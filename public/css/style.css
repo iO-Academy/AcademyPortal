@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    font-family: Courier, sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+div {
+    margin: 25px;
+}
+
+form {
+    margin-top: 10px;
+}
+
+input {
+    width:350px;
+    border-radius: 5px;
+    padding: 6px 12px;
+    background-color: #b8cce7;
+}
+
+.submit {
+    width:100px;
+    background-color: #56e789;
+}

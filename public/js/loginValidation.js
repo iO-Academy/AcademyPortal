@@ -1,20 +1,10 @@
 
-function isEmpty(elementID) {
-    var textIn = document.getElementById(elementID).value.trim();
-    if (textIn == "" || textIn == null){
-        return true;
-    } else {
-        return false;
-    }
-}
-
-
 function isValidEmail(elementID) {
-    var inputVal = document.getElementById(elementID);
-    var email = inputVal.value;
-    var validFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let inputVal = document.getElementById(elementID);
+    let email = inputVal.value.trim();
+    let re = new RegExp("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$");
 
-    if (validFormat.test(email)) {
+    if (re.test(email)) {
         inputVal.style.backgroundColor = "";
         return true
     } else {
@@ -24,36 +14,28 @@ function isValidEmail(elementID) {
 }
 
 function checkRequiredField(elementID) {
-    var inputVal = document.getElementById(elementID);
-    if (inputVal.value.trim() == "" || isEmpty(elementID) ) {
+    let inputVal = document.getElementById(elementID);
+
+    if (inputVal.value.trim() == "") {
         inputVal.style.backgroundColor = "pink";
-        return true;
+        return false;
     }
     else{
         inputVal.style.backgroundColor = "";
-        return false;
-    }
-}
-
-
-
-function outOfRange(elementID, MinChar, MaxChar) {
-    var inputVal = document.getElementById(elementID);
-    if (inputVal.value.length < MinChar || inputVal.value.length > MaxChar) {
-        inputVal.style.backgroundColor = "yellow";
         return true;
-    } else {
-        inputVal.style.backgroundColor = "";
-        return false;
     }
 }
 
+function validateForm() {
+    if (checkRequiredField('userEmail') && isValidEmail('userEmail') && checkRequiredField('password')) {
+        document.getElementById('submitWarning').textContent = 'Form is Goooood!'
+    } else {
+        document.getElementById('submitWarning').textContent = 'Field input error'
+    }
+}
 
-
-
-//Add event listener on the button Submit
-//get Form Element using its ID
 document.getElementById('formID').addEventListener('submit', function(e){
     e.preventDefault();
     validateForm();
 });
+
