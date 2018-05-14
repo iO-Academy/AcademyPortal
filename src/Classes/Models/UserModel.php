@@ -14,7 +14,7 @@ class UserModel
         $this->loginFormPassword = $loginFormPassword;
     }
 
-    private function userLoginVerify(string $loginFormUserName, string $loginFormPassword, UserCredentials $userCredentials) {
+    private function userLoginVerify(string $loginFormUserName, string $loginFormPassword, UserCredentialsModel $userCredentials) {
 
         if (($loginFormUserName === $userCredentials->userName) && (password_verify($loginFormPassword,$userCredentials->password))) {
             //returns json object
