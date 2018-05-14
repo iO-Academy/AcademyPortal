@@ -17,3 +17,10 @@ $container['logger'] = function ($c) {
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
 };
+
+// db connection
+$container['dbConnection'] = function ($c) {
+    $db = new PDO('mysql:host=192.168.20.20:8080; dbname=academyPortal', 'root');
+};
+
+
