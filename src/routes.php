@@ -15,4 +15,4 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 });
 
 
-$app->get('/admin', \Portal\Controller\AdminController::class);
+$app->get('/admin', 'adminActionFactory');

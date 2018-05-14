@@ -2,21 +2,23 @@
 
 namespace Portal\Controller;
 
+use Slim\Views\PhpRenderer;
+
 class AdminController
 {
-    protected $container;
+    protected $renderer;
 
-    function __construct($container)
+    function __construct(PhpRenderer $renderer)
     {
-        $this->container = $container;
+        $this->renderer = $renderer;
     }
 
     function __invoke($request, $response, $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            return $this->container->get('renderer')->render($response, 'admin.phtml', $args);
+            return $this->renderer->render($response, 'admin.phtml', $args);
         } else {
-            $_SESSION['loggedIn'] = false; 
+            $_SESSION['loggedIn'] = false;
             return $response->withRedirect('/');
         }
     }

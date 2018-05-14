@@ -23,4 +23,5 @@ $container['dbConnection'] = function ($c) {
     $db = new PDO('mysql:host=192.168.20.20:8080; dbname=academyPortal', 'root');
 };
 
-
+// factory to create admin controller
+$container['adminActionFactory'] = new \Portal\Factory\AdminActionFactory();
