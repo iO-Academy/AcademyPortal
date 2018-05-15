@@ -3,8 +3,6 @@
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-// Routes
-
 // Front end routes:
 $app->get('/', function (Request $request, Response $response, array $args) {
     // Sample log message
@@ -14,5 +12,6 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     return $this->renderer->render($response, 'index.phtml', $args);
 });
 
-
 $app->get('/admin', 'adminActionFactory');
+
+// API routes:
