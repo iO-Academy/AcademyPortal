@@ -24,4 +24,4 @@ $container['dbConnection'] = function ($c) {
 };
 
 // factory to create admin controller
-$container['adminActionFactory'] = new \Portal\Factory\AdminActionFactory();
+$container['adminControllerFactory'] = new \Portal\Factory\AdminControllerFactory();

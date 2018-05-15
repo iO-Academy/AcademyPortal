@@ -12,6 +12,6 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     return $this->renderer->render($response, 'index.phtml', $args);
 });
 
-$app->get('/admin', 'adminActionFactory');
+$app->get('/admin', 'adminControllerFactory');
 
 // API routes:

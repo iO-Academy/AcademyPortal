@@ -5,7 +5,7 @@ namespace Portal\Factory;
 use Psr\Container\ContainerInterface;
 use Portal\Controller\AdminController;
 
-class AdminActionFactory
+class AdminControllerFactory
 {
     public function __invoke(ContainerInterface $container) : AdminController {
         $renderer = $container->get('renderer');
