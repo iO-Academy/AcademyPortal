@@ -28,7 +28,7 @@ DROP TABLE IF EXISTS `admins`;
 CREATE TABLE users (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL DEFAULT '',
-  `password` varchar(65) NOT NULL DEFAULT '',
+  `password` varchar(256) NOT NULL DEFAULT '',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
