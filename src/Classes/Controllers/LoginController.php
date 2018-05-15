@@ -11,6 +11,8 @@ class LoginController
     private $userModel;
 
     /**
+     * Instantiates login controller
+     *
      * LoginController constructor.
      * @param UserModel $userModel userModel object dependency
      */
@@ -20,6 +22,8 @@ class LoginController
     }
 
     /**
+     * Verifies user credentials and returns message and status code
+     *
      * @param Request $request HTTP request
      * @param Response $response HTTP response
      *

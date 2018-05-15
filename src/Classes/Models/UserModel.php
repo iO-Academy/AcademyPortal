@@ -12,6 +12,8 @@ class UserModel
     }
 
     /**
+     * Gets email and password from database
+     *
      * @param $userEmail used by prepared statement
      *
      * @return array contains user email and password
@@ -25,8 +27,9 @@ class UserModel
         return $userCredentials;
     }
 
-
     /**
+     * Verifies user credentials
+     *
      * @param string $userEmail value provided for comparison
      * @param string $password value provided for comparison
      * @param array $userCredentials values provided for comparison
