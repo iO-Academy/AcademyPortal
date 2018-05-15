@@ -2,8 +2,8 @@ let isValidEmail = (elementID) => {
     let inputVal = document.getElementById(elementID)
     let userEmailWarning = document.getElementById('userEmailWarning')
     let email = inputVal.value.trim();
-    let regexp = new RegExp("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")
-    if (regexp.test(email)) {
+    let regEx = new RegExp("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")
+    if (regEx.test(email)) {
         userEmailWarning.classList.remove('error')
         return true
     } else {
