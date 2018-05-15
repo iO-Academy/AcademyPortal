@@ -14,7 +14,6 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 
 $app->get('/admin', 'adminControllerFactory');
 
-//WIP need to create register user factory as callable
-$app->get('/registerUser', \templates\registerUser.phtml::class);
+$app->get('/register', 'registerControllerFactory');
 
 // API routes:
