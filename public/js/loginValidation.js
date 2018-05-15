@@ -2,9 +2,8 @@ let isValidEmail = (elementID) => {
     let inputVal = document.getElementById(elementID)
     let userEmailWarning = document.getElementById('userEmailWarning')
     let email = inputVal.value.trim();
-    let re = new RegExp("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")
-console.log(re.test(email))
-    if (re.test(email)) {
+    let regexp = new RegExp("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")
+    if (regexp.test(email)) {
         userEmailWarning.classList.remove('error')
         return true
     } else {
@@ -13,7 +12,7 @@ console.log(re.test(email))
     }
 }
 
-let validateToPostInputs = () => {
+let validateInputs = () => {
     let cleanedEmailInput = encodeURI(document.getElementById('userEmail').value)
     let cleanedPasswordInput = encodeURI(document.getElementById('password').value)
 
@@ -25,7 +24,7 @@ let validateToPostInputs = () => {
     }
 }
 
-let loginDetails = (path, data) => {
+let sendLoginDetails = (path, data) => {
     fetch(`/api/${path}`,
         {
             headers: {
@@ -38,10 +37,10 @@ let loginDetails = (path, data) => {
         .then(function(data){return data.json()})
 }
 
-let loginForm = document.getElementById('formID')
+let loginForm = document.getElementById('loginForm')
 loginForm.addEventListener('submit', (e) => {
     let validInputs
     e.preventDefault()
-    validInputs = validateToPostInputs()
-    loginDetails(validInputs)
+    validInputs = validateInputs()
+    sendLoginDetails(validInputs)
 })
