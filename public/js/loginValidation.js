@@ -1,4 +1,3 @@
-
 function isValidEmail(elementID) {
     let inputVal = document.getElementById(elementID);
     let email = inputVal.value.trim();
@@ -12,7 +11,6 @@ function isValidEmail(elementID) {
         return false
     }
 }
-
 
 function postLoginDetails(inputs){
     fetch("/api/login",
@@ -29,7 +27,6 @@ function postLoginDetails(inputs){
         })
         .then(function(data){return data.json()})
 }
-
 
 function validateToPostInputs() {
     let cleanedEmailInput = encodeURI(document.getElementById('userEmail').value);
@@ -48,4 +45,3 @@ document.getElementById('formID').addEventListener('submit', function(e){
     let validInputs = validateToPostInputs();
     postLoginDetails(validInputs);
 });
-
