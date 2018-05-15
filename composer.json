@@ -25,6 +25,11 @@
             "Tests\\": "tests/"
         }
     },
+    "autoload": {
+        "psr-4": {
+            "Portal\\": "src/classes/"
+        }
+    },
     "config": {
         "process-timeout" : 0
     },
