@@ -6,7 +6,7 @@ use Slim\Views\PhpRenderer;
 
 class AdminController
 {
-    protected $renderer;
+    private $renderer;
 
     function __construct(PhpRenderer $renderer)
     {
