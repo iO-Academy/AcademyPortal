@@ -36,7 +36,8 @@ class UserModel
      *
      * @return bool
      */
-    public function userLoginVerify(string $userEmail, string $password, $userCredentials) {
+    public function userLoginVerify(string $userEmail, string $password, $userCredentials):bool
+    {
 
         if (
             (is_array($userCredentials)) &&
