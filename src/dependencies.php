@@ -24,7 +24,7 @@ $container['dbConnection'] = function ($c) {
     return $db;
 };
 
-$container[\Portal\Models\UserModel::class] = new \Portal\Factories\UserModelFactory();
+$container['UserModel'] = new \Portal\Factories\UserModelFactory();
 
-$container[\Portal\Controllers\LoginController::class] = new \Portal\Factories\LoginControllerFactory();
+$container['LoginController'] = new \Portal\Factories\LoginControllerFactory();
 
