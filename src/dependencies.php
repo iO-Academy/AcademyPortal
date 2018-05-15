@@ -26,3 +26,6 @@ $container['dbConnection'] = function ($c) {
 
 // factory to create admin controller
 $container['adminControllerFactory'] = new \Portal\Factory\AdminControllerFactory();
+
+// factory to create register controller
+$container['registerControllerFactory'] = new \Portal\Factory\RegisterControllerFactory();
