@@ -1,13 +1,13 @@
 * {
     box-sizing: border-box;
-    font-family: Courier, sans-serif;
 }
 
 body {
-    margin: 25px;
+    font-family: Courier, sans-serif;
 }
 
-div {
+div,
+h1 {
     margin: 25px;
 }
 
@@ -16,13 +16,13 @@ form {
 }
 
 input {
-    width:350px;
+    width: 350px;
     border-radius: 5px;
     padding: 6px 12px;
     background-color: #b8cce7;
 }
 
 .submit {
-    width:100px;
+    width: 100px;
     background-color: #56e789;
 }

@@ -13,26 +13,11 @@ function isValidEmail(elementID) {
     }
 }
 
-function checkRequiredField(elementID) {
-    let inputVal = document.getElementById(elementID);
-
-    if (inputVal.value.trim() == "") {
-        inputVal.style.backgroundColor = "pink";
-        return false;
-    }
-    else{
-        inputVal.style.backgroundColor = "";
-        return true;
-    }
-}
-
-
-
-function validateForm() {
+function validateToPostInputs() {
     let cleanedEmailInput = encodeURI(document.getElementById('userEmail').value);
     let cleanedPasswordInput = encodeURI(document.getElementById('password').value);
 
-    if (checkRequiredField('userEmail') && isValidEmail('userEmail') && checkRequiredField('password')) {
+    if (isValidEmail('userEmail')) {
         document.getElementById('submitWarning').textContent = 'Form is Goooood!'
 
         fetch("/api/login",
@@ -57,6 +42,6 @@ function validateForm() {
 
 document.getElementById('formID').addEventListener('submit', function(e){
     e.preventDefault();
-    validateForm();
+    validateToPostInputs();
 });
 
