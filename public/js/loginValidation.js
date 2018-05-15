@@ -14,7 +14,7 @@ function isValidEmail(elementID) {
 }
 
 
-function postLoginDetails(email, password){
+function postLoginDetails(inputs){
     fetch("/api/login",
         {
             headers: {
@@ -23,12 +23,11 @@ function postLoginDetails(email, password){
             },
             method: "POST",
             body: JSON.stringify({
-                "userEmail": email,
-                "password": password
+                "userEmail": inputs['email'],
+                "password": inputs['password']
             })
         })
-        .then(function(data){ return data.json() })
-        .then(function (value) {console.log(value) })
+        .then(function(data){return data.json()})
 }
 
 
@@ -37,7 +36,8 @@ function validateToPostInputs() {
     let cleanedPasswordInput = encodeURI(document.getElementById('password').value);
 
     if (isValidEmail('userEmail')) {
-        postLoginDetails(cleanedEmailInput, cleanedPasswordInput)
+        let emailPasswordValues = {'email' : cleanedEmailInput, 'password': cleanedPasswordInput};
+        return emailPasswordValues;
     } else {
         document.getElementById('submitWarning').textContent = 'Field input error'
     }
@@ -45,6 +45,7 @@ function validateToPostInputs() {
 
 document.getElementById('formID').addEventListener('submit', function(e){
     e.preventDefault();
-    validateToPostInputs();
+    let validInputs = validateToPostInputs();
+    postLoginDetails(validInputs);
 });
 
