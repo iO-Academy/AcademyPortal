@@ -2,28 +2,47 @@
 
 namespace Portal\Models;
 
-
 class UserModel
 {
-    public $loginFormUserName;
-    public $loginFormPassword;
-    public $userCredentials;
+    private $db;
 
-    public function setUserCredentials ($loginFormUserName, $loginFormPassword) {
-        $this->loginFormUserName = $loginFormUserName;
-        $this->loginFormPassword = $loginFormPassword;
+    public function __construct(\PDO $db)
+    {
+        $this->db = $db;
     }
 
-    private function userLoginVerify(string $loginFormUserName, string $loginFormPassword, UserCredentialsModel $userCredentials) {
+    /**
+     * @param $userEmail used by prepared statement
+     *
+     * @return array contains user email and password
+     */
+    public function getUserByEmail($userEmail)
+    {
+        $query = $this->db->prepare("SELECT `email`, `password` FROM `users` WHERE `email` = :email;");
+        $query->bindParam(':email', $userEmail);
+        $query->execute();
+        $userCredentials = $query->fetch();
+        return $userCredentials;
+    }
 
-        if (($loginFormUserName === $userCredentials->userName) && (password_verify($loginFormPassword,$userCredentials->password))) {
-            //returns json object
+
+    /**
+     * @param string $userEmail value provided for comparison
+     * @param string $password value provided for comparison
+     * @param array $userCredentials values provided for comparison
+     *
+     * @return bool
+     */
+    public function userLoginVerify(string $userEmail, string $password, $userCredentials) {
+
+        if (
+            (is_array($userCredentials)) &&
+            ($userEmail === $userCredentials['email']) &&
+            (password_verify($password, $userCredentials['password']))
+        ) {
             return true;
-        } else {
-            //return json with error message
-            return false;
         }
-
+        return false;
     }
 
 }
