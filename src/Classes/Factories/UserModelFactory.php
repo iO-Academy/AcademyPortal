@@ -1,15 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: academy
- * Date: 14/05/2018
- * Time: 16:02
- */
 
 namespace Portal\Factories;
 
+use Portal\Models\UserModel;
+use Psr\Container\ContainerInterface;
 
 class UserModelFactory
 {
-
+    /**
+     * @param $container
+     *
+     * @return UserModel returns object with db connection injected
+     */
+    public function __invoke(ContainerInterface $container)
+    {
+        $db = $container->get('dbConnection');
+        return new UserModel($db);
+    }
 }
