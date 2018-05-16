@@ -1,14 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: academy
- * Date: 15/05/2018
- * Time: 10:24
- */
 
 namespace Portal\Factories;
+
 use Portal\Controllers\LoginController;
-use Portal\Models\UserModel;
 use Psr\Container\ContainerInterface;
 
 

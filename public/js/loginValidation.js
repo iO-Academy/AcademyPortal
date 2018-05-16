@@ -25,6 +25,7 @@ let validateInputs = () => {
 }
 
 let sendLoginDetails = (path, data) => {
+
     fetch(`/api/${path}`,
         {
             headers: {
@@ -35,6 +36,7 @@ let sendLoginDetails = (path, data) => {
             body: JSON.stringify(data)
         })
         .then(function(data){return data.json()})
+        .catch(console.log('error'));
 }
 
 let loginForm = document.getElementById('loginForm')
@@ -42,5 +44,8 @@ loginForm.addEventListener('submit', (e) => {
     let validInputs
     e.preventDefault()
     validInputs = validateInputs()
-    sendLoginDetails(validInputs)
+    sendLoginDetails('login', validInputs)
 })
+
+
+// $app->post('/api/login', 'LoginController');
