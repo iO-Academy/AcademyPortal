@@ -43,7 +43,7 @@ let displayPassword = async () => {
         password = await generatePassword()
 
     if(password !== undefined) {
-        messageBox.textContent = password
+        messageBox.value = password
     } else {
         errorMessage()
     }
