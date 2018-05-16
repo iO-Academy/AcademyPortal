@@ -17,7 +17,7 @@ let validateInputs = () => {
     let cleanedPasswordInput = encodeURI(document.getElementById('password').value)
 
     if (isValidEmail('userEmail')) {
-        let emailPasswordValues = {'email' : cleanedEmailInput, 'password': cleanedPasswordInput}
+        let emailPasswordValues = {'userEmail' : cleanedEmailInput, 'password': cleanedPasswordInput}
         return emailPasswordValues
     } else {
         document.getElementById('submitWarning').textContent = 'Field input error'
