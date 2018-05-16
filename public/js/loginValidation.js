@@ -24,9 +24,9 @@ let validateInputs = () => {
     }
 }
 
-let sendLoginDetails = (path, data) => {
+let sendLoginDetails = async (path, data) => {
 
-    fetch(`/api/${path}`,
+    let response =  await fetch(`/api/${path}`,
         {
             headers: {
                 'Accept': 'application/json',
