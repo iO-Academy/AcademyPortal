@@ -35,6 +35,6 @@ newUserForm.addEventListener('submit', async (e) => {
     if(!response['success']) {
         document.getElementById("message").innerText = response['msg']
     } else if (response['success'] === true) {
-        document.getElementById("message").innerText = `New user added email:${response['data'].userEmail} password:${response['data'].password}`;
+        document.getElementById("message").innerText = `New user added email:${inputs['userEmail']} password:${inputs['password']}`;
     }
 })
