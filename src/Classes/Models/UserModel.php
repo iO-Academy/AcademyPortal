@@ -12,7 +12,7 @@ class UserModel
     }
 
     /**
-     * Gets email and password from database
+     * Gets email and password from database to login
      *
      * @param $userEmail used by prepared statement
      *
@@ -48,4 +48,24 @@ class UserModel
         return false;
     }
 
+    /**
+     * Inserts new user into database - registering
+     *
+     * @param string $registerEmail value provided from form to insert into database
+     * @param string $registerPassword value provided from form to insert into database
+     */
+    public function insertNewUserToDb(string $registerEmail, string $registerPassword) {
+
+        $query = $this->db->prepare(
+            "INSERT INTO `users` (`email`, `password`) 
+                      VALUES (:email, :password) 
+                      WHERE NOT EXISTS (
+                          SELECT `email` FROM `users`
+                      );");
+        $query->bindParam(':email', $registerEmail);
+        $query->bindParam(':password', $registerPassword);
+        $query->execute();
+
+        // return success or fail
+    }
 }
