@@ -1,0 +1,10 @@
+* {
+    box-sizing: border-box;
+}
+
+.addUserButton {
+    text-decoration: none;
+    border: solid;
+    padding: 15px 32px;
+    border-radius: 5px;
+}
