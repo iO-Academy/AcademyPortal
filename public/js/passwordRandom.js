@@ -38,8 +38,12 @@ let displayPassword = async () => {
         password = await generatePassword(),
         failMessage = 'PasswordWolf currently unavailable. Try refreshing or come back later.'
 
-    password !== undefined ?
-        messageBox.textContent = password : messageBox.textContent = failMessage
+    if(password !== undefined) {
+        messageBox.textContent = password
+    } else {
+        messageBox.textContent = failMessage
+        messageBox.className = 'alert'
+    }
 }
 
 displayPassword();
