@@ -1,6 +1,6 @@
 
-let getPasswordList = () => {
-    const PASSWORDRANDOMURL = 'https://passwordwolf.com/api/?repeat=10'
+let getPasswordList = (numberOfPasswords) => {
+    const PASSWORDRANDOMURL = `https://passwordwolf.com/api/?repeat=${numberOfPasswords}`
 
     return fetch(PASSWORDRANDOMURL, {
         headers: {
@@ -15,12 +15,11 @@ let getPasswordList = () => {
         })
 }
 
-
 let selectPassword = async () => {
-   let passwords = await getPasswordList()
+   let passwords = await getPasswordList(10)
 
     if (typeof passwords ===  'object') {
-        let password = await passwords[Math.floor(Math.random() * 9)]
+        let password = await passwords[Math.floor(Math.random() * (passwords.length - 1))]
         return password['password']
     }
 }
@@ -43,4 +42,4 @@ let displayPassword = async () => {
         messageBox.textContent = password : messageBox.textContent = failMessage
 }
 
-document.addEventListener('load', displayPassword)
+displayPassword();
