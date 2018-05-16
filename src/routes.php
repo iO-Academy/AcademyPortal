@@ -13,4 +13,6 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 
 $app->get('/admin', 'adminControllerFactory');
 
+
 // API routes:
+$app->post('api/registerUser', 'registerUserControllerFactory');
