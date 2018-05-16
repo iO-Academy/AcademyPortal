@@ -1,4 +1,5 @@
 <?php
+
 namespace Portal\Factories;
 
 use Portal\Controllers\LoginController;
