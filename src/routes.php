@@ -10,4 +10,4 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 });
 
 $app->post('/api/login', 'LoginController');
-$app->get('/admin', 'AdminControllerFactory');
+$app->get('/admin', 'adminController');
