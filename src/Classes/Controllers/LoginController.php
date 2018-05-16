@@ -47,6 +47,5 @@ class LoginController
         }
 
         return $response->withJson($data, $statusCode);
-
     }
 }

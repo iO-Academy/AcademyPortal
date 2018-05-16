@@ -17,30 +17,41 @@ let validateInputs = () => {
     let cleanedPasswordInput = encodeURI(document.getElementById('password').value)
 
     if (isValidEmail('userEmail')) {
-        let emailPasswordValues = {'email' : cleanedEmailInput, 'password': cleanedPasswordInput}
+        let emailPasswordValues = {'userEmail' : cleanedEmailInput, 'password': cleanedPasswordInput}
         return emailPasswordValues
     } else {
         document.getElementById('submitWarning').textContent = 'Field input error'
     }
 }
 
-let sendLoginDetails = (path, data) => {
-    fetch(`/api/${path}`,
+let sendLoginDetails = async (path, data) => {
+
+    let response =  await fetch(`/api/${path}`,
         {
+            credentials: "same-origin",
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             method: "POST",
             body: JSON.stringify(data)
         })
         .then(function(data){return data.json()})
+        .then(function(data){return data})
+    return response
+
 }
 
 let loginForm = document.getElementById('loginForm')
-loginForm.addEventListener('submit', (e) => {
-    let validInputs
+loginForm.addEventListener('submit', async (e) => {
     e.preventDefault()
+    let validInputs
     validInputs = validateInputs()
-    sendLoginDetails(validInputs)
+    let response = await sendLoginDetails('login', validInputs)
+
+    if(!response['success']) {
+        document.getElementById("error-message").innerText = response['msg']
+    } else if (response['success'] === true) {
+        window.location.href = "/admin";
+    }
 })
