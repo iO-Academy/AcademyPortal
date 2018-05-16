@@ -9,7 +9,7 @@ class UserModelFactoryTest extends TestCase
 {
     function testInvoke()
     {
-        $db = new PDO('mysql:host=192.168.20.20;dbname=academyPortal', 'root');
+        $db = $this->createMock(PDO);
         $container = $this->createMock(ContainerInterface::class);
         $container->method('get')
             ->willReturn($db);
