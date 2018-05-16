@@ -28,9 +28,10 @@ let sendLoginDetails = async (path, data) => {
 
     let response =  await fetch(`/api/${path}`,
         {
+            credentials: "same-origin",
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             method: "POST",
             body: JSON.stringify(data)
@@ -40,8 +41,6 @@ let sendLoginDetails = async (path, data) => {
     return response
 
 }
-
-
 
 let loginForm = document.getElementById('loginForm')
 loginForm.addEventListener('submit', async (e) => {
@@ -56,6 +55,3 @@ loginForm.addEventListener('submit', async (e) => {
         window.location.href = "/admin";
     }
 })
-
-
-// $app->post('/api/login', 'LoginController');
