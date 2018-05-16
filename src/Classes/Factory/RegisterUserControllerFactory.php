@@ -7,6 +7,8 @@
  */
 
 namespace Portal\Factory;
+use Psr\Container\ContainerInterface;
+use Portal\Controller\RegisterUserController;
 
 
 class RegisterUserControllerFactory
@@ -20,8 +22,7 @@ class RegisterUserControllerFactory
      */
     public function __invoke(ContainerInterface $container): RegisterUserController
     {
-        $db = $container->get('dbConnection');
-        return new RegisterUserController($db);
+        $userModel = $container->get('UserModel');
+        return new RegisterUserController($userModel);
     }
-
 }

@@ -14,4 +14,4 @@ $app->get('/admin', 'adminControllerFactory');
 
 // API routes
 $app->post('/api/login', 'LoginController');
-$app->post('/api/registerUser', 'registerUserControllerFactory');
+$app->post('/api/registerUser', 'RegisterUserControllerFactory');

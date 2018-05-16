@@ -34,7 +34,7 @@ class UserModel
      * @param string $password value provided for comparison
      * @param array $userCredentials values provided for comparison
      *
-     * @return bool
+     * @return true if email entered exists in database
      */
     public function userLoginVerify(string $userEmail, string $password, $userCredentials):bool
     {
@@ -53,19 +53,15 @@ class UserModel
      *
      * @param string $registerEmail value provided from form to insert into database
      * @param string $registerPassword value provided from form to insert into database
+     *
+     * @return insert email and password into database
      */
     public function insertNewUserToDb(string $registerEmail, string $registerPassword) {
-
-        $query = $this->db->prepare(
-            "INSERT INTO `users` (`email`, `password`) 
-                      VALUES (:email, :password) 
-                      WHERE NOT EXISTS (
-                          SELECT `email` FROM `users`
-                      );");
-        $query->bindParam(':email', $registerEmail);
-        $query->bindParam(':password', $registerPassword);
-        $query->execute();
-
-        // return success or fail
+            $query = $this->db->prepare(
+                "INSERT INTO `users` (`email`, `password`) VALUES (:email, :password);");
+            $query->bindParam(':email', $registerEmail);
+            $query->bindParam(':password', $registerPassword);
+            // change result to return once got SQL statement working
+            return $query->execute();
     }
 }
