@@ -16,4 +16,4 @@ $app->get('/admin', 'adminControllerFactory');
 
 $app->get('/register', 'registerControllerFactory');
 
-// API routes:git
+// API routes
