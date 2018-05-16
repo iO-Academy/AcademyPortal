@@ -36,26 +36,30 @@ class RegisterUserController
      */
     function __invoke(Request $request, Response $response){
 
-        $data = ['success' => false, 'msg' => 'User not registered.', 'data' => []];
-        $statusCode = 401;
+        if ($_SESSION['loggedIn'] === true) {
 
-        $newUserData = $request->getParsedBody();
-        $validatedUserData = [];
-        $validatedUserData['email'] = filter_var($newUserData['email'], FILTER_SANITIZE_STRING);
-        $validatedUserData['password'] = filter_var($newUserData['password'], FILTER_SANITIZE_STRING);
+            $data = ['success' => false, 'msg' => 'User not registered.', 'data' => []];
+            $statusCode = 401;
 
-        //returns true if exists - we want it to return false to continue adding new user
-        $emailExists = $this->userModel->getUserByEmail($validatedUserData['email']);
+            $newUserData = $request->getParsedBody();
+            $validatedUserData = [];
+            $validatedUserData['email'] = filter_var($newUserData['email'], FILTER_SANITIZE_STRING);
+            $validatedUserData['password'] = filter_var($newUserData['password'], FILTER_SANITIZE_STRING);
 
-        if(!$emailExists){
-            $result = $this->userModel->insertNewUserToDb($validatedUserData['email'], $validatedUserData['password']);
+            //returns true if exists - we want it to return false to continue adding new user
+            $emailExists = $this->userModel->getUserByEmail($validatedUserData['email']);
+
+            if (!$emailExists) {
+                $result = $this->userModel->insertNewUserToDb($validatedUserData['email'], $validatedUserData['password']);
+            }
+
+            if ($result) {
+                $data['success'] = $result;
+                $data['msg'] = 'User registered';
+                $statusCode = 200;
+            }
+            return $response->withJson($data, $statusCode);
+
         }
-
-        if($result) {
-            $data['success'] = $result;
-            $data['msg'] = 'User registered';
-            $statusCode = 200;
-        }
-        return $response->withJson($data, $statusCode);
     }
 }
