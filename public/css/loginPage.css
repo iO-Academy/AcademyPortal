@@ -1,11 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Courier, sans-serif;
-}
-
 div,
 h1 {
     margin: 25px;
