@@ -17,15 +17,13 @@ let validateInputs = () => {
     let cleanedPasswordInput = encodeURI(document.getElementById('password').value)
 
     if (isValidEmail('userEmail')) {
-        let emailPasswordValues = {'userEmail' : cleanedEmailInput, 'password': cleanedPasswordInput}
-        return emailPasswordValues
+        return {'userEmail' : cleanedEmailInput, 'password': cleanedPasswordInput}
     } else {
         document.getElementById('submitWarning').textContent = 'Field input error'
     }
 }
 
 let sendLoginDetails = async (path, data) => {
-
     let response =  await fetch(`/api/${path}`,
         {
             credentials: "same-origin",
@@ -36,22 +34,19 @@ let sendLoginDetails = async (path, data) => {
             method: "POST",
             body: JSON.stringify(data)
         })
-        .then(function(data){return data.json()})
+        .then(data => data.json())
         .then(function(data){return data})
     return response
-
 }
 
 let loginForm = document.getElementById('loginForm')
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault()
-    let validInputs
-    validInputs = validateInputs()
-    let response = await sendLoginDetails('login', validInputs)
 
-    if(!response['success']) {
-        document.getElementById("error-message").innerText = response['msg']
-    } else if (response['success'] === true) {
-        window.location.href = "/admin";
-    }
+    let validInputs = validateInputs(),
+        response = await sendLoginDetails('login', validInputs)
+
+    response['success'] === true ?
+        window.location.href = "/admin"
+        : document.getElementById("error-message").innerText = response['msg']
 })
