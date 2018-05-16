@@ -25,7 +25,7 @@
 
 DROP TABLE IF EXISTS `admins`;
 
-CREATE TABLE `admins` (
+CREATE TABLE users (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL DEFAULT '',
   `password` varchar(256) NOT NULL DEFAULT '',
@@ -36,7 +36,7 @@ CREATE TABLE `admins` (
 LOCK TABLES `admins` WRITE;
 /*!40000 ALTER TABLE `admins` DISABLE KEYS */;
 
-INSERT INTO `admins` (`id`, `email`, `password`, `deleted`)
+INSERT INTO users (`id`, `email`, `password`, `deleted`)
 VALUES
 	(1,'test@test.com','$2y$12$jW0bVIRrUy.rx0QD7mGNWOlfJz1Sd0cZUhc0FfamtiPx1OT9ntPlC',0);
 
