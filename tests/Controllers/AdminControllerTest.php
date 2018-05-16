@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Portal\Controllers\AdminController as AdminController;
+use Portal\Controllers\AdminController;
 
 use Slim\Views\PhpRenderer;
 
