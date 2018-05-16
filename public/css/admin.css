@@ -8,3 +8,8 @@
     padding: 15px 32px;
     border-radius: 5px;
 }
+
+.error{
+    background-color: #ffc0cb;
+    width:200px;
+}

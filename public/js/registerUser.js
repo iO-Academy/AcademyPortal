@@ -31,10 +31,13 @@ newUserForm.addEventListener('submit', async (e) => {
     e.preventDefault()
     let inputs = getInputs()
     let response = await sendNewUserDetails('registerUser', inputs)
+    let messageBox = document.getElementById("message")
 
     if(!response['success']) {
-        document.getElementById("message").innerText = response['msg']
+        messageBox.innerText = 'Error adding user to database'
+        messageBox.classList.add('error')
     } else if (response['success'] === true) {
-        document.getElementById("message").innerText = `New user added email:${inputs['userEmail']} password:${inputs['password']}`;
+        messageBox.innerText = `New user added email:${inputs['userEmail']} password:${inputs['password']}`
+        messageBox.classList.remove('error')
     }
 })
