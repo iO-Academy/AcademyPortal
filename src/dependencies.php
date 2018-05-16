@@ -20,9 +20,11 @@ $container['logger'] = function ($c) {
 
 // db connection
 $container['dbConnection'] = function ($c) {
-    $db = new PDO('mysql:host=192.168.20.20:8080; dbname=academyPortal', 'root');
+    $db = new PDO('mysql:host=192.168.20.20;dbname=academyPortal', 'root');
     return $db;
 };
 
-// factory to create admin controller
+$container['UserModel'] = new \Portal\Factories\UserModelFactory();
+$container['LoginController'] = new \Portal\Factories\LoginControllerFactory();
 $container['adminControllerFactory'] = new \Portal\Factory\AdminControllerFactory();
+
