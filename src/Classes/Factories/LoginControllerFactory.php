@@ -23,7 +23,7 @@ class LoginControllerFactory
      */
     public function __invoke(ContainerInterface $container)
     {
-        $userModel = $container->get(UserModel::class);
+        $userModel = $container->get('UserModel');
         return new LoginController($userModel);
     }
 
