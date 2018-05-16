@@ -1,3 +1,9 @@
+let errorMessage = () => {
+    let messageBox = document.getElementById('randomPassword')
+
+    messageBox.textContent = 'PasswordWolf currently unavailable. Try refreshing or come back later.'
+    messageBox.classList.add('alert')
+}
 
 let getPasswordList = (numberOfPasswords) => {
     const PASSWORDRANDOMURL = `https://passwordwolf.com/api/?repeat=${numberOfPasswords}`
@@ -11,7 +17,7 @@ let getPasswordList = (numberOfPasswords) => {
         .then(res => res.json())
         .then(myJson => myJson)
         .catch(err => {
-            console.log(`Looks like there was an error: ${err}`) //charlie may want this gone
+            errorMessage()
         })
 }
 
@@ -34,14 +40,12 @@ let generatePassword = async () => {
 
 let displayPassword = async () => {
     let messageBox = document.getElementById('randomPassword'),
-        password = await generatePassword(),
-        failMessage = 'PasswordWolf currently unavailable. Try refreshing or come back later.'
+        password = await generatePassword()
 
     if(password !== undefined) {
         messageBox.textContent = password
     } else {
-        messageBox.textContent = failMessage
-        messageBox.className = 'alert'
+        errorMessage()
     }
 }
 
