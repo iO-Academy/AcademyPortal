@@ -37,7 +37,6 @@ class LoginController
 
         $parsedBody = $request->getParsedBody();
         $user = $this->userModel->getUserByEmail($parsedBody['userEmail']);
-
         $result = $this->userModel->userLoginVerify($parsedBody['userEmail'], $parsedBody['password'], $user);
 
         if($result) {
