@@ -13,6 +13,7 @@ class UserModelFactory
      * @param $container
      *
      * @return UserModel returns object with db connection injected
+     * @throws
      */
     public function __invoke(ContainerInterface $container)
     {
