@@ -11,7 +11,7 @@ let getPasswordList = (numberOfPasswords) => {
         .then(res => res.json())
         .then(myJson => myJson)
         .catch(err => {
-            console.log(`Looks like there was an error: ${err}`)
+            console.log(`Looks like there was an error: ${err}`) //charlie may want this gone
         })
 }
 
@@ -28,7 +28,6 @@ let generatePassword = async () => {
     let password = await selectPassword()
 
     if (typeof password ===  'string') {
-        console.log(password)
         return password
     }
 }
