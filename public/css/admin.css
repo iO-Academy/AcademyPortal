@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-.addUserButton {
+.addUserButton, .returnButton {
     text-decoration: none;
     border: solid;
     padding: 15px 32px;
