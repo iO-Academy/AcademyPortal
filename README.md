@@ -21,7 +21,7 @@ POST
 POST
 - Registers a new user by saving in database
 - Sends:
-	- `{'email':'example@email.com', 'password':'password'}`
+	- `{'userEmail':'example@email.com', 'password':'password'}`
 - Checks if email already exists in database
 - If email does not exist then saves to database
 - Returns success true / false:
