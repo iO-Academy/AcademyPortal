@@ -15,4 +15,4 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 
 //API routes
 
-$app->post('/api/login', \Portal\Controllers\LoginController::class);
+$app->post('/api/login', 'LoginController');
