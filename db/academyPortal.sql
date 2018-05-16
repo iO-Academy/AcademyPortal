@@ -20,10 +20,8 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
-# Dump of table admins
+# Dump of table users
 # ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `admins`;
 
 CREATE TABLE users (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -33,14 +31,11 @@ CREATE TABLE users (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `admins` WRITE;
-/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-
 INSERT INTO users (`id`, `email`, `password`, `deleted`)
 VALUES
 	(1,'test@test.com','$2y$12$jW0bVIRrUy.rx0QD7mGNWOlfJz1Sd0cZUhc0FfamtiPx1OT9ntPlC',0);
 
-/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
+
 UNLOCK TABLES;
 
 
