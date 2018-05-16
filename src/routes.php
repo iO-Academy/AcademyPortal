@@ -10,8 +10,8 @@ $app->get('/', function (Request $request, Response $response, array $args) {
 });
 
 // URL routes - to display pages
-$app->get('/admin', 'adminControllerFactory');
+$app->get('/admin', 'adminController');
 
 // API routes
 $app->post('/api/login', 'LoginController');
-$app->post('/api/registerUser', 'RegisterUserControllerFactory');
+$app->post('/api/registerUser', 'RegisterUserController');

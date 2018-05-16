@@ -14,7 +14,7 @@ class UserModel
     /**
      * Gets email and password from database to login
      *
-     * @param $userEmail used by prepared statement
+     * @param $userEmail used by prepared statement.
      *
      * @return array contains user email and password
      */
@@ -61,7 +61,6 @@ class UserModel
                 "INSERT INTO `users` (`email`, `password`) VALUES (:email, :password);");
             $query->bindParam(':email', $registerEmail);
             $query->bindParam(':password', $registerPassword);
-            // change result to return once got SQL statement working
             return $query->execute();
     }
 }
