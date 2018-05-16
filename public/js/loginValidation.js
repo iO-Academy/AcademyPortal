@@ -36,15 +36,25 @@ let sendLoginDetails = async (path, data) => {
             body: JSON.stringify(data)
         })
         .then(function(data){return data.json()})
-        .catch(console.log('error'));
+        .then(function(data){return data})
+    return response
+
 }
 
+
+
 let loginForm = document.getElementById('loginForm')
-loginForm.addEventListener('submit', (e) => {
-    let validInputs
+loginForm.addEventListener('submit', async (e) => {
     e.preventDefault()
+    let validInputs
     validInputs = validateInputs()
-    sendLoginDetails('login', validInputs)
+    let response = await sendLoginDetails('login', validInputs)
+
+    if(!response['success']) {
+        document.getElementById("error-message").innerText = response['msg']
+    } else if (response['success'] === true) {
+        window.location.href = "/admin";
+    }
 })
 
 
