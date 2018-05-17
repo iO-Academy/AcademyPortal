@@ -15,7 +15,6 @@ class RegisterController
 
     function __invoke($request, $response, $args)
     {
-        $_SESSION['loggedIn'] = true;
         if ($_SESSION['loggedIn'] === true) {
             return $this->renderer->render($response, 'registerUser.phtml', $args);
         } else {
