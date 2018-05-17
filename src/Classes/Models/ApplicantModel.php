@@ -19,19 +19,20 @@ class ApplicantModel
      *
      * @return insert email and password into database
      */
-    public function insertNewApplicantToDb(string $applicantName,
-                                           string $applicantEmail,
-                                           string $applicantPhoneNumber,
-                                           string $applicantCohortId,
-                                           string $applicantWhyDev,
-                                           string $applicantCodeExperience,
-                                           string $applicantHearAboutId,
-                                           string $applicantEligible,
-                                           string $applicantEighteenPlus,
-                                           string $applicantFinance
+    public function insertNewApplicantToDb(
+        string $applicantName,
+        string $applicantEmail,
+        string $applicantPhoneNumber,
+        int $applicantCohortId,
+        string $applicantWhyDev,
+        string $applicantCodeExperience,
+        int $applicantHearAboutId,
+        string $applicantEligible,
+        string $applicantEighteenPlus,
+        string $applicantFinance
     ) {
         $query = $this->db->prepare(
-            "INSERT INTO `users` (
+            "INSERT INTO `applicants` (
                             `name`,
                             `email`,
                             `phoneNumber`,
@@ -41,18 +42,20 @@ class ApplicantModel
                             `hearAboutId`,
                             `eligible`,
                             `eighteenPlus`,
-                            `finance`)
+                            `finance`
+                            )
                         VALUES (
-                        :name,
-                        :email,
-                        :phoneNumber,
-                        :cohortId,
-                        :whyDev,
-                        :codeExperience,
-                        :hearAboutId,
-                        :eligible,
-                        :eighteenPlus,
-                        :finance);"
+                            :name,
+                            :email,
+                            :phoneNumber,
+                            :cohortId,
+                            :whyDev,
+                            :codeExperience,
+                            :hearAboutId,
+                            :eligible,
+                            :eighteenPlus,
+                            :finance
+                        );"
         );
 
         $query->bindParam(':name', $applicantName);

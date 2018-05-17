@@ -41,10 +41,10 @@ class SaveApplicantController
                 'name' => filter_var($newApplicationData['name'], FILTER_SANITIZE_STRING),
                 'email' => filter_var($newApplicationData['email'], FILTER_SANITIZE_STRING),
                 'phoneNumber' => filter_var($newApplicationData['phoneNumber'], FILTER_SANITIZE_STRING),
-                'cohortId' => filter_var($newApplicationData['cohortId'], FILTER_SANITIZE_STRING),
+                'cohortId' => $newApplicationData['cohortId'],
                 'whyDev' => filter_var($newApplicationData['whyDev'], FILTER_SANITIZE_STRING),
                 'codeExperience' => filter_var($newApplicationData['codeExperience'], FILTER_SANITIZE_STRING),
-                'hearAboutId' => filter_var($newApplicationData['hearAboutId'], FILTER_SANITIZE_STRING),
+                'hearAboutId' => $newApplicationData['hearAboutId'],
                 'eligible' => filter_var($newApplicationData['eligible'], FILTER_SANITIZE_STRING),
                 'eighteenPlus' => filter_var($newApplicationData['eighteenPlus'], FILTER_SANITIZE_STRING),
                 'finance' => filter_var($newApplicationData['finance'], FILTER_SANITIZE_STRING)
@@ -75,6 +75,6 @@ class SaveApplicantController
             return $response->withJson($data, $statusCode);
 
         }
-    }
 
+    }
 }
