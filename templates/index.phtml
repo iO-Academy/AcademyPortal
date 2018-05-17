@@ -2,37 +2,29 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>Slim 3</title>
-        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-        <style>
-            body {
-                margin: 50px 0 0 0;
-                padding: 0;
-                width: 100%;
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                text-align: center;
-                color: #aaa;
-                font-size: 18px;
-            }
-
-            h1 {
-                color: #719e40;
-                letter-spacing: -3px;
-                font-family: 'Lato', sans-serif;
-                font-size: 100px;
-                font-weight: 200;
-                margin-bottom: 0;
-            }
-        </style>
+        <title>Admin Login</title>
+        <link rel="stylesheet" type="text/css" href="css/genericStyles.css"/>
+        <link rel="stylesheet" type="text/css" href="css/loginPage.css"/>
+        <script src="js/loginValidation.js" defer></script>
     </head>
     <body>
-        <h1>Slim</h1>
-        <div>a microframework for PHP</div>
-
-        <?php if (isset($name)) : ?>
-            <h2>Hello <?= htmlspecialchars($name); ?>!</h2>
-        <?php else: ?>
-            <p>Try <a href="http://www.slimframework.com">SlimFramework</a></p>
-        <?php endif; ?>
+        <h1>Login</h1>
+        <form id="loginForm" class="text-input-field">
+            <div>
+                <input type="email" name="userEmail" id="userEmail" required>
+                <label for="userEmail">User Email (Required)</label>
+                <span id="userEmailWarning" class=""></span>
+            </div>
+            <div>
+                <input type="password" name="password" id="password" required>
+                <label for="password">Password (Required)</label>
+                <span id="passwordWarning" class=""></span>
+            </div>
+            <div>
+                <input type="submit" value="Login" id="submit" class="submit">
+                <span id="submitWarning" class="req"></span>
+            </div>
+        <div id="error-message"></div>
+        </form>
     </body>
 </html>

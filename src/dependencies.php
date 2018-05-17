@@ -19,13 +19,19 @@ $container['logger'] = function ($c) {
 };
 
 // db connection
-$container['dbConnection'] = function ($c) {
-    $db = new PDO('mysql:host=192.168.20.20:8080; dbname=academyPortal', 'root');
+$container['dbConnection'] = function () {
+    $db = new PDO('mysql:host=192.168.20.20;dbname=academyPortal', 'root');
     return $db;
 };
 
-// factory to create admin controller
-$container['adminControllerFactory'] = new \Portal\Factory\AdminControllerFactory();
-
 // factory to create register controller
-$container['registerControllerFactory'] = new \Portal\Factory\RegisterControllerFactory();
+$container['RegisterController'] = new \Portal\Factory\RegisterControllerFactory();
+
+// factory to create user model
+$container['UserModel'] = new \Portal\Factories\UserModelFactory();
+
+//factory to create login controller
+$container['LoginController'] = new \Portal\Factories\LoginControllerFactory();
+
+//factory to create admin controller
+$container['AdminController'] = new \Portal\Factories\AdminControllerFactory();
