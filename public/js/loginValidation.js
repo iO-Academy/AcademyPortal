@@ -13,8 +13,6 @@ let isValidEmail = (elementID) => {
 }
 
 let validateInputs = (cleanedEmailInput, cleanedPasswordInput) => {
-
-
     if (isValidEmail('userEmail')) {
         return {'userEmail' : cleanedEmailInput, 'password': cleanedPasswordInput}
     } else {
