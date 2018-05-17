@@ -32,12 +32,12 @@ newUserForm.addEventListener('submit', async (e) => {
         messageBox = document.getElementById('message'),
         response = await sendNewUserDetails(data)
 
-        if(!response['success']) {
-            messageBox.innerText = 'Error adding user to database'
-            messageBox.classList.add('error')
-        } else if (response['success'] === true) {
-            messageBox.innerText = `New user added email:' ${data['email']} ' password:' ${data['password']} '`
-            messageBox.classList.remove('error')
-        }
+    if(!response['success']) {
+        messageBox.innerText = 'Error adding user to database'
+        messageBox.classList.add('error')
+    } else if (response['success'] === true) {
+        messageBox.innerText = `New user added email:' ${data['email']} ' password:' ${data['password']} '`
+        messageBox.classList.remove('error')
+    }
     displayPassword();
 })
