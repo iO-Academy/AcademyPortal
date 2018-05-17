@@ -2,16 +2,19 @@
 
 namespace Portal\Controllers;
 
+use Portal\Models\RandomPasswordModel;
 use Slim\Views\PhpRenderer;
 use \Slim\Http\Request as Request;
 use \Slim\Http\Response as Response;
+
+
 
 class RegisterController
 {
     private $renderer;
     private $password;
 
-    function __construct(PhpRenderer $renderer,string $password)
+    function __construct(PhpRenderer $renderer,RandomPasswordModel $password)
     {
         $this->renderer = $renderer;
         $this->password = $password;
