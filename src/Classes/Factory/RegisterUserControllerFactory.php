@@ -7,6 +7,7 @@
  */
 
 namespace Portal\Factory;
+
 use Psr\Container\ContainerInterface;
 use Portal\Controller\RegisterUserController;
 

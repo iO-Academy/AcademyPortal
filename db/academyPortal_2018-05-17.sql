@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.39)
 # Database: academyPortal
-# Generation Time: 2018-05-17 10:53:23 +0000
+# Generation Time: 2018-05-17 13:13:11 +0000
 # ************************************************************
 
 
@@ -20,6 +20,42 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
+
+# Dump of table applicants
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `applicants`;
+
+CREATE TABLE `applicants` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `phoneNumber` varchar(20) DEFAULT NULL,
+  `cohortId` int(11) DEFAULT NULL,
+  `whyDev` varchar(2000) DEFAULT NULL,
+  `codeExperience` varchar(2000) DEFAULT NULL,
+  `hearAboutId` int(11) DEFAULT NULL,
+  `eligible` enum('yes','no') DEFAULT NULL,
+  `eighteenPlus` enum('yes','no') DEFAULT NULL,
+  `finance` enum('yes','no') DEFAULT NULL,
+  `notes` varchar(2000) DEFAULT NULL,
+  `dateTimeAdded` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted` tinyint(4) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `applicants` WRITE;
+/*!40000 ALTER TABLE `applicants` DISABLE KEYS */;
+
+INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `cohortId`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `deleted`)
+VALUES
+	(1,'test','test@test.com','000000',4,'test','test',2,'yes','yes','yes',0);
+
+/*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
 # Dump of table cohorts
 # ------------------------------------------------------------
 
@@ -28,18 +64,24 @@ DROP TABLE IF EXISTS `cohorts`;
 CREATE TABLE `cohorts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `date` date DEFAULT NULL,
+<<<<<<< HEAD
+  `deleted` tinyint(4) DEFAULT '0',
+=======
+>>>>>>> story3-applicantRegister
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `cohorts` WRITE;
 /*!40000 ALTER TABLE `cohorts` DISABLE KEYS */;
 
-INSERT INTO `cohorts` (`id`, `date`)
+
+INSERT INTO `cohorts` (`id`, `date`, `deleted`)
 VALUES
-	(1,'2018-08-01'),
-	(2,'2019-02-01'),
-	(3,'2019-08-01'),
-	(4,'2020-02-01');
+	(1,'2018-08-01',0),
+	(2,'2019-02-01',0),
+	(3,'2019-08-01',0),
+	(4,'2020-02-01',0);
+
 
 /*!40000 ALTER TABLE `cohorts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -53,20 +95,26 @@ DROP TABLE IF EXISTS `hearAbout`;
 CREATE TABLE `hearAbout` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `hearAbout` varchar(150) DEFAULT NULL,
+<<<<<<< HEAD
+  `deleted` tinyint(4) DEFAULT '0',
+=======
+>>>>>>> story3-applicantRegister
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `hearAbout` WRITE;
 /*!40000 ALTER TABLE `hearAbout` DISABLE KEYS */;
 
-INSERT INTO `hearAbout` (`id`, `hearAbout`)
+
+INSERT INTO `hearAbout` (`id`, `hearAbout`, `deleted`)
 VALUES
-	(1,'Google'),
-	(2,'Newspaper'),
-	(3,'Back of the toilet door'),
-	(4,'Telepathy'),
-	(5,'North Korea'),
-	(6,'Yoda');
+	(1,'Google',0),
+	(2,'Newspaper',0),
+	(3,'Back of the toilet door',0),
+	(4,'Telepathy',0),
+	(5,'North Korea',0),
+	(6,'Yoda',0);
+
 
 /*!40000 ALTER TABLE `hearAbout` ENABLE KEYS */;
 UNLOCK TABLES;
