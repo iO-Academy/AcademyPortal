@@ -45,7 +45,8 @@ POST
 	    'hearAboutId': 3,
 	    'eligible': 'yes' or 'no',
 	    'eighteenPlus': 'yes' or 'no',
-	    'finance': 'yes' or 'no'
+	    'finance': 'yes' or 'no',
+	    'notes': 'example notes'
 	   }
 - Returns success true / false:
 	- if new applicant registered successfully
