@@ -30,3 +30,6 @@ $container['AdminController'] = new \Portal\Factories\AdminControllerFactory();
 $container['RegisterUserController'] = new \Portal\Factory\RegisterUserControllerFactory();
 $container['ApplicantModel'] = new \Portal\Factories\ApplicantModelFactory();
 $container['SaveApplicantController'] = new \Portal\Factories\SaveApplicantControllerFactory();
+$container['ApplicationFormModel'] =  new \Portal\Factories\ApplicationFormModelFactory();
+$container['ApplicationFormController'] = new \Portal\Factories\ApplicationFormControllerFactory();
+
