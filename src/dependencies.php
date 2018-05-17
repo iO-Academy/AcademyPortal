@@ -25,7 +25,7 @@ $container['dbConnection'] = function () {
 };
 
 // factory to create register controller
-$container['RegisterController'] = new \Portal\Factory\RegisterControllerFactory();
+$container['RegisterController'] = new \Portal\Factories\RegisterControllerFactory();
 
 // factory to create user model
 $container['UserModel'] = new \Portal\Factories\UserModelFactory();

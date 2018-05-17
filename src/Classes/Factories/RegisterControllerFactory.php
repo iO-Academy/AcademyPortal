@@ -1,9 +1,9 @@
 <?php
 
-namespace Portal\Factory;
+namespace Portal\Factories;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controller\RegisterController;
+use Portal\Controllers\RegisterController;
 
 class RegisterControllerFactory
 {
