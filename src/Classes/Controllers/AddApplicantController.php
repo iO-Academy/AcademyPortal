@@ -17,7 +17,9 @@ class AddApplicantController
 
     function __invoke(Request $request, Response $response, $args)
     {   
+        // MUST BE REMOVED - ONLY FOR TESTING!!!!!!
         $_SESSION['loggedIn'] = true;
+        
         if ($_SESSION['loggedIn'] === true) {
             return $this->renderer->render($response, 'addApplicant.phtml', $args);
         } else {
