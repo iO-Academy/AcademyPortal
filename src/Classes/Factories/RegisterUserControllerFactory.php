@@ -1,14 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: academy
- * Date: 15/05/2018
- * Time: 16:34
- */
 
-namespace Portal\Factory;
+namespace Portal\Factories;
 use Psr\Container\ContainerInterface;
-use Portal\Controller\RegisterUserController;
+use Portal\Controllers\RegisterUserController;
 
 
 class RegisterUserControllerFactory
