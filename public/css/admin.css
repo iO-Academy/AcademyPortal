@@ -1,11 +1,12 @@
 * {
     box-sizing: border-box;
+    font-family: courier-new;
 }
 
 .addUserButton, .returnButton {
     text-decoration: none;
     border: solid;
-    padding: 5px 32px;
+    padding: 5px 30px;
     border-radius: 5px;
 }
 
