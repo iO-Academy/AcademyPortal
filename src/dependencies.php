@@ -19,13 +19,16 @@ $container['logger'] = function ($c) {
 };
 
 // db connection
-$container['dbConnection'] = function () {
-    $db = new PDO('mysql:host=192.168.20.20;dbname=academyPortal', 'root');
+$container['dbConnection'] = function ($c) {
+    $settings = $c->get('settings')['db'];
+    $db = new PDO($settings['host'].$settings['dbName'], $settings['userName']);
     return $db;
 };
 
 $container['UserModel'] = new \Portal\Factories\UserModelFactory();
-$container['LoginController'] = new \Portal\Factories\LoginControllerFactory();
-$container['adminController'] = new \Portal\Factories\AdminControllerFactory();
-$container['RegisterUserController'] = new \Portal\Factory\RegisterUserControllerFactory();
 
+$container['LoginController'] = new \Portal\Factories\LoginControllerFactory();
+
+$container['AdminController'] = new \Portal\Factories\AdminControllerFactory();
+
+$container['HomePageController'] = new \Portal\Factories\HomePageControllerFactory();
