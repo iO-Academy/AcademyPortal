@@ -6,7 +6,7 @@
  * Time: 16:37
  */
 
-namespace Portal\Controller;
+namespace Portal\Controllers;
 
 use Portal\Models\UserModel;
 use Slim\Http\Request;
