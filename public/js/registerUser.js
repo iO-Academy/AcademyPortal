@@ -1,9 +1,9 @@
 
 document.getElementById("randomPassword").readOnly = true;
 
-let sendNewUserDetails = async (path, data) => {
+let sendNewUserDetails = async (data) => {
 
-    let response =  await fetch(`/api/${path}`,
+    let response =  await fetch(`/api/registerUser`,
         {
             credentials: "same-origin",
             headers: {
@@ -13,24 +13,23 @@ let sendNewUserDetails = async (path, data) => {
             method: "POST",
             body: JSON.stringify(data)
         })
-        .then(function(data){return data.json()})
+        .then(data => data.json())
         .then(function(data){return data})
+    console.log(response)
     return response
-
 }
 
 let getInputs = () =>{
     let cleanedEmailInput = encodeURI(document.getElementById('emailNewUser').value)
     let cleanedPasswordInput = encodeURI(document.getElementById('randomPassword').value)
-    let newUser= {'userEmail' : cleanedEmailInput, 'password' : cleanedPasswordInput}
-    return newUser
+    return {'userEmail' : cleanedEmailInput, 'password' : cleanedPasswordInput}
 }
 
 let newUserForm = document.getElementById('registerUserForm')
 newUserForm.addEventListener('submit', async (e) => {
     e.preventDefault()
     let inputs = getInputs()
-    let response = await sendNewUserDetails('registerUser', inputs)
+    let response = await sendNewUserDetails(inputs)
     let messageBox = document.getElementById("message")
 
     if(!response['success']) {

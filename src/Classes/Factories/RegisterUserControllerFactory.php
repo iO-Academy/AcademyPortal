@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 use Psr\Container\ContainerInterface;
-use Portal\Controller\RegisterUserController;
+use Portal\Controllers\RegisterUserController;
 
 
 class RegisterUserControllerFactory
