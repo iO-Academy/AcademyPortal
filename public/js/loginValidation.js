@@ -12,6 +12,7 @@ let validateInputs = (cleanedEmailInput, cleanedPasswordInput) => {
     } else {
         userEmailWarning.classList.add('error')
         document.getElementById('submitWarning').textContent = 'Field input error'
+        return false
     }
 }
 
@@ -33,15 +34,18 @@ let jsonRequest = async (path, data) => {
 let loginForm = document.getElementById('loginForm')
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault()
+    let response = false
     let cleanedEmailInput = encodeURI(document.getElementById('userEmail').value)
     let cleanedPasswordInput = encodeURI(document.getElementById('password').value)
-    let validInputs = validateInputs(cleanedEmailInput, cleanedPasswordInput),
+    let validInputs = validateInputs(cleanedEmailInput, cleanedPasswordInput)
+    if (validInputs) {
         response = await jsonRequest('login', validInputs)
+    }
 
-    if (response['success'] === true){
+    if (response && response['success'] === true){
         window.location.href = "/admin"
     } else {
-        document.getElementById("error-message").innerText = response['msg']
+        document.getElementById("error-message").innerText = response['msg'] || ''
     }
 
 })
