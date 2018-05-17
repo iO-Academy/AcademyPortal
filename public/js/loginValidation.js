@@ -12,9 +12,8 @@ let isValidEmail = (elementID) => {
     }
 }
 
-let validateInputs = () => {
-    let cleanedEmailInput = encodeURI(document.getElementById('userEmail').value)
-    let cleanedPasswordInput = encodeURI(document.getElementById('password').value)
+let validateInputs = (cleanedEmailInput, cleanedPasswordInput) => {
+
 
     if (isValidEmail('userEmail')) {
         return {'userEmail' : cleanedEmailInput, 'password': cleanedPasswordInput}
@@ -36,14 +35,16 @@ let sendLoginDetails = async (path, data) => {
         })
         .then(data => data.json())
         .then(function(data){return data})
+    console.log(response)
     return response
 }
 
 let loginForm = document.getElementById('loginForm')
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault()
-
-    let validInputs = validateInputs(),
+    let cleanedEmailInput = encodeURI(document.getElementById('userEmail').value)
+    let cleanedPasswordInput = encodeURI(document.getElementById('password').value)
+    let validInputs = validateInputs(cleanedEmailInput, cleanedPasswordInput),
         response = await sendLoginDetails('login', validInputs)
 
     response['success'] === true ?
