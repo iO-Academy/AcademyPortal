@@ -15,4 +15,5 @@ $app->get('/admin', 'adminController');
 // API routes
 $app->post('/api/login', 'LoginController');
 $app->post('/api/registerUser', 'RegisterUserController');
+$app->post('/api/saveApplicant', 'SaveApplicantController');
 $app->get('/api/applicationForm', 'ApplicationFormController');

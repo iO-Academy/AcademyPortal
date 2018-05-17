@@ -25,8 +25,11 @@ $container['dbConnection'] = function () {
 };
 
 $container['UserModel'] = new \Portal\Factories\UserModelFactory();
-$container['ApplicationFormModel'] =  new \Portal\Factories\ApplicationFormModelFactory();
 $container['LoginController'] = new \Portal\Factories\LoginControllerFactory();
-$container['adminController'] = new \Portal\Factories\AdminControllerFactory();
+$container['AdminController'] = new \Portal\Factories\AdminControllerFactory();
 $container['RegisterUserController'] = new \Portal\Factory\RegisterUserControllerFactory();
+$container['ApplicantModel'] = new \Portal\Factories\ApplicantModelFactory();
+$container['SaveApplicantController'] = new \Portal\Factories\SaveApplicantControllerFactory();
+$container['ApplicationFormModel'] =  new \Portal\Factories\ApplicationFormModelFactory();
 $container['ApplicationFormController'] = new \Portal\Factories\ApplicationFormControllerFactory();
+

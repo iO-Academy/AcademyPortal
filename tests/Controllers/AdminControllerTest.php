@@ -8,9 +8,9 @@ class AdminControllerTest extends TestCase
 {
     function testConstruct()
     {
-        $stub = $this->createMock(PhpRenderer::class);
+        $renderer = $this->createMock(PhpRenderer::class);
 
-        $case = new AdminController($stub);
+        $case = new AdminController($renderer);
         $expected = AdminController::class;
         $this->assertInstanceOf($expected, $case);
     }

@@ -29,3 +29,27 @@ POST
 		- `{'success':true, 'msg':'User registered', 'data':[]}`
 	- if new user not registered successfully, either already exists or insert into database failed
 		- `{'success':false, 'msg':'User not registered.', 'data':[]}`
+
+
+**/saveApplicant**
+
+POST
+- Saves a new application to the applicant table in the database
+- Sends:
+	- `{'name': 'example',
+   	    'email': 'example@example.com',
+ 	    'phoneNumber': '0123456789',
+	    'cohortId': 2,
+	    'whyDev': 'example interest in development',
+	    'codeExperience': 'example coding experience',
+	    'hearAboutId': 3,
+	    'eligible': 'yes' or 'no',
+	    'eighteenPlus': 'yes' or 'no',
+	    'finance': 'yes' or 'no',
+	    'notes': 'example notes'
+	   }
+- Returns success true / false:
+	- if new applicant registered successfully
+		- `{'success':true, 'msg':'Application Saved', 'data':[]}`
+	- if new applicant not saved successfully
+		- `{'success':false, 'msg':'Application Not Saved', 'data':[]}`
