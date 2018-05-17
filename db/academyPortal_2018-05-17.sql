@@ -38,6 +38,8 @@ CREATE TABLE `applicants` (
   `eligible` enum('yes','no') DEFAULT NULL,
   `eighteenPlus` enum('yes','no') DEFAULT NULL,
   `finance` enum('yes','no') DEFAULT NULL,
+  `notes` varchar(2000) DEFAULT NULL,
+  `dateTimeAdded` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
