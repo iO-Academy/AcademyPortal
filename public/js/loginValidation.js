@@ -12,35 +12,42 @@ let isValidEmail = (elementID) => {
     }
 }
 
-let validateInputs = () => {
-    let cleanedEmailInput = encodeURI(document.getElementById('userEmail').value)
-    let cleanedPasswordInput = encodeURI(document.getElementById('password').value)
+let validateInputs = (cleanedEmailInput, cleanedPasswordInput) => {
+
 
     if (isValidEmail('userEmail')) {
-        let emailPasswordValues = {'email' : cleanedEmailInput, 'password': cleanedPasswordInput}
-        return emailPasswordValues
+        return {'userEmail' : cleanedEmailInput, 'password': cleanedPasswordInput}
     } else {
         document.getElementById('submitWarning').textContent = 'Field input error'
     }
 }
 
-let sendLoginDetails = (path, data) => {
-    fetch(`/api/${path}`,
+let sendLoginDetails = async (path, data) => {
+    let response =  await fetch(`/api/${path}`,
         {
+            credentials: "same-origin",
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             method: "POST",
             body: JSON.stringify(data)
         })
-        .then(function(data){return data.json()})
+        .then(data => data.json())
+        .then(function(data){return data})
+    console.log(response)
+    return response
 }
 
 let loginForm = document.getElementById('loginForm')
-loginForm.addEventListener('submit', (e) => {
-    let validInputs
+loginForm.addEventListener('submit', async (e) => {
     e.preventDefault()
-    validInputs = validateInputs()
-    sendLoginDetails(validInputs)
+    let cleanedEmailInput = encodeURI(document.getElementById('userEmail').value)
+    let cleanedPasswordInput = encodeURI(document.getElementById('password').value)
+    let validInputs = validateInputs(cleanedEmailInput, cleanedPasswordInput),
+        response = await sendLoginDetails('login', validInputs)
+
+    response['success'] === true ?
+        window.location.href = "/admin"
+        : document.getElementById("error-message").innerText = response['msg']
 })
