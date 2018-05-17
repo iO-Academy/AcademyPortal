@@ -43,3 +43,4 @@ $container['RegisterUserController'] = new \Portal\Factories\RegisterUserControl
 //factory to create register user controller
 $container['HomePageController'] = new \Portal\Factories\HomePageControllerFactory();
 
+$container['RandomPasswordModel'] = new \Portal\Models\RandomPasswordModel();

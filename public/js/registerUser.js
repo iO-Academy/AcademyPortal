@@ -21,7 +21,7 @@ let sendNewUserDetails = async (data) => {
 
 let getInputs = () =>{
     let cleanedEmailInput = encodeURI(document.getElementById('emailNewUser').value)
-    let cleanedPasswordInput = encodeURI(randomPassword)
+    let cleanedPasswordInput = encodeURI(document.getElementById('randomPassword').value)
     return {'email' : cleanedEmailInput, 'password' : cleanedPasswordInput}
 }
 
@@ -30,6 +30,7 @@ newUserForm.addEventListener('submit', async (e) => {
     e.preventDefault()
     let data = getInputs(),
         messageBox = document.getElementById('message'),
+        button = document.getElementById('newUserSubmit'),
         response = await sendNewUserDetails(data)
 
     if(!response['success']) {
@@ -38,6 +39,6 @@ newUserForm.addEventListener('submit', async (e) => {
     } else if (response['success'] === true) {
         messageBox.innerText = `New user added email:' ${data['email']} ' password:' ${data['password']} '`
         messageBox.classList.remove('error')
+        button.style.display = 'none';
     }
-    displayPassword();
 })

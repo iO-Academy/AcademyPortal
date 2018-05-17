@@ -21,13 +21,13 @@
     <form id="registerUserForm">
         <div>
             <h4>Password</h4>
-            <p id="randomPassword"</p>
+            <input type="text" id="randomPassword" readonly value="<?php echo $password;?>">
         </div>
     <div>
         <h4>Email
         </h4>
         <input id="emailNewUser" type="email" name="email">
-        <input type="submit">
+        <input type="submit" id="newUserSubmit">
         </div>
     </form>
 </body>

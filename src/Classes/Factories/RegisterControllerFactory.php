@@ -9,6 +9,7 @@ class RegisterControllerFactory
 {
     public function __invoke(ContainerInterface $container) : RegisterController {
         $renderer = $container->get('renderer');
-        return new RegisterController($renderer);
+        $password = $container->get('RandomPasswordModel');
+        return new RegisterController($renderer, $password);
     }
 }
