@@ -27,7 +27,6 @@ let jsonRequest = async (path, data) => {
             body: JSON.stringify(data)
         })
         .then(data => data.json())
-        .then(function(data){return data})
     return response
 }
 
