@@ -46,15 +46,12 @@ class RegisterUserController
                 'email' => filter_var($newUserData['email'], FILTER_SANITIZE_STRING),
                 'password' => filter_var($newUserData['password'], FILTER_SANITIZE_STRING)
             ];
-            //returns true if user exists - we want it to return false to continue adding new user
-            $user = $this->userModel->getUserByEmail($validatedUserData['email']);
 
-            if (!$user) {
-                $successfulRegister = $this->userModel->insertNewUserToDb($validatedUserData['email'], $validatedUserData['password']);
-            }
+            $successfulRegister = $this->userModel->insertNewUserToDb($validatedUserData['email'], $validatedUserData['password']);
+
             if ($successfulRegister) {
                 $data = [
-                    'success' => $result,
+                    'success' => $successfulRegister,
                     'msg' => 'User registered',
                     'data' => []
                 ];
