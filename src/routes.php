@@ -9,5 +9,11 @@ $app->get('/', function (Request $request, Response $response, array $args) {
     return $this->renderer->render($response, 'index.phtml', $args);
 });
 
-$app->post('/api/login', 'LoginController');
+// URL routes - to display pages
 $app->get('/admin', 'adminController');
+
+// API routes
+$app->post('/api/login', 'LoginController');
+
+$app->post('/api/registerUser', 'RegisterUserController');
+
