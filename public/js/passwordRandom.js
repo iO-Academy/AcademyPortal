@@ -39,8 +39,9 @@ let generatePassword = async () => {
 }
 
 let displayPassword = async () => {
-    let messageBox = document.getElementById('randomPassword'),
-        password = await generatePassword()
+    let messageBox = document.getElementById('randomPassword')
+    messageBox.readOnly = true
+    let password = await generatePassword()
 
     if(password !== undefined) {
         messageBox.value = password
