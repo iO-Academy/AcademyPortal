@@ -19,8 +19,9 @@ $container['logger'] = function ($c) {
 };
 
 // db connection
-$container['dbConnection'] = function () {
-    $db = new PDO('mysql:host=192.168.20.20;dbname=academyPortal', 'root');
+$container['dbConnection'] = function ($c) {
+    $settings = $c->get('settings')['db'];
+    $db = new PDO($settings['host'].$settings['dbName'], $settings['userName']);
     return $db;
 };
 
