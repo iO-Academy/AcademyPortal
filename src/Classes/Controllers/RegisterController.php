@@ -2,7 +2,6 @@
 
 namespace Portal\Controllers;
 
-use Portal\Models\RandomPasswordModel;
 use Slim\Views\PhpRenderer;
 
 class RegisterController
