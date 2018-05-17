@@ -1,1 +1,64 @@
-<h1>foo</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Academy Portal | New Applicant</title>
+    <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="./css/newApplicantForm.css">
+
+</head>
+<body>
+<div class="container">
+    <h1>New Applicant Registration</h1>
+    <form>
+        <label for="name">Applicant Name</label>
+        <input id="name" class="form-control" type="text" placeholder="name" required>
+
+        <label for="email">Applicant Email</label>
+        <input id="email" class="form-control" type="email" placeholder="email" required>
+
+        <label for="phone">Applicant Phone Number</label>
+        <input id="phone" class="form-control" type="text" placeholder="phone number" required>
+
+        <label for="cohorts">When would you like to join us?</label>
+        <select id="cohorts" class="form-control" name="cohort" required>
+            <option value="F">F</option>
+            <option value="O">O</option>
+        </select>
+
+        <label for="why-developer">Why do you want to become a software developer?</label>
+        <textarea id="why-developer" class="form-control" placeholder="Enter here" required></textarea>
+
+        <label for="experience">Please tell us about any relevant coding experience.</label>
+        <textarea id="experience" class="form-control" placeholder="Enter here" required></textarea>
+
+        <label for="hear-about">How did you hear about Mayden Academy?</label>
+        <select id="hear-about" class="form-control" name="hear-about" required>
+            <option value="F">F</option>
+            <option vlaue="O">O</option>
+        </select>
+
+        <div class="form-group">
+            <input type="checkbox"></input>
+            <label for="uk-eligible">I confirm I am eligible to study in the UK.</label>
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox"></input>
+            <label for="is-18">I confirm I will be at least 18 years before my chosen cohort*.</label>
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox"></input>
+            <label for="finance">I would like to apply for interest free finance.</label>
+        </div>
+
+        <input type="submit" class="btn btn-success"></input>
+    </form>
+</div>
+</body>
+</html>
+
