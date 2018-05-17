@@ -35,3 +35,8 @@ $container['LoginController'] = new \Portal\Factories\LoginControllerFactory();
 
 //factory to create admin controller
 $container['AdminController'] = new \Portal\Factories\AdminControllerFactory();
+
+//factory to create register user controller
+$container['RegisterUserController'] = new \Portal\Factory\RegisterUserControllerFactory();
+
+
