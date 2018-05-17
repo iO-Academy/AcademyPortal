@@ -38,7 +38,10 @@ loginForm.addEventListener('submit', async (e) => {
     let validInputs = validateInputs(cleanedEmailInput, cleanedPasswordInput),
         response = await jsonRequest('login', validInputs)
 
-    response['success'] === true ?
+    if (response['success'] === true){
         window.location.href = "/admin"
-        : document.getElementById("error-message").innerText = response['msg']
+    } else {
+        document.getElementById("error-message").innerText = response['msg']
+    }
+
 })
