@@ -21,7 +21,9 @@ class SaveApplicantController
     }
 
     /**
-     *
+     * If user is logged in, invoke gets data from new applicant form and passes into insertNewApplicantToDb
+     * function for inserting into database
+     * If successful Insert returns success true with message of application saved
      *
      * @param Request $request HTTP request
      * @param Response $response HTTP response
@@ -30,9 +32,7 @@ class SaveApplicantController
      */
     function __invoke(Request $request, Response $response)
     {
-
         if ($_SESSION['loggedIn'] === true) {
-
             $data = ['success' => false, 'msg' => 'Application not saved', 'data' => []];
             $statusCode = 401;
 
@@ -73,8 +73,6 @@ class SaveApplicantController
             }
 
             return $response->withJson($data, $statusCode);
-
         }
-
     }
 }
