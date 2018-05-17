@@ -27,7 +27,7 @@ class UserModel
     }
 
     /**
-     * Verifies user credentials
+     * Verifies user credentials by comparing form input with email and hashed password in database
      *
      * @param string $userEmail value provided for comparison
      * @param string $password value provided for comparison
