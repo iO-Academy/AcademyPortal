@@ -19,8 +19,9 @@ $container['logger'] = function ($c) {
 };
 
 // db connection
-$container['dbConnection'] = function () {
-    $db = new PDO('mysql:host=192.168.20.20;dbname=academyPortal', 'root');
+$container['dbConnection'] = function ($c) {
+    $settings = $c->get('settings')['db'];
+    $db = new PDO($settings['host'].$settings['dbName'], $settings['userName']);
     return $db;
 };
 
@@ -38,5 +39,6 @@ $container['AdminController'] = new \Portal\Factories\AdminControllerFactory();
 
 //factory to create register user controller
 $container['RegisterUserController'] = new \Portal\Factories\RegisterUserControllerFactory();
+
 
 

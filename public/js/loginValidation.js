@@ -1,28 +1,21 @@
-let isValidEmail = (elementID) => {
-    let inputVal = document.getElementById(elementID)
-    let userEmailWarning = document.getElementById('userEmailWarning')
-    let email = inputVal.value.trim();
+let isValidEmail = (inputEmail) => {
+    let email = inputEmail.trim()
     let regEx = new RegExp("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")
-    if (regEx.test(email)) {
-        userEmailWarning.classList.remove('error')
-        return true
-    } else {
-        userEmailWarning.classList.add('error')
-        return false
-    }
+    return regEx.test(email)
 }
 
 let validateInputs = (cleanedEmailInput, cleanedPasswordInput) => {
-
-
-    if (isValidEmail('userEmail')) {
+    let userEmailWarning = document.getElementById('userEmailWarning')
+    if (isValidEmail(cleanedEmailInput)) {
+        userEmailWarning.classList.remove('error')
         return {'userEmail' : cleanedEmailInput, 'password': cleanedPasswordInput}
     } else {
+        userEmailWarning.classList.add('error')
         document.getElementById('submitWarning').textContent = 'Field input error'
     }
 }
 
-let sendLoginDetails = async (path, data) => {
+let jsonRequest = async (path, data) => {
     let response =  await fetch(`/api/${path}`,
         {
             credentials: "same-origin",
@@ -34,8 +27,6 @@ let sendLoginDetails = async (path, data) => {
             body: JSON.stringify(data)
         })
         .then(data => data.json())
-        .then(function(data){return data})
-    console.log(response)
     return response
 }
 
@@ -45,9 +36,12 @@ loginForm.addEventListener('submit', async (e) => {
     let cleanedEmailInput = encodeURI(document.getElementById('userEmail').value)
     let cleanedPasswordInput = encodeURI(document.getElementById('password').value)
     let validInputs = validateInputs(cleanedEmailInput, cleanedPasswordInput),
-        response = await sendLoginDetails('login', validInputs)
+        response = await jsonRequest('login', validInputs)
 
-    response['success'] === true ?
+    if (response['success'] === true){
         window.location.href = "/admin"
-        : document.getElementById("error-message").innerText = response['msg']
+    } else {
+        document.getElementById("error-message").innerText = response['msg']
+    }
+
 })

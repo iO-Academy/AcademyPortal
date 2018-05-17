@@ -23,12 +23,11 @@ class UserModel
         $query = $this->db->prepare("SELECT `email`, `password` FROM `users` WHERE `email` = :email;");
         $query->bindParam(':email', $userEmail);
         $query->execute();
-        $userCredentials = $query->fetch();
-        return $userCredentials;
+        return $query->fetch();
     }
 
     /**
-     * Verifies user credentials
+     * Verifies user credentials by comparing form input with email and hashed password in database
      *
      * @param string $userEmail value provided for comparison
      * @param string $password value provided for comparison

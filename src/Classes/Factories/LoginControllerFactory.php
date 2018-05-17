@@ -13,10 +13,9 @@ class LoginControllerFactory
      * @param ContainerInterface $container DIC
      *
      * @return LoginController returns object with dependencies injected
-     * @throws
      */
 
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container):LoginController
     {
         $userModel = $container->get('UserModel');
         return new LoginController($userModel);
