@@ -28,8 +28,8 @@ $container['UserModel'] = new \Portal\Factories\UserModelFactory();
 $container['LoginController'] = new \Portal\Factories\LoginControllerFactory();
 $container['AdminController'] = new \Portal\Factories\AdminControllerFactory();
 $container['RegisterUserController'] = new \Portal\Factory\RegisterUserControllerFactory();
+$container['addApplicantController'] = new \Portal\Factories\AddApplicantControllerFactory();
 $container['ApplicantModel'] = new \Portal\Factories\ApplicantModelFactory();
 $container['SaveApplicantController'] = new \Portal\Factories\SaveApplicantControllerFactory();
 $container['ApplicationFormModel'] =  new \Portal\Factories\ApplicationFormModelFactory();
 $container['ApplicationFormController'] = new \Portal\Factories\ApplicationFormControllerFactory();
-
