@@ -23,8 +23,7 @@ class UserModel
         $query = $this->db->prepare("SELECT `email`, `password` FROM `users` WHERE `email` = :email;");
         $query->bindParam(':email', $userEmail);
         $query->execute();
-        $userCredentials = $query->fetch();
-        return $userCredentials;
+        return $query->fetch();
     }
 
     /**
