@@ -29,7 +29,8 @@ class ApplicantModel
         int $applicantHearAboutId,
         string $applicantEligible,
         string $applicantEighteenPlus,
-        string $applicantFinance
+        string $applicantFinance,
+        string $applicantNotes
     ) {
         $query = $this->db->prepare(
             "INSERT INTO `applicants` (
@@ -42,7 +43,8 @@ class ApplicantModel
                             `hearAboutId`,
                             `eligible`,
                             `eighteenPlus`,
-                            `finance`
+                            `finance`,
+                            `notes`
                             )
                         VALUES (
                             :name,
@@ -54,7 +56,8 @@ class ApplicantModel
                             :hearAboutId,
                             :eligible,
                             :eighteenPlus,
-                            :finance
+                            :finance,
+                            :notes
                         );"
         );
 
@@ -68,6 +71,7 @@ class ApplicantModel
         $query->bindParam(':eligible', $applicantEligible);
         $query->bindParam(':eighteenPlus', $applicantEighteenPlus);
         $query->bindParam(':finance', $applicantFinance);
+        $query->bindParam(':notes', $applicantNotes);
 
         return $query->execute();
     }

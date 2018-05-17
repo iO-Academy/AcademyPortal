@@ -47,7 +47,8 @@ class SaveApplicantController
                 'hearAboutId' => $newApplicationData['hearAboutId'],
                 'eligible' => filter_var($newApplicationData['eligible'], FILTER_SANITIZE_STRING),
                 'eighteenPlus' => filter_var($newApplicationData['eighteenPlus'], FILTER_SANITIZE_STRING),
-                'finance' => filter_var($newApplicationData['finance'], FILTER_SANITIZE_STRING)
+                'finance' => filter_var($newApplicationData['finance'], FILTER_SANITIZE_STRING),
+                'notes' => filter_var($newApplicationData['notes'], FILTER_SANITIZE_STRING)
             ];
 
             $successfulRegister = $this->applicantModel->insertNewApplicantToDb(
@@ -60,7 +61,8 @@ class SaveApplicantController
                     $validatedApplicationData['hearAboutId'],
                     $validatedApplicationData['eligible'],
                     $validatedApplicationData['eighteenPlus'],
-                    $validatedApplicationData['finance']
+                    $validatedApplicationData['finance'],
+                    $validatedApplicationData['notes']
                 );
 
             if ($successfulRegister) {
