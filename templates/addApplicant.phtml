@@ -14,7 +14,7 @@
 <body>
 <div class="container">
     <h1>New Applicant Registration</h1>
-    <form>
+    <form action="/api/saveapplicant" method="POST">
         <label for="name">Applicant Name</label>
         <input id="name" class="form-control" type="text" placeholder="name" required>
 
@@ -52,6 +52,10 @@
             <input type="checkbox"></input>
             <label for="finance">I would like to apply for interest free finance.</label>
         </div>
+
+
+        <label for="notes">Mike and Charlie's special notes.</label>
+        <textarea id="notes" class="form-control" placeholder="Enter here" required></textarea>
 
         <input type="submit" class="btn btn-success"></input>
     </form>

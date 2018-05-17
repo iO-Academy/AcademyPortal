@@ -1,20 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: academy
- * Date: 15/05/2018
- * Time: 16:34
- */
 
 namespace Portal\Factories;
+
 use Psr\Container\ContainerInterface;
 use Portal\Controllers\AddApplicantController;
-
 
 class AddApplicantControllerFactory
 {
     /**
-     * Creates RegisterUserController with dependencies
+     * Creates AddApplicantController with dependencies
      *
      * @param $container
      *
