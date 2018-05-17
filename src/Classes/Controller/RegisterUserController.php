@@ -42,20 +42,22 @@ class RegisterUserController
             $statusCode = 401;
 
             $newUserData = $request->getParsedBody();
-            $validatedUserData = [];
-            $validatedUserData['email'] = filter_var($newUserData['email'], FILTER_SANITIZE_STRING);
-            $validatedUserData['password'] = filter_var($newUserData['password'], FILTER_SANITIZE_STRING);
+            $validatedUserData = [
+                'email' => filter_var($newUserData['email'], FILTER_SANITIZE_STRING),
+                'password' => filter_var($newUserData['password'], FILTER_SANITIZE_STRING)
+            ];
+            //returns true if user exists - we want it to return false to continue adding new user
+            $user = $this->userModel->getUserByEmail($validatedUserData['email']);
 
-            //returns true if exists - we want it to return false to continue adding new user
-            $emailExists = $this->userModel->getUserByEmail($validatedUserData['email']);
-
-            if (!$emailExists) {
-                $result = $this->userModel->insertNewUserToDb($validatedUserData['email'], $validatedUserData['password']);
+            if (!$user) {
+                $successfulRegister = $this->userModel->insertNewUserToDb($validatedUserData['email'], $validatedUserData['password']);
             }
-
-            if ($result) {
-                $data['success'] = $result;
-                $data['msg'] = 'User registered';
+            if ($successfulRegister) {
+                $data = [
+                    'success' => $result,
+                    'msg' => 'User registered',
+                    'data' => []
+                ];
                 $statusCode = 200;
             }
             return $response->withJson($data, $statusCode);
