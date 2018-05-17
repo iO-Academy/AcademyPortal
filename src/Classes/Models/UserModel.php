@@ -50,6 +50,12 @@ class UserModel
         return false;
     }
 
+    /**
+     * Validates if parameter is an email
+     *
+     * @param $email string value provided for validation
+     * @return mixed returns the email as a string if its a valid email otherwise it returns false
+     */
     private function validateEmail ($email) {
         return filter_var($email,FILTER_VALIDATE_EMAIL);
     }
