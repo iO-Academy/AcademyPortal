@@ -11,7 +11,7 @@ class ApplicantModelFactoryTest extends TestCase
 {
     function testInvoke()
     {
-        $db = $this->createMock(PDO);
+        $db = $this->createMock(\PDO::class);
         $container = $this->createMock(ContainerInterface::class);
         $container->method('get')
             ->willReturn($db);

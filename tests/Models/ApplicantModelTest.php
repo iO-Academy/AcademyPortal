@@ -9,7 +9,7 @@ class ApplicantModelTest extends TestCase
 {
     public function testConstruct()
     {
-        $db = $this->createMock(PDO);
+        $db = $this->createMock(\PDO::class);
         $case = new ApplicantModel($db);
         $expected = ApplicantModel::class;
 
