@@ -5,8 +5,10 @@
 .addUserButton, .returnButton {
     text-decoration: none;
     border: solid;
-    padding: 15px 32px;
+    padding: 5px 32px;
     border-radius: 5px;
+
+
 }
 
 .error{
