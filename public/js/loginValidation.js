@@ -20,7 +20,7 @@ let validateInputs = (cleanedEmailInput, cleanedPasswordInput) => {
     }
 }
 
-let sendLoginDetails = async (path, data) => {
+let jsonRequestCreator = async (path, data) => {
     let response =  await fetch(`/api/${path}`,
         {
             credentials: "same-origin",
@@ -33,7 +33,6 @@ let sendLoginDetails = async (path, data) => {
         })
         .then(data => data.json())
         .then(function(data){return data})
-    console.log(response)
     return response
 }
 
@@ -43,7 +42,7 @@ loginForm.addEventListener('submit', async (e) => {
     let cleanedEmailInput = encodeURI(document.getElementById('userEmail').value)
     let cleanedPasswordInput = encodeURI(document.getElementById('password').value)
     let validInputs = validateInputs(cleanedEmailInput, cleanedPasswordInput),
-        response = await sendLoginDetails('login', validInputs)
+        response = await jsonRequestCreator('login', validInputs)
 
     response['success'] === true ?
         window.location.href = "/admin"
