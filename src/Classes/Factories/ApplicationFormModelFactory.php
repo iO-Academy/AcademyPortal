@@ -13,7 +13,6 @@ class ApplicationFormModelFactory
      * @param $container
      *
      * @return ApplicationFormModel returns object with db connection injected
-     * @throws
      */
     public function __invoke(ContainerInterface $container)
     {

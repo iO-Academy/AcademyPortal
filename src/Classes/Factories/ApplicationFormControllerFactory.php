@@ -13,7 +13,6 @@ class ApplicationFormControllerFactory
      * @param ContainerInterface $container DIC
      *
      * @return ApplicationFormController returns object with dependencies injected
-     * @throws
      */
 
     public function __invoke(ContainerInterface $container)
