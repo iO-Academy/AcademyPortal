@@ -31,6 +31,17 @@ POST
 		- `{'success':false, 'msg':'User not registered.', 'data':[]}`
 
 
+**/applicationForm**
+
+GET
+- Gets available dropdown values from database for:
+	- When would you like to join us? 
+	- How did you hear about Mayden Academy? 
+- Returns:
+	- if GET request is successful
+		- `{'success':true, 'msg':'Retrieved dropdown info.', 'data':['cohorts':'Available cohort values', 'hearAbout':'Available hear about values']}`
+
+
 **/saveApplicant**
 
 POST
