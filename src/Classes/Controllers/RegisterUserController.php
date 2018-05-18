@@ -37,8 +37,8 @@ class RegisterUserController
 
             $newUserData = $request->getParsedBody();
             $validatedUserData = [
-                'email' => filter_var($newUserData['email'], FILTER_SANITIZE_STRING),
-                'password' => filter_var($newUserData['password'], FILTER_SANITIZE_EMAIL)
+                'email' => filter_var($newUserData['email'], FILTER_SANITIZE_EMAIL),
+                'password' => filter_var($newUserData['password'], FILTER_SANITIZE_STRING)
             ];
 
             $successfulRegister = $this->userModel->insertNewUserToDb($validatedUserData['email'], password_hash($validatedUserData['email'], PASSWORD_DEFAULT));
