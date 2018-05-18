@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.39)
 # Database: academyPortal
-# Generation Time: 2018-05-17 09:30:49 +0000
+# Generation Time: 2018-05-18 08:30:31 +0000
 # ************************************************************
 
 
@@ -40,11 +40,8 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` (`id`, `email`, `password`, `deleted`)
 VALUES
 	(1,'test@test.com','$2y$12$jW0bVIRrUy.rx0QD7mGNWOlfJz1Sd0cZUhc0FfamtiPx1OT9ntPlC',0),
-	(2,'stuff@stuff.com','nickloveslemon',0),
-	(3,'test4@test.com','bacon',0),
-	(4,'stuff5@stuff.com','nickloveslemon2',0),
-	(7,'new@newemail.com','nickloveslemon2',0),
-	(9,'new@newemail2.com','nickloveslemon2',0);
+	(30,'emailme@mikeoram.co.u','$2y$10$Z2llevqjbJlt1RBeqM3O6.ogkyxcFRweP/DamUB3DqCthUwd2gVai',0),
+	(31,'test@test.co','$2y$10$NqivPwnltwcvF/0m4An60uscASy9Q7rhASxHjmLoo1XtHl4T4WDFa',0);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
