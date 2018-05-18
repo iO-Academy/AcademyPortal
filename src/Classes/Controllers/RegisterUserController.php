@@ -41,12 +41,12 @@ class RegisterUserController
                 'password' => filter_var($newUserData['password'], FILTER_SANITIZE_STRING)
             ];
 
-            $successfulRegister = $this->userModel->insertNewUserToDb($validatedUserData['email'], password_hash($validatedUserData['password'], PASSWORD_DEFAULT));
+            $successfulRegister = $this->userModel->insertNewUserToDb($validatedUserData['email'], password_hash($validatedUserData['email'], PASSWORD_DEFAULT));
 
             if ($successfulRegister) {
                 $data = [
                     'success' => $successfulRegister,
-                    'msg' => 'User registered',
+                    'msg' => "New user added email:' ". $validatedUserData['email'] ." ' password:' ". $validatedUserData['password'] ." '",
                     'data' => []
                 ];
                 $statusCode = 200;

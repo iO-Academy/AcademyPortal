@@ -34,10 +34,10 @@ newUserForm.addEventListener('submit', async (e) => {
         response = await sendNewUserDetails(data)
 
     if(!response['success']) {
-        messageBox.innerText = 'Error adding user to database'
+        messageBox.innerText = response['msg']
         messageBox.classList.add('error')
     } else if (response['success'] === true) {
-        messageBox.innerText = `New user added email:' ${data['email']} ' password:' ${data['password']} '`
+        messageBox.innerText = response['msg']
         messageBox.classList.remove('error')
         button.style.display = 'none';
     }
