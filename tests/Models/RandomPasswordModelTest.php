@@ -7,10 +7,5 @@ use Portal\Models\RandomPasswordModel;
 
 class RandomPasswordModelTest extends TestCase
 {
-    function testConstruct(){
-        $password = new RandomPasswordModel();
-        $case = gettype($password());
-        $expected = 'string';
-        $this->assertEquals($expected, $case);
-    }
+    //this is untestable as a unit test as it calls from the API
 }

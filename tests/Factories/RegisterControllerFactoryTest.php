@@ -18,7 +18,8 @@ class RegisterControllerFactoryTest extends TestCase
         $renderer = $this->createMock(PhpRenderer::class);
         $RandomPasswordModel = $this->createMock(RandomPasswordModel::class);
 
-        $container->expects($this->at(0))->method('get')//best solution is to use prophecy but this works. Do not mess with order in factory
+        //best solution is to use prophecy but this works. Do not mess with order in factory
+        $container->expects($this->at(0))->method('get')
             ->with($this->equalTo('renderer'))
             ->willReturn($renderer);
 
