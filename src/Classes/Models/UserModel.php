@@ -36,7 +36,7 @@ class UserModel
      * @param string $password value provided for comparison
      * @param array $userCredentials values provided for comparison
      *
-     * @return true if email entered exists in database
+     * @return bool if email entered exists in database
      */
     public function userLoginVerify(string $userEmail, string $password, $userCredentials): bool
     {

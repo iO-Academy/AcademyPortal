@@ -22,11 +22,9 @@ class RandomPasswordModel
         $password = json_decode(curl_exec($ch));
         shuffle($password);
 
-        //
-        $password = array_pop($password)->password;
-
         // close curl resource to free up system resources
         curl_close($ch);
-        return $password;
+
+        return array_pop($password)->password;
     }
 }

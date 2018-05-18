@@ -28,8 +28,8 @@ class RegisterUserController
      *
      * @return error/success message and status code
      */
-    function __invoke(Request $request, Response $response){
-
+    function __invoke(Request $request, Response $response)
+    {
         if ($_SESSION['loggedIn'] === true) {
 
             $data = ['success' => false, 'msg' => 'User not registered.', 'data' => []];
