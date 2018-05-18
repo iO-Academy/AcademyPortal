@@ -25,12 +25,16 @@ $container['dbConnection'] = function ($c) {
     return $db;
 };
 
+$container['RegisterController'] = new \Portal\Factories\RegisterControllerFactory();
+
 $container['UserModel'] = new \Portal\Factories\UserModelFactory();
 
 $container['LoginController'] = new \Portal\Factories\LoginControllerFactory();
 
 $container['AdminController'] = new \Portal\Factories\AdminControllerFactory();
 
+$container['RegisterUserController'] = new \Portal\Factories\RegisterUserControllerFactory();
+
 $container['HomePageController'] = new \Portal\Factories\HomePageControllerFactory();
 
-
+$container['RandomPasswordModel'] = new \Portal\Models\RandomPasswordModel();

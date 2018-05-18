@@ -12,15 +12,15 @@ class UserModel
     }
 
     /**
-     * Gets email and password from database
+     * Gets email and password from database to login
      *
-     * @param $userEmail used by prepared statement
+     * @param $userEmail used by prepared statement.
      *
      * @return array contains user email and password
      */
     public function getUserByEmail($userEmail)
     {
-        if ($this->validateEmail($userEmail) !== false){
+        if ($this->validateEmail($userEmail) !== false) {
             $query = $this->db->prepare("SELECT `email`, `password` FROM `users` WHERE `email` = :email;");
             $query->bindParam(':email', $userEmail);
             $query->execute();
@@ -36,9 +36,9 @@ class UserModel
      * @param string $password value provided for comparison
      * @param array $userCredentials values provided for comparison
      *
-     * @return bool
+     * @return bool if email entered exists in database
      */
-    public function userLoginVerify(string $userEmail, string $password, $userCredentials):bool
+    public function userLoginVerify(string $userEmail, string $password, $userCredentials): bool
     {
         if (
             (is_array($userCredentials)) &&
@@ -51,12 +51,29 @@ class UserModel
     }
 
     /**
-     * Validates if parameter is an email
+     * Inserts new user into database - registering
+     *
+     * @param string $registerEmail value provided from form to insert into database
+     * @param string $registerPassword value provided from form to insert into database
+     *
+     * @return insert email and password into database
+     */
+    public function insertNewUserToDb(string $registerEmail, string $registerPassword)
+    {
+        $query = $this->db->prepare(
+            "INSERT INTO `users` (`email`, `password`) VALUES (:email, :password);");
+        $query->bindParam(':email', $registerEmail);
+        $query->bindParam(':password', $registerPassword);
+        return $query->execute();
+    }
+
+    /** Validates if parameter is an email
      *
      * @param $email string value provided for validation
      * @return mixed returns the email as a string if its a valid email otherwise it returns false
      */
-    private function validateEmail ($email) {
-        return filter_var($email,FILTER_VALIDATE_EMAIL);
+    private function validateEmail($email)
+    {
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 }

@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.39)
 # Database: academyPortal
-# Generation Time: 2018-05-14 13:56:17 +0000
+# Generation Time: 2018-05-18 08:30:31 +0000
 # ************************************************************
 
 
@@ -23,19 +23,27 @@
 # Dump of table users
 # ------------------------------------------------------------
 
-CREATE TABLE users (
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL DEFAULT '',
-  `password` varchar(256) NOT NULL DEFAULT '',
+  `password` varchar(65) NOT NULL DEFAULT '',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO users (`id`, `email`, `password`, `deleted`)
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+
+INSERT INTO `users` (`id`, `email`, `password`, `deleted`)
 VALUES
-	(1,'test@test.com','$2y$12$jW0bVIRrUy.rx0QD7mGNWOlfJz1Sd0cZUhc0FfamtiPx1OT9ntPlC',0);
+	(1,'test@test.com','$2y$12$jW0bVIRrUy.rx0QD7mGNWOlfJz1Sd0cZUhc0FfamtiPx1OT9ntPlC',0),
+	(30,'emailme@mikeoram.co.u','$2y$10$Z2llevqjbJlt1RBeqM3O6.ogkyxcFRweP/DamUB3DqCthUwd2gVai',0),
+	(31,'test@test.co','$2y$10$NqivPwnltwcvF/0m4An60uscASy9Q7rhASxHjmLoo1XtHl4T4WDFa',0);
 
-
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
