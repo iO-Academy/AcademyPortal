@@ -11,7 +11,7 @@ class RegisterController
     private $renderer;
     private $password;
 
-    function __construct(PhpRenderer $renderer, $password)
+    function __construct(PhpRenderer $renderer, string $password)
     {
         $this->renderer = $renderer;
         $this->password = $password;

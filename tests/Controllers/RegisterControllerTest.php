@@ -12,7 +12,7 @@ class AdminControllerTest extends TestCase
     function testConstruct()
     {
         $stub = $this->createMock(PhpRenderer::class);
-        $password = $this->createMock(RandomPasswordModel::class);
+        $password = 'password';
 
         $case = new RegisterController($stub, $password);
         $expected = RegisterController::class;
