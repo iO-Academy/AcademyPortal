@@ -2,7 +2,7 @@
     font-family: courier-new;
 }
 
-.addUserButton, .returnButton {
+.addButton, .returnButton {
     text-decoration: none;
     border: solid;
     padding: 5px 30px;
@@ -12,4 +12,8 @@
 .error{
     background-color: #ffc0cb;
     width:200px;
+}
+
+div {
+    padding: 15px 0;
 }
