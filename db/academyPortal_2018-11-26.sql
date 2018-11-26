@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.6.39)
+# Host: 127.0.0.1 (MySQL 5.6.41)
 # Database: academyPortal
-# Generation Time: 2018-05-18 08:30:31 +0000
+# Generation Time: 2018-11-26 15:33:13 +0000
 # ************************************************************
 
 
@@ -18,6 +18,53 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Dump of table companySizeLink
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `companySizeLink`;
+
+CREATE TABLE `companySizeLink` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `size` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `companySizeLink` WRITE;
+/*!40000 ALTER TABLE `companySizeLink` DISABLE KEYS */;
+
+INSERT INTO `companySizeLink` (`id`, `size`)
+VALUES
+	(1,'<5'),
+	(2,'5-30'),
+	(3,'31-60'),
+	(4,'61-100'),
+	(5,'101-250'),
+	(6,'>250');
+
+/*!40000 ALTER TABLE `companySizeLink` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table hiringPartners
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `hiringPartners`;
+
+CREATE TABLE `hiringPartners` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `companyName` varchar(255) NOT NULL DEFAULT '',
+  `size` int(11) unsigned NOT NULL,
+  `techStack` text NOT NULL,
+  `postcode` varchar(255) NOT NULL DEFAULT '',
+  `phoneNo` varchar(11) DEFAULT NULL,
+  `url` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `hiringPartnerSize` (`size`),
+  CONSTRAINT `hiringPartnerSize` FOREIGN KEY (`size`) REFERENCES `companySizeLink` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 
 # Dump of table users
