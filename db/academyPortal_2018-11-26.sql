@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.41)
 # Database: academyPortal
-# Generation Time: 2018-11-26 13:50:17 +0000
+# Generation Time: 2018-11-26 14:23:37 +0000
 # ************************************************************
 
 
@@ -34,6 +34,33 @@ CREATE TABLE `applicants` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+
+# Dump of table cohorts
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `cohorts`;
+
+CREATE TABLE `cohorts` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `CourseDate` varchar(100) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `cohorts` WRITE;
+/*!40000 ALTER TABLE `cohorts` DISABLE KEYS */;
+
+INSERT INTO `cohorts` (`id`, `CourseDate`)
+VALUES
+	(1,'February 2019'),
+	(2,'August 2019'),
+	(3,'Febraury 2020'),
+	(4,'August 2020'),
+	(5,'February 2021'),
+	(6,'August 2021');
+
+/*!40000 ALTER TABLE `cohorts` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table users
