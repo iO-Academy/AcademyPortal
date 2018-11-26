@@ -16,7 +16,7 @@ class RegisterControllerFactoryTest extends TestCase
     {
         $container = $this->createMock(ContainerInterface::class);
         $renderer = $this->createMock(PhpRenderer::class);
-        $RandomPasswordModel = $this->createMock(RandomPasswordModel::class);
+        $password = 'password';
 
         //best solution is to use prophecy but this works. Do not mess with order in factory
         $container->expects($this->at(0))->method('get')
@@ -25,7 +25,7 @@ class RegisterControllerFactoryTest extends TestCase
 
         $container->expects($this->at(1))->method('get')
             ->with($this->equalTo('RandomPasswordModel'))
-            ->willReturn($RandomPasswordModel);
+            ->willReturn('password');
 
         $factory =  new RegisterControllerFactory;
         $case = $factory($container);
