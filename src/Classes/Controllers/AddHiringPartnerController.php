@@ -22,7 +22,7 @@ class AddHiringPartnerController
 
     public function __invoke(Request $request, Response $response)
     {
-        // pick up data from form here and validate.    
+        // pick up data from form here and validate.
 
     }
 
