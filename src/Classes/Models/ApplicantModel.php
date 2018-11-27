@@ -12,14 +12,22 @@ class ApplicantModel
     }
 
     /**
-     * Inserts new Applicant into database - registering
+     *  Inserts new Applicant into database - registering
      *
-     * @param string $registerEmail value provided from form to insert into database
-     * @param string $registerPassword value provided from form to insert into database
+     * @param string $applicantName
+     * @param string $applicantEmail
+     * @param string $applicantPhoneNumber
+     * @param int $applicantCohortId
+     * @param string $applicantWhyDev
+     * @param string $applicantCodeExperience
+     * @param int $applicantHearAboutId
+     * @param string $applicantEligible
+     * @param string $applicantEighteenPlus
+     * @param string $applicantFinance
+     * @param string $applicantNotes
      *
-     * @return insert email and password into database
+     * @return bool
      */
-
     public function insertNewApplicantToDb(
         string $applicantName,
         string $applicantEmail,
@@ -76,7 +84,12 @@ class ApplicantModel
 
         return $query->execute();
     }
-    
+
+    /**
+     * Retrieves selected applicant data from applicant table and cohort date from cohort table.
+     *
+     * @return array $results is the data retrieved.
+     */
     public
     function getAllApplicants()
     {
