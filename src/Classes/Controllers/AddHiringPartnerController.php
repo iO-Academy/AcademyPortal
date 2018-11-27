@@ -24,37 +24,42 @@ class AddHiringPartnerController
     {
         $newHiringPartnerData = $request->getParsedBody();
 
-
         $postcodeRegex = '#^([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})$#';
-        $success = preg_match($postcodeRegex, 'BA115EY');
-        var_dump($success);
 
-//        $companyName = $newHiringPartnerData['companyName'];
-//        $size = $newHiringPartnerData['size'];
-//        $techStack = $newHiringPartnerData['techStack'];
-//        $postcode = $newHiringPartnerData['postcode'];
-//        $phoneNo = $newHiringPartnerData['phoneNo'];
-//        $url = $newHiringPartnerData['url'];
-//
-//        if (
-//            !empty($companyName) &&
-//            is_string($companyName) &&
-//            !empty($size) &&
-//            is_int($size) &&
-//            !empty($techStack) &&
-//            is_string($techStack) &&
-//            !empty($postcode) // need to add validation for phoneNo and url here
-//        ) {
-//            $validatedHiringPartnerData = [
-//                'companyName' => $companyName,
-//                'size' => $size,
-//                'techStack' => $techStack,
-//
-//                'phoneNo' => $phoneNo,
-//                'url' => filter_var($url, FILTER_SANITIZE_URL)
-//            ];
-//        }
+        $companyName = $newHiringPartnerData['companyName'];
+        $size = $newHiringPartnerData['size'];
+        $techStack = $newHiringPartnerData['techStack'];
+        $postcode = $newHiringPartnerData['postcode'];
+        $phoneNo = $newHiringPartnerData['phoneNo'] ?? 'not known'; //null coalesce
+        $url = $newHiringPartnerData['url'];
 
-//        $this->hiringPartnerModel->insertNewHiringPartnerToDb();
+        if (
+            !empty($companyName) &&
+            is_string($companyName) &&
+            !empty($size) &&
+            is_int($size) &&
+            !empty($techStack) &&
+            is_string($techStack) &&
+            !empty($postcode) &&
+            preg_match($postcodeRegex, $postcode) // need to add validation for phoneNo and url here
+        ) {
+            $validatedNewHiringPartnerData = [
+                'companyName' => $companyName,
+                'size' => $size,
+                'techStack' => $techStack,
+                'postcode' => $postcode,
+                'phoneNo' => filter_var($phoneNo, FILTER_SANITIZE_STRING), //need to validate this
+                'url' => filter_var($url, FILTER_SANITIZE_URL)
+            ];
+
+            $successfulNewHiringPartner = $this->hiringPartnerModel->insertNewHiringPartnerToDb(
+                $validatedNewHiringPartnerData['companyName'],
+                $validatedNewHiringPartnerData['size'],
+                $validatedNewHiringPartnerData['techStack'],
+                $validatedNewHiringPartnerData['postcode'],
+                $validatedNewHiringPartnerData['phoneNo'],
+                $validatedNewHiringPartnerData['url']
+                );
+        }
     }
 }
