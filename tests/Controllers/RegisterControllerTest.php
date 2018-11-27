@@ -4,7 +4,6 @@ namespace Tests\Controllers;
 
 use PHPUnit\Framework\TestCase;
 use Portal\Controllers\RegisterController;
-use Portal\Models\RandomPasswordModel;
 use Slim\Views\PhpRenderer;
 
 class AdminControllerTest extends TestCase
