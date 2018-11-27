@@ -39,3 +39,7 @@ $container['RegisterUserController'] = new \Portal\Factories\RegisterUserControl
 $container['HomePageController'] = new \Portal\Factories\HomePageControllerFactory();
 
 $container['RandomPasswordModel'] = new \Portal\Models\RandomPasswordModel();
+
+$container['AddHiringPartnerPageController'] = new \Portal\Factories\AddHiringPartnerPageControllerFactory();
+
+$container['HiringPartnerModel'] = new \Portal\Factories\HiringPartnerModelFactory();

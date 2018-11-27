@@ -4,6 +4,7 @@
 $app->get('/','HomePageController');
 $app->get('/admin', 'AdminController');
 $app->get('/register', 'RegisterController');
+$app->get('/addHiringPartner', 'AddHiringPartnerPageController');
 
 //Backend
 $app->post('/api/login', 'LoginController');
