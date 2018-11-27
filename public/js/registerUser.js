@@ -20,8 +20,8 @@ let sendNewUserDetails = async (data) => {
 }
 
 let getInputs = () =>{
-    let cleanedEmailInput = encodeURI(document.getElementById('emailNewUser').value)
-    let cleanedPasswordInput = encodeURI(document.getElementById('randomPassword').value)
+    let cleanedEmailInput = document.getElementById('emailNewUser').value
+    let cleanedPasswordInput = document.getElementById('randomPassword').value
     return {'email' : cleanedEmailInput, 'password' : cleanedPasswordInput}
 }
 
