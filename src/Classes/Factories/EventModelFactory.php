@@ -14,7 +14,7 @@ use Portal\Models\EventModel;
 class EventModelFactory
 {
     /**
-     * Creates AddEventModel with dependencies
+     * Creates EventModel with dependencies
      *
      * @param ContainerInterface $container
      *
