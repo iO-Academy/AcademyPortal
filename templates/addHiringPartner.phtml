@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/genericStyles.css"/>
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/addHiringPartner.css">
 
     <title>AcademyPortal | Add Hiring Partner</title>
 </head>
@@ -23,6 +24,7 @@
         <h4>Size</h4>
         <select name="companySize" class="addHiringPartner" required>
             <option value=""> //populate dropdown with db info with ViewHelper
+            <option value=""> //populate dropdown with db info with ViewHelper
         </select>
         <h4>Tech Stack</h4>
         <input type="text" class="addHiringPartner" name="techStack" required>
@@ -32,7 +34,9 @@
         <input type="tel" class="addHiringPartner" name="telNumber">
         <h4>Website</h4>
         <input type="url" class="addHiringPartner" name="companyURL">
-        <input type="submit" id="addHiringPartnerSubmit">
+        <div class="buttonWrapper">
+            <input type="submit" id="addHiringPartnerSubmit">
+        </div>
     </form>
 </body>
 </html>
