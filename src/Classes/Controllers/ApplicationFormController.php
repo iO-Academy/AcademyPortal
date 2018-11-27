@@ -29,7 +29,6 @@ class ApplicationFormController
                         'hearAbout' => $this->applicationFormModel->getHearAbout(),
                 ]
             ];
-
             return $response->withJson($data, $statusCode);
         } 
     }
