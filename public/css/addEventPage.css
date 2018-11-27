@@ -3,7 +3,7 @@
     margin: 0 auto;
 }
 
-#heading {
+.heading {
     width: 200px;
     margin: 50px auto;
     text-align: center;
@@ -19,8 +19,6 @@
     height: 30px;
 }
 
-.eventDataRow
-
 .eventLabel {
     flex: 0 0 150px;
     border-bottom: 2px solid #56e789;
@@ -35,8 +33,7 @@
     padding: 5px;
 }
 
-#submitEventButton,
-.adminPageButton {
+.addEventPageButton {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.2rem;
     width: 150px;
@@ -49,10 +46,13 @@
     text-decoration: none;
 }
 
-#submitEventButton:hover {
-    background-color: #56e789;
+.addEventPageButton:hover {
     color: #fff;
     transition: all 0.3s;
+}
+
+.submitEventButton:hover {
+    background-color: #56e789;
 }
 
 .adminPageButton {
@@ -61,6 +61,12 @@
 
 .adminPageButton:hover {
     background-color: #ffc0cb;
-    color: #fff;
-    transition: all 0.3s;
+}
+
+.notesWrapper {
+    height: 100px;
+}
+
+.notes {
+    height: 100%;
 }
