@@ -15,6 +15,16 @@ class ApplicationFormController
         $this->applicationFormModel = $applicationFormModel;
     }
 
+    /**
+     * Defines the default behaviour of Class when treated as a method.
+     * Retrieves options for drop down menus in application form.
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     *
+     * @return Response
+     */
     function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
