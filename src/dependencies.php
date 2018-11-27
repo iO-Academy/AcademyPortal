@@ -41,4 +41,4 @@ $container['RandomPasswordModel'] = new \Portal\Models\RandomPasswordModel();
 
 $container['EventModel'] = new \Portal\Factories\EventModelFactory();
 
-$container['EventModelFactory'] = new \Portal\Factories\EventModelFactory();
+$container['AddEventController'] = new \Portal\Controllers\AddEventController();
