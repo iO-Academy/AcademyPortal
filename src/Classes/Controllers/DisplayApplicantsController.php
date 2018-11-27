@@ -36,8 +36,7 @@ class DisplayApplicantsController
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $data = $this->applicantModel->getAllApplicants();
-        $args['data'] = $data;
+        $args['data'] = $this->applicantModel->getAllApplicants();
         return $this->renderer->render($response, 'displayApplicants.phtml', $args);
     }
 }
