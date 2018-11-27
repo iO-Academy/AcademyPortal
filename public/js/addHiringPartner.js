@@ -1,8 +1,6 @@
 document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault()
 
-   isValidEmail()
-
     const formData = getFormData()
     sendRequest(formData)
 })
@@ -22,17 +20,22 @@ function getFormData() {
     return formData
 }
 
-function sendRequest(formData) {
-
-    fetch('/api/addHiringPartner',{
+async function fetchData(formData) {
+    let response = await fetch('/api/addHiringPartner', {
         method: 'post',
         body: JSON.stringify(formData),
         headers: {
             "Content-Type": "application/json; charset=utf-8",
-        },
-    }).then(function (data) {
-        return data.json()
-    }).catch(function(error){
-        console.log(error)
+        }
+    })
+    let data = await response.json()
+    return data
+}
+
+function sendRequest(formData) {
+    fetchData(formData).then(function (data) {
+        console.log(data)
+    }).catch(function (err) {
+        console.log(err)
     })
 }
