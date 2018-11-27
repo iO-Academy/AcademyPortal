@@ -10,6 +10,11 @@ class ApplicationFormController
 {
     private $applicationFormModel;
 
+    /**
+     * ApplicationFormController constructor.
+     * 
+     * @param ApplicationFormModel $applicationFormModel
+     */
     function __construct(ApplicationFormModel $applicationFormModel)
     {   
         $this->applicationFormModel = $applicationFormModel;
