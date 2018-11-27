@@ -19,7 +19,7 @@ class ApplicantModel
      *
      * @return insert email and password into database
      */
-    public function insertNewApplicantToDb(c
+    public function insertNewApplicantToDb(
         string $applicantName,
         string $applicantEmail,
         string $applicantPhoneNumber,
@@ -75,11 +75,11 @@ class ApplicantModel
 
         return $query->execute();
     }
-}
 
     public function getAllApplicants() {
-    $query = $this->db->prepare('SELECT `name`, `email`, `cohortid` FROM `applicants`;');
-    $query->execute();
-    $results = $query->fetchAll(\PDO::FETCH_ASSOC);
-    return $results;
+        $query = $this->db->prepare('SELECT `name`, `email`, `cohortid` FROM `applicants`;');
+        $query->execute();
+        $results = $query->fetchAll(\PDO::FETCH_ASSOC);
+        return $results;
+    }
 }
