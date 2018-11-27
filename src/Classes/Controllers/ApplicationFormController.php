@@ -15,10 +15,8 @@ class ApplicationFormController
         $this->applicationFormModel = $applicationFormModel;
     }
 
-    function __invoke(Request $request, Response $response, $args)
-    {   
-        //Line below is here for testing. Should be removed after code review!!!
-        // $_SESSION['loggedIn'] = true; 
+    function __invoke(Request $request, Response $response, array $args)
+    {
         if ($_SESSION['loggedIn'] === true) {
             $statusCode = 200;
             $data = [
