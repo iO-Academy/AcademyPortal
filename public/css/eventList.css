@@ -1,30 +1,56 @@
+@keyframes open {
+    from {height: 0;}
+    to {height: 100%;}
+}
+@keyframes close {
+    from {height: 100%;}
+    to {height: 0;}
+}
 
-span {
+
+.upper span {
     display: block;
     text-align: center;
 }
+
+.mid span {
+    display: block;
+    text-align: center;
+}
+
 #eventTitle {
     text-align: center;
 }
 
-.events {
+.event {
     width: 80%;
-    height: 120px;
+    overflow: auto;
     margin: auto;
     background-color: deepskyblue;
+    margin-bottom: 10px;
 }
-.upper, .mid {
+
+.top {
     width: 90%;
-    height: 50%;
+}
+
+.upper, .mid {
+    width: 100%;
 }
 
 .upper, .mid, .lower {
     float: left;
+    overflow: auto;
+}
+
+.infoBox, .infoBox-mid, .infoBox-low {
+    overflow: auto;
+    padding: 10px;
+
 }
 
 .infoBox, .infoBox-mid {
     float: left;
-    overflow: auto;
 }
 
 .infoBox {
@@ -44,7 +70,21 @@ span {
 }
 
 .lower {
-    height: 200px;
     width: 100%;
-    background: #000;
+    background: #ffc0f1;
+    height: 0;
+
+}
+
+.arrowBox {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.hide {
+    animation: close 1s ease;
+}
+
+.show {
+    animation: open 1s ease;
 }
