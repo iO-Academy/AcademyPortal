@@ -15,7 +15,7 @@ class DisplayApplicantViewHelper
     {
         $result = '';
         foreach ($applicants as $applicant) {
-            $result .= "name: ". " " . $applicant['name'] . ' ' .  "email:" . " " .  $applicant['email'] . '  ' . $applicant['date'] . '<br>';
+            $result .= "name: ". " " . $applicant['name'] . ' ' .  "email:" . " " .  $applicant['email'] . '  ' . "date:" . $applicant['date'] . '<br>';
         }
         return $result;
     }

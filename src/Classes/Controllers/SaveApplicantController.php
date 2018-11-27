@@ -22,13 +22,13 @@ class SaveApplicantController
 
     /**
      * If user is logged in, invoke gets data from new applicant form and passes into insertNewApplicantToDb
-     * function for inserting into database
-     * If successful Insert returns success true with message of application saved
-     *
-     * @param Request $request HTTP request
-     * @param Response $response HTTP response
-     *
-     * @return error/success message and status code
+     * function for inserting into database.
+     * If successful Insert returns success true with message of application saved.
+     * 
+     * @param Request $request
+     * @param Response $response
+     * 
+     * @return Response
      */
     function __invoke(Request $request, Response $response)
     {
@@ -73,7 +73,6 @@ class SaveApplicantController
                 ];
                 $statusCode = 200;
             }
-
             return $response->withJson($data, $statusCode);
         }
     }
