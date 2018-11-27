@@ -5,9 +5,10 @@
     <title>Test</title>
 </head>
 <body>
-    Test
+    <select>
     <?php
-    var_dump($dropdownData)
+    echo \Portal\ViewHelpers\AddHiringPartnerPageViewHelper::outputSizeBrackets($dropdownData);
     ?>
+    </select>
 </body>
 </html>
