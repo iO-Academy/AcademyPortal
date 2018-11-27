@@ -27,7 +27,7 @@ class DisplayApplicantsController
     }
 
     /**
-     *
+     * Renders applicant data on the front end in display.phtml.
      *
      * @param Request $request
      * @param Response $response

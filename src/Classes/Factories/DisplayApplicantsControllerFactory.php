@@ -17,7 +17,7 @@ class DisplayApplicantsControllerFactory
     public function __invoke(ContainerInterface $container) : DisplayApplicantsController
     {
         $renderer = $container->get('renderer');
-        $applicantModelFactory = $container->get('ApplicantModel');
-        return new DisplayApplicantsController($renderer, $applicantModelFactory);
+        $applicantModel = $container->get('ApplicantModel');
+        return new DisplayApplicantsController($renderer, $applicantModel);
     }
 }
