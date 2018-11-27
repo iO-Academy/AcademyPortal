@@ -76,9 +76,7 @@ class ApplicantModel
 
         return $query->execute();
     }
-
-
-
+    
     public
     function getAllApplicants()
     {
