@@ -1,14 +1,13 @@
-document.getElementById('submitApplicant').addEventListener('click', function (e) {
+document.getElementById('submitApplicant').addEventListener('click', e => {
     e.preventDefault()
-    let formData = document.querySelectorAll(".submitApplicant")
     let data = getCompletedFormData()
     makeApiRequest(data)
 })
 
-function getCompletedFormData() {
+let getCompletedFormData = async () => {
     let formData = document.querySelectorAll(".submitApplicant")
     let data = {}
-    formData.forEach(function (formItem) {
+    formData.forEach(formItem => {
         data[formItem.name] = formItem.value
         if (formItem.type == 'checkbox') {
             data[formItem.name] = formItem.checked
@@ -17,7 +16,7 @@ function getCompletedFormData() {
     return data
 }
 
-function makeApiRequest(data) {
+let makeApiRequest = async (data) => {
     return fetch('/api/saveApplicant', {
         credentials: "same-origin",
         headers: {
@@ -28,8 +27,7 @@ function makeApiRequest(data) {
         body: JSON.stringify(data)
     })
         .then(response => response.json())
-        .then(function () {
+        .then(() => {
             window.location.href = '/admin';
         })
-
 }

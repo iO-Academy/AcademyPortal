@@ -22,13 +22,13 @@ class SaveApplicantController
 
     /**
      * If user is logged in, invoke gets data from new applicant form and passes into insertNewApplicantToDb
-     * function for inserting into database
-     * If successful Insert returns success true with message of application saved
+     * function for inserting into database.
+     * If successful Insert returns success true with message of application saved.
+     * 
+     * @param Request $request
+     * @param Response $response
      *
-     * @param Request $request HTTP request
-     * @param Response $response HTTP response
-     *
-     * @return error/success message and status code
+     * @return Response
      */
     function __invoke(Request $request, Response $response)
     {
@@ -39,7 +39,7 @@ class SaveApplicantController
             $newApplicationData = $request->getParsedBody();
             $validatedApplicationData = [
                 'name'           => filter_var($newApplicationData['name'], FILTER_SANITIZE_STRING),
-                'email'          => filter_var($newApplicationData['email'], FILTER_SANITIZE_STRING),
+                'email'          => filter_var($newApplicationData['email'], FILTER_VALIDATE_EMAIL),
                 'phoneNumber'    => filter_var($newApplicationData['phoneNumber'], FILTER_SANITIZE_STRING),
                 'cohortId'       => (int)$newApplicationData['cohortId'],
                 'whyDev'         => filter_var($newApplicationData['whyDev'], FILTER_SANITIZE_STRING),
@@ -73,7 +73,6 @@ class SaveApplicantController
                 ];
                 $statusCode = 200;
             }
-
             return $response->withJson($data, $statusCode);
         }
     }

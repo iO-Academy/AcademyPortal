@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Portal\Controllers;
 
 use \Slim\Http\Request as Request;
