@@ -62,3 +62,11 @@
 .adminPageButton:hover {
     background-color: #ffc0cb;
 }
+
+.notesWrapper {
+    height: 100px;
+}
+
+.notes {
+    height: 100%;
+}
