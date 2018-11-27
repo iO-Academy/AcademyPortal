@@ -79,7 +79,6 @@ class ApplicantModel
  * Will select all the fields from the applicants table, to show the user's data.
  *
  * @return $results, this will return the results from the query.
- *
  */
     public function getAllApplicants()
     {
