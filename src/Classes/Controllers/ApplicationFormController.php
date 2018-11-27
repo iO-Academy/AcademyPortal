@@ -10,15 +10,28 @@ class ApplicationFormController
 {
     private $applicationFormModel;
 
+    /**
+     * ApplicationFormController constructor.
+     * 
+     * @param ApplicationFormModel $applicationFormModel
+     */
     function __construct(ApplicationFormModel $applicationFormModel)
     {   
         $this->applicationFormModel = $applicationFormModel;
     }
 
-    function __invoke(Request $request, Response $response, $args)
-    {   
-        //Line below is here for testing. Should be removed after code review!!!
-        // $_SESSION['loggedIn'] = true; 
+    /**
+     * Defines the default behaviour of Class when treated as a method.
+     * Retrieves options for drop down menus in application form.
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     *
+     * @return Response
+     */
+    function __invoke(Request $request, Response $response, array $args)
+    {
         if ($_SESSION['loggedIn'] === true) {
             $statusCode = 200;
             $data = [
@@ -29,7 +42,6 @@ class ApplicationFormController
                         'hearAbout' => $this->applicationFormModel->getHearAbout(),
                 ]
             ];
-
             return $response->withJson($data, $statusCode);
         } 
     }
