@@ -9,55 +9,56 @@
     <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="./css/addApplicant.css">
     <script src="js/addApplicant.js" defer></script>
+    <script src="js/saveApplicant.js" defer></script>
 
 </head>
 <body>
 <div class="container">
     <h1>New Applicant Registration</h1>
-    <form action="/api/saveapplicant" method="POST">
+    <form action="/api/saveApplicant" method="POST">
         <label for="name">Applicant Name</label>
-        <input id="name" class="form-control" type="text" placeholder="name" required>
+        <input id="name" name="name" class="form-control" type="text" placeholder="name" required>
 
         <label for="email">Applicant Email</label>
-        <input id="email" class="form-control" type="email" placeholder="email" required>
+        <input id="email" name="email" class="form-control" type="email" placeholder="email" required>
 
         <label for="phone">Applicant Phone Number</label>
-        <input id="phone" class="form-control" type="text" placeholder="phone number" required>
+        <input id="phone" name="phoneNumber" class="form-control" type="text" placeholder="phone number" required>
 
         <label for="cohorts">When would you like to join us?</label>
-        <select id="cohorts" class="form-control" name="cohort" required>
+        <select id="cohorts" class="form-control" name="cohortId" required>
         </select>
 
         <label for="why-developer">Why do you want to become a software developer?</label>
-        <textarea id="why-developer" class="form-control" placeholder="Enter here" required></textarea>
+        <textarea id="why-developer" name="whyDev" class="form-control" placeholder="Enter here" required></textarea>
 
         <label for="experience">Please tell us about any relevant coding experience.</label>
-        <textarea id="experience" class="form-control" placeholder="Enter here" required></textarea>
+        <textarea id="experience" name="codeExperience" class="form-control" placeholder="Enter here" required></textarea>
 
         <label for="hear-about">How did you hear about Mayden Academy?</label>
-        <select id="hear-about" class="form-control" name="hear-about" required>
+        <select id="hear-about" class="form-control" name="hearAboutId" required>
         </select>
 
         <div class="form-group">
-            <input type="checkbox"></input>
+            <input name="eligible" type="checkbox"></input>
             <label for="uk-eligible">I confirm I am eligible to study in the UK.</label>
         </div>
 
         <div class="form-group">
-            <input type="checkbox"></input>
+            <input name="eighteenPlus" type="checkbox"></input>
             <label for="is-18">I confirm I will be at least 18 years before my chosen cohort*.</label>
         </div>
 
         <div class="form-group">
-            <input type="checkbox"></input>
+            <input name="finance" type="checkbox"></input>
             <label for="finance">I would like to apply for interest free finance.</label>
         </div>
 
 
         <label for="notes">Mike and Charlie's special notes.</label>
-        <textarea id="notes" class="form-control" placeholder="Enter here" required></textarea>
+        <textarea id="notes" name="notes" class="form-control" placeholder="Enter here" required></textarea>
 
-        <input type="submit" class="btn btn-success"></input>
+        <input id="submitApplicant" type="submit" class="btn btn-success"></input>
     </form>
 </div>
 </body>
