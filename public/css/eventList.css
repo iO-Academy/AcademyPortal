@@ -1,0 +1,50 @@
+
+span {
+    display: block;
+    text-align: center;
+}
+#eventTitle {
+    text-align: center;
+}
+
+.events {
+    width: 80%;
+    height: 120px;
+    margin: auto;
+    background-color: deepskyblue;
+}
+.upper, .mid {
+    width: 90%;
+    height: 50%;
+}
+
+.upper, .mid, .lower {
+    float: left;
+}
+
+.infoBox, .infoBox-mid {
+    float: left;
+    overflow: auto;
+}
+
+.infoBox {
+    width: 33.33%
+}
+
+.infoBox-mid {
+    width: 50%;
+}
+
+.upper {
+    background-color: lightpink;
+}
+
+.mid {
+    background-color: #56e789;
+}
+
+.lower {
+    height: 200px;
+    width: 100%;
+    background: #000;
+}
