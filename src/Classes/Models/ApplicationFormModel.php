@@ -29,7 +29,7 @@ class ApplicationFormModel
      * @return assoc_array of hear about options.
      */
     public function getHearAbout() {
-        $query = $this->db->prepare('SELECT `id`, hearAbout` FROM `hearAbout`;');
+        $query = $this->db->prepare('SELECT `id`, `hearAbout` FROM `hearAbout`;');
         $query->execute();
         $result = $query->fetchAll(\PDO::FETCH_ASSOC);
         return $result;
