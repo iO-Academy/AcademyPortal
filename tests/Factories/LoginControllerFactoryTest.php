@@ -20,4 +20,6 @@ class LoginControllerFactoryTest extends TestCase
         $expected = LoginController::class;
         $this->assertInstanceOf($expected, $case);
     }
+
 }
+

@@ -8,7 +8,6 @@ let getFormOptions = () => {
         },
     })
     .then(response => response.json())
-    .then(json => json)
 }
 
 let handleFormOptions = async () => {

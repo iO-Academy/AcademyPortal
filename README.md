@@ -54,9 +54,9 @@ POST
 	    'whyDev': 'example interest in development',
 	    'codeExperience': 'example coding experience',
 	    'hearAboutId': 3,
-	    'eligible': 'yes' or 'no',
-	    'eighteenPlus': 'yes' or 'no',
-	    'finance': 'yes' or 'no',
+	    'eligible': '1' or '0',
+	    'eighteenPlus': '1' or '0',
+	    'finance': '1' or '0',
 	    'notes': 'example notes'
 	   }
 - Returns success true / false:

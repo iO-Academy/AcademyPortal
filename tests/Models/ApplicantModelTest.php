@@ -14,5 +14,7 @@ class ApplicantModelTest extends TestCase
         $expected = ApplicantModel::class;
 
         $this->assertInstanceOf($expected, $case);
+
     }
+
 }

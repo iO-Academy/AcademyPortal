@@ -27,7 +27,7 @@ class SaveApplicantController
      * 
      * @param Request $request
      * @param Response $response
-     * 
+     *
      * @return Response
      */
     function __invoke(Request $request, Response $response)
@@ -39,7 +39,7 @@ class SaveApplicantController
             $newApplicationData = $request->getParsedBody();
             $validatedApplicationData = [
                 'name'           => filter_var($newApplicationData['name'], FILTER_SANITIZE_STRING),
-                'email'          => filter_var($newApplicationData['email'], FILTER_SANITIZE_STRING),
+                'email'          => filter_var($newApplicationData['email'], FILTER_VALIDATE_EMAIL),
                 'phoneNumber'    => filter_var($newApplicationData['phoneNumber'], FILTER_SANITIZE_STRING),
                 'cohortId'       => (int)$newApplicationData['cohortId'],
                 'whyDev'         => filter_var($newApplicationData['whyDev'], FILTER_SANITIZE_STRING),
