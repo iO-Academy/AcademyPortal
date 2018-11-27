@@ -19,20 +19,20 @@
     <h1> Add Hiring Partner Page</h1>
     <div id="message"></div>
     <form id="addHiringPartnerForm">
-        <h4>Company name</h4>
+        <label for="companyName" class="hiringPartnerLabels">Company name</label>
         <input type="text" class="addHiringPartner" name="companyName" required>
-        <h4>Size</h4>
-        <select name="companySize" class="addHiringPartner" required>
+        <label for="companySize" class="hiringPartnerLabels">Size</label>
+        <select class="addHiringPartner" name="companySize" required>
             <option value=""> //populate dropdown with db info with ViewHelper
             <option value=""> //populate dropdown with db info with ViewHelper
         </select>
-        <h4>Tech Stack</h4>
+        <label for="techStack" class="hiringPartnerLabels">Tech Stack</label>
         <input type="text" class="addHiringPartner" name="techStack" required>
-        <h4>Postcode</h4>
+        <label for="postcode" class="hiringPartnerLabels">Postcode</label>
         <input type="text" class="addHiringPartner" name="postcode" required>
-        <h4>Phone Number</h4>
+        <label for="telNumber" class="hiringPartnerLabels">Phone Number</label>
         <input type="tel" class="addHiringPartner" name="telNumber">
-        <h4>Website</h4>
+        <label for="companyURL" class="hiringPartnerLabels">Website</label>
         <input type="url" class="addHiringPartner" name="companyURL">
         <div class="buttonWrapper">
             <input type="submit" id="addHiringPartnerSubmit">
