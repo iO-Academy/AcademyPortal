@@ -38,7 +38,7 @@ class EventModel
             'INSERT INTO `events` (`eventName`, `date`, `location`, `type`, `startTime`, `endTime`, `notes`) 
                         VALUES (:eventName, :date, :location, :type, :startTime, :endTime, :notes)');
         $query->bindParam(':eventName', $newEventData['eventName']);
-        $query->bindParam(':data', $newEventData['data']);
+        $query->bindParam(':date', $newEventData['date']);
         $query->bindParam(':location', $newEventData['location']);
         $query->bindParam(':type', $newEventData['type']);
         $query->bindParam(':startTime', $newEventData['startTime']);
