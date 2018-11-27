@@ -1,5 +1,5 @@
 .addEventPageWrapper {
-    width: 1000px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -15,9 +15,11 @@
     margin-bottom: 20px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     height: 30px;
 }
+
+.eventDataRow
 
 .eventLabel {
     flex: 0 0 150px;
@@ -26,9 +28,39 @@
 }
 
 .eventInput {
-    flex: 1 0 250px;
+    flex: 1 1 250px;
     border-radius: 5px;
     text-decoration: none;
     border: 1px solid;
     padding: 5px;
+}
+
+#submitEventButton,
+.adminPageButton {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid #56e789;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#submitEventButton:hover {
+    background-color: #56e789;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.adminPageButton {
+    border: 2px solid #ffc0cb;
+}
+
+.adminPageButton:hover {
+    background-color: #ffc0cb;
+    color: #fff;
+    transition: all 0.3s;
 }

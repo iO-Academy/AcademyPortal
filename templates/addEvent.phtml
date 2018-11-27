@@ -29,8 +29,20 @@
                     <input type="date" name="date" id="date" class="eventInput">
                 </div>
                 <div class="eventDataRow">
+                    <label for="startTime" class="eventLabel">Start Time: </label>
+                    <input type="text" name="startTime" id="startTime" class="eventInput" placeholder="hh:mm">
                 </div>
                 <div class="eventDataRow">
+                    <label for="endTime" class="eventLabel">End Time: </label>
+                    <input type="text" name="endTime" id="endTime" class="eventInput" placeholder="hh:mm">
+                </div>
+                <div class="eventDataRow">
+                    <label for="notes" class="eventLabel">Notes: </label>
+                    <input type="text" name="notes" id="notes" class="eventInput">
+                </div>
+                <div class="eventDataRow">
+                    <a href="/admin" class="adminPageButton">Back</a>
+                    <input type="submit" name="submitEventButton" id="submitEventButton" value="Add Event">
                 </div>
             </form>
         </main>
