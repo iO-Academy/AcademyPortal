@@ -6,7 +6,7 @@
  * Time: 10:31
  */
 
-namespace Portal;
+namespace Portal\ViewHelper;
 
 
 class DisplayApplicantViewHelper
@@ -15,9 +15,10 @@ class DisplayApplicantViewHelper
     {
         $result = '';
         foreach ($applicants as $applicant) {
-            $result .= $applicant['name'] . $applicant['email'] . $applicant['cohortid'];
+            $result .= "name: ". " " . $applicant['name'] . ' ' .  "email:" . " " .  $applicant['email'] . '  ' . $applicant['date'] . '<br>';
         }
         return $result;
     }
 
 }
+
