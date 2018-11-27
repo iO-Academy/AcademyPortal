@@ -17,8 +17,10 @@ class HiringPartnerModel
         $this->db = $db;
     }
 
-    public function insertNewHiringPartnerToDb() { //need to pass in correct data from controller here
-        $query = $this->db->prepare("INSERT INTO `hiringPartners` (`companyName`, `size`, `techStack`, `postcode`, `phoneNo`, `url`) VALUES (:companyName, :size, :techStack, :postcode, :phoneNo, :url);");
+    public function insertNewHiringPartnerToDb(string $companyName, $size, string $techStack, string $postcode, $phoneNo, string $url) { //need to pass in correct data from controller here
+        $query = $this->db->prepare("
+            INSERT INTO `hiringPartners` (`companyName`, `size`, `techStack`, `postcode`, `phoneNo`, `url`) 
+            VALUES (:companyName, :size, :techStack, :postcode, :phoneNo, :url);");
         $query->bindParam(':companyName', $companyName);
         $query->bindParam(':size', $size);
         $query->bindParam(':techStack', $techStack);
