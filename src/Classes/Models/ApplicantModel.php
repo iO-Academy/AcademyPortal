@@ -78,7 +78,7 @@ class ApplicantModel
 }
 
     public function getAllApplicants() {
-    $query = $this->db->prepare('SELECT `name`, `email`, `cohortid` FROM `applicants`;');
+    $query = $this->db->prepare('SELECT `name`, `email`, `cohortid`, `phoneNumber`, `cohortid`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `notes`, `deleted` FROM `applicants`;');
     $query->execute();
     $results = $query->fetchAll(\PDO::FETCH_ASSOC);
     return $results;
