@@ -8,7 +8,6 @@ use Slim\Views\PhpRenderer;
 use Psr\Container\ContainerInterface;
 use Portal\Controllers\RegisterController;
 use Portal\Factories\RegisterControllerFactory;
-use Portal\Models\RandomPasswordModel;
 
 class RegisterControllerFactoryTest extends TestCase
 {
