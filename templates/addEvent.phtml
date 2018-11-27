@@ -7,6 +7,8 @@
         <title>Add Event</title>
         <link rel="stylesheet" type="text/css" href="css/genericStyles.css"/>
         <link rel="stylesheet" href="css/addEventPage.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     </head>
     <body>
         <main class="addEventPageWrapper">
@@ -32,7 +34,7 @@
                 </div>
                 <div class="eventDataRow">
                     <label for="date" class="eventLabel">Date: </label>
-                    <input type="date" name="date" id="date" class="eventInput">
+                    <input type="text" name="date" id="date" class="eventInput">
                 </div>
                 <div class="eventDataRow">
                     <label for="startTime" class="eventLabel">Start Time: </label>
@@ -52,5 +54,8 @@
                 </div>
             </form>
         </main>
+        <script>
+            const date = flatpickr('#date', {})
+        </script>
     </body>
 </html>
