@@ -19,6 +19,7 @@ class ApplicantModel
      *
      * @return insert email and password into database
      */
+
 //    public function insertNewApplicantToDb(c
 //        string $applicantName,
 //        string $applicantEmail,
@@ -76,6 +77,48 @@ class ApplicantModel
 //        return $query->execute();
 //    }
 //}
+=======
+    public function insertNewApplicantToDb(
+        string $applicantName,
+        string $applicantEmail,
+        string $applicantPhoneNumber,
+        int $applicantCohortId,
+        string $applicantWhyDev,
+        string $applicantCodeExperience,
+        int $applicantHearAboutId,
+        string $applicantEligible,
+        string $applicantEighteenPlus,
+        string $applicantFinance,
+        string $applicantNotes
+    ) {
+        $query = $this->db->prepare(
+            "INSERT INTO `applicants` (
+                            `name`,
+                            `email`,
+                            `phoneNumber`,
+                            `cohortId`,
+                            `whyDev`,
+                            `codeExperience`,
+                            `hearAboutId`,
+                            `eligible`,
+                            `eighteenPlus`,
+                            `finance`,
+                            `notes`
+                            )
+                        VALUES (
+                            :name,
+                            :email,
+                            :phoneNumber,
+                            :cohortId,
+                            :whyDev,
+                            :codeExperience,
+                            :hearAboutId,
+                            :eligible,
+                            :eighteenPlus,
+                            :finance,
+                            :notes
+                        );"
+        );
 
     public function getAllApplicants()
     {
@@ -84,4 +127,3 @@ class ApplicantModel
         $results = $query->fetchAll(\PDO::FETCH_ASSOC);
         return $results;
     }
-}
