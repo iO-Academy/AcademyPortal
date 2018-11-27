@@ -17,46 +17,46 @@
     <h1>New Applicant Registration</h1>
     <form action="/api/saveApplicant" method="POST">
         <label for="name">Applicant Name</label>
-        <input id="name" name="name" class="form-control" type="text" placeholder="name" required>
+        <input id="name" name="name" class="submitApplicant form-control" type="text" placeholder="name" required>
 
         <label for="email">Applicant Email</label>
-        <input id="email" name="email" class="form-control" type="email" placeholder="email" required>
+        <input id="email" name="email" class="submitApplicant form-control" type="email" placeholder="email" required>
 
         <label for="phone">Applicant Phone Number</label>
-        <input id="phone" name="phoneNumber" class="form-control" type="text" placeholder="phone number" required>
+        <input id="phone" name="phoneNumber" class="submitApplicant form-control" type="text" placeholder="phone number" required>
 
         <label for="cohorts">When would you like to join us?</label>
-        <select id="cohorts" class="form-control" name="cohortId" required>
+        <select id="cohorts" class="submitApplicant form-control" name="cohortId" required>
         </select>
 
         <label for="why-developer">Why do you want to become a software developer?</label>
-        <textarea id="why-developer" name="whyDev" class="form-control" placeholder="Enter here" required></textarea>
+        <textarea id="why-developer" name="whyDev" class="submitApplicant form-control" placeholder="Enter here" required></textarea>
 
         <label for="experience">Please tell us about any relevant coding experience.</label>
-        <textarea id="experience" name="codeExperience" class="form-control" placeholder="Enter here" required></textarea>
+        <textarea id="experience" name="codeExperience" class="submitApplicant form-control" placeholder="Enter here" required></textarea>
 
         <label for="hear-about">How did you hear about Mayden Academy?</label>
-        <select id="hear-about" class="form-control" name="hearAboutId" required>
+        <select id="hear-about" class="submitApplicant form-control" name="hearAboutId" required>
         </select>
 
         <div class="form-group">
-            <input name="eligible" type="checkbox"></input>
+            <input class="submitApplicant" name="eligible" type="checkbox"></input>
             <label for="uk-eligible">I confirm I am eligible to study in the UK.</label>
         </div>
 
-        <div class="form-group">
-            <input name="eighteenPlus" type="checkbox"></input>
+        <div>
+            <input class="submitApplicant" name="eighteenPlus" type="checkbox"></input>
             <label for="is-18">I confirm I will be at least 18 years before my chosen cohort*.</label>
         </div>
 
         <div class="form-group">
-            <input name="finance" type="checkbox"></input>
+            <input class="submitApplicant" name="finance" type="checkbox"></input>
             <label for="finance">I would like to apply for interest free finance.</label>
         </div>
 
 
         <label for="notes">Mike and Charlie's special notes.</label>
-        <textarea id="notes" name="notes" class="form-control" placeholder="Enter here" required></textarea>
+        <textarea id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here" required></textarea>
 
         <input id="submitApplicant" type="submit" class="btn btn-success"></input>
     </form>
