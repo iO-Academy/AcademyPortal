@@ -38,3 +38,5 @@ $container['RegisterUserController'] = new \Portal\Factories\RegisterUserControl
 $container['HomePageController'] = new \Portal\Factories\HomePageControllerFactory();
 
 $container['RandomPasswordModel'] = new \Portal\Models\RandomPasswordModel();
+
+$container['AddEventModel'] = new \Portal\Factories\AddEventModelFactory();
