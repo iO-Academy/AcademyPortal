@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.41)
 # Database: academyPortal
-# Generation Time: 2018-11-26 16:09:24 +0000
+# Generation Time: 2018-11-27 10:56:52 +0000
 # ************************************************************
 
 
@@ -44,8 +44,8 @@ LOCK TABLES `events` WRITE;
 
 INSERT INTO `events` (`id`, `eventName`, `date`, `location`, `type`, `startTime`, `endTime`, `notes`)
 VALUES
-	(1,'BDSM Party','2018-12-25','Mayden',2,'22:00','05:00','GHB provided	'),
-	(2,'Ice Cream Eating Contest Hosted by Lipton Ice Tea','2019-01-01','At the bottom of the hill down from the red light district near the dog shelter on the left of the pub.',1,'18:00','20:00','The ice cream unfortunately is not free please bring all of your money as there will be a casino round the back for all you gamblers out there! '),
+	(1,'Lollipop day','2018-12-25','Mayden',2,'22:00','05:00','Lollipops provided please leave on time!'),
+	(2,'Ice Cream Eating Contest Hosted by Lipton Ice Tea','2019-01-01','At the bottom of the hill down from the bakery near the dog shelter on the left of the pub.',1,'18:00','20:00','The ice cream unfortunately is not free please bring all of your money as there will be a casino round the back for all you gamblers out there! '),
 	(3,'Water Fight','2019-06-23','Mayden Rooftop',3,'12:00','20:00','If youre ready for the night of your life DJ abdi is coming for his evening soak of dubstep.'),
 	(4,'Watching Paint Dry','2019-04-02','Mayden kitchen',4,'08:00','20:00',NULL);
 
