@@ -1,21 +1,36 @@
-
-let eventBoxes = document.getElementsByClassName("event")
 let clicked = 0
 
-for(i=0;i<eventBoxes.length;i++) {
-eventBoxes[i].addEventListener('click', function() {
-    clicked++
-    if(clicked%2) {
-        this.querySelector(".arrowBox").innerHTML = "<span>&#x21E7;</span>"
-        this.querySelector('.lower').classList.add("show")
-        this.querySelector('.lower').classList.remove("hide")
+document.querySelectorAll(".event .lower").forEach(function(event) {
+    event.dataset.height = event.clientHeight
+    event.style.height = 0
+})
 
+document.querySelectorAll(".event").forEach(function(event) {
+    event.addEventListener('click', function() {
+        clicked++
+        let lower = this.querySelector('.lower')
+        let arrow = this.querySelector(".arrowBox")
+        if(clicked%2) {
+            arrow.innerHTML = "<span>&#x21E7;</span>"
 
-    }
-    else {
-        this.querySelector(".arrowBox").innerHTML = "<span>&#x21E9;</span>"
-        this.querySelector('.lower').classList.remove("show")
-        this.querySelector('.lower').classList.add("hide")
+            var id = setInterval(function() {
+                if (lower.clientHeight < lower.dataset.height) {
+                    lower.style.height = (parseInt(lower.style.height) + 15) + 'px'
+                } else {
+                    clearInterval(id)
+                }
+            }, 16)
+        }
+        else {
+            arrow.innerHTML = "<span>&#x21E9;</span>"
 
-    }
-})}
+            var id = setInterval(function() {
+                if (lower.clientHeight > 0) {
+                    lower.style.height = (parseInt(lower.style.height) - 10) + 'px'
+                } else {
+                    clearInterval(id)
+                }
+            }, 16)
+        }
+    })
+})
