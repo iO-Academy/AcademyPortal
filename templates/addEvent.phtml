@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Event</title>
-</head>
-<body>
-    <main>
-        <form action="/addEvent" method="POST">
-            <div>
-                <label for="event-name">Event Name</label>
-                <input type="text" name="event-name" id="event-name">
-            </div>
-        </form>
-    </main>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Add Event</title>
+        <link rel="stylesheet" type="text/css" href="css/genericStyles.css"/>
+        <link rel="stylesheet" href="css/addEventPage.css">
+    </head>
+    <body>
+        <main class="addEventPageWrapper">
+            <h2 id="heading">Add Event</h2>
+            <form action="/addEvent" method="POST" id="addEventForm">
+                <div class="eventDataRow">
+                    <label for="eventName" class="eventLabel">Event Name: </label>
+                    <input type="text" name="eventName" id="eventName" class="eventInput">
+                </div>
+                <div class="eventDataRow">
+                    <label for="location" class="eventLabel">Location: </label>
+                    <input type="text" name="location" id="location" class="eventInput">
+                </div>
+                <div class="eventDataRow">
+                    <label for="eventType" class="eventLabel">Type of Event: </label>
+                    <input type="text" name="eventType" id="eventType" class="eventInput">
+                </div>
+                <div class="eventDataRow">
+                    <label for="date" class="eventLabel">Date: </label>
+                    <input type="date" name="date" id="date" class="eventInput">
+                </div>
+                <div class="eventDataRow">
+                </div>
+                <div class="eventDataRow">
+                </div>
+            </form>
+        </main>
+    </body>
 </html>

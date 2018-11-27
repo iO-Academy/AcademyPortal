@@ -1,0 +1,34 @@
+.addEventPageWrapper {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+#heading {
+    width: 200px;
+    margin: 50px auto;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.eventDataRow {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 30px;
+}
+
+.eventLabel {
+    flex: 0 0 150px;
+    border-bottom: 2px solid #56e789;
+    margin-right: 20px;
+}
+
+.eventInput {
+    flex: 1 0 250px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 5px;
+}
