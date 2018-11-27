@@ -65,6 +65,8 @@ class AddEventController
             'notes' => filter_var($newEventData['notes'], FILTER_SANITIZE_STRING)
         ];
 
+        $this->eventModel->insertNewEventToDb($newEventData);
+
     }
 
 
