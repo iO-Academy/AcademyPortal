@@ -16,7 +16,6 @@ $app->post('/api/login', 'LoginController');
 $app->post('/api/registerUser', 'RegisterUserController');
 
 $app->post('/api/addHiringPartner', function(Request $request, Response $response, $args) {
-    $parsedBody = $request->getParsedBody();
-    $args['stuff'] = $parsedBody;
-    return $response->withJson($args, 200);
+    $returnVars = ['status'=>true];
+    return $response->withJson($returnVars, 200);
 });
