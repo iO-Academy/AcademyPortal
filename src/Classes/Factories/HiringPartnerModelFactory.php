@@ -12,6 +12,10 @@ use Portal\Models\HiringPartnerModel;
 
 class HiringPartnerModelFactory
 {
+    /**
+     * @param $c
+     * @return HiringPartnerModel
+     */
     public function __invoke($c)
     {
         $db = $c->dbConnection;

@@ -13,7 +13,6 @@ class AddHiringPartnerPageController
     private $hiringPartnerModel;
 
     /**
-     * AddHiringPartnerPageController constructor.
      * @param $renderer
      * @param $hiringPartnerModel
      */
@@ -23,6 +22,12 @@ class AddHiringPartnerPageController
         $this->hiringPartnerModel = $hiringPartnerModel;
     }
 
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param $args
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function __invoke(Request $request, Response $response, $args)
     {
         $args['dropdownData'] = $this->hiringPartnerModel->getDropdownData();

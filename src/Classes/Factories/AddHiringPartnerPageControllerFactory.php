@@ -6,6 +6,10 @@ use Portal\Controllers\AddHiringPartnerPageController;
 
 class AddHiringPartnerPageControllerFactory
 {
+    /**
+     * @param $c
+     * @return AddHiringPartnerPageController
+     */
     public function __invoke($c)
     {
         $renderer = $c->renderer;
