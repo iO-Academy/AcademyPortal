@@ -19,4 +19,6 @@ class ApplicationFormModelFactoryTest extends TestCase
         $expected = ApplicationFormModel::class;
         $this->assertInstanceOf($expected, $case);
     }
+
 }
+

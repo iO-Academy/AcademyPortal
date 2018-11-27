@@ -99,3 +99,8 @@ class ApplicantModel
         return $results;
     }
 }
+
+    public function searchDatabaseByName()
+    {
+
+    }

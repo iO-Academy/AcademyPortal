@@ -19,4 +19,6 @@ class UserModelFactoryTest extends TestCase
         $expected = UserModel::class;
         $this->assertInstanceOf($expected, $case);
     }
+
 }
+
