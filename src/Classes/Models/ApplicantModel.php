@@ -19,8 +19,7 @@ class ApplicantModel
      *
      * @return insert email and password into database
      */
-    public function insertNewApplicantToDb(c
-        string $applicantName,
+    public function insertNewApplicantToDb(c string $applicantName,
         string $applicantEmail,
         string $applicantPhoneNumber,
         int $applicantCohortId,
@@ -75,11 +74,18 @@ class ApplicantModel
 
         return $query->execute();
     }
-}
 
-    public function getAllApplicants() {
+/**
+ * Will select all the fields from the applicants table, to show the user's data.
+ *
+ * @return $results, this will return the results from the query.
+ *
+ */
+    public function getAllApplicants()
+    {
     $query = $this->db->prepare('SELECT `id`, `name`, `email`, `cohortid`, `phoneNumber`, `cohortid`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `notes`, `deleted` FROM `applicants`;');
     $query->execute();
     $results = $query->fetchAll(\PDO::FETCH_ASSOC);
     return $results;
+    }
 }
