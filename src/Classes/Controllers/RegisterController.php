@@ -26,7 +26,7 @@ class RegisterController
 
     /**
      * Directs the user to the registerUser page if they have logged in, but redirects them to the index
-     * if they have no.
+     * if they have not.
      *
      * @param Request $request
      * @param Response $response
