@@ -22,7 +22,13 @@
                 </div>
                 <div class="eventDataRow">
                     <label for="eventType" class="eventLabel">Type of Event: </label>
-                    <input type="text" name="eventType" id="eventType" class="eventInput">
+                    <select name="eventType" id="eventType" class="eventInput" required>
+                        <option selected>Event Type</option>
+                        <option value="1">Hiring Partner</option>
+                        <option value="2">Taster Session</option>
+                        <option value="3">Sprint Review</option>
+                        <option value="4">Other</option>
+                    </select>
                 </div>
                 <div class="eventDataRow">
                     <label for="date" class="eventLabel">Date: </label>
