@@ -9,20 +9,29 @@
 namespace Portal\Models;
 
 
-class AddEventModel
+class EventModel
 {
+
     private $dbConnection;
 
+
     /**
-     * AddEventModel constructor.
+     * EventModel constructor.
+     *
+     * @param \PDO $dbConnection
      */
-
-
     public function __construct(\PDO $dbConnection)
     {
         $this->dbConnection = $dbConnection;
     }
 
+    /**
+     * Inserts new event into the database using data from the given array.
+     *
+     * @param array $newEventData
+     *
+     * @return bool true if database query successful and false if otherwise.
+     */
     public function insertNewEventToDb(array $newEventData)
     {
         $query = $this->dbConnection->prepare(

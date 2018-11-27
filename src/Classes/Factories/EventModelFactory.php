@@ -9,21 +9,21 @@
 namespace Portal\Factories;
 
 
-use Portal\Models\AddEventModel;
+use Portal\Models\EventModel;
 
-class AddEventModelFactory
+class EventModelFactory
 {
     /**
      * Creates AddEventModel with dependencies
      *
      * @param ContainerInterface $container
      *
-     * @return AddEventModel
+     * @return EventModel
      */
-    public function __invoke(ContainerInterface $container) : AddEventModel
+    public function __invoke(ContainerInterface $container) : EventModel
     {
         $db = $container->get('dbConnection');
-        return new AddEventModel($db);
+        return new EventModel($db);
     }
 
 }
