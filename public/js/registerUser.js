@@ -37,7 +37,6 @@ newUserForm.addEventListener('submit', async (e) => {
         messageBox.innerText = response['msg']
         messageBox.classList.add('error')
     } else if (response['success'] === true) {
-        console.log(response)
         messageBox.innerText = response['msg']
         messageBox.classList.remove('error')
         button.style.display = 'none';
