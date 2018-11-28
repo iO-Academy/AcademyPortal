@@ -10,7 +10,7 @@ class AdminControllerFactory
     /**
      * Creates a interface that will render
      *
-     * @param $container
+     * @param ContainerInterface $container
      *
      * @return AdminController that calls renderer.
      */
@@ -22,4 +22,4 @@ class AdminControllerFactory
 }
 
 // create RegisterUserControllerFactory
-    // (needed even if no dependencies in case there are in future)
+// (needed even if no dependencies in case there are in future)
