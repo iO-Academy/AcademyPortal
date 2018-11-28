@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: academy
- * Date: 27/11/2018
- * Time: 10:15
- */
 
 namespace Portal\Models;
 
