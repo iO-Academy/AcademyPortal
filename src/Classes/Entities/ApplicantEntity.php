@@ -64,7 +64,7 @@ class ApplicantEntity
      */
     public function sanitiseName($applicantName)
     {
-        return $applicantName = filter_var($applicantName, FILTER_SANITIZE_STRING);
+        return filter_var($applicantName, FILTER_SANITIZE_STRING);
     }
 
     /**(
@@ -73,7 +73,7 @@ class ApplicantEntity
      */
     public function sanitiseEmail($applicantEmail)
     {
-        return $applicantEmail = filter_var($applicantEmail, FILTER_SANITIZE_STRING);
+        return filter_var($applicantEmail, FILTER_SANITIZE_STRING);
     }
 
     /**
@@ -82,7 +82,7 @@ class ApplicantEntity
      */
     public function sanitisePhoneNumber($applicantPhoneNumber)
     {
-        return $applicantPhoneNumber = filter_var($applicantPhoneNumber, FILTER_SANITIZE_STRING);
+        return filter_var($applicantPhoneNumber, FILTER_SANITIZE_STRING);
     }
 
     /**
@@ -91,7 +91,7 @@ class ApplicantEntity
      */
     public function sanitiseCohortId($applicantCohortId)
     {
-        return $applicantCohortId = filter_var($applicantCohortId, FILTER_SANITIZE_STRING);
+        return filter_var($applicantCohortId, FILTER_SANITIZE_STRING);
     }
 
     /**
@@ -100,7 +100,7 @@ class ApplicantEntity
      */
     public function sanitiseWhyDev($applicantWhyDev)
     {
-        return $applicantWhyDev = filter_var($applicantWhyDev, FILTER_SANITIZE_STRING);
+        return filter_var($applicantWhyDev, FILTER_SANITIZE_STRING);
     }
 
     /**
@@ -109,7 +109,7 @@ class ApplicantEntity
      */
     public function sanitiseCodeExperience($applicantCodeExperience)
     {
-        return $applicantCodeExperience = filter_var($applicantCodeExperience, FILTER_SANITIZE_STRING);
+        return filter_var($applicantCodeExperience, FILTER_SANITIZE_STRING);
     }
 
     /**
@@ -118,7 +118,7 @@ class ApplicantEntity
      */
     public function sanitiseHearAboutId($applicantHearAboutId)
     {
-        return $applicantHearAboutId= filter_var($applicantHearAboutId, FILTER_SANITIZE_STRING);
+        return filter_var($applicantHearAboutId, FILTER_SANITIZE_STRING);
     }
 
     /**
@@ -127,7 +127,7 @@ class ApplicantEntity
      */
     public function sanitiseEligible($applicantEligible)
     {
-        return $applicantEligible = filter_var($applicantEligible, FILTER_SANITIZE_STRING);
+        return filter_var($applicantEligible, FILTER_SANITIZE_STRING);
     }
 
     /**
@@ -136,7 +136,7 @@ class ApplicantEntity
      */
     public function sanitiseEighteenPlus($applicantEighteenPlus)
     {
-        return $applicantEighteenPlus = filter_var($applicantEighteenPlus, FILTER_SANITIZE_STRING);
+        return filter_var($applicantEighteenPlus, FILTER_SANITIZE_STRING);
     }
 
     /**
@@ -145,7 +145,7 @@ class ApplicantEntity
      */
     public function sanitiseFinance($applicantFinance)
     {
-        return $applicantFinance = filter_var($applicantFinance, FILTER_SANITIZE_STRING);
+        return filter_var($applicantFinance, FILTER_SANITIZE_STRING);
     }
 
     /**
@@ -154,7 +154,7 @@ class ApplicantEntity
      */
     public function sanitiseNotes($applicantNotes)
     {
-        return $applicantNotes = filter_var($applicantNotes, FILTER_SANITIZE_STRING);
+        return filter_var($applicantNotes, FILTER_SANITIZE_STRING);
     }
 
     /**
