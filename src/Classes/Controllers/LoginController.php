@@ -12,8 +12,8 @@ class LoginController
 
     /**
      * Instantiates login controller
-     *
      * LoginController constructor.
+     *
      * @param UserModel $userModel userModel object dependency
      */
     public function __construct(UserModel $userModel)
