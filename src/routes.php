@@ -12,11 +12,7 @@ $app->get('/addEvent', function (Request $request, Response $response, array $ar
     // Render index view
     return $this->renderer->render($response, 'addEvent.phtml', $args);
 });
-$app->get('/events', function (Request $request, Response $response, array $args) {
-
-    // Render index view
-    return $this->renderer->render($response, 'EventList.phtml', $args);
-});
+$app->get('/events', 'EventListController');
 
 //Backend
 $app->post('/api/login', 'LoginController');

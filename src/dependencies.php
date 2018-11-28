@@ -40,3 +40,5 @@ $container['HomePageController'] = new \Portal\Factories\HomePageControllerFacto
 $container['RandomPasswordModel'] = new \Portal\Models\RandomPasswordModel();
 
 $container['EventListModel'] = new \Portal\Factories\EventListModelFactory();
+
+$container['EventListController'] = new \Portal\Factories\EventListControllerFactory();
