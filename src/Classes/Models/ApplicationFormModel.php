@@ -19,7 +19,7 @@ class ApplicationFormModel
     public function getCohorts() {
         $query = $this->db->prepare('SELECT `id`, `date` FROM `cohorts`;');
         $query->execute();
-        $result = $query->fetchAll(\PDO::FETCH_ASSOC);
+        $result = $query->fetchAll();
         return $result;
     }
 
@@ -31,7 +31,7 @@ class ApplicationFormModel
     public function getHearAbout() {
         $query = $this->db->prepare('SELECT `id`, `hearAbout` FROM `hearAbout`;');
         $query->execute();
-        $result = $query->fetchAll(\PDO::FETCH_ASSOC);
+        $result = $query->fetchAll();
         return $result;
     }
 }

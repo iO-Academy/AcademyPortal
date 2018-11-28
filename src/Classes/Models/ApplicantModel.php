@@ -95,7 +95,7 @@ class ApplicantModel
     {
         $query = $this->db->prepare('SELECT `name`, `email`, `date` FROM `applicants` LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`;');
         $query->execute();
-        $results = $query->fetchAll(\PDO::FETCH_ASSOC);
+        $results = $query->fetchAll();
         return $results;
     }
 }

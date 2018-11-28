@@ -7,7 +7,6 @@ let getFormOptions = () => {
             'Content-Type': 'application/json',
         },
     })
-    .then(response => response.json())
 }
 
 let handleFormOptions = async () => {
