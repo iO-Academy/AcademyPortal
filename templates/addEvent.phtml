@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="css/addEventPage.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="js/addEventValidationAjax.js" defer></script>
     </head>
     <body>
         <main class="addEventPageWrapper">
@@ -16,15 +17,15 @@
             <form>
                 <div class="eventDataRow">
                     <label for="eventName" class="eventLabel">Event Name: </label>
-                    <input type="text" name="eventName" id="eventName" class="eventInput">
+                    <input type="text" name="eventName" id="eventName" class="eventInput" data-required="true">
                 </div>
                 <div class="eventDataRow">
                     <label for="location" class="eventLabel">Location: </label>
-                    <input type="text" name="location" id="location" class="eventInput">
+                    <input type="text" name="location" id="location" class="eventInput" data-required="true">
                 </div>
                 <div class="eventDataRow">
                     <label for="type" class="eventLabel">Type of Event: </label>
-                    <select name="type" id="type" class="eventInput">
+                    <select name="type" id="type" class="eventInput" data-required="true">
                         <option value="" selected disabled>Select Event</option>
                         <option value="1">Hiring Partner</option>
                         <option value="2">Taster Session</option>
@@ -34,15 +35,15 @@
                 </div>
                 <div class="eventDataRow">
                     <label for="date" class="eventLabel">Date: </label>
-                    <input type="text" name="date" id="date" class="eventInput">
+                    <input type="text" name="date" id="date" class="eventInput" data-required="true" data-date="true">
                 </div>
                 <div class="eventDataRow">
                     <label for="startTime" class="eventLabel">Start Time: </label>
-                    <input type="text" name="startTime" id="startTime" class="eventInput" placeholder="hh:mm">
+                    <input type="text" name="startTime" id="startTime" class="eventInput" placeholder="hh:mm" data-required="true" data-startTime="true">
                 </div>
                 <div class="eventDataRow">
                     <label for="endTime" class="eventLabel">End Time: </label>
-                    <input type="text" name="endTime" id="endTime" class="eventInput" placeholder="hh:mm">
+                    <input type="text" name="endTime" id="endTime" class="eventInput" placeholder="hh:mm" data-required="true" data-endTime="true">
                 </div>
                 <div class="eventDataRow notesWrapper">
                     <label for="notes" class="eventLabel">Notes: </label>
