@@ -105,8 +105,59 @@ class ApplicantEntity
     }
 
     /**
+     * Sanitise the hearAboutID in the applicant table.
+     *
+     * @param $applicantHearAboutId
+     *
+     * @return mixed, returns the hearAboutID field.
+     */
+    public function sanitiseHearAboutId($applicantHearAboutId)
+    {
+        return filter_var($applicantHearAboutId, FILTER_SANITIZE_STRING);
+    }
+
+    /**
+     * Sanitise the applicantEligible in the applicant table.
+     *
+     * @param $applicantEligible
+     *
+     * @return mixed, returns the applicantEligible field.
+     */
+    public function sanitiseEligible($applicantEligible)
+    {
+        return filter_var($applicantEligible, FILTER_SANITIZE_STRING);
+    }
+
+    /**
+     * Sanitise the applicantEighteenPlus in the applicant table.
+     *
+     * @param $applicantEighteenPlus
+     *
+     * @return mixed, return the applicantEighteenPlus field.
+     */
+    public function sanitiseEighteenPlus($applicantEighteenPlus)
+    {
+        return filter_var($applicantEighteenPlus, FILTER_SANITIZE_STRING);
+    }
+
+    /**
+     * Sanitise the applicantFinance in the applicant table.
+     *
+     * @param $applicantFinance
+     *
+     * @return mixed, return the applicantFinance field.
+     */
+    public function sanitiseFinance($applicantFinance)
+    {
+        return filter_var($applicantFinance, FILTER_SANITIZE_STRING);
+    }
+
+    /**
+     * Sanitise the applicantNotes in the applicant table.
+     *
      * @param $applicantNotes
-     * @return mixed
+     *
+     * @return mixed, return the applicantNotes field.
      */
     public function sanitiseNotes($applicantNotes)
     {
@@ -114,7 +165,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Gets the applicant's name.
+     *
+     * @return mixed, returns the applicant's name from that field.
      */
     public function getApplicantName()
     {
@@ -122,7 +175,10 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     *  Get's the applicant's email.
+     *
+     * @return mixed, return the applicant email from that field.
+     *
      */
     public function getApplicantEmail()
     {
@@ -130,7 +186,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's the applicant's phoneNumber.
+     *
+     * @return mixed, returns the applicant's phoneNumber from that field.
      */
     public function getApplicantPhoneNumber()
     {
@@ -138,7 +196,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's the applicant's cohort ID.
+     *
+     * @return mixed, return the cohort ID field.
      */
     public function getApplicantCohortId()
     {
@@ -146,7 +206,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's the applicant's whyDev.
+     *
+     * @return mixed, return the whyDev field.
      */
     public function getApplicantWhyDev()
     {
@@ -154,7 +216,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's applicantCodeExperience.
+     *
+     * @return mixed, returns the applicantCodeExperience field.
      */
     public function getApplicantCodeExperience()
     {
@@ -162,7 +226,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's applicantHearAboutID.
+     *
+     * @return mixed, returns the hearAboutID field.
      */
     public function getApplicantHearAboutId()
     {
@@ -170,7 +236,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's applicantEligible.
+     *
+     * @return mixed, returns the applicantEligible field.
      */
     public function getApplicantEligible()
     {
@@ -178,7 +246,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's applicantEighteenPlus.
+     *
+     * @return mixed, returns the applicantEighteenPlus field.
      */
     public function getApplicantEighteenPlus()
     {
@@ -186,7 +256,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's applicantFinance.
+     *
+     * @return mixed, returns the applicantFinance field.
      */
     public function getApplicantFinance()
     {
@@ -194,7 +266,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's applicantNotes.
+     *
+     * @return mixed, returns the applicantNotes field.
      */
     public function getApplicantNotes()
     {

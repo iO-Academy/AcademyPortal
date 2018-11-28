@@ -6,6 +6,11 @@ class UserModel
 {
     private $db;
 
+    /**
+     * Creates UserModel constructor.
+     *
+     * @param \PDO $db
+     */
     public function __construct(\PDO $db)
     {
         $this->db = $db;
