@@ -12,7 +12,7 @@ class ApplicantModel
     }
 
     /**
-     *  Inserts new Applicant into database - registering
+     *  Inserts new ApplicantEntity into database - registering
      *
      * @param string $applicantName
      * @param string $applicantEmail
@@ -99,8 +99,3 @@ class ApplicantModel
         return $results;
     }
 }
-
-    public function searchDatabaseByName()
-    {
-
-    }

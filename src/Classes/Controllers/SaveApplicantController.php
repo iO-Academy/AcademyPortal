@@ -2,6 +2,7 @@
 
 namespace Portal\Controllers;
 
+use Portal\Entities\ApplicantEntity;
 use Portal\Models\ApplicantModel;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -37,6 +38,8 @@ class SaveApplicantController
             $statusCode = 401;
 
             $newApplicationData = $request->getParsedBody();
+
+            $applicant = new ApplicantEntity();
             $validatedApplicationData = [
                 'name'           => filter_var($newApplicationData['name'], FILTER_SANITIZE_STRING),
                 'email'          => filter_var($newApplicationData['email'], FILTER_VALIDATE_EMAIL),
