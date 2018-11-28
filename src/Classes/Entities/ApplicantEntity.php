@@ -34,14 +34,14 @@ class ApplicantEntity
         $this->applicantName = $this->sanitiseName($applicantName);
         $this->applicantEmail = $this->sanitiseEmail($applicantEmail);
         $this->applicantPhoneNumber = $this->sanitisePhoneNumber($applicantPhoneNumber);
-        $this->applicantCohortId = $this->sanitiseCohortId($applicantCohortId);
+        $this->applicantCohortId = $applicantCohortId;
         $this->applicantWhyDev = $this->sanitiseWhyDev($applicantWhyDev);
         $this->applicantCodeExperience = $this->sanitiseCodeExperience($applicantCodeExperience);
-        $this->$applicantHearAboutId = $this->sanitiseHearAboutId($applicantHearAboutId);
-        $this->$applicantEligible = $this->sanitiseEligible($applicantEligible);
-        $this->$applicantEighteenPlus = $this->sanitiseEighteenPlus($applicantEighteenPlus);
-        $this->$applicantFinance = $this->sanitiseFinance($applicantFinance);
-        $this->$applicantNotes = $this->sanitiseNotes($applicantNotes);
+        $this->applicantHearAboutId = $applicantHearAboutId;
+        $this->applicantEligible = $applicantEligible;
+        $this->applicantEighteenPlus = $applicantEighteenPlus;
+        $this->applicantFinance = $applicantFinance;
+        $this->applicantNotes = $this->sanitiseNotes($applicantNotes);
 
     }
 
@@ -82,18 +82,6 @@ class ApplicantEntity
     public function sanitisePhoneNumber($applicantPhoneNumber)
     {
         return filter_var($applicantPhoneNumber, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * Sanitise the cohort's ID in the applicant table.
-     *
-     * @param $applicantCohortId
-     *
-     * @return mixed, will return the cohort ID for the applicant.
-     */
-    public function sanitiseCohortId($applicantCohortId)
-    {
-        return filter_var($applicantCohortId, FILTER_SANITIZE_STRING);
     }
 
     /**
@@ -166,6 +154,8 @@ class ApplicantEntity
     }
 
     /**
+=======
+>>>>>>> deb9b3599fe989917dde09faa17b472be561897a
      * @param $applicantNotes
      * @return mixed
      */
