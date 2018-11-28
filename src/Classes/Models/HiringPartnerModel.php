@@ -20,16 +20,16 @@ class HiringPartnerModel
     }
 
     public function insertNewHiringPartnerToDb(HiringPartnerEntity $hiringPartnerEntity) {
+
         $query = $this->db->prepare("
             INSERT INTO `hiringPartners` (`companyName`, `size`, `techStack`, `postcode`, `phoneNo`, `url`) 
             VALUES (:companyName, :size, :techStack, :postcode, :phoneNo, :url);");
-        $query->bindParam(':companyName', $hiringPartnerEntity['companyName']);
-        $query->bindParam(':size', $hiringPartnerEntity['size']);
-        $query->bindParam(':techStack', $hiringPartnerEntity['techStack']);
-        $query->bindParam(':postcode', $hiringPartnerEntity['postcode']);
-        $query->bindParam(':phoneNo', $hiringPartnerEntity['phoneNo']);
-        $query->bindParam(':url', $hiringPartnerEntity['url']);
+        $query->bindParam(':companyName', $hiringPartnerEntity->getCompanyName());
+        $query->bindParam(':size', $hiringPartnerEntity->getSize());
+        $query->bindParam(':techStack', $hiringPartnerEntity->getTechStack());
+        $query->bindParam(':postcode', $hiringPartnerEntity->getPostcode());
+        $query->bindParam(':phoneNo', $hiringPartnerEntity->getPhoneNo());
+        $query->bindParam(':url', $hiringPartnerEntity->getUrl());
         return $query->execute();
     }
-
 }
