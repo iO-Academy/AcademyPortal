@@ -220,7 +220,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's applicantCodeExperience.
+     *
+     * @return mixed, returns the applicantCodeExperience.
      */
     public function getApplicantCodeExperience()
     {
@@ -228,7 +230,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's applicantHearAboutID.
+     *
+     * @return mixed, returns the hearAboutID.
      */
     public function getApplicantHearAboutId()
     {
@@ -236,7 +240,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's applicantEligible
+     *
+     * @return mixed, returns the applicantEligible.
      */
     public function getApplicantEligible()
     {
