@@ -16,3 +16,13 @@ $app->get('/addEvent', function (Request $request, Response $response, array $ar
 //Backend
 $app->post('/api/login', 'LoginController');
 $app->post('/api/registerUser', 'RegisterUserController');
+$app->post('/api/addEvent', function (Request $request, Response $response, array $args) {
+    $data = $request->getParsedBody();
+    return $response->withJson(['data' => $data, 'success' => true]);
+    // $result = $this->Model->save($data);
+    // if ($result) {
+    //     return $response->withJson(['success' => true]);
+    // } else {
+    //     return $response->withJson(['success' => false], 500);
+    // }
+});
