@@ -17,5 +17,4 @@ class SaveApplicantControllerTest extends TestCase
         $expected = SaveApplicantController::class;
         $this->assertInstanceOf($expected, $case);
     }
-
 }
