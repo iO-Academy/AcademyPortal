@@ -4,6 +4,8 @@ namespace Portal\Models;
 
 
 
+use Portal\Entities\HiringPartnerEntity;
+
 class HiringPartnerModel
 {
     private $db;
@@ -17,16 +19,16 @@ class HiringPartnerModel
         $this->db = $db;
     }
 
-    public function insertNewHiringPartnerToDb(string $companyName, $size, string $techStack, string $postcode, $phoneNo, string $url) { //need to pass in correct data from controller here
+    public function insertNewHiringPartnerToDb(HiringPartnerEntity $hiringPartnerEntity) {
         $query = $this->db->prepare("
             INSERT INTO `hiringPartners` (`companyName`, `size`, `techStack`, `postcode`, `phoneNo`, `url`) 
             VALUES (:companyName, :size, :techStack, :postcode, :phoneNo, :url);");
-        $query->bindParam(':companyName', $companyName);
-        $query->bindParam(':size', $size);
-        $query->bindParam(':techStack', $techStack);
-        $query->bindParam(':postcode', $postcode);
-        $query->bindParam(':phoneNo', $phoneNo);
-        $query->bindParam(':url', $url);
+        $query->bindParam(':companyName', $hiringPartnerEntity['companyName']);
+        $query->bindParam(':size', $hiringPartnerEntity['size']);
+        $query->bindParam(':techStack', $hiringPartnerEntity['techStack']);
+        $query->bindParam(':postcode', $hiringPartnerEntity['postcode']);
+        $query->bindParam(':phoneNo', $hiringPartnerEntity['phoneNo']);
+        $query->bindParam(':url', $hiringPartnerEntity['url']);
         return $query->execute();
     }
 
