@@ -6,12 +6,11 @@ let getFormOptions = () => {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
-    })
+    }).then(response => response.json())
 }
 
 let handleFormOptions = async () => {
     let response = await getFormOptions()
-
     return response.data
 }
 
