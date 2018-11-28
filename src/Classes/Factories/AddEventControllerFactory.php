@@ -9,6 +9,7 @@
 namespace Portal\Factories;
 
 use Portal\Controllers\AddEventController;
+use Interop\Container\ContainerInterface;
 
 class AddEventControllerFactory
 {

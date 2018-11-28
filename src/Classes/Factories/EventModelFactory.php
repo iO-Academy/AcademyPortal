@@ -8,7 +8,7 @@
 
 namespace Portal\Factories;
 
-
+use Interop\Container\ContainerInterface;
 use Portal\Models\EventModel;
 
 class EventModelFactory

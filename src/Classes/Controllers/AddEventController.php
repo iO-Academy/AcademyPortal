@@ -9,6 +9,7 @@
 namespace Portal\Controllers;
 
 use Portal\Models\EventModel;
+use Portal\Validators\EventValidator;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -27,49 +28,58 @@ class AddEventController
 
     public function __invoke(Request $request, Response $response)
     {
-        $data = $request->getParsedBody();
-        var_dump($data);
 
-//        $newEventData = $request->getParsedBody();
-//
-//        $TimeRegex = '/([0-1][0-9]|[1-2][0-3]):([0-1][0-9]|[1-5][0-9])/';
-//
-//        if (!preg_match($TimeRegex, $newEventData['startTime']) || !preg_match($TimeRegex, $newEventData['endTime'])) {
-//            return $response->withRedirect('/');
-//        }
-//
-//        $startIntegers =  str_replace(':', '', $newEventData['startTime']) ;
-//        $endIntegers = str_replace(':', '', $newEventData['endTime']);
-//
-//        if ((int) $startIntegers >= (int)$endIntegers) {
-//            return $response->withRedirect('/');
-//        }
-//
-//        $date = DateTime::createFromFormat('Y-m-d', $newEventData['date']);
-//
-//        if (date_diff($date, new \DateTime()) < 0) {
-//            return $response->withRedirect('/');
-//        }
-//
-//        $trimLocation = trim($newEventData['location']);
-//        $trimEventName = trim($newEventData['eventName']);
-//
-//        if (empty($trimLocation) || empty($trimEventName)) {
-//            return $response->withRedirect('/');
-//        }
-//
-//     $validatedUserData = [
-//            'eventName' => filter_var($newEventData['email'], FILTER_SANITIZE_STRING),
-//            'date' => filter_var($newEventData['date'], FILTER_SANITIZE_STRING),
-//            'location' => filter_var($newEventData['location'], FILTER_SANITIZE_STRING),
-//            'type' => filter_var($newEventData['type'], FILTER_SANITIZE_NUMBER_INT),
-//            'startTime' => $newEventData['startTime'],
-//            'endTime' => $newEventData['endTime'],
-//            'notes' => filter_var($newEventData['notes'], FILTER_SANITIZE_STRING)
-//        ];
-//
-//        $this->eventModel->insertNewEventToDb($newEventData);
+        $data = ['success' => false, 'msg' => 'Event not created', 'data' => []];
+        $statusCode = 406;
 
+        $newEventData = $request->getParsedBody();
+
+        if (!EventValidator::validTime($newEventData['startTime']) || !EventValidator::validTime($newEventData['endTime'])) {
+            return $response->withJson($data, $statusCode);
+        }
+
+        $startIntegers =  str_replace(':', '', $newEventData['startTime']) ;
+        $endIntegers = str_replace(':', '', $newEventData['endTime']);
+
+        if ((int) $startIntegers >= (int)$endIntegers) {
+            return $response->withJson($data, $statusCode);
+        }
+
+        $date = DateTime::createFromFormat('Y-m-d', $newEventData['date']);
+
+        if (date_diff($date, new \DateTime()) < 0) {
+            return $response->withJson($data, $statusCode);
+        }
+
+        $trimLocation = trim($newEventData['location']);
+        $trimEventName = trim($newEventData['eventName']);
+
+        if (empty($trimLocation) || empty($trimEventName)) {
+            return $response->withJson($data, $statusCode);
+        }
+
+        $validatedEventData = [
+            'eventName' => filter_var($newEventData['eventName'], FILTER_SANITIZE_STRING),
+            'date' => filter_var($newEventData['date'], FILTER_SANITIZE_STRING),
+            'location' => filter_var($newEventData['location'], FILTER_SANITIZE_STRING),
+            'type' => filter_var($newEventData['type'], FILTER_SANITIZE_NUMBER_INT),
+            'startTime' => $newEventData['startTime'],
+            'endTime' => $newEventData['endTime'],
+            'notes' => filter_var($newEventData['notes'], FILTER_SANITIZE_STRING)
+        ];
+
+        $successfulRegister = $this->eventModel->insertNewEventToDb($validatedEventData);
+
+        if ($successfulRegister) {
+            $data = [
+                'success' => $successfulRegister,
+                'msg' => "New event added name: ". $validatedEventData['eventName'],
+                'data' => []
+            ];
+            $statusCode = 200;
+        }
+
+        return $response->withJson($data, $statusCode);
     }
 
 

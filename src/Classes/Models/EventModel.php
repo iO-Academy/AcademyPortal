@@ -39,7 +39,7 @@ class EventModel
                         VALUES (:eventName, :date, :location, :type, :startTime, :endTime, :notes)');
         $query->bindParam(':eventName', $newEventData['eventName']);
         $query->bindParam(':date', $newEventData['date']);
-        $query->bindParam(':postCode', $newEventData['postCode']);
+        $query->bindParam(':location', $newEventData['location']);
         $query->bindParam(':type', $newEventData['type']);
         $query->bindParam(':startTime', $newEventData['startTime']);
         $query->bindParam(':endTime', $newEventData['endTime']);
