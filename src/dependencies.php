@@ -21,7 +21,7 @@ $container['logger'] = function ($c) {
 // db connection
 $container['dbConnection'] = function () {
     $db = new PDO('mysql:host=192.168.20.20;dbname=academyPortal', 'root');
-    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
     return $db;
 };
 
