@@ -66,7 +66,7 @@ class ApplicantEntity
     /**(
      * Sanitise as a string in the applicant table as data.
      *
-     * @param $applicantData
+     * @param string $applicantData
      *
      * @return mixed, which will return the applicant data.
      */
@@ -78,7 +78,7 @@ class ApplicantEntity
     /**(
      * Sanitise the applicant's email from the applicant's Data.
      *
-     * @param $applicantData
+     * @param string $applicantData
      *
      * @return mixed, will return the applicant's data, to output the email.
      */

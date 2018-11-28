@@ -10,7 +10,7 @@ class RegisterUserControllerFactory
     /**
      * Creates RegisterUserController with dependencies
      *
-     * @param $container
+     * @param ContainerInterface $container
      *
      * @return RegisterUserController returns object with db connection injected
      */
