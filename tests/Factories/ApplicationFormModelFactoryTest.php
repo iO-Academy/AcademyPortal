@@ -21,4 +21,3 @@ class ApplicationFormModelFactoryTest extends TestCase
     }
 
 }
-
