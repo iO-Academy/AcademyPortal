@@ -16,7 +16,7 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
         'db' => [
-            'host' => 'mysql:host=127.0.0.1;',
+            'host' => 'mysql:host=192.168.20.20;',
             'dbName' =>'dbname=academyPortal',
             'userName' =>'root',
         ]
