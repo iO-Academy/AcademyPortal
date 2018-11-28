@@ -1,13 +1,3 @@
-@keyframes open {
-    from {height: 0;}
-    to {height: 100%;}
-}
-@keyframes close {
-    from {height: 100%;}
-    to {height: 0;}
-}
-
-
 .upper span {
     display: block;
     text-align: center;
@@ -26,8 +16,9 @@
     width: 80%;
     overflow: auto;
     margin: auto;
-    background-color: deepskyblue;
+    background-color: #fbd8ff;
     margin-bottom: 10px;
+    border: solid #56e789 2px;
 }
 
 .top {
@@ -36,6 +27,7 @@
 
 .upper, .mid {
     width: 100%;
+    background-color: #fbd8ff;
 }
 
 .upper, .mid, .lower {
@@ -46,7 +38,6 @@
 .infoBox, .infoBox-mid, .infoBox-low {
     overflow: auto;
     padding: 10px;
-
 }
 
 .infoBox, .infoBox-mid {
@@ -61,14 +52,6 @@
     width: 50%;
 }
 
-.upper {
-    background-color: lightpink;
-}
-
-.mid {
-    background-color: #56e789;
-}
-
 .lower {
     width: 100%;
     background: #ffc0f1;
@@ -77,4 +60,21 @@
 .arrowBox {
     font-size: 2.5rem;
     text-align: center;
+    background-color: #fbd8ff;
+}
+
+.addButtonWrapper {
+    padding: 15px 0;
+    text-align: center;
+}
+
+.addButton {
+    text-decoration: none;
+    border: solid #fbd8ff;
+    padding: 5px 30px;
+    border-radius: 5px;
+}
+
+.addButton:hover {
+    background-color: #ffc0f1;
 }
