@@ -2,7 +2,6 @@
 
 namespace Portal\Controllers;
 
-use Portal\Entities\ApplicantEntity;
 use Portal\Models\ApplicantModel;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -39,12 +38,12 @@ class SaveApplicantController
 
             $newApplicationData = $request->getParsedBody();
 
-            $applicant = new ApplicantEntity(
+            $applicant = $this->applicantModel->createNewApplicant(
                 $newApplicationData['name'],
                 $newApplicationData['email'],
                 $newApplicationData['phoneNumber'],
                 $newApplicationData['cohortId'],
-                $newApplicationData['WhyDev'],
+                $newApplicationData['whyDev'],
                 $newApplicationData['codeExperience'],
                 $newApplicationData['hearAboutId'],
                 $newApplicationData['eligible'],
