@@ -43,6 +43,6 @@ class ApplicationFormController
                 ]
             ];
             return $response->withJson($data, $statusCode);
-        } 
+        }
     }
 }
