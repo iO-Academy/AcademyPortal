@@ -200,7 +200,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's the applicant's cohort ID.
+     *
+     * @return mixed, return the cohort ID field.
      */
     public function getApplicantCohortId()
     {
@@ -208,7 +210,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's the applicant's whyDev.
+     *
+     * @return mixed, return the whyDev field.
      */
     public function getApplicantWhyDev()
     {
