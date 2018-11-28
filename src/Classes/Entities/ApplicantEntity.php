@@ -73,7 +73,10 @@ class ApplicantEntity
      */
     public function sanitiseEmail($applicantEmail)
     {
-        return filter_var($applicantEmail, FILTER_SANITIZE_STRING);
+        if (filter_var($applicantEmail, FILTER_VALIDATE_EMAIL)) {
+            return $applicantEmail;
+        }
+        throw new \UnexpectedValueException('Invalid Email');
     }
 
     /**
