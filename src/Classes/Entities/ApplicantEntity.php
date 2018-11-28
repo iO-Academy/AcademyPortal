@@ -37,11 +37,11 @@ class ApplicantEntity
         $this->applicantCohortId = $this->sanitiseCohortId($applicantCohortId);
         $this->applicantWhyDev = $this->sanitiseWhyDev($applicantWhyDev);
         $this->applicantCodeExperience = $this->sanitiseCodeExperience($applicantCodeExperience);
-        $this->$applicantHearAboutId = $this->sanitiseHearAboutId($applicantHearAboutId);
-        $this->$applicantEligible = $this->sanitiseEligible($applicantEligible);
-        $this->$applicantEighteenPlus = $this->sanitiseEighteenPlus($applicantEighteenPlus);
-        $this->$applicantFinance = $this->sanitiseFinance($applicantFinance);
-        $this->$applicantNotes = $this->sanitiseNotes($applicantNotes);
+        $this->applicantHearAboutId = $this->sanitiseHearAboutId($applicantHearAboutId);
+        $this->applicantEligible = $this->sanitiseEligible($applicantEligible);
+        $this->applicantEighteenPlus = $this->sanitiseEighteenPlus($applicantEighteenPlus);
+        $this->applicantFinance = $this->sanitiseFinance($applicantFinance);
+        $this->applicantNotes = $this->sanitiseNotes($applicantNotes);
 
     }
 
@@ -85,18 +85,6 @@ class ApplicantEntity
     }
 
     /**
-     * Sanitise the cohort's ID in the applicant table.
-     *
-     * @param $applicantCohortId
-     *
-     * @return mixed, will return the cohort ID for the applicant.
-     */
-    public function sanitiseCohortId($applicantCohortId)
-    {
-        return filter_var($applicantCohortId, FILTER_SANITIZE_STRING);
-    }
-
-    /**
      * Sanitise the whyDev in the applicant table.
      *
      * @param $applicantWhyDev
@@ -118,42 +106,6 @@ class ApplicantEntity
     public function sanitiseCodeExperience($applicantCodeExperience)
     {
         return filter_var($applicantCodeExperience, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * @param $applicantHearAboutId
-     * @return mixed
-     */
-    public function sanitiseHearAboutId($applicantHearAboutId)
-    {
-        return filter_var($applicantHearAboutId, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * @param $applicantEligible
-     * @return mixed
-     */
-    public function sanitiseEligible($applicantEligible)
-    {
-        return filter_var($applicantEligible, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * @param $applicantEighteenPlus
-     * @return mixed
-     */
-    public function sanitiseEighteenPlus($applicantEighteenPlus)
-    {
-        return filter_var($applicantEighteenPlus, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * @param $applicantFinance
-     * @return mixed
-     */
-    public function sanitiseFinance($applicantFinance)
-    {
-        return filter_var($applicantFinance, FILTER_SANITIZE_STRING);
     }
 
     /**
