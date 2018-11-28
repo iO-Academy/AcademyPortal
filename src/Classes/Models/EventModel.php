@@ -39,5 +39,5 @@ class EventModel
         return $query->execute();
 
     }
-    
+
 }
