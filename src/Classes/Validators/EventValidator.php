@@ -24,11 +24,11 @@ class EventValidator
         return ((int)$startIntegers >= (int)$endIntegers);
     }
 
-    public static function dateNotInPast(string $date) {
+    public static function dateInPast(string $date) {
 
         $date = \DateTime::createFromFormat('Y-m-d', $date);
 
-        return $date > new \DateTime();
+        return $date < new \DateTime();
 
     }
 

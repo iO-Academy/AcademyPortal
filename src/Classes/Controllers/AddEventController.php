@@ -35,18 +35,22 @@ class AddEventController
         $newEventData = $request->getParsedBody();
 
         if (!EventValidator::validTime($newEventData['startTime']) || !EventValidator::validTime($newEventData['endTime'])) {
+            $data['msg'] = 'Time not in correct format';
             return $response->withJson($data, $statusCode);
         }
 
         if (EventValidator::startAfterEndTime($newEventData['startTime'], $newEventData['endTime'])) {
+            $data['msg'] = 'Start time not before end time';
             return $response->withJson($data, $statusCode);
         }
 
-        if (EventValidator::dateNotInPast($newEventData['date'])) {
+        if (EventValidator::dateInPast($newEventData['date'])) {
+            $data['msg'] = 'Date not in past';
             return $response->withJson($data, $statusCode);
         }
 
-        if (EventValidator::isFieldEmpty($newEventData['location'], $newEventData('eventName'))) {
+        if (EventValidator::isFieldEmpty($newEventData['eventName'], $newEventData['location'])) {
+            $data['msg'] = 'Event location or name is empty';
             return $response->withJson($data, $statusCode);
         }
 
@@ -69,6 +73,8 @@ class AddEventController
                 'data' => []
             ];
             $statusCode = 200;
+        } else {
+            $data['msg'] = 'Failed to add event to database';
         }
 
         return $response->withJson($data, $statusCode);

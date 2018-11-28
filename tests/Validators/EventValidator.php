@@ -51,27 +51,29 @@ class EventValidatorTest extends TestCase
 
     }
 
-    public function test_dateNotInPast_success_true() {
-        $this->assertEquals(EventValidator::dateNotInPast('2019-05-03'),true);
-        $this->assertEquals(EventValidator::dateNotInPast('2021-04-28'),true);
-        $this->assertEquals(EventValidator::dateNotInPast('3000-01-01'), true);
+
+
+    public function test_dateInPast_success_true() {
+        $this->assertEquals(EventValidator::dateInPast('2013-05-03'),true);
+        $this->assertEquals(EventValidator::dateInPast('2012-04-28'),true);
+        $this->assertEquals(EventValidator::dateInPast('1000-01-01'), true);
     }
 
-    public function test_dateNotInPast_success_false() {
-        $this->assertEquals(EventValidator::dateNotInPast('2013-05-03'),false);
-        $this->assertEquals(EventValidator::dateNotInPast('2012-04-28'),false);
-        $this->assertEquals(EventValidator::dateNotInPast('1000-01-01'), false);
+    public function test_dateInPast_success_false() {
+        $this->assertEquals(EventValidator::dateInPast('2019-05-03'),false);
+        $this->assertEquals(EventValidator::dateInPast('2021-04-28'),false);
+        $this->assertEquals(EventValidator::dateInPast('3000-01-01'), false);
     }
 
-    public function test_dateNotInPast_malform_wrongInput_string() {
-        $this->assertEquals(EventValidator::dateNotInPast('2013.05.03'),false);
-        $this->assertEquals(EventValidator::dateNotInPast('2012 04 28'),false);
-        $this->assertEquals(EventValidator::dateNotInPast('1000:01:01'), false);
+    public function test_dateInPast_malform_wrongInput_string() {
+        $this->assertEquals(EventValidator::dateInPast('2013.05.03'), true);
+        $this->assertEquals(EventValidator::dateInPast('2012 04 28'),true);
+        $this->assertEquals(EventValidator::dateInPast('1000:01:01'), true);
     }
 
-    public function test_dateNotInPast_malform_wrongInput_type() {
+    public function test_dateInPast_malform_wrongInput_type() {
         $this->expectException(TypeError::class);
-        EventValidator::dateNotInPast(new stdClass());
+        EventValidator::dateInPast(new stdClass());
     }
 
     public function test_isFieldEmpty_success_true() {
