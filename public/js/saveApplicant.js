@@ -4,7 +4,7 @@ document.getElementById('submitApplicant').addEventListener('click', e => {
     makeApiRequest(data)
 })
 
-let getCompletedFormData = async () => {
+let getCompletedFormData = () => {
     let formData = document.querySelectorAll(".submitApplicant")
     let data = {}
     formData.forEach(formItem => {
@@ -27,7 +27,11 @@ let makeApiRequest = async (data) => {
         body: JSON.stringify(data)
     })
         .then(response => response.json())
-        .then(() => {
-            window.location.href = '/admin';
+        .then((data) => {
+            if (data.success) {
+                window.location.href = '/admin';
+            } else {
+                document.getElementById('errorMsg').innerHTML = "Please contact administrator. Or <a href='/admin'>click here</a> to return to admin page"
+            }
         })
 }
