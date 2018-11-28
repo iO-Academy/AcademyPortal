@@ -31,137 +31,41 @@ class ApplicantEntity
         string $applicantNotes
     )
     {
-        $this->applicantName = $this->sanitiseName($applicantName);
+        $this->applicantName = $this->sanitiseString($applicantName);
         $this->applicantEmail = $this->sanitiseEmail($applicantEmail);
-        $this->applicantPhoneNumber = $this->sanitisePhoneNumber($applicantPhoneNumber);
+        $this->applicantPhoneNumber = $this->sanitiseString($applicantPhoneNumber);
         $this->applicantCohortId = (int)$applicantCohortId;
-        $this->applicantWhyDev = $this->sanitiseWhyDev($applicantWhyDev);
-        $this->applicantCodeExperience = $this->sanitiseCodeExperience($applicantCodeExperience);
+        $this->applicantWhyDev = $this->sanitiseString($applicantWhyDev);
+        $this->applicantCodeExperience = $this->sanitiseString($applicantCodeExperience);
         $this->applicantHearAboutId = (int)$applicantHearAboutId;
         $this->applicantEligible = $applicantEligible ? 1 : 0;
         $this->applicantEighteenPlus = $applicantEighteenPlus ? 1 : 0;
         $this->applicantFinance = $applicantFinance ? 1 : 0;
-        $this->applicantNotes = $this->sanitiseNotes($applicantNotes);
+        $this->applicantNotes = $this->sanitiseString($applicantNotes);
     }
 
     /**(
-     * Sanitise the applicant's name in the applicant table.
+     * Sanitise as a string in the applicant table as data.
      *
-     * @param $applicantName
+     * @param $applicantData
      *
-     * @return mixed, which will return the applicants name.
+     * @return mixed, which will return the applicant data.
      */
-    public function sanitiseName($applicantName)
+    public function sanitiseString($applicantData)
     {
-        return filter_var($applicantName, FILTER_SANITIZE_STRING);
+        return filter_var($applicantData, FILTER_SANITIZE_STRING);
     }
 
     /**(
-     * Sanitise the applicant's email in the applicant table.
+     * Sanitise the applicant's email from the applicant's Data.
      *
-     * @param $applicantEmail
+     * @param $applicantData
      *
-     * @return mixed, will return the applicant's email.
+     * @return mixed, will return the applicant's data, to output the email.
      */
-    public function sanitiseEmail($applicantEmail)
+    public function sanitiseEmail($applicantData)
     {
-        return $applicantEmail = filter_var($applicantEmail, FILTER_VALIDATE_EMAIL);
-    }
-
-    /**
-     * Sanitise phoneNumber's in the applicant table.
-     *
-     * @param $applicantPhoneNumber
-     *
-     * @return mixed, will return the applicant's phoneNumber
-     */
-    public function sanitisePhoneNumber($applicantPhoneNumber)
-    {
-        return filter_var($applicantPhoneNumber, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * Sanitise the whyDev in the applicant table.
-     *
-     * @param $applicantWhyDev
-     *
-     * @return mixed, will return the whyDev for the applicant.
-     */
-    public function sanitiseWhyDev($applicantWhyDev)
-    {
-        return filter_var($applicantWhyDev, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * Sanitise the codeExperience in the applicant table.
-     *
-     * @param $applicantCodeExperience
-     *
-     * @return mixed, returns the codeExperience field
-     */
-    public function sanitiseCodeExperience($applicantCodeExperience)
-    {
-        return filter_var($applicantCodeExperience, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * Sanitise the hearAboutID in the applicant table.
-     *
-     * @param $applicantHearAboutId
-     *
-     * @return mixed, returns the hearAboutID field.
-     */
-    public function sanitiseHearAboutId($applicantHearAboutId)
-    {
-        return filter_var($applicantHearAboutId, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * Sanitise the applicantEligible in the applicant table.
-     *
-     * @param $applicantEligible
-     *
-     * @return mixed, returns the applicantEligible field.
-     */
-    public function sanitiseEligible($applicantEligible)
-    {
-        return filter_var($applicantEligible, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * Sanitise the applicantEighteenPlus in the applicant table.
-     *
-     * @param $applicantEighteenPlus
-     *
-     * @return mixed, return the applicantEighteenPlus field.
-     */
-    public function sanitiseEighteenPlus($applicantEighteenPlus)
-    {
-        return filter_var($applicantEighteenPlus, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * Sanitise the applicantFinance in the applicant table.
-     *
-     * @param $applicantFinance
-     *
-     * @return mixed, return the applicantFinance field.
-     */
-    public function sanitiseFinance($applicantFinance)
-    {
-        return filter_var($applicantFinance, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * Sanitise the applicantNotes in the applicant table.
-     *
-     * @param $applicantNotes
-     *
-     * @return mixed, return the applicantNotes field.
-     */
-    public function sanitiseNotes($applicantNotes)
-    {
-        return filter_var($applicantNotes, FILTER_SANITIZE_STRING);
+        return filter_var($applicantData, FILTER_VALIDATE_EMAIL);
     }
 
     /**
