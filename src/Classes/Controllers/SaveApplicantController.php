@@ -39,40 +39,27 @@ class SaveApplicantController
 
             $newApplicationData = $request->getParsedBody();
 
-            $applicant = new ApplicantEntity();
-            $validatedApplicationData = [
-                'name'           => filter_var($newApplicationData['name'], FILTER_SANITIZE_STRING),
-                'email'          => filter_var($newApplicationData['email'], FILTER_VALIDATE_EMAIL),
-                'phoneNumber'    => filter_var($newApplicationData['phoneNumber'], FILTER_SANITIZE_STRING),
-                'cohortId'       => (int)$newApplicationData['cohortId'],
-                'whyDev'         => filter_var($newApplicationData['whyDev'], FILTER_SANITIZE_STRING),
-                'codeExperience' => filter_var($newApplicationData['codeExperience'], FILTER_SANITIZE_STRING),
-                'hearAboutId'    => (int)$newApplicationData['hearAboutId'],
-                'eligible'       => $newApplicationData['eligible'] ? 1 : 0,
-                'eighteenPlus'   => $newApplicationData['eighteenPlus'] ? 1 : 0,
-                'finance'        => $newApplicationData['finance'] ? 1 : 0,
-                'notes'          => filter_var($newApplicationData['notes'], FILTER_SANITIZE_STRING)
-            ];
-
-            $successfulRegister = $this->applicantModel->insertNewApplicantToDb(
-                $validatedApplicationData['name'],
-                $validatedApplicationData['email'],
-                $validatedApplicationData['phoneNumber'],
-                $validatedApplicationData['cohortId'],
-                $validatedApplicationData['whyDev'],
-                $validatedApplicationData['codeExperience'],
-                $validatedApplicationData['hearAboutId'],
-                $validatedApplicationData['eligible'],
-                $validatedApplicationData['eighteenPlus'],
-                $validatedApplicationData['finance'],
-                $validatedApplicationData['notes']
+            $applicant = new ApplicantEntity(
+                $newApplicationData['name'],
+                $newApplicationData['email'],
+                $newApplicationData['phoneNumber'],
+                $newApplicationData['cohortId'],
+                $newApplicationData['WhyDev'],
+                $newApplicationData['codeExperience'],
+                $newApplicationData['hearAboutId'],
+                $newApplicationData['eligible'],
+                $newApplicationData['eighteenPlus'],
+                $newApplicationData['finance'],
+                $newApplicationData['notes']
             );
+
+            $successfulRegister = $this->applicantModel->insertNewApplicantToDb($applicant);
 
             if ($successfulRegister) {
                 $data = [
                     'success' => $successfulRegister,
                     'msg'     => 'Application Saved',
-                    'data'    => []
+                    'data'    => [$applicant]
                 ];
                 $statusCode = 200;
             }

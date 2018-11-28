@@ -34,15 +34,14 @@ class ApplicantEntity
         $this->applicantName = $this->sanitiseName($applicantName);
         $this->applicantEmail = $this->sanitiseEmail($applicantEmail);
         $this->applicantPhoneNumber = $this->sanitisePhoneNumber($applicantPhoneNumber);
-        $this->applicantCohortId = $applicantCohortId;
+        $this->applicantCohortId = (int)$applicantCohortId;
         $this->applicantWhyDev = $this->sanitiseWhyDev($applicantWhyDev);
         $this->applicantCodeExperience = $this->sanitiseCodeExperience($applicantCodeExperience);
-        $this->applicantHearAboutId = $applicantHearAboutId;
-        $this->applicantEligible = $applicantEligible;
-        $this->applicantEighteenPlus = $applicantEighteenPlus;
-        $this->applicantFinance = $applicantFinance;
+        $this->applicantHearAboutId = (int)$applicantHearAboutId;
+        $this->applicantEligible = $applicantEligible ? 1 : 0;
+        $this->applicantEighteenPlus = $applicantEighteenPlus ? 1 : 0;
+        $this->applicantFinance = $applicantFinance ? 1 : 0;
         $this->applicantNotes = $this->sanitiseNotes($applicantNotes);
-
     }
 
     /**(
@@ -66,10 +65,7 @@ class ApplicantEntity
      */
     public function sanitiseEmail($applicantEmail)
     {
-        if (filter_var($applicantEmail, FILTER_VALIDATE_EMAIL)) {
-            return $applicantEmail;
-        }
-        throw new \UnexpectedValueException('Invalid Email');
+        return $applicantEmail = filter_var($applicantEmail, FILTER_VALIDATE_EMAIL);
     }
 
     /**
@@ -204,5 +200,4 @@ class ApplicantEntity
     {
         return $this->applicantNotes;
     }
-
 }
