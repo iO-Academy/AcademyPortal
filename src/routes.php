@@ -10,9 +10,6 @@ $app->get('/addPartner', function ($request, $response, $args) {
     return $this->renderer->render($response, 'addHiringPartner.phtml', $args);
 });
 
-$app->get('/test', function(Request $request, Response $response, $args) {
-    return $this->renderer->render($response, 'test.phtml', $args);
-});
 
 //Backend
 $app->post('/api/login', 'LoginController');
