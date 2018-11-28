@@ -5,17 +5,17 @@ namespace Portal\Entities;
 
 class ApplicantEntity
 {
-    public $applicantName;
-    public $applicantEmail;
-    public $applicantPhoneNumber;
-    public $applicantCohortId;
-    public $applicantWhyDev;
-    public $applicantCodeExperience;
-    public $applicantHearAboutId;
-    public $applicantEligible;
-    public $applicantEighteenPlus;
-    public $applicantFinance;
-    public $applicantNotes;
+    protected $applicantName;
+    protected $applicantEmail;
+    protected $applicantPhoneNumber;
+    protected $applicantCohortId;
+    protected $applicantWhyDev;
+    protected $applicantCodeExperience;
+    protected $applicantHearAboutId;
+    protected $applicantEligible;
+    protected $applicantEighteenPlus;
+    protected $applicantFinance;
+    protected $applicantNotes;
 
     public function __construct(
         string $applicantName,
