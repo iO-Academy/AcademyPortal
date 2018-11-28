@@ -45,11 +45,11 @@ class ApplicantEntity
     }
 
     /**(
-     * Sanitise the applicant's name in the applicant table.
+     * Sanitise as a string in the applicant table as data.
      *
      * @param $applicantName
      *
-     * @return mixed, which will return the applicants name.
+     * @return mixed, which will return the applicant data.
      */
     public function sanitiseString($applicantData)
     {
