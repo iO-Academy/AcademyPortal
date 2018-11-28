@@ -34,13 +34,13 @@ class ApplicantEntity
         $this->applicantName = $this->sanitiseName($applicantName);
         $this->applicantEmail = $this->sanitiseEmail($applicantEmail);
         $this->applicantPhoneNumber = $this->sanitisePhoneNumber($applicantPhoneNumber);
-        $this->applicantCohortId = $this->sanitiseCohortId($applicantCohortId);
+        $this->applicantCohortId = $applicantCohortId;
         $this->applicantWhyDev = $this->sanitiseWhyDev($applicantWhyDev);
         $this->applicantCodeExperience = $this->sanitiseCodeExperience($applicantCodeExperience);
-        $this->applicantHearAboutId = $this->sanitiseHearAboutId($applicantHearAboutId);
-        $this->applicantEligible = $this->sanitiseEligible($applicantEligible);
-        $this->applicantEighteenPlus = $this->sanitiseEighteenPlus($applicantEighteenPlus);
-        $this->applicantFinance = $this->sanitiseFinance($applicantFinance);
+        $this->applicantHearAboutId = $applicantHearAboutId;
+        $this->applicantEligible = $applicantEligible;
+        $this->applicantEighteenPlus = $applicantEighteenPlus;
+        $this->applicantFinance = $applicantFinance;
         $this->applicantNotes = $this->sanitiseNotes($applicantNotes);
 
     }
