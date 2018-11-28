@@ -12,11 +12,11 @@ class EventValidator
 {
     const TIMEREGEX = '/([0-1][0-9]|[1-2][0-3]):([0-1][0-9]|[1-5][0-9])/';
 
-    public static function validTime($time) {
+    public static function validTime(string $time) {
         return preg_match(self::TIMEREGEX, $time);
     }
 
-    public static function startAfterEndTime($startTime, $endTime) {
+    public static function startAfterEndTime(string $startTime, string $endTime) {
 
         $startIntegers = str_replace(':', '', $startTime);
         $endIntegers = str_replace(':', '', $endTime);
@@ -24,7 +24,7 @@ class EventValidator
         return ((int)$startIntegers >= (int)$endIntegers);
     }
 
-    public static function dateNotInPast($date) {
+    public static function dateNotInPast(string $date) {
 
         $date = \DateTime::createFromFormat('Y-m-d', $date);
 
@@ -32,7 +32,7 @@ class EventValidator
 
     }
 
-    public static function checkFieldNotEmpty($location, $eventName) {
+    public static function checkFieldNotEmpty(string $location, string $eventName) {
 
         $trimLocation = trim($location);
         $trimEventName = trim($eventName);
