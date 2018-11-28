@@ -10,7 +10,7 @@ class SaveApplicantControllerFactory
     /**
      * Creates SaveApplicantController with dependencies
      *
-     * @param $container
+     * @param ContainerInterface $container
      *
      * @return SaveApplicantController returns object with db connection injected
      */

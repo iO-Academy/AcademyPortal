@@ -10,10 +10,9 @@ class UserModelFactory
     /**
      * Creates user model with dependencies
      *
-     * @param $container
+     * @param ContainerInterface $container
      *
      * @return UserModel returns object with db connection injected
-     * @throws
      */
     public function __invoke(ContainerInterface $container)
     {
