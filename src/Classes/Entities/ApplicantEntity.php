@@ -57,11 +57,11 @@ class ApplicantEntity
     }
 
     /**(
-     * Sanitise the applicant's email in the applicant table.
+     * Sanitise the applicant's email from the applicant's Data.
      *
-     * @param $applicantEmail
+     * @param $applicantData
      *
-     * @return mixed, will return the applicant's email.
+     * @return mixed, will return the applicant's data, to output the email.
      */
     public function sanitiseEmail($applicantData)
     {
