@@ -2,6 +2,8 @@
 
 namespace Portal\Models;
 
+use Portal\Entities\ApplicantEntity;
+
 class ApplicantModel
 {
     private $db;
@@ -14,33 +16,11 @@ class ApplicantModel
     /**
      *  Inserts new ApplicantEntity into database - registering
      *
-     * @param string $applicantName
-     * @param string $applicantEmail
-     * @param string $applicantPhoneNumber
-     * @param int $applicantCohortId
-     * @param string $applicantWhyDev
-     * @param string $applicantCodeExperience
-     * @param int $applicantHearAboutId
-     * @param string $applicantEligible
-     * @param string $applicantEighteenPlus
-     * @param string $applicantFinance
-     * @param string $applicantNotes
+     * @param $applicant
      *
      * @return bool
      */
-    public function insertNewApplicantToDb(
-        string $applicantName,
-        string $applicantEmail,
-        string $applicantPhoneNumber,
-        int $applicantCohortId,
-        string $applicantWhyDev,
-        string $applicantCodeExperience,
-        int $applicantHearAboutId,
-        string $applicantEligible,
-        string $applicantEighteenPlus,
-        string $applicantFinance,
-        string $applicantNotes
-    ) {
+    public function insertNewApplicantToDb(ApplicantEntity $applicant) {
         $query = $this->db->prepare(
             "INSERT INTO `applicants` (
                             `name`,
@@ -70,17 +50,17 @@ class ApplicantModel
                         );"
         );
 
-        $query->bindParam(':name', $applicantName);
-        $query->bindParam(':email', $applicantEmail);
-        $query->bindParam(':phoneNumber', $applicantPhoneNumber);
-        $query->bindParam(':cohortId', $applicantCohortId);
-        $query->bindParam(':whyDev', $applicantWhyDev);
-        $query->bindParam(':codeExperience', $applicantCodeExperience);
-        $query->bindParam(':hearAboutId', $applicantHearAboutId);
-        $query->bindParam(':eligible', $applicantEligible);
-        $query->bindParam(':eighteenPlus', $applicantEighteenPlus);
-        $query->bindParam(':finance', $applicantFinance);
-        $query->bindParam(':notes', $applicantNotes);
+        $query->bindParam(':name', $applicant->getApplicantName());
+        $query->bindParam(':email', $applicant->getApplicantEmail());
+        $query->bindParam(':phoneNumber', $applicant->getApplicantPhoneNumber());
+        $query->bindParam(':cohortId', $applicant->getApplicantCohortId());
+        $query->bindParam(':whyDev', $applicant->getApplicantWhyDev());
+        $query->bindParam(':codeExperience', $applicant->getApplicantCodeExperience());
+        $query->bindParam(':hearAboutId', $applicant->getApplicantHearAboutId());
+        $query->bindParam(':eligible', $applicant->getApplicantEligible());
+        $query->bindParam(':eighteenPlus', $applicant->getApplicantEighteenPlus());
+        $query->bindParam(':finance', $applicant->getApplicantFinance());
+        $query->bindParam(':notes', $applicant->getApplicantNotes());
 
         return $query->execute();
     }
@@ -90,13 +70,41 @@ class ApplicantModel
      *
      * @return array $results is the data retrieved.
      */
-    public
-    function getAllApplicants()
+    public function getAllApplicants()
     {
         $query = $this->db->prepare('SELECT `name`, `email`, `date` FROM `applicants` LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`;');
+        //fetchClass
         $query->execute();
         $results = $query->fetchAll();
         return $results;
     }
-}
 
+    public function createNewApplicant(
+        $applicantName,
+       $applicantEmail,
+       $applicantPhoneNumber,
+       $applicantCohortId,
+       $applicantWhyDev,
+       $applicantCodeExperience,
+       $applicantHearAboutId,
+       $applicantEligible,
+       $applicantEighteenPlus,
+       $applicantFinance,
+       $applicantNotes
+    )
+    {
+        return new ApplicantEntity(
+            $applicantName,
+            $applicantEmail,
+            $applicantPhoneNumber,
+            $applicantCohortId,
+            $applicantWhyDev,
+            $applicantCodeExperience,
+            $applicantHearAboutId,
+            $applicantEligible,
+            $applicantEighteenPlus,
+            $applicantFinance,
+            $applicantNotes
+        );
+    }
+}
