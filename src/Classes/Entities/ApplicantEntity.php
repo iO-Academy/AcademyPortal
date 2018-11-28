@@ -121,8 +121,11 @@ class ApplicantEntity
     }
 
     /**
+     * Sanitise the hearAboutID in the applicant table.
+     *
      * @param $applicantHearAboutId
-     * @return mixed
+     *
+     * @return mixed, returns the hearAboutID field.
      */
     public function sanitiseHearAboutId($applicantHearAboutId)
     {
@@ -130,8 +133,11 @@ class ApplicantEntity
     }
 
     /**
+     * Sanitise the applicantEligible in the applicant table.
+     *
      * @param $applicantEligible
-     * @return mixed
+     *
+     * @return mixed, returns the applicantEligible field.
      */
     public function sanitiseEligible($applicantEligible)
     {
@@ -139,8 +145,11 @@ class ApplicantEntity
     }
 
     /**
+     * Sanitise the applicantEighteenPlus in the applicant table.
+     *
      * @param $applicantEighteenPlus
-     * @return mixed
+     *
+     * @return mixed, return the applicantEighteenPlus field.
      */
     public function sanitiseEighteenPlus($applicantEighteenPlus)
     {
