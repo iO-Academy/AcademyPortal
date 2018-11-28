@@ -8,7 +8,6 @@ document.querySelectorAll('.event').forEach(function(event) {
     let clicked = 0
     event.addEventListener('click', function() {
         clicked = (clicked ? 0 : 1)
-        // clicked++
         let lower = this.querySelector('.lower')
         let arrow = this.querySelector('.arrowBox')
         if(clicked == 1) {
