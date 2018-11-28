@@ -1,6 +1,8 @@
 document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault()
 
+    document.querySelector('.statusMessage').textContent = ''
+
     document.querySelectorAll('.error').forEach(function (error) {
         error.remove()
     })
