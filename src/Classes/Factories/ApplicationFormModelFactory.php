@@ -10,7 +10,7 @@ class ApplicationFormModelFactory
     /**
      * Creates user model with dependencies
      *
-     * @param $container
+     * @param ContainerInterface $container
      *
      * @return ApplicationFormModel returns object with db connection injected
      */
