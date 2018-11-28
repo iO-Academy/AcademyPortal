@@ -7,10 +7,11 @@ document.querySelectorAll(".event .lower").forEach(function(event) {
 document.querySelectorAll('.event').forEach(function(event) {
     let clicked = 0
     event.addEventListener('click', function() {
-        clicked++
+        clicked = (clicked ? 0 : 1)
+        // clicked++
         let lower = this.querySelector('.lower')
         let arrow = this.querySelector('.arrowBox')
-        if(clicked % 2) {
+        if(clicked == 1) {
             arrow.innerHTML = '<span>&#x21E7;</span>'
 
             var id = setInterval(function() {
