@@ -1,33 +1,47 @@
 document.querySelector('form').addEventListener('submit', function (e) {
     e.preventDefault()
-    // Delete error messages existing on the page
-    document.querySelectorAll('.errorMessage').forEach(field => field.remove())
+    // Delete messages existing on the page
+    document.querySelectorAll('.message').forEach(field => field.remove())
     // Checking the field values if they are valid
     document.querySelectorAll('.eventInput').forEach(field => {
         if (field.dataset.required) {
             if (!validateRequired(field.value)) {
-                insertErrorMessage(field, 'Required Field')
+                insertMessage(field, 'Required Field', 'errorMessage')
             }
         }
 
         if (field.dataset.date) {
             if (validateRequired(field.value) && !validateDate(field.value)) {
-                insertErrorMessage(field, 'Date cannot be earlier than current date')
+                insertMessage(field, 'Date cannot be earlier than current date', 'errorMessage')
             }
         }
 
         if (field.dataset.time) {
             if (validateRequired(field.value) && !validateTime(field.value)) {
-                insertErrorMessage(field, 'Please enter time in correct format HH:MM')
+                insertMessage(field, 'Please enter time in correct format HH:MM', 'errorMessage')
             }
         }
 
         if (field.dataset.endTime) {
             if (validateRequired(field.value) && validateTime(field.value) && !validateEndTime()) {
-                insertErrorMessage(field, 'End time cannot be earlier than start time')
+                insertMessage(field, 'End time cannot be earlier than start time', 'errorMessage')
             }
         }
     })
+
+    if (!document.querySelector('.errorMessage')) {
+        jsonRequest('addEvent', getFormData())
+            .then(res => {
+                if (res.success) {
+                    insertMessage(document.querySelector('main'), 'Event submitted successfully', 'successMessage')
+                } else {
+                    insertMessage(document.querySelector('main'), 'An error occured during fetch post', 'errorMessage')
+                }
+            })
+            .catch(err => {
+                console.log(new Error(err))
+            })
+    }
 })
 
 /**
@@ -35,7 +49,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
  * 
  * @param string input
  * 
- * @returns boolean
+ * @returns {boolean}
  */
 function validateRequired(input) {
     return input !== ''
@@ -46,9 +60,10 @@ function validateRequired(input) {
  * 
  * @param HTML element field
  * @param string message
+ * @param string classNames for html styling
  */
-function insertErrorMessage(field, message) {
-    field.insertAdjacentHTML('afterend', `<span class="errorMessage">** ${message}</span>`)
+function insertMessage(field, message, className) {
+    field.insertAdjacentHTML('afterend', `<div class="${className} message">** ${message}</div>`)
 }
 
 /**
@@ -56,7 +71,7 @@ function insertErrorMessage(field, message) {
  * 
  * @param string date
  * 
- * @returns boolean
+ * @returns {boolean}
  */
 function validateDate(date) {
     const dateObj = new Date()
@@ -70,7 +85,7 @@ function validateDate(date) {
 /**
  * Function checks if endTime is later than startTime
  * 
- * @return boolean
+ * @return {boolean}
  */
 function validateEndTime() {
     const startTime = document.getElementById('startTime')
@@ -83,9 +98,20 @@ function validateEndTime() {
  * 
  * @param string time
  * 
- * @return boolean
+ * @return {boolean}
  */
 function validateTime(time) {
     const timeRegex = new RegExp('^([0-1][0-9]|[1-2][0-3]):([0-1][0-9]|[1-5][0-9])$', 'g')
     return timeRegex.test(time)
+}
+
+/**
+ * Function creates an empty object and fills it with key/value pairs from form
+ * 
+ * @return {object}
+ */
+function getFormData() {
+    const data = {}
+    document.querySelectorAll('.eventInput').forEach(field => data[field.name] = field.value)
+    return data
 }
