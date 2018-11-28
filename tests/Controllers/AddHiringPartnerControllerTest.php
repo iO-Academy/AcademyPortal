@@ -33,7 +33,7 @@ class AddHiringPartnerControllerTest extends TestCase
         'data' => []
     ];
 
-        function testConstruct()
+        function testConstructSuccess()
         {
             $mockHiringPartnerModel = $this->createMock(HiringPartnerModel::class);
 
@@ -42,13 +42,13 @@ class AddHiringPartnerControllerTest extends TestCase
             $this->assertInstanceOf($expected, $case);
         }
 
-        function testFailConstruct()
+        function testConstructFail()
         {
             $this->expectException(\TypeError::class);
             new AddHiringPartnerController('not a database');
         }
 
-        function testInvoke_success()
+        function testInvokeSuccess()
         {
             $mockRequest = $this->createMock(Request::class);
             $mockResponse = $this->createMock(Response::class);
@@ -70,7 +70,7 @@ class AddHiringPartnerControllerTest extends TestCase
             $this->assertTrue($result);
         }
 
-        function testInvoke_failure()
+        function testInvokeFailure()
         {
             $mockRequest = $this->createMock(Request::class);
             $mockResponse = $this->createMock(Response::class);
@@ -92,7 +92,7 @@ class AddHiringPartnerControllerTest extends TestCase
             $this->assertTrue($result);
         }
 
-        function testInvoke_malformed()
+        function testInvokeMalformed()
         {
             $mockRequest = $this->createMock(Request::class);
             $mockResponse = $this->createMock(Response::class);
