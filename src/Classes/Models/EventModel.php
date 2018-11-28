@@ -1,19 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: academy
- * Date: 27/11/2018
- * Time: 10:10
- */
 
 namespace Portal\Models;
-
 
 class EventModel
 {
 
     private $dbConnection;
-
 
     /**
      * EventModel constructor.
@@ -48,5 +40,4 @@ class EventModel
 
     }
     
-
 }
