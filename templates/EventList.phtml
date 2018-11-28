@@ -10,8 +10,8 @@
 <body>
     <main>
         <h1 id="eventTitle">Events</h1>
-        <?php $arr = \Portal\ViewHelpers\EventListViewHelper::outputEventList($events);
-        foreach ($arr as $i){echo $i;}?>
+        <?php $eventListData = \Portal\ViewHelpers\EventListViewHelper::outputEventList($events);
+        foreach ($eventListData as $i){echo $i;}?>
         <div class="addButtonWrapper">
             <a href="/admin" class="addButton">Back</a>
         </div>

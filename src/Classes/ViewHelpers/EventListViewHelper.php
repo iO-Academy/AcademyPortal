@@ -2,7 +2,6 @@
 
 namespace Portal\ViewHelpers;
 
-
 class EventListViewHelper
 {
     public static function outputEventList($events) {
@@ -23,7 +22,6 @@ class EventListViewHelper
                         '<span >' . $event['date'] . '</span>' .
                     '</div>
                 </div>
-
                 <div class=' . "mid" . '>
                     <div class=' . "infoBox-mid" . '>
                         <span><strong>Start Time</strong></span>' .
@@ -53,7 +51,5 @@ class EventListViewHelper
             $arr[] = $return;
         }
         return $arr;
-
     }
-
 }
