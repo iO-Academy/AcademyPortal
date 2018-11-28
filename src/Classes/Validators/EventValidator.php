@@ -26,11 +26,18 @@ class EventValidator
 
     public static function dateNotInPast($date) {
 
-        $date = DateTime::createFromFormat('Y-m-d', $date);
+        $date = \DateTime::createFromFormat('Y-m-d', $date);
 
         return (date_diff($date, new \DateTime()) < 0);
 
     }
 
+    public static function checkFieldNotEmpty($location, $eventName) {
+
+        $trimLocation = trim($location);
+        $trimEventName = trim($eventName);
+
+        return (empty($trimLocation) || empty($trimEventName));
+    }
 
 }

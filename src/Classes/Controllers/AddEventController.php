@@ -42,14 +42,11 @@ class AddEventController
             return $response->withJson($data, $statusCode);
         }
 
-        if (EventValidator::dateNotInPast($date)) {
+        if (EventValidator::dateNotInPast($newEventData['date'])) {
             return $response->withJson($data, $statusCode);
         }
 
-        $trimLocation = trim($newEventData['location']);
-        $trimEventName = trim($newEventData['eventName']);
-
-        if (empty($trimLocation) || empty($trimEventName)) {
+        if (EventValidator::checkFieldNotEmpty($newEventData['location'], $newEventData('eventName'))) {
             return $response->withJson($data, $statusCode);
         }
 
