@@ -10,10 +10,9 @@ class ApplicantModelFactory
     /**
      * Creates applicant model with dependencies
      *
-     * @param $container
+     * @param ContainerInterface $container
      *
      * @return ApplicantModel returns object with db connection injected
-     * @throws
      */
     public function __invoke(ContainerInterface $container)
     {
