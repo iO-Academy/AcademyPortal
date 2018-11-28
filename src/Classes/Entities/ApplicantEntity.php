@@ -46,7 +46,7 @@ class ApplicantEntity
     }
 
     /**(
-     * Sanitise the applicant's name.
+     * Sanitise the applicant's name in the applicant table.
      *
      * @param $applicantName
      *
@@ -58,7 +58,7 @@ class ApplicantEntity
     }
 
     /**(
-     * Sanitise the applicant's email.
+     * Sanitise the applicant's email in the applicant table.
      *
      * @param $applicantEmail
      *
@@ -73,7 +73,7 @@ class ApplicantEntity
     }
 
     /**
-     * Sanitise the applicant's phoneNumber.
+     * Sanitise phoneNumber's in the applicant table.
      *
      * @param $applicantPhoneNumber
      *
@@ -85,8 +85,11 @@ class ApplicantEntity
     }
 
     /**
+     * Sanitise the cohort's ID in the applicant table.
+     *
      * @param $applicantCohortId
-     * @return mixed
+     *
+     * @return mixed, will return the cohort ID for the applicant.
      */
     public function sanitiseCohortId($applicantCohortId)
     {
@@ -94,8 +97,11 @@ class ApplicantEntity
     }
 
     /**
+     * Sanitise the whyDev in the applicant table.
+     *
      * @param $applicantWhyDev
-     * @return mixed
+     *
+     * @return mixed, will return the whyDev for the applicant.
      */
     public function sanitiseWhyDev($applicantWhyDev)
     {
@@ -103,8 +109,11 @@ class ApplicantEntity
     }
 
     /**
+     * Sanitise the codeExperience in the applicant table.
+     *
      * @param $applicantCodeExperience
-     * @return mixed
+     *
+     * @return mixed, returns the codeExperience field
      */
     public function sanitiseCodeExperience($applicantCodeExperience)
     {
