@@ -28,7 +28,7 @@ class EventValidator
 
         $date = \DateTime::createFromFormat('Y-m-d', $date);
 
-        return (date_diff($date, new \DateTime()) < 0);
+        return $date > new \DateTime();
 
     }
 
