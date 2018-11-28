@@ -63,9 +63,9 @@ class ApplicantEntity
      *
      * @return mixed, will return the applicant's email.
      */
-    public function sanitiseEmail($applicantEmail)
+    public function sanitiseEmail($applicantData)
     {
-        return $applicantEmail = filter_var($applicantEmail, FILTER_VALIDATE_EMAIL);
+        return filter_var($applicantData, FILTER_VALIDATE_EMAIL);
     }
 
     /**
