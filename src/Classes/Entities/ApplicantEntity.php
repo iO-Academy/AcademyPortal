@@ -145,8 +145,11 @@ class ApplicantEntity
     }
 
     /**
+     * Sanitise the applicantFinance in the applicant table.
+     *
      * @param $applicantFinance
-     * @return mixed
+     *
+     * @return mixed, return the applicantFinance field.
      */
     public function sanitiseFinance($applicantFinance)
     {
@@ -154,10 +157,11 @@ class ApplicantEntity
     }
 
     /**
-=======
->>>>>>> deb9b3599fe989917dde09faa17b472be561897a
+     * Sanitise the applicantNotes in the applicant table.
+     *
      * @param $applicantNotes
-     * @return mixed
+     *
+     * @return mixed, return the applicantNotes field.
      */
     public function sanitiseNotes($applicantNotes)
     {
@@ -165,7 +169,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Gets the applicant's name.
+     *
+     * @return mixed, returns the applicant's name from the name field.
      */
     public function getApplicantName()
     {
