@@ -179,7 +179,10 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     *  Get's the applicant's email.
+     *
+     * @return mixed, return the applicant email from the email field.
+     *
      */
     public function getApplicantEmail()
     {
