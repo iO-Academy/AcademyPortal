@@ -5,43 +5,43 @@ namespace Portal\Entities;
 
 class ApplicantEntity
 {
-    protected $applicantName;
-    protected $applicantEmail;
-    protected $applicantPhoneNumber;
-    protected $applicantCohortId;
-    protected $applicantWhyDev;
-    protected $applicantCodeExperience;
-    protected $applicantHearAboutId;
-    protected $applicantEligible;
-    protected $applicantEighteenPlus;
-    protected $applicantFinance;
-    protected $applicantNotes;
+    protected $name;
+    protected $email;
+    protected $phoneNumber;
+    protected $cohortId;
+    protected $whyDev;
+    protected $codeExperience;
+    protected $hearAboutId;
+    protected $eligible;
+    protected $eighteenPlus;
+    protected $finance;
+    protected $notes;
 
     public function __construct(
-        string $applicantName,
-        string $applicantEmail,
-        string $applicantPhoneNumber,
-        int $applicantCohortId,
-        string $applicantWhyDev,
-        string $applicantCodeExperience,
-        int $applicantHearAboutId,
-        string $applicantEligible,
-        string $applicantEighteenPlus,
-        string $applicantFinance,
-        string $applicantNotes
+        string $applicantName = null,
+        string $applicantEmail = null,
+        string $applicantPhoneNumber = null,
+        int $applicantCohortId = null,
+        string $applicantWhyDev = null,
+        string $applicantCodeExperience = null,
+        int $applicantHearAboutId = null,
+        string $applicantEligible = null,
+        string $applicantEighteenPlus = null,
+        string $applicantFinance = null,
+        string $applicantNotes = null
     )
     {
-        $this->applicantName = $this->sanitiseString($applicantName);
-        $this->applicantEmail = $this->sanitiseEmail($applicantEmail);
-        $this->applicantPhoneNumber = $this->sanitiseString($applicantPhoneNumber);
-        $this->applicantCohortId = (int)$applicantCohortId;
-        $this->applicantWhyDev = $this->sanitiseString($applicantWhyDev);
-        $this->applicantCodeExperience = $this->sanitiseString($applicantCodeExperience);
-        $this->applicantHearAboutId = (int)$applicantHearAboutId;
-        $this->applicantEligible = $applicantEligible ? 1 : 0;
-        $this->applicantEighteenPlus = $applicantEighteenPlus ? 1 : 0;
-        $this->applicantFinance = $applicantFinance ? 1 : 0;
-        $this->applicantNotes = $this->sanitiseString($applicantNotes);
+        $this->name = $this->sanitiseString($applicantName);
+        $this->email = $this->validateEmail($applicantEmail);
+        $this->phoneNumber = $this->sanitiseString($applicantPhoneNumber);
+        $this->cohortId = (int)$applicantCohortId;
+        $this->whyDev = $this->sanitiseString($applicantWhyDev);
+        $this->codeExperience = $this->sanitiseString($applicantCodeExperience);
+        $this->hearAboutId = (int)$applicantHearAboutId;
+        $this->eligible = $applicantEligible ? 1 : 0;
+        $this->eighteenPlus = $applicantEighteenPlus ? 1 : 0;
+        $this->finance = $applicantFinance ? 1 : 0;
+        $this->notes = $this->sanitiseString($applicantNotes);
     }
 
     /**(
@@ -63,7 +63,7 @@ class ApplicantEntity
      *
      * @return mixed, will return the applicant's data, to output the email.
      */
-    public function sanitiseEmail($applicantData)
+    public function validateEmail($applicantData)
     {
         return filter_var($applicantData, FILTER_VALIDATE_EMAIL);
     }
@@ -73,9 +73,9 @@ class ApplicantEntity
      *
      * @return mixed, returns the applicant's name from that field.
      */
-    public function getApplicantName()
+    public function getName()
     {
-        return $this->applicantName;
+        return $this->name;
     }
 
     /**
@@ -84,9 +84,9 @@ class ApplicantEntity
      * @return mixed, return the applicant email from that field.
      *
      */
-    public function getApplicantEmail()
+    public function getEmail()
     {
-        return $this->applicantEmail;
+        return $this->email;
     }
 
     /**
@@ -94,9 +94,9 @@ class ApplicantEntity
      *
      * @return mixed, returns the applicant's phoneNumber from that field.
      */
-    public function getApplicantPhoneNumber()
+    public function getPhoneNumber()
     {
-        return $this->applicantPhoneNumber;
+        return $this->phoneNumber;
     }
 
     /**
@@ -104,9 +104,9 @@ class ApplicantEntity
      *
      * @return mixed, return the cohort ID field.
      */
-    public function getApplicantCohortId()
+    public function getCohortId()
     {
-        return $this->applicantCohortId;
+        return $this->cohortId;
     }
 
     /**
@@ -114,9 +114,9 @@ class ApplicantEntity
      *
      * @return mixed, return the whyDev field.
      */
-    public function getApplicantWhyDev()
+    public function getWhyDev()
     {
-        return $this->applicantWhyDev;
+        return $this->whyDev;
     }
 
     /**
@@ -124,9 +124,9 @@ class ApplicantEntity
      *
      * @return mixed, returns the applicantCodeExperience field.
      */
-    public function getApplicantCodeExperience()
+    public function getCodeExperience()
     {
-        return $this->applicantCodeExperience;
+        return $this->codeExperience;
     }
 
     /**
@@ -134,9 +134,9 @@ class ApplicantEntity
      *
      * @return mixed, returns the hearAboutID field.
      */
-    public function getApplicantHearAboutId()
+    public function getHearAboutId()
     {
-        return $this->applicantHearAboutId;
+        return $this->hearAboutId;
     }
 
     /**
@@ -144,9 +144,9 @@ class ApplicantEntity
      *
      * @return mixed, returns the applicantEligible field.
      */
-    public function getApplicantEligible()
+    public function getEligible()
     {
-        return $this->applicantEligible;
+        return $this->eligible;
     }
 
     /**
@@ -154,9 +154,9 @@ class ApplicantEntity
      *
      * @return mixed, returns the applicantEighteenPlus field.
      */
-    public function getApplicantEighteenPlus()
+    public function getEighteenPlus()
     {
-        return $this->applicantEighteenPlus;
+        return $this->eighteenPlus;
     }
 
     /**
@@ -164,9 +164,9 @@ class ApplicantEntity
      *
      * @return mixed, returns the applicantFinance field.
      */
-    public function getApplicantFinance()
+    public function getFinance()
     {
-        return $this->applicantFinance;
+        return $this->finance;
     }
 
     /**
@@ -174,8 +174,8 @@ class ApplicantEntity
      *
      * @return mixed, returns the applicantNotes field.
      */
-    public function getApplicantNotes()
+    public function getNotes()
     {
-        return $this->applicantNotes;
+        return $this->notes;
     }
 }
