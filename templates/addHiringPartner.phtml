@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="stylesheet" type="text/css" href="css/genericStyles.css"/>
+        <link rel="stylesheet" href="css/admin.css">
+        <link rel="stylesheet" href="css/addHiringPartner.css">
+
+        <title>AcademyPortal | Add Hiring Partner</title>
+    </head>
+    <body>
+        <div>
+            <a href="/admin" class="returnButton">Return to admin page</a>
+        </div>
+        <h1> Add Hiring Partner Page</h1>
+        <div id="message"></div>
+        <form id="addHiringPartnerForm">
+            <label for="companyName" class="hiringPartnerLabels">Company name</label>
+            <input type="text" id="companyName" class="addHiringPartner" name="companyName" required>
+            <label for="companySize" class="hiringPartnerLabels">Size</label>
+            <select id="companySize" class="addHiringPartner" name="companySize" required>
+                <option value=""> //populate dropdown with db info with ViewHelper
+                <option value=""> //populate dropdown with db info with ViewHelper
+            </select>
+            <label for="techStack" class="hiringPartnerLabels">Tech Stack</label>
+            <input type="text" id="techStack" class="addHiringPartner" name="techStack" required>
+            <label for="postcode" class="hiringPartnerLabels">Postcode</label>
+            <input type="text" id="postcode" class="addHiringPartner" name="postcode" required>
+            <label for="telNumber" class="hiringPartnerLabels">Phone Number</label>
+            <input type="tel" id="telNumber" class="addHiringPartner" name="telNumber">
+            <label for="companyURL" class="hiringPartnerLabels">Website</label>
+            <input type="url" id="companyURL" class="addHiringPartner" name="companyURL">
+            <div class="buttonWrapper">
+                <input type="submit" id="addHiringPartnerSubmit">
+            </div>
+        </form>
+    </body>
+</html>

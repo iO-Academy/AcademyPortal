@@ -5,3 +5,14 @@
 body {
     font-family: Courier, sans-serif;
 }
+
+.hiringPartnerLabels {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 20px 0 5px;
+}
+
+.buttonWrapper {
+    margin: 5px 0;
+}

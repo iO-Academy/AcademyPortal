@@ -6,6 +6,9 @@ use \Slim\Http\Response as Response;
 $app->get('/','HomePageController');
 $app->get('/admin', 'AdminController');
 $app->get('/register', 'RegisterController');
+$app->get('/addPartner', function ($request, $response, $args) {
+    return $this->renderer->render($response, 'addHiringPartner.phtml', $args);
+});
 
 $app->get('/test', function(Request $request, Response $response, $args) {
     return $this->renderer->render($response, 'test.phtml', $args);
