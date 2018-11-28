@@ -72,9 +72,16 @@
     height: 100%;
 }
 
-.errorMessage {
+.message {
     flex: 1 1 100%;
     text-align: center;
-    color: #fa0101c7;
     font-style: italic;
+}
+
+.errorMessage {
+    color: #fa0101c7;
+}
+
+.successMessage {
+    color: #56e789;
 }
