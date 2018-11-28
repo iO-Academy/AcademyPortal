@@ -10,6 +10,12 @@ class AddApplicantController
 {
     private $renderer;
 
+    /**
+     * Will instantiate renderer
+     * 
+     * @param PhpRenderer $renderer
+     */
+
     function __construct(PhpRenderer $renderer)
     {
         $this->renderer = $renderer;
@@ -25,3 +31,4 @@ class AddApplicantController
         }
     }
 }
+
