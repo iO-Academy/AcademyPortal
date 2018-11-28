@@ -16,6 +16,7 @@ class ApplicantEntity
     protected $eighteenPlus;
     protected $finance;
     protected $notes;
+    protected $cohortDate;
 
     public function __construct(
         string $applicantName = null,
@@ -31,18 +32,36 @@ class ApplicantEntity
         string $applicantNotes = null
     )
     {
-        $this->name = $this->sanitiseString($applicantName);
-        $this->email = $this->validateEmail($applicantEmail);
-        $this->phoneNumber = $this->sanitiseString($applicantPhoneNumber);
-        $this->cohortId = (int)$applicantCohortId;
-        $this->whyDev = $this->sanitiseString($applicantWhyDev);
-        $this->codeExperience = $this->sanitiseString($applicantCodeExperience);
-        $this->hearAboutId = (int)$applicantHearAboutId;
-        $this->eligible = $applicantEligible ? 1 : 0;
-        $this->eighteenPlus = $applicantEighteenPlus ? 1 : 0;
-        $this->finance = $applicantFinance ? 1 : 0;
-        $this->notes = $this->sanitiseString($applicantNotes);
+        $this->name = ($this->name ?? $applicantName);
+        $this->email = ($this->email ?? $applicantEmail);
+        $this->phoneNumber = ($this->phoneNumber ?? $applicantPhoneNumber);
+        $this->cohortId = ($this->cohortId ?? $applicantCohortId);
+        $this->whyDev = ($this->whyDev ?? $applicantWhyDev);
+        $this->codeExperience = ($this->codeExperience ?? $applicantCodeExperience);
+        $this->hearAboutId = ($this->hearAboutId ?? $applicantHearAboutId);
+        $this->eligible = ($this->eligible ?? $applicantEligible);
+        $this->eighteenPlus = ($this->eighteenPlus ?? $applicantEighteenPlus);
+        $this->finance = ($this->finance ?? $applicantFinance);
+        $this->notes = ($this->notes ?? $applicantNotes);
+
+        $this->sanitiseData();
+
     }
+
+    private function sanitiseData() {
+        $this->name = $this->sanitiseString($this->name);
+        $this->email = $this->validateEmail($this->email);
+        $this->phoneNumber = $this->sanitiseString($this->phoneNumber);
+        $this->cohortId = (int)$this->cohortId;
+        $this->whyDev = $this->sanitiseString($this->whyDev);
+        $this->codeExperience = $this->sanitiseString($this->codeExperience);
+        $this->hearAboutId = (int)$this->hearAboutId;
+        $this->eligible = $this->eligible ? 1 : 0;
+        $this->eighteenPlus = $this->eighteenPlus ? 1 : 0;
+        $this->finance = $this->finance ? 1 : 0;
+        $this->notes = $this->sanitiseString($this->notes);
+    }
+
 
     /**(
      * Sanitise as a string in the applicant table as data.
@@ -177,5 +196,13 @@ class ApplicantEntity
     public function getNotes()
     {
         return $this->notes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCohortDate()
+    {
+        return $this->cohortDate;
     }
 }

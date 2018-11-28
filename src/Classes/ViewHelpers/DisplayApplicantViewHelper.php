@@ -19,9 +19,9 @@ class DisplayApplicantViewHelper
         $result = '';
         foreach ($applicants as $applicant) {
             if ($applicant instanceof ApplicantEntity) {
-                $result .= 'name: ' . $applicant->getApplicantName() . ' ' .  'email: ' .  $applicant->getApplicantEmail() . ' ' . 'date: ' . $applicant->getApplicantCohortId() . '<br>';
+                $result .= '<strong>Name:</strong> ' . $applicant->getName() . '<strong> Email:</strong> ' .  $applicant->getEmail() . '<strong> Date:</strong> ' . $applicant->getCohortDate() . '<br>';
             }
         }
-        return $result;
+        return ($result);
     }
 }

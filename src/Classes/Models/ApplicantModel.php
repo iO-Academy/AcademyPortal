@@ -50,17 +50,17 @@ class ApplicantModel
                         );"
         );
 
-        $query->bindParam(':name', $applicant->getApplicantName());
-        $query->bindParam(':email', $applicant->getApplicantEmail());
-        $query->bindParam(':phoneNumber', $applicant->getApplicantPhoneNumber());
-        $query->bindParam(':cohortId', $applicant->getApplicantCohortId());
-        $query->bindParam(':whyDev', $applicant->getApplicantWhyDev());
-        $query->bindParam(':codeExperience', $applicant->getApplicantCodeExperience());
-        $query->bindParam(':hearAboutId', $applicant->getApplicantHearAboutId());
-        $query->bindParam(':eligible', $applicant->getApplicantEligible());
-        $query->bindParam(':eighteenPlus', $applicant->getApplicantEighteenPlus());
-        $query->bindParam(':finance', $applicant->getApplicantFinance());
-        $query->bindParam(':notes', $applicant->getApplicantNotes());
+        $query->bindParam(':name', $applicant->getName());
+        $query->bindParam(':email', $applicant->getEmail());
+        $query->bindParam(':phoneNumber', $applicant->getPhoneNumber());
+        $query->bindParam(':cohortId', $applicant->getCohortId());
+        $query->bindParam(':whyDev', $applicant->getWhyDev());
+        $query->bindParam(':codeExperience', $applicant->getCodeExperience());
+        $query->bindParam(':hearAboutId', $applicant->getHearAboutId());
+        $query->bindParam(':eligible', $applicant->getEligible());
+        $query->bindParam(':eighteenPlus', $applicant->getEighteenPlus());
+        $query->bindParam(':finance', $applicant->getFinance());
+        $query->bindParam(':notes', $applicant->getNotes());
 
         return $query->execute();
     }
@@ -72,25 +72,25 @@ class ApplicantModel
      */
     public function getAllApplicants()
     {
-        $query = $this->db->prepare('SELECT `name`, `email`, `date` FROM `applicants` LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`;');
+        $query = $this->db->prepare('SELECT `name`, `email`, `date` AS "cohortDate" FROM `applicants` LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`;');
+        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
         $query->execute();
-        $query->setFetchMode(\PDO::FETCH_CLASS, 'ApplicantEntity');
         $results = $query->fetchAll();
         return $results;
     }
 
     public function createNewApplicant(
         $applicantName,
-       $applicantEmail,
-       $applicantPhoneNumber,
-       $applicantCohortId,
-       $applicantWhyDev,
-       $applicantCodeExperience,
-       $applicantHearAboutId,
-       $applicantEligible,
-       $applicantEighteenPlus,
-       $applicantFinance,
-       $applicantNotes
+        $applicantEmail,
+        $applicantPhoneNumber,
+        $applicantCohortId,
+        $applicantWhyDev,
+        $applicantCodeExperience,
+        $applicantHearAboutId,
+        $applicantEligible,
+        $applicantEighteenPlus,
+        $applicantFinance,
+        $applicantNotes
     )
     {
         return new ApplicantEntity(
