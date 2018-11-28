@@ -73,8 +73,8 @@ class ApplicantModel
     public function getAllApplicants()
     {
         $query = $this->db->prepare('SELECT `name`, `email`, `date` FROM `applicants` LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`;');
-        //fetchClass
         $query->execute();
+        $query->setFetchMode(\PDO::FETCH_CLASS, 'ApplicantEntity');
         $results = $query->fetchAll();
         return $results;
     }
