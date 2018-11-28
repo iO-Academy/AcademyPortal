@@ -171,7 +171,7 @@ class ApplicantEntity
     /**
      * Gets the applicant's name.
      *
-     * @return mixed, returns the applicant's name from the name field.
+     * @return mixed, returns the applicant's name from that field.
      */
     public function getApplicantName()
     {
@@ -181,7 +181,7 @@ class ApplicantEntity
     /**
      *  Get's the applicant's email.
      *
-     * @return mixed, return the applicant email from the email field.
+     * @return mixed, return the applicant email from that field.
      *
      */
     public function getApplicantEmail()
@@ -190,7 +190,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's the applicant's phoneNumber.
+     *
+     * @return mixed, returns the applicant's phoneNumber from that field.
      */
     public function getApplicantPhoneNumber()
     {
