@@ -22,6 +22,7 @@ $container['logger'] = function ($c) {
 $container['dbConnection'] = function ($c) {
     $settings = $c->get('settings')['db'];
     $db = new PDO($settings['host'].$settings['dbName'], $settings['userName']);
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $db;
 };
 
@@ -38,3 +39,7 @@ $container['RegisterUserController'] = new \Portal\Factories\RegisterUserControl
 $container['HomePageController'] = new \Portal\Factories\HomePageControllerFactory();
 
 $container['RandomPasswordModel'] = new \Portal\Models\RandomPasswordModel();
+
+$container['AddEventPageController'] = new \Portal\Factories\AddEventPageControllerFactory();
+
+$container['EventModel'] = new \Portal\Factories\EventModelFactory();
