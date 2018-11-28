@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: academy
- * Date: 27/11/2018
- * Time: 11:17
- */
 
 namespace Portal\Controllers;
 
@@ -18,7 +12,7 @@ class AddEventController
     private $eventModel;
 
     /**
-     * EventModelController constructor.
+     * AddEventController constructor.
      * @param $eventModel
      */
     public function __construct(EventModel $eventModel)
