@@ -31,17 +31,17 @@ class ApplicantEntity
         string $applicantNotes
     )
     {
-        $this->applicantName = $this->sanitiseName($applicantName);
+        $this->applicantName = $this->sanitiseString($applicantName);
         $this->applicantEmail = $this->sanitiseEmail($applicantEmail);
-        $this->applicantPhoneNumber = $this->sanitisePhoneNumber($applicantPhoneNumber);
+        $this->applicantPhoneNumber = $this->sanitiseString($applicantPhoneNumber);
         $this->applicantCohortId = (int)$applicantCohortId;
-        $this->applicantWhyDev = $this->sanitiseWhyDev($applicantWhyDev);
-        $this->applicantCodeExperience = $this->sanitiseCodeExperience($applicantCodeExperience);
+        $this->applicantWhyDev = $this->sanitiseString($applicantWhyDev);
+        $this->applicantCodeExperience = $this->sanitiseString($applicantCodeExperience);
         $this->applicantHearAboutId = (int)$applicantHearAboutId;
         $this->applicantEligible = $applicantEligible ? 1 : 0;
         $this->applicantEighteenPlus = $applicantEighteenPlus ? 1 : 0;
         $this->applicantFinance = $applicantFinance ? 1 : 0;
-        $this->applicantNotes = $this->sanitiseNotes($applicantNotes);
+        $this->applicantNotes = $this->sanitiseString($applicantNotes);
     }
 
     /**(
@@ -51,9 +51,9 @@ class ApplicantEntity
      *
      * @return mixed, which will return the applicants name.
      */
-    public function sanitiseName($applicantName)
+    public function sanitiseString($applicantData)
     {
-        return filter_var($applicantName, FILTER_SANITIZE_STRING);
+        return filter_var($applicantData, FILTER_SANITIZE_STRING);
     }
 
     /**(
