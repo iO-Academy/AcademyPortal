@@ -28,7 +28,7 @@ class SaveApplicantController
      * @param Request $request
      * @param Response $response
      *
-     * @return Response
+     * @return Response, will return the data from successfulRegister and the statusCode, via Json.
      */
     function __invoke(Request $request, Response $response)
     {
