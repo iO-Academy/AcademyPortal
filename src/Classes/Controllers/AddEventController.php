@@ -38,16 +38,11 @@ class AddEventController
             return $response->withJson($data, $statusCode);
         }
 
-        $startIntegers =  str_replace(':', '', $newEventData['startTime']) ;
-        $endIntegers = str_replace(':', '', $newEventData['endTime']);
-
-        if ((int) $startIntegers >= (int)$endIntegers) {
+        if (EventValidator::startAfterEndTime($newEventData['startTime'], $newEventData['endTime'])) {
             return $response->withJson($data, $statusCode);
         }
 
-        $date = DateTime::createFromFormat('Y-m-d', $newEventData['date']);
-
-        if (date_diff($date, new \DateTime()) < 0) {
+        if (EventValidator::dateNotInPast($date)) {
             return $response->withJson($data, $statusCode);
         }
 
