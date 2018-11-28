@@ -22,4 +22,3 @@ class ApplicationFormControllerFactoryTest extends TestCase
     }
 
 }
-

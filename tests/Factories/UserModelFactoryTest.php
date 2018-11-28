@@ -21,4 +21,3 @@ class UserModelFactoryTest extends TestCase
     }
 
 }
-

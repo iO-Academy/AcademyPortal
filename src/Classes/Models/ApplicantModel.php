@@ -99,3 +99,4 @@ class ApplicantModel
         return $results;
     }
 }
+

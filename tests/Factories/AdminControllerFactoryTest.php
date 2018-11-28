@@ -22,5 +22,3 @@ class AdminControllerFactoryTest extends TestCase
     }
 
 }
-
-
