@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: academy
- * Date: 28/11/2018
- * Time: 09:56
- */
 
 namespace Portal\Validators;
 
