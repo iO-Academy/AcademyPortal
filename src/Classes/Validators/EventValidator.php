@@ -32,7 +32,7 @@ class EventValidator
 
     }
 
-    public static function checkFieldNotEmpty(string $location, string $eventName) {
+    public static function isFieldEmpty(string $location, string $eventName) {
 
         $trimLocation = trim($location);
         $trimEventName = trim($eventName);

@@ -46,7 +46,7 @@ class AddEventController
             return $response->withJson($data, $statusCode);
         }
 
-        if (EventValidator::checkFieldNotEmpty($newEventData['location'], $newEventData('eventName'))) {
+        if (EventValidator::isFieldEmpty($newEventData['location'], $newEventData('eventName'))) {
             return $response->withJson($data, $statusCode);
         }
 
