@@ -222,7 +222,7 @@ class ApplicantEntity
     /**
      * Get's applicantCodeExperience.
      *
-     * @return mixed, returns the applicantCodeExperience.
+     * @return mixed, returns the applicantCodeExperience field.
      */
     public function getApplicantCodeExperience()
     {
@@ -232,7 +232,7 @@ class ApplicantEntity
     /**
      * Get's applicantHearAboutID.
      *
-     * @return mixed, returns the hearAboutID.
+     * @return mixed, returns the hearAboutID field.
      */
     public function getApplicantHearAboutId()
     {
@@ -240,9 +240,9 @@ class ApplicantEntity
     }
 
     /**
-     * Get's applicantEligible
+     * Get's applicantEligible.
      *
-     * @return mixed, returns the applicantEligible.
+     * @return mixed, returns the applicantEligible field.
      */
     public function getApplicantEligible()
     {
@@ -250,7 +250,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's applicantEighteenPlus.
+     *
+     * @return mixed, returns the applicantEighteenPlus field.
      */
     public function getApplicantEighteenPlus()
     {
@@ -258,7 +260,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's applicantFinance.
+     *
+     * @return mixed, returns the applicantFinance field.
      */
     public function getApplicantFinance()
     {
@@ -266,7 +270,9 @@ class ApplicantEntity
     }
 
     /**
-     * @return mixed
+     * Get's applicantNotes.
+     *
+     * @return mixed, returns the applicantNotes field.
      */
     public function getApplicantNotes()
     {
