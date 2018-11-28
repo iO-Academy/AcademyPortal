@@ -2,6 +2,7 @@
 
 namespace Portal\ViewHelpers;
 
+use \Portal\Entities\ApplicantEntity;
 
 class DisplayApplicantViewHelper
 {
@@ -14,9 +15,12 @@ class DisplayApplicantViewHelper
      */
     static public function displayApplicants($applicants)
     {
+
         $result = '';
         foreach ($applicants as $applicant) {
-            $result .= "name: " . $applicant['name'] . ' ' .  "email: " .  $applicant['email'] . ' ' . "date: " . $applicant['date'];
+            if ($applicant instanceof ApplicantEntity) {
+                $result .= 'name: ' . $applicant->getApplicantName() . ' ' .  'email: ' .  $applicant->getApplicantEmail() . ' ' . 'date: ' . $applicant->getApplicantCohortId() . '<br>';
+            }
         }
         return $result;
     }
