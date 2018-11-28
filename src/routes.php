@@ -7,7 +7,11 @@ $app->get('/','HomePageController');
 $app->get('/admin', 'AdminController');
 $app->get('/register', 'RegisterController');
 $app->get('/addHiringPartner', function ($request, $response, $args) {
-    return $this->renderer->render($response, 'addHiringPartner.phtml', $args);
+    if ($_SESSION['loggedIn']) {
+        return $this->renderer->render($response, 'addHiringPartner.phtml', $args);
+    } else {
+        return $response->withStatus(401);
+    }
 });
 
 
