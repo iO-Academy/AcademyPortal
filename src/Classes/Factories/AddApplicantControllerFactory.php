@@ -10,7 +10,7 @@ class AddApplicantControllerFactory
     /**
      * Creates AddApplicantController with dependencies
      *
-     * @param $container
+     * @param ContainerInterface $container
      *
      * @return AddApplicantController returns object with db connection injected
      */
