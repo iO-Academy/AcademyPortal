@@ -46,8 +46,11 @@ class ApplicantEntity
     }
 
     /**(
+     * Sanitise the applicant's name.
+     *
      * @param $applicantName
-     * @return mixed
+     *
+     * @return mixed, which will return the applicants name.
      */
     public function sanitiseName($applicantName)
     {
@@ -55,8 +58,11 @@ class ApplicantEntity
     }
 
     /**(
+     * Sanitise the applicant's email.
+     *
      * @param $applicantEmail
-     * @return mixed
+     *
+     * @return mixed, will return the applicant's email.
      */
     public function sanitiseEmail($applicantEmail)
     {
@@ -67,8 +73,11 @@ class ApplicantEntity
     }
 
     /**
+     * Sanitise the applicant's phoneNumber.
+     *
      * @param $applicantPhoneNumber
-     * @return mixed
+     *
+     * @return mixed, will return the applicant's phoneNumber
      */
     public function sanitisePhoneNumber($applicantPhoneNumber)
     {
