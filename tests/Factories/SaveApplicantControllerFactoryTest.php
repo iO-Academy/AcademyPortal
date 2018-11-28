@@ -24,4 +24,3 @@ class SaveApplicantControllerFactoryTest extends TestCase
     }
 
 }
-
