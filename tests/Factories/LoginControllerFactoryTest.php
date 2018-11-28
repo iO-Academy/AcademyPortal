@@ -22,4 +22,3 @@ class LoginControllerFactoryTest extends TestCase
     }
 
 }
-
