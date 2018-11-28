@@ -47,7 +47,7 @@ class ApplicantEntity
     /**(
      * Sanitise as a string in the applicant table as data.
      *
-     * @param $applicantData
+     * @param string $applicantData
      *
      * @return mixed, which will return the applicant data.
      */
