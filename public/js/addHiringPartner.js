@@ -92,7 +92,6 @@ async function fetchData(formData) {
  */
 function sendRequest(formData) {
     fetchData(formData).then(function (data) {
-        console.log(data)
         if (data.status) {
             document.querySelector('.statusMessage').textContent = 'Success!'
         } else {
