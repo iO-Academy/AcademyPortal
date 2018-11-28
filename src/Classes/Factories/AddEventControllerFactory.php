@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: academy
- * Date: 27/11/2018
- * Time: 16:02
- */
 
 namespace Portal\Factories;
 
