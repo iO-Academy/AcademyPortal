@@ -5,7 +5,6 @@ use Portal\Validators\EventValidator;
 
 class EventValidatorTest extends TestCase
 {
-
     public function test_validTime_success() {
         $this->assertEquals(EventValidator::validTime('14:23'), true);
         $this->assertEquals(EventValidator::validTime('23:59'), true);
@@ -93,7 +92,4 @@ class EventValidatorTest extends TestCase
         $eventName = 4.5;
         EventValidator::isFieldEmpty($location, $eventName);
     }
-
-
-
 }
