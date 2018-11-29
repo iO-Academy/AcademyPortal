@@ -11,7 +11,7 @@ class LoginController
     private $userModel;
 
     /**
-     * Instantiates login controller
+     * Instantiates login controller.
      * LoginController constructor.
      *
      * @param UserModel $userModel userModel object dependency
@@ -22,12 +22,12 @@ class LoginController
     }
 
     /**
-     * Verifies user credentials then returns message and status code with login success status and attached message
+     * Verifies user credentials then returns message and status code with login success status and attached message.
      *
      * @param Request $request HTTP request
      * @param Response $response HTTP response
      *
-     * @return string JSON message and status code
+     * @return string JSON message and status code.
      */
     public function __invoke(Request $request, Response $response) : Response
     {
