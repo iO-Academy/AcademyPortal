@@ -15,16 +15,18 @@ class HiringPartnerEntity
 
     /**
      * HiringPartnerEntity constructor.
-     * @param $companyName
-     * @param $size
-     * @param $techStack
-     * @param $postcode
-     * @param $phoneNo
-     * @param $url
+     * @param array $validIds
+     * @param string $companyName
+     * @param int $size
+     * @param string $techStack
+     * @param string $postcode
+     * @param string $phoneNo
+     * @param string $url
      */
-    public function __construct(string $companyName, int $size, string $techStack, string $postcode, string $phoneNo = '0', string $url = '0')
+    public function __construct(array $validIds, string $companyName, int $size, string $techStack, string $postcode, string $phoneNo = '0', string $url = '0')
     {
-        if (preg_match($this->postcodeRegex, $postcode)) {
+
+        if (preg_match($this->postcodeRegex, $postcode) && in_array(['id' => $size], $validIds)) {
 
             $this->companyName = filter_var($companyName, FILTER_SANITIZE_STRING);
             $this->size = filter_var($size, FILTER_SANITIZE_NUMBER_INT);

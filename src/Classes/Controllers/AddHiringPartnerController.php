@@ -42,9 +42,11 @@ class AddHiringPartnerController
         $statusCode = 406;
 
         $newHiringPartnerData = $request->getParsedBody();
+        $validIds = $this->hiringPartnerModel->getCompanySizeBracketIds();
 
         try {
             $hiringPartnerEntity = new HiringPartnerEntity(
+                $validIds,
                 $newHiringPartnerData['companyName'],
                 $newHiringPartnerData['size'],
                 $newHiringPartnerData['techStack'],
