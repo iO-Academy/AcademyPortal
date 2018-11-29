@@ -2,7 +2,6 @@ document.getElementById('submitApplicant').addEventListener('click', e => {
     e.preventDefault()
     let data = getCompletedFormData()
     let validate = validateFormInputs(data)
-
     if (validate) {
         makeApiRequest(data)
     } else {
@@ -47,34 +46,15 @@ let makeApiRequest = async (data) => {
 let validateFormInputs = (data) => {
     let returnedValue
 
-    if(data.name.length >= 1 && data.name.length <= 255){
+    if(data.name.length >= 1 && data.name.length <= 255 &&
+        data.email.length >= 1 && data.email.length <= 255 &&
+        data.phoneNumber.length >= 1 && data.phoneNumber.length <= 255 &&
+        data.whyDev.length >= 1 && data.whyDev.length <= 255 &&
+        data.codeExperience.length >= 1 && data.codeExperience.length <= 255){
         returnedValue = true
     } else {
         returnedValue = false
     }
 
-    if(data.email.length >= 1 && data.email.length <= 255){
-        returnedValue = true
-    } else {
-        returnedValue = false
-    }
-
-    if(data.phoneNumber.length >= 1 && data.phoneNumber.length <= 255){
-        returnedValue = true
-    } else {
-        returnedValue = false
-    }
-
-    if(data.whyDev.length >= 1 && data.whyDev.length <= 255){
-        returnedValue = true
-    } else {
-        returnedValue = false
-    }
-
-    if(data.codeExperience.length >= 1 && data.codeExperience.length <= 255){
-        returnedValue = true
-    } else {
-        returnedValue = false
-    }
     return returnedValue
 }
