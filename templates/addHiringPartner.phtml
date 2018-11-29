@@ -1,42 +1,52 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-        <link rel="stylesheet" type="text/css" href="css/genericStyles.css"/>
-        <link rel="stylesheet" href="css/admin.css">
-        <link rel="stylesheet" href="css/addHiringPartner.css">
-
-        <title>AcademyPortal | Add Hiring Partner</title>
-    </head>
-    <body>
-        <div>
-            <a href="/admin" class="returnButton">Return to admin page</a>
-        </div>
-        <h1> Add Hiring Partner Page</h1>
-        <div id="message"></div>
-        <form id="addHiringPartnerForm">
+<head>
+    <title>AcademyPortal | Add Hiring Partner</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/genericStyles.css"/>
+    <link rel="stylesheet" type="text/css" href="css/admin.css">
+    <script src="js/addHiringPartner.js" defer></script>
+</head>
+<body>
+    <div>
+        <a href="/admin" class="returnButton">Return to admin page</a>
+    </div>
+    <h1>Add Hiring Partner Page</h1>
+    <div id="message"></div>
+    <form id="addHiringPartnerForm">
+        <div class="formField">
             <label for="companyName" class="hiringPartnerLabels">Company name</label>
-            <input type="text" id="companyName" class="addHiringPartner" name="companyName" required>
+            <input type="text" id="companyName" class="addHiringPartner field" name="companyName" data-required="true" required>
+        </div>
+        <div class="formField">
             <label for="companySize" class="hiringPartnerLabels">Size</label>
-            <select id="companySize" class="addHiringPartner" name="companySize" required>
-                <option value=""> //populate dropdown with db info with ViewHelper
-                <option value=""> //populate dropdown with db info with ViewHelper
+            <select id="companySize" class="addHiringPartner field" name="companySize" data-required="true" required>
+                <option value="1"> //populate dropdown with db info with ViewHelper
+                <option value="2"> //populate dropdown with db info with ViewHelper
             </select>
+        </div>
+        <div class="formField">
             <label for="techStack" class="hiringPartnerLabels">Tech Stack</label>
-            <input type="text" id="techStack" class="addHiringPartner" name="techStack" required>
+            <input type="text" id="techStack" class="addHiringPartner field" name="techStack" data-required="true" required>
+        </div>
+        <div class="formField">
             <label for="postcode" class="hiringPartnerLabels">Postcode</label>
-            <input type="text" id="postcode" class="addHiringPartner" name="postcode" required>
+            <input type="text" id="postcode" class="addHiringPartner field" name="postcode" data-required="true" data-postcode="true" required>
+        </div>
+        <div class="formField">
             <label for="telNumber" class="hiringPartnerLabels">Phone Number</label>
-            <input type="tel" id="telNumber" class="addHiringPartner" name="telNumber">
+            <input type="tel" id="telNumber" class="addHiringPartner field" name="telNumber">
+        </div>
+        <div class="formField">
             <label for="companyURL" class="hiringPartnerLabels">Website</label>
-            <input type="url" id="companyURL" class="addHiringPartner" name="companyURL">
-            <div class="buttonWrapper">
-                <input type="submit" id="addHiringPartnerSubmit">
-            </div>
-        </form>
-    </body>
+            <input type="url" id="companyURL" class="addHiringPartner field" name="companyURL">
+        </div>
+        <div class="buttonWrapper">
+            <input type="submit" id="addHiringPartnerSubmit">
+        </div>
+    </form>
+    <p class="statusMessage"></p>
+</body>
 </html>
