@@ -8,7 +8,7 @@ use Portal\Controllers\AdminController;
 class AdminControllerFactory
 {
     /**
-     * Creates a interface that will render
+     * Creates a interface that will render.
      *
      * @param ContainerInterface $container
      *

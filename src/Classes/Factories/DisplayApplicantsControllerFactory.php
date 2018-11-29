@@ -12,7 +12,7 @@ class DisplayApplicantsControllerFactory
      *
      * @param ContainerInterface $container
      *
-     * @return DisplayApplicantsController
+     * @return DisplayApplicantsController.
      */
     public function __invoke(ContainerInterface $container) : DisplayApplicantsController
     {

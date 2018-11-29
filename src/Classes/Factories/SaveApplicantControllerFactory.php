@@ -8,11 +8,11 @@ use Portal\Controllers\SaveApplicantController;
 class SaveApplicantControllerFactory
 {
     /**
-     * Creates SaveApplicantController with dependencies
+     * Creates SaveApplicantController with dependencies.
      *
      * @param ContainerInterface $container
      *
-     * @return SaveApplicantController returns object with db connection injected
+     * @return SaveApplicantController returns object with db connection injected.
      */
     public function __invoke(ContainerInterface $container): SaveApplicantController
     {

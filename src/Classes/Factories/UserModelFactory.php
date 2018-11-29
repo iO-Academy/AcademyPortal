@@ -8,11 +8,11 @@ use Psr\Container\ContainerInterface;
 class UserModelFactory
 {
     /**
-     * Creates user model with dependencies
+     * Creates user model with dependencies.
      *
      * @param ContainerInterface $container
      *
-     * @return UserModel returns object with db connection injected
+     * @return UserModel returns object with db connection injected.
      */
     public function __invoke(ContainerInterface $container)
     {
