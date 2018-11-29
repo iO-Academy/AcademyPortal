@@ -77,7 +77,7 @@ class ApplicantEntity
     }
 
     /**(
-     * Sanitise the applicant's email from the applicant's Data.
+     * Sanitise the applicant's email from the applicant's data.
      *
      * @param string $applicantData
      *
