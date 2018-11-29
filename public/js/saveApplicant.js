@@ -2,13 +2,12 @@ document.getElementById('submitApplicant').addEventListener('click', e => {
     e.preventDefault()
     let data = getCompletedFormData()
     let validate = validateFormInputs(data)
-    validate.forEach(validateItem => {
-        if (element[''] = 0) {
-            document.getElementById('errorMsg').innerHTML = 'Not asll fields have been filled out. Try again...'
-        }
-            else {
-            makeApiRequest(data)
-        }
+
+    if (validate) {
+        makeApiRequest(data)
+    } else {
+        document.getElementById('errorMsg').innerHTML = 'Not all fields have been filled out. Try again...'
+    }
 })
 
 let getCompletedFormData = () => {
@@ -38,9 +37,44 @@ let makeApiRequest = async (data) => {
         .then(response => response.json())
         .then((data) => {
             if (data.success) {
-                window.location.href = '/admin';
+                // window.location.href = '/admin';
             } else {
                 document.getElementById('errorMsg').innerHTML = "Please contact administrator. Or <a href='/admin'>click here</a> to return to admin page"
             }
         })
+}
+
+let validateFormInputs = (data) => {
+    let returnedValue
+
+    if(data.name.length >= 1 && data.name.length <= 255){
+        returnedValue = true
+    } else {
+        returnedValue = false
+    }
+
+    if(data.email.length >= 1 && data.email.length <= 255){
+        returnedValue = true
+    } else {
+        returnedValue = false
+    }
+
+    if(data.phoneNumber.length >= 1 && data.phoneNumber.length <= 255){
+        returnedValue = true
+    } else {
+        returnedValue = false
+    }
+
+    if(data.whyDev.length >= 1 && data.whyDev.length <= 255){
+        returnedValue = true
+    } else {
+        returnedValue = false
+    }
+
+    if(data.codeExperience.length >= 1 && data.codeExperience.length <= 255){
+        returnedValue = true
+    } else {
+        returnedValue = false
+    }
+    return returnedValue
 }
