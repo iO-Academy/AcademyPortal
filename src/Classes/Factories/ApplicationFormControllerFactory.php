@@ -8,11 +8,11 @@ use Portal\Controllers\ApplicationFormController;
 class ApplicationFormControllerFactory
 {
     /**
-     * Creates login controller with dependencies
+     * Creates login controller with dependencies.
      *
      * @param ContainerInterface $container DIC
      *
-     * @return ApplicationFormController returns object with dependencies injected
+     * @return ApplicationFormController returns object with dependencies injected.
      */
 
     public function __invoke(ContainerInterface $container)

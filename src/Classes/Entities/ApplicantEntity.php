@@ -77,7 +77,7 @@ class ApplicantEntity
     }
 
     /**(
-     * Sanitise the applicant's email from the applicant's Data.
+     * Sanitise the applicant's email from the applicant's data.
      *
      * @param string $applicantData
      *
@@ -206,9 +206,9 @@ class ApplicantEntity
     }
 
     /**
-     * Get's cohortDate
+     * Get's cohortDate.
      *
-     * @return string, returns the cohortDate field
+     * @return string, returns the cohortDate field.
      */
     public function getCohortDate()
     {

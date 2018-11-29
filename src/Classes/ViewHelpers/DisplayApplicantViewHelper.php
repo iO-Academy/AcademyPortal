@@ -11,7 +11,7 @@ class DisplayApplicantViewHelper
      *
      * @param $applicants
      *
-     * @return string $result
+     * @return string $result, returns name, email, cohortID and all the data for the applicant.
      */
     static public function displayApplicants($applicants)
     {

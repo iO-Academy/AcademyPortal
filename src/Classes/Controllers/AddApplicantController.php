@@ -11,7 +11,7 @@ class AddApplicantController
     private $renderer;
 
     /**
-     * Will instantiate renderer
+     * Will instantiate renderer.
      *
      * @param PhpRenderer $renderer
      */
@@ -24,9 +24,9 @@ class AddApplicantController
     /**
      * Checks if the users are logged in or not.
      *
-     * @param Request $request HTTP request.
-     * @param Response $response HTTP response.
-     * @param $args array.
+     * @param Request $request HTTP request
+     * @param Response $response HTTP response
+     * @param $args array
      *
      * @return Response will return the url output.
      */

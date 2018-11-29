@@ -8,11 +8,11 @@ use Portal\Models\ApplicantModel;
 class ApplicantModelFactory
 {
     /**
-     * Creates applicant model with dependencies
+     * Creates applicant model with dependencies.
      *
      * @param ContainerInterface $container
      *
-     * @return ApplicantModel returns object with db connection injected
+     * @return ApplicantModel returns object with db connection injected.
      */
     public function __invoke(ContainerInterface $container)
     {
