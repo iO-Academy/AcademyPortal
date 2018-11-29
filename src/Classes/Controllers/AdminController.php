@@ -28,7 +28,7 @@ class AdminController
      * @param Response $response HTTP response
      * @param array $args
      *
-     * @return \Psr\Http\Message\ResponseInterface|Response
+     * @return \Psr\Http\Message\ResponseInterface|Response.
      */
     function __invoke(Request $request, Response $response, $args)
     {
