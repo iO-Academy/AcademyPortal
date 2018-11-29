@@ -26,31 +26,38 @@
     width: 90%;
 }
 
-.upper, .mid {
+.upper {
     width: 100%;
-    background-color: #fbd8ff;
 }
 
-.upper, .mid, .lower {
+.mid {
+    width: 100%;
     float: left;
     overflow: auto;
 }
 
-.infoBox, .infoBox-mid, .infoBox-low {
-    overflow: auto;
-    padding: 10px;
-}
-
-.infoBox, .infoBox-mid {
+.lower {
     float: left;
+    overflow: auto;
 }
 
 .infoBox {
+    overflow: auto;
+    padding: 10px;
+    float: left;
     width: 33.33%
 }
 
 .infoBox-mid {
+    overflow: auto;
+    padding: 10px;
+    float: left;
     width: 50%;
+}
+
+.infoBox-low {
+    overflow: auto;
+    padding: 10px;
 }
 
 .lower {
