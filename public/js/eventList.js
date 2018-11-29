@@ -1,5 +1,5 @@
 
-document.querySelectorAll(".event .lower").forEach(function(event) {
+document.querySelectorAll(".lower").forEach(function(event) {
     event.dataset.height = event.clientHeight
     event.style.height = 0
 })
