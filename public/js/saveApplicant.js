@@ -1,7 +1,14 @@
 document.getElementById('submitApplicant').addEventListener('click', e => {
     e.preventDefault()
     let data = getCompletedFormData()
-    makeApiRequest(data)
+    let validate = validateFormInputs(data)
+    validate.forEach(validateItem => {
+        if (element[''] = 0) {
+            document.getElementById('errorMsg').innerHTML = 'Not asll fields have been filled out. Try again...'
+        }
+            else {
+            makeApiRequest(data)
+        }
 })
 
 let getCompletedFormData = () => {
@@ -15,6 +22,8 @@ let getCompletedFormData = () => {
     })
     return data
 }
+
+
 
 let makeApiRequest = async (data) => {
     return fetch('/api/saveApplicant', {
