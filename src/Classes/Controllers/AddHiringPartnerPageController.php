@@ -30,8 +30,11 @@ class AddHiringPartnerPageController
      */
     public function __invoke(Request $request, Response $response, $args)
     {
-        $args['dropdownData'] = $this->hiringPartnerModel->getDropdownData();
-        return $this->renderer->render($response, 'test.phtml', $args);
+        if ($_SESSION['loggedIn']) {
+            $args['dropdownData'] = $this->hiringPartnerModel->getDropdownData();
+            return $this->renderer->render($response, 'addHiringPartner.phtml', $args);
+        } else {
+            return $response->withRedirect('/');
+        }
     }
-
 }
