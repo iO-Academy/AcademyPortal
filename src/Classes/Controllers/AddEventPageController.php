@@ -23,6 +23,12 @@ class AddEventPageController
         $this->eventModel = $eventModel;
     }
 
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param $args
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function __invoke(Request $request, Response $response, $args)
     {
         $args['dropdownData'] = $this->eventModel->getDropdownData();

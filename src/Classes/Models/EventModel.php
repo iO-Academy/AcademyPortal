@@ -15,6 +15,10 @@ class EventModel
         $this->db = $db;
     }
 
+    /**
+     * Queries event types and ids from database
+     * @return array
+     */
     public function getDropdownData()
     {
         $stmt = $this->db->query('SELECT id, type FROM eventTypes;');
