@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: imogen
- * Date: 28/11/2018
- * Time: 10:10
- */
 
 use PHPUnit\Framework\TestCase;
 use Portal\Models\HiringPartnerModel;
