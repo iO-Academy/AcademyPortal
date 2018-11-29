@@ -8,11 +8,11 @@ use Portal\Controller\RegisterUserController;
 class RegisterUserControllerFactory
 {
     /**
-     * Creates RegisterUserController with dependencies
+     * Creates RegisterUserController with dependencies.
      *
      * @param ContainerInterface $container
      *
-     * @return RegisterUserController returns object with db connection injected
+     * @return RegisterUserController returns object with db connection injected.
      */
     public function __invoke(ContainerInterface $container): RegisterUserController
     {
