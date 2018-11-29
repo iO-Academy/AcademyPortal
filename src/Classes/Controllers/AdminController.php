@@ -24,8 +24,8 @@ class AdminController
     /**
      * Checks if the user is admin or not and if true let them into admin page, if false redirect them back.
      *
-     * @param Request $request via HTTP request.
-     * @param Response $response HTTP response.
+     * @param Request $request via HTTP request
+     * @param Response $response HTTP response
      * @param array $args
      *
      * @return \Psr\Http\Message\ResponseInterface|Response

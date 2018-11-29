@@ -11,7 +11,7 @@ class SaveApplicantController
     private $applicantModel;
 
     /**
-     * Instantiates SaveApplicantController
+     * Instantiates SaveApplicantController.
      *
      * @param ApplicantModel $applicantModel userModel object dependency
      */

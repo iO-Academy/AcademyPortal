@@ -22,7 +22,7 @@ class LoginController
     }
 
     /**
-     * Verifies user credentials and returns message and status code
+     * Verifies user credentials and returns message and status code.
      *
      * @param Request $request HTTP request
      * @param Response $response HTTP response
