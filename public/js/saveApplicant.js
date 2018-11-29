@@ -36,7 +36,7 @@ let makeApiRequest = async (data) => {
         .then(response => response.json())
         .then((data) => {
             if (data.success) {
-                // window.location.href = '/admin';
+                window.location.href = '/admin';
             } else {
                 document.getElementById('errorMsg').innerHTML = "Please contact administrator. Or <a href='/admin'>click here</a> to return to admin page"
             }
@@ -46,7 +46,7 @@ let makeApiRequest = async (data) => {
 let validateFormInputs = (data) => {
     let returnedValue
 
-    if(data.name.length >= 1 && data.name.length <= 255 &&
+    if (data.name.length >= 1 && data.name.length <= 255 &&
         data.email.length >= 1 && data.email.length <= 255 &&
         data.phoneNumber.length >= 1 && data.phoneNumber.length <= 255 &&
         data.whyDev.length >= 1 && data.whyDev.length <= 255 &&
