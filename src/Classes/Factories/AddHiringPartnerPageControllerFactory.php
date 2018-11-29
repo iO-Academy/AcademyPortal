@@ -7,13 +7,13 @@ use Portal\Controllers\AddHiringPartnerPageController;
 class AddHiringPartnerPageControllerFactory
 {
     /**
-     * @param $c
+     * @param $container
      * @return AddHiringPartnerPageController
      */
-    public function __invoke($c)
+    public function __invoke($container)
     {
-        $renderer = $c->renderer;
-        $hiringPartnerModel = $c->HiringPartnerModel;
+        $renderer = $container->renderer;
+        $hiringPartnerModel = $container->HiringPartnerModel;
         return new AddHiringPartnerPageController($renderer, $hiringPartnerModel);
     }
 
