@@ -13,7 +13,7 @@ class DisplayApplicantsController
     private $applicantModel;
 
     /**
-     * DisplayTodosController constructor.
+     * DisplayApplicantsController constructor.
      *
      * @param PhpRenderer $renderer
      *
