@@ -26,18 +26,12 @@ class HiringPartnerEntity
     {
         if (preg_match($this->postcodeRegex, $postcode)) {
 
-            $companyName = filter_var($companyName, FILTER_SANITIZE_STRING);
-            $size = filter_var($size, FILTER_SANITIZE_NUMBER_INT);
-            $techStack = filter_var($techStack, FILTER_SANITIZE_STRING);
-            $phoneNo = filter_var($phoneNo, FILTER_SANITIZE_STRING);
-            $url = filter_var($url, FILTER_SANITIZE_URL);
-
-            $this->companyName = $companyName;
-            $this->size = $size;
-            $this->techStack = $techStack;
+            $this->companyName = filter_var($companyName, FILTER_SANITIZE_STRING);
+            $this->size = filter_var($size, FILTER_SANITIZE_NUMBER_INT);
+            $this->techStack = filter_var($techStack, FILTER_SANITIZE_STRING);
             $this->postcode = $postcode;
-            $this->phoneNo = $phoneNo;
-            $this->url = $url;
+            $this->phoneNo = filter_var($phoneNo, FILTER_SANITIZE_STRING);
+            $this->url = filter_var($url, FILTER_SANITIZE_URL);
         }
     }
 
