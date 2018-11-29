@@ -16,7 +16,4 @@ class AddHiringPartnerPageControllerTest extends TestCase
         $expected = AddHiringPartnerPageController::class;
         $this->assertInstanceOf($expected, $case);
     }
-
-
-
 }
