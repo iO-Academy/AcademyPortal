@@ -14,7 +14,7 @@ class ApplicantModel
     }
 
     /**
-     *  Inserts new ApplicantEntity into database - registering
+     * Inserts new ApplicantEntity into database - registering.
      *
      * @param $applicant
      *
