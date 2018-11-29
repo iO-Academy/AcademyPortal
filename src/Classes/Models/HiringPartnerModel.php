@@ -19,7 +19,8 @@ class HiringPartnerModel
      * Gets company size brackets from database
      * @return array each id and size bracket pair
      */
-    public function getDropdownData() {
+    public function getDropdownData()
+    {
         $stmt = $this->db->query('SELECT id, size FROM companySizeLink');
         return $stmt->fetchAll();
     }

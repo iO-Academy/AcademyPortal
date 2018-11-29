@@ -9,7 +9,8 @@ class AddHiringPartnerPageViewHelper
      * @param array $dropdownData is data from database
      * @return string html to go in select tag
      */
-    public static function outputSizeBrackets(array $dropdownData) {
+    public static function outputSizeBrackets(array $dropdownData)
+    {
         $return = '';
         foreach ($dropdownData as $bracket) {
             $return .= '<option value="' . $bracket['id'] . '">' . $bracket['size'] . '</option>';
