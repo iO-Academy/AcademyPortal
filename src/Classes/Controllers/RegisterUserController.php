@@ -11,7 +11,7 @@ class RegisterUserController
     private $userModel;
 
     /**
-     * Instantiates RegisterUserController
+     * Instantiates RegisterUserController.
      *
      * @param UserModel $userModel userModel object dependency
      */
@@ -21,12 +21,12 @@ class RegisterUserController
     }
 
     /**
-     * Validates username / email and updates database if email doesn't exist
+     * Validates username / email and updates database if email doesn't exist.
      *
      * @param Request $request HTTP request
      * @param Response $response HTTP response
      *
-     * @return error/success message and status code
+     * @return error/success message and status code.
      */
     function __invoke(Request $request, Response $response)
     {
