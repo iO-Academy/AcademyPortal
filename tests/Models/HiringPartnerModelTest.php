@@ -6,7 +6,8 @@ use Portal\Models\HiringPartnerModel;
 class HiringPartnerModelTest extends TestCase
 {
 
-    public function testConstruct() {
+    public function testConstruct()
+    {
         $db = $this->createMock(\PDO::class);
         $case = new HiringPartnerModel($db);
         $expected = HiringPartnerModel::class;
@@ -14,7 +15,8 @@ class HiringPartnerModelTest extends TestCase
         $this->assertInstanceOf($expected, $case);
     }
 
-    public function testGetDropdownData() {
+    public function testGetDropdownData()
+    {
         $db = $this->createMock(\PDO::class);
         $stmt = $this->createMock(PDOStatement::class);
         $stmt->method('fetchAll')->willReturn(true);

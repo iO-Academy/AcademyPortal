@@ -7,7 +7,8 @@ use Slim\Views\PhpRenderer;
 
 class AddHiringPartnerPageControllerTest extends TestCase
 {
-    public function testConstruct() {
+    public function testConstruct()
+    {
         $mockRenderer = $this->createMock(PhpRenderer::class);
         $mockModel = $this->createMock(HiringPartnerModel::class);
 
