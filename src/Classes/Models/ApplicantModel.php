@@ -79,6 +79,23 @@ class ApplicantModel
         return $results;
     }
 
+    /**
+     * Takes all the data/fields needed to create an applicant.
+     *
+     * @param $applicantName
+     * @param $applicantEmail
+     * @param $applicantPhoneNumber
+     * @param $applicantCohortId
+     * @param $applicantWhyDev
+     * @param $applicantCodeExperience
+     * @param $applicantHearAboutId
+     * @param $applicantEligible
+     * @param $applicantEighteenPlus
+     * @param $applicantFinance
+     * @param $applicantNotes
+     *
+     * @return ApplicantEntity, will then return all the data inside the applicant.
+     */
     public function createNewApplicant(
         $applicantName,
         $applicantEmail,
