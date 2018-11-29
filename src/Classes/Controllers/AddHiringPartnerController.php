@@ -5,6 +5,7 @@ namespace Portal\Controllers;
 
 use Portal\Entities\HiringPartnerEntity;
 use Portal\Models\HiringPartnerModel;
+use Portal\Validators\HiringPartnerValidator;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -42,23 +43,31 @@ class AddHiringPartnerController
         $statusCode = 406;
 
         $newHiringPartnerData = $request->getParsedBody();
-        $validIds = $this->hiringPartnerModel->getCompanySizeBracketIds();
+        $validIds = $this->flattenArray($this->hiringPartnerModel->getCompanySizeBracketIds(), 'id');
 
-        try {
-            $hiringPartnerEntity = new HiringPartnerEntity(
-                $validIds,
-                $newHiringPartnerData['companyName'],
-                $newHiringPartnerData['size'],
-                $newHiringPartnerData['techStack'],
-                $newHiringPartnerData['postcode'],
-                $newHiringPartnerData['phoneNo'],
-                $newHiringPartnerData['url']
-            );
-        } catch (\Error $e) {
+        if (
+            !HiringPartnerValidator::isValidHiringPartner($newHiringPartnerData) ||
+            !HiringPartnerValidator::isValidCompanySize($newHiringPartnerData['size'], $validIds)
+        ) {
             return $response->withJson($data, $statusCode);
         }
 
-        $successfulNewHiringPartner = $this->hiringPartnerModel->insertNewHiringPartnerToDb($hiringPartnerEntity);
+
+        $hiringPartnerEntity = new HiringPartnerEntity(
+            $newHiringPartnerData['companyName'],
+            $newHiringPartnerData['size'],
+            $newHiringPartnerData['techStack'],
+            $newHiringPartnerData['postcode'],
+            $newHiringPartnerData['phoneNo'],
+            $newHiringPartnerData['url']
+        );
+
+        try {
+            $successfulNewHiringPartner = $this->hiringPartnerModel->insertNewHiringPartnerToDb($hiringPartnerEntity);
+        } catch (\Exception $e) {
+            $statusCode = 500;
+            return $response->withJson($data, $statusCode);
+        }
 
         if ($successfulNewHiringPartner) {
             $data = [
@@ -69,5 +78,12 @@ class AddHiringPartnerController
             $statusCode = 200;
         }
         return $response->withJson($data, $statusCode);
+    }
+
+
+    public function flattenArray($array, $key) {
+        return array_map(function($v) use ($key) {
+            return $v[$key];
+        }, $array);
     }
 }

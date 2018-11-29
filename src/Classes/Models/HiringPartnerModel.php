@@ -42,6 +42,11 @@ class HiringPartnerModel
         return $stmt->execute();
     }
 
+    /**
+     * This fetches the company size bracket ids from the database
+     *
+     * @return array
+     */
     public function getCompanySizeBracketIds()
     {
         $stmt = $this->db->query("SELECT `id` FROM `companySizeLink`;");

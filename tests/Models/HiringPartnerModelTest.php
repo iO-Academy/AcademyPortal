@@ -56,4 +56,15 @@ class HiringPartnerModelTest Extends TestCase
         $this->expectException(\TypeError::class);
         $hiringPartnerModel->insertNewHiringPartnerToDb($mockHPEntity);
     }
+
+    function testGetCompanySizeBracketIdsSuccess()
+    {
+        $mockDb = $this->createMock(\PDO::class);
+        $mockStmt = $this->createMock(\PDOStatement::class);
+        $mockStmt->method('fetchAll')->willReturn(true);
+        $mockDb->method('query')->willReturn($mockStmt);
+        $sizeIds = new HiringPartnerModel($mockDb);
+        $result = $sizeIds->getCompanySizeBracketIds();
+        $this->assertTrue($result);
+    }
 }

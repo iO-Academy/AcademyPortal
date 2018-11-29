@@ -12,13 +12,13 @@ use Slim\Http\Response;
 class AddHiringPartnerControllerTest extends TestCase
 {
 
-    public $eventData = [
+    public $hiringPartnerData = [
         "companyName" => "Mayden Academy",
         "size" => "3",
         "techStack" => "PHP and JS",
         "postcode" => "E4 0LY",
         "phoneNo" => "0930183",
-        "url" => "www.google.com"
+        "url" => "http://www.google.com"
     ];
 
     public $successData = [
@@ -33,84 +33,146 @@ class AddHiringPartnerControllerTest extends TestCase
         'data' => []
     ];
 
-        function testConstructSuccess()
-        {
-            $mockHiringPartnerModel = $this->createMock(HiringPartnerModel::class);
+    public $eventSizeIds = [
+        ['id' => '1'],
+        ['id' => '2'],
+        ['id' => '3'],
+        ['id' => '4'],
+        ['id' => '5'],
+        ['id' => '6']
+    ];
 
-            $case = new AddHiringPartnerController($mockHiringPartnerModel);
-            $expected = AddHiringPartnerController::class;
-            $this->assertInstanceOf($expected, $case);
-        }
+    function testConstructSuccess()
+    {
+        $mockHiringPartnerModel = $this->createMock(HiringPartnerModel::class);
 
-        function testConstructFail()
-        {
-            $this->expectException(\TypeError::class);
-            new AddHiringPartnerController('not a database');
-        }
+        $case = new AddHiringPartnerController($mockHiringPartnerModel);
+        $expected = AddHiringPartnerController::class;
+        $this->assertInstanceOf($expected, $case);
+    }
 
-        function testInvokeSuccess()
-        {
-            $mockRequest = $this->createMock(Request::class);
-            $mockResponse = $this->createMock(Response::class);
+    function testConstructFail()
+    {
+        $this->expectException(\TypeError::class);
+        new AddHiringPartnerController('not a database');
+    }
 
-            $mockRequest->method('getParsedBody')->willReturn($this->eventData);
+    function testInvokeSuccess()
+    {
+        $mockRequest = $this->createMock(Request::class);
+        $mockResponse = $this->createMock(Response::class);
 
-            $mockHiringPartnerModel = $this->createMock(HiringPartnerModel::class);
-            $mockHiringPartnerModel->method('insertNewHiringPartnerToDb')->willReturn(true);
+        $mockRequest->method('getParsedBody')->willReturn($this->hiringPartnerData);
 
-            $mockResponse
-                ->method('withJson')
-                ->with($this->successData, 200)
-                ->willReturn(true);
+        $mockHiringPartnerModel = $this->createMock(HiringPartnerModel::class);
+        $mockHiringPartnerModel->method('insertNewHiringPartnerToDb')->willReturn(true);
+        $mockHiringPartnerModel->method('getCompanySizeBracketIds')->willReturn($this->eventSizeIds);
 
-            $addHPController = new AddHiringPartnerController($mockHiringPartnerModel);
 
-            $result = $addHPController($mockRequest, $mockResponse);
+        $mockResponse
+            ->method('withJson')
+            ->with($this->successData, 200)
+            ->willReturn(true);
 
-            $this->assertTrue($result);
-        }
+        $addHPController = new AddHiringPartnerController($mockHiringPartnerModel);
 
-        function testInvokeFailure()
-        {
-            $mockRequest = $this->createMock(Request::class);
-            $mockResponse = $this->createMock(Response::class);
+        $result = $addHPController($mockRequest, $mockResponse);
 
-            $mockRequest->method('getParsedBody')->willReturn($this->eventData);
+        $this->assertTrue($result);
+    }
 
-            $mockHiringPartnerModel = $this->createMock(HiringPartnerModel::class);
-            $mockHiringPartnerModel->method('insertNewHiringPartnerToDb')->willReturn(false);
+    function testInvokeFailure_insertToDBReturnFalse()
+    {
+        $mockRequest = $this->createMock(Request::class);
+        $mockResponse = $this->createMock(Response::class);
 
-            $mockResponse
-                ->method('withJson')
-                ->with($this->failureData, 406)
-                ->willReturn(true);
+        $mockRequest->method('getParsedBody')->willReturn($this->hiringPartnerData);
 
-            $addHPController = new AddHiringPartnerController($mockHiringPartnerModel);
+        $mockHiringPartnerModel = $this->createMock(HiringPartnerModel::class);
+        $mockHiringPartnerModel->method('getCompanySizeBracketIds')->willReturn($this->eventSizeIds);
+        $mockHiringPartnerModel->method('insertNewHiringPartnerToDb')->willReturn(false);
 
-            $result = $addHPController($mockRequest, $mockResponse);
+        $mockResponse
+            ->method('withJson')
+            ->with($this->failureData, 406)
+            ->willReturn(true);
 
-            $this->assertTrue($result);
-        }
+        $addHPController = new AddHiringPartnerController($mockHiringPartnerModel);
 
-        function testInvokeMalformed()
-        {
-            $mockRequest = $this->createMock(Request::class);
-            $mockResponse = $this->createMock(Response::class);
+        $result = $addHPController($mockRequest, $mockResponse);
 
-            $mockRequest->method('getParsedBody')->willReturn([]);
+        $this->assertTrue($result);
+    }
 
-            $mockHiringPartnerModel = $this->createMock(HiringPartnerModel::class);
-            $mockHiringPartnerModel->method('insertNewHiringPartnerToDb')->willReturn(false);
+    function testInvokeFailure_insertToDBThrowException()
+    {
+        $mockRequest = $this->createMock(Request::class);
+        $mockResponse = $this->createMock(Response::class);
 
-            $mockResponse
-                ->method('withJson')
-                ->with($this->failureData, 406)
-                ->willReturn(true);
+        $mockRequest->method('getParsedBody')->willReturn($this->hiringPartnerData);
 
-            $addHPController = new AddHiringPartnerController($mockHiringPartnerModel);
+        $mockHiringPartnerModel = $this->createMock(HiringPartnerModel::class);
+        $mockHiringPartnerModel->method('getCompanySizeBracketIds')->willReturn($this->eventSizeIds);
+        $mockHiringPartnerModel->method('insertNewHiringPartnerToDb')->willThrowException(new \Exception());
 
-            $result = $addHPController($mockRequest, $mockResponse);
+        $mockResponse
+            ->method('withJson')
+            ->with($this->failureData, 500)
+            ->willReturn(true);
 
-            $this->assertTrue($result);
-        }
+        $addHPController = new AddHiringPartnerController($mockHiringPartnerModel);
+
+        $result = $addHPController($mockRequest, $mockResponse);
+
+        $this->assertTrue($result);
+    }
+
+    function testInvokeMalformed_emptyPostData()
+    {
+        $mockRequest = $this->createMock(Request::class);
+        $mockResponse = $this->createMock(Response::class);
+
+        $mockRequest->method('getParsedBody')->willReturn([]);
+
+        $mockHiringPartnerModel = $this->createMock(HiringPartnerModel::class);
+        $mockHiringPartnerModel->method('getCompanySizeBracketIds')->willReturn($this->eventSizeIds);
+        $mockHiringPartnerModel->method('insertNewHiringPartnerToDb')->willReturn(false);
+
+        $mockResponse
+            ->method('withJson')
+            ->with($this->failureData, 406)
+            ->willReturn(true);
+
+        $addHPController = new AddHiringPartnerController($mockHiringPartnerModel);
+
+        $result = $addHPController($mockRequest, $mockResponse);
+
+        $this->assertTrue($result);
+    }
+
+    function testInvokeMalformed_invalidCompanySize()
+    {
+        $mockRequest = $this->createMock(Request::class);
+        $mockResponse = $this->createMock(Response::class);
+
+        $HpData = $this->hiringPartnerData;
+        $HpData['size'] = 8;
+
+        $mockRequest->method('getParsedBody')->willReturn($HpData);
+
+        $mockHiringPartnerModel = $this->createMock(HiringPartnerModel::class);
+        $mockHiringPartnerModel->method('getCompanySizeBracketIds')->willReturn($this->eventSizeIds);
+        $mockHiringPartnerModel->method('insertNewHiringPartnerToDb')->willReturn(false);
+
+        $mockResponse
+            ->method('withJson')
+            ->with($this->failureData, 406)
+            ->willReturn(true);
+
+        $addHPController = new AddHiringPartnerController($mockHiringPartnerModel);
+
+        $result = $addHPController($mockRequest, $mockResponse);
+
+        $this->assertTrue($result);
+    }
 }
