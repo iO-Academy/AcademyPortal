@@ -87,17 +87,6 @@ class ApplicantModel
         return $query->execute();
     }
 
-/**
- * Will select all the fields from the applicants table, to show the user's data.
- *
- * @return $results, this will return the results from the query.
- */
-    public function getAllApplicants()
-    {
-    $query = $this->db->prepare('SELECT `id`, `name`, `email`, `cohortid`, `phoneNumber`, `cohortid`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `notes`, `deleted` FROM `applicants`;');
-    $query->execute();
-    $results = $query->fetchAll(\PDO::FETCH_ASSOC);
-    return $results;
     /**
      * Retrieves selected applicant data from applicant table and cohort date from cohort table.
      *
@@ -105,7 +94,7 @@ class ApplicantModel
      */
     public function getAllApplicants()
     {
-        $query = $this->db->prepare('SELECT `name`, `email`, `date` FROM `applicants` LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`;');
+        $query = $this->db->prepare('SELECT `id`, `name`, `email`, `phoneNumber`, `cohortId`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `notes`, `deleted` FROM `applicants` LEFT JOIN `cohorts` ON `applicants`.`cohortId` = `cohorts`.`id`;');
         $query->execute();
         $results = $query->fetchAll(\PDO::FETCH_ASSOC);
         return $results;
