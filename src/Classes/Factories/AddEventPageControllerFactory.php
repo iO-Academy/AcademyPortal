@@ -7,13 +7,13 @@ use Portal\Controllers\AddEventPageController;
 class AddEventPageControllerFactory
 {
     /**
-     * @param $c
+     * @param $container
      * @return AddEventPageController
      */
-    public function __invoke($c)
+    public function __invoke($container)
     {
-        $renderer = $c->renderer;
-        $eventModel = $c->EventModel;
+        $renderer = $container->renderer;
+        $eventModel = $container->EventModel;
         return new AddEventPageController($renderer, $eventModel);
     }
 }

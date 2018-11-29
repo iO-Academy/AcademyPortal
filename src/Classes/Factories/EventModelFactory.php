@@ -7,12 +7,12 @@ use Portal\Models\EventModel;
 class EventModelFactory
 {
     /**
-     * @param $c
+     * @param $container
      * @return EventModel
      */
-    public function __invoke($c)
+    public function __invoke($container)
     {
-        $db = $c->dbConnection;
+        $db = $container->dbConnection;
         return new EventModel($db);
     }
 }
