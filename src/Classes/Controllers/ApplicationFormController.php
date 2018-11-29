@@ -28,7 +28,7 @@ class ApplicationFormController
      * @param Response $response
      * @param array $args
      *
-     * @return Response
+     * @return Response, carry through data and statusCode.
      */
     function __invoke(Request $request, Response $response, array $args)
     {
