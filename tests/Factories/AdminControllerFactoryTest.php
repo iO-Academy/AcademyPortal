@@ -20,4 +20,5 @@ class AdminControllerFactoryTest extends TestCase
         $expected = AdminController::class;
         $this->assertInstanceOf($expected, $case);
     }
+
 }

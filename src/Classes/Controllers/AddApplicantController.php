@@ -6,34 +6,35 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
-class AdminController
+class AddApplicantController
 {
     private $renderer;
 
     /**
-     * AdminController constructor.
-     * Instantiates admin controller.
+     * Will instantiate renderer.
      *
      * @param PhpRenderer $renderer
      */
+
     function __construct(PhpRenderer $renderer)
     {
         $this->renderer = $renderer;
     }
 
     /**
-     * Checks if the user is admin or not and if true let them into admin page, if false redirect them back.
+     * Checks if the users are logged in or not.
      *
-     * @param Request $request via HTTP request
+     * @param Request $request HTTP request
      * @param Response $response HTTP response
-     * @param array $args
+     * @param $args array
      *
-     * @return \Psr\Http\Message\ResponseInterface|Response.
+     * @return Response will return the url output.
      */
+
     function __invoke(Request $request, Response $response, $args)
-    {
+    {   
         if ($_SESSION['loggedIn'] === true) {
-            return $this->renderer->render($response, 'admin.phtml', $args);
+            return $this->renderer->render($response, 'addApplicant.phtml', $args);
         } else {
             $_SESSION['loggedIn'] = false;
             return $response->withRedirect('/');

@@ -8,9 +8,9 @@ class LoginControllerTest extends TestCase
 {
     function testConstruct()
     {
-        $stub = $this->createMock(UserModel::class);
+        $userModel = $this->createMock(UserModel::class);
 
-        $case = new LoginController($stub);
+        $case = new LoginController($userModel);
         $expected = LoginController::class;
         $this->assertInstanceOf($expected, $case);
     }

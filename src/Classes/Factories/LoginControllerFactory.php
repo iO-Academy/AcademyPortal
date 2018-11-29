@@ -8,7 +8,7 @@ use Psr\Container\ContainerInterface;
 class LoginControllerFactory
 {
     /**
-     * Creates login controller with dependencies
+     * Creates login controller with dependencies.
      *
      * @param ContainerInterface $container DIC
      *

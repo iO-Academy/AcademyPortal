@@ -1,11 +1,11 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Portal\Factories\UserModelFactory;
-use Portal\Models\UserModel;
+use Portal\Factories\ApplicationFormModelFactory;
+use Portal\Models\ApplicationFormModel;
 use Psr\Container\ContainerInterface;
 
-class UserModelFactoryTest extends TestCase
+class ApplicationFormModelFactoryTest extends TestCase
 {
     function testInvoke()
     {
@@ -14,9 +14,9 @@ class UserModelFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($db);
 
-        $factory = new UserModelFactory;
+        $factory = new ApplicationFormModelFactory;
         $case = $factory($container);
-        $expected = UserModel::class;
+        $expected = ApplicationFormModel::class;
         $this->assertInstanceOf($expected, $case);
     }
 

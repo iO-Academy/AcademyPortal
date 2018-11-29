@@ -45,7 +45,6 @@ loginForm.addEventListener('submit', async (e) => {
     if (response && response['success'] === true){
         window.location.href = "/admin"
     } else {
-        document.getElementById("error-message").innerText = response['msg'] || ''
+        document.getElementById("error-message").innerText = response['msg']
     }
-
 })

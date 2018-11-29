@@ -31,7 +31,8 @@ class RegisterController
      * @param Request $request
      * @param Response $response
      * @param array $args
-     * @return \Psr\Http\Message\ResponseInterface|Response
+     *
+     * @return \Psr\Http\Message\ResponseInterface|Response.
      */
     function __invoke(Request $request, Response $response, array $args)
     {
