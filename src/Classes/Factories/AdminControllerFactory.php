@@ -20,6 +20,3 @@ class AdminControllerFactory
         return new AdminController($renderer);
     }
 }
-
-// create RegisterUserControllerFactory
-// (needed even if no dependencies in case there are in future)

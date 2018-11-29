@@ -19,19 +19,35 @@ $container['logger'] = function ($c) {
 };
 
 // db connection
-$container['dbConnection'] = function () {
-    $db = new PDO('mysql:host=192.168.20.20;dbname=academyPortal', 'root');
+$container['dbConnection'] = function ($c) {
+    $settings = $c->get('settings')['db'];
+    $db = new PDO($settings['host'].$settings['dbName'], $settings['userName']);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
     return $db;
 };
 
+$container['RegisterController'] = new \Portal\Factories\RegisterControllerFactory();
+
 $container['UserModel'] = new \Portal\Factories\UserModelFactory();
+
 $container['LoginController'] = new \Portal\Factories\LoginControllerFactory();
-$container['AdminController'] = new \Portal\Factories\AdminControllerFactory();
-$container['RegisterUserController'] = new \Portal\Factory\RegisterUserControllerFactory();
+
 $container['addApplicantController'] = new \Portal\Factories\AddApplicantControllerFactory();
+
 $container['ApplicantModel'] = new \Portal\Factories\ApplicantModelFactory();
+
 $container['SaveApplicantController'] = new \Portal\Factories\SaveApplicantControllerFactory();
+
 $container['ApplicationFormModel'] =  new \Portal\Factories\ApplicationFormModelFactory();
+
 $container['ApplicationFormController'] = new \Portal\Factories\ApplicationFormControllerFactory();
+
 $container['DisplayApplicantsController'] = new \Portal\Factories\DisplayApplicantsControllerFactory();
+
+$container['AdminController'] = new \Portal\Factories\AdminControllerFactory();
+
+$container['RegisterUserController'] = new \Portal\Factories\RegisterUserControllerFactory();
+
+$container['HomePageController'] = new \Portal\Factories\HomePageControllerFactory();
+
+$container['RandomPasswordModel'] = new \Portal\Models\RandomPasswordModel();

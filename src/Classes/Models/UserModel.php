@@ -25,23 +25,25 @@ class UserModel
      */
     public function getUserByEmail($userEmail)
     {
-        $query = $this->db->prepare("SELECT `email`, `password` FROM `users` WHERE `email` = :email;");
-        $query->bindParam(':email', $userEmail);
-        $query->execute();
-        $userCredentials = $query->fetch();
-        return $userCredentials;
+        if ($this->validateEmail($userEmail) !== false) {
+            $query = $this->db->prepare("SELECT `email`, `password` FROM `users` WHERE `email` = :email;");
+            $query->bindParam(':email', $userEmail);
+            $query->execute();
+            return $query->fetch();
+        }
+        return [];
     }
 
     /**
-     * Verifies user credentials
+     * Verifies user credentials by comparing form input with email and hashed password in database
      *
      * @param string $userEmail value provided for comparison
      * @param string $password value provided for comparison
      * @param array $userCredentials values provided for comparison
      *
-     * @return true if email entered exists in database
+     * @return bool if email entered exists in database
      */
-    public function userLoginVerify(string $userEmail, string $password, $userCredentials):bool
+    public function userLoginVerify(string $userEmail, string $password, $userCredentials): bool
     {
         if (
             (is_array($userCredentials)) &&
@@ -61,11 +63,22 @@ class UserModel
      *
      * @return insert email and password into database
      */
-    public function insertNewUserToDb(string $registerEmail, string $registerPassword) {
-            $query = $this->db->prepare(
-                "INSERT INTO `users` (`email`, `password`) VALUES (:email, :password);");
-            $query->bindParam(':email', $registerEmail);
-            $query->bindParam(':password', $registerPassword);
-            return $query->execute();
+    public function insertNewUserToDb(string $registerEmail, string $registerPassword)
+    {
+        $query = $this->db->prepare(
+            "INSERT INTO `users` (`email`, `password`) VALUES (:email, :password);");
+        $query->bindParam(':email', $registerEmail);
+        $query->bindParam(':password', $registerPassword);
+        return $query->execute();
+    }
+
+    /** Validates if parameter is an email
+     *
+     * @param $email string value provided for validation
+     * @return mixed returns the email as a string if its a valid email otherwise it returns false
+     */
+    private function validateEmail($email)
+    {
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 }

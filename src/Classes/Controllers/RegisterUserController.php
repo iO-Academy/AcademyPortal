@@ -1,6 +1,6 @@
 <?php
 
-namespace Portal\Controller;
+namespace Portal\Controllers;
 
 use Portal\Models\UserModel;
 use Slim\Http\Request;
@@ -28,8 +28,8 @@ class RegisterUserController
      *
      * @return error/success message and status code
      */
-    function __invoke(Request $request, Response $response) {
-
+    function __invoke(Request $request, Response $response)
+    {
         if ($_SESSION['loggedIn'] === true) {
 
             $data = ['success' => false, 'msg' => 'User not registered.', 'data' => []];
@@ -37,16 +37,15 @@ class RegisterUserController
 
             $newUserData = $request->getParsedBody();
             $validatedUserData = [
-                'email' => filter_var($newUserData['email'], FILTER_SANITIZE_STRING),
-                'password' => filter_var($newUserData['password'], FILTER_SANITIZE_STRING)
+                'email' => filter_var($newUserData['email'], FILTER_SANITIZE_EMAIL),
+                'password' => $newUserData['password']
             ];
-
-            $successfulRegister = $this->userModel->insertNewUserToDb($validatedUserData['email'], $validatedUserData['password']);
+            $successfulRegister = $this->userModel->insertNewUserToDb($validatedUserData['email'], password_hash($validatedUserData['password'], PASSWORD_DEFAULT));
 
             if ($successfulRegister) {
                 $data = [
                     'success' => $successfulRegister,
-                    'msg' => 'User registered',
+                    'msg' => "New user added email:' ". $validatedUserData['email'] ." ' password:' ". $validatedUserData['password'] ." '",
                     'data' => []
                 ];
                 $statusCode = 200;

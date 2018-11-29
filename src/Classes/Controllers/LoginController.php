@@ -22,14 +22,14 @@ class LoginController
     }
 
     /**
-     * Verifies user credentials and returns message and status code
+     * Verifies user credentials then returns message and status code with login success status and attached message
      *
      * @param Request $request HTTP request
      * @param Response $response HTTP response
      *
      * @return string JSON message and status code
      */
-    public function __invoke(Request $request, Response $response)
+    public function __invoke(Request $request, Response $response) : Response
     {
         $data = ['success' => false, 'msg' => 'Incorrect email or password.', 'data' => []];
         $statusCode = 401;
@@ -37,7 +37,7 @@ class LoginController
 
         $parsedBody = $request->getParsedBody();
         $user = $this->userModel->getUserByEmail($parsedBody['userEmail']);
-        $result = $this->userModel->userLoginVerify($parsedBody['userEmail'], $parsedBody['password'], $user);
+        $result = $this->userModel->userLoginVerify($parsedBody['userEmail'], urldecode($parsedBody['password']), $user);
 
         if($result) {
             $data['success'] = $result;
