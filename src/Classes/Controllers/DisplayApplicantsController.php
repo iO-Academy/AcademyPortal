@@ -32,7 +32,7 @@ class DisplayApplicantsController
      * @param Response $response
      * @param array $args
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return \Psr\Http\Message\ResponseInterface.
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
