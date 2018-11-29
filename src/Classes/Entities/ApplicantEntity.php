@@ -71,7 +71,7 @@ class ApplicantEntity
      *
      * @return string, which will return the applicant data.
      */
-    public function sanitiseString(string $applicantData)
+    public function sanitiseString($applicantData)
     {
         return filter_var($applicantData, FILTER_SANITIZE_STRING);
     }
@@ -84,7 +84,7 @@ class ApplicantEntity
      * @return string $applicantData, returns valid email.
      * @return bool, returns false if invalid email.
      */
-    public function validateEmail(string $applicantData)
+    public function validateEmail($applicantData)
     {
         if (filter_var($applicantData, FILTER_VALIDATE_EMAIL)) {
             return $applicantData;
