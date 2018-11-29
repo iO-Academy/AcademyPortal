@@ -17,11 +17,11 @@ class UserModel
     }
 
     /**
-     * Gets email and password from database to login
+     * Gets email and password from database to login.
      *
-     * @param $userEmail used by prepared statement.
+     * @param $userEmail used by prepared statement
      *
-     * @return array contains user email and password
+     * @return array contains user email and password.
      */
     public function getUserByEmail($userEmail)
     {
@@ -33,13 +33,13 @@ class UserModel
     }
 
     /**
-     * Verifies user credentials
+     * Verifies user credentials.
      *
      * @param string $userEmail value provided for comparison
      * @param string $password value provided for comparison
      * @param array $userCredentials values provided for comparison
      *
-     * @return true if email entered exists in database
+     * @return true if email entered exists in database.
      */
     public function userLoginVerify(string $userEmail, string $password, $userCredentials):bool
     {
@@ -54,12 +54,12 @@ class UserModel
     }
 
     /**
-     * Inserts new user into database - registering
+     * Inserts new user into database - registering.
      *
      * @param string $registerEmail value provided from form to insert into database
      * @param string $registerPassword value provided from form to insert into database
      *
-     * @return insert email and password into database
+     * @return $query insert email and password into database.
      */
     public function insertNewUserToDb(string $registerEmail, string $registerPassword) {
             $query = $this->db->prepare(
