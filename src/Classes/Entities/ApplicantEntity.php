@@ -206,9 +206,9 @@ class ApplicantEntity
     }
 
     /**
-     * Get's cohortDate
+     * Get's cohortDate.
      *
-     * @return string, returns the cohortDate field
+     * @return string, returns the cohortDate field.
      */
     public function getCohortDate()
     {
