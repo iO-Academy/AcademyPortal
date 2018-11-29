@@ -26,6 +26,6 @@ class AddEventPageController
     public function __invoke(Request $request, Response $response, $args)
     {
         $args['dropdownData'] = $this->eventModel->getDropdownData();
-        return $this->renderer->render($response, 'test.phtml', $args);
+        return $this->renderer->render($response, 'addEvent.phtml', $args);
     }
 }

@@ -26,10 +26,7 @@
                     <label for="type" class="eventLabel">Type of Event: </label>
                     <select name="type" id="type" class="eventInput">
                         <option value="" selected disabled>Select Event</option>
-                        <option value="1">Hiring Partner</option>
-                        <option value="2">Taster Session</option>
-                        <option value="3">Sprint Review</option>
-                        <option value="4">Other</option>
+                        <?php echo \Portal\ViewHelpers\AddEventPageViewHelper::populateDropdown($dropdownData) ?>
                     </select>
                 </div>
                 <div class="eventDataRow">
