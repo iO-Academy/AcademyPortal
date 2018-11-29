@@ -48,6 +48,9 @@ class ApplicantEntity
 
     }
 
+    /**
+     * Will sanitise all the fields for an applicant.
+     */
     private function sanitiseData() {
         $this->name = $this->sanitiseString($this->name);
         $this->email = $this->sanitiseString($this->email);
