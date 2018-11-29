@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Add Event</title>
+        <link rel="stylesheet" type="text/css" href="css/genericStyles.css"/>
+        <link rel="stylesheet" href="css/addEventPage.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    </head>
+    <body>
+        <main class="addEventPageWrapper">
+            <h2 class="heading">Add Event</h2>
+            <form>
+                <div class="eventDataRow">
+                    <label for="eventName" class="eventLabel">Event Name: </label>
+                    <input type="text" name="eventName" id="eventName" class="eventInput">
+                </div>
+                <div class="eventDataRow">
+                    <label for="location" class="eventLabel">Location: </label>
+                    <input type="text" name="location" id="location" class="eventInput">
+                </div>
+                <div class="eventDataRow">
+                    <label for="type" class="eventLabel">Type of Event: </label>
+                    <select name="type" id="type" class="eventInput">
+                        <option value="" selected disabled>Select Event</option>
+                        <option value="1">Hiring Partner</option>
+                        <option value="2">Taster Session</option>
+                        <option value="3">Sprint Review</option>
+                        <option value="4">Other</option>
+                    </select>
+                </div>
+                <div class="eventDataRow">
+                    <label for="date" class="eventLabel">Date: </label>
+                    <input type="text" name="date" id="date" class="eventInput">
+                </div>
+                <div class="eventDataRow">
+                    <label for="startTime" class="eventLabel">Start Time: </label>
+                    <input type="text" name="startTime" id="startTime" class="eventInput" placeholder="hh:mm">
+                </div>
+                <div class="eventDataRow">
+                    <label for="endTime" class="eventLabel">End Time: </label>
+                    <input type="text" name="endTime" id="endTime" class="eventInput" placeholder="hh:mm">
+                </div>
+                <div class="eventDataRow notesWrapper">
+                    <label for="notes" class="eventLabel">Notes: </label>
+                    <textarea type="text" name="notes" id="notes" class="eventInput notes"></textarea>
+                </div>
+                <div class="eventDataRow">
+                    <a href="/admin" class="adminPageButton addEventPageButton">Back</a>
+                    <input type="submit" name="submitEventButton" id="submitEventButton" class="submitEventButton addEventPageButton" value="Add Event">
+                </div>
+            </form>
+        </main>
+        <script>
+            const date = flatpickr('#date', {})
+        </script>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="css/genericStyles.css"/>
+    <link rel="stylesheet" href="css/admin.css">
+
+    <title>AcademyPortal | Add Hiring Partner</title>
+</head>
+<body>
+    <div>
+        <a href="/admin" class="returnButton">Return to admin page</a>
+    </div>
+    <h1> Add Hiring Partner Page</h1>
+    <div id="message"></div>
+    <form id="addHiringPartnerForm">
+        <h4>Company name</h4>
+        <input type="text" class="addHiringPartner" name="companyName" required>
+        <h4>Size</h4>
+        <select name="companySize" class="addHiringPartner" required>
+            <option value=""> //populate dropdown with db info with ViewHelper
+        </select>
+        <h4>Tech Stack</h4>
+        <input type="text" class="addHiringPartner" name="techStack" required>
+        <h4>Postcode</h4>
+        <input type="text" class="addHiringPartner" name="postcode" required>
+        <h4>Phone Number</h4>
+        <input type="tel" class="addHiringPartner" name="telNumber">
+        <h4>Website</h4>
+        <input type="url" class="addHiringPartner" name="companyURL">
+        <input type="submit" id="addHiringPartnerSubmit">
+    </form>
+</body>
+</html>

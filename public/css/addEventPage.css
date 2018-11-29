@@ -1,0 +1,72 @@
+.addEventPageWrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.heading {
+    width: 200px;
+    margin: 50px auto;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.eventDataRow {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+}
+
+.eventLabel {
+    flex: 0 0 150px;
+    border-bottom: 2px solid #56e789;
+    margin-right: 20px;
+}
+
+.eventInput {
+    flex: 1 1 250px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 5px;
+}
+
+.addEventPageButton {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid #56e789;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.addEventPageButton:hover {
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.submitEventButton:hover {
+    background-color: #56e789;
+}
+
+.adminPageButton {
+    border: 2px solid #ffc0cb;
+}
+
+.adminPageButton:hover {
+    background-color: #ffc0cb;
+}
+
+.notesWrapper {
+    height: 100px;
+}
+
+.notes {
+    height: 100%;
+}
