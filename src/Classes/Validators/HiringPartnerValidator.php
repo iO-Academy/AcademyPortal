@@ -15,13 +15,14 @@ class HiringPartnerValidator
 
     public static function isValidHiringPartner($hiringPartnerArray)
     {
+        $hiringPartnerArray['phoneNo'] = ($hiringPartnerArray['phoneNo'] ?? '');
         return (
             is_string($hiringPartnerArray['companyName']) &&
             is_string($hiringPartnerArray['techStack']) &&
             is_numeric($hiringPartnerArray['size']) &&
             preg_match(self::POSTCODEREGEX, $hiringPartnerArray['postcode']) &&
             is_string($hiringPartnerArray['phoneNo']) &&
-            self::isValidURL($hiringPartnerArray['url'])
+            (!empty($hiringPartnerArray['url']) ? self::isValidURL($hiringPartnerArray['url']) : TRUE)
         );
     }
 
