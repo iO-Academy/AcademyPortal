@@ -17,9 +17,9 @@ class HiringPartnerValidator
     {
         $hiringPartnerArray['phoneNo'] = ($hiringPartnerArray['phoneNo'] ?? '');
         return (
-            is_string($hiringPartnerArray['companyName']) &&
+            is_string($hiringPartnerArray['companyName']) && //needs to be required currently allowing empty string
             is_string($hiringPartnerArray['techStack']) &&
-            is_numeric($hiringPartnerArray['size']) &&
+            is_numeric($hiringPartnerArray['size']) && //needs to be required currently allowing empty string
             preg_match(self::POSTCODEREGEX, $hiringPartnerArray['postcode']) &&
             is_string($hiringPartnerArray['phoneNo']) &&
             (!empty($hiringPartnerArray['url']) ? self::isValidURL($hiringPartnerArray['url']) : TRUE)
