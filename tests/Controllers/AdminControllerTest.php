@@ -13,6 +13,7 @@ class AdminControllerTest extends TestCase
         $case = new AdminController($renderer);
         $expected = AdminController::class;
         $this->assertInstanceOf($expected, $case);
+        $this->assertInstanceOf($expected, $case);
     }
 }
 
