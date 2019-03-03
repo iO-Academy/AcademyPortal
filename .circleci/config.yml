@@ -30,5 +30,8 @@ jobs:
           name: Install project dependencies
           command: php composer.phar install
       - run:
+          name: Setup Autoloader
+          command: php composer.phar dump-autoload
+      - run:
           name: Run Unit tests
           command: vendor/bin/phpunit
