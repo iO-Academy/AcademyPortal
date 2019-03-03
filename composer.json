@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Portal\\": "src/classes/"
+            "Portal\\": "src/Classes/"
         }
     },
     "config": {
