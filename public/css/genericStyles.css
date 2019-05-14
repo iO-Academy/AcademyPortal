@@ -9,7 +9,13 @@ body {
 label {
     margin-top: 20px;
 }
+h4 {
+    color: #157383;
+}
 
+p {
+    font-family: Helvetica Neue;
+}
 .errorMsg {
     color: #761c19;
     text-align: center;
@@ -35,3 +41,4 @@ label {
 .well .row {
     margin-left: 5px;
 }
+
