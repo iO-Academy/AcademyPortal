@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.6.41)
+# Host: 127.0.0.1 (MySQL 5.6.43)
 # Database: academyPortal
-# Generation Time: 2018-11-29 09:30:18 +0000
+# Generation Time: 2019-05-14 09:39:42 +0000
 # ************************************************************
 
 
@@ -88,6 +88,19 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table company_sizes
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `company_sizes`;
+
+CREATE TABLE `company_sizes` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `size` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
 # Dump of table hearAbout
 # ------------------------------------------------------------
 
@@ -114,6 +127,25 @@ VALUES
 
 /*!40000 ALTER TABLE `hearAbout` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+# Dump of table hiring_partner_companies
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `hiring_partner_companies`;
+
+CREATE TABLE `hiring_partner_companies` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `size` tinyint(2) DEFAULT '0',
+  `tech_stack` varchar(600) DEFAULT NULL,
+  `postcode` varchar(255) DEFAULT NULL,
+  `phone_number` varchar(255) DEFAULT NULL,
+  `url_website` varchar(255) DEFAULT NULL,
+  `main_contact` tinyint(4) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 
 # Dump of table users
