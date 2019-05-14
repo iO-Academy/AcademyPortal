@@ -11,7 +11,7 @@ class HiringPartnerModel {
         $this->db = $db;
     }
 
-    //Remember to typhint the HiringPartnerEntity in the param
+    //Remember to type hint the HiringPartnerEntity in the param
     public function addHiringPartner($company) {
         $query = $this->db->prepare("INSERT INTO `hiring_partner_companies` (
             `company_name`,
