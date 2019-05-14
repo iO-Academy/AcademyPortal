@@ -12,12 +12,28 @@ class DisplayHiringPartnerPageController
     private $hiringPartnerModel;
     private $renderer;
 
+    /**
+     * DisplayHiringPartnerPageController constructor.
+     *
+     * @param PhpRenderer $renderer
+     *
+     * @param HiringPartnerModel $hiringPartnerModel
+     */
     public function __construct(PhpRenderer $renderer, HiringPartnerModel $hiringPartnerModel)
     {
         $this->renderer = $renderer;
         $this->hiringPartnerModel = $hiringPartnerModel;
     }
 
+    /**
+     * Renders hiring partner company size on the front end in hiringPartnerPage.phtml
+     *
+     * @param Request $request
+     *
+     * @param Response $response
+     *
+     * @param array $args
+     */
     public function __invoke(Request $request, Response $response, array $args)
     {
         $args['companySize'] = $this->hiringPartnerModel->getCompanySize();
