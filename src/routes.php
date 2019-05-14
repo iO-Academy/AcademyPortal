@@ -9,6 +9,7 @@ $app->get('/register', 'RegisterController');
 $app->get('/addapplicant', 'addApplicantController');
 $app->get('/displayApplicants', 'DisplayApplicantsController');
 $app->get('/displayHiringPartnerPage', 'DisplayHiringPartnerPageController');
+$app->get('/createHiringPartner', 'CreateHiringPartnerController');
 
 // API routes
 $app->post('/api/saveApplicant', 'SaveApplicantController');
