@@ -5,6 +5,7 @@ namespace Portal\Entities;
 
 class ApplicantEntity
 {
+    protected $id;
     protected $name;
     protected $email;
     protected $phoneNumber;
@@ -19,6 +20,7 @@ class ApplicantEntity
     protected $cohortDate;
 
     public function __construct(
+        int $applicantId = null,
         string $applicantName = null,
         string $applicantEmail = null,
         string $applicantPhoneNumber = null,
@@ -32,6 +34,7 @@ class ApplicantEntity
         string $applicantNotes = null
     )
     {
+        $this->id = ($this->id ?? $applicantId);
         $this->name = ($this->name ?? $applicantName);
         $this->email = ($this->email ?? $applicantEmail);
         $this->phoneNumber = ($this->phoneNumber ?? $applicantPhoneNumber);
@@ -52,6 +55,7 @@ class ApplicantEntity
      * Will sanitise all the fields for an applicant.
      */
     private function sanitiseData() {
+        $this->id = $this->sanitiseInteger($this->id);
         $this->name = $this->sanitiseString($this->name);
         $this->email = $this->sanitiseString($this->email);
         $this->email = $this->validateEmail($this->email);
@@ -79,6 +83,18 @@ class ApplicantEntity
         return filter_var($applicantData, FILTER_SANITIZE_STRING);
     }
 
+
+    /**
+     * Sanitise as an integer in the applicant table as data.
+     *
+     * @param $applicantData
+     * @return mixed
+     */
+    public function sanitiseInteger($applicantData)
+    {
+        return filter_var($applicantData, FILTER_SANITIZE_NUMBER_INT);
+    }
+
     /**(
      * Sanitise the applicant's email from the applicant's data.
      *
@@ -94,6 +110,11 @@ class ApplicantEntity
         } else {
             return false;
         }
+
+    }
+
+    public function getId(){
+        return $this->id;
 
     }
 
