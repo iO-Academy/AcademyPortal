@@ -18,6 +18,7 @@ class ApplicantEntity
     protected $finance;
     protected $notes;
     protected $cohortDate;
+    protected $dateTimeAdded;
 
     public function __construct(
         int $applicantId = null,
@@ -32,6 +33,7 @@ class ApplicantEntity
         string $applicantEighteenPlus = null,
         string $applicantFinance = null,
         string $applicantNotes = null
+
     )
     {
         $this->id = ($this->id ?? $applicantId);
@@ -218,6 +220,16 @@ class ApplicantEntity
     }
 
     /**
+     * Get's dateOfApplication.
+     *
+     * @return string, returns the dateOfApplication field.
+     */
+    public function getDateOfApplication()
+    {
+        return $this->dateTimeAdded;
+    }
+
+    /**
      * Get's cohortDate.
      *
      * @return string, returns the cohortDate field.
@@ -226,4 +238,6 @@ class ApplicantEntity
     {
         return $this->cohortDate;
     }
+
+
 }
