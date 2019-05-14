@@ -16,9 +16,18 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 registeredApplicants">
-                <h1 class="col-xs-12 applicantFields">Registered Applicants</h1>
+                <h1>Registered Applicants</h1>
+                <table class="col-xs-12 table-bordered">
+                    <tr>
+                        <th class="col-xs-4">Name</th>
+                        <th class="col-xs-4">Email</th>
+                        <th class="col-xs-2">Date of application</th>
+                        <th class="col-xs-2">Cohort date</th>
+                    </tr>
+                    <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayApplicants($data); ?>
+
+                </table>
 <!--                this needs checking with viewHelper when all relevant branches are merged-->
-                <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayApplicants($data); ?>
             </div>
             <div class="container">
                 <!-- Trigger the modal with a button -->
