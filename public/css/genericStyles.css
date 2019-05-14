@@ -20,3 +20,7 @@ label {
 .collapse, .collapsing {
     clear: both;
 }
+
+.apply {
+    margin-top: 30px;
+}
