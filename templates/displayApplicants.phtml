@@ -4,12 +4,14 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Registered Applicants</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/css/displayApplicants.css">
-    <link rel="stylesheet" type="text/css" href="/css/genericStyles.css">
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<!--    <link rel="stylesheet" type="text/css" href="/css/displayApplicants.css"/>-->
+    <link rel="stylesheet" type="text/css" href="/css/genericStyles.css"/>
 </head>
 <body>
     <div class="container">
+    <?php require ('partials/filterApplicantBar.phtml'); ?>
         <div class="row">
             <div class="col-xs-12 registeredApplicants">
                 <h1 class="col-xs-12 applicantFields">Registered Applicants</h1>
@@ -19,5 +21,10 @@
             <a href="/admin"></a>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="/js/datePicker.js"></script>
 </body>
 </html>
