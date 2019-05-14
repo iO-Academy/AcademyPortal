@@ -17,9 +17,9 @@
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li data-id="">Spring 2019</li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
+                           <?php
+                           echo \Portal\ViewHelpers\DisplayCohortsViewHelper::displayCohorts($cohorts);
+                           ?>
                         </ul>
                     </div>
                 </div>
