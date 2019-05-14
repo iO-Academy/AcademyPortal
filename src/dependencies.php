@@ -57,3 +57,5 @@ $container['DisplayHiringPartnerPageController'] = new \Portal\Factories\Display
 $container['CreateHiringPartnerController'] = new \Portal\Factories\CreateHiringPartnerControllerFactory();
 
 $container['GetCompanySizeController'] = new \Portal\Factories\GetCompanySizeControllerFactory();
+
+$container['HiringPartnerModel'] = new \Portal\Factories\HiringPartnerModelFactory();
