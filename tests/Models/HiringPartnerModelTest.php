@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Models;
-
 use PHPUnit\Framework\TestCase;
 use Portal\Models\HiringPartnerModel;
 
