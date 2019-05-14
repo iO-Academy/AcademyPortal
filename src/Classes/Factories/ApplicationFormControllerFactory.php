@@ -18,6 +18,7 @@ class ApplicationFormControllerFactory
     public function __invoke(ContainerInterface $container)
     {
         $applicationFormModel = $container->get('ApplicationFormModel');
-        return new ApplicationFormController($applicationFormModel);
+        $cohortModel = $container->get('CohortModelFactory');
+        return new ApplicationFormController($applicationFormModel, $cohortModel);
     }
 }
