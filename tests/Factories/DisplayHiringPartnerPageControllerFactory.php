@@ -6,11 +6,15 @@ use Portal\Models\HiringPartnerModel;
 
 class DisplayHiringPartnerPageControllerFactoryTest extends TestCase {
 
-    function testConstruct()
+    function testInvoke()
     {
-        $stub = $this->createMock(PhpRenderer::class);
-        $case = new DisplayHiringPartnerPageControllerFactory($stub);
-        $expected = DisplayHiringPartnerPageControllerFactory::class;
+        $container = $this->createMock(ContainerInterface::class);
+        $model = $this->createMock(HiringPartnerModel::class);
+        $container->method('get')
+            ->willReturn($model);
+        $factory = new GetCompanySizeControllerFactory();
+        $case = $factory($container);
+        $expected = GetCompanySizeController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }
