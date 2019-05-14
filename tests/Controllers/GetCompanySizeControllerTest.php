@@ -2,6 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 use Portal\Controllers\GetCompanySizeController;
+use Portal\Models\HiringPartnerModel;
+
 
 class GetCompanySizeControllerTest extends TestCase
 {
