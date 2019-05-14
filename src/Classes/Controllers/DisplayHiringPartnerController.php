@@ -7,7 +7,8 @@ use \Slim\Http\Response as Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\HiringPartnerModel;
 
-class DisplayHiringPartnerController {
+class DisplayHiringPartnerController
+{
     private $hiringPartnerModel;
     private $renderer;
 
