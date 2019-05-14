@@ -10,7 +10,6 @@ namespace Portal\Controllers;
 
 use \Slim\Http\Request as Request;
 use \Slim\Http\Response as Response;
-use Slim\Views\PhpRenderer;
 use Portal\Models\ApplicantModel;
 
 
@@ -21,20 +20,22 @@ class GetApplicantController
     /**
      * GetApplicantController constructor.
      *
-     * @param PhpRenderer $renderer
-     *
      * @param ApplicantModel $applicantModel
      */
-    public function __construct( ApplicantModel $applicantModel)
+    public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
     }
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-        echo 'hello';
+        $id = $args['id'];
 
+        $applicant = $this->applicantModel->getApplicantById($id);
 
+       //var_dump($applicant);
+
+       return $response->withJson($applicant);
     }
 }
 

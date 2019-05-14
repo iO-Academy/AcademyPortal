@@ -19,7 +19,7 @@ class DisplayApplicantViewHelper
         $result = '';
         foreach ($applicants as $applicant) {
             if ($applicant instanceof ApplicantEntity) {
-                $result .= '<li dada-id="'. $applicant->getId().'"><strong>Name:</strong> ' .
+                $result .= '<li data-id="'. $applicant->getId().'"><strong>Name:</strong> ' .
                     $applicant->getName() . '<strong> Email:</strong> ' .
                     $applicant->getEmail() . '<strong> Date Applied To:</strong> ' .
                     $applicant->getCohortDate() . '</li>';

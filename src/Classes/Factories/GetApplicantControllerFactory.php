@@ -25,8 +25,7 @@ class GetApplicantControllerFactory
      */
     public function __invoke(ContainerInterface $container) : GetApplicantController
     {
-        $renderer = $container->get('renderer');
         $applicantModel = $container->get('ApplicantModel');
-        return new GetApplicantController($renderer, $applicantModel);
+        return new GetApplicantController($applicantModel);
     }
 }

@@ -55,7 +55,7 @@ class ApplicantEntity
      * Will sanitise all the fields for an applicant.
      */
     private function sanitiseData() {
-        $this->id = $this->sanitiseInteger($this->id);
+        $this->id = (int) $this->id;
         $this->name = $this->sanitiseString($this->name);
         $this->email = $this->sanitiseString($this->email);
         $this->email = $this->validateEmail($this->email);
@@ -81,18 +81,6 @@ class ApplicantEntity
     public function sanitiseString($applicantData)
     {
         return filter_var($applicantData, FILTER_SANITIZE_STRING);
-    }
-
-
-    /**
-     * Sanitise as an integer in the applicant table as data.
-     *
-     * @param $applicantData
-     * @return mixed
-     */
-    public function sanitiseInteger($applicantData)
-    {
-        return filter_var($applicantData, FILTER_SANITIZE_NUMBER_INT);
     }
 
     /**(

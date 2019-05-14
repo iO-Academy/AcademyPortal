@@ -80,6 +80,30 @@ class ApplicantModel
     }
 
     /**
+     * Retrieves an Applicant with the specified id
+     *
+     * @param $id
+     * @return object of applicant data
+     */
+    public function getApplicantById($id)
+    {
+        $query = $this->db->prepare('SELECT `applicants`.`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`,  `date` 
+                                                AS "cohortDate" 
+                                                FROM `applicants` 
+                                                LEFT JOIN `cohorts` 
+                                                ON `applicants`.`cohortId`=`cohorts`.`id` 
+                                                LEFT JOIN `hearAbout` 
+                                                ON `applicants`.`hearAboutId`=`hearAbout`.`id` 
+                                                WHERE `applicants`.`id`= :id;');
+        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        $query->execute([
+            'id' => $id
+        ]);
+        $results = $query->fetch();
+        return $results;
+    }
+
+    /**
      * Takes all the data/fields needed to create an applicant.
      *
      * @param $applicantName
