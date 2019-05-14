@@ -30,12 +30,12 @@ class HiringPartnerModel {
             `:websiteUrl`
             );"
         );
-        $query->bindParam(':companyName', $company->getCompanyName);
-        $query->bindParam(':companySize', $company->getCompanySize);
-        $query->bindParam(':techStack', $company->getTechStack);
-        $query->bindParam(':postcode', $company->getPostcode);
-        $query->bindParam(':phoneNumber', $company->getPhoneNumber);
-        $query->bindParam(':websiteUrl', $company->getWebsiteUrl);
+        $query->bindParam(':companyName', $company->getCompanyName());
+        $query->bindParam(':companySize', $company->getCompanySize());
+        $query->bindParam(':techStack', $company->getTechStack());
+        $query->bindParam(':postcode', $company->getPostcode());
+        $query->bindParam(':phoneNumber', $company->getPhoneNumber());
+        $query->bindParam(':websiteUrl', $company->getWebsiteUrl());
         return $query->execute();
     }
 
