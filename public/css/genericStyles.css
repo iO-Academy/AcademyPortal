@@ -24,3 +24,14 @@ label {
 .apply {
     margin-top: 30px;
 }
+
+.daterange {
+    width: 30%;
+}
+#dropdownMenu1 {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.well .row {
+    margin-left: 5px;
+}
