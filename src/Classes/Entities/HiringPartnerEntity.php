@@ -125,16 +125,7 @@ class HiringPartnerEntity
      *
      * @return string of website url
      */
-    public function getCompanyName(){
-        return $this->companyName;
-    }
-
-    /**
-     * Gets the hiring partner company name
-     *
-     * @return string of company name
-     */
-    public function getCompanyName(){
-        return $this->companyName;
+    public function getWebsiteURL(){
+        return $this->websiteUrl;
     }
 }
