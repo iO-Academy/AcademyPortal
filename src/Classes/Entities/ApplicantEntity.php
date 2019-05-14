@@ -3,7 +3,7 @@
 namespace Portal\Entities;
 
 
-class ApplicantEntity
+class ApplicantEntity implements \JsonSerializable
 {
     protected $id;
     protected $name;
@@ -51,6 +51,29 @@ class ApplicantEntity
 
         $this->sanitiseData();
 
+    }
+
+    /**
+     * Returns private properties from object.
+     *
+     * @return array|mixed
+     */
+    public function jsonSerialize() {
+        return ['id'=>$this->id,
+                'name'=>$this->name,
+                'email'=>$this->email,
+                'phoneNumber'=>$this->phoneNumber,
+                'cohortID'=>$this->cohortId,
+                'whyDev'=>$this->whyDev,
+                'codeExperience'=>$this->codeExperience,
+                'hearAboutId'=>$this->hearAboutId,
+                'eligible'=>$this->eligible,
+                'eighteenPlus'=>$this->eighteenPlus,
+                'finance'=>$this->finance,
+                'notes'=>$this->notes,
+                'cohortDate'=>$this->cohortDate,
+                'dateTimeAdded'=>$this->dateTimeAdded
+                ];
     }
 
     /**
@@ -103,7 +126,13 @@ class ApplicantEntity
 
     }
 
-    public function getId(){
+    /**
+     * Gets the Id
+     *
+     * @return int
+     */
+    public function getId()
+    {
         return $this->id;
 
     }

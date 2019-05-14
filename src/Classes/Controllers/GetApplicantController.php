@@ -30,12 +30,8 @@ class GetApplicantController
     public function __invoke(Request $request, Response $response, array $args)
     {
         $id = $args['id'];
-
         $applicant = $this->applicantModel->getApplicantById($id);
-
-       //var_dump($applicant);
-
-       return $response->withJson($applicant);
+        return $response->withJson($applicant);
     }
 }
 

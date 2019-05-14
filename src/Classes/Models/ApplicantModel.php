@@ -95,7 +95,7 @@ class ApplicantModel
                                                 LEFT JOIN `hearAbout` 
                                                 ON `applicants`.`hearAboutId`=`hearAbout`.`id` 
                                                 WHERE `applicants`.`id`= :id;');
-        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
         $query->execute([
             'id' => $id
         ]);
