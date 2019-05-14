@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.43)
 # Database: academyPortal
-# Generation Time: 2019-05-14 09:39:42 +0000
+# Generation Time: 2019-05-14 09:52:34 +0000
 # ************************************************************
 
 
@@ -99,6 +99,20 @@ CREATE TABLE `company_sizes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `company_sizes` WRITE;
+/*!40000 ALTER TABLE `company_sizes` DISABLE KEYS */;
+
+INSERT INTO `company_sizes` (`id`, `size`)
+VALUES
+	(1,'<5'),
+	(2,'5-30'),
+	(3,'31-60'),
+	(4,'61-100'),
+	(5,'101-250'),
+	(6,'250+');
+
+/*!40000 ALTER TABLE `company_sizes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table hearAbout
@@ -142,7 +156,6 @@ CREATE TABLE `hiring_partner_companies` (
   `postcode` varchar(255) DEFAULT NULL,
   `phone_number` varchar(255) DEFAULT NULL,
   `url_website` varchar(255) DEFAULT NULL,
-  `main_contact` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
