@@ -8,13 +8,13 @@ use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\HiringPartnerModel;
 
-class HiringPartnerController
+class CreateHiringPartnerController
 {
     public $hiringPartnerModel;
     public $renderer;
 
     /**
-     * HiringPartnerController constructor.
+     * CreateHiringPartnerController constructor.
      *
      * @param PhpRenderer $renderer
      * @param $hiringPartnerModel
