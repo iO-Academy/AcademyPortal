@@ -3,7 +3,6 @@ $(document).ready(function(){
 
         var url = '/displayApplicantInfo/' + this.dataset.id
 
-
         fetch(url)
             .then(
                 function(response) {
@@ -15,29 +14,31 @@ $(document).ready(function(){
 
                     // Examine the text in the response
                     response.json().then(function(data) {
-                        console.log(data)
                         var noDataMessage = 'No information provided'
-                        if(data.name != '') {
+                        if(data.name !== '') {
                             document.getElementById('name').innerHTML = data.name
                         }
-
-                        if (data.email != '') {
+                        if (data.email !== '') {
                             document.getElementById('email').innerHTML = data.email
                         } else {
                             document.getElementById('email').innerHTML = noDataMessage
                         }
-                        if (data.phoneNumber !='') {
+                        if (data.phoneNumber !== '') {
                             document.getElementById('phoneNumber').innerHTML = data.phoneNumber
                         } else {
                             document.getElementById('phoneNumber').innerHTML = noDataMessage
                         }
-                        document.getElementById('cohort').innerHTML =  data.cohortDate
-                        if (data.whyDev !=='') {
+                        if (data.cohortDate != null) {
+                            document.getElementById('cohort').innerHTML = data.cohortDate
+                        } else {
+                            document.getElementById('cohort').innerHTML = noDataMessage
+                        }
+                        if (data.whyDev !== '') {
                             document.getElementById('whyDev').innerHTML = data.whyDev
                         } else {
                             document.getElementById('whyDev').innerHTML = noDataMessage
                         }
-                        if(data.codeExperience != '') {
+                        if(data.codeExperience !== '') {
                             document.getElementById('codeExperience').innerHTML =  data.codeExperience
                         } else {
                             document.getElementById('codeExperience').innerHTML = noDataMessage
@@ -47,22 +48,22 @@ $(document).ready(function(){
                         } else {
                             document.getElementById('hearAbout').innerHTML = noDataMessage
                         }
-                        if (data.eligible != '0') {
+                        if (data.eligible !== 0) {
                             document.getElementById('eligible').innerHTML = 'Eligible for studying in the UK'
                         } else {
                             document.getElementById('eligible').innerHTML = 'Not eligible for studying in the UK'
                         }
-                        if (data.eighteenPlus !='0') {
+                        if (data.eighteenPlus !== 0) {
                             document.getElementById('eighteenPlus').innerHTML = 'Over eighteen'
                         } else {
                             document.getElementById('eighteenPlus').innerHTML = 'Under eighteen'
                         }
-                        if (data.finance !='0') {
-                            document.getElementById('finance').innerHTML = 'true'
+                        if (data.finance !== 0) {
+                            document.getElementById('finance').innerHTML = 'Would like to apply for finance'
                         } else {
-                            document.getElementById('finance').innerHTML = 'false'
+                            document.getElementById('finance').innerHTML = 'Would not like to apply for finance'
                         }
-                        if (data.notes !=='') {
+                        if (data.notes !== '') {
                             document.getElementById('notes').innerHTML = data.notes
                         } else{
                             document.getElementById('notes').innerHTML = noDataMessage
@@ -74,8 +75,6 @@ $(document).ready(function(){
             .catch(function(err) {
                 console.log('Fetch Error :-S', err)
             })
-
-
 
         $("#myModal").modal()
     })
