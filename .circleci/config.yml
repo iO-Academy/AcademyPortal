@@ -34,4 +34,4 @@ jobs:
           command: php composer.phar dump-autoload
       - run:
           name: Run Unit tests
-          command: vendor/bin/phpunit
+          command: vendor/bin/phpunit --fail-on-warning
