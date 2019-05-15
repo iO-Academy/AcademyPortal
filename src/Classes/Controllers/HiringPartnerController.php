@@ -47,12 +47,12 @@ class HiringPartnerController
 
         try {
             $hiringPartner = $this->hiringPartnerModel->createNewHiringPartner(
-              $newHiringPartner[''],
-              $newHiringPartner[''],
-              $newHiringPartner[''],
-              $newHiringPartner[''],
-              $newHiringPartner[''],
-              $newHiringPartner['']
+              $newHiringPartner['name'],
+              $newHiringPartner['companySize'],
+              $newHiringPartner['techStack'],
+              $newHiringPartner['postcode'],
+              $newHiringPartner['phoneNumber'],
+              $newHiringPartner['websiteUrl']
             );
             if(!empty($hiringPartner) && $hiringPartner instanceof HiringPartnerEntity) {
                 $result = $this->hiringPartnerModel->addHiringPartner($hiringPartner);
