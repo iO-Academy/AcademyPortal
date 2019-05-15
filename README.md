@@ -1,5 +1,11 @@
 # AcademyPortal API
 
+### Setup
+
+1. Run `composer install` in root of project
+2. Create database with name `academyPortal` and populate using latest version in db/
+3. `php -S localhost:8080 -t public public/index.php`
+
 ### Routes
 - for local development use localhost:8080/api/whatYouRequire as your URL
 
