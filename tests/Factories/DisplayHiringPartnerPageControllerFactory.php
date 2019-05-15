@@ -2,19 +2,15 @@
 
 use PHPUnit\Framework\TestCase;
 use Portal\Controllers\DisplayHiringPartnerPageController;
-use Portal\Models\HiringPartnerModel;
 
 class DisplayHiringPartnerPageControllerFactoryTest extends TestCase {
 
-    function testInvoke()
+    function testDisplayHiringPartnerPageControllerFactory()
     {
         $container = $this->createMock(ContainerInterface::class);
-        $model = $this->createMock(HiringPartnerModel::class);
-        $container->method('get')
-            ->willReturn($model);
-        $factory = new GetCompanySizeControllerFactory();
+        $factory = new \Portal\Factories\DisplayHiringPartnerPageControllerFactory($container);
         $case = $factory($container);
-        $expected = GetCompanySizeController::class;
+        $expected = DisplayHiringPartnerPageController\::class;
         $this->assertInstanceOf($expected, $case);
     }
 }
