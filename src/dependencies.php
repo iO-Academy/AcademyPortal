@@ -50,6 +50,8 @@ $container['RegisterUserController'] = new \Portal\Factories\RegisterUserControl
 
 $container['HomePageController'] = new \Portal\Factories\HomePageControllerFactory();
 
+$container['GetApplicantController'] = new \Portal\Factories\GetApplicantControllerFactory();
+
 $container['RandomPasswordModel'] = new \Portal\Models\RandomPasswordModel();
 
 $container['CohortModelFactory'] = new \Portal\Factories\CohortModelFactory();
