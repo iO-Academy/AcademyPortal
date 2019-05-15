@@ -43,7 +43,7 @@ function validateForm() {
 
         if (element.name === 'phoneNumber') {
             let phoneNumber =  element.value.trim()
-            let pattern = /(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})/gm
+            let pattern = /^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/gm
             let regEx = new RegExp(pattern)
             if (!regEx.test(phoneNumber)) {
                 message += 'Invalid phone number format!<br>'
