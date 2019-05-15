@@ -79,6 +79,6 @@ POST
 	   }
 - Returns success true / false:
 	- if new applicant registered successfully
-		- `{'success':true, 'msg':'Hiring Partner Added', 'data':[]}`
+		- `{'success':true, 'msg':'Hiring Partner successfully added', 'data':[]}`
 	- if new applicant not saved successfully
-		- `{'success':false, 'msg':'Application Not Saved', 'data':[]}`
+		- `{'success':false, 'msg':'Hiring Partner not added', 'data':[]}`
