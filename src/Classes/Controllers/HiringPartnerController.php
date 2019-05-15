@@ -2,12 +2,14 @@
 
 namespace Portal\Controllers;
 
+use Portal\Entities\HiringPartnerEntity;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\HiringPartnerModel;
 
-class HiringPartnerController {
+class HiringPartnerController
+{
     public $hiringPartnerModel;
     public $renderer;
 
@@ -35,15 +37,38 @@ class HiringPartnerController {
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $userData = $request->getParsedBody();
-        $addHiringPartner = $userData['addHiringPartner'];
+        $newHiringPartner = $request->getParsedBody();
+        $data = [
+            'success' => false,
+            'message' => 'Error!',
+            'data' => []
+        ];
+        $statusCode = 400;
+
         try {
-            $this->hiringPartnerModel->addHiringPartner($addHiringPartner);
+            $hiringPartner = $this->hiringPartnerModel->createNewHiringPartner(
+              $newHiringPartner[''],
+              $newHiringPartner[''],
+              $newHiringPartner[''],
+              $newHiringPartner[''],
+              $newHiringPartner[''],
+              $newHiringPartner['']
+            );
+            if(!empty($hiringPartner) && $hiringPartner instanceof HiringPartnerEntity) {
+                $result = $this->hiringPartnerModel->addHiringPartner($hiringPartner);
+            }
+        } catch (\Exception $exception) {
+            $data['message'] = $exception->getMessage();
         }
-        catch (\Exception $exception) {
-            $args['errorMessage'] = $exception->getMessage();
-            $this->renderer->render($response, 'error.phtml', $args);
+
+        if (isset($result) && $result) {
+            $data = [
+                'success' => true,
+                'message' => 'Hiring Partner Added to the db',
+                'data' => []
+            ];
+            $statusCode = 200;
         }
-        return $response->withRedirect('/hiringpartnerpage.phtml');
+        return $response->withJson($data, $statusCode);
     }
 }
