@@ -9,15 +9,14 @@
     <link type="text/css" rel="stylesheet" href="./css/genericStyles.css">
 </head>
 <body>
-<?php var_dump($data); ?>
     <div class="container">
         <h1>Hiring Partners</h1>
         <form>
             <label for="name">Company Name</label>
             <input id="name" name="name" class="submitHiringPartner form-control" type="text" placeholder="name" required>
             <label for='companySize'>Company Size</label>
-            <select name='companySize' id='companySize'>
-<!--                --><?php //echo \Portal\ViewHelpers\CompanySizeViewHelper::companySizesDropdown($data); ?>
+            <select name='companySize' id='companySize' class='form-control'>
+                <?php echo \Portal\ViewHelpers\CompanySizeViewHelper::companySizeDropdown($data); ?>
             </select>
             <label for="techStack">Company Tech Stack</label>
             <input id="techStack" name="techStack" class="submitHiringPartner form-control" type="text" placeholder="Company tech stack" required>
