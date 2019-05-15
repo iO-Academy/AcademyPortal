@@ -3,8 +3,9 @@
 namespace Portal\Entities;
 
 
-class ApplicantEntity
+class ApplicantEntity implements \JsonSerializable
 {
+    protected $id;
     protected $name;
     protected $email;
     protected $phoneNumber;
@@ -20,6 +21,7 @@ class ApplicantEntity
     protected $dateTimeAdded;
 
     public function __construct(
+        int $applicantId = null,
         string $applicantName = null,
         string $applicantEmail = null,
         string $applicantPhoneNumber = null,
@@ -34,6 +36,7 @@ class ApplicantEntity
 
     )
     {
+        $this->id = ($this->id ?? $applicantId);
         $this->name = ($this->name ?? $applicantName);
         $this->email = ($this->email ?? $applicantEmail);
         $this->phoneNumber = ($this->phoneNumber ?? $applicantPhoneNumber);
@@ -51,9 +54,33 @@ class ApplicantEntity
     }
 
     /**
+     * Returns private properties from object.
+     *
+     * @return array|mixed
+     */
+    public function jsonSerialize() {
+        return ['id'=>$this->id,
+                'name'=>$this->name,
+                'email'=>$this->email,
+                'phoneNumber'=>$this->phoneNumber,
+                'cohortID'=>$this->cohortId,
+                'whyDev'=>$this->whyDev,
+                'codeExperience'=>$this->codeExperience,
+                'hearAboutId'=>$this->hearAboutId,
+                'eligible'=>$this->eligible,
+                'eighteenPlus'=>$this->eighteenPlus,
+                'finance'=>$this->finance,
+                'notes'=>$this->notes,
+                'cohortDate'=>$this->cohortDate,
+                'dateTimeAdded'=>$this->dateTimeAdded
+                ];
+    }
+
+    /**
      * Will sanitise all the fields for an applicant.
      */
     private function sanitiseData() {
+        $this->id = (int) $this->id;
         $this->name = $this->sanitiseString($this->name);
         $this->email = $this->sanitiseString($this->email);
         $this->email = $this->validateEmail($this->email);
@@ -96,6 +123,17 @@ class ApplicantEntity
         } else {
             return false;
         }
+
+    }
+
+    /**
+     * Gets the Id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
 
     }
 
@@ -218,6 +256,12 @@ class ApplicantEntity
     public function getDateOfApplication()
     {
         return $this->dateTimeAdded;
+    }
+
+    public function getDateOfApplicationUsingMMDDYYYY()
+    {
+        $timestamp = strtotime($this->dateTimeAdded);
+         return date("m/d/Y",$timestamp);
     }
 
     /**
