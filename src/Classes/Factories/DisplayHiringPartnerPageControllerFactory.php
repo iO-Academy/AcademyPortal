@@ -2,7 +2,6 @@
 
 namespace Portal\Factories;
 
-use Portal\Models\HiringPartnerModel;
 use Psr\Container\ContainerInterface;
 use Portal\Controllers\DisplayHiringPartnerPageController;
 
