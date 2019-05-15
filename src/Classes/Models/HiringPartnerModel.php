@@ -2,6 +2,8 @@
 
 namespace Portal\Models;
 
+use Portal\Entities\HiringPartnerEntity;
+
 class HiringPartnerModel {
 
     private $db;
@@ -12,7 +14,8 @@ class HiringPartnerModel {
     }
 
     //Remember to type hint the HiringPartnerEntity in the param
-    public function addHiringPartner($company) {
+    public function addHiringPartner($company) :bool
+    {
         $query = $this->db->prepare("INSERT INTO `hiring_partner_companies` (
             `company_name`,
             `size`, 
@@ -39,9 +42,29 @@ class HiringPartnerModel {
         return $query->execute();
     }
 
-    public function getCompanySize() {
+    public function getCompanySize() :array
+    {
         $query = $this->db->prepare("SELECT `id`,`size` FROM `company_sizes`");
         $query->execute();
         return $query->fetchAll();
+    }
+
+    public function createNewHiringPartner(
+        string $companyName,
+        string $companySize,
+        string $techStack,
+        string $postocde,
+        string $phoneNumber,
+        string $websiteUrl
+    ) :HiringPartnerEntity
+    {
+        return new HiringPartnerEntity(
+            $companyName,
+            $companySize,
+            $techStack,
+            $postocde,
+            $phoneNumber,
+            $websiteUrl
+        );
     }
 }
