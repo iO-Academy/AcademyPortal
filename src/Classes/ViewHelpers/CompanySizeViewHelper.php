@@ -9,5 +9,6 @@ class CompanySizeViewHelper
         foreach ($data['companySize'] as $companySize) {
             $companySizeDropdown .= '<option value=' . $companySize['id'] . '>' . $companySize['size'] . '</option>';
         }
+        return $companySizeDropdown;
     }
 }
