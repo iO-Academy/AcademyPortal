@@ -7,26 +7,29 @@
     <title>Academy Portal | Hiring Partners</title>
     <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="./css/genericStyles.css">
+    <script src='./js/hiringPartner.js' defer></script>
 </head>
 <body>
     <div class="container">
         <h1>Hiring Partners</h1>
-        <form>
+        <form id='hiringPartnerForm'>
             <label for="name">Company Name</label>
-            <input id="name" name="name" class="submitHiringPartner form-control" type="text" placeholder="name" required>
+            <input id="name" name="name" class="submitHiringPartner form-control" type="text" placeholder="name" data-required='true' data-max='255'>
             <label for='companySize'>Company Size</label>
-            <select name='companySize' id='companySize' class='form-control'>
+            <select name='companySize' id='companySize' class='submitHiringPartner form-control'>
+                <option value='0'>Please select a company size...</option>
                 <?php echo \Portal\ViewHelpers\CompanySizeViewHelper::companySizeDropdown($data); ?>
             </select>
             <label for="techStack">Company Tech Stack</label>
-            <input id="techStack" name="techStack" class="submitHiringPartner form-control" type="text" placeholder="Company tech stack" required>
+            <input id="techStack" name="techStack" class="submitHiringPartner form-control" type="text" placeholder="Company tech stack" data-required='true' data-max='600'>
             <label for='postcode'>Postcode</label>
-            <input id='postcode' name='postcode' class="submitHiringPartner form-control" type="text" placeholder="Postcode" required>
+            <input id='postcode' name='postcode' class="submitHiringPartner form-control" type="text" placeholder="Postcode" data-required='true' data-max='10'>
             <label for='phoneNumber'>Phone Number</label>
-            <input id='phoneNumber' name='phoneNumber' class="submitHiringPartner form-control" type="text" placeholder="Phone Number">
+            <input id='phoneNumber' name='phoneNumber' class="submitHiringPartner form-control" type="text" placeholder="Phone Number" data-max='20'>
             <label for='companyUrl'>Company Website URL</label>
-            <input id='companyUrl' name='companyUrl' class="submitHiringPartner form-control" type="text" placeholder="Company Website Url">
+            <input id='companyUrl' name='companyUrl' class="submitHiringPartner form-control" type="text" placeholder="Company Website Url" data-max='255'>
             <input id="submitHiringPartner" type="submit" class="btn btn-success"/>
         </form>
+        <div id='messages'></div>
     </div>
 </body>
