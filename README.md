@@ -64,3 +64,10 @@ POST
 		- `{'success':true, 'msg':'Application Saved', 'data':[]}`
 	- if new applicant not saved successfully
 		- `{'success':false, 'msg':'Application Not Saved', 'data':[]}`
+
+**/createHiringPartner**
+
+POST
+- Saves a new hiring partner to the hiring_partner_companies table in the database
+- Sends:
+    - `{`
