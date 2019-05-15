@@ -258,6 +258,12 @@ class ApplicantEntity implements \JsonSerializable
         return $this->dateTimeAdded;
     }
 
+    public function getDateOfApplicationUsingMMDDYYYY()
+    {
+        $timestamp = strtotime($this->dateTimeAdded);
+         return date("m/d/Y",$timestamp);
+    }
+
     /**
      * Get's cohortDate.
      *
