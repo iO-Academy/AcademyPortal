@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-xs-8 center-block">
+        <button class="btn btn-primary pull-right" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Apply Filters
+        </button>
+        <div class="collapse" id="collapseExample">
+            <div class="well">
+                <div class="row">
+                    <label for="daterange">Application Date Range:</label>
+                    <input class="daterange" type="text" name="daterange" value="01/01/2019 - 01/01/2020" />
+                </div>
+                <div class="row">
+                    <label for="dropdownMenu1" class="cohortlabel pull-left"> Cohort Date:</label>
+                    <div class="dropdown pull-left">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Choose Cohort
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                           <?php
+                           echo \Portal\ViewHelpers\DisplayCohortsViewHelper::displayCohorts($cohorts);
+                           ?>
+                        </ul>
+                    </div>
+                </div>
+                <button class="btn btn-primary apply" type="button">
+                    Apply
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,6 +18,7 @@ class DisplayApplicantsControllerFactory
     {
         $renderer = $container->get('renderer');
         $applicantModel = $container->get('ApplicantModel');
-        return new DisplayApplicantsController($renderer, $applicantModel);
+        $cohortModel = $container->get('CohortModelFactory');
+        return new DisplayApplicantsController($renderer, $applicantModel, $cohortModel);
     }
 }

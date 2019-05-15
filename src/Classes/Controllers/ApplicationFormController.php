@@ -2,6 +2,7 @@
 
 namespace Portal\Controllers;
 
+use Portal\Models\CohortModel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Portal\Models\ApplicationFormModel;
@@ -9,15 +10,18 @@ use Portal\Models\ApplicationFormModel;
 class ApplicationFormController
 {
     private $applicationFormModel;
+    private $cohortModel;
 
     /**
      * ApplicationFormController constructor.
      * 
      * @param ApplicationFormModel $applicationFormModel
+     * @param CohortModel $cohortModel
      */
-    function __construct(ApplicationFormModel $applicationFormModel)
+    function __construct(ApplicationFormModel $applicationFormModel, CohortModel $cohortModel)
     {   
         $this->applicationFormModel = $applicationFormModel;
+        $this->cohortModel = $cohortModel;
     }
 
     /**
@@ -38,7 +42,7 @@ class ApplicationFormController
                 'success' => true, 
                 'msg' => 'Retrieved dropdown info.', 
                 'data' => [
-                        'cohorts' => $this->applicationFormModel->getCohorts(),
+                        'cohorts' => $this->cohortModel->getCohorts(),
                         'hearAbout' => $this->applicationFormModel->getHearAbout(),
                 ]
             ];
