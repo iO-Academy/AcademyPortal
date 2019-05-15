@@ -7,21 +7,22 @@
     <title>Academy Portal | Hiring Partners</title>
     <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="./css/genericStyles.css">
+    <script src='./js/hiringPartnerValidation.js' defer></script>
 </head>
 <body>
     <div class="container">
         <h1>Hiring Partners</h1>
-        <form>
+        <form id='hiringPartnerForm'>
             <label for="name">Company Name</label>
-            <input id="name" name="name" class="submitHiringPartner form-control" type="text" placeholder="name" required>
+            <input id="name" name="name" class="submitHiringPartner form-control" type="text" placeholder="name" data-required='true'>
             <label for='companySize'>Company Size</label>
-            <select name='companySize' id='companySize' class='form-control'>
+            <select name='companySize' id='companySize' class='submitHiringPartner form-control'>
                 <?php echo \Portal\ViewHelpers\CompanySizeViewHelper::companySizeDropdown($data); ?>
             </select>
             <label for="techStack">Company Tech Stack</label>
-            <input id="techStack" name="techStack" class="submitHiringPartner form-control" type="text" placeholder="Company tech stack" required>
+            <input id="techStack" name="techStack" class="submitHiringPartner form-control" type="text" placeholder="Company tech stack" data-required='true'>
             <label for='postcode'>Postcode</label>
-            <input id='postcode' name='postcode' class="submitHiringPartner form-control" type="text" placeholder="Postcode" required>
+            <input id='postcode' name='postcode' class="submitHiringPartner form-control" type="text" placeholder="Postcode" data-required='true'>
             <label for='phoneNumber'>Phone Number</label>
             <input id='phoneNumber' name='phoneNumber' class="submitHiringPartner form-control" type="text" placeholder="Phone Number">
             <label for='companyUrl'>Company Website URL</label>
