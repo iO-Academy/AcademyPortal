@@ -7,7 +7,15 @@ use Portal\Controllers\DisplayHiringPartnerPageController;
 
 class DisplayHiringPartnerPageControllerFactory
 {
- public function __invoke(ContainerInterface $container) : DisplayHiringPartnerPageController
+    /**
+     * Instantiates DisplayHiringPartnerPageController with dependencies.
+     *
+     * @param ContainerInterface $container
+     *
+     * @return DisplayHiringPartnerPageController
+     */
+
+    public function __invoke(ContainerInterface $container) : DisplayHiringPartnerPageController
  {
      $renderer = $container->get('renderer');
      $hiringPartnerModel = $container->get('HiringPartnerModel');
