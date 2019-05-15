@@ -61,6 +61,14 @@ function validateForm() {
                 success = false
             }
         }
+
+        if (element.name === 'companySize') {
+            let idRange = document.getElementsByTagName('option').length -1
+            if (element.value > idRange) {
+                message += 'Invalid company size range info!<br>'
+                success = false
+            }
+        }
     })
 
     document.getElementById('messages').innerHTML = message
