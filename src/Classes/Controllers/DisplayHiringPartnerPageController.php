@@ -26,6 +26,7 @@ class DisplayHiringPartnerPageController
     }
 
     /**
+     * Renders hiring partner company size on the front end in hiringPartnerPage.phtml
      * Renders hiring partner page on the front end in hiringPartnerPage.phtml
      *
      * @param Request $request
@@ -36,6 +37,7 @@ class DisplayHiringPartnerPageController
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
+        $args['companySize'] = $this->hiringPartnerModel->getCompanySize();
         $this->renderer->render($response, 'hiringPartnerPage.phtml', $args);
     }
 }
