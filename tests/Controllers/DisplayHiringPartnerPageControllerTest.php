@@ -3,6 +3,7 @@
 use PHPUnit\Framework\TestCase;
 use Portal\Controllers\DisplayHiringPartnerPageController;
 use Portal\Models\HiringPartnerModel;
+use Slim\Views\PhpRenderer;
 
 class DisplayHiringPartnerPageControllerTest extends TestCase
 {
