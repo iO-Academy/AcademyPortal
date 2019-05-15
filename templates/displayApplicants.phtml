@@ -13,34 +13,32 @@
 
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 registeredApplicants">
-                <h1>Registered Applicants</h1>
-                <table class="col-xs-12 table-bordered">
-                    <tr>
-                        <th class="col-xs-2">Name</th>
-                        <th class="col-xs-4">Email</th>
-                        <th class="col-xs-2">Date of application</th>
-                        <th class="col-xs-2">Cohort date</th>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 registeredApplicants">
+            <h1>Registered Applicants</h1>
+            <table class="col-xs-12 table-bordered">
+                <tr>
+                    <th class="col-xs-2">Name</th>
+                    <th class="col-xs-4">Email</th>
+                    <th class="col-xs-2">Date of application</th>
+                    <th class="col-xs-2">Cohort date</th>
+                </tr>
+                <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayApplicants($data); ?>
+            </table>
+        </div>
+        <div class="container">
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-lg">
 
-
-                    </tr>
-                    <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayApplicants($data); ?>
-
-                </table>
-            </div>
-            <div class="container">
-                <!-- Modal -->
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog modal-lg">
-
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h2 class="modal-title">Applicant Details</h2>
-                            </div>
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h2 class="modal-title">Applicant Details</h2>
+                        </div>
+                        <div id="modal-main">
                             <div class="modal-body">
                                 <h3>Personal Information</h3>
                                 <h4> Name</h4>
@@ -54,7 +52,7 @@
                             <div class="modal-body">
                                 <h3>Application Information</h3>
                                 <h4>Cohort</h4>
-                                <p id="cohort"></p>
+                                <p id="cohortDate"></p>
                                 <h4>Reason for wanting to be a dev</h4>
                                 <p id="whyDev"></p>
                                 <h4>Code Experience</h4>
@@ -72,15 +70,16 @@
                                 <h4>Date/Time Added</h4>
                                 <p id="dateTimeAdded"></p>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <a href="/admin"></a>
         </div>
+        <a href="/admin"></a>
     </div>
+</div>
 </body>
 </html>

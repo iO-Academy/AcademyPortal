@@ -59,6 +59,7 @@ class ApplicantEntity implements \JsonSerializable
      * @return array|mixed
      */
     public function jsonSerialize() {
+        $formatedData = date("F, Y", strtotime($this->cohortDate) );
         return ['id'=>$this->id,
                 'name'=>$this->name,
                 'email'=>$this->email,
@@ -71,7 +72,7 @@ class ApplicantEntity implements \JsonSerializable
                 'eighteenPlus'=>$this->eighteenPlus,
                 'finance'=>$this->finance,
                 'notes'=>$this->notes,
-                'cohortDate'=>$this->cohortDate,
+                'cohortDate'=>$formatedData,
                 'dateTimeAdded'=>$this->dateTimeAdded
                 ];
     }
@@ -265,7 +266,7 @@ class ApplicantEntity implements \JsonSerializable
      */
     public function getCohortDate()
     {
-        return $this->cohortDate;
+        return date("F, Y", strtotime($this->cohortDate));
     }
 
 
