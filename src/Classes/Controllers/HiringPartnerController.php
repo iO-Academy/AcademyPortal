@@ -52,7 +52,7 @@ class HiringPartnerController
               $newHiringPartner['techStack'],
               $newHiringPartner['postcode'],
               $newHiringPartner['phoneNumber'],
-              $newHiringPartner['websiteUrl']
+              $newHiringPartner['companyUrl']
             );
             if(!empty($hiringPartner) && $hiringPartner instanceof HiringPartnerEntity) {
                 $result = $this->hiringPartnerModel->addHiringPartner($hiringPartner);
