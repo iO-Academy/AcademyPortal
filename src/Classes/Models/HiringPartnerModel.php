@@ -13,8 +13,12 @@ class HiringPartnerModel {
         $this->db = $db;
     }
 
-    //Remember to type hint the HiringPartnerEntity in the param
-    public function addHiringPartner($company) :bool
+    /** Inserts the properties to the database
+     *
+     * @param HiringPartnerEntity $company Sanitise and validate the hiring partner properties as required.
+     * @return bool
+     */
+    public function addHiringPartner(HiringPartnerEntity $company) :bool
     {
         $query = $this->db->prepare("INSERT INTO `hiring_partner_companies` (
             `name`,
@@ -25,12 +29,12 @@ class HiringPartnerModel {
             `url_website`
             )
             VALUES (
-            `:companyName`,
-            `:companySize`,
-            `:techStack`,
-            `:postcode`,
-            `:phoneNumber`,
-            `:websiteUrl`
+            :companyName,
+            :companySize,
+            :techStack,
+            :postcode,
+            :phoneNumber,
+            :websiteUrl
             );"
         );
         $query->bindParam(':companyName', $company->getCompanyName());
