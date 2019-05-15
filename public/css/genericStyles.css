@@ -22,7 +22,7 @@ p {
     font-weight: bold;
     font-size: 40px;
 }
-
+¡
 .collapse, .collapsing {
     clear: both;
 }
@@ -40,5 +40,9 @@ p {
 }
 .well .row {
     margin-left: 5px;
+}
+
+.hidden {
+    display: none;
 }
 
