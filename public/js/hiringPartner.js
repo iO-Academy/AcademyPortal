@@ -1,28 +1,34 @@
 
-
-
-
-document.getElementById('hiringPartnerForm').addEventListener('submit', function (e) {
+document.getElementById('submitHiringPartner').addEventListener('click', e => {
     e.preventDefault()
-    validateForm();
+
+    let data = getCompletedFormData()
+    let validate = validateForm()
+    if(validate) {
+        makeApiRequest(data)
+    }
 })
 
 function validateForm() {
 
+    let success = true
     let message = ''
     let inputs = document.querySelectorAll('.submitHiringPartner')
     inputs.forEach(function (element) {
         let required = element.getAttribute('data-required')
         if (required && element.value.length < 1) {
             message += element.name + ' is a required field! <br>'
+            success = false
         }
         let maxLength = element.getAttribute('data-max')
         if (required && element.value.length > maxLength) {
             message += element.name + ' is too long, must be less than ' + maxLength + ' characters! <br>'
+            success = false
         }
 
         if (element.name === 'companySize' && element.value === '0') {
             message += 'Please select a company size!<br>'
+            success = false
         }
 
         if (element.name === 'postcode') {
@@ -31,6 +37,7 @@ function validateForm() {
             let regEx = new RegExp(pattern)
             if (!regEx.test(postcode)) {
                 message += 'Invalid postcode!<br>'
+                success = false
             }
         }
 
@@ -40,6 +47,7 @@ function validateForm() {
             let regEx = new RegExp(pattern)
             if (!regEx.test(phoneNumber)) {
                 message += 'Invalid phone number format!<br>'
+                success = false
             }
         }
 
@@ -49,14 +57,43 @@ function validateForm() {
             let regEx = new RegExp(pattern)
             if (!regEx.test(url)) {
                 message += 'Invalid URL format!<br>'
+                success = false
             }
         }
     })
 
-
-
     document.getElementById('errors').innerHTML = message
+
+    return success
 }
 
+let getCompletedFormData = () => {
+    let formData = document.querySelectorAll(".submitHiringPartner")
+    let data = {}
+    formData.forEach(formItem=> {
+        data[formItem.name] = formItem.value
+    })
+    return data
+}
 
-///outputting error messages!
+let makeApiRequest = async(data) => {
+    return fetch('/api/createHiringPartner', {
+        credentials: 'same-origin',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'post',
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then((data) => {
+            if (data.success) {
+                document.getElementById('.successMsg').innerHTML = '<p>Hiring Partner successfully added</p>'
+            } else {
+                document.getElementById('.successMsg').innerHTML = '<p>Hiring Partner not added</p>'
+            }
+        })
+
+}
+
