@@ -13,7 +13,7 @@ class HiringPartnerController {
 
     /**
      * HiringPartnerController constructor.
-     * 
+     *
      * @param PhpRenderer $renderer
      * @param $hiringPartnerModel
      */
