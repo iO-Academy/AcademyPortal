@@ -46,6 +46,10 @@ class HiringPartnerModel {
         return $query->execute();
     }
 
+    /** Method does a query request that picks up the id and size to be displayed on the dropdown
+     *
+     * @return array
+     */
     public function getCompanySize() :array
     {
         $query = $this->db->prepare("SELECT `id`,`size` FROM `company_sizes`");
@@ -53,6 +57,16 @@ class HiringPartnerModel {
         return $query->fetchAll();
     }
 
+    /** Instantiate a HiringPartnerEntity
+     *
+     * @param string $companyName
+     * @param string $companySize
+     * @param string $techStack
+     * @param string $postocde
+     * @param string $phoneNumber
+     * @param string $websiteUrl
+     * @return HiringPartnerEntity
+     */
     public function createNewHiringPartner(
         string $companyName,
         string $companySize,
