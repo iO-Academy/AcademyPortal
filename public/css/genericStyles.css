@@ -45,3 +45,8 @@ p {
 #searchBar {
     margin: 25px 0;
 }
+
+.hidden {
+    display: none;
+}
+
