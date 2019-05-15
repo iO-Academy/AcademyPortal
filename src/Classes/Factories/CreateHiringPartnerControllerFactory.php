@@ -2,20 +2,20 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\HiringPartnerController;
+use Portal\Controllers\CreateHiringPartnerController;
 use Psr\Container\ContainerInterface;
 
-class HiringPartnerControllerFactory
+class CreateHiringPartnerControllerFactory
 {
     /**Controller for adding hiring partners to the database
      *
      * @param ContainerInterface $container
-     * @return HiringPartnerController instantiated with both params from the container
+     * @return CreateHiringPartnerController instantiated with both params from the container
      */
     public function __invoke(ContainerInterface $container)
     {
         $renderer = $container->get('renderer');
         $hiringPartnerModel = $container->get('HiringPartnerModel');
-        return new HiringPartnerController($renderer, $hiringPartnerModel);
+        return new CreateHiringPartnerController($renderer, $hiringPartnerModel);
     }
 }
