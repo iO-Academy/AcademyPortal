@@ -62,7 +62,7 @@ function validateForm() {
         }
     })
 
-    document.getElementById('errors').innerHTML = message
+    document.getElementById('messages').innerHTML = message
 
     return success
 }
@@ -89,9 +89,9 @@ let makeApiRequest = async(data) => {
         .then(response => response.json())
         .then((data) => {
             if (data.success) {
-                document.getElementById('.successMsg').innerHTML = '<p>Hiring Partner successfully added</p>'
+                document.getElementById('messages').innerHTML = '<p>Hiring Partner successfully added</p>'
             } else {
-                document.getElementById('.successMsg').innerHTML = '<p>Hiring Partner not added</p>'
+                document.getElementById('messages').innerHTML = '<p>Hiring Partner not added</p>'
             }
         })
 
