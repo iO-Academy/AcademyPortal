@@ -17,7 +17,7 @@ class HiringPartnerModel {
     public function addHiringPartner($company) :bool
     {
         $query = $this->db->prepare("INSERT INTO `hiring_partner_companies` (
-            `company_name`,
+            `name`,
             `size`, 
             `tech_stack`,
             `postcode`,
