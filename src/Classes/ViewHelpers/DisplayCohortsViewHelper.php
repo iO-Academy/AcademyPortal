@@ -18,7 +18,13 @@ class DisplayCohortsViewHelper
 
         $result = '';
         foreach ($cohorts as $key=>$cohort) {
-                $result .= '<li data-id="' . $cohort['id'] .'">' . date("F, Y", strtotime($cohort['date'])) . '</li>';
+                $result .= '<li><a class="cohort-item" data-id="'
+                    . $cohort['id']
+                    . '" data-cohortDate="'
+                    . date("Y-m-d", strtotime($cohort['date']))
+                    . '">'
+                    . date("F, Y", strtotime($cohort['date']))
+                    . '</a></li>';
             }
         return ($result);
     }
