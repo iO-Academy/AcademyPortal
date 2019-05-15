@@ -20,9 +20,9 @@ let makeApiRequest = async(data) => {
         .then(response => response.json())
         .then((data) => {
             if (data.success) {
-                document.getElementById('.successMsg').innerHTML = 'Hiring Partner successfully added'
+                document.getElementById('.successMsg').innerHTML = '<p>Hiring Partner successfully added</p>'
             } else {
-                document.getElementById('.successMsg').innerHTML = 'Hiring Partner not added'
+                document.getElementById('.successMsg').innerHTML = '<p>Hiring Partner not added</p>'
             }
         })
 
@@ -31,7 +31,7 @@ let makeApiRequest = async(data) => {
 document.getElementById('submitHiringPartner').addEventListener('click', e => {
     e.preventDefault()
     let data = getCompletedFormData()
-    let validate = validateFormInputs(data)
+    let validate = validateForm(data)
     if(validate) {
         makeApiRequest(data)
     }
