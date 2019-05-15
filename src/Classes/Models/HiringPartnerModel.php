@@ -13,8 +13,12 @@ class HiringPartnerModel {
         $this->db = $db;
     }
 
-    //Remember to type hint the HiringPartnerEntity in the param
-    public function addHiringPartner($company) :bool
+    /** Inserts the properties to the database
+     *
+     * @param HiringPartnerEntity $company Sanitise and validate the hiring partner properties as required.
+     * @return bool
+     */
+    public function addHiringPartner(HiringPartnerEntity $company) :bool
     {
         $query = $this->db->prepare("INSERT INTO `hiring_partner_companies` (
             `name`,
@@ -25,12 +29,12 @@ class HiringPartnerModel {
             `url_website`
             )
             VALUES (
-            `:companyName`,
-            `:companySize`,
-            `:techStack`,
-            `:postcode`,
-            `:phoneNumber`,
-            `:websiteUrl`
+            :companyName,
+            :companySize,
+            :techStack,
+            :postcode,
+            :phoneNumber,
+            :websiteUrl
             );"
         );
         $query->bindParam(':companyName', $company->getCompanyName());
@@ -42,6 +46,10 @@ class HiringPartnerModel {
         return $query->execute();
     }
 
+    /** Method does a query request that picks up the id and size to be displayed on the dropdown
+     *
+     * @return array
+     */
     public function getCompanySize() :array
     {
         $query = $this->db->prepare("SELECT `id`,`size` FROM `company_sizes`");
@@ -49,6 +57,16 @@ class HiringPartnerModel {
         return $query->fetchAll();
     }
 
+    /** Instantiate a HiringPartnerEntity
+     *
+     * @param string $companyName
+     * @param string $companySize
+     * @param string $techStack
+     * @param string $postocde
+     * @param string $phoneNumber
+     * @param string $websiteUrl
+     * @return HiringPartnerEntity
+     */
     public function createNewHiringPartner(
         string $companyName,
         string $companySize,
