@@ -7,6 +7,7 @@ document.getElementById('submitHiringPartner').addEventListener('click', e => {
     if(validate) {
         makeApiRequest(data)
     }
+
 })
 
 function validateForm() {
@@ -89,7 +90,9 @@ let makeApiRequest = async(data) => {
         .then(response => response.json())
         .then((data) => {
             if (data.success) {
+                document.getElementById('hiringPartnerForm').reset()
                 document.getElementById('messages').innerHTML = '<p>Hiring Partner successfully added</p>'
+
             } else {
                 document.getElementById('messages').innerHTML = '<p>Hiring Partner not added</p>'
             }
