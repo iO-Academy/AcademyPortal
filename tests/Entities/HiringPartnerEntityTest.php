@@ -4,32 +4,53 @@ use PHPUnit\Framework\TestCase;
 
 class HiringPartnerEntityTest extends TestCase
 {
-    public function testValidateLengthSuccess(){
+    public function testValidateExistsAndLengthSuccess(){
         $characterLength = 255;
         $companyName = 'TechHub';
-        $result = \Portal\Entities\HiringPartnerEntity::validateLength($companyName, $characterLength);
+        $result = \Portal\Entities\HiringPartnerEntity::ValidateExistsAndLength($companyName, $characterLength);
         $this->assertEquals($result, 'TechHub');
 }
 
-    public function testValidateLengthEmptyFailure(){
+    public function testValidateExistsAndLengthEmptyFailure(){
         $characterLength = 255;
         $companyName = '';
         $this->expectException(Exception::class);
-        \Portal\Entities\HiringPartnerEntity::validateLength($companyName, $characterLength);
+        \Portal\Entities\HiringPartnerEntity::ValidateExistsAndLength($companyName, $characterLength);
     }
 
-    public function testValidateLengthCharactersFailure(){
+    public function testValidateExistsAndLengthLongFailure(){
         $characterLength = 10;
         $postcode = 'BA2BA2 4BB4BB';
         $this->expectException(Exception::class);
-        \Portal\Entities\HiringPartnerEntity::validateLength($postcode, $characterLength);
+        \Portal\Entities\HiringPartnerEntity::ValidateExistsAndLength($postcode, $characterLength);
     }
 
-    public function testValidateLengthMalform(){
+    public function testValidateExistsAndLengthMalform(){
         $characterLength = 10;
         $postcode = [56,54,36];
         $this->expectException(TypeError::class);
-        \Portal\Entities\HiringPartnerEntity::validateLength($postcode, $characterLength);
+        \Portal\Entities\HiringPartnerEntity::ValidateExistsAndLength($postcode, $characterLength);
+    }
+
+    public function testValidateLengthSuccess(){
+        $characterLength = 20;
+        $phoneNumber = '';
+        $result = \Portal\Entities\HiringPartnerEntity::ValidateLength($phoneNumber, $characterLength);
+        $this->assertEquals($result, '');
+    }
+
+    public function testValidateLengthFailure(){
+        $characterLength = 20;
+        $phoneNumber = '000000000000000000000';
+        $this->expectException(Exception::class);
+        \Portal\Entities\HiringPartnerEntity::ValidateLength($phoneNumber, $characterLength);
+    }
+
+    public function testValidateLengthMalform(){
+        $characterLength = 20;
+        $phoneNumber = [56,54,36];
+        $this->expectException(TypeError::class);
+        \Portal\Entities\HiringPartnerEntity::ValidateLength($phoneNumber, $characterLength);
     }
 
     public function testGetCompanyNameSuccess(){
