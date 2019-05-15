@@ -15,7 +15,7 @@ class HiringPartnerControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($renderer);
 
-        $factory = new HiringPartnerControllerFactory();
+        $factory = new HiringPartnerControllerFactory;
         $case = $factory($container);
         $expected = HiringPartnerController::class;
         $this->assertInstanceOf($expected, $case);
