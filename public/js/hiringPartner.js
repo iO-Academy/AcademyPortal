@@ -42,7 +42,7 @@ function validateForm() {
             }
         }
 
-        if (element.name === 'phoneNumber') {
+        if (element.name === 'phoneNumber' && element.value.length > 0) {
             let phoneNumber =  element.value.trim()
             let pattern = /^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/gm
             let regEx = new RegExp(pattern)
@@ -52,12 +52,20 @@ function validateForm() {
             }
         }
 
-        if (element.name === 'companyUrl') {
+        if (element.name === 'companyUrl' && element.value.length > 0) {
             let url =  element.value.trim()
             let pattern = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm
             let regEx = new RegExp(pattern)
             if (!regEx.test(url)) {
                 message += 'Invalid URL format!<br>'
+                success = false
+            }
+        }
+
+        if (element.name === 'companySize') {
+            let idRange = document.getElementsByTagName('option').length -1
+            if (element.value > idRange) {
+                message += 'Invalid company size range info!<br>'
                 success = false
             }
         }
