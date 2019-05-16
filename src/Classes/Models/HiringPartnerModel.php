@@ -85,4 +85,24 @@ class HiringPartnerModel {
             $websiteUrl
         );
     }
+
+    /**
+     * Gets all the hiring partners information
+     *
+     * @return array array with the info
+     */
+    public function getHiringPartners() :array
+    {
+        $query = $this->db->prepare("SELECT 
+	            `id`
+				`name`,
+	            `size`, 
+	            `tech_stack`,
+	            `postcode`,
+	            `phone_number`,
+	            `url_website`
+	            FROM `hiring_partner_companies`");
+        $query->execute();
+        return $query->fetchAll();
+    }
 }
