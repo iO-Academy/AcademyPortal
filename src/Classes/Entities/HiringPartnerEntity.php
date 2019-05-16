@@ -134,18 +134,18 @@ class HiringPartnerEntity
     /**
      * Gets the hiring partner phone number
      *
-     * @return string of phone number
+     * @return string of phone number or null
      */
-    public function getPhoneNumber() : string {
+    public function getPhoneNumber() {
         return $this->phoneNumber;
     }
 
     /**
      * Gets the hiring partner website URL
      *
-     * @return string of website url
+     * @return string of website url or null
      */
-    public function getWebsiteURL() : string {
+    public function getWebsiteURL() {
         return $this->websiteUrl;
     }
 }
