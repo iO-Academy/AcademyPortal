@@ -1,3 +1,4 @@
+
 document.getElementById('submitHiringPartnerContact').addEventListener('click', e => {
     e.preventDefault()
 
@@ -29,7 +30,7 @@ function validateForm() {
         }
 
         if (element.name === 'contactEmail') {
-            let postcode =  element.value.trim()
+            let postcode = element.value.trim()
             let pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             let regEx = new RegExp(pattern)
             if (!regEx.test(contactEmail)) {
@@ -39,7 +40,7 @@ function validateForm() {
         }
 
         if (element.name === 'phoneNumber' && element.value.length > 0) {
-            let phoneNumber =  element.value.trim()
+            let phoneNumber = element.value.trim()
             let pattern = /^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/gm
             let regEx = new RegExp(pattern)
             if (!regEx.test(phoneNumber)) {
@@ -48,10 +49,11 @@ function validateForm() {
             }
         }
 
-        document.getElementById('messages').innerHTML = message
+    })
+    document.getElementById('messages').innerHTML = message
 
-        return success
-    }
+    return success
+}
 
     let getCompletedFormData = () => {
         let formData = document.querySelectorAll(".submitHiringPartnerContact")
@@ -100,7 +102,7 @@ function validateForm() {
             },
         })
             .then( hiringPartnerContacts => hiringPartnerContacts.json())
-            .then(hiringPartnerContacts => displayHiringPartnerContactPage(hiringPartnerContacts.data))
+            .then(hiringPartnerContacts => displayHiringPartnerContactsHandler(hiringPartnerContacts.data))
     }
 
     /**
@@ -138,7 +140,6 @@ function validateForm() {
                 targetDiv.classList.toggle('hide')
             })
         })
-    }
 }
 
 getHiringPartnerContacts()
