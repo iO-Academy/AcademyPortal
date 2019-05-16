@@ -42,7 +42,7 @@ class GetHiringPartnerController
             $data = [
                 'status' => true,
                 'message' => 'Query Successful',
-                'data' => [$hiringPartners]
+                'data' => $hiringPartners
             ];
             $statusCode = 200;
         }
