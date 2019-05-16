@@ -108,7 +108,6 @@ let makeApiRequest = async(data) => {
 
 }
 
-
 /**
  * Gets hiring partner information from the API and passes into the displayHandler function
  *
