@@ -86,7 +86,13 @@ class HiringPartnerModel {
         );
     }
 
-    public function getHiringPartners() {
+    /**
+     * Gets all the hiring partners information
+     *
+     * @return array array with the info
+     */
+    public function getHiringPartners() :array
+    {
         $query = $this->db->prepare("SELECT 
 	            `id`
 				`name`,
