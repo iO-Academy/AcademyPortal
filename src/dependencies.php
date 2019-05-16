@@ -65,3 +65,5 @@ $container['GetHiringPartnersController'] = new \Portal\Factories\GetHiringPartn
 $container['HiringPartnerContactModel'] = new \Portal\Factories\HiringPartnerContactsModelFactory();
 
 $container['GetHiringPartnerContactsController'] = new \Portal\Factories\GetHiringPartnerContactsControllerFactory();
+
+$container['AssignMainContactController'] = new \Portal\Factories\AssignMainContactControllerFactory();
