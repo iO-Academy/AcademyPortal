@@ -3,14 +3,16 @@
 use PHPUnit\Framework\TestCase;
 use Portal\Controllers\ApplicationFormController;
 use Portal\Models\ApplicationFormModel;
+use Portal\Models\CohortModel;
 
 class ApplicationFormControllerTest extends TestCase
 {
     function testConstruct()
     {
-        $stub = $this->createMock(ApplicationFormModel::class);
+        $applicationFormModel = $this->createMock(ApplicationFormModel::class);
+        $cohortModel = $this->createMock(CohortModel::class);
 
-        $case = new ApplicationFormController($stub);
+        $case = new ApplicationFormController($applicationFormModel, $cohortModel);
         $expected = ApplicationFormController::class;
         $this->assertInstanceOf($expected, $case);
     }
