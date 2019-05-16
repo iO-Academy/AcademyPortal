@@ -16,3 +16,7 @@ label {
     font-weight: bold;
     font-size: 40px;
 }
+
+input[type="submit"] {
+    margin-top: 30px;
+}

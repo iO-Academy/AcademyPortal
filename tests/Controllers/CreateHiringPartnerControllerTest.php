@@ -9,9 +9,8 @@ class CreateHiringPartnerControllerTest extends TestCase {
 
     function testConstruct()
     {
-        $renderer = $this->createMock(PhpRenderer::class);
         $hiringPartnerModel = $this->createMock(HiringPartnerModel::class);
-        $case = new CreateHiringPartnerController($renderer, $hiringPartnerModel);
+        $case = new CreateHiringPartnerController($hiringPartnerModel);
         $expected = CreateHiringPartnerController::class;
         $this->assertInstanceOf($expected, $case);
     }

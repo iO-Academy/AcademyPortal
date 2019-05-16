@@ -12,10 +12,10 @@ class CreateHiringPartnerControllerFactory
      * @param ContainerInterface $container
      * @return CreateHiringPartnerController instantiated with both params from the container
      */
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container) : CreateHiringPartnerController
     {
-        $renderer = $container->get('renderer');
+
         $hiringPartnerModel = $container->get('HiringPartnerModel');
-        return new CreateHiringPartnerController($renderer, $hiringPartnerModel);
+        return new CreateHiringPartnerController($hiringPartnerModel);
     }
 }

@@ -16,12 +16,10 @@ class CreateHiringPartnerController
     /**
      * CreateHiringPartnerController constructor.
      *
-     * @param PhpRenderer $renderer
      * @param $hiringPartnerModel
      */
-    public function __construct(PhpRenderer $renderer, HiringPartnerModel $hiringPartnerModel)
+    public function __construct(HiringPartnerModel $hiringPartnerModel)
     {
-        $this->renderer = $renderer;
         $this->hiringPartnerModel = $hiringPartnerModel;
     }
 

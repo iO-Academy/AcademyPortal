@@ -36,12 +36,12 @@ class HiringPartnerEntity
      */
     private function sanitiseData() {
         $this->companyName = $this->sanitiseString($this->companyName);
-        $this->companyName = self::validateLength($this->companyName, 255);
+        $this->companyName = self::validateExistsAndLength($this->companyName, 255);
         $this->companySize = (int)$this->companySize;
         $this->techStack = $this->sanitiseString($this->techStack);
-        $this->techStack = self::validateLength($this->techStack, 600);
+        $this->techStack = self::validateExistsAndLength($this->techStack, 600);
         $this->postcode = $this->sanitiseString($this->postcode);
-        $this->postcode = self::validateLength($this->postcode, 10);
+        $this->postcode = self::validateExistsAndLength($this->postcode, 10);
         $this->phoneNumber = $this->sanitiseString($this->phoneNumber);
         $this->phoneNumber = self::validateLength($this->phoneNumber, 20);
         $this->websiteUrl = $this->sanitiseString($this->websiteUrl);
@@ -55,7 +55,7 @@ class HiringPartnerEntity
      *
      * @return string, which will return the hiring partner data.
      */
-    public function sanitiseString(string $hiringPartnerData){
+    public function sanitiseString(string $hiringPartnerData) : string {
         return filter_var($hiringPartnerData, FILTER_SANITIZE_STRING);
     }
 
@@ -68,8 +68,25 @@ class HiringPartnerEntity
      *
      * @return string, which will return the hiring partner data
      */
-    public static function validateLength(string $hiringPartnerData, int $characterLength){
+    public static function validateExistsAndLength(string $hiringPartnerData, int $characterLength){
         if (empty($hiringPartnerData) == false && strlen($hiringPartnerData) <= $characterLength){
+            return $hiringPartnerData;
+        } else {
+            throw new \Exception('An input string does not exist or is too long');
+        }
+    }
+
+    /**
+     * Validate that a string exists and is within length allowed, throws an error if not
+     *
+     * @param string $hiringPartnerData
+     * @param int $characterLength
+     * @throws \Exception if the array is empty
+     *
+     * @return string, which will return the hiring partner data
+     */
+    public static function validateLength(string $hiringPartnerData, int $characterLength){
+        if (strlen($hiringPartnerData) <= $characterLength){
             return $hiringPartnerData;
         } else {
             throw new \Exception('An input string does not exist or is too long');
@@ -81,7 +98,7 @@ class HiringPartnerEntity
      *
      * @return string of company name
      */
-    public function getCompanyName(){
+    public function getCompanyName() : string {
         return $this->companyName;
     }
 
@@ -90,7 +107,7 @@ class HiringPartnerEntity
      *
      * @return string of company size
      */
-    public function getCompanySize(){
+    public function getCompanySize() : string {
         return $this->companySize;
     }
 
@@ -99,7 +116,7 @@ class HiringPartnerEntity
      *
      * @return string of tech stack
      */
-    public function getTechStack(){
+    public function getTechStack() : string{
         return $this->techStack;
     }
 
@@ -108,7 +125,7 @@ class HiringPartnerEntity
      *
      * @return string of company postcode
      */
-    public function getPostcode(){
+    public function getPostcode() : string{
         return $this->postcode;
     }
 
@@ -117,7 +134,7 @@ class HiringPartnerEntity
      *
      * @return string of phone number
      */
-    public function getPhoneNumber(){
+    public function getPhoneNumber() : string {
         return $this->phoneNumber;
     }
 
@@ -126,7 +143,7 @@ class HiringPartnerEntity
      *
      * @return string of website url
      */
-    public function getWebsiteURL(){
+    public function getWebsiteURL() : string {
         return $this->websiteUrl;
     }
 }
