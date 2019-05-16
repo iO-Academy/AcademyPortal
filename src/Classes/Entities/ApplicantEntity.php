@@ -50,8 +50,9 @@ class ApplicantEntity implements \JsonSerializable
         $this->notes = ($this->notes ?? $applicantNotes);
 
         $this->sanitiseData();
-
     }
+
+
 
     /**
      * Returns private properties from object.
@@ -59,21 +60,23 @@ class ApplicantEntity implements \JsonSerializable
      * @return array|mixed
      */
     public function jsonSerialize() {
-        return ['id'=>$this->id,
-                'name'=>$this->name,
-                'email'=>$this->email,
-                'phoneNumber'=>$this->phoneNumber,
-                'cohortID'=>$this->cohortId,
-                'whyDev'=>$this->whyDev,
-                'codeExperience'=>$this->codeExperience,
-                'hearAboutId'=>$this->hearAboutId,
-                'eligible'=>$this->eligible,
-                'eighteenPlus'=>$this->eighteenPlus,
-                'finance'=>$this->finance,
-                'notes'=>$this->notes,
-                'cohortDate'=>$this->cohortDate,
-                'dateTimeAdded'=>$this->dateTimeAdded
-                ];
+
+        return [
+                  'id' => $this->id,
+                  'name' => $this->name,
+                  'email' => $this->email,
+                  'phoneNumber' => $this->phoneNumber,
+                  'cohortID' => $this->cohortId,
+                  'whyDev' => $this->whyDev,
+                  'codeExperience' => $this->codeExperience,
+                  'hearAboutId' => $this->hearAboutId,
+                  'eligible' => $this->eligible,
+                  'eighteenPlus' => $this->eighteenPlus,
+                  'finance' => $this->finance,
+                  'notes' => $this->notes,
+                  'cohortDate' => $this->getCohortDate(),
+                  'dateTimeAdded' => $this->dateTimeAdded
+               ];
     }
 
     /**
@@ -94,7 +97,6 @@ class ApplicantEntity implements \JsonSerializable
         $this->finance = $this->finance ? 1 : 0;
         $this->notes = $this->sanitiseString($this->notes);
     }
-
 
     /**(
      * Sanitise as a string in the applicant table as data.
@@ -134,7 +136,6 @@ class ApplicantEntity implements \JsonSerializable
     public function getId()
     {
         return $this->id;
-
     }
 
     /**
@@ -287,6 +288,6 @@ class ApplicantEntity implements \JsonSerializable
      */
     public function getCohortDate()
     {
-        return $this->cohortDate;
+        return date("F, Y", strtotime($this->cohortDate));
     }
 }
