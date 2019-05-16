@@ -3,8 +3,9 @@
 namespace Portal\Entities;
 
 
-class ApplicantEntity
+class ApplicantEntity implements \JsonSerializable
 {
+    protected $id;
     protected $name;
     protected $email;
     protected $phoneNumber;
@@ -17,8 +18,10 @@ class ApplicantEntity
     protected $finance;
     protected $notes;
     protected $cohortDate;
+    protected $dateTimeAdded;
 
     public function __construct(
+        int $applicantId = null,
         string $applicantName = null,
         string $applicantEmail = null,
         string $applicantPhoneNumber = null,
@@ -30,8 +33,10 @@ class ApplicantEntity
         string $applicantEighteenPlus = null,
         string $applicantFinance = null,
         string $applicantNotes = null
+
     )
     {
+        $this->id = ($this->id ?? $applicantId);
         $this->name = ($this->name ?? $applicantName);
         $this->email = ($this->email ?? $applicantEmail);
         $this->phoneNumber = ($this->phoneNumber ?? $applicantPhoneNumber);
@@ -45,13 +50,40 @@ class ApplicantEntity
         $this->notes = ($this->notes ?? $applicantNotes);
 
         $this->sanitiseData();
+    }
 
+
+
+    /**
+     * Returns private properties from object.
+     *
+     * @return array|mixed
+     */
+    public function jsonSerialize() {
+
+        return [
+                  'id' => $this->id,
+                  'name' => $this->name,
+                  'email' => $this->email,
+                  'phoneNumber' => $this->phoneNumber,
+                  'cohortID' => $this->cohortId,
+                  'whyDev' => $this->whyDev,
+                  'codeExperience' => $this->codeExperience,
+                  'hearAboutId' => $this->hearAboutId,
+                  'eligible' => $this->eligible,
+                  'eighteenPlus' => $this->eighteenPlus,
+                  'finance' => $this->finance,
+                  'notes' => $this->notes,
+                  'cohortDate' => $this->getCohortDate(),
+                  'dateTimeAdded' => $this->dateTimeAdded
+               ];
     }
 
     /**
      * Will sanitise all the fields for an applicant.
      */
     private function sanitiseData() {
+        $this->id = (int) $this->id;
         $this->name = $this->sanitiseString($this->name);
         $this->email = $this->sanitiseString($this->email);
         $this->email = $this->validateEmail($this->email);
@@ -65,7 +97,6 @@ class ApplicantEntity
         $this->finance = $this->finance ? 1 : 0;
         $this->notes = $this->sanitiseString($this->notes);
     }
-
 
     /**(
      * Sanitise as a string in the applicant table as data.
@@ -95,6 +126,16 @@ class ApplicantEntity
             return false;
         }
 
+    }
+
+    /**
+     * Gets the Id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -209,12 +250,22 @@ class ApplicantEntity
     }
 
     /**
+     * Get's dateOfApplication.
+     *
+     * @return string, returns the dateOfApplication field.
+     */
+    public function getDateOfApplication()
+    {
+        return $this->dateTimeAdded;
+    }
+
+    /**
      * Get's cohortDate.
      *
      * @return string, returns the cohortDate field.
      */
     public function getCohortDate()
     {
-        return $this->cohortDate;
+        return date("F, Y", strtotime($this->cohortDate));
     }
 }
