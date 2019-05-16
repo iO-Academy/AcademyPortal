@@ -143,8 +143,8 @@ function displayHiringPartnerHandler(partnerCompanies){
         companyInformation +=
             `<div class="companyName">
                 <p>${partnerCompany.name}</p>
-                <button class="showCompanyInfo" data-reference='${partnerCompany.name}'>More Info</button>
-                <div id="moreInfo${partnerCompany.name}" class="hide moreInfo">
+                <button class="showCompanyInfo" data-reference='${partnerCompany.id}'>More Info</button>
+                <div id="moreInfo${partnerCompany.id}" class="hide moreInfo">
                     <p>Company size: ${partnerCompany.size}</p>
                     <p>Tech Stack: ${partnerCompany.tech_stack}</p>
                     <p>Postcode: ${partnerCompany.postcode}</p>
