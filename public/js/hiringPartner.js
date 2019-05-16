@@ -147,11 +147,14 @@ function displayHiringPartnerHandler(partnerCompanies){
                 <div id="moreInfo${partnerCompany.name}" class="hide moreInfo">
                     <p>Company size: ${partnerCompany.size}</p>
                     <p>Tech Stack: ${partnerCompany.tech_stack}</p>
-                    <p>Postcode: ${partnerCompany.postcode}</p>
-                    <p>Phone number: ${partnerCompany.phone_number}</p>
-                    <a href="https://${partnerCompany.url_website}" target="_blank">${partnerCompany.url_website}</a>
-                </div>
-            </div>`
+                    <p>Postcode: ${partnerCompany.postcode}</p>`
+        if (partnerCompany.phone_number !== null) {
+            companyInformation += `<p>Phone number: ${partnerCompany.phone_number}</p>`
+        }
+        if (partnerCompany.url_website !== null) {
+            companyInformation += `<a href="https://${partnerCompany.url_website}" target="_blank">${partnerCompany.url_website}</a>`
+        }
+        companyInformation += `</div></div>`
     })
     companyDisplayer.innerHTML = companyInformation
 
@@ -166,4 +169,3 @@ function displayHiringPartnerHandler(partnerCompanies){
 }
 
 getHiringPartners()
-
