@@ -53,3 +53,9 @@ $container['HomePageController'] = new \Portal\Factories\HomePageControllerFacto
 $container['GetApplicantController'] = new \Portal\Factories\GetApplicantControllerFactory();
 
 $container['RandomPasswordModel'] = new \Portal\Models\RandomPasswordModel();
+
+$container['DisplayHiringPartnerPageController'] = new \Portal\Factories\DisplayHiringPartnerPageControllerFactory();
+
+$container['CreateHiringPartnerController'] = new \Portal\Factories\CreateHiringPartnerControllerFactory();
+
+$container['HiringPartnerModel'] = new \Portal\Factories\HiringPartnerModelFactory();

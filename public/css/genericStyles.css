@@ -27,3 +27,6 @@ p {
     color: #FF0000
 }
 
+input[type="submit"] {
+    margin-top: 30px;
+}
