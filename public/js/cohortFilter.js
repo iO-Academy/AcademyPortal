@@ -27,7 +27,7 @@ function applyCohortFilter(cohortDate) {
 $('.cohort-item').click(function () {
     let cohortDate = this.dataset.cohortdate
     let cohortDateNice = this.textContent
-    document.querySelector('#cohort-dropdown-title').innerText = cohortDateNice
+    document.querySelector('#dropdownMenu1').innerText = cohortDateNice
     clearFilter()
     applyCohortFilter(cohortDate)
     return cohortDate
