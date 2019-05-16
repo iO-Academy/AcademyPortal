@@ -22,7 +22,7 @@ class DisplayApplicantViewHelper
                         <td><a data-id ="'. $applicant->getId().'" type="button"  class="myBtn">'. $applicant->getName() .'</a></td>
                         <td>'. $applicant->getEmail() .'</td>
                         <td class="dateApplied" data-applied="'. $applicant->getDateOfApplicationMMDDYYYY() .'">'. $applicant->getDateOfApplicationDDMMYYYY() .'</td>
-                        <td class="applicants-cohort-date">'. $applicant->getCohortDate() .'</td>
+                        <td class="applicants-cohort-date" data-id="' . $applicant->getCohortDateNumber() . '" >'. $applicant->getCohortDate() .'</td>
                         </tr>';
             }
         }

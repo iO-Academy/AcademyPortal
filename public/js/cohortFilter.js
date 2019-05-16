@@ -8,8 +8,10 @@ let applicantsDates = document.querySelectorAll('.applicants-cohort-date')
  */
 function applyCohortFilter(cohortDate) {
     let mismatches = [];
+
     applicantsDates.forEach(function (date, index) {
-        if(cohortDate !== date.innerHTML) {
+        let theDates = date.getAttribute('data-id')
+        if(cohortDate !== theDates) {
             let row = date.parentNode
             mismatches.push(row)
         }
