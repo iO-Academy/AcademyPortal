@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Portal\Controllers;
 
 use Portal\Models\HiringPartnerModel;
@@ -16,7 +15,15 @@ class GetHiringPartnersController
         $this->hiringPartnerModel = $hiringPartnerModel;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    /**
+     * Calls a method to get all the hiring partner and send JSON back with the info
+     *
+     * @param Request $request HTTP request
+     * @param Response $response HTTP response
+     * @param array $args
+     * @return Response returns JSON with hiring partner data
+     */
+    public function __invoke(Request $request, Response $response, array $args) :Response
     {
         $data = [
             'status' => false,
