@@ -1,6 +1,8 @@
-<div class="row">
+
+<div class="row filter">
     <div class="col-xs-12 center-block">
-        <button class="btn btn-primary pull-right" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <h1 class="pull-left">Registered Applicants</h1>
+        <button class="btn filterbtn btn-primary pull-right" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Filters
         </button>
         <div class="collapse" id="collapseExample">
@@ -13,13 +15,13 @@
                     <label for="dropdownMenu1" class="cohortlabel pull-left"> Cohort Date:</label>
                     <div class="dropdown pull-left">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Choose Cohort
+                            <span id="cohort-dropdown-title">Choose Cohort</span>
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                           <?php
-                           echo \Portal\ViewHelpers\DisplayCohortsViewHelper::displayCohorts($cohorts);
-                           ?>
+                            <?php
+                            echo \Portal\ViewHelpers\DisplayCohortsViewHelper::displayCohorts($cohorts);
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -30,3 +32,4 @@
         </div>
     </div>
 </div>
+

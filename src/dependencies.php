@@ -55,3 +55,12 @@ $container['GetApplicantController'] = new \Portal\Factories\GetApplicantControl
 $container['RandomPasswordModel'] = new \Portal\Models\RandomPasswordModel();
 
 $container['CohortModelFactory'] = new \Portal\Factories\CohortModelFactory();
+
+$container['DisplayHiringPartnerPageController'] = new \Portal\Factories\DisplayHiringPartnerPageControllerFactory();
+
+$container['CreateHiringPartnerController'] = new \Portal\Factories\CreateHiringPartnerControllerFactory();
+
+$container['HiringPartnerModel'] = new \Portal\Factories\HiringPartnerModelFactory();
+
+$container['GetHiringPartnersController'] = new \Portal\Factories\GetHiringPartnerControllerFactory();
+
