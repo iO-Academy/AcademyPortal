@@ -98,7 +98,7 @@ class HiringPartnerEntity
      *
      * @return string of company name
      */
-    public function getCompanyName(){
+    public function getCompanyName() : string {
         return $this->companyName;
     }
 
