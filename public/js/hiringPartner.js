@@ -154,8 +154,10 @@ function displayHiringPartnerHandler(partnerCompanies){
             companyInformation += `<a href="https://${partnerCompany.url_website}" target="_blank">${partnerCompany.url_website}</a>`
         }
         companyInformation += `</div></div>`
+        companyInformation += `<button class="companyContacts" data-reference='${partnerCompany.name}'>Contacts</button>`
     })
     companyDisplayer.innerHTML = companyInformation
+
 
     let showInfoButtons = document.querySelectorAll('.showCompanyInfo')
     showInfoButtons.forEach(function (button) {
