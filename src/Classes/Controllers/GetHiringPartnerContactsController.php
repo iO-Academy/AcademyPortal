@@ -25,31 +25,29 @@ class GetHiringPartnerContactsController
      */
     public function __invoke(Request $request, Response $response, array $args) :Response
     {
-        {
-            $data = [
-                'status' => false,
-                'message' => 'No hiring partner contacts found!',
-                'data' => []
-            ];
-            $statusCode = 400;
+        $hiringPartnerId = $args['id'];
+        $data = [
+            'status' => false,
+            'message' => 'No hiring partner contacts found!',
+            'data' => []
+        ];
+        $statusCode = 400;
 
-            try {
-                $hiringPartnerContacts = $this->hiringPartnerContactsModel->getHiringPartnerContactById();
-            } catch (\PDOException $exception) {
-                $data['message'] = $exception->getMessage();
-            }
-
-            if (!empty($hiringPartnerContacts)) {
-                $data = [
-                    'status' => true,
-                    'message' => 'Query Successful',
-                    'data' => $hiringPartnerContacts
-                ];
-                $statusCode = 200;
-            }
-
-            return $response->withJson($data, $statusCode);
+        try {
+            $hiringPartnerContacts = $this->hiringPartnerContactsModel->getHiringPartnerContactById($hiringPartnerId);
+        } catch (\PDOException $exception) {
+            $data['message'] = $exception->getMessage();
         }
 
+        if (!empty($hiringPartnerContacts)) {
+            $data = [
+                'status' => true,
+                'message' => 'Query Successful',
+                'data' => $hiringPartnerContacts
+            ];
+            $statusCode = 200;
+        }
+
+        return $response->withJson($data, $statusCode);
     }
 }
