@@ -16,6 +16,7 @@ $app->get('/displayHiringPartnerPage', 'DisplayHiringPartnerPageController');
 $app->post('/api/saveApplicant', 'SaveApplicantController');
 $app->get('/api/applicationForm', 'ApplicationFormController');
 $app->post('/api/createHiringPartner', 'CreateHiringPartnerController');
+$app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');
 
 //Backend
 $app->post('/api/login', 'LoginController');
