@@ -100,7 +100,8 @@ class HiringPartnerModel
 								`hiring_partner_companies`.`tech_stack`, 
 								`hiring_partner_companies`.`postcode`,
 								`hiring_partner_companies`.`phone_number`,
-								`hiring_partner_companies`.`url_website`
+								`hiring_partner_companies`.`url_website`,
+							    `hiring_partner_companies`.`main_contact`
 								FROM `hiring_partner_companies` 
 								Left JOIN `company_sizes`
 								ON `hiring_partner_companies`.`size` = `company_sizes`.`id`;");
