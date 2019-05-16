@@ -127,7 +127,6 @@ async function getHiringPartners () {
         .then(hiringPartnerInfo => displayHiringPartnerHandler(hiringPartnerInfo.data))
 }
 
-
 /**
  * Runs a foreach through each hiring partner object and outputs HTML elements with hiring partner's details
  *
@@ -154,7 +153,6 @@ function displayHiringPartnerHandler(partnerCompanies){
             </div>`
     })
     companyDisplayer.innerHTML = companyInformation
-
 
     let showInfoButtons = document.querySelectorAll('.showCompanyInfo')
     showInfoButtons.forEach(function (button) {

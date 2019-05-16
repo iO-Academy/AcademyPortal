@@ -4,8 +4,8 @@ namespace Portal\Models;
 
 use Portal\Entities\HiringPartnerEntity;
 
-class HiringPartnerModel {
-
+class HiringPartnerModel
+{
     private $db;
 
     public function __construct(\PDO $db)
