@@ -2,7 +2,8 @@
 
 namespace Portal\Controllers;
 
-use http\Env\Response;
+use Slim\Http\Request;
+use \Slim\Http\Response;
 use Portal\Models\HiringPartnerContactsModel;
 
 class GetHiringPartnerContactsController
@@ -34,7 +35,7 @@ class GetHiringPartnerContactsController
         $statusCode = 400;
 
         try {
-            $hiringPartnerContacts = $this->hiringPartnerContactsModel->getHiringPartnerContactById($hiringPartnerId);
+            $hiringPartnerContacts = $this->hiringPartnerContactsModel->getHiringPartnerContactByCompanyId($hiringPartnerId);
         } catch (\PDOException $exception) {
             $data['message'] = $exception->getMessage();
         }
