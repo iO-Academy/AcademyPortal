@@ -1,18 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: academy
- * Date: 2019-05-13
- * Time: 15:45
- */
 
 namespace Portal\Factories;
-
 
 use Portal\Controllers\GetApplicantController;
 
 use Psr\Container\ContainerInterface;
-
 
 class GetApplicantControllerFactory
 {
@@ -23,7 +15,7 @@ class GetApplicantControllerFactory
      *
      * @return DisplayApplicantsController.
      */
-    public function __invoke(ContainerInterface $container) : GetApplicantController
+    public function __invoke(ContainerInterface $container): GetApplicantController
     {
         $applicantModel = $container->get('ApplicantModel');
         return new GetApplicantController($applicantModel);

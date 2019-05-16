@@ -24,8 +24,13 @@ class GetApplicantController
     public function __invoke(Request $request, Response $response, array $args)
     {
         $id = $args['id'];
-        $applicant = $this->applicantModel->getApplicantById($id);
-        return $response->withJson($applicant);
+        if(is_numeric($id) && !empty($id)){
+            $applicant = $this->applicantModel->getApplicantById($id);
+            return $response->withJson($applicant);
+        } else {
+            return $response->withJson('' , 418);
+        }
+
     }
 }
 

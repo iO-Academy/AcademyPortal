@@ -18,6 +18,7 @@ $(document).ready(function(){
                         document.getElementById('modal-main').innerHTML = ''
                         document.querySelector('.modal-header').innerHTML += '<div class="alert alert-danger" role="alert">Looks like there was a problem. Status Code: ' +
                         response.status + '</div>'
+                        return
                     }
                     // Examine the text in the response
                     response.json().then(function(data) {
@@ -49,9 +50,6 @@ $(document).ready(function(){
                     })
                 }
             )
-            .catch(function(err) {
-                console.log('Fetch Error :-S', err)
-            })
 
         $("#myModal").modal()
     })
