@@ -42,7 +42,7 @@ class CreateHiringPartnerContactController
         $statusCode = 400;
 
         try {
-            $hiringPartnerContact = $this->hiringPartnerModel->createHiringPartnerContact(
+            $hiringPartnerContact = $this->hiringPartnerContactsModel->createHiringPartnerContact(
                 $newHiringPartnerContact['name'],
                 $newHiringPartnerContact['email'],
                 $newHiringPartnerContact['jobTitle'],
@@ -50,7 +50,7 @@ class CreateHiringPartnerContactController
                 $newHiringPartnerContact['companyId']
             );
             if(!empty($hiringPartnerContact) && $hiringPartnerContact instanceof HiringPartnerContactEntity) {
-                $result = $this->hiringPartnerModel->createHiringPartnerContact($hiringPartnerContact);
+                $result = $this->hiringPartnerContactsModel->createHiringPartnerContact($hiringPartnerContact);
             }
         } catch (\Exception $exception) {
             $data['message'] = $exception->getMessage();
