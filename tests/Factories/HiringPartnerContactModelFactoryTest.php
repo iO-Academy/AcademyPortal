@@ -2,10 +2,10 @@
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use Portal\Factories\HiringPartnerContactModelFactory;
-use Portal\Controllers\HiringPartnerContactModel;
+use Portal\Factories\HiringPartnerContactsModelFactory;
+use Portal\Models\HiringPartnerContactsModel;
 
-class HiringPartnerContactModelFactoryTest extends TestCase
+class HiringPartnerContactsModelFactoryTest extends TestCase
 {
     function testInvoke()
     {
@@ -13,9 +13,9 @@ class HiringPartnerContactModelFactoryTest extends TestCase
         $db = $this->createMock(\PDO::class);
         $container->method('get')
             ->willReturn($db);
-        $factory = new HiringPartnerContactModelFactory();
+        $factory = new HiringPartnerContactsModelFactory();
         $case = $factory($container);
-        $expected = HiringPartnerContactModel::class;
+        $expected = HiringPartnerContactsModel::class;
         $this->assertInstanceOf($expected, $case);
     }
 }
