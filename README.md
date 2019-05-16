@@ -129,7 +129,7 @@ POST
             - if new contact not saved successfully
                 - `{'success':false, 'msg':'Hiring Partner contact not added', 'data':[]}`        
                 
-**/makeHiringPartner        ContactMain**        
+**/makeHiringPartnerContactMain**        
         
 POST
         - Updates the main contact field in the hiring_partner_companies table in the database
@@ -153,4 +153,3 @@ POST
                     'email':'Available email values', 'email':'Available job title values', 
                     'email':'Available phone number values', 'email':'Available company name values']}`     
                     
-           
