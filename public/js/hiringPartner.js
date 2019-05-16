@@ -139,16 +139,17 @@ function displayHiringPartnerHandler(partnerCompanies){
     let companyDisplayer = document.getElementById('companies')
     let companyInformation = ''
     partnerCompanies.forEach(function(partnerCompany){
+        console.log(partnerCompany.url_website)
         companyInformation +=
             `<div class="companyName">
                 <p>${partnerCompany.name}</p>
                 <button class="showCompanyInfo" data-reference='${partnerCompany.name}'>More Info</button>
-                <div id="moreInfo${partnerCompany.name}" class="hide">
+                <div id="moreInfo${partnerCompany.name}" class="hide moreInfo">
                     <p>Company size: ${partnerCompany.size}</p>
                     <p>Tech Stack: ${partnerCompany.tech_stack}</p>
                     <p>Postcode: ${partnerCompany.postcode}</p>
                     <p>Phone number: ${partnerCompany.phone_number}</p>
-                    <a href="${partnerCompany.url_website}">${partnerCompany.url_website}</a>
+                    <a href="https://${partnerCompany.url_website}">${partnerCompany.url_website}</a>
                 </div>
             </div>`
     })
