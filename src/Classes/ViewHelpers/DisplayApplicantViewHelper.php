@@ -25,7 +25,6 @@ class DisplayApplicantViewHelper
                         <td class="dateApplied" data-applied="'. $applicant->getDateOfApplicationMMDDYYYY() .'">'. $applicant->getDateOfApplicationDDMMYYYY() .'</td>
                         <td class="applicants-cohort-date">'. $applicant->getCohortDate() .'</td>
                         </tr>';
-
             }
         }
         return ($result);
