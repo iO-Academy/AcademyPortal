@@ -2,7 +2,7 @@
 
 namespace Portal\Models;
 
-use Portal\Entity\HiringPartnerContactEntity;
+use Portal\Entities\HiringPartnerContactEntity;
 
 class HiringPartnerContactsModel
 {
@@ -59,15 +59,32 @@ class HiringPartnerContactsModel
     /**
      * Updates the main_contact column of the hiring_partner_companies table
      *
-     * @param $hiringPartnerContactId the id of the relevant hiring partner contact
-     * @param $hiringPartnerCompanyId the id of the relevant hiring partner company
+     * @param $hiringPartnerContactId string the id of the relevant hiring partner contact
+     * @param $hiringPartnerCompanyId string the id of the relevant hiring partner company
      *
      * @return bool
      */
-    public function makeHiringPartnerContactMain($hiringPartnerContactId, $hiringPartnerCompanyId) : bool {
+    public function makeHiringPartnerContactMain(string $hiringPartnerContactId, string $hiringPartnerCompanyId) : bool {
         $query = $this->db->prepare("UPDATE `hiring_partner_companies` SET `main_contact` = :hiringPartnerContactId WHERE `id` = :companyId");
         $query->bindParam(':hiringPartnerContactId', $hiringPartnerContactId);
         $query->bindParam(':companyId', $hiringPartnerCompanyId);
         return $query->execute();
+    }
+
+    public function createNewHiringPartnerContact (
+        string $hiringPartnerContactName,
+        string $hiringPartnerContactEmail,
+        string $hiringPartnerJobTitle,
+        string $hiringPartnerPhoneNumber,
+        string $hiringPartnerCompanyId
+    )
+    {
+        return new HiringPartnerContactEntity(
+            $hiringPartnerContactName,
+            $hiringPartnerContactEmail,
+            $hiringPartnerJobTitle,
+            $hiringPartnerPhoneNumber,
+            $hiringPartnerCompanyId
+            );
     }
 }
