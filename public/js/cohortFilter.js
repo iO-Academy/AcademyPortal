@@ -8,16 +8,12 @@ let showAllCohortDates = document.getElementById('showallcohort')
  * @param cohortDate
  */
 function applyCohortFilter(cohortDate) {
-    let mismatches = [];
     applicantsDates.forEach(function (date, index) {
         let theDates = date.getAttribute('data-id')
         if(cohortDate !== theDates) {
             let row = date.parentNode
-            mismatches.push(row)
+            row.classList.add('hidden')
         }
-    })
-    mismatches.forEach(function(mismatch) {
-        mismatch.classList.add('hidden')
     })
 }
 
