@@ -220,10 +220,26 @@ class ApplicantEntity
         return $this->dateTimeAdded;
     }
 
-    public function getDateOfApplicationUsingMMDDYYYY()
+    /**
+     * Gets dateOfApplication in format for JavaScript
+     *
+     * @return string, date in new format
+     */
+    public function getDateOfApplicationMMDDYYYY()
     {
         $timestamp = strtotime($this->dateTimeAdded);
          return date("m/d/Y",$timestamp);
+    }
+
+    /**
+     * Gets dateOfApplication in format for UI
+     *
+     * @return string, date in new format
+     */
+    public function getDateOfApplicationDDMMYYYY()
+    {
+        $timestamp = strtotime($this->dateTimeAdded);
+        return date("d/m/Y",$timestamp);
     }
 
     /**
@@ -235,6 +251,4 @@ class ApplicantEntity
     {
         return $this->cohortDate;
     }
-
-
 }

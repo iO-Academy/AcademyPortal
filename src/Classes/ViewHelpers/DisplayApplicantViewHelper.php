@@ -21,7 +21,7 @@ class DisplayApplicantViewHelper
                 $result .= '<tr class="applicant">
                         <td>'. $applicant->getName() .'</td>
                         <td>'. $applicant->getEmail() .'</td>
-                        <td class="dateApplied" data-applied="'. $applicant->getDateOfApplicationUsingMMDDYYYY() .'">'. $applicant->getDateOfApplication() .'</td>
+                        <td class="dateApplied" data-applied="'. $applicant->getDateOfApplicationMMDDYYYY() .'">'. $applicant->getDateOfApplicationDDMMYYYY() .'</td>
                         <td>'. $applicant->getCohortDate() .'</td>
                     </tr>';
 
