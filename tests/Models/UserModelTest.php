@@ -1,11 +1,13 @@
 <?php
 
+namespace Tests\Models;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Models\UserModel;
 
 class UserModelTest extends TestCase
 {
-    function testConstruct()
+    public function testConstruct()
     {
         $db = $this->createMock(\PDO::class);
             $case = new UserModel($db);
@@ -13,7 +15,8 @@ class UserModelTest extends TestCase
 
             $this->assertInstanceOf($expected, $case);
     }
-    function testSuccessUserLoginVerify() {
+    public function testSuccessUserLoginVerify()
+    {
         $userEmail = 'test@test.com';
         $password = 'test';
         $userCredentials = [

@@ -1,12 +1,14 @@
 <?php
 
+namespace Tests\Controllers;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Controllers\LoginController;
 use Portal\Models\UserModel;
 
 class LoginControllerTest extends TestCase
 {
-    function testConstruct()
+    public function testConstruct()
     {
         $userModel = $this->createMock(UserModel::class);
 
@@ -14,4 +16,4 @@ class LoginControllerTest extends TestCase
         $expected = LoginController::class;
         $this->assertInstanceOf($expected, $case);
     }
-};
+}

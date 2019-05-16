@@ -2,7 +2,6 @@
 
 namespace Portal\Entities;
 
-
 class ApplicantEntity
 {
     protected $name;
@@ -30,8 +29,7 @@ class ApplicantEntity
         string $applicantEighteenPlus = null,
         string $applicantFinance = null,
         string $applicantNotes = null
-    )
-    {
+    ) {
         $this->name = ($this->name ?? $applicantName);
         $this->email = ($this->email ?? $applicantEmail);
         $this->phoneNumber = ($this->phoneNumber ?? $applicantPhoneNumber);
@@ -45,13 +43,13 @@ class ApplicantEntity
         $this->notes = ($this->notes ?? $applicantNotes);
 
         $this->sanitiseData();
-
     }
 
     /**
      * Will sanitise all the fields for an applicant.
      */
-    private function sanitiseData() {
+    private function sanitiseData()
+    {
         $this->name = $this->sanitiseString($this->name);
         $this->email = $this->sanitiseString($this->email);
         $this->email = $this->validateEmail($this->email);
@@ -94,7 +92,6 @@ class ApplicantEntity
         } else {
             return false;
         }
-
     }
 
     /**

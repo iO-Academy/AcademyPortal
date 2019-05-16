@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Factories;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Factories\ApplicationFormModelFactory;
 use Portal\Models\ApplicationFormModel;
@@ -7,7 +9,7 @@ use Psr\Container\ContainerInterface;
 
 class ApplicationFormModelFactoryTest extends TestCase
 {
-    function testInvoke()
+    public function testInvoke()
     {
         $db = $this->createMock(\PDO::class);
         $container = $this->createMock(ContainerInterface::class);
@@ -19,5 +21,4 @@ class ApplicationFormModelFactoryTest extends TestCase
         $expected = ApplicationFormModel::class;
         $this->assertInstanceOf($expected, $case);
     }
-
 }

@@ -10,16 +10,15 @@ class RegisterUserControllerTest extends TestCase
 {
     private $mockUserModel;
 
-    function SetUp()
+    public function setup()
     {
         $this->mockUserModel = $this->createMock(UserModel::class);
     }
 
-    function test_Construct()
+    public function testConstruct()
     {
         $case = new RegisterUserController($this->mockUserModel);
         $expected = RegisterUserController::class;
         $this->assertInstanceOf($expected, $case);
     }
-
 }

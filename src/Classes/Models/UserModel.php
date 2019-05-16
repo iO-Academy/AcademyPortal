@@ -45,8 +45,7 @@ class UserModel
      */
     public function userLoginVerify(string $userEmail, string $password, $userCredentials): bool
     {
-        if (
-            (is_array($userCredentials)) &&
+        if ((is_array($userCredentials)) &&
             ($userEmail === $userCredentials['email']) &&
             (password_verify($password, $userCredentials['password']))
         ) {
@@ -66,7 +65,8 @@ class UserModel
     public function insertNewUserToDb(string $registerEmail, string $registerPassword)
     {
         $query = $this->db->prepare(
-            "INSERT INTO `users` (`email`, `password`) VALUES (:email, :password);");
+            "INSERT INTO `users` (`email`, `password`) VALUES (:email, :password);"
+        );
         $query->bindParam(':email', $registerEmail);
         $query->bindParam(':password', $registerPassword);
         return $query->execute();

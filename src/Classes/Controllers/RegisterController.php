@@ -18,7 +18,7 @@ class RegisterController
      * @param PhpRenderer $renderer
      * @param string $password
      */
-    function __construct(PhpRenderer $renderer, string $password)
+    public function __construct(PhpRenderer $renderer, string $password)
     {
         $this->renderer = $renderer;
         $this->password = $password;
@@ -34,7 +34,7 @@ class RegisterController
      *
      * @return \Psr\Http\Message\ResponseInterface|Response.
      */
-    function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args)
     {
         $args['password'] = $this->password;
         if ($_SESSION['loggedIn'] === true) {

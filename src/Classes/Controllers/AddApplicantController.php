@@ -16,7 +16,7 @@ class AddApplicantController
      * @param PhpRenderer $renderer
      */
 
-    function __construct(PhpRenderer $renderer)
+    public function __construct(PhpRenderer $renderer)
     {
         $this->renderer = $renderer;
     }
@@ -31,8 +31,8 @@ class AddApplicantController
      * @return Response will return the url output.
      */
 
-    function __invoke(Request $request, Response $response, $args)
-    {   
+    public function __invoke(Request $request, Response $response, $args)
+    {
         if ($_SESSION['loggedIn'] === true) {
             return $this->renderer->render($response, 'addApplicant.phtml', $args);
         } else {

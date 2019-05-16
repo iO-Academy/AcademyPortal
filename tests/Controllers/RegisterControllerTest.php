@@ -8,7 +8,7 @@ use Slim\Views\PhpRenderer;
 
 class AdminControllerTest extends TestCase
 {
-    function testConstruct()
+    public function testConstruct()
     {
         $stub = $this->createMock(PhpRenderer::class);
         $password = 'password';
@@ -18,4 +18,3 @@ class AdminControllerTest extends TestCase
         $this->assertInstanceOf($expected, $case);
     }
 }
-

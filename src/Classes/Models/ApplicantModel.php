@@ -20,7 +20,8 @@ class ApplicantModel
      *
      * @return bool
      */
-    public function insertNewApplicantToDb(ApplicantEntity $applicant) {
+    public function insertNewApplicantToDb(ApplicantEntity $applicant)
+    {
         $query = $this->db->prepare(
             "INSERT INTO `applicants` (
                             `name`,
@@ -72,7 +73,10 @@ class ApplicantModel
      */
     public function getAllApplicants()
     {
-        $query = $this->db->prepare('SELECT `name`, `email`, `date` AS "cohortDate" FROM `applicants` LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`;');
+        $query = $this->db->prepare(
+            'SELECT `name`, `email`, `date` AS "cohortDate" FROM `applicants` 
+                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`;'
+        );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
         $query->execute();
         $results = $query->fetchAll();
@@ -108,8 +112,7 @@ class ApplicantModel
         $applicantEighteenPlus,
         $applicantFinance,
         $applicantNotes
-    )
-    {
+    ) {
         return new ApplicantEntity(
             $applicantName,
             $applicantEmail,

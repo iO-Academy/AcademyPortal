@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Factories;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Factories\HomePageControllerFactory;
 use Slim\Views\PhpRenderer;
@@ -8,7 +10,7 @@ use Portal\Controllers\HomePageController;
 
 class HomePageControllerFactoryTest extends TestCase
 {
-    function testInvoke()
+    public function testInvoke()
     {
         $container = $this->createMock(ContainerInterface::class);
         $renderer = $this->createMock(PhpRenderer::class);

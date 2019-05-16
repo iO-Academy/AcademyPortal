@@ -13,10 +13,11 @@ class ApplicationFormModel
 
     /**
      * Gets all the cohorts from the database.
-     * 
+     *
      * @return array $result is data from cohorts fields.
      */
-    public function getCohorts() {
+    public function getCohorts()
+    {
         $query = $this->db->prepare('SELECT `id`, `date` FROM `cohorts`;');
         $query->execute();
         $result = $query->fetchAll();
@@ -28,7 +29,8 @@ class ApplicationFormModel
      *
      * @return array $result is data from hearAbout fields.
      */
-    public function getHearAbout() {
+    public function getHearAbout()
+    {
         $query = $this->db->prepare('SELECT `id`, `hearAbout` FROM `hearAbout`;');
         $query->execute();
         $result = $query->fetchAll();

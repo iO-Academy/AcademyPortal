@@ -1,11 +1,13 @@
 <?php
 
+namespace Tests\Models;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Models\ApplicationFormModel;
 
 class ApplicationFormModelTest extends TestCase
 {
-    function testConstruct()
+    public function testConstruct()
     {
         $db = $this->createMock(\PDO::class);
             $case = new ApplicationFormModel($db);

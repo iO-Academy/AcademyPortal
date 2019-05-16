@@ -10,7 +10,7 @@ use Portal\Factories\SaveApplicantControllerFactory;
 
 class SaveApplicantControllerFactoryTest extends TestCase
 {
-    function testInvoke()
+    public function testInvoke()
     {
         $container = $this->createMock(ContainerInterface::class);
         $applicant = $this->createMock(ApplicantModel::class);
@@ -22,5 +22,4 @@ class SaveApplicantControllerFactoryTest extends TestCase
         $expected = SaveApplicantController::class;
         $this->assertInstanceOf($expected, $case);
     }
-
 }
