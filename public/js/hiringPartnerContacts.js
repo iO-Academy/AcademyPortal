@@ -121,8 +121,7 @@ function validateForm() {
 		                <button class="showContactInfo" data-reference='${partnerContact.id}'>More Info</button>
 		                <div id="moreInfo${partnerContact.id}" class="hide moreInfo">
 		                    <p>Job Title: ${partnerContact.job_title}</p>
-		                    <p>Email: ${partnerContact.email}</p>
-		                    <p>Company: ${partnerContact.postcode}</p>`
+		                    <p>Email: ${partnerContact.email}</p>`
             if (partnerContact.phone_number !== null) {
                 contactInformation += `<p>Phone number: ${partnerContact.phone_number}</p>`
             }
