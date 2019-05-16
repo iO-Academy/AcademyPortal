@@ -290,4 +290,15 @@ class ApplicantEntity implements \JsonSerializable
     {
         return date("F, Y", strtotime($this->cohortDate));
     }
+
+    /**
+     * Gets cohort date as a yyyymmdd
+     * @return false|string
+     */
+    public function getCohortDateNumber()
+    {
+        $cohortDate = date('Y-m-d', strtotime($this->cohortDate));
+
+        return $cohortDate;
+    }
 }
