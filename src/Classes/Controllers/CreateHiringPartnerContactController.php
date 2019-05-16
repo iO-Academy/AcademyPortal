@@ -2,25 +2,23 @@
 
 namespace Portal\Controllers;
 
-use Portal\Entities\HiringPartnerEntity;
+use Portal\Entities\HiringPartnerContactsEntity;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Slim\Views\PhpRenderer;
-use Portal\Models\HiringPartnerModel;
+use Portal\Models\HiringPartnerContactsModel;
 
 class CreateHiringPartnerContactController
 {
-    public $hiringPartnerModel;
-    public $renderer;
+    public $hiringPartnerContactsModel;
 
     /**
      * CreateHiringPartnerContactController constructor.
      *
      * @param $hiringPartnerModel
      */
-    public function __construct(HiringPartnerModel $hiringPartnerModel)
+    public function __construct(HiringPartnerContactsModel $hiringPartnerContactsModel)
     {
-        $this->hiringPartnerModel = $hiringPartnerModel;
+        $this->hiringPartnerContactsModel = $hiringPartnerContactsModel;
     }
 
 
@@ -31,7 +29,7 @@ class CreateHiringPartnerContactController
      * @param Response $response HTTP response
      * @param array $args
      *
-     * @return Response HTTP response with redirect
+     * @return Response responds with JSON
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
@@ -44,7 +42,7 @@ class CreateHiringPartnerContactController
         $statusCode = 400;
 
         try {
-            $hiringPartnerContact = $this->hiringPartnerModel->createNewHiringPartner(
+            $hiringPartnerContact = $this->hiringPartnerModel->createHiringPartnerContact(
                 $newHiringPartnerContact['name'],
                 $newHiringPartnerContact['email'],
                 $newHiringPartnerContact['jobTitle'],
@@ -52,7 +50,7 @@ class CreateHiringPartnerContactController
                 $newHiringPartnerContact['companyId']
             );
             if(!empty($hiringPartnerContact) && $hiringPartnerContact instanceof HiringPartnerContactEntity) {
-                $result = $this->hiringPartnerModel->addHiringPartner($hiringPartnerContact);
+                $result = $this->hiringPartnerModel->createHiringPartnerContact($hiringPartnerContact);
             }
         } catch (\Exception $exception) {
             $data['message'] = $exception->getMessage();
@@ -61,7 +59,7 @@ class CreateHiringPartnerContactController
         if (isset($result) && $result) {
             $data = [
                 'success' => true,
-                'message' => 'Hiring Partner Added to the db',
+                'message' => 'Contact added to the db',
                 'data' => []
             ];
             $statusCode = 200;
