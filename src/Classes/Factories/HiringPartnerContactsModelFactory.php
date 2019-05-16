@@ -7,11 +7,12 @@ use Portal\Models\HiringPartnerContactsModel;
 
 class HiringPartnerContactsModelFactory
 {
-    /** Calls addHiringPartnerContact method
+    /**
+     * Calls addHiringPartnerContact method
      *
      * @param $container
      *
-     * @return HiringPartnerContactsModel returns JSON
+     * @return HiringPartnerContactsModel returns instantiation of the model
      */
     public function __invoke(ContainerInterface $container) : HiringPartnerContactsModel
     {
