@@ -116,7 +116,7 @@ class HiringPartnerEntity
      *
      * @return string of tech stack
      */
-    public function getTechStack(){
+    public function getTechStack() : string{
         return $this->techStack;
     }
 
@@ -125,7 +125,7 @@ class HiringPartnerEntity
      *
      * @return string of company postcode
      */
-    public function getPostcode(){
+    public function getPostcode() : string{
         return $this->postcode;
     }
 
@@ -134,7 +134,7 @@ class HiringPartnerEntity
      *
      * @return string of phone number
      */
-    public function getPhoneNumber(){
+    public function getPhoneNumber() : string {
         return $this->phoneNumber;
     }
 
@@ -143,7 +143,7 @@ class HiringPartnerEntity
      *
      * @return string of website url
      */
-    public function getWebsiteURL(){
+    public function getWebsiteURL() : string {
         return $this->websiteUrl;
     }
 }
