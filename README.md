@@ -111,3 +111,45 @@ GET
         - `{'success':false, 'msg':'SQL error message', 'data':[]}`
     - if there are not data in the database
         - `{'success':false, 'msg':'No hiring partners found!', 'data':[]}`
+        
+**/createHiringPartnerContact**
+        
+POST
+- Saves a new hiring partner contact to the hiring_partner_contacts table in the database
+- Sends:
+  - `{'name': 'example',
+                  'email': 'example@example.com',
+                  'jobTitle': 'CTO',
+                  'phoneNumber': '01225 444444',
+                  'companyId': '1',
+                 }          
+- Returns success true / false:
+            - if new contact registered successfully
+                - `{'success':true, 'msg':'Hiring Partner contact successfully added', 'data':[]}`
+            - if new contact not saved successfully
+                - `{'success':false, 'msg':'Hiring Partner contact not added', 'data':[]}`        
+                
+**/makeHiringPartnerContactMain**        
+        
+POST
+        - Updates the main contact field in the hiring_partner_companies table in the database
+        - Sends:
+            - `{'companyId': '1',
+                'contactId': '5'
+               }
+        - Returns success true / false:
+            - if main contact updated successfully
+                - `{'success':true, 'msg':'Hiring Partner main contact successfully updated', 'data':[]}`
+            - if new contact not saved successfully
+                - `{'success':false, 'msg':'Hiring Partner main contact has not been updated', 'data':[]}`        
+                
+ **/getHiringPartnerContacts**
+        
+  GET
+        - Gets all contacts for a specified Hiring Partner from database 
+        - Returns:
+            - if GET request is successful
+                - `{'success':true, 'msg':'Retrieved contacts.', 'data':['name':'Available name values', 
+                    'email':'Available email values', 'email':'Available job title values', 
+                    'email':'Available phone number values', 'email':'Available company name values']}`     
+                    
