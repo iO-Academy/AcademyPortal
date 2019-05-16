@@ -5,7 +5,7 @@ use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Portal\Models\HiringPartnerModel;
 use Portal\Factories\GetHiringPartnerControllerFactory;
-use Portal\Controllers\GetHiringPartnerController;
+use Portal\Controllers\GetHiringPartnersController;
 
 class GetHiringPartnerControllerFactoryTest extends TestCase
 {
@@ -16,7 +16,7 @@ class GetHiringPartnerControllerFactoryTest extends TestCase
         $container->method('get')->willReturn($hiringPartnerModel);
         $factory = new GetHiringPartnerControllerFactory();
         $case = $factory($container);
-        $expected = GetHiringPartnerController::class;
+        $expected = GetHiringPartnersController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

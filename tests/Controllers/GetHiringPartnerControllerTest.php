@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Portal\Models\HiringPartnerModel;
-use Portal\Controllers\GetHiringPartnerController;
+use Portal\Controllers\GetHiringPartnersController;
 
 class GetHiringPartnerControllerTest extends TestCase
 {
@@ -10,8 +10,8 @@ class GetHiringPartnerControllerTest extends TestCase
     {
         $hiringPartnerModel = $this->createMock(HiringPartnerModel::class);
 
-        $case = new GetHiringPartnerController($hiringPartnerModel);
-        $expected = GetHiringPartnerController::class;
+        $case = new GetHiringPartnersController($hiringPartnerModel);
+        $expected = GetHiringPartnersController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

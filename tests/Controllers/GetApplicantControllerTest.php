@@ -22,11 +22,4 @@ class GetApplicantControllerTest extends TestCase
         $expected = GetApplicantController::class;
         $this->assertInstanceOf($expected, $case);
     }
-
-    function testInvoke()
-    {
-        $this->markTestSkipped (
-            'This method currently doesn\'t contain anything to be tested.'
-        );
-    }
 }
