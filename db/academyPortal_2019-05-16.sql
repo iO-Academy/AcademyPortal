@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.43)
 # Database: academyPortal
-# Generation Time: 2019-05-14 09:52:34 +0000
+# Generation Time: 2019-05-16 13:27:34 +0000
 # ************************************************************
 
 
@@ -156,6 +156,37 @@ CREATE TABLE `hiring_partner_companies` (
   `postcode` varchar(255) DEFAULT NULL,
   `phone_number` varchar(255) DEFAULT NULL,
   `url_website` varchar(255) DEFAULT NULL,
+  `main_contact` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `hiring_partner_companies` WRITE;
+/*!40000 ALTER TABLE `hiring_partner_companies` DISABLE KEYS */;
+
+INSERT INTO `hiring_partner_companies` (`id`, `name`, `size`, `tech_stack`, `postcode`, `phone_number`, `url_website`, `main_contact`)
+VALUES
+	(1,'Simpson Kline Co',2,'Malone Bailey Inc','BA1 5BR','01225 4444444','www.google.com',NULL),
+	(2,'Prince and Mcgee Traders',2,'Moody and Moss Traders','BA1 5BR','01225 444444','www.google.com',NULL),
+	(3,'Brennan Price Associates',6,'Pearson Evans Traders','BA1 5BR',NULL,NULL,5),
+	(4,'Erickson and Marshall Co',5,'Boyle and Pollard Associates','BA1 5BR',NULL,NULL,NULL),
+	(5,'Garner Horton Trading',6,'Bowers and Pollard Plc','BA1 5BR',NULL,NULL,1);
+
+/*!40000 ALTER TABLE `hiring_partner_companies` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table hiring_partner_contacts
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `hiring_partner_contacts`;
+
+CREATE TABLE `hiring_partner_contacts` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `job_title` varchar(255) NOT NULL DEFAULT '',
+  `phone_number` varchar(20) DEFAULT NULL,
+  `company_id` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
