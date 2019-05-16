@@ -15,11 +15,15 @@ class DisplayApplicantViewHelper
      */
     static public function displayApplicants($applicants)
     {
-
         $result = '';
         foreach ($applicants as $applicant) {
             if ($applicant instanceof ApplicantEntity) {
-                $result .= '<strong>Name:</strong> ' . $applicant->getName() . '<strong> Email:</strong> ' .  $applicant->getEmail() . '<strong> Date Applied To:</strong> ' . $applicant->getCohortDate() . '<br>';
+                $result .= '<tr>
+                        <td><a data-id ="'. $applicant->getId().'" type="button"  class="myBtn">'. $applicant->getName() .'</a></td>
+                        <td>'. $applicant->getEmail() .'</td>
+                        <td>'. $applicant->getDateOfApplication() .'</td>
+                        <td>'. $applicant->getCohortDate().'</td>
+                    </tr>';
             }
         }
         return ($result);
