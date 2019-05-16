@@ -29,7 +29,7 @@ function validateForm() {
         }
 
         if (element.name === 'contactEmail') {
-            let postcode = element.value.trim()
+            let contactEmail = element.value.trim()
             let pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             let regEx = new RegExp(pattern)
             if (!regEx.test(contactEmail)) {
@@ -64,7 +64,7 @@ function validateForm() {
     }
 
     let makeApiRequest = async(data) => {
-        return fetch('/api/createHiringPartnerContact', {
+        return fetch('/api/createHiringPartnerContacts', {
             credentials: 'same-origin',
             headers: {
                 'Accept': 'application/json',
