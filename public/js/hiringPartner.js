@@ -108,3 +108,56 @@ let makeApiRequest = async(data) => {
 
 }
 
+
+/**
+ * Gets hiring partner information from the API and passes into the displayHandler function
+ *
+ * @return hiring partner data
+ */
+
+async function getHiringPartners () {
+    await fetch('/api/getHiringPartnerInfo', {
+        credentials: "same-origin",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+    })
+        .then( hiringPartnerInfo => hiringPartnerInfo.json())
+        .then(hiringPartnerInfo => displayHandler(hiringPartnerInfo.data))
+}
+
+
+/**
+ * Runs a foreach through each hiring partner object and outputs HTML elements with hiring partner's details
+ *
+ * @param partnerCompanies is an array of objects which contains information about hiring partners
+ *
+ * @return a divs of the company name with a button that reveals each hiring partner's additional info on each line
+ */
+
+function displayHandler(partnerCompanies){
+    let companyDisplayer = document.getElementById('companies')
+    partnerCompanies.forEach(function(partnerCompany){
+        companyDisplayer.innerHTML +=
+            `<div class="companyName">
+                <p>${partnerCompany.name}</p>
+                <button class="showCompanyInfo">More Info</button>
+                <div id="moreInfo" class="hide">
+                    <p>Company size: ${partnerCompany.size}</p>
+                    <p>Tech Stack: ${partnerCompany.tech_stack}</p>
+                    <p>Postcode: ${partnerCompany.postcode}</p>
+                    <p>Phone number: ${partnerCompany.phone_number}</p>
+                    <p>Company URL: ${partnerCompany.url_website}</p>
+                </div>
+            </div>`
+
+let moreInfo = document.getElementById('moreInfo')
+document.querySelector('.showCompanyInfo').addEventListener('click', event => {
+    moreInfo.classList.toggle('hide')
+        })
+    })
+}
+
+getHiringPartners()
+
