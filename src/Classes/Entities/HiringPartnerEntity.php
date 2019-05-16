@@ -107,7 +107,7 @@ class HiringPartnerEntity
      *
      * @return string of company size
      */
-    public function getCompanySize(){
+    public function getCompanySize() : string {
         return $this->companySize;
     }
 
