@@ -18,7 +18,7 @@ class HiringPartnerContactsModel
      * @param $companyId the id of the company whose contacts we are getting
      * @return array
      */
-    public function getHiringPartnerContactByCompanyId($companyId) :array {
+    public function getHiringPartnerContactByCompanyId(int $companyId) :array {
         $query = $this->db->prepare("SELECT `name`, `email`, `job_title`, `phone_number`, `company_id` FROM `hiring_partner_contacts` WHERE `id` = :`id`");
         $query->bindParam(':id', $companyId);
         $query->execute();
