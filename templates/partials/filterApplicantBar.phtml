@@ -7,13 +7,14 @@
             <div class="well">
                 <div class="row">
                     <label for="daterange">Application Date Range:</label>
-                    <input class="daterange" type="text" name="daterange" value="01/01/2019 - 01/01/2020" />
+                    <input class="daterange" type="text" name="daterange" value="01/01/2015 - <?php echo date("m/d/Y"); ?>">
+
                 </div>
                 <div class="row">
                     <label for="dropdownMenu1" class="cohortlabel pull-left"> Cohort Date:</label>
                     <div class="dropdown pull-left">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Choose Cohort
+                            <span id="cohort-dropdown-title">Choose Cohort</span>
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">

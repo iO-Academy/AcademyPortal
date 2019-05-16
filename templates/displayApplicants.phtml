@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Registered Applicants</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <link rel="stylesheet" type="text/css" href="/css/displayApplicants.css">
     <link rel="stylesheet" type="text/css" href="/css/genericStyles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script defer src="js/applicantModal.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 <body>
     <div class="container">
@@ -18,9 +18,9 @@
         <div class="row">
             <div class="col-xs-12 registeredApplicants">
                 <h1>Registered Applicants</h1>
-                <table class="col-xs-12 table-bordered">
+                <table id="applicants" class="col-xs-12 table-bordered">
                     <tr>
-                        <th class="col-xs-4">Name</th>
+                        <th class="col-xs-2">Name</th>
                         <th class="col-xs-4">Email</th>
                         <th class="col-xs-2">Date of application</th>
                         <th class="col-xs-2">Cohort date</th>
@@ -28,11 +28,8 @@
                     <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayApplicants($data); ?>
 
                 </table>
-<!--                this needs checking with viewHelper when all relevant branches are merged-->
             </div>
             <div class="container">
-                <!-- Trigger the modal with a button -->
-                <a type="button"  id="myBtn">Applicant name(modal)</a>
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog modal-lg">
@@ -45,22 +42,34 @@
                             </div>
                             <div class="modal-body">
                                 <h3>Personal Information</h3>
-                                <h4>Name</h4>
+                                <h4> Name</h4>
+                                <p id="name"></p>
                                 <h4>Email</h4>
+                                <p id="email"></p>
                                 <h4>Phone Number</h4>
+                                <p id="phoneNumber"></p>
                             </div>
                             <hr>
                             <div class="modal-body">
                                 <h3>Application Information</h3>
                                 <h4>Cohort</h4>
+                                <p id="cohort"></p>
                                 <h4>Reason for wanting to be a dev</h4>
+                                <p id="whyDev"></p>
                                 <h4>Code Experience</h4>
+                                <p id="codeExperience"></p>
                                 <h4>Heard About Us</h4>
+                                <p id="hearAbout"></p>
                                 <h4>Eligibility</h4>
+                                <p id="eligible"></p>
                                 <h4>18+ </h4>
+                                <p id="eighteenPlus"></p>
                                 <h4>Finance</h4>
+                                <p id="finance"></p>
                                 <h4>Notes</h4>
+                                <p id="notes"></p>
                                 <h4>Date/Time Added</h4>
+                                <p id="dateTimeAdded"></p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -77,5 +86,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script type="text/javascript" src="/js/datePicker.js"></script>
+    <script type="text/javascript" src="/js/filterApplicantTable.js"></script>
+    <script type="text/javascript" src="/js/cohortFilter.js"></script>
 </body>
 </html>

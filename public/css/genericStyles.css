@@ -23,8 +23,6 @@ p {
     font-size: 40px;
 }
 
-<<<<<<< HEAD
-=======
 .collapse, .collapsing {
     clear: both;
 }
@@ -43,4 +41,7 @@ p {
 .well .row {
     margin-left: 5px;
 }
->>>>>>> RMPstory2_filter
+
+.hidden {
+    display: none;
+}
