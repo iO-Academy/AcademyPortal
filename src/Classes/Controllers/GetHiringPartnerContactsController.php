@@ -36,7 +36,7 @@ class GetHiringPartnerContactsController
 
         try {
             $hiringPartnerContacts = $this->hiringPartnerContactsModel->getHiringPartnerContactByCompanyId($hiringPartnerId);
-        } catch (\PDOException $exception) {
+        } catch (\Exception $exception) {
             $data['message'] = $exception->getMessage();
         }
 
