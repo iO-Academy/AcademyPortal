@@ -124,7 +124,7 @@ async function getHiringPartners () {
         },
     })
         .then( hiringPartnerInfo => hiringPartnerInfo.json())
-        .then(hiringPartnerInfo => displayHandler(hiringPartnerInfo.data))
+        .then(hiringPartnerInfo => displayHiringPartnerHandler(hiringPartnerInfo.data))
 }
 
 
@@ -136,10 +136,11 @@ async function getHiringPartners () {
  * @return a divs of the company name with a button that reveals each hiring partner's additional info on each line
  */
 
-function displayHandler(partnerCompanies){
+function displayHiringPartnerHandler(partnerCompanies){
     let companyDisplayer = document.getElementById('companies')
+    let companyInformation = ''
     partnerCompanies.forEach(function(partnerCompany){
-        companyDisplayer.innerHTML +=
+        companyInformation +=
             `<div class="companyName">
                 <p>${partnerCompany.name}</p>
                 <button class="showCompanyInfo">More Info</button>
@@ -153,10 +154,12 @@ function displayHandler(partnerCompanies){
             </div>`
 
 let moreInfo = document.getElementById('moreInfo')
-document.querySelector('.showCompanyInfo').addEventListener('click', event => {
+document.querySelector('.showCompanyInfo').addEventListener('click', () => {
     moreInfo.classList.toggle('hide')
         })
     })
+
+    companyDisplayer.innerHTML = companyInformation
 }
 
 getHiringPartners()
