@@ -71,6 +71,17 @@ class HiringPartnerContactsModel
         return $query->execute();
     }
 
+    /**
+     * Creates a new hiring partner contact entity
+     *
+     * @param string $hiringPartnerContactName
+     * @param string $hiringPartnerContactEmail
+     * @param string $hiringPartnerJobTitle
+     * @param string $hiringPartnerPhoneNumber
+     * @param string $hiringPartnerCompanyId
+     *
+     * @return HiringPartnerContactEntity new instantiation of HiringPartnerContactEntity
+     */
     public function createNewHiringPartnerContact (
         string $hiringPartnerContactName,
         string $hiringPartnerContactEmail,
