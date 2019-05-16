@@ -3,14 +3,19 @@ document.querySelector('#searchBar').addEventListener("input", function () {
 
     document.querySelectorAll('#applicants .applicant').forEach(row => {
 
-        let textCheck = document.querySelectorAll('.searchable')
-        console.log ("textCheck")
+        let childNodes = row.childNodes
+        let nameField = childNodes[1].innerText
+        let emailField = childNodes[3].innerText
+        let regex = new RegExp(textSearch, 'gi')
+        let doesExistInName = nameField.match(regex)
+        let doesExistInEmail = emailField.match(regex)
+
+        if (doesExistInName != null && doesExistInName.length > 0 || doesExistInEmail != null && doesExistInEmail.length > 0) {
+            row.classList.remove('hidden')
+        } else {
+            row.classList.add('hidden')
+        }
     })
-    // let textSearchAsArray =
-
-
-
-
 })
 
 
@@ -20,16 +25,3 @@ document.querySelector('#searchBar').addEventListener("input", function () {
 
 
 
-// var dateCheck = row.querySelector('.dateApplied').dataset.applied;
-//
-// //console.log(dateCheck)
-//
-// var applicationDateAsArray = dateCheck.split("/");
-//
-// var applicationDate = new Date(applicationDateAsArray[2], (applicationDateAsArray[0])-1, applicationDateAsArray[1]) // -1 because January = 0, December = 11
-//
-// if (applicationDate >= dateFrom && applicationDate <= dateTo) {
-//     row.classList.remove('hidden')
-// } else {
-//     row.classList.add('hidden')
-// }
