@@ -139,5 +139,6 @@ function validateForm() {
             })
         })
     }
+}
 
-    getHiringPartnerContacts()
+getHiringPartnerContacts()
