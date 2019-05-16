@@ -143,12 +143,14 @@ POST
             - if new contact not saved successfully
                 - `{'success':false, 'msg':'Hiring Partner main contact has not been updated', 'data':[]}`        
                 
-        **/getHiringPartnerContacts**
+ **/getHiringPartnerContacts**
         
-        GET
+  GET
         - Gets all contacts for a specified Hiring Partner from database 
         - Returns:
             - if GET request is successful
                 - `{'success':true, 'msg':'Retrieved contacts.', 'data':['name':'Available name values', 
                     'email':'Available email values', 'email':'Available job title values', 
-                    'email':'Available phone number values', 'email':'Available company name values']}`         
+                    'email':'Available phone number values', 'email':'Available company name values']}`     
+                    
+           
