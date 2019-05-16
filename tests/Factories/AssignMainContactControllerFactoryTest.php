@@ -3,6 +3,7 @@
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 use Portal\Models\HiringPartnerContactsModel;
+use Portal\Controllers\AssignMainContactController;
 use Portal\Factories\AssignMainContactControllerFactory;
 
 class AssignMainContactControllerFactoryTest extends TestCase {
@@ -14,7 +15,7 @@ class AssignMainContactControllerFactoryTest extends TestCase {
         $container->method('get')->willReturn($hiringPartnerContactsModel);
         $factory = new AssignMainContactControllerFactory();
         $case = $factory($container);
-        $expected = AssignMainContactControllerFactory::class;
+        $expected = AssignMainContactController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }
