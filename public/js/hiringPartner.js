@@ -149,7 +149,7 @@ function displayHiringPartnerHandler(partnerCompanies){
                     <p>Tech Stack: ${partnerCompany.tech_stack}</p>
                     <p>Postcode: ${partnerCompany.postcode}</p>
                     <p>Phone number: ${partnerCompany.phone_number}</p>
-                    <a href="https://${partnerCompany.url_website}">${partnerCompany.url_website}</a>
+                    <a href="https://${partnerCompany.url_website}" target="_blank">${partnerCompany.url_website}</a>
                 </div>
             </div>`
     })
