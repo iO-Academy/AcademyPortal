@@ -55,7 +55,7 @@ class HiringPartnerEntity
      *
      * @return string, which will return the hiring partner data.
      */
-    public function sanitiseString(string $hiringPartnerData){
+    public function sanitiseString(string $hiringPartnerData) : string {
         return filter_var($hiringPartnerData, FILTER_SANITIZE_STRING);
     }
 
