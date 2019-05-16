@@ -6,7 +6,7 @@ use Portal\Models\HiringPartnerModel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class GetHiringPartnersController
+class GetHiringPartnerController
 {
     private $hiringPartnerModel;
 
