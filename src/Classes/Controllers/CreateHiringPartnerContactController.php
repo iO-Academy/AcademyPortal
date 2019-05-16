@@ -2,7 +2,7 @@
 
 namespace Portal\Controllers;
 
-use Portal\Entities\HiringPartnerContactsEntity;
+use Portal\Entities\HiringPartnerContactEntity;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Portal\Models\HiringPartnerContactsModel;
@@ -14,7 +14,7 @@ class CreateHiringPartnerContactController
     /**
      * CreateHiringPartnerContactController constructor.
      *
-     * @param $hiringPartnerModel
+     * @param $hiringPartnerContactsModel
      */
     public function __construct(HiringPartnerContactsModel $hiringPartnerContactsModel)
     {
@@ -42,7 +42,7 @@ class CreateHiringPartnerContactController
         $statusCode = 400;
 
         try {
-            $hiringPartnerContact = $this->hiringPartnerContactsModel->createHiringPartnerContact(
+            $hiringPartnerContact = $this->hiringPartnerContactsModel->createNewHiringPartnerContact(
                 $newHiringPartnerContact['name'],
                 $newHiringPartnerContact['email'],
                 $newHiringPartnerContact['jobTitle'],
