@@ -11,7 +11,8 @@ namespace Tests\Factories;
 use PHPUnit\Framework\TestCase;
 
 use Portal\Factories\GetApplicantControllerFactory;
-use Portal\Models\ApplicationFormModel;
+use Portal\Models\ApplicantModel;
+use Portal\Controllers\GetApplicantController;
 use Psr\Container\ContainerInterface;
 
 
@@ -20,13 +21,13 @@ class GetApplicantControllerFactoryTest extends TestCase
     function testInvoke()
     {
         $container = $this->createMock(ContainerInterface::class);
-        $applicationForm = $this->createMock(ApplicantModel::class);
+        $applicationModel = $this->createMock(ApplicantModel::class);
         $container->method('get')
-            ->willReturn($applicationForm);
+            ->willReturn($applicationModel);
 
         $factory = new GetApplicantControllerFactory();
         $case = $factory($container);
-        $expected = GetApplicantControllerFactory::class;
+        $expected = GetApplicantController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }
