@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Portal\Controllers\RegisterController;
 use Slim\Views\PhpRenderer;
 
-class AdminControllerTest extends TestCase
+class RegisterControllerTest extends TestCase
 {
     public function testConstruct()
     {
