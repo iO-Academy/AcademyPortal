@@ -3,7 +3,7 @@
 namespace Portal\Factories;
 
 use Psr\Container\ContainerInterface;
-use Portal\Models\HiringPartnerContactModel;
+use Portal\Models\HiringPartnerContactsModel;
 
 class HiringPartnerContactModelFactory
 {
@@ -11,11 +11,11 @@ class HiringPartnerContactModelFactory
      *
      * @param $container
      *
-     * @return HiringPartnerContactModel returns JSON
+     * @return HiringPartnerContactsModel returns JSON
      */
-    public function __invoke(ContainerInterface $container) : HiringPartnerContactModel
+    public function __invoke(ContainerInterface $container) : HiringPartnerContactsModel
     {
         $db = $container->get('dbConnection');
-        return new HiringPartnerContactModel($db);
+        return new HiringPartnerContactsModel($db);
     }
 }

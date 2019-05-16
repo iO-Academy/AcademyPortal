@@ -62,4 +62,4 @@ $container['HiringPartnerModel'] = new \Portal\Factories\HiringPartnerModelFacto
 
 $container['GetHiringPartnersController'] = new \Portal\Factories\GetHiringPartnerControllerFactory();
 
-$container['HiringPartnerContactModel'] = new \Portal\Factories\HiringPartnerContactModelFactory();
+$container['HiringPartnerContactModel'] = new \Portal\Factories\HiringPartnerContactsModelFactory();
