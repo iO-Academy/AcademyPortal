@@ -20,17 +20,6 @@ function applyCohortFilter(cohortDate) {
 }
 
 /**
- *   resets all the hidden rows
- */
-function clearFilter() {
-    tableRows.forEach(function(tableRow) {
-        if(tableRow.classList.contains('hidden')){
-            tableRow.classList.remove('hidden')
-        }
-    })
-}
-
-/**
  * makes dropdown select cohortDate and calls the filter function
  *
  * @return cohortDate (yyyy/mm/dd)
