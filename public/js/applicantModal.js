@@ -1,6 +1,5 @@
 
 function validateField(data, field, noDataMessage = 'No information provided') {
-    // let noDataMessage = 'No information provided'
     if (data[field] === '' || data[field] === null || data[field] === undefined || data[field] === 0 || data[field] === false) {
         document.getElementById(field).innerHTML = noDataMessage
     } else {
