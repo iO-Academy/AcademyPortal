@@ -1,5 +1,11 @@
 # AcademyPortal API
 
+### Setup
+
+1. Run `composer install` in root of project
+2. Create database with name `academyPortal` and populate using latest version in db/
+3. `php -S localhost:8080 -t public public/index.php`
+
 ### Routes
 - for local development use localhost:8080/api/whatYouRequire as your URL
 
@@ -64,3 +70,21 @@ POST
 		- `{'success':true, 'msg':'Application Saved', 'data':[]}`
 	- if new applicant not saved successfully
 		- `{'success':false, 'msg':'Application Not Saved', 'data':[]}`
+
+**/createHiringPartner**
+
+POST
+- Saves a new hiring partner to the hiring_partner_companies table in the database
+- Sends:
+	- `{'name': 'example',
+   	    'companySize': '1',
+ 	    'techStack': 'example tech stack',
+	    'postcode': 'BA1 1AA,
+	    'phoneNumber': '01225 444444',
+	    'companyURL': 'www.example.com',
+	   }
+- Returns success true / false:
+	- if new applicant registered successfully
+		- `{'success':true, 'msg':'Hiring Partner successfully added', 'data':[]}`
+	- if new applicant not saved successfully
+		- `{'success':false, 'msg':'Hiring Partner not added', 'data':[]}`
