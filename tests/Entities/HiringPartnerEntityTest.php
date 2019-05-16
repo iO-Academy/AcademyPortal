@@ -36,7 +36,7 @@ class HiringPartnerEntityTest extends TestCase
         $characterLength = 20;
         $phoneNumber = '';
         $result = \Portal\Entities\HiringPartnerEntity::ValidateLength($phoneNumber, $characterLength);
-        $this->assertEquals($result, '');
+        $this->assertEquals($result, null);
     }
 
     public function testValidateLengthFailure(){

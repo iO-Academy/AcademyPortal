@@ -77,16 +77,18 @@ class HiringPartnerEntity
     }
 
     /**
-     * Validate that a string exists and is within length allowed, throws an error if not
+     * Validate that a string is not empty and is within length allowed, throws an error if not
      *
      * @param string $hiringPartnerData
      * @param int $characterLength
      * @throws \Exception if the array is empty
      *
-     * @return string, which will return the hiring partner data
+     * @return string, which will return the hiring partner data or assigns to null
      */
     public static function validateLength(string $hiringPartnerData, int $characterLength){
-        if (strlen($hiringPartnerData) <= $characterLength){
+        if ($hiringPartnerData == '') {
+            return null;
+        } else if (strlen($hiringPartnerData) <= $characterLength){
             return $hiringPartnerData;
         } else {
             throw new \Exception('An input string does not exist or is too long');
@@ -132,18 +134,18 @@ class HiringPartnerEntity
     /**
      * Gets the hiring partner phone number
      *
-     * @return string of phone number
+     * @return string of phone number or null
      */
-    public function getPhoneNumber() : string {
+    public function getPhoneNumber() {
         return $this->phoneNumber;
     }
 
     /**
      * Gets the hiring partner website URL
      *
-     * @return string of website url
+     * @return string of website url or null
      */
-    public function getWebsiteURL() : string {
+    public function getWebsiteURL() {
         return $this->websiteUrl;
     }
 }

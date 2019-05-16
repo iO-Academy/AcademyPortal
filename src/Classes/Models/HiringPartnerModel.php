@@ -62,7 +62,7 @@ class HiringPartnerModel {
      * @param string $companyName
      * @param string $companySize
      * @param string $techStack
-     * @param string $postocde
+     * @param string $postcode
      * @param string $phoneNumber
      * @param string $websiteUrl
      * @return HiringPartnerEntity
@@ -71,7 +71,7 @@ class HiringPartnerModel {
         string $companyName,
         string $companySize,
         string $techStack,
-        string $postocde,
+        string $postcode,
         string $phoneNumber,
         string $websiteUrl
     ) :HiringPartnerEntity
@@ -80,7 +80,7 @@ class HiringPartnerModel {
             $companyName,
             $companySize,
             $techStack,
-            $postocde,
+            $postcode,
             $phoneNumber,
             $websiteUrl
         );
