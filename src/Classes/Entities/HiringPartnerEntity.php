@@ -77,16 +77,18 @@ class HiringPartnerEntity
     }
 
     /**
-     * Validate that a string exists and is within length allowed, throws an error if not
+     * Validate that a string is not empty and is within length allowed, throws an error if not
      *
      * @param string $hiringPartnerData
      * @param int $characterLength
      * @throws \Exception if the array is empty
      *
-     * @return string, which will return the hiring partner data
+     * @return string, which will return the hiring partner data or assigns to null
      */
     public static function validateLength(string $hiringPartnerData, int $characterLength){
-        if (strlen($hiringPartnerData) <= $characterLength){
+        if ($hiringPartnerData == '') {
+            return null;
+        } else if (strlen($hiringPartnerData) <= $characterLength){
             return $hiringPartnerData;
         } else {
             throw new \Exception('An input string does not exist or is too long');
