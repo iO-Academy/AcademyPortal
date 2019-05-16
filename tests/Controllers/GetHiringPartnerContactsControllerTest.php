@@ -10,7 +10,7 @@ class GetHiringPartnerContactsControllerTest extends TestCase
     {
         $hiringPartnerContactsModel = $this->createMock(HiringPartnerContactsModel::class);
         $case = new GetHiringPartnerContactsController($hiringPartnerContactsModel);
-        $expected = GetHiringPartnerController::class;
+        $expected = GetHiringPartnerContactsController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }
