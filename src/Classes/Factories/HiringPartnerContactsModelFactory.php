@@ -5,7 +5,7 @@ namespace Portal\Factories;
 use Psr\Container\ContainerInterface;
 use Portal\Models\HiringPartnerContactsModel;
 
-class HiringPartnerContactModelFactory
+class HiringPartnerContactsModelFactory
 {
     /** Calls addHiringPartnerContact method
      *
