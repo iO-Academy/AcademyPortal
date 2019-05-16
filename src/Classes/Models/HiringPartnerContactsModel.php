@@ -6,7 +6,6 @@ use Portal\Entity\HiringPartnerContactEntity;
 
 class HiringPartnerContactsModel
 {
-
     private $db;
 
     public function __construct(\PDO $db)
@@ -15,12 +14,13 @@ class HiringPartnerContactsModel
     }
 
     /**
-     * Queries the database to get an array of hiring partner company ids
-     *
+     * Queries the database to get an array of hiring partner company data
+     * @param $companyId the id of the company whose contacts we are getting
      * @return array
      */
-    public function getHiringPartnerContactById() :array {
-        $query = $this->db->prepare("SELECT `id`, `name`, `email`, `job_title`, `phone_number`, `company_id` FROM `hiring_partner_contacts`");
+    public function getHiringPartnerContactByCompanyId($companyId) :array {
+        $query = $this->db->prepare("SELECT `name`, `email`, `job_title`, `phone_number`, `company_id` FROM `hiring_partner_contacts` WHERE `id` = :`id`");
+        $query->bindParam(':id', $companyId);
         $query->execute();
         return $query->fetchAll();
     }
