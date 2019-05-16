@@ -42,7 +42,23 @@ p {
     margin-left: 5px;
 }
 
+#searchBar {
+    margin: 25px 0;
+}
+
 .hidden {
     display: none;
 }
 
+.btn {
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.filter {
+    position: relative;
+}
+
+.hidden {
+    height: 0;
+}
