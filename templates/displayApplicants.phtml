@@ -13,14 +13,9 @@
 </head>
 <body>
     <div class="container">
-
         <div class="row">
             <div class="col-xs-12 registeredApplicants">
-                <h1>Registered Applicants</h1>
                 <div class="row">
-                    <div class="md-form mt-0 col-xs-12">
-                        <input id="searchBar" class="form-control" type="text" placeholder="Search" aria-label="Search">
-                    </div>
                 </div>
                 <?php require ('partials/filterApplicantBar.phtml'); ?>
                 <table id="applicants" class="col-xs-12 table-bordered">
@@ -32,7 +27,10 @@
                     </tr>
                     <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayApplicants($data); ?>
 
-                </table>
+            <div class="row">
+                <div class="md-form mt-0 col-xs-12">
+                    <input id="searchBar" class="form-control" type="text" placeholder="Search by name or email address" aria-label="Search">
+                </div>
             </div>
         <!-- Modal -->
         <?php require('partials/applicantInfoModal.phtml'); ?>
