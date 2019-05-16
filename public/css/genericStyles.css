@@ -42,6 +42,10 @@ p {
     margin-left: 5px;
 }
 
+#searchBar {
+    margin: 25px 0;
+}
+
 .hidden {
     display: none;
 }
@@ -53,3 +57,9 @@ p {
 input[type="submit"] {
     margin-top: 30px;
 }
+
+.btn {
+margin-bottom: 10px;
+}
+
+
