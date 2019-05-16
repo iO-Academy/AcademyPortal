@@ -21,7 +21,6 @@ class ApplicantEntity implements \JsonSerializable
     protected $dateTimeAdded;
 
     public function __construct(
-        int $applicantId = null,
         string $applicantName = null,
         string $applicantEmail = null,
         string $applicantPhoneNumber = null,
@@ -36,7 +35,6 @@ class ApplicantEntity implements \JsonSerializable
 
     )
     {
-        $this->id = ($this->id ?? $applicantId);
         $this->name = ($this->name ?? $applicantName);
         $this->email = ($this->email ?? $applicantEmail);
         $this->phoneNumber = ($this->phoneNumber ?? $applicantPhoneNumber);

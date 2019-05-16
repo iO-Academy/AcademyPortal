@@ -107,4 +107,19 @@ class HiringPartnerModel
 		$query->execute();
 		return $query->fetchAll();
 	}
+
+    /**
+     * Gets all the hiring partner name from db
+     *
+     * @param string id of the company from the URL
+     * @return array array containing the name of the company
+     */
+	public function getCompanyName (string $id) :array
+    {
+        $query = $this->db->prepare("SELECT `name` FROM `hiring_partner_companies` WHERE `id` = :id ");
+        $query->bindParam(':id', $id);
+        $query->execute();
+        return $query->fetch();
+
+    }
 }
