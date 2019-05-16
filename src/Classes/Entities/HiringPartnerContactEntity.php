@@ -130,9 +130,9 @@ class HiringPartnerContactEntity
     /**
      * Gets the hiring partner company ID
      *
-     * @return string of company ID
+     * @return int of company ID
      */
-    public function getCompanyId() {
+    public function getCompanyId() : int {
         return $this->companyId;
     }
 }
