@@ -153,7 +153,7 @@ function displayHiringPartnerHandler(partnerCompanies){
         if (partnerCompany.url_website !== null) {
             companyInformation += `<a href="https://${partnerCompany.url_website}" target="_blank">${partnerCompany.url_website}</a>`
         }
-        companyInformation += `<p><a href="" class="btn btn-success">Contacts</a></p>`
+        companyInformation += `<p><a href="/contacts/${partnerCompany.id}" class="btn btn-success">Contacts</a></p>`
         companyInformation += `</div></div>`
     })
     companyDisplayer.innerHTML = companyInformation
