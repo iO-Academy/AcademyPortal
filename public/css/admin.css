@@ -2,7 +2,7 @@
     font-family: courier-new;
 }
 
-.addUserButton, .returnButton {
+.custom-button {
     text-decoration: none;
     border: solid;
     padding: 5px 30px;
