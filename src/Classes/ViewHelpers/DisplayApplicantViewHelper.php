@@ -18,13 +18,14 @@ class DisplayApplicantViewHelper
         $result = '';
         foreach ($applicants as $applicant) {
             if ($applicant instanceof ApplicantEntity) {
-                $result .= '<tr class="table-row">
+
+                $result .= '<tr class="applicant table-row">
                         <td><a data-id ="'. $applicant->getId().'" type="button"  class="myBtn">'. $applicant->getName() .'</a></td>
                         <td>'. $applicant->getEmail() .'</td>
-                        <td>'. $applicant->getDateOfApplication() .'</td>
+                        <td class="dateApplied" data-applied="'. $applicant->getDateOfApplicationMMDDYYYY() .'">'. $applicant->getDateOfApplicationDDMMYYYY() .'</td>
                         <td class="applicants-cohort-date">'. $applicant->getCohortDate() .'</td>
-<!--                       <td><a type="button"  id="myBtn">Get Info</a></td> -->
-                    </tr>';
+                        </tr>';
+
             }
         }
         return ($result);

@@ -41,3 +41,8 @@ p {
 .well .row {
     margin-left: 5px;
 }
+
+.hidden {
+    display: none;
+}
+
