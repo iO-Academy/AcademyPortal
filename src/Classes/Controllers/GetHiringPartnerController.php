@@ -33,7 +33,7 @@ class GetHiringPartnerController
         $statusCode = 400;
 
         try {
-            $hiringPartners = $this->hiringPartnerModel->getHiringPartnes();
+            $hiringPartners = $this->hiringPartnerModel->getHiringPartners();
         } catch (\PDOException $exception) {
             $data['message'] = $exception->getMessage();
         }
