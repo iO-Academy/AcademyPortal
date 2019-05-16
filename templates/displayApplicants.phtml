@@ -7,17 +7,29 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/displayApplicants.css">
     <link rel="stylesheet" type="text/css" href="/css/genericStyles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script defer src="js/applicantModal.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 registeredApplicants">
-                <h1 class="col-xs-12 applicantFields">Registered Applicants</h1>
-<!--                this needs checking with viewHelper when all relevant branches are merged-->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 registeredApplicants">
+            <h1>Registered Applicants</h1>
+            <table class="col-xs-12 table-bordered">
+                <tr>
+                    <th class="col-xs-2">Name</th>
+                    <th class="col-xs-4">Email</th>
+                    <th class="col-xs-2">Date of application</th>
+                    <th class="col-xs-2">Cohort date</th>
+                </tr>
                 <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayApplicants($data); ?>
-            </div>
-            <a href="/admin"></a>
+            </table>
         </div>
+        <!-- Modal -->
+        <?php require('partials/applicantInfoModal.phtml'); ?>
+        <a href="/admin"></a>
     </div>
+</div>
 </body>
 </html>

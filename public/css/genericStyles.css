@@ -9,10 +9,34 @@ body {
 label {
     margin-top: 20px;
 }
+h4 {
+    color: #157383;
+}
 
+p {
+    font-family: Helvetica Neue;
+}
 .errorMsg {
     color: #761c19;
     text-align: center;
     font-weight: bold;
     font-size: 40px;
+}
+
+.alertUser {
+    color: #FF0000
+}
+
+input[type="submit"] {
+    margin-top: 30px;
+}
+
+.companyName {
+    margin-top: 30px;
+    margin-bottom: 5px;
+    border-top: 1px solid #CCCCCC;
+}
+
+.moreInfo {
+    margin-top: 10px;
 }

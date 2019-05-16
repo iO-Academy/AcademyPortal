@@ -74,12 +74,35 @@ class ApplicantModel
     public function getAllApplicants()
     {
         $query = $this->db->prepare(
-            'SELECT `name`, `email`, `date` AS "cohortDate" FROM `applicants` 
-                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`;'
-        );
+            'SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` AS "cohortDate" 
+            FROM `applicants` LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`;');
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
         $query->execute();
         $results = $query->fetchAll();
+        return $results;
+    }
+
+    /**
+     * Retrieves an Applicant with the specified id
+     *
+     * @param $id
+     * @return object of applicant data
+     */
+    public function getApplicantById($id)
+    {
+        $query = $this->db->prepare('SELECT `applicants`.`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`,  `date` 
+                                                AS "cohortDate" 
+                                                FROM `applicants` 
+                                                LEFT JOIN `cohorts` 
+                                                ON `applicants`.`cohortId`=`cohorts`.`id` 
+                                                LEFT JOIN `hearAbout` 
+                                                ON `applicants`.`hearAboutId`=`hearAbout`.`id` 
+                                                WHERE `applicants`.`id`= :id;');
+        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
+        $query->execute([
+            'id' => $id
+        ]);
+        $results = $query->fetch();
         return $results;
     }
 

@@ -70,3 +70,44 @@ POST
 		- `{'success':true, 'msg':'Application Saved', 'data':[]}`
 	- if new applicant not saved successfully
 		- `{'success':false, 'msg':'Application Not Saved', 'data':[]}`
+
+**/createHiringPartner**
+
+POST
+- Saves a new hiring partner to the hiring_partner_companies table in the database
+- Sends:
+	- `{'name': 'example',
+   	    'companySize': '1',
+ 	    'techStack': 'example tech stack',
+	    'postcode': 'BA1 1AA,
+	    'phoneNumber': '01225 444444',
+	    'companyURL': 'www.example.com',
+	   }`
+- Returns success true / false:
+	- if new applicant registered successfully
+		- `{'success':true, 'msg':'Hiring Partner successfully added', 'data':[]}`
+	- if new applicant not saved successfully
+		- `{'success':false, 'msg':'Hiring Partner not added', 'data':[]}`
+		
+
+**/getHiringPartnerInfo**
+
+GET
+- Retrieves all the hiring partners data from the hiring_partner_companies table in the database
+- Data format:
+    - `{
+        'id': '1',
+        'name': 'example',
+        'size': '5-30',
+        'tech_stack': 'LAMP',
+        'postcode': 'BA1 2QF',
+        'phone_number': '07436124985',
+        'url_website': 'example.com'
+        }`
+- Returns success true / false:
+    - if the data are received successfully
+        - `{'success':true, 'msg':'Query Successful', 'data':[]}`
+    - if the data are not received successfully
+        - `{'success':false, 'msg':'SQL error message', 'data':[]}`
+    - if there are not data in the database
+        - `{'success':false, 'msg':'No hiring partners found!', 'data':[]}`
