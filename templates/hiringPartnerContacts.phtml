@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Academy Portal | Hiring Partner Contacts</title>
+    <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="./css/genericStyles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Contacts for <?= $companyName ?? '' ?></h1>
+    <h3>Add new contact</h3>
+    <form id='hiringPartnerForm'>
+        <label for="name">Contact Name</label>
+        <input id="name" name="name" class="submitContact form-control" type="text" placeholder="Contact Name" data-required='true' data-max='255'>
+        <label for="email">Contact Email</label>
+        <input id="email" name="email" class="submitContact form-control" type="text" placeholder="Contact Email" data-required='true' data-max='255'>
+        <label for="jobTitle">Job Title</label>
+        <input id="jobTitle" name="jobTitle" class="submitContact form-control" type="text" placeholder="Job Title" data-required='true' data-max='255'>
+        <label for="phoneNumber">Phone Number</label>
+        <input id="phoneNumber" name="phoneNumber" class="submitContact form-control" type="text" placeholder="Phone Number" data-required='true' data-max='255'>
+        <input id='companyId' name='companyId' class="submitHiringPartner form-control" type="hidden" value='<?= $companyId ?? '' ?>'>
+        <input id="submitContactButton" type="submit" class="btn btn-success"/>
+    </form>
+    <h3>Contacts</h3>
+    <div id='contacts'></div>
+</div>
+</body>
