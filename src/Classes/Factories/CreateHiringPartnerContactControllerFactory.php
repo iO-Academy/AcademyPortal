@@ -2,8 +2,8 @@
 
 namespace Portal\Factories;
 
+use Portal\Controllers\CreateHiringPartnerContactController;
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\CreateHiringPartnerController;
 
 class CreateHiringPartnerContactControllerFactory
 {
@@ -13,9 +13,9 @@ class CreateHiringPartnerContactControllerFactory
      *
      * @return CreateHiringPartnerContactController returns an instantiated CreateHiringPartnerContactController
      */
-    public function __invoke(ContainerInterface $container) : CreateHiringPartnerController
+    public function __invoke(ContainerInterface $container) :CreateHiringPartnerContactController
     {
-        $hiringPartnerContactsModel = $container->get('HiringPartnerContactModel');
-        return new CreateHiringPartnerContactController($hiringPartnerContactsModel);
+        $hiringPartnerContactController = $container->get('HiringPartnerContactModel');
+        return new CreateHiringPartnerContactController($hiringPartnerContactController);
     }
 }
