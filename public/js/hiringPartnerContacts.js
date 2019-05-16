@@ -11,7 +11,6 @@ document.getElementById('submitHiringPartnerContact').addEventListener('click', 
 
 })
 
-
 function validateForm() {
 
     let success = true
