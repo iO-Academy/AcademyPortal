@@ -8,6 +8,7 @@ $app->get('/register', 'RegisterController');
 // URL routes - to display pages
 $app->get('/addapplicant', 'addApplicantController');
 $app->get('/displayApplicants', 'DisplayApplicantsController');
+$app->get('/displayApplicantInfo/{id}', 'GetApplicantController');
 
 // API routes
 $app->post('/api/saveApplicant', 'SaveApplicantController');
