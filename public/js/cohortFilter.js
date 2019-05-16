@@ -1,5 +1,6 @@
 let tableRows = document.querySelectorAll('.table-row')
 let applicantsDates = document.querySelectorAll('.applicants-cohort-date')
+let showAllCohortDates = document.getElementById('showallcohort')
 
 /**
  * filter through nodelist of cohort date items to hide mismatches
@@ -44,4 +45,9 @@ $('.cohort-item').click(function () {
     applyCohortFilter(cohortDate)
     return cohortDate
 })
+
+showAllCohortDates.addEventListener('click', function(){
+    clearFilter()
+})
+
 
