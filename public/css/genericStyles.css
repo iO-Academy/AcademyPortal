@@ -46,21 +46,12 @@ p {
     margin: 25px 0;
 }
 
-.hidden {
-    display: none;
-}
-
-<<<<<<< HEAD
 .alertUser {
     color: #FF0000
 }
 
 input[type="submit"] {
     margin-top: 30px;
-}
-
-.btn {
-margin-bottom: 10px;
 }
 
 .companyName {
@@ -72,7 +63,7 @@ margin-bottom: 10px;
 .moreInfo {
     margin-top: 10px;
 }
-=======
+
 .btn {
     margin-bottom: 10px;
     margin-top: 20px;
@@ -85,4 +76,4 @@ margin-bottom: 10px;
 .hidden {
     height: 0;
 }
->>>>>>> RMPstory2_filter
+
