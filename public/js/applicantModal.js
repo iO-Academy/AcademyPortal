@@ -1,6 +1,6 @@
 
-function validateField(data, field) {
-    let noDataMessage = 'No information provided'
+function validateField(data, field, noDataMessage = 'No information provided') {
+    // let noDataMessage = 'No information provided'
     if (data[field] === '' || data[field] === null || data[field] === undefined || data[field] === 0 || data[field] === false) {
         document.getElementById(field).innerHTML = noDataMessage
     } else {
@@ -30,20 +30,17 @@ $(document).ready(function(){
                         validateField(data, 'whyDev')
                         validateField(data, 'codeExperience')
                         validateField(data, 'hearAbout')
+                        validateField(data, 'eligible', '<p class="alertUser">Not eligible for studying in the UK<p/>')
+                        validateField(data, 'eighteenPlus', '<p class="alertUser">Under eighteen</p>')
+                        validateField(data, 'finance', 'Would not like to apply for finance')
                         if (data.eligible !== 0) {
                             document.getElementById('eligible').innerHTML = 'Eligible for studying in the UK'
-                        } else {
-                             document.getElementById('eligible').innerHTML= '<p class="alertUser">Not eligible for studying in the UK<p/>'
                         }
                         if (data.eighteenPlus !== 0) {
                             document.getElementById('eighteenPlus').innerHTML = 'Over eighteen'
-                        } else {
-                            document.getElementById('eighteenPlus').innerHTML = '<p class="alertUser">Under eighteen</p>'
                         }
                         if (data.finance !== 0) {
                             document.getElementById('finance').innerHTML = 'Would like to apply for finance'
-                        } else {
-                            document.getElementById('finance').innerHTML = 'Would not like to apply for finance'
                         }
                         validateField(data, 'notes')
                         document.getElementById('dateTimeAdded').innerHTML =  data.dateTimeAdded

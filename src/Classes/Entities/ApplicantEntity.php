@@ -52,13 +52,15 @@ class ApplicantEntity implements \JsonSerializable
         $this->sanitiseData();
     }
 
+
+
     /**
      * Returns private properties from object.
      *
      * @return array|mixed
      */
     public function jsonSerialize() {
-        $formatedData = date("F, Y", strtotime($this->cohortDate) );
+
         return [
                   'id' => $this->id,
                   'name' => $this->name,
@@ -72,7 +74,7 @@ class ApplicantEntity implements \JsonSerializable
                   'eighteenPlus' => $this->eighteenPlus,
                   'finance' => $this->finance,
                   'notes' => $this->notes,
-                  'cohortDate' => $formatedData,
+                  'cohortDate' => $this->getCohortDate(),
                   'dateTimeAdded' => $this->dateTimeAdded
                ];
     }

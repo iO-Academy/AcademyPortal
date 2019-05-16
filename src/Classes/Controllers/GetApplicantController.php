@@ -21,6 +21,14 @@ class GetApplicantController
         $this->applicantModel = $applicantModel;
     }
 
+    /**
+     * Takes id from the get request and if id is valid returns relevant applicant
+     * else returns 404
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return Response
+     */
     public function __invoke(Request $request, Response $response, array $args)
     {
         $id = $args['id'];
@@ -28,9 +36,8 @@ class GetApplicantController
             $applicant = $this->applicantModel->getApplicantById($id);
             return $response->withJson($applicant);
         } else {
-            return $response->withJson('' , 418);
+            return $response->withStatus(404);
         }
-
     }
 }
 
