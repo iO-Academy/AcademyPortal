@@ -11,7 +11,6 @@ class DisplayHiringPartnerContactPageController
 {
 	private $renderer;
 	private $hiringPartnerModel;
-	private $contactsModel;
 
 	/**
 	 * DisplayHiringPartnerContactPageController constructor.
@@ -19,11 +18,10 @@ class DisplayHiringPartnerContactPageController
 	 * @param PhpRenderer $renderer
 	 * @param HiringPartnerModel $hiringPartnerModel
 	 */
-	public function __construct(PhpRenderer $renderer, HiringPartnerModel $hiringPartnerModel, HiringPartnerContactsModel $contactsModel)
+	public function __construct(PhpRenderer $renderer, HiringPartnerModel $hiringPartnerModel)
 	{
 		$this->renderer = $renderer;
 		$this->hiringPartnerModel = $hiringPartnerModel;
-		$this->contactsModel = $contactsModel;
 	}
 
 	/**
@@ -40,7 +38,6 @@ class DisplayHiringPartnerContactPageController
 		$hiringPartnerId = $args['id'];
 
 		$args['companyName'] = $this->hiringPartnerModel->getCompanyName($hiringPartnerId);
-		$args['contacts'] = $this->contactsModel->getHiringPartnerContactByCompanyId($hiringPartnerId);
 
 		$this->renderer->render($response, 'hiringPartnerContacts.phtml', $args);
 	}

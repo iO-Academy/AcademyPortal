@@ -13,8 +13,7 @@ class DisplayHiringPartnerContactPageControllerTest extends TestCase
 	{
 		$mockRender = $this->createMock(PhpRenderer::class);
 		$mockHiringPartnerModel = $this->createMock(HiringPartnerModel::class);
-		$mockContactModel = $this->createMock(HiringPartnerContactsModel::class);
-		$case = new DisplayHiringPartnerContactPageController($mockRender, $mockHiringPartnerModel, $mockContactModel);
+		$case = new DisplayHiringPartnerContactPageController($mockRender, $mockHiringPartnerModel);
 		$expected = DisplayHiringPartnerContactPageController::class;
 		$this->assertInstanceOf($expected, $case);
 	}
