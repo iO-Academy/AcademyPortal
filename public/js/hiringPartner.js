@@ -6,6 +6,7 @@ document.getElementById('submitHiringPartner').addEventListener('click', e => {
     let validate = validateForm()
     if(validate) {
         makeApiRequest(data)
+        getHiringPartners()
     }
 
 })
@@ -147,7 +148,7 @@ function displayHiringPartnerHandler(partnerCompanies){
                     <p>Tech Stack: ${partnerCompany.tech_stack}</p>
                     <p>Postcode: ${partnerCompany.postcode}</p>
                     <p>Phone number: ${partnerCompany.phone_number}</p>
-                    <p>Company URL: ${partnerCompany.url_website}</p>
+                    <a href="${partnerCompany.url_website}">${partnerCompany.url_website}</a>
                 </div>
             </div>`
     })
