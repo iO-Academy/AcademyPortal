@@ -143,8 +143,8 @@ function displayHiringPartnerHandler(partnerCompanies){
         companyInformation +=
             `<div class="companyName">
                 <p>${partnerCompany.name}</p>
-                <button class="showCompanyInfo">More Info</button>
-                <div id="moreInfo" class="hide">
+                <button class="showCompanyInfo" data-reference='${partnerCompany.name}'>More Info</button>
+                <div id="moreInfo${partnerCompany.name}" class="hide">
                     <p>Company size: ${partnerCompany.size}</p>
                     <p>Tech Stack: ${partnerCompany.tech_stack}</p>
                     <p>Postcode: ${partnerCompany.postcode}</p>
@@ -152,14 +152,18 @@ function displayHiringPartnerHandler(partnerCompanies){
                     <p>Company URL: ${partnerCompany.url_website}</p>
                 </div>
             </div>`
+    })
+    companyDisplayer.innerHTML = companyInformation
 
-let moreInfo = document.getElementById('moreInfo')
-document.querySelector('.showCompanyInfo').addEventListener('click', () => {
-    moreInfo.classList.toggle('hide')
+
+    let showInfoButtons = document.querySelectorAll('.showCompanyInfo')
+    showInfoButtons.forEach(function (button) {
+        button.addEventListener('click', (e) => {
+            let targetId = 'moreInfo' + e.target.dataset.reference
+            let targetDiv = document.getElementById(targetId)
+            targetDiv.classList.toggle('hide')
         })
     })
-
-    companyDisplayer.innerHTML = companyInformation
 }
 
 getHiringPartners()
