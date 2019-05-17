@@ -46,15 +46,6 @@ p {
     margin: 25px 0;
 }
 
-.btn {
-    margin-bottom: 10px;
-    margin-top: 20px;
-}
-
-.filter {
-    position: relative;
-}
-
 .alertUser {
     color: #FF0000
 }
@@ -71,5 +62,18 @@ input[type="submit"] {
 
 .moreInfo {
     margin-top: 10px;
+}
+
+.btn {
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.filter {
+    position: relative;
+}
+
+.hidden {
+    height: 0;
 }
 

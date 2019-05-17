@@ -8,6 +8,7 @@ let applicantsDates = document.querySelectorAll('.applicants-cohort-date')
  */
 function applyCohortFilter(cohortDate) {
     let mismatches = [];
+
     applicantsDates.forEach(function (date, index) {
         let theDates = date.getAttribute('data-id')
         if(cohortDate !== theDates) {
@@ -21,17 +22,6 @@ function applyCohortFilter(cohortDate) {
 }
 
 /**
- *   resets all the hidden rows
- */
-function clearFilter() {
-    tableRows.forEach(function(tableRow) {
-        if(tableRow.classList.contains('hidden')){
-            tableRow.classList.remove('hidden')
-        }
-    })
-}
-
-/**
  * makes dropdown select cohortDate and calls the filter function
  *
  * @return cohortDate (yyyy/mm/dd)
@@ -39,7 +29,7 @@ function clearFilter() {
 $('.cohort-item').click(function () {
     let cohortDate = this.dataset.cohortdate
     let cohortDateNice = this.textContent
-    document.querySelector('#cohort-dropdown-title').innerText = cohortDateNice
+    document.querySelector('#dropdownMenu1').innerText = cohortDateNice
     clearFilter()
     applyCohortFilter(cohortDate)
     return cohortDate
