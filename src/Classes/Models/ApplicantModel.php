@@ -50,17 +50,17 @@ class ApplicantModel
                         );"
         );
 
-        $query->bindParam(':name', $applicant->getName());
-        $query->bindParam(':email', $applicant->getEmail());
-        $query->bindParam(':phoneNumber', $applicant->getPhoneNumber());
-        $query->bindParam(':cohortId', $applicant->getCohortId());
-        $query->bindParam(':whyDev', $applicant->getWhyDev());
-        $query->bindParam(':codeExperience', $applicant->getCodeExperience());
-        $query->bindParam(':hearAboutId', $applicant->getHearAboutId());
-        $query->bindParam(':eligible', $applicant->getEligible());
-        $query->bindParam(':eighteenPlus', $applicant->getEighteenPlus());
-        $query->bindParam(':finance', $applicant->getFinance());
-        $query->bindParam(':notes', $applicant->getNotes());
+        $query->bindValue(':name', $applicant->getName());
+        $query->bindValue(':email', $applicant->getEmail());
+        $query->bindValue(':phoneNumber', $applicant->getPhoneNumber());
+        $query->bindValue(':cohortId', $applicant->getCohortId());
+        $query->bindValue(':whyDev', $applicant->getWhyDev());
+        $query->bindValue(':codeExperience', $applicant->getCodeExperience());
+        $query->bindValue(':hearAboutId', $applicant->getHearAboutId());
+        $query->bindValue(':eligible', $applicant->getEligible());
+        $query->bindValue(':eighteenPlus', $applicant->getEighteenPlus());
+        $query->bindValue(':finance', $applicant->getFinance());
+        $query->bindValue(':notes', $applicant->getNotes());
 
         return $query->execute();
     }
