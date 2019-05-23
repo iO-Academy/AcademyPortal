@@ -1,12 +1,14 @@
 <?php
 
+namespace Tests\Controllers;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Controllers\HomePageController;
 use Slim\Views\PhpRenderer;
 
 class HomePageControllerTest extends TestCase
 {
-    function testConstruct()
+    public function testConstruct()
     {
         $stub = $this->createMock(PhpRenderer::class);
 
@@ -15,4 +17,3 @@ class HomePageControllerTest extends TestCase
         $this->assertInstanceOf($expected, $case);
     }
 }
-

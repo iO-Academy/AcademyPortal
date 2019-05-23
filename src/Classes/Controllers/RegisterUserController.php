@@ -28,10 +28,9 @@ class RegisterUserController
      *
      * @return error/success message and status code.
      */
-    function __invoke(Request $request, Response $response)
+    public function __invoke(Request $request, Response $response)
     {
         if ($_SESSION['loggedIn'] === true) {
-
             $data = ['success' => false, 'msg' => 'User not registered.', 'data' => []];
             $statusCode = 401;
 
@@ -40,18 +39,24 @@ class RegisterUserController
                 'email' => filter_var($newUserData['email'], FILTER_SANITIZE_EMAIL),
                 'password' => $newUserData['password']
             ];
-            $successfulRegister = $this->userModel->insertNewUserToDb($validatedUserData['email'], password_hash($validatedUserData['password'], PASSWORD_DEFAULT));
+            $successfulRegister = $this->userModel->insertNewUserToDb(
+                $validatedUserData['email'],
+                password_hash($validatedUserData['password'], PASSWORD_DEFAULT)
+            );
 
             if ($successfulRegister) {
                 $data = [
                     'success' => $successfulRegister,
-                    'msg' => "New user added email:' ". $validatedUserData['email'] ." ' password:' ". $validatedUserData['password'] ." '",
+                    'msg' => "New user added email:' "
+                        . $validatedUserData['email']
+                        ." ' password:' "
+                        . $validatedUserData['password']
+                        ." '",
                     'data' => []
                 ];
                 $statusCode = 200;
             }
             return $response->withJson($data, $statusCode);
-
         }
     }
 }

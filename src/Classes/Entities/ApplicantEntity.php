@@ -2,7 +2,6 @@
 
 namespace Portal\Entities;
 
-
 class ApplicantEntity implements \JsonSerializable
 {
     protected $id;
@@ -21,6 +20,7 @@ class ApplicantEntity implements \JsonSerializable
     protected $dateTimeAdded;
 
     public function __construct(
+        int $applicantId = null,
         string $applicantName = null,
         string $applicantEmail = null,
         string $applicantPhoneNumber = null,
@@ -32,9 +32,8 @@ class ApplicantEntity implements \JsonSerializable
         string $applicantEighteenPlus = null,
         string $applicantFinance = null,
         string $applicantNotes = null
-
-    )
-    {
+    ) {
+        $this->id = ($this->id ?? $applicantId);
         $this->name = ($this->name ?? $applicantName);
         $this->email = ($this->email ?? $applicantEmail);
         $this->phoneNumber = ($this->phoneNumber ?? $applicantPhoneNumber);
@@ -57,7 +56,8 @@ class ApplicantEntity implements \JsonSerializable
      *
      * @return array|mixed
      */
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
 
         return [
                   'id' => $this->id,
@@ -80,7 +80,8 @@ class ApplicantEntity implements \JsonSerializable
     /**
      * Will sanitise all the fields for an applicant.
      */
-    private function sanitiseData() {
+    private function sanitiseData()
+    {
         $this->id = (int) $this->id;
         $this->name = $this->sanitiseString($this->name);
         $this->email = $this->sanitiseString($this->email);
@@ -123,7 +124,6 @@ class ApplicantEntity implements \JsonSerializable
         } else {
             return false;
         }
-
     }
 
     /**

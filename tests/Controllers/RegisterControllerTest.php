@@ -6,9 +6,9 @@ use PHPUnit\Framework\TestCase;
 use Portal\Controllers\RegisterController;
 use Slim\Views\PhpRenderer;
 
-class AdminControllerTest extends TestCase
+class RegisterControllerTest extends TestCase
 {
-    function testConstruct()
+    public function testConstruct()
     {
         $stub = $this->createMock(PhpRenderer::class);
         $password = 'password';
@@ -18,4 +18,3 @@ class AdminControllerTest extends TestCase
         $this->assertInstanceOf($expected, $case);
     }
 }
-

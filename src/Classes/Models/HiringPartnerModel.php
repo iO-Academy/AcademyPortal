@@ -35,8 +35,7 @@ class HiringPartnerModel
             :postcode,
             :phoneNumber,
             :websiteUrl
-            );"
-        );
+            );");
         $query->bindParam(':companyName', $company->getCompanyName());
         $query->bindParam(':companySize', $company->getCompanySize());
         $query->bindParam(':techStack', $company->getTechStack());
@@ -74,8 +73,7 @@ class HiringPartnerModel
         string $postcode,
         string $phoneNumber,
         string $websiteUrl
-    ) :HiringPartnerEntity
-    {
+    ) :HiringPartnerEntity {
         return new HiringPartnerEntity(
             $companyName,
             $companySize,
@@ -86,14 +84,14 @@ class HiringPartnerModel
         );
     }
 
-	/**
-	 * Gets all the hiring partners information
-	 *
-	 * @return array array with the info
-	 */
-	public function getHiringPartners() :array
-	{
-		$query = $this->db->prepare("SELECT 
+    /**
+     * Gets all the hiring partners information
+     *
+     * @return array array with the info
+     */
+    public function getHiringPartners() :array
+    {
+        $query = $this->db->prepare("SELECT 
 							  	`hiring_partner_companies`.`id`,
 								`hiring_partner_companies`.`name`,
 								`company_sizes`.`size`, 
@@ -104,7 +102,7 @@ class HiringPartnerModel
 								FROM `hiring_partner_companies` 
 								Left JOIN `company_sizes`
 								ON `hiring_partner_companies`.`size` = `company_sizes`.`id`;");
-		$query->execute();
-		return $query->fetchAll();
-	}
+        $query->execute();
+        return $query->fetchAll();
+    }
 }

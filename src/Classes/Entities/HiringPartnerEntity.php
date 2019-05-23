@@ -18,8 +18,7 @@ class HiringPartnerEntity
         string $hiringPartnerPostcode = null,
         string $hiringPartnerPhoneNumber = null,
         string $hiringPartnerWebsiteUrl = null
-    )
-    {
+    ) {
         $this->companyName = ($this->companyName ?? $hiringPartnerCompanyName);
         $this->companySize = ($this->companySize ?? $hiringPartnerCompanySize);
         $this->techStack = ($this->techStack ?? $hiringPartnerTechStack);
@@ -28,13 +27,13 @@ class HiringPartnerEntity
         $this->websiteUrl = ($this->websiteUrl ?? $hiringPartnerWebsiteUrl);
 
         $this->sanitiseData();
-
     }
 
     /**
      * Will sanitise and validate the hiring partner properties as required.
      */
-    private function sanitiseData() {
+    private function sanitiseData()
+    {
         $this->companyName = $this->sanitiseString($this->companyName);
         $this->companyName = self::validateExistsAndLength($this->companyName, 255);
         $this->companySize = (int)$this->companySize;
@@ -55,7 +54,8 @@ class HiringPartnerEntity
      *
      * @return string, which will return the hiring partner data.
      */
-    public function sanitiseString(string $hiringPartnerData) : string {
+    public function sanitiseString(string $hiringPartnerData) : string
+    {
         return filter_var($hiringPartnerData, FILTER_SANITIZE_STRING);
     }
 
@@ -68,8 +68,9 @@ class HiringPartnerEntity
      *
      * @return string, which will return the hiring partner data
      */
-    public static function validateExistsAndLength(string $hiringPartnerData, int $characterLength){
-        if (empty($hiringPartnerData) == false && strlen($hiringPartnerData) <= $characterLength){
+    public static function validateExistsAndLength(string $hiringPartnerData, int $characterLength)
+    {
+        if (empty($hiringPartnerData) == false && strlen($hiringPartnerData) <= $characterLength) {
             return $hiringPartnerData;
         } else {
             throw new \Exception('An input string does not exist or is too long');
@@ -85,10 +86,11 @@ class HiringPartnerEntity
      *
      * @return string, which will return the hiring partner data or assigns to null
      */
-    public static function validateLength(string $hiringPartnerData, int $characterLength){
+    public static function validateLength(string $hiringPartnerData, int $characterLength)
+    {
         if ($hiringPartnerData == '') {
             return null;
-        } else if (strlen($hiringPartnerData) <= $characterLength){
+        } elseif (strlen($hiringPartnerData) <= $characterLength) {
             return $hiringPartnerData;
         } else {
             throw new \Exception('An input string does not exist or is too long');
@@ -100,7 +102,8 @@ class HiringPartnerEntity
      *
      * @return string of company name
      */
-    public function getCompanyName() : string {
+    public function getCompanyName() : string
+    {
         return $this->companyName;
     }
 
@@ -109,7 +112,8 @@ class HiringPartnerEntity
      *
      * @return string of company size
      */
-    public function getCompanySize() : string {
+    public function getCompanySize() : string
+    {
         return $this->companySize;
     }
 
@@ -118,7 +122,8 @@ class HiringPartnerEntity
      *
      * @return string of tech stack
      */
-    public function getTechStack() : string{
+    public function getTechStack() : string
+    {
         return $this->techStack;
     }
 
@@ -127,7 +132,8 @@ class HiringPartnerEntity
      *
      * @return string of company postcode
      */
-    public function getPostcode() : string{
+    public function getPostcode() : string
+    {
         return $this->postcode;
     }
 
@@ -136,7 +142,8 @@ class HiringPartnerEntity
      *
      * @return string of phone number or null
      */
-    public function getPhoneNumber() {
+    public function getPhoneNumber()
+    {
         return $this->phoneNumber;
     }
 
@@ -145,7 +152,8 @@ class HiringPartnerEntity
      *
      * @return string of website url or null
      */
-    public function getWebsiteURL() {
+    public function getWebsiteURL()
+    {
         return $this->websiteUrl;
     }
 }

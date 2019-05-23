@@ -1,12 +1,14 @@
 <?php
 
+namespace Tests\Controllers;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Controllers\AdminController;
 use Slim\Views\PhpRenderer;
 
 class AdminControllerTest extends TestCase
 {
-    function testConstruct()
+    public function testConstruct()
     {
         $renderer = $this->createMock(PhpRenderer::class);
 
@@ -15,4 +17,3 @@ class AdminControllerTest extends TestCase
         $this->assertInstanceOf($expected, $case);
     }
 }
-

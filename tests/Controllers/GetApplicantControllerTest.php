@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: academy
- * Date: 2019-05-15
- * Time: 10:19
- */
 
 namespace Tests\Controllers;
 
@@ -15,7 +9,7 @@ use Portal\Models\ApplicantModel;
 
 class GetApplicantControllerTest extends TestCase
 {
-    function testConstruct()
+    public function testConstruct()
     {
         $applicantModel = $this->createMock(ApplicantModel::class);
         $case = new GetApplicantController($applicantModel);

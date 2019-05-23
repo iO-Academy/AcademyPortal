@@ -1,5 +1,6 @@
 <?php
 
+namespace Test\Factories;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -9,7 +10,7 @@ use Portal\Controllers\GetHiringPartnersController;
 
 class GetHiringPartnerControllerFactoryTest extends TestCase
 {
-    function testReturnsNewInstanceOfController()
+    public function testReturnsNewInstanceOfController()
     {
         $container = $this->createMock(ContainerInterface::class);
         $hiringPartnerModel = $this->createMock(HiringPartnerModel::class);
@@ -20,5 +21,3 @@ class GetHiringPartnerControllerFactoryTest extends TestCase
         $this->assertInstanceOf($expected, $case);
     }
 }
-
-
