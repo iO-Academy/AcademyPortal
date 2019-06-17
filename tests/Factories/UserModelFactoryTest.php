@@ -1,5 +1,7 @@
 <?php
 
+namespace Test\Factories;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Factories\UserModelFactory;
 use Portal\Models\UserModel;
@@ -7,7 +9,7 @@ use Psr\Container\ContainerInterface;
 
 class UserModelFactoryTest extends TestCase
 {
-    function testInvoke()
+    public function testInvoke()
     {
         $db = $this->createMock(\PDO::class);
         $container = $this->createMock(ContainerInterface::class);
@@ -19,5 +21,4 @@ class UserModelFactoryTest extends TestCase
         $expected = UserModel::class;
         $this->assertInstanceOf($expected, $case);
     }
-
 }

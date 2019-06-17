@@ -16,7 +16,7 @@ class AdminController
      *
      * @param PhpRenderer $renderer
      */
-    function __construct(PhpRenderer $renderer)
+    public function __construct(PhpRenderer $renderer)
     {
         $this->renderer = $renderer;
     }
@@ -30,7 +30,7 @@ class AdminController
      *
      * @return \Psr\Http\Message\ResponseInterface|Response.
      */
-    function __invoke(Request $request, Response $response, $args)
+    public function __invoke(Request $request, Response $response, $args)
     {
         if ($_SESSION['loggedIn'] === true) {
             return $this->renderer->render($response, 'admin.phtml', $args);

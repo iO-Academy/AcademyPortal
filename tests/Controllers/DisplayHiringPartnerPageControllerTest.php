@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Controllers;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Controllers\DisplayHiringPartnerPageController;
 use Portal\Models\HiringPartnerModel;

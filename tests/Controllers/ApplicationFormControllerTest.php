@@ -1,12 +1,14 @@
 <?php
 
+namespace Tests\Controllers;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Controllers\ApplicationFormController;
 use Portal\Models\ApplicationFormModel;
 
 class ApplicationFormControllerTest extends TestCase
 {
-    function testConstruct()
+    public function testConstruct()
     {
         $stub = $this->createMock(ApplicationFormModel::class);
 
@@ -15,4 +17,3 @@ class ApplicationFormControllerTest extends TestCase
         $this->assertInstanceOf($expected, $case);
     }
 }
-

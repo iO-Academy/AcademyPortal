@@ -37,9 +37,13 @@ class LoginController
 
         $parsedBody = $request->getParsedBody();
         $user = $this->userModel->getUserByEmail($parsedBody['userEmail']);
-        $result = $this->userModel->userLoginVerify($parsedBody['userEmail'], urldecode($parsedBody['password']), $user);
+        $result = $this->userModel->userLoginVerify(
+            $parsedBody['userEmail'],
+            urldecode($parsedBody['password']),
+            $user
+        );
 
-        if($result) {
+        if ($result) {
             $data['success'] = $result;
             $data['msg'] = 'Valid user';
             $_SESSION['loggedIn'] = true;

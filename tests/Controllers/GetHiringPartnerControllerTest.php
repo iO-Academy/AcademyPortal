@@ -1,12 +1,14 @@
 <?php
 
+namespace Tests\Controllers;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Models\HiringPartnerModel;
 use Portal\Controllers\GetHiringPartnersController;
 
 class GetHiringPartnerControllerTest extends TestCase
 {
-    function testInstanceOfTheRightClass()
+    public function testInstanceOfTheRightClass()
     {
         $hiringPartnerModel = $this->createMock(HiringPartnerModel::class);
 

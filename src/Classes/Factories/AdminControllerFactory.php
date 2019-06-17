@@ -15,7 +15,8 @@ class AdminControllerFactory
      * @return AdminController that calls renderer.
      */
 
-    public function __invoke(ContainerInterface $container) : AdminController {
+    public function __invoke(ContainerInterface $container) : AdminController
+    {
         $renderer = $container->get('renderer');
         return new AdminController($renderer);
     }

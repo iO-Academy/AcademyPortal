@@ -13,17 +13,18 @@ class DisplayApplicantViewHelper
      *
      * @return string $result, returns name, email, cohortID and all the data for the applicant.
      */
-    static public function displayApplicants($applicants)
+    public static function displayApplicants($applicants)
     {
         $result = '';
         foreach ($applicants as $applicant) {
             if ($applicant instanceof ApplicantEntity) {
                 $result .= '<tr>
-                        <td><a data-id ="'. $applicant->getId().'" type="button"  class="myBtn">'. $applicant->getName() .'</a></td>
-                        <td>'. $applicant->getEmail() .'</td>
-                        <td>'. $applicant->getDateOfApplication() .'</td>
-                        <td>'. $applicant->getCohortDate().'</td>
-                    </tr>';
+                        <td><a data-id ="'. $applicant->getId().'" type="button"  class="myBtn">'
+                            . $applicant->getName() .'</a></td>
+                            <td>'. $applicant->getEmail() .'</td>
+                            <td>'. $applicant->getDateOfApplication() .'</td>
+                            <td>'. $applicant->getCohortDate().'</td>
+                        </tr>';
             }
         }
         return ($result);

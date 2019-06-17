@@ -1,5 +1,7 @@
 <?php
 
+namespace Test\Factories;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Factories\CreateHiringPartnerControllerFactory;
 

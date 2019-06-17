@@ -6,7 +6,6 @@ use \Slim\Http\Request as Request;
 use \Slim\Http\Response as Response;
 use Portal\Models\ApplicantModel;
 
-
 class GetApplicantController
 {
     private $applicantModel;
@@ -32,7 +31,7 @@ class GetApplicantController
     public function __invoke(Request $request, Response $response, array $args)
     {
         $id = $args['id'];
-        if(is_numeric($id) && !empty($id)){
+        if (is_numeric($id) && !empty($id)) {
             $applicant = $this->applicantModel->getApplicantById($id);
             return $response->withJson($applicant);
         } else {
@@ -40,4 +39,3 @@ class GetApplicantController
         }
     }
 }
-

@@ -1,13 +1,16 @@
 <?php
 
+namespace Tests\Controllers;
+
 use PHPUnit\Framework\TestCase;
 use Slim\Views\PhpRenderer;
 use Portal\Models\HiringPartnerModel;
 use Portal\Controllers\CreateHiringPartnerController;
 
-class CreateHiringPartnerControllerTest extends TestCase {
+class CreateHiringPartnerControllerTest extends TestCase
+{
 
-    function testConstruct()
+    public function testConstruct()
     {
         $hiringPartnerModel = $this->createMock(HiringPartnerModel::class);
         $case = new CreateHiringPartnerController($hiringPartnerModel);

@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Factories;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Factories\AdminControllerFactory;
 use Slim\Views\PhpRenderer;
@@ -8,7 +10,7 @@ use Portal\Controllers\AdminController;
 
 class AdminControllerFactoryTest extends TestCase
 {
-    function testInvoke()
+    public function testInvoke()
     {
         $container = $this->createMock(ContainerInterface::class);
         $renderer = $this->createMock(PhpRenderer::class);
@@ -20,5 +22,4 @@ class AdminControllerFactoryTest extends TestCase
         $expected = AdminController::class;
         $this->assertInstanceOf($expected, $case);
     }
-
 }

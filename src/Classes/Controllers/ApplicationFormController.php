@@ -12,11 +12,11 @@ class ApplicationFormController
 
     /**
      * ApplicationFormController constructor.
-     * 
+     *
      * @param ApplicationFormModel $applicationFormModel
      */
-    function __construct(ApplicationFormModel $applicationFormModel)
-    {   
+    public function __construct(ApplicationFormModel $applicationFormModel)
+    {
         $this->applicationFormModel = $applicationFormModel;
     }
 
@@ -30,13 +30,13 @@ class ApplicationFormController
      *
      * @return Response, carry through data and statusCode.
      */
-    function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
             $statusCode = 200;
             $data = [
-                'success' => true, 
-                'msg' => 'Retrieved dropdown info.', 
+                'success' => true,
+                'msg' => 'Retrieved dropdown info.',
                 'data' => [
                         'cohorts' => $this->applicationFormModel->getCohorts(),
                         'hearAbout' => $this->applicationFormModel->getHearAbout(),

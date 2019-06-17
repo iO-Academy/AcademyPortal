@@ -1,10 +1,13 @@
 <?php
 
+namespace Test\Factories;
+
 use PHPUnit\Framework\TestCase;
 
-class DisplayHiringPartnerPageControllerFactoryTest extends TestCase {
+class DisplayHiringPartnerPageControllerFactoryTest extends TestCase
+{
 
-    function testDisplayHiringPartnerPageControllerFactory()
+    public function testDisplayHiringPartnerPageControllerFactory()
     {
         $renderer = $this->createMock(\Slim\Views\PhpRenderer::class);
         $model = $this->createMock(\Portal\Models\HiringPartnerModel::class);

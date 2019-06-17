@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: academy
- * Date: 2019-05-15
- * Time: 10:08
- */
 
 namespace Tests\Factories;
 
@@ -15,10 +9,9 @@ use Portal\Models\ApplicantModel;
 use Portal\Controllers\GetApplicantController;
 use Psr\Container\ContainerInterface;
 
-
 class GetApplicantControllerFactoryTest extends TestCase
 {
-    function testInvoke()
+    public function testInvoke()
     {
         $container = $this->createMock(ContainerInterface::class);
         $applicationModel = $this->createMock(ApplicantModel::class);

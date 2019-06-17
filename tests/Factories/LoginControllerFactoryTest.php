@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Factories;
+
 use PHPUnit\Framework\TestCase;
 use Portal\Factories\LoginControllerFactory;
 use Portal\Controllers\LoginController;
@@ -8,7 +10,7 @@ use Psr\Container\ContainerInterface;
 
 class LoginControllerFactoryTest extends TestCase
 {
-    function testInvoke()
+    public function testInvoke()
     {
         $container = $this->createMock(ContainerInterface::class);
         $user = $this->createMock(UserModel::class);
@@ -20,5 +22,4 @@ class LoginControllerFactoryTest extends TestCase
         $expected = LoginController::class;
         $this->assertInstanceOf($expected, $case);
     }
-
 }

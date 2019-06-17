@@ -1,5 +1,6 @@
 <?php
 
+namespace Test\Factories;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
@@ -8,7 +9,7 @@ use Portal\Models\HiringPartnerModel;
 
 class HiringPartnerModelFactoryTest extends TestCase
 {
-    function testInvoke()
+    public function testInvoke()
     {
         $container = $this->createMock(ContainerInterface::class);
         $db = $this->createMock(\PDO::class);
@@ -20,4 +21,3 @@ class HiringPartnerModelFactoryTest extends TestCase
         $this->assertInstanceOf($expected, $case);
     }
 }
-
