@@ -2,6 +2,8 @@
 
 namespace Portal\Models;
 
+use Portal\Entities\EventEntity;
+
 class EventModel
 {
     private $db;
@@ -41,8 +43,34 @@ class EventModel
      * @param [type] $newEvent
      * @return boolean True if operation succeeded
      */
-    public function addEvent($newEvent):bool
+    public function addEvent(EventEntity $newEvent):bool
     {
-        return false;
+        try {
+            $query = $this->db->prepare("INSERT INTO `events` (
+                `name`,
+                `category`,
+                `date`,
+                `start_time`,
+                `end_time`,
+                `notes`
+                ) 
+                VALUES (
+                :name, 
+                :category, 
+                :date, 
+                :startTime, 
+                :endTime, 
+                :notes);");
+            $query->bindParam(':name', $newEvent->name);
+            $query->bindParam(':category', $newEvent->category);
+            $query->bindParam(':date', $newEvent->date);
+            $query->bindParam(':startTime', $newEvent->startTime);
+            $query->bindParam(':endTime', $newEvent->endTime);
+            $query->bindParam(':notes', $newEvent->notes);
+            $query->execute();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }
