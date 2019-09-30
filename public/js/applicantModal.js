@@ -9,7 +9,7 @@ function validateField(data, field, noDataMessage = 'No information provided') {
 
 $(document).ready(function(){
     $(".myBtn").click(function(){
-        var url = '/displayApplicantInfo/' + this.dataset.id
+        var url = './displayApplicantInfo/' + this.dataset.id
         fetch(url)
             .then(
                 function(response) {
