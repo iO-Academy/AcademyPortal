@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.6.43)
+# Host: 192.168.20.20 (MySQL 5.6.44)
 # Database: academyPortal
-# Generation Time: 2019-05-14 09:52:34 +0000
+# Generation Time: 2019-09-30 13:04:19 +0000
 # ************************************************************
 
 
@@ -113,6 +113,51 @@ VALUES
 
 /*!40000 ALTER TABLE `company_sizes` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+# Dump of table event_categories
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `event_categories`;
+
+CREATE TABLE `event_categories` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `event_categories` WRITE;
+/*!40000 ALTER TABLE `event_categories` DISABLE KEYS */;
+
+INSERT INTO `event_categories` (`id`, `name`)
+VALUES
+	(1,'Other'),
+	(2,'Sprint Review'),
+	(3,'Taster Session'),
+	(4,'Hiring Event');
+
+/*!40000 ALTER TABLE `event_categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table events
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `events`;
+
+CREATE TABLE `events` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `category` int(11) unsigned NOT NULL,
+  `date` date NOT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
+  `notes` text,
+  PRIMARY KEY (`id`),
+  KEY `category` (`category`),
+  CONSTRAINT `events_ibfk_1` FOREIGN KEY (`category`) REFERENCES `event_categories` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 
 # Dump of table hearAbout
