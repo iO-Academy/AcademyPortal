@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registered Applicants</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../public/css/createEventsPage.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/genericStyles.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src='./js/hiringPartner.js' defer></script>
+</head>
+<body>
+<div class="form-page">
+<h1>Events</h1>
+<button type="button" class="btn btn-success">go back</button>
+<h2>Add new Event</h2>
+    <form id='hiringPartnerForm'>
+        <label for="name">Create name</label>
+        <input id="name" name="name" class="submitHiringPartner form-control" type="text" placeholder="name" data-required='true' data-max='255'>
+        <label for='companySize'>date</label>
+        <input id="name" name="name" class="submitHiringPartner form-control" type="text" placeholder="name" data-required='true' data-max='255'>
+        <label for="techStack">location</label>
+        <input id="techStack" name="techStack" class="submitHiringPartner form-control" type="text" placeholder="Company tech stack" data-required='true' data-max='600'>
+        <label for='postcode'>category</label>
+        <input id='postcode' name='postcode' class="submitHiringPartner form-control" type="text" placeholder="Postcode" data-required='true' data-max='10'>
+        <label for='phoneNumber'>hiring event</label>
+        <input id='phoneNumber' name='phoneNumber' class="submitHiringPartner form-control" type="text" placeholder="Phone Number" data-max='20'>
+        <label for='companyUrl'>Company Website URL</label>
+        <input id='companyUrl' name='companyUrl' class="submitHiringPartner form-control" type="text" placeholder="Company Website Url" data-max='255'>
+        <input id="submitHiringPartner" type="submit" class="btn btn-success"/>
+    </form>
+</div>
+</body>
