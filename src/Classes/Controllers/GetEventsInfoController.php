@@ -3,7 +3,6 @@
 
 namespace Portal\Controllers;
 
-
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -42,5 +41,4 @@ class GetEventsInfoController
 
         return $response->withJson($data, $statusCode);
     }
-
 }
