@@ -10,9 +10,9 @@ class GetEventsInfoController
 {
     private $eventsModel;
 
-    public function __construct($eventsModel)
+    public function __construct($eventModel)
     {
-        $this->eventsModel = $eventsModel;
+        $this->eventModel = $eventModel;
     }
 
     public function __invoke(Request $request, Response $response, array $args)
@@ -25,7 +25,7 @@ class GetEventsInfoController
         $statusCode = 400;
 
         try {
-            $events = $this->eventsModel->getEvents();
+            $events = $this->eventModel->getEvents();
         } catch (\PDOException $exception) {
             $data['message'] = $exception->getMessage();
         }
