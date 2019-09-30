@@ -1,11 +1,11 @@
 
-document.getElementById('submitHiringPartner').addEventListener('click', e => {
+document.getElementById('submitHiringPartner').addEventListener('click', async e => {
     e.preventDefault()
 
     let data = getCompletedFormData()
     let validate = validateForm()
     if(validate) {
-        makeApiRequest(data)
+        await makeApiRequest(data)
         getHiringPartners()
     }
 
