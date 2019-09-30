@@ -1,5 +1,5 @@
 
-document.getElementById('submitHiringPartner').addEventListener('click', async e => {
+document.getElementById('submitHiringPartner').addEventListener('click', async (e) => {
     e.preventDefault()
 
     let data = getCompletedFormData()
