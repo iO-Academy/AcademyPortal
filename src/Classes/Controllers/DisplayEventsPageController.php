@@ -21,7 +21,7 @@ class DisplayEventsPageController
     {
         {
             if ($_SESSION['loggedIn'] === true) {
-                $args['eventCategory'] = $this->eventsModel->getEventCategories();
+                $args['eventCategories'] = $this->eventsModel->getEventCategories();
                 $this->renderer->render($response, 'createEventsPage.phtml', $args);
             } else {
                 return $response->withRedirect('/');
