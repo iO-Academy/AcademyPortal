@@ -18,8 +18,9 @@ class EventModel
      */
     public function getEvents():array
     { 
-        $sql = '';
-        return [];
+        $sql = 'SELECT `id`, `name`, `category`, `date`, `start_time`, `end_time`, `notes` FROM `events`;';
+        $query = $this->db->prepare($sql);
+        return $query->fetchAll();
     }
 
     /**
@@ -29,8 +30,9 @@ class EventModel
      */
     public function getEventCategories():array
     { 
-        $sql = '';
-        return [];
+        $sql = 'SELECT `id`, `name` FROM `event_categories`';
+        $query = $this->db->prepare($sql);
+        return $query->fetchAll();
     }
 
     /**
