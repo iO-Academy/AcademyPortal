@@ -11,7 +11,7 @@ class EventModelFactory
      * Factory to generate an EventModel
      *
      * @param ContainerInterface $container
-     * 
+     *
      * @return EventModel
      */
     public function __invoke(ContainerInterface $container) : EventModel
