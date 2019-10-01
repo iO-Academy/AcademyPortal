@@ -14,7 +14,6 @@ class EventEntity
     protected $notes;
 
     public function __construct(
-        int $eventId = null,
         string $name = null,
         int $category = null,
         string $location = null,
@@ -23,7 +22,6 @@ class EventEntity
         string $endTime = null,
         string $notes = null
     ) {
-        $this->id = ($this->id ?? $eventId);
         $this->name = ($this->name ?? $name);
         $this->category = ($this->category ?? $category);
         $this->location = ($this->location ?? $location);
@@ -40,9 +38,8 @@ class EventEntity
      */
     private function sanitiseData()
     {
-        $this->id = (int) $this->id;
         $this->name = $this->sanitiseString($this->name);
-        $this->name = self::validateLength($this->name, 20);
+        $this->name = self::validateLength($this->name, 255);
         $this->category = (int)$this->category;
         $this->location = $this->sanitiseString($this->location);
         $this->location = self::validateLength($this->location, 255);
@@ -99,16 +96,6 @@ class EventEntity
         } else {
             throw new \Exception('An input string does not exist or is too long');
         }
-    }
-
-    /**
-     * Get event Id
-     *
-     * @return int
-     */
-    public function getId():int
-    {
-        return $this->id;
     }
 
     /**
