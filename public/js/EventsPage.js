@@ -34,7 +34,7 @@ function displayEventsHandler(events) {
             <p>${event.name}</p>
             <button class="show-event-info" data-reference='${event.id}'>More Info</button>
             <div id="moreInfo${event.id}" class="hide moreInfo">
-            <p>Event Category: ${event.category}</p
+            <p>Event Category: ${event.category}</p>
             <p>Date: ${event.date}</p>
             <p>Location: ${event.location}</p>
             <p>Start Time: ${event.start_time}</p>
@@ -63,7 +63,6 @@ eventForm.addEventListener("submit", e => {
     e.preventDefault()
 
     let data = getCompletedFormData()
-    console.log(data)
     let validate = validateForm()
     if (validate) {
         // send it!
