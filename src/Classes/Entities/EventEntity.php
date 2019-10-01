@@ -99,7 +99,7 @@ class EventEntity
         }
     }
 
-    /**(
+    /**
      * Sanitise as a string in the event table as data.
      *
      * @param string $eventData
