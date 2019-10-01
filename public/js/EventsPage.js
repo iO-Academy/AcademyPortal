@@ -147,7 +147,7 @@ function validateForm() {
                 success = false
             }
         }
-        //Checks the end time is in the format of a time 'HH:MM'
+        // Checks the end time is in the format of a time 'HH:MM'
         if (element.name === 'event-end-time') {
             let date =  element.value.trim()
             let pattern = /([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?/
@@ -158,6 +158,16 @@ function validateForm() {
             }
         }
     })
+    // check that the end time is actually after the start time
+    // does not assume that times after midnight roll over to the next day
+    let date = document.querySelector('#event-date').value
+    let startTime = new Date(date + ' ' + document.querySelector('#event-start-time').value)
+    let endTime = new Date(date + ' ' + document.querySelector('#event-end-time').value)
+    if (endTime < startTime) {
+        message += 'Event ends before it begins!<br>'
+        success = false
+    }
+
     //Adds all error messages to the messages div.
     document.getElementById('messages').innerHTML = message
     return success
