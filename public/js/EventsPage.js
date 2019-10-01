@@ -1,11 +1,10 @@
-document.getElementById('events').addEventListener('click', e => {
+document.getElementById('submit-event').addEventListener('click', e => {
     e.preventDefault()
 
     let data = getCompletedFormData()
     let validate = validateForm()
     if(validate) {
-        makeApiRequest(data)
-        getHiringPartners()
+       console.log(data)
     }
 
 })
@@ -14,7 +13,7 @@ function validateForm() {
 
     let success = true
     let message = ''
-    let inputs = document.querySelectorAll('.createEvents')
+    let inputs = document.querySelectorAll('.create-events')
     inputs.forEach(function (element) {
         let required = element.getAttribute('data-required')
         if (required && element.value.length < 1) {
@@ -42,7 +41,7 @@ function validateForm() {
 
         if (element.name === 'event-date') {
             let date =  element.value.trim()
-            let pattern = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/i
+            let pattern = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/
             let regEx = new RegExp(pattern)
             if (!regEx.test(date)) {
                 message += 'Invalid date!<br>'
@@ -57,7 +56,7 @@ function validateForm() {
 }
 
 let getCompletedFormData = () => {
-    let formData = document.querySelectorAll(".createEvents")
+    let formData = document.querySelectorAll(".create-events")
     let data = {}
     formData.forEach(formItem=> {
         data[formItem.name] = formItem.value
