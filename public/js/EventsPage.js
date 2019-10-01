@@ -49,7 +49,7 @@ function displayEventsHandler(events) {
 
     let showInfoButtons = document.querySelectorAll('.show-event-info')
     showInfoButtons.forEach(function (button) {
-        button.addEventListener('click', (e) => {
+        button.addEventListener('click', e => {
             let targetId = 'moreInfo' + e.target.dataset.reference
             let targetDiv = document.getElementById(targetId)
             targetDiv.classList.toggle('hide')
