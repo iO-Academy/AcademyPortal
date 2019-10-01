@@ -34,11 +34,11 @@ class DisplayEventsPageController
      * @param array $args
      * @return Response
      */
-    public function __invoke(Request $request, Response $response, array $args) : Response
+    public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $args['eventCategories'] = $this->eventsModel->getEventCategories();
-            $this->renderer->render($response, 'createEventsPage.phtml', $args);
+            $args['eventCategories'] = $this->eventModel->getEventCategories();
+            $this->renderer->render($response, 'EventsPage.phtml', $args);
         } else {
             return $response->withRedirect('/');
         }
