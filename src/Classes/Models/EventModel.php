@@ -20,7 +20,7 @@ class EventModel
      */
     public function getEvents():array
     {
-        $sql = 'SELECT `id`, `name`, `category`, `date`, `start_time`, `end_time`, `notes` FROM `events`;';
+        $sql = 'SELECT `id`, `name`, `category`, `location`, `date`, `start_time`, `end_time`, `notes` FROM `events`;';
         $query = $this->db->prepare($sql);
         return $query->fetchAll();
     }
@@ -49,6 +49,7 @@ class EventModel
             $query = $this->db->prepare("INSERT INTO `events` (
                 `name`,
                 `category`,
+                `location`,
                 `date`,
                 `start_time`,
                 `end_time`,
@@ -57,12 +58,14 @@ class EventModel
                 VALUES (
                 :name, 
                 :category, 
+                :location,
                 :date, 
                 :startTime, 
                 :endTime, 
                 :notes);");
             $query->bindParam(':name', $newEvent->name);
             $query->bindParam(':category', $newEvent->category);
+            $query->bindParam(':location', $newEvent->location);
             $query->bindParam(':date', $newEvent->date);
             $query->bindParam(':startTime', $newEvent->startTime);
             $query->bindParam(':endTime', $newEvent->endTime);
