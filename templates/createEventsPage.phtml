@@ -13,9 +13,9 @@
     <h1>Events</h1>
     <button type="button" class="btn btn-success">go back</button>
     <h2>Add new Event</h2>
-    <form id='CreateEventsForm'>
+    <form id='createEventsForm'>
 
-        <label for='EventCategory'>Event category</label>
+        <label for='eventCategory'>Event category</label>
         <select name='eventCategory' id='eventCategory' class='createEvents form-control'>
             <option value='0'>Select and event category</option>
             <?php echo \Portal\ViewHelpers\EventCategoryViewHelper::eventCategoryDropdown($data); ?>
@@ -26,18 +26,18 @@
                data-required='true' data-max='255'>
 
         <label for='eventDate'>date</label>
-        <input id="EventDate" name="name" class="createEvents form-control" type="date" data-required='true'
+        <input id="eventDate" name="name" class="createEvents form-control" type="date" data-required='true'
                data-max='255'>
 
         <label for="eventLocation">location</label>
-        <input id="location" name="location" class="createEvents form-control" type="text" placeholder="Location"
+        <input id="eventLocation" name="eventLocation" class="createEvents form-control" type="text" placeholder="Location"
                data-required='true' data-max='600'>
 
         <label for='eventStartTime'>Event start time</label>
-        <input id='eventStartTime' name='EventStartTime' class="createEvents form-control" type="time" data-max='20'>
+        <input id='eventStartTime' name='eventStartTime' class="createEvents form-control" type="time" data-max='20'>
 
         <label for='eventEndTime'>Event end time</label>
-        <input id='eventEndTime' name='EventEndTime' class="createEvents form-control" type="time" data-max='20'>
+        <input id='eventEndTime' name='eventEndTime' class="createEvents form-control" type="time" data-max='20'>
 
         <label for='eventNotes'>Notes</label>
         <input id='eventNotes' name='eventNotes' class="createEvents form-control" type="text" placeholder="Notes"
