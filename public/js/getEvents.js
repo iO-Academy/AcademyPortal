@@ -20,7 +20,6 @@ function getEvents() {
  *
  * @param events is an array of objects which contains information about events
  *
- * @return a div of the event name with a button that reveals each event's additional info on each line
  */
 function displayEventsHandler(events) {
     let eventDisplayer = document.getElementById('events')
