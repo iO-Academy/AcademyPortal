@@ -63,3 +63,5 @@ $container['HiringPartnerModel'] = new \Portal\Factories\HiringPartnerModelFacto
 $container['GetHiringPartnersController'] = new \Portal\Factories\GetHiringPartnerControllerFactory();
 
 $container['GetEventController'] = new \Portal\Factories\GetEventControllerFactory();
+
+$container['EventModel'] = new \Portal\Factories\EventModelFactory();
