@@ -15,7 +15,7 @@
     <form id='createEventsForm'>
 
         <label for='eventCategory'>Event category</label>
-        <select name='eventCategory' id='eventCategory' class='createEvents form-control'>
+        <select name='eventCategory' id='eventCategory' class='createEvents form-control' data-required='true'>
             <option value='0'>Select and event category</option>
             <?php echo \Portal\ViewHelpers\EventCategoryViewHelper::eventCategoryDropdown($data); ?>
         </select>
@@ -33,10 +33,12 @@
                data-required='true' data-max='600'>
 
         <label for='eventStartTime'>Event start time</label>
-        <input id='eventStartTime' name='eventStartTime' class="createEvents form-control" type="time" data-max='20'>
+        <input id='eventStartTime' name='eventStartTime' class="createEvents form-control" type="time" data-required='true'
+               data-max='20'>
 
         <label for='eventEndTime'>Event end time</label>
-        <input id='eventEndTime' name='eventEndTime' class="createEvents form-control" type="time" data-max='20'>
+        <input id='eventEndTime' name='eventEndTime' class="createEvents form-control" type="time" data-required='true'
+               data-max='20'>
 
         <label for='eventNotes'>Notes</label>
         <input id='eventNotes' name='eventNotes' class="createEvents form-control" type="text" placeholder="Notes"
