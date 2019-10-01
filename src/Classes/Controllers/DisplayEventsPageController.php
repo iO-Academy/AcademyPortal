@@ -40,7 +40,7 @@ class DisplayEventsPageController
             $args['eventCategories'] = $this->eventModel->getEventCategories();
             $this->renderer->render($response, 'EventsPage.phtml', $args);
         } else {
-            return $response->withRedirect('/');
+            return $response->withRedirect('../');
         }
     }
 }

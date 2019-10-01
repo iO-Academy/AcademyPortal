@@ -37,7 +37,7 @@ class AddApplicantController
             return $this->renderer->render($response, 'addApplicant.phtml', $args);
         } else {
             $_SESSION['loggedIn'] = false;
-            return $response->withRedirect('/');
+            return $response->withRedirect('../');
         }
     }
 }

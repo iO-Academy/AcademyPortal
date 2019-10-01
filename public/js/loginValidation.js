@@ -17,7 +17,7 @@ let validateInputs = (cleanedEmailInput, cleanedPasswordInput) => {
 }
 
 let jsonRequest = async (path, data) => {
-    let response =  await fetch(`/api/${path}`,
+    let response =  await fetch(`./api/${path}`,
         {
             credentials: "same-origin",
             headers: {
@@ -43,7 +43,7 @@ loginForm.addEventListener('submit', async (e) => {
     }
 
     if (response && response['success'] === true){
-        window.location.href = "/admin"
+        window.location.href = "./admin"
     } else {
         document.getElementById("error-message").innerText = response['msg']
     }

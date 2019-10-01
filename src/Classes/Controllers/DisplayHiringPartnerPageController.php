@@ -43,7 +43,7 @@ class DisplayHiringPartnerPageController
             $args['companySize'] = $this->hiringPartnerModel->getCompanySize();
             $this->renderer->render($response, 'hiringPartnerPage.phtml', $args);
         } else {
-            return $response->withRedirect('/');
+            return $response->withRedirect('../');
         }
     }
 }

@@ -24,7 +24,7 @@ let getCompletedFormData = () => {
 
 
 let makeApiRequest = async (data) => {
-    return fetch('/api/saveApplicant', {
+    return fetch('../api/saveApplicant', {
         credentials: "same-origin",
         headers: {
             'Accept': 'application/json',
@@ -36,7 +36,7 @@ let makeApiRequest = async (data) => {
         .then(response => response.json())
         .then((data) => {
             if (data.success) {
-                window.location.href = '/admin';
+                window.location.href = '../admin';
             } else {
                 document.getElementById('errorMsg').innerHTML = "Please contact administrator. Or <a href='/admin'>click here</a> to return to admin page"
             }
