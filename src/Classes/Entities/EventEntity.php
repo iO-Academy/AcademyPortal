@@ -59,7 +59,7 @@ class EventEntity
     public function validateDate(string $date)
     {
         if (!preg_match('/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/', $date)) {
-            return false;
+            throw new \Exception('Please enter correct date');
         } else {
             return $this->sanitiseString($this->date);
         }
@@ -75,7 +75,7 @@ class EventEntity
     {
         if (!preg_match('/((1[0-2]|0?[1-9]):([0-5][0-9]))/', $time)
         ) {
-            return false;
+            throw new \Exception('Please enter correct time');
         } else {
             if ($time == $this->startTime) {
                 return $this->sanitiseString($this->startTime);
