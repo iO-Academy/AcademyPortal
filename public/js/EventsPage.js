@@ -26,17 +26,9 @@ function validateForm() {
             success = false
         }
 
-        if (element.name === 'companySize' && element.value === '0') {
-            message += 'Please select a company size!<br>'
+        if (element.name === 'event-category' && element.value === '0') {
+            message += 'Please select an event category!<br>'
             success = false
-        }
-        
-        if (element.name === 'companySize') {
-            let idRange = document.getElementsByTagName('option').length -1
-            if (element.value > idRange) {
-                message += 'Invalid company size range info!<br>'
-                success = false
-            }
         }
 
         if (element.name === 'event-date') {
@@ -48,6 +40,27 @@ function validateForm() {
                 success = false
             }
         }
+
+        if (element.name === 'event-start-time') {
+            let date =  element.value.trim()
+            let pattern = /([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?/
+            let regEx = new RegExp(pattern)
+            if (!regEx.test(date)) {
+                message += 'Invalid start time!<br>'
+                success = false
+            }
+        }
+
+        if (element.name === 'event-end-time') {
+            let date =  element.value.trim()
+            let pattern = /([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?/
+            let regEx = new RegExp(pattern)
+            if (!regEx.test(date)) {
+                message += 'Invalid end time!<br>'
+                success = false
+            }
+        }
+
     })
 
     document.getElementById('messages').innerHTML = message

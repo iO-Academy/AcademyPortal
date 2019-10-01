@@ -15,10 +15,12 @@
     <h2>Add new Event</h2>
     <form id='create-events-form'>
         <label for='event-category'>Event category</label>
-        <select name='event-category' id='event-category' class='create-events form-control' data-required='true' data-max='255'>
+        <select name='event-category' id='event-category' class='create-events form-control'>
             <option value='0'>Select and event category</option>
 <!--            --><?php //echo \Portal\ViewHelpers\EventCategoryViewHelper::eventCategoryDropdown($data); ?>
             <option value="Testing Event">Testing Event</option>
+            <option value="Testing Event">Testing Event</option>
+
         </select>
         <label for="event-name">Event Name</label>
         <input id="event-name" name="event-name" class="create-events form-control" type="text" placeholder="Event Name"
