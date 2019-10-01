@@ -35,7 +35,7 @@ function displayEventsHandler(events) {
             <p>${event.name}</p>
             <button class="show-event-info" data-reference='${event.id}'>More Info</button>
             <div id="moreInfo${event.id}" class="hide moreInfo">
-            <p>Event Category: ${event.category}</p>
+            <p>Event Category: ${event.category_name}</p>
             <p>Date: ${event.date}</p>
             <p>Location: ${event.location}</p>
             <p>Start Time: ${event.start_time}</p>
