@@ -14,7 +14,7 @@ function validateForm() {
 
     let success = true
     let message = ''
-    let inputs = document.querySelectorAll('.submitHiringPartner')
+    let inputs = document.querySelectorAll('.createEvents')
     inputs.forEach(function (element) {
         let required = element.getAttribute('data-required')
         if (required && element.value.length < 1) {
@@ -74,4 +74,13 @@ function validateForm() {
     document.getElementById('messages').innerHTML = message
 
     return success
+}
+
+let getCompletedFormData = () => {
+    let formData = document.querySelectorAll(".createEvents")
+    let data = {}
+    formData.forEach(formItem=> {
+        data[formItem.name] = formItem.value
+    })
+    return data
 }
