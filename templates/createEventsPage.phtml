@@ -13,13 +13,11 @@
     <button type="button" class="btn btn-success">go back</button>
     <h2>Add new Event</h2>
     <form id='createEventsForm'>
-
         <label for='event-category'>Event category</label>
         <select name='event-category' id='event-category' class='create-events form-control' data-required='true'>
             <option value='0'>Select and event category</option>
             <?php echo \Portal\ViewHelpers\EventCategoryViewHelper::eventCategoryDropdown($data); ?>
         </select>
-
         <label for="event-name">Event Name</label>
         <input id="event-name" name="event-name" class="create-events form-control" type="text" placeholder="Event Name"
                data-required='true' data-max='255'>
