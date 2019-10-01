@@ -8,12 +8,12 @@ use Slim\Views\PhpRenderer;
 use Portal\Models\EventModel;
 use Portal\Entities\EventEntity;
 
-class AddApplicantController
+class AddEventController
 {
     private $eventModel;
 
     /**
-     * AddApplicantController Constructor
+     * AddEventController constructor
      *
      * @param EventModel $eventModel
      */
