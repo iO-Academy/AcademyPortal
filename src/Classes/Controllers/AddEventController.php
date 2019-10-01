@@ -23,6 +23,7 @@ class AddApplicantController
 
     public function __invoke(Request $request, Response $response, array $args)
     {
+        // do the actual thing
         return $response->withJson(['hey' => 'there']);
     }
 }
