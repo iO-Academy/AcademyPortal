@@ -1,5 +1,6 @@
 const eventList = document.querySelector('#events')
 const eventForm = document.querySelector('form')
+const message = document.querySelector('#messages')
 
 eventForm.addEventListener("submit", e => {
     e.preventDefault()
@@ -26,6 +27,17 @@ eventForm.addEventListener("submit", e => {
     })
     .then(response => response.json())
     .then(responseJson => {
-        console.log(responseJson.message)
+        if(responseJson.success) {
+            eventForm.elements['event-name'].value = '',
+            eventForm.elements['event-category'].value = '',
+            eventForm.elements['event-location'].value = '',
+            eventForm.elements['event-date'].value = '',
+            eventForm.elements['event-start-time'].value = '',
+            eventForm.elements['event-end-time'].value = '',
+            eventForm.elements['event-notes'].value = ''
+            message.innerText = responseJson.message
+        } else {
+            message.innerText = responseJson.message
+        }
     })
 })
