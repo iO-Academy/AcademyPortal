@@ -36,7 +36,7 @@ class AdminController
             return $this->renderer->render($response, 'admin.phtml', $args);
         } else {
             $_SESSION['loggedIn'] = false;
-            return $response->withRedirect('/');
+            return $response->withRedirect('../');
         }
     }
 }
