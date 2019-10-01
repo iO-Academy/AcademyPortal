@@ -38,13 +38,13 @@ class EventEntity
     private function sanitiseData()
     {
         $this->name = $this->sanitiseString($this->name);
-        $this->name = self::validateLength($this->name, 255);
+        $this->name = self::validateExistsAndLength($this->name, 255);
         $this->category = (int)$this->category;
         $this->location = $this->sanitiseString($this->location);
-        $this->location = self::validateLength($this->location, 255);
-        $this->date = $this->sanitiseDate($this->date);
-        $this->startTime = $this->sanitiseTime($this->startTime);
-        $this->endTime = $this->sanitiseTime($this->endTime);
+        $this->location = self::validateExistsAndLength($this->location, 255);
+        $this->date = $this->validateDate($this->date);
+        $this->startTime = $this->validateTime($this->startTime);
+        $this->endTime = $this->validateTime($this->endTime);
         $this->notes = $this->sanitiseString($this->notes);
         $this->notes = self::validateLength($this->notes, 255);
     }
@@ -56,7 +56,7 @@ class EventEntity
      *
      * @return bool|string
      */
-    public function sanitiseDate($date)
+    public function validateDate($date)
     {
         if (!preg_match('/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/', $date)) {
             return false;
@@ -65,7 +65,13 @@ class EventEntity
         }
     }
 
-    public function sanitiseTime($time)
+    /**
+     * Sanitise as a time in the event table as data.
+     *
+     * @param $time
+     * @return bool|string
+     */
+    public function validateTime($time)
     {
         if (!preg_match('/((1[0-2]|0?[1-9]):([0-5][0-9]))/', $time)
         ) {
