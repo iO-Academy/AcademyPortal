@@ -42,11 +42,49 @@ class EventEntity
         $this->category = (int)$this->category;
         $this->location = $this->sanitiseString($this->location);
         $this->location = self::validateLength($this->location, 255);
-        $this->date = $this->sanitiseString($this->date);
-        $this->startTime = $this->sanitiseString($this->startTime);
-        $this->endTime = $this->sanitiseString($this->endTime);
+        $this->date = $this->sanitiseDate($this->date);
+        $this->startTime = $this->sanitiseTime($this->startTime);
+        $this->endTime = $this->sanitiseTime($this->endTime);
         $this->notes = $this->sanitiseString($this->notes);
         $this->notes = self::validateLength($this->notes, 255);
+    }
+
+    /**
+     * Sanitise as a date in the event table as data.
+     *
+     * @param $date
+     *
+     * @return bool|string
+     */
+    public function sanitiseDate($date)
+    {
+        if (!preg_match('/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/',
+            $date))
+        {
+            return false;
+        }
+        else
+        {
+            return $this->sanitiseString($this->date);
+        }
+    }
+
+    public function sanitiseTime($time)
+    {
+        if (!preg_match('/((1[0-2]|0?[1-9]):([0-5][0-9]))/',
+            $time))
+        {
+            return false;
+        }
+        else
+        {
+            if($time == $this->startTime){
+                return $this->sanitiseString($this->startTime);
+            } elseif($time == $this->endTime){
+                return $this->sanitiseString($this->endTime);
+            }
+
+        }
     }
 
     /**(
