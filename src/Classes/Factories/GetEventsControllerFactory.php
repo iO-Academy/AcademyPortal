@@ -2,21 +2,21 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\GetEventController;
+use Portal\Controllers\GetEventsController;
 use Psr\Container\ContainerInterface;
 
-class GetEventControllerFactory
+class GetEventsControllerFactory
 {
     /**
      * Creates a controller to get all the events
      *
      * @param ContainerInterface $container
      *
-     * @return GetEventController a new instance of the GetEventController
+     * @return GetEventsController a new instance of the GetEventsController
      */
     public function __invoke(ContainerInterface $container)
     {
         $eventModel = $container->get('EventModel');
-        return new GetEventController($eventModel);
+        return new GetEventsController($eventModel);
     }
 }

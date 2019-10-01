@@ -3,18 +3,18 @@
 namespace Tests\Controllers;
 
 use PHPUnit\Framework\TestCase;
-use Portal\Controllers\GetEventController;
+use Portal\Controllers\GetEventsController;
 use Portal\Models\EventModel;
 
-class GetEventControllerTest extends TestCase
+class GetEventsControllerTest extends TestCase
 {
 
     public function testConstruct()
     {
         $eventModel = $this->createMock(EventModel::class);
 
-        $case = new GetEventController($eventModel);
-        $expected = GetEventController::class;
+        $case = new GetEventsController($eventModel);
+        $expected = GetEventsController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

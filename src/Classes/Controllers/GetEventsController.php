@@ -3,14 +3,15 @@
 
 namespace Portal\Controllers;
 
+use Portal\Models\EventModel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class GetEventController
+class GetEventsController
 {
-    private $eventsModel;
+    private $eventModel;
 
-    public function __construct($eventModel)
+    public function __construct(EventModel $eventModel)
     {
         $this->eventModel = $eventModel;
     }
