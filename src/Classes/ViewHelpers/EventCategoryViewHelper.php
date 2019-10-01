@@ -8,7 +8,7 @@ class EventCategoryViewHelper
     {
         $eventCategoryDropdown = '';
         foreach ($data['eventCategories'] as $eventCategory) {
-            $eventCategoryDropdown .= 
+            $eventCategoryDropdown .=
             '<option value=' . $eventCategory['id'] . '>' . $eventCategory['name'] . '</option>';
         }
         return $eventCategoryDropdown;

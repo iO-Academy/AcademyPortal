@@ -26,5 +26,4 @@ class DisplayEventsPageController
             return $response->withRedirect('/');
         }
     }
-
 }
