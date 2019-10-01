@@ -2,38 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registered Applicants</title>
+    <title>Add Events</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../public/css/createEventsPage.css">
     <link rel="stylesheet" type="text/css" href="../public/css/genericStyles.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src='./js/hiringPartner.js' defer></script>
 </head>
 <body>
 <div class="form-page">
-<h1>Events</h1>
-<button type="button" class="btn btn-success">go back</button>
-<h2>Add new Event</h2>
-    <form id='hiringPartnerForm'>
-        <label for="name">Event Name</label>
-        <input id="name" name="name" class="submitHiringPartner form-control" type="text" placeholder="Event Name" data-required='true' data-max='255'>
+    <h1>Events</h1>
+    <button type="button" class="btn btn-success">go back</button>
+    <h2>Add new Event</h2>
+    <form id='CreateEventsForm'>
 
-        <label for='companySize'>date</label>
-        <input id="name" name="name" class="submitHiringPartner form-control" type="text" placeholder="Date" data-required='true' data-max='255'>
+        <label for='EventCategory'>Event category</label>
+        <select name='eventCategory' id='eventCategory' class='createEvents form-control'>
+            <option value='0'>Select and event category</option>
+            <?php echo \Portal\ViewHelpers\EventCategoryViewHelper::eventCategoryDropdown($data); ?>
+        </select>
 
-        <label for="techStack">location</label>
-        <input id="techStack" name="techStack" class="submitHiringPartner form-control" type="text" placeholder="Location" data-required='true' data-max='600'>
+        <label for="eventName">Event Name</label>
+        <input id="eventName" name="eventName" class="createEvents form-control" type="text" placeholder="Event Name"
+               data-required='true' data-max='255'>
 
-        <label for='postcode'>category</label>
-        <input id='postcode' name='postcode' class="submitHiringPartner form-control" type="text" placeholder="Category" data-required='true' data-max='10'>
+        <label for='eventDate'>date</label>
+        <input id="EventDate" name="name" class="createEvents form-control" type="date" data-required='true'
+               data-max='255'>
 
-        <label for='phoneNumber'>Start and End Time</label>
-        <input id='phoneNumber' name='phoneNumber' class="submitHiringPartner form-control" type="text" placeholder="Start and End Time" data-max='20'>
+        <label for="eventLocation">location</label>
+        <input id="location" name="location" class="createEvents form-control" type="text" placeholder="Location"
+               data-required='true' data-max='600'>
 
-        <label for='companyUrl'>Notes</label>
-        <input id='companyUrl' name='companyUrl' class="submitHiringPartner form-control" type="text" placeholder="Notes" data-max='255'>
-        <input id="submitHiringPartner" type="submit" class="btn btn-success"/>
+        <label for='eventStartTime'>Event start time</label>
+        <input id='eventStartTime' name='EventStartTime' class="createEvents form-control" type="time" data-max='20'>
+
+        <label for='eventEndTime'>Event end time</label>
+        <input id='eventEndTime' name='EventEndTime' class="createEvents form-control" type="time" data-max='20'>
+
+        <label for='eventNotes'>Notes</label>
+        <input id='eventNotes' name='eventNotes' class="createEvents form-control" type="text" placeholder="Notes"
+               data-max='255'>
+        <input id="submitEvent" type="submit" class="btn btn-success"/>
     </form>
 </div>
 </body>
