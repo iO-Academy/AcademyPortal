@@ -87,6 +87,7 @@ eventForm.addEventListener("submit", e => {
                 eventForm.elements['event-end-time'].value = '',
                 eventForm.elements['event-notes'].value = ''
                 message.innerText = responseJson.message
+                getEvents();
             } else {
                 message.innerText = responseJson.message
             }
