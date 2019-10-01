@@ -22,6 +22,7 @@ class EventModel
     {
         $sql = 'SELECT `id`, `name`, `category`, `location`, `date`, `start_time`, `end_time`, `notes` FROM `events`;';
         $query = $this->db->prepare($sql);
+        $query->execute();
         return $query->fetchAll();
     }
 
