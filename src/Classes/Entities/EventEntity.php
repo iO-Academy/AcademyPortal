@@ -42,8 +42,10 @@ class EventEntity
     {
         $this->id = (int) $this->id;
         $this->name = $this->sanitiseString($this->name);
+        $this->name = self::validateLength($this->name, 255);
         $this->category = (int)$this->category;
         $this->location = $this->sanitiseString($this->location);
+        $this->location = self::validateLength($this->location, 255);
         $this->date = $this->sanitiseString($this->date);
         $this->startTime = $this->sanitiseString($this->startTime);
         $this->endTime = $this->sanitiseString($this->endTime);
@@ -60,6 +62,36 @@ class EventEntity
     public function sanitiseString($eventData)
     {
         return filter_var($eventData, FILTER_SANITIZE_STRING);
+    }
+
+    /**
+     * Validate that a string is not empty and is within length allowed, throws an error if not
+     *
+     * @param string $hiringPartnerData
+     * @param int $characterLength
+     * @throws \Exception if the array is empty
+     *
+     * @return string, which will return the hiring partner data or assigns to null
+     */
+    public static function validateLength(string $eventData, int $characterLength)
+    {
+        if ($eventData == '') {
+            return null;
+        } elseif (strlen($eventData) <= $characterLength) {
+            return $eventData;
+        } else {
+            throw new \Exception('An input string does not exist or is too long');
+        }
+    }
+
+    /**
+     * Get event Id
+     *
+     * @return int
+     */
+    public function getId():int
+    {
+        return $this->id;
     }
 
     /**
