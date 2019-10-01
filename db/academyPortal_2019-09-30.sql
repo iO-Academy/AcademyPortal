@@ -7,7 +7,7 @@
 #
 # Host: 192.168.20.20 (MySQL 5.6.44)
 # Database: academyPortal
-# Generation Time: 2019-09-30 13:04:19 +0000
+# Generation Time: 2019-10-01 09:13:21 +0000
 # ************************************************************
 
 
@@ -149,6 +149,7 @@ CREATE TABLE `events` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `category` int(11) unsigned NOT NULL,
+  `location` varchar(255) NOT NULL DEFAULT '',
   `date` date NOT NULL,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
