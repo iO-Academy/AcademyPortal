@@ -19,7 +19,6 @@ function getEvents() {
  * Runs a foreach through each event object and outputs HTML elements with event details
  *
  * @param events is an array of objects which contains information about events
- *
  */
 function displayEventsHandler(events) {
     let eventDisplayer = document.getElementById('events')
