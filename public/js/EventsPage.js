@@ -1,14 +1,114 @@
-//Adds event listener to submit button that gets data from form and validates it.
-document.getElementById('submit-event').addEventListener('click', e => {
+const eventList = document.querySelector('#events')
+const eventForm = document.querySelector('form')
+const message = document.querySelector('#messages')
+
+/**
+ * Gets event information from the API and passes into the displayHandler function
+ *
+ * @return event data
+ */
+function getEvents() {
+    fetch('/api/getEvents', {
+        credentials: "same-origin",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(eventInfo => eventInfo.json())
+    .then(eventInfo => displayEventsHandler(eventInfo.data))
+}
+
+/**
+ * Runs a foreach through each event object and outputs HTML elements with event details
+ *
+ * @param events is an array of objects which contains information about events
+ */
+function displayEventsHandler(events) {
+    let eventDisplayer = document.getElementById('events')
+    let eventInformation = ''
+    events.forEach(function (event) {
+        eventInformation +=
+            `<div class="event-name">
+            <p>${event.name}</p>
+            <button class="show-event-info" data-reference='${event.id}'>More Info</button>
+            <div id="moreInfo${event.id}" class="hide moreInfo">
+            <p>Event Category: ${event.category}</p
+            <p>Date: ${event.date}</p>
+            <p>Location: ${event.location}</p>
+            <p>Start Time: ${event.startTime}</p>
+            <p>End Time: ${event.endTime}</p>
+            <p>Notes: ${event.notes}</p>`
+        if (event.notes !== null) {
+            eventInformation += `<p>Notes: ${event.notes}</p>`
+        }
+
+        eventInformation += `</div></div>`
+    })
+    eventDisplayer.innerHTML = eventInformation
+
+    let showInfoButtons = document.querySelectorAll('.show-event-info')
+    showInfoButtons.forEach(function (button) {
+        button.addEventListener('click', (e) => {
+            let targetId = 'moreInfo' + e.target.dataset.reference
+            let targetDiv = document.getElementById(targetId)
+            targetDiv.classList.toggle('hide')
+        })
+    })
+}
+
+getEvents()
+
+// Add new event listener
+eventForm.addEventListener("submit", e => {
     e.preventDefault()
+
     let data = getCompletedFormData()
+    console.log(data)
     let validate = validateForm()
-    if(validate) {
+    if (validate) {
         //This is where the object of the form data is sent if valid data.
         //It's console logged now for demonstration.
        console.log(data)
+    
+        fetch('api/addEvent', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            method: 'post',
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(responseJson => {
+            if(responseJson.success) {
+                eventForm.elements['event-name'].value = '',
+                eventForm.elements['event-category'].value = '',
+                eventForm.elements['event-location'].value = '',
+                eventForm.elements['event-date'].value = '',
+                eventForm.elements['event-start-time'].value = '',
+                eventForm.elements['event-end-time'].value = '',
+                eventForm.elements['event-notes'].value = ''
+                message.innerText = responseJson.message
+            } else {
+                message.innerText = responseJson.message
+            }
+        })
     }
 })
+
+/**
+ * Adds data from form into an object with the field name as key and the form value as value.
+ */
+let getCompletedFormData = () => {
+    let formData = document.querySelectorAll(".create-events")
+    let data = {}
+    formData.forEach(formItem=> {
+        data[formItem.name] = formItem.value
+    })
+    return data
+}
 
 function validateForm() {
     let success = true
@@ -23,7 +123,7 @@ function validateForm() {
         }
         //Checks fields with attribute data-max are within their character limit.
         let maxLength = element.getAttribute('data-max')
-        if (required && element.value.length > maxLength) {
+        if (required && maxLength != null && element.value.length > maxLength) {
             message += element.name + ' is too long, must be less than ' + maxLength + ' characters! <br>'
             success = false
         }
@@ -66,16 +166,4 @@ function validateForm() {
     //Adds all error messages to the messages div.
     document.getElementById('messages').innerHTML = message
     return success
-}
-
-/**
- * Adds data from form into an object with the field name as key and the form value as value.
- */
-let getCompletedFormData = () => {
-    let formData = document.querySelectorAll(".create-events")
-    let data = {}
-    formData.forEach(formItem=> {
-        data[formItem.name] = formItem.value
-    })
-    return data
 }
