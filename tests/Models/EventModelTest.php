@@ -12,7 +12,6 @@ class EventModelTest extends TestCase
         $db = $this->createMock(\PDO::class);
         $case = new EventModel($db);
         $expected = EventModel::class;
-
         $this->assertInstanceOf($expected, $case);
     }
 }
