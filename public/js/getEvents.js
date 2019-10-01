@@ -3,8 +3,8 @@
  *
  * @return event data
  */
-async function getEvents() {
-    await fetch('/api/getEvents', {
+function getEvents() {
+    fetch('/api/getEvents', {
         credentials: "same-origin",
         headers: {
             'Accept': 'application/json',
@@ -20,7 +20,7 @@ async function getEvents() {
  *
  * @param events is an array of objects which contains information about events
  *
- * @return a divs of the event name with a button that reveals each event's additional info on each line
+ * @return a div of the event name with a button that reveals each event's additional info on each line
  */
 function displayEventsHandler(events) {
     let eventDisplayer = document.getElementById('events')
