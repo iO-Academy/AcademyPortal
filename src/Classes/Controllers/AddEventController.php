@@ -34,13 +34,13 @@ class AddEventController
 
         try {
             $event = new EventEntity(
-                $newEvent['name'];
-                $newEvent['category'];
-                $newEvent['location'];
-                $newEvent['date'];
-                $newEvent['startTime'];
-                $newEvent['endTime'];
-                $newEvent['notes'];
+                $newEvent['name'],
+                $newEvent['category'],
+                $newEvent['location'],
+                $newEvent['date'],
+                $newEvent['startTime'],
+                $newEvent['endTime'],
+                $newEvent['notes']
             );
             if (!empty($event) && $event instanceof EventEntity) {
                 $result = $this->eventModel->addEvent($event);
