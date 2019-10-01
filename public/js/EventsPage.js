@@ -3,7 +3,8 @@ const eventForm = document.querySelector('form')
 const message = document.querySelector('#messages')
 
 /**
- * Gets event information from the API and passes into the displayHandler function
+ * Gets event information from the API and passes into the 
+ * displayEventsHandler function
  *
  * @return event data
  */
