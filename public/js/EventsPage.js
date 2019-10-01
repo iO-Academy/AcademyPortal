@@ -130,9 +130,7 @@ function validateForm() {
         //Checks the date is in the format of a date 'YYYY-MM-DD'
         if (element.name === 'event-date') {
             let date =  element.value.trim()
-            let pattern = '/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'
-            let regEx = new RegExp(pattern)
-            if (!regEx.test(date)) {
+            if (isDate(date)) {
                 message += 'Invalid date!<br>'
                 success = false
             }
@@ -167,6 +165,17 @@ function validateForm() {
     //Adds all error messages to the messages div.
     document.getElementById('messages').innerHTML = message
     return success
+}
+
+function isDate(date) {
+    console.log(date)
+    let pattern = '/([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/'
+    let regEx = new RegExp(pattern)
+    if (regEx.test(date)) {
+        return true
+    } else {
+        return false
+    }
 }
 
 function isTime(time) {
