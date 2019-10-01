@@ -61,4 +61,74 @@ class EventEntity
     {
         return filter_var($eventData, FILTER_SANITIZE_STRING);
     }
+
+    /**
+     * Get event name
+     *
+     * @return string name
+     */
+    public function getName():string 
+    {
+        return $this->name;
+    }
+
+    /**
+     * Get event category
+     *
+     * @return int category
+     */
+    public function getCategory():int 
+    {
+        return $this->category;
+    }
+
+    /**
+     * Get event location
+     *
+     * @return string location
+     */
+    public function getLocation():string 
+    {
+        return $this->location;
+    }
+
+    /**
+     * Get event date
+     *
+     * @return Date date
+     */
+    public function getDate():Date 
+    {
+        return $this->date;
+    }
+
+    /**
+     * get event start time
+     *
+     * @return Time startTime
+     */
+    public function getStartTime():Time 
+    {
+        return $this->startTime;
+    }
+
+    /**
+     * Get event end time
+     *
+     * @return Time endTime
+     */
+    public function getEndTime():Time 
+    {
+        return $this->endTime;
+    }
+
+    /**
+     * Get event notes
+     *
+     * @return string notes
+     */
+    public function getNotes():string 
+    {
+        return $this->endTime;
+    }
 }
