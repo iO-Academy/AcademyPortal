@@ -52,7 +52,7 @@ class EventEntityTest extends TestCase
     public function testValidateLengthFailure()
     {
         $characterLength = 20;
-        $location = '1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH';
+        $location = '1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH';
         $this->expectException(Exception::class);
         EventEntity::ValidateLength($location, $characterLength);
     }
