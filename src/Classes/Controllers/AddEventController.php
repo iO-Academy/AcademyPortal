@@ -6,6 +6,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\EventModel;
+use Portal\Entities\EventEntity;
 
 class AddApplicantController
 {
@@ -23,7 +24,38 @@ class AddApplicantController
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-        // do the actual thing
-        return $response->withJson(['hey' => 'there']);
+        $newEvent = $request->getParsedBody();
+        $responseData = [
+            'success' => false,
+            'message' => 'There was an Error!',
+            'data' => []
+        ];
+        $statusCode = 400;
+
+        try {
+            $event = new EventEntity (
+                $newEvent['name'];
+                $newEvent['category'];
+                $newEvent['date'];
+                $newEvent['startTime'];
+                $newEvent['endTime'];
+                $newEvent['notes'];
+            );
+            if (!empty($event) && $event instanceof HiringPartnerEntity) {
+                $result = $this->eventModel->addEvent($event);
+            }
+        } catch (\Exception $exception) {
+            $responseData['message'] = $exception->getMessage();
+        }
+
+        if (isset($result) && $result) {
+            $responseData = [
+                'success' => true,
+                'message' => 'New Event successfully added to the database.',
+                'data' => []
+            ];
+            $statusCode = 201;
+        }
+        return $response->withJson($responseData, $statusCode);
     }
 }
