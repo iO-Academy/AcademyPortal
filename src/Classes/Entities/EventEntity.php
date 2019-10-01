@@ -18,9 +18,9 @@ class EventEntity
         string $name = null,
         int $category = null,
         string $location = null,
-        Date $date = null,
-        Time $startTime = null,
-        Time $endTime = null,
+        string $date = null,
+        string $startTime = null,
+        string $endTime = null,
         string $notes = null
     ) {
         $this->id = ($this->id ?? $eventId);
@@ -62,6 +62,23 @@ class EventEntity
     public function sanitiseString($eventData)
     {
         return filter_var($eventData, FILTER_SANITIZE_STRING);
+    }
+
+    /**
+     * Validate that a string exists and is within length allowed, throws an error if not
+     *
+     * @param string $eventData
+     * @param int $characterLength
+     * @return string, which will return the hiring partner data
+     * @throws \Exception if the array is empty
+     */
+    public static function validateExistsAndLength(string $eventData, int $characterLength)
+    {
+        if (empty($eventData) == false && strlen($eventData) <= $characterLength) {
+            return $eventData;
+        } else {
+            throw new \Exception('An input string does not exist or is too long');
+        }
     }
 
     /**
@@ -127,9 +144,9 @@ class EventEntity
     /**
      * Get event date
      *
-     * @return Date date
+     * @return string date
      */
-    public function getDate():Date 
+    public function getDate():string
     {
         return $this->date;
     }
@@ -137,9 +154,9 @@ class EventEntity
     /**
      * get event start time
      *
-     * @return Time startTime
+     * @return string startTime
      */
-    public function getStartTime():Time 
+    public function getStartTime():string
     {
         return $this->startTime;
     }
@@ -147,9 +164,9 @@ class EventEntity
     /**
      * Get event end time
      *
-     * @return Time endTime
+     * @return string endTime
      */
-    public function getEndTime():Time 
+    public function getEndTime():string
     {
         return $this->endTime;
     }
