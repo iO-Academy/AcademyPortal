@@ -168,7 +168,6 @@ function validateForm() {
 }
 
 function isDate(date) {
-    console.log(date)
     let pattern = '/([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/'
     let regEx = new RegExp(pattern)
     if (regEx.test(date)) {
