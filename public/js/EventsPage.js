@@ -139,20 +139,16 @@ function validateForm() {
         }
         //Checks the start time is in the format of a time 'HH:MM'
         if (element.name === 'event-start-time') {
-            let date =  element.value.trim()
-            let pattern = /([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?/
-            let regEx = new RegExp(pattern)
-            if (!regEx.test(date)) {
+            let time =  element.value.trim()
+            if (isTime(time)) {
                 message += 'Invalid start time!<br>'
                 success = false
             }
         }
         // Checks the end time is in the format of a time 'HH:MM'
         if (element.name === 'event-end-time') {
-            let date =  element.value.trim()
-            let pattern = /([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?/
-            let regEx = new RegExp(pattern)
-            if (!regEx.test(date)) {
+            let time =  element.value.trim()
+            if (isTime(time)) {
                 message += 'Invalid end time!<br>'
                 success = false
             }
@@ -171,4 +167,14 @@ function validateForm() {
     //Adds all error messages to the messages div.
     document.getElementById('messages').innerHTML = message
     return success
+}
+
+function isTime(time) {
+    let pattern = '/([01]?[0-9]|2[0-3]):[0-5][0-9]/'
+    let regEx = new RegExp(pattern)
+    if (regEx.test(time)) {
+        return true
+    } else {
+        return false
+    }
 }
