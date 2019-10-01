@@ -24,7 +24,7 @@ let getCompletedFormData = () => {
 
 
 let makeApiRequest = async (data) => {
-    return fetch('../api/saveApplicant', {
+    return fetch('./api/saveApplicant', {
         credentials: "same-origin",
         headers: {
             'Accept': 'application/json',

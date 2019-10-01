@@ -2,7 +2,7 @@ const REGISTERERRORMESSAGE = 'Registration has failed. Please refresh the browse
 
 let sendNewUserDetails = async (data) => {
 
-    let response =  await fetch(`../api/registerUser`,
+    let response =  await fetch(`./api/registerUser`,
         {
             credentials: "same-origin",
             headers: {
