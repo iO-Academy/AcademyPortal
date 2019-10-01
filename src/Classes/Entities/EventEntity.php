@@ -4,6 +4,7 @@ namespace Portal\Entities;
 
 class EventEntity
 {
+    protected $id;
     protected $name;
     protected $category;
     protected $location;
@@ -13,6 +14,7 @@ class EventEntity
     protected $notes;
 
     public function __construct(
+        int $eventId = null,
         string $name = null,
         int $category = null,
         string $location = null,
@@ -21,6 +23,7 @@ class EventEntity
         Time $endTime = null,
         string $notes = null
     ) {
+        $this->id = ($this->id ?? $eventId);
         $this->name = ($this->name ?? $name);
         $this->category = ($this->category ?? $category);
         $this->location = ($this->location ?? $location);
@@ -28,6 +31,8 @@ class EventEntity
         $this->startTime = ($this->startTime ?? $startTime);
         $this->endTime = ($this->endTime ?? $endTime);
         $this->notes = ($this->notes ?? $notes);
+
+        $this->sanitiseData();
     }
 
     /**
@@ -35,8 +40,9 @@ class EventEntity
      */
     private function sanitiseData()
     {
+        $this->id = (int) $this->id;
         $this->name = $this->sanitiseString($this->name);
-        $this->category = $this->sanitiseString($this->category);
+        $this->category = (int)$this->category;
         $this->location = $this->sanitiseString($this->location);
         $this->date = $this->sanitiseString($this->date);
         $this->startTime = $this->sanitiseString($this->startTime);
