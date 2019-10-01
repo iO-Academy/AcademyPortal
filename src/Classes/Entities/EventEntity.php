@@ -29,4 +29,30 @@ class EventEntity
         $this->endTime = ($this->endTime ?? $endTime);
         $this->notes = ($this->notes ?? $notes);
     }
+
+    /**
+     * Will sanitise all the fields for an applicant.
+     */
+    private function sanitiseData()
+    {
+        $this->name = $this->sanitiseString($this->name);
+        $this->category = $this->sanitiseString($this->category);
+        $this->location = $this->sanitiseString($this->location);
+        $this->date = $this->sanitiseString($this->date);
+        $this->startTime = $this->sanitiseString($this->startTime);
+        $this->endTime = $this->sanitiseString($this->endTime);
+        $this->notes = $this->sanitiseString($this->notes);
+    }
+
+    /**(
+     * Sanitise as a string in the applicant table as data.
+     *
+     * @param string $applicantData
+     *
+     * @return string, which will return the applicant data.
+     */
+    public function sanitiseString($applicantData)
+    {
+        return filter_var($applicantData, FILTER_SANITIZE_STRING);
+    }
 }
