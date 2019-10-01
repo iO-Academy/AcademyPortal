@@ -56,7 +56,7 @@ class EventEntity
      *
      * @return bool|string
      */
-    public function validateDate($date)
+    public function validateDate(string $date)
     {
         if (!preg_match('/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/', $date)) {
             return false;
@@ -71,7 +71,7 @@ class EventEntity
      * @param $time
      * @return bool|string
      */
-    public function validateTime($time)
+    public function validateTime(string $time)
     {
         if (!preg_match('/((1[0-2]|0?[1-9]):([0-5][0-9]))/', $time)
         ) {
@@ -92,7 +92,7 @@ class EventEntity
      *
      * @return string, which will return the event data.
      */
-    public function sanitiseString($eventData)
+    public function sanitiseString(string $eventData)
     {
         return filter_var($eventData, FILTER_SANITIZE_STRING);
     }
