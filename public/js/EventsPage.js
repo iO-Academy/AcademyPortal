@@ -15,8 +15,10 @@ function getEvents() {
             'Content-Type': 'application/json',
         },
     })
-    .then(eventInfo => eventInfo.json())
-    .then(eventInfo => displayEventsHandler(eventInfo.data))
+    .then(response => response.json())
+    .then(eventInfo => {
+        displayEventsHandler(eventInfo.data)
+    })
 }
 
 /**
@@ -25,10 +27,9 @@ function getEvents() {
  * @param events is an array of objects which contains information about events
  */
 function displayEventsHandler(events) {
-    let eventDisplayer = document.getElementById('events')
     let eventInformation = ''
-    events.forEach(function (event) {
-        eventInformation +=
+    events.forEach(event => {
+        eventInformation += 
             `<div class="event-name">
             <p>${event.name}</p>
             <button class="show-event-info" data-reference='${event.id}'>More Info</button>
@@ -36,16 +37,14 @@ function displayEventsHandler(events) {
             <p>Event Category: ${event.category}</p
             <p>Date: ${event.date}</p>
             <p>Location: ${event.location}</p>
-            <p>Start Time: ${event.startTime}</p>
-            <p>End Time: ${event.endTime}</p>
-            <p>Notes: ${event.notes}</p>`
+            <p>Start Time: ${event.start_time}</p>
+            <p>End Time: ${event.end_time}</p>`
         if (event.notes !== null) {
             eventInformation += `<p>Notes: ${event.notes}</p>`
         }
-
         eventInformation += `</div></div>`
     })
-    eventDisplayer.innerHTML = eventInformation
+    eventList.innerHTML = eventInformation
 
     let showInfoButtons = document.querySelectorAll('.show-event-info')
     showInfoButtons.forEach(function (button) {
@@ -67,10 +66,7 @@ eventForm.addEventListener("submit", e => {
     console.log(data)
     let validate = validateForm()
     if (validate) {
-        //This is where the object of the form data is sent if valid data.
-        //It's console logged now for demonstration.
-       console.log(data)
-    
+        // send it!
         fetch('api/addEvent', {
             credentials: 'same-origin',
             headers: {
