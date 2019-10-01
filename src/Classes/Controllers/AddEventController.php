@@ -36,12 +36,13 @@ class AddApplicantController
             $event = new EventEntity(
                 $newEvent['name'];
                 $newEvent['category'];
+                $newEvent['location'];
                 $newEvent['date'];
                 $newEvent['startTime'];
                 $newEvent['endTime'];
                 $newEvent['notes'];
             );
-            if (!empty($event) && $event instanceof HiringPartnerEntity) {
+            if (!empty($event) && $event instanceof EventEntity) {
                 $result = $this->eventModel->addEvent($event);
             }
         } catch (\Exception $exception) {
