@@ -74,7 +74,7 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            ''
+            'notes'
         );
         $result = $name->getName();
         $this->assertEquals($result, 'hiring event');
@@ -89,7 +89,7 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            ''
+            'notes'
         );
         $result = $name->getCategory();
         $this->assertEquals($result, 2);
@@ -104,7 +104,7 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            ''
+            'notes'
         );
         $result = $name->getLocation();
         $this->assertEquals($result, '1 Widcombe Cres, Bath BA2 6AH');
@@ -119,7 +119,7 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            ''
+            'notes'
         );
         $result = $name->getDate();
         $this->assertEquals($result, '2019-10-02');
@@ -134,7 +134,7 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            ''
+            'notes'
         );
         $result = $name->getStartTime();
         $this->assertEquals($result, '18:00');
@@ -149,7 +149,7 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            ''
+            'notes'
         );
         $result = $name->getEndTime();
         $this->assertEquals($result, '21:00');
@@ -164,9 +164,9 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            ''
+            'notes'
         );
         $result = $name->getNotes();
-        $this->assertEquals($result, '');
+        $this->assertEquals($result, 'notes');
     }
 }
