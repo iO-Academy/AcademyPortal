@@ -47,12 +47,12 @@ class EventEntity
     /**(
      * Sanitise as a string in the applicant table as data.
      *
-     * @param string $applicantData
+     * @param string $eventData
      *
      * @return string, which will return the applicant data.
      */
-    public function sanitiseString($applicantData)
+    public function sanitiseString($eventData)
     {
-        return filter_var($applicantData, FILTER_SANITIZE_STRING);
+        return filter_var($eventData, FILTER_SANITIZE_STRING);
     }
 }
