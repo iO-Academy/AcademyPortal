@@ -41,7 +41,7 @@ class RegisterController
             return $this->renderer->render($response, 'registerUser.phtml', $args);
         } else {
             $_SESSION['loggedIn'] = false;
-            return $response->withRedirect('../');
+            return $response->withRedirect('./');
         }
     }
 }
