@@ -34,6 +34,7 @@ class EventModel
     {
         $sql = 'SELECT `id`, `name` FROM `event_categories`';
         $query = $this->db->prepare($sql);
+        $query->execute();
         return $query->fetchAll();
     }
 
