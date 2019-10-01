@@ -43,7 +43,7 @@ class EventEntityTest extends TestCase
 
     public function testValidateLengthSuccess()
     {
-        $characterLength= 255;
+        $characterLength = 255;
         $location = '1 Widcombe Cres, Bath BA2 6AH';
         $result = EventEntity::ValidateLength($location, $characterLength);
         $this->assertEquals($result, '1 Widcombe Cres, Bath BA2 6AH');
@@ -170,11 +170,47 @@ class EventEntityTest extends TestCase
         $this->assertEquals($result, 'notes');
     }
 
+    public function testValidateStartEndTimeSuccess()
+    {
+        $startTime = '18:00';
+        $endTime = '20:00';
+        $result = EventEntity::validateStartEndTime($startTime, $endTime);
+        $this->assertEquals($result, true);
+    }
+
     public function testValidateStartEndTimeFailure()
     {
         $startTime = '22:00';
         $endTime = '20:00';
         $this->expectException(Exception::class);
         EventEntity::validateStartEndTime($startTime, $endTime);
+    }
+
+    public function testValidateTimeSuccess()
+    {
+        $time = '18:00';
+        $result = EventEntity::validateTime($time);
+        $this->assertEquals($result, $time);
+    }
+
+    public function testValidateTimeFailure()
+    {
+        $time = 'This is not how time looks like';
+        $this->expectException(Exception::class);
+        EventEntity::validateTime($time);
+    }
+
+    public function testValidateDateSuccess()
+    {
+        $date = '2019-10-01';
+        $result = EventEntity::validateDate($date);
+        $this->assertEquals($result, '2019-10-01');
+    }
+
+    public function testValidateDateFailure()
+    {
+        $date = 'This is not how date looks like';
+        $this->expectException(Exception::class);
+        EventEntity::validateDate($date);
     }
 }
