@@ -52,7 +52,7 @@ class EventEntityTest extends TestCase
     public function testValidateLengthFailure()
     {
         $characterLength = 20;
-        $location = '1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH';
+        $location = '1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH';
         $this->expectException(Exception::class);
         EventEntity::ValidateLength($location, $characterLength);
     }
@@ -65,26 +65,9 @@ class EventEntityTest extends TestCase
         EventEntity::ValidateLength($name, $characterLength);
     }
 
-    public function testGetIdSuccess()
-    {
-        $name = new EventEntity(
-            1,
-            'hiring event',
-            2,
-            '1 Widcombe Cres, Bath BA2 6AH',
-            '2019-10-02',
-            '18:00',
-            '21:00',
-            ''
-        );
-        $result = $name->getId();
-        $this->assertEquals($result, 1);
-    }
-
     public function testGetEventNameSuccess()
     {
         $name = new EventEntity(
-            1,
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
@@ -100,7 +83,6 @@ class EventEntityTest extends TestCase
     public function testGetCategorySuccess()
     {
         $name = new EventEntity(
-            1,
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
@@ -116,7 +98,6 @@ class EventEntityTest extends TestCase
     public function testGetLocationSuccess()
     {
         $name = new EventEntity(
-            1,
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
@@ -132,7 +113,6 @@ class EventEntityTest extends TestCase
     public function testGetDateSuccess()
     {
         $name = new EventEntity(
-            1,
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
@@ -148,7 +128,6 @@ class EventEntityTest extends TestCase
     public function testGetStartTimeSuccess()
     {
         $name = new EventEntity(
-            1,
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
@@ -164,7 +143,6 @@ class EventEntityTest extends TestCase
     public function testGetEndTimeSuccess()
     {
         $name = new EventEntity(
-            1,
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
@@ -180,7 +158,6 @@ class EventEntityTest extends TestCase
     public function testGetNotesSuccess()
     {
         $name = new EventEntity(
-            1,
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
