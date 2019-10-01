@@ -85,7 +85,7 @@ class EventEntity
     public function validateStartEndTime($startTime, $endTime)
     {
         if ($startTime >= $endTime) {
-            throw new \Exception('End time should be later than Start time');
+            throw new \Exception('End time should be later than start time');
         } else {
             return true;
         }
