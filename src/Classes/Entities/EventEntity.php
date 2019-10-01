@@ -4,7 +4,6 @@ namespace Portal\Entities;
 
 class EventEntity
 {
-    protected $id;
     protected $name;
     protected $category;
     protected $location;
