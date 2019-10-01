@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Portal\Controllers;
 
@@ -19,14 +19,12 @@ class DisplayEventsPageController
 
     public function __invoke(Request $request, Response $response, array $args) :Response
     {
-        {
-            if ($_SESSION['loggedIn'] === true) {
-                $args['eventCategories'] = $this->eventsModel->getEventCategories();
-                $this->renderer->render($response, 'createEventsPage.phtml', $args);
-            } else {
-                return $response->withRedirect('/');
-            }
+        if ($_SESSION['loggedIn'] === true) {
+            $args['eventCategories'] = $this->eventsModel->getEventCategories();
+            $this->renderer->render($response, 'createEventsPage.phtml', $args);
+        } else {
+            return $response->withRedirect('/');
+        }
     }
-
 
 }
