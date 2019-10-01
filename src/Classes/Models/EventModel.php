@@ -20,7 +20,7 @@ class EventModel
      */
     public function getEvents():array
     {
-        $sql = 'SELECT `id`, `name`, `category`, `location`, `date`, `start_time`, `end_time`, `notes` FROM `events`;';
+        $sql = 'SELECT `id`, `name`, `category`, `location`, `date`, `start_time`, `end_time`, `notes` FROM `events` ORDER BY `date` DESC;';
         $query = $this->db->prepare($sql);
         $query->execute();
         return $query->fetchAll();
