@@ -22,13 +22,13 @@
             </select>
 
             <label for="event-name">Event Name</label>
-            <input id="event-name" name="event-name" class="create-events form-control" type="text" placeholder="Event Name" data-required='true' maxlength="255">
+            <input id="event-name" name="event-name" class="create-events form-control" type="text" placeholder="Event Name" data-required='true' data-max='255' maxlength="255">
 
             <label for='event-date'>Date</label>
             <input id="event-date" name="event-date" class="create-events form-control" type="date" data-required='true'>
 
             <label for="event-location">Location</label>
-            <input id="event-location" name="event-location" class="create-events form-control" type="text" placeholder="Location" data-required='true' maxlength="255">
+            <input id="event-location" name="event-location" class="create-events form-control" type="text" placeholder="Location" data-required='true' data-max='255' maxlength="255">
 
             <label for='event-start-time'>Event Start Time</label>
             <input id='event-start-time' name='event-start-time' class="create-events form-control" type="time" data-required='true'>
@@ -37,7 +37,7 @@
             <input id='event-end-time' name='event-end-time' class="create-events form-control" type="time" data-required='true'>
 
             <label for='event-notes'>Notes</label>
-            <input id='event-notes' name='event-notes' class="create-events form-control" type="text" placeholder="Notes" data-max='5000'>
+            <input id='event-notes' name='event-notes' class="create-events form-control" type="text" placeholder="Notes" data-max='5000' maxlength='5000'>
 
             <input id="submit-event" type="submit" class="btn btn-success" />
         </form>
