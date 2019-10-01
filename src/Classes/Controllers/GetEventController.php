@@ -6,7 +6,7 @@ namespace Portal\Controllers;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class GetEventsInfoController
+class GetEventController
 {
     private $eventsModel;
 
@@ -18,7 +18,7 @@ class GetEventsInfoController
     public function __invoke(Request $request, Response $response, array $args)
     {
         $data = [
-            'status' => false,
+            'success' => false,
             'message' => 'No events found!',
             'data' => []
         ];
@@ -32,7 +32,7 @@ class GetEventsInfoController
 
         if (!empty($events)) {
             $data = [
-                'status' => true,
+                'success' => true,
                 'message' => 'Query Successful',
                 'data' => $events
             ];

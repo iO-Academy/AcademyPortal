@@ -17,7 +17,7 @@ $app->post('/api/saveApplicant', 'SaveApplicantController');
 $app->get('/api/applicationForm', 'ApplicationFormController');
 $app->post('/api/createHiringPartner', 'CreateHiringPartnerController');
 $app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');
-$app->get('/api/getEventsInfo', 'GetEventsInfoController');
+$app->get('/api/getEventsInfo', 'GetEventController');
 
 //Backend
 $app->post('/api/login', 'LoginController');
