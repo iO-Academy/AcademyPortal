@@ -169,4 +169,12 @@ class EventEntityTest extends TestCase
         $result = $name->getNotes();
         $this->assertEquals($result, 'notes');
     }
+
+    public function testValidateStartEndTimeFailure()
+    {
+        $startTime = '22:00';
+        $endTime = '20:00';
+        $this->expectException(Exception::class);
+        EventEntity::validateStartEndTime($startTime, $endTime);
+    }
 }

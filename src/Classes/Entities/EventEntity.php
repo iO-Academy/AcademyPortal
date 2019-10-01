@@ -57,7 +57,7 @@ class EventEntity
      *
      * @return bool|string
      */
-    public function validateDate(string $date)
+    public static function validateDate(string $date)
     {
         if (!preg_match('/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/', $date)) {
             throw new \Exception('Please enter correct date');
@@ -72,7 +72,7 @@ class EventEntity
      * @param string $time
      * @return bool|string
      */
-    public function validateTime(string $time)
+    public static function validateTime(string $time)
     {
         if (!preg_match('/((1[0-2]|0?[1-9]):([0-5][0-9]))/', $time)
         ) {
@@ -85,12 +85,12 @@ class EventEntity
     /**
      * Validate that end time is later than start time
      *
-     * @param string $startTime
-     * @param string $endTime
+     * @param $startTime
+     * @param $endTime
      * @return bool
      * @throws \Exception
      */
-    public function validateStartEndTime(string $startTime, string $endTime)
+    public static function validateStartEndTime($startTime, $endTime)
     {
         if ($startTime >= $endTime) {
             throw new \Exception('End time should be later than start time');
