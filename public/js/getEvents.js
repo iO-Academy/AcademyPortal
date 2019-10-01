@@ -1,3 +1,8 @@
+/**
+ * Gets event information from the API and passes into the displayHandler function
+ *
+ * @return event data
+ */
 async function getEvents() {
     await fetch('/api/getEvents', {
         credentials: "same-origin",
@@ -10,6 +15,13 @@ async function getEvents() {
         .then(eventInfo => displayEventsHandler(eventInfo.data))
 }
 
+/**
+ * Runs a foreach through each event object and outputs HTML elements with event details
+ *
+ * @param events is an array of objects which contains information about events
+ *
+ * @return a divs of the event name with a button that reveals each event's additional info on each line
+ */
 function displayEventsHandler(events) {
     let eventDisplayer = document.getElementById('events')
     let eventInformation = ''
@@ -42,3 +54,5 @@ function displayEventsHandler(events) {
         })
     })
 }
+
+getEvents()
