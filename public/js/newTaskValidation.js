@@ -1,4 +1,4 @@
-document.getElementById('submitEvent').addEventListener('click', e => {
+document.getElementById('events').addEventListener('click', e => {
     e.preventDefault()
 
     let data = getCompletedFormData()
@@ -36,6 +36,16 @@ function validateForm() {
             let idRange = document.getElementsByTagName('option').length -1
             if (element.value > idRange) {
                 message += 'Invalid company size range info!<br>'
+                success = false
+            }
+        }
+
+        if (element.name === 'event-date') {
+            let date =  element.value.trim()
+            let pattern = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/i
+            let regEx = new RegExp(pattern)
+            if (!regEx.test(date)) {
+                message += 'Invalid date!<br>'
                 success = false
             }
         }
