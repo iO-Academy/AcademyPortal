@@ -67,10 +67,8 @@ class EventEntity
 
     public function sanitiseTime($time)
     {
-        if (
-        !preg_match('/((1[0-2]|0?[1-9]):([0-5][0-9]))/', $time)
-        )
-        {
+        if (!preg_match('/((1[0-2]|0?[1-9]):([0-5][0-9]))/', $time)
+        ) {
             return false;
         } else {
             if ($time == $this->startTime) {
