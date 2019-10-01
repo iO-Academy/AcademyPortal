@@ -42,7 +42,7 @@ class EventEntity
     {
         $this->id = (int) $this->id;
         $this->name = $this->sanitiseString($this->name);
-        $this->name = self::validateLength($this->name, 255);
+        $this->name = self::validateLength($this->name, 20);
         $this->category = (int)$this->category;
         $this->location = $this->sanitiseString($this->location);
         $this->location = self::validateLength($this->location, 255);
@@ -178,6 +178,6 @@ class EventEntity
      */
     public function getNotes():string 
     {
-        return $this->endTime;
+        return $this->notes;
     }
 }

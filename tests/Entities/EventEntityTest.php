@@ -19,9 +19,10 @@ class EventEntityTest extends TestCase
 
     public function testValidateExistsAndLengthFailure()
     {
-        $characterLength = 255;
+        $characterLength = 20;
         $eventName = '';
-        $result = EventEntity::ValidateExistsAndLength($eventName, $characterLength);
+        $this->expectException(Exception::class);
+        EventEntity::ValidateExistsAndLength($eventName, $characterLength);
     }
 
     public function testValidateExistsAndLengthLongFailure()
@@ -42,10 +43,10 @@ class EventEntityTest extends TestCase
 
     public function testValidateLengthSuccess()
     {
-        $characterLength= 20;
+        $characterLength= 255;
         $location = '1 Widcombe Cres, Bath BA2 6AH';
         $result = EventEntity::ValidateLength($location, $characterLength);
-        $this->assertEquals($result, null);
+        $this->assertEquals($result,  '1 Widcombe Cres, Bath BA2 6AH');
     }
 
     public function testValidateLengthFailure()
