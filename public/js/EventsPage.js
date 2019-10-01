@@ -17,7 +17,7 @@ function validateForm() {
     inputs.forEach(function (element) {
         let required = element.getAttribute('data-required')
         if (required && element.value.length < 1) {
-            message += element.name + ' is a required field! <br>'
+            message += element.previousElementSibling.innerHTML + ' is a required field! <br>'
             success = false
         }
         let maxLength = element.getAttribute('data-max')
