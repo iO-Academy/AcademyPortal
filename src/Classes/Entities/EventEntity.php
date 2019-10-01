@@ -33,7 +33,7 @@ class EventEntity
     }
 
     /**
-     * Will sanitise all the fields for an applicant.
+     * Will sanitise all the fields for an event.
      */
     private function sanitiseData()
     {
@@ -50,11 +50,11 @@ class EventEntity
     }
 
     /**(
-     * Sanitise as a string in the applicant table as data.
+     * Sanitise as a string in the event table as data.
      *
      * @param string $eventData
      *
-     * @return string, which will return the applicant data.
+     * @return string, which will return the event data.
      */
     public function sanitiseString($eventData)
     {
@@ -66,7 +66,7 @@ class EventEntity
      *
      * @param string $eventData
      * @param int $characterLength
-     * @return string, which will return the hiring partner data
+     * @return string, which will return the event data
      * @throws \Exception if the array is empty
      */
     public static function validateExistsAndLength(string $eventData, int $characterLength)
@@ -81,11 +81,11 @@ class EventEntity
     /**
      * Validate that a string is not empty and is within length allowed, throws an error if not
      *
-     * @param string $hiringPartnerData
+     * @param string $eventData
      * @param int $characterLength
      * @throws \Exception if the array is empty
      *
-     * @return string, which will return the hiring partner data or assigns to null
+     * @return string, which will return the event data or assigns to null
      */
     public static function validateLength(string $eventData, int $characterLength)
     {
