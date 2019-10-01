@@ -14,7 +14,7 @@ class EventEntityTest extends TestCase
         $characterLength = 255;
         $eventName = 'Hiring Event';
         $result = EventEntity::ValidateExistsAndLength($eventName, $characterLength);
-        $this->assertEquals($result,'Hiring Event');
+        $this->assertEquals($result, 'Hiring Event');
     }
 
     public function testValidateExistsAndLengthFailure()
@@ -28,7 +28,7 @@ class EventEntityTest extends TestCase
     public function testValidateExistsAndLengthLongFailure()
     {
         $characterLength = 20;
-        $location = '1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH';
+        $location = '1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH';
         $this->expectException(Exception::class);
         EventEntity::ValidateExistsAndLength($location, $characterLength);
     }
@@ -46,13 +46,13 @@ class EventEntityTest extends TestCase
         $characterLength= 255;
         $location = '1 Widcombe Cres, Bath BA2 6AH';
         $result = EventEntity::ValidateLength($location, $characterLength);
-        $this->assertEquals($result,  '1 Widcombe Cres, Bath BA2 6AH');
+        $this->assertEquals($result, '1 Widcombe Cres, Bath BA2 6AH');
     }
 
     public function testValidateLengthFailure()
     {
         $characterLength = 20;
-        $location = '1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH';
+        $location = '1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH 1 Widcombe Cres, Bath BA2 6AH';
         $this->expectException(Exception::class);
         EventEntity::ValidateLength($location, $characterLength);
     }

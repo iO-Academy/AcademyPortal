@@ -116,7 +116,7 @@ class EventEntity
      *
      * @return string name
      */
-    public function getName():string 
+    public function getName():string
     {
         return $this->name;
     }
@@ -126,7 +126,7 @@ class EventEntity
      *
      * @return int category
      */
-    public function getCategory():int 
+    public function getCategory():int
     {
         return $this->category;
     }
@@ -136,7 +136,7 @@ class EventEntity
      *
      * @return string location
      */
-    public function getLocation():string 
+    public function getLocation():string
     {
         return $this->location;
     }
@@ -176,7 +176,7 @@ class EventEntity
      *
      * @return string notes
      */
-    public function getNotes():string 
+    public function getNotes():string
     {
         return $this->notes;
     }
