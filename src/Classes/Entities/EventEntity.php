@@ -45,6 +45,7 @@ class EventEntity
         $this->date = $this->validateDate($this->date);
         $this->startTime = $this->validateTime($this->startTime);
         $this->endTime = $this->validateTime($this->endTime);
+        $this->validateStartEndTime($this->startTIme, $this->endTime);
         $this->notes = $this->sanitiseString($this->notes);
         $this->notes = self::validateLength($this->notes, 255);
     }
@@ -61,7 +62,7 @@ class EventEntity
         if (!preg_match('/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/', $date)) {
             throw new \Exception('Please enter correct date');
         } else {
-            return $this->sanitiseString($this->date);
+            return $date;
         }
     }
 
@@ -77,11 +78,16 @@ class EventEntity
         ) {
             throw new \Exception('Please enter correct time');
         } else {
-            if ($time == $this->startTime) {
-                return $this->sanitiseString($this->startTime);
-            } elseif ($time == $this->endTime) {
-                return $this->sanitiseString($this->endTime);
-            }
+            return $time;
+        }
+    }
+
+    public function validateStartEndTime($startTime, $endTime)
+    {
+        if($startTime >= $endTime) {
+            throw new \Exception('End time should be later than Start time');
+        } else {
+            return true;
         }
     }
 
