@@ -14,38 +14,38 @@
     <h2>Add new Event</h2>
     <form id='createEventsForm'>
 
-        <label for='eventCategory'>Event category</label>
-        <select name='eventCategory' id='eventCategory' class='createEvents form-control' data-required='true'>
+        <label for='event-category'>Event category</label>
+        <select name='event-category' id='event-category' class='create-events form-control' data-required='true'>
             <option value='0'>Select and event category</option>
             <?php echo \Portal\ViewHelpers\EventCategoryViewHelper::eventCategoryDropdown($data); ?>
         </select>
 
-        <label for="eventName">Event Name</label>
-        <input id="eventName" name="eventName" class="createEvents form-control" type="text" placeholder="Event Name"
+        <label for="event-name">Event Name</label>
+        <input id="event-name" name="event-name" class="create-events form-control" type="text" placeholder="Event Name"
                data-required='true' data-max='255'>
 
-        <label for='eventDate'>date</label>
-        <input id="eventDate" name="eventDate" class="createEvents form-control" type="date" data-required='true'
+        <label for='event-date'>date</label>
+        <input id="event-date" name="event-date" class="create-events form-control" type="date" data-required='true'
                data-max='255'>
 
-        <label for="eventLocation">location</label>
-        <input id="eventLocation" name="eventLocation" class="createEvents form-control" type="text" placeholder="Location"
+        <label for="event-location">location</label>
+        <input id="event-location" name="event-location" class="create-events form-control" type="text" placeholder="Location"
                data-required='true' data-max='600'>
 
-        <label for='eventStartTime'>Event start time</label>
-        <input id='eventStartTime' name='eventStartTime' class="createEvents form-control" type="time" data-required='true'
+        <label for='event-start-time'>Event start time</label>
+        <input id='event-start-time' name='event-start-time' class="create-events form-control" type="time" data-required='true'
                data-max='20'>
 
-        <label for='eventEndTime'>Event end time</label>
-        <input id='eventEndTime' name='eventEndTime' class="createEvents form-control" type="time" data-required='true'
+        <label for='event-end-time'>Event end time</label>
+        <input id='event-end-time' name='event-end-time' class="create-events form-control" type="time" data-required='true'
                data-max='20'>
 
-        <label for='eventNotes'>Notes</label>
-        <input id='eventNotes' name='eventNotes' class="createEvents form-control" type="text" placeholder="Notes"
+        <label for='event-notes'>Notes</label>
+        <input id='event-notes' name='event-notes' class="create-events form-control" type="text" placeholder="Notes"
                data-max='255'>
-        <input id="submitEvent" type="submit" class="btn btn-success"/>
+        <input id="submit-event" type="submit" class="btn btn-success"/>
     </form>
-    <div id='messages'</div>
+    <div id='messages'></div>
     <h3>Current Events</h3>
     <div id='events' ></div>
 </div>
