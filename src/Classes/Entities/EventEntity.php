@@ -20,7 +20,8 @@ class EventEntity
         string $startTime = null,
         string $endTime = null,
         string $notes = null
-    ) {
+    )
+    {
         $this->name = ($this->name ?? $name);
         $this->category = ($this->category ?? $category);
         $this->location = ($this->location ?? $location);
@@ -58,13 +59,9 @@ class EventEntity
      */
     public function sanitiseDate($date)
     {
-        if (!preg_match('/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/',
-            $date))
-        {
+        if (!preg_match('/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/', $date)) {
             return false;
-        }
-        else
-        {
+        } else {
             return $this->sanitiseString($this->date);
         }
     }
@@ -72,15 +69,12 @@ class EventEntity
     public function sanitiseTime($time)
     {
         if (!preg_match('/((1[0-2]|0?[1-9]):([0-5][0-9]))/',
-            $time))
-        {
+            $time)) {
             return false;
-        }
-        else
-        {
-            if($time == $this->startTime){
+        } else {
+            if ($time == $this->startTime) {
                 return $this->sanitiseString($this->startTime);
-            } elseif($time == $this->endTime){
+            } elseif ($time == $this->endTime) {
                 return $this->sanitiseString($this->endTime);
             }
 
@@ -121,9 +115,9 @@ class EventEntity
      *
      * @param string $eventData
      * @param int $characterLength
+     * @return string, which will return the event data or assigns to null
      * @throws \Exception if the array is empty
      *
-     * @return string, which will return the event data or assigns to null
      */
     public static function validateLength(string $eventData, int $characterLength)
     {
@@ -141,7 +135,7 @@ class EventEntity
      *
      * @return string name
      */
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -151,7 +145,7 @@ class EventEntity
      *
      * @return int category
      */
-    public function getCategory():int
+    public function getCategory(): int
     {
         return $this->category;
     }
@@ -161,7 +155,7 @@ class EventEntity
      *
      * @return string location
      */
-    public function getLocation():string
+    public function getLocation(): string
     {
         return $this->location;
     }
@@ -171,7 +165,7 @@ class EventEntity
      *
      * @return string date
      */
-    public function getDate():string
+    public function getDate(): string
     {
         return $this->date;
     }
@@ -181,7 +175,7 @@ class EventEntity
      *
      * @return string startTime
      */
-    public function getStartTime():string
+    public function getStartTime(): string
     {
         return $this->startTime;
     }
@@ -191,7 +185,7 @@ class EventEntity
      *
      * @return string endTime
      */
-    public function getEndTime():string
+    public function getEndTime(): string
     {
         return $this->endTime;
     }
@@ -201,7 +195,7 @@ class EventEntity
      *
      * @return string notes
      */
-    public function getNotes():string
+    public function getNotes(): string
     {
         return $this->notes;
     }
