@@ -8,7 +8,7 @@ const message = document.querySelector('#messages')
  * @return event data
  */
 function getEvents() {
-    fetch('/api/getEvents', {
+    fetch('./api/getEvents', {
         credentials: "same-origin",
         headers: {
             'Accept': 'application/json',
@@ -66,7 +66,7 @@ eventForm.addEventListener("submit", e => {
     let validate = validateForm()
     if (validate) {
         // send it!
-        fetch('api/addEvent', {
+        fetch('./api/addEvent', {
             credentials: 'same-origin',
             headers: {
                 'Accept': 'application/json',
@@ -130,7 +130,7 @@ function validateForm() {
         //Checks the date is in the format of a date 'YYYY-MM-DD'
         if (element.name === 'event-date') {
             let date =  element.value.trim()
-            let pattern = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/
+            let pattern = '/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'
             let regEx = new RegExp(pattern)
             if (!regEx.test(date)) {
                 message += 'Invalid date!<br>'
