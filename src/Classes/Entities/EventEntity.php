@@ -215,7 +215,7 @@ class EventEntity
      */
     public function getNotes(): string
     {
-        if($this->notes === null){
+        if ($this->notes === null) {
             return '';
         } else {
             return $this->notes;
