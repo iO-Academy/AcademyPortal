@@ -33,7 +33,7 @@ class AddApplicantController
         $statusCode = 400;
 
         try {
-            $event = new EventEntity (
+            $event = new EventEntity(
                 $newEvent['name'];
                 $newEvent['category'];
                 $newEvent['date'];
