@@ -32,7 +32,7 @@ function validateForm() {
             message += 'Please select an event category!<br>'
             success = false
         }
-        //Checks the date is in the format of a date
+        //Checks the date is in the format of a date 'YYYY-MM-DD'
         if (element.name === 'event-date') {
             let date =  element.value.trim()
             let pattern = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/
@@ -42,7 +42,7 @@ function validateForm() {
                 success = false
             }
         }
-        //Checks the start time is in the format of a time
+        //Checks the start time is in the format of a time 'HH:MM'
         if (element.name === 'event-start-time') {
             let date =  element.value.trim()
             let pattern = /([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?/
@@ -52,7 +52,7 @@ function validateForm() {
                 success = false
             }
         }
-        //Checks the end time is in the format of a time
+        //Checks the end time is in the format of a time 'HH:MM'
         if (element.name === 'event-end-time') {
             let date =  element.value.trim()
             let pattern = /([01]?[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?/
@@ -67,7 +67,10 @@ function validateForm() {
     document.getElementById('messages').innerHTML = message
     return success
 }
-//Adds data from form into an object with the field name as key and the form value as value.
+
+/**
+ * Adds data from form into an object with the field name as key and the form value as value.
+ */
 let getCompletedFormData = () => {
     let formData = document.querySelectorAll(".create-events")
     let data = {}
