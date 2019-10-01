@@ -11,6 +11,7 @@ $app->get('/displayApplicants', 'DisplayApplicantsController');
 
 $app->get('/displayApplicantInfo/{id}', 'GetApplicantController');
 $app->get('/displayHiringPartnerPage', 'DisplayHiringPartnerPageController');
+$app->get('/displayEventsPage', 'DisplayEventsController');
 
 // API routes
 $app->post('/api/saveApplicant', 'SaveApplicantController');
