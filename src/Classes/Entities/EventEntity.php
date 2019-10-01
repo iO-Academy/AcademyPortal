@@ -53,7 +53,7 @@ class EventEntity
     /**
      * Sanitise as a date in the event table as data.
      *
-     * @param $date
+     * @param string $date
      *
      * @return bool|string
      */
@@ -69,7 +69,7 @@ class EventEntity
     /**
      * Sanitise as a time in the event table as data.
      *
-     * @param $time
+     * @param string $time
      * @return bool|string
      */
     public function validateTime(string $time)
@@ -82,7 +82,15 @@ class EventEntity
         }
     }
 
-    public function validateStartEndTime($startTime, $endTime)
+    /**
+     * Validate that end time is later than start time
+     *
+     * @param string $startTime
+     * @param string $endTime
+     * @return bool
+     * @throws \Exception
+     */
+    public function validateStartEndTime(string $startTime, string $endTime)
     {
         if ($startTime >= $endTime) {
             throw new \Exception('End time should be later than start time');
