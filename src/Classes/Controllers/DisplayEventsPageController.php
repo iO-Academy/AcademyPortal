@@ -2,6 +2,7 @@
 
 namespace Portal\Controllers;
 
+use Portal\Models\EventModel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
@@ -9,7 +10,7 @@ use Slim\Views\PhpRenderer;
 class DisplayEventsPageController
 {
     private $renderer;
-    private $eventsModel;
+    private $eventModel;
     
     /**
      * Creates new instance of DisplayEventsPageController
@@ -17,10 +18,10 @@ class DisplayEventsPageController
      * @param PhpRenderer $renderer
      * @param EventsModel $eventsModel
      */
-    public function __construct(PhpRenderer $renderer, EventsModel $eventsModel)
+    public function __construct(PhpRenderer $renderer, EventModel $eventModel)
     {
         $this->renderer = $renderer;
-        $this->eventsModel = $eventsModel;
+        $this->eventModel = $eventModel;
     }
 
     /**

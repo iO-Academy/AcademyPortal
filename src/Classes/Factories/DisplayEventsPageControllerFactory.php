@@ -16,8 +16,8 @@ class DisplayEventsPageControllerFactory
      */
     public function __invoke(ContainerInterface $container) : DisplayEventsPageController
     {
-        $eventsModel = $container->get('EventModel');
+        $eventModel = $container->get('EventModel');
         $renderer = $container->get('renderer');
-        return new DisplayEventsPageController($renderer, $eventsModel);
+        return new DisplayEventsPageController($renderer, $eventModel);
     }
 }
