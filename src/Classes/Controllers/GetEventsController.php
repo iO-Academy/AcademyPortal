@@ -11,6 +11,12 @@ class GetEventsController
 {
     private $eventModel;
 
+    /**
+     * GetEventsController constructor.
+     *
+     * @param EventModel $eventModel
+     */
+
     public function __construct(EventModel $eventModel)
     {
         $this->eventModel = $eventModel;
