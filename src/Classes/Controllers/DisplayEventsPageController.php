@@ -10,14 +10,30 @@ class DisplayEventsPageController
 {
     private $renderer;
     private $eventsModel;
-
+    
+    /**
+     * Creates new instance of DisplayEventsPageController
+     *
+     * @param PhpRenderer $renderer
+     * @param EventsModel $eventsModel
+     */
     public function __construct(PhpRenderer $renderer, EventsModel $eventsModel)
     {
         $this->renderer = $renderer;
         $this->eventsModel = $eventsModel;
     }
 
-    public function __invoke(Request $request, Response $response, array $args) :Response
+    /**
+     * Checks for logged-in status,
+     * gets event categories from DB
+     * and returns rendered landing screen for Events page
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return Response
+     */
+    public function __invoke(Request $request, Response $response, array $args) : Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $args['eventCategories'] = $this->eventsModel->getEventCategories();

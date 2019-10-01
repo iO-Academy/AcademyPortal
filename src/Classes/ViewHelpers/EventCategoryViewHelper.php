@@ -4,7 +4,14 @@ namespace Portal\ViewHelpers;
 
 class EventCategoryViewHelper
 {
-    public static function eventCategoryDropdown($data)
+
+    /**
+     * Takes event category data and renderers html elemt for events category dropdown
+     *
+     * @param array $data
+     * @return string
+     */
+    public static function eventCategoryDropdown(array $data) : string
     {
         $eventCategoryDropdown = '';
         foreach ($data['eventCategories'] as $eventCategory) {
