@@ -2,7 +2,6 @@ const eventList = document.querySelector('#events')
 const eventForm = document.querySelector('form')
 const message = document.querySelector('#messages')
 
-
 /**
  * Gets event information from the API and passes into the 
  * displayEventsHandler function
@@ -173,4 +172,3 @@ function validateForm() {
     document.getElementById('messages').innerHTML = message
     return success
 }
-

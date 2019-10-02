@@ -15,5 +15,3 @@ function isTime(time) {
         return false
     }
 }
-
-
