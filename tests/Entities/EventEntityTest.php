@@ -71,10 +71,11 @@ class EventEntityTest extends TestCase
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
-            '2019-10-02',
+            '2019-10-04',
             '18:00',
             '21:00',
-            'notes'
+            '',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getName();
         $this->assertEquals($result, 'hiring event');
@@ -86,25 +87,44 @@ class EventEntityTest extends TestCase
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
-            '2019-10-02',
-            '18:00',
-            '21:00',
-            'notes'
+            '1970-01-01',
+            '12:34',
+            '16:00',
+            '',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getCategory();
         $this->assertEquals($result, 2);
     }
 
+    public function testValidateCategoryExistsSuccess()
+    {
+        $category = 3;
+        $categoryList = ['1' => 'Other', '2' => 'Tasty', '3' => 'Armageddon', '4' => 'Visit'];
+        $expected = 3;
+        $result = EventEntity::validateCategoryExists($category, $categoryList);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testValidateCategoryExistsInvalidCategory()
+    {
+        $category = 9;
+        $categoryList = ['1' => 'Other', '2' => 'Tasty', '3' => 'Armageddon', '4' => 'Visit'];
+        $this->expectException(Exception::class);
+        EventEntity::validateCategoryExists($category, $categoryList);
+    }
+
     public function testGetLocationSuccess()
     {
         $name = new EventEntity(
-            'hiring event',
+            'Taster Session',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
             '2019-10-02',
             '18:00',
             '21:00',
-            'notes'
+            'notes',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getLocation();
         $this->assertEquals($result, '1 Widcombe Cres, Bath BA2 6AH');
@@ -119,7 +139,8 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            'notes'
+            'notes',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getDate();
         $this->assertEquals($result, '2019-10-02');
@@ -128,13 +149,14 @@ class EventEntityTest extends TestCase
     public function testGetStartTimeSuccess()
     {
         $name = new EventEntity(
-            'hiring event',
+            'Misc Event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
             '2019-10-02',
             '18:00',
             '21:00',
-            'notes'
+            'notes',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getStartTime();
         $this->assertEquals($result, '18:00');
@@ -147,9 +169,10 @@ class EventEntityTest extends TestCase
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
             '2019-10-02',
-            '18:00',
+            '18:34',
             '21:00',
-            'notes'
+            '',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getEndTime();
         $this->assertEquals($result, '21:00');
@@ -164,7 +187,8 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            'notes'
+            'notes',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getNotes();
         $this->assertEquals($result, 'notes');
@@ -212,5 +236,20 @@ class EventEntityTest extends TestCase
         $date = 'This is not how date looks like';
         $this->expectException(Exception::class);
         EventEntity::validateDate($date);
+    }
+
+    public function testNewEventEntitySuccess()
+    {
+        $newEventEntity = new EventEntity(
+            'new event',
+            2,
+            '1 widcomb',
+            '2019-01-01',
+            "12:00",
+            "14:00",
+            '',
+            ['1' => 'Thing', '2' => 'Wing']
+        );
+        $this->assertInstanceOf(EventEntity::class, $newEventEntity);
     }
 }
