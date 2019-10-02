@@ -52,35 +52,30 @@ class EventModel
      */
     public function addEvent(EventEntity $newEvent):bool
     {
-        try {
-            $query = $this->db->prepare("INSERT INTO `events` (
-                `name`,
-                `category`,
-                `location`,
-                `date`,
-                `start_time`,
-                `end_time`,
-                `notes`
-                ) 
-                VALUES (
-                :name, 
-                :category, 
-                :location,
-                :date, 
-                :startTime, 
-                :endTime, 
-                :notes);");
-            $query->bindParam(':name', $newEvent->getName());
-            $query->bindParam(':category', $newEvent->getCategory());
-            $query->bindParam(':location', $newEvent->getLocation());
-            $query->bindParam(':date', $newEvent->getDate());
-            $query->bindParam(':startTime', $newEvent->getStartTime());
-            $query->bindParam(':endTime', $newEvent->getEndTime());
-            $query->bindParam(':notes', $newEvent->getNotes());
-            $query->execute();
-            return true;
-        } catch (Exception $e) {
-            return false;
-        }
+        $query = $this->db->prepare("INSERT INTO `events` (
+            `name`,
+            `category`,
+            `location`,
+            `date`,
+            `start_time`,
+            `end_time`,
+            `notes`
+            ) 
+            VALUES (
+            :name, 
+            :category, 
+            :location,
+            :date, 
+            :startTime, 
+            :endTime, 
+            :notes);");
+        $query->bindParam(':name', $newEvent->getName());
+        $query->bindParam(':category', $newEvent->getCategory());
+        $query->bindParam(':location', $newEvent->getLocation());
+        $query->bindParam(':date', $newEvent->getDate());
+        $query->bindParam(':startTime', $newEvent->getStartTime());
+        $query->bindParam(':endTime', $newEvent->getEndTime());
+        $query->bindParam(':notes', $newEvent->getNotes());
+        return $query->execute();
     }
 }

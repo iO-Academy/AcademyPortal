@@ -11,6 +11,7 @@ class EventEntity
     protected $startTime;
     protected $endTime;
     protected $notes;
+    protected $eventCategories;
 
     public function __construct(
         string $name = null,
@@ -19,7 +20,8 @@ class EventEntity
         string $date = null,
         string $startTime = null,
         string $endTime = null,
-        string $notes = null
+        string $notes = null,
+        array $eventCategories
     ) {
         $this->name = ($this->name ?? $name);
         $this->category = ($this->category ?? $category);
@@ -28,6 +30,7 @@ class EventEntity
         $this->startTime = ($this->startTime ?? $startTime);
         $this->endTime = ($this->endTime ?? $endTime);
         $this->notes = ($this->notes ?? $notes);
+        $this->eventCategories = $eventCategories;
 
         $this->sanitiseData();
     }
@@ -40,14 +43,17 @@ class EventEntity
         $this->name = $this->sanitiseString($this->name);
         $this->name = self::validateExistsAndLength($this->name, 255);
         $this->category = (int)$this->category;
+        $this->category = self::validateCategoryExists($this->category, $this->eventCategories);
         $this->location = $this->sanitiseString($this->location);
         $this->location = self::validateExistsAndLength($this->location, 255);
         $this->date = $this->validateDate($this->date);
         $this->startTime = $this->validateTime($this->startTime);
         $this->endTime = $this->validateTime($this->endTime);
         $this->validateStartEndTime($this->startTIme, $this->endTime);
-        $this->notes = $this->sanitiseString($this->notes);
-        $this->notes = self::validateLength($this->notes, 5000);
+        if ($this->notes !== null) {
+            $this->notes = $this->sanitiseString($this->notes);
+            $this->notes = self::validateLength($this->notes, 5000);
+        }
     }
 
     /**
@@ -96,6 +102,21 @@ class EventEntity
             throw new \Exception('End time should be later than start time');
         } else {
             return true;
+        }
+    }
+
+    /**
+     * Make sure that the category exists
+     *
+     * @param int $category
+     * @param array $categoryList
+     */
+    public static function validateCategoryExists(int $category, array $categoryList)
+    {
+        if (array_key_exists($category, $categoryList)) {
+            return $category;
+        } else {
+            throw new \Exception('Category is not valid.');
         }
     }
 
