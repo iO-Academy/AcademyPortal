@@ -2,7 +2,7 @@
 
 namespace Portal\Entities;
 
-class ApplicantEntity implements \JsonSerializable
+class ApplicantEntity extends ValidationEntity implements \JsonSerializable
 {
     protected $id;
     protected $name;
@@ -83,30 +83,18 @@ class ApplicantEntity implements \JsonSerializable
     private function sanitiseData()
     {
         $this->id = (int) $this->id;
-        $this->name = $this->sanitiseString($this->name);
-        $this->email = $this->sanitiseString($this->email);
+        $this->name = self::sanitiseString($this->name);
+        $this->email = self::sanitiseString($this->email);
         $this->email = $this->validateEmail($this->email);
-        $this->phoneNumber = $this->sanitiseString($this->phoneNumber);
+        $this->phoneNumber = self::sanitiseString($this->phoneNumber);
         $this->cohortId = (int)$this->cohortId;
-        $this->whyDev = $this->sanitiseString($this->whyDev);
-        $this->codeExperience = $this->sanitiseString($this->codeExperience);
+        $this->whyDev = self::sanitiseString($this->whyDev);
+        $this->codeExperience = self::sanitiseString($this->codeExperience);
         $this->hearAboutId = (int)$this->hearAboutId;
         $this->eligible = $this->eligible ? 1 : 0;
         $this->eighteenPlus = $this->eighteenPlus ? 1 : 0;
         $this->finance = $this->finance ? 1 : 0;
-        $this->notes = $this->sanitiseString($this->notes);
-    }
-
-    /**(
-     * Sanitise as a string in the applicant table as data.
-     *
-     * @param string $applicantData
-     *
-     * @return string, which will return the applicant data.
-     */
-    public function sanitiseString($applicantData)
-    {
-        return filter_var($applicantData, FILTER_SANITIZE_STRING);
+        $this->notes = self::sanitiseString($this->notes);
     }
 
     /**(

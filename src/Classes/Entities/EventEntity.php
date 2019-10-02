@@ -2,7 +2,7 @@
 
 namespace Portal\Entities;
 
-class EventEntity
+class EventEntity extends ValidationEntity
 {
     protected $name;
     protected $category;
@@ -40,18 +40,18 @@ class EventEntity
      */
     private function sanitiseData()
     {
-        $this->name = $this->sanitiseString($this->name);
+        $this->name = self::sanitiseString($this->name);
         $this->name = self::validateExistsAndLength($this->name, 255);
         $this->category = (int)$this->category;
         $this->category = self::validateCategoryExists($this->category, $this->eventCategories);
-        $this->location = $this->sanitiseString($this->location);
+        $this->location = self::sanitiseString($this->location);
         $this->location = self::validateExistsAndLength($this->location, 255);
         $this->date = $this->validateDate($this->date);
         $this->startTime = $this->validateTime($this->startTime);
         $this->endTime = $this->validateTime($this->endTime);
         $this->validateStartEndTime($this->startTIme, $this->endTime);
         if ($this->notes !== null) {
-            $this->notes = $this->sanitiseString($this->notes);
+            $this->notes = self::sanitiseString($this->notes);
             $this->notes = self::validateLength($this->notes, 5000);
         }
     }
@@ -117,57 +117,6 @@ class EventEntity
             return $category;
         } else {
             throw new \Exception('Category is not valid.');
-        }
-    }
-
-    /**
-     * Sanitise as a string in the event table as data.
-     *
-     * @param string $eventData
-     *
-     * @return string, which will return the event data.
-     */
-    public function sanitiseString(string $eventData)
-    {
-        $clean = filter_var($eventData, FILTER_SANITIZE_STRING);
-        $clean = trim($clean);
-        return $clean;
-    }
-
-    /**
-     * Validate that a string exists and is within length allowed, throws an error if not
-     *
-     * @param string $eventData
-     * @param int $characterLength
-     * @return string, which will return the event data
-     * @throws \Exception if the array is empty
-     */
-    public static function validateExistsAndLength(string $eventData, int $characterLength)
-    {
-        if (empty($eventData) == false && strlen($eventData) <= $characterLength) {
-            return $eventData;
-        } else {
-            throw new \Exception('An input string does not exist or is too long');
-        }
-    }
-
-    /**
-     * Validate that a string is not empty and is within length allowed, throws an error if not
-     *
-     * @param string $eventData
-     * @param int $characterLength
-     * @return string, which will return the event data or assigns to null
-     * @throws \Exception if the array is empty
-     *
-     */
-    public static function validateLength(string $eventData, int $characterLength)
-    {
-        if ($eventData == '') {
-            return null;
-        } elseif (strlen($eventData) <= $characterLength) {
-            return $eventData;
-        } else {
-            throw new \Exception('An input string does not exist or is too long');
         }
     }
 
