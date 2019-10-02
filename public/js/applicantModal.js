@@ -14,8 +14,8 @@ $(document).ready(function(){
             .then(
                 function(response) {
                     if (response.status !== 200) {
-                        document.getElementById('modal-main').innerHTML = ''
-                        document.querySelector('.modal-header').innerHTML += '<div class="alert alert-danger" role="alert">Looks like there was a problem. Status Code: ' +
+                        document.querySelector('#modal-main').innerHTML = ''
+                        document.querySelector('#modal-main').innerHTML += '<div class="alert alert-danger" role="alert">Looks like there was a problem. Status Code: ' +
                         response.status + '</div>'
                         return
                     }

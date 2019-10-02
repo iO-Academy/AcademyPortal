@@ -40,7 +40,8 @@ class AddEventController
                 $newEvent['date'],
                 $newEvent['startTime'],
                 $newEvent['endTime'],
-                $newEvent['notes']
+                $newEvent['notes'],
+                $this->eventModel->getEventCategories()
             );
             if (!empty($event) && $event instanceof EventEntity) {
                 $result = $this->eventModel->addEvent($event);

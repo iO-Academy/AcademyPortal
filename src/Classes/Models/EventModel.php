@@ -20,8 +20,14 @@ class EventModel
      */
     public function getEvents():array
     {
-        $sql = 'SELECT `id`, `name`, `category`, `location`, `date`, `start_time`, `end_time`, `notes` FROM `events`;';
+        $sql = 'SELECT `events`.`id`, `events`.`name`, `category`, 
+        `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`, 
+        `end_time`, `notes` 
+        FROM `events`
+        LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id`
+        ORDER BY `date` DESC;';
         $query = $this->db->prepare($sql);
+        $query->execute();
         return $query->fetchAll();
     }
 
@@ -46,35 +52,30 @@ class EventModel
      */
     public function addEvent(EventEntity $newEvent):bool
     {
-        try {
-            $query = $this->db->prepare("INSERT INTO `events` (
-                `name`,
-                `category`,
-                `location`,
-                `date`,
-                `start_time`,
-                `end_time`,
-                `notes`
-                ) 
-                VALUES (
-                :name, 
-                :category, 
-                :location,
-                :date, 
-                :startTime, 
-                :endTime, 
-                :notes);");
-            $query->bindParam(':name', $newEvent->name);
-            $query->bindParam(':category', $newEvent->category);
-            $query->bindParam(':location', $newEvent->location);
-            $query->bindParam(':date', $newEvent->date);
-            $query->bindParam(':startTime', $newEvent->startTime);
-            $query->bindParam(':endTime', $newEvent->endTime);
-            $query->bindParam(':notes', $newEvent->notes);
-            $query->execute();
-            return true;
-        } catch (Exception $e) {
-            return false;
-        }
+        $query = $this->db->prepare("INSERT INTO `events` (
+            `name`,
+            `category`,
+            `location`,
+            `date`,
+            `start_time`,
+            `end_time`,
+            `notes`
+            ) 
+            VALUES (
+            :name, 
+            :category, 
+            :location,
+            :date, 
+            :startTime, 
+            :endTime, 
+            :notes);");
+        $query->bindParam(':name', $newEvent->getName());
+        $query->bindParam(':category', $newEvent->getCategory());
+        $query->bindParam(':location', $newEvent->getLocation());
+        $query->bindParam(':date', $newEvent->getDate());
+        $query->bindParam(':startTime', $newEvent->getStartTime());
+        $query->bindParam(':endTime', $newEvent->getEndTime());
+        $query->bindParam(':notes', $newEvent->getNotes());
+        return $query->execute();
     }
 }

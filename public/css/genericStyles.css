@@ -37,6 +37,21 @@ input[type="submit"] {
     border-top: 1px solid #CCCCCC;
 }
 
+.event-name {
+    margin-top: 30px;
+    margin-bottom: 5px;
+    border-top: 1px solid #CCCCCC
+}
+
 .moreInfo {
     margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.event-name p {
+    overflow-wrap: break-word;
+}
+
+.container {
+    margin-bottom: 25px;
 }

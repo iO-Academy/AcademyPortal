@@ -2,7 +2,7 @@
 
 namespace Portal\Entities;
 
-class HiringPartnerEntity
+class HiringPartnerEntity extends ValidationEntity
 {
     protected $companyName;
     protected $companySize;
@@ -34,67 +34,17 @@ class HiringPartnerEntity
      */
     private function sanitiseData()
     {
-        $this->companyName = $this->sanitiseString($this->companyName);
+        $this->companyName = self::sanitiseString($this->companyName);
         $this->companyName = self::validateExistsAndLength($this->companyName, 255);
         $this->companySize = (int)$this->companySize;
-        $this->techStack = $this->sanitiseString($this->techStack);
+        $this->techStack = self::sanitiseString($this->techStack);
         $this->techStack = self::validateExistsAndLength($this->techStack, 600);
-        $this->postcode = $this->sanitiseString($this->postcode);
+        $this->postcode = self::sanitiseString($this->postcode);
         $this->postcode = self::validateExistsAndLength($this->postcode, 10);
-        $this->phoneNumber = $this->sanitiseString($this->phoneNumber);
+        $this->phoneNumber = self::sanitiseString($this->phoneNumber);
         $this->phoneNumber = self::validateLength($this->phoneNumber, 20);
-        $this->websiteUrl = $this->sanitiseString($this->websiteUrl);
+        $this->websiteUrl = self::sanitiseString($this->websiteUrl);
         $this->websiteUrl = self::validateLength($this->websiteUrl, 255);
-    }
-
-    /**(
-     * Sanitise as a string in the hiring_partners_companies table as data.
-     *
-     * @param string $hiringPartnerData
-     *
-     * @return string, which will return the hiring partner data.
-     */
-    public function sanitiseString(string $hiringPartnerData) : string
-    {
-        return filter_var($hiringPartnerData, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * Validate that a string exists and is within length allowed, throws an error if not
-     *
-     * @param string $hiringPartnerData
-     * @param int $characterLength
-     * @throws \Exception if the array is empty
-     *
-     * @return string, which will return the hiring partner data
-     */
-    public static function validateExistsAndLength(string $hiringPartnerData, int $characterLength)
-    {
-        if (empty($hiringPartnerData) == false && strlen($hiringPartnerData) <= $characterLength) {
-            return $hiringPartnerData;
-        } else {
-            throw new \Exception('An input string does not exist or is too long');
-        }
-    }
-
-    /**
-     * Validate that a string is not empty and is within length allowed, throws an error if not
-     *
-     * @param string $hiringPartnerData
-     * @param int $characterLength
-     * @throws \Exception if the array is empty
-     *
-     * @return string, which will return the hiring partner data or assigns to null
-     */
-    public static function validateLength(string $hiringPartnerData, int $characterLength)
-    {
-        if ($hiringPartnerData == '') {
-            return null;
-        } elseif (strlen($hiringPartnerData) <= $characterLength) {
-            return $hiringPartnerData;
-        } else {
-            throw new \Exception('An input string does not exist or is too long');
-        }
     }
 
     /**
