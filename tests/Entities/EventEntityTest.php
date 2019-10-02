@@ -240,9 +240,16 @@ class EventEntityTest extends TestCase
 
     public function testNewEventEntitySuccess()
     {
-        $newEventEntity = new EventEntity('new event', 2, '1 widcomb', '2019-01-01', "12:00", "14:00", '');
-        $time = $newEventEntity->getStartTime();
-        $result = EventEntity::validateTime($time);
-        $this->assertEquals($result, $time);
+        $newEventEntity = new EventEntity(
+            'new event',
+            2,
+            '1 widcomb',
+            '2019-01-01',
+            "12:00",
+            "14:00",
+            '',
+            ['1' => 'Thing', '2' => 'Wing']
+        );
+        $this->assertInstanceOf(EventEntity::class, $newEventEntity);
     }
 }
