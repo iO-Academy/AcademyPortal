@@ -51,3 +51,7 @@ input[type="submit"] {
 .event-name p {
     overflow-wrap: break-word;
 }
+
+.container {
+    margin-bottom: 25px;
+}

@@ -2,7 +2,7 @@
 
 namespace Portal\Entities;
 
-class EventEntity
+class EventEntity extends ValidationEntity
 {
     protected $name;
     protected $category;
@@ -11,6 +11,7 @@ class EventEntity
     protected $startTime;
     protected $endTime;
     protected $notes;
+    protected $eventCategories;
 
     public function __construct(
         string $name = null,
@@ -19,7 +20,8 @@ class EventEntity
         string $date = null,
         string $startTime = null,
         string $endTime = null,
-        string $notes = null
+        string $notes = null,
+        array $eventCategories
     ) {
         $this->name = ($this->name ?? $name);
         $this->category = ($this->category ?? $category);
@@ -28,6 +30,7 @@ class EventEntity
         $this->startTime = ($this->startTime ?? $startTime);
         $this->endTime = ($this->endTime ?? $endTime);
         $this->notes = ($this->notes ?? $notes);
+        $this->eventCategories = $eventCategories;
 
         $this->sanitiseData();
     }
@@ -37,17 +40,20 @@ class EventEntity
      */
     private function sanitiseData()
     {
-        $this->name = $this->sanitiseString($this->name);
+        $this->name = self::sanitiseString($this->name);
         $this->name = self::validateExistsAndLength($this->name, 255);
         $this->category = (int)$this->category;
-        $this->location = $this->sanitiseString($this->location);
+        $this->category = self::validateCategoryExists($this->category, $this->eventCategories);
+        $this->location = self::sanitiseString($this->location);
         $this->location = self::validateExistsAndLength($this->location, 255);
         $this->date = $this->validateDate($this->date);
         $this->startTime = $this->validateTime($this->startTime);
         $this->endTime = $this->validateTime($this->endTime);
         $this->validateStartEndTime($this->startTIme, $this->endTime);
-        $this->notes = $this->sanitiseString($this->notes);
-        $this->notes = self::validateLength($this->notes, 5000);
+        if ($this->notes !== null) {
+            $this->notes = self::sanitiseString($this->notes);
+            $this->notes = self::validateLength($this->notes, 5000);
+        }
     }
 
     /**
@@ -100,53 +106,17 @@ class EventEntity
     }
 
     /**
-     * Sanitise as a string in the event table as data.
+     * Make sure that the category exists
      *
-     * @param string $eventData
-     *
-     * @return string, which will return the event data.
+     * @param int $category
+     * @param array $categoryList
      */
-    public function sanitiseString(string $eventData)
+    public static function validateCategoryExists(int $category, array $categoryList)
     {
-        $clean = filter_var($eventData, FILTER_SANITIZE_STRING);
-        $clean = trim($clean);
-        return $clean;
-    }
-
-    /**
-     * Validate that a string exists and is within length allowed, throws an error if not
-     *
-     * @param string $eventData
-     * @param int $characterLength
-     * @return string, which will return the event data
-     * @throws \Exception if the array is empty
-     */
-    public static function validateExistsAndLength(string $eventData, int $characterLength)
-    {
-        if (empty($eventData) == false && strlen($eventData) <= $characterLength) {
-            return $eventData;
+        if (array_key_exists($category, $categoryList)) {
+            return $category;
         } else {
-            throw new \Exception('An input string does not exist or is too long');
-        }
-    }
-
-    /**
-     * Validate that a string is not empty and is within length allowed, throws an error if not
-     *
-     * @param string $eventData
-     * @param int $characterLength
-     * @return string, which will return the event data or assigns to null
-     * @throws \Exception if the array is empty
-     *
-     */
-    public static function validateLength(string $eventData, int $characterLength)
-    {
-        if ($eventData == '') {
-            return null;
-        } elseif (strlen($eventData) <= $characterLength) {
-            return $eventData;
-        } else {
-            throw new \Exception('An input string does not exist or is too long');
+            throw new \Exception('Category is not valid.');
         }
     }
 

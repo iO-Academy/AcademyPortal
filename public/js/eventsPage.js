@@ -42,16 +42,16 @@ function displayEventsHandler(events) {
             <button class="show-event-info" data-reference='${event.id}'>More Info</button>
             <div id="moreInfo${event.id}" class="hide moreInfo">
             <p>Event Category: ${event.category_name}</p>
-            <p>Date: ${event.date}</p>
+            <p>Date: ${new Date(event.date).toDateString()}</p>
             <p>Location: ${event.location}</p>
-            <p>Start Time: ${event.start_time}</p>
-            <p>End Time: ${event.end_time}</p>`
-            if (event.notes !== null) {
-                eventInformation += `<p>Notes: ${event.notes}</p>`
-            }
-            eventInformation += `</div></div>`
-        })
-        eventList.innerHTML = eventInformation
+            <p>Start Time: ${event.start_time.slice(0, - 3)}</p>
+            <p>End Time: ${event.end_time.slice(0, - 3)}</p>`
+        if (event.notes !== null) {
+            eventInformation += `<p>Notes: ${event.notes}</p>`
+        }
+        eventInformation += `</div></div>`
+    })
+    eventList.innerHTML = eventInformation
 
         let showInfoButtons = document.querySelectorAll('.show-event-info')
         showInfoButtons.forEach(function (button) {
@@ -170,29 +170,14 @@ function validateForm() {
     let startTime = new Date(date + ' ' + document.querySelector('#event-start-time').value)
     let endTime = new Date(date + ' ' + document.querySelector('#event-end-time').value)
     if (endTime < startTime) {
-        message += 'Event ends before it begins!<br>'
+        message += 'Event must not end before it begins.<br>'
+        success = false
+    } else if (endTime.getTime() == startTime.getTime()) {
+        message += 'Event must not end at the same time it begins.<br>'
         success = false
     }
 
     //Adds all error messages to the messages div.
     document.getElementById('messages').innerHTML = message
     return success
-}
-
-function isDate(date) {
-    let pattern = /([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/
-    if (pattern.test(date)) {
-        return true
-    } else {
-        return false
-    }
-}
-
-function isTime(time) {
-    let pattern = /([01][0-9]|2[0-3]):[0-5][0-9]/
-    if (pattern.test(time)) {
-        return true
-    } else {
-        return false
-    }
 }
