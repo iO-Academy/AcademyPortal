@@ -47,7 +47,7 @@ class EventEntity
         $this->endTime = $this->validateTime($this->endTime);
         $this->validateStartEndTime($this->startTIme, $this->endTime);
         $this->notes = $this->sanitiseString($this->notes);
-        $this->notes = self::validateLength($this->notes, 255);
+        $this->notes = self::validateLength($this->notes, 5000);
     }
 
     /**
