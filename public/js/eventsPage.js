@@ -59,7 +59,7 @@ function displayEventsHandler(events) {
 
 getEvents()
 
-// Add new event listener
+// Submit Form + Add New Event API Call
 eventForm.addEventListener("submit", e => {
     e.preventDefault()
 
