@@ -108,7 +108,9 @@ class EventEntity
      */
     public function sanitiseString(string $eventData)
     {
-        return filter_var($eventData, FILTER_SANITIZE_STRING);
+        $clean = filter_var($eventData, FILTER_SANITIZE_STRING);
+        $clean = trim($clean);
+        return $clean;
     }
 
     /**
