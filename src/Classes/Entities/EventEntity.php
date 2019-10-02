@@ -40,18 +40,18 @@ class EventEntity extends ValidationEntity
      */
     private function sanitiseData()
     {
-        $this->name = $this->sanitiseString($this->name);
+        $this->name = self::sanitiseString($this->name);
         $this->name = self::validateExistsAndLength($this->name, 255);
         $this->category = (int)$this->category;
         $this->category = self::validateCategoryExists($this->category, $this->eventCategories);
-        $this->location = $this->sanitiseString($this->location);
+        $this->location = self::sanitiseString($this->location);
         $this->location = self::validateExistsAndLength($this->location, 255);
         $this->date = $this->validateDate($this->date);
         $this->startTime = $this->validateTime($this->startTime);
         $this->endTime = $this->validateTime($this->endTime);
         $this->validateStartEndTime($this->startTIme, $this->endTime);
         if ($this->notes !== null) {
-            $this->notes = $this->sanitiseString($this->notes);
+            $this->notes = self::sanitiseString($this->notes);
             $this->notes = self::validateLength($this->notes, 5000);
         }
     }

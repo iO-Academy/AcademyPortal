@@ -48,7 +48,7 @@ abstract class ValidationEntity
      *
      * @return string, which will return the validateData.
      */
-    public function sanitiseString(string $validateData)
+    public static function sanitiseString(string $validateData)
     {
         $clean = filter_var($validateData, FILTER_SANITIZE_STRING);
         $clean = trim($clean);
