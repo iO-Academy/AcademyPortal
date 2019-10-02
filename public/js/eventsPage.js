@@ -175,8 +175,7 @@ function validateForm() {
 
 function isDate(date) {
     let pattern = /([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/
-    let regEx = new RegExp(pattern)
-    if (regEx.test(date)) {
+    if (pattern.test(date)) {
         return true
     } else {
         return false
@@ -185,8 +184,7 @@ function isDate(date) {
 
 function isTime(time) {
     let pattern = /([01][0-9]|2[0-3]):[0-5][0-9]/
-    let regEx = new RegExp(pattern)
-    if (regEx.test(time)) {
+    if (pattern.test(time)) {
         return true
     } else {
         return false
