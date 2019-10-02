@@ -71,10 +71,10 @@ class EventEntityTest extends TestCase
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
-            '2019-10-02',
+            '2019-10-04',
             '18:00',
             '21:00',
-            'notes',
+            '',
             ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getName();
@@ -87,10 +87,10 @@ class EventEntityTest extends TestCase
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
-            '2019-10-02',
-            '18:00',
-            '21:00',
-            'notes',
+            '1970-01-01',
+            '12:34',
+            '16:00',
+            '',
             ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getCategory();
@@ -117,7 +117,7 @@ class EventEntityTest extends TestCase
     public function testGetLocationSuccess()
     {
         $name = new EventEntity(
-            'hiring event',
+            'Taster Session',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
             '2019-10-02',
@@ -149,7 +149,7 @@ class EventEntityTest extends TestCase
     public function testGetStartTimeSuccess()
     {
         $name = new EventEntity(
-            'hiring event',
+            'Misc Event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
             '2019-10-02',
@@ -169,9 +169,9 @@ class EventEntityTest extends TestCase
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
             '2019-10-02',
-            '18:00',
+            '18:34',
             '21:00',
-            'notes',
+            '',
             ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getEndTime();
