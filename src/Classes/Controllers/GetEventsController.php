@@ -33,7 +33,7 @@ class GetEventsController
     {
         $data = [
             'success' => false,
-            'message' => 'No events found!',
+            'message' => 'Something went wrong.',
             'data' => []
         ];
         $statusCode = 400;
@@ -47,14 +47,16 @@ class GetEventsController
         if (!empty($events)) {
             $data = [
                 'success' => true,
-                'message' => 'Query Successful',
+                'message' => 'Query Successful.',
                 'data' => $events
             ];
             $statusCode = 200;
-        } else {
+        }
+
+        if(empty($events)) {
             $data = [
                 'success' => true,
-                'message' => 'There is no event',
+                'message' => 'There are no events.',
                 'data' => []
             ];
             $statusCode = 200;
