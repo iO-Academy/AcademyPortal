@@ -149,11 +149,11 @@ CREATE TABLE `events` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `category` int(11) unsigned NOT NULL,
+  `location` varchar(255) NOT NULL DEFAULT '',
   `date` date NOT NULL,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
   `notes` text,
-  `location` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `category` (`category`),
   CONSTRAINT `events_ibfk_1` FOREIGN KEY (`category`) REFERENCES `event_categories` (`id`)
