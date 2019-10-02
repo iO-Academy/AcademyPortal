@@ -105,11 +105,11 @@ class EventEntity
 
     /**
      * Make sure that the category exists
-     * 
+     *
      * @param int $category
      * @param array $categoryList
      */
-    public static function validateCategoryExists(int $category, array $categoryList) 
+    public static function validateCategoryExists(int $category, array $categoryList)
     {
         if (array_key_exists($category, $categoryList)) {
             return $category;
