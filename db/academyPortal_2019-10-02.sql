@@ -7,7 +7,7 @@
 #
 # Host: 192.168.20.20 (MySQL 5.6.44)
 # Database: academyPortal
-# Generation Time: 2019-10-01 09:13:21 +0000
+# Generation Time: 2019-10-02 15:43:02 +0000
 # ************************************************************
 
 
@@ -149,11 +149,11 @@ CREATE TABLE `events` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `category` int(11) unsigned NOT NULL,
-  `location` varchar(255) NOT NULL DEFAULT '',
   `date` date NOT NULL,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
   `notes` text,
+  `location` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `category` (`category`),
   CONSTRAINT `events_ibfk_1` FOREIGN KEY (`category`) REFERENCES `event_categories` (`id`)
@@ -202,6 +202,25 @@ CREATE TABLE `hiring_partner_companies` (
   `postcode` varchar(255) DEFAULT NULL,
   `phone_number` varchar(255) DEFAULT NULL,
   `url_website` varchar(255) DEFAULT NULL,
+  `primary_contact` int(11) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `primary_contact` (`primary_contact`),
+  CONSTRAINT `hiring_partner_companies_ibfk_1` FOREIGN KEY (`primary_contact`) REFERENCES `hiring_partner_contacts` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+# Dump of table hiring_partner_contacts
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `hiring_partner_contacts`;
+
+CREATE TABLE `hiring_partner_contacts` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `job_title` varchar(255) DEFAULT NULL,
+  `phone` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
