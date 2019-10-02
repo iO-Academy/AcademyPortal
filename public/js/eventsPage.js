@@ -29,16 +29,15 @@ function getEvents() {
  */
 function displayEventsHandler(events) {
     let eventInformation = ''
-    let noEvents = document.querySelector('.no-events')
     if(events == '') {
-        noEvents.innerHTML = 'No Events Scheduled'
+        eventList.innerHTML = 'No Events Scheduled'
     } else {
-        noEvents.innerHTML = ''
-    }
-    events.forEach(event => {
-        noEvents.innerHTML = ''
-        eventInformation += 
-            `<div class="event-name">
+        eventList.innerHTML = ''
+
+        events.forEach(event => {
+            eventList.innerHTML = ''
+            eventInformation +=
+                `<div class="event-name">
             <p>${event.name}</p>
             <button class="show-event-info" data-reference='${event.id}'>More Info</button>
             <div id="moreInfo${event.id}" class="hide moreInfo">
@@ -47,22 +46,22 @@ function displayEventsHandler(events) {
             <p>Location: ${event.location}</p>
             <p>Start Time: ${event.start_time}</p>
             <p>End Time: ${event.end_time}</p>`
-        if (event.notes !== null) {
-            eventInformation += `<p>Notes: ${event.notes}</p>`
-        }
-        eventInformation += `</div></div>`
-    })
-    eventList.innerHTML = eventInformation
-
-    let showInfoButtons = document.querySelectorAll('.show-event-info')
-    showInfoButtons.forEach(function (button) {
-        button.addEventListener('click', e => {
-            let targetId = 'moreInfo' + e.target.dataset.reference
-            let targetDiv = document.getElementById(targetId)
-            targetDiv.classList.toggle('hide')
+            if (event.notes !== null) {
+                eventInformation += `<p>Notes: ${event.notes}</p>`
+            }
+            eventInformation += `</div></div>`
         })
-    })
-}
+        eventList.innerHTML = eventInformation
+
+        let showInfoButtons = document.querySelectorAll('.show-event-info')
+        showInfoButtons.forEach(function (button) {
+            button.addEventListener('click', e => {
+                let targetId = 'moreInfo' + e.target.dataset.reference
+                let targetDiv = document.getElementById(targetId)
+                targetDiv.classList.toggle('hide')
+            })
+        })
+    }}
 
 getEvents()
 
