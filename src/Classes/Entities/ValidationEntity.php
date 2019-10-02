@@ -3,7 +3,6 @@
 
 namespace Portal\Entities;
 
-
 abstract class ValidationEntity
 {
     /**
