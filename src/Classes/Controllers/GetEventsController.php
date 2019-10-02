@@ -51,6 +51,13 @@ class GetEventsController
                 'data' => $events
             ];
             $statusCode = 200;
+        } else {
+            $data = [
+                'success' => true,
+                'message' => 'There is no event',
+                'data' => []
+            ];
+            $statusCode = 200;
         }
 
         return $response->withJson($data, $statusCode);
