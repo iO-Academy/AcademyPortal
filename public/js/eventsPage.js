@@ -35,7 +35,7 @@ function displayEventsHandler(events) {
             <p>${event.name}</p>
             <button class="show-event-info" data-reference='${event.id}'>More Info</button>
             <div id="moreInfo${event.id}" class="hide moreInfo">
-            <p>Event Category: ${event.category}</p>
+            <p>Event Category: ${event.category_name}</p>
             <p>Date: ${event.date}</p>
             <p>Location: ${event.location}</p>
             <p>Start Time: ${event.start_time}</p>
@@ -136,7 +136,7 @@ function validateForm() {
         //Checks the date is in the format of a date 'YYYY-MM-DD'
         if (element.name === 'event-date') {
             let date =  element.value.trim()
-            if (isDate(date)) {
+            if (!isDate(date)) {
                 message += 'Invalid date!<br>'
                 success = false
             }
@@ -144,7 +144,7 @@ function validateForm() {
         //Checks the start time is in the format of a time 'HH:MM'
         if (element.name === 'event-start-time') {
             let time =  element.value.trim()
-            if (isTime(time)) {
+            if (!isTime(time)) {
                 message += 'Invalid start time!<br>'
                 success = false
             }
@@ -152,7 +152,7 @@ function validateForm() {
         // Checks the end time is in the format of a time 'HH:MM'
         if (element.name === 'event-end-time') {
             let time =  element.value.trim()
-            if (isTime(time)) {
+            if (!isTime(time)) {
                 message += 'Invalid end time!<br>'
                 success = false
             }
@@ -174,9 +174,8 @@ function validateForm() {
 }
 
 function isDate(date) {
-    let pattern = '/([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/'
-    let regEx = new RegExp(pattern)
-    if (regEx.test(date)) {
+    let pattern = /([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/
+    if (pattern.test(date)) {
         return true
     } else {
         return false
@@ -184,9 +183,8 @@ function isDate(date) {
 }
 
 function isTime(time) {
-    let pattern = '/([01]?[0-9]|2[0-3]):[0-5][0-9]/'
-    let regEx = new RegExp(pattern)
-    if (regEx.test(time)) {
+    let pattern = /([01][0-9]|2[0-3]):[0-5][0-9]/
+    if (pattern.test(time)) {
         return true
     } else {
         return false
