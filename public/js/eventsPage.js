@@ -187,10 +187,8 @@ function isTime(time) {
     let pattern = /([01][0-9]|2[0-3]):[0-5][0-9]/
     let regEx = new RegExp(pattern)
     if (regEx.test(time)) {
-        console.log(time + ' is ok')
         return true
     } else {
-        console.log(time + ' is bad')
         return false
     }
 }
