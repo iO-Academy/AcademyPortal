@@ -74,7 +74,7 @@ class EventEntity
      */
     public static function validateTime(string $time)
     {
-        if (!preg_match('/([01][0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?/', $time)
+        if (!preg_match('/([01][0-9]|2[0-3]):[0-5][0-9]/', $time)
         ) {
             throw new \Exception('Please enter correct time');
         } else {
