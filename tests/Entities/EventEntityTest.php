@@ -74,7 +74,8 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            'notes'
+            'notes',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getName();
         $this->assertEquals($result, 'hiring event');
@@ -89,7 +90,8 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            'notes'
+            'notes',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getCategory();
         $this->assertEquals($result, 2);
@@ -108,8 +110,8 @@ class EventEntityTest extends TestCase
     {
         $category = 9;
         $categoryList = ['1' => 'Other', '2' => 'Tasty', '3' => 'Armageddon', '4' => 'Visit'];
-        $this->expectException(TypeError::class);
-        $result = EventEntity::validateCategoryExists($category, $categoryList);
+        $this->expectException(Exception::class);
+        EventEntity::validateCategoryExists($category, $categoryList);
     }
 
     public function testGetLocationSuccess()
@@ -121,7 +123,8 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            'notes'
+            'notes',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getLocation();
         $this->assertEquals($result, '1 Widcombe Cres, Bath BA2 6AH');
@@ -136,7 +139,8 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            'notes'
+            'notes',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getDate();
         $this->assertEquals($result, '2019-10-02');
@@ -151,7 +155,8 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            'notes'
+            'notes',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getStartTime();
         $this->assertEquals($result, '18:00');
@@ -166,7 +171,8 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            'notes'
+            'notes',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getEndTime();
         $this->assertEquals($result, '21:00');
@@ -181,7 +187,8 @@ class EventEntityTest extends TestCase
             '2019-10-02',
             '18:00',
             '21:00',
-            'notes'
+            'notes',
+            ['1' => 'Other', '2' => 'Hiring Event']
         );
         $result = $name->getNotes();
         $this->assertEquals($result, 'notes');
