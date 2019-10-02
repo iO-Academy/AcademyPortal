@@ -29,7 +29,14 @@ function getEvents() {
  */
 function displayEventsHandler(events) {
     let eventInformation = ''
+    let noEvents = document.querySelector('.no-events')
+    if(events == '') {
+        noEvents.innerHTML = 'No Events Scheduled'
+    } else {
+        noEvents.innerHTML = ''
+    }
     events.forEach(event => {
+        noEvents.innerHTML = ''
         eventInformation += 
             `<div class="event-name">
             <p>${event.name}</p>
