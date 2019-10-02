@@ -213,4 +213,12 @@ class EventEntityTest extends TestCase
         $this->expectException(Exception::class);
         EventEntity::validateDate($date);
     }
+
+    public function testNewEventEntitySuccess()
+    {
+        $newEventEntity = new EventEntity('new event', 2, '1 widcomb', '2019-01-01', "12:00", "14:00", '');
+        $time = $newEventEntity->getStartTime();
+        $result = EventEntity::validateTime($time);
+        $this->assertEquals($result, $time);
+    }
 }
