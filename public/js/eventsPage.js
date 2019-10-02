@@ -30,6 +30,8 @@ function getEvents() {
 function displayEventsHandler(events) {
     let eventInformation = ''
     events.forEach(event => {
+        let startTimeWithoutSeconds = event.start_time.slice(0, - 3)
+        let endTimeWithoutSeconds = event.end_time.slice(0, - 3)
         eventInformation += 
             `<div class="event-name">
             <p>${event.name}</p>
@@ -38,8 +40,8 @@ function displayEventsHandler(events) {
             <p>Event Category: ${event.category_name}</p>
             <p>Date: ${event.date}</p>
             <p>Location: ${event.location}</p>
-            <p>Start Time: ${event.start_time}</p>
-            <p>End Time: ${event.end_time}</p>`
+            <p>Start Time: ${startTimeWithoutSeconds}</p>
+            <p>End Time: ${endTimeWithoutSeconds}</p>`
         if (event.notes !== null) {
             eventInformation += `<p>Notes: ${event.notes}</p>`
         }
