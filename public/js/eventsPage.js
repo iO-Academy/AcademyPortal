@@ -164,7 +164,10 @@ function validateForm() {
     let startTime = new Date(date + ' ' + document.querySelector('#event-start-time').value)
     let endTime = new Date(date + ' ' + document.querySelector('#event-end-time').value)
     if (endTime < startTime) {
-        message += 'Event ends before it begins!<br>'
+        message += 'Event must not end before it begins.<br>'
+        success = false
+    } else if (endTime.getTime() == startTime.getTime()) {
+        message += 'Event must not end at the same time it begins.<br>'
         success = false
     }
 
