@@ -95,6 +95,23 @@ class EventEntityTest extends TestCase
         $this->assertEquals($result, 2);
     }
 
+    public function testValidateCategoryExistsSuccess()
+    {
+        $category = 3;
+        $categoryList = ['1' => 'Other', '2' => 'Tasty', '3' => 'Armageddon', '4' => 'Visit'];
+        $expected = 3;
+        $result = EventEntity::validateCategoryExists($category, $categoryList);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testValidateCategoryExistsInvalidCategory()
+    {
+        $category = 9;
+        $categoryList = ['1' => 'Other', '2' => 'Tasty', '3' => 'Armageddon', '4' => 'Visit'];
+        $this->expectException(TypeError::class);
+        $result = EventEntity::validateCategoryExists($category, $categoryList);
+    }
+
     public function testGetLocationSuccess()
     {
         $name = new EventEntity(
