@@ -59,7 +59,7 @@ class GetEventsController
                 'message' => 'There are no events.',
                 'data' => []
             ];
-            $statusCode = 204;
+            $statusCode = 200;
         }
 
         return $response->withJson($data, $statusCode);
