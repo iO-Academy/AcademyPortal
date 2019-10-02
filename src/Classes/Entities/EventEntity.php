@@ -47,7 +47,7 @@ class EventEntity
         $this->endTime = $this->validateTime($this->endTime);
         $this->validateStartEndTime($this->startTIme, $this->endTime);
         $this->notes = $this->sanitiseString($this->notes);
-        $this->notes = self::validateLength($this->notes, 255);
+        $this->notes = self::validateLength($this->notes, 5000);
     }
 
     /**
@@ -108,7 +108,9 @@ class EventEntity
      */
     public function sanitiseString(string $eventData)
     {
-        return filter_var($eventData, FILTER_SANITIZE_STRING);
+        $clean = filter_var($eventData, FILTER_SANITIZE_STRING);
+        $clean = trim($clean);
+        return $clean;
     }
 
     /**
@@ -215,6 +217,10 @@ class EventEntity
      */
     public function getNotes(): string
     {
-        return $this->notes;
+        if ($this->notes === null) {
+            return '';
+        } else {
+            return $this->notes;
+        }
     }
 }

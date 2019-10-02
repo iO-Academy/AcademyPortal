@@ -46,3 +46,7 @@ input[type="submit"] {
 .moreInfo {
     margin-top: 10px;
 }
+
+.event-name p {
+    overflow-wrap: break-word;
+}
