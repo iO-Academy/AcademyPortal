@@ -29,9 +29,15 @@ function getEvents() {
  */
 function displayEventsHandler(events) {
     let eventInformation = ''
-    events.forEach(event => {
-        eventInformation += 
-            `<div class="event-name">
+    if(events == '') {
+        eventList.innerHTML = 'No Events Scheduled'
+    } else {
+        eventList.innerHTML = ''
+
+        events.forEach(event => {
+            eventList.innerHTML = ''
+            eventInformation +=
+                `<div class="event-name">
             <p>${event.name}</p>
             <button class="show-event-info" data-reference='${event.id}'>More Info</button>
             <div id="moreInfo${event.id}" class="hide moreInfo">
@@ -47,15 +53,15 @@ function displayEventsHandler(events) {
     })
     eventList.innerHTML = eventInformation
 
-    let showInfoButtons = document.querySelectorAll('.show-event-info')
-    showInfoButtons.forEach(function (button) {
-        button.addEventListener('click', e => {
-            let targetId = 'moreInfo' + e.target.dataset.reference
-            let targetDiv = document.getElementById(targetId)
-            targetDiv.classList.toggle('hide')
+        let showInfoButtons = document.querySelectorAll('.show-event-info')
+        showInfoButtons.forEach(function (button) {
+            button.addEventListener('click', e => {
+                let targetId = 'moreInfo' + e.target.dataset.reference
+                let targetDiv = document.getElementById(targetId)
+                targetDiv.classList.toggle('hide')
+            })
         })
-    })
-}
+    }}
 
 getEvents()
 
