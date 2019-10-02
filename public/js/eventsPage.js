@@ -38,8 +38,8 @@ function displayEventsHandler(events) {
             <p>Event Category: ${event.category_name}</p>
             <p>Date: ${event.date}</p>
             <p>Location: ${event.location}</p>
-            <p>Start Time: ${event.start_time}</p>
-            <p>End Time: ${event.end_time}</p>`
+            <p>Start Time: ${event.start_time.slice(0, - 3)}</p>
+            <p>End Time: ${event.end_time.slice(0, - 3)}</p>`
         if (event.notes !== null) {
             eventInformation += `<p>Notes: ${event.notes}</p>`
         }
