@@ -2,7 +2,7 @@
 
 namespace Portal\Entities;
 
-class ApplicantEntity implements \JsonSerializable
+class ApplicantEntity extends ValidationEntity implements \JsonSerializable
 {
     protected $id;
     protected $name;
@@ -95,18 +95,6 @@ class ApplicantEntity implements \JsonSerializable
         $this->eighteenPlus = $this->eighteenPlus ? 1 : 0;
         $this->finance = $this->finance ? 1 : 0;
         $this->notes = $this->sanitiseString($this->notes);
-    }
-
-    /**(
-     * Sanitise as a string in the applicant table as data.
-     *
-     * @param string $applicantData
-     *
-     * @return string, which will return the applicant data.
-     */
-    public function sanitiseString($applicantData)
-    {
-        return filter_var($applicantData, FILTER_SANITIZE_STRING);
     }
 
     /**(

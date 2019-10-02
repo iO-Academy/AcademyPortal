@@ -2,7 +2,7 @@
 
 namespace Portal\Entities;
 
-class EventEntity
+class EventEntity extends ValidationEntity
 {
     protected $name;
     protected $category;
@@ -96,57 +96,6 @@ class EventEntity
             throw new \Exception('End time should be later than start time');
         } else {
             return true;
-        }
-    }
-
-    /**
-     * Sanitise as a string in the event table as data.
-     *
-     * @param string $eventData
-     *
-     * @return string, which will return the event data.
-     */
-    public function sanitiseString(string $eventData)
-    {
-        $clean = filter_var($eventData, FILTER_SANITIZE_STRING);
-        $clean = trim($clean);
-        return $clean;
-    }
-
-    /**
-     * Validate that a string exists and is within length allowed, throws an error if not
-     *
-     * @param string $eventData
-     * @param int $characterLength
-     * @return string, which will return the event data
-     * @throws \Exception if the array is empty
-     */
-    public static function validateExistsAndLength(string $eventData, int $characterLength)
-    {
-        if (empty($eventData) == false && strlen($eventData) <= $characterLength) {
-            return $eventData;
-        } else {
-            throw new \Exception('An input string does not exist or is too long');
-        }
-    }
-
-    /**
-     * Validate that a string is not empty and is within length allowed, throws an error if not
-     *
-     * @param string $eventData
-     * @param int $characterLength
-     * @return string, which will return the event data or assigns to null
-     * @throws \Exception if the array is empty
-     *
-     */
-    public static function validateLength(string $eventData, int $characterLength)
-    {
-        if ($eventData == '') {
-            return null;
-        } elseif (strlen($eventData) <= $characterLength) {
-            return $eventData;
-        } else {
-            throw new \Exception('An input string does not exist or is too long');
         }
     }
 

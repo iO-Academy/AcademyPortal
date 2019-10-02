@@ -2,7 +2,7 @@
 
 namespace Portal\Entities;
 
-class HiringPartnerEntity
+class HiringPartnerEntity extends ValidationEntity
 {
     protected $companyName;
     protected $companySize;
@@ -45,56 +45,6 @@ class HiringPartnerEntity
         $this->phoneNumber = self::validateLength($this->phoneNumber, 20);
         $this->websiteUrl = $this->sanitiseString($this->websiteUrl);
         $this->websiteUrl = self::validateLength($this->websiteUrl, 255);
-    }
-
-    /**(
-     * Sanitise as a string in the hiring_partners_companies table as data.
-     *
-     * @param string $hiringPartnerData
-     *
-     * @return string, which will return the hiring partner data.
-     */
-    public function sanitiseString(string $hiringPartnerData) : string
-    {
-        return filter_var($hiringPartnerData, FILTER_SANITIZE_STRING);
-    }
-
-    /**
-     * Validate that a string exists and is within length allowed, throws an error if not
-     *
-     * @param string $hiringPartnerData
-     * @param int $characterLength
-     * @throws \Exception if the array is empty
-     *
-     * @return string, which will return the hiring partner data
-     */
-    public static function validateExistsAndLength(string $hiringPartnerData, int $characterLength)
-    {
-        if (empty($hiringPartnerData) == false && strlen($hiringPartnerData) <= $characterLength) {
-            return $hiringPartnerData;
-        } else {
-            throw new \Exception('An input string does not exist or is too long');
-        }
-    }
-
-    /**
-     * Validate that a string is not empty and is within length allowed, throws an error if not
-     *
-     * @param string $hiringPartnerData
-     * @param int $characterLength
-     * @throws \Exception if the array is empty
-     *
-     * @return string, which will return the hiring partner data or assigns to null
-     */
-    public static function validateLength(string $hiringPartnerData, int $characterLength)
-    {
-        if ($hiringPartnerData == '') {
-            return null;
-        } elseif (strlen($hiringPartnerData) <= $characterLength) {
-            return $hiringPartnerData;
-        } else {
-            throw new \Exception('An input string does not exist or is too long');
-        }
     }
 
     /**
