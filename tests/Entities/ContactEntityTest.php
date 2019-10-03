@@ -24,8 +24,9 @@ class ContactEntityTest extends TestCase
         ContactEntity::ValidateExistsAndLength($contactName, $characterLength);
     }
 
-    public function testValidateLengthFailure()
+    public function testConstructorFailure()
     {
+        $this->expectException(Exception::class);
         $newContact = new ContactEntity(
             'John Doe',
             'johndoe@company.com',
@@ -33,10 +34,6 @@ class ContactEntityTest extends TestCase
             '0412345678914398502481058',
             2,
             1);
-        $characterLength = 20;
-        $contactNumber = $newContact->getContactPhone();
-        $this->expectException(Exception::class);
-        ContactEntity::ValidateExistsAndLength($contactNumber, $characterLength);
     }
 
     public function testMandatoryFieldsOnly()
