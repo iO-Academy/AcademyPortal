@@ -83,9 +83,6 @@ let getCompletedFormData = () => {
         phoneNumber: formData['company-phone-number'].value,
         companyUrl: formData['company-url'].value
     }
-    // formData.forEach(formItem=> {
-    //     data[formItem.name] = formItem.value
-    // })
     return data
 }
 
