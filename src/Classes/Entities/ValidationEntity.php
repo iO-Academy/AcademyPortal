@@ -44,11 +44,12 @@ abstract class ValidationEntity
     /**
      * Sanitise as a string in the database table as data.
      *
-     * @param string $validateData
+     * @param $validateData. Type hinting removed here on purpose.
+     * (type hinting as string causes errors in ApplicantEntity)
      *
      * @return string, which will return the validateData.
      */
-    public static function sanitiseString(string $validateData)
+    public static function sanitiseString($validateData)
     {
         $clean = filter_var($validateData, FILTER_SANITIZE_STRING);
         $clean = trim($clean);
