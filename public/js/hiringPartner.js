@@ -154,7 +154,6 @@ async function getHiringPartners () {
  * Runs a foreach through each hiring partner object and outputs HTML elements with hiring partner's details
  *
  * @param partnerCompanies is an array of objects which contains information about hiring partners
- * @return a divs of the company name with a button that reveals each hiring partner's additional info on each line
  */
 function displayHiringPartnerHandler(partnerCompanies){
     let companyDisplayer = document.getElementById('companies')
@@ -162,12 +161,12 @@ function displayHiringPartnerHandler(partnerCompanies){
     partnerCompanies.forEach(function(partnerCompany){
         companyInformation +=
             `<div class="company-name">
-                <p>${partnerCompany.name}</p>
-                <button class="show-company-info" data-reference='${partnerCompany.id}'>More Info</button>
-                <div id="more-info${partnerCompany.id}" class="hide more-info">
-                    <p>Company size: ${partnerCompany.size}</p>
-                    <p>Tech Stack: ${partnerCompany.tech_stack}</p>
-                    <p>Postcode: ${partnerCompany.postcode}</p>`
+            <p>${partnerCompany.name}</p>
+            <button class="show-company-info" data-reference='${partnerCompany.id}'>More Info</button>
+            <div id="more-info${partnerCompany.id}" class="hide more-info">
+            <p>Company size: ${partnerCompany.size}</p>
+            <p>Tech Stack: ${partnerCompany.tech_stack}</p>
+            <p>Postcode: ${partnerCompany.postcode}</p>`
         if (partnerCompany.phone_number !== null) {
             companyInformation += `<p>Phone number: ${partnerCompany.phone_number}</p>`
         }
@@ -187,13 +186,10 @@ function displayHiringPartnerHandler(partnerCompanies){
         })
     })
 }
-
 getHiringPartners()
 
 addContactForm.addEventListener('submit', e => {
     e.preventDefault()
-
-    //TODO: validation
 
     let data = {
         contactName: addContactForm['contact-name'].value,
@@ -205,7 +201,6 @@ addContactForm.addEventListener('submit', e => {
     }
 
     if(validateAddContactForm(data)){
-
         fetch('./api/addContact', {
             credentials: 'same-origin',
             headers: {
