@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Portal\Entities;
-
 
 class ContactEntity extends ValidationEntity
 {
@@ -22,7 +20,8 @@ class ContactEntity extends ValidationEntity
         int $hiringPartnerCompanyId = null,
         int $primaryContact = null
 
-    ) {
+    )
+    {
         $this->contactName = ($this->contactName ?? $contactName);
         $this->contactEmail = ($this->contactEmail ?? $contactEmail);
         $this->jobTitle = ($this->jobTitle ?? $jobTitle);
@@ -93,6 +92,12 @@ class ContactEntity extends ValidationEntity
         return $this->primaryContact;
     }
 
+
+    /**
+     * Will sanitise all the fields for adding contact details
+     *
+     * @throws \Exception
+     */
     private function sanitiseData()
     {
         $this->contactName = self::sanitiseString($this->contactName);
@@ -111,11 +116,17 @@ class ContactEntity extends ValidationEntity
         $this->hiringPartnerCompanyId = (int)$this->hiringPartnerCompanyId;
         $this->primaryContact = (int)$this->primaryContact;
         $this->primaryContact = self::validateIsPrimaryContact($this->primaryContact);
-
     }
 
-    public static function validateIsPrimaryContact(int $primaryContact) {
-        if($primaryContact !== 0 || $primaryContact !== 1) {
+    /**
+     * checks if the value for primaryContact is 0 or 1
+     *
+     * @param int $primaryContact
+     * @throws \Exception
+     */
+    public static function validateIsPrimaryContact(int $primaryContact)
+    {
+        if ($primaryContact !== 0 || $primaryContact !== 1) {
             throw new \Exception('Primary contact is not valid.');
         }
     }
