@@ -67,8 +67,7 @@ function validateHiringPartnerForm(data) {
             message += 'Company Postcode is too long!<br>'
             return false
         }
-        let regEx = /\b((?:(?:gir)|(?:[a-pr-uwyz])(?:(?:[0-9](?:[a-hjkpstuw]|[0-9])?)|(?:[a-hk-y][0-9](?:[0-9]|[abehmnprv-y])?)))) ?([0-9][abd-hjlnp-uw-z]{2})\b/ig
-        if (!regEx.test(postcode)) {
+        if (!isPostcode(postcode)) {
             message += 'Invalid postcode format!<br>'
             success = false
         }
@@ -80,8 +79,7 @@ function validateHiringPartnerForm(data) {
             message += 'Company Phone Number is too long!<br>'
             return false
         }
-        let regEx = /^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/gm
-        if (!regEx.test(phone)) {
+        if (!isPhoneNumber(phone)) {
             message += 'Invalid Phone Number format!<br>'
             return false
         }
@@ -93,8 +91,7 @@ function validateHiringPartnerForm(data) {
             message += 'Company Website URL is too long!<br>'
             return false
         }
-        let regEx = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm
-        if (!regEx.test(url)) {
+        if (!isUrl(url)) {
             message += 'Invalid company URL!<br>'
             return false
         }
@@ -259,11 +256,9 @@ function validateAddContactForm(data) {
             message += 'Contact eMail is too long!<br>'
             return false
         }
-        // email regex from http://emailregex.com - "Email Address Regular Expression That 99.99% Works."
-        let regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        if (!regEx.test(email)) {
+        if (!isEmail(email)) {
             message += 'Invalid email format!<br>'
-            success = false
+            return false
         }
         return true
     }(data.contactEmail)
@@ -284,8 +279,7 @@ function validateAddContactForm(data) {
             message += 'Contact Phone Number is too long!<br>'
             return false
         }
-        let regEx = /^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/gm
-        if (!regEx.test(phone)) {
+        if (!isPhoneNumber(phone)) {
             message += 'Invalid Phone Number format!<br>'
             return false
         }
