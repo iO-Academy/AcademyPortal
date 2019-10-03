@@ -19,9 +19,7 @@ class ContactEntity extends ValidationEntity
         string $contactPhone = null,
         int $hiringPartnerCompanyId = null,
         int $primaryContact = null
-
-    )
-    {
+    ) {
         $this->contactName = ($this->contactName ?? $contactName);
         $this->contactEmail = ($this->contactEmail ?? $contactEmail);
         $this->jobTitle = ($this->jobTitle ?? $jobTitle);
