@@ -87,7 +87,7 @@ let getCompletedFormData = () => {
 }
 
 let makeApiRequest = async(data) => {
-    return fetch('/api/createHiringPartner', {
+    return fetch('./api/createHiringPartner', {
         credentials: 'same-origin',
         headers: {
             'Accept': 'application/json',
@@ -116,7 +116,7 @@ let makeApiRequest = async(data) => {
  */
 
 async function getHiringPartners () {
-    await fetch('/api/getHiringPartnerInfo', {
+    await fetch('./api/getHiringPartnerInfo', {
         credentials: "same-origin",
         headers: {
             'Accept': 'application/json',
