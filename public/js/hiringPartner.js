@@ -1,15 +1,26 @@
-document.getElementById('submit-hiring-partner').addEventListener('click', async (e) => {
+const addHiringPartnerForm = document.querySelector('#add-hiring-partner-form')
+const addContactForm = document.querySelector('#add-contact-form')
+
+addHiringPartnerForm.addEventListener('submit', async e => {
     e.preventDefault()
 
-    let data = getCompletedFormData()
-    let validate = validateForm()
+    let data = {
+        name: addHiringPartnerForm['company-name'].value,
+        companySize: addHiringPartnerForm['company-size'].value,
+        techStack: addHiringPartnerForm['company-tech-stack'].value,
+        postcode: addHiringPartnerForm['company-postcode'].value,
+        phoneNumber: addHiringPartnerForm['company-phone-number'].value,
+        companyUrl: addHiringPartnerForm['company-url'].value
+    }
+    
+    let validate = validateHiringPartnerForm()
     if(validate) {
         await addHiringPartner(data)
         getHiringPartners()
     }
 })
 
-function validateForm() {
+function validateHiringPartnerForm() {
     let success = true
     let message = ''
     let inputs = document.querySelectorAll('.submit-hiring-partner')
@@ -69,21 +80,8 @@ function validateForm() {
         }
     })
 
-    document.getElementById('hiring-partner-messages').innerHTML = message
+    document.getElementById('add-hiring-partner-messages').innerHTML = message
     return success
-}
-
-let getCompletedFormData = () => {
-    let formData = document.querySelector('#add-hiring-partner-form')
-    let data = {
-        name: formData['company-name'].value,
-        companySize: formData['company-size'].value,
-        techStack: formData['company-tech-stack'].value,
-        postcode: formData['company-postcode'].value,
-        phoneNumber: formData['company-phone-number'].value,
-        companyUrl: formData['company-url'].value
-    }
-    return data
 }
 
 let addHiringPartner = async(data) => {
@@ -165,11 +163,10 @@ function displayHiringPartnerHandler(partnerCompanies){
 
 getHiringPartners()
 
-const addContactFom = document.querySelector('#add-contact-form')
 addContactForm.addEventListener('submit', e => {
     e.preventDefault()
 
-    //validation
+    //TODO: validation
 
     let data = {
         contactName: addContactForm['contact-name'].value,
