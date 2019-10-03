@@ -38,6 +38,7 @@ class ContactEntityTest extends TestCase
 
     public function testMandatoryFieldsOnly()
     {
+        $this->expectException(Exception::class);
         $newContact = new ContactEntity(
             'John Doe',
             'johndoe@company.com',
@@ -46,7 +47,5 @@ class ContactEntityTest extends TestCase
             3,
             0
         );
-        $contactName = $newContact->getContactName();
-        $this->assertEquals($contactName, 'Jone Doe');
     }
 }
