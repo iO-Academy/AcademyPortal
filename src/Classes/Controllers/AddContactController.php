@@ -57,4 +57,3 @@ class AddContactController
         return $response->withJson($data, $statusCode);
     }
 }
-
