@@ -30,6 +30,7 @@ class ContactEntity extends ValidationEntity
         $this->hiringPartnerCompanyId = ($this->hiringPartnerCompanyId ?? $hiringPartnerCompanyId);
         $this->primaryContact = ($this->primaryContact ?? $primaryContact);
 
+        $this->sanitiseData();
     }
 
     /**
@@ -97,17 +98,25 @@ class ContactEntity extends ValidationEntity
         $this->contactName = self::sanitiseString($this->contactName);
         $this->contactName = self::validateExistsAndLength($this->contactName, 255);
 
-        $this->category = (int)$this->category;
-        $this->category = self::validateCategoryExists($this->category, $this->eventCategories);
-        $this->location = self::sanitiseString($this->location);
-        $this->location = self::validateExistsAndLength($this->location, 255);
-        $this->date = $this->validateDate($this->date);
-        $this->startTime = $this->validateTime($this->startTime);
-        $this->endTime = $this->validateTime($this->endTime);
-        $this->validateStartEndTime($this->startTIme, $this->endTime);
-        if ($this->notes !== null) {
-            $this->notes = self::sanitiseString($this->notes);
-            $this->notes = self::validateLength($this->notes, 5000);
+        $this->contactEmail = self::sanitiseString($this->contactEmail);
+        $this->contactEmail = self::validateExistsAndLength($this->contactEmail, 255);
+        if ($this->jobTitle !== null) {
+            $this->jobTitle = self::sanitiseString($this->jobTitle);
+            $this->jobTitle = self::validateExistsAndLength($this->jobTitle, 255);
+        }
+        if ($this->contactPhone !== null) {
+            $this->contactPhone = self::sanitiseString($this->contactPhone);
+            $this->contactPhone = self::validateExistsAndLength($this->contactPhone, 20);
+        }
+        $this->hiringPartnerCompanyId = (int)$this->hiringPartnerCompanyId;
+        $this->primaryContact = (int)$this->primaryContact;
+        $this->primaryContact = self::validateIsPrimaryContact($this->primaryContact);
+
+    }
+
+    public static function validateIsPrimaryContact(int $primaryContact) {
+        if($primaryContact !== 0 || $primaryContact !== 1) {
+            throw new \Exception('Primary contact is not valid.');
         }
     }
 }
