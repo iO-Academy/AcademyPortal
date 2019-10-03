@@ -21,21 +21,21 @@ class HiringPartnerModel
     public function addHiringPartner(HiringPartnerEntity $company) :bool
     {
         $query = $this->db->prepare("INSERT INTO `hiring_partner_companies` (
-            `name`,
-            `size`, 
-            `tech_stack`,
-            `postcode`,
-            `phone_number`,
-            `url_website`
-            )
-            VALUES (
-            :companyName,
-            :companySize,
-            :techStack,
-            :postcode,
-            :phoneNumber,
-            :websiteUrl
-            );");
+                                `name`,
+                                `size`, 
+                                `tech_stack`,
+                                `postcode`,
+                                `phone_number`,
+                                `url_website`
+                                )
+                                VALUES (
+                                :companyName,
+                                :companySize,
+                                :techStack,
+                                :postcode,
+                                :phoneNumber,
+                                :websiteUrl
+                                );");
         $query->bindParam(':companyName', $company->getCompanyName());
         $query->bindParam(':companySize', $company->getCompanySize());
         $query->bindParam(':techStack', $company->getTechStack());
@@ -45,41 +45,50 @@ class HiringPartnerModel
         return $query->execute();
     }
 
-    public function getNewContacts()
-    {
-       $query = $this->db>prepare("SELECT 
-                            * FROM `hiring_partner_contacts`
-                            LEFT JOIN `hiring_partner_companies` 
-                            ON `hiring_partner_contacts`.`id` 
-                            = `hiring_partner_companies`.`id`;");
-
-        $query->execute();
-        return $query->fetchAll();
-    }
+//    /**
+//     * Gets all the contacts information
+//     *
+//     * @return array array with the info
+//     */
+//    public function getContacts() :array
+//    {
+//       $query = $this->db>prepare("SELECT
+//                                 * FROM `hiring_partner_contacts`
+//                                LEFT JOIN `hiring_partner_companies`
+//                                ON `hiring_partner_contacts`.`id`
+//                                 = `hiring_partner_companies`.`id`
+//                                 WHERE `hiring_partner_company_id` =");
+//        $query->execute();
+//        return $query->fetchAll();
+//    }
 
     public function addNewContact($contact)
     {
-
+//        if ($query = $this->db>prepare("SELECT `id` FROM `hiring_partner_contacts`
+//                                    WHERE `id` =>=1")) {
+//        }
         $query = $this->db>prepare("INSERT INTO `hiring_partner_contacts`(
-            `name`,
-            `email`,
-            `job_title`,
-            `phone`,
-            `hiring_partner_contact_id`,
-            `is_primary_contact`
-            )
-            VALUES (
-            :contactName,
-            :contactEmail,
-            :jobTitle,
-            :contactPhone
-            :hiringPartnerContactId,
-            :primaryContact
-            );");
+                                `name`,
+                                `email`,
+                                `job_title`,
+                                `phone`,
+                                `hiring_partner_company_id`,
+                                `is_primary_contact`
+                                )
+                                VALUES (
+                                :contactName,
+                                :contactEmail,
+                                :jobTitle,
+                                :contactPhone
+                                :hiringPartnerContactId,
+                                :primaryContact
+                                );");
         $query->bindParam(':contactName', $contact->getContactName());
         $query->bindParam(':contactEmail', $contact->getContactEmail());
         $query->bindParam(':jobTitle', $contact->getJobTitle());
         $query->bindParam(':contactPhone', $contact->getContactPhone());
+        $query->bindParam(':hiringPartnerCompanyId', $contact->getHiringPartnerCompanyId());
+        $query->bindParam(':primaryContact', $contact->getPrimaryContact());
         return $query->execute();
     }
 
