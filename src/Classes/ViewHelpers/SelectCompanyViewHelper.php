@@ -8,8 +8,8 @@ class SelectCompanyViewHelper
     public static function selectCompanyDropdown($data)
     {
         $SelectCompanyDropdown = '';
-        foreach ($data['companySize'] as $companySize) {
-            $SelectCompanyDropdown .= '<option value=' . $companySize['id'] . '>' . $companySize['size'] . '</option>';
+        foreach ($data['companyName'] as $companyName) {
+            $SelectCompanyDropdown .= '<option value=' . $companyName['id'] . '>' . $companyName['name'] . '</option>';
         }
         return $SelectCompanyDropdown;
     }
