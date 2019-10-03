@@ -47,22 +47,28 @@ class HiringPartnerModel
         return $query->execute();
     }
 
-//    /**
-//     * Gets all the contacts information
-//     *
-//     * @return array array with the info
-//     */
-//    public function getContacts() :array
-//    {
-//       $query = $this->db>prepare("SELECT
-//                                 * FROM `hiring_partner_contacts`
-//                                LEFT JOIN `hiring_partner_companies`
-//                                ON `hiring_partner_contacts`.`id`
-//                                 = `hiring_partner_companies`.`id`
-//                                 WHERE `hiring_partner_company_id` =");
-//        $query->execute();
-//        return $query->fetchAll();
-//    }
+    /**
+     * Gets all the contacts information
+     *
+     * @return array array with the info
+     */
+    public function getContactsForCompany(int $companyId) :array
+    {
+        $query = $this->db>prepare("SELECT
+            `name`,
+            `email`,
+            `job_title`,
+            `phone`,
+            `hiring_partner_company_id`,
+            `is_primary_contact` 
+            FROM `hiring_partner_contacts`
+            LEFT JOIN `hiring_partner_companies`
+            ON `hiring_partner_contacts`.`id` = `hiring_partner_companies`.`id`
+            WHERE `hiring_partner_company_id` = :id;");
+        $query->bindParam(':id', $companyId, \PDO::PARAM_INT);
+        $query->execute();
+        return $query->fetchAll();
+    }
 
     public function addNewContact(ContactEntity $contact) :bool
     {
@@ -70,21 +76,21 @@ class HiringPartnerModel
 //                                    WHERE `id` =>=1")) {
 //        }
         $query = $this->db->prepare("INSERT INTO `hiring_partner_contacts`(
-                                `name`,
-                                `email`,
-                                `job_title`,
-                                `phone`,
-                                `hiring_partner_company_id`,
-                                `is_primary_contact`
-                                )
-                                VALUES (
-                                :contactName,
-                                :contactEmail,
-                                :jobTitle,
-                                :contactPhone,
-                                :hiringPartnerCompanyId,
-                                :primaryContact
-                                );");
+            `name`,
+            `email`,
+            `job_title`,
+            `phone`,
+            `hiring_partner_company_id`,
+            `is_primary_contact`
+            )
+            VALUES (
+            :contactName,
+            :contactEmail,
+            :jobTitle,
+            :contactPhone,
+            :hiringPartnerCompanyId,
+            :primaryContact
+            );");
         $query->bindParam(':contactName', $contact->getContactName(), \PDO::PARAM_STR);
         $query->bindParam(':contactEmail', $contact->getContactEmail(), \PDO::PARAM_STR);
         $query->bindParam(':jobTitle', $contact->getJobTitle(), \PDO::PARAM_STR);
