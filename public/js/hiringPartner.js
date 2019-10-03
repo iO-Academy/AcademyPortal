@@ -4,7 +4,7 @@ document.getElementById('submit-hiring-partner').addEventListener('click', async
     let data = getCompletedFormData()
     let validate = validateForm()
     if(validate) {
-        await makeApiRequest(data)
+        await addHiringPartner(data)
         getHiringPartners()
     }
 })
@@ -86,7 +86,7 @@ let getCompletedFormData = () => {
     return data
 }
 
-let makeApiRequest = async(data) => {
+let addHiringPartner = async(data) => {
     return fetch('/api/createHiringPartner', {
         credentials: 'same-origin',
         headers: {
