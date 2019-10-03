@@ -3,7 +3,6 @@
 
 namespace Portal\Controllers;
 
-
 class AddContactController
 {
 
@@ -17,6 +16,4 @@ class AddContactController
     {
         $this->hiringPartnerModel = $hiringPartnerModel;
     }
-
-
 }
