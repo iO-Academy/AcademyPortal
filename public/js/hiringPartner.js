@@ -196,7 +196,7 @@ addContactForm.addEventListener('submit', e => {
         contactEmail: addContactForm['contact-email'].value.trim(),
         contactJobTitle: addContactForm['contact-job-title'].value.trim(),
         contactPhone: addContactForm['contact-phone-number'].value.trim(),
-        contactIsPrimary: addContactForm['contact-is-primary'].value,
+        contactIsPrimary: addContactForm['contact-is-primary'].checked,
     }
 
     if(validateAddContactForm(data)){
