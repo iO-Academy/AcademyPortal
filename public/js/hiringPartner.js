@@ -87,7 +87,7 @@ let getCompletedFormData = () => {
 }
 
 let addHiringPartner = async(data) => {
-    return fetch('/api/createHiringPartner', {
+    return fetch('./api/createHiringPartner', {
         credentials: 'same-origin',
         headers: {
             'Accept': 'application/json',
@@ -99,11 +99,10 @@ let addHiringPartner = async(data) => {
     .then(response => response.json())
     .then((data) => {
         if (data.success) {
-            document.getElementById('hiring-partner-form').reset()
-            document.getElementById('hiring-partner-messages').innerHTML = '<p>Hiring Partner successfully added</p>'
-
+            document.getElementById('add-hiring-partner-form').reset()
+            document.getElementById('add-hiring-partner-messages').innerHTML = '<p>Hiring Partner successfully added.</p>'
         } else {
-            document.getElementById('hiring-partner-messages').innerHTML = '<p>Hiring Partner not added</p>'
+            document.getElementById('add-hiring-partner-messages').innerHTML = '<p>Hiring Partner not added.</p>'
         }
     })
 }
@@ -114,7 +113,7 @@ let addHiringPartner = async(data) => {
  * @return hiring partner data
  */
 async function getHiringPartners () {
-    await fetch('/api/getHiringPartnerInfo', {
+    await fetch('./api/getHiringPartnerInfo', {
         credentials: "same-origin",
         headers: {
             'Accept': 'application/json',
@@ -165,3 +164,38 @@ function displayHiringPartnerHandler(partnerCompanies){
 }
 
 getHiringPartners()
+
+const addContactFom = document.querySelector('#add-contact-form')
+addContactForm.addEventListener('submit', e => {
+    e.preventDefault()
+
+    //validation
+
+    let data = {
+        name: addContactForm['contact-name'].value,
+        company: addContactForm['company'].value,
+        email: addContactForm['contact-email'].value,
+        jobTitle: addContactForm['contact-job-title'].value,
+        phone: addContactForm['contact-phone-number'].value,
+        isPrimary: addContactForm['contact-is-primary'].value,
+    }
+
+    fetch('./api/addContact', {
+        credentials: 'same-origin',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'post',
+        body: JSON.stringify(data)
+    })
+    .then( response => response.json())
+    .then( data => {
+        if (data.success) {
+            document.getElementById('add-contact-form').reset()
+            document.getElementById('add-contact-messages').innerHTML = data.message
+        } else {
+            document.getElementById('add-contact-messages').innerHTML = data.message
+        }
+    })
+})
