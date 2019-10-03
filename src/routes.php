@@ -20,6 +20,7 @@ $app->post('/api/createHiringPartner', 'CreateHiringPartnerController');
 $app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');
 $app->get('/api/getEvents', 'GetEventsController');
 $app->post('/api/addEvent', 'AddEventController');
+$app->get('/api/addContact', 'AddContactController');
 
 //Backend
 $app->post('/api/login', 'LoginController');
