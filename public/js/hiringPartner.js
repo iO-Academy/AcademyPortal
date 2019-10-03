@@ -189,11 +189,11 @@ addContactForm.addEventListener('submit', e => {
     e.preventDefault()
 
     let data = {
-        contactName: addContactForm['contact-name'].value,
+        contactName: addContactForm['contact-name'].value.trim(),
         contactCompanyId: addContactForm['company'].value,
-        contactEmail: addContactForm['contact-email'].value,
-        contactJobTitle: addContactForm['contact-job-title'].value,
-        contactPhone: addContactForm['contact-phone-number'].value,
+        contactEmail: addContactForm['contact-email'].value.trim(),
+        contactJobTitle: addContactForm['contact-job-title'].value.trim(),
+        contactPhone: addContactForm['contact-phone-number'].value.trim(),
         contactIsPrimary: addContactForm['contact-is-primary'].value,
     }
 
