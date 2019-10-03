@@ -24,8 +24,8 @@ class ContactEntity extends ValidationEntity
         $this->contactEmail = ($this->contactEmail ?? $contactEmail);
         $this->jobTitle = ($this->jobTitle ?? $jobTitle);
         $this->contactPhone = ($this->contactPhone ?? $contactPhone);
-        $this->hiringPartnerCompanyId = ($this->hiringPartnerCompanyId ?? $hiringPartnerCompanyId);
-        $this->primaryContact = ($this->primaryContact ?? $primaryContact);
+        $this->hiringPartnerCompanyId = ($this->hiringPartnerCompanyId ?? (int)$hiringPartnerCompanyId);
+        $this->primaryContact = ($this->primaryContact ?? (int)$primaryContact);
 
         $this->sanitiseData();
     }
@@ -89,7 +89,6 @@ class ContactEntity extends ValidationEntity
     {
         return $this->primaryContact;
     }
-
 
     /**
      * Will sanitise all the fields for adding contact details
