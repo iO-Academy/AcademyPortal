@@ -204,22 +204,113 @@ addContactForm.addEventListener('submit', e => {
         contactIsPrimary: addContactForm['contact-is-primary'].value,
     }
 
-    fetch('./api/addContact', {
-        credentials: 'same-origin',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        method: 'post',
-        body: JSON.stringify(data)
-    })
-    .then( response => response.json())
-    .then( data => {
-        if (data.success) {
-            document.getElementById('add-contact-form').reset()
-            document.getElementById('add-contact-messages').innerHTML = data.message
-        } else {
-            document.getElementById('add-contact-messages').innerHTML = data.message
-        }
-    })
+    if(validateAddContactForm(data)){
+
+        fetch('./api/addContact', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            method: 'post',
+            body: JSON.stringify(data)
+        })
+        .then( response => response.json())
+        .then( data => {
+            if (data.success) {
+                document.getElementById('add-contact-form').reset()
+                document.getElementById('add-contact-messages').innerHTML = data.message
+            } else {
+                document.getElementById('add-contact-messages').innerHTML = data.message
+            }
+        })
+    }
 })
+
+function validateAddContactForm(data) {
+    let message = ''
+
+    let validateCompany = function (company) {
+        if (company == 0) {
+            message += 'Contact Company is a required field!<br>'
+            return false
+        }
+        let companySizes = document.querySelector('#company-size').childElementCount
+        if (company > companySizes) {
+            message += 'Invalid company option!<br>'
+            return false
+        }
+        return true
+    }(data.contactCompanyId)
+
+    let validateName = function (name) {
+        if (name.length < 1) {
+            message += 'Contact Name is a required field!<br>'
+            return false
+        }
+        if (name.length > 255) {
+            message += 'Contact Name is too long!<br>'
+            return false
+        }
+        return true
+    }(data.contactName)
+
+    let validateEmail = function (email) {
+        if (email.length < 1) {
+            message += 'Contact eMail is a required field!<br>'
+            return false
+        }
+        if (email.length > 255) {
+            message += 'Contact eMail is too long!<br>'
+            return false
+        }
+        // email regex from http://emailregex.com - "Email Address Regular Expression That 99.99% Works."
+        let regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        if (!regEx.test(email)) {
+            message += 'Invalid email format!<br>'
+            success = false
+        }
+        return true
+    }(data.contactEmail)
+
+    let validateJobTitle = function (jobTitle) {
+        if (jobTitle.length > 255) {
+            message += 'Contact Job Title is too long!<br>'
+            return false
+        }
+        return true
+    }(data.contactJobTitle)
+
+    let validatePhoneNumber = function (phone) {
+        if (phone.length > 20) {
+            message += 'Contact Phone Number is too long!<br>'
+            return false
+        }
+        let regEx = /^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/gm
+        if (!regEx.test(phone)) {
+            message += 'Invalid Phone Number format!<br>'
+            return false
+        }
+        return true
+    }(data.contactPhone)
+
+    let validateIsPrimary = function (isPrimary) {
+        if (!(isPrimary == 0 || isPrimary == 1)) {
+            message += 'Primary Contact has an invalid value!<br>'
+            return false
+        }
+        return true
+    }(data.contactIsPrimary)
+
+    document.getElementById('add-contact-messages').innerHTML = message
+    if( validateCompany 
+        && validateName 
+        && validateEmail 
+        && validateJobTitle
+        && validatePhoneNumber 
+        && validateIsPrimary ){
+        return true
+    } else {
+        return false
+    }
+}
