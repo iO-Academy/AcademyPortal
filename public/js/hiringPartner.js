@@ -172,12 +172,12 @@ addContactForm.addEventListener('submit', e => {
     //validation
 
     let data = {
-        name: addContactForm['contact-name'].value,
-        company: addContactForm['company'].value,
-        email: addContactForm['contact-email'].value,
-        jobTitle: addContactForm['contact-job-title'].value,
-        phone: addContactForm['contact-phone-number'].value,
-        isPrimary: addContactForm['contact-is-primary'].value,
+        contactName: addContactForm['contact-name'].value,
+        contactCompanyId: addContactForm['company'].value,
+        contactEmail: addContactForm['contact-email'].value,
+        contactJobTitle: addContactForm['contact-job-title'].value,
+        contactPhone: addContactForm['contact-phone-number'].value,
+        contactIsPrimary: addContactForm['contact-is-primary'].value,
     }
 
     fetch('./api/addContact', {
