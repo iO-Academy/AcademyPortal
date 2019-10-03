@@ -277,6 +277,9 @@ function validateAddContactForm(data) {
     }(data.contactJobTitle)
 
     let validatePhoneNumber = function (phone) {
+        if (phone.length == 0) {
+            return true
+        }
         if (phone.length > 20) {
             message += 'Contact Phone Number is too long!<br>'
             return false
