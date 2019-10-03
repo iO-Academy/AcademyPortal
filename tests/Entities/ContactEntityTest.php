@@ -27,7 +27,7 @@ class ContactEntityTest extends TestCase
     public function testConstructorFailure()
     {
         $this->expectException(Exception::class);
-        $newContact = new ContactEntity(
+        new ContactEntity(
             'John Doe',
             'johndoe@company.com',
             'CTO',
@@ -38,8 +38,7 @@ class ContactEntityTest extends TestCase
 
     public function testMandatoryFieldsOnly()
     {
-        $this->expectException(Exception::class);
-        $newContact = new ContactEntity(
+        new ContactEntity(
             'John Doe',
             'johndoe@company.com',
             '',
@@ -47,5 +46,89 @@ class ContactEntityTest extends TestCase
             3,
             0
         );
+    }
+
+    public function testGetContactName() 
+    {
+        $newContact = new ContactEntity(
+            'John Doe',
+            'johndoe@company.com',
+            'CTO',
+            '04123456789',
+            2,
+            1);
+        $expected = 'John Doe';
+        $actual = $newContact->getContactName();
+        $this->$this->assertEquals($expected, $actual);
+    }
+
+    public function testGetContactEmail() 
+    {
+        $newContact = new ContactEntity(
+            'John Doe',
+            'johndoe@company.com',
+            'CTO',
+            '04123456789',
+            2,
+            1);
+        $expected = 'johndoe@company.com';
+        $actual = $newContact->getContactEmail();
+        $this->$this->assertEquals($expected, $actual);
+    }
+
+    public function testGetJobTitle() 
+    {
+        $newContact = new ContactEntity(
+            'John Doe',
+            'johndoe@company.com',
+            'CTO',
+            '04123456789',
+            2,
+            1);
+        $expected = 'CTO';
+        $actual = $newContact->getJobTitle();
+        $this->$this->assertEquals($expected, $actual);
+    }
+
+    public function testGetContactPhone() 
+    {
+        $newContact = new ContactEntity(
+            'John Doe',
+            'johndoe@company.com',
+            'CTO',
+            '04123456789',
+            2,
+            1);
+        $expected = '04123456789';
+        $actual = $newContact->getContactPhone();
+        $this->$this->assertEquals($expected, $actual);
+    }
+
+    public function testGetHiringPartnerCompanyId() 
+    {
+        $newContact = new ContactEntity(
+            'John Doe',
+            'johndoe@company.com',
+            'CTO',
+            '04123456789',
+            23,
+            1);
+        $expected = 23;
+        $actual = $newContact->getHiringPartnerCompanyId();
+        $this->$this->assertEquals($expected, $actual);
+    }
+
+    public function testGetPrimaryContact() 
+    {
+        $newContact = new ContactEntity(
+            'John Doe',
+            'johndoe@company.com',
+            'CTO',
+            '04123456789',
+            23,
+            1);
+        $expected = 1;
+        $actual = $newContact->getPrimaryContact();
+        $this->$this->assertEquals($expected, $actual);
     }
 }
