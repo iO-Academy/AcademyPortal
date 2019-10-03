@@ -116,7 +116,7 @@ let makeApiRequest = async(data) => {
  */
 
 async function getHiringPartners () {
-    await fetch('../api/getHiringPartnerInfo', {
+    await fetch('./api/getHiringPartnerInfo', {
         credentials: "same-origin",
         headers: {
             'Accept': 'application/json',
