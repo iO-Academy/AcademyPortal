@@ -34,28 +34,28 @@
         </form>
     <div class="container">
         <h1>Add contact to Hiring partner</h1>
-        <form id='addContactForm'>
+        <form id='add-contact-form'>
             <label for='companySize'>Company Size</label>
-            <select name='companySize' id='companySize' class='submitContact form-control'>
+            <select name='companySize' id='company-size' class='submitContact form-control'>
                 <option value='0'>Please select a company</option>
                 <?php echo \Portal\ViewHelpers\SelectCompanyViewHelper::selectCompanyDropdown($data); ?>
 <!--                    Above is a placeholder ViewHelper for the drop down-->
             </select>
             <label for="ContactName">name</label>
-            <input id="contactName" name="contactName" class="submitContact form-control" type="text" placeholder="Contact Name" data-required='true' data-max='600'>
+            <input id="contact-name" name="contactName" class="submit-contact form-control" type="text" placeholder="Contact Name" data-required='true' data-max='600'>
             <label for='email'>email</label>
-            <input id='email' name='email' class="submitContact form-control" type="text" placeholder="email" data-required='true' data-max='40'>
+            <input id='email' name='email' class="submit-contact form-control" type="text" placeholder="email" data-required='true' data-max='40'>
             <label for='jobTitle'>Job title</label>
-            <input id='jobTitle' name='jobTitle' class="submitContact form-control" type="text" placeholder="Job title" data-max='255'>
+            <input id='job-title' name='job-title' class="submit-contact form-control" type="text" placeholder="Job title" data-max='255'>
             <label for='contactPhoneNumber'>Phone Number</label>
-            <input id='contactPhoneNumber' name='contactPhoneNumber' class="submitContact form-control" type="text" placeholder="Phone Number" data-max='20'>
+            <input id='contact-phone-number' name='contactPhoneNumber' class="submit-contact form-control" type="text" placeholder="Phone Number" data-max='20'>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="isPrimaryContact">
                 <label class="form-check-label" for="defaultCheck1">
                     Primary contact
                 </label>
             </div>
-            <input id="submitHiringPartnerContact" type="submit" class="btn btn-success"/>
+            <input id="submit-hiring-partner-contact" type="submit" class="btn btn-success"/>
         </form>
     </div>
     <div id='messages'></div>
