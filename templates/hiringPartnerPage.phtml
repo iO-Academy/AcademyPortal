@@ -7,58 +7,57 @@
     <title>Academy Portal | Hiring Partners</title>
     <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="./css/genericStyles.css">
-    <script src='./js/hiringPartner.js' defer></script>
+    <script defer src="./js/validations.js"></script>
+    <script defer src='./js/hiringPartner.js'></script>
 </head>
 <body>
     <div class="container">
         <h1>Hiring Partners</h1>
         <a href="./admin" class="btn btn-success">Go back to the Admin Page</a>
         <h3>Add new hiring partner</h3>
-        <form id='hiringPartnerForm'>
-            <label for="name">Company Name</label>
-            <input id="name" name="name" class="submitHiringPartner form-control" type="text" placeholder="name" data-required='true' data-max='255'>
-            <label for='companySize'>Company Size</label>
-            <select name='companySize' id='companySize' class='submitHiringPartner form-control'>
+        <form id='add-hiring-partner-form'>
+            <label for="company-name">Company Name:</label>
+            <input id="company-name" name="company-name" class="submit-hiring-partner form-control" type="text" placeholder="name">
+            <label for='company-size'>Company Size:</label>
+            <select name='company-size' id='company-size' class='submit-hiring-partner form-control'>
                 <option value='0'>Please select a company size...</option>
                 <?php echo \Portal\ViewHelpers\CompanySizeViewHelper::companySizeDropdown($data); ?>
             </select>
-            <label for="techStack">Company Tech Stack</label>
-            <input id="techStack" name="techStack" class="submitHiringPartner form-control" type="text" placeholder="Company tech stack" data-required='true' data-max='600'>
-            <label for='postcode'>Postcode</label>
-            <input id='postcode' name='postcode' class="submitHiringPartner form-control" type="text" placeholder="Postcode" data-required='true' data-max='10'>
-            <label for='phoneNumber'>Phone Number</label>
-            <input id='phoneNumber' name='phoneNumber' class="submitHiringPartner form-control" type="text" placeholder="Phone Number" data-max='20'>
-            <label for='companyUrl'>Company Website URL</label>
-            <input id='companyUrl' name='companyUrl' class="submitHiringPartner form-control" type="text" placeholder="Company Website Url" data-max='255'>
-            <input id="submitHiringPartner" type="submit" class="btn btn-success"/>
+            <label for="company-tech-stack">Company Tech Stack:</label>
+            <input id="company-tech-stack" name="company-tech-stack" class="submit-hiring-partner form-control" type="text" placeholder="Company tech stack">
+            <label for='company-postcode'>Postcode:</label>
+            <input id='company-postcode' name='company-postcode' class="submit-hiring-partner form-control" type="text" placeholder="Postcode">
+            <label for='company-phone-number'>Phone Number:</label>
+            <input id='company-phone-number' name='company-phone-number' class="submit-hiring-partner form-control" type="text" placeholder="Phone Number">
+            <label for='company-url'>Company Website URL:</label>
+            <input id='company-url' name='company-url' class="submit-hiring-partner form-control" type="text" placeholder="Company Website Url">
+            <input id="submit-hiring-partner" type="submit" class="btn btn-success"/>
+            <div id='add-hiring-partner-messages'></div>
         </form>
     <div class="container">
         <h1>Add contact to Hiring partner</h1>
         <form id='add-contact-form'>
-            <label for='companySize'>Company Size</label>
-            <select name='companySize' id='company-size' class='submit-contact form-control'>
+            <label for='company'>Company:</label>
+            <select name='company' id='company' class='submit-contact form-control'>
                 <option value='0'>Please select a company</option>
                 <?php echo \Portal\ViewHelpers\SelectCompanyViewHelper::selectCompanyDropdown($data); ?>
-<!--                    Above is a placeholder ViewHelper for the drop down-->
             </select>
-            <label for="ContactName">name</label>
-            <input id="contact-name" name="contactName" class="submit-contact form-control" type="text" placeholder="Contact Name" data-required='true' data-max='600'>
-            <label for='email'>email</label>
-            <input id='email' name='email' class="submit-contact form-control" type="text" placeholder="email" data-required='true' data-max='40'>
-            <label for='jobTitle'>Job title</label>
-            <input id='job-title' name='job-title' class="submit-contact form-control" type="text" placeholder="Job title" data-max='255'>
-            <label for='contactPhoneNumber'>Phone Number</label>
-            <input id='contact-phone-number' name='contactPhoneNumber' class="submit-contact form-control" type="text" placeholder="Phone Number" data-max='20'>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="is-primary-contact">
-                <label class="form-check-label" for="defaultCheck1">
-                    Primary contact
-                </label>
+            <label for="contact-name">Name:</label>
+            <input id="contact-name" name="contact-name" class="submit-contact form-control" type="text" placeholder="Contact Name">
+            <label for='contact-email'>eMail:</label>
+            <input id='contact-email' name='contact-email' class="submit-contact form-control" type="text" placeholder="email">
+            <label for='contact-job-title'>Job Title:</label>
+            <input id='contact-job-title' name='contact-job-title' class="submit-contact form-control" type="text" placeholder="Job title">
+            <label for='contact-phone-number'>Contact Phone Number:</label>
+            <input id='contact-phone-number' name='contact-phone-number' class="submit-contact form-control" type="text" placeholder="Phone Number">
+            <div class="contact-is-primary">
+                <input class="form-check-input" type="checkbox" value="" id="contact-is-primary">
+                <label class="form-check-label" for="defaultCheck1">Primary Contact</label>
             </div>
             <input id="submit-hiring-partner-contact" type="submit" class="btn btn-success"/>
+            <div id='add-contact-messages'></div>
         </form>
     </div>
-    <div id='messages'></div>
     <h3>Current Hiring Partners</h3>
     <div id='companies'></div>
 </div>
