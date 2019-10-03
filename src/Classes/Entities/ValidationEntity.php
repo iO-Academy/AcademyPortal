@@ -44,7 +44,8 @@ abstract class ValidationEntity
     /**
      * Sanitise as a string in the database table as data.
      *
-     * @param $validateData. Type hinting removed here on purpose. (type hinting as string causes errors in ApplicantEntity)
+     * @param $validateData. Type hinting removed here on purpose.
+     * (type hinting as string causes errors in ApplicantEntity)
      *
      * @return string, which will return the validateData.
      */
