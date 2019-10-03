@@ -104,11 +104,11 @@ class ContactEntity extends ValidationEntity
         $this->contactEmail = self::validateExistsAndLength($this->contactEmail, 255);
         if ($this->jobTitle !== null) {
             $this->jobTitle = self::sanitiseString($this->jobTitle);
-            $this->jobTitle = self::validateExistsAndLength($this->jobTitle, 255);
+            $this->jobTitle = self::ValidateLength($this->jobTitle, 255);
         }
         if ($this->contactPhone !== null) {
             $this->contactPhone = self::sanitiseString($this->contactPhone);
-            $this->contactPhone = self::validateExistsAndLength($this->contactPhone, 20);
+            $this->contactPhone = self::ValidateLength($this->contactPhone, 20);
         }
         $this->hiringPartnerCompanyId = (int)$this->hiringPartnerCompanyId;
         $this->primaryContact = (int)$this->primaryContact;

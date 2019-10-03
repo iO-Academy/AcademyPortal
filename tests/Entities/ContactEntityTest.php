@@ -36,9 +36,8 @@ class ContactEntityTest extends TestCase
             1);
     }
 
-    public function testMandatoryFieldsOnly()
+    public function testMandatoryFieldsOnlySuccess()
     {
-        $this->expectException(Exception::class);
         $newContact = new ContactEntity(
             'John Doe',
             'johndoe@company.com',
