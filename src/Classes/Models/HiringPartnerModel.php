@@ -56,17 +56,6 @@ class HiringPartnerModel
         return $query->fetchAll();
     }
 
-    /** Method does a query request that picks up the id and name to be displayed on the dropdown
-     *
-     * @return array
-     */
-    public function getCompanyName() :array
-    {
-        $query = $this->db->prepare("SELECT `id`,`name` FROM `hiring_partner_companies`");
-        $query->execute();
-        return $query->fetchAll();
-    }
-
     /** Instantiate a HiringPartnerEntity
      *
      * @param string $companyName
