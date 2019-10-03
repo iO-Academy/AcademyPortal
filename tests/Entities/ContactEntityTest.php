@@ -36,9 +36,9 @@ class ContactEntityTest extends TestCase
             1);
     }
 
-    public function testMandatoryFieldsOnly()
+    public function testMandatoryFieldsOnlySuccess()
     {
-        new ContactEntity(
+        $actual = new ContactEntity(
             'John Doe',
             'johndoe@company.com',
             '',
@@ -46,6 +46,7 @@ class ContactEntityTest extends TestCase
             3,
             0
         );
+        $this->assertInstanceOf(ContactEntity::class, $actual);
     }
 
     public function testGetContactName() 
