@@ -45,6 +45,29 @@ class HiringPartnerModel
         return $query->execute();
     }
 
+
+    public function addNewContact($contact)
+    {
+        $query = $this->db>prepare("INSERT INTO `hiring_partner_contacts`(
+            `name`,
+            `email`,
+            `job_title`,
+            `phone`
+            )
+            VALUES (
+            :contactName,
+            :contactEmail,
+            :jobTitle,
+            :contactPhone
+            );");
+        $query->bindParam(':contactName', $contact->getContactName());
+        $query->bindParam(':contactEmail', $contact->getContactEmail());
+        $query->bindParam(':jobTitle', $contact->getJobTitle());
+        $query->bindParam(':contactPhone', $contact->getContactPhone());
+        return $query->execute();
+    }
+
+
     /** Method does a query request that picks up the id and size to be displayed on the dropdown
      *
      * @return array
