@@ -3,7 +3,6 @@
 
 namespace Portal\ViewHelpers;
 
-
 class selectCompanyViewHelper
 {
     public static function selectCompanyDropdown($data)
