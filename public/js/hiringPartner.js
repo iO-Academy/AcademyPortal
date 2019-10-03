@@ -1,4 +1,4 @@
-document.getElementById('submitHiringPartner').addEventListener('click', async (e) => {
+document.getElementById('submit-hiring-partner').addEventListener('click', async (e) => {
     e.preventDefault()
 
     let data = getCompletedFormData()
@@ -12,7 +12,7 @@ document.getElementById('submitHiringPartner').addEventListener('click', async (
 function validateForm() {
     let success = true
     let message = ''
-    let inputs = document.querySelectorAll('.submitHiringPartner')
+    let inputs = document.querySelectorAll('.submit-hiring-partner')
     inputs.forEach(function (element) {
         let required = element.getAttribute('data-required')
         if (required && element.value.length < 1) {
@@ -25,12 +25,12 @@ function validateForm() {
             success = false
         }
 
-        if (element.name === 'companySize' && element.value === '0') {
+        if (element.name === 'company-size' && element.value === '0') {
             message += 'Please select a company size!<br>'
             success = false
         }
 
-        if (element.name === 'postcode') {
+        if (element.name === 'company-postcode') {
             let postcode =  element.value.trim()
             let pattern = /\b((?:(?:gir)|(?:[a-pr-uwyz])(?:(?:[0-9](?:[a-hjkpstuw]|[0-9])?)|(?:[a-hk-y][0-9](?:[0-9]|[abehmnprv-y])?)))) ?([0-9][abd-hjlnp-uw-z]{2})\b/ig
             let regEx = new RegExp(pattern)
@@ -40,7 +40,7 @@ function validateForm() {
             }
         }
 
-        if (element.name === 'phoneNumber' && element.value.length > 0) {
+        if (element.name === 'company-phone-number' && element.value.length > 0) {
             let phoneNumber =  element.value.trim()
             let pattern = /^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/gm
             let regEx = new RegExp(pattern)
@@ -50,7 +50,7 @@ function validateForm() {
             }
         }
 
-        if (element.name === 'companyUrl' && element.value.length > 0) {
+        if (element.name === 'company-url' && element.value.length > 0) {
             let url =  element.value.trim()
             let pattern = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm
             let regEx = new RegExp(pattern)
@@ -60,7 +60,7 @@ function validateForm() {
             }
         }
 
-        if (element.name === 'companySize') {
+        if (element.name === 'company-size') {
             let idRange = document.getElementsByTagName('option').length -1
             if (element.value > idRange) {
                 message += 'Invalid company size range info!<br>'
@@ -69,16 +69,23 @@ function validateForm() {
         }
     })
 
-    document.getElementById('messages').innerHTML = message
+    document.getElementById('hiring-partner-messages').innerHTML = message
     return success
 }
 
 let getCompletedFormData = () => {
-    let formData = document.querySelectorAll(".submitHiringPartner")
-    let data = {}
-    formData.forEach(formItem=> {
-        data[formItem.name] = formItem.value
-    })
+    let formData = document.querySelector('#add-hiring-partner-form')
+    let data = {
+        name: formData['company-name'].value,
+        companySize: formData['company-size'].value,
+        techStack: formData['company-tech-stack'].value,
+        postcode: formData['company-postcode'].value,
+        phoneNumber: formData['company-phone-number'].value,
+        companyUrl: formData['company-url'].value
+    }
+    // formData.forEach(formItem=> {
+    //     data[formItem.name] = formItem.value
+    // })
     return data
 }
 
@@ -95,11 +102,11 @@ let makeApiRequest = async(data) => {
     .then(response => response.json())
     .then((data) => {
         if (data.success) {
-            document.getElementById('hiringPartnerForm').reset()
-            document.getElementById('messages').innerHTML = '<p>Hiring Partner successfully added</p>'
+            document.getElementById('hiring-partner-form').reset()
+            document.getElementById('hiring-partner-messages').innerHTML = '<p>Hiring Partner successfully added</p>'
 
         } else {
-            document.getElementById('messages').innerHTML = '<p>Hiring Partner not added</p>'
+            document.getElementById('hiring-partner-messages').innerHTML = '<p>Hiring Partner not added</p>'
         }
     })
 }
@@ -133,10 +140,10 @@ function displayHiringPartnerHandler(partnerCompanies){
     let companyInformation = ''
     partnerCompanies.forEach(function(partnerCompany){
         companyInformation +=
-            `<div class="companyName">
+            `<div class="company-name">
                 <p>${partnerCompany.name}</p>
-                <button class="showCompanyInfo" data-reference='${partnerCompany.id}'>More Info</button>
-                <div id="moreInfo${partnerCompany.id}" class="hide moreInfo">
+                <button class="show-company-info" data-reference='${partnerCompany.id}'>More Info</button>
+                <div id="more-info${partnerCompany.id}" class="hide more-info">
                     <p>Company size: ${partnerCompany.size}</p>
                     <p>Tech Stack: ${partnerCompany.tech_stack}</p>
                     <p>Postcode: ${partnerCompany.postcode}</p>`
@@ -150,10 +157,10 @@ function displayHiringPartnerHandler(partnerCompanies){
     })
     companyDisplayer.innerHTML = companyInformation
 
-    let showInfoButtons = document.querySelectorAll('.showCompanyInfo')
+    let showInfoButtons = document.querySelectorAll('.show-company-info')
     showInfoButtons.forEach(function (button) {
         button.addEventListener('click', (e) => {
-            let targetId = 'moreInfo' + e.target.dataset.reference
+            let targetId = 'more-info' + e.target.dataset.reference
             let targetDiv = document.getElementById(targetId)
             targetDiv.classList.toggle('hide')
         })
