@@ -60,7 +60,7 @@ class ContactEntityTest extends TestCase
             1);
         $expected = 'John Doe';
         $actual = $newContact->getContactName();
-        $this->$this->assertEquals($expected, $actual);
+        $this->assertEquals($expected, $actual);
     }
 
     public function testGetContactEmail() 
@@ -74,7 +74,7 @@ class ContactEntityTest extends TestCase
             1);
         $expected = 'johndoe@company.com';
         $actual = $newContact->getContactEmail();
-        $this->$this->assertEquals($expected, $actual);
+        $this->assertEquals($expected, $actual);
     }
 
     public function testGetJobTitle() 
@@ -88,7 +88,7 @@ class ContactEntityTest extends TestCase
             1);
         $expected = 'CTO';
         $actual = $newContact->getJobTitle();
-        $this->$this->assertEquals($expected, $actual);
+        $this->assertEquals($expected, $actual);
     }
 
     public function testGetContactPhone() 
@@ -102,7 +102,7 @@ class ContactEntityTest extends TestCase
             1);
         $expected = '04123456789';
         $actual = $newContact->getContactPhone();
-        $this->$this->assertEquals($expected, $actual);
+        $this->assertEquals($expected, $actual);
     }
 
     public function testGetHiringPartnerCompanyId() 
@@ -116,7 +116,7 @@ class ContactEntityTest extends TestCase
             1);
         $expected = 23;
         $actual = $newContact->getHiringPartnerCompanyId();
-        $this->$this->assertEquals($expected, $actual);
+        $this->assertEquals($expected, $actual);
     }
 
     public function testGetPrimaryContact() 
@@ -130,6 +130,6 @@ class ContactEntityTest extends TestCase
             1);
         $expected = 1;
         $actual = $newContact->getPrimaryContact();
-        $this->$this->assertEquals($expected, $actual);
+        $this->assertEquals($expected, $actual);
     }
 }
