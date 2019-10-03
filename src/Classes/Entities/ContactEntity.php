@@ -120,6 +120,7 @@ class ContactEntity extends ValidationEntity
      *
      * @param int $primaryContact
      * @throws \Exception
+     * @return $primaryContact
      */
     public static function validateIsPrimaryContact(int $primaryContact)
     {
@@ -128,6 +129,5 @@ class ContactEntity extends ValidationEntity
         } else {
             throw new \Exception('Primary contact is not valid.');
         }
-        
     }
 }
