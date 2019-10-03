@@ -3,7 +3,6 @@
 
 namespace Portal\Entities;
 
-
 class ContactEntity
 {
     protected $contactName;
@@ -21,19 +20,18 @@ class ContactEntity
         string $contactPhone = null,
         int $hiringPartnerCompanyId = null,
         int $primaryContact = null
-
     ) {
         $this->contactName = ($this->contactName ?? $contactName);
         $this->contactEmail = ($this->contactEmail ?? $contactEmail);
         $this->jobTitle = ($this->jobTitle ?? $jobTitle);
         $this->contactPhone = ($this->contactPhone ?? $contactPhone);
-        $this->hiringPartnerCompanyId = ($this->hiringPartnerCompanyId ?? $hiringPartnerCompanyId);
-        $this->primaryContact = ($this->primaryContact ?? $primaryContact);
-
+        $this->hiringPartnerCompanyId = ($this->hiringPartnerCompanyId ?? (int)$hiringPartnerCompanyId);
+        $this->primaryContact = ($this->primaryContact ?? (int)$primaryContact);
     }
 
     /**
      * Get contact name
+     *
      *
      * @return string
      */
@@ -91,5 +89,4 @@ class ContactEntity
     {
         return $this->primaryContact;
     }
-
 }

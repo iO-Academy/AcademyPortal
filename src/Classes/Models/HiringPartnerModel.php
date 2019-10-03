@@ -72,9 +72,13 @@ class HiringPartnerModel
 
     public function addNewContact(ContactEntity $contact) :bool
     {
-//        if ($query = $this->db>prepare("SELECT `id` FROM `hiring_partner_contacts`
-//                                    WHERE `id` =>=1")) {
-//        }
+        if ($contact->getPrimaryContact() == 1) {
+            $resetPrimaryQuery = $this->db->prepare("UPDATE `hiring_partner_contacts` 
+                SET `is_primary_contact` = 0 
+                WHERE `hiring_partner_company_id` = :id;");
+            $resetPrimaryQuery->bindParam(':id', $contact->getHiringPartnerCompanyId(), \PDO::PARAM_INT);
+            $resetPrimaryQuery->execute();
+        }
         $query = $this->db->prepare("INSERT INTO `hiring_partner_contacts`(
             `name`,
             `email`,
