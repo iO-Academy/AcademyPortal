@@ -90,7 +90,6 @@ class ContactEntity extends ValidationEntity
         return $this->primaryContact;
     }
 
-
     /**
      * Will sanitise all the fields for adding contact details
      *
