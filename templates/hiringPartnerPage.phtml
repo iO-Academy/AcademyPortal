@@ -32,8 +32,34 @@
             <input id='companyUrl' name='companyUrl' class="submitHiringPartner form-control" type="text" placeholder="Company Website Url" data-max='255'>
             <input id="submitHiringPartner" type="submit" class="btn btn-success"/>
         </form>
-        <div id='messages'></div>
-        <h3>Current Hiring Partners</h3>
-        <div id='companies' ></div>
+    <div class="container">
+        <h1>Add contact to Hiring partner</h1>
+        <form id='add-contact-form'>
+            <label for='companySize'>Company Size</label>
+            <select name='companySize' id='company-size' class='submit-contact form-control'>
+                <option value='0'>Please select a company</option>
+                <?php echo \Portal\ViewHelpers\SelectCompanyViewHelper::selectCompanyDropdown($data); ?>
+<!--                    Above is a placeholder ViewHelper for the drop down-->
+            </select>
+            <label for="ContactName">name</label>
+            <input id="contact-name" name="contactName" class="submit-contact form-control" type="text" placeholder="Contact Name" data-required='true' data-max='600'>
+            <label for='email'>email</label>
+            <input id='email' name='email' class="submit-contact form-control" type="text" placeholder="email" data-required='true' data-max='40'>
+            <label for='jobTitle'>Job title</label>
+            <input id='job-title' name='job-title' class="submit-contact form-control" type="text" placeholder="Job title" data-max='255'>
+            <label for='contactPhoneNumber'>Phone Number</label>
+            <input id='contact-phone-number' name='contactPhoneNumber' class="submit-contact form-control" type="text" placeholder="Phone Number" data-max='20'>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="is-primary-contact">
+                <label class="form-check-label" for="defaultCheck1">
+                    Primary contact
+                </label>
+            </div>
+            <input id="submit-hiring-partner-contact" type="submit" class="btn btn-success"/>
+        </form>
     </div>
+    <div id='messages'></div>
+    <h3>Current Hiring Partners</h3>
+    <div id='companies'></div>
+</div>
 </body>

@@ -7,7 +7,7 @@
 #
 # Host: 192.168.20.20 (MySQL 5.6.44)
 # Database: academyPortal
-# Generation Time: 2019-10-01 09:13:21 +0000
+# Generation Time: 2019-10-03 09:10:37 +0000
 # ************************************************************
 
 
@@ -203,6 +203,26 @@ CREATE TABLE `hiring_partner_companies` (
   `phone_number` varchar(255) DEFAULT NULL,
   `url_website` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+# Dump of table hiring_partner_contacts
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `hiring_partner_contacts`;
+
+CREATE TABLE `hiring_partner_contacts` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `job_title` varchar(255) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `hiring_partner_company_id` int(11) unsigned NOT NULL,
+  `is_primary_contact` int(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `hiring_partner_company_id` (`hiring_partner_company_id`),
+  CONSTRAINT `hiring_partner_contacts_ibfk_1` FOREIGN KEY (`hiring_partner_company_id`) REFERENCES `hiring_partner_companies` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
