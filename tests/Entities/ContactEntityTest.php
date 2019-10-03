@@ -35,7 +35,7 @@ class ContactEntityTest extends TestCase
             1);
         $characterLength = 20;
         $contactNumber = $newContact->getContactPhone();
-        $this->expectException(TypeError::class);
+        $this->expectException(Exception::class);
         ContactEntity::ValidateExistsAndLength($contactNumber, $characterLength);
     }
 
@@ -47,7 +47,7 @@ class ContactEntityTest extends TestCase
             '',
             '',
             3,
-            null
+            0
         );
         $contactName = $newContact->getContactName();
         $this->assertEquals($contactName, 'Jone Doe');

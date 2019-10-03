@@ -24,8 +24,8 @@ class ContactEntity extends ValidationEntity
         $this->contactEmail = ($this->contactEmail ?? $contactEmail);
         $this->jobTitle = ($this->jobTitle ?? $jobTitle);
         $this->contactPhone = ($this->contactPhone ?? $contactPhone);
-        $this->hiringPartnerCompanyId = ($this->hiringPartnerCompanyId ?? $hiringPartnerCompanyId);
-        $this->primaryContact = ($this->primaryContact ?? $primaryContact);
+        $this->hiringPartnerCompanyId = ($this->hiringPartnerCompanyId ?? (int)$hiringPartnerCompanyId);
+        $this->primaryContact = ($this->primaryContact ?? (int)$primaryContact);
 
         $this->sanitiseData();
     }
@@ -121,11 +121,13 @@ class ContactEntity extends ValidationEntity
      *
      * @param int $primaryContact
      * @throws \Exception
+     * @return $primaryContact
      */
     public static function validateIsPrimaryContact(int $primaryContact)
     {
         if ($primaryContact !== 0 || $primaryContact !== 1) {
             throw new \Exception('Primary contact is not valid.');
         }
+        return $primaryContact;
     }
 }
