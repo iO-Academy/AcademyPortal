@@ -38,7 +38,7 @@ let makeApiRequest = async (data) => {
             if (data.success) {
                 window.location.href = './admin';
             } else {
-                document.getElementById('errorMsg').innerHTML = "Please contact administrator. Or <a href='/admin'>click here</a> to return to admin page"
+                document.getElementById('errorMsg').innerHTML = "Please contact administrator. Or <a href='./admin'>click here</a> to return to admin page"
             }
         })
 }
