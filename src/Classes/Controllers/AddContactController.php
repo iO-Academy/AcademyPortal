@@ -3,7 +3,7 @@
 
 namespace Portal\Controllers;
 
-use Portal\Entities\HiringPartnerEntity;
+use Portal\Entities\ContactEntity;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -27,20 +27,20 @@ class AddContactController
         $data = [
             'success' => false,
             'message' => 'Error!',
-            'data' => []
+            'data' => $newContact
         ];
         $statusCode = 400;
 
         try {
-            $contact = $this->hiringPartnerModel->addNewContact(
+            $contact = new ContactEntity(
                 $newContact['contactName'],
-                $newContact['contactCompanyId'],
                 $newContact['contactEmail'],
                 $newContact['contactJobTitle'],
                 $newContact['contactPhone'],
+                $newContact['contactCompanyId'],
                 $newContact['contactIsPrimary']
             );
-            if (!empty($contact) && $contact instanceof HiringPartnerEntity) {
+            if (!empty($contact) && $contact instanceof ContactEntity) {
                 $result = $this->hiringPartnerModel->addNewContact($contact);
             }
         } catch (\Exception $exception) {

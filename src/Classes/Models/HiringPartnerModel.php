@@ -2,6 +2,8 @@
 
 namespace Portal\Models;
 
+use phpDocumentor\Reflection\Types\Boolean;
+use Portal\Entities\ContactEntity;
 use Portal\Entities\HiringPartnerEntity;
 
 class HiringPartnerModel
@@ -62,12 +64,12 @@ class HiringPartnerModel
 //        return $query->fetchAll();
 //    }
 
-    public function addNewContact($contact)
+    public function addNewContact(ContactEntity $contact) :bool
     {
 //        if ($query = $this->db>prepare("SELECT `id` FROM `hiring_partner_contacts`
 //                                    WHERE `id` =>=1")) {
 //        }
-        $query = $this->db>prepare("INSERT INTO `hiring_partner_contacts`(
+        $query = $this->db->prepare("INSERT INTO `hiring_partner_contacts`(
                                 `name`,
                                 `email`,
                                 `job_title`,
@@ -79,19 +81,29 @@ class HiringPartnerModel
                                 :contactName,
                                 :contactEmail,
                                 :jobTitle,
-                                :contactPhone
-                                :hiringPartnerContactId,
+                                :contactPhone,
+                                :hiringPartnerCompanyId,
                                 :primaryContact
                                 );");
-        $query->bindParam(':contactName', $contact->getContactName());
-        $query->bindParam(':contactEmail', $contact->getContactEmail());
-        $query->bindParam(':jobTitle', $contact->getJobTitle());
-        $query->bindParam(':contactPhone', $contact->getContactPhone());
-        $query->bindParam(':hiringPartnerCompanyId', $contact->getHiringPartnerCompanyId());
-        $query->bindParam(':primaryContact', $contact->getPrimaryContact());
+        $query->bindParam(':contactName', $contact->getContactName(), \PDO::PARAM_STR);
+        $query->bindParam(':contactEmail', $contact->getContactEmail(), \PDO::PARAM_STR);
+        $query->bindParam(':jobTitle', $contact->getJobTitle(), \PDO::PARAM_STR);
+        $query->bindParam(':contactPhone', $contact->getContactPhone(), \PDO::PARAM_STR);
+        $query->bindParam(':hiringPartnerCompanyId', $contact->getHiringPartnerCompanyId(), \PDO::PARAM_INT);
+        $query->bindParam(':primaryContact', $contact->getPrimaryContact(), \PDO::PARAM_INT);
         return $query->execute();
     }
 
+    /** Method does a query request that picks up the id and name to be displayed on the dropdown
+     *
+     * @return array
+     */
+    public function getCompanyName() :array
+    {
+        $query = $this->db->prepare("SELECT `id`,`name` FROM `hiring_partner_companies`");
+        $query->execute();
+        return $query->fetchAll();
+    }
 
     /** Method does a query request that picks up the id and size to be displayed on the dropdown
      *
