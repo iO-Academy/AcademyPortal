@@ -123,8 +123,11 @@ class ContactEntity extends ValidationEntity
      */
     public static function validateIsPrimaryContact(int $primaryContact)
     {
-        if ($primaryContact !== 0 || $primaryContact !== 1) {
+        if ($primaryContact === 0 || $primaryContact === 1) {
+            return $primaryContact;
+        } else {
             throw new \Exception('Primary contact is not valid.');
         }
+        
     }
 }
