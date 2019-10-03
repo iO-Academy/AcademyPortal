@@ -7,31 +7,89 @@ namespace Portal\Entities;
 class ContactEntity extends ValidationEntity
 {
     protected $contactName;
-    protected $contactCompanyId;
     protected $contactEmail;
-    protected $contactJobTitle;
+    protected $jobTitle;
     protected $contactPhone;
-    protected $contactIsPrimary;
+    protected $hiringPartnerCompanyId;
+    protected $primaryContact;
 
-    /**
-     * ContactEntity constructor.
-     */
+
     public function __construct(
         string $contactName = null,
-        int $contactCompanyId = null,
         string $contactEmail = null,
-        string $contactJobTitle = null,
+        string $jobTitle = null,
         string $contactPhone = null,
-        int $contactIsPrimary = null
+        int $hiringPartnerCompanyId = null,
+        int $primaryContact = null
+
     ) {
         $this->contactName = ($this->contactName ?? $contactName);
-        $this->contactCompanyId = ($this->contactCompanyId ?? $contactCompanyId);
         $this->contactEmail = ($this->contactEmail ?? $contactEmail);
-        $this->contactJobTitle = ($this->contactJobTitle ?? $contactJobTitle);
+        $this->jobTitle = ($this->jobTitle ?? $jobTitle);
         $this->contactPhone = ($this->contactPhone ?? $contactPhone);
-        $this->contactIsPrimary = ($this->contactIsPrimary ?? $contactIsPrimary);
+        $this->hiringPartnerCompanyId = ($this->hiringPartnerCompanyId ?? $hiringPartnerCompanyId);
+        $this->primaryContact = ($this->primaryContact ?? $primaryContact);
 
-        $this->sanitiseData();
+    }
+
+    /**
+     * Get contact name
+     *
+     * @return string
+     */
+    public function getContactName()
+    {
+        return $this->contactName;
+    }
+
+    /**
+     * Get contact email
+     *
+     * @return string
+     */
+    public function getContactEmail()
+    {
+        return $this->contactEmail;
+    }
+
+    /**
+     * get job title
+     *
+     * @return string
+     */
+    public function getJobTitle()
+    {
+        return $this->jobTitle;
+    }
+
+    /**
+     * Get phone number
+     *
+     * @return string
+     */
+    public function getContactPhone()
+    {
+        return $this->contactPhone;
+    }
+
+    /**
+     * Get hiring partner company id
+     *
+     * @return string
+     */
+    public function getHiringPartnerCompanyId()
+    {
+        return $this->hiringPartnerCompanyId;
+    }
+
+    /**
+     * Get primary contact
+     *
+     * @return int
+     */
+    public function getPrimaryContact()
+    {
+        return $this->primaryContact;
     }
 
     private function sanitiseData()
