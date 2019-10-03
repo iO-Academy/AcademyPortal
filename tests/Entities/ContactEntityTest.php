@@ -1,12 +1,10 @@
 <?php
 
-
 namespace Tests\Entities;
 
 use \Exception;
 use PHPUnit\Framework\TestCase;
 use Portal\Entities\ContactEntity;
-use TypeError;
 
 class ContactEntityTest extends TestCase
 {
@@ -49,7 +47,7 @@ class ContactEntityTest extends TestCase
         $this->assertInstanceOf(ContactEntity::class, $actual);
     }
 
-    public function testGetContactName() 
+    public function testGetContactName()
     {
         $newContact = new ContactEntity(
             'John Doe',
@@ -63,7 +61,7 @@ class ContactEntityTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testGetContactEmail() 
+    public function testGetContactEmail()
     {
         $newContact = new ContactEntity(
             'John Doe',
@@ -77,7 +75,7 @@ class ContactEntityTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testGetJobTitle() 
+    public function testGetJobTitle()
     {
         $newContact = new ContactEntity(
             'John Doe',
@@ -91,7 +89,7 @@ class ContactEntityTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testGetContactPhone() 
+    public function testGetContactPhone()
     {
         $newContact = new ContactEntity(
             'John Doe',
@@ -105,7 +103,7 @@ class ContactEntityTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testGetHiringPartnerCompanyId() 
+    public function testGetHiringPartnerCompanyId()
     {
         $newContact = new ContactEntity(
             'John Doe',
@@ -119,7 +117,7 @@ class ContactEntityTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testGetPrimaryContact() 
+    public function testGetPrimaryContact()
     {
         $newContact = new ContactEntity(
             'John Doe',
