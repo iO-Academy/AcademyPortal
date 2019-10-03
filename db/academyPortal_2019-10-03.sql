@@ -7,7 +7,7 @@
 #
 # Host: 192.168.20.20 (MySQL 5.6.44)
 # Database: academyPortal
-# Generation Time: 2019-10-02 15:43:02 +0000
+# Generation Time: 2019-10-03 08:42:11 +0000
 # ************************************************************
 
 
@@ -218,9 +218,9 @@ DROP TABLE IF EXISTS `hiring_partner_contacts`;
 CREATE TABLE `hiring_partner_contacts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
-  `email` varchar(255) NOT NULL DEFAULT '',
   `job_title` varchar(255) DEFAULT NULL,
-  `phone` int(11) DEFAULT NULL,
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `phone` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
