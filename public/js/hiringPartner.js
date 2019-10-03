@@ -1,4 +1,3 @@
-
 document.getElementById('submitHiringPartner').addEventListener('click', e => {
     e.preventDefault()
 
@@ -8,11 +7,9 @@ document.getElementById('submitHiringPartner').addEventListener('click', e => {
         makeApiRequest(data)
         getHiringPartners()
     }
-
 })
 
 function validateForm() {
-
     let success = true
     let message = ''
     let inputs = document.querySelectorAll('.submitHiringPartner')
@@ -73,7 +70,6 @@ function validateForm() {
     })
 
     document.getElementById('messages').innerHTML = message
-
     return success
 }
 
@@ -96,17 +92,16 @@ let makeApiRequest = async(data) => {
         method: 'post',
         body: JSON.stringify(data)
     })
-        .then(response => response.json())
-        .then((data) => {
-            if (data.success) {
-                document.getElementById('hiringPartnerForm').reset()
-                document.getElementById('messages').innerHTML = '<p>Hiring Partner successfully added</p>'
+    .then(response => response.json())
+    .then((data) => {
+        if (data.success) {
+            document.getElementById('hiringPartnerForm').reset()
+            document.getElementById('messages').innerHTML = '<p>Hiring Partner successfully added</p>'
 
-            } else {
-                document.getElementById('messages').innerHTML = '<p>Hiring Partner not added</p>'
-            }
-        })
-
+        } else {
+            document.getElementById('messages').innerHTML = '<p>Hiring Partner not added</p>'
+        }
+    })
 }
 
 /**
@@ -114,7 +109,6 @@ let makeApiRequest = async(data) => {
  *
  * @return hiring partner data
  */
-
 async function getHiringPartners () {
     await fetch('/api/getHiringPartnerInfo', {
         credentials: "same-origin",
@@ -123,8 +117,8 @@ async function getHiringPartners () {
             'Content-Type': 'application/json',
         },
     })
-        .then( hiringPartnerInfo => hiringPartnerInfo.json())
-        .then(hiringPartnerInfo => displayHiringPartnerHandler(hiringPartnerInfo.data))
+    .then( hiringPartnerInfo => hiringPartnerInfo.json())
+    .then(hiringPartnerInfo => displayHiringPartnerHandler(hiringPartnerInfo.data))
 }
 
 /**
@@ -134,7 +128,6 @@ async function getHiringPartners () {
  *
  * @return a divs of the company name with a button that reveals each hiring partner's additional info on each line
  */
-
 function displayHiringPartnerHandler(partnerCompanies){
     let companyDisplayer = document.getElementById('companies')
     let companyInformation = ''
