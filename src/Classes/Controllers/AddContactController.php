@@ -33,12 +33,12 @@ class AddContactController
 
         try {
             $contact = $this->hiringPartnerModel->addNewContact(
-                $newContact['name'],
-                $newContact['email'],
-                $newContact['job_title'],
-                $newContact['phone'],
-                $newContact['hiring_partner_company_id'],
-                $newContact['is_primary_contact']
+                $newContact['contactName'],
+                $newContact['contactCompanyId'],
+                $newContact['contactEmail'],
+                $newContact['contactJobTitle'],
+                $newContact['contactPhone'],
+                $newContact['contactIsPrimary']
             );
             if (!empty($contact) && $contact instanceof HiringPartnerEntity) {
                 $result = $this->hiringPartnerModel->addNewContact($contact);
