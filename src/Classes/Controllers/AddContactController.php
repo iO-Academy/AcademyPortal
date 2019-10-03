@@ -49,7 +49,7 @@ class AddContactController
         if (isset($result) && $result) {
             $data = [
                 'success' => true,
-                'message' => 'Hiring Partner Added to the db',
+                'message' => 'Contact information added to the db',
                 'data' => []
             ];
             $statusCode = 200;
