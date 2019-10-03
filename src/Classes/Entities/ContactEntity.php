@@ -1,9 +1,8 @@
 <?php
 
-
 namespace Portal\Entities;
 
-class ContactEntity
+class ContactEntity extends ValidationEntity
 {
     protected $contactName;
     protected $contactEmail;
@@ -27,6 +26,8 @@ class ContactEntity
         $this->contactPhone = ($this->contactPhone ?? $contactPhone);
         $this->hiringPartnerCompanyId = ($this->hiringPartnerCompanyId ?? (int)$hiringPartnerCompanyId);
         $this->primaryContact = ($this->primaryContact ?? (int)$primaryContact);
+
+        $this->sanitiseData();
     }
 
     /**
@@ -87,5 +88,46 @@ class ContactEntity
     public function getPrimaryContact()
     {
         return $this->primaryContact;
+    }
+
+    /**
+     * Will sanitise all the fields for adding contact details
+     *
+     * @throws \Exception
+     */
+    private function sanitiseData()
+    {
+        $this->contactName = self::sanitiseString($this->contactName);
+        $this->contactName = self::validateExistsAndLength($this->contactName, 255);
+
+        $this->contactEmail = self::sanitiseString($this->contactEmail);
+        $this->contactEmail = self::validateExistsAndLength($this->contactEmail, 255);
+        if ($this->jobTitle !== null) {
+            $this->jobTitle = self::sanitiseString($this->jobTitle);
+            $this->jobTitle = self::ValidateLength($this->jobTitle, 255);
+        }
+        if ($this->contactPhone !== null) {
+            $this->contactPhone = self::sanitiseString($this->contactPhone);
+            $this->contactPhone = self::ValidateLength($this->contactPhone, 20);
+        }
+        $this->hiringPartnerCompanyId = (int)$this->hiringPartnerCompanyId;
+        $this->primaryContact = (int)$this->primaryContact;
+        $this->primaryContact = self::validateIsPrimaryContact($this->primaryContact);
+    }
+
+    /**
+     * checks if the value for primaryContact is 0 or 1
+     *
+     * @param int $primaryContact
+     * @throws \Exception
+     * @return $primaryContact
+     */
+    public static function validateIsPrimaryContact(int $primaryContact)
+    {
+        if ($primaryContact === 0 || $primaryContact === 1) {
+            return $primaryContact;
+        } else {
+            throw new \Exception('Primary contact is not valid.');
+        }
     }
 }
