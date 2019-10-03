@@ -16,7 +16,8 @@ class ContactEntityTest extends TestCase
             'CTO',
             '04123456789',
             2,
-            1);
+            1
+        );
         $characterLength = 255;
         $contactName = $newContact->getContactName();
         ContactEntity::ValidateExistsAndLength($contactName, $characterLength);
@@ -31,7 +32,8 @@ class ContactEntityTest extends TestCase
             'CTO',
             '0412345678914398502481058',
             2,
-            1);
+            1
+        );
     }
 
     public function testMandatoryFieldsOnlySuccess()
@@ -55,7 +57,8 @@ class ContactEntityTest extends TestCase
             'CTO',
             '04123456789',
             2,
-            1);
+            1
+        );
         $expected = 'John Doe';
         $actual = $newContact->getContactName();
         $this->assertEquals($expected, $actual);
@@ -69,7 +72,8 @@ class ContactEntityTest extends TestCase
             'CTO',
             '04123456789',
             2,
-            1);
+            1
+        );
         $expected = 'johndoe@company.com';
         $actual = $newContact->getContactEmail();
         $this->assertEquals($expected, $actual);
@@ -83,7 +87,8 @@ class ContactEntityTest extends TestCase
             'CTO',
             '04123456789',
             2,
-            1);
+            1
+        );
         $expected = 'CTO';
         $actual = $newContact->getJobTitle();
         $this->assertEquals($expected, $actual);
@@ -97,7 +102,8 @@ class ContactEntityTest extends TestCase
             'CTO',
             '04123456789',
             2,
-            1);
+            1
+        );
         $expected = '04123456789';
         $actual = $newContact->getContactPhone();
         $this->assertEquals($expected, $actual);
@@ -111,7 +117,8 @@ class ContactEntityTest extends TestCase
             'CTO',
             '04123456789',
             23,
-            1);
+            1
+        );
         $expected = 23;
         $actual = $newContact->getHiringPartnerCompanyId();
         $this->assertEquals($expected, $actual);
@@ -125,7 +132,8 @@ class ContactEntityTest extends TestCase
             'CTO',
             '04123456789',
             23,
-            1);
+            1
+        );
         $expected = 1;
         $actual = $newContact->getPrimaryContact();
         $this->assertEquals($expected, $actual);
