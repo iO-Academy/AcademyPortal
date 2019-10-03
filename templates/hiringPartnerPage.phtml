@@ -36,7 +36,7 @@
         <h1>Add contact to Hiring partner</h1>
         <form id='add-contact-form'>
             <label for='companySize'>Company Size</label>
-            <select name='companySize' id='company-size' class='submitContact form-control'>
+            <select name='companySize' id='company-size' class='submit-contact form-control'>
                 <option value='0'>Please select a company</option>
                 <?php echo \Portal\ViewHelpers\SelectCompanyViewHelper::selectCompanyDropdown($data); ?>
 <!--                    Above is a placeholder ViewHelper for the drop down-->
@@ -50,7 +50,7 @@
             <label for='contactPhoneNumber'>Phone Number</label>
             <input id='contact-phone-number' name='contactPhoneNumber' class="submit-contact form-control" type="text" placeholder="Phone Number" data-max='20'>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="isPrimaryContact">
+                <input class="form-check-input" type="checkbox" value="" id="is-primary-contact">
                 <label class="form-check-label" for="defaultCheck1">
                     Primary contact
                 </label>
