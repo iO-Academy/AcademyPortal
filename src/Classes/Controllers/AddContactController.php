@@ -27,7 +27,7 @@ class AddContactController
         $data = [
             'success' => false,
             'message' => 'Error!',
-            'data' => $newContact
+            'data' => []
         ];
         $statusCode = 400;
 

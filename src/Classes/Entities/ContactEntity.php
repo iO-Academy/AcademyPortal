@@ -32,7 +32,6 @@ class ContactEntity
     /**
      * Get contact name
      *
-     *
      * @return string
      */
     public function getContactName()

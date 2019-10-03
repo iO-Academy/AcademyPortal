@@ -2,7 +2,6 @@
 
 namespace Portal\Models;
 
-use phpDocumentor\Reflection\Types\Boolean;
 use Portal\Entities\ContactEntity;
 use Portal\Entities\HiringPartnerEntity;
 
@@ -22,22 +21,22 @@ class HiringPartnerModel
      */
     public function addHiringPartner(HiringPartnerEntity $company) :bool
     {
-        $query = $this->db->prepare("INSERT INTO `hiring_partner_companies` (
-                                `name`,
-                                `size`, 
-                                `tech_stack`,
-                                `postcode`,
-                                `phone_number`,
-                                `url_website`
-                                )
-                                VALUES (
-                                :companyName,
-                                :companySize,
-                                :techStack,
-                                :postcode,
-                                :phoneNumber,
-                                :websiteUrl
-                                );");
+        $query = $this->db->prepare("INSERT INTO `hiring_partner_companies`(
+            `name`,
+            `size`, 
+            `tech_stack`,
+            `postcode`,
+            `phone_number`,
+            `url_website`
+            )
+            VALUES (
+            :companyName,
+            :companySize,
+            :techStack,
+            :postcode,
+            :phoneNumber,
+            :websiteUrl
+            );");
         $query->bindParam(':companyName', $company->getCompanyName());
         $query->bindParam(':companySize', $company->getCompanySize());
         $query->bindParam(':techStack', $company->getTechStack());
