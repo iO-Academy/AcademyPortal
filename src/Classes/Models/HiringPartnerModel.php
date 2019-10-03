@@ -45,20 +45,36 @@ class HiringPartnerModel
         return $query->execute();
     }
 
+    public function getNewContacts()
+    {
+       $query = $this->db>prepare("SELECT 
+                            * FROM `hiring_partner_contacts`
+                            LEFT JOIN `hiring_partner_companies` 
+                            ON `hiring_partner_contacts`.`id` 
+                            = `hiring_partner_companies`.`id`;");
+
+        $query->execute();
+        return $query->fetchAll();
+    }
 
     public function addNewContact($contact)
     {
+
         $query = $this->db>prepare("INSERT INTO `hiring_partner_contacts`(
             `name`,
             `email`,
             `job_title`,
-            `phone`
+            `phone`,
+            `hiring_partner_contact_id`,
+            `is_primary_contact`
             )
             VALUES (
             :contactName,
             :contactEmail,
             :jobTitle,
             :contactPhone
+            :hiringPartnerContactId,
+            :primaryContact
             );");
         $query->bindParam(':contactName', $contact->getContactName());
         $query->bindParam(':contactEmail', $contact->getContactEmail());
