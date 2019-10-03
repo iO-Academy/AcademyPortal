@@ -5,87 +5,117 @@ addHiringPartnerForm.addEventListener('submit', async e => {
     e.preventDefault()
 
     let data = {
-        name: addHiringPartnerForm['company-name'].value,
+        name: addHiringPartnerForm['company-name'].value.trim(),
         companySize: addHiringPartnerForm['company-size'].value,
-        techStack: addHiringPartnerForm['company-tech-stack'].value,
-        postcode: addHiringPartnerForm['company-postcode'].value,
-        phoneNumber: addHiringPartnerForm['company-phone-number'].value,
-        companyUrl: addHiringPartnerForm['company-url'].value
+        techStack: addHiringPartnerForm['company-tech-stack'].value.trim(),
+        postcode: addHiringPartnerForm['company-postcode'].value.trim(),
+        phoneNumber: addHiringPartnerForm['company-phone-number'].value.trim(),
+        companyUrl: addHiringPartnerForm['company-url'].value.trim()
     }
-    
-    let validate = validateHiringPartnerForm()
-    if(validate) {
+
+    if( validateHiringPartnerForm(data) ) {
         await addHiringPartner(data)
         getHiringPartners()
     }
 })
 
-function validateHiringPartnerForm() {
-    let success = true
+function validateHiringPartnerForm(data) {
     let message = ''
-    let inputs = document.querySelectorAll('.submit-hiring-partner')
-    inputs.forEach(function (element) {
-        let required = element.getAttribute('data-required')
-        if (required && element.value.length < 1) {
-            message += element.name + ' is a required field! <br>'
+
+    let validateCompanyName = function (name) {
+        if (name.length < 1) {
+            message += 'Company Name is a required field!<br>'
+            return false
+        }
+        if (name.length > 255) {
+            message += 'Company Name is too long!<br>'
+            return false
+        }
+        return true
+    }(data.name)
+
+    let validateCompanySize = function (size) {
+        if (size == 0) {
+            message += 'Company Size is a required field!<br>'
+            return false
+        }
+        let companySizes = document.querySelector('#company-size').childElementCount
+        if (size > companySizes) {
+            message += 'Invalid company size option!<br>'
+            return false
+        }
+        return true
+    }(data.companySize)
+
+    let validateTechStack = function (techStack) {
+        if (techStack.length < 1) {
+            message += 'Company Tech Stack is a required field!<br>'
+            return false
+        }
+        if (techStack.length > 600) {
+            message += 'Company Tech Stack is too long!<br>'
+            return false
+        }
+    }(data.techStack)
+
+    let validatePostcode = function (postcode) {
+        if (postcode.length < 1) {
+            message += 'Company Postcode is a required field!<br>'
+            return false
+        }
+        if (postcode.length > 10) {
+            message += 'Company Postcode is too long!<br>'
+            return false
+        }
+        let regEx = /\b((?:(?:gir)|(?:[a-pr-uwyz])(?:(?:[0-9](?:[a-hjkpstuw]|[0-9])?)|(?:[a-hk-y][0-9](?:[0-9]|[abehmnprv-y])?)))) ?([0-9][abd-hjlnp-uw-z]{2})\b/ig
+        if (!regEx.test(postcode)) {
+            message += 'Invalid postcode format!<br>'
             success = false
         }
-        let maxLength = element.getAttribute('data-max')
-        if (required && element.value.length > maxLength) {
-            message += element.name + ' is too long, must be less than ' + maxLength + ' characters! <br>'
-            success = false
-        }
+        return true
+    }(data.postcode)
 
-        if (element.name === 'company-size' && element.value === '0') {
-            message += 'Please select a company size!<br>'
-            success = false
+    let validatePhoneNumber = function (phone) {
+        if (phone.length > 20) {
+            message += 'Company Phone Number is too long!<br>'
+            return false
         }
+        let regEx = /^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/gm
+        if (!regEx.test(phone)) {
+            message += 'Invalid Phone Number format!<br>'
+            return false
+        }
+        return true
+    }(data.phoneNumber)
 
-        if (element.name === 'company-postcode') {
-            let postcode =  element.value.trim()
-            let pattern = /\b((?:(?:gir)|(?:[a-pr-uwyz])(?:(?:[0-9](?:[a-hjkpstuw]|[0-9])?)|(?:[a-hk-y][0-9](?:[0-9]|[abehmnprv-y])?)))) ?([0-9][abd-hjlnp-uw-z]{2})\b/ig
-            let regEx = new RegExp(pattern)
-            if (!regEx.test(postcode)) {
-                message += 'Invalid postcode!<br>'
-                success = false
-            }
+    let validateUrl = function (url) {
+        if (url.length > 255) {
+            message += 'Company Website URL is too long!<br>'
+            return false
         }
-
-        if (element.name === 'company-phone-number' && element.value.length > 0) {
-            let phoneNumber =  element.value.trim()
-            let pattern = /^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/gm
-            let regEx = new RegExp(pattern)
-            if (!regEx.test(phoneNumber)) {
-                message += 'Invalid phone number format!<br>'
-                success = false
-            }
+        let regEx = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm
+        if (!regEx.test(url)) {
+            message += 'Invalid company URL!<br>'
+            return false
         }
-
-        if (element.name === 'company-url' && element.value.length > 0) {
-            let url =  element.value.trim()
-            let pattern = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/gm
-            let regEx = new RegExp(pattern)
-            if (!regEx.test(url)) {
-                message += 'Invalid URL format!<br>'
-                success = false
-            }
-        }
-
-        if (element.name === 'company-size') {
-            let idRange = document.getElementsByTagName('option').length -1
-            if (element.value > idRange) {
-                message += 'Invalid company size range info!<br>'
-                success = false
-            }
-        }
-    })
+        return true
+    }(data.companyUrl)
 
     document.getElementById('add-hiring-partner-messages').innerHTML = message
-    return success
+    if( validateCompanyName 
+        && validateCompanySize 
+        && validateTechStack 
+        && validatePostcode 
+        && validatePhoneNumber 
+        && validateUrl ){
+        return true
+    } else {
+        return false
+    }
 }
 
-let addHiringPartner = async(data) => {
-    return fetch('./api/createHiringPartner', {
+let addHiringPartner = async data => {
+    fetch('./api/createHiringPartner', {
         credentials: 'same-origin',
         headers: {
             'Accept': 'application/json',
@@ -107,8 +137,6 @@ let addHiringPartner = async(data) => {
 
 /**
  * Gets hiring partner information from the API and passes into the displayHandler function
- *
- * @return hiring partner data
  */
 async function getHiringPartners () {
     await fetch('./api/getHiringPartnerInfo', {
@@ -126,7 +154,6 @@ async function getHiringPartners () {
  * Runs a foreach through each hiring partner object and outputs HTML elements with hiring partner's details
  *
  * @param partnerCompanies is an array of objects which contains information about hiring partners
- *
  * @return a divs of the company name with a button that reveals each hiring partner's additional info on each line
  */
 function displayHiringPartnerHandler(partnerCompanies){
