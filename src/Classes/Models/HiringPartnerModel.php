@@ -59,7 +59,7 @@ class HiringPartnerModel
             `job_title`,
             `phone`,
             `hiring_partner_company_id`,
-            `is_primary_contact` 
+            `is_primary_contact`
             FROM `hiring_partner_contacts`
             WHERE `hiring_partner_company_id` = :id;");
         $query->bindParam(':id', $companyId, \PDO::PARAM_INT);
@@ -69,6 +69,7 @@ class HiringPartnerModel
 
     public function addNewContact(ContactEntity $contact) :bool
     {
+        $this->db->beginTransaction();
         if ($contact->getPrimaryContact() == 1) {
             $resetPrimaryQuery = $this->db->prepare("UPDATE `hiring_partner_contacts` 
                 SET `is_primary_contact` = 0 
@@ -98,7 +99,9 @@ class HiringPartnerModel
         $query->bindParam(':contactPhone', $contact->getContactPhone(), \PDO::PARAM_STR);
         $query->bindParam(':hiringPartnerCompanyId', $contact->getHiringPartnerCompanyId(), \PDO::PARAM_INT);
         $query->bindParam(':primaryContact', $contact->getPrimaryContact(), \PDO::PARAM_INT);
-        return $query->execute();
+        $success = $query->execute();
+        $this->db->commit();
+        return $success;
     }
 
     /** Method does a query request that picks up the id and name to be displayed on the dropdown
