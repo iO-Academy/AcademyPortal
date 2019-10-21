@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 192.168.20.20 (MySQL 5.6.44)
+# Host: 192.168.20.20 (MySQL 5.6.43)
 # Database: academyPortal
-# Generation Time: 2019-10-03 09:10:37 +0000
+# Generation Time: 2019-10-21 08:39:07 +0000
 # ************************************************************
 
 
@@ -205,6 +205,16 @@ CREATE TABLE `hiring_partner_companies` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `hiring_partner_companies` WRITE;
+/*!40000 ALTER TABLE `hiring_partner_companies` DISABLE KEYS */;
+
+INSERT INTO `hiring_partner_companies` (`id`, `name`, `size`, `tech_stack`, `postcode`, `phone_number`, `url_website`)
+VALUES
+	(1,'HP1',5,'node.js','ba2 6ah',NULL,NULL),
+	(2,'HP2',100,'php',NULL,'0117 432 1111',NULL);
+
+/*!40000 ALTER TABLE `hiring_partner_companies` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table hiring_partner_contacts
@@ -216,15 +226,24 @@ CREATE TABLE `hiring_partner_contacts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `email` varchar(255) NOT NULL DEFAULT '',
+  `is_primary_contact` tinyint(1) NOT NULL DEFAULT '1',
   `job_title` varchar(255) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
   `hiring_partner_company_id` int(11) unsigned NOT NULL,
-  `is_primary_contact` int(1) unsigned NOT NULL DEFAULT '0',
+  `phone` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `hiring_partner_company_id` (`hiring_partner_company_id`),
-  CONSTRAINT `hiring_partner_contacts_ibfk_1` FOREIGN KEY (`hiring_partner_company_id`) REFERENCES `hiring_partner_companies` (`id`)
+  KEY `link_contacts_to_hiring_partner` (`hiring_partner_company_id`),
+  CONSTRAINT `link_contacts_to_hiring_partner` FOREIGN KEY (`hiring_partner_company_id`) REFERENCES `hiring_partner_companies` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `hiring_partner_contacts` WRITE;
+/*!40000 ALTER TABLE `hiring_partner_contacts` DISABLE KEYS */;
+
+INSERT INTO `hiring_partner_contacts` (`id`, `name`, `email`, `is_primary_contact`, `job_title`, `hiring_partner_company_id`, `phone`)
+VALUES
+	(1,'Greg Roll','greg.roll@hp1.com',1,NULL,1,NULL);
+
+/*!40000 ALTER TABLE `hiring_partner_contacts` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table users
