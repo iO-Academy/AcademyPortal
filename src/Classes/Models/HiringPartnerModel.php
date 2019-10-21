@@ -61,8 +61,6 @@ class HiringPartnerModel
             `hiring_partner_company_id`,
             `is_primary_contact` 
             FROM `hiring_partner_contacts`
-            LEFT JOIN `hiring_partner_companies`
-            ON `hiring_partner_contacts`.`id` = `hiring_partner_companies`.`id`
             WHERE `hiring_partner_company_id` = :id;");
         $query->bindParam(':id', $companyId, \PDO::PARAM_INT);
         $query->execute();
