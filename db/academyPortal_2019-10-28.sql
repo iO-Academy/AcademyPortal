@@ -7,7 +7,7 @@
 #
 # Host: 192.168.20.20 (MySQL 5.6.43)
 # Database: academyPortal
-# Generation Time: 2019-10-21 08:39:07 +0000
+# Generation Time: 2019-10-28 11:23:33 +0000
 # ************************************************************
 
 
@@ -55,7 +55,7 @@ VALUES
 	(5,'Ignacia Watkins','qewopepodi@mailinator.com','+613-35-8385501',2,'Excepturi consequatur Est culpa enim itaque ratione optio minima ullamco voluptates dolor et totam','Earum est iure sed fuga Velit',6,'0','0','0','Impedit aut duis laborum aspernatur amet aliquip tempora harum nulla aut','2018-11-28 14:42:01',0),
 	(6,'Luke Haney','wubeqyko@mailinator.com','+942-61-9779862',3,'Nemo id qui aspernatur possimus dolor adipisicing aut est sed minim','Consequatur quia voluptate delectus impedit similique',6,'0','0','0','Non sed modi ab culpa sed quia tempore debitis dolor','2018-11-28 14:52:20',0),
 	(7,'Curran Patel','pudapaceje@mailinator.net','+628-48-1465496',4,'Non voluptas eligendi assumenda et itaque cupidatat ut tempor','Et aliqua Quia sit soluta enim nesciunt vitae consequatur Aut repellendus Soluta magni',2,'1','0','0','Quos fugiat qui et enim eum tempor est modi','2018-11-28 22:53:05',0),
-	(8,'Katelyn Parsons','1','+567-54-9746748',3,'Aut est et est esse mollitia laborum','Fuga Enim omnis anim et error aut et voluptate anim blanditiis dolorem voluptatem facilis',2,'0','0','0','Similique velit qui nisi debitis aliquip lorem dolor commodi assumenda quod quod autem amet eu mollitia quod necessitatibus','2018-11-28 23:10:12',0),
+	(8,'Katelyn Parsons','poipoi@qwerty.com','+567-54-9746748',3,'Aut est et est esse mollitia laborum','Fuga Enim omnis anim et error aut et voluptate anim blanditiis dolorem voluptatem facilis',2,'0','0','0','Similique velit qui nisi debitis aliquip lorem dolor commodi assumenda quod quod autem amet eu mollitia quod necessitatibus','2018-11-28 23:10:12',0),
 	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555',3,'Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit','2018-11-28 23:10:47',0);
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
@@ -240,7 +240,8 @@ LOCK TABLES `hiring_partner_contacts` WRITE;
 
 INSERT INTO `hiring_partner_contacts` (`id`, `name`, `email`, `is_primary_contact`, `job_title`, `hiring_partner_company_id`, `phone`)
 VALUES
-	(1,'Greg Roll','greg.roll@hp1.com',1,NULL,1,NULL);
+	(1,'Greg S Roll','greg.roll@hp1.com',0,NULL,1,NULL),
+	(2,'Little Chef','little.chef@hp1.com',1,'Chief Food Officer',1,'01299 872145');
 
 /*!40000 ALTER TABLE `hiring_partner_contacts` ENABLE KEYS */;
 UNLOCK TABLES;
