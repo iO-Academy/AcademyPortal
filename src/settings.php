@@ -17,10 +17,10 @@ return [
         ],
 
         'db' => [
-            'host' => 'mysql:host=192.168.20.20;',
+            'host' => 'mysql:host=db;',
             'dbName' =>'dbname=academyPortal',
             'userName' =>'root',
-            'password' => ''
+            'password' => 'password'
         ]
     ],
 ];
