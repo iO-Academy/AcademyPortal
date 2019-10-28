@@ -20,6 +20,7 @@ return [
             'host' => 'mysql:host=192.168.20.20;',
             'dbName' =>'dbname=academyPortal',
             'userName' =>'root',
+            'password' => ''
         ]
     ],
 ];
