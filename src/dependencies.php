@@ -21,7 +21,7 @@ $container['logger'] = function ($c) {
 // db connection
 $container['dbConnection'] = function ($c) {
     $settings = $c->get('settings')['db'];
-    $db = new PDO($settings['host'].$settings['dbName'], $settings['userName']);
+    $db = new PDO($settings['host'].$settings['dbName'], $settings['userName'], $settings['password']);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
     return $db;
 };
