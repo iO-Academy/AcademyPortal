@@ -6,6 +6,17 @@
 2. Create database with name `academyPortal` and populate using latest version in db/
 3. `php -S localhost:8080 -t public public/index.php`
 
+### Deploy
+
+- Files/folders that can be easily replaced with uploads:
+    - db/
+    - logs/
+    - public/
+    - src/Classes/
+- Files that require more care:
+    - src/dependencies (Factories go here but so does db connection, config for db should be the same in local and deployed now (config, not credentials))
+    - src/settings (deployed version contains different credentials, shouldn't need to be updated)
+
 ### Routes
 - for local development use localhost:8080/api/whatYouRequire as your URL
 
