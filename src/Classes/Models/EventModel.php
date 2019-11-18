@@ -87,7 +87,7 @@ class EventModel
      *
      * @param int $event the id of the event selected
      *
-     * @param $attendees the number of people attending from that hiring partner
+     * @param int $attendees number of people attending from that hiring partner
      *
      * @return boolean True if operation succeeds
      */
