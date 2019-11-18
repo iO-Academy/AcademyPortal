@@ -128,6 +128,7 @@ class HiringPartnerModel
 
     /** Instantiate a HiringPartnerEntity
      *
+     * @param string $companyId
      * @param string $companyName
      * @param string $companySize
      * @param string $techStack
@@ -137,6 +138,7 @@ class HiringPartnerModel
      * @return HiringPartnerEntity
      */
     public function createNewHiringPartner(
+        string $companyId,
         string $companyName,
         string $companySize,
         string $techStack,
@@ -145,6 +147,7 @@ class HiringPartnerModel
         string $websiteUrl
     ) :HiringPartnerEntity {
         return new HiringPartnerEntity(
+            $companyId,
             $companyName,
             $companySize,
             $techStack,

@@ -2,8 +2,11 @@
 
 namespace Portal\Entities;
 
+use phpDocumentor\Reflection\Types\Integer;
+
 class HiringPartnerEntity extends ValidationEntity
 {
+    protected $companyId;
     protected $companyName;
     protected $companySize;
     protected $techStack;
@@ -12,6 +15,7 @@ class HiringPartnerEntity extends ValidationEntity
     protected $websiteUrl;
 
     public function __construct(
+        int $hiringPartnerCompanyId = null,
         string $hiringPartnerCompanyName = null,
         int $hiringPartnerCompanySize = null,
         string $hiringPartnerTechStack = null,
@@ -19,6 +23,7 @@ class HiringPartnerEntity extends ValidationEntity
         string $hiringPartnerPhoneNumber = null,
         string $hiringPartnerWebsiteUrl = null
     ) {
+        $this->companyId = ($this->companyId ?? $hiringPartnerCompanyId);
         $this->companyName = ($this->companyName ?? $hiringPartnerCompanyName);
         $this->companySize = ($this->companySize ?? $hiringPartnerCompanySize);
         $this->techStack = ($this->techStack ?? $hiringPartnerTechStack);
@@ -34,6 +39,7 @@ class HiringPartnerEntity extends ValidationEntity
      */
     private function sanitiseData()
     {
+        $this->companyId = (int)$this->companyId;
         $this->companyName = self::sanitiseString($this->companyName);
         $this->companyName = self::validateExistsAndLength($this->companyName, 255);
         $this->companySize = (int)$this->companySize;
@@ -45,6 +51,16 @@ class HiringPartnerEntity extends ValidationEntity
         $this->phoneNumber = self::validateLength($this->phoneNumber, 20);
         $this->websiteUrl = self::sanitiseString($this->websiteUrl);
         $this->websiteUrl = self::validateLength($this->websiteUrl, 255);
+    }
+
+    /**
+     * Gets the hiring partner company Id
+     *
+     * @return string of company ID
+     */
+    public function getCompanyId() : Int
+    {
+        return $this->companyId;
     }
 
     /**

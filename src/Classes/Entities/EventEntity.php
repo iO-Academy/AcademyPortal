@@ -4,6 +4,7 @@ namespace Portal\Entities;
 
 class EventEntity extends ValidationEntity
 {
+    protected $eventId;
     protected $name;
     protected $category;
     protected $location;
@@ -14,6 +15,7 @@ class EventEntity extends ValidationEntity
     protected $eventCategories;
 
     public function __construct(
+        string $eventId = null,
         string $name = null,
         int $category = null,
         string $location = null,
@@ -23,6 +25,7 @@ class EventEntity extends ValidationEntity
         string $notes = null,
         array $eventCategories
     ) {
+        $this->eventId = ($this->eventId ?? $eventId);
         $this->name = ($this->name ?? $name);
         $this->category = ($this->category ?? $category);
         $this->location = ($this->location ?? $location);
@@ -40,6 +43,7 @@ class EventEntity extends ValidationEntity
      */
     private function sanitiseData()
     {
+        $this->eventId = (int)$this->eventId;
         $this->name = self::sanitiseString($this->name);
         $this->name = self::validateExistsAndLength($this->name, 255);
         $this->category = (int)$this->category;
@@ -119,6 +123,17 @@ class EventEntity extends ValidationEntity
             throw new \Exception('Category is not valid.');
         }
     }
+
+    /**
+     * Get event id
+     *
+     * @return string id
+     */
+    public function getEventId(): int
+    {
+        return $this->eventId;
+    }
+
 
     /**
      * Get event name
