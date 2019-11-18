@@ -4,7 +4,6 @@ namespace Portal\Controllers;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Slim\Views\PhpRenderer;
 
 class AddApplicantController
 {
