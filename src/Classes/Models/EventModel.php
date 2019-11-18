@@ -93,7 +93,15 @@ class EventModel
      */
     public function linkHPToEvent(Integer $hiringPartner, Integer $event, Integer $attendees) : bool
     {
-        $query = $this->db->prepare('INSERT INTO `events_hiring_partner_link_table` (`hiring_partner_id`, `events_id`, `people_attending`) VALUES (:hiringPartner, :event, :attendees)');
+        $query = $this->db->prepare('INSERT INTO `events_hiring_partner_link_table` (
+            `hiring_partner_id`, 
+            `events_id`, 
+            `people_attending`
+            ) 
+            VALUES (
+            :hiringPartner, 
+            :event, 
+            :attendees);');
         $query->bindParam(':hiringPartner', $hiringPartner);
         $query->bindParam(':event', $event);
         $query->bindParam(':attendees', $attendees);
