@@ -83,6 +83,8 @@ class EventModel
 
 
     /**
+     *Adds event id, hiring partner id and people attending to database
+     *
      * @param int $hiringPartner id of the hiring partner selected
      *
      * @param int $event the id of the event selected
@@ -91,7 +93,7 @@ class EventModel
      *
      * @return bool True if operation succeeds
      */
-    public function linkHPToEvent(Integer $hiringPartner, Integer $event, Integer $attendees) : bool
+    public function linkHPToEvent(int $hiringPartner, int $event, int $attendees) : bool
     {
         $query = $this->db->prepare('INSERT INTO `events_hiring_partner_link_table` (
             `hiring_partner_id`, 
