@@ -25,5 +25,3 @@ $app->post('/api/addContact', 'AddContactController');
 //Backend
 $app->post('/api/login', 'LoginController');
 $app->post('/api/registerUser', 'RegisterUserController');
-
-$app->post('/sort/{id}', 'XXXXX');
