@@ -85,7 +85,7 @@ class EventModel
     /**
      * @param int $hiringPartner id of the hiring partner selected
      *
-     * @param $event the id of the event selected
+     * @param int $event the id of the event selected
      *
      * @param $attendees the number of people attending from that hiring partner
      *
