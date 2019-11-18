@@ -42,6 +42,7 @@ class DisplayHiringPartnerPageController
         if ($_SESSION['loggedIn'] === true) {
             $args['companySize'] = $this->hiringPartnerModel->getCompanySize();
             $args['companyName'] = $this->hiringPartnerModel->getCompanyName();
+            $args['contactDetails'] = $this->hiringPartnerModel->getContactsForCompany();
             $this->renderer->render($response, 'hiringPartnerPage.phtml', $args);
         } else {
             return $response->withRedirect('./');
