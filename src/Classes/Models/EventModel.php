@@ -89,7 +89,7 @@ class EventModel
      *
      * @param int $attendees number of people attending from that hiring partner
      *
-     * @return boolean True if operation succeeds
+     * @return bool True if operation succeeds
      */
     public function linkHPToEvent(Integer $hiringPartner, Integer $event, Integer $attendees) : bool
     {
