@@ -17,7 +17,7 @@ function getEvents() {
         },
     })
     .then(response => response.json())
-    .then(eventInfo => {
+    .then((eventInfo) => {
         displayEventsHandler(eventInfo.data)
     })
 }
@@ -27,14 +27,14 @@ function getEvents() {
  *
  * @param events is an array of objects which contains information about events
  */
-function displayEventsHandler(events) {
+async function displayEventsHandler(events) {
     let eventInformation = ''
     if(events == '') {
         eventList.innerHTML = 'No Events Scheduled'
     } else {
         eventList.innerHTML = ''
 
-        events.forEach(event => {
+        await events.forEach(async (event) => {
             eventList.innerHTML = ''
             eventInformation +=
                 `<div class="event-name">
@@ -54,59 +54,64 @@ function displayEventsHandler(events) {
             eventInformation += `<div class='addHiringPartner'>
             <form id='addHiringPartnerForm'>
 
+            <select data-event=${event.id}>
+            <option value='0'>Please select a hiring</option>`
+
+            await getHiringPartners().then(responseJson => {
+                if(responseJson.status) {
+                    let hiringPartners = responseJson.data
+                        hiringPartners.forEach(function(hiringPartner) {
+                            eventInformation += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
+                        })
+                        message.innerText = responseJson.message
+                } else {
+                    message.innerText = responseJson.message
+                }
+            });
+
+            eventInformation += `</select>
             <label>Number of company attendees:</label>
             <input type='number' name='companyAttendees' min='0'/>
             <input type='submit'/> 
             </form>
             </div>`
 
-
         eventInformation += `</div></div>`
-    })
-    eventList.innerHTML = eventInformation
+        console.log(eventInformation)
+        eventList.innerHTML += eventInformation
 
         let showInfoButtons = document.querySelectorAll('.show-event-info')
         showInfoButtons.forEach(function (button) {
             button.addEventListener('click', e => {
+                console.log('yooo')
                 let targetId = 'moreInfo' + e.target.dataset.reference
                 let targetDiv = document.getElementById(targetId)
                 targetDiv.classList.toggle('hide')     
-       })
-    })
+        })
+        })
+        return eventInformation
+    })  
 }};
 
 getEvents()
 
-function generateHiringPartnerDropdown() {
+/**
+ * Get all the hiring partners from the API
+ *
+ * @return array The JSON response
+ */
+ async function getHiringPartners() {
     
-    let html = await fetch('./api/getHiringPartnerInfo', {
+    let response = await fetch('./api/getHiringPartnerInfo', {
         credentials: 'same-origin',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
         method: 'get',
-    }).then(responseJson => {
-        let html = ""
-        if(responseJson.success) {
-            let hiringPartners = responseJson.data
-                hiringPartners.forEach(function(hiringPartner) {
-                    html += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
-                })
-                message.innerText = responseJson.message
-        } else {
-            message.innerText = responseJson.message
-        }
-        return html
     })
-    return html
+    return await response.json()
 }
-
-// TODO: addHiringPartnerForm
-// TODO: hiringPartnerSelection
-
-
-
 
 // Submit Form + Add New Event API Call
 eventForm.addEventListener("submit", e => {
