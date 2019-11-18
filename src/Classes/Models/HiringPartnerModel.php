@@ -22,6 +22,7 @@ class HiringPartnerModel
     public function addHiringPartner(HiringPartnerEntity $company) :bool
     {
         $query = $this->db->prepare("INSERT INTO `hiring_partner_companies`(
+            `id`,
             `name`,
             `size`, 
             `tech_stack`,
@@ -30,6 +31,7 @@ class HiringPartnerModel
             `url_website`
             )
             VALUES (
+            :companyId,
             :companyName,
             :companySize,
             :techStack,
@@ -37,6 +39,7 @@ class HiringPartnerModel
             :phoneNumber,
             :websiteUrl
             );");
+        $query->bindParam(':companyId', $company->getCompanyId());
         $query->bindParam(':companyName', $company->getCompanyName());
         $query->bindParam(':companySize', $company->getCompanySize());
         $query->bindParam(':techStack', $company->getTechStack());

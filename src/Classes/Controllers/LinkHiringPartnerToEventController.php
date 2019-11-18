@@ -8,13 +8,13 @@ use Slim\Http\Response;
 
 class LinkHiringPartnerToEventController
 {
-    private $EventModel;
+    private $eventModel;
 
-    public function __construct(EventModel $EventModel)
+    public function __construct(EventModel $eventModel)
     {
-        $this->EventModel = $EventModel;
+        $this->eventModel = $eventModel;
     }
-    
+
     /**
      * Calls a method to send hiring partner id, event id and number of attendees
      *
@@ -28,10 +28,11 @@ class LinkHiringPartnerToEventController
      */
     public function __invoke(Request $request, Response $response, array $args) :Response
     {
-        $hiringPartner = $request->getParsedBody()['companyId'];
-        $event = $request->getParsedBody()['eventId'];
-        $attendees = $request->getParsedBody()['attendees'];
-        $result = $this->toDoModel->linkHPToEvent($hiringPartner, $event, $attendees);
+        $data = $request->getParsedBody();
+        $hiringPartner = $data['companyId'];
+        $event = $data['eventId'];
+        $attendees = $data['attendees'];
+        $result = $this->eventModel->linkHPToEvent($hiringPartner, $event, $attendees);
         if ($result) {
             return $response->withJson(['success' => 'True'], 200);
         } else {
