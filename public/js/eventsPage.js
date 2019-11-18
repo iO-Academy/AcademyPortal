@@ -55,7 +55,7 @@ async function displayEventsHandler(events) {
             <form id='addHiringPartnerForm'>
 
             <select data-event=${event.id}>
-            <option value='0'>Please select a hiring</option>`
+            <option value='0'>Please select a hiring partner...</option>`
 
             await getHiringPartners().then(responseJson => {
                 if(responseJson.status) {
@@ -77,13 +77,11 @@ async function displayEventsHandler(events) {
             </div>`
 
         eventInformation += `</div></div>`
-        console.log(eventInformation)
         eventList.innerHTML += eventInformation
 
         let showInfoButtons = document.querySelectorAll('.show-event-info')
         showInfoButtons.forEach(function (button) {
             button.addEventListener('click', e => {
-                console.log('yooo')
                 let targetId = 'moreInfo' + e.target.dataset.reference
                 let targetDiv = document.getElementById(targetId)
                 targetDiv.classList.toggle('hide')     
