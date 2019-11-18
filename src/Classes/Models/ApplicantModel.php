@@ -87,6 +87,28 @@ class ApplicantModel
     }
 
     /**
+     * Sorts the table via the input taken from the sorting arrows
+     *
+     * @input string $input is the sort choice
+     *
+     * @return array $results is the data retrieved.
+     */
+    public function sortApplicants($input) //eg `dateTimeAdded`DESC
+    {
+        $query = $this->db->prepare(
+            'SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
+                      AS "cohortDate" 
+                      FROM `applicants` 
+                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      ORDER BY $input;'
+        );
+        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
+        $query->execute();
+        $results = $query->fetchAll();
+        return $results;
+    }
+
+    /**
      * Retrieves an Applicant with the specified id
      *
      * @param $id
