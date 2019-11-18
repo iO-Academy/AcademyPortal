@@ -46,9 +46,21 @@ function displayEventsHandler(events) {
             <p>Location: ${event.location}</p>
             <p>Start Time: ${event.start_time.slice(0, - 3)}</p>
             <p>End Time: ${event.end_time.slice(0, - 3)}</p>`
-        if (event.notes !== null) {
-            eventInformation += `<p>Notes: ${event.notes}</p>`
-        }
+            
+            if (event.notes !== null) {
+                eventInformation += `<p>Notes: ${event.notes}</p>`
+            }
+
+            eventInformation += `<div class='addHiringPartner'>
+            <form id='addHiringPartnerForm'>
+
+            <label>Number of company attendees:</label>
+            <input type='number' name='companyAttendees' min='0'/>
+            <input type='submit'/> 
+            </form>
+            </div>`
+
+
         eventInformation += `</div></div>`
     })
     eventList.innerHTML = eventInformation
@@ -58,12 +70,43 @@ function displayEventsHandler(events) {
             button.addEventListener('click', e => {
                 let targetId = 'moreInfo' + e.target.dataset.reference
                 let targetDiv = document.getElementById(targetId)
-                targetDiv.classList.toggle('hide')
-            })
-        })
-    }}
+                targetDiv.classList.toggle('hide')     
+       })
+    })
+}};
 
 getEvents()
+
+function generateHiringPartnerDropdown() {
+    
+    let html = await fetch('./api/getHiringPartnerInfo', {
+        credentials: 'same-origin',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'get',
+    }).then(responseJson => {
+        let html = ""
+        if(responseJson.success) {
+            let hiringPartners = responseJson.data
+                hiringPartners.forEach(function(hiringPartner) {
+                    html += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
+                })
+                message.innerText = responseJson.message
+        } else {
+            message.innerText = responseJson.message
+        }
+        return html
+    })
+    return html
+}
+
+// TODO: addHiringPartnerForm
+// TODO: hiringPartnerSelection
+
+
+
 
 // Submit Form + Add New Event API Call
 eventForm.addEventListener("submit", e => {
