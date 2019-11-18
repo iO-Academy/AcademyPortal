@@ -7,7 +7,7 @@ use \Slim\Http\Response as Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\ApplicantModel;
 
-class DisplayApplicantsController
+class SortApplicantsController
 {
     private $renderer;
     private $applicantModel;
@@ -36,31 +36,9 @@ class DisplayApplicantsController
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $sortValue = $request->getQueryParam('sort');
 
-        switch ($sortValue){
-            case 'dateAsc':
-                echo 'date ascending';
-                break;
-
-            case 'dateDesc':
-                echo 'date descending';
-                break;
-
-            case 'cohortAsc':
-                echo 'cohort ascending';
-                break;
-
-            case 'cohortDesc':
-                echo 'cohoert desc';
-                break;
-        }
-
-        $args['data'] = $this->applicantModel->getAllApplicants();
-        return $this->renderer->render($response, 'displayApplicants.phtml', $args);
-
-//        $query = $args['query'];
-//        $this->applicantModel->sortApplicants($query);
+        $query = $args['query'];
+        $this->applicantModel->sortApplicants($query);
 //        return $response->withRedirect('/displayApplicants');
     }
 }

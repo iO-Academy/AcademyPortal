@@ -37,5 +37,6 @@ class GetApplicantController
         } else {
             return $response->withStatus(404);
         }
+
     }
 }
