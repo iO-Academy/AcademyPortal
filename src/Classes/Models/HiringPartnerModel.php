@@ -51,16 +51,19 @@ class HiringPartnerModel
      *
      * @return array array with the info
      */
-    public function getAllHiringPartnerContacts() :array
+    public function getContactsForCompany(int $companyId) :array
     {
-        $query = $this->db->query("SELECT
+        $query = $this->db>prepare("SELECT
             `name`,
             `email`,
             `job_title`,
             `phone`,
             `hiring_partner_company_id`,
             `is_primary_contact`
-            FROM `hiring_partner_contacts`;");
+            FROM `hiring_partner_contacts`
+            WHERE `hiring_partner_company_id` = :id;");
+        $query->bindParam(':id', $companyId, \PDO::PARAM_INT);
+        $query->execute();
         return $query->fetchAll();
     }
 

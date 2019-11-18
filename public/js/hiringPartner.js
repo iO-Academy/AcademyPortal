@@ -166,13 +166,14 @@ function displayHiringPartnerHandler(partnerCompanies){
             <p>Company size: ${partnerCompany.size}</p>
             <p>Tech Stack: ${partnerCompany.tech_stack}</p>
             <p>Postcode: ${partnerCompany.postcode}</p>`
+
         if (partnerCompany.phone_number !== null) {
             companyInformation += `<p>Phone number: ${partnerCompany.phone_number}</p>`
         }
         if (partnerCompany.url_website !== null) {
             companyInformation += `<a href="https://${partnerCompany.url_website}" target="_blank">${partnerCompany.url_website}</a>`
         }
-        companyInformation += `</div></div>`
+        companyInformation += `<a data-id ="${partnerCompany.id}" type="button"  class="myBtn">Contacts</a></div></div>`
     })
     companyDisplayer.innerHTML = companyInformation
 
