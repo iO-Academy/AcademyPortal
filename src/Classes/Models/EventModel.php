@@ -2,8 +2,6 @@
 
 namespace Portal\Models;
 
-use phpDocumentor\Reflection\Types\Boolean;
-use phpDocumentor\Reflection\Types\Integer;
 use Portal\Entities\EventEntity;
 
 class EventModel
@@ -20,7 +18,7 @@ class EventModel
      *
      * @return array An array of Events
      */
-    public function getEvents():array
+    public function getEvents(): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `category`, 
         `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`, 
@@ -38,7 +36,7 @@ class EventModel
      *
      * @return array An array of event categories
      */
-    public function getEventCategories():array
+    public function getEventCategories(): array
     {
         $sql = 'SELECT `id`, `name` FROM `event_categories`';
         $query = $this->db->prepare($sql);
@@ -52,7 +50,7 @@ class EventModel
      * @param [type] $newEvent
      * @return boolean True if operation succeeded
      */
-    public function addEvent(EventEntity $newEvent):bool
+    public function addEvent(EventEntity $newEvent): bool
     {
         $query = $this->db->prepare("INSERT INTO `events` (
             `id`,
@@ -96,7 +94,7 @@ class EventModel
      *
      * @return bool True if operation succeeds
      */
-    public function linkHPToEvent(int $hiringPartner, int $event, int $attendees) : bool
+    public function linkHPToEvent(int $hiringPartner, int $event, int $attendees): bool
     {
         $query = $this->db->prepare('INSERT INTO `events_hiring_partner_link_table` (
             `hiring_partner_id`, 

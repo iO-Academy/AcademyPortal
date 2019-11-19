@@ -26,7 +26,7 @@ class AddHiringPartnerToEventController
      *
      * @return Response returns Json success/failure message
      */
-    public function __invoke(Request $request, Response $response, array $args) :Response
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $data = $request->getParsedBody();
         $hiringPartner = $data['hiring_partner_id'];
@@ -37,7 +37,7 @@ class AddHiringPartnerToEventController
             return $response->withJson(['success' => true,
                 'message'=>'Hiring partner successfully added to event.'], 200);
         } else {
-            return $response->withJson(['success' => false, 'message'=>'Database error!'], 500);
+            return $response->withJson(['success' => false, 'message' => 'Error - please contact administrator'], 500);
         }
     }
 }
