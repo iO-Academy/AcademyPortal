@@ -23,19 +23,41 @@ function getEvents() {
 }
 
 /**
- * Runs a foreach through each event object and outputs HTML elements with event details
+ * Runs a foreach through each event object and outputs HTML elements with event details via eventGenerator
  *
  * @param events is an array of objects which contains information about events
  */
-async function displayEventsHandler(events) {
+function displayEventsHandler(events) {
     let eventInformation = ''
     if(events == '') {
         eventList.innerHTML = 'No Events Scheduled'
     } else {
         eventList.innerHTML = ''
 
-        await events.forEach(async (event) => {
-            eventList.innerHTML = ''
+        events.forEach((event) => {
+            eventGenerator(event)
+            .then(() => {
+                let showInfoButtons = document.querySelectorAll('.show-event-info')
+            showInfoButtons.forEach(function (button) {
+                button.addEventListener('click', e => {
+                    let targetId = 'moreInfo' + e.target.dataset.reference
+                    let targetDiv = document.getElementById(targetId)
+                    targetDiv.classList.toggle('hide')     
+            })
+            })
+            })
+        })   
+    }
+};
+
+/**
+ * Outputs HTML elements with event details
+ *
+ * @param evens an object which contains information about an event
+ */
+async function eventGenerator(event) {
+    eventList.innerHTML = ''
+            let eventInformation = ''
             eventInformation +=
                 `<div class="event-name">
             <p>${event.name}</p>
@@ -78,18 +100,8 @@ async function displayEventsHandler(events) {
 
         eventInformation += `</div></div>`
         eventList.innerHTML += eventInformation
-
-        let showInfoButtons = document.querySelectorAll('.show-event-info')
-        showInfoButtons.forEach(function (button) {
-            button.addEventListener('click', e => {
-                let targetId = 'moreInfo' + e.target.dataset.reference
-                let targetDiv = document.getElementById(targetId)
-                targetDiv.classList.toggle('hide')     
-        })
-        })
         return eventInformation
-    })  
-}};
+}
 
 getEvents()
 
