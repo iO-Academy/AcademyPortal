@@ -41,28 +41,23 @@ class DisplayApplicantsController
 
         switch ($sortValue){
             case 'dateAsc':
-                echo 'date ascending';
                 $args['data'] = $this->applicantModel->sortApplicants('dateAsc');
                 break;
 
             case 'dateDesc':
-                echo 'date descending';
                 $args['data'] = $this->applicantModel->sortApplicants('dateDesc');
                 break;
 
             case 'cohortAsc':
-                echo 'cohort ascending';
                 $args['data'] = $this->applicantModel->sortApplicants('cohortAsc');
                 break;
 
             case 'cohortDesc':
-                echo 'cohoert desc';
                 $args['data'] = $this->applicantModel->sortApplicants('cohortDesc');
                 break;
 
             default:
                 $args['data'] = $this->applicantModel->getAllApplicants();
-                echo 'default';
         }
         return $this->renderer->render($response, 'displayApplicants.phtml', $args);
 

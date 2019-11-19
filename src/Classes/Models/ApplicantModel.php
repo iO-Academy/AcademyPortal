@@ -95,20 +95,26 @@ class ApplicantModel
      */
     public function sortApplicants($input) //eg `dateTimeAdded`DESC
     {
-        if ($input == 'dateAsc'){
-            $order = '`dateTimeAdded` ASC';
+        switch ($input){
+            case 'dateAsc':
+                $order = '`dateTimeAdded` ASC';
+                break;
 
-        } elseif ($input == 'dateDesc'){
-            $order = '`dateTimeAdded` DESC';
+            case 'dateDesc':
+                $order = '`dateTimeAdded` DESC';
+                break;
 
-        } elseif ($input == 'cohortAsc'){
-            $order = '`date`ASC';
+            case 'cohortAsc':
+                $order = '`date` ASC';
+                break;
 
-        } elseif ($input == 'cohortDesc'){
-            $order = '`date` DESC';
+            case 'cohortDesc':
+                $order = '`date` DESC';
+                break;
 
-        } else {
-            $order = '`dateTimeAdded` ASC';
+            default:
+                $order = '`dateTimeAdded` ASC';
+                break;
         }
 
         $query = $this->db->prepare(
