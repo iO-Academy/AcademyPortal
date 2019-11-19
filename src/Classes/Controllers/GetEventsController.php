@@ -69,7 +69,6 @@ class GetEventsController
                 'data' => []
             ];
             $statusCode = 200;
-
         }
         return $response->withJson($data, $statusCode);
     }
