@@ -80,7 +80,7 @@ class EventModel
     }
 
     /**
-     * Search all events from the database 
+     * Search all events from the database
      *
      * @param string of validated search term
      * @return array An array of Events based on input search criteria

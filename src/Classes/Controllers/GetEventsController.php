@@ -59,7 +59,6 @@ class GetEventsController
                     $statusCode = 200;
                 }
                 return $response->withJson($data, $statusCode);
-
             } else {
                 $data['message'] = 'Search term cannot be greater than 255 characters.';
                 return $response->withJson($data, $statusCode);
