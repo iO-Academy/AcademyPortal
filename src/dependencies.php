@@ -72,4 +72,4 @@ $container['AddEventController'] = new \Portal\Factories\AddEventControllerFacto
 
 $container['AddContactController'] = new \Portal\Factories\AddContactControllerFactory();
 
-$container['LinkHiringPartnerToEventController'] = new \Portal\Factories\LinkHiringPartnerToEventControllerFactory();
+$container['AddHiringPartnerToEventController'] = new \Portal\Factories\AddHiringPartnerToEventControllerFactory();
