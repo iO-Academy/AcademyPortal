@@ -32,7 +32,12 @@ class LinkHiringPartnerToEventController
         $hiringPartner = $data['hiring_partner_id'];
         $event = $data['events_id'];
         $attendees = $data['people_attending'];
-        $result = $this->eventModel->linkHPToEvent($hiringPartner, $event, $attendees);
+        if (!$this->eventModel->checklinkHP($hiringPartner, $event)){
+            $result = $this->eventModel->linkHPToEvent($hiringPartner, $event, $attendees);
+        }else{
+            return $response->withJson(['success' => true,
+                'message'=>'Hiring partner already linked.'], 200);
+        }
         if ($result) {
             return $response->withJson(['success' => true,
                 'message'=>'Hiring partner successfully linked to event.'], 200);

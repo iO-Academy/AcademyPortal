@@ -20,7 +20,7 @@ class EventModel
      *
      * @return array An array of Events
      */
-    public function getEvents():array
+    public function getEvents(): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `category`, 
         `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`, 
@@ -38,7 +38,7 @@ class EventModel
      *
      * @return array An array of event categories
      */
-    public function getEventCategories():array
+    public function getEventCategories(): array
     {
         $sql = 'SELECT `id`, `name` FROM `event_categories`';
         $query = $this->db->prepare($sql);
@@ -52,7 +52,7 @@ class EventModel
      * @param [type] $newEvent
      * @return boolean True if operation succeeded
      */
-    public function addEvent(EventEntity $newEvent):bool
+    public function addEvent(EventEntity $newEvent): bool
     {
         $query = $this->db->prepare("INSERT INTO `events` (
             `id`,
@@ -96,7 +96,7 @@ class EventModel
      *
      * @return bool True if operation succeeds
      */
-    public function linkHPToEvent(int $hiringPartner, int $event, int $attendees) : bool
+    public function linkHPToEvent(int $hiringPartner, int $event, $attendees = null): bool
     {
         $query = $this->db->prepare('INSERT INTO `events_hiring_partner_link_table` (
             `hiring_partner_id`, 
@@ -111,5 +111,21 @@ class EventModel
         $query->bindParam(':event', $event);
         $query->bindParam(':attendees', $attendees);
         return $query->execute();
+    }
+
+    public function checklinkHP(int $hiringPartner, int $event): bool
+    {
+        $query = $this->db->prepare('SELECT `id` FROM `events_hiring_partner_link_table`
+        WHERE  `events_id` = :event AND
+        `hiring_partner_id` = :hiringPartner;');
+        $query->bindParam(':hiringPartner', $hiringPartner);
+        $query->bindParam(':event', $event);
+        $query->execute();
+        $linkToHp = $query->fetchAll();
+        If(count($linkToHp) > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
