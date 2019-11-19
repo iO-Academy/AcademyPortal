@@ -36,28 +36,48 @@ class DisplayApplicantsController
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
+
+
+
         $sortValue = $request->getQueryParam('sort');
+
+        if (empty($sortValue)){
+            echo 'sort value is empty';
+        } else{
+            echo $sortValue;
+            echo '<br>';
+        }
 
         switch ($sortValue){
             case 'dateAsc':
                 echo 'date ascending';
+                $args['data'] = $this->applicantModel->sortApplicants('dateAsc');
                 break;
 
             case 'dateDesc':
                 echo 'date descending';
+                $args['data'] = $this->applicantModel->sortApplicants('dateDesc');
                 break;
 
             case 'cohortAsc':
                 echo 'cohort ascending';
+                $args['data'] = $this->applicantModel->sortApplicants('cohortAsc');
                 break;
 
             case 'cohortDesc':
                 echo 'cohoert desc';
+                $args['data'] = $this->applicantModel->sortApplicants('cohortDesc');
                 break;
-        }
 
-        $args['data'] = $this->applicantModel->getAllApplicants();
+            default:
+                $args['data'] = $this->applicantModel->getAllApplicants();
+                echo 'default';
+        }
+        var_dump($args['data']);
         return $this->renderer->render($response, 'displayApplicants.phtml', $args);
+
+//        $args['data'] = $this->applicantModel->getAllApplicants();
+//        return $this->renderer->render($response, 'displayApplicants.phtml', $args);
 
 //        $query = $args['query'];
 //        $this->applicantModel->sortApplicants($query);

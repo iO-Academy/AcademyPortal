@@ -78,7 +78,7 @@ class ApplicantModel
                       AS "cohortDate" 
                       FROM `applicants` 
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-                      ORDER BY `dateTimeAdded`DESC;'
+                      ORDER BY `dateTimeAdded`ASC ;'
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
         $query->execute();
@@ -96,24 +96,27 @@ class ApplicantModel
     public function sortApplicants($input) //eg `dateTimeAdded`DESC
     {
         if ($input == 'dateAsc'){
-            $order = 'dateTimeAdded`ASC`';
+            $order = '`dateTimeAdded` ASC';
 
         } elseif ($input == 'dateDesc'){
-            $order = 'dateTimeAdded`DESC`';
+            $order = '`dateTimeAdded` DESC';
 
         } elseif ($input == 'cohortAsc'){
-            $order = 'date`ASC`';
+            $order = '`date`ASC';
+
+        } elseif ($input == 'cohortDesc'){
+            $order = '`date` DESC';
 
         } else {
-            $order = 'date`DESC`';
+            $order = '`dateTimeAdded` ASC';
         }
 
         $query = $this->db->prepare(
-            'SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
-                      AS "cohortDate" 
-                      FROM `applicants` 
+            "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
+                      AS 'cohortDate'
+                      FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-                      ORDER BY ?;'
+                      ORDER BY $order;"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
         $query->execute([$order]);

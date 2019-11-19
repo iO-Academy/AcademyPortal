@@ -8,7 +8,6 @@ $app->get('/register', 'RegisterController');
 // URL routes - to display pages
 $app->get('/addapplicant', 'addApplicantController');
 $app->get('/displayApplicants', 'DisplayApplicantsController');
-$app->get('/sort/{query}', 'SortApplicantsController');
 
 $app->get('/displayApplicantInfo/{id}', 'GetApplicantController');
 $app->get('/displayHiringPartnerPage', 'DisplayHiringPartnerPageController');
