@@ -23,14 +23,20 @@ class CompanyDetailsModalController
         $this->view = $view;
     }
 
-
+    /**
+     * Combine company details and company contact details into a single array and send to modal
+     * @param Request $request
+     * @param Response $response
+     * @param $args contains company ID
+     */
     public function __invoke(Request $request, Response $response, $args)
     {
         $id = (int) $args['id'];
         $companyDetails = $this->model->getDetailsByCompany($id);
         $contactDetails = $this->model->getContactsByCompany($id);
         $companyDetailsAndContacts = array_merge($companyDetails, $contactDetails);
-        $this->view->render($response, 'companyDetailsModal.phtml', ['companyInfo' => $companyDetailsAndContacts]);
-    }
+        $companyDetailsAndContacts = (object) $companyDetailsAndContacts;
+        return $response->withJson($companyDetailsAndContacts);
 
+    }
 }

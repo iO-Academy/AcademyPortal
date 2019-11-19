@@ -149,6 +149,9 @@ async function getHiringPartners () {
     .then(hiringPartnerInfo => displayHiringPartnerHandler(hiringPartnerInfo.data))
 }
 
+getHiringPartners()
+
+
 /**
  * Runs a foreach through each hiring partner object and outputs HTML elements with hiring partner's details
  *
@@ -156,13 +159,14 @@ async function getHiringPartners () {
  */
 function displayHiringPartnerHandler(partnerCompanies){
     let companyNamesHTML = '';
+    console.log('hello')
     partnerCompanies.forEach(function(partnerCompany){
         companyNamesHTML += `<div class="company-name"><a data-id=${partnerCompany.id} type="button"  class="myBtn">${partnerCompany.name}</a></div>`;
     })
-    document.getElementById('companies').innerHTML = companyNamesHTML
+    document.querySelector('#companies').innerHTML = companyNamesHTML;
+    addEventListenersForModal();
 }
 
-getHiringPartners()
 
 addContactForm.addEventListener('submit', e => {
     e.preventDefault()

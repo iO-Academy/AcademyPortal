@@ -7,46 +7,36 @@ function validateField(data, field, noDataMessage = 'No information provided') {
     }
 }
 
-$(document).ready(function(){
-    $(".myBtn").click(function(){
-        var url = './api/displayCompanyInfo/' + this.dataset.id
-        fetch(url)
-            .then(
-                function(response) {
-                    if (response.status !== 200) {
-                        document.querySelector('#modal-main').innerHTML = ''
-                        document.querySelector('#modal-main').innerHTML += '<div class="alert alert-danger" role="alert">Looks like there was a problem. Status Code: ' +
-                            response.status + '</div>'
-                        return
-                    }
-                    // Examine the text in the response
-                    response.json().then(function(data) {
+function addEventListenersForModal() {
+    console.log('2nd hello');
+    $(document).ready(function(){
+        $(".myBtn").click(function(){
+            var url = './api/displayCompanyInfo/' + this.dataset.id
+            fetch(url)
+                .then(
+                    function(response) {
+                        return response.json()
+                    }).then(function(data) {
                         console.log(data)
-                        validateField(data, 'name')
-                        validateField(data, 'email')
-                        validateField(data, 'phoneNumber')
-                        validateField(data, 'cohortDate')
-                        validateField(data, 'whyDev')
-                        validateField(data, 'codeExperience')
-                        validateField(data, 'hearAbout')
-                        validateField(data, 'eligible', '<p class="alertUser">Not eligible for studying in the UK<p/>')
-                        validateField(data, 'eighteenPlus', '<p class="alertUser">Under eighteen</p>')
-                        validateField(data, 'finance', 'Would not like to apply for finance')
-                        if (data.eligible !== 0) {
-                            document.getElementById('eligible').innerHTML = 'Eligible for studying in the UK'
-                        }
-                        if (data.eighteenPlus !== 0) {
-                            document.getElementById('eighteenPlus').innerHTML = 'Over eighteen'
-                        }
-                        if (data.finance !== 0) {
-                            document.getElementById('finance').innerHTML = 'Would like to apply for finance'
-                        }
-                        validateField(data, 'notes')
-                        document.getElementById('dateTimeAdded').innerHTML =  data.dateTimeAdded
-                    })
-                }
-            )
 
-        $("#myModal").modal()
-    })
-})
+                            // console.log(data[0])
+                            // data[0]
+                            // data[1]-data[x] loop
+                            validateField(data[0], 'name')
+                            validateField(data[0], 'size')
+                            validateField(data[0], 'tech_stack')
+                            validateField(data[0], 'postcode')
+                            validateField(data[0], 'phone_number')
+                            validateField(data[0], 'url_website')
+                    })
+            $("#myModal").modal()
+
+            // .catch(function() {
+                //         console.log('hello')
+                // document.querySelector('#modal-main').innerHTML = ''
+                // document.querySelector('#modal-main').innerHTML += '<div class="alert alert-danger" role="alert">Looks like there was a problem. Status Code: ' +
+                //     response.status + '</div>'
+            })
+        })
+    // })
+}
