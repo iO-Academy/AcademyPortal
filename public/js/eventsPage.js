@@ -96,7 +96,7 @@ function displayEventsHandler(events) {
 /**
  * Outputs HTML elements with event details
  *
- * @param evens an object which contains information about an event
+ * @param events an object which contains information about an event
  */
 async function eventGenerator(event) {
     eventList.innerHTML = ''
