@@ -37,7 +37,7 @@ class LinkHiringPartnerToEventController
             return $response->withJson(['success' => true,
                 'message' => 'Hiring partner successfully linked to event.'], 200);
         } else {
-            return $response->withJson(['success' => false, 'message' => 'Database error!'], 500);
+            return $response->withJson(['success' => false, 'message' => 'Error - please contact administrator'], 500);
         }
     }
 }
