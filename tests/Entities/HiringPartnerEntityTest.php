@@ -157,6 +157,7 @@ class HiringPartnerEntityTest extends TestCase
     public function testGetWebsiteURLSuccess()
     {
         $company = new \Portal\Entities\HiringPartnerEntity(
+            1,
             'TechHub',
             2,
             'CSS',

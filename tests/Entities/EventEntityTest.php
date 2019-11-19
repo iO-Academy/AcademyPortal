@@ -65,6 +65,23 @@ class EventEntityTest extends TestCase
         EventEntity::ValidateLength($name, $characterLength);
     }
 
+    public function testGetEventIdSuccess()
+    {
+        $name = new EventEntity(
+            1,
+            'hiring event',
+            2,
+            '1 Widcombe Cres, Bath BA2 6AH',
+            '2019-10-04',
+            '18:00',
+            '21:00',
+            '',
+            ['1' => 'Other', '2' => 'Hiring Event']
+        );
+        $result = $name->getEventId();
+        $this->assertEquals($result, 1);
+    }
+
     public function testGetEventNameSuccess()
     {
         $name = new EventEntity(
@@ -119,6 +136,7 @@ class EventEntityTest extends TestCase
     public function testGetLocationSuccess()
     {
         $name = new EventEntity(
+            1,
             'Taster Session',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
@@ -135,6 +153,7 @@ class EventEntityTest extends TestCase
     public function testGetDateSuccess()
     {
         $name = new EventEntity(
+            1,
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
@@ -151,6 +170,7 @@ class EventEntityTest extends TestCase
     public function testGetStartTimeSuccess()
     {
         $name = new EventEntity(
+            1,
             'Misc Event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
@@ -167,6 +187,7 @@ class EventEntityTest extends TestCase
     public function testGetEndTimeSuccess()
     {
         $name = new EventEntity(
+            1,
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
@@ -183,6 +204,7 @@ class EventEntityTest extends TestCase
     public function testGetNotesSuccess()
     {
         $name = new EventEntity(
+            1,
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
@@ -243,6 +265,7 @@ class EventEntityTest extends TestCase
     public function testNewEventEntitySuccess()
     {
         $newEventEntity = new EventEntity(
+            1,
             'new event',
             2,
             '1 widcomb',
