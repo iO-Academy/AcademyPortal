@@ -14,7 +14,7 @@ class LinkHiringPartnerToEventControllerFactory
      *
      * @return LinkHiringPartnerToEventController
      */
-    public function __invoke(ContainerInterface $container) : LinkHiringPartnerToEventController
+    public function __invoke(ContainerInterface $container): LinkHiringPartnerToEventController
     {
         $eventModel = $container->get('EventModel');
         return new LinkHiringPartnerToEventController($eventModel);
