@@ -29,14 +29,15 @@ class LinkHiringPartnerToEventController
     public function __invoke(Request $request, Response $response, array $args) :Response
     {
         $data = $request->getParsedBody();
-        $hiringPartner = $data['companyId'];
-        $event = $data['eventId'];
-        $attendees = $data['attendees'];
+        $hiringPartner = $data['hiring_partner_id'];
+        $event = $data['events_id'];
+        $attendees = $data['people_attending'];
         $result = $this->eventModel->linkHPToEvent($hiringPartner, $event, $attendees);
         if ($result) {
             return $response->withJson(['success' => 'True'], 200);
         } else {
-            return $response->withJson(['success' => 'False'], 200);
+            echo 'Something went wrong, please check and try again';
+            return $response->withJson(['success' => 'False'], 500);
         }
     }
 }
