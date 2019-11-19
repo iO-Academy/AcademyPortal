@@ -51,9 +51,9 @@ class HiringPartnerModel
      *
      * @return array array with the info
      */
-    public function getContactsForCompany(int $companyId) :array
+    public function getContactsByCompany(int $companyId) :array
     {
-        $query = $this->db>prepare("SELECT
+        $query = $this->db->prepare("SELECT
             `name`,
             `email`,
             `job_title`,
@@ -175,4 +175,20 @@ class HiringPartnerModel
         $query->execute();
         return $query->fetchAll();
     }
+
+    /**
+     * Gets a single hiring partners information
+     *
+     * @return array array with the info
+     */
+    public function getDetailsByCompany($id) :array
+    {
+        $query = $this->db->prepare("SELECT 
+							  	`id`, `name`, `size`, `tech_stack`, `postcode`, `phone_number`, `url_website`
+								FROM `hiring_partner_companies`
+								WHERE `id` = :id ;");
+        $query->execute(['id'=>$id]);
+        return $query->fetchAll();
+    }
+
 }
