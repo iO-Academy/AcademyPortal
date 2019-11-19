@@ -55,6 +55,7 @@ class EventModel
     public function addEvent(EventEntity $newEvent):bool
     {
         $query = $this->db->prepare("INSERT INTO `events` (
+            `id`,
             `name`,
             `category`,
             `location`,
@@ -64,6 +65,7 @@ class EventModel
             `notes`
             ) 
             VALUES (
+            :eventId, 
             :name, 
             :category, 
             :location,
@@ -71,6 +73,7 @@ class EventModel
             :startTime, 
             :endTime, 
             :notes);");
+        $query->bindParam(':eventId', $newEvent->getEventId());
         $query->bindParam(':name', $newEvent->getName());
         $query->bindParam(':category', $newEvent->getCategory());
         $query->bindParam(':location', $newEvent->getLocation());
