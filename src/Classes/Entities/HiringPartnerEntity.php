@@ -20,8 +20,7 @@ class HiringPartnerEntity extends ValidationEntity
         string $hiringPartnerPostcode = null,
         string $hiringPartnerPhoneNumber = null,
         string $hiringPartnerWebsiteUrl = null
-    )
-    {
+    ) {
         $this->companyId = ($this->companyId ?? $hiringPartnerCompanyId);
         $this->companyName = ($this->companyName ?? $hiringPartnerCompanyName);
         $this->companySize = ($this->companySize ?? $hiringPartnerCompanySize);
