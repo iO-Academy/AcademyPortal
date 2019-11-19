@@ -55,27 +55,37 @@ function displayEventsHandler(events) {
                         let eventIdForm = e.target.id
                         let hpId = document.querySelector(`select[data-event='${eventIdForm}']`).value
                         let attendees = document.querySelector(`[name='companyAttendees'][data-event='${eventIdForm}']`).value
+                        
                         if (attendees == ""){
                             attendees = 0
                         }
+
                         let data = {
                             hiring_partner_id: hpId,
                             events_id: eventIdForm,
                             people_attending: attendees
                         }
-                        fetch('./api/linkHiringPartnerToEvent', {
-                            credentials: 'same-origin',
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json',
-                            },
-                            method: 'post',
-                            body: JSON.stringify(data)
-                        }).then(response => response.json())
-                            .then((responseJSON) => {
-                                currentEventsMessage.innerText = responseJSON.message
-                            })
 
+                        if(!(attendees < 0)) {
+                            if(hpId != 0) {
+                                fetch('./api/linkHiringPartnerToEvent', {
+                                    credentials: 'same-origin',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json',
+                                    },
+                                    method: 'post',
+                                    body: JSON.stringify(data)
+                                }).then(response => response.json())
+                                    .then((responseJSON) => {
+                                        currentEventsMessage.innerText = responseJSON.message
+                                    })
+                            } else {
+                                currentEventsMessage.innerText = "Please select a hiring partner"
+                            }
+                        } else {
+                            currentEventsMessage.innerText = "Please enter a valid number of attendees"
+                        }
                     })
                 })
             })
