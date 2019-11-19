@@ -118,9 +118,9 @@ async function eventGenerator(event) {
                         hiringPartners.forEach(function(hiringPartner) {
                             eventInformation += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
                         })
-                        message.innerText = responseJson.message
+                        currentEventsMessage.innerText = responseJson.message
                 } else {
-                    message.innerText = responseJson.message
+                    currentEventsMessage.innerText = responseJson.message
                 }
             });
 
