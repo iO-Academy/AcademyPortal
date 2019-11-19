@@ -2,8 +2,6 @@
 
 namespace Portal\Models;
 
-use phpDocumentor\Reflection\Types\Boolean;
-use phpDocumentor\Reflection\Types\Integer;
 use Portal\Entities\EventEntity;
 
 class EventModel
@@ -97,10 +95,11 @@ class EventModel
      * @return bool True if operation succeeds
      */
     public function linkHPToEvent(int $hiringPartner, int $event, $attendees = null): bool
+
     {
         $query = $this->db->prepare('INSERT INTO `events_hiring_partner_link_table` (
             `hiring_partner_id`, 
-            `events_id`, 
+            `event_id`, 
             `people_attending`
             ) 
             VALUES (

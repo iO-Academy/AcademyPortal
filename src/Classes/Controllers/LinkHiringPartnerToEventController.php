@@ -26,11 +26,11 @@ class LinkHiringPartnerToEventController
      *
      * @return Response returns Json success/failure message
      */
-    public function __invoke(Request $request, Response $response, array $args) :Response
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $data = $request->getParsedBody();
         $hiringPartner = $data['hiring_partner_id'];
-        $event = $data['events_id'];
+        $event = $data['event_id'];
         $attendees = $data['people_attending'];
         if (!$this->eventModel->checklinkHP($hiringPartner, $event)){
             $result = $this->eventModel->linkHPToEvent($hiringPartner, $event, $attendees);
@@ -40,9 +40,9 @@ class LinkHiringPartnerToEventController
         }
         if ($result) {
             return $response->withJson(['success' => true,
-                'message'=>'Hiring partner successfully linked to event.'], 200);
+                'message' => 'Hiring partner successfully linked to event.'], 200);
         } else {
-            return $response->withJson(['success' => false, 'message'=>'Database error!'], 500);
+            return $response->withJson(['success' => false, 'message' => 'Database error!'], 500);
         }
     }
 }

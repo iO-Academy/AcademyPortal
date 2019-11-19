@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.27)
 # Database: academyPortal
-# Generation Time: 2019-11-18 15:07:49 +0000
+# Generation Time: 2019-11-19 16:03:23 +0000
 # ************************************************************
 
 
@@ -159,6 +159,15 @@ CREATE TABLE `events` (
   CONSTRAINT `events_ibfk_1` FOREIGN KEY (`category`) REFERENCES `event_categories` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `events` WRITE;
+/*!40000 ALTER TABLE `events` DISABLE KEYS */;
+
+INSERT INTO `events` (`id`, `name`, `category`, `location`, `date`, `start_time`, `end_time`, `notes`)
+VALUES
+	(1,'test',2,'bath','2020-02-08','09:01:00','11:00:00','sf');
+
+/*!40000 ALTER TABLE `events` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table events_hiring_partner_link_table
@@ -168,9 +177,9 @@ DROP TABLE IF EXISTS `events_hiring_partner_link_table`;
 
 CREATE TABLE `events_hiring_partner_link_table` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `events_id` int(11) NOT NULL,
-  `hiring_partner_id` int(11) NOT NULL,
-  `people_attending` int(11) DEFAULT NULL,
+  `event_id` int(11) unsigned NOT NULL,
+  `hiring_partner_id` int(11) unsigned NOT NULL,
+  `people_attending` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
