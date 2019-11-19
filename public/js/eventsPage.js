@@ -191,7 +191,7 @@ function validateForm() {
 document.querySelector('#submit-search-event').addEventListener('click', function(e) {
     const searchInput = document.querySelector('#academy-events-search').value
     e.preventDefault()
-    if ((searchInput.length) && searchInput.length < 255) {
+    if ((searchInput.length) && searchInput.length < 256) {
         getEvents(searchInput)
     } else {
         message.innerHTML = 'Event search: must be between 1 and 255 characters'
