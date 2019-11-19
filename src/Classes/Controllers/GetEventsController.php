@@ -41,25 +41,7 @@ class GetEventsController
         $eventSearchInput = $request->getQueryParam('searchTerm');
         if (!empty($eventSearchInput)) {
             if (strlen($eventSearchInput) < 256) {
-            // run the search event function
-                $searchEvents = $this->eventModel->searchEvents($eventSearchInput);
-                if (!empty($eventSearchInput)) {
-                    $data = [
-                        'success' => true,
-                        'message' => 'Query Successful.',
-                        'data' => $eventSearchInput
-                    ];
-                    $statusCode = 200;
-                } else {
-                    $data = [
-                        'success' => true,
-                        'message' => 'There are no events.',
-                        'data' => []
-                    ];
-                    $statusCode = 200;
-                }
-                return $response->withJson($data, $statusCode);
-
+                $events = $this->eventModel->searchEvents($eventSearchInput);
             } else {
                 $data['message'] = 'Search term cannot be greater than 255 characters.';
                 return $response->withJson($data, $statusCode);
