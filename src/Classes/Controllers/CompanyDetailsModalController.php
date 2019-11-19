@@ -35,8 +35,6 @@ class CompanyDetailsModalController
         $companyDetails = $this->model->getDetailsByCompany($id);
         $contactDetails = $this->model->getContactsByCompany($id);
         $companyDetailsAndContacts = array_merge($companyDetails, $contactDetails);
-        $companyDetailsAndContacts = (object) $companyDetailsAndContacts;
         return $response->withJson($companyDetailsAndContacts);
-
     }
 }
