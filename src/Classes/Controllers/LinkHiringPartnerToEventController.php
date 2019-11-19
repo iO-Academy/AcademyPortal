@@ -36,7 +36,7 @@ class LinkHiringPartnerToEventController
         if ($result) {
             return $response->withJson(['success' => 'True'], 200);
         } else {
-            return $response->withJson([['success' => 'False'], 200);
+            return $response->withJson(['success' => 'False'], 200);
         }
     }
 }
