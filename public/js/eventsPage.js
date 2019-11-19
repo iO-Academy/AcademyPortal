@@ -8,8 +8,13 @@ const message = document.querySelector('#messages')
  *
  * @return event data
  */
-function getEvents() {
-    fetch('./api/getEvents', {
+function getEvents(search = false) {
+    let url = './api/getEvents'
+    if (search !== false) {
+        url += '?searchTerm=' + search
+    }
+
+    fetch(url, {
         credentials: "same-origin",
         headers: {
             'Accept': 'application/json',
@@ -183,12 +188,12 @@ function validateForm() {
 }
 
 
-
-const searchEvent = document.querySelector('#submit-search-event')
-searchEvent.addEventListener('click', function(e) {
-    const searchInput = document.querySelector('#search-events')
+document.querySelector('#submit-search-event').addEventListener('click', function(e) {
+    const searchInput = document.querySelector('#academy-events-search').value
     e.preventDefault()
-    if (!(searchInput.value.length) || searchInput.value.length > 255) {
+    if ((searchInput.length) && searchInput.length < 255) {
+        getEvents(searchInput)
+    } else {
         message.innerHTML = 'Event search: must be between 1 and 255 characters'
     }
 })
