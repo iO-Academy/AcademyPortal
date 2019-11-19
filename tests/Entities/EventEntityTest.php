@@ -68,6 +68,7 @@ class EventEntityTest extends TestCase
     public function testGetEventNameSuccess()
     {
         $name = new EventEntity(
+            1,
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
@@ -84,6 +85,7 @@ class EventEntityTest extends TestCase
     public function testGetCategorySuccess()
     {
         $name = new EventEntity(
+            1,
             'hiring event',
             2,
             '1 Widcombe Cres, Bath BA2 6AH',
