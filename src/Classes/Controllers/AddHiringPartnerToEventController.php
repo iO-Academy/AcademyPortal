@@ -6,7 +6,7 @@ use Portal\Models\EventModel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class LinkHiringPartnerToEventController
+class AddHiringPartnerToEventController
 {
     private $eventModel;
 
@@ -32,10 +32,10 @@ class LinkHiringPartnerToEventController
         $hiringPartner = $data['hiring_partner_id'];
         $event = $data['event_id'];
         $attendees = $data['people_attending'];
-        $result = $this->eventModel->linkHPToEvent($hiringPartner, $event, $attendees);
+        $result = $this->eventModel->addHPToEvent($hiringPartner, $event, $attendees);
         if ($result) {
             return $response->withJson(['success' => true,
-                'message'=>'Hiring partner successfully linked to event.'], 200);
+                'message'=>'Hiring partner successfully added to event.'], 200);
         } else {
             return $response->withJson(['success' => false, 'message'=>'Database error!'], 500);
         }
