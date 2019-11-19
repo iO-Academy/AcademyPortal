@@ -1,6 +1,8 @@
 const eventList = document.querySelector('#events')
 const eventForm = document.querySelector('form')
 const message = document.querySelector('#messages')
+const currentEventsMessage = document.querySelector('#currentEventsMessages')
+
 
 /**
  * Gets event information from the API and passes into the 
@@ -43,8 +45,36 @@ function displayEventsHandler(events) {
                     let targetId = 'moreInfo' + e.target.dataset.reference
                     let targetDiv = document.getElementById(targetId)
                     targetDiv.classList.toggle('hide')     
-            })
-            })
+                    })
+                })
+            }).then(()=>{
+                let HPForms = document.querySelectorAll('.addHiringPartnerForm')
+                HPForms.forEach(function(HpForm) {
+                    HpForm.addEventListener('submit' , function(e){
+                        e.preventDefault()
+                        let eventIdForm = e.target.id
+                        let hpId = document.querySelector(`select[data-event='${eventIdForm}']`).value
+                        let attendees = document.querySelector(`[name='companyAttendees'][data-event='${eventIdForm}']`).value
+                        let data = {
+                            hiring_partner_id: hpId,
+                            events_id: eventIdForm,
+                            people_attending: attendees
+                        }
+                        fetch('./api/linkHiringPartnerToEvent', {
+                            credentials: 'same-origin',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                            },
+                            method: 'post',
+                            body: JSON.stringify(data)
+                        }).then(response => response.json())
+                            .then((responseJSON) => {
+                                currentEventsMessage.innerText = responseJSON.message
+                            })
+
+                    })
+                })
             })
         })   
     }
@@ -68,13 +98,13 @@ async function eventGenerator(event) {
             <p>Location: ${event.location}</p>
             <p>Start Time: ${event.start_time.slice(0, - 3)}</p>
             <p>End Time: ${event.end_time.slice(0, - 3)}</p>`
-            
+
             if (event.notes !== null) {
                 eventInformation += `<p>Notes: ${event.notes}</p>`
             }
 
             eventInformation += `<div class='addHiringPartner'>
-            <form id='addHiringPartnerForm'>
+            <form class='addHiringPartnerForm' id='${event.id}'>
 
             <select data-event=${event.id}>
             <option value='0'>Please select a hiring partner...</option>`
@@ -93,7 +123,7 @@ async function eventGenerator(event) {
 
             eventInformation += `</select>
             <label>Number of company attendees:</label>
-            <input type='number' name='companyAttendees' min='0'/>
+            <input data-event='${event.id}' type='number' name='companyAttendees' min='0'/>
             <input type='submit'/> 
             </form>
             </div>`
@@ -111,7 +141,7 @@ getEvents()
  * @return array The JSON response
  */
  async function getHiringPartners() {
-    
+
     let response = await fetch('./api/getHiringPartnerInfo', {
         credentials: 'same-origin',
         headers: {
