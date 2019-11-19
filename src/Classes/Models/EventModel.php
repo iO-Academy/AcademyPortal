@@ -80,10 +80,10 @@ class EventModel
     }
 
     /**
-     * Get all events from the database
+     * Search all events from the database 
      *
      * @param string of validated search term
-     * @return array An array of Events
+     * @return array An array of Events based on input search criteria
      */
     public function searchEvents(string $searchTerm):array
     {
@@ -91,7 +91,7 @@ class EventModel
                 `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes` 
                 FROM `events` 
                 LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
-                WHERE `events`.`name` LIKE = ? ORDER BY `date` DESC;';
+                WHERE `events`.`name` LIKE ? ORDER BY `date` DESC;';
         $query = $this->db->prepare($sql);
         $searchTerm = '%' . $searchTerm . '%';
         $query->execute([$searchTerm]);
