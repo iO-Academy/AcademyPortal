@@ -55,3 +55,11 @@ input[type="submit"] {
     margin-bottom: 25px;
 }
 
+.arrowBtn{
+    border: none;
+}
+
+.arrowForm{
+    display: inline-block;
+
+}

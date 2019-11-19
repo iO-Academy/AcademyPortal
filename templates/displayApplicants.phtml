@@ -21,8 +21,17 @@
                 <tr>
                     <th class="col-xs-2">Name</th>
                     <th class="col-xs-4">Email</th>
-                    <th class="col-xs-2">Date of application <div><i style="color:#d64405;" class="fas fa-arrow-up"></i> <i class="fas fa-arrow-down"></i></div></th>
-                    <th class="col-xs-2">Cohort date <div><i class="fas fa-arrow-up"></i> <i class="fas fa-arrow-down"></i></div></th>
+                    <th class="col-xs-2">Date of application
+                        <div>
+                            <form class="arrowForm" method="get" action="/sort/dateAsc"><button class="arrowBtn" type="submit"><i style="color:#d64405;" class="fas fa-arrow-up"></i></button></form>
+                            <form class="arrowForm" method="get" action="/sort/dateDesc"><button class="arrowBtn" type="submit"><i class="fas fa-arrow-down"></i></button></form>
+                        </div>
+
+                    <th class="col-xs-2">Cohort date
+                        <div>
+                            <form class="arrowForm" method="get" action="/sort/cohortAsc"><button class="arrowBtn" type="submit"><i class="fas fa-arrow-up"></i></button></form>
+                            <form class="arrowForm" method="get" action="/sort/cohortDesc"><button class="arrowBtn" type="submit"><i class="fas fa-arrow-down"></i></button></form>
+                        </div>
                 </tr>
                 <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayApplicants($data); ?>
             </table>
@@ -34,3 +43,5 @@
 </div>
 </body>
 </html>
+
+
