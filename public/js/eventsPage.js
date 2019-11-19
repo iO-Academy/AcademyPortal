@@ -62,7 +62,7 @@ function displayEventsHandler(events) {
 
                         let data = {
                             hiring_partner_id: hpId,
-                            events_id: eventIdForm,
+                            event_id: eventIdForm,
                             people_attending: attendees
                         }
 
