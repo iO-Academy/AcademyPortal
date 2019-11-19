@@ -182,14 +182,47 @@ function validateForm() {
     return success
 }
 
+
+
 const searchEvent = document.querySelector('#submit-search-event')
 searchEvent.addEventListener('click', function(e) {
     const searchInput = document.querySelector('#search-events')
     e.preventDefault()
-    console.log(searchInput)
     if (!(searchInput.value.length) || searchInput.value.length > 255) {
-        message.innerHTML = 'error message input length invalid'
-    } else {
-        message.innerHTML = 'it is alll goood'
+        message.innerHTML = 'Event search: must be between 1 and 255 characters'
     }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
