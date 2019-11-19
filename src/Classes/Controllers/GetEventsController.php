@@ -38,10 +38,21 @@ class GetEventsController
         ];
         $statusCode = 400;
 
-        try {
-            $events = $this->eventModel->getEvents();
-        } catch (\PDOException $exception) {
-            $data['message'] = $exception->getMessage();
+        $eventSearchInput = $request->getQueryParam('searchTerm');
+        if (!empty($eventSearchInput)) {
+            if (strlen($eventSearchInput) < 256) {
+            // run the search event function
+            } else {
+                $data['message'] = 'Search term cannot be greater than 255 characters.';
+                return $response->withJson($data, $statusCode);
+            }
+        } else {
+            try {
+                $events = $this->eventModel->getEvents();
+            } catch (\PDOException $exception) {
+                $data['message'] = $exception->getMessage();
+                return $response->withJson($data, $statusCode);
+            }
         }
 
         if (!empty($events)) {
@@ -51,9 +62,7 @@ class GetEventsController
                 'data' => $events
             ];
             $statusCode = 200;
-        }
-
-        if (empty($events)) {
+        } else {
             $data = [
                 'success' => true,
                 'message' => 'There are no events.',
@@ -61,7 +70,6 @@ class GetEventsController
             ];
             $statusCode = 200;
         }
-
         return $response->withJson($data, $statusCode);
     }
 }
