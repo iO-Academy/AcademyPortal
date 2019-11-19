@@ -2,8 +2,6 @@
 
 namespace Portal\Entities;
 
-use phpDocumentor\Reflection\Types\Integer;
-
 class HiringPartnerEntity extends ValidationEntity
 {
     protected $companyId;
