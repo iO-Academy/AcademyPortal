@@ -30,7 +30,7 @@ class LinkHiringPartnerToEventController
     {
         $data = $request->getParsedBody();
         $hiringPartner = $data['hiring_partner_id'];
-        $event = $data['events_id'];
+        $event = $data['event_id'];
         $attendees = $data['people_attending'];
         $result = $this->eventModel->linkHPToEvent($hiringPartner, $event, $attendees);
         if ($result) {
