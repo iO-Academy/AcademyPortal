@@ -48,9 +48,9 @@ function displayEventsHandler(events) {
                     })
                 })
             }).then(()=>{
-                let HPForms = document.querySelectorAll('.addHiringPartnerForm')
-                HPForms.forEach(function(HpForm) {
-                    HpForm.addEventListener('submit' , function(e){
+                let hpForms = document.querySelectorAll('.addHiringPartnerForm')
+                hpForms.forEach(function(hpForm) {
+                    hpForm.addEventListener('submit' , function(e){
                         e.preventDefault()
                         let eventIdForm = e.target.id
                         let hpId = document.querySelector(`select[data-event='${eventIdForm}']`).value
