@@ -55,6 +55,9 @@ function displayEventsHandler(events) {
                         let eventIdForm = e.target.id
                         let hpId = document.querySelector(`select[data-event='${eventIdForm}']`).value
                         let attendees = document.querySelector(`[name='companyAttendees'][data-event='${eventIdForm}']`).value
+                        if (attendees == ""){
+                            attendees = 0
+                        }
                         let data = {
                             hiring_partner_id: hpId,
                             events_id: eventIdForm,
