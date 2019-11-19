@@ -20,7 +20,8 @@ class HiringPartnerEntity extends ValidationEntity
         string $hiringPartnerPostcode = null,
         string $hiringPartnerPhoneNumber = null,
         string $hiringPartnerWebsiteUrl = null
-    ) {
+    )
+    {
         $this->companyId = ($this->companyId ?? $hiringPartnerCompanyId);
         $this->companyName = ($this->companyName ?? $hiringPartnerCompanyName);
         $this->companySize = ($this->companySize ?? $hiringPartnerCompanySize);
@@ -56,7 +57,7 @@ class HiringPartnerEntity extends ValidationEntity
      *
      * @return string of company ID
      */
-    public function getCompanyId() : Int
+    public function getCompanyId(): Int
     {
         return $this->companyId;
     }
@@ -66,7 +67,7 @@ class HiringPartnerEntity extends ValidationEntity
      *
      * @return string of company name
      */
-    public function getCompanyName() : string
+    public function getCompanyName(): string
     {
         return $this->companyName;
     }
@@ -76,7 +77,7 @@ class HiringPartnerEntity extends ValidationEntity
      *
      * @return string of company size
      */
-    public function getCompanySize() : string
+    public function getCompanySize(): string
     {
         return $this->companySize;
     }
@@ -86,7 +87,7 @@ class HiringPartnerEntity extends ValidationEntity
      *
      * @return string of tech stack
      */
-    public function getTechStack() : string
+    public function getTechStack(): string
     {
         return $this->techStack;
     }
@@ -96,7 +97,7 @@ class HiringPartnerEntity extends ValidationEntity
      *
      * @return string of company postcode
      */
-    public function getPostcode() : string
+    public function getPostcode(): string
     {
         return $this->postcode;
     }
