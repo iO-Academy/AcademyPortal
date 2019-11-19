@@ -42,7 +42,6 @@ class DisplayApplicantsController
 
         switch ($sortValue) {
             case 'dateAsc':
-
                 $args['data'] = $this->applicantModel->sortApplicants('dateAsc');
                 break;
 
