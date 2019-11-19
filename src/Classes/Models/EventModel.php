@@ -100,7 +100,7 @@ class EventModel
     {
         $query = $this->db->prepare('INSERT INTO `events_hiring_partner_link_table` (
             `hiring_partner_id`, 
-            `events_id`, 
+            `event_id`, 
             `people_attending`
             ) 
             VALUES (
