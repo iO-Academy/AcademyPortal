@@ -29,17 +29,18 @@ function addEventListenersForModal() {
 
                 delete data[0]
 
+                let yesNoSub = ['No', 'Yes']
+
                 data.forEach(function (contact) {
                     contactsHTML += `
                         <h4>Name</h4><p>${contact.name}</p>
                         <h4>Email</h4><p>${contact.email}</p>
                         <h4>Job title</h4><p>${contact.job_title}</p>
                         <h4>Phone</h4><p>${contact.phone}</p>
-                        <h4>Primary Contact</h4><p>${contact.is_primary_contact}</p>`
+                        <h4>Primary Contact</h4><p>${yesNoSub[contact.is_primary_contact]}</p>`
 
                     contactsHTML += '<hr>'
                 })
-
 
                 let contactDetails = {}
 

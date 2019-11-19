@@ -61,7 +61,8 @@ class HiringPartnerModel
             `hiring_partner_company_id`,
             `is_primary_contact`
             FROM `hiring_partner_contacts`
-            WHERE `hiring_partner_company_id` = :id;");
+            WHERE `hiring_partner_company_id` = :id
+            ORDER BY `is_primary_contact` DESC;");
         $query->bindParam(':id', $companyId, \PDO::PARAM_INT);
         $query->execute();
         return $query->fetchAll();
@@ -186,7 +187,7 @@ class HiringPartnerModel
         $query = $this->db->prepare("SELECT 
 							  	`id`, `name`, `size`, `tech_stack`, `postcode`, `phone_number`, `url_website`
 								FROM `hiring_partner_companies`
-								WHERE `id` = :id ;");
+								WHERE `id` = :id;");
         $query->execute(['id'=>$id]);
         return $query->fetchAll();
     }
