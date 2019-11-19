@@ -24,7 +24,8 @@ class EventEntity extends ValidationEntity
         string $endTime = null,
         string $notes = null,
         array $eventCategories
-    ) {
+    )
+    {
         $this->event_id = ($this->event_id ?? $event_id);
         $this->name = ($this->name ?? $name);
         $this->category = ($this->category ?? $category);
