@@ -39,7 +39,7 @@ class DisplayApplicantsController
 
         $sortValue = $request->getQueryParam('sort');
 
-        switch ($sortValue){
+        switch ($sortValue) {
             case 'dateAsc':
                 $args['data'] = $this->applicantModel->sortApplicants('dateAsc');
                 break;
@@ -60,6 +60,5 @@ class DisplayApplicantsController
                 $args['data'] = $this->applicantModel->getAllApplicants();
         }
         return $this->renderer->render($response, 'displayApplicants.phtml', $args);
-
     }
 }

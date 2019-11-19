@@ -95,7 +95,7 @@ class ApplicantModel
      */
     public function sortApplicants($input) //eg `dateTimeAdded`DESC
     {
-        switch ($input){
+        switch ($input) {
             case 'dateAsc':
                 $order = '`dateTimeAdded` ASC';
                 break;
