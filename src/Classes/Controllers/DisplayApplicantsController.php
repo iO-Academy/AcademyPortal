@@ -38,9 +38,11 @@ class DisplayApplicantsController
     {
 
         $sortValue = $request->getQueryParam('sort');
+        $args['sort'] = $sortValue;
 
         switch ($sortValue) {
             case 'dateAsc':
+
                 $args['data'] = $this->applicantModel->sortApplicants('dateAsc');
                 break;
 

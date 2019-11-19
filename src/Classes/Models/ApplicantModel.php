@@ -78,7 +78,7 @@ class ApplicantModel
                       AS "cohortDate" 
                       FROM `applicants` 
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-                      ORDER BY `dateTimeAdded`ASC ;'
+                      ORDER BY `dateTimeAdded`ASC;'
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
         $query->execute();

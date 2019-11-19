@@ -23,14 +23,14 @@
                     <th class="col-xs-4">Email</th>
                     <th class="col-xs-2">Date of application
                         <div>
-                            <form class="arrowForm" method="get"><button name="sort" value="dateAsc" class="arrowBtn" type="submit"><i style="color:#d64405;" class="fas fa-arrow-up"></i></button></form>
-                            <form class="arrowForm" method="get"><button name="sort" value="dateDesc" class="arrowBtn" type="submit"><i class="fas fa-arrow-down"></i></button></form>
+                            <form class="arrowForm" method="get"><button name="sort" value="dateAsc" class="arrowBtn <?php if ($sort == 'dateAsc') {echo 'active';}?>" type="submit"><i id="arrowDateAsc" class="fas fa-arrow-up"></i></button></form>
+                            <form class="arrowForm" method="get"><button name="sort" value="dateDesc" class="arrowBtn <?php if ($sort == 'dateDesc') {echo 'active';}?>" type="submit"><i id="arrowDateDesc" class="fas fa-arrow-down"></i></button></form>
                         </div>
 
                     <th class="col-xs-2">Cohort date
                         <div>
-                            <form class="arrowForm" method="get"><button name="sort" value="cohortAsc" class="arrowBtn" type="submit"><i class="fas fa-arrow-up"></i></button></form>
-                            <form class="arrowForm" method="get"><button name="sort" value="cohortDesc" class="arrowBtn" type="submit"><i class="fas fa-arrow-down"></i></button></form>
+                            <form class="arrowForm" method="get"><button name="sort" value="cohortAsc" class="arrowBtn <?php if ($sort == 'cohortAsc') {echo 'active';}?>" type="submit"><i id="arrowCohortAsc" class="fas fa-arrow-up"></i></button></form>
+                            <form class="arrowForm" method="get"><button name="sort" value="cohortDesc" class="arrowBtn <?php if ($sort == 'cohortDesc') {echo 'active';}?>" type="submit"><i id="arrowCohortDesc" class="fas fa-arrow-down"></i></button></form>
                         </div>
                 </tr>
                 <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayApplicants($data); ?>
