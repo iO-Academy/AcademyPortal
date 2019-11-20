@@ -23,4 +23,3 @@ class AddHiringPartnerToEventControllerFactoryTest extends TestCase
         $this->assertInstanceOf($expected, $case);
     }
 }
-
