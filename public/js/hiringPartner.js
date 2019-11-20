@@ -145,9 +145,12 @@ async function getHiringPartners () {
             'Content-Type': 'application/json',
         },
     })
-    .then( hiringPartnerInfo => hiringPartnerInfo.json())
+    .then(hiringPartnerInfo => hiringPartnerInfo.json())
     .then(hiringPartnerInfo => displayHiringPartnerHandler(hiringPartnerInfo.data))
 }
+
+getHiringPartners()
+
 
 /**
  * Runs a foreach through each hiring partner object and outputs HTML elements with hiring partner's details
@@ -155,37 +158,15 @@ async function getHiringPartners () {
  * @param partnerCompanies is an array of objects which contains information about hiring partners
  */
 function displayHiringPartnerHandler(partnerCompanies){
-    let companyDisplayer = document.getElementById('companies')
-    let companyInformation = ''
+    let companyNamesHTML = '';
+    console.log('hello')
     partnerCompanies.forEach(function(partnerCompany){
-        companyInformation +=
-            `<div class="company-name">
-            <p>${partnerCompany.name}</p>
-            <button class="show-company-info" data-reference='${partnerCompany.id}'>More Info</button>
-            <div id="more-info${partnerCompany.id}" class="hide more-info">
-            <p>Company size: ${partnerCompany.size}</p>
-            <p>Tech Stack: ${partnerCompany.tech_stack}</p>
-            <p>Postcode: ${partnerCompany.postcode}</p>`
-        if (partnerCompany.phone_number !== null) {
-            companyInformation += `<p>Phone number: ${partnerCompany.phone_number}</p>`
-        }
-        if (partnerCompany.url_website !== null) {
-            companyInformation += `<a href="https://${partnerCompany.url_website}" target="_blank">${partnerCompany.url_website}</a>`
-        }
-        companyInformation += `</div></div>`
+        companyNamesHTML += `<div class="company-name"><a data-id=${partnerCompany.id} type="button"  class="myBtn">${partnerCompany.name}</a></div>`;
     })
-    companyDisplayer.innerHTML = companyInformation
-
-    let showInfoButtons = document.querySelectorAll('.show-company-info')
-    showInfoButtons.forEach(function (button) {
-        button.addEventListener('click', (e) => {
-            let targetId = 'more-info' + e.target.dataset.reference
-            let targetDiv = document.getElementById(targetId)
-            targetDiv.classList.toggle('hide')
-        })
-    })
+    document.querySelector('#companies').innerHTML = companyNamesHTML;
+    addEventListenersForModal();
 }
-getHiringPartners()
+
 
 addContactForm.addEventListener('submit', e => {
     e.preventDefault()
