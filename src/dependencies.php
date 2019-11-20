@@ -73,3 +73,5 @@ $container['AddEventController'] = new \Portal\Factories\AddEventControllerFacto
 $container['AddContactController'] = new \Portal\Factories\AddContactControllerFactory();
 
 $container['AddHiringPartnerToEventController'] = new \Portal\Factories\AddHiringPartnerToEventControllerFactory();
+
+$container['CompanyDetailsModalController'] = new \Portal\Factories\CompanyDetailsModalControllerFactory();
