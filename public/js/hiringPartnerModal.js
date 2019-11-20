@@ -18,7 +18,6 @@ function validateContactField(contactField, noDataMessage = 'No information prov
 }
 
 function addEventListenersForModal() {
-    console.log('2nd hello');
     $(document).ready(function(){
         $(".myBtn").click(function(){
             var url = './api/displayCompanyInfo/' + this.dataset.id
@@ -55,25 +54,22 @@ function addEventListenersForModal() {
                         <h4>Phone</h4><p>${$validatedPhone}</p>
                         <h4>Primary Contact</h4><p>${$validatedIsPrimaryContact}</p>`
                     contactsHTML += '<hr>'
+                    })
+
+                    let contactDetails = {}
+
+                    contactDetails.contacts = contactsHTML
+
+                    validateField(contactDetails, 'contacts')
+                    })
+                .catch(function() {
+                    document.querySelector('#contacts').innerText = 'We were unable to retrieve the' +
+                        ' requested information please refresh and try again.'
+                        document.querySelector('#contacts').style.color = 'red'
                 })
 
-                let contactDetails = {}
-
-                contactDetails.contacts = contactsHTML
-
-                console.log('xxxxxxxx')
-                console.log(contactDetails)
-
-                validateField(contactDetails, 'contacts')
-                    })
             $("#myModal").modal()
 
-            // .catch(function() {
-                //         console.log('hello')
-                // document.querySelector('#modal-main').innerHTML = ''
-                // document.querySelector('#modal-main').innerHTML += '<div class="alert alert-danger" role="alert">Looks like there was a problem. Status Code: ' +
-                //     response.status + '</div>'
             })
         })
-    // })
 }
