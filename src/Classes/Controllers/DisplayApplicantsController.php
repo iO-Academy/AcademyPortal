@@ -59,7 +59,6 @@ class DisplayApplicantsController
 
             default:
                 $args['data'] = $this->applicantModel->getAllApplicants();
-
         }
         return $this->renderer->render($response, 'displayApplicants.phtml', $args);
     }
