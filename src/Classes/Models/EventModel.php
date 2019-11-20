@@ -94,7 +94,7 @@ class EventModel
      *
      * @return bool True if operation succeeds
      */
-    public function linkHPToEvent(int $hiringPartner, int $event, $attendees = null): bool
+    public function addHPToEvent(int $hiringPartner, int $event, $attendees = null): bool
     {
         $query = $this->db->prepare('INSERT INTO `events_hiring_partner_link_table` (
             `hiring_partner_id`, 
