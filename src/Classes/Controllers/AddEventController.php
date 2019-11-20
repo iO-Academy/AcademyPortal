@@ -34,6 +34,7 @@ class AddEventController
 
         try {
             $event = new EventEntity(
+                $newEvent['id'],
                 $newEvent['name'],
                 $newEvent['category'],
                 $newEvent['location'],
