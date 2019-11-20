@@ -139,7 +139,6 @@ class HiringPartnerModel
      * @return HiringPartnerEntity
      */
     public function createNewHiringPartner(
-//        string $companyId,
         string $companyName,
         string $companySize,
         string $techStack,
@@ -148,7 +147,6 @@ class HiringPartnerModel
         string $websiteUrl
     ) :HiringPartnerEntity {
         return new HiringPartnerEntity(
-//            $companyId,
             $companyName,
             $companySize,
             $techStack,
