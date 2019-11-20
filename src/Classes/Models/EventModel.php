@@ -148,7 +148,9 @@ class EventModel
         $query = $this->db->prepare('SELECT `hiring_partner_id` FROM `events_hiring_partner_link_table`
         WHERE  `event_id` = :eventId;');
         $query->bindParam(':eventId', $eventId);
-        $query->execute();
-        return $query->fetchAll();
+        $success = $query->execute();
+        $hpIds = $query->fetchAll();
+        $returnData = ['hpIds' => $hpIds, 'success' => $success];
+        return $returnData;
     }
 }

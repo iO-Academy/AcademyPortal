@@ -205,13 +205,15 @@ class HiringPartnerModel
      *
      * @return HiringPartnerEntity hiring partner entity
      */
-    public function getHiringPartnerById(int $id) :HiringPartnerEntity
+    public function getHiringPartnerById(int $id) :array
     {
         $query = $this->db->prepare("SELECT 
 					`id`, `name`, `size`, `tech_stack`, `postcode`, `phone_number`, `url_website`
 					FROM `hiring_partner_companies`
 					WHERE `id` = :id;");
-        $query->execute(['id'=>$id]);
-        return $query->fetch(\PDO::FETCH_CLASS, 'HiringPartnerEntity');
+        $success = $query->execute(['id'=>$id]);
+        $entity = $query->fetch();
+        $returnData = ['entity' => $entity, 'success' => $success];
+        return $returnData;
     }
 }
