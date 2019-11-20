@@ -125,7 +125,7 @@ class ApplicantModel
                       ORDER BY $order;"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
-        $query->execute([$order]);
+        $query->execute();
         $results = $query->fetchAll();
         return $results;
     }
