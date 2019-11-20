@@ -89,7 +89,7 @@ class ApplicantModel
     /**
      * Sorts the table via the input taken from the sorting arrows
      *
-     * @input string $input is the sort choice
+     * @param string $input is the sort choice
      *
      * @return array $results is the data retrieved.
      */
