@@ -120,4 +120,21 @@ class HiringPartnerEntity extends ValidationEntity
     {
         return $this->websiteUrl;
     }
+
+    /**
+     * @return array of hiring entity properties
+     */
+    public function hiringPartnerEntityToArray() :array
+    {
+        $hiringPartnerEntityAsArray = [
+            'companyID' => $this->getCompanyId(),
+            'companyName' => $this->getCompanyName(),
+            'companySize' => $this->getCompanySize(),
+            'techStack' => $this->getTechStack(),
+            'postcode' => $this->getTechStack(),
+            'phoneNumber' => $this->getPhoneNumber(),
+            'websiteUrl' => $this->getWebsiteURL()
+        ];
+        return $hiringPartnerEntityAsArray;
+    }
 }
