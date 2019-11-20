@@ -115,7 +115,7 @@ class EventModel
     public function checklinkHP(int $hiringPartner, int $event): bool
     {
         $query = $this->db->prepare('SELECT `id` FROM `events_hiring_partner_link_table`
-        WHERE  `events_id` = :event AND
+        WHERE  `event_id` = :event AND
         `hiring_partner_id` = :hiringPartner;');
         $query->bindParam(':hiringPartner', $hiringPartner);
         $query->bindParam(':event', $event);

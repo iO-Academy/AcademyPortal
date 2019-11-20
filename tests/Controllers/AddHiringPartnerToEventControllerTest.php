@@ -3,16 +3,16 @@
 namespace Tests\Controllers;
 
 use PHPUnit\Framework\TestCase;
-use Portal\Controllers\LinkHiringPartnerToEventController;
+use Portal\Controllers\AddHiringPartnerToEventController;
 use Portal\Models\EventModel;
 
-class LinkHiringPartnerToEventControllerTest extends TestCase
+class AddHiringPartnerToEventControllerTest extends TestCase
 {
     public function testConstruct()
     {
         $eventModel = $this->createMock(EventModel::class);
-        $case = new LinkHiringPartnerToEventController($eventModel);
-        $expected = LinkHiringPartnerToEventController::class;
+        $case = new AddHiringPartnerToEventController($eventModel);
+        $expected = AddHiringPartnerToEventController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }
