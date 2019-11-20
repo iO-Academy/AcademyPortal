@@ -23,7 +23,7 @@ function getEvents(search = false) {
     })
     .then(response => response.json())
     .then(eventInfo => {
-        displayEventsHandler(eventInfo.data)
+        displayEventsHandler(eventInfo)
     })
 }
 
@@ -34,12 +34,14 @@ function getEvents(search = false) {
  */
 function displayEventsHandler(events) {
     let eventInformation = ''
-    if(events == '') {
-        eventList.innerHTML = 'No Events Scheduled'
+    console.log(events)
+
+    if(!events.eventsFound) {
+        eventList.innerHTML = events.message
     } else {
         eventList.innerHTML = ''
 
-        events.forEach(event => {
+        events.data.forEach(event => {
             eventList.innerHTML = ''
             eventInformation +=
                 `<div class="event-name">
