@@ -36,11 +36,8 @@ function displayEventsHandler(events) {
     } else {
         eventList.innerHTML = ''
 
-        events.forEach((event) => {
-            
-            eventGenerator(event)
-                .then(() => {
-                    let showInfoButtons = document.querySelectorAll('.show-event-info')
+        displayEvents(events).then(() => {
+            let showInfoButtons = document.querySelectorAll('.show-event-info')
                     showInfoButtons.forEach(function (button) {
                         button.addEventListener('click', e => {
                             let targetId = 'moreInfo' + e.target.dataset.reference
@@ -48,8 +45,16 @@ function displayEventsHandler(events) {
                             targetDiv.classList.toggle('hide')
                         })
                     })
-                }).then(() => {
-                
+        })
+
+        
+    }
+};
+
+async function displayEvents(events) {
+    events.forEach(async (event) => {
+        eventGenerator(event)
+                .then(() => {
                 let hpForms = document.querySelectorAll('.addHiringPartnerForm')
                 hpForms.forEach(function (hpForm) {
                     hpForm.addEventListener('submit', function (e) {
@@ -92,9 +97,8 @@ function displayEventsHandler(events) {
                     })
                 })
             })
-        })
-    }
-};
+    })
+}
 
 /**
  * Outputs HTML elements with event details
