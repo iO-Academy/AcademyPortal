@@ -46,57 +46,55 @@ function displayEventsHandler(events) {
                         })
                     })
         })
+        .then(() => {
+            let hpForms = document.querySelectorAll('.addHiringPartnerForm')
+            hpForms.forEach(function (hpForm) {
+                hpForm.addEventListener('submit', function (e) {
+                    e.preventDefault()
+                    let eventIdForm = e.target.id
+                    const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${eventIdForm}"]`)
+                    let hpId = document.querySelector(`select[data-event='${eventIdForm}']`).value
+                    let attendees = document.querySelector(`[name='companyAttendees'][data-event='${eventIdForm}']`).value
 
-        
+                    if (attendees == "") {
+                        attendees = null
+                    }
+
+                    let data = {
+                        hiring_partner_id: hpId,
+                        event_id: eventIdForm,
+                        people_attending: attendees
+                    }
+
+                    if (attendees >= 0) {
+                        if (hpId != 0) {
+                            fetch('./api/addHiringPartnerToEvent', {
+                                credentials: 'same-origin',
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                },
+                                method: 'post',
+                                body: JSON.stringify(data)
+                            }).then(response => response.json())
+                                .then((responseJSON) => {
+                                    currentEventsMessage.innerText = responseJSON.message
+                                })
+                        } else {
+                            currentEventsMessage.innerText = "Please select a hiring partner"
+                        }
+                    } else {
+                        currentEventsMessage.innerText = "Please enter a valid number of attendees"
+                    }
+                })
+            })
+        })
     }
 };
 
 async function displayEvents(events) {
     events.forEach(async (event) => {
         eventGenerator(event)
-                .then(() => {
-                let hpForms = document.querySelectorAll('.addHiringPartnerForm')
-                hpForms.forEach(function (hpForm) {
-                    hpForm.addEventListener('submit', function (e) {
-                        e.preventDefault()
-                        let eventIdForm = e.target.id
-                        const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${eventIdForm}"]`)
-                        let hpId = document.querySelector(`select[data-event='${eventIdForm}']`).value
-                        let attendees = document.querySelector(`[name='companyAttendees'][data-event='${eventIdForm}']`).value
-
-                        if (attendees == "") {
-                            attendees = null
-                        }
-
-                        let data = {
-                            hiring_partner_id: hpId,
-                            event_id: eventIdForm,
-                            people_attending: attendees
-                        }
-
-                        if (attendees >= 0) {
-                            if (hpId != 0) {
-                                fetch('./api/addHiringPartnerToEvent', {
-                                    credentials: 'same-origin',
-                                    headers: {
-                                        'Accept': 'application/json',
-                                        'Content-Type': 'application/json',
-                                    },
-                                    method: 'post',
-                                    body: JSON.stringify(data)
-                                }).then(response => response.json())
-                                    .then((responseJSON) => {
-                                        currentEventsMessage.innerText = responseJSON.message
-                                    })
-                            } else {
-                                currentEventsMessage.innerText = "Please select a hiring partner"
-                            }
-                        } else {
-                            currentEventsMessage.innerText = "Please enter a valid number of attendees"
-                        }
-                    })
-                })
-            })
     })
 }
 
