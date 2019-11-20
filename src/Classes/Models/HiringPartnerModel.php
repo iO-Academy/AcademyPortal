@@ -191,5 +191,4 @@ class HiringPartnerModel
         $query->execute(['id'=>$id]);
         return $query->fetchAll();
     }
-
 }
