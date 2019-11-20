@@ -110,7 +110,16 @@ class EventModel
         $query->bindParam(':attendees', $attendees);
         return $query->execute();
     }
-    
+
+    /**
+     * checks that the hiring partner has successfully been linked to the event in the database
+     *
+     * @param int $hiringPartner hiring partner id
+     *
+     * @param int $event event id
+     * 
+     * @return bool
+     */
     public function checklinkHP(int $hiringPartner, int $event): bool
     {
         $query = $this->db->prepare('SELECT `id` FROM `events_hiring_partner_link_table`
