@@ -117,7 +117,8 @@ class EventEntity extends ValidationEntity
      */
     public static function validateCategoryExists(int $category, array $categoryList)
     {
-        if (array_key_exists($category, $categoryList)) {
+        $zeroIndexCat = intval($category) - 1;
+        if (array_key_exists($zeroIndexCat, $categoryList)) {
             return $category;
         } else {
             throw new \Exception('Category is not valid.');
