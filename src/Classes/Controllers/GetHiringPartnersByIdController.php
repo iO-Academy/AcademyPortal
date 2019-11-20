@@ -19,6 +19,10 @@ class GetHiringPartnersByIdController
      */
     private $event;
 
+    private $hpIdsData;
+
+    private $hpEntities = [];
+
     /**
      * GetHiringPartnersByIdController constructor to populate the model and event properties in this class.
      *
@@ -32,16 +36,37 @@ class GetHiringPartnersByIdController
         $this->event = $event;
     }
 
+
     /**
-     * @param Request $request from eventPage.js
+     * Invoke function to get all hiring partners associated with an event and returns JSON
      *
-     * @param Response $response to eventPage.js
+     * @param Request $request
+     *
+     * @param Response $response
      *
      * @param $args
+     *
+     * @return Response
      */
-    public function __invoke(Request $request, Response $response, $args)
+    public function __invoke(Request $request, Response $response, $args) :Response
     {
         $id = $request->getParsedBodyParam('event_id');
-        $this->event->hpIdsByEventId($id);
+        $this->hpIdsData = $this->event->hpIdsByEventId($id);
+        if ($this->hpIdsData['success']){
+            foreach($this->hpIdsData['hpIds'] as $hpIds){
+                foreach ($hpIds as $hpId) {
+                    $getHiringPartnerIdData = $this->model->getHiringPartnerById($hpId);
+                    if ($getHiringPartnerIdData['success']){
+                        $hpEntity = $getHiringPartnerIdData['entity'];
+                        array_push($this->hpEntities, $hpEntity);
+                    } else {
+                        return $response->withJson(['message' => 'Database error'], 500);
+                    }
+                }
+            }
+            return $response->withJson($this->hpEntities, 200);
+        } else {
+            return $response->withJson(['message' => 'Database error'], 500);
+        }
     }
 }
