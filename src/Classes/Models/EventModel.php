@@ -110,7 +110,7 @@ class EventModel
         $query->bindParam(':attendees', $attendees);
         return $query->execute();
     }
-
+    
     public function checklinkHP(int $hiringPartner, int $event): bool
     {
         $query = $this->db->prepare('SELECT `id` FROM `events_hiring_partner_link_table`
@@ -125,5 +125,21 @@ class EventModel
         } else {
             return false;
         }
+    }
+
+    /**
+     * Pulls hiring partner ids from database where they link to a specific event id
+     *
+     * @param int $eventId the id of the event
+     *
+     * @return array the array of hiring partner ids
+     */
+    public function hpIdsByEventId(int $eventId): array
+    {
+        $query = $this->db->prepare('SELECT `hiring_partner_id` FROM `events_hiring_partner_link_table`
+        WHERE  `event_id` = :eventId;');
+        $query->bindParam(':eventId', $eventId);
+        $query->execute();
+        return $query->fetchAll();
     }
 }

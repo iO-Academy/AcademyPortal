@@ -104,7 +104,6 @@ async function displayEvents(events) {
  * @param events an object which contains information about an event
  */
 async function eventGenerator(event) {
-    // eventList.innerHTML = ''
     let eventInformation = ''
     eventInformation +=
         `<div class="event-name">
