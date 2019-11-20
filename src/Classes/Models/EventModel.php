@@ -127,7 +127,7 @@ class EventModel
         }
     }
 
-    public function HpIdsByEventId($eventId): array
+    public function hpIdsByEventId($eventId): array
     {
         $query = $this->db->prepare('SELECT `hiring_partner_id` FROM `events_hiring_partner_link_table`
         WHERE  `event_id` = :eventId;');
