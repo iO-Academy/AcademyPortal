@@ -93,7 +93,7 @@ class ApplicantModel
      *
      * @return array $results is the data retrieved.
      */
-    public function sortApplicants($input) //eg `dateTimeAdded`DESC
+    public function sortApplicants(string $input) //eg `dateTimeAdded`DESC
     {
         switch ($input) {
             case 'dateAsc':

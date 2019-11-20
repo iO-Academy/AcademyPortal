@@ -23,7 +23,7 @@
                     <th class="col-xs-4">Email</th>
                     <th class="col-xs-2">Date of application
                         <div>
-                            <form class="arrowForm" method="get"><button name="sort" value="dateAsc" class="arrowBtn <?php if ($sort == 'dateAsc') {echo 'active';}?>" type="submit"><i id="arrowDateAsc" class="fas fa-arrow-up"></i></button></form>
+                            <form class="arrowForm" method="get"><button name="sort" value="dateAsc" class="arrowBtn <?php if ($sort == 'dateAsc' OR empty($sort)) {echo 'active';}?>" type="submit"><i id="arrowDateAsc" class="fas fa-arrow-up"></i></button></form>
                             <form class="arrowForm" method="get"><button name="sort" value="dateDesc" class="arrowBtn <?php if ($sort == 'dateDesc') {echo 'active';}?>" type="submit"><i id="arrowDateDesc" class="fas fa-arrow-down"></i></button></form>
                         </div>
 
