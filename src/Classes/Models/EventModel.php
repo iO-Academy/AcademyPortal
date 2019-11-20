@@ -95,7 +95,6 @@ class EventModel
      * @return bool True if operation succeeds
      */
     public function linkHPToEvent(int $hiringPartner, int $event, $attendees = null): bool
-
     {
         $query = $this->db->prepare('INSERT INTO `events_hiring_partner_link_table` (
             `hiring_partner_id`, 
@@ -121,9 +120,9 @@ class EventModel
         $query->bindParam(':event', $event);
         $query->execute();
         $linkToHp = $query->fetchAll();
-        If(count($linkToHp) > 0){
+        if (count($linkToHp) > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
