@@ -68,7 +68,7 @@ function displayEventsHandler(events) {
 
                         if (attendees >= 0) {
                             if (hpId != 0) {
-                                fetch('./api/linkHiringPartnerToEvent', {
+                                fetch('./api/addHiringPartnerToEvent', {
                                     credentials: 'same-origin',
                                     headers: {
                                         'Accept': 'application/json',
