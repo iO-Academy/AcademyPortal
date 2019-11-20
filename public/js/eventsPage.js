@@ -49,12 +49,13 @@ function displayEventsHandler(events) {
                         })
                     })
                 }).then(() => {
-                const currentEventsMessage = document.querySelector(`#currentEventsMessages${event.id}`)
+                
                 let hpForms = document.querySelectorAll('.addHiringPartnerForm')
                 hpForms.forEach(function (hpForm) {
                     hpForm.addEventListener('submit', function (e) {
                         e.preventDefault()
                         let eventIdForm = e.target.id
+                        const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${eventIdForm}"]`)
                         let hpId = document.querySelector(`select[data-event='${eventIdForm}']`).value
                         let attendees = document.querySelector(`[name='companyAttendees'][data-event='${eventIdForm}']`).value
 
@@ -102,23 +103,22 @@ function displayEventsHandler(events) {
  */
 async function eventGenerator(event) {
     // eventList.innerHTML = ''
-    eventList.innerHTML += `<div id='currentEventsMessages${event.id}'></div>`
-    const currentEventsMessage = document.querySelector(`#currentEventsMessages${event.id}`)
     let eventInformation = ''
     eventInformation +=
         `<div class="event-name">
-            <p>${event.name}</p>
-            <button class="show-event-info" data-reference='${event.id}'>More Info</button>
-            <div id="moreInfo${event.id}" class="hide moreInfo">
-            <p>Event Category: ${event.category_name}</p>
-            <p>Date: ${new Date(event.date).toDateString()}</p>
-            <p>Location: ${event.location}</p>
-            <p>Start Time: ${event.start_time.slice(0, -3)}</p>
-            <p>End Time: ${event.end_time.slice(0, -3)}</p>`
+        <p>${event.name}</p>
+        <button class="show-event-info" data-reference='${event.id}'>More Info</button>
+        <div id="moreInfo${event.id}" class="hide moreInfo">
+        <p>Event Category: ${event.category_name}</p>
+        <p>Date: ${new Date(event.date).toDateString()}</p>
+        <p>Location: ${event.location}</p>
+        <p>Start Time: ${event.start_time.slice(0, -3)}</p>
+        <p>End Time: ${event.end_time.slice(0, -3)}</p>`
 
     if (event.notes !== null) {
         eventInformation += `<p>Notes: ${event.notes}</p>`
     }
+    
 
     eventInformation += `<div class='addHiringPartner'>
             <form class='addHiringPartnerForm' id='${event.id}'>
@@ -126,27 +126,29 @@ async function eventGenerator(event) {
             <select data-event=${event.id}>
             <option value='0'>Please select a hiring partner...</option>`
 
-    await getHiringPartners().then(responseJson => {
-        if (responseJson.status) {
-            let hiringPartners = responseJson.data
-            hiringPartners.forEach(function (hiringPartner) {
-                eventInformation += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
-            })
-        } else {
-            currentEventsMessage.innerText = responseJson.message
-        }
-    });
+    
 
     eventInformation += `</select>
             <label>Number of company attendees:</label>
             <input data-event='${event.id}' type='number' name='companyAttendees' min='0'/>
             <input type='submit'/> 
             </form>
+            <div class='currentEventsMessages' data-event=${event.id}></div>
             </div>`
 
     eventInformation += `</div></div>`
     eventList.innerHTML += eventInformation
-    return eventInformation
+    const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`)
+    await getHiringPartners().then(responseJson => {
+        if (responseJson.status) {
+            let hiringPartners = responseJson.data
+            hiringPartners.forEach(function (hiringPartner) {
+                document.querySelector(`select[data-event="${event.id}"]`).innerHTML += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
+            })
+        } else {
+            currentEventsMessage.innerText = responseJson.message
+        }
+    });
 }
 
 getEvents()
