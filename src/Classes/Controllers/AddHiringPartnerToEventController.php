@@ -33,16 +33,16 @@ class AddHiringPartnerToEventController
         $event = $data['event_id'];
         $attendees = $data['people_attending'];
 
-        if (!$this->eventModel->checklinkHP($hiringPartner, $event)){
+        if (!$this->eventModel->checklinkHP($hiringPartner, $event)) {
             $result = $this->eventModel->linkHPToEvent($hiringPartner, $event, $attendees);
-        }else{
+        } else {
             return $response->withJson(['success' => true,
-                'message'=>'Hiring partner already linked.'], 200);
+                'message' => 'Hiring partner already linked.'], 200);
         }
         $result = $this->eventModel->addHPToEvent($hiringPartner, $event, $attendees);
         if ($result) {
             return $response->withJson(['success' => true,
-                'message'=>'Hiring partner successfully added to event.'], 200);
+                'message' => 'Hiring partner successfully added to event.'], 200);
         } else {
             return $response->withJson(['success' => false, 'message' => 'Error - please contact administrator'], 500);
         }
