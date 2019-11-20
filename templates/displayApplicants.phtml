@@ -40,9 +40,22 @@
         </div>
         <!-- Modal -->
         <?php require('partials/applicantInfoModal.phtml'); ?>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter Cohort
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">January, 2019</a>
+                <a class="dropdown-item" href="#">September, 2019</a>
+                <a class="dropdown-item" href="#">February, 2020</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">August, 2020</a>
+            </div>
+        </div>
+
         <a href="/admin" id="applicantsPageHomeBtn" class="btn btn-success">Go home</a>
 
-<!--        <input id="submit-hiring-partner" type="submit" class="btn btn-success">-->
     </div>
 </div>
 </body>
