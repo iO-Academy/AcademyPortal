@@ -36,7 +36,30 @@ class DisplayApplicantsController
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $args['data'] = $this->applicantModel->getAllApplicants();
+
+        $sortValue = $request->getQueryParam('sort');
+        $args['sort'] = $sortValue;
+
+        switch ($sortValue) {
+            case 'dateAsc':
+                $args['data'] = $this->applicantModel->sortApplicants('dateAsc');
+                break;
+
+            case 'dateDesc':
+                $args['data'] = $this->applicantModel->sortApplicants('dateDesc');
+                break;
+
+            case 'cohortAsc':
+                $args['data'] = $this->applicantModel->sortApplicants('cohortAsc');
+                break;
+
+            case 'cohortDesc':
+                $args['data'] = $this->applicantModel->sortApplicants('cohortDesc');
+                break;
+
+            default:
+                $args['data'] = $this->applicantModel->getAllApplicants();
+        }
         return $this->renderer->render($response, 'displayApplicants.phtml', $args);
     }
 }

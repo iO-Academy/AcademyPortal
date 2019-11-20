@@ -63,3 +63,11 @@ input[type="submit"] {
     display: inline-block;
 
 }
+
+.active{
+    color:#d64405;
+}
+
+#applicantsPageHomeBtn{
+    margin: 20px;
+}
