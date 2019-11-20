@@ -33,7 +33,7 @@ class AddHiringPartnerToEventController
         $event = $data['event_id'];
         $attendees = $data['people_attending'];
 
-        if (!$this->eventModel->checklinkHP($hiringPartner, $event)) {
+        if (!$this->eventModel->checkLinkHP($hiringPartner, $event)) {
             $result = $this->eventModel->addHPToEvent($hiringPartner, $event, $attendees);
         } else {
             return $response->withJson(['success' => true,
