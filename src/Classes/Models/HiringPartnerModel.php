@@ -212,6 +212,6 @@ class HiringPartnerModel
 					FROM `hiring_partner_companies`
 					WHERE `id` = :id;");
         $query->execute(['id'=>$id]);
-        return $query->fetch(\PDO::FETCH_CLASS,'HiringPartnerEntity');
+        return $query->fetch(\PDO::FETCH_CLASS, 'HiringPartnerEntity');
     }
 }
