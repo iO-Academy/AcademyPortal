@@ -9,17 +9,15 @@ use Slim\Http\Response;
 class CompanyDetailsModalController
 {
     private $model;
-    private $view;
 
     /**
      * CompanyDetailsModalController constructor.
      * @param $model
      * @param $view
      */
-    public function __construct($model, $view)
+    public function __construct($model)
     {
         $this->model = $model;
-        $this->view = $view;
     }
 
     /**
