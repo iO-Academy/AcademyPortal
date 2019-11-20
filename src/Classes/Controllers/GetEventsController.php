@@ -35,63 +35,42 @@ class GetEventsController
         $data = [
             'success' => false,
             'message' => 'Something went wrong.',
-            'data' => [],
-            'searchPerformed' => false,
-            'eventsFound' => false
+            'data' => []
         ];
-        $statusCode = 400;
+        $statusCode = 200;
 
         $eventSearchInput = $request->getQueryParam('searchTerm');
-        if (!empty($eventSearchInput)) {  // if a search has been performed do next line
-            if (strlen($eventSearchInput) < 256) { // if the search input is less than 256 chars then do next line
+        if (!empty($eventSearchInput)) {
+            if (strlen($eventSearchInput) < 256) {
                 try {
-                    $events = $this->eventModel->searchEvents($eventSearchInput); // try to get the events from the database which match the search term and put it in the $events variable
-                    if (count($events) === 0) { // if the returned array is empty (i.e. no events match search)
-                        $data['searchPerformed'] = true;// this means that a search was performed BUT no events match the search (used later on as a condition)
-                        $data['eventsFound'] = false; // no events returned
-                    } else {
-                        $data['searchPerformed'] = true;// this means that a search was not performed
-                        $data['eventsFound'] = true; // no events returned
+                    $data['data'] = $this->eventModel->searchEvents($eventSearchInput);
+
+                    $data['message'] = 'No results returned matching your search';
+                    if (count($data['data']) > 0) {
+                        $data['message'] = '';
                     }
-                } catch (\PDOException $exception) { // this handles any db errors
+                } catch (\PDOException $exception) {
                     $data['message'] = $exception->getMessage();
-                    return $response->withJson($data, $statusCode);
                 }
-            } else { // if the length of the search input is longer than 255 characters do next line
-                $data['message'] = 'Search term cannot be greater than 255 characters.'; // <- set the data array message to this
-                return $response->withJson($data, $statusCode); // jump out here, sending the data array as JSON data to the front end
+            } else {
+                $data['message'] = 'Search term cannot be greater than 255 characters.';
             }
-        } else { // if no search has been performed (i.e. page load or refresh do next line
-            try {
-                $events = $this->eventModel->getEvents(); // try to get all the events from the db and put them in the $events variable
-                if (count($events) === 0) { // if the returned array is empty (i.e. no events match search)
-                    $data['searchPerformed'] = false;// this means that a search was not performed
-                    $data['eventsFound'] = false; // no events returned
-                } else { // if the returned array contains events
-                    $data['searchPerformed'] = false;// this means that a search was not performed
-                    $data['eventsFound'] = true; // no events returned
-                }
-            } catch (\PDOException $exception) { // this handles any db errors
-                $data['message'] = $exception->getMessage();
-                return $response->withJson($data, $statusCode);
-            }
+            return $response->withJson($data, $statusCode);
         }
 
-        if ($data['searchPerformed'] === true && $data['eventsFound'] === false) {
-            $data['message'] = 'No results returned matching your search';
-//            $data['data'] = 'noSearchResults';
-        } else if ($data['searchPerformed'] === true && $data['eventsFound'] === true) {
-            $data['message'] = 'Query successful';
-            $data['data'] = $events;
-        } else if ($data['searchPerformed'] === false && $data['eventsFound'] === false) {
+
+        try {
+            $data['data'] = $this->eventModel->getEvents();
+
             $data['message'] = 'No events scheduled';
-            $data['data'] = '';
-        } else if ($data['searchPerformed'] === false && $data['eventsFound'] === true) {
-            $data['message'] = 'Query successful';
-            $data['data'] = $events;
+
+            if (count($data['data']) > 0) {
+                $data['message'] = '';
+            }
+        } catch (\PDOException $exception) {
+            $data['message'] = $exception->getMessage();
         }
-        $data['success'] = true;
-        $statusCode = 200;
         return $response->withJson($data, $statusCode);
     }
 }
+
