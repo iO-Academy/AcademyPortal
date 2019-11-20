@@ -14,7 +14,7 @@ class EventModelFactory
      *
      * @return EventModel
      */
-    public function __invoke(ContainerInterface $container) : EventModel
+    public function __invoke(ContainerInterface $container): EventModel
     {
         $db = $container->get('dbConnection');
         return new EventModel($db);

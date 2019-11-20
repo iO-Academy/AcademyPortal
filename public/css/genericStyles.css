@@ -54,3 +54,19 @@ input[type="submit"] {
 .container {
     margin-bottom: 25px;
 }
+
+.arrowBtn {
+    border: none;
+}
+
+.arrowForm {
+    display: inline-block;
+}
+
+.active {
+    color: #d64405;
+}
+
+#applicantsPageHomeBtn {
+    margin: 20px;
+}

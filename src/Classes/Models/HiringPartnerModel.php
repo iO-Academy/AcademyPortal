@@ -22,6 +22,7 @@ class HiringPartnerModel
     public function addHiringPartner(HiringPartnerEntity $company) :bool
     {
         $query = $this->db->prepare("INSERT INTO `hiring_partner_companies`(
+            `id`,
             `name`,
             `size`, 
             `tech_stack`,
@@ -30,6 +31,7 @@ class HiringPartnerModel
             `url_website`
             )
             VALUES (
+            :companyId,
             :companyName,
             :companySize,
             :techStack,
@@ -37,6 +39,7 @@ class HiringPartnerModel
             :phoneNumber,
             :websiteUrl
             );");
+        $query->bindParam(':companyId', $company->getCompanyId());
         $query->bindParam(':companyName', $company->getCompanyName());
         $query->bindParam(':companySize', $company->getCompanySize());
         $query->bindParam(':techStack', $company->getTechStack());
@@ -51,9 +54,9 @@ class HiringPartnerModel
      *
      * @return array array with the info
      */
-    public function getContactsForCompany(int $companyId) :array
+    public function getContactsByCompany(int $companyId) :array
     {
-        $query = $this->db>prepare("SELECT
+        $query = $this->db->prepare("SELECT
             `name`,
             `email`,
             `job_title`,
@@ -61,7 +64,8 @@ class HiringPartnerModel
             `hiring_partner_company_id`,
             `is_primary_contact`
             FROM `hiring_partner_contacts`
-            WHERE `hiring_partner_company_id` = :id;");
+            WHERE `hiring_partner_company_id` = :id
+            ORDER BY `is_primary_contact` DESC;");
         $query->bindParam(':id', $companyId, \PDO::PARAM_INT);
         $query->execute();
         return $query->fetchAll();
@@ -128,6 +132,7 @@ class HiringPartnerModel
 
     /** Instantiate a HiringPartnerEntity
      *
+     * @param string $companyId
      * @param string $companyName
      * @param string $companySize
      * @param string $techStack
@@ -137,6 +142,7 @@ class HiringPartnerModel
      * @return HiringPartnerEntity
      */
     public function createNewHiringPartner(
+        string $companyId,
         string $companyName,
         string $companySize,
         string $techStack,
@@ -145,6 +151,7 @@ class HiringPartnerModel
         string $websiteUrl
     ) :HiringPartnerEntity {
         return new HiringPartnerEntity(
+            $companyId,
             $companyName,
             $companySize,
             $techStack,
@@ -162,17 +169,32 @@ class HiringPartnerModel
     public function getHiringPartners() :array
     {
         $query = $this->db->prepare("SELECT 
-							  	`hiring_partner_companies`.`id`,
-								`hiring_partner_companies`.`name`,
-								`company_sizes`.`size`, 
-								`hiring_partner_companies`.`tech_stack`, 
-								`hiring_partner_companies`.`postcode`,
-								`hiring_partner_companies`.`phone_number`,
-								`hiring_partner_companies`.`url_website`
-								FROM `hiring_partner_companies` 
-								Left JOIN `company_sizes`
-								ON `hiring_partner_companies`.`size` = `company_sizes`.`id`;");
+				`hiring_partner_companies`.`id`,
+				`hiring_partner_companies`.`name`,
+				`company_sizes`.`size`, 
+				`hiring_partner_companies`.`tech_stack`, 
+				`hiring_partner_companies`.`postcode`,
+				`hiring_partner_companies`.`phone_number`,
+				`hiring_partner_companies`.`url_website`
+				FROM `hiring_partner_companies` 
+				Left JOIN `company_sizes`
+				ON `hiring_partner_companies`.`size` = `company_sizes`.`id`;");
         $query->execute();
+        return $query->fetchAll();
+    }
+
+    /**
+     * Gets a single hiring partners information
+     *
+     * @return array array with the info
+     */
+    public function getDetailsByCompany(int $id) :array
+    {
+        $query = $this->db->prepare("SELECT 
+					`id`, `name`, `size`, `tech_stack`, `postcode`, `phone_number`, `url_website`
+					FROM `hiring_partner_companies`
+					WHERE `id` = :id;");
+        $query->execute(['id'=>$id]);
         return $query->fetchAll();
     }
 }

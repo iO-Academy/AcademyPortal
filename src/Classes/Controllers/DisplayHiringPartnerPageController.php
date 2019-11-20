@@ -40,8 +40,8 @@ class DisplayHiringPartnerPageController
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $args['companySize'] = $this->hiringPartnerModel->getCompanySize();
             $args['companyName'] = $this->hiringPartnerModel->getCompanyName();
+            $args['companySize'] = $this->hiringPartnerModel->getCompanySize();
             $this->renderer->render($response, 'hiringPartnerPage.phtml', $args);
         } else {
             return $response->withRedirect('./');
