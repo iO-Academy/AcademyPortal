@@ -1,7 +1,7 @@
 const eventList = document.querySelector('#events')
 const eventForm = document.querySelector('form')
 const message = document.querySelector('#messages')
-const currentEventsMessage = document.querySelector('#currentEventsMessages')
+
 
 
 /**
@@ -37,6 +37,7 @@ function displayEventsHandler(events) {
         eventList.innerHTML = ''
 
         events.forEach((event) => {
+            
             eventGenerator(event)
                 .then(() => {
                     let showInfoButtons = document.querySelectorAll('.show-event-info')
@@ -48,6 +49,7 @@ function displayEventsHandler(events) {
                         })
                     })
                 }).then(() => {
+                const currentEventsMessage = document.querySelector(`#currentEventsMessages${event.id}`)
                 let hpForms = document.querySelectorAll('.addHiringPartnerForm')
                 hpForms.forEach(function (hpForm) {
                     hpForm.addEventListener('submit', function (e) {
@@ -99,7 +101,9 @@ function displayEventsHandler(events) {
  * @param events an object which contains information about an event
  */
 async function eventGenerator(event) {
-    eventList.innerHTML = ''
+    // eventList.innerHTML = ''
+    eventList.innerHTML += `<div id='currentEventsMessages${event.id}'></div>`
+    const currentEventsMessage = document.querySelector(`#currentEventsMessages${event.id}`)
     let eventInformation = ''
     eventInformation +=
         `<div class="event-name">
