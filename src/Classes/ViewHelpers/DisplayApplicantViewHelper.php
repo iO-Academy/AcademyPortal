@@ -43,7 +43,6 @@ class DisplayApplicantViewHelper
         $result = '';
         foreach ($applicants as $applicant) {
             if ($applicant instanceof ApplicantEntity) {
-
                 $cohort = $applicant->getCohortDate();
                 array_push($cohortsArray, $cohort);
             }
