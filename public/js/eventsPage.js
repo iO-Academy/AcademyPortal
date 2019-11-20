@@ -34,7 +34,6 @@ function getEvents(search = false) {
  */
 function displayEventsHandler(events) {
     let eventInformation = ''
-    console.log(events.data)
     if(events.data.length === 0) {
         eventList.innerHTML = events.message
     } else {
