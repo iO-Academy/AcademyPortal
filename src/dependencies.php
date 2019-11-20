@@ -71,9 +71,5 @@ $container['EventModel'] = new \Portal\Factories\EventModelFactory();
 $container['AddEventController'] = new \Portal\Factories\AddEventControllerFactory();
 
 $container['AddContactController'] = new \Portal\Factories\AddContactControllerFactory();
-
-<<<<<<< HEAD
 $container['LinkHiringPartnerToEventController'] = new \Portal\Factories\AddHiringPartnerToEventControllerFactory();
-=======
 $container['AddHiringPartnerToEventController'] = new \Portal\Factories\AddHiringPartnerToEventControllerFactory();
->>>>>>> 426035be6bef26cb81ffd5d3bbcd92e798f0086a
