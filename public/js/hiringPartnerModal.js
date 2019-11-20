@@ -41,18 +41,18 @@ function addEventListenersForModal() {
 
                 data.forEach(function (contact) {
 
-                    $validatedName = validateContactField(contact.name)
-                    $validatedEmail = validateContactField(contact.email)
-                    $validatedJobTitle = validateContactField(contact.job_title)
-                    $validatedPhone = validateContactField(contact.phone)
-                    $validatedIsPrimaryContact = validateContactField(yesNoSub[contact.is_primary_contact])
+                    let validatedName = validateContactField(contact.name)
+                    let validatedEmail = validateContactField(contact.email)
+                    let validatedJobTitle = validateContactField(contact.job_title)
+                    let validatedPhone = validateContactField(contact.phone)
+                    let validatedIsPrimaryContact = validateContactField(yesNoSub[contact.is_primary_contact])
 
                     contactsHTML += `
-                        <h4>Name</h4><p>${$validatedName}</p>
-                        <h4>Email</h4><p>${$validatedEmail}</p>
-                        <h4>Job title</h4><p>${$validatedJobTitle}</p>
-                        <h4>Phone</h4><p>${$validatedPhone}</p>
-                        <h4>Primary Contact</h4><p>${$validatedIsPrimaryContact}</p>`
+                        <h4>Name</h4><p>${validatedName}</p>
+                        <h4>Email</h4><p>${validatedEmail}</p>
+                        <h4>Job title</h4><p>${validatedJobTitle}</p>
+                        <h4>Phone</h4><p>${validatedPhone}</p>
+                        <h4>Primary Contact</h4><p>${validatedIsPrimaryContact}</p>`
                     contactsHTML += '<hr>'
                     })
 

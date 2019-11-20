@@ -159,7 +159,6 @@ getHiringPartners()
  */
 function displayHiringPartnerHandler(partnerCompanies){
     let companyNamesHTML = '';
-    console.log('hello')
     partnerCompanies.forEach(function(partnerCompany){
         companyNamesHTML += `<div class="company-name"><a data-id=${partnerCompany.id} type="button"  class="myBtn">${partnerCompany.name}</a></div>`;
     })

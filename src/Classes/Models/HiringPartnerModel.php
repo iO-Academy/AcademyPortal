@@ -163,16 +163,16 @@ class HiringPartnerModel
     public function getHiringPartners() :array
     {
         $query = $this->db->prepare("SELECT 
-							  	`hiring_partner_companies`.`id`,
-								`hiring_partner_companies`.`name`,
-								`company_sizes`.`size`, 
-								`hiring_partner_companies`.`tech_stack`, 
-								`hiring_partner_companies`.`postcode`,
-								`hiring_partner_companies`.`phone_number`,
-								`hiring_partner_companies`.`url_website`
-								FROM `hiring_partner_companies` 
-								Left JOIN `company_sizes`
-								ON `hiring_partner_companies`.`size` = `company_sizes`.`id`;");
+				`hiring_partner_companies`.`id`,
+				`hiring_partner_companies`.`name`,
+				`company_sizes`.`size`, 
+				`hiring_partner_companies`.`tech_stack`, 
+				`hiring_partner_companies`.`postcode`,
+				`hiring_partner_companies`.`phone_number`,
+				`hiring_partner_companies`.`url_website`
+				FROM `hiring_partner_companies` 
+				Left JOIN `company_sizes`
+				ON `hiring_partner_companies`.`size` = `company_sizes`.`id`;");
         $query->execute();
         return $query->fetchAll();
     }
@@ -182,12 +182,12 @@ class HiringPartnerModel
      *
      * @return array array with the info
      */
-    public function getDetailsByCompany($id) :array
+    public function getDetailsByCompany(int $id) :array
     {
         $query = $this->db->prepare("SELECT 
-							  	`id`, `name`, `size`, `tech_stack`, `postcode`, `phone_number`, `url_website`
-								FROM `hiring_partner_companies`
-								WHERE `id` = :id;");
+					`id`, `name`, `size`, `tech_stack`, `postcode`, `phone_number`, `url_website`
+					FROM `hiring_partner_companies`
+					WHERE `id` = :id;");
         $query->execute(['id'=>$id]);
         return $query->fetchAll();
     }

@@ -3,6 +3,7 @@
 
 namespace Portal\Controllers;
 
+use Portal\Models\HiringPartnerModel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -15,7 +16,7 @@ class CompanyDetailsModalController
      * @param $model
      * @param $view
      */
-    public function __construct($model)
+    public function __construct(HiringPartnerModel $model)
     {
         $this->model = $model;
     }
