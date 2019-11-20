@@ -77,7 +77,52 @@ class ApplicantModel
             'SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
                       AS "cohortDate" 
                       FROM `applicants` 
-                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`;'
+                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      ORDER BY `dateTimeAdded`ASC;'
+        );
+        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
+        $query->execute();
+        $results = $query->fetchAll();
+        return $results;
+    }
+
+    /**
+     * Sorts the table via the input taken from the sorting arrows
+     *
+     * @param string $input is the sort choice
+     *
+     * @return array $results is the data retrieved.
+     */
+    public function sortApplicants(string $input) //eg `dateTimeAdded`DESC
+    {
+        switch ($input) {
+            case 'dateAsc':
+                $order = '`dateTimeAdded` ASC';
+                break;
+
+            case 'dateDesc':
+                $order = '`dateTimeAdded` DESC';
+                break;
+
+            case 'cohortAsc':
+                $order = '`date` ASC';
+                break;
+
+            case 'cohortDesc':
+                $order = '`date` DESC';
+                break;
+
+            default:
+                $order = '`dateTimeAdded` ASC';
+                break;
+        }
+
+        $query = $this->db->prepare(
+            "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
+                      AS 'cohortDate'
+                      FROM `applicants`
+                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      ORDER BY $order;"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
         $query->execute();
