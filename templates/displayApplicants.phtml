@@ -46,15 +46,16 @@
                 Filter Cohort
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">January, 2019</a>
-                <a class="dropdown-item" href="#">September, 2019</a>
-                <a class="dropdown-item" href="#">February, 2020</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">August, 2020</a>
+                <a class="dropdown-item" href="#">All</a><br>
+
+                <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::getCohorts($data); ?>
+<!--                <a class="dropdown-item" href="#">September, 2019</a>-->
+
             </div>
         </div>
 
         <a href="/admin" id="applicantsPageHomeBtn" class="btn btn-success">Go home</a>
+
 
     </div>
 </div>

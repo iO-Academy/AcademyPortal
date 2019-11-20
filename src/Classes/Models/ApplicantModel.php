@@ -130,6 +130,67 @@ class ApplicantModel
         return $results;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Populates dropdown
+     *
+     * @return array $results is the data retrieved to go into dropdown.
+     */
+    public function populateDropdown()
+    {
+
+        $query = $this->db->prepare(
+            "SELECT `applicants`.`id`, `dateTimeAdded`, `date` 
+                      AS 'cohortDate'
+                      FROM `applicants`
+                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`"
+        );
+        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
+        $query->execute();
+        $results = $query->fetchAll();
+
+//        var_dump($results);
+
+        foreach ($results as $result) {
+            foreach ($result as $item) {
+                echo $item;
+                echo '<br>';
+            }
+        }
+        return $results;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Retrieves an Applicant with the specified id
      *

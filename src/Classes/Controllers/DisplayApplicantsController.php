@@ -36,6 +36,9 @@ class DisplayApplicantsController
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
+
+        $this->applicantModel->populateDropdown();
+
         $params = [];
         $sortValue = $request->getQueryParam('sort');
         $params['sort'] = $sortValue;
@@ -61,5 +64,10 @@ class DisplayApplicantsController
                 $params['data'] = $this->applicantModel->getAllApplicants();
         }
         return $this->renderer->render($response, 'displayApplicants.phtml', $params);
+
+//        $this->applicantModel->populateDropdown();
+
+
+
     }
 }

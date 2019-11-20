@@ -29,4 +29,29 @@ class DisplayApplicantViewHelper
         }
         return ($result);
     }
+
+    /**
+     * generates cohorts.
+     *
+     * @param $applicants
+     *
+     * @return string.
+     */
+    public static function getCohorts($applicants)
+    {
+        $cohortsArray = [];
+        $result = '';
+        foreach ($applicants as $applicant) {
+            if ($applicant instanceof ApplicantEntity) {
+
+                $cohort = $applicant->getCohortDate();
+                array_push($cohortsArray, $cohort);
+            }
+        }
+        $cohortsArraySorted = array_unique($cohortsArray);
+        foreach ($cohortsArraySorted as $item) {
+            $result .= '<form method="get"><a class="dropdown-item" href="#">' . $item . '</a></form><br>';
+        }
+        return ($result);
+    }
 }
