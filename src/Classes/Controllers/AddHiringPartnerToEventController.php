@@ -39,7 +39,7 @@ class AddHiringPartnerToEventController
             return $response->withJson(['success' => true,
                 'message' => 'Hiring partner already linked.'], 200);
         }
-        $result = $this->eventModel->linkHPToEvent($hiringPartner, $event, $attendees);
+        
         if ($result) {
             return $response->withJson(['success' => true,
                 'message' => 'Hiring partner successfully added to event.'], 200);
