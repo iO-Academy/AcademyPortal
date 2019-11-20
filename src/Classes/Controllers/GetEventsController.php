@@ -73,4 +73,3 @@ class GetEventsController
         return $response->withJson($data, $statusCode);
     }
 }
-
