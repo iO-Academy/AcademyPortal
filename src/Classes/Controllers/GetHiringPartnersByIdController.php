@@ -48,15 +48,15 @@ class GetHiringPartnersByIdController
      *
      * @return Response
      */
-    public function __invoke(Request $request, Response $response, $args) :Response
+    public function __invoke(Request $request, Response $response, $args): Response
     {
         $id = $request->getParsedBodyParam('event_id');
         $this->hpIdsData = $this->event->hpIdsByEventId($id);
-        if ($this->hpIdsData['success']){
-            foreach($this->hpIdsData['hpIds'] as $hpIds){
+        if ($this->hpIdsData['success']) {
+            foreach ($this->hpIdsData['hpIds'] as $hpIds) {
                 foreach ($hpIds as $hpId) {
                     $getHiringPartnerIdData = $this->model->getHiringPartnerById($hpId);
-                    if ($getHiringPartnerIdData['success']){
+                    if ($getHiringPartnerIdData['success']) {
                         $hpEntity = $getHiringPartnerIdData['entity'];
                         array_push($this->hpEntities, $hpEntity);
                     } else {
