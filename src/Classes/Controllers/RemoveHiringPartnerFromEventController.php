@@ -1,17 +1,20 @@
 <?php
+
 namespace Portal\Controllers
 
 use Portal\Models\EventModel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class RemoveHiringPartnerFromEventController {
+class RemoveHiringPartnerFromEventController
+{
     private $eventModel;
 
     public function __construct(EventModel $eventModel)
     {
         $this->eventModel = $eventModel;
     }
+
     /**
      * Calls a method to remove hiring partner from the event
      *
@@ -29,7 +32,7 @@ class RemoveHiringPartnerFromEventController {
         $hiringPartner = $data['hiring_partner_id'];
         $event = $data['event_id'];
 
-        $result = $this->eventModel->removeHiringPartnerFromEvent($hiringPartner, $event)) {
+        $result = $this->eventModel->removeHiringPartnerFromEvent($hiringPartner, $event);
 
         if ($result) {
             return $response->withJson(['success' => true,
@@ -39,4 +42,4 @@ class RemoveHiringPartnerFromEventController {
         }
     }
 }
-}
+
