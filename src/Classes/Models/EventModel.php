@@ -2,13 +2,14 @@
 
 namespace Portal\Models;
 
+use PDO;
 use Portal\Entities\EventEntity;
 
 class EventModel
 {
     private $db;
 
-    public function __construct(\PDO $db)
+    public function __construct(PDO $db)
     {
         $this->db = $db;
     }
@@ -145,11 +146,30 @@ class EventModel
     public function hpIdsByEventId(int $eventId): array
     {
         $statement = 'SELECT `hiring_partner_id`,`people_attending` 
-        FROM `events_hiring_partner_link_table` WHERE  `event_id` = :eventId;';
+        FROM `events_hiring_partner_link_table` WHERE  `event_id` = :eventId AND `deleted` = 0;';
         $query = $this->db->prepare($statement);
         $query->bindParam(':eventId', $eventId);
         $success = $query->execute();
         $hpIds = $query->fetchAll();
         return $hpIds;
+    }
+
+    /**
+     * Deletes hiring partner from an event.
+     *
+     * @param int $eventId the id of the event
+     *
+     * @param int $hiringPartnerId the id of the hiring partner
+     *
+     * @return bool true if successful, else false.
+     */
+    public function removeHiringPartnerFromEvent(int $eventId, int $hiringPartnerId): bool
+    {
+        $statement = 'UPDATE events_hiring_partner_link_table  SET `deleted` = 1  
+        WHERE `event_id` = :eventId AND `hiring_partner_id` = :hiringPartnerId;';
+        $query = $this->db->prepare($statement);
+        $query->bindParam(':eventId', $eventId);
+        $query->bindParam(':hiringPartnerId', $hiringPartnerId);
+        return $query->execute();
     }
 }
