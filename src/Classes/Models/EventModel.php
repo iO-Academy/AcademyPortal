@@ -20,7 +20,7 @@ class EventModel
      */
     public function getEvents(): array
     {
-        $sql = 'SELECT `events`.`id`, `events`.`name`, `category`, 
+        $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
         `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`, 
         `end_time`, `notes` 
         FROM `events`
@@ -82,6 +82,25 @@ class EventModel
         return $query->execute();
     }
 
+    /**
+     * Search all events from the database
+     *
+     * @param string of validated search term
+     * @return array An array of Events based on input search criteria
+     */
+    public function searchEvents(string $searchTerm):array
+    {
+        $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
+                `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes` 
+                FROM `events` 
+                LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
+                WHERE `events`.`name` LIKE ? ORDER BY `date` DESC;';
+        $query = $this->db->prepare($sql);
+        $searchTerm = '%' . $searchTerm . '%';
+        $query->execute([$searchTerm]);
+        return $query->fetchAll();
+    }
+
 
     /**
      *Adds event id, hiring partner id and people attending to database
@@ -111,7 +130,16 @@ class EventModel
         return $query->execute();
     }
 
-    public function checklinkHP(int $hiringPartner, int $event): bool
+    /**
+     * checks that the hiring partner has successfully been linked to the event in the database
+     *
+     * @param int $hiringPartner hiring partner id
+     *
+     * @param int $event event id
+     *
+     * @return boolean indicating whether a hiring partner has successfully been linked to the event in the database
+     */
+    public function checkLinkHP(int $hiringPartner, int $event): bool
     {
         $query = $this->db->prepare('SELECT `id` FROM `events_hiring_partner_link_table`
         WHERE  `event_id` = :event AND
@@ -125,5 +153,23 @@ class EventModel
         } else {
             return false;
         }
+    }
+
+    /**
+     * Pulls hiring partner ids from database where they link to a specific event id
+     *
+     * @param int $eventId the id of the event
+     *
+     * @return array the array of hiring partner ids
+     */
+    public function hpIdsByEventId(int $eventId): array
+    {
+        $statement = 'SELECT `hiring_partner_id`,`people_attending` 
+        FROM `events_hiring_partner_link_table` WHERE  `event_id` = :eventId;';
+        $query = $this->db->prepare($statement);
+        $query->bindParam(':eventId', $eventId);
+        $success = $query->execute();
+        $hpIds = $query->fetchAll();
+        return $hpIds;
     }
 }

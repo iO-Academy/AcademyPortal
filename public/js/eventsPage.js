@@ -2,26 +2,33 @@ const eventList = document.querySelector('#events')
 const eventForm = document.querySelector('form')
 const message = document.querySelector('#messages')
 
-
-
 /**
  * Gets event information from the API and passes into the
  * displayEventsHandler function
  *
  * @return event data
  */
-function getEvents() {
-    fetch('./api/getEvents', {
+function getEvents(search = false) {
+    let url = './api/getEvents'
+    if (search !== false) {
+        url += '?searchTerm=' + search
+    }
+
+    fetch(url, {
         credentials: "same-origin",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
     })
-        .then(response => response.json())
-        .then((eventInfo) => {
-            displayEventsHandler(eventInfo.data)
-        })
+    .then(response => response.json())
+    .then(async (eventInfo) => {
+        let hiringPartners = await getHiringPartners()
+        return {events: eventInfo, hiringPartners: hiringPartners}
+    })
+    .then(eventsAndHiringPartners => {
+        displayEventsHandler(eventsAndHiringPartners)
+    })
 }
 
 /**
@@ -29,14 +36,12 @@ function getEvents() {
  *
  * @param events is an array of objects which contains information about events
  */
-function displayEventsHandler(events) {
-    let eventInformation = ''
-    if (events == '') {
-        eventList.innerHTML = 'No Events Scheduled'
+function displayEventsHandler(eventsAndHiringPartners) {
+    if (eventsAndHiringPartners.events.data.length === 0) {
+        eventList.innerHTML = eventsAndHiringPartners.events.message
     } else {
         eventList.innerHTML = ''
-
-        displayEvents(events).then(() => {
+        displayEvents(eventsAndHiringPartners.events.data, eventsAndHiringPartners.hiringPartners).then(() => {
             let showInfoButtons = document.querySelectorAll('.show-event-info')
                     showInfoButtons.forEach(function (button) {
                         button.addEventListener('click', e => {
@@ -79,6 +84,9 @@ function displayEventsHandler(events) {
                             }).then(response => response.json())
                                 .then((responseJSON) => {
                                     currentEventsMessage.innerText = responseJSON.message
+                                    if(responseJSON.success) {
+                                        getEvents()
+                                    }
                                 })
                         } else {
                             currentEventsMessage.innerText = "Please select a hiring partner"
@@ -92,10 +100,57 @@ function displayEventsHandler(events) {
     }
 };
 
-async function displayEvents(events) {
-    events.forEach(async (event) => {
-        eventGenerator(event)
+async function displayEvents(events, hiringPartners) {
+    events.forEach((event) => {
+        eventGenerator(event, hiringPartners)
+        .then((event) => {
+            displayHiringPartnersAttending(event)
+        })
     })
+}
+
+/**
+ * Function takes an event ID and displays information about attending hiring partners and any attendees associated with a given event
+ *
+ * @param event, the ID of a given event
+ *
+ * @returns a response putting HTML on front end for the attending hiring partners
+ */
+async function displayHiringPartnersAttending(event){
+    let data = {
+        event_id: event.id
+    }
+
+    let hiringPartnersDiv = document.querySelector(`.hiring-partners[data-eventId='${event.id}']`)
+
+    fetch('./api/getHpsByEventId', {
+        credentials: 'same-origin',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'post',
+        body: JSON.stringify(data)
+
+    })
+        .then(response => response.json())
+        .then(response => {
+            if(response.length != 0) {
+                let hiringPartnerHTML = ""
+                hiringPartnerHTML += `<h4>Attending hiring partners</h4>`
+                response.forEach(function(hiringPartner) {
+                    hiringPartnerHTML += `<div class="hiring-partner">`
+                    if(hiringPartner.attendees != null) {
+                        hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
+                        </div>`
+                    } else {
+                        hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span></p>
+                        </div>`
+                    }
+                })
+                hiringPartnersDiv.innerHTML += hiringPartnerHTML
+            }
+        })
 }
 
 /**
@@ -103,8 +158,7 @@ async function displayEvents(events) {
  *
  * @param events an object which contains information about an event
  */
-async function eventGenerator(event) {
-    // eventList.innerHTML = ''
+async function eventGenerator(event, hiringPartners) {
     let eventInformation = ''
     eventInformation +=
         `<div class="event-name">
@@ -120,17 +174,15 @@ async function eventGenerator(event) {
     if (event.notes !== null) {
         eventInformation += `<p>Notes: ${event.notes}</p>`
     }
-    
 
-    eventInformation += `<div class='addHiringPartner'>
+    eventInformation += `<div class="hiring-partners" data-eventId='${event.id}'></div>
+            <div class='addHiringPartner'>
             <form class='addHiringPartnerForm' id='${event.id}'>
 
             <select data-event=${event.id}>
             <option value='0'>Please select a hiring partner...</option>`
 
-    
-
-    eventInformation += `</select>
+            eventInformation += `</select>
             <label>Number of company attendees:</label>
             <input data-event='${event.id}' type='number' name='companyAttendees' min='0'/>
             <input type='submit'/> 
@@ -141,16 +193,14 @@ async function eventGenerator(event) {
     eventInformation += `</div></div>`
     eventList.innerHTML += eventInformation
     const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`)
-    await getHiringPartners().then(responseJson => {
-        if (responseJson.status) {
-            let hiringPartners = responseJson.data
-            hiringPartners.forEach(function (hiringPartner) {
-                document.querySelector(`select[data-event="${event.id}"]`).innerHTML += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
-            })
-        } else {
-            currentEventsMessage.innerText = responseJson.message
-        }
-    });
+    if (hiringPartners.status) {
+        hiringPartners.data.forEach(function (hiringPartner) {
+            document.querySelector(`select[data-event="${event.id}"]`).innerHTML += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
+        })
+    } else {
+        currentEventsMessage.innerText = hiringPartners.message
+    }
+    return event
 }
 
 getEvents()
@@ -289,3 +339,23 @@ function validateForm() {
     document.getElementById('messages').innerHTML = message
     return success
 }
+
+
+document.querySelector('#submit-search-event').addEventListener('click', function(e) {
+    const searchInput = document.querySelector('#academy-events-search').value
+    e.preventDefault()
+    if ((searchInput.length) && searchInput.length < 256) {
+        getEvents(searchInput)
+        document.querySelector('#events-list').innerText = 'Results'
+    } else {
+        message.innerHTML = 'Event search: must be between 1 and 255 characters'
+    }
+})
+
+document.querySelector('#clear-search').addEventListener('click', function(e) {
+    e.preventDefault()
+    if (!window.location.href.includes('#events-list')) {
+        window.location.href += '#events-list'
+    }
+    location.reload()
+})

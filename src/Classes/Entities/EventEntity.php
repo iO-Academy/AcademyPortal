@@ -53,7 +53,7 @@ class EventEntity extends ValidationEntity
         $this->date = $this->validateDate($this->date);
         $this->startTime = $this->validateTime($this->startTime);
         $this->endTime = $this->validateTime($this->endTime);
-        $this->validateStartEndTime($this->startTIme, $this->endTime);
+        $this->validateStartEndTime($this->startTime, $this->endTime);
         if ($this->notes !== null) {
             $this->notes = self::sanitiseString($this->notes);
             $this->notes = self::validateLength($this->notes, 5000);
@@ -117,7 +117,8 @@ class EventEntity extends ValidationEntity
      */
     public static function validateCategoryExists(int $category, array $categoryList)
     {
-        if (array_key_exists($category, $categoryList)) {
+        $zeroIndexCat = intval($category) - 1;
+        if (array_key_exists($zeroIndexCat, $categoryList)) {
             return $category;
         } else {
             throw new \Exception('Category is not valid.');
