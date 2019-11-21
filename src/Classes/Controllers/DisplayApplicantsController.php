@@ -36,28 +36,53 @@ class DisplayApplicantsController
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-
-        $this->applicantModel->populateDropdown();
-
         $params = [];
         $sortValue = $request->getQueryParam('sort');
+        $filterNumber = $request->getQueryParam('filter');
+
         $params['sort'] = $sortValue;
+        $params['filter'] = $filterNumber;
+
+        $filterNumber = trim($filterNumber);
+
+        var_dump($filterNumber);
+//        var_dump($filterValue);
+
+//        if ($filterValue =='August, 2019'){
+//            $params['data'] = $this->applicantModel->filterCohort($filterValue);
+//            echo 'hello';
+//        }
+
+//        if ($filterNumber == null){
+//            $filterValue = '';
+////            WHERE `cohortId` = 2
+//        } else {
+//            $filterValue = 'WHERE `cohortId` =' . $filterNumber;
+//        }
+
+        if ($sortValue == null){
+            $sortValue = 'default';
+        }
 
         switch ($sortValue) {
             case 'dateAsc':
-                $params['data'] = $this->applicantModel->sortApplicants('dateAsc');
+                $params['data'] = $this->applicantModel->sortApplicants('dateAsc', $filterNumber);
                 break;
 
             case 'dateDesc':
-                $params['data'] = $this->applicantModel->sortApplicants('dateDesc');
+                $params['data'] = $this->applicantModel->sortApplicants('dateDesc', $filterNumber);
                 break;
 
             case 'cohortAsc':
-                $params['data'] = $this->applicantModel->sortApplicants('cohortAsc');
+                $params['data'] = $this->applicantModel->sortApplicants('cohortAsc', $filterNumber);
                 break;
 
             case 'cohortDesc':
-                $params['data'] = $this->applicantModel->sortApplicants('cohortDesc');
+                $params['data'] = $this->applicantModel->sortApplicants('cohortDesc', $filterNumber);
+                break;
+
+            case 'default':
+                $params['data'] = $this->applicantModel->sortApplicants('dateAsc', $filterNumber);
                 break;
 
             default:

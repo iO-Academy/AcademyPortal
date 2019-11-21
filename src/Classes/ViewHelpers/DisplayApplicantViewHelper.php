@@ -48,8 +48,10 @@ class DisplayApplicantViewHelper
             }
         }
         $cohortsArraySorted = array_unique($cohortsArray);
+        $i = 1;
         foreach ($cohortsArraySorted as $item) {
             $result .= '<form method="get"><button type="submit" name="filter" value=" ' . $item .' " class="dropdown-item dropdownFilter" href="#">' . $item . '</button></form>';
+            $i++;
         }
         return ($result);
     }

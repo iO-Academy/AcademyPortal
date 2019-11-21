@@ -2,6 +2,7 @@
 
 namespace Portal\Models;
 
+use DateTime;
 use Portal\Entities\ApplicantEntity;
 
 class ApplicantModel
@@ -93,9 +94,9 @@ class ApplicantModel
      *
      * @return array $results is the data retrieved.
      */
-    public function sortApplicants(string $input) //eg `dateTimeAdded`DESC
+    public function sortApplicants(string $sort, string $filter) //eg `dateTimeAdded`DESC
     {
-        switch ($input) {
+        switch ($sort) {
             case 'dateAsc':
                 $order = '`dateTimeAdded` ASC';
                 break;
@@ -117,13 +118,42 @@ class ApplicantModel
                 break;
         }
 
-        $query = $this->db->prepare(
+//        convert filter
+
+//        $dtime = DateTime::createFromFormat("d/m G:i", "13/10 15:00");
+//        $dtime = DateTime::createFromFormat("F, Y", $filter);
+//        $timestamp = $dtime->getTimestamp();
+//
+//        echo '<br>';
+//        echo date("Y-m-01", strtotime($timestamp));
+//        echo '<br>';
+
+
+        if ($filter == null OR $filter == 'all') {
+            $filterQuery = '';
+//            echo $filter;
+
+        } else {
+            $dtime = DateTime::createFromFormat("F, Y", $filter);
+            $timestamp = $dtime->getTimestamp();
+            $filterDate = date("Y-m-01", $timestamp);
+
+            $filterQuery = 'WHERE `cohorts`.`date` = \' ' . $filterDate .' \''; // -> THIS WORKS
+        }
+
+
+
+        $SQLquery =
             "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
                       AS 'cohortDate'
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-                      ORDER BY $order;"
-        );
+                      $filterQuery
+                      ORDER BY $order;";
+
+        var_dump($SQLquery);
+
+        $query = $this->db->prepare($SQLquery);
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
         $query->execute();
         $results = $query->fetchAll();
@@ -131,64 +161,27 @@ class ApplicantModel
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * Populates dropdown
-     *
-     * @return array $results is the data retrieved to go into dropdown.
-     */
-    public function populateDropdown()
-    {
-
-        $query = $this->db->prepare(
-            "SELECT `applicants`.`id`, `dateTimeAdded`, `date` 
-                      AS 'cohortDate'
-                      FROM `applicants`
-                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`"
-        );
-        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
-        $query->execute();
-        $results = $query->fetchAll();
-
-//        var_dump($results);
-
-        foreach ($results as $result) {
-            foreach ($result as $item) {
-                echo $item;
-                echo '<br>';
-            }
-        }
-        return $results;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//    /**
+//     * Sorts the table via the input taken from the sorting arrows
+//     *
+//     * @param string $input is the sort choice
+//     *
+//     * @return array $results is the data retrieved.
+//     */
+//    public function filterCohort(string $input) //eg `dateTimeAdded`DESC
+//    {
+//        $query = $this->db->prepare(
+//            "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date`
+//                      AS 'cohortDate'
+//                      FROM `applicants`
+//                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+//                      WHERE `cohorts` = $input;"
+//        );
+//        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
+//        $query->execute();
+//        $results = $query->fetchAll();
+//        return $results;
+//    }
 
 
     /**
@@ -247,7 +240,8 @@ class ApplicantModel
         $applicantEighteenPlus,
         $applicantFinance,
         $applicantNotes
-    ) {
+    )
+    {
         return new ApplicantEntity(
             $applicantName,
             $applicantEmail,
