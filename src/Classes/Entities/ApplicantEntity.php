@@ -4,7 +4,6 @@ namespace Portal\Entities;
 
 class ApplicantEntity extends ValidationEntity implements \JsonSerializable
 {
-    protected $id;
     protected $name;
     protected $email;
     protected $phoneNumber;
@@ -20,7 +19,6 @@ class ApplicantEntity extends ValidationEntity implements \JsonSerializable
     protected $dateTimeAdded;
 
     public function __construct(
-        int $applicantId = null,
         string $applicantName = null,
         string $applicantEmail = null,
         string $applicantPhoneNumber = null,
@@ -33,7 +31,6 @@ class ApplicantEntity extends ValidationEntity implements \JsonSerializable
         string $applicantFinance = null,
         string $applicantNotes = null
     ) {
-        $this->id = ($this->id ?? $applicantId);
         $this->name = ($this->name ?? $applicantName);
         $this->email = ($this->email ?? $applicantEmail);
         $this->phoneNumber = ($this->phoneNumber ?? $applicantPhoneNumber);
@@ -60,7 +57,6 @@ class ApplicantEntity extends ValidationEntity implements \JsonSerializable
     {
 
         return [
-                  'id' => $this->id,
                   'name' => $this->name,
                   'email' => $this->email,
                   'phoneNumber' => $this->phoneNumber,
@@ -82,7 +78,6 @@ class ApplicantEntity extends ValidationEntity implements \JsonSerializable
      */
     private function sanitiseData()
     {
-        $this->id = (int) $this->id;
         $this->name = self::sanitiseString($this->name);
         $this->email = self::sanitiseString($this->email);
         $this->email = $this->validateEmail($this->email);
@@ -112,16 +107,6 @@ class ApplicantEntity extends ValidationEntity implements \JsonSerializable
         } else {
             return false;
         }
-    }
-
-    /**
-     * Gets the Id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**

@@ -18,7 +18,7 @@ return [
 
         'db' => [
             'host' => 'mysql:host=127.0.0.1;',
-            'dbName' =>'dbname=academyPortal',
+            'dbName' =>'dbname=academyPortal2',
             'userName' =>'root',
             'password' => 'password'
         ]
