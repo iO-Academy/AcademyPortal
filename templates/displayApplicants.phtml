@@ -46,10 +46,9 @@
                 Filter Cohort
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">All</a><br>
 
+                <form method="get"><button type="submit" name="filter" value="all" class="dropdown-item dropdownFilter" href="#">All</button></form>
                 <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::getCohorts($data); ?>
-<!--                <a class="dropdown-item" href="#">September, 2019</a>-->
 
             </div>
         </div>
