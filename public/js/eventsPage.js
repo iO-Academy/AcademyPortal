@@ -39,7 +39,7 @@ function getEvents(search = false) {
  * @param events is an array of objects which contains information about events
  */
 function displayEventsHandler(eventsAndHiringPartners) {
-    if(eventsAndHiringPartners.events.data.length === 0) {
+    if (eventsAndHiringPartners.events.data.length === 0) {
         eventList.innerHTML = eventsAndHiringPartners.events.message
     } else {
         eventList.innerHTML = ''
