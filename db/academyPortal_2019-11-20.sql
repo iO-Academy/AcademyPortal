@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.27)
 # Database: academyPortal
-# Generation Time: 2019-11-19 16:03:23 +0000
+# Generation Time: 2019-11-20 13:23:25 +0000
 # ************************************************************
 
 
@@ -131,10 +131,10 @@ LOCK TABLES `event_categories` WRITE;
 
 INSERT INTO `event_categories` (`id`, `name`)
 VALUES
-	(1,'Other'),
+	(1,'Hiring Event'),
 	(2,'Sprint Review'),
 	(3,'Taster Session'),
-	(4,'Hiring Event');
+	(4,'Other');
 
 /*!40000 ALTER TABLE `event_categories` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -164,7 +164,9 @@ LOCK TABLES `events` WRITE;
 
 INSERT INTO `events` (`id`, `name`, `category`, `location`, `date`, `start_time`, `end_time`, `notes`)
 VALUES
-	(1,'test',2,'bath','2020-02-08','09:01:00','11:00:00','sf');
+	(1,'test',2,'bath','2020-02-08','09:01:00','11:00:00','sf'),
+	(2,'bath',1,'bath','2020-12-12','19:00:00','20:00:00','sd'),
+	(3,'bath',3,'bath','2020-12-12','19:00:00','20:00:00','ats');
 
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
