@@ -52,15 +52,15 @@ class GetHiringPartnersByIdController
     {
         $id = $request->getParsedBodyParam('event_id');
         $this->hpIdsData = $this->event->hpIdsByEventId($id);
-        foreach($this->hpIdsData as $hpId) {
+        foreach ($this->hpIdsData as $hpId) {
             $getHiringPartnerIdData = $this->model->getHiringPartnerById($hpId['hiring_partner_id']);
-                    if ($getHiringPartnerIdData['success']) {
-                        $hpEntity = $getHiringPartnerIdData['entity'];
-                        $hpEntity['attendees'] = $hpId['people_attending'];
-                        array_push($this->hpEntities, $hpEntity);
-                    } else {
-                        return $response->withJson(['message' => 'Database error'], 500);
-                    }
+            if ($getHiringPartnerIdData['success']) {
+                $hpEntity = $getHiringPartnerIdData['entity'];
+                $hpEntity['attendees'] = $hpId['people_attending'];
+                array_push($this->hpEntities, $hpEntity);
+            } else {
+                return $response->withJson(['message' => 'Database error'], 500);
+            }
         }
         return $response->withJson($this->hpEntities);
     }
