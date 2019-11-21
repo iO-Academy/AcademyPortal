@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Portal\Controllers;
 
 use Portal\Models\EventModel;

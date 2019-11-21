@@ -197,4 +197,23 @@ class HiringPartnerModel
         $query->execute(['id'=>$id]);
         return $query->fetchAll();
     }
+
+    /**
+     * Gets a single hiring partner's information
+     *
+     * @param int Hiring Partner Id
+     *
+     * @return HiringPartnerEntity hiring partner entity
+     */
+    public function getHiringPartnerById(int $id) :array
+    {
+        $query = $this->db->prepare("SELECT 
+					`id`, `name`, `size`, `tech_stack`, `postcode`, `phone_number`, `url_website`
+					FROM `hiring_partner_companies`
+					WHERE `id` = :id;");
+        $success = $query->execute(['id'=>$id]);
+        $entity = $query->fetch();
+        $returnData = ['entity' => $entity, 'success' => $success];
+        return $returnData;
+    }
 }
