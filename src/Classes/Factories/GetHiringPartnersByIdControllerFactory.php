@@ -15,7 +15,7 @@ class GetHiringPartnersByIdControllerFactory
      *
      * @return GetHiringPartnersByIdController
      */
-    public function __invoke(ContainerInterface $container) :GetHiringPartnersByIdController
+    public function __invoke(ContainerInterface $container): GetHiringPartnersByIdController
     {
         $hiringPartnerModel = $container->get('HiringPartnerModel');
         $eventModel = $container->get('EventModel');
