@@ -18,6 +18,11 @@
         <div class="col-xs-12 registeredApplicants">
             <h1>Registered Applicants</h1>
             <form class="arrowForm" method="get">
+                <?php
+                if (!empty($filter)) {
+                    echo '<input type="hidden" value="' . $filter . '" name="filter">';
+                }
+                ?>
                 <table class="col-xs-12 table-bordered">
                     <tr>
                         <th class="col-xs-2">Name</th>
@@ -47,8 +52,16 @@
             </button>
             <div class="dropdown-menu">
 
-                <form method="get"><button type="submit" name="filter" value="all" class="dropdown-item dropdownFilter" href="#">All</button></form>
-                <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::getCohorts($data); ?>
+                <form method="get">
+
+                    <?php
+                    if (!empty($sort)) {
+                        echo '<input type="hidden" value="' . $sort . '" name="sort">';
+                    }
+                    ?>
+
+                    <button type="submit" name="filter" value="all" class="dropdown-item dropdownFilter">All</button></form>
+                <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::getCohorts($data, $sort); ?>
 
             </div>
         </div>
