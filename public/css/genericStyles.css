@@ -31,6 +31,11 @@ input[type="submit"] {
     margin-top: 30px;
 }
 
+/*Search event button on display events page, margin pushes it out of line with search box*/
+#submit-search-event {
+    margin-top: 0;
+}
+
 .company-name {
     margin-top: 30px;
     margin-bottom: 5px;
