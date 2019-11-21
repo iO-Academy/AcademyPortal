@@ -79,3 +79,13 @@ input[type="submit"] {
 .dropdownFilter:hover{
     color: #538eff;
 }
+
+/*#applicantsPageTitle{*/
+
+/*    float: left;*/
+/*}*/
+
+#applicantsPageBtns{
+
+    float: right;
+}

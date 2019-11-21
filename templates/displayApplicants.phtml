@@ -16,7 +16,33 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 registeredApplicants">
-            <h1>Registered Applicants</h1>
+            <div>
+                <h1>Registered Applicants</h1>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Filter Cohort
+                        </button>
+                        <div class="dropdown-menu">
+
+                            <form method="get">
+
+                                <?php
+                                if (!empty($sort)) {
+                                    echo '<input type="hidden" value="' . $sort . '" name="sort">';
+                                }
+                                ?>
+
+                                <button type="submit" name="filter" value="all" class="dropdown-item dropdownFilter">All</button></form>
+                            <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::getCohorts($data, $sort); ?>
+
+                        </div>
+                    </div>
+
+                    <a href="/admin" id="applicantsPageHomeBtn" class="btn btn-success">Go home</a>
+
+            </div>
+
             <form class="arrowForm" method="get">
                 <?php
                 if (!empty($filter)) {
@@ -45,29 +71,6 @@
         </div>
         <!-- Modal -->
         <?php require('partials/applicantInfoModal.phtml'); ?>
-
-        <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Filter Cohort
-            </button>
-            <div class="dropdown-menu">
-
-                <form method="get">
-
-                    <?php
-                    if (!empty($sort)) {
-                        echo '<input type="hidden" value="' . $sort . '" name="sort">';
-                    }
-                    ?>
-
-                    <button type="submit" name="filter" value="all" class="dropdown-item dropdownFilter">All</button></form>
-                <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::getCohorts($data, $sort); ?>
-
-            </div>
-        </div>
-
-        <a href="/admin" id="applicantsPageHomeBtn" class="btn btn-success">Go home</a>
-
 
     </div>
 </div>
