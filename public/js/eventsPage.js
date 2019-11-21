@@ -126,10 +126,8 @@ async function displayEvents(events) {
                         </div>`
                     }
                 })
-            }
-            
+            }  
         })
-        // THE INTEGRATION STATION GOES HERE
     })
 })
 }
