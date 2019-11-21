@@ -2,11 +2,12 @@
 
 namespace Portal\Controllers;
 
+use Portal\Entities\HiringPartnerEntity;
 use Portal\Models\EventModel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class AddHiringPartnerToEventController
+class RemoveHiringPartnerFromEventController
 {
     private $eventModel;
 
@@ -16,33 +17,28 @@ class AddHiringPartnerToEventController
     }
 
     /**
-     * Calls a method to send hiring partner id, event id and number of attendees
+     * Calls a method to remove hiring partner from the event
      *
      * and responds with Json success message
      *
      * @param Request $request HTTP request
      * @param Response $response HTTP response
-     * @param array $args
+     * @param array $args The arguments array
      *
      * @return Response returns Json success/failure message
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $data = $request->getParsedBody();
-        $hiringPartner = $data['hiring_partner_id'];
+        $hiringPartner = $data['hp_id'];
         $event = $data['event_id'];
-        $attendees = $data['people_attending'];
 
-        if (!$this->eventModel->checkLinkHP($hiringPartner, $event)) {
-            $result = $this->eventModel->addHPToEvent($hiringPartner, $event, $attendees);
-        } else {
-            return $response->withJson(['success' => false,
-                'message' => 'Hiring partner already linked.'], 200);
-        }
-        
+        $result = $this->eventModel->removeHiringPartnerFromEvent($event, $hiringPartner);
+
         if ($result) {
             return $response->withJson(['success' => true,
-                'message' => 'Hiring partner successfully added to event.'], 200);
+                'message' => 'Hiring partner successfully removed from the event.',
+                'data' => [$hiringPartner, $event]], 200);
         } else {
             return $response->withJson(['success' => false, 'message' => 'Error - please contact administrator'], 500);
         }

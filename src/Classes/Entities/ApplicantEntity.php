@@ -20,7 +20,6 @@ class ApplicantEntity extends ValidationEntity implements \JsonSerializable
     protected $dateTimeAdded;
 
     public function __construct(
-        int $applicantId = null,
         string $applicantName = null,
         string $applicantEmail = null,
         string $applicantPhoneNumber = null,
@@ -33,7 +32,6 @@ class ApplicantEntity extends ValidationEntity implements \JsonSerializable
         string $applicantFinance = null,
         string $applicantNotes = null
     ) {
-        $this->id = ($this->id ?? $applicantId);
         $this->name = ($this->name ?? $applicantName);
         $this->email = ($this->email ?? $applicantEmail);
         $this->phoneNumber = ($this->phoneNumber ?? $applicantPhoneNumber);

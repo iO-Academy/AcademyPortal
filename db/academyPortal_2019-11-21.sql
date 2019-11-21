@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.27)
 # Database: academyPortal
-# Generation Time: 2019-11-19 16:03:23 +0000
+# Generation Time: 2019-11-21 15:02:33 +0000
 # ************************************************************
 
 
@@ -131,10 +131,10 @@ LOCK TABLES `event_categories` WRITE;
 
 INSERT INTO `event_categories` (`id`, `name`)
 VALUES
-	(1,'Other'),
+	(1,'Hiring Event'),
 	(2,'Sprint Review'),
 	(3,'Taster Session'),
-	(4,'Hiring Event');
+	(4,'Other');
 
 /*!40000 ALTER TABLE `event_categories` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -164,7 +164,9 @@ LOCK TABLES `events` WRITE;
 
 INSERT INTO `events` (`id`, `name`, `category`, `location`, `date`, `start_time`, `end_time`, `notes`)
 VALUES
-	(1,'test',2,'bath','2020-02-08','09:01:00','11:00:00','sf');
+	(1,'test',2,'bath','2020-02-08','09:01:00','11:00:00','sf'),
+	(2,'bath',1,'bath','2020-12-12','19:00:00','20:00:00','sd'),
+	(3,'bath',3,'bath','2020-12-12','19:00:00','20:00:00','ats');
 
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -180,9 +182,20 @@ CREATE TABLE `events_hiring_partner_link_table` (
   `event_id` int(11) unsigned NOT NULL,
   `hiring_partner_id` int(11) unsigned NOT NULL,
   `people_attending` int(11) unsigned DEFAULT NULL,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `events_hiring_partner_link_table` WRITE;
+/*!40000 ALTER TABLE `events_hiring_partner_link_table` DISABLE KEYS */;
+
+INSERT INTO `events_hiring_partner_link_table` (`id`, `event_id`, `hiring_partner_id`, `people_attending`, `deleted`)
+VALUES
+	(1,3,3,10,0),
+	(2,4,4,12,0);
+
+/*!40000 ALTER TABLE `events_hiring_partner_link_table` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table hearAbout

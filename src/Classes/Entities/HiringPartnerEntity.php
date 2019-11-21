@@ -13,7 +13,6 @@ class HiringPartnerEntity extends ValidationEntity
     protected $websiteUrl;
 
     public function __construct(
-        int $hiringPartnerCompanyId = null,
         string $hiringPartnerCompanyName = null,
         int $hiringPartnerCompanySize = null,
         string $hiringPartnerTechStack = null,
@@ -21,7 +20,6 @@ class HiringPartnerEntity extends ValidationEntity
         string $hiringPartnerPhoneNumber = null,
         string $hiringPartnerWebsiteUrl = null
     ) {
-        $this->companyId = ($this->companyId ?? $hiringPartnerCompanyId);
         $this->companyName = ($this->companyName ?? $hiringPartnerCompanyName);
         $this->companySize = ($this->companySize ?? $hiringPartnerCompanySize);
         $this->techStack = ($this->techStack ?? $hiringPartnerTechStack);
@@ -119,5 +117,22 @@ class HiringPartnerEntity extends ValidationEntity
     public function getWebsiteURL()
     {
         return $this->websiteUrl;
+    }
+
+    /**
+     * @return array of hiring entity properties
+     */
+    public function hiringPartnerEntityToArray() :array
+    {
+        $hiringPartnerEntityAsArray = [
+            'companyID' => $this->getCompanyId(),
+            'companyName' => $this->getCompanyName(),
+            'companySize' => $this->getCompanySize(),
+            'techStack' => $this->getTechStack(),
+            'postcode' => $this->getTechStack(),
+            'phoneNumber' => $this->getPhoneNumber(),
+            'websiteUrl' => $this->getWebsiteURL()
+        ];
+        return $hiringPartnerEntityAsArray;
     }
 }
