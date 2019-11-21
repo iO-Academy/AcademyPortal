@@ -38,7 +38,7 @@ class RemoveHiringPartnerFromEventController
         if ($result) {
             return $response->withJson(['success' => true,
                 'message' => 'Hiring partner successfully removed from the event.',
-            'data' => [$hiringPartner, $event]], 200);
+                'data' => [$hiringPartner, $event]], 200);
         } else {
             return $response->withJson(['success' => false, 'message' => 'Error - please contact administrator'], 500);
         }
