@@ -43,9 +43,9 @@ class GetHiringPartnersByIdController
      *
      * @param Response $response
      *
-     * @param $args
+     * @param $args an array of arguments
      *
-     * @return Response
+     * @return JSON response containing hpEntities
      */
     public function __invoke(Request $request, Response $response, $args): Response
     {
@@ -61,6 +61,6 @@ class GetHiringPartnersByIdController
                 return $response->withJson(['message' => 'Database error'], 500);
             }
         }
-        return $response->withJson($this->hpEntities);
+        return $response->withJson($this->hpEntities, 200);
     }
 }

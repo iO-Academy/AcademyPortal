@@ -117,7 +117,7 @@ class EventModel
      *
      * @param int $event event id
      *
-     * @return bool
+     * @return boolean indicating whether a hiring partner has successfully been linked to the event in the database
      */
     public function checkLinkHP(int $hiringPartner, int $event): bool
     {

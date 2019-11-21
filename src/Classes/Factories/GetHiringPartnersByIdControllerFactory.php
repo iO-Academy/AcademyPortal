@@ -11,9 +11,9 @@ class GetHiringPartnersByIdControllerFactory
     /**
      * Invoke function to create new GetHiringPartnersByIdControllers
      *
-     * @param ContainerInterface $container
+     * @param ContainerInterface $container an array of objects
      *
-     * @return GetHiringPartnersByIdController
+     * @return a new GetHiringPartnersByIdController object
      */
     public function __invoke(ContainerInterface $container) :GetHiringPartnersByIdController
     {
