@@ -22,7 +22,7 @@ class RemoveHiringPartnerFromEventController
      *
      * @param Request $request HTTP request
      * @param Response $response HTTP response
-     * @param array $args
+     * @param array $args The arguments array
      *
      * @return Response returns Json success/failure message
      */
