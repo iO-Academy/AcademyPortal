@@ -10,7 +10,6 @@ const message = document.querySelector('#messages')
  */
 function getEvents(search = false) {
     let url = './api/getEvents'
-
     fetch(url, {
         credentials: "same-origin",
         headers: {
