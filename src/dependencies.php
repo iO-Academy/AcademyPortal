@@ -21,7 +21,7 @@ $container['logger'] = function ($c) {
 // db connection
 $container['dbConnection'] = function ($c) {
     $settings = $c->get('settings')['db'];
-    $db = new PDO($settings['host'].$settings['dbName'], $settings['userName'], $settings['password']);
+    $db = new PDO($settings['host'] . $settings['dbName'], $settings['userName'], $settings['password']);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
     return $db;
 };
@@ -38,7 +38,7 @@ $container['ApplicantModel'] = new \Portal\Factories\ApplicantModelFactory();
 
 $container['SaveApplicantController'] = new \Portal\Factories\SaveApplicantControllerFactory();
 
-$container['ApplicationFormModel'] =  new \Portal\Factories\ApplicationFormModelFactory();
+$container['ApplicationFormModel'] = new \Portal\Factories\ApplicationFormModelFactory();
 
 $container['ApplicationFormController'] = new \Portal\Factories\ApplicationFormControllerFactory();
 
@@ -71,3 +71,7 @@ $container['EventModel'] = new \Portal\Factories\EventModelFactory();
 $container['AddEventController'] = new \Portal\Factories\AddEventControllerFactory();
 
 $container['AddContactController'] = new \Portal\Factories\AddContactControllerFactory();
+
+$container['AddHiringPartnerToEventController'] = new \Portal\Factories\AddHiringPartnerToEventControllerFactory();
+
+$container['CompanyDetailsModalController'] = new \Portal\Factories\CompanyDetailsModalControllerFactory();
