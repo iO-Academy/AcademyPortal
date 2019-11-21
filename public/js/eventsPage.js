@@ -85,7 +85,12 @@ function displayEventsHandler(eventsAndHiringPartners) {
                                 .then((responseJSON) => {
                                     currentEventsMessage.innerText = responseJSON.message
                                     if(responseJSON.success) {
-                                        getEvents()
+                                        searchQuery = document.getElementById("academy-events-search").value
+                                        if(searchQuery != "") {
+                                            getEvents(searchQuery)
+                                        } else {
+                                            getEvents()
+                                        }
                                     }
                                 })
                         } else {
@@ -131,7 +136,12 @@ async function addEventListenersToHpDelete(event){
                     let currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`)
                     currentEventsMessage.innerText = responseJSON.message
                     if (responseJSON.success){
-                        getEvents()
+                        searchQuery = document.getElementById("academy-events-search").value
+                        if(searchQuery != "") {
+                            getEvents(searchQuery)
+                        } else {
+                            getEvents()
+                        }
                     }
                 })
         })
