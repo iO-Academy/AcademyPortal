@@ -64,25 +64,9 @@ class HiringPartnerEntityTest extends TestCase
         \Portal\Entities\HiringPartnerEntity::ValidateLength($phoneNumber, $characterLength);
     }
 
-    public function testGetCompanyIdSuccess()
-    {
-        $company = new \Portal\Entities\HiringPartnerEntity(
-            1,
-            'TechHub',
-            2,
-            'CSS',
-            'BA2 4DD',
-            '01225 888888',
-            'www.techhub.com'
-        );
-        $result = $company->getCompanyId();
-        $this->assertEquals($result, 1);
-    }
-
     public function testGetCompanyNameSuccess()
     {
         $company = new \Portal\Entities\HiringPartnerEntity(
-            1,
             'TechHub',
             2,
             'CSS',
@@ -97,7 +81,6 @@ class HiringPartnerEntityTest extends TestCase
     public function testGetCompanySizeSuccess()
     {
         $company = new \Portal\Entities\HiringPartnerEntity(
-            1,
             'TechHub',
             2,
             'CSS',
@@ -112,7 +95,6 @@ class HiringPartnerEntityTest extends TestCase
     public function testGetTechStackSuccess()
     {
         $company = new \Portal\Entities\HiringPartnerEntity(
-            1,
             'TechHub',
             2,
             'CSS',
@@ -127,7 +109,6 @@ class HiringPartnerEntityTest extends TestCase
     public function testGetPostcodeSuccess()
     {
         $company = new \Portal\Entities\HiringPartnerEntity(
-            1,
             'TechHub',
             2,
             'CSS',
@@ -142,7 +123,6 @@ class HiringPartnerEntityTest extends TestCase
     public function testGetPhoneNumberSuccess()
     {
         $company = new \Portal\Entities\HiringPartnerEntity(
-            1,
             'TechHub',
             2,
             'CSS',
@@ -157,7 +137,6 @@ class HiringPartnerEntityTest extends TestCase
     public function testGetWebsiteURLSuccess()
     {
         $company = new \Portal\Entities\HiringPartnerEntity(
-            1,
             'TechHub',
             2,
             'CSS',
