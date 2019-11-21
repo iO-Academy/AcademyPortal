@@ -82,7 +82,6 @@ class EventModel
         return $query->execute();
     }
 
-
     /**
      *Adds event id, hiring partner id and people attending to database
      *
@@ -145,17 +144,12 @@ class EventModel
      */
     public function hpIdsByEventId(int $eventId): array
     {
-        $query = $this->db->prepare('SELECT `hiring_partner_id` FROM `events_hiring_partner_link_table`
-        WHERE  `event_id` = :eventId;');
+        $statement = 'SELECT `hiring_partner_id`,`people_attending` 
+        FROM `events_hiring_partner_link_table` WHERE  `event_id` = :eventId;';
+        $query = $this->db->prepare($statement);
         $query->bindParam(':eventId', $eventId);
         $success = $query->execute();
         $hpIds = $query->fetchAll();
-        $queryTwo = $this->db->prepare('SELECT `people_attending` FROM `events_hiring_partner_link_table`
-        WHERE  `event_id` = :eventId;');
-        $queryTwo->bindParam(':eventId', $eventId);
-        $successTwo = $queryTwo->execute();
-        $attendees = $queryTwo->fetchAll();
-        $returnData = ['hpIds' => $hpIds, 'attendees' => $attendees, 'success' => $success];
-        return $returnData;
+        return $hpIds;
     }
 }

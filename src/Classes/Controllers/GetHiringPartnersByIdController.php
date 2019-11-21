@@ -36,7 +36,6 @@ class GetHiringPartnersByIdController
         $this->event = $event;
     }
 
-
     /**
      * Invoke function to get all hiring partners associated with an event and returns JSON
      *
@@ -52,22 +51,16 @@ class GetHiringPartnersByIdController
     {
         $id = $request->getParsedBodyParam('event_id');
         $this->hpIdsData = $this->event->hpIdsByEventId($id);
-        if ($this->hpIdsData['success']) {
-            foreach ($this->hpIdsData['hpIds'] as $index => $hpIds) {
-                foreach ($hpIds as $hpId) {
-                    $getHiringPartnerIdData = $this->model->getHiringPartnerById($hpId);
-                    if ($getHiringPartnerIdData['success']) {
-                        $hpEntity = $getHiringPartnerIdData['entity'];
-                        $hpEntity['attendees'] = $this->hpIdsData['attendees'][$index]['people_attending'];
-                        array_push($this->hpEntities, $hpEntity);
-                    } else {
-                        return $response->withJson(['message' => 'Database error'], 500);
-                    }
-                }
+        foreach ($this->hpIdsData as $hpId) {
+            $getHiringPartnerIdData = $this->model->getHiringPartnerById($hpId['hiring_partner_id']);
+            if ($getHiringPartnerIdData['success']) {
+                $hpEntity = $getHiringPartnerIdData['entity'];
+                $hpEntity['attendees'] = $hpId['people_attending'];
+                array_push($this->hpEntities, $hpEntity);
+            } else {
+                return $response->withJson(['message' => 'Database error'], 500);
             }
-            return $response->withJson($this->hpEntities, 200);
-        } else {
-            return $response->withJson(['message' => 'Database error'], 500);
         }
+        return $response->withJson($this->hpEntities);
     }
 }
