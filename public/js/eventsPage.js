@@ -39,7 +39,7 @@ function getEvents(search = false) {
  * @param events is an array of objects which contains information about events
  */
 function displayEventsHandler(eventsAndHiringPartners) {
-    if(eventsAndHiringPartners.events.data.length === 0) {
+    if (eventsAndHiringPartners.events.data.length === 0) {
         eventList.innerHTML = eventsAndHiringPartners.events.message
     } else {
         eventList.innerHTML = ''
@@ -299,15 +299,16 @@ document.querySelector('#submit-search-event').addEventListener('click', functio
     e.preventDefault()
     if ((searchInput.length) && searchInput.length < 256) {
         getEvents(searchInput)
-        document.querySelector('#events-list').innerHTML = '<h2 id="event-search-results">Results</h2><a id="clear-search" class="btn btn-success" href="./displayEventsPage">Clear Search</a>'
-        document.querySelector('#clear-search').addEventListener('click', function(e) {
-            e.preventDefault()
-            if (!window.location.href.includes('#events-list')) {
-                window.location.href += '#events-list'
-            }
-            location.reload()
-        })
+        document.querySelector('#events-list').innerText = 'Results'
     } else {
         message.innerHTML = 'Event search: must be between 1 and 255 characters'
     }
+})
+
+document.querySelector('#clear-search').addEventListener('click', function(e) {
+    e.preventDefault()
+    if (!window.location.href.includes('#events-list')) {
+        window.location.href += '#events-list'
+    }
+    location.reload()
 })
