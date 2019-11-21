@@ -139,6 +139,7 @@ async function displayEvents(events, hiringPartners) {
  *
  * @param events an object which contains information about an event
  */
+
 async function eventGenerator(event, hiringPartners) {
     let eventInformation = ''
     eventInformation +=
