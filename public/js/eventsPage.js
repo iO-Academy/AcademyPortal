@@ -81,6 +81,7 @@ function displayEventsHandler(eventsAndHiringPartners) {
                             }).then(response => response.json())
                                 .then((responseJSON) => {
                                     currentEventsMessage.innerText = responseJSON.message
+                                    getEvents()
                                 })
                         } else {
                             currentEventsMessage.innerText = "Please select a hiring partner"
@@ -97,41 +98,54 @@ function displayEventsHandler(eventsAndHiringPartners) {
 async function displayEvents(events, hiringPartners) {
     events.forEach(async (event) => {
         eventGenerator(event, hiringPartners)
-        .then((event) => {
-            let data = {
-                event_id: event.id
-            }
+        .then(async (event) => {
+            await displayHiringPartnersAttending(event)
+    })
+})
+}
 
-            let hiringPartnersDiv = document.querySelector(`.hiring-partners[data-eventId='${event.id}']`)
+/**
+ * Function takes an event ID and displays information about attending hiring partners and any attendees associated with a given event
+ *
+ * @param event, the ID of a given event
+ *
+ * @returns a response putting HTML on front end for the attending hiring partners
+ */
+async function displayHiringPartnersAttending(event){
+    let data = {
+        event_id: event.id
+    }
 
-            fetch('./api/getHpsByEventId', {
-                credentials: 'same-origin',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                method: 'post',
-                body: JSON.stringify(data)
+    let hiringPartnersDiv = document.querySelector(`.hiring-partners[data-eventId='${event.id}']`)
 
-        })
+    fetch('./api/getHpsByEventId', {
+        credentials: 'same-origin',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'post',
+        body: JSON.stringify(data)
+
+    })
         .then(response => response.json())
         .then(response => {
             if(response.length != 0) {
-                hiringPartnersDiv.innerHTML += `<h4>Attending hiring partners</h4>`
+                let hiringPartnerHTML = ""
+                hiringPartnerHTML += `<h4>Attending hiring partners</h4>`
                 response.forEach(function(hiringPartner) {
-                    hiringPartnersDiv.innerHTML += `<div class="hiring-partner">`
+                    hiringPartnerHTML += `<div class="hiring-partner">`
                     if(hiringPartner.attendees != null) {
-                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
+                        hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
                         </div>`
                     } else {
-                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span></p>
+                        hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span></p>
                         </div>`
                     }
+                    hiringPartnersDiv.innerHTML += hiringPartnerHTML
                 })
-            }  
+            }
         })
-    })
-})
 }
 
 /**
