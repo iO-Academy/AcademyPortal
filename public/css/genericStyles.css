@@ -6,6 +6,14 @@
     font-weight: bold;
 }
 
+.hiring-partner form {
+    display: inline-block;
+}
+
+.hiring-partner p {
+    display: inline-block;
+}
+
 body {
     font-family: Courier, sans-serif;
 }

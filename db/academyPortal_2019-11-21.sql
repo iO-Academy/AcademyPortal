@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.27)
 # Database: academyPortal
-# Generation Time: 2019-11-20 13:23:25 +0000
+# Generation Time: 2019-11-21 15:02:33 +0000
 # ************************************************************
 
 
@@ -182,9 +182,20 @@ CREATE TABLE `events_hiring_partner_link_table` (
   `event_id` int(11) unsigned NOT NULL,
   `hiring_partner_id` int(11) unsigned NOT NULL,
   `people_attending` int(11) unsigned DEFAULT NULL,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `events_hiring_partner_link_table` WRITE;
+/*!40000 ALTER TABLE `events_hiring_partner_link_table` DISABLE KEYS */;
+
+INSERT INTO `events_hiring_partner_link_table` (`id`, `event_id`, `hiring_partner_id`, `people_attending`, `deleted`)
+VALUES
+	(1,3,3,10,0),
+	(2,4,4,12,0);
+
+/*!40000 ALTER TABLE `events_hiring_partner_link_table` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table hearAbout

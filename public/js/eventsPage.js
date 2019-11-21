@@ -85,7 +85,12 @@ function displayEventsHandler(eventsAndHiringPartners) {
                                 .then((responseJSON) => {
                                     currentEventsMessage.innerText = responseJSON.message
                                     if(responseJSON.success) {
-                                        getEvents()
+                                        searchQuery = document.getElementById("academy-events-search").value
+                                        if(searchQuery != "") {
+                                            getEvents(searchQuery)
+                                        } else {
+                                            getEvents()
+                                        }
                                     }
                                 })
                         } else {
@@ -101,12 +106,50 @@ function displayEventsHandler(eventsAndHiringPartners) {
 };
 
 async function displayEvents(events, hiringPartners) {
-    events.forEach((event) => {
-        eventGenerator(event, hiringPartners)
-        .then((event) => {
+    events.forEach(async (event) => {
+        await eventGenerator(event, hiringPartners).then(event => {
             displayHiringPartnersAttending(event)
         })
+        return event
     })
+}
+
+async function addEventListenersToHpDelete(event){
+    let hpDeleteForms = document.querySelectorAll(`.hiring-partner input[data-event='${event.id}']`)
+    hpDeleteForms.forEach(function(hpDelete){
+        hpDelete.addEventListener('click', function(e){
+            e.preventDefault()
+            DeleteHPRequest(e, event)
+        })
+    })
+}
+
+function DeleteHPRequest(e, event) {
+            let data = {
+                event_id: e.target.dataset.event,
+                hp_id: e.target.dataset.hp
+            }
+            fetch('./api/deleteHiringPartnerFromEvent', {
+                credentials: 'same-origin',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                method: 'post',
+                body: JSON.stringify(data)
+            }) .then (response => response.json())
+                .then (responseJSON => {
+                    let currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`)
+                    currentEventsMessage.innerText = responseJSON.message
+                    if (responseJSON.success){
+                        searchQuery = document.getElementById("academy-events-search").value
+                        if(searchQuery != "") {
+                            getEvents(searchQuery)
+                        } else {
+                            getEvents()
+                        }
+                    }
+                })
 }
 
 /**
@@ -142,15 +185,24 @@ async function displayHiringPartnersAttending(event){
                     hiringPartnerHTML += `<div class="hiring-partner">`
                     if(hiringPartner.attendees != null) {
                         hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
+                        <form>
+                            <input type="submit" data-event="${event.id}" data-hp="${hiringPartner.id}" value="Delete">
+                        </form>
                         </div>`
                     } else {
                         hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span></p>
+                        <form>
+                            <input type="submit" data-event="${event.id}" data-hp="${hiringPartner.id}" value="Delete">
+                        </form>
                         </div>`
                     }
                 })
                 hiringPartnersDiv.innerHTML += hiringPartnerHTML
             }
-        })
+        }) .then(() => {
+        addEventListenersToHpDelete(event)
+    })
+    return event
 }
 
 /**
