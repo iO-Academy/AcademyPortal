@@ -123,12 +123,6 @@ async function addEventListenersToHpDelete(event){
     })
 }
 
-/**
- * 
- * Sends request to remove hiring partner from an event
- * 
- * @param e event that triggered request 
- */
 function DeleteHPRequest(e) {
     e.preventDefault()
             let data = {
