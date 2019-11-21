@@ -126,7 +126,7 @@ async function addEventListenersToHpDelete(event){
                 .then (responseJSON => {
                     let currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`)
                     currentEventsMessage.innerText = responseJSON.message
-                    if (!responseJSON.success){
+                    if (responseJSON.success){
                         getEvents()
                     }
                 })

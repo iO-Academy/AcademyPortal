@@ -124,7 +124,7 @@ class EventModel
     {
         $query = $this->db->prepare('SELECT `id` FROM `events_hiring_partner_link_table`
         WHERE  `event_id` = :event AND
-        `hiring_partner_id` = :hiringPartner;');
+        `hiring_partner_id` = :hiringPartner AND `deleted` = 0;');
         $query->bindParam(':hiringPartner', $hiringPartner);
         $query->bindParam(':event', $event);
         $query->execute();
@@ -165,7 +165,7 @@ class EventModel
      */
     public function removeHiringPartnerFromEvent(int $eventId, int $hiringPartnerId): bool
     {
-        $statement = 'UPDATE events_hiring_partner_link_table  SET `deleted` = 1  
+        $statement = 'UPDATE events_hiring_partner_link_table SET `deleted` = 1  
         WHERE `event_id` = :eventId AND `hiring_partner_id` = :hiringPartnerId;';
         $query = $this->db->prepare($statement);
         $query->bindParam(':eventId', $eventId);

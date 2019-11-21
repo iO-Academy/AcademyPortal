@@ -29,7 +29,7 @@ class RemoveHiringPartnerFromEventController
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $data = $request->getParsedBody();
-        $hiringPartner = $data['hiring_partner_id'];
+        $hiringPartner = $data['hp_id'];
         $event = $data['event_id'];
 
         $result = $this->eventModel->removeHiringPartnerFromEvent($hiringPartner, $event);
