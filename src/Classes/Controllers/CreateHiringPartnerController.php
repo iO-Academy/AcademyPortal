@@ -45,7 +45,6 @@ class CreateHiringPartnerController
 
         try {
             $hiringPartner = $this->hiringPartnerModel->createNewHiringPartner(
-                NULL,
                 $newHiringPartner['name'],
                 $newHiringPartner['companySize'],
                 $newHiringPartner['techStack'],
