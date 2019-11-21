@@ -81,7 +81,9 @@ function displayEventsHandler(eventsAndHiringPartners) {
                             }).then(response => response.json())
                                 .then((responseJSON) => {
                                     currentEventsMessage.innerText = responseJSON.message
-                                    getEvents()
+                                    if(responseJSON.success) {
+                                        getEvents()
+                                    }
                                 })
                         } else {
                             currentEventsMessage.innerText = "Please select a hiring partner"
@@ -133,9 +135,7 @@ async function displayHiringPartnersAttending(event){
             if(response.length != 0) {
                 let hiringPartnerHTML = ""
                 hiringPartnerHTML += `<h4>Attending hiring partners</h4>`
-                console.log(response)
                 response.forEach(function(hiringPartner) {
-                    console.log(hiringPartner)
                     hiringPartnerHTML += `<div class="hiring-partner">`
                     if(hiringPartner.attendees != null) {
                         hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
