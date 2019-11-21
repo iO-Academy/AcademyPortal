@@ -2,6 +2,7 @@
 
 namespace Portal\Models;
 
+use DateTime;
 use Portal\Entities\ApplicantEntity;
 
 class ApplicantModel
@@ -87,15 +88,16 @@ class ApplicantModel
     }
 
     /**
-     * Sorts the table via the input taken from the sorting arrows
+     * Sorts the table via the input taken from the sorting arrows + filters it
      *
      * @param string $input is the sort choice
+     * @param string $filter is the filter choice
      *
      * @return array $results is the data retrieved.
      */
-    public function sortApplicants(string $input) //eg `dateTimeAdded`DESC
+    public function sortApplicants(string $sort, string $filter)
     {
-        switch ($input) {
+        switch ($sort) {
             case 'dateAsc':
                 $order = '`dateTimeAdded` ASC';
                 break;
@@ -117,13 +119,25 @@ class ApplicantModel
                 break;
         }
 
-        $query = $this->db->prepare(
+        if ($filter == null or $filter == 'all') {
+            $filterQuery = '';
+        } else {
+            $dtime = DateTime::createFromFormat("F, Y", $filter);
+            $timestamp = $dtime->getTimestamp();
+            $filterDate = date("Y-m-01", $timestamp);
+
+            $filterQuery = 'WHERE `cohorts`.`date` = \' ' . $filterDate .' \''; // -> THIS WORKS
+        }
+
+        $SQLquery =
             "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
                       AS 'cohortDate'
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-                      ORDER BY $order;"
-        );
+                      $filterQuery
+                      ORDER BY $order;";
+
+        $query = $this->db->prepare($SQLquery);
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
         $query->execute();
         $results = $query->fetchAll();

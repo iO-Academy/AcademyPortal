@@ -43,8 +43,13 @@
             <input id="submit-event" type="submit" class="btn btn-success" />
         </form>
         <div id='messages'></div>
-        <h3>Current Events</h3>
+        <div>
+            <h2>Search Events</h2>
+            <input id="academy-events-search" name="search-event-input" type="text" maxlength="255">
+            <input class="btn btn-success" id="submit-search-event" value="Search" type="submit">
+            <a id="clear-search" class="btn btn-warning" href="./displayEventsPage">Clear Search</a>
+        </div>
+        <h2 id="events-list">Current Events</h2>
         <div id='events'></div>
-
     </div>
 </body>
