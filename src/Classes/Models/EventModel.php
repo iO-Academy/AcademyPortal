@@ -82,7 +82,6 @@ class EventModel
         return $query->execute();
     }
 
-
     /**
      *Adds event id, hiring partner id and people attending to database
      *

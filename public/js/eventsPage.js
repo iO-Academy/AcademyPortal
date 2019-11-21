@@ -2,8 +2,6 @@ const eventList = document.querySelector('#events')
 const eventForm = document.querySelector('form')
 const message = document.querySelector('#messages')
 
-
-
 /**
  * Gets event information from the API and passes into the
  * displayEventsHandler function
@@ -153,7 +151,6 @@ async function eventGenerator(event) {
     if (event.notes !== null) {
         eventInformation += `<p>Notes: ${event.notes}</p>`
     }
-    
 
     eventInformation += `<div class="hiring-partners" data-eventId='${event.id}'></div>
             <div class='addHiringPartner'>
@@ -161,8 +158,6 @@ async function eventGenerator(event) {
 
             <select data-event=${event.id}>
             <option value='0'>Please select a hiring partner...</option>`
-
-    
 
     eventInformation += `</select>
             <label>Number of company attendees:</label>

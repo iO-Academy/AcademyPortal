@@ -36,7 +36,6 @@ class GetHiringPartnersByIdController
         $this->event = $event;
     }
 
-
     /**
      * Invoke function to get all hiring partners associated with an event and returns JSON
      *
