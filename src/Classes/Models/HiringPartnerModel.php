@@ -150,7 +150,7 @@ class HiringPartnerModel
         string $websiteUrl
     ) :HiringPartnerEntity {
         return new HiringPartnerEntity(
-            NULL,
+            null,
             $companyName,
             $companySize,
             $techStack,

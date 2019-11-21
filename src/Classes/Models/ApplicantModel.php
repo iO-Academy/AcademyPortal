@@ -188,7 +188,7 @@ class ApplicantModel
         $applicantNotes
     ) {
         return new ApplicantEntity(
-            NULL,
+            null,
             $applicantName,
             $applicantEmail,
             $applicantPhoneNumber,
