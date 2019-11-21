@@ -77,6 +77,7 @@ function displayEventsHandler(events) {
                             }).then(response => response.json())
                                 .then((responseJSON) => {
                                     currentEventsMessage.innerText = responseJSON.message
+                                    getEvents()
                                 })
                         } else {
                             currentEventsMessage.innerText = "Please select a hiring partner"
