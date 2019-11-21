@@ -97,7 +97,7 @@ function displayEventsHandler(eventsAndHiringPartners) {
 
 async function displayEvents(events, hiringPartners) {
     events.forEach(async (event) => {
-        eventGenerator(event, hiringPartners)
+        await eventGenerator(event, hiringPartners)
         .then(async (event) => {
             await displayHiringPartnersAttending(event)
     })
@@ -133,7 +133,9 @@ async function displayHiringPartnersAttending(event){
             if(response.length != 0) {
                 let hiringPartnerHTML = ""
                 hiringPartnerHTML += `<h4>Attending hiring partners</h4>`
+                console.log(response)
                 response.forEach(function(hiringPartner) {
+                    console.log(hiringPartner)
                     hiringPartnerHTML += `<div class="hiring-partner">`
                     if(hiringPartner.attendees != null) {
                         hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
@@ -142,8 +144,8 @@ async function displayHiringPartnersAttending(event){
                         hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span></p>
                         </div>`
                     }
-                    hiringPartnersDiv.innerHTML += hiringPartnerHTML
                 })
+                hiringPartnersDiv.innerHTML += hiringPartnerHTML
             }
         })
 }
@@ -188,13 +190,13 @@ async function eventGenerator(event, hiringPartners) {
     eventInformation += `</div></div>`
     eventList.innerHTML += eventInformation
     const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`)
-        if (hiringPartners.status) {
-            hiringPartners.data.forEach(function (hiringPartner) {
-                document.querySelector(`select[data-event="${event.id}"]`).innerHTML += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
-            })
-        } else {
-            currentEventsMessage.innerText = hiringPartners.message
-        }
+    if (hiringPartners.status) {
+        hiringPartners.data.forEach(function (hiringPartner) {
+            document.querySelector(`select[data-event="${event.id}"]`).innerHTML += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
+        })
+    } else {
+        currentEventsMessage.innerText = hiringPartners.message
+    }
     return event
 }
 
