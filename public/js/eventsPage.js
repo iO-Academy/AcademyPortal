@@ -192,9 +192,8 @@ document.querySelector('#submit-search-event').addEventListener('click', functio
     const searchInput = document.querySelector('#academy-events-search').value
     e.preventDefault()
     if ((searchInput.length) && searchInput.length < 256) {
-        document.querySelector('#events-list').innerHTML = '<h2 id="event-search-results">Results</h2><input type="submit" value="Clear Search">'
-        document.querySelector('#event-search-results').style.display = 'inline'
         getEvents(searchInput)
+        document.querySelector('#events-list').innerHTML = '<h2 id="event-search-results">Results</h2><a class="btn btn-success" href="./displayEventsPage">Clear Search</a>'
     } else {
         message.innerHTML = 'Event search: must be between 1 and 255 characters'
     }
