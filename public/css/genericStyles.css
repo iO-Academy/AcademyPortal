@@ -21,6 +21,7 @@ body {
 label {
     margin-top: 20px;
 }
+
 h4 {
     color: #157383;
 }
@@ -28,6 +29,7 @@ h4 {
 p {
     font-family: Helvetica Neue;
 }
+
 .errorMsg {
     color: #761c19;
     text-align: center;
@@ -86,4 +88,17 @@ input[type="submit"] {
 
 #applicantsPageHomeBtn {
     margin: 20px;
+}
+
+.dropdownFilter {
+    background: transparent;
+    border: none;
+}
+
+.dropdownFilter:hover {
+    color: #538eff;
+}
+
+#applicantsPageBtns {
+    float: right;
 }

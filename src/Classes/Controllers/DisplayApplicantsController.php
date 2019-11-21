@@ -38,28 +38,44 @@ class DisplayApplicantsController
     {
         $params = [];
         $sortValue = $request->getQueryParam('sort');
+        $filterNumber = $request->getQueryParam('filter');
+
         $params['sort'] = $sortValue;
+        $params['filter'] = $filterNumber;
+
+        $filterNumber = trim($filterNumber);
+
+        if ($sortValue == null) {
+            $sortValue = 'default';
+        }
 
         switch ($sortValue) {
             case 'dateAsc':
-                $params['data'] = $this->applicantModel->sortApplicants('dateAsc');
+                $params['data'] = $this->applicantModel->sortApplicants('dateAsc', $filterNumber);
                 break;
 
             case 'dateDesc':
-                $params['data'] = $this->applicantModel->sortApplicants('dateDesc');
+                $params['data'] = $this->applicantModel->sortApplicants('dateDesc', $filterNumber);
                 break;
 
             case 'cohortAsc':
-                $params['data'] = $this->applicantModel->sortApplicants('cohortAsc');
+                $params['data'] = $this->applicantModel->sortApplicants('cohortAsc', $filterNumber);
                 break;
 
             case 'cohortDesc':
-                $params['data'] = $this->applicantModel->sortApplicants('cohortDesc');
+                $params['data'] = $this->applicantModel->sortApplicants('cohortDesc', $filterNumber);
+                break;
+
+            case 'default':
+                $params['data'] = $this->applicantModel->sortApplicants('dateAsc', $filterNumber);
                 break;
 
             default:
                 $params['data'] = $this->applicantModel->getAllApplicants();
         }
+
+        $params['allData'] = $this->applicantModel->getAllApplicants();
+
         return $this->renderer->render($response, 'displayApplicants.phtml', $params);
     }
 }
