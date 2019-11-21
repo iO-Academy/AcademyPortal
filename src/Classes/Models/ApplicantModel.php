@@ -88,13 +88,14 @@ class ApplicantModel
     }
 
     /**
-     * Sorts the table via the input taken from the sorting arrows
+     * Sorts the table via the input taken from the sorting arrows + filters it
      *
      * @param string $input is the sort choice
+     * @param string $filter is the filter choice
      *
      * @return array $results is the data retrieved.
      */
-    public function sortApplicants(string $sort, string $filter) //eg `dateTimeAdded`DESC
+    public function sortApplicants(string $sort, string $filter)
     {
         switch ($sort) {
             case 'dateAsc':
@@ -118,20 +119,8 @@ class ApplicantModel
                 break;
         }
 
-//        convert filter
-
-//        $dtime = DateTime::createFromFormat("d/m G:i", "13/10 15:00");
-//        $dtime = DateTime::createFromFormat("F, Y", $filter);
-//        $timestamp = $dtime->getTimestamp();
-//
-//        echo '<br>';
-//        echo date("Y-m-01", strtotime($timestamp));
-//        echo '<br>';
-
-
         if ($filter == null OR $filter == 'all') {
             $filterQuery = '';
-//            echo $filter;
 
         } else {
             $dtime = DateTime::createFromFormat("F, Y", $filter);
@@ -141,8 +130,6 @@ class ApplicantModel
             $filterQuery = 'WHERE `cohorts`.`date` = \' ' . $filterDate .' \''; // -> THIS WORKS
         }
 
-
-
         $SQLquery =
             "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
                       AS 'cohortDate'
@@ -151,38 +138,12 @@ class ApplicantModel
                       $filterQuery
                       ORDER BY $order;";
 
-        var_dump($SQLquery);
-
         $query = $this->db->prepare($SQLquery);
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
         $query->execute();
         $results = $query->fetchAll();
         return $results;
     }
-
-
-//    /**
-//     * Sorts the table via the input taken from the sorting arrows
-//     *
-//     * @param string $input is the sort choice
-//     *
-//     * @return array $results is the data retrieved.
-//     */
-//    public function filterCohort(string $input) //eg `dateTimeAdded`DESC
-//    {
-//        $query = $this->db->prepare(
-//            "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date`
-//                      AS 'cohortDate'
-//                      FROM `applicants`
-//                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-//                      WHERE `cohorts` = $input;"
-//        );
-//        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
-//        $query->execute();
-//        $results = $query->fetchAll();
-//        return $results;
-//    }
-
 
     /**
      * Retrieves an Applicant with the specified id

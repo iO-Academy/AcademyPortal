@@ -45,21 +45,6 @@ class DisplayApplicantsController
 
         $filterNumber = trim($filterNumber);
 
-        var_dump($filterNumber);
-//        var_dump($filterValue);
-
-//        if ($filterValue =='August, 2019'){
-//            $params['data'] = $this->applicantModel->filterCohort($filterValue);
-//            echo 'hello';
-//        }
-
-//        if ($filterNumber == null){
-//            $filterValue = '';
-////            WHERE `cohortId` = 2
-//        } else {
-//            $filterValue = 'WHERE `cohortId` =' . $filterNumber;
-//        }
-
         if ($sortValue == null){
             $sortValue = 'default';
         }
