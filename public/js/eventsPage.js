@@ -119,12 +119,12 @@ async function addEventListenersToHpDelete(event){
     hpDeleteForms.forEach(function(hpDelete){
         hpDelete.addEventListener('click', function(e){
             e.preventDefault()
-            
+            DeleteHPRequest(e, event)
         })
     })
 }
 
-function DeleteHPRequest(e) {
+function DeleteHPRequest(e, event) {
             let data = {
                 event_id: e.target.dataset.event,
                 hp_id: e.target.dataset.hp
