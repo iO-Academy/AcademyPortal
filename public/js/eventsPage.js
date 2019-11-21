@@ -104,6 +104,13 @@ async function displayEvents(events, hiringPartners) {
 })
 }
 
+/**
+ * Function takes an event ID and displays information about attending hiring partners and any attendees associated with a given event
+ *
+ * @param event, the ID of a given event
+ *
+ * @returns a response putting HTML on front end for the attending hiring partners
+ */
 async function displayHiringPartnersAttending(event){
     let data = {
         event_id: event.id
