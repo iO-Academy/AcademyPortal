@@ -131,16 +131,18 @@ async function displayHiringPartnersAttending(event){
         .then(response => response.json())
         .then(response => {
             if(response.length != 0) {
-                hiringPartnersDiv.innerHTML += `<h4>Attending hiring partners</h4>`
+                let hiringPartnerHTML = ""
+                hiringPartnerHTML += `<h4>Attending hiring partners</h4>`
                 response.forEach(function(hiringPartner) {
-                    hiringPartnersDiv.innerHTML += `<div class="hiring-partner">`
+                    hiringPartnerHTML += `<div class="hiring-partner">`
                     if(hiringPartner.attendees != null) {
-                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
+                        hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
                         </div>`
                     } else {
-                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span></p>
+                        hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span></p>
                         </div>`
                     }
+                    hiringPartnersDiv.innerHTML += hiringPartnerHTML
                 })
             }
         })
