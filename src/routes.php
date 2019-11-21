@@ -21,6 +21,8 @@ $app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');
 $app->get('/api/getEvents', 'GetEventsController');
 $app->post('/api/addEvent', 'AddEventController');
 $app->post('/api/addContact', 'AddContactController');
+$app->post('/api/addHiringPartnerToEvent', 'AddHiringPartnerToEventController');
+$app->get('/api/displayCompanyInfo/{id}', 'CompanyDetailsModalController');
 
 //Backend
 $app->post('/api/login', 'LoginController');

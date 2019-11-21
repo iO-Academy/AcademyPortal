@@ -4,6 +4,7 @@ namespace Portal\Entities;
 
 class HiringPartnerEntity extends ValidationEntity
 {
+    protected $companyId;
     protected $companyName;
     protected $companySize;
     protected $techStack;
@@ -12,6 +13,7 @@ class HiringPartnerEntity extends ValidationEntity
     protected $websiteUrl;
 
     public function __construct(
+        int $hiringPartnerCompanyId = null,
         string $hiringPartnerCompanyName = null,
         int $hiringPartnerCompanySize = null,
         string $hiringPartnerTechStack = null,
@@ -19,6 +21,7 @@ class HiringPartnerEntity extends ValidationEntity
         string $hiringPartnerPhoneNumber = null,
         string $hiringPartnerWebsiteUrl = null
     ) {
+        $this->companyId = ($this->companyId ?? $hiringPartnerCompanyId);
         $this->companyName = ($this->companyName ?? $hiringPartnerCompanyName);
         $this->companySize = ($this->companySize ?? $hiringPartnerCompanySize);
         $this->techStack = ($this->techStack ?? $hiringPartnerTechStack);
@@ -34,6 +37,7 @@ class HiringPartnerEntity extends ValidationEntity
      */
     private function sanitiseData()
     {
+        $this->companyId = (int)$this->companyId;
         $this->companyName = self::sanitiseString($this->companyName);
         $this->companyName = self::validateExistsAndLength($this->companyName, 255);
         $this->companySize = (int)$this->companySize;
@@ -48,11 +52,21 @@ class HiringPartnerEntity extends ValidationEntity
     }
 
     /**
+     * Gets the hiring partner company Id
+     *
+     * @return string of company ID
+     */
+    public function getCompanyId(): Int
+    {
+        return $this->companyId;
+    }
+
+    /**
      * Gets the hiring partner company name
      *
      * @return string of company name
      */
-    public function getCompanyName() : string
+    public function getCompanyName(): string
     {
         return $this->companyName;
     }
@@ -62,7 +76,7 @@ class HiringPartnerEntity extends ValidationEntity
      *
      * @return string of company size
      */
-    public function getCompanySize() : string
+    public function getCompanySize(): string
     {
         return $this->companySize;
     }
@@ -72,7 +86,7 @@ class HiringPartnerEntity extends ValidationEntity
      *
      * @return string of tech stack
      */
-    public function getTechStack() : string
+    public function getTechStack(): string
     {
         return $this->techStack;
     }
@@ -82,7 +96,7 @@ class HiringPartnerEntity extends ValidationEntity
      *
      * @return string of company postcode
      */
-    public function getPostcode() : string
+    public function getPostcode(): string
     {
         return $this->postcode;
     }
