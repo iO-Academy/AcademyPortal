@@ -135,10 +135,10 @@ async function displayHiringPartnersAttending(event){
                 response.forEach(function(hiringPartner) {
                     hiringPartnersDiv.innerHTML += `<div class="hiring-partner">`
                     if(hiringPartner.attendees != null) {
-                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
+                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
                         </div>`
                     } else {
-                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold'>${hiringPartner.name}</span></p>
+                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span></p>
                         </div>`
                     }
                 })
@@ -151,7 +151,6 @@ async function displayHiringPartnersAttending(event){
  *
  * @param events an object which contains information about an event
  */
-
 async function eventGenerator(event, hiringPartners) {
     let eventInformation = ''
     eventInformation +=
