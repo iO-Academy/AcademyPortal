@@ -121,10 +121,10 @@ async function displayEvents(events, hiringPartners) {
                 response.forEach(function(hiringPartner) {
                     hiringPartnersDiv.innerHTML += `<div class="hiring-partner">`
                     if(hiringPartner.attendees != null) {
-                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
+                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
                         </div>`
                     } else {
-                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold'>${hiringPartner.name}</span></p>
+                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span></p>
                         </div>`
                     }
                 })
