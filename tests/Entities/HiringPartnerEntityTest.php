@@ -67,7 +67,6 @@ class HiringPartnerEntityTest extends TestCase
     public function testGetCompanyIdSuccess()
     {
         $company = new \Portal\Entities\HiringPartnerEntity(
-            1,
             'TechHub',
             2,
             'CSS',
