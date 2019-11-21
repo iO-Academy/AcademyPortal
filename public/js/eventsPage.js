@@ -10,7 +10,6 @@ const message = document.querySelector('#messages')
  */
 function getEvents(search = false) {
     let url = './api/getEvents'
-
     fetch(url, {
         credentials: "same-origin",
         headers: {
@@ -97,7 +96,7 @@ function displayEventsHandler(eventsAndHiringPartners) {
     }
 };
 
-async function displayEvents(events, hiringPartners){
+async function displayEvents(events, hiringPartners) {
     events.forEach(async (event) => {
         await eventGenerator(event, hiringPartners).then(event => {
             displayHiringPartnersAttending(event)
