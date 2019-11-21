@@ -8,7 +8,8 @@ class ApplicantEntityTest extends \PHPUnit_Framework_TestCase
 {
     private function createApplicant()
     {
-        return new ApplicantEntity('james',
+        return new ApplicantEntity(
+            'james',
             'Example@example.com',
             '02920253192',
             1,
