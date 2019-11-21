@@ -53,7 +53,7 @@ class EventEntity extends ValidationEntity
         $this->date = $this->validateDate($this->date);
         $this->startTime = $this->validateTime($this->startTime);
         $this->endTime = $this->validateTime($this->endTime);
-        $this->validateStartEndTime($this->startTIme, $this->endTime);
+        $this->validateStartEndTime($this->startTime, $this->endTime);
         if ($this->notes !== null) {
             $this->notes = self::sanitiseString($this->notes);
             $this->notes = self::validateLength($this->notes, 5000);
