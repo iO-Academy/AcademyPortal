@@ -107,8 +107,7 @@ async function displayEvents(events, hiringPartners){
 }
 
 async function addEventListenersToHpDelete(event){
-    let hpDeleteForms = document.querySelectorAll(`.hiring-partner input[data-event='${event.id}'`)
-    console.log(hpDeleteForms)
+    let hpDeleteForms = document.querySelectorAll(`.hiring-partner input[data-event='${event.id}']`)
     hpDeleteForms.forEach(function(hpDelete){
         hpDelete.addEventListener('click', function(e){
             e.preventDefault()
@@ -116,7 +115,6 @@ async function addEventListenersToHpDelete(event){
                 event_id: e.target.dataset.event,
                 hp_id: e.target.dataset.hp
             }
-            console.log(data)
             fetch('./api/deleteHiringPartnerFromEvent', {
                 credentials: 'same-origin',
                 headers: {
