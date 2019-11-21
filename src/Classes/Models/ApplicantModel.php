@@ -119,9 +119,8 @@ class ApplicantModel
                 break;
         }
 
-        if ($filter == null OR $filter == 'all') {
+        if ($filter == null or $filter == 'all') {
             $filterQuery = '';
-
         } else {
             $dtime = DateTime::createFromFormat("F, Y", $filter);
             $timestamp = $dtime->getTimestamp();
@@ -201,8 +200,7 @@ class ApplicantModel
         $applicantEighteenPlus,
         $applicantFinance,
         $applicantNotes
-    )
-    {
+    ) {
         return new ApplicantEntity(
             $applicantName,
             $applicantEmail,

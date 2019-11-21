@@ -45,7 +45,7 @@ class DisplayApplicantsController
 
         $filterNumber = trim($filterNumber);
 
-        if ($sortValue == null){
+        if ($sortValue == null) {
             $sortValue = 'default';
         }
 
