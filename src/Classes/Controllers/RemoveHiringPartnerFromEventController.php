@@ -1,6 +1,6 @@
 <?php
 
-namespace Portal\Controllers
+namespace Portal\Controllers;
 
 use Portal\Models\EventModel;
 use Slim\Http\Request;
@@ -42,4 +42,3 @@ class RemoveHiringPartnerFromEventController
         }
     }
 }
-

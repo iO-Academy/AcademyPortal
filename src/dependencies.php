@@ -78,4 +78,5 @@ $container['CompanyDetailsModalController'] = new \Portal\Factories\CompanyDetai
 
 $container['GetHiringPartnersByIdController'] = new \Portal\Factories\GetHiringPartnersByIdControllerFactory();
 
-$container['RemoveHiringPartnerFromEventController'] = new \Portal\Factories\RemoveHiringPartnerFromEventControllerFactory();
+$container['RemoveHiringPartnerFromEventController'] =
+    new \Portal\Factories\RemoveHiringPartnerFromEventControllerFactory();
