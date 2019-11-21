@@ -10,7 +10,10 @@ const message = document.querySelector('#messages')
  */
 function getEvents(search = false) {
     let url = './api/getEvents'
-    
+    if (search !== false) {
+        url += '?searchTerm=' + search
+    }
+
     fetch(url, {
         credentials: "same-origin",
         headers: {
@@ -34,7 +37,7 @@ function getEvents(search = false) {
  * @param events is an array of objects which contains information about events
  */
 function displayEventsHandler(eventsAndHiringPartners) {
-    if(eventsAndHiringPartners.events.data.length === 0) {
+    if (eventsAndHiringPartners.events.data.length === 0) {
         eventList.innerHTML = eventsAndHiringPartners.events.message
     } else {
         eventList.innerHTML = ''
@@ -98,12 +101,12 @@ function displayEventsHandler(eventsAndHiringPartners) {
 };
 
 async function displayEvents(events, hiringPartners) {
-    events.forEach(async (event) => {
-        await eventGenerator(event, hiringPartners)
-        .then(async (event) => {
-            await displayHiringPartnersAttending(event)
+    events.forEach((event) => {
+        eventGenerator(event, hiringPartners)
+        .then((event) => {
+            displayHiringPartnersAttending(event)
+        })
     })
-})
 }
 
 /**
@@ -336,3 +339,23 @@ function validateForm() {
     document.getElementById('messages').innerHTML = message
     return success
 }
+
+
+document.querySelector('#submit-search-event').addEventListener('click', function(e) {
+    const searchInput = document.querySelector('#academy-events-search').value
+    e.preventDefault()
+    if ((searchInput.length) && searchInput.length < 256) {
+        getEvents(searchInput)
+        document.querySelector('#events-list').innerText = 'Results'
+    } else {
+        message.innerHTML = 'Event search: must be between 1 and 255 characters'
+    }
+})
+
+document.querySelector('#clear-search').addEventListener('click', function(e) {
+    e.preventDefault()
+    if (!window.location.href.includes('#events-list')) {
+        window.location.href += '#events-list'
+    }
+    location.reload()
+})
