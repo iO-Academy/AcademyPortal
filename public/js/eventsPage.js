@@ -95,7 +95,43 @@ function displayEventsHandler(events) {
 async function displayEvents(events) {
     events.forEach(async (event) => {
         eventGenerator(event)
+        .then((event) => {
+            let data = {
+                event_id: event.id
+            }
+
+            let hiringPartnersDiv = document.querySelector(`.hiring-partners[data-eventId='${event.id}']`)
+
+            fetch('./api/getHpsByEventId', {
+                credentials: 'same-origin',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                method: 'post',
+                body: JSON.stringify(data)
+
+        })
+        .then(response => response.json())
+        .then(response => {
+            if(response.length != 0) {
+                hiringPartnersDiv.innerHTML += `<h4>Attending hiring partners</h4>`
+                response.forEach(function(hiringPartner) {
+                    hiringPartnersDiv.innerHTML += `<div class="hiring-partner">`
+                    if(hiringPartner.attendees != null) {
+                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
+                        </div>`
+                    } else {
+                        hiringPartnersDiv.innerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold'>${hiringPartner.name}</span></p>
+                        </div>`
+                    }
+                })
+            }
+            
+        })
+        // THE INTEGRATION STATION GOES HERE
     })
+})
 }
 
 /**
@@ -121,7 +157,8 @@ async function eventGenerator(event) {
     }
     
 
-    eventInformation += `<div class='addHiringPartner'>
+    eventInformation += `<div class="hiring-partners" data-eventId='${event.id}'></div>
+            <div class='addHiringPartner'>
             <form class='addHiringPartnerForm' id='${event.id}'>
 
             <select data-event=${event.id}>
@@ -150,6 +187,7 @@ async function eventGenerator(event) {
             currentEventsMessage.innerText = responseJson.message
         }
     });
+    return event
 }
 
 getEvents()
