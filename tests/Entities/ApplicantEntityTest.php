@@ -6,13 +6,6 @@ use Portal\Entities\ApplicantEntity;
 
 class ApplicantEntityTest extends \PHPUnit_Framework_TestCase
 {
-//    public function testValidateExistsAndLengthSuccess()
-//    {
-//        $characterLength = 255;
-//        $companyName = 'TechHub';
-//        $result = \Portal\Entities\HiringPartnerEntity::ValidateExistsAndLength($companyName, $characterLength);
-//        $this->assertEquals($result, 'TechHub');
-//    }
     private function createApplicant()
     {
         return new ApplicantEntity('james',
