@@ -2,8 +2,8 @@
 
 namespace Portal\Controllers;
 
-use \Slim\Http\Request as Request;
-use \Slim\Http\Response as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Models\ApplicantModel;
 
 class GetApplicantController
@@ -33,7 +33,8 @@ class GetApplicantController
         $id = $args['id'];
         if (is_numeric($id) && !empty($id)) {
             $applicant = $this->applicantModel->getApplicantById($id);
-            return $response->withJson($applicant);
+            $response->getBody()->write(json_encode($applicant));
+            return $response;
         } else {
             return $response->withStatus(404);
         }

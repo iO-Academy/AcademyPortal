@@ -80,6 +80,17 @@ return function (ContainerBuilder $containerBuilder) {
         return $controller($c);
     };
 
+    $container['DisplayApplicantsController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\DisplayApplicantsControllerFactory();
+        return $controller($c);
+    };
+
+    $container['GetApplicantController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\GetApplicantControllerFactory();
+        return $controller($c);
+    };
+
+
     $container['UserModel'] = function(ContainerInterface $c) {
         $model = new \Portal\Factories\UserModelFactory();
         return $model($c);

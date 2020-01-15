@@ -9,7 +9,13 @@ return function (App $app) {
     $app->get('/', 'HomePageController');
     $app->get('/admin', 'AdminController');
     $app->get('/register', 'RegisterController');
+
     $app->get('/addapplicant', 'addApplicantController');
+    $app->get('/displayApplicants', 'DisplayApplicantsController');
+
+    $app->get('/displayApplicantInfo/{id}', 'GetApplicantController');
+
+
 
     //API
     $app->post('/api/saveApplicant', 'SaveApplicantController');

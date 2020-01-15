@@ -2,8 +2,8 @@
 
 namespace Portal\Controllers;
 
-use \Slim\Http\Request as Request;
-use \Slim\Http\Response as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\ApplicantModel;
 
@@ -37,7 +37,7 @@ class DisplayApplicantsController
     public function __invoke(Request $request, Response $response, array $args)
     {
         $params = [];
-        $sortValue = $request->getQueryParam('sort');
+        $sortValue = $request->getQueryParams()['sort'] ?? '';
         $params['sort'] = $sortValue;
 
         switch ($sortValue) {
