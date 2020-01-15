@@ -2,8 +2,8 @@
 
 namespace Portal\Controllers;
 
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Models\ApplicationFormModel;
 
 class ApplicationFormController
@@ -42,7 +42,8 @@ class ApplicationFormController
                         'hearAbout' => $this->applicationFormModel->getHearAbout(),
                 ]
             ];
-            return $response->withJson($data, $statusCode);
+            $response->getBody()->write(json_encode($data));
+            return $response->withStatus($statusCode);
         }
     }
 }

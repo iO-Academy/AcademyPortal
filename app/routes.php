@@ -9,6 +9,12 @@ return function (App $app) {
     $app->get('/', 'HomePageController');
     $app->get('/admin', 'AdminController');
     $app->get('/register', 'RegisterController');
+    $app->get('/addapplicant', 'addApplicantController');
+
+    //API
+    $app->post('/api/saveApplicant', 'SaveApplicantController');
+    $app->get('/api/applicationForm', 'ApplicationFormController');
+
 
     //Backend
     $app->post('/api/login', 'LoginController');

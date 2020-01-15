@@ -2,8 +2,8 @@
 
 namespace Portal\Controllers;
 
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
 class AddApplicantController
@@ -37,7 +37,7 @@ class AddApplicantController
             return $this->renderer->render($response, 'addApplicant.phtml', $args);
         } else {
             $_SESSION['loggedIn'] = false;
-            return $response->withRedirect('./');
+            return $response->withHeader('Location', './');
         }
     }
 }

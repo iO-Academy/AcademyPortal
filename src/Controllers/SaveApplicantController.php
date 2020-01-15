@@ -3,8 +3,8 @@
 namespace Portal\Controllers;
 
 use Portal\Models\ApplicantModel;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class SaveApplicantController
 {
@@ -62,7 +62,8 @@ class SaveApplicantController
                 ];
                 $statusCode = 200;
             }
-            return $response->withJson($data, $statusCode);
+            $response->getBody()->write(json_encode($data));
+            return $response->withStatus($statusCode);
         }
     }
 }

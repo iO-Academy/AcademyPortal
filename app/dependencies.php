@@ -50,11 +50,6 @@ return function (ContainerBuilder $containerBuilder) {
         return $controller($c);
     };
 
-    $container['RandomPasswordModel'] = function() {
-        $model = new \Portal\Models\RandomPasswordModel();
-        return $model();
-    };
-
     $container['LoginController'] = function (ContainerInterface $c) {
         $controller = new \Portal\Factories\LoginControllerFactory();
         return $controller($c);
@@ -65,10 +60,41 @@ return function (ContainerBuilder $containerBuilder) {
         return $controller($c);
     };
 
+    $container['addApplicantController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\AddApplicantControllerFactory();
+        return $controller($c);
+    };
+
+    $container['ApplicationFormModel'] = function(ContainerInterface $c) {
+        $model = new \Portal\Factories\ApplicationFormModelFactory();
+        return $model($c);
+    };
+
+    $container['ApplicationFormController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\ApplicationFormControllerFactory();
+        return $controller($c);
+    };
+
+    $container['SaveApplicantController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\SaveApplicantControllerFactory();
+        return $controller($c);
+    };
 
     $container['UserModel'] = function(ContainerInterface $c) {
         $model = new \Portal\Factories\UserModelFactory();
         return $model($c);
+    };
+
+    $container['ApplicantModel'] = function(ContainerInterface $c) {
+        $model = new \Portal\Factories\ApplicantModelFactory();
+        return $model($c);
+    };
+
+
+
+    $container['RandomPasswordModel'] = function() {
+        $model = new \Portal\Models\RandomPasswordModel();
+        return $model();
     };
 
     $container['AdminController'] = function(ContainerInterface $c) {
