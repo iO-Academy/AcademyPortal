@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Portal\Application\Handlers;
 
-use App\Application\ResponseEmitter\ResponseEmitter;
+use Portal\Application\ResponseEmitter\ResponseEmitter;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpInternalServerErrorException;
 
