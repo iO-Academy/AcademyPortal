@@ -1,0 +1,15 @@
+* {
+    font-family: courier-new;
+}
+
+.custom-button {
+    text-decoration: none;
+    border: solid;
+    padding: 5px 30px;
+    border-radius: 5px;
+}
+
+.error{
+    background-color: #ffc0cb;
+    width:200px;
+}

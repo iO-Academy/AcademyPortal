@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registered Applicants</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/displayApplicants.css">
+    <link rel="stylesheet" type="text/css" href="./css/genericStyles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script defer src="./js/applicantModal.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 registeredApplicants">
+            <h1>Registered Applicants</h1>
+            <form class="arrowForm" method="get">
+                <table class="col-xs-12 table-bordered">
+                    <tr>
+                        <th class="col-xs-2">Name</th>
+                        <th class="col-xs-4">Email</th>
+                        <th class="col-xs-2">Date of application
+                            <div>
+                                <button name="sort" value="dateAsc" class="arrowBtn <?php if ($sort == 'dateAsc' OR empty($sort)) {echo 'active';}?>" type="submit"><i id="arrowDateAsc" class="fas fa-arrow-up"></i></button>
+                                <button name="sort" value="dateDesc" class="arrowBtn <?php if ($sort == 'dateDesc') {echo 'active';}?>" type="submit"><i id="arrowDateDesc" class="fas fa-arrow-down"></i></button>
+                            </div>
+
+                        <th class="col-xs-2">Cohort date
+                            <div>
+                                <button name="sort" value="cohortAsc" class="arrowBtn <?php if ($sort == 'cohortAsc') {echo 'active';}?>" type="submit"><i id="arrowCohortAsc" class="fas fa-arrow-up"></i></button>
+                                <button name="sort" value="cohortDesc" class="arrowBtn <?php if ($sort == 'cohortDesc') {echo 'active';}?>" type="submit"><i id="arrowCohortDesc" class="fas fa-arrow-down"></i></button>
+                            </div>
+                    </tr>
+                    <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayApplicants($data); ?>
+                </table>
+            </form>
+        </div>
+        <!-- Modal -->
+        <?php require('partials/applicantInfoModal.phtml'); ?>
+        <a href="/admin" id="applicantsPageHomeBtn" class="btn btn-success">Go home</a>
+
+<!--        <input id="submit-hiring-partner" type="submit" class="btn btn-success">-->
+    </div>
+</div>
+</body>
+</html>
+
+

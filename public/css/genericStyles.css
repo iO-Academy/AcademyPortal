@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+}
+
+.hiring-partner span {
+    font-weight: bold;
+}
+
+.hiring-partner form {
+    display: inline-block;
+}
+
+.hiring-partner p {
+    display: inline-block;
+}
+
+body {
+    font-family: Courier, sans-serif;
+}
+
+label {
+    margin-top: 20px;
+}
+h4 {
+    color: #157383;
+}
+
+p {
+    font-family: Helvetica Neue;
+}
+.errorMsg {
+    color: #761c19;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.alertUser {
+    color: #FF0000
+}
+
+input[type="submit"] {
+    margin-top: 30px;
+}
+
+/*Search event button on display events page, margin pushes it out of line with search box*/
+#submit-search-event {
+    margin-top: 0;
+}
+
+.company-name {
+    margin-top: 30px;
+    margin-bottom: 5px;
+    border-top: 1px solid #CCCCCC;
+}
+
+.event-name {
+    margin-top: 30px;
+    margin-bottom: 5px;
+    border-top: 1px solid #CCCCCC
+}
+
+.more-info {
+    margin: 10px 0;
+}
+
+.event-name p {
+    overflow-wrap: break-word;
+}
+
+.container {
+    margin-bottom: 25px;
+}
+
+.arrowBtn {
+    border: none;
+}
+
+.arrowForm {
+    display: inline-block;
+}
+
+.active {
+    color: #d64405;
+}
+
+#applicantsPageHomeBtn {
+    margin: 20px;
+}
