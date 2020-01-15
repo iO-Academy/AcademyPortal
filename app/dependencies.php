@@ -41,8 +41,8 @@ return function (ContainerBuilder $containerBuilder) {
     };
 
     $container['HomePageController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\HomePageControllerFactory($c);
-        return $controller();
+        $controller = new \Portal\Factories\HomePageControllerFactory();
+        return $controller($c);
     };
 
     $container['LoginController'] = function (ContainerInterface $c) {
@@ -55,7 +55,10 @@ return function (ContainerBuilder $containerBuilder) {
         return $model($c);
     };
 
-
+    $container['AdminController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\AdminControllerFactory();
+        return $controller($c);
+    };
 
     $containerBuilder->addDefinitions($container);
 };

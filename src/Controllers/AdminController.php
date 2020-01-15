@@ -2,8 +2,8 @@
 
 namespace Portal\Controllers;
 
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
 class AdminController
@@ -36,7 +36,8 @@ class AdminController
             return $this->renderer->render($response, 'admin.phtml', $args);
         } else {
             $_SESSION['loggedIn'] = false;
-            return $response->withRedirect('./');
+            return $response->withHeader('Location', './')
+                ->withStatus(302);
         }
     }
 }

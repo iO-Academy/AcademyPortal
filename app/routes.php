@@ -9,8 +9,9 @@ return function (App $app) {
 
     $app->get('/', 'HomePageController');
 
+
+    $app->get('/admin', 'AdminController');
+
+    //Backend
     $app->post('/api/login', 'LoginController');
-
-
-
 };

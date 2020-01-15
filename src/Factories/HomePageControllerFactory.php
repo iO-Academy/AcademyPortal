@@ -13,16 +13,9 @@ use Portal\Controllers\HomePageController;
 
 class HomePageControllerFactory
 {
-    public $container;
-
-    public function __construct(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container) : HomePageController
     {
-        $this->container = $container;
-    }
-
-    public function __invoke() : HomePageController
-    {
-        $renderer = $this->container->get('renderer');
+        $renderer = $container->get('renderer');
         return new HomePageController($renderer);
     }
 }
