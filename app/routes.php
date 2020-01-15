@@ -5,13 +5,13 @@ use Slim\App;
 use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 
 return function (App $app) {
-    $container = $app->getContainer();
-
+    //Frontend
     $app->get('/', 'HomePageController');
-
-
     $app->get('/admin', 'AdminController');
+    $app->get('/register', 'RegisterController');
 
     //Backend
     $app->post('/api/login', 'LoginController');
+    $app->post('/api/registerUser', 'RegisterUserController');
+
 };

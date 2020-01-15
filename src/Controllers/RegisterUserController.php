@@ -3,8 +3,8 @@
 namespace Portal\Controllers;
 
 use Portal\Models\UserModel;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class RegisterUserController
 {
@@ -26,7 +26,7 @@ class RegisterUserController
      * @param Request $request HTTP request
      * @param Response $response HTTP response
      *
-     * @return error/success message and status code.
+     * @return Response
      */
     public function __invoke(Request $request, Response $response)
     {
@@ -56,7 +56,8 @@ class RegisterUserController
                 ];
                 $statusCode = 200;
             }
-            return $response->withJson($data, $statusCode);
+            $response->getBody()->write(json_encode($data));
+            return $response->withStatus($statusCode);
         }
     }
 }

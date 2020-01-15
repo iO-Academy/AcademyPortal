@@ -3,8 +3,8 @@
 namespace Portal\Controllers;
 
 use Slim\Views\PhpRenderer;
-use \Slim\Http\Request as Request;
-use \Slim\Http\Response as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class RegisterController
 {

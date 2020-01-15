@@ -45,10 +45,26 @@ return function (ContainerBuilder $containerBuilder) {
         return $controller($c);
     };
 
+    $container['RegisterController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\RegisterControllerFactory();
+        return $controller($c);
+    };
+
+    $container['RandomPasswordModel'] = function() {
+        $model = new \Portal\Models\RandomPasswordModel();
+        return $model();
+    };
+
     $container['LoginController'] = function (ContainerInterface $c) {
         $controller = new \Portal\Factories\LoginControllerFactory();
         return $controller($c);
     };
+
+    $container['RegisterUserController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\RegisterUserControllerFactory();
+        return $controller($c);
+    };
+
 
     $container['UserModel'] = function(ContainerInterface $c) {
         $model = new \Portal\Factories\UserModelFactory();
