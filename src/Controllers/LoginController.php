@@ -2,7 +2,6 @@
 
 namespace Portal\Controllers;
 
-
 use Portal\Models\UserModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -38,12 +37,6 @@ class LoginController
 
         $parsedBody = $request->getParsedBody();
 
-        $response->getBody()->write(json_encode($parsedBody));
-
-        var_dump($request->getBody());
-
-        return $response;
-
         $user = $this->userModel->getUserByEmail($parsedBody['userEmail']);
         $result = $this->userModel->userLoginVerify(
             $parsedBody['userEmail'],
@@ -58,6 +51,8 @@ class LoginController
             $statusCode = 200;
         }
 
-        return $response->withJson($data, $statusCode);
+        $response->getBody()->write(json_encode($data));
+
+        return $response->withStatus($statusCode);
     }
 }
