@@ -2,8 +2,8 @@
 
 namespace Portal\Controllers;
 
-use \Slim\Http\Request as Request;
-use \Slim\Http\Response as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\HiringPartnerModel;
 
@@ -35,16 +35,16 @@ class DisplayHiringPartnerPageController
      *
      * @param array $args
      *
-     * @return redirect
+     * @return Response
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
             $args['companyName'] = $this->hiringPartnerModel->getCompanyName();
             $args['companySize'] = $this->hiringPartnerModel->getCompanySize();
-            $this->renderer->render($response, 'hiringPartnerPage.phtml', $args);
+            return $this->renderer->render($response, 'hiringPartnerPage.phtml', $args);
         } else {
-            return $response->withRedirect('./');
+            return $response->withHeader('Location', './');
         }
     }
 }

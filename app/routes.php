@@ -14,12 +14,18 @@ return function (App $app) {
     $app->get('/displayApplicants', 'DisplayApplicantsController');
 
     $app->get('/displayApplicantInfo/{id}', 'GetApplicantController');
+    $app->get('/displayHiringPartnerPage', 'DisplayHiringPartnerPageController');
 
 
 
     //API
     $app->post('/api/saveApplicant', 'SaveApplicantController');
     $app->get('/api/applicationForm', 'ApplicationFormController');
+    $app->post('/api/createHiringPartner', 'CreateHiringPartnerController');
+    $app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');
+    $app->post('/api/addContact', 'AddContactController');
+    $app->get('/api/displayCompanyInfo/{id}', 'CompanyDetailsModalController');
+
 
 
     //Backend

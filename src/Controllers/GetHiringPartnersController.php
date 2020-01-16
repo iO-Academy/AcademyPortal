@@ -3,8 +3,8 @@
 namespace Portal\Controllers;
 
 use Portal\Models\HiringPartnerModel;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class GetHiringPartnersController
 {
@@ -47,6 +47,7 @@ class GetHiringPartnersController
             $statusCode = 200;
         }
 
-        return $response->withJson($data, $statusCode);
+        $response->getBody()->write(json_encode($data));
+        return $response->withStatus($statusCode);
     }
 }

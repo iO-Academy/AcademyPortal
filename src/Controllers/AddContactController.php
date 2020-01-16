@@ -4,8 +4,8 @@
 namespace Portal\Controllers;
 
 use Portal\Entities\ContactEntity;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class AddContactController
 {
@@ -54,6 +54,7 @@ class AddContactController
             ];
             $statusCode = 200;
         }
-        return $response->withJson($data, $statusCode);
+        $response->getBody()->write(json_encode($data));
+        return $response->withStatus($statusCode);
     }
 }

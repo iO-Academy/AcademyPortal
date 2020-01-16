@@ -10,8 +10,8 @@ class CompanyDetailsModalControllerFactory
 {
     public function __invoke(ContainerInterface $container)
     {
-        $model = $container['HiringPartnerModel'];
-        $veiw = $container['renderer'];
+        $model = $container->get('HiringPartnerModel');
+        $veiw = $container->get('renderer');
         return new CompanyDetailsModalController($model, $veiw);
     }
 }

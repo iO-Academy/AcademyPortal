@@ -4,8 +4,8 @@
 namespace Portal\Controllers;
 
 use Portal\Models\HiringPartnerModel;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class CompanyDetailsModalController
 {
@@ -33,6 +33,7 @@ class CompanyDetailsModalController
         $companyDetails = $this->model->getDetailsByCompany($id);
         $contactDetails = $this->model->getContactsByCompany($id);
         $companyDetailsAndContacts = array_merge($companyDetails, $contactDetails);
-        return $response->withJson($companyDetailsAndContacts);
+        $response->getBody()->write(json_encode($companyDetailsAndContacts));
+        return $response;
     }
 }

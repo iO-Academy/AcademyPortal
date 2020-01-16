@@ -45,6 +45,11 @@ return function (ContainerBuilder $containerBuilder) {
         return $controller($c);
     };
 
+    $container['AdminController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\AdminControllerFactory();
+        return $controller($c);
+    };
+
     $container['RegisterController'] = function(ContainerInterface $c) {
         $controller = new \Portal\Factories\RegisterControllerFactory();
         return $controller($c);
@@ -90,6 +95,34 @@ return function (ContainerBuilder $containerBuilder) {
         return $controller($c);
     };
 
+    $container['DisplayHiringPartnerPageController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\DisplayHiringPartnerPageControllerFactory();
+        return $controller($c);
+    };
+
+    $container['CreateHiringPartnerController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\CreateHiringPartnerControllerFactory();
+        return $controller($c);
+    };
+
+    $container['GetHiringPartnersController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\GetHiringPartnerControllerFactory();
+        return $controller($c);
+    };
+
+    $container['CompanyDetailsModalController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\CompanyDetailsModalControllerFactory();
+        return $controller($c);
+    };
+
+    $container['AddContactController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\AddContactControllerFactory();
+        return $controller($c);
+    };
+
+
+
+
 
     $container['UserModel'] = function(ContainerInterface $c) {
         $model = new \Portal\Factories\UserModelFactory();
@@ -101,16 +134,14 @@ return function (ContainerBuilder $containerBuilder) {
         return $model($c);
     };
 
-
+    $container['HiringPartnerModel'] = function(ContainerInterface $c) {
+        $model = new \Portal\Factories\HiringPartnerModelFactory();
+        return $model($c);
+    };
 
     $container['RandomPasswordModel'] = function() {
         $model = new \Portal\Models\RandomPasswordModel();
         return $model();
-    };
-
-    $container['AdminController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\AdminControllerFactory();
-        return $controller($c);
     };
 
     $containerBuilder->addDefinitions($container);
