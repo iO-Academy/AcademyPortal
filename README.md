@@ -1,38 +1,124 @@
-# Slim Framework 4 Skeleton Application
+# AcademyPortal API
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 4 application. This application uses the latest Slim 4 with Slim PSR-7 implementation and PHP-DI container implementation along with the PHP-View template renderer. It also uses the Monolog logger.
+### Setup
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+1. Run `composer install` in root of project
+2. Create database with name `academyPortal` and populate using latest version in db/
+3. `php -S localhost:8080 -t public public/index.php`
 
-## Install the Application
+### Deploy
 
-Create a new directory with your project name, e.g:
+- Files/folders that can be easily replaced with uploads:
+    - db/
+    - logs/
+    - public/
+    - src/Classes/
+- Files that require more care:
+    - src/dependencies (Factories go here but so does db connection, config for db should be the same in local and deployed now (config, not credentials))
+    - src/settings (deployed version contains different credentials, shouldn't need to be updated)
+
+### Routes
+- for local development use localhost:8080/api/whatYouRequire as your URL
+
+**/login**
+
+POST
+- Login registered user
+- Sends:
+	- `{'userEmail':'example@email.com', 'password':'password'}`
+- Returns success true / false:
+	- if registered user and correct email and password
+		- `{'success':true, 'msg':'Valid User', 'data':[]}`  
+	- if not registered or incorrect email and password
+		- `{'success':false, 'msg':'Incorrect email or password.', 'data':[]}`
 
 
-```bash
-mkdir academyProject
-```
+**/registerUser**
 
-Once inside the new directory, clone this repo:
+POST
+- Registers a new user by saving in database
+- Sends:
+	- `{'userEmail':'example@email.com', 'password':'password'}`
+- Checks if email already exists in database
+- If email does not exist then saves to database
+- Returns success true / false:
+	- if new user registered successfully
+		- `{'success':true, 'msg':'User registered', 'data':[]}`
+	- if new user not registered successfully, either already exists or insert into database failed
+		- `{'success':false, 'msg':'User not registered.', 'data':[]}`
 
-```bash
-git clone git@github.com:Mayden-Academy/slim4-skeleton.git .
-```
 
-One cloned, you must install the slim components by running:
+**/applicationForm**
 
-```bash
-composer install
-```
+GET
+- Gets available dropdown values from database for:
+	- When would you like to join us? 
+	- How did you hear about Mayden Academy? 
+- Returns:
+	- if GET request is successful
+		- `{'success':true, 'msg':'Retrieved dropdown info.', 'data':['cohorts':'Available cohort values', 'hearAbout':'Available hear about values']}`
 
-To run the application locally:
-```bash
-composer start
 
-```
-Run this command in the application directory to run the test suite
-```bash
-composer test
-```
+**/saveApplicant**
 
-That's it! Now go build something cool.
+POST
+- Saves a new application to the applicant table in the database
+- Sends:
+	- `{'name': 'example',
+   	    'email': 'example@example.com',
+ 	    'phoneNumber': '0123456789',
+	    'cohortId': 2,
+	    'whyDev': 'example interest in development',
+	    'codeExperience': 'example coding experience',
+	    'hearAboutId': 3,
+	    'eligible': '1' or '0',
+	    'eighteenPlus': '1' or '0',
+	    'finance': '1' or '0',
+	    'notes': 'example notes'
+	   }
+- Returns success true / false:
+	- if new applicant registered successfully
+		- `{'success':true, 'msg':'Application Saved', 'data':[]}`
+	- if new applicant not saved successfully
+		- `{'success':false, 'msg':'Application Not Saved', 'data':[]}`
+
+**/createHiringPartner**
+
+POST
+- Saves a new hiring partner to the hiring_partner_companies table in the database
+- Sends:
+	- `{'name': 'example',
+   	    'companySize': '1',
+ 	    'techStack': 'example tech stack',
+	    'postcode': 'BA1 1AA,
+	    'phoneNumber': '01225 444444',
+	    'companyURL': 'www.example.com',
+	   }`
+- Returns success true / false:
+	- if new applicant registered successfully
+		- `{'success':true, 'msg':'Hiring Partner successfully added', 'data':[]}`
+	- if new applicant not saved successfully
+		- `{'success':false, 'msg':'Hiring Partner not added', 'data':[]}`
+		
+
+**/getHiringPartnerInfo**
+
+GET
+- Retrieves all the hiring partners data from the hiring_partner_companies table in the database
+- Data format:
+    - `{
+        'id': '1',
+        'name': 'example',
+        'size': '5-30',
+        'tech_stack': 'LAMP',
+        'postcode': 'BA1 2QF',
+        'phone_number': '07436124985',
+        'url_website': 'example.com'
+        }`
+- Returns success true / false:
+    - if the data are received successfully
+        - `{'success':true, 'msg':'Query Successful', 'data':[]}`
+    - if the data are not received successfully
+        - `{'success':false, 'msg':'SQL error message', 'data':[]}`
+    - if there are not data in the database
+        - `{'success':false, 'msg':'No hiring partners found!', 'data':[]}`
