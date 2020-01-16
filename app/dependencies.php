@@ -120,9 +120,30 @@ return function (ContainerBuilder $containerBuilder) {
         return $controller($c);
     };
 
+    $container['DisplayEventsPageController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\DisplayEventsPageControllerFactory();
+        return $controller($c);
+    };
 
+    $container['GetEventsController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\GetEventsControllerFactory();
+        return $controller($c);
+    };
 
+    $container['GetHiringPartnersByIdController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\GetHiringPartnersByIdControllerFactory();
+        return $controller($c);
+    };
 
+    $container['AddHiringPartnerToEventController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\AddHiringPartnerToEventControllerFactory();
+        return $controller($c);
+    };
+
+    $container['AddEventController'] = function(ContainerInterface $c) {
+        $controller = new \Portal\Factories\AddEventControllerFactory();
+        return $controller($c);
+    };
 
     $container['UserModel'] = function(ContainerInterface $c) {
         $model = new \Portal\Factories\UserModelFactory();
@@ -138,6 +159,12 @@ return function (ContainerBuilder $containerBuilder) {
         $model = new \Portal\Factories\HiringPartnerModelFactory();
         return $model($c);
     };
+
+    $container['EventModel'] = function(ContainerInterface $c) {
+        $model = new \Portal\Factories\EventModelFactory();
+        return $model($c);
+    };
+
 
     $container['RandomPasswordModel'] = function() {
         $model = new \Portal\Models\RandomPasswordModel();

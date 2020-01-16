@@ -72,14 +72,24 @@ class EventModel
             :startTime, 
             :endTime, 
             :notes);");
-        $query->bindParam(':eventId', $newEvent->getEventId());
-        $query->bindParam(':name', $newEvent->getName());
-        $query->bindParam(':category', $newEvent->getCategory());
-        $query->bindParam(':location', $newEvent->getLocation());
-        $query->bindParam(':date', $newEvent->getDate());
-        $query->bindParam(':startTime', $newEvent->getStartTime());
-        $query->bindParam(':endTime', $newEvent->getEndTime());
-        $query->bindParam(':notes', $newEvent->getNotes());
+
+        $eventId = $newEvent->getEventId();
+        $name = $newEvent->getName();
+        $category = $newEvent->getCategory();
+        $location = $newEvent->getLocation();
+        $date = $newEvent->getDate();
+        $startTime = $newEvent->getStartTime();
+        $endTime = $newEvent->getEndTime();
+        $notes = $newEvent->getNotes();
+
+        $query->bindParam(':eventId', $eventId);
+        $query->bindParam(':name', $name);
+        $query->bindParam(':category', $category);
+        $query->bindParam(':location', $location);
+        $query->bindParam(':date', $date);
+        $query->bindParam(':startTime', $startTime);
+        $query->bindParam(':endTime', $endTime);
+        $query->bindParam(':notes', $notes);
         return $query->execute();
     }
 

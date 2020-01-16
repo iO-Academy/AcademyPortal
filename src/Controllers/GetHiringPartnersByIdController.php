@@ -4,8 +4,8 @@ namespace Portal\Controllers;
 
 use Portal\Models\EventModel;
 use Portal\Models\HiringPartnerModel;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class GetHiringPartnersByIdController
 {
@@ -49,7 +49,7 @@ class GetHiringPartnersByIdController
      */
     public function __invoke(Request $request, Response $response, $args): Response
     {
-        $id = $request->getParsedBodyParam('event_id');
+        $id = $request->getParsedBody()['event_id'];
         $this->hpIdsData = $this->event->hpIdsByEventId($id);
         foreach ($this->hpIdsData as $hpId) {
             $getHiringPartnerIdData = $this->model->getHiringPartnerById($hpId['hiring_partner_id']);
@@ -58,9 +58,11 @@ class GetHiringPartnersByIdController
                 $hpEntity['attendees'] = $hpId['people_attending'];
                 array_push($this->hpEntities, $hpEntity);
             } else {
-                return $response->withJson(['message' => 'Database error'], 500);
+                $response->getBody()->write(json_encode(['message' => 'Database error']));
+                return $response->withStatus(500);
             }
         }
-        return $response->withJson($this->hpEntities, 200);
+        $response->getBody()->write(json_encode($this->hpEntities));
+        return $response->withStatus(200);
     }
 }

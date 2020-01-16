@@ -3,8 +3,8 @@
 namespace Portal\Controllers;
 
 use Portal\Models\EventModel;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
 class DisplayEventsPageController
@@ -38,9 +38,9 @@ class DisplayEventsPageController
     {
         if ($_SESSION['loggedIn'] === true) {
             $args['eventCategories'] = $this->eventModel->getEventCategories();
-            $this->renderer->render($response, 'EventsPage.phtml', $args);
+            return $this->renderer->render($response, 'EventsPage.phtml', $args);
         } else {
-            return $response->withRedirect('./');
+            return $response->withHeader('Location', './');
         }
     }
 }

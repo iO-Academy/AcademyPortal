@@ -2,8 +2,8 @@
 
 namespace Portal\Controllers;
 
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\EventModel;
 use Portal\Entities\EventEntity;
@@ -34,7 +34,7 @@ class AddEventController
 
         try {
             $event = new EventEntity(
-                $newEvent['id'],
+                $newEvent['id'] ?? '',
                 $newEvent['name'],
                 $newEvent['category'],
                 $newEvent['location'],
@@ -59,6 +59,7 @@ class AddEventController
             ];
             $statusCode = 201;
         }
-        return $response->withJson($responseData, $statusCode);
+        $response->getBody()->write(json_encode($responseData));
+        return $response->withStatus($statusCode);
     }
 }

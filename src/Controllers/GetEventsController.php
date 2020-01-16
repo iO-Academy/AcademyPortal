@@ -3,8 +3,8 @@
 namespace Portal\Controllers;
 
 use Portal\Models\EventModel;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class GetEventsController
 {
@@ -38,7 +38,7 @@ class GetEventsController
         ];
         $statusCode = 200;
 
-        $eventSearchInput = $request->getQueryParam('searchTerm');
+        $eventSearchInput = $request->getQueryParams()['searchTerm'] ?? '';
         if (!empty($eventSearchInput)) {
             if (strlen($eventSearchInput) < 256) {
                 try {
@@ -54,7 +54,8 @@ class GetEventsController
             } else {
                 $data['message'] = 'Search term cannot be greater than 255 characters.';
             }
-            return $response->withJson($data, $statusCode);
+            $response->getBody()->write(json_encode($data));
+            return $response->withStatus($statusCode);
         }
 
 
@@ -69,6 +70,7 @@ class GetEventsController
         } catch (\PDOException $exception) {
             $data['message'] = $exception->getMessage();
         }
-        return $response->withJson($data, $statusCode);
+        $response->getBody()->write(json_encode($data));
+        return $response->withStatus($statusCode);
     }
 }
