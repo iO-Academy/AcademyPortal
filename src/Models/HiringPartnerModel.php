@@ -39,13 +39,22 @@ class HiringPartnerModel
             :phoneNumber,
             :websiteUrl
             );");
-        $query->bindParam(':companyId', $company->getCompanyId());
-        $query->bindParam(':companyName', $company->getCompanyName());
-        $query->bindParam(':companySize', $company->getCompanySize());
-        $query->bindParam(':techStack', $company->getTechStack());
-        $query->bindParam(':postcode', $company->getPostcode());
-        $query->bindParam(':phoneNumber', $company->getPhoneNumber());
-        $query->bindParam(':websiteUrl', $company->getWebsiteUrl());
+
+        $companyId = $company->getCompanyId();
+        $companyName = $company->getCompanyName();
+        $companySize = $company->getCompanySize();
+        $techStack = $company->getTechStack();
+        $postCode = $company->getPostcode();
+        $phoneNumber = $company->getPhoneNumber();
+        $websiteUrl = $company->getWebsiteUrl();
+
+        $query->bindParam(':companyId', $companyId);
+        $query->bindParam(':companyName', $companyName);
+        $query->bindParam(':companySize', $companySize);
+        $query->bindParam(':techStack', $techStack);
+        $query->bindParam(':postcode', $postCode);
+        $query->bindParam(':phoneNumber', $phoneNumber);
+        $query->bindParam(':websiteUrl', $websiteUrl);
         return $query->execute();
     }
 
@@ -78,7 +87,10 @@ class HiringPartnerModel
             $resetPrimaryQuery = $this->db->prepare("UPDATE `hiring_partner_contacts` 
                 SET `is_primary_contact` = 0 
                 WHERE `hiring_partner_company_id` = :id;");
-            $resetPrimaryQuery->bindParam(':id', $contact->getHiringPartnerCompanyId(), \PDO::PARAM_INT);
+
+            $hiringPartnerCompanyId = $contact->getHiringPartnerCompanyId();
+
+            $resetPrimaryQuery->bindParam(':id', $hiringPartnerCompanyId, \PDO::PARAM_INT);
             $resetPrimaryQuery->execute();
         }
         $query = $this->db->prepare("INSERT INTO `hiring_partner_contacts`(
@@ -97,12 +109,20 @@ class HiringPartnerModel
             :hiringPartnerCompanyId,
             :primaryContact
             );");
-        $query->bindParam(':contactName', $contact->getContactName(), \PDO::PARAM_STR);
-        $query->bindParam(':contactEmail', $contact->getContactEmail(), \PDO::PARAM_STR);
-        $query->bindParam(':jobTitle', $contact->getJobTitle(), \PDO::PARAM_STR);
-        $query->bindParam(':contactPhone', $contact->getContactPhone(), \PDO::PARAM_STR);
-        $query->bindParam(':hiringPartnerCompanyId', $contact->getHiringPartnerCompanyId(), \PDO::PARAM_INT);
-        $query->bindParam(':primaryContact', $contact->getPrimaryContact(), \PDO::PARAM_INT);
+
+        $contactName = $contact->getContactName();
+        $contactEmail = $contact->getContactEmail();
+        $jobTitle = $contact->getJobTitle();
+        $contactPhone = $contact->getContactPhone();
+        $hiringPartnerCompanyId = $contact->getHiringPartnerCompanyId();
+        $primaryContact = $contact->getPrimaryContact();
+
+        $query->bindParam(':contactName', $contactName, \PDO::PARAM_STR);
+        $query->bindParam(':contactEmail', $contactEmail, \PDO::PARAM_STR);
+        $query->bindParam(':jobTitle', $jobTitle, \PDO::PARAM_STR);
+        $query->bindParam(':contactPhone', $contactPhone, \PDO::PARAM_STR);
+        $query->bindParam(':hiringPartnerCompanyId', $hiringPartnerCompanyId, \PDO::PARAM_INT);
+        $query->bindParam(':primaryContact', $primaryContact, \PDO::PARAM_INT);
         $success = $query->execute();
         $this->db->commit();
         return $success;
