@@ -2,7 +2,7 @@
 
 namespace Tests\Factories;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Factories\LoginControllerFactory;
 use Portal\Controllers\LoginController;
 use Portal\Models\UserModel;

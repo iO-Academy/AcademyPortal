@@ -2,7 +2,7 @@
 
 namespace Test\Factories;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Controllers\DisplayEventsPageController;
 use Portal\Models\EventModel;
 use Slim\Views\PhpRenderer;

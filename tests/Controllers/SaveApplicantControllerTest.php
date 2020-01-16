@@ -2,7 +2,7 @@
 
 namespace Tests\Controllers;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Controllers\SaveApplicantController;
 use Portal\Models\ApplicantModel;
 

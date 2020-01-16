@@ -5,8 +5,9 @@ namespace Tests\Controllers;
 use Portal\Controllers\GetHiringPartnersByIdController;
 use Portal\Models\EventModel;
 use Portal\Models\HiringPartnerModel;
+use Tests\TestCase;
 
-class GetHiringPartnersByIdControllerTest extends \PHPUnit_Framework_TestCase
+class GetHiringPartnersByIdControllerTest extends TestCase
 {
     public function testConstruct()
     {

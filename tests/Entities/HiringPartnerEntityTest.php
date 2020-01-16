@@ -3,7 +3,7 @@
 namespace Test\Entities;
 
 use \Exception;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use TypeError;
 
 class HiringPartnerEntityTest extends TestCase

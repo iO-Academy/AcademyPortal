@@ -2,7 +2,7 @@
 
 namespace Tests\Factories;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Factories\AdminControllerFactory;
 use Slim\Views\PhpRenderer;
 use Psr\Container\ContainerInterface;

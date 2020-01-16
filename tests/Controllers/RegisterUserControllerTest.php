@@ -2,7 +2,7 @@
 
 namespace Tests\Controllers;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Controllers\RegisterUserController;
 use Portal\Models\UserModel;
 

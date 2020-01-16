@@ -2,7 +2,7 @@
 
 namespace Test\Factories;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Factories\ApplicationFormControllerFactory;
 use Portal\Controllers\ApplicationFormController;
 use Portal\Models\ApplicationFormModel;

@@ -4,8 +4,9 @@ namespace Tests\Controllers;
 
 use Portal\Controllers\CompanyDetailsModalController;
 use Portal\Models\HiringPartnerModel;
+use Tests\TestCase;
 
-class CompanyDetailsModalControllerTest extends \PHPUnit_Framework_TestCase
+class CompanyDetailsModalControllerTest extends TestCase
 {
     public function testConstruct()
     {

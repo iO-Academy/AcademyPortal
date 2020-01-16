@@ -2,7 +2,7 @@
 
 namespace Test\Factories;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Psr\Container\ContainerInterface;
 use Portal\Factories\EventModelFactory;
 use Portal\Models\EventModel;

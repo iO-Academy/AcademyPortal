@@ -4,7 +4,7 @@ namespace Tests\Entities;
 
 use Portal\Entities\EventEntity;
 use \Exception;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use TypeError;
 
 class EventEntityTest extends TestCase

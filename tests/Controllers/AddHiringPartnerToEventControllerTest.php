@@ -2,9 +2,9 @@
 
 namespace Tests\Controllers;
 
-use PHPUnit\Framework\TestCase;
 use Portal\Controllers\AddHiringPartnerToEventController;
 use Portal\Models\EventModel;
+use Tests\TestCase;
 
 class AddHiringPartnerToEventControllerTest extends TestCase
 {

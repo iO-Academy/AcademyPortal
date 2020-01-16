@@ -3,8 +3,9 @@
 namespace Tests\Entities;
 
 use Portal\Entities\ApplicantEntity;
+use Tests\TestCase;
 
-class ApplicantEntityTest extends \PHPUnit_Framework_TestCase
+class ApplicantEntityTest extends TestCase
 {
     private function createApplicant()
     {

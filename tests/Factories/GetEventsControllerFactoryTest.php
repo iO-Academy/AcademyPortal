@@ -2,7 +2,7 @@
 
 namespace Tests\Factories;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Controllers\GetEventsController;
 use Portal\Factories\GetEventsControllerFactory;
 use Portal\Models\EventModel;

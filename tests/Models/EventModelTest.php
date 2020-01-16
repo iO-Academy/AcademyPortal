@@ -2,7 +2,7 @@
 
 namespace Tests\Models;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Models\EventModel;
 
 class EventModelTest extends TestCase

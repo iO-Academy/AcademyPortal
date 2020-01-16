@@ -2,8 +2,8 @@
 
 namespace Tests\Factories;
 
-use Interop\Container\ContainerInterface;
-use PHPUnit\Framework\TestCase;
+use Psr\Container\ContainerInterface;
+use Tests\TestCase;
 use Portal\Factories\ApplicantModelFactory;
 use Portal\Models\ApplicantModel;
 

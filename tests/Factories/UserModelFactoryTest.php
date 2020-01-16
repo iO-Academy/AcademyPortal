@@ -2,7 +2,7 @@
 
 namespace Test\Factories;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Factories\UserModelFactory;
 use Portal\Models\UserModel;
 use Psr\Container\ContainerInterface;

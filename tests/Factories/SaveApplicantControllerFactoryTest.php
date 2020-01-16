@@ -2,7 +2,7 @@
 
 namespace Tests\Factories;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Models\ApplicantModel;
 use Psr\Container\ContainerInterface;
 use Portal\Controllers\SaveApplicantController;

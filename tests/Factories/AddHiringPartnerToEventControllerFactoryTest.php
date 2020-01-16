@@ -2,7 +2,7 @@
 
 namespace Tests\Factories;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Factories\AddHiringPartnerToEventControllerFactory;
 use Portal\Models\EventModel;
 use Slim\Views\PhpRenderer;

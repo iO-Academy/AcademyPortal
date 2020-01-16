@@ -2,7 +2,7 @@
 
 namespace Tests\Controllers;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Models\HiringPartnerModel;
 use Portal\Controllers\GetHiringPartnersController;
 

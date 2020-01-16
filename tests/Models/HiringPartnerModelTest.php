@@ -2,7 +2,7 @@
 
 namespace Tests\Models;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Models\HiringPartnerModel;
 
 class HiringPartnerModelTest extends TestCase

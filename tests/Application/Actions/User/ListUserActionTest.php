@@ -9,6 +9,7 @@ use Portal\Domain\User\User;
 use DI\Container;
 use Tests\TestCase;
 
+
 class ListUserActionTest extends TestCase
 {
     public function testAction()

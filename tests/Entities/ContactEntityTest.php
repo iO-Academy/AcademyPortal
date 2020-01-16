@@ -3,7 +3,7 @@
 namespace Tests\Entities;
 
 use \Exception;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\Entities\ContactEntity;
 
 class ContactEntityTest extends TestCase
