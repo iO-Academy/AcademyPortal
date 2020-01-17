@@ -40,136 +40,57 @@ return function (ContainerBuilder $containerBuilder) {
         return $db;
     };
 
-    $container['HomePageController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\HomePageControllerFactory();
-        return $controller($c);
-    };
+    $container['HomePageController'] = DI\factory('\Portal\Factories\HomePageControllerFactory');
 
-    $container['AdminController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\AdminControllerFactory();
-        return $controller($c);
-    };
+    $container['AdminController'] = DI\factory('\Portal\Factories\AdminControllerFactory');
 
-    $container['RegisterController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\RegisterControllerFactory();
-        return $controller($c);
-    };
+    $container['RegisterController'] = DI\factory('\Portal\Factories\RegisterControllerFactory');
 
-    $container['LoginController'] = function (ContainerInterface $c) {
-        $controller = new \Portal\Factories\LoginControllerFactory();
-        return $controller($c);
-    };
+    $container['LoginController'] = DI\factory('\Portal\Factories\LoginControllerFactory');
 
-    $container['RegisterUserController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\RegisterUserControllerFactory();
-        return $controller($c);
-    };
+    $container['RegisterUserController'] = DI\factory('\Portal\Factories\RegisterUserControllerFactory');
 
-    $container['addApplicantController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\AddApplicantControllerFactory();
-        return $controller($c);
-    };
+    $container['addApplicantController'] = DI\factory('\Portal\Factories\AddApplicantControllerFactory');
 
-    $container['ApplicationFormModel'] = function(ContainerInterface $c) {
-        $model = new \Portal\Factories\ApplicationFormModelFactory();
-        return $model($c);
-    };
+    $container['ApplicationFormModel'] = DI\factory('\Portal\Factories\ApplicationFormModelFactory');
 
-    $container['ApplicationFormController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\ApplicationFormControllerFactory();
-        return $controller($c);
-    };
+    $container['ApplicationFormController'] = DI\factory('\Portal\Factories\ApplicationFormControllerFactory');
 
-    $container['SaveApplicantController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\SaveApplicantControllerFactory();
-        return $controller($c);
-    };
+    $container['SaveApplicantController'] = DI\factory('\Portal\Factories\SaveApplicantControllerFactory');
 
-    $container['DisplayApplicantsController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\DisplayApplicantsControllerFactory();
-        return $controller($c);
-    };
+    $container['DisplayApplicantsController'] = DI\factory('\Portal\Factories\DisplayApplicantsControllerFactory');
 
-    $container['GetApplicantController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\GetApplicantControllerFactory();
-        return $controller($c);
-    };
+    $container['GetApplicantController'] = DI\factory('\Portal\Factories\GetApplicantControllerFactory');
 
-    $container['DisplayHiringPartnerPageController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\DisplayHiringPartnerPageControllerFactory();
-        return $controller($c);
-    };
+    $container['DisplayHiringPartnerPageController'] = DI\factory('\Portal\Factories\DisplayHiringPartnerPageControllerFactory');
 
-    $container['CreateHiringPartnerController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\CreateHiringPartnerControllerFactory();
-        return $controller($c);
-    };
+    $container['CreateHiringPartnerController'] = DI\factory('\Portal\Factories\CreateHiringPartnerControllerFactory');
 
-    $container['GetHiringPartnersController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\GetHiringPartnerControllerFactory();
-        return $controller($c);
-    };
+    $container['GetHiringPartnersController'] = DI\factory('\Portal\Factories\GetHiringPartnerControllerFactory');
 
-    $container['CompanyDetailsModalController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\CompanyDetailsModalControllerFactory();
-        return $controller($c);
-    };
+    $container['CompanyDetailsModalController'] = DI\factory('\Portal\Factories\CompanyDetailsModalControllerFactory');
 
-    $container['AddContactController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\AddContactControllerFactory();
-        return $controller($c);
-    };
+    $container['AddContactController'] = DI\factory('\Portal\Factories\AddContactControllerFactory');
 
-    $container['DisplayEventsPageController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\DisplayEventsPageControllerFactory();
-        return $controller($c);
-    };
+    $container['DisplayEventsPageController'] = DI\factory('\Portal\Factories\DisplayEventsPageControllerFactory');
 
-    $container['GetEventsController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\GetEventsControllerFactory();
-        return $controller($c);
-    };
+    $container['GetEventsController'] = DI\factory('\Portal\Factories\GetEventsControllerFactory');
 
-    $container['GetHiringPartnersByIdController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\GetHiringPartnersByIdControllerFactory();
-        return $controller($c);
-    };
+    $container['GetHiringPartnersByIdController'] = DI\factory('\Portal\Factories\GetHiringPartnersByIdControllerFactory');
 
-    $container['AddHiringPartnerToEventController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\AddHiringPartnerToEventControllerFactory();
-        return $controller($c);
-    };
+    $container['AddHiringPartnerToEventController'] = DI\factory('\Portal\Factories\AddHiringPartnerToEventControllerFactory');
 
-    $container['AddEventController'] = function(ContainerInterface $c) {
-        $controller = new \Portal\Factories\AddEventControllerFactory();
-        return $controller($c);
-    };
+    $container['AddEventController'] = DI\factory('\Portal\Factories\AddEventControllerFactory');
 
-    $container['UserModel'] = function(ContainerInterface $c) {
-        $model = new \Portal\Factories\UserModelFactory();
-        return $model($c);
-    };
+    $container['UserModel'] = DI\factory('\Portal\Factories\UserModelFactory');
 
-    $container['ApplicantModel'] = function(ContainerInterface $c) {
-        $model = new \Portal\Factories\ApplicantModelFactory();
-        return $model($c);
-    };
+    $container['ApplicantModel'] = DI\factory('\Portal\Factories\ApplicantModelFactory');
 
-    $container['HiringPartnerModel'] = function(ContainerInterface $c) {
-        $model = new \Portal\Factories\HiringPartnerModelFactory();
-        return $model($c);
-    };
+    $container['HiringPartnerModel'] = DI\factory('\Portal\Factories\HiringPartnerModelFactory');
 
-    $container['EventModel'] = function(ContainerInterface $c) {
-        $model = new \Portal\Factories\EventModelFactory();
-        return $model($c);
-    };
+    $container['EventModel'] = DI\factory('\Portal\Factories\EventModelFactory');
 
-
-    $container['RandomPasswordModel'] = function() {
-        $model = new \Portal\Models\RandomPasswordModel();
-        return $model();
-    };
+    $container['RandomPasswordModel'] = DI\factory('\Portal\Models\RandomPasswordModel');
 
     $containerBuilder->addDefinitions($container);
 };
