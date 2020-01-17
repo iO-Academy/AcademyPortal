@@ -46,7 +46,8 @@ class AddHiringPartnerToEventController
                 'message' => 'Hiring partner successfully added to event.']));
             return $response->withStatus(200);
         } else {
-            $response->getBody()->write(json_encode(['success' => false, 'message' => 'Error - please contact administrator']));
+            $res = json_encode(['success' => false, 'message' => 'Error - please contact administrator']);
+            $response->getBody()->write($res);
             return $response->withStatus(500);
         }
     }
