@@ -92,5 +92,7 @@ return function (ContainerBuilder $containerBuilder) {
 
     $container['RandomPasswordModel'] = DI\factory('\Portal\Models\RandomPasswordModel');
 
+    $container['RemoveHiringPartnerFromEventController'] = DI\factory('\Portal\Factories\RemoveHiringPartnerFromEventControllerFactory');
+
     $containerBuilder->addDefinitions($container);
 };

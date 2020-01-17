@@ -4,8 +4,8 @@ namespace Portal\Controllers;
 
 use Portal\Entities\HiringPartnerEntity;
 use Portal\Models\EventModel;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class RemoveHiringPartnerFromEventController
 {
@@ -36,11 +36,14 @@ class RemoveHiringPartnerFromEventController
         $result = $this->eventModel->removeHiringPartnerFromEvent($event, $hiringPartner);
 
         if ($result) {
-            return $response->withJson(['success' => true,
+            $response->getBody()->write(json_encode(['success' => true,
                 'message' => 'Hiring partner successfully removed from the event.',
-                'data' => [$hiringPartner, $event]], 200);
+                'data' => [$hiringPartner, $event]]));
+            return $response->withStatus(200);
         } else {
-            return $response->withJson(['success' => false, 'message' => 'Error - please contact administrator'], 500);
+            $response->getBody()->write(json_encode(['success' => false,
+                'message' => 'Error - please contact administrator']));
+            return $response->withStatus(500);
         }
     }
 }
