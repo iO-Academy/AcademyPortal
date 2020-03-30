@@ -6,6 +6,11 @@
 2. Create database with name `academyPortal` and populate using latest version in db/
 3. `php -S localhost:8080 -t public public/index.php`
 
+### Running tests
+
+- cd into the tests directory and run:
+```../vendor/bin/phpunit .```
+
 ### Deploy
 
 - Files/folders that can be easily replaced with uploads:
