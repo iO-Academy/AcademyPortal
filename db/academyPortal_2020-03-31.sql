@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.27)
+# Host: 127.0.0.1 (MySQL 5.7.29)
 # Database: academyPortal
-# Generation Time: 2019-11-21 15:02:33 +0000
+# Generation Time: 2020-03-31 10:55:49 +0000
 # ************************************************************
 
 
@@ -281,6 +281,34 @@ VALUES
 	(2,'Little Chef','little.chef@hp1.com',1,'Chief Food Officer',1,'01299 872145');
 
 /*!40000 ALTER TABLE `hiring_partner_contacts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table stages
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `stages`;
+
+CREATE TABLE `stages` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) DEFAULT NULL,
+  `order` int(11) DEFAULT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `stages` WRITE;
+/*!40000 ALTER TABLE `stages` DISABLE KEYS */;
+
+INSERT INTO `stages` (`id`, `title`, `order`, `deleted`)
+VALUES
+	(1,'email application received',1,0),
+	(2,'Aptitude Test',2,0),
+	(3,'Interview',3,0),
+	(4,'Place Awarded',5,0),
+	(5,'Charlie\'s secret initiation',4,0);
+
+/*!40000 ALTER TABLE `stages` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
