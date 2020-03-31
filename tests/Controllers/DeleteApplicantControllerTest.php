@@ -5,7 +5,6 @@ namespace Tests\Controllers;
 use PHPUnit\Framework\TestCase;
 use Portal\Controllers\DeleteApplicantController;
 use Portal\Models\ApplicantModel;
-use Slim\http\Response;
 
 class DeleteApplicantControllerTest extends TestCase
 {
