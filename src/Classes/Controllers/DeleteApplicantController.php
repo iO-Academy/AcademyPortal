@@ -19,11 +19,11 @@ class DeleteApplicantController
     public function __invoke(Request $request, Response $response, array $args)
     {
         $requestData = $request->getParsedBody();
-        if(isset($requestData['id'])) {
-            if($applicantModel->deleteApplicant($requestData['id'])) {
+        if (isset($requestData['id'])) {
+            if ($applicantModel->deleteApplicant($requestData['id'])) {
                 return $response->withStatus(200);
             } else {
-                return $response->withStatus(500); 
+                return $response->withStatus(500);
             }
         }
     }
