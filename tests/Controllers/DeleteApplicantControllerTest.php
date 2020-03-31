@@ -7,7 +7,7 @@ use Portal\Controllers\DeleteApplicantController;
 use Portal\Models\ApplicantModel;
 use Slim\http\Response;
 
-class SaveApplicantControllerTest extends TestCase
+class DeleteApplicantControllerTest extends TestCase
 {
 
     public function testConstruct()
