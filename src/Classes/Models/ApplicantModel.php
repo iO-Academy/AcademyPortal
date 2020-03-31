@@ -187,8 +187,7 @@ class ApplicantModel
         $applicantEighteenPlus,
         $applicantFinance,
         $applicantNotes
-    )
-    {
+    ) {
         return new ApplicantEntity(
             $applicantName,
             $applicantEmail,
@@ -204,9 +203,16 @@ class ApplicantModel
         );
     }
 
+    /**
+     * Deletes record with the given id from the database
+     *
+     * @param $id
+     *
+     * @return boolean for success or failure of the query
+     */
     public function deleteApplicant($id)
     {
-        $query= $this->dbConnection->prepare( "UPDATE `applicants` SET `deleted` = '1' WHERE `id` = :id");
+        $query = $this->dbConnection->prepare("UPDATE `applicants` SET `deleted` = '1' WHERE `id` = :id");
         $query->bindParam(':id', $id);
         return $query->execute();
     }
