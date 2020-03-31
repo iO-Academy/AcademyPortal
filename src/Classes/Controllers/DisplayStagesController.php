@@ -27,6 +27,7 @@ class DisplayStagesController
 
     public function __invoke(Request $request, Response $response, array $args)
     {
+        $args = $this->stageModel->getAllStages();
         return $this->renderer->render($response, 'displayStages.phtml', $args);
     }
 
