@@ -212,7 +212,7 @@ class ApplicantModel
      */
     public function deleteApplicant($id)
     {
-        $query = $this->dbConnection->prepare("UPDATE `applicants` SET `deleted` = '1' WHERE `id` = :id");
+        $query = $this->db->prepare("UPDATE `applicants` SET `deleted` = '1' WHERE `id` = :id");
         $query->bindParam(':id', $id);
         return $query->execute();
     }
