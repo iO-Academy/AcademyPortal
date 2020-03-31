@@ -15,6 +15,7 @@ $app->get('/displayEventsPage', 'DisplayEventsPageController');
 
 // API routes
 $app->post('/api/saveApplicant', 'SaveApplicantController');
+$app->delete('/api/deleteApplicant', 'DeleteApplicantController');
 $app->get('/api/applicationForm', 'ApplicationFormController');
 $app->post('/api/createHiringPartner', 'CreateHiringPartnerController');
 $app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');

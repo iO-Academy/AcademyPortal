@@ -6,6 +6,11 @@
 2. Create database with name `academyPortal` and populate using latest version in db/
 3. `php -S localhost:8080 -t public public/index.php`
 
+### Running tests
+
+- cd into the tests directory and run:
+```../vendor/bin/phpunit .```
+
 ### Deploy
 
 - Files/folders that can be easily replaced with uploads:
@@ -75,12 +80,21 @@ POST
 	    'eighteenPlus': '1' or '0',
 	    'finance': '1' or '0',
 	    'notes': 'example notes'
-	   }
+	   }`
 - Returns success true / false:
 	- if new applicant registered successfully
 		- `{'success':true, 'msg':'Application Saved', 'data':[]}`
 	- if new applicant not saved successfully
 		- `{'success':false, 'msg':'Application Not Saved', 'data':[]}`
+		
+		
+**/deleteApplicant**
+
+DELETE
+- Changes the 'deleted' value for a single entry in the applicant table to '1'.
+- Sends: 
+    - `{'id' : 'integer'}`
+- Returns either an HTTP status of 200 for success or 500 for error.
 
 **/createHiringPartner**
 
