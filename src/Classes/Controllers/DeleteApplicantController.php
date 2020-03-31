@@ -19,7 +19,7 @@ class DeleteApplicantController
     {
         $requestData = $request->getParsedBody();
         if (isset($requestData['id'])) {
-            if ($applicantModel->deleteApplicant($requestData['id'])) {
+            if ($this->applicantModel->deleteApplicant($requestData['id'])) {
                 return $response->withStatus(200);
             } else {
                 return $response->withStatus(500);
