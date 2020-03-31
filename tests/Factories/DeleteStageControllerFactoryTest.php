@@ -8,7 +8,7 @@ use Psr\Container\ContainerInterface;
 use Portal\Controllers\DeleteStageController;
 use Portal\Factories\DeleteStageControllerFactory;
 
-class DeleteApplicantControllerFactoryTest extends TestCase
+class DeleteStageControllerFactoryTest extends TestCase
 {
     public function testInvoke()
     {
