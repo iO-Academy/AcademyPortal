@@ -7,7 +7,7 @@ use \Slim\Http\Response as Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\StageModel;
 
-class DisplayApplicantsController
+class DisplayStagesController
 {
     private $renderer;
     private $stageModel;
