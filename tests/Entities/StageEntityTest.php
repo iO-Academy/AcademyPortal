@@ -3,9 +3,7 @@
 namespace Tests\Entities;
 
 use Portal\Entities\StageEntity;
-use \Exception;
 use PHPUnit\Framework\TestCase;
-use TypeError;
 
 class StageEntityTest extends TestCase
 {
