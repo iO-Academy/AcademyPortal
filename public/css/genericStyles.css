@@ -121,3 +121,7 @@ input[type="submit"] {
 #createNewResponse {
     margin-top: 10px;
 }
+
+#deleteResponse {
+    color: #FF0000;
+}
