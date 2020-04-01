@@ -13,7 +13,7 @@ class DeleteApplicantController
     /**
      * DeleteApplicantsController constructor saves an applicantModel
      * onto this object
-     * 
+     *
      * @param ApplicantModel $applicantModel
      */
     public function __construct(ApplicantModel $applicantModel)
@@ -48,7 +48,7 @@ class DeleteApplicantController
                         if ($this->applicantModel->deleteApplicant($validatedRequestData)) {
                             $data = ['success' => true, 'msg' => 'Applicant has been deleted successfully.'];
                             $response = $response->withStatus(200);
-                        } 
+                        }
                     }
                 } else {
                     $data = ['msg' => 'Invalid id provided.'];
@@ -58,7 +58,6 @@ class DeleteApplicantController
             }
 
             return $response->withJson($data);
-
         }
     }
 }
