@@ -10,14 +10,30 @@ class DeleteApplicantController
 {
     private $applicantModel;
 
+    /**
+     * DeleteApplicantsController constructor saves an applicantModel
+     * onto this object
+     * 
+     * @param ApplicantModel $applicantModel
+     */
     public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
     }
 
+    /**
+     * Checks if user is logged in, validates the http request data and calls
+     * the delete method on applicantModel
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     *
+     * @return \Slim\Http\Response - Returns status 200/500 with message in Json
+     */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        // if ($_SESSION['loggedIn'] === true) {
+        if ($_SESSION['loggedIn'] === true) {
             $data = ['success' => false, 'msg' => 'Applicant not found.'];
             $response = $response->withStatus(500);
             
@@ -43,6 +59,6 @@ class DeleteApplicantController
 
             return $response->withJson($data);
 
-        // }
+        }
     }
 }
