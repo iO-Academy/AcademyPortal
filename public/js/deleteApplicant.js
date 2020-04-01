@@ -1,10 +1,10 @@
 window.addEventListener('load', (event) => {
        checkCookie()
-})
+});
 
-let deleteButton = document.getElementById('deleteBtn')
+let deleteButton = document.getElementById('deleteBtn');
     deleteButton.addEventListener('click', (e) => {
-        let id = e.target.dataset.id
+        let id = e.target.dataset.id;
         fetch('/api/deleteApplicant', {
             method: 'DELETE',
             body: JSON.stringify({"id": id}),
@@ -12,22 +12,18 @@ let deleteButton = document.getElementById('deleteBtn')
                 "Content-Type": "application/json"
             }
         }).then((response) => {
-            let responseData = response.json()
-            document.cookie = `response=${responseData.msg}`
-                // if (response.status === 200) {
-                //     document.cookie = `response=${responseData.msg}`
-                //     } else if (response.status === 500) {
-                //     document.cookie = `response=${responseData.msg}`
-                // }
-                window.location.reload(true)
+            return response.json()
+        }).then((responseData) => {
+            console.log(responseData);
+            document.cookie = `response=${responseData.msg}`;
+            window.location.reload(true)
         })
-    })
+    });
 
 function checkCookie() {
-    let elem = document.getElementById('deleteResponse')
-    let response = getCookie("response")
-    console.log(response)
-    elem.textContent = response
+    let elem = document.getElementById('deleteResponse');
+    let response = getCookie("response");
+    elem.textContent = response;
     document.cookie = "response=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
