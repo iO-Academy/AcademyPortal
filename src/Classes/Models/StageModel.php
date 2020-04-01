@@ -36,7 +36,9 @@ class StageModel
      */
     public function getStageById(int $id) : StageEntity
     {
-        $query = $this->db->prepare('SELECT `stages`.`id`, `title`, `order`, `deleted` FROM `stages` WHERE `stages`.`id` = :id');
+        $query = $this->db->prepare
+        ('SELECT `stages`.`id`, `title`, `order`, `deleted` FROM `stages` WHERE `stages`.`id` = :id');
+        
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
         $query->bindParam(':id', $id);
         $query->execute();
