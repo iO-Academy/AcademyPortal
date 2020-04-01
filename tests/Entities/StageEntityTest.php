@@ -9,6 +9,9 @@ use TypeError;
 
 class StageEntityTest extends TestCase
 {
+    /**
+     * Checks if StageEntity creates an instance of the StageEntityClass
+     */
     public function testNewStageEntitySuccess()
     {
         $newStageEntity = new StageEntity(
@@ -19,6 +22,9 @@ class StageEntityTest extends TestCase
         $this->assertInstanceOf(StageEntity::class, $newStageEntity);
     }
 
+    /**
+     * Checks if id can successfully be got from the StageEntity
+     */
     public function testGetStageIdSuccess()
     {
         $name = new StageEntity(
@@ -30,6 +36,9 @@ class StageEntityTest extends TestCase
         $this->assertEquals($result, 1);
     }
 
+    /**
+     * Checks if title can successfully be got from the StageEntity
+     */
     public function testGetStageTitleSuccess()
     {
         $name = new StageEntity(
@@ -41,6 +50,9 @@ class StageEntityTest extends TestCase
         $this->assertEquals($result, 'newStage');
     }
 
+    /**
+     * Checks if order can successfully be got from the StageEntity
+     */
     public function testGetStageOrderSuccess()
     {
         $name = new StageEntity(
