@@ -82,3 +82,5 @@ $container['RemoveHiringPartnerFromEventController'] =
     new \Portal\Factories\RemoveHiringPartnerFromEventControllerFactory();
 
 $container['StageModel'] = new \Portal\Factories\StageModelFactory();
+
+$container['CreateStageController'] = new \Portal\Factories\CreateStageControllerFactory();
