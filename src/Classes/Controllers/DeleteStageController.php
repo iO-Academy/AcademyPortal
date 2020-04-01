@@ -30,7 +30,7 @@ class DeleteStageController
         if ($_SESSION['loggedIn'] === true) {
             $data = [
                 'success' => false,
-                'msg' => 'Applicant not found.',
+                'msg' => 'Stage not found.',
                 'data' => []
             ];
             $statusCode = 500;
