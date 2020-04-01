@@ -4,6 +4,7 @@ namespace Tests\ViewHelpers;
 
 use PHPUnit\Framework\TestCase;
 use Portal\ViewHelpers\StagesPageViewHelper;
+use Portal\Entities\StageEntity;
 
 class StagesPageViewHelperTest extends TestCase
 {
@@ -21,11 +22,14 @@ class StagesPageViewHelperTest extends TestCase
         $expected .=      '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
         $expected .=      '<td class="col-xs-2 text-center"><a data-id="1" class="text-danger">Delete</a></td>';
         $expected .= '</tr>';
-        $input =  ["id" => "1", "title" => "Stage 1 test"];
-        //Create mock for stages entity
-        //make case
+        $entityMock = $this->createMock(StageEntity::class);
+        $entityMock->method('getId')->willReturn('1');
+        $entityMock->method('getTitle')->willReturn('Stage 1 test');
 
-        $this->assertEquals($expected); //pass case in
+        $input =  [$entityMock];
+        $case = StagesPageViewHelper::displayStages($input);
+
+        $this->assertEquals($expected, $case);
 
     }
 }

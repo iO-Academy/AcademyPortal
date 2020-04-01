@@ -4,6 +4,7 @@ const editResponse = document.getElementById('editResponse');
 const newStageForm = document.getElementById('newStageForm');
 const createNewResponse = document.getElementById('createNewResponse');
 
+//Handler for edit button
 editButtons.forEach((editButton, index) => {
     editButton.addEventListener('click', () => {
         if (editForms[index].style.display === '' || editForms[index].style.display === 'none') {
@@ -14,6 +15,7 @@ editButtons.forEach((editButton, index) => {
     })
 });
 
+//Handler for submitting an edited stage
 editForms.forEach((editForm) => {
     editForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -29,6 +31,19 @@ editForms.forEach((editForm) => {
     })
 });
 
+//Handler for submitting a new stage
+newStageForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let newStage = e.target.firstElementChild.value;
+    let data = {
+        "title" : newStage
+    };
+
+    sendNewStageRequest(data);
+
+});
+
+//Fetch template
 async function fetchTemplate(url, requestMethod, data) {
     let requestData = JSON.stringify(data);
 
@@ -49,17 +64,6 @@ async function sendEditRequest(data) {
         editResponse.textContent = responseData.msg
     }
 }
-
-newStageForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let newStage = e.target.firstElementChild.value;
-    let data = {
-        "title" : newStage
-    };
-
-    sendNewStageRequest(data);
-
-});
 
 async function sendNewStageRequest(data) {
     let response = await fetchTemplate('/api/createStage', 'POST', data);

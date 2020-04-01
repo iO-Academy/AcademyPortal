@@ -2,7 +2,7 @@
 
 namespace Portal\ViewHelpers;
 
-use \Portal\Entities\StagesEntity; /** dependent on stages entity being created */
+use \Portal\Entities\StageEntity; /** dependent on stages entity being created */
 
 class StagesPageViewHelper
 {
@@ -17,7 +17,7 @@ class StagesPageViewHelper
     {
         $result = '';
         foreach($stages as $stage) {
-            if ($stage instanceof StagesEntity) {
+            if ($stage instanceof StageEntity) {
                 $result .= '<tr>';
                 $result .=      '<td>';
                 $result .=          '<p>'. $stage->getTitle().'</p>';
