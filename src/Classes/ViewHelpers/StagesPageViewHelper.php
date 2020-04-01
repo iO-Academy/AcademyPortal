@@ -2,7 +2,7 @@
 
 namespace Portal\ViewHelpers;
 
-use \Portal\Entities\StageEntity; /** dependent on stages entity being created */
+use \Portal\Entities\StageEntity;
 
 class StagesPageViewHelper
 {
@@ -20,14 +20,14 @@ class StagesPageViewHelper
             if ($stage instanceof StageEntity) {
                 $result .= '<tr>';
                 $result .=      '<td>';
-                $result .=          '<p>'. $stage->getTitle().'</p>';
-                $result .=          '<form data-id="'. $stage->getId().'" class="stagesTableForm">';
-                $result .=              '<input type="text" class="stageEditTitle col-xs-10" placeholder="'. $stage->getTitle().'"/>';
+                $result .=          '<p>'. $stage->getStageTitle().'</p>';
+                $result .=          '<form data-id="'. $stage->getStageId().'" class="stagesTableForm">';
+                $result .=              '<input type="text" class="stageEditTitle col-xs-10" placeholder="'. $stage->getStageTitle().'"/>';
                 $result .=              '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
                 $result .=          '</form>';
                 $result .=      '</td>';
                 $result .=      '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
-                $result .=      '<td class="col-xs-2 text-center"><a data-id="'. $stage->getId().'" class="text-danger">Delete</a></td>';
+                $result .=      '<td class="col-xs-2 text-center"><a data-id="'. $stage->getStageId().'" class="text-danger">Delete</a></td>';
                 $result .= '</tr>';
             }
         }
