@@ -34,8 +34,12 @@ class DeleteApplicantController
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $data = ['success' => false, 'msg' => 'Applicant not found.'];
-            $response = $response->withStatus(500);
+            $data = [
+                'success' => false,
+                'msg' => 'Applicant not found.',
+                'data' => []
+            ];
+            $statusCode = 500;
             
             $requestData = $request->getParsedBody();
             
@@ -46,18 +50,29 @@ class DeleteApplicantController
                     $applicantData = $this->applicantModel->getApplicantById($validatedRequestData);
                     if ($applicantData) {
                         if ($this->applicantModel->deleteApplicant($validatedRequestData)) {
-                            $data = ['success' => true, 'msg' => 'Applicant has been deleted successfully.'];
-                            $response = $response->withStatus(200);
+                            $data = [
+                                'success' => true,
+                                'msg' => 'Applicant has been deleted successfully.',
+                                'data' => []
+                            ];
+                            $statusCode = 200;
                         }
                     }
                 } else {
-                    $data = ['msg' => 'Invalid id provided.'];
+                    $data = [
+                    'success' => false,
+                    'msg' => 'Invalid id provided.',
+                    'data' => []
+                ];
                 }
             } else {
-                $data = ['msg' => 'No id provided.'];
+                $data = [
+                    'success' => false,
+                    'msg' => 'Invalid id provided.',
+                    'data' => []
+                ];
             }
-
-            return $response->withJson($data);
+            return $response->withJson($data, $statusCode);
         }
     }
 }
