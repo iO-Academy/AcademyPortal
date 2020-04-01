@@ -63,7 +63,7 @@ class DeleteApplicantController
                     'success' => false,
                     'msg' => 'Invalid id provided.',
                     'data' => []
-                ];
+                    ];
                 }
             } else {
                 $data = [
