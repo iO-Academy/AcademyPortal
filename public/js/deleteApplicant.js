@@ -12,11 +12,13 @@ let deleteButton = document.getElementById('deleteBtn')
                 "Content-Type": "application/json"
             }
         }).then((response) => {
-                if (response.status === 200) {
-                    document.cookie = 'response=success'
-                    } else if (response.status === 500) {
-                    document.cookie = 'response=fail'
-                }
+            let responseData = response.json()
+            document.cookie = `response=${responseData.msg}`
+                // if (response.status === 200) {
+                //     document.cookie = `response=${responseData.msg}`
+                //     } else if (response.status === 500) {
+                //     document.cookie = `response=${responseData.msg}`
+                // }
                 window.location.reload(true)
         })
     })
@@ -24,11 +26,9 @@ let deleteButton = document.getElementById('deleteBtn')
 function checkCookie() {
     let elem = document.getElementById('deleteResponse')
     let response = getCookie("response")
-        if (response == "success") {
-            elem.textContent = 'Applicant has been successfully deleted'
-        } else if (response == "fail") {
-            elem.textContent = 'Error - Applicant could not be deleted, please contact system admin'
-        } document.cookie = "response=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    console.log(response)
+    elem.textContent = response
+    document.cookie = "response=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
 function getCookie(cname) {
