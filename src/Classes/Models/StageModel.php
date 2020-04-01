@@ -13,8 +13,10 @@ class StageModel
 
     public function getAllStages()
     {
-        $query = $this->db->prepare(
-            'SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `deleted` = 0 ORDER BY `order`;');
+        $query = $this->db->prepare
+        (
+        'SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `deleted` = 0 ORDER BY `order`;'
+        );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
         $query->execute();
         return $query->fetchAll();
