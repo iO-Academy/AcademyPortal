@@ -10,6 +10,9 @@ use Portal\Factories\DeleteStageControllerFactory;
 
 class DeleteStageControllerFactoryTest extends TestCase
 {
+    /**
+     * Success test for __invoke() method on DeleteStageControllerFactory class.
+     */
     public function testInvoke()
     {
         $container = $this->createMock(ContainerInterface::class);
