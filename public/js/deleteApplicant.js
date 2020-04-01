@@ -14,7 +14,6 @@ let deleteButton = document.getElementById('deleteBtn');
         }).then((response) => {
             return response.json()
         }).then((responseData) => {
-            console.log(responseData);
             document.cookie = `response=${responseData.msg}`;
             window.location.reload(true)
         })
