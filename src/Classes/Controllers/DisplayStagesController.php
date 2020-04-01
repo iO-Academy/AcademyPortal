@@ -30,5 +30,4 @@ class DisplayStagesController
         $args = $this->stageModel->getAllStages();
         return $this->renderer->render($response, 'displayStages.phtml', $args);
     }
-
 }

@@ -7,6 +7,10 @@ use PHPUnit\Framework\TestCase;
 use Portal\Models\StageModel;
 use Slim\Views\PhpRenderer;
 
+/**
+ * Checks whether the DisplayStagesController instantiates an object in the DisplayStagesController Class, passing in a
+ * mock PhpRenderer and mock StageModel
+ */
 class DisplayStagesControllerTest extends TestCase
 {
     public function testConstruct()
