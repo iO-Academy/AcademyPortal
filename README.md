@@ -94,7 +94,8 @@ DELETE
 - Changes the 'deleted' value for a single entry in the applicant table to '1'.
 - Sends: 
     - `{'id' : 'integer'}`
-- Returns either an HTTP status of 200 for success or 500 for error.
+- Returns a json package with either an HTTP status of 200 for success or 500 for error.
+    - `{'success':boolean, 'msg':'string', 'data':[]}`
 
 **/createHiringPartner**
 
