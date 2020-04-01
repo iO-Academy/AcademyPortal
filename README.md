@@ -148,10 +148,4 @@ DELETE
         - `{'success':true, 'msg':'Stage has been deleted successfuly.', 'data':[]}`
     - if stage could not be deleted
         - `{'success':false, 'msg':'Invalid id provided.', 'data':[]}`
-
-
-     
- 
-
-   
         
