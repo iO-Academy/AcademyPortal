@@ -8,9 +8,9 @@ class StageEntity extends ValidationEntity implements \JsonSerializable
     protected $title;
     protected $order;
 
-    public function __construct(string $id = null, string $title = null, string $order = null)
+    public function __construct(string $title, string $order)
     {
-        $this->id = ($this->id ?? $id);
+        $this->id = null;
         $this->title = ($this->title ?? $title);
         $this->order = ($this->order ?? $order);
 
