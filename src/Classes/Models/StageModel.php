@@ -22,7 +22,7 @@ class StageModel
      */
     public function deleteStage(int $id) : bool
     {
-        $query = $this->db->prepare("UPDATE `stages` SET `deleted` = '1' WHERE `id` = :id");
+        $query = $this->db->prepare("UPDATE `stages` SET `deleted` = '1', `order` = '0' WHERE `id` = :id");
         $query->bindParam(':id', $id);
         return $query->execute();
     }
