@@ -87,3 +87,37 @@ input[type="submit"] {
 #applicantsPageHomeBtn {
     margin: 20px;
 }
+
+#stagesPageHomeBtn {
+    margin-top: 10px;
+}
+
+.stagesInstruction {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.applicantStages td {
+    padding: 4px 8px;
+}
+
+.applicantStages tr {
+    cursor: pointer;
+}
+
+.applicantStages input[type="submit"] {
+    margin-top: 0;
+}
+
+.stagesTableForm {
+    display: none;
+}
+
+#editResponse {
+    margin-bottom: 10px;
+}
+
+#createNewResponse {
+    margin-top: 10px;
+}
