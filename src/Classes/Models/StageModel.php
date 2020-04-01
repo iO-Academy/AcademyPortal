@@ -14,7 +14,7 @@ class StageModel
     }
 
     /**
-     * Sets the 'deleted' flag to '1' for a record with a given id.
+     * Sets the 'deleted' flag to '1' and 'order' value to '0' for a record with a given id.
      *
      * @param integer $id
      *
@@ -36,9 +36,7 @@ class StageModel
      */
     public function getStageById(int $id) : StageEntity
     {
-        $query = $this
-        ->db
-        ->prepare('SELECT `stages`.`id`, `title`, `order`, `deleted` FROM `stages` WHERE `stages`.`id`=:id');
+        $query = $this->db->prepare('SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `id`=:id');
 
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
         $query->bindParam(':id', $id);

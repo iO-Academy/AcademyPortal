@@ -10,6 +10,10 @@ class DeleteStageController
 {
     private $stageModel;
 
+    /**
+     * DeleteStageController constructor.
+     * @param StageModel $stageModel
+     */
     public function __construct(StageModel $stageModel)
     {
         $this->stageModel = $stageModel;
@@ -41,29 +45,24 @@ class DeleteStageController
                 $validatedRequestData = filter_var($requestData['id'], FILTER_VALIDATE_INT);
 
                 if ($validatedRequestData) {
-                    $applicantData = $this->stageModel->getStageById($validatedRequestData);
-                    if ($applicantData) {
+                    $stageData = $this->stageModel->getStageById($validatedRequestData);
+                    if ($stageData) {
                         if ($this->stageModel->deleteStage($validatedRequestData)) {
                             $data = [
                                 'success' => true,
-                                'msg' => 'Stage has been deleted successfully.',
-                                'data' => []
+                                'msg' => 'Stage has been deleted successfully.'
                             ];
                             $statusCode = 200;
                         }
                     }
                 } else {
                     $data = [
-                        'success' => false,
-                        'msg' => 'Invalid id provided.',
-                        'data' => []
+                        'msg' => 'Invalid id provided.'
                     ];
                 }
             } else {
                 $data = [
-                    'success' => false,
-                    'msg' => 'Invalid id provided.',
-                    'data' => []
+                    'msg' => 'Invalid id provided.'
                 ];
             }
             return $response->withJson($data, $statusCode);
