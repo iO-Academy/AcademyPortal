@@ -11,6 +11,11 @@ class StageModel
         $this->db = $db;
     }
 
+    /**
+     *  Gets all the stages that are not deleted from stages table sorted by order
+     *
+     * @return array of stage entities
+     */
     public function getAllStages()
     {
         $query = $this->db->prepare(

@@ -25,9 +25,17 @@ class DisplayStagesController
         $this->stageModel = $stageModel;
     }
 
+    /**
+     * Renders stages page on the front end in stagesPage.phtml
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return \Psr\Http\Message\ResponseInterface
+     */
     public function __invoke(Request $request, Response $response, array $args)
     {
         $args = $this->stageModel->getAllStages();
-        return $this->renderer->render($response, 'displayStages.phtml', $args);
+        return $this->renderer->render($response, 'stagesPage.phtml', $args);
     }
 }

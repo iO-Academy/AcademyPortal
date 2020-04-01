@@ -7,12 +7,13 @@ use Portal\Controllers\DisplayStagesController;
 use Portal\Models\StageModel;
 use Slim\Views\PhpRenderer;
 
-/**
- * Checks if DisplayStagesControllerFactory instantiates an object of the class DisplayChangesController, passing in
- * a mock PhpRenderer and mock StageModel
- */
 class DisplayStagesControllerFactoryTest extends TestCase
 {
+    /**
+     * Checks if DisplayStagesControllerFactory instantiates an object of the class
+     * DisplayChangesController, passing in
+     * a mock PhpRenderer and mock StageModel
+     */
     public function testDisplayStagesControllerFactory()
     {
         $renderer = $this->createMock(PhpRenderer::class);
