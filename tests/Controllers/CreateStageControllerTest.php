@@ -8,7 +8,7 @@ use Portal\Controllers\CreateStageController;
 
 class CreateStageControllerTest extends TestCase
 {
-    public function testConstruct()
+    public function testSuccessConstruct()
     {
         $stageModel = $this->createMock(StageModel::class);
         $case = new CreateStageController($stageModel);
