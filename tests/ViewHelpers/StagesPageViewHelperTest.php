@@ -15,7 +15,7 @@ class StagesPageViewHelperTest extends TestCase
     public function testSuccessDisplayStages()
     {
         $expected = '';
-        $expected .= '<tr>';
+        $expected .= '<tr class="list-group-item" data-id="1">';
         $expected .=      '<td>';
         $expected .=          '<p>Stage 1 test</p>';
         $expected .=          '<form data-id="1" class="stagesTableForm">';
