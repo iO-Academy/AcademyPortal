@@ -2,6 +2,7 @@
 
 namespace Portal\Models;
 
+use phpDocumentor\Reflection\Types\Boolean;
 use Portal\Entities\StageEntity;
 
 class StageModel
@@ -42,5 +43,20 @@ class StageModel
         $query->bindParam(':id', $id);
         $query->execute();
         return $query->fetch();
+    }
+
+    /**
+     * Updates the 'title' value of a record with a given id.
+     * @param int $id
+     * @param string $newTitle
+     * @return bool
+     */
+    public function updateStage(int $id, string $newTitle) : bool
+    {
+        $query = $this->db->prepare("UPDATE `stages` SET `title` = :newTitle WHERE `id` = :id");
+        $query->bindParam(':id', $id);
+        $query->bindParam(':newTitle', $newTitle);
+
+        return $query->execute();
     }
 }

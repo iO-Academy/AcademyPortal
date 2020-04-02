@@ -86,3 +86,5 @@ $container['DeleteApplicantController'] = new \Portal\Factories\DeleteApplicantC
 $container['StageModel'] = new \Portal\Factories\StageModelFactory();
 
 $container['DeleteStageController'] = new \Portal\Factories\DeleteStageControllerFactory();
+
+$container['EditStageController'] = new \Portal\Factories\EditStageControllerFactory();
