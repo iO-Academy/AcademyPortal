@@ -14,8 +14,7 @@ class StageEntityTest extends TestCase
     {
         $newStageEntity = new StageEntity(
             'newStage',
-            2,
-            0
+            2
         );
         $this->assertInstanceOf(StageEntity::class, $newStageEntity);
     }
@@ -27,8 +26,7 @@ class StageEntityTest extends TestCase
     {
         $name = new StageEntity(
             'newStage',
-            2,
-            0
+            2
         );
         $result = $name->getStageTitle();
         $this->assertEquals($result, 'newStage');
@@ -41,8 +39,7 @@ class StageEntityTest extends TestCase
     {
         $name = new StageEntity(
             'newStage',
-            2,
-            0
+            2
         );
         $result = $name->getStageOrder();
         $this->assertEquals($result, 2);
@@ -55,8 +52,7 @@ class StageEntityTest extends TestCase
     {
         $name = new StageEntity(
             'newStage',
-            2,
-            0
+            2
         );
         $result = $name->getStageDeleted();
         $this->assertEquals($result, 0);
