@@ -41,14 +41,11 @@ class EditStageController extends ValidationEntity
             $requestDataPackage = $request->getParsedBody();
 
             try {
-
                 $this->stageModel->getDB()->beginTransaction();
 
                 foreach ($requestDataPackage['data'] as $stageObject) {
 
-
                     if (isset($stageObject['id']) && isset($stageObject['title']) && isset($stageObject['order'])) {
-
                         $stageObject['id'] = (int) $stageObject['id'];
                         $stageObject['title'] = self::sanitiseString($stageObject['title']);
                         try {
@@ -59,11 +56,11 @@ class EditStageController extends ValidationEntity
 
                         $stageObject['order'] = (int) $stageObject['order'];
 
-                        $this->stageModel->updateStage($stageObject['id'], $stageObject['title'], $stageObject['order']);
+                        $this->stageModel
+                            ->updateStage($stageObject['id'], $stageObject['title'], $stageObject['order']);
 
                     }
                 }
-
                 $this->stageModel->getDB()->commit();
                 //return success data package.
                 $data = [
@@ -76,7 +73,6 @@ class EditStageController extends ValidationEntity
 
             } catch (\PDOException $e) {
                 $this->stageModel->getDB()->rollBack();
-                //return error fail data package.
                 $data = [
                     'msg' => 'Stage edit failed.'
                 ];
