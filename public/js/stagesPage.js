@@ -5,13 +5,40 @@ const newStageForm = document.getElementById('newStageForm');
 const createNewResponse = document.getElementById('createNewResponse');
 const deleteButtons = document.querySelectorAll('.delete');
 
+window.addEventListener('load', (event) => {
+    checkCookie()
+});
+
+function checkCookie() {
+    let elem = document.getElementById('editResponse');
+    let response = getCookie("response");
+    elem.textContent = response;
+    document.cookie = "response=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
 //Handler for delete button
 deleteButtons.forEach((deleteButton) => {
     deleteButton.addEventListener('click', async (e) => {
         let data = {
             "id" : e.target.dataset.id
         };
-        await deleteStageRequest(data)
+        await sendRequest('/api/deleteStage', 'DELETE', data)
         window.location.reload(true)
     })
 })
@@ -43,7 +70,7 @@ editForms.forEach((editForm, index) => {
             ]
         };
 
-        await sendEditRequest(data);
+        await sendRequest('/api/updateStages', 'PUT', data);
         window.location.reload(true);
     })
 });
@@ -56,16 +83,16 @@ newStageForm.addEventListener('submit', async (e) => {
         "title" : newStage
     };
 
-    await sendNewStageRequest(data);
+    await sendRequest('/api/createStage', 'POST', data);
     window.location.reload(true);
 
 });
 
 //Fetch template
-async function fetchTemplate(url, requestMethod, data) {
+async function sendRequest(url, requestMethod, data) {
     let requestData = JSON.stringify(data);
 
-    return await fetch(url, {
+    let response = await fetch(url, {
         method: requestMethod.toUpperCase(),
         body: requestData,
         headers: {
@@ -73,28 +100,8 @@ async function fetchTemplate(url, requestMethod, data) {
         }
     })
 
-}
-
-async function sendEditRequest(data) {
-    let response = await fetchTemplate('/api/updateStages', 'PUT', data);
     let responseData = await response.json();
     if (response.status === 500) {
-        editResponse.textContent = responseData.msg
-    }
-}
-
-async function sendNewStageRequest(data) {
-    let response = await fetchTemplate('/api/createStage', 'POST', data);
-    let responseData = await response.json();
-    if (response.status === 500) {
-        createNewResponse.textContent = responseData.msg
-    }
-}
-
-async function deleteStageRequest(data) {
-    let response = await fetchTemplate('/api/deleteStage', 'DELETE', data);
-    let responseData = await response.json();
-    if (response.status === 500) {
-        createNewResponse.textContent = responseData.msg
+        document.cookie = `response=${responseData.msg}`;
     }
 }

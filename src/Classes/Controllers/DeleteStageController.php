@@ -39,6 +39,15 @@ class DeleteStageController
             ];
             $statusCode = 500;
 
+            $stagesCount = $this->stageModel->stagesCount();
+
+            if ($stagesCount['stagesCount'] <= 1) {
+                $data = [
+                    'msg' => 'Cannot delete last record.',
+                ];
+                return $response->withJson($data, $statusCode);
+            }
+
             $requestData = $request->getParsedBody();
 
             if (isset($requestData['id'])) {
