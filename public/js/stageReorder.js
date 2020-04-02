@@ -20,7 +20,7 @@ Sortable.create(stageTable, {
                 stageEntity.order = (stageOrder.indexOf(tableRow.dataset.id) + 1);
                 requestData.data.push(stageEntity);
             });
-
+            sendEditRequest(requestData);
         },
     }
 });

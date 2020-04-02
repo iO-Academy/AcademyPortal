@@ -125,3 +125,10 @@ input[type="submit"] {
 #deleteResponse {
     color: #FF0000;
 }
+
+.list-group-item {
+    position: unset;
+    display: table-row;
+    padding: 0;
+    margin-bottom: 0;
+}
