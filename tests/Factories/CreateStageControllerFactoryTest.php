@@ -14,4 +14,3 @@ class CreateStageControllerFactoryTest extends TestCase
         $this->assertInstanceOf($expected, $factory);
     }
 }
-
