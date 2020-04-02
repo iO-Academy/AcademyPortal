@@ -28,6 +28,7 @@ $app->post('/api/addHiringPartnerToEvent', 'AddHiringPartnerToEventController');
 $app->get('/api/displayCompanyInfo/{id}', 'CompanyDetailsModalController');
 $app->post('/api/getHpsByEventId', 'GetHiringPartnersByIdController');
 $app->post('/api/deleteHiringPartnerFromEvent', 'RemoveHiringPartnerFromEventController');
+$app->delete('/api/deleteStage', 'DeleteStageController');
 
 //Backend
 $app->post('/api/login', 'LoginController');

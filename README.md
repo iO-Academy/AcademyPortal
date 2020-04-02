@@ -137,3 +137,17 @@ GET
         - `{'success':false, 'msg':'SQL error message', 'data':[]}`
     - if there are not data in the database
         - `{'success':false, 'msg':'No hiring partners found!', 'data':[]}`
+        
+**/deleteStage**
+ 
+DELETE
+- Changes the 'deleted' value for a single entry in the stages table to '1', and changes the 'order' value for 
+that entry to '0'.
+- Sends:
+    - `{'id' : 'integer'}` 
+- Returns success true / false:
+    - if stage is delete successfully
+        - `{'success':true, 'msg':'Stage has been deleted successfuly.', 'data':[]}`
+    - if stage could not be deleted
+        - `{'success':false, 'msg':'Invalid id provided.', 'data':[]}`
+        
