@@ -29,7 +29,7 @@ class StagesPageViewHelper
                 $result .= '</td>';
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
                 $result .= '<td class="col-xs-2 text-center"><a data-id="'. $stage->getStageId()
-                    .'" class="text-danger">Delete</a></td>';
+                    .'" class="text-danger delete">Delete</a></td>';
                 $result .= '</tr>';
             }
         }
