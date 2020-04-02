@@ -16,14 +16,19 @@ editButtons.forEach((editButton, index) => {
 });
 
 //Handler for submitting an edited stage
-editForms.forEach((editForm) => {
+editForms.forEach((editForm, index) => {
     editForm.addEventListener('submit', (e) => {
         e.preventDefault();
         let editTitleInput = e.target.firstElementChild.value;
         let id = e.target.dataset.id;
         let data = {
-            "id" : id,
-            "title" : editTitleInput
+            "data" : [
+                {
+                    "id" : id,
+                    "title" : editTitleInput,
+                    "order" : (index + 1)
+                }
+            ]
         };
 
         sendEditRequest(data);
@@ -60,7 +65,7 @@ async function fetchTemplate(url, requestMethod, data) {
 async function sendEditRequest(data) {
     let response = await fetchTemplate('/api/updateStages', 'PUT', data);
     let responseData = await response.json();
-    if (reponse.status === 500) {
+    if (response.status === 500) {
         editResponse.textContent = responseData.msg
     }
 }
@@ -68,7 +73,7 @@ async function sendEditRequest(data) {
 async function sendNewStageRequest(data) {
     let response = await fetchTemplate('/api/createStage', 'POST', data);
     let responseData = await response.json();
-    if (reponse.status === 500) {
+    if (response.status === 500) {
         createNewResponse.textContent = responseData.msg
     }
 }

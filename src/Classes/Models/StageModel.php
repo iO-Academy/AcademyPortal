@@ -65,12 +65,12 @@ class StageModel
      * @param string $newTitle
      * @return bool
      */
-    public function updateStage(StageEntity $stageEntity) : bool
+    public function updateStage(int $id, string $title, int $order) : bool
     {
-        $query = $this->db->prepare("UPDATE `stages` SET `title` = :title, `order` = :newOorder WHERE `id` = :id");
-        $query->bindParam(':id', $stageEntity->getStageId());
-        $query->bindParam(':title', $stageEntity->getStageTitle());
-        $query->bindParam(':newOrder', $stageEntity->getStageOrder());
+        $query = $this->db->prepare("UPDATE `stages` SET `title` = :title, `order` = :newOrder WHERE `id` = :id");
+        $query->bindParam(':id', $id);
+        $query->bindParam(':title', $title);
+        $query->bindParam(':newOrder', $order);
 
         return $query->execute();
     }

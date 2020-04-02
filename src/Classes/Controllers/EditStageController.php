@@ -2,6 +2,7 @@
 
 namespace Portal\Controllers;
 
+use Portal\Entities\StageEntity;
 use \Slim\Http\Request as Request;
 use \Slim\Http\Response as Response;
 use Portal\Models\StageModel;
@@ -27,7 +28,7 @@ class EditStageController
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        if ($_SESSION['loggedIn'] === true) {
+//        if ($_SESSION['loggedIn'] === true) {
             $data = [
                 'success' => false,
                 'msg' => 'Stage not found.',
@@ -41,17 +42,12 @@ class EditStageController
 
                 $this->stageModel->getDB()->beginTransaction();
 
-                foreach ($requestDataPackage->data as $requestData) {
+                foreach ($requestDataPackage['data'] as $stageObject) {
 
-                    if (isset($requestData->id)) {
+                    if (isset($stageObject['id'])) {
 
-                        $validatedRequestData = filter_var($requestData->id, FILTER_VALIDATE_INT);
+                        $this->stageModel->updateStage($stageObject['id'], $stageObject['title'], $stageObject['order']);
 
-                        if ($validatedRequestData) {
-
-                                $this->stageModel->updateStage($requestData);
-
-                        }
                     }
                 }
 
@@ -75,5 +71,5 @@ class EditStageController
                 return $response->withJson($data, $statusCode);
             }
         }
-    }
+//    }
 }
