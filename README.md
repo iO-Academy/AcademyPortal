@@ -138,6 +138,29 @@ GET
     - if there are not data in the database
         - `{'success':false, 'msg':'No hiring partners found!', 'data':[]}`
         
+**/createStage**
+ 
+POST
+- Adds a new stage in the last oder position.
+- Sends:
+    - `{'title' : 'string'}` 
+- Returns success true / false:
+    - if stage is added successfully
+        - `{'success':true, 'msg':'Stage added successfuly.', 'data':[]}`
+    - if stage could not be added
+        - `{'success':false, 'msg':'Error (dependant on reason)', 'data':[]}`
+        
+**/updateStages**
+EDIT
+- Goes through an array of edit requests and changes the database
+- Sends an array of:
+    - `{'id' : 'integer', 'title' : 'string', 'order' : 'integer'}` 
+- Returns success true / false:
+    - if stage is edited successfully
+        - `{'success':true, 'msg':'Stage edit successful.'}`
+    - if stage could not be edited
+        - `{'success':false, 'msg':'Stage edit failed.'}`
+        
 **/deleteStage**
  
 DELETE
