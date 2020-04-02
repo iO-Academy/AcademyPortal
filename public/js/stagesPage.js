@@ -29,18 +29,23 @@ editButtons.forEach((editButton, index) => {
 });
 
 //Handler for submitting an edited stage
-editForms.forEach((editForm) => {
+editForms.forEach((editForm, index) => {
     editForm.addEventListener('submit', (e) => {
         e.preventDefault();
         let editTitleInput = e.target.firstElementChild.value;
         let id = e.target.dataset.id;
         let data = {
-            "id" : id,
-            "title" : editTitleInput
+            "data" : [
+                {
+                    "id" : id,
+                    "title" : editTitleInput,
+                    "order" : (index + 1)
+                }
+            ]
         };
 
         sendEditRequest(data);
-
+        window.location.reload(true);
     })
 });
 

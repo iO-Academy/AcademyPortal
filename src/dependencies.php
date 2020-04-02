@@ -90,3 +90,5 @@ $container['CreateStageController'] = new \Portal\Factories\CreateStageControlle
 $container['DisplayStagesController'] = new \Portal\Factories\DisplayStagesControllerFactory();
 
 $container['DeleteStageController'] = new \Portal\Factories\DeleteStageControllerFactory();
+
+$container['EditStageController'] = new \Portal\Factories\EditStageControllerFactory();
