@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script defer src="./js/applicantModal.js"></script>
+    <script defer src="./js/deleteApplicant.js"></script>
 </head>
 <body>
 <div class="container">
@@ -41,11 +42,8 @@
         <!-- Modal -->
         <?php require('partials/applicantInfoModal.phtml'); ?>
         <a href="/admin" id="applicantsPageHomeBtn" class="btn btn-success">Go home</a>
-
-<!--        <input id="submit-hiring-partner" type="submit" class="btn btn-success">-->
+        <div id='deleteResponse'></div>
     </div>
 </div>
 </body>
 </html>
-
-

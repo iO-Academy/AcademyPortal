@@ -17,7 +17,7 @@ class StageModel
     {
         $this->db = $db;
     }
-
+    
     /** Queries the database and returns the highest current stage number as an integer
      *
      * @return int
@@ -41,5 +41,36 @@ class StageModel
         $query->bindParam(':title', $stageEntity->getStageTitle());
         $query->bindParam(':order', $stageEntity->getStageOrder());
         return $query->execute();
+    }
+
+    /**
+     * Sets the 'deleted' flag to '1' and 'order' value to '0' for a record with a given id.
+     *
+     * @param integer $id
+     *
+     * @return boolean for success or failure of the query
+     */
+    public function deleteStage(int $id) : bool
+    {
+        $query = $this->db->prepare("UPDATE `stages` SET `deleted` = '1', `order` = '0' WHERE `id` = :id");
+        $query->bindParam(':id', $id);
+        return $query->execute();
+    }
+
+    /**
+     * Retrieves a stage with the specified id
+     *
+     * @param integer $id
+     * @return StageEntity object
+     *
+     */
+    public function getStageById(int $id) : StageEntity
+    {
+        $query = $this->db->prepare('SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `id`=:id');
+
+        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
+        $query->bindParam(':id', $id);
+        $query->execute();
+        return $query->fetch();
     }
 }

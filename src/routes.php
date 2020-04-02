@@ -15,6 +15,7 @@ $app->get('/displayEventsPage', 'DisplayEventsPageController');
 
 // API routes
 $app->post('/api/saveApplicant', 'SaveApplicantController');
+$app->delete('/api/deleteApplicant', 'DeleteApplicantController');
 $app->get('/api/applicationForm', 'ApplicationFormController');
 $app->post('/api/createHiringPartner', 'CreateHiringPartnerController');
 $app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');
@@ -26,6 +27,7 @@ $app->get('/api/displayCompanyInfo/{id}', 'CompanyDetailsModalController');
 $app->post('/api/getHpsByEventId', 'GetHiringPartnersByIdController');
 $app->post('/api/deleteHiringPartnerFromEvent', 'RemoveHiringPartnerFromEventController');
 $app->post('/api/createStage', 'CreateStageController');
+$app->delete('/api/deleteStage', 'DeleteStageController');
 
 //Backend
 $app->post('/api/login', 'LoginController');
