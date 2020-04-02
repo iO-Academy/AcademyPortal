@@ -2,6 +2,8 @@
 
 namespace Portal\Entities;
 
+use mysql_xdevapi\Exception;
+
 class StageEntity extends ValidationEntity implements \JsonSerializable
 {
     protected $id;
@@ -9,19 +11,11 @@ class StageEntity extends ValidationEntity implements \JsonSerializable
     protected $order;
     protected $deleted;
 
-
-    public function __construct(string $title = null, string $order = null)
+    public function __construct($title = null, $order = null)
     {
-        $this->id = null;
         $this->title = ($this->title ?? $title);
         $this->order = ($this->order ?? $order);
-
-    public function __construct(string $title, string $order, string $deleted)
-    {
-        $this->id = null;
-        $this->title = $title;
-        $this->order = $order;
-        $this->deleted = $deleted;
+        $this->deleted = 0;
 
 
         $this->sanitiseData();
@@ -49,8 +43,25 @@ class StageEntity extends ValidationEntity implements \JsonSerializable
     {
         $this->id = (int) $this->id;
         $this->title = self::sanitiseString($this->title);
+
+        try {
+            $this->title = self::validateLength($this->title, 255);
+        } catch (\Exception $exception) {
+            $this->title = substr($this->title, 0, 254);
+        }
+
         $this->order = (int) $this->order;
         $this->deleted = (int) $this->deleted;
+    }
+
+    /**
+     *  Get stage id
+     *
+     * @return mixed
+     */
+    public function getStageId()
+    {
+        return $this->id;
     }
 
     /**
