@@ -21,20 +21,7 @@
             <p class="stagesInstruction">Drag a stage to change the order</p>
             <div id="editResponse" class="text-danger"></div>
             <table class="table-bordered table">
-                <!-- FIRST TABLE ROW FOR TESTING, DELETE IF FE INTERGRATION TEST SUCCESSFUL-->
-                <tr>
-                    <td>
-                        <p>Stage Test 1</p>
-                        <form data-id="x" class="stagesTableForm">
-                            <input type="text" class="stageEditTitle col-xs-10" placeholder="currentTitle"/>
-                            <input type="submit" class="stageEditSubmit btn-success" value="Submit">
-                        </form>
-                    </td>
-                    <td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>
-                    <td class="col-xs-2 text-center"><a data-id="x" class="text-danger">Delete</a></td>
-                </tr>
-                <? echo \Portal\ViewHelpers\StagesPageViewHelper::displayStages($data) ?> <!-- Var data needs to match display stages controller -->
-
+                <? echo \Portal\ViewHelpers\StagesPageViewHelper::displayStages($data) ?>
             </table>
             <p class="stagesInstruction">Add a new stage:</p>
             <form action="/api/createStage" method="post" id="newStageForm">
