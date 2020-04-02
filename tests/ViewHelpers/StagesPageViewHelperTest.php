@@ -34,6 +34,5 @@ class StagesPageViewHelperTest extends TestCase
         $case = StagesPageViewHelper::displayStages($input);
 
         $this->assertEquals($expected, $case);
-
     }
 }
