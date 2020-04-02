@@ -12,7 +12,8 @@ deleteButtons.forEach((deleteButton) => {
         let data = {
             "id" : e.target.dataset.id
         };
-        deleteStageRequest(data)
+        let result = deleteStageRequest(data)
+        window.location.reload(true)
     })
 })
 
