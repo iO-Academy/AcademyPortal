@@ -7,12 +7,23 @@ class StageEntity extends ValidationEntity implements \JsonSerializable
     protected $id;
     protected $title;
     protected $order;
+    protected $deleted;
+
 
     public function __construct(string $title = null, string $order = null)
     {
         $this->id = null;
         $this->title = ($this->title ?? $title);
         $this->order = ($this->order ?? $order);
+
+    public function __construct(string $title, string $order, string $deleted)
+    {
+        $this->id = null;
+        $this->title = $title;
+        $this->order = $order;
+        $this->deleted = $deleted;
+
+
         $this->sanitiseData();
     }
 
@@ -39,16 +50,7 @@ class StageEntity extends ValidationEntity implements \JsonSerializable
         $this->id = (int) $this->id;
         $this->title = self::sanitiseString($this->title);
         $this->order = (int) $this->order;
-    }
-
-    /**
-     * Get's stage Id.
-     *
-     * @return int, returns the stage Id field.
-     */
-    public function getStageId(): int
-    {
-        return $this->id;
+        $this->deleted = (int) $this->deleted;
     }
 
     /**
@@ -69,5 +71,15 @@ class StageEntity extends ValidationEntity implements \JsonSerializable
     public function getStageOrder(): int
     {
         return $this->order;
+    }
+
+    /**
+     * Get stage deleted
+     *
+     * @return string
+     */
+    public function getStageDeleted() : int
+    {
+        return $this->deleted;
     }
 }
