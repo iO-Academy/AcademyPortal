@@ -39,7 +39,7 @@ class CreateStageController
         ];
         $statusCode = 500;
 
-//        if ($_SESSION['loggedIn'] === true) {
+        if ($_SESSION['loggedIn'] === true) {
             if (isset($requestData['title']) && strlen($requestData['title']) > 0) {
                 $highestOrder = $this->stageModel->getHighestOrderNo();
                 $newStage = new StageEntity($requestData['title'], ++$highestOrder);
@@ -61,5 +61,5 @@ class CreateStageController
             }
             return $response->withJson($data, $statusCode);
         }
-//    }
+    }
 }
