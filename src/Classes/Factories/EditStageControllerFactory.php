@@ -18,4 +18,3 @@ class EditStageControllerFactory
         return new EditStageController($model);
     }
 }
-

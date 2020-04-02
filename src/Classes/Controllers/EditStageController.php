@@ -30,7 +30,7 @@ class EditStageController extends ValidationEntity
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-//        if ($_SESSION['loggedIn'] === true) {
+        if ($_SESSION['loggedIn'] === true) {
             $data = [
                 'success' => false,
                 'msg' => 'Stage not found.',
@@ -84,7 +84,7 @@ class EditStageController extends ValidationEntity
                 return $response->withJson($data, $statusCode);
             }
         }
-//    }
+    }
 
     /**
      * Will sanitise all the fields for a stage.
