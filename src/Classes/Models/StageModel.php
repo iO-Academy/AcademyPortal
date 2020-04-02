@@ -87,4 +87,25 @@ class StageModel
         $query->execute();
         return $query->fetch();
     }
+
+    /**
+     * Updates the 'title' value of a record with a given id.
+     * @param int $id
+     * @param string $newTitle
+     * @return bool
+     */
+    public function updateStage(int $id, string $title, int $order) : bool
+    {
+        $query = $this->db->prepare("UPDATE `stages` SET `title` = :title, `order` = :newOrder WHERE `id` = :id");
+        $query->bindParam(':id', $id);
+        $query->bindParam(':title', $title);
+        $query->bindParam(':newOrder', $order);
+
+        return $query->execute();
+    }
+
+    public function getDB() : \PDO
+    {
+        return $this->db;
+    }
 }
