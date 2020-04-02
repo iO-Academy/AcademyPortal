@@ -19,7 +19,7 @@ class StagesPageViewHelperTest extends TestCase
         $expected .=      '<td>';
         $expected .=          '<p>Stage 1 test</p>';
         $expected .=          '<form data-id="1" class="stagesTableForm">';
-        $expected .=              '<input type="text" class="stageEditTitle col-xs-10" placeholder="Stage 1 test"/>';
+        $expected .=              '<input type="text" class="stageEditTitle col-xs-10" value="Stage 1 test"/>';
         $expected .=              '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
         $expected .=          '</form>';
         $expected .=      '</td>';

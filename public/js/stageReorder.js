@@ -16,7 +16,7 @@ Sortable.create(stageTable, {
             stageTableRows.forEach((tableRow)=>{
                 let stageEntity = {};
                 stageEntity.id = tableRow.dataset.id;
-                stageEntity.title = tableRow.children[1].textContent;
+                stageEntity.title = tableRow.children[0].children[0].textContent;
                 stageEntity.order = (stageOrder.indexOf(tableRow.dataset.id) + 1);
                 requestData.data.push(stageEntity);
             });

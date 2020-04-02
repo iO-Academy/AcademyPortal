@@ -22,7 +22,7 @@ class StagesPageViewHelper
                 $result .= '<td>';
                 $result .= '<p>'. $stage->getStageTitle().'</p>';
                 $result .= '<form data-id="'. $stage->getStageId().'" class="stagesTableForm">';
-                $result .= '<input type="text" class="stageEditTitle col-xs-10" placeholder="'
+                $result .= '<input type="text" class="stageEditTitle col-xs-10" value="'
                     . $stage->getStageTitle().'"/>';
                 $result .= '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
                 $result .= '</form>';

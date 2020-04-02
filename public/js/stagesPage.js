@@ -7,12 +7,11 @@ const deleteButtons = document.querySelectorAll('.delete');
 
 //Handler for delete button
 deleteButtons.forEach((deleteButton) => {
-    deleteButton.addEventListener('click', (e) => {
-        console.log (e.target.dataset.id)
+    deleteButton.addEventListener('click', async (e) => {
         let data = {
             "id" : e.target.dataset.id
         };
-        let result = deleteStageRequest(data)
+        await deleteStageRequest(data)
         window.location.reload(true)
     })
 })
@@ -30,7 +29,7 @@ editButtons.forEach((editButton, index) => {
 
 //Handler for submitting an edited stage
 editForms.forEach((editForm, index) => {
-    editForm.addEventListener('submit', (e) => {
+    editForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         let editTitleInput = e.target.firstElementChild.value;
         let id = e.target.dataset.id;
@@ -44,20 +43,20 @@ editForms.forEach((editForm, index) => {
             ]
         };
 
-        sendEditRequest(data);
+        await sendEditRequest(data);
         window.location.reload(true);
     })
 });
 
 //Handler for submitting a new stage
-newStageForm.addEventListener('submit', (e) => {
+newStageForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     let newStage = e.target.firstElementChild.value;
     let data = {
         "title" : newStage
     };
 
-    sendNewStageRequest(data);
+    await sendNewStageRequest(data);
     window.location.reload(true);
 
 });
