@@ -82,3 +82,13 @@ $container['RemoveHiringPartnerFromEventController'] =
     new \Portal\Factories\RemoveHiringPartnerFromEventControllerFactory();
 
 $container['DeleteApplicantController'] = new \Portal\Factories\DeleteApplicantControllerFactory();
+
+$container['StageModel'] = new \Portal\Factories\StageModelFactory();
+
+$container['CreateStageController'] = new \Portal\Factories\CreateStageControllerFactory();
+
+$container['DisplayStagesController'] = new \Portal\Factories\DisplayStagesControllerFactory();
+
+$container['DeleteStageController'] = new \Portal\Factories\DeleteStageControllerFactory();
+
+$container['EditStageController'] = new \Portal\Factories\EditStageControllerFactory();

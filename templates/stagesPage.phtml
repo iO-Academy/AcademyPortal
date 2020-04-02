@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Applicant Stages</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+          integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./css/genericStyles.css">
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script defer src="./js/Sortable.js"></script>
+    <script defer src="./js/stagesPage.js"></script>
+    <script defer src="./js/stageReorder.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="applicantStages">
+            <h1>Applicant Stages</h1>
+            <a href="/admin" id="stagesPageHomeBtn" class="btn btn-success">Go home</a>
+            <p class="stagesInstruction">Drag a stage to change the order</p>
+            <div id="editResponse" class="text-danger"></div>
+            <table class="table-bordered table">
+                <tbody id="stageTable" class="list-group">
+                    <?php echo \Portal\ViewHelpers\StagesPageViewHelper::displayStages($data); ?>
+                </tbody>
+            </table>
+            <p class="stagesInstruction">Add a new stage:</p>
+            <form action="/api/createStage" method="post" id="newStageForm">
+                <input type="text" class="col-xs-7" placeholder="Type new stage" name="createNewStageTextBox"/>
+                <input type="submit" class="btn-success" value="Submit"/>
+            </form>
+            <div id="createNewResponse" class="text-danger"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
