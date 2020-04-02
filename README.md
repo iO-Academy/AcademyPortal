@@ -139,9 +139,9 @@ GET
         - `{'success':false, 'msg':'No hiring partners found!', 'data':[]}`
         
 **/createStage**
- 
+
 POST
-- Adds a new stage in the last oder position.
+- Adds a new stage in the last order position.
 - Sends:
     - `{'title' : 'string'}` 
 - Returns success true / false:
@@ -151,6 +151,7 @@ POST
         - `{'success':false, 'msg':'Error (dependant on reason)', 'data':[]}`
         
 **/updateStages**
+
 EDIT
 - Goes through an array of edit requests and changes the database
 - Sends an array of:
