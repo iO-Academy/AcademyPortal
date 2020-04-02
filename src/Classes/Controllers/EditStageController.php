@@ -39,11 +39,9 @@ class EditStageController extends ValidationEntity
             $statusCode = 500;
 
             $requestDataPackage = $request->getParsedBody();
-
             try {
                 $this->stageModel->getDB()->beginTransaction();
                 foreach ($requestDataPackage['data'] as $stageObject) {
-
                     if (isset($stageObject['id']) && isset($stageObject['title']) && isset($stageObject['order'])) {
                         $stageObject['id'] = (int) $stageObject['id'];
                         $stageObject['title'] = self::sanitiseString($stageObject['title']);
