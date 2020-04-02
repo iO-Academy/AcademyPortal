@@ -24,7 +24,7 @@ class StagesPageViewHelperTest extends TestCase
         $expected .=          '</form>';
         $expected .=      '</td>';
         $expected .=      '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
-        $expected .=      '<td class="col-xs-2 text-center"><a data-id="1" class="text-danger">Delete</a></td>';
+        $expected .=      '<td class="col-xs-2 text-center"><a data-id="1" class="text-danger delete">Delete</a></td>';
         $expected .= '</tr>';
         $entityMock = $this->createMock(StageEntity::class);
         $entityMock->method('getStageId')->willReturn('1');
