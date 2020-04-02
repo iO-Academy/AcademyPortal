@@ -16,7 +16,7 @@ class StageEntity extends ValidationEntity implements \JsonSerializable
         $this->title = ($this->title ?? $title);
         $this->order = ($this->order ?? $order);
         $this->deleted = 0;
-
+        
         $this->sanitiseData();
     }
 

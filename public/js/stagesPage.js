@@ -53,6 +53,7 @@ newStageForm.addEventListener('submit', (e) => {
     };
 
     sendNewStageRequest(data);
+    window.location.reload(true);
 
 });
 
