@@ -74,22 +74,4 @@ class EditStageController extends ValidationEntity
             }
         }
     }
-
-    /**
-     * Will sanitise all the fields for a stage.
-     */
-    private function sanitiseData()
-    {
-        $this->id = (int) $this->id;
-        $this->title = self::sanitiseString($this->title);
-
-        try {
-            $this->title = self::validateLength($this->title, 255);
-        } catch (\Exception $exception) {
-            $this->title = substr($this->title, 0, 254);
-        }
-
-        $this->order = (int) $this->order;
-        $this->deleted = (int) $this->deleted;
-    }
 }

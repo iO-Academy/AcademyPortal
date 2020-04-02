@@ -30,6 +30,20 @@ class StageModel
         return ($result['MAX(`order`)'] ?? 0);
     }
 
+    /** Queries the db and returns an array with one result stored under 'stagesCount'
+     *
+     * @return array
+     */
+    public function stagesCount() : array
+    {
+        $query = $this->db->prepare(
+            "SELECT COUNT(`id`) AS 'stagesCount' FROM `stages` WHERE `deleted` = 0;"
+        );
+        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        $query->execute();
+        return $query->fetch();
+    }
+
     /** Adds new stage to database and returns a boolean based on success or failure
      *
      * @param StageEntity $stageEntity
