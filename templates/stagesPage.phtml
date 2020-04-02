@@ -10,7 +10,9 @@
     <link rel="stylesheet" type="text/css" href="./css/genericStyles.css">
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script defer src="./js/Sortable.js"></script>
     <script defer src="./js/stagesPage.js"></script>
+    <script defer src="./js/stageReorder.js"></script>
 </head>
 <body>
 <div class="container">
@@ -21,7 +23,9 @@
             <p class="stagesInstruction">Drag a stage to change the order</p>
             <div id="editResponse" class="text-danger"></div>
             <table class="table-bordered table">
-                <? echo \Portal\ViewHelpers\StagesPageViewHelper::displayStages($data) ?>
+                <tbody id="stageTable" class="list-group">
+                    <? echo \Portal\ViewHelpers\StagesPageViewHelper::displayStages($data) ?>
+                </tbody>
             </table>
             <p class="stagesInstruction">Add a new stage:</p>
             <form action="/api/createStage" method="post" id="newStageForm">
