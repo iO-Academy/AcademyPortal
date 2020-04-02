@@ -13,6 +13,8 @@ $app->get('/displayApplicantInfo/{id}', 'GetApplicantController');
 $app->get('/displayHiringPartnerPage', 'DisplayHiringPartnerPageController');
 $app->get('/displayEventsPage', 'DisplayEventsPageController');
 
+$app->get('/displayStages', 'DisplayStagesController');
+
 // API routes
 $app->post('/api/saveApplicant', 'SaveApplicantController');
 $app->delete('/api/deleteApplicant', 'DeleteApplicantController');

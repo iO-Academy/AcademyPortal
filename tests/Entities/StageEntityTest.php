@@ -13,25 +13,11 @@ class StageEntityTest extends TestCase
     public function testNewStageEntitySuccess()
     {
         $newStageEntity = new StageEntity(
-            1,
             'newStage',
-            2
+            2,
+            0
         );
         $this->assertInstanceOf(StageEntity::class, $newStageEntity);
-    }
-
-    /**
-     * Checks if id can successfully be got from the StageEntity
-     */
-    public function testGetStageIdSuccess()
-    {
-        $name = new StageEntity(
-            1,
-            'newStage',
-            2
-        );
-        $result = $name->getStageId();
-        $this->assertEquals($result, 1);
     }
 
     /**
@@ -40,9 +26,9 @@ class StageEntityTest extends TestCase
     public function testGetStageTitleSuccess()
     {
         $name = new StageEntity(
-            1,
             'newStage',
-            2
+            2,
+            0
         );
         $result = $name->getStageTitle();
         $this->assertEquals($result, 'newStage');
@@ -54,11 +40,25 @@ class StageEntityTest extends TestCase
     public function testGetStageOrderSuccess()
     {
         $name = new StageEntity(
-            1,
             'newStage',
-            2
+            2,
+            0
         );
         $result = $name->getStageOrder();
         $this->assertEquals($result, 2);
+    }
+
+    /**
+     * Checks if deleted can successfully be got from the StageEntity
+     */
+    public function testGetStageDeletedSuccess()
+    {
+        $name = new StageEntity(
+            'newStage',
+            2,
+            0
+        );
+        $result = $name->getStageDeleted();
+        $this->assertEquals($result, 0);
     }
 }
