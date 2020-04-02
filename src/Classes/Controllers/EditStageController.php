@@ -42,7 +42,6 @@ class EditStageController extends ValidationEntity
 
             try {
                 $this->stageModel->getDB()->beginTransaction();
-
                 foreach ($requestDataPackage['data'] as $stageObject) {
 
                     if (isset($stageObject['id']) && isset($stageObject['title']) && isset($stageObject['order'])) {
@@ -58,11 +57,9 @@ class EditStageController extends ValidationEntity
 
                         $this->stageModel
                             ->updateStage($stageObject['id'], $stageObject['title'], $stageObject['order']);
-
                     }
                 }
                 $this->stageModel->getDB()->commit();
-                //return success data package.
                 $data = [
                     'success' => true,
                     'msg' => 'Stage edit successful.'
@@ -70,13 +67,11 @@ class EditStageController extends ValidationEntity
                 $statusCode = 200;
 
                 return $response->withJson($data, $statusCode);
-
             } catch (\PDOException $e) {
                 $this->stageModel->getDB()->rollBack();
                 $data = [
                     'msg' => 'Stage edit failed.'
                 ];
-
                 return $response->withJson($data, $statusCode);
             }
         }
