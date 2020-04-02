@@ -17,7 +17,7 @@ class StageModel
     {
         $this->db = $db;
     }
-    
+
     /** Queries the database and returns the highest current stage number as an integer
      *
      * @return int

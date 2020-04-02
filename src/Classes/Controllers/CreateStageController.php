@@ -40,7 +40,7 @@ class CreateStageController
         $statusCode = 500;
 
 //        if ($_SESSION['loggedIn'] === true) {
-            if (isset($requestData['title']) && strlen($requestData['title'] > 0)) {
+            if (isset($requestData['title']) && strlen($requestData['title']) > 0) {
                 $highestOrder = $this->stageModel->getHighestOrderNo();
                 $newStage = new StageEntity($requestData['title'], ++$highestOrder);
                 if ($this->stageModel->createStage($newStage)) {
@@ -54,9 +54,12 @@ class CreateStageController
                         'message' => 'Error adding to database',
                     ];
                 }
-
-                return $response->withJson($data, $statusCode);
+            } else {
+                $data = [
+                    'message' => 'Incorrect data provided',
+                ];
             }
+            return $response->withJson($data, $statusCode);
         }
 //    }
 }
