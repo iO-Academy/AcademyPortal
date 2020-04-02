@@ -45,7 +45,7 @@ editForms.forEach((editForm, index) => {
         };
 
         sendEditRequest(data);
-
+        window.location.reload(true);
     })
 });
 
