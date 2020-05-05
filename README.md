@@ -6,6 +6,11 @@
 2. Create database with name `academyPortal` and populate using latest version in db/
 3. `php -S localhost:8080 -t public public/index.php`
 
+### Running tests
+
+- cd into the tests directory and run:
+```../vendor/bin/phpunit .```
+
 ### Deploy
 
 - Files/folders that can be easily replaced with uploads:
@@ -75,12 +80,22 @@ POST
 	    'eighteenPlus': '1' or '0',
 	    'finance': '1' or '0',
 	    'notes': 'example notes'
-	   }
+	   }`
 - Returns success true / false:
 	- if new applicant registered successfully
 		- `{'success':true, 'msg':'Application Saved', 'data':[]}`
 	- if new applicant not saved successfully
 		- `{'success':false, 'msg':'Application Not Saved', 'data':[]}`
+		
+		
+**/deleteApplicant**
+
+DELETE
+- Changes the 'deleted' value for a single entry in the applicant table to '1'.
+- Sends: 
+    - `{'id' : 'integer'}`
+- Returns a json package with either an HTTP status of 200 for success or 500 for error.
+    - `{'success':boolean, 'msg':'string', 'data':[]}`
 
 **/createHiringPartner**
 
@@ -122,3 +137,41 @@ GET
         - `{'success':false, 'msg':'SQL error message', 'data':[]}`
     - if there are not data in the database
         - `{'success':false, 'msg':'No hiring partners found!', 'data':[]}`
+        
+**/createStage**
+
+POST
+- Adds a new stage in the last order position.
+- Sends:
+    - `{'title' : 'string'}` 
+- Returns success true / false:
+    - if stage is added successfully
+        - `{'success':true, 'msg':'Stage added successfuly.', 'data':[]}`
+    - if stage could not be added
+        - `{'success':false, 'msg':'Error (dependant on reason)', 'data':[]}`
+        
+**/updateStages**
+
+EDIT
+- Goes through an array of edit requests and changes the database
+- Sends an array of:
+    - `{'id' : 'integer', 'title' : 'string', 'order' : 'integer'}` 
+- Returns success true / false:
+    - if stage is edited successfully
+        - `{'success':true, 'msg':'Stage edit successful.'}`
+    - if stage could not be edited
+        - `{'success':false, 'msg':'Stage edit failed.'}`
+        
+**/deleteStage**
+ 
+DELETE
+- Changes the 'deleted' value for a single entry in the stages table to '1', and changes the 'order' value for 
+that entry to '0'.
+- Sends:
+    - `{'id' : 'integer'}` 
+- Returns success true / false:
+    - if stage is delete successfully
+        - `{'success':true, 'msg':'Stage has been deleted successfuly.', 'data':[]}`
+    - if stage could not be deleted
+        - `{'success':false, 'msg':'Invalid id provided.', 'data':[]}`
+        
