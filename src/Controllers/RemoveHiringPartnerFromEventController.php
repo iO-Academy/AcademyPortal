@@ -41,7 +41,6 @@ class RemoveHiringPartnerFromEventController extends Controller
                 'message' => 'Hiring partner successfully removed from the event.',
                 'data' => [$hiringPartner, $event]];
             return $this->respondWithJson($response, $data);
-
         } else {
             $data = ['success' => false,
                 'message' => 'Error - please contact administrator'];

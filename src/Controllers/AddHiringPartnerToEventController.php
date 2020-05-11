@@ -37,16 +37,15 @@ class AddHiringPartnerToEventController extends Controller
         if (!$this->eventModel->checkLinkHP($hiringPartner, $event)) {
             $result = $this->eventModel->addHPToEvent($hiringPartner, $event, $attendees);
         } else {
-            return $this->respondWithJson($response, ['success' => false, 'message' => 'Hiring partner already linked.']);
-
+            return $this->respondWithJson($response, ['success' => false,
+                'message' => 'Hiring partner already linked.']);
         }
-        
         if ($result) {
             return $this->respondWithJson($response, ['success' => true,
                 'message' => 'Hiring partner successfully added to event.']);
-
         } else {
-            return $this->respondWithJson($response, ['success' => false, 'message' => 'Error - please contact administrator'], 500);
+            return $this->respondWithJson($response, ['success' => false,
+                'message' => 'Error - please contact administrator'], 500);
         }
     }
 }
