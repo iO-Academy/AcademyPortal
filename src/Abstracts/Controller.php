@@ -28,5 +28,4 @@ abstract class Controller
         $response->getBody()->write($json);
         return $response->withHeader('Content-type', 'application/json')->withStatus($statusCode);
     }
-
 }
