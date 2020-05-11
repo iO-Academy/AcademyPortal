@@ -20,7 +20,8 @@ class ContactEntityTest extends TestCase
         );
         $characterLength = 255;
         $contactName = $newContact->getContactName();
-        ContactEntity::ValidateExistsAndLength($contactName, $characterLength);
+        $result = ContactEntity::ValidateExistsAndLength($contactName, $characterLength);
+        $this->assertEquals('John Doe', $result);
     }
 
     public function testConstructorFailure()
