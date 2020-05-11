@@ -33,7 +33,7 @@ class GetApplicantController extends Controller
     {
         $id = $args['id'];
         if (is_numeric($id) && !empty($id)) {
-            $applicant = (array) $this->applicantModel->getApplicantById($id);
+            $applicant = $this->applicantModel->getApplicantById($id);
             return $this->respondWithJson($response, $applicant);
         } else {
             return $response->withStatus(404);
