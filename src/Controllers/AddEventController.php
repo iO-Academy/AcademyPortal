@@ -2,13 +2,14 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\EventModel;
 use Portal\Entities\EventEntity;
 
-class AddEventController
+class AddEventController extends Controller
 {
     private $eventModel;
 
@@ -59,7 +60,6 @@ class AddEventController
             ];
             $statusCode = 201;
         }
-        $response->getBody()->write(json_encode($responseData));
-        return $response->withStatus($statusCode);
+        return $this->respondWithJson($response, $responseData, $statusCode);
     }
 }

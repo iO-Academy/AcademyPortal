@@ -2,11 +2,12 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Portal\Models\UserModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class RegisterUserController
+class RegisterUserController extends Controller
 {
     private $userModel;
 
@@ -25,10 +26,11 @@ class RegisterUserController
      *
      * @param Request $request HTTP request
      * @param Response $response HTTP response
+     * @param array $args
      *
      * @return Response
      */
-    public function __invoke(Request $request, Response $response)
+    public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
             $data = ['success' => false, 'msg' => 'User not registered.', 'data' => []];
@@ -56,8 +58,8 @@ class RegisterUserController
                 ];
                 $statusCode = 200;
             }
-            $response->getBody()->write(json_encode($data));
-            return $response->withStatus($statusCode);
+
+            return $this->respondWithJson($response, $data, $statusCode);
         }
     }
 }

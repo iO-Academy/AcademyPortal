@@ -2,11 +2,12 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Portal\Models\EventModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class AddHiringPartnerToEventController
+class AddHiringPartnerToEventController extends Controller
 {
     private $eventModel;
 
@@ -36,19 +37,16 @@ class AddHiringPartnerToEventController
         if (!$this->eventModel->checkLinkHP($hiringPartner, $event)) {
             $result = $this->eventModel->addHPToEvent($hiringPartner, $event, $attendees);
         } else {
-            $response->getBody()->write(json_encode(['success' => false,
-                'message' => 'Hiring partner already linked.']));
-            return $response->withStatus(200);
+            return $this->respondWithJson($response, ['success' => false, 'message' => 'Hiring partner already linked.']);
+
         }
         
         if ($result) {
-            $response->getBody()->write(json_encode(['success' => true,
-                'message' => 'Hiring partner successfully added to event.']));
-            return $response->withStatus(200);
+            return $this->respondWithJson($response, ['success' => true,
+                'message' => 'Hiring partner successfully added to event.']);
+
         } else {
-            $res = json_encode(['success' => false, 'message' => 'Error - please contact administrator']);
-            $response->getBody()->write($res);
-            return $response->withStatus(500);
+            return $this->respondWithJson($response, ['success' => false, 'message' => 'Error - please contact administrator'], 500);
         }
     }
 }

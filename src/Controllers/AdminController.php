@@ -2,11 +2,12 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
-class AdminController
+class AdminController extends Controller
 {
     private $renderer;
 

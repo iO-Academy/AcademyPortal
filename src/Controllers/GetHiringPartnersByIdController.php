@@ -2,12 +2,13 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Portal\Models\EventModel;
 use Portal\Models\HiringPartnerModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class GetHiringPartnersByIdController
+class GetHiringPartnersByIdController extends Controller
 {
     /**
      * @var HiringPartnerModel created by constructor
@@ -58,11 +59,9 @@ class GetHiringPartnersByIdController
                 $hpEntity['attendees'] = $hpId['people_attending'];
                 array_push($this->hpEntities, $hpEntity);
             } else {
-                $response->getBody()->write(json_encode(['message' => 'Database error']));
-                return $response->withStatus(500);
+                return $this->respondWithJson($response, ['message' => 'Database error'], 500);
             }
         }
-        $response->getBody()->write(json_encode($this->hpEntities));
-        return $response->withStatus(200);
+        return $this->respondWithJson($response, $this->hpEntities);
     }
 }

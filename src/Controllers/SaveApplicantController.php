@@ -2,11 +2,12 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Portal\Models\ApplicantModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class SaveApplicantController
+class SaveApplicantController extends Controller
 {
     private $applicantModel;
 
@@ -27,10 +28,11 @@ class SaveApplicantController
      *
      * @param Request $request
      * @param Response $response
+     * @param array $args The arguments array
      *
      * @return Response, will return the data from successfulRegister and the statusCode, via Json.
      */
-    public function __invoke(Request $request, Response $response)
+    public function __invoke(Request $request, Response $response, Array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
             $data = ['success' => false, 'msg' => 'Application not saved', 'data' => []];
@@ -62,8 +64,7 @@ class SaveApplicantController
                 ];
                 $statusCode = 200;
             }
-            $response->getBody()->write(json_encode($data));
-            return $response->withStatus($statusCode);
+            return $this->respondWithJson($response, $data, $statusCode);
         }
     }
 }

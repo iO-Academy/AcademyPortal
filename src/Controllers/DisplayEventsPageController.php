@@ -2,12 +2,13 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Portal\Models\EventModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
-class DisplayEventsPageController
+class DisplayEventsPageController extends Controller
 {
     private $renderer;
     private $eventModel;

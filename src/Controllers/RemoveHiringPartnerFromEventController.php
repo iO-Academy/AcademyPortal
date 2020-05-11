@@ -2,12 +2,13 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Portal\Entities\HiringPartnerEntity;
 use Portal\Models\EventModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class RemoveHiringPartnerFromEventController
+class RemoveHiringPartnerFromEventController extends Controller
 {
     private $eventModel;
 
@@ -36,14 +37,15 @@ class RemoveHiringPartnerFromEventController
         $result = $this->eventModel->removeHiringPartnerFromEvent($event, $hiringPartner);
 
         if ($result) {
-            $response->getBody()->write(json_encode(['success' => true,
+            $data = ['success' => true,
                 'message' => 'Hiring partner successfully removed from the event.',
-                'data' => [$hiringPartner, $event]]));
-            return $response->withStatus(200);
+                'data' => [$hiringPartner, $event]];
+            return $this->respondWithJson($response, $data);
+
         } else {
-            $response->getBody()->write(json_encode(['success' => false,
-                'message' => 'Error - please contact administrator']));
-            return $response->withStatus(500);
+            $data = ['success' => false,
+                'message' => 'Error - please contact administrator'];
+            return $this->respondWithJson($response, $data, 500);
         }
     }
 }

@@ -3,11 +3,12 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Portal\Models\HiringPartnerModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class CompanyDetailsModalController
+class CompanyDetailsModalController extends Controller
 {
     private $model;
 
@@ -25,15 +26,15 @@ class CompanyDetailsModalController
      * Combine company details and company contact details into a single array and send to modal
      * @param Request $request
      * @param Response $response
-     * @param $args contains company ID
+     * @param Array $args contains company ID
      */
-    public function __invoke(Request $request, Response $response, $args)
+    public function __invoke(Request $request, Response $response, Array $args)
     {
         $id = (int) $args['id'];
         $companyDetails = $this->model->getDetailsByCompany($id);
         $contactDetails = $this->model->getContactsByCompany($id);
         $companyDetailsAndContacts = array_merge($companyDetails, $contactDetails);
-        $response->getBody()->write(json_encode($companyDetailsAndContacts));
-        return $response;
+
+        return $this->respondWithJson($response, $companyDetailsAndContacts);
     }
 }

@@ -2,11 +2,12 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Portal\Models\HiringPartnerModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class GetHiringPartnersController
+class GetHiringPartnersController extends Controller
 {
     private $hiringPartnerModel;
 
@@ -47,7 +48,6 @@ class GetHiringPartnersController
             $statusCode = 200;
         }
 
-        $response->getBody()->write(json_encode($data));
-        return $response->withStatus($statusCode);
+        return $this->respondWithJson($response, $data, $statusCode);
     }
 }

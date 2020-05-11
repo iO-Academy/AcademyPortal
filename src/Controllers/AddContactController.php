@@ -3,11 +3,12 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Portal\Entities\ContactEntity;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class AddContactController
+class AddContactController extends Controller
 {
 
     private $hiringPartnerModel;
@@ -54,7 +55,6 @@ class AddContactController
             ];
             $statusCode = 200;
         }
-        $response->getBody()->write(json_encode($data));
-        return $response->withStatus($statusCode);
+        return $this->respondWithJson($response, $data, $statusCode);
     }
 }

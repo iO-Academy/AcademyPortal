@@ -2,11 +2,12 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Portal\Models\EventModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class GetEventsController
+class GetEventsController extends Controller
 {
     private $eventModel;
 
@@ -54,8 +55,7 @@ class GetEventsController
             } else {
                 $data['message'] = 'Search term cannot be greater than 255 characters.';
             }
-            $response->getBody()->write(json_encode($data));
-            return $response->withStatus($statusCode);
+            return $this->respondWithJson($response, $data, $statusCode);
         }
 
 
@@ -70,7 +70,6 @@ class GetEventsController
         } catch (\PDOException $exception) {
             $data['message'] = $exception->getMessage();
         }
-        $response->getBody()->write(json_encode($data));
-        return $response->withStatus($statusCode);
+        return $this->respondWithJson($response, $data, $statusCode);
     }
 }

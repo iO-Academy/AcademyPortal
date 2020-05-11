@@ -2,9 +2,10 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Slim\Views\PhpRenderer;
 
-class HomePageController
+class HomePageController extends Controller
 {
     private $renderer;
 

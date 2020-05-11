@@ -2,11 +2,12 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Portal\Models\UserModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class LoginController
+class LoginController extends Controller
 {
     private $userModel;
 
@@ -26,10 +27,12 @@ class LoginController
      *
      * @param Request $request HTTP request
      * @param Response $response HTTP response
+     * @param array $args The arguments array
+
      *
      * @return string JSON message and status code.
      */
-    public function __invoke(Request $request, Response $response) : Response
+    public function __invoke(Request $request, Response $response, Array $args) : Response
     {
         $data = ['success' => false, 'msg' => 'Incorrect email or password.', 'data' => []];
         $statusCode = 401;
@@ -51,8 +54,6 @@ class LoginController
             $statusCode = 200;
         }
 
-        $response->getBody()->write(json_encode($data));
-
-        return $response->withStatus($statusCode);
+        return $this->respondWithJson($response, $data, $statusCode);
     }
 }
