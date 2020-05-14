@@ -10,12 +10,12 @@ return function (App $app) {
     $app->get('/register', 'RegisterController');
     $app->get('/addapplicant', 'addApplicantController');
     $app->get('/displayApplicants', 'DisplayApplicantsController');
-    $app->get('/displayApplicantInfo/{id}', 'GetApplicantController');
     $app->get('/displayHiringPartnerPage', 'DisplayHiringPartnerPageController');
     $app->get('/displayEventsPage', 'DisplayEventsPageController');
     $app->get('/displayStages', 'DisplayStagesController');
 
     //API
+    $app->get('/api/getApplicant/{id}', 'GetApplicantController');
     $app->post('/api/saveApplicant', 'SaveApplicantController');
     $app->delete('/api/deleteApplicant', 'DeleteApplicantController');
     $app->get('/api/applicationForm', 'ApplicationFormController');
