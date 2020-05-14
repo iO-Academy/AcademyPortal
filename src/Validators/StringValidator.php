@@ -1,8 +1,8 @@
 <?php
 
-namespace Portal\Entities;
+namespace Portal\Validators;
 
-abstract class ValidationEntity
+class StringValidator
 {
     /**
      * Validate that a string exists and is within length allowed, throws an error if not

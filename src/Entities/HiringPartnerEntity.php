@@ -2,7 +2,9 @@
 
 namespace Portal\Entities;
 
-class HiringPartnerEntity extends ValidationEntity
+use Portal\Validators\StringValidator;
+
+class HiringPartnerEntity
 {
     protected $companyId;
     protected $companyName;
@@ -36,17 +38,17 @@ class HiringPartnerEntity extends ValidationEntity
     private function sanitiseData()
     {
         $this->companyId = (int)$this->companyId;
-        $this->companyName = self::sanitiseString($this->companyName);
-        $this->companyName = self::validateExistsAndLength($this->companyName, 255);
+        $this->companyName = StringValidator::sanitiseString($this->companyName);
+        $this->companyName = StringValidator::validateExistsAndLength($this->companyName, 255);
         $this->companySize = (int)$this->companySize;
-        $this->techStack = self::sanitiseString($this->techStack);
-        $this->techStack = self::validateExistsAndLength($this->techStack, 600);
-        $this->postcode = self::sanitiseString($this->postcode);
-        $this->postcode = self::validateExistsAndLength($this->postcode, 10);
-        $this->phoneNumber = self::sanitiseString($this->phoneNumber);
-        $this->phoneNumber = self::validateLength($this->phoneNumber, 20);
-        $this->websiteUrl = self::sanitiseString($this->websiteUrl);
-        $this->websiteUrl = self::validateLength($this->websiteUrl, 255);
+        $this->techStack = StringValidator::sanitiseString($this->techStack);
+        $this->techStack = StringValidator::validateExistsAndLength($this->techStack, 600);
+        $this->postcode = StringValidator::sanitiseString($this->postcode);
+        $this->postcode = StringValidator::validateExistsAndLength($this->postcode, 10);
+        $this->phoneNumber = StringValidator::sanitiseString($this->phoneNumber);
+        $this->phoneNumber = StringValidator::validateLength($this->phoneNumber, 20);
+        $this->websiteUrl = StringValidator::sanitiseString($this->websiteUrl);
+        $this->websiteUrl = StringValidator::validateLength($this->websiteUrl, 255);
     }
 
     /**

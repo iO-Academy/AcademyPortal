@@ -2,7 +2,9 @@
 
 namespace Portal\Entities;
 
-class ContactEntity extends ValidationEntity
+use Portal\Validators\StringValidator;
+
+class ContactEntity
 {
     protected $contactName;
     protected $contactEmail;
@@ -97,18 +99,18 @@ class ContactEntity extends ValidationEntity
      */
     private function sanitiseData()
     {
-        $this->contactName = self::sanitiseString($this->contactName);
-        $this->contactName = self::validateExistsAndLength($this->contactName, 255);
+        $this->contactName = StringValidator::sanitiseString($this->contactName);
+        $this->contactName = StringValidator::validateExistsAndLength($this->contactName, 255);
 
-        $this->contactEmail = self::sanitiseString($this->contactEmail);
-        $this->contactEmail = self::validateExistsAndLength($this->contactEmail, 255);
+        $this->contactEmail = StringValidator::sanitiseString($this->contactEmail);
+        $this->contactEmail = StringValidator::validateExistsAndLength($this->contactEmail, 255);
         if ($this->jobTitle !== null) {
-            $this->jobTitle = self::sanitiseString($this->jobTitle);
-            $this->jobTitle = self::ValidateLength($this->jobTitle, 255);
+            $this->jobTitle = StringValidator::sanitiseString($this->jobTitle);
+            $this->jobTitle = StringValidator::ValidateLength($this->jobTitle, 255);
         }
         if ($this->contactPhone !== null) {
-            $this->contactPhone = self::sanitiseString($this->contactPhone);
-            $this->contactPhone = self::ValidateLength($this->contactPhone, 20);
+            $this->contactPhone = StringValidator::sanitiseString($this->contactPhone);
+            $this->contactPhone = StringValidator::ValidateLength($this->contactPhone, 20);
         }
         $this->hiringPartnerCompanyId = (int)$this->hiringPartnerCompanyId;
         $this->primaryContact = (int)$this->primaryContact;
@@ -122,7 +124,7 @@ class ContactEntity extends ValidationEntity
      * @throws \Exception
      * @return $primaryContact
      */
-    public static function validateIsPrimaryContact(int $primaryContact)
+    public static function validateIsPrimaryContact(int $primaryContact) // @todo: move to validator
     {
         if ($primaryContact === 0 || $primaryContact === 1) {
             return $primaryContact;

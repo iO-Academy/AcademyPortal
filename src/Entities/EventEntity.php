@@ -2,7 +2,9 @@
 
 namespace Portal\Entities;
 
-class EventEntity extends ValidationEntity
+use Portal\Validators\StringValidator;
+
+class EventEntity
 {
     protected $event_id;
     protected $name;
@@ -23,7 +25,7 @@ class EventEntity extends ValidationEntity
         string $startTime = null,
         string $endTime = null,
         string $notes = null,
-        array $eventCategories
+        array $eventCategories // @todo: wtf?!
     ) {
         $this->event_id = ($this->event_id ?? $event_id);
         $this->name = ($this->name ?? $name);
@@ -44,19 +46,19 @@ class EventEntity extends ValidationEntity
     private function sanitiseData()
     {
         $this->event_id = (int)$this->event_id;
-        $this->name = self::sanitiseString($this->name);
-        $this->name = self::validateExistsAndLength($this->name, 255);
+        $this->name = StringValidator::sanitiseString($this->name);
+        $this->name = StringValidator::validateExistsAndLength($this->name, 255);
         $this->category = (int)$this->category;
         $this->category = self::validateCategoryExists($this->category, $this->eventCategories);
-        $this->location = self::sanitiseString($this->location);
-        $this->location = self::validateExistsAndLength($this->location, 255);
+        $this->location = StringValidator::sanitiseString($this->location);
+        $this->location = StringValidator::validateExistsAndLength($this->location, 255);
         $this->date = $this->validateDate($this->date);
         $this->startTime = $this->validateTime($this->startTime);
         $this->endTime = $this->validateTime($this->endTime);
         $this->validateStartEndTime($this->startTime, $this->endTime);
         if ($this->notes !== null) {
-            $this->notes = self::sanitiseString($this->notes);
-            $this->notes = self::validateLength($this->notes, 5000);
+            $this->notes = StringValidator::sanitiseString($this->notes);
+            $this->notes = StringValidator::validateLength($this->notes, 5000);
         }
     }
 
@@ -67,7 +69,7 @@ class EventEntity extends ValidationEntity
      *
      * @return bool|string
      */
-    public static function validateDate(string $date)
+    public static function validateDate(string $date) // @todo: move to validator
     {
         if (!preg_match('/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/', $date)) {
             throw new \Exception('Please enter correct date');
@@ -82,7 +84,7 @@ class EventEntity extends ValidationEntity
      * @param string $time
      * @return bool|string
      */
-    public static function validateTime(string $time)
+    public static function validateTime(string $time) // @todo: move to validator
     {
         if (!preg_match('/([01][0-9]|2[0-3]):[0-5][0-9]/', $time)
         ) {
@@ -100,7 +102,7 @@ class EventEntity extends ValidationEntity
      * @return bool
      * @throws \Exception
      */
-    public static function validateStartEndTime($startTime, $endTime)
+    public static function validateStartEndTime($startTime, $endTime) // @todo: move to validator
     {
         if ($startTime >= $endTime) {
             throw new \Exception('End time should be later than start time');
@@ -115,7 +117,7 @@ class EventEntity extends ValidationEntity
      * @param int $category
      * @param array $categoryList
      */
-    public static function validateCategoryExists(int $category, array $categoryList)
+    public static function validateCategoryExists(int $category, array $categoryList) // @todo: move to validator
     {
         $zeroIndexCat = intval($category) - 1;
         if (array_key_exists($zeroIndexCat, $categoryList)) {
