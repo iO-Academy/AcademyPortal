@@ -2,6 +2,7 @@
 
 namespace Portal\Entities;
 
+use Portal\Validators\EmailValidator;
 use Portal\Validators\StringValidator;
 
 class ApplicantEntity implements \JsonSerializable
@@ -85,7 +86,7 @@ class ApplicantEntity implements \JsonSerializable
         $this->id = (int) $this->id;
         $this->name = StringValidator::sanitiseString($this->name);
         $this->email = StringValidator::sanitiseString($this->email);
-        $this->email = $this->validateEmail($this->email);
+        $this->email = EmailValidator::validateEmail($this->email);
         $this->phoneNumber = StringValidator::sanitiseString($this->phoneNumber);
         $this->cohortId = (int)$this->cohortId;
         $this->whyDev = StringValidator::sanitiseString($this->whyDev);
@@ -95,23 +96,6 @@ class ApplicantEntity implements \JsonSerializable
         $this->eighteenPlus = $this->eighteenPlus ? 1 : 0;
         $this->finance = $this->finance ? 1 : 0;
         $this->notes = StringValidator::sanitiseString($this->notes);
-    }
-
-    /**(
-     * Sanitise the applicant's email from the applicant's data.
-     *
-     * @param string $applicantData
-     *
-     * @return string $applicantData, returns valid email.
-     * @return bool, returns false if invalid email.
-     */
-    public function validateEmail($applicantData) // @todo: move to validator
-    {
-        if (filter_var($applicantData, FILTER_VALIDATE_EMAIL)) {
-            return $applicantData;
-        } else {
-            return false;
-        }
     }
 
     /**
