@@ -3,6 +3,7 @@
 namespace Portal\Controllers;
 
 use Portal\Abstracts\Controller;
+use Portal\Validators\EventValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
@@ -34,6 +35,12 @@ class AddEventController extends Controller
         $statusCode = 400;
 
         try {
+
+            $newEvent['category'] = EventValidator::validateCategoryExists(
+                $newEvent['category'],
+                $this->eventModel->getEventCategories()
+            );
+
             $event = new EventEntity(
                 $newEvent['id'] ?? '',
                 $newEvent['name'],
@@ -42,8 +49,7 @@ class AddEventController extends Controller
                 $newEvent['date'],
                 $newEvent['startTime'],
                 $newEvent['endTime'],
-                $newEvent['notes'],
-                $this->eventModel->getEventCategories()
+                $newEvent['notes']
             );
             if (!empty($event) && $event instanceof EventEntity) {
                 $result = $this->eventModel->addEvent($event);

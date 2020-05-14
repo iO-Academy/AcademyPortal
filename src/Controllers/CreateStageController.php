@@ -2,12 +2,13 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
 use Portal\Entities\StageEntity;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class CreateStageController
+class CreateStageController extends Controller
 {
     private $stageModel;
 
@@ -47,20 +48,16 @@ class CreateStageController
                     $data = [
                         'success' => true,
                         'message' => 'Stage added successfully',
+                        'data' => []
                     ];
                     $statusCode = 200;
                 } else {
-                    $data = [
-                        'message' => 'Error adding to database',
-                    ];
+                    $data['message'] = 'Error adding to database';
                 }
             } else {
-                $data = [
-                    'message' => 'Incorrect data provided',
-                ];
+                $data['message'] = 'Incorrect data provided';
             }
-            $response->getBody()->write(json_encode($data));
-            return $response->withStatus($statusCode);
+            return $this->respondWithJson($response, $data, $statusCode);
         }
     }
 }

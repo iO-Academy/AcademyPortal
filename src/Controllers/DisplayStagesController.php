@@ -2,12 +2,13 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\StageModel;
 
-class DisplayStagesController
+class DisplayStagesController extends Controller
 {
     private $renderer;
     private $stageModel;

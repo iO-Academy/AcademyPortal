@@ -2,14 +2,14 @@
 
 namespace Portal\Controllers;
 
-use Portal\Entities\StageEntity;
-use Portal\Entities\ValidationEntity;
+use Portal\Abstracts\Controller;
+use Portal\Validators\StageValidator;
+use Portal\Validators\StringValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Models\StageModel;
-use mysql_xdevapi\Exception;
 
-class EditStageController extends ValidationEntity
+class EditStageController extends Controller
 {
     private $stageModel;
 
@@ -39,42 +39,23 @@ class EditStageController extends ValidationEntity
             $statusCode = 500;
 
             $requestDataPackage = $request->getParsedBody();
+
             try {
-                $this->stageModel->getDB()->beginTransaction();
-                foreach ($requestDataPackage['data'] as $stageObject) {
-                    if (isset($stageObject['id']) && isset($stageObject['title']) && isset($stageObject['order'])) {
-                        $stageObject['id'] = (int) $stageObject['id'];
-                        $stageObject['title'] = self::sanitiseString($stageObject['title']);
-                        try {
-                            $stageObject['title'] = self::validateLength($stageObject['title'], 255);
-                        } catch (\Exception $exception) {
-                            $stageObject['title'] = substr($stageObject['title'], 0, 254);
-                        }
-
-                        $stageObject['order'] = (int) $stageObject['order'];
-
-                        $this->stageModel
-                            ->updateStage($stageObject['id'], $stageObject['title'], $stageObject['order']);
-                    }
-                }
-                $this->stageModel->getDB()->commit();
+                $stages = StageValidator::sanitiseStageOrders($requestDataPackage['data']);
+                $this->stageModel->updateAllStages($stages);
                 $data = [
                     'success' => true,
-                    'msg' => 'Stage edit successful.'
+                    'msg' => 'Stage edit successful.',
+                    'data' => ''
                 ];
                 $statusCode = 200;
 
-                $response->getBody()->write(json_encode($data));
-                return $response->withStatus($statusCode);
-            } catch (\PDOException $e) {
-                $this->stageModel->getDB()->rollBack();
-                $data = [
-                    'msg' => 'Stage edit failed.'
-                ];
-
-                $response->getBody()->write(json_encode($data));
-                return $response->withStatus($statusCode);
+                return $this->respondWithJson($response, $data, $statusCode);
+            } catch (\Exception $e) {
+                $data['msg'] = $e->getMessage();
+                return $this->respondWithJson($response, $data, $statusCode);
             }
         }
+        return $this->respondWithJson($response, ['success' => false, 'msg'=> 'Unauthorized'], 401);
     }
 }
