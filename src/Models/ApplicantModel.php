@@ -78,6 +78,7 @@ class ApplicantModel
                       AS "cohortDate" 
                       FROM `applicants` 
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      WHERE `applicants`.`deleted` = \'0\' 
                       ORDER BY `dateTimeAdded`ASC;'
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
@@ -200,5 +201,19 @@ class ApplicantModel
             $applicantFinance,
             $applicantNotes
         );
+    }
+
+    /**
+     * Deletes record with the given id from the database
+     *
+     * @param $id
+     *
+     * @return boolean for success or failure of the query
+     */
+    public function deleteApplicant($id)
+    {
+        $query = $this->db->prepare("UPDATE `applicants` SET `deleted` = '1' WHERE `id` = :id");
+        $query->bindParam(':id', $id);
+        return $query->execute();
     }
 }

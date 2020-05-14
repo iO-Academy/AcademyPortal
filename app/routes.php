@@ -17,9 +17,11 @@ return function (App $app) {
     $app->get('/displayApplicantInfo/{id}', 'GetApplicantController');
     $app->get('/displayHiringPartnerPage', 'DisplayHiringPartnerPageController');
     $app->get('/displayEventsPage', 'DisplayEventsPageController');
+    $app->get('/displayStages', 'DisplayStagesController');
 
     //API
     $app->post('/api/saveApplicant', 'SaveApplicantController');
+    $app->delete('/api/deleteApplicant', 'DeleteApplicantController');
     $app->get('/api/applicationForm', 'ApplicationFormController');
     $app->post('/api/createHiringPartner', 'CreateHiringPartnerController');
     $app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');
@@ -30,6 +32,9 @@ return function (App $app) {
     $app->get('/api/displayCompanyInfo/{id}', 'CompanyDetailsModalController');
     $app->post('/api/getHpsByEventId', 'GetHiringPartnersByIdController');
     $app->post('/api/deleteHiringPartnerFromEvent', 'RemoveHiringPartnerFromEventController');
+    $app->post('/api/createStage', 'CreateStageController');
+    $app->delete('/api/deleteStage', 'DeleteStageController');
+    $app->put('/api/updateStages', 'EditStageController');
 
     //Backend
     $app->post('/api/login', 'LoginController');

@@ -94,5 +94,17 @@ return function (ContainerBuilder $containerBuilder) {
 
     $container['RemoveHiringPartnerFromEventController'] = DI\factory('\Portal\Factories\RemoveHiringPartnerFromEventControllerFactory');
 
+    $container['DeleteApplicantController'] = DI\factory('\Portal\Factories\DeleteApplicantControllerFactory');
+
+    $container['StageModel'] = DI\factory('\Portal\Factories\StageModelFactory');
+
+    $container['CreateStageController'] = DI\factory('\Portal\Factories\CreateStageControllerFactory');
+
+    $container['DisplayStagesController'] = DI\factory('\Portal\Factories\DisplayStagesControllerFactory');
+
+    $container['DeleteStageController'] = DI\factory('\Portal\Factories\DeleteStageControllerFactory');
+
+    $container['EditStageController'] = DI\factory('\Portal\Factories\EditStageControllerFactory');
+
     $containerBuilder->addDefinitions($container);
 };
