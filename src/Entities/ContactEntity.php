@@ -114,7 +114,7 @@ class ContactEntity
         }
         $this->hiringPartnerCompanyId = (int)$this->hiringPartnerCompanyId;
         $this->primaryContact = (int)$this->primaryContact;
-        $this->primaryContact = self::validateIsPrimaryContact($this->primaryContact);
+        $this->primaryContact = $this->isPrimaryContact($this->primaryContact);
     }
 
     /**
@@ -124,7 +124,7 @@ class ContactEntity
      * @throws \Exception
      * @return $primaryContact
      */
-    public static function validateIsPrimaryContact(int $primaryContact) // @todo: move to validator
+    public function isPrimaryContact(int $primaryContact)
     {
         if ($primaryContact === 0 || $primaryContact === 1) {
             return $primaryContact;
