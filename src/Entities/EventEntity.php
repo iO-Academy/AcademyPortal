@@ -2,6 +2,7 @@
 
 namespace Portal\Entities;
 
+use Portal\Validators\DateTimeValidator;
 use Portal\Validators\StringValidator;
 
 class EventEntity
@@ -52,62 +53,13 @@ class EventEntity
         $this->category = self::validateCategoryExists($this->category, $this->eventCategories);
         $this->location = StringValidator::sanitiseString($this->location);
         $this->location = StringValidator::validateExistsAndLength($this->location, 255);
-        $this->date = $this->validateDate($this->date);
-        $this->startTime = $this->validateTime($this->startTime);
-        $this->endTime = $this->validateTime($this->endTime);
-        $this->validateStartEndTime($this->startTime, $this->endTime);
+        $this->date = DateTimeValidator::validateDate($this->date);
+        $this->startTime = DateTimeValidator::validateTime($this->startTime);
+        $this->endTime = DateTimeValidator::validateTime($this->endTime);
+        DateTimeValidator::validateStartEndTime($this->startTime, $this->endTime);
         if ($this->notes !== null) {
             $this->notes = StringValidator::sanitiseString($this->notes);
             $this->notes = StringValidator::validateLength($this->notes, 5000);
-        }
-    }
-
-    /**
-     * Sanitise as a date in the event table as data.
-     *
-     * @param string $date
-     *
-     * @return bool|string
-     */
-    public static function validateDate(string $date) // @todo: move to validator
-    {
-        if (!preg_match('/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/', $date)) {
-            throw new \Exception('Please enter correct date');
-        } else {
-            return $date;
-        }
-    }
-
-    /**
-     * Sanitise as a time in the event table as data.
-     *
-     * @param string $time
-     * @return bool|string
-     */
-    public static function validateTime(string $time) // @todo: move to validator
-    {
-        if (!preg_match('/([01][0-9]|2[0-3]):[0-5][0-9]/', $time)
-        ) {
-            throw new \Exception('Please enter correct time');
-        } else {
-            return $time;
-        }
-    }
-
-    /**
-     * Validate that end time is later than start time
-     *
-     * @param $startTime
-     * @param $endTime
-     * @return bool
-     * @throws \Exception
-     */
-    public static function validateStartEndTime($startTime, $endTime) // @todo: move to validator
-    {
-        if ($startTime >= $endTime) {
-            throw new \Exception('End time should be later than start time');
-        } else {
-            return true;
         }
     }
 
