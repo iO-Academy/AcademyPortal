@@ -35,10 +35,8 @@ class AdminController extends Controller
     {
         if ($_SESSION['loggedIn'] === true) {
             return $this->renderer->render($response, 'admin.phtml');
-        } else {
-            $_SESSION['loggedIn'] = false;
-            return $response->withHeader('Location', './')
-                ->withStatus(302);
         }
+        $_SESSION['loggedIn'] = false;
+        return $response->withHeader('Location', './')->withStatus(302);
     }
 }
