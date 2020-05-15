@@ -4,7 +4,6 @@ namespace Portal\Controllers;
 
 use Portal\Abstracts\Controller;
 use Portal\Validators\StageValidator;
-use Portal\Validators\StringValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Models\StageModel;
