@@ -39,7 +39,7 @@ class CreateHiringPartnerController extends Controller
         $newHiringPartner = $request->getParsedBody();
         $data = [
             'success' => false,
-            'message' => 'Error!',
+            'message' => 'Unexpected Error.',
             'data' => []
         ];
         $statusCode = 400;
