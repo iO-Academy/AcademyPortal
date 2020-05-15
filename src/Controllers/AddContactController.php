@@ -5,6 +5,7 @@ namespace Portal\Controllers;
 
 use Portal\Abstracts\Controller;
 use Portal\Entities\ContactEntity;
+use Portal\Models\HiringPartnerModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -17,7 +18,7 @@ class AddContactController extends Controller
      * AddContactController constructor.
      * @param $hiringPartnerModel
      */
-    public function __construct($hiringPartnerModel)
+    public function __construct(HiringPartnerModel $hiringPartnerModel)
     {
         $this->hiringPartnerModel = $hiringPartnerModel;
     }
@@ -27,7 +28,7 @@ class AddContactController extends Controller
         $newContact = $request->getParsedBody();
         $data = [
             'success' => false,
-            'message' => 'Error!',
+            'message' => 'Unexpected Error.',
             'data' => $newContact
         ];
         $statusCode = 400;
@@ -50,7 +51,7 @@ class AddContactController extends Controller
         if (isset($result) && $result) {
             $data = [
                 'success' => true,
-                'message' => 'Contact information added to the db',
+                'message' => 'Contact information saved.',
                 'data' => []
             ];
             $statusCode = 200;
