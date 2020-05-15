@@ -14,7 +14,7 @@ deleteButton.addEventListener('click', (e) => {
     }).then((response) => {
         return response.json()
     }).then((responseData) => {
-        document.cookie = `response=${responseData.msg}`;
+        document.cookie = `response=${responseData.message}`;
         window.location.reload(true)
     })
 });
