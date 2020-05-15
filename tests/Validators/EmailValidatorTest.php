@@ -19,4 +19,5 @@ class EmailValidatorTest extends TestCase
         $result = EmailValidator::validateEmail('Example@examplecom');
         $this->assertEquals($result, false);
     }
+
 }

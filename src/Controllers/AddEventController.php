@@ -35,7 +35,6 @@ class AddEventController extends Controller
         $statusCode = 400;
 
         try {
-
             $newEvent['category'] = EventValidator::validateCategoryExists(
                 $newEvent['category'],
                 $this->eventModel->getEventCategories()

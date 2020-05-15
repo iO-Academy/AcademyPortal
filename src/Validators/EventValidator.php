@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Portal\Validators;
-
 
 class EventValidator
 {
@@ -21,4 +19,5 @@ class EventValidator
             throw new \Exception('Category is not valid.');
         }
     }
+
 }
