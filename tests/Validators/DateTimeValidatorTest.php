@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Tests\Validators;
-
 
 use Portal\Validators\DateTimeValidator;
 use Tests\TestCase;
