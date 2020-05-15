@@ -124,7 +124,7 @@ class ContactEntity
      * @throws \Exception
      * @return $primaryContact
      */
-    public function isPrimaryContact(int $primaryContact)
+    private function isPrimaryContact(int $primaryContact)
     {
         if ($primaryContact === 0 || $primaryContact === 1) {
             return $primaryContact;
