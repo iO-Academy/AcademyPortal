@@ -8,22 +8,6 @@ use Portal\Entities\ContactEntity;
 
 class ContactEntityTest extends TestCase
 {
-    public function testValidateExistsAndLengthSuccess()
-    {
-        $newContact = new ContactEntity(
-            'John Doe',
-            'johndoe@company.com',
-            'CTO',
-            '04123456789',
-            2,
-            1
-        );
-        $characterLength = 255;
-        $contactName = $newContact->getContactName();
-        $result = ContactEntity::ValidateExistsAndLength($contactName, $characterLength);
-        $this->assertEquals('John Doe', $result);
-    }
-
     public function testConstructorFailure()
     {
         $this->expectException(Exception::class);
