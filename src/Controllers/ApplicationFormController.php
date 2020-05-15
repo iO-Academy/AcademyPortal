@@ -38,7 +38,7 @@ class ApplicationFormController extends Controller
                 $statusCode = 200;
                 $data = [
                     'success' => true,
-                    'msg' => 'Retrieved dropdown info.',
+                    'message' => 'Retrieved dropdown info.',
                     'data' => [
                         'cohorts' => $this->applicationFormModel->getCohorts(),
                         'hearAbout' => $this->applicationFormModel->getHearAbout(),
