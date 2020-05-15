@@ -2,9 +2,9 @@
 
 namespace Portal\Entities;
 
-use mysql_xdevapi\Exception;
+use Portal\Validators\StringValidator;
 
-class StageEntity extends ValidationEntity implements \JsonSerializable
+class StageEntity implements \JsonSerializable
 {
     protected $id;
     protected $title;
@@ -41,10 +41,10 @@ class StageEntity extends ValidationEntity implements \JsonSerializable
     private function sanitiseData()
     {
         $this->id = (int) $this->id;
-        $this->title = self::sanitiseString($this->title);
+        $this->title = StringValidator::sanitiseString($this->title);
 
         try {
-            $this->title = self::validateLength($this->title, 255);
+            $this->title = StringValidator::validateLength($this->title, 255);
         } catch (\Exception $exception) {
             $this->title = substr($this->title, 0, 254);
         }

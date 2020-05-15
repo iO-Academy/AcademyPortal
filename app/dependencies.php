@@ -40,71 +40,42 @@ return function (ContainerBuilder $containerBuilder) {
         return $db;
     };
 
+    // Controllers
     $container['HomePageController'] = DI\factory('\Portal\Factories\HomePageControllerFactory');
-
     $container['AdminController'] = DI\factory('\Portal\Factories\AdminControllerFactory');
-
     $container['RegisterController'] = DI\factory('\Portal\Factories\RegisterControllerFactory');
-
     $container['LoginController'] = DI\factory('\Portal\Factories\LoginControllerFactory');
-
     $container['RegisterUserController'] = DI\factory('\Portal\Factories\RegisterUserControllerFactory');
-
     $container['addApplicantController'] = DI\factory('\Portal\Factories\AddApplicantControllerFactory');
-
-    $container['ApplicationFormModel'] = DI\factory('\Portal\Factories\ApplicationFormModelFactory');
-
     $container['ApplicationFormController'] = DI\factory('\Portal\Factories\ApplicationFormControllerFactory');
-
     $container['SaveApplicantController'] = DI\factory('\Portal\Factories\SaveApplicantControllerFactory');
-
     $container['DisplayApplicantsController'] = DI\factory('\Portal\Factories\DisplayApplicantsControllerFactory');
-
     $container['GetApplicantController'] = DI\factory('\Portal\Factories\GetApplicantControllerFactory');
-
     $container['DisplayHiringPartnerPageController'] = DI\factory('\Portal\Factories\DisplayHiringPartnerPageControllerFactory');
-
     $container['CreateHiringPartnerController'] = DI\factory('\Portal\Factories\CreateHiringPartnerControllerFactory');
-
     $container['GetHiringPartnersController'] = DI\factory('\Portal\Factories\GetHiringPartnerControllerFactory');
-
     $container['CompanyDetailsModalController'] = DI\factory('\Portal\Factories\CompanyDetailsModalControllerFactory');
-
     $container['AddContactController'] = DI\factory('\Portal\Factories\AddContactControllerFactory');
-
     $container['DisplayEventsPageController'] = DI\factory('\Portal\Factories\DisplayEventsPageControllerFactory');
-
     $container['GetEventsController'] = DI\factory('\Portal\Factories\GetEventsControllerFactory');
-
     $container['GetHiringPartnersByIdController'] = DI\factory('\Portal\Factories\GetHiringPartnersByIdControllerFactory');
-
     $container['AddHiringPartnerToEventController'] = DI\factory('\Portal\Factories\AddHiringPartnerToEventControllerFactory');
-
     $container['AddEventController'] = DI\factory('\Portal\Factories\AddEventControllerFactory');
-
-    $container['UserModel'] = DI\factory('\Portal\Factories\UserModelFactory');
-
-    $container['ApplicantModel'] = DI\factory('\Portal\Factories\ApplicantModelFactory');
-
-    $container['HiringPartnerModel'] = DI\factory('\Portal\Factories\HiringPartnerModelFactory');
-
-    $container['EventModel'] = DI\factory('\Portal\Factories\EventModelFactory');
-
-    $container['RandomPasswordModel'] = DI\factory('\Portal\Models\RandomPasswordModel');
-
     $container['RemoveHiringPartnerFromEventController'] = DI\factory('\Portal\Factories\RemoveHiringPartnerFromEventControllerFactory');
-
     $container['DeleteApplicantController'] = DI\factory('\Portal\Factories\DeleteApplicantControllerFactory');
-
-    $container['StageModel'] = DI\factory('\Portal\Factories\StageModelFactory');
-
     $container['CreateStageController'] = DI\factory('\Portal\Factories\CreateStageControllerFactory');
-
     $container['DisplayStagesController'] = DI\factory('\Portal\Factories\DisplayStagesControllerFactory');
-
     $container['DeleteStageController'] = DI\factory('\Portal\Factories\DeleteStageControllerFactory');
-
     $container['EditStageController'] = DI\factory('\Portal\Factories\EditStageControllerFactory');
 
+    // Models
+    $container['UserModel'] = DI\factory('\Portal\Factories\UserModelFactory');
+    $container['ApplicationFormModel'] = DI\factory('\Portal\Factories\ApplicationFormModelFactory');
+    $container['ApplicantModel'] = DI\factory('\Portal\Factories\ApplicantModelFactory');
+    $container['HiringPartnerModel'] = DI\factory('\Portal\Factories\HiringPartnerModelFactory');
+    $container['EventModel'] = DI\factory('\Portal\Factories\EventModelFactory');
+    $container['RandomPasswordModel'] = DI\factory('\Portal\Models\RandomPasswordModel');
+    $container['StageModel'] = DI\factory('\Portal\Factories\StageModelFactory');
+    
     $containerBuilder->addDefinitions($container);
 };

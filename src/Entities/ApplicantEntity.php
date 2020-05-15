@@ -2,7 +2,10 @@
 
 namespace Portal\Entities;
 
-class ApplicantEntity extends ValidationEntity implements \JsonSerializable
+use Portal\Validators\EmailValidator;
+use Portal\Validators\StringValidator;
+
+class ApplicantEntity implements \JsonSerializable
 {
     protected $id;
     protected $name;
@@ -81,35 +84,18 @@ class ApplicantEntity extends ValidationEntity implements \JsonSerializable
     private function sanitiseData()
     {
         $this->id = (int) $this->id;
-        $this->name = self::sanitiseString($this->name);
-        $this->email = self::sanitiseString($this->email);
-        $this->email = $this->validateEmail($this->email);
-        $this->phoneNumber = self::sanitiseString($this->phoneNumber);
+        $this->name = StringValidator::sanitiseString($this->name);
+        $this->email = StringValidator::sanitiseString($this->email);
+        $this->email = EmailValidator::validateEmail($this->email);
+        $this->phoneNumber = StringValidator::sanitiseString($this->phoneNumber);
         $this->cohortId = (int)$this->cohortId;
-        $this->whyDev = self::sanitiseString($this->whyDev);
-        $this->codeExperience = self::sanitiseString($this->codeExperience);
+        $this->whyDev = StringValidator::sanitiseString($this->whyDev);
+        $this->codeExperience = StringValidator::sanitiseString($this->codeExperience);
         $this->hearAboutId = (int)$this->hearAboutId;
         $this->eligible = $this->eligible ? 1 : 0;
         $this->eighteenPlus = $this->eighteenPlus ? 1 : 0;
         $this->finance = $this->finance ? 1 : 0;
-        $this->notes = self::sanitiseString($this->notes);
-    }
-
-    /**(
-     * Sanitise the applicant's email from the applicant's data.
-     *
-     * @param string $applicantData
-     *
-     * @return string $applicantData, returns valid email.
-     * @return bool, returns false if invalid email.
-     */
-    public function validateEmail($applicantData)
-    {
-        if (filter_var($applicantData, FILTER_VALIDATE_EMAIL)) {
-            return $applicantData;
-        } else {
-            return false;
-        }
+        $this->notes = StringValidator::sanitiseString($this->notes);
     }
 
     /**

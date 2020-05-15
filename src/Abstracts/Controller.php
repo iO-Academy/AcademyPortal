@@ -13,7 +13,7 @@ abstract class Controller
 
     /**
      * @param Response $response a PSR-7 HTTP Response for the JSON and status code to be added
-     * @param $data an array of data or an object to be JSON encoded and added to the response
+     * @param array|object $data an array of data or an object to be JSON encoded and added to the response
      * @param int $statusCode an optional status code for the response, defaults to 200
      * @return Response a PSR-7 HTTP Response object with JSON data and a custom status code
      * @throws \Exception Thrown if the data given cannot be encoded

@@ -118,6 +118,21 @@ class StageModel
         return $query->execute();
     }
 
+    public function updateAllStages(array $stages) : bool
+    {
+        try {
+            $this->db->beginTransaction();
+            foreach ($stages as $stage) {
+                $this->updateStage($stage['id'], $stage['title'], $stage['order']);
+            }
+            $this->db->commit();
+            return true;
+        } catch (\PDOException $e) {
+            $this->db->rollBack();
+            throw new \Exception('Cannot update stages.');
+        }
+    }
+
     public function getDB() : \PDO
     {
         return $this->db;

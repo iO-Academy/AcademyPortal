@@ -2,11 +2,12 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Models\StageModel;
 
-class DeleteStageController
+class DeleteStageController extends Controller
 {
     private $stageModel;
 
@@ -45,8 +46,7 @@ class DeleteStageController
                 $data = [
                     'msg' => 'Cannot delete last record.',
                 ];
-                $response->getBody()->write(json_encode($data));
-                return $response->withStatus($statusCode);
+                return $this->respondWithJson($response, $data, $statusCode);
             }
 
             $requestData = $request->getParsedBody();
@@ -75,8 +75,7 @@ class DeleteStageController
                     'msg' => 'Invalid id provided.'
                 ];
             }
-            $response->getBody()->write(json_encode($data));
-            return $response->withStatus($statusCode);
+            return $this->respondWithJson($response, $data, $statusCode);
         }
     }
 }

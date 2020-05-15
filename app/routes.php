@@ -2,24 +2,20 @@
 declare(strict_types=1);
 
 use Slim\App;
-use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 
 return function (App $app) {
     //Frontend
     $app->get('/', 'HomePageController');
     $app->get('/admin', 'AdminController');
     $app->get('/register', 'RegisterController');
-
-    // URL routes - to display pages
     $app->get('/addapplicant', 'addApplicantController');
     $app->get('/displayApplicants', 'DisplayApplicantsController');
-
-    $app->get('/displayApplicantInfo/{id}', 'GetApplicantController');
     $app->get('/displayHiringPartnerPage', 'DisplayHiringPartnerPageController');
     $app->get('/displayEventsPage', 'DisplayEventsPageController');
     $app->get('/displayStages', 'DisplayStagesController');
 
     //API
+    $app->get('/api/getApplicant/{id}', 'GetApplicantController');
     $app->post('/api/saveApplicant', 'SaveApplicantController');
     $app->delete('/api/deleteApplicant', 'DeleteApplicantController');
     $app->get('/api/applicationForm', 'ApplicationFormController');
@@ -35,8 +31,6 @@ return function (App $app) {
     $app->post('/api/createStage', 'CreateStageController');
     $app->delete('/api/deleteStage', 'DeleteStageController');
     $app->put('/api/updateStages', 'EditStageController');
-
-    //Backend
     $app->post('/api/login', 'LoginController');
     $app->post('/api/registerUser', 'RegisterUserController');
 
