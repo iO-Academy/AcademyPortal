@@ -31,10 +31,10 @@ class AdminController extends Controller
      *
      * @return \Psr\Http\Message\ResponseInterface|Response.
      */
-    public function __invoke(Request $request, Response $response, $args)
+    public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            return $this->renderer->render($response, 'admin.phtml', $args);
+            return $this->renderer->render($response, 'admin.phtml');
         } else {
             $_SESSION['loggedIn'] = false;
             return $response->withHeader('Location', './')
