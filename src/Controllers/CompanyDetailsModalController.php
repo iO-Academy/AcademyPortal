@@ -37,7 +37,7 @@ class CompanyDetailsModalController extends Controller
             $data['data'] = array_merge($companyDetails, $contactDetails);
             $data['success'] = true;
             $data['message'] = 'Company details found.';
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $data['success'] = false;
             $data['message'] = $e->getMessage();
             $data['data'] = [];

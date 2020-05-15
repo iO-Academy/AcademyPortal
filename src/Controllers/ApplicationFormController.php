@@ -44,7 +44,7 @@ class ApplicationFormController extends Controller
                         'hearAbout' => $this->applicationFormModel->getHearAbout(),
                     ]
                 ];
-            } catch(\Exception $e) {
+            } catch (\Exception $e) {
                 $statusCode = 500;
                 $data['success'] = false;
                 $data['message'] = $e->getMessage();

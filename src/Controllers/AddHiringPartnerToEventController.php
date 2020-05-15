@@ -59,6 +59,5 @@ class AddHiringPartnerToEventController extends Controller
             }
         }
         return $this->respondWithJson($response, $responseData, $statusCode);
-
     }
 }

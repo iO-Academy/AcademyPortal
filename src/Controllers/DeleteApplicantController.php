@@ -45,7 +45,6 @@ class DeleteApplicantController extends Controller
             $requestData = $request->getParsedBody();
 
             if (isset($requestData['id']) && filter_var($requestData['id'], FILTER_VALIDATE_INT)) {
-
                 $applicantData = $this->applicantModel->getApplicantById($requestData['id']);
                 if ($applicantData) {
                     if ($this->applicantModel->deleteApplicant($requestData['id'])) {

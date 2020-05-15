@@ -47,7 +47,6 @@ class DeleteStageController extends Controller
                 $requestData = $request->getParsedBody();
 
                 if (isset($requestData['id']) && filter_var($requestData['id'], FILTER_VALIDATE_INT)) {
-
                     $stageData = $this->stageModel->getStageById($requestData['id']);
                     if ($stageData) {
                         if ($this->stageModel->deleteStage($requestData['id'])) {
@@ -59,7 +58,6 @@ class DeleteStageController extends Controller
                             $statusCode = 200;
                         }
                     }
-
                 } else {
                     $statusCode = 400;
                     $data['message'] = 'Invalid id provided.';
