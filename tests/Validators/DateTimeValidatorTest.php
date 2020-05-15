@@ -52,5 +52,4 @@ class DateTimeValidatorTest extends TestCase
         $this->expectException(\Exception::class);
         DateTimeValidator::validateDate($date);
     }
-
 }

@@ -55,5 +55,4 @@ class StringValidator
         $clean = trim($clean);
         return $clean;
     }
-
 }

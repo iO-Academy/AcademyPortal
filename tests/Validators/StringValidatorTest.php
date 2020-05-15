@@ -62,5 +62,4 @@ class StringValidatorTest extends TestCase
         $this->expectException(\TypeError::class);
         StringValidator::ValidateLength($name, $characterLength);
     }
-
 }

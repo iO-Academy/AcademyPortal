@@ -19,5 +19,4 @@ class EventValidator
             throw new \Exception('Category is not valid.');
         }
     }
-
 }

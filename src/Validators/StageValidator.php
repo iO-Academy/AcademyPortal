@@ -27,5 +27,4 @@ class StageValidator
     {
         return (isset($stage['id']) && is_numeric($stage['id']) && !empty($stage['title']) && !empty($stage['order']));
     }
-
 }

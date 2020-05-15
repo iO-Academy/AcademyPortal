@@ -23,5 +23,4 @@ class EventValidatorTest extends TestCase
         $this->expectException(\Exception::class);
         EventValidator::validateCategoryExists($category, $categoryList);
     }
-
 }
