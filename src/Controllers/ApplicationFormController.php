@@ -34,16 +34,27 @@ class ApplicationFormController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $statusCode = 200;
-            $data = [
-                'success' => true,
-                'msg' => 'Retrieved dropdown info.',
-                'data' => [
+            try {
+                $statusCode = 200;
+                $data = [
+                    'success' => true,
+                    'msg' => 'Retrieved dropdown info.',
+                    'data' => [
                         'cohorts' => $this->applicationFormModel->getCohorts(),
                         'hearAbout' => $this->applicationFormModel->getHearAbout(),
-                ]
-            ];
+                    ]
+                ];
+            } catch(\Exception $e) {
+                $statusCode = 500;
+                $data['success'] = false;
+                $data['message'] = $e->getMessage();
+                $data['data'] = [];
+            }
             return $this->respondWithJson($response, $data, $statusCode);
         }
+
+        $_SESSION['loggedIn'] = false;
+        $data = ['success' => false, 'message' => 'Unauthorized', 'data' => []];
+        return $this->respondWithJson($response, $data, 401);
     }
 }
