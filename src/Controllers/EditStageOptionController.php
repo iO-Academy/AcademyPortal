@@ -5,7 +5,7 @@ namespace Portal\Controllers;
 use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
 
-class AddOptionController extends Controller 
+class EditStageOptionController extends Controller 
 {
     private $stageModel;
 
