@@ -46,11 +46,11 @@ let makeApiRequest = async (data) => {
 let validateFormInputs = (data) => {
     let validate = [];
 
-    validate.push(isName(data.name));
+    validate.push(isName(data.name) && charsMaxLength(data.name));
     validate.push(isEmail(data.email));
     validate.push(isPhoneNumber(data.phoneNumber));
-    validate.push(evalLength(data.whyDev));
-    validate.push(evalLength(data.codeExperience));
+    validate.push(isPresent(data.whyDev));
+    validate.push(isPresent(data.codeExperience));
 
     return validate.includes(false) ? false : true;
 };
