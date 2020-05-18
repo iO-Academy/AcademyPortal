@@ -73,3 +73,7 @@ function nameMaxLength(name) {
 function textAreaMaxLength(data) {
     return data.length <= 10000;
 }
+
+function varCharMaxLength(data) {
+    return data.length <= 255;
+}
