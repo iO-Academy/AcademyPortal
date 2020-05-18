@@ -66,6 +66,10 @@ function isPresent(data) {
     return data.length >= 1;
 }
 
-function charsMaxLength(name) {
+function nameMaxLength(name) {
     return name.length <= 255;
+}
+
+function textAreaMaxLength(data) {
+    return data.length <= 10000;
 }
