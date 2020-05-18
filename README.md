@@ -4,12 +4,11 @@
 
 1. Run `composer install` in root of project
 2. Create database with name `academyPortal` and populate using latest version in db/
-3. `php -S localhost:8080 -t public public/index.php`
+3. `composer start`
 
 ### Running tests
 
-- cd into the tests directory and run:
-```../vendor/bin/phpunit .```
+```composer test```
 
 ### Deploy
 
