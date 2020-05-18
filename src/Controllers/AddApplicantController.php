@@ -16,7 +16,6 @@ class AddApplicantController extends Controller
      *
      * @param PhpRenderer $renderer
      */
-
     public function __construct(PhpRenderer $renderer)
     {
         $this->renderer = $renderer;
@@ -31,14 +30,13 @@ class AddApplicantController extends Controller
      *
      * @return Response will return the url output.
      */
-
-    public function __invoke(Request $request, Response $response, $args)
+    public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            return $this->renderer->render($response, 'addApplicant.phtml', $args);
-        } else {
-            $_SESSION['loggedIn'] = false;
-            return $response->withHeader('Location', './');
+            return $this->renderer->render($response, 'addApplicant.phtml');
         }
+
+        $_SESSION['loggedIn'] = false;
+        return $response->withHeader('Location', './');
     }
 }

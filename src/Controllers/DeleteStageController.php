@@ -35,46 +35,35 @@ class DeleteStageController extends Controller
         if ($_SESSION['loggedIn'] === true) {
             $data = [
                 'success' => false,
-                'msg' => 'Stage not found.',
+                'message' => 'Stage not found.',
                 'data' => []
             ];
             $statusCode = 500;
 
-            $stagesCount = $this->stageModel->stagesCount();
+            if ($this->stageModel->stagesCount() <= 1) {
+                $data['message'] = 'Cannot delete last stage.';
+                $statusCode = 400;
+            } else {
+                $requestData = $request->getParsedBody();
 
-            if ($stagesCount['stagesCount'] <= 1) {
-                $data = [
-                    'msg' => 'Cannot delete last record.',
-                ];
-                return $this->respondWithJson($response, $data, $statusCode);
-            }
-
-            $requestData = $request->getParsedBody();
-
-            if (isset($requestData['id'])) {
-                $validatedRequestData = filter_var($requestData['id'], FILTER_VALIDATE_INT);
-
-                if ($validatedRequestData) {
-                    $stageData = $this->stageModel->getStageById($validatedRequestData);
+                if (isset($requestData['id']) && filter_var($requestData['id'], FILTER_VALIDATE_INT)) {
+                    $stageData = $this->stageModel->getStageById($requestData['id']);
                     if ($stageData) {
-                        if ($this->stageModel->deleteStage($validatedRequestData)) {
+                        if ($this->stageModel->deleteStage($requestData['id'])) {
                             $data = [
                                 'success' => true,
-                                'msg' => 'Stage has been deleted successfully.'
+                                'message' => 'Stage has been deleted successfully.',
+                                'data' => []
                             ];
                             $statusCode = 200;
                         }
                     }
                 } else {
-                    $data = [
-                        'msg' => 'Invalid id provided.'
-                    ];
+                    $statusCode = 400;
+                    $data['message'] = 'Invalid id provided.';
                 }
-            } else {
-                $data = [
-                    'msg' => 'Invalid id provided.'
-                ];
             }
+
             return $this->respondWithJson($response, $data, $statusCode);
         }
     }

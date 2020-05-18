@@ -35,13 +35,13 @@ class CreateStageController extends Controller
         $requestData = $request->getParsedBody();
         $data = [
             'success' => false,
-            'message' => 'Error!',
+            'message' => 'Unexpected Error.',
             'data' => []
         ];
         $statusCode = 500;
 
         if ($_SESSION['loggedIn'] === true) {
-            if (isset($requestData['title']) && strlen($requestData['title']) > 0) {
+            if (!empty($requestData['title'])) {
                 $highestOrder = $this->stageModel->getHighestOrderNo();
                 $newStage = new StageEntity($requestData['title'], ++$highestOrder);
                 if ($this->stageModel->createStage($newStage)) {
@@ -55,6 +55,7 @@ class CreateStageController extends Controller
                     $data['message'] = 'Error adding to database';
                 }
             } else {
+                $statusCode = 400;
                 $data['message'] = 'Incorrect data provided';
             }
             return $this->respondWithJson($response, $data, $statusCode);

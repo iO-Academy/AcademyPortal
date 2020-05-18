@@ -2,11 +2,12 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Models\ApplicantModel;
 
-class DeleteApplicantController
+class DeleteApplicantController extends Controller
 {
     private $applicantModel;
 
@@ -36,44 +37,35 @@ class DeleteApplicantController
         if ($_SESSION['loggedIn'] === true) {
             $data = [
                 'success' => false,
-                'msg' => 'Applicant not found.',
+                'message' => 'Applicant not found.',
                 'data' => []
             ];
             $statusCode = 500;
 
             $requestData = $request->getParsedBody();
 
-            if (isset($requestData['id'])) {
-                $validatedRequestData = filter_var($requestData['id'], FILTER_VALIDATE_INT);
-
-                if ($validatedRequestData) {
-                    $applicantData = $this->applicantModel->getApplicantById($validatedRequestData);
-                    if ($applicantData) {
-                        if ($this->applicantModel->deleteApplicant($validatedRequestData)) {
-                            $data = [
-                                'success' => true,
-                                'msg' => 'Applicant has been deleted successfully.',
-                                'data' => []
-                            ];
-                            $statusCode = 200;
-                        }
+            if (isset($requestData['id']) && filter_var($requestData['id'], FILTER_VALIDATE_INT)) {
+                $applicantData = $this->applicantModel->getApplicantById($requestData['id']);
+                if ($applicantData) {
+                    if ($this->applicantModel->deleteApplicant($requestData['id'])) {
+                        $data = [
+                            'success' => true,
+                            'message' => 'Applicant has been deleted successfully.',
+                            'data' => []
+                        ];
+                        $statusCode = 200;
+                    } else {
+                        $data['message'] = 'Unexpected error, could not delete applicant';
                     }
-                } else {
-                    $data = [
-                        'success' => false,
-                        'msg' => 'Invalid id provided.',
-                        'data' => []
-                    ];
                 }
             } else {
                 $data = [
                     'success' => false,
-                    'msg' => 'Invalid id provided.',
+                    'message' => 'Invalid id provided.',
                     'data' => []
                 ];
             }
-            $response->getBody()->write(json_encode($data));
-            return $response->withStatus($statusCode);
+            return $this->respondWithJson($response, $data, $statusCode);
         }
     }
 }

@@ -19,7 +19,7 @@ class AddEventController extends Controller
      *
      * @param EventModel $eventModel
      */
-    public function __construct(EventModel  $eventModel)
+    public function __construct(EventModel $eventModel)
     {
         $this->eventModel = $eventModel;
     }
@@ -29,7 +29,7 @@ class AddEventController extends Controller
         $newEvent = $request->getParsedBody();
         $responseData = [
             'success' => false,
-            'message' => 'There was an Error!',
+            'message' => 'Unexpected Error.',
             'data' => []
         ];
         $statusCode = 400;
@@ -60,10 +60,10 @@ class AddEventController extends Controller
         if (isset($result) && $result) {
             $responseData = [
                 'success' => true,
-                'message' => 'New Event successfully added to the database.',
+                'message' => 'New Event successfully saved.',
                 'data' => []
             ];
-            $statusCode = 201;
+            $statusCode = 200;
         }
         return $this->respondWithJson($response, $responseData, $statusCode);
     }

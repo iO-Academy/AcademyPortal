@@ -29,23 +29,35 @@ class AddHiringPartnerToEventController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $data = $request->getParsedBody();
-        $hiringPartner = $data['hiring_partner_id'];
-        $event = $data['event_id'];
-        $attendees = $data['people_attending'];
+        $responseData = [
+            'success' => false,
+            'message' => 'Unexpected Error.',
+            'data' => []
+        ];
+        $statusCode =  500;
 
-        if (!$this->eventModel->checkLinkHP($hiringPartner, $event)) {
-            $result = $this->eventModel->addHPToEvent($hiringPartner, $event, $attendees);
+        $data = $request->getParsedBody();
+
+        if (empty($data['hiring_partner_id']) || empty($data['event_id']) || empty($data['people_attending'])) {
+            $responseData['message'] = 'Missing data';
+            $statusCode = 400;
         } else {
-            return $this->respondWithJson($response, ['success' => false,
-                'message' => 'Hiring partner already linked.']);
+            $hiringPartner = $data['hiring_partner_id'];
+            $event = $data['event_id'];
+            $attendees = $data['people_attending'];
+
+            if (!$this->eventModel->checkLinkHP($hiringPartner, $event)) {
+                $result = $this->eventModel->addHPToEvent($hiringPartner, $event, $attendees);
+            } else {
+                $responseData['message'] = 'Hiring partner already linked.';
+                $statusCode = 200;
+            }
+            if ($result) {
+                $responseData['success'] = true;
+                $responseData['message'] = 'Hiring Partner linked successfully.';
+                $statusCode = 200;
+            }
         }
-        if ($result) {
-            return $this->respondWithJson($response, ['success' => true,
-                'message' => 'Hiring partner successfully added to event.']);
-        } else {
-            return $this->respondWithJson($response, ['success' => false,
-                'message' => 'Error - please contact administrator'], 500);
-        }
+        return $this->respondWithJson($response, $responseData, $statusCode);
     }
 }

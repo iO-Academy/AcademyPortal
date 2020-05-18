@@ -26,15 +26,22 @@ class CompanyDetailsModalController extends Controller
      * Combine company details and company contact details into a single array and send to modal
      * @param Request $request
      * @param Response $response
-     * @param Array $args contains company ID
+     * @param array $args contains company ID
      */
-    public function __invoke(Request $request, Response $response, Array $args)
+    public function __invoke(Request $request, Response $response, array $args)
     {
-        $id = (int) $args['id'];
-        $companyDetails = $this->model->getDetailsByCompany($id);
-        $contactDetails = $this->model->getContactsByCompany($id);
-        $companyDetailsAndContacts = array_merge($companyDetails, $contactDetails);
-
-        return $this->respondWithJson($response, $companyDetailsAndContacts);
+        try {
+            $id = (int)$args['id'];
+            $companyDetails = $this->model->getDetailsByCompany($id);
+            $contactDetails = $this->model->getContactsByCompany($id);
+            $data['data'] = array_merge($companyDetails, $contactDetails);
+            $data['success'] = true;
+            $data['message'] = 'Company details found.';
+        } catch (\Exception $e) {
+            $data['success'] = false;
+            $data['message'] = $e->getMessage();
+            $data['data'] = [];
+        }
+        return $this->respondWithJson($response, $data);
     }
 }
