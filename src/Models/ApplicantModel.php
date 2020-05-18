@@ -3,6 +3,7 @@
 namespace Portal\Models;
 
 use Portal\Entities\ApplicantEntity;
+use Portal\Interfaces\ApplicantEntityInterface;
 
 class ApplicantModel
 {
@@ -20,7 +21,7 @@ class ApplicantModel
      *
      * @return bool
      */
-    public function insertNewApplicantToDb(ApplicantEntity $applicant)
+    public function insertNewApplicantToDb(ApplicantEntityInterface $applicant)
     {
         $query = $this->db->prepare(
             "INSERT INTO `applicants` (
@@ -156,51 +157,6 @@ class ApplicantModel
         ]);
         $results = $query->fetch();
         return $results;
-    }
-
-    /**
-     * Takes all the data/fields needed to create an applicant.
-     *
-     * @param $applicantName
-     * @param $applicantEmail
-     * @param $applicantPhoneNumber
-     * @param $applicantCohortId
-     * @param $applicantWhyDev
-     * @param $applicantCodeExperience
-     * @param $applicantHearAboutId
-     * @param $applicantEligible
-     * @param $applicantEighteenPlus
-     * @param $applicantFinance
-     * @param $applicantNotes
-     *
-     * @return ApplicantEntity, will then return all the data inside the applicant.
-     */
-    public function createNewApplicant(
-        $applicantName,
-        $applicantEmail,
-        $applicantPhoneNumber,
-        $applicantCohortId,
-        $applicantWhyDev,
-        $applicantCodeExperience,
-        $applicantHearAboutId,
-        $applicantEligible,
-        $applicantEighteenPlus,
-        $applicantFinance,
-        $applicantNotes
-    ) {
-        return new ApplicantEntity(
-            $applicantName,
-            $applicantEmail,
-            $applicantPhoneNumber,
-            $applicantCohortId,
-            $applicantWhyDev,
-            $applicantCodeExperience,
-            $applicantHearAboutId,
-            $applicantEligible,
-            $applicantEighteenPlus,
-            $applicantFinance,
-            $applicantNotes
-        );
     }
 
     /**
