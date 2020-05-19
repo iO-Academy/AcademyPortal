@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.29)
 # Database: academyPortal
-# Generation Time: 2020-05-19 08:32:24 +0000
+# Generation Time: 2020-05-19 11:29:14 +0000
 # ************************************************************
 
 
@@ -293,22 +293,23 @@ CREATE TABLE `options` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `option` varchar(255) DEFAULT NULL,
   `stageId` int(11) DEFAULT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `options` WRITE;
 /*!40000 ALTER TABLE `options` DISABLE KEYS */;
 
-INSERT INTO `options` (`id`, `option`, `stageId`)
+INSERT INTO `options` (`id`, `option`, `stageId`, `deleted`)
 VALUES
-	(1,'application needs more info',1),
-	(2,'application accepted',1),
-	(3,'application waiting on check',1),
-	(4,'passed',2),
-	(5,'failed',2),
-	(6,'scored over 90%',2),
-	(7,'video interview',3),
-	(8,'in-person interview',3);
+	(1,'application needs more info',1,0),
+	(2,'application accepted',1,0),
+	(3,'application waiting on check',1,0),
+	(4,'passed',2,0),
+	(5,'failed',2,0),
+	(6,'scored over 90%',2,0),
+	(7,'video interview',3,0),
+	(8,'in-person interview',3,0);
 
 /*!40000 ALTER TABLE `options` ENABLE KEYS */;
 UNLOCK TABLES;
