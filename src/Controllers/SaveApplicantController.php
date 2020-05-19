@@ -40,7 +40,7 @@ class SaveApplicantController extends Controller
     {
         if ($_SESSION['loggedIn'] === true) {
             $data = ['success' => false, 'msg' => 'Application not saved', 'data' => []];
-            $statusCode = 401;
+            $statusCode = 500;
 
             $newApplicationData = $request->getParsedBody();
 
