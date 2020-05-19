@@ -133,6 +133,30 @@ class StageModel
         }
     }
 
+    public function createOption(string $option, int $stageId) : bool
+    {
+        $query = $this->db->prepare("INSERT INTO `options` (`option`, `stageId`) VALUES (:optionText, :stageId);");
+        $query->bindParam(':optionText', $option);
+        $query->bindParam(':stageId', $stageId);
+        return $query->execute();
+    }
+
+    public function updateOption(string $option, int $optionId) : bool
+    {
+        $query = $this->db->prepare("UPDATE `options` SET `option` = :optionText WHERE `id` = :id");
+        $query->bindParam(':id', $optionId);
+        $query->bindParam(':optionText', $option);
+        return $query->execute();
+    }
+
+    public function deleteOption(int $optionId) : bool
+    {
+        $query = $this->db->prepare("UPDATE `options` SET `deleted` = '1' WHERE `id` = :optionId");
+        $query->bindParam(':optionId', $optionId);
+        return $query->execute();
+    }
+
+
     public function getDB() : \PDO
     {
         return $this->db;
