@@ -63,7 +63,6 @@ function isPostcode(postcode) {
 }
 
 function isPresent(data) {
-    console.log(data);
     if (data) {
         return true;
     }

@@ -26,7 +26,6 @@ document.getElementById('submitApplicant').addEventListener('click', e => {
         makeApiRequest(data);
     } else {
         document.getElementById('generalError').innerHTML = 'This form is invalid, please check all fields';
-        document.querySelector('#generalError').classList.add('alert-danger');
         document.querySelector('#generalError').classList.remove('hidden');
     }
 });
@@ -73,28 +72,16 @@ let makeApiRequest = async (data) => {
             window.location.href = './admin';
         } else if (response.status == 400) {
             document.querySelector('#generalError').innerHTML = "You must fill out all form options.";
+            document.querySelector('#generalError').classList.remove('hidden');
         } else {
             document.querySelector('#generalError').innerHTML = "Something went wrong, please try again later.";
+            document.querySelector('#generalError').classList.remove('hidden');
         }
     });
 }
 
-// let validateFormInputs = (data) => {
-//     let validate = {};
-//
-//     validate.push(isName(data.name) && nameMaxLength(data.name));
-//     validate.push(isEmail(data.email) && varCharMaxLength(data.email));
-//     validate.push(isPhoneNumber(data.phoneNumber));
-//     validate.push(isPresent(data.whyDev) && textAreaMaxLength(data.whyDev));
-//     validate.push(isPresent(data.codeExperience) && textAreaMaxLength(data.codeExperience));
-//     validate.push(textAreaMaxLength(data.notes));
-//
-//     return validate;
-// };
-
 let validateFormInputs = (data) => {
     let validate = {};
-    console.log(typeof data.name, typeof data.whyDev);
 
     validate.name = {validLengthVarChar: varCharMaxLength(data.name), isName: isName(data.name), isPresent: isPresent(data.name)};
     validate.email = {validLengthVarChar: varCharMaxLength(data.email), isEmail: isEmail(data.email), isPresent: isPresent(data.email)};
