@@ -17,15 +17,15 @@
         <h1>New Applicant Registration</h1>
         <form>
             <label for="name">Applicant Name</label>
-            <div id="nameError" class="alert hidden"></div>
+            <div id="nameError" class="alert hidden formItem_alert"></div>
             <input id="name" name="name" class="submitApplicant form-control" type="text" placeholder="name" required>
 
             <label for="email">Applicant Email</label>
-            <div id="emailError" class="alert hidden"></div>
+            <div id="emailError" class="alert hidden formItem_alert"></div>
             <input id="email" name="email" class="submitApplicant form-control" type="email" placeholder="email" required>
 
             <label for="phone">Applicant Phone Number</label>
-            <div id="phoneError" class="alert hidden"></div>
+            <div id="phoneError" class="alert hidden formItem_alert"></div>
             <input id="phone" name="phoneNumber" class="submitApplicant form-control" type="text" placeholder="phone number" required>
 
             <label for="cohorts">When would you like to join us?</label>
@@ -33,11 +33,11 @@
             </select>
 
             <label for="why-developer">Why do you want to become a software developer?</label>
-            <div id="whyDevError" class="alert hidden"></div>
+            <div id="whyDevError" class="alert hidden formItem_alert"></div>
             <textarea id="why-developer" name="whyDev" class="submitApplicant form-control" placeholder="Enter here" required></textarea>
 
             <label for="experience">Please tell us about any relevant coding experience.</label>
-            <div id="codeExperienceError" class="alert hidden"></div>
+            <div id="codeExperienceError" class="alert hidden formItem_alert"></div>
             <textarea id="experience" name="codeExperience" class="submitApplicant form-control" placeholder="Enter here" required></textarea>
 
             <label for="hear-about">How did you hear about Mayden Academy?</label>
@@ -60,11 +60,11 @@
             </div>
 
             <label for="notes">Notes</label>
-            <div id="notesError" class="alert hidden"></div>
+            <div id="notesError" class="alert hidden formItem_alert"></div>
             <textarea id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here" required></textarea>
 
             <input id="submitApplicant" type="submit" class="btn btn-success" />
-            <div id="generalError" class="alert alert-danger hidden"></div>
+            <div id="generalError" class="alert alert-danger hidden formItem_alert"></div>
         </form>
     </div>
 </body>

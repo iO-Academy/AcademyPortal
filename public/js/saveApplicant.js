@@ -4,6 +4,12 @@ document.getElementById('submitApplicant').addEventListener('click', e => {
     let validate = validateFormInputs(data);
     let formIsValid = true;
 
+    document.querySelectorAll('.formItem_alert').forEach(element => {
+        element.classList.remove('alert-danger');
+        element.classList.add('hidden');
+        element.innerHTML = '';
+    });
+
     Object.keys(validate).forEach(formItem => {
         let querySelector = `#${formItem}Error`;
         let formItemValues = validate[formItem];
@@ -15,10 +21,6 @@ document.getElementById('submitApplicant').addEventListener('click', e => {
                 document.querySelector(querySelector).classList.remove('hidden');
                 document.querySelector(querySelector).innerHTML = errorMessage(validationType);
                 formIsValid = false;
-            } else {
-                document.querySelector(querySelector).classList.remove('alert-danger');
-                document.querySelector(querySelector).classList.add('hidden');
-                document.querySelector(querySelector).innerHTML = '';
             }
         })
     });
@@ -26,8 +28,9 @@ document.getElementById('submitApplicant').addEventListener('click', e => {
     if (formIsValid) {
         makeApiRequest(data);
     } else {
-        document.getElementById('generalError').innerHTML = 'This form is invalid, please check all fields';
+        document.getElementById('#generalError').innerHTML = 'This form is invalid, please check all fields';
         document.querySelector('#generalError').classList.remove('hidden');
+        document.querySelector('#generalError').classList.add('alert-danger');
     }
 });
 
@@ -74,9 +77,11 @@ let makeApiRequest = async (data) => {
         } else if (response.status == 400) {
             document.querySelector('#generalError').innerHTML = "You must fill out all form options.";
             document.querySelector('#generalError').classList.remove('hidden');
+            document.querySelector('#generalError').classList.add('alert-danger');
         } else {
             document.querySelector('#generalError').innerHTML = "Something went wrong, please try again later.";
             document.querySelector('#generalError').classList.remove('hidden');
+            document.querySelector('#generalError').classList.add('alert-danger');
         }
     });
 }
