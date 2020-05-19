@@ -1,4 +1,4 @@
-document.querySelector('submitApplicant').addEventListener('click', e => {
+document.querySelector('#submitApplicant').addEventListener('click', e => {
     e.preventDefault();
     let data = getCompletedFormData();
     let validate = validateFormInputs(data);
