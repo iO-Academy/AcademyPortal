@@ -28,12 +28,6 @@ h4 {
 p {
     font-family: Helvetica Neue;
 }
-.errorMsg {
-    color: #761c19;
-    text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-}
 
 .alertUser {
     color: #FF0000
@@ -131,4 +125,9 @@ input[type="submit"] {
     display: table-row;
     padding: 0;
     margin-bottom: 0;
+}
+
+.hidden {
+    display: none;
+    height: 0;
 }

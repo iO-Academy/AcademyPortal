@@ -63,7 +63,12 @@ function isPostcode(postcode) {
 }
 
 function isPresent(data) {
-    return data.length >= 1;
+    console.log(data);
+    if (data) {
+        return true;
+    }
+
+    return false;
 }
 
 function nameMaxLength(name) {
