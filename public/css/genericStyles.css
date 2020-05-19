@@ -132,3 +132,19 @@ input[type="submit"] {
     padding: 0;
     margin-bottom: 0;
 }
+
+
+.optionTableForm{
+    display: none;
+}
+
+
+.optionDeleteSubmit, .optionEditSubmit{
+    float: right;
+    margin-left: 3%;
+    font-family: Courier, sans-serif;
+}
+
+.optionAddForm input[type="submit"]{
+    margin-top: 1%;
+}
