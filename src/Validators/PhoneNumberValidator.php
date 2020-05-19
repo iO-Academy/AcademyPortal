@@ -19,9 +19,7 @@ class PhoneNumberValidator
      */
     public static function validatePhoneNumber(string $phoneNumber)
     {
-        if ($phoneNumber == '') {
-            return null;
-        } elseif (preg_match(self::PATTERN, $phoneNumber)) {
+        if (preg_match(self::PATTERN, $phoneNumber)) {
             return $phoneNumber;
         } else {
             throw new Exception('Invalid phone number');
