@@ -27,7 +27,7 @@ class DisplayApplicantsController extends Controller
     }
 
     /**
-     * Renders applicant data on the front end in displayApplicants.phtml.
+     * Renders applicant data on the front end in applicants.phtml.
      *
      * @param Request $request
      * @param Response $response
@@ -61,6 +61,6 @@ class DisplayApplicantsController extends Controller
             default:
                 $params['data'] = $this->applicantModel->getAllApplicants();
         }
-        return $this->renderer->render($response, 'displayApplicants.phtml', $params);
+        return $this->renderer->render($response, 'applicants.phtml', $params);
     }
 }

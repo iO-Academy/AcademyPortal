@@ -27,8 +27,8 @@ class DisplayHiringPartnerPageController extends Controller
     }
 
     /**
-     * Renders hiring partner company size on the front end in hiringPartnerPage.phtml
-     * Renders hiring partner page on the front end in hiringPartnerPage.phtml
+     * Renders hiring partner company size on the front end in hiringPartners.phtml
+     * Renders hiring partner page on the front end in hiringPartners.phtml
      *
      * @param Request $request
      *
@@ -43,7 +43,7 @@ class DisplayHiringPartnerPageController extends Controller
         if ($_SESSION['loggedIn'] === true) {
             $args['companyName'] = $this->hiringPartnerModel->getCompanyName();
             $args['companySize'] = $this->hiringPartnerModel->getCompanySize();
-            return $this->renderer->render($response, 'hiringPartnerPage.phtml', $args);
+            return $this->renderer->render($response, 'hiringPartners.phtml', $args);
         } else {
             return $response->withHeader('Location', './');
         }

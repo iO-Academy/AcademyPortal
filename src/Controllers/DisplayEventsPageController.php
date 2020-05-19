@@ -39,7 +39,7 @@ class DisplayEventsPageController extends Controller
     {
         if ($_SESSION['loggedIn'] === true) {
             $args['eventCategories'] = $this->eventModel->getEventCategories();
-            return $this->renderer->render($response, 'EventsPage.phtml', $args);
+            return $this->renderer->render($response, 'events.phtml', $args);
         } else {
             return $response->withHeader('Location', './');
         }
