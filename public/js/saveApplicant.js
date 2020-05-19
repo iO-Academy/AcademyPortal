@@ -1,4 +1,4 @@
-document.getElementById('submitApplicant').addEventListener('click', e => {
+document.querySelector('submitApplicant').addEventListener('click', e => {
     e.preventDefault();
     let data = getCompletedFormData();
     let validate = validateFormInputs(data);
@@ -28,7 +28,7 @@ document.getElementById('submitApplicant').addEventListener('click', e => {
     if (formIsValid) {
         makeApiRequest(data);
     } else {
-        document.getElementById('#generalError').innerHTML = 'This form is invalid, please check all fields';
+        document.querySelector('#generalError').innerHTML = 'This form is invalid, please check all fields';
         document.querySelector('#generalError').classList.remove('hidden');
         document.querySelector('#generalError').classList.add('alert-danger');
     }
