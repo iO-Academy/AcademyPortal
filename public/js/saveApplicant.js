@@ -44,22 +44,14 @@ let makeApiRequest = async (data) => {
 }
 
 let validateFormInputs = (data) => {
-    let validate = []
+    let validate = [];
 
-    validate.push(evalLength(data.name))
-    validate.push(evalLength(data.email))
-    validate.push(evalLength(data.phoneNumber))
-    validate.push(evalLength(data.whyDev))
-    validate.push(evalLength(data.codeExperience))
-    validate.push(evalLength(data.hearAboutId))
+    validate.push(isName(data.name) && nameMaxLength(data.name));
+    validate.push(isEmail(data.email) && varCharMaxLength(data.email));
+    validate.push(isPhoneNumber(data.phoneNumber));
+    validate.push(isPresent(data.whyDev) && textAreaMaxLength(data.whyDev));
+    validate.push(isPresent(data.codeExperience) && textAreaMaxLength(data.codeExperience));
+    validate.push(textAreaMaxLength(data.notes));
 
-    return validate.includes(false) ? false : true
-}
-
-function evalLength(data) {
-    if(data.length >= 1 && data.length <= 255){
-        return true
-    } else {
-        return false
-    }
-}
+    return validate.includes(false) ? false : true;
+};
