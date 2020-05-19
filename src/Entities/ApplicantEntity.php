@@ -2,10 +2,12 @@
 
 namespace Portal\Entities;
 
+use Portal\Interfaces\ApplicantEntityInterface;
 use Portal\Validators\EmailValidator;
+use Portal\Validators\PhoneNumberValidator;
 use Portal\Validators\StringValidator;
 
-class ApplicantEntity implements \JsonSerializable
+class ApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
 {
     protected $id;
     protected $name;
@@ -96,6 +98,12 @@ class ApplicantEntity implements \JsonSerializable
         $this->eighteenPlus = $this->eighteenPlus ? 1 : 0;
         $this->finance = $this->finance ? 1 : 0;
         $this->notes = StringValidator::sanitiseString($this->notes);
+        $this->name = StringValidator::validateExistsAndLength($this->name, 255);
+        $this->email = StringValidator::validateExistsAndLength($this->email, 255);
+        $this->codeExperience = StringValidator::validateLength($this->codeExperience, 10000);
+        $this->whyDev = StringValidator::validateExistsAndLength($this->whyDev, 10000);
+        $this->notes = StringValidator::validateLength($this->notes, 10000);
+        $this->phoneNumber = PhoneNumberValidator::validatePhoneNumber($this->phoneNumber);
     }
 
     /**
