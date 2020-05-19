@@ -21,4 +21,10 @@ class PhoneNumberValidatorTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\Exception::class);
         PhoneNumberValidator::validatePhoneNumber('7a86670434as');
     }
+
+    public function testValidatePhoneNumberEmptyFailure()
+    {
+        $this->expectException(\Exception::class);
+        PhoneNumberValidator::validatePhoneNumber('');
+    }
 }
