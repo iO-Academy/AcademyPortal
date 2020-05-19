@@ -21,10 +21,9 @@ document.getElementById('submitApplicant').addEventListener('click', e => {
             }
         })
     });
+
     if (formIsValid) {
-        makeApiRequest(data)
-        document.querySelector('#generalError').classList.remove('alert-danger');
-        document.querySelector('#generalError').classList.add('hidden');
+        makeApiRequest(data);
     } else {
         document.getElementById('generalError').innerHTML = 'This form is invalid, please check all fields';
         document.querySelector('#generalError').classList.add('alert-danger');
@@ -56,7 +55,8 @@ let getCompletedFormData = () => {
             data[formItem.name] = formItem.checked
         }
     });
-    return data
+
+    return data;
 };
 
 let makeApiRequest = async (data) => {
@@ -68,15 +68,15 @@ let makeApiRequest = async (data) => {
         },
         method: 'post',
         body: JSON.stringify(data)
-    })
-        .then(response => response.json())
-        .then((data) => {
-            if (data.success) {
-                window.location.href = './admin';
-            } else {
-                document.getElementById('errorMsg').innerHTML = "Please contact administrator. Or <a href='./admin'>click here</a> to return to admin page"
-            }
-        })
+    }).then(response => {
+        if (response.status == 200) {
+            window.location.href = './admin';
+        } else if (response.status == 400) {
+            document.querySelector('#generalError').innerHTML = "You must fill out all form options.";
+        } else {
+            document.querySelector('#generalError').innerHTML = "Something went wrong, please try again later.";
+        }
+    });
 }
 
 // let validateFormInputs = (data) => {
@@ -98,7 +98,7 @@ let validateFormInputs = (data) => {
 
     validate.name = {validLengthVarChar: varCharMaxLength(data.name), isName: isName(data.name), isPresent: isPresent(data.name)};
     validate.email = {validLengthVarChar: varCharMaxLength(data.email), isEmail: isEmail(data.email), isPresent: isPresent(data.email)};
-    validate.phone = {isPhone: isPhoneNumber(data.phoneNumber), isPresent: isPresent(data.phone)};
+    validate.phone = {isPhone: isPhoneNumber(data.phoneNumber), isPresent: isPresent(data.phoneNumber)};
     validate.whyDev = {validLengthText: textAreaMaxLength(data.whyDev), isPresent: isPresent(data.whyDev)};
     validate.codeExperience = {validLengthText: textAreaMaxLength(data.codeExperience)};
     validate.notes = {validLengthText: textAreaMaxLength(data.notes)};
