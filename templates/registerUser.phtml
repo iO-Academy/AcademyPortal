@@ -1,22 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Register User');
+    ?>
 
     <script src='js/passwordRandom.js' defer></script>
     <script src='js/registerUser.js' defer></script>
-    <link rel="stylesheet" type="text/css" href="./css/genericStyles.css"/>
     <link rel="stylesheet" href="./css/admin.css">
-
-    <title>AcademyPortal | Register User</title>
 </head>
 <body>
-    <div>
-        <a href="./admin" class="custom-button">Return to admin page</a>
-    </div>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
     <h1> Registration Page</h1>
     <div id="message"></div>
     <form id="registerUserForm">
@@ -31,5 +28,6 @@
         <input type="submit" id="newUserSubmit">
         </div>
     </form>
+<?php require 'partials/layout/footer.phtml'; ?>
 </body>
 </html>

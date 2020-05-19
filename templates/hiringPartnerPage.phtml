@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Academy Portal | Hiring Partners</title>
-    <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="./css/genericStyles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Hiring Partners');
+    ?>
+    <link href="css/hiringPartner.css" rel="stylesheet" type="text/css">
     <script defer src="./js/validations.js"></script>
     <script defer src='./js/hiringPartner.js'></script>
     <script defer src='./js/hiringPartnerModal.js'></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Hiring Partners</h1>
-        <a href="./admin" class="btn btn-success">Go back to the Admin Page</a>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
         <h3>Add new hiring partner</h3>
         <form id='add-hiring-partner-form'>
             <label for="company-name">Company Name:</label>
@@ -65,6 +62,6 @@
     <div id='companies'></div>
         <!-- Modal -->
         <?php require('partials/companyDetailsModal.phtml'); ?>
-<!--        <a href="/admin"></a>-->
-</div>
+
+<?php require 'partials/layout/footer.phtml'; ?>
 </body>

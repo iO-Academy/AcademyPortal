@@ -13,6 +13,10 @@ h4 {
     color: #157383;
 }
 
+.container {
+    margin-bottom: 25px;
+}
+
 header {
     overflow: auto;
     margin-top: 20px;
@@ -40,117 +44,10 @@ footer {
     border-top: 1px solid #333333;
     padding-top: 15px;
     margin-bottom: 30px;
-}
-
-.errorMsg {
-    color: #761c19;
-    text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-}
-
-.alertUser {
-    color: #FF0000
+    margin-top: 15px;
 }
 
 input[type="submit"] {
     margin-top: 30px;
 }
 
-/*Search event button on display events page, margin pushes it out of line with search box*/
-#submit-search-event {
-    margin-top: 0;
-}
-
-.company-name {
-    margin-top: 30px;
-    margin-bottom: 5px;
-    border-top: 1px solid #CCCCCC;
-}
-
-.event-name {
-    margin-top: 30px;
-    margin-bottom: 5px;
-    border-top: 1px solid #CCCCCC
-}
-
-.more-info {
-    margin: 10px 0;
-}
-
-.event-name p {
-    overflow-wrap: break-word;
-}
-
-.container {
-    margin-bottom: 25px;
-}
-
-.arrowBtn {
-    border: none;
-}
-
-.active {
-    color: #d64405;
-}
-
-#applicantsPageHomeBtn {
-    margin: 20px;
-}
-
-#stagesPageHomeBtn {
-    margin-top: 10px;
-}
-
-.stagesInstruction {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: 2rem;
-}
-
-.applicantStages td {
-    padding: 4px 8px;
-}
-
-.applicantStages tr {
-    cursor: pointer;
-}
-
-.applicantStages input[type="submit"] {
-    margin-top: 0;
-}
-
-.stagesTableForm {
-    display: none;
-}
-
-#editResponse {
-    margin-bottom: 10px;
-}
-
-#createNewResponse {
-    margin-top: 10px;
-}
-
-#deleteResponse {
-    color: #FF0000;
-}
-
-.list-group-item {
-    position: unset;
-    display: table-row;
-    padding: 0;
-    margin-bottom: 0;
-}
-
-.hiring-partner span {
-    font-weight: bold;
-}
-
-.hiring-partner form {
-    display: inline-block;
-}
-
-.hiring-partner p {
-    display: inline-block;
-}

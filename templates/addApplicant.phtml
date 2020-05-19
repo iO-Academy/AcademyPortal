@@ -2,17 +2,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Academy Portal | New Applicant</title>
-    <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="./css/genericStyles.css">
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Add Applicant');
+    ?>
+    <link href="css/applicants.css" rel="stylesheet" type="text/css">
     <script src="./js/addApplicant.js" defer></script>
     <script src="./js/saveApplicant.js" defer></script>
 </head>
 <body>
-    <div class="container">
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
         <h1>New Applicant Registration</h1>
         <form>
             <label for="name">Applicant Name</label>
@@ -59,6 +60,6 @@
 
             <input id="submitApplicant" type="submit" class="btn btn-success" />
         </form>
-    </div>
+<?php require 'partials/layout/footer.phtml'; ?>
 </body>
 </html>
