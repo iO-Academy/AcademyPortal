@@ -3,10 +3,11 @@ document.getElementById('submitApplicant').addEventListener('click', e => {
     let data = getCompletedFormData();
     let validate = validateFormInputs(data);
     let formIsValid = true;
+
     Object.keys(validate).forEach(formItem => {
-        let itemKey = formItem;
-        let querySelector = `#${itemKey}Error`;
+        let querySelector = `#${formItem}Error`;
         let formItemValues = validate[formItem];
+
         Object.keys(formItemValues).forEach(validationType => {
             let isValid = formItemValues[validationType];
             if (!isValid) {
@@ -33,13 +34,13 @@ document.getElementById('submitApplicant').addEventListener('click', e => {
 let errorMessage = (validationType) => {
     let htmlString = '';
     if (validationType === 'isPresent') {
-        htmlString += `This is a required field, please fill in`
+        htmlString += `This is a required field, please fill in`;
     } else if (validationType === 'validLengthVarChar') {
-        htmlString += `This field must be less than 255 characters`
+        htmlString += `This field must be less than 255 characters`;
     } else if (validationType === 'validLengthText') {
-        htmlString += `This field must be less than 10000 characters`
+        htmlString += `This field must be less than 10000 characters`;
     } else {
-        htmlString += `This field is invalid`
+        htmlString += `This field is invalid`;
     }
 
     return htmlString;
@@ -51,7 +52,7 @@ let getCompletedFormData = () => {
     formData.forEach(formItem => {
         data[formItem.name] = formItem.value;
         if (formItem.type == 'checkbox') {
-            data[formItem.name] = formItem.checked
+            data[formItem.name] = formItem.checked;
         }
     });
 
