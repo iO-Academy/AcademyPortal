@@ -101,7 +101,7 @@ class ApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
         $this->name = StringValidator::validateExistsAndLength($this->name, 255);
         $this->email = StringValidator::validateExistsAndLength($this->email, 255);
         $this->codeExperience = StringValidator::validateLength($this->codeExperience, 10000);
-        $this->whyDev = StringValidator::validateLength($this->whyDev, 10000);
+        $this->whyDev = StringValidator::validateExistsAndLength($this->whyDev, 10000);
         $this->notes = StringValidator::validateLength($this->notes, 10000);
         $this->phoneNumber = PhoneNumberValidator::validatePhoneNumber($this->phoneNumber);
     }
