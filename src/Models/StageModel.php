@@ -65,16 +65,19 @@ class StageModel
     public function getAllStages()
     {
         $query = $this->db->prepare(
-            'SELECT `stages`.`id`, `stages`.`title`, `stages`.`order`, `stages`.`deleted`, `options`.`option` 
-                FROM `stages` 
-                    INNER JOIN `options` 
-                        ON `stages`.`id` = `options`.`stageId` 
-                            WHERE `deleted` = 0 
-                                ORDER BY `order`;'
+            'SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `deleted` = 0 ORDER BY `order`;'
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
         $query->execute();
-        return $query->fetchAll();
+        $stages = $query->fetchAll();
+        
+        $query = $this->db->prepare(
+            'SELECT `id`, `option`, `stageId` FROM `options`;'
+        );
+        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\OptionEntity');
+        $query->execute();
+        $options = $query->fetchAll();
+
     }
 
     /** Sets the 'deleted' flag to '1' and 'order' value to '0' for a record with a given id.

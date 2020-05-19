@@ -4,14 +4,13 @@ namespace Portal\Entities;
 
 use Portal\Validators\StringValidator;
 
-class StageEntity implements \JsonSerializable
+class OptionsEntity implements \JsonSerializable
 {
     protected $id;
-    protected $title;
-    protected $order;
+    protected $option;
+    protected $stageId;
     protected $deleted;
-    protected $options;
-
+    
     public function __construct($title = null, $order = null)
     {
         $this->title = ($this->title ?? $title);
