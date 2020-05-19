@@ -10,6 +10,7 @@ class StageEntity implements \JsonSerializable
     protected $title;
     protected $order;
     protected $deleted;
+    protected $options;
 
     public function __construct($title = null, $order = null)
     {
@@ -91,5 +92,15 @@ class StageEntity implements \JsonSerializable
     public function getStageDeleted() : int
     {
         return $this->deleted;
+    }
+
+    public function setOptions(Array $options)
+    {
+        $this->options = $options;
+    }
+
+    public function getOptions():Array
+    {
+        return $this->options;
     }
 }
