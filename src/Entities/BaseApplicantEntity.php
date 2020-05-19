@@ -56,5 +56,4 @@ class BaseApplicantEntity implements BaseApplicantEntityInterface
     {
         return date("F, Y", strtotime($this->cohortDate));
     }
-
 }
