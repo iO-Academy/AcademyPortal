@@ -3,7 +3,6 @@
 
 namespace Portal\Factories;
 
-
 use Portal\Controllers\EditApplicantController;
 use Psr\Container\ContainerInterface;
 

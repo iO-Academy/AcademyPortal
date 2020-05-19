@@ -3,14 +3,13 @@
 
 namespace Portal\Controllers;
 
-
 use Portal\Abstracts\Controller;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 class EditApplicantController extends Controller
 {
- private $applicantModel;
+    private $applicantModel;
 
     /**
      * EditApplicantController constructor.
@@ -26,5 +25,4 @@ class EditApplicantController extends Controller
         var_dump('success'); // this is a temporary thing to check that it works
         return $response;
     }
-
 }
