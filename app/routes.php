@@ -9,10 +9,10 @@ return function (App $app) {
     $app->get('/admin', 'AdminController');
     $app->get('/register', 'RegisterController');
     $app->get('/addapplicant', 'addApplicantController');
-    $app->get('/displayApplicants', 'DisplayApplicantsController');
-    $app->get('/displayHiringPartnerPage', 'DisplayHiringPartnerPageController');
-    $app->get('/displayEventsPage', 'DisplayEventsPageController');
-    $app->get('/displayStages', 'DisplayStagesController');
+    $app->get('/applicants', 'DisplayApplicantsController');
+    $app->get('/hiringPartners', 'DisplayHiringPartnerPageController');
+    $app->get('/events', 'DisplayEventsPageController');
+    $app->get('/editStages', 'DisplayStagesController');
 
     //API
     $app->get('/api/getApplicant/{id}', 'GetApplicantController');
