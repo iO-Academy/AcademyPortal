@@ -114,6 +114,10 @@ input[type="submit"] {
     display: none;
 }
 
+.disabled {
+    pointer-events: none;
+}
+
 #editResponse {
     margin-bottom: 10px;
 }
