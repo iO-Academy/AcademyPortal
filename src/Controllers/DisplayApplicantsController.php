@@ -41,26 +41,8 @@ class DisplayApplicantsController extends Controller
         $sortValue = $request->getQueryParams()['sort'] ?? '';
         $params['sort'] = $sortValue;
 
-        switch ($sortValue) {
-            case 'dateAsc':
-                $params['data'] = $this->applicantModel->sortApplicants('dateAsc');
-                break;
+        $params['data'] = $this->applicantModel->getAllApplicants($params['sort']);
 
-            case 'dateDesc':
-                $params['data'] = $this->applicantModel->sortApplicants('dateDesc');
-                break;
-
-            case 'cohortAsc':
-                $params['data'] = $this->applicantModel->sortApplicants('cohortAsc');
-                break;
-
-            case 'cohortDesc':
-                $params['data'] = $this->applicantModel->sortApplicants('cohortDesc');
-                break;
-
-            default:
-                $params['data'] = $this->applicantModel->getAllApplicants();
-        }
         return $this->renderer->render($response, 'displayApplicants.phtml', $params);
     }
 }

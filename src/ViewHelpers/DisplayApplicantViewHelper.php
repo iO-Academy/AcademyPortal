@@ -2,7 +2,7 @@
 
 namespace Portal\ViewHelpers;
 
-use \Portal\Entities\ApplicantEntity;
+use Portal\Interfaces\BaseApplicantEntityInterface;
 
 class DisplayApplicantViewHelper
 {
@@ -17,7 +17,7 @@ class DisplayApplicantViewHelper
     {
         $result = '';
         foreach ($applicants as $applicant) {
-            if ($applicant instanceof ApplicantEntity) {
+            if ($applicant instanceof BaseApplicantEntityInterface) {
                 $result .= '<tr>
                         <td><a data-id ="'. $applicant->getId().'" type="button"  class="myBtn">'
                             . $applicant->getName() .'</a></td>
