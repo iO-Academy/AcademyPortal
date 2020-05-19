@@ -133,6 +133,12 @@ class StageModel
         }
     }
 
+    /**
+     * Creates a new option in the options table.
+     * @param string $option
+     * @param int $stageId
+     * @return bool
+     */
     public function createOption(string $option, int $stageId) : bool
     {
         $query = $this->db->prepare("INSERT INTO `options` (`option`, `stageId`) VALUES (:optionText, :stageId);");
@@ -141,6 +147,12 @@ class StageModel
         return $query->execute();
     }
 
+    /**
+     * Updates the 'option' value of an entry in the options table with a given id.
+     * @param string $option
+     * @param int $optionId
+     * @return bool
+     */
     public function updateOption(string $option, int $optionId) : bool
     {
         $query = $this->db->prepare("UPDATE `options` SET `option` = :optionText WHERE `id` = :id");
@@ -149,6 +161,11 @@ class StageModel
         return $query->execute();
     }
 
+    /**
+     * Deletes (soft delete) the 'option' value of an entry in the options table with a given id.
+     * @param int $optionId
+     * @return bool
+     */
     public function deleteOption(int $optionId) : bool
     {
         $query = $this->db->prepare("UPDATE `options` SET `deleted` = '1' WHERE `id` = :optionId");

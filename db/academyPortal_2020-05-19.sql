@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.01 (MySQL 5.7.29)
+# Host: 127.0.0.1 (MySQL 5.7.29)
 # Database: academyPortal
-# Generation Time: 2020-05-19 10:42:50 +0000
+# Generation Time: 2020-05-19 11:29:14 +0000
 # ************************************************************
 
 
