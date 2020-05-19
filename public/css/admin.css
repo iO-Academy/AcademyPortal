@@ -1,15 +1,28 @@
-* {
-    font-family: courier-new;
-}
-
 .custom-button {
     text-decoration: none;
     border: solid;
-    padding: 5px 30px;
+    padding: 25px;
     border-radius: 5px;
+    display: block;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-.error{
+.custom-button:hover {
+    text-decoration: none;
+    background: #dddddd;
+}
+
+.custom-button[href="#"] {
+    color: #dddddd;
+    cursor: default;
+}
+
+.custom-button[href="#"]:hover {
+    background: none;
+}
+
+.error {
     background-color: #ffc0cb;
     width:200px;
 }

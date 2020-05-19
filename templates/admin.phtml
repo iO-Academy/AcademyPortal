@@ -1,21 +1,57 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>AcademyPortal | Admin</title>
-        <link rel="stylesheet" type="text/css" href="./css/genericStyles.css"/>
+        <?php
+        require 'partials/layout/head.phtml';
+        echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Admin Panel');
+        ?>
         <link rel="stylesheet" href="./css/admin.css">
     </head>
     <body>
-        <h1> Admin Page</h1>
-        <a href="./register" class="custom-button">Add User</a>
-        <a href="./addapplicant" class="custom-button">Register Applicant</a>
-        <a href="./displayApplicants" class="custom-button">Display Applicants</a>
-        <a href="./displayHiringPartnerPage" class="custom-button">Hiring Partners</a>
-        <a href="./displayEventsPage" class="custom-button">Events</a>
-        <a href="./displayStages" class="custom-button">Applicant Stages</a>
+        <?php require 'partials/layout/header.phtml'; ?>
+
+            <main>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                        <a href="./displayApplicants" class="custom-button">Applicants</a>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                        <a href="./displayEventsPage" class="custom-button">Events</a>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                        <a href="./displayHiringPartnerPage" class="custom-button">Hiring Partners</a>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                        <a href="./addapplicant" class="custom-button">New Applicant</a>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                        <a href="#" class="custom-button">New Event</a>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                        <a href="#" class="custom-button">New Hiring Partner</a>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                        <a href="./displayStages" class="custom-button">Edit Applicant Stages</a>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                        <a href="#" class="custom-button">Past Events</a>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6 col-lg-4">
+                        <a href="#" class="custom-button">New Hiring Partner Contact</a>
+                    </div>
+
+                </div>
+
+            </main>
+
+        <?php require 'partials/layout/footer.phtml'; ?>
     </body>
 </html>
