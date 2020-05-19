@@ -65,8 +65,12 @@ class StageModel
     public function getAllStages()
     {
         $query = $this->db->prepare(
-            'SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `deleted` = 0 ORDER BY `order` INNER JOIN `options` 
-            ON `stages`.`stageId` = `options`.`optionsId`;'
+            'SELECT `stages`.`id`, `stages`.`title`, `stages`.`order`, `stages`.`deleted`, `options`.`option` 
+                FROM `stages` 
+                    INNER JOIN `options` 
+                        ON `stages`.`id` = `options`.`stageId` 
+                            WHERE `deleted` = 0 
+                                ORDER BY `order`;'
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
         $query->execute();
@@ -95,7 +99,13 @@ class StageModel
      */
     public function getStageById(int $id) : StageEntity
     {
-        $query = $this->db->prepare('SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `id`=:id');
+        $query = $this->db->prepare(
+            'SELECT `stages`.`id`, `stages`.`title`, `stages`.`order`, `stages`.`deleted`, `options`.`option` 
+                FROM `stages` 
+                    INNER JOIN `options` 
+                        ON `stages`.`id` = `options`.`stageId` 
+                            WHERE `stages`.`id`=:id;
+        ');
 
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
         $query->bindParam(':id', $id);
