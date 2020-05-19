@@ -8,6 +8,8 @@ use Portal\Models\StageModel;
 class EditStageOptionController extends Controller
 {
     private $stageModel;
+    private $optionId;
+    private $option;
 
     public function __construct(StageModel $stageModel)
     {
@@ -16,5 +18,13 @@ class EditStageOptionController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args)
     {
+        $formOption = $request->getParsedBody();
+
+        $this->optionId = $formOption[optionId];
+        $this->option = $formOption[option];
+
+        $this->stageModel->editOption($this->optionId, $this->option);
+        
+        return $response->withHeader('location', '/displayStages');
     }
 }
