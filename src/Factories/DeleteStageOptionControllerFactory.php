@@ -15,4 +15,3 @@ class DeleteStageOptionControllerFactory
         return new DeleteStageOptionController($model);
     }
 }
-

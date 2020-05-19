@@ -14,7 +14,7 @@ class DeleteStageOptionController extends Controller
         $this->stageModel = $stageModel;        
     }
 
-    public function __invoke()
+    public function __invoke(Request $request, Response $response, array $args)
     {
 
     }

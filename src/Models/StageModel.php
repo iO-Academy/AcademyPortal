@@ -51,7 +51,7 @@ class StageModel
      */
     public function createStage(StageEntity $stageEntity) : bool
     {
-        $query = $this->db->prepare("INSERT INTO `stages` (`title`, `order`) VALUES (:title, :order);");
+        $query = $this->db->prepare("INSERT INTO `stages` (`title`, `order`) VALUES (:title, :order); ");
         $query->bindParam(':title', $stageEntity->getStageTitle());
         $query->bindParam(':order', $stageEntity->getStageOrder());
         return $query->execute();
@@ -65,7 +65,8 @@ class StageModel
     public function getAllStages()
     {
         $query = $this->db->prepare(
-            'SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `deleted` = 0 ORDER BY `order`;'
+            'SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `deleted` = 0 ORDER BY `order`; INNER JOIN `othertablename` 
+            ON `tablename`.`fieldname` = `othertablename`.`otherfieldname`;'
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
         $query->execute();
