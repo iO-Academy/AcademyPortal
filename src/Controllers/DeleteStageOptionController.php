@@ -8,6 +8,7 @@ use Portal\Models\StageModel;
 class DeleteStageOptionController extends Controller
 {
     private $stageModel;
+    private $optionId;
 
     public function __construct(StageModel $stageModel)
     {
@@ -16,5 +17,12 @@ class DeleteStageOptionController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args)
     {
+        $formOption = $request->getParsedBody();
+
+        $this->optionId = $formOption[optionId];
+
+        $this->stageModel->deleteOption($this->optionId);
+        
+        return $response->withHeader('location', '/displayStages');
     }
 }

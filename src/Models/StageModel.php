@@ -81,7 +81,7 @@ class StageModel
         foreach ($stages as $stage) {
             $stageOptions = [];
 
-            foreach($options as $option){
+            foreach ($options as $option) {
                 if ($stage->id == $option->stageId) {
                     $stageOptions[] = $option;
                 }

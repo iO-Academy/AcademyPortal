@@ -94,7 +94,7 @@ class StageEntity implements \JsonSerializable
         return $this->deleted;
     }
 
-    public function setOptions(Array $options) 
+    public function setOptions(Array $options)
     {
         $this->options = $options;
     }
