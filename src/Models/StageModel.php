@@ -65,7 +65,7 @@ class StageModel
     public function getAllStages()
     {
         $query = $this->db->prepare(
-            'SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `deleted` = 0 ORDER BY `order`; INNER JOIN `options` 
+            'SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `deleted` = 0 ORDER BY `order` INNER JOIN `options` 
             ON `stages`.`stageId` = `options`.`optionsId`;'
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
