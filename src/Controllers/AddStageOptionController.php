@@ -5,7 +5,7 @@ namespace Portal\Controllers;
 use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
 
-class AddStageOptionController extends Controller
+class AddStageOptionController
 {
     private $stageModel;
     private $options;
@@ -23,10 +23,6 @@ class AddStageOptionController extends Controller
         foreach ($formOptions as $option) {
             $this->model->addOption($option);
         }
-
-
-    
-        $this->model->addOptions($this->options);
         
         return $response->withHeader('location', '/displayStages');
     }

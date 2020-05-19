@@ -5,7 +5,7 @@ namespace Portal\Controllers;
 use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
 
-class DeleteStageOptionController extends Controller
+class DeleteStageOptionController
 {
     private $stageModel;
     private $optionId;
