@@ -36,7 +36,7 @@ class SaveApplicantController extends Controller
      * @return Response, will return the data from successfulRegister and the statusCode, via Json.
      * @throws Exception
      */
-    public function __invoke(Request $request, Response $response, Array $args)
+    public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
             $data = ['success' => false, 'msg' => 'Application not saved', 'data' => []];
