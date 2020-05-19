@@ -11,13 +11,11 @@ class OptionsEntity implements \JsonSerializable
     protected $stageId;
     protected $deleted;
     
-    public function __construct($title = null, $order = null)
+    public function __construct($option = null, $stageId = null)
     {
-        $this->title = ($this->title ?? $title);
-        $this->order = ($this->order ?? $order);
+        $this->option = ($this->option ?? $option);
+        $this->stageId = ($this->stageId ?? $stageId);
         $this->deleted = 0;
-
-        $this->sanitiseData();
     }
 
     /**
@@ -27,30 +25,11 @@ class OptionsEntity implements \JsonSerializable
      */
     public function jsonSerialize()
     {
-
         return [
             'id' => $this->id,
-            'title' => $this->title,
-            'order' => $this->order
+            'option' => $this->option,
+            'stageId' => $this->stageId
         ];
-    }
-
-    /**
-     * Will sanitise all the fields for a stage.
-     */
-    private function sanitiseData()
-    {
-        $this->id = (int) $this->id;
-        $this->title = StringValidator::sanitiseString($this->title);
-
-        try {
-            $this->title = StringValidator::validateLength($this->title, 255);
-        } catch (\Exception $exception) {
-            $this->title = substr($this->title, 0, 254);
-        }
-
-        $this->order = (int) $this->order;
-        $this->deleted = (int) $this->deleted;
     }
 
     /**
@@ -58,7 +37,7 @@ class OptionsEntity implements \JsonSerializable
      *
      * @return mixed
      */
-    public function getStageId()
+    public function getOptionId()
     {
         return $this->id;
     }
@@ -68,9 +47,9 @@ class OptionsEntity implements \JsonSerializable
      *
      * @return string, returns the stage title field.
      */
-    public function getStageTitle(): string
+    public function getOptionTitle(): string
     {
-        return $this->title;
+        return $this->option;
     }
 
     /**
@@ -78,9 +57,9 @@ class OptionsEntity implements \JsonSerializable
      *
      * @return int, returns the stage order field.
      */
-    public function getStageOrder(): int
+    public function getStageId(): int
     {
-        return $this->order;
+        return $this->stageId;
     }
 
     /**
@@ -88,18 +67,8 @@ class OptionsEntity implements \JsonSerializable
      *
      * @return string
      */
-    public function getStageDeleted() : int
+    public function getOptionDeleted() : int
     {
         return $this->deleted;
-    }
-
-    public function setOptions(Array $options) 
-    {
-        $this->options = $options;
-    }
-
-    public function getOptions():Array
-    {
-        return $this->options;
     }
 }
