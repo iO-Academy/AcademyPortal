@@ -78,6 +78,17 @@ class StageModel
         $query->execute();
         $options = $query->fetchAll();
 
+        foreach ($stages as $stage) {
+            $stageOptions = [];
+
+            foreach($options as $option){
+                if ($stage->id == $option->stageId) {
+                    $stageOptions[] = $option;
+                }
+            }
+            $stage->setOptions($stageOptions);
+        }
+        return $stages;
     }
 
     /** Sets the 'deleted' flag to '1' and 'order' value to '0' for a record with a given id.
