@@ -70,6 +70,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['AddStageOptionController'] =DI\factory('\Portal\Factories\AddStageOptionController');
     $container['EditStageOptionController'] =DI\factory('\Portal\Factories\EditStageOptionController');
     $container['DeleteStageOptionController'] =DI\factory('\Portal\Factories\DeleteStageOptionController');
+    $container['DeleteAllStageOptionsController'] =DI\factory('\Portal\Factories\DeleteAllStageOptionsController');
 
     // Models
     $container['UserModel'] = DI\factory('\Portal\Factories\UserModelFactory');

@@ -23,7 +23,7 @@ class OptionsEntity implements \JsonSerializable
      *
      * @return array|mixed
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,
@@ -33,19 +33,19 @@ class OptionsEntity implements \JsonSerializable
     }
 
     /**
-     *  Get stage id
+     *  Get option id
      *
-     * @return mixed
+     * @return int
      */
-    public function getOptionId()
+    public function getOptionId(): int
     {
         return $this->id;
     }
 
     /**
-     * Get's stage title.
+     * Gets option title.
      *
-     * @return string, returns the stage title field.
+     * @return string, returns the option title field.
      */
     public function getOptionTitle(): string
     {
@@ -53,9 +53,9 @@ class OptionsEntity implements \JsonSerializable
     }
 
     /**
-     * Get's stage order.
+     * Gets stage Id.
      *
-     * @return int, returns the stage order field.
+     * @return int, returns the stage Id field.
      */
     public function getStageId(): int
     {
@@ -63,9 +63,9 @@ class OptionsEntity implements \JsonSerializable
     }
 
     /**
-     * Get stage deleted
+     * Gets option deleted
      *
-     * @return string
+     * @return int
      */
     public function getOptionDeleted() : int
     {

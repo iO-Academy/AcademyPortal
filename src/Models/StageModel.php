@@ -74,15 +74,14 @@ class StageModel
         $query = $this->db->prepare(
             'SELECT `id`, `option`, `stageId` FROM `options`;'
         );
-        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\OptionEntity');
+        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\OptionsEntity');
         $query->execute();
         $options = $query->fetchAll();
 
         foreach ($stages as $stage) {
             $stageOptions = [];
-
             foreach ($options as $option) {
-                if ($stage->id == $option->stageId) {
+                if ($stage->getStageId() == $option->getStageId()) {
                     $stageOptions[] = $option;
                 }
             }
@@ -189,6 +188,18 @@ class StageModel
     {
         $query = $this->db->prepare("UPDATE `options` SET `deleted` = '1' WHERE `id` = :optionId");
         $query->bindParam(':optionId', $optionId);
+        return $query->execute();
+    }
+
+    /**
+     * Deletes (soft delete) all the 'options' of a stage with a given id.
+     * @param int $stageId
+     * @return bool
+     */
+    public function deleteAllOptions(int $stageId) : bool
+    {
+        $query = $this->db->prepare("UPDATE `options` SET `deleted` = '1' WHERE `stageId` = :stageId");
+        $query->bindParam(':stageId', $stageId);
         return $query->execute();
     }
 

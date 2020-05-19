@@ -5,7 +5,7 @@ namespace Portal\Factories;
 class DeleteStageOptionControllerFactory
 {
     /**
-     * invoke() method for creating new EditStageOptionControllers from the DIC
+     * invoke() method for creating new DeleteStageOptionControllers from the DIC
      * @param ContainerInterface $container
      * @return DeleteStageOptionController
      */
