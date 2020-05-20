@@ -6,7 +6,6 @@ use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Portal\Entities\OptionsEntity;
 
 class DeleteStageOptionController extends Controller
 {
@@ -45,7 +44,7 @@ class DeleteStageOptionController extends Controller
 
             try {
                 $formOption = $request->getParsedBody();
-                $this->optionId = $formOption[optionId];
+                $this->optionId = (int) $formOption['optionId'];
 
                 $this->stageModel->deleteOption($this->optionId);
                 $data = [
@@ -54,7 +53,6 @@ class DeleteStageOptionController extends Controller
                     'data' => ''
                 ];
                 $statusCode = 200;
-
                 return $this->respondWithJson($response, $data, $statusCode);
             } catch (\Exception $e) {
                 $data['msg'] = $e->getMessage();
