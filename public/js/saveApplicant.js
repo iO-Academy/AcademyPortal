@@ -1,7 +1,7 @@
 document.querySelector('#submitApplicant').addEventListener('click', e => {
     e.preventDefault();
-    let data = getCompletedFormData();
-    let validate = validateFormInputs(data);
+    const data = getCompletedFormData();
+    const validate = validateFormInputs(data);
     let formIsValid = true;
 
     document.querySelectorAll('.formItem_alert').forEach(element => {
@@ -11,15 +11,15 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
     });
 
     Object.keys(validate).forEach(formItem => {
-        let querySelector = `#${formItem}Error`;
+        const querySelector = document.querySelector(`#${formItem}Error`);
         let formItemValues = validate[formItem];
 
         Object.keys(formItemValues).forEach(validationType => {
             let isValid = formItemValues[validationType];
             if (!isValid) {
-                document.querySelector(querySelector).classList.add('alert-danger');
-                document.querySelector(querySelector).classList.remove('hidden');
-                document.querySelector(querySelector).innerHTML = errorMessage(validationType);
+                querySelector.classList.add('alert-danger');
+                querySelector.classList.remove('hidden');
+                querySelector.innerHTML = errorMessage(validationType);
                 formIsValid = false;
             }
         })
@@ -36,6 +36,7 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
 
 let errorMessage = (validationType) => {
     let htmlString = '';
+
     if (validationType === 'isPresent') {
         htmlString += `This is a required field, please fill in`;
     } else if (validationType === 'validLengthVarChar') {
@@ -50,8 +51,9 @@ let errorMessage = (validationType) => {
 };
 
 let getCompletedFormData = () => {
-    let formData = document.querySelectorAll(".submitApplicant");
+    const formData = document.querySelectorAll(".submitApplicant");
     let data = {};
+
     formData.forEach(formItem => {
         data[formItem.name] = formItem.value;
         if (formItem.type == 'checkbox') {
@@ -72,14 +74,14 @@ let makeApiRequest = async (data) => {
         method: 'post',
         body: JSON.stringify(data)
     }).then(response => {
-        let generalErrorMessage = document.querySelector('#generalError');
+        const generalErrorMessage = document.querySelector('#generalError');
 
         if (response.status === 200) {
             window.location.href = './admin';
         } else if (response.status === 400) {
             generalErrorMessage.innerHTML = "You must fill out all form options.";
         } else {
-            generalErrorMessage = "Something went wrong, please try again later.";
+            generalErrorMessage.innerHTML = "Something went wrong, please try again later.";
         }
         generalErrorMessage.classList.remove('hidden');
         generalErrorMessage.classList.add('alert-danger');
@@ -89,12 +91,31 @@ let makeApiRequest = async (data) => {
 let validateFormInputs = (data) => {
     let validate = {};
 
-    validate.name = {validLengthVarChar: varCharMaxLength(data.name), isName: isName(data.name), isPresent: isPresent(data.name)};
-    validate.email = {validLengthVarChar: varCharMaxLength(data.email), isEmail: isEmail(data.email), isPresent: isPresent(data.email)};
-    validate.phone = {isPhone: isPhoneNumber(data.phoneNumber), isPresent: isPresent(data.phoneNumber)};
-    validate.whyDev = {validLengthText: textAreaMaxLength(data.whyDev), isPresent: isPresent(data.whyDev)};
-    validate.codeExperience = {validLengthText: textAreaMaxLength(data.codeExperience)};
-    validate.notes = {validLengthText: textAreaMaxLength(data.notes)};
+    validate.name = {
+        validLengthVarChar: varCharMaxLength(data.name),
+        isName: isName(data.name),
+        isPresent: isPresent(data.name)
+    };
+    validate.email = {
+        validLengthVarChar: varCharMaxLength(data.email),
+        isEmail: isEmail(data.email),
+        isPresent: isPresent(data.email)
+    };
+    validate.phone = {
+        isPhone: isPhoneNumber(data.phoneNumber),
+        isPresent: isPresent(data.phoneNumber)
+    };
+    validate.whyDev = {
+        validLengthText: textAreaMaxLength(data.whyDev),
+        isPresent: isPresent(data.whyDev)
+    };
+    validate.codeExperience = {
+        validLengthText: textAreaMaxLength(data.codeExperience)
+    };
+    validate.notes = {
+        validLengthText: textAreaMaxLength(data.notes)
+    };
 
+    console.log(validate.name);
     return validate;
 };
