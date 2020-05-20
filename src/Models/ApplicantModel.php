@@ -2,8 +2,6 @@
 
 namespace Portal\Models;
 
-use Portal\Entities\ApplicantEntity;
-use Portal\Entities\BaseApplicantEntity;
 use Portal\Interfaces\ApplicantEntityInterface;
 
 class ApplicantModel
@@ -74,7 +72,7 @@ class ApplicantModel
      * @param string $sortingQuery
      * @return array $results is the data retrieved.
      */
-    public function getAllApplicants(string $sortingQuery) //eg `dateTimeAdded`DESC
+    public function getAllApplicants(string $sortingQuery)
     {
         $stmt = 'SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
                       AS \'cohortDate\'

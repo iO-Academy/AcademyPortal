@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.29)
 # Database: academyPortal
-# Generation Time: 2020-05-20 08:39:52 +0000
+# Generation Time: 2020-05-20 08:44:40 +0000
 # ************************************************************
 
 
@@ -55,21 +55,7 @@ VALUES
 	(6,'Luke Haney','wubeqyko@mailinator.com','+942-61-9779862',3,'Nemo id qui aspernatur possimus dolor adipisicing aut est sed minim','Consequatur quia voluptate delectus impedit similique',6,'0','0','0','Non sed modi ab culpa sed quia tempore debitis dolor','2018-11-28 14:52:20',0),
 	(7,'Curran Patel','pudapaceje@mailinator.net','+628-48-1465496',4,'Non voluptas eligendi assumenda et itaque cupidatat ut tempor','Et aliqua Quia sit soluta enim nesciunt vitae consequatur Aut repellendus Soluta magni',2,'1','0','0','Quos fugiat qui et enim eum tempor est modi','2018-11-28 22:53:05',0),
 	(8,'Katelyn Parsons','poipoi@qwerty.com','+567-54-9746748',3,'Aut est et est esse mollitia laborum','Fuga Enim omnis anim et error aut et voluptate anim blanditiis dolorem voluptatem facilis',2,'0','0','0','Similique velit qui nisi debitis aliquip lorem dolor commodi assumenda quod quod autem amet eu mollitia quod necessitatibus','2018-11-28 23:10:12',0),
-	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555',3,'Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit','2018-11-28 23:10:47',0),
-	(10,'chreo','hey@mail.com','07494564241',1,'hey','no',1,'1','1','0',NULL,'2020-05-19 09:55:23',0),
-	(11,'example','example@example.com','07494564241',2,'example interest in development','example coding experience',3,'1','1','1','example notes','2020-05-19 10:03:29',0),
-	(12,'h','example@example.com','07494564241',2,'example interest in development','example coding experience',3,'1','1','1','example notes','2020-05-19 10:03:42',0),
-	(13,'h','example@example.com','07494564241',2,'example interest in development','example coding experience',3,'1','1','1','example notes','2020-05-19 10:06:25',0),
-	(14,'h','example@example.com','07494564241',2,'example interest in development','example coding experience',3,'1','1','1',NULL,'2020-05-19 10:06:30',0),
-	(15,'Bob Smith','bobsmith324@mail.com','07494564241',1,'ibiuiub',NULL,1,'1','1','0',NULL,'2020-05-19 10:14:40',0),
-	(16,'hey','example@example.com','07494564241',2,'example interest in development','example coding experience',3,'1','1','1',NULL,'2020-05-19 10:18:07',0),
-	(17,'hey','example@example.com','07494564241',2,'example interest in development',NULL,3,'1','1','1',NULL,'2020-05-19 10:18:44',0),
-	(19,'hey','example@example.com','07494564241',2,'example interest in development',NULL,3,'1','1','1',NULL,'2020-05-19 10:19:04',0),
-	(20,'hey','example@example.com','07494564241',2,'example interest in development',NULL,3,'1','1','1',NULL,'2020-05-19 10:20:30',0),
-	(22,'chrwi','bobsmith324@mail.com','07494564241',1,'bkjb',NULL,1,'1','1','0',NULL,'2020-05-19 10:26:23',0),
-	(23,'hey','example@example.com','07494564241',2,'gyuyugy',NULL,3,'1','1','1',NULL,'2020-05-19 14:17:34',0),
-	(24,'Nnamaamttru','hello@mayden.academy','07494564241',1,'Ene agluvrod rufla deuftu od cut tuzos mupfiz sonoed ura gidu caku amocukav. Kizope umacu takfego durmame gefcuhu ebolevoj ilhoka cesabu pe bidorak hidu ijarodcen aliunvi','Uniji tebmu zoozu dupdeh vesu iwefewci fovjoija coaparuh waoj rizamav idotuet noknub puc gofus suzgolab hameh. Vinihenu teafiefe jig diman apekazje acovuc veupe reczow vuetzul nowehu ud avijok ubo. Ho hisdumkoc hoha vi kapelube nul zasabir vifgiw raflo ewoki gewes kip. Dazkit fibfotot uvlon ekkacus ade ezsezvi ti avu kida zazra wa birumzu zug ampe mionde kuscilmig gihjo kucebob. Lekakwal ge fovoliino renba subo nagru ire bav ka paruwac wih pu agula awidubru. F',1,'1','1','0','Pu pigwi iva pewdacgaz jecuc donobak ecaohuov zutozir lu rewfozbi na ponune bi sajude viwemeuki hozcarka lujdepav zoek. Fiz sas idli nid zovo ho dotfazuvu buggosoh welumwon ki ojoze ro nag. Coebe co cueka','2020-05-19 15:21:18',0),
-	(25,'TnCblua','vuhreves@ucgidopa.kh','07494564241',1,'Maoro ludu hiteze ajore hengawku wil pupu muti new wufzowe paloz dapukep vucco li afed anpa. Zacihu hemedwew garufviw ma enovudcaz di va milajawef hewgu boveaz wullin dulitmut vi kog itataira meviw mu meh. Ne licipgew cifgew zig gesje tomzaba emuji nuckioze widv','Oco uhulusan pizkijip hatvuhi doveh dolubud negawlob zejwoh ta cafdes bocusit gophel wubpavawu. Sa orridi icatedme su savomsun kiz gi ti vet ni ud hor ehosav um filu. Defisliw vunko lig jovuej kad femfi ic jos jelo haz ihlo ratokkom cew. Gom fabnazib baazezi ekvug jin muzam zot sen lar juse gewuj zipa. Jesdo copfo vumegwi fisi ri goflezu toh sirpupulu ac fa sejbipra heci viper bergujto weizup vilikev wikiuru sebebka. Ji jiv fic zutofeara fawaw ulikha i',1,'0','1','1','Palogfas pefjul ofun somtilo gid saejmu lu gew ritwu bi wi ebe cowuce jov lahaz eg aduti fusbut. Mebzu tagackev epehaz potco umhezwis wupi umfe nahguaj omima iruliddus tu odo kemag wojsa povvuce lojlirbip camig ilvek. Wo naepu','2020-05-19 15:22:17',0);
+	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555',3,'Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit','2018-11-28 23:10:47',0);
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
 UNLOCK TABLES;
