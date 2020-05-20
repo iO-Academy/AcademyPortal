@@ -78,13 +78,11 @@ let makeApiRequest = async (data) => {
             window.location.href = './admin';
         } else if (response.status === 400) {
             generalErrorMessage.innerHTML = "You must fill out all form options.";
-            generalErrorMessage.classList.remove('hidden');
-            generalErrorMessage.classList.add('alert-danger');
         } else {
             generalErrorMessage = "Something went wrong, please try again later.";
-            generalErrorMessage.classList.remove('hidden');
-            generalErrorMessage.classList.add('alert-danger');
         }
+        generalErrorMessage.classList.remove('hidden');
+        generalErrorMessage.classList.add('alert-danger');
     });
 };
 
