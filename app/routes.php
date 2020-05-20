@@ -33,8 +33,8 @@ return function (App $app) {
     $app->put('/api/updateStages', 'EditStageController');
     $app->post('/api/login', 'LoginController');
     $app->post('/api/registerUser', 'RegisterUserController');
-    $app->post('/api/editStageOption', 'EditStageOptionController');
-    $app->post('/api/deleteStageOption', 'DeleteStageOptionController');
+    $app->put('/api/editStageOption', 'EditStageOptionController');
+    $app->delete('/api/deleteStageOption', 'DeleteStageOptionController');
     $app->post('/api/addStageOption', 'AddStageOptionController');
     $app->post('/api/deleteAllStageOptions', 'DeleteAllStageOptionsController');
     

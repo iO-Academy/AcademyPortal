@@ -12,7 +12,7 @@ class EditStageOptionController extends Controller
 {
     private $stageModel;
     private $optionId;
-    private $option;
+    private $optionTitle;
 
      /** Constructor assigns StageModel to this object
      *
@@ -46,17 +46,17 @@ class EditStageOptionController extends Controller
 
             try {
                 $formOption = $request->getParsedBody();
-                $this->optionId = $formOption[optionId];
-                $this->option = $formOption[option];
+                $this->optionId = $formOption['optionId'];
+                $this->optionTitle = $formOption['optionTitle'];
 
-                $this->stageModel->editOption($this->optionId, $this->option);
-                $data = [
-                    'success' => true,
-                    'msg' => 'Option edit successful.',
-                    'data' => ''
-                ];
-                $statusCode = 200;
-
+                if($this->stageModel->updateOption($this->optionTitle, $this->optionId)){
+                    $data = [
+                        'success' => true,
+                        'msg' => 'Option edit successful.',
+                        'data' => ''
+                    ];
+                    $statusCode = 200;
+                }
                 return $this->respondWithJson($response, $data, $statusCode);
             } catch (\Exception $e) {
                 $data['msg'] = $e->getMessage();

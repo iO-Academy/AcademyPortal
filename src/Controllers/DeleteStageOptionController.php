@@ -35,7 +35,7 @@ class DeleteStageOptionController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        if ($_SESSION['loggedIn'] === true) {
+        // if ($_SESSION['loggedIn'] === true) {
             $data = [
                 'success' => false,
                 'msg' => 'Option not found.',
@@ -45,7 +45,7 @@ class DeleteStageOptionController extends Controller
 
             try {
                 $formOption = $request->getParsedBody();
-                $this->optionId = $formOption[optionId];
+                $this->optionId = (int) $formOption['optionId'];
 
                 $this->stageModel->deleteOption($this->optionId);
                 $data = [
@@ -54,13 +54,12 @@ class DeleteStageOptionController extends Controller
                     'data' => ''
                 ];
                 $statusCode = 200;
-
                 return $this->respondWithJson($response, $data, $statusCode);
             } catch (\Exception $e) {
                 $data['msg'] = $e->getMessage();
                 return $this->respondWithJson($response, $data, $statusCode);
             }
-        }
+        // }
         return $this->respondWithJson($response, ['success' => false, 'msg'=> 'Unauthorised'], 401);
     }
 }

@@ -2,7 +2,10 @@
 
 namespace Portal\Factories;
 
- /**
+use Portal\Controllers\AddStageOptionController;
+use Psr\Container\ContainerInterface;
+
+/**
      * invoke() method for creating new AddStageOptionControllers from the DIC
      * @param ContainerInterface $container
      * @return AddStageOptionController

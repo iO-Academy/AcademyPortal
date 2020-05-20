@@ -133,9 +133,9 @@ input[type="submit"] {
     margin-bottom: 0;
 }
 
-.optionDeleteSubmit, .optionEditSubmit{
-    /* float: right; */
-    /* margin-left: 3%; */
+.optionDelete, .optionEdit{
+    float: right;
+    margin-left: 3%;
     font-family: Courier, sans-serif;
 }
 
@@ -151,19 +151,28 @@ input[type="submit"] {
     padding-top: 1%;
 }
 
-.optionEditSubmit{
+.optionEditSubmit, .optionAddSubmit{
     position: absolute;
     right: 0;
-    top: 0;
+    bottom: 0;
 }
 
 .optionContainer{
     position: relative;
-    height: 3em;
+    height: 2.5em;
+    vertical-align: bottom;
 }
 
-.optionEditTitle{
+.optionEditTitle, .optionAddTitle{
     position: absolute;
     left: 0;
-    top: 0;
+    bottom: 0;
+}
+
+.multiOptionsContainer{
+    height: 6em;
+}
+
+.firstOption{
+    bottom: 3em;
 }
