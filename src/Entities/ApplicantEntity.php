@@ -14,7 +14,6 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     protected $whyDev;
     protected $codeExperience;
     protected $hearAboutId;
-    protected $hearAbout;
     protected $eligible;
     protected $eighteenPlus;
     protected $finance;
@@ -153,16 +152,6 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     {
         return $this->hearAboutId;
     }
-
-    /**
-     * @return mixed
-     */
-
-    public function getHearAbout()
-    {
-        return $this->hearAbout;
-    }
-
 
     /**
      * Get's eligible.

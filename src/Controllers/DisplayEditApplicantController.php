@@ -27,7 +27,7 @@ class DisplayEditApplicantController extends Controller
     {
         $id = $request->getQueryParams()['id'];
         $applicant = $this->applicantModel->getApplicantById($id);
-        return $this->renderer->render($response, 'applicantForm.phtml', [
+        $data = [
             'applicantName' => $applicant->getName(),
             'applicantEmail' => $applicant->getEmail(),
             'applicantPhoneNumber' => $applicant->getPhoneNumber(),
@@ -39,6 +39,8 @@ class DisplayEditApplicantController extends Controller
             'applicantEighteenPlus' => $applicant->getEighteenPlus(),
             'applicantFinance' => $applicant->getFinance(),
             'applicantNotes' => $applicant->getNotes()
-        ]);
+        ];
+
+        return $this->renderer->render($response, 'applicantForm.phtml', $data);
     }
 }
