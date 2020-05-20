@@ -72,19 +72,21 @@ let makeApiRequest = async (data) => {
         method: 'post',
         body: JSON.stringify(data)
     }).then(response => {
-        if (response.status == 200) {
+        let generalErrorMessage = document.querySelector('#generalError');
+
+        if (response.status === 200) {
             window.location.href = './admin';
-        } else if (response.status == 400) {
-            document.querySelector('#generalError').innerHTML = "You must fill out all form options.";
-            document.querySelector('#generalError').classList.remove('hidden');
-            document.querySelector('#generalError').classList.add('alert-danger');
+        } else if (response.status === 400) {
+            generalErrorMessage.innerHTML = "You must fill out all form options.";
+            generalErrorMessage.classList.remove('hidden');
+            generalErrorMessage.classList.add('alert-danger');
         } else {
-            document.querySelector('#generalError').innerHTML = "Something went wrong, please try again later.";
-            document.querySelector('#generalError').classList.remove('hidden');
-            document.querySelector('#generalError').classList.add('alert-danger');
+            generalErrorMessage = "Something went wrong, please try again later.";
+            generalErrorMessage.classList.remove('hidden');
+            generalErrorMessage.classList.add('alert-danger');
         }
     });
-}
+};
 
 let validateFormInputs = (data) => {
     let validate = {};
