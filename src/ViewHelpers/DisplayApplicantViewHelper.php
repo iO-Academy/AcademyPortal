@@ -35,9 +35,9 @@ class DisplayApplicantViewHelper
                                        class="btn btn-primary edit">
                                        Edit
                                     </a>                                                                   
-                                    <button id=\'deleteBtn\'
+                                    <button 
                                             type="delete"
-                                            class="btn btn-danger delete"
+                                            class="btn btn-danger delete deleteBtn"
                                             data-id="' . $applicant->getId() . '">
                                             Delete
                                     </button>                                   

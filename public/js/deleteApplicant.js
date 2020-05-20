@@ -2,21 +2,24 @@ window.addEventListener('load', (event) => {
     checkCookie()
 });
 
-let deleteButton = document.getElementById('deleteBtn');
-deleteButton.addEventListener('click', (e) => {
-    let id = e.target.dataset.id;
-    fetch('/api/deleteApplicant', {
-        method: 'DELETE',
-        body: JSON.stringify({"id": id}),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    }).then((response) => {
-        return response.json()
-    }).then((responseData) => {
-        document.cookie = `response=${responseData.message}`;
-        window.location.reload(true)
-    })
+let deleteButtons = document.querySelectorAll('.deleteBtn');
+deleteButtons.forEach(deleteBtn => {
+    deleteBtn.addEventListener('click', (e) => {
+        let id = e.target.dataset.id;
+        console.log(id);
+        fetch('/api/deleteApplicant', {
+            method: 'DELETE',
+            body: JSON.stringify({"id": id}),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((response) => {
+            return response.json()
+        }).then((responseData) => {
+            document.cookie = `response = ${responseData.message}`;
+            window.location.reload(true)
+        })
+    });
 });
 
 function checkCookie() {
