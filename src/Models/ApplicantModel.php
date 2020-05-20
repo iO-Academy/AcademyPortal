@@ -120,7 +120,7 @@ class ApplicantModel
     {
         $query = $this->db->prepare(
             'SELECT `applicants`.`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
-                      `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout` AS "hearAboutId",  `date` 
+                      `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`,  `date` 
                         AS "cohortDate" 
                         FROM `applicants` 
                         LEFT JOIN `cohorts` 
