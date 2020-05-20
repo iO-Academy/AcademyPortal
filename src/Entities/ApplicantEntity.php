@@ -18,6 +18,8 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     protected $eighteenPlus;
     protected $finance;
     protected $notes;
+    private const MAXVARCHARLENGTH = 255;
+    private const MAXTEXTLENGTH = 10000;
 
     public function __construct(
         string $applicantName = null,
@@ -93,11 +95,11 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
         $this->eighteenPlus = $this->eighteenPlus ? 1 : 0;
         $this->finance = $this->finance ? 1 : 0;
         $this->notes = StringValidator::sanitiseString($this->notes);
-        $this->name = StringValidator::validateExistsAndLength($this->name, 255);
-        $this->email = StringValidator::validateExistsAndLength($this->email, 255);
-        $this->codeExperience = StringValidator::validateLength($this->codeExperience, 10000);
-        $this->whyDev = StringValidator::validateExistsAndLength($this->whyDev, 10000);
-        $this->notes = StringValidator::validateLength($this->notes, 10000);
+        $this->name = StringValidator::validateExistsAndLength($this->name, self::MAXVARCHARLENGTH);
+        $this->email = StringValidator::validateExistsAndLength($this->email, self::MAXVARCHARLENGTH);
+        $this->codeExperience = StringValidator::validateLength($this->codeExperience, self::MAXTEXTLENGTH);
+        $this->whyDev = StringValidator::validateExistsAndLength($this->whyDev, self::MAXTEXTLENGTH);
+        $this->notes = StringValidator::validateLength($this->notes, self::MAXTEXTLENGTH);
         $this->phoneNumber = PhoneNumberValidator::validatePhoneNumber($this->phoneNumber);
     }
 

@@ -75,10 +75,10 @@ class ApplicantModel
     public function getAllApplicants(string $sortingQuery)
     {
         $stmt = 'SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
-                      AS \'cohortDate\'
+                      AS "cohortDate"
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-                      WHERE `applicants`.`deleted` = \'0\' 
+                      WHERE `applicants`.`deleted` = "0" 
                         ORDER BY ';
 
         switch ($sortingQuery) {
