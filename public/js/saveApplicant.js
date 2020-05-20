@@ -1,7 +1,7 @@
 document.querySelector('#submitApplicant').addEventListener('click', e => {
     e.preventDefault();
-    let data = getCompletedFormData();
-    let validate = validateFormInputs(data);
+    const data = getCompletedFormData();
+    const validate = validateFormInputs(data);
     let formIsValid = true;
 
     document.querySelectorAll('.formItem_alert').forEach(element => {
@@ -11,15 +11,15 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
     });
 
     Object.keys(validate).forEach(formItem => {
-        let querySelector = `#${formItem}Error`;
+        const querySelector = document.querySelector(`#${formItem}Error`);
         let formItemValues = validate[formItem];
 
         Object.keys(formItemValues).forEach(validationType => {
             let isValid = formItemValues[validationType];
             if (!isValid) {
-                document.querySelector(querySelector).classList.add('alert-danger');
-                document.querySelector(querySelector).classList.remove('hidden');
-                document.querySelector(querySelector).innerHTML = errorMessage(validationType);
+                querySelector.classList.add('alert-danger');
+                querySelector.classList.remove('hidden');
+                querySelector.innerHTML = errorMessage(validationType);
                 formIsValid = false;
             }
         })
@@ -36,22 +36,29 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
 
 let errorMessage = (validationType) => {
     let htmlString = '';
-    if (validationType === 'isPresent') {
-        htmlString += `This is a required field, please fill in`;
-    } else if (validationType === 'validLengthVarChar') {
-        htmlString += `This field must be less than 255 characters`;
-    } else if (validationType === 'validLengthText') {
-        htmlString += `This field must be less than 10000 characters`;
-    } else {
-        htmlString += `This field is invalid`;
+
+    switch (validationType) {
+        case 'isPresent' :
+            htmlString += `This is a required field, please fill in`;
+            break;
+        case 'validLengthVarChar' :
+            htmlString += `This field must be less than 255 characters`;
+            break;
+        case 'validLengthText':
+            htmlString += `This field must be less than 10000 characters`;
+            break;
+        default:
+            htmlString += `This field is invalid`;
+            break;
     }
 
     return htmlString;
 };
 
 let getCompletedFormData = () => {
-    let formData = document.querySelectorAll(".submitApplicant");
+    const formData = document.querySelectorAll(".submitApplicant");
     let data = {};
+
     formData.forEach(formItem => {
         data[formItem.name] = formItem.value;
         if (formItem.type == 'checkbox') {
@@ -71,30 +78,59 @@ let makeApiRequest = async (data) => {
         },
         method: 'post',
         body: JSON.stringify(data)
-    }).then(response => {
-        let generalErrorMessage = document.querySelector('#generalError');
+    })
+        .then(response => {
+        const generalErrorMessage = document.querySelector('#generalError');
 
-        if (response.status === 200) {
-            window.location.href = './admin';
-        } else if (response.status === 400) {
-            generalErrorMessage.innerHTML = "You must fill out all form options.";
-        } else {
-            generalErrorMessage = "Something went wrong, please try again later.";
+        switch (response.status) {
+            case 200:
+                generalErrorMessage.innerHTML = "Applicant was successfully registered!";
+                generalErrorMessage.classList.add('alert-success');
+                break;
+            case 400:
+                response.json().then(data => {
+                    generalErrorMessage.innerHTML = data.msg;
+                    generalErrorMessage.classList.add('alert-danger');
+                });
+                break;
+            default:
+                generalErrorMessage.innerHTML = "Something went wrong, please try again later.";
+                generalErrorMessage.classList.add('alert-danger');
+                break;
         }
         generalErrorMessage.classList.remove('hidden');
-        generalErrorMessage.classList.add('alert-danger');
     });
 };
 
 let validateFormInputs = (data) => {
     let validate = {};
 
-    validate.name = {validLengthVarChar: varCharMaxLength(data.name), isName: isName(data.name), isPresent: isPresent(data.name)};
-    validate.email = {validLengthVarChar: varCharMaxLength(data.email), isEmail: isEmail(data.email), isPresent: isPresent(data.email)};
-    validate.phone = {isPhone: isPhoneNumber(data.phoneNumber), isPresent: isPresent(data.phoneNumber)};
-    validate.whyDev = {validLengthText: textAreaMaxLength(data.whyDev), isPresent: isPresent(data.whyDev)};
-    validate.codeExperience = {validLengthText: textAreaMaxLength(data.codeExperience)};
-    validate.notes = {validLengthText: textAreaMaxLength(data.notes)};
-
+    validate = {
+        name: {
+            validLengthVarChar: varCharMaxLength(data.name),
+            isName: isName(data.name),
+            isPresent: isPresent(data.name)
+        },
+        email: {
+            validLengthVarChar: varCharMaxLength(data.email),
+            isEmail: isEmail(data.email),
+            isPresent: isPresent(data.email)
+        },
+        phone: {
+            isPhone: isPhoneNumber(data.phoneNumber),
+            isPresent: isPresent(data.phoneNumber)
+        } ,
+        whyDev: {
+            validLengthText: textAreaMaxLength(data.whyDev),
+            isPresent: isPresent(data.whyDev)
+        },
+        codeExperience: {
+            validLengthText: textAreaMaxLength(data.codeExperience)
+        },
+        notes: {
+            validLengthText: textAreaMaxLength(data.notes)
+        }
+    };
+    
     return validate;
 };

@@ -68,6 +68,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['DeleteStageController'] = DI\factory('\Portal\Factories\DeleteStageControllerFactory');
     $container['EditStageController'] = DI\factory('\Portal\Factories\EditStageControllerFactory');
     $container['EditApplicantController'] = DI\factory('\Portal\Factories\EditApplicantControllerFactory');
+    $container['DisplayEditApplicantController'] = DI\factory('\Portal\Factories\DisplayEditApplicantControllerFactory');
 
     // Models
     $container['UserModel'] = DI\factory('\Portal\Factories\UserModelFactory');

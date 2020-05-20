@@ -3,16 +3,16 @@
 
 namespace Portal\Factories;
 
-
-use Portal\Controllers\EditApplicantController;
+use Portal\Controllers\DisplayEditApplicantController;
 use Psr\Container\ContainerInterface;
 
-class EditApplicantControllerFactory
+class DisplayEditApplicantControllerFactory
 {
     public function __invoke(ContainerInterface $container)
     {
+        $renderer = $container->get('renderer');
         $applicantModel = $container->get('ApplicantModel');
-        $editApplicantController = new EditApplicantController($applicantModel);
+        $editApplicantController = new DisplayEditApplicantController($applicantModel, $renderer);
         return $editApplicantController;
     }
 }

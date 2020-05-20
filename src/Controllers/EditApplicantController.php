@@ -66,6 +66,4 @@ class EditApplicantController extends Controller
         }
         return $response->withStatus(401);
     }
-
-
 }

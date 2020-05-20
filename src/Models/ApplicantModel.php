@@ -2,8 +2,6 @@
 
 namespace Portal\Models;
 
-use Portal\Entities\ApplicantEntity;
-use Portal\Entities\BaseApplicantEntity;
 use Portal\Interfaces\ApplicantEntityInterface;
 use Portal\Interfaces\ApplicantModelInterface;
 
@@ -75,14 +73,14 @@ class ApplicantModel implements ApplicantModelInterface
      * @param string $sortingQuery
      * @return array $results is the data retrieved.
      */
-    public function getAllApplicants(string $sortingQuery) //eg `dateTimeAdded`DESC
+    public function getAllApplicants(string $sortingQuery)
     {
-        $stmt = 'SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
-                      AS \'cohortDate\'
+        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
+                      AS 'cohortDate'
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-                      WHERE `applicants`.`deleted` = \'0\' 
-                        ORDER BY ';
+                      WHERE `applicants`.`deleted` = '0' 
+                        ORDER BY ";
 
         switch ($sortingQuery) {
             case 'dateAsc':
@@ -124,7 +122,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare(
             'SELECT `applicants`.`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`,  `date` 
-                        AS "cohortDate" 
+                        AS "cohortDate", `cohortId`, `hearAboutId`  
                         FROM `applicants` 
                         LEFT JOIN `cohorts` 
                         ON `applicants`.`cohortId`=`cohorts`.`id` 

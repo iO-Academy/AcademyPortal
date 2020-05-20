@@ -6,7 +6,6 @@ use Exception;
 use Portal\Abstracts\Controller;
 use Portal\Entities\ApplicantEntity;
 use Portal\Models\ApplicantModel;
-use Portal\Validators\NewApplicantValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -39,7 +38,7 @@ class SaveApplicantController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $data = ['success' => false, 'msg' => 'Application not saved', 'data' => []];
+            $data = ['success' => false, 'msg' => 'Application not saved'];
             $statusCode = 500;
 
             $newApplicationData = $request->getParsedBody();
@@ -59,7 +58,9 @@ class SaveApplicantController extends Controller
                     $newApplicationData['notes']
                 );
             } catch (Exception $e) {
-                return $response->withStatus(400);
+                $statusCode = 400;
+                $data['msg'] = $e->getMessage();
+                return $this->respondWithJson($response, $data, $statusCode);
             }
 
             $successfulRegister = $this->applicantModel->insertNewApplicantToDb($applicant);
@@ -67,8 +68,7 @@ class SaveApplicantController extends Controller
             if ($successfulRegister) {
                 $data = [
                     'success' => $successfulRegister,
-                    'msg' => 'Application Saved',
-                    'data' => [$applicant]
+                    'msg' => 'Application Saved'
                 ];
                 $statusCode = 200;
             }

@@ -19,12 +19,30 @@ class DisplayApplicantViewHelper
         foreach ($applicants as $applicant) {
             if ($applicant instanceof BaseApplicantEntityInterface) {
                 $result .= '<tr>
-                        <td><a data-id ="'. $applicant->getId().'" type="button"  class="myBtn">'
-                            . $applicant->getName() .'</a></td>
-                            <td>'. $applicant->getEmail() .'</td>
-                            <td>'. $applicant->getDateOfApplication() .'</td>
-                            <td>'. $applicant->getCohortDate().'</td>
-                        </tr>';
+                                <td>
+                                    <a data-id ="' . $applicant->getId() . '" 
+                                       type="button"  
+                                       class="myBtn">
+                                      ' . $applicant->getName() . '
+                                    </a>
+                                </td>
+                                <td>' . $applicant->getEmail() . '</td>
+                                <td>' . $applicant->getDateOfApplication() . '</td>
+                                <td>' . $applicant->getCohortDate() . '</td>
+                                <td>                              
+                                    <a href="/editApplicant/' . $applicant->getId() . '"   
+                                       type="button"                                   
+                                       class="btn btn-primary edit">
+                                       Edit
+                                    </a>                                                                   
+                                    <button 
+                                            type="delete"
+                                            class="btn btn-danger delete deleteBtn"
+                                            data-id="' . $applicant->getId() . '">
+                                            Delete
+                                    </button>                                   
+                                </td>
+                            </tr>';
             }
         }
         return ($result);

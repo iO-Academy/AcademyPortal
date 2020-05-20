@@ -7,11 +7,8 @@ use Portal\Validators\EmailValidator;
 use Portal\Validators\PhoneNumberValidator;
 use Portal\Validators\StringValidator;
 
-class ApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
+class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
 {
-    protected $id;
-    protected $name;
-    protected $email;
     protected $phoneNumber;
     protected $cohortId;
     protected $whyDev;
@@ -21,8 +18,8 @@ class ApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
     protected $eighteenPlus;
     protected $finance;
     protected $notes;
-    protected $cohortDate;
-    protected $dateTimeAdded;
+    private const MAXVARCHARLENGTH = 255;
+    private const MAXTEXTLENGTH = 10000;
 
     public function __construct(
         string $applicantName = null,
@@ -100,43 +97,12 @@ class ApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
         $this->eighteenPlus = $this->eighteenPlus ? 1 : 0;
         $this->finance = $this->finance ? 1 : 0;
         $this->notes = StringValidator::sanitiseString($this->notes);
-        $this->name = StringValidator::validateExistsAndLength($this->name, 255);
-        $this->email = StringValidator::validateExistsAndLength($this->email, 255);
-        $this->codeExperience = StringValidator::validateLength($this->codeExperience, 10000);
-        $this->whyDev = StringValidator::validateExistsAndLength($this->whyDev, 10000);
-        $this->notes = StringValidator::validateLength($this->notes, 10000);
+        $this->name = StringValidator::validateExistsAndLength($this->name, self::MAXVARCHARLENGTH);
+        $this->email = StringValidator::validateExistsAndLength($this->email, self::MAXVARCHARLENGTH);
+        $this->codeExperience = StringValidator::validateLength($this->codeExperience, self::MAXTEXTLENGTH);
+        $this->whyDev = StringValidator::validateExistsAndLength($this->whyDev, self::MAXTEXTLENGTH);
+        $this->notes = StringValidator::validateLength($this->notes, self::MAXTEXTLENGTH);
         $this->phoneNumber = PhoneNumberValidator::validatePhoneNumber($this->phoneNumber);
-    }
-
-    /**
-     * Gets the Id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Get's name.
-     *
-     * @return string, returns the name field.
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     *  Get's email.
-     *
-     * @return string, returns the email field.
-     *
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**
@@ -227,25 +193,5 @@ class ApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
     public function getNotes()
     {
         return $this->notes;
-    }
-
-    /**
-     * Get's dateOfApplication.
-     *
-     * @return string, returns the dateOfApplication field.
-     */
-    public function getDateOfApplication()
-    {
-        return $this->dateTimeAdded;
-    }
-
-    /**
-     * Get's cohortDate.
-     *
-     * @return string, returns the cohortDate field.
-     */
-    public function getCohortDate()
-    {
-        return date("F, Y", strtotime($this->cohortDate));
     }
 }
