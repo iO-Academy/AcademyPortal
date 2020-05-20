@@ -10,8 +10,9 @@ class EditApplicantControllerFactory
 {
     public function __invoke(ContainerInterface $container)
     {
-        $applicantModel = $container ->get('ApplicantModel');
-        $editApplicantController = new EditApplicantController($applicantModel);
+        $renderer = $container->get('renderer');
+        $applicantModel = $container->get('ApplicantModel');
+        $editApplicantController = new EditApplicantController($applicantModel, $renderer);
         return $editApplicantController;
     }
 }
