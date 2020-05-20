@@ -21,7 +21,7 @@ Sortable.create(stageTable, {
                 requestData.data.push(stageEntity);
                 location.reload()
             });
-            sendRequest('/api/updateStages', 'PUT', requestData)
+            sendRequest('/api/updateStages', 'PUT', requestData);
         },
     }
 });
