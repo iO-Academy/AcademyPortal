@@ -82,14 +82,16 @@ let makeApiRequest = async (data) => {
         const generalErrorMessage = document.querySelector('#generalError');
 
         if (response.status === 200) {
-            window.location.href = './admin';
+            generalErrorMessage.innerHTML = "Applicant was successfully registered!";
+            generalErrorMessage.classList.add('alert-success');
         } else if (response.status === 400) {
             generalErrorMessage.innerHTML = "You must fill out all form options.";
+            generalErrorMessage.classList.add('alert-danger');
         } else {
             generalErrorMessage.innerHTML = "Something went wrong, please try again later.";
+            generalErrorMessage.classList.add('alert-danger');
         }
         generalErrorMessage.classList.remove('hidden');
-        generalErrorMessage.classList.add('alert-danger');
     });
 };
 
