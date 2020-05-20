@@ -18,6 +18,7 @@ return function (App $app) {
     $app->get('/api/getApplicant/{id}', 'GetApplicantController');
     $app->post('/api/saveApplicant', 'SaveApplicantController');
     $app->delete('/api/deleteApplicant', 'DeleteApplicantController');
+    $app->post('/api/updateApplicant', 'EditApplicantController');
     $app->get('/api/applicationForm', 'ApplicationFormController');
     $app->post('/api/createHiringPartner', 'CreateHiringPartnerController');
     $app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');

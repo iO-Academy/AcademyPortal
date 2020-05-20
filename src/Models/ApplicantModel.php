@@ -5,8 +5,9 @@ namespace Portal\Models;
 use Portal\Entities\ApplicantEntity;
 use Portal\Entities\BaseApplicantEntity;
 use Portal\Interfaces\ApplicantEntityInterface;
+use Portal\Interfaces\ApplicantModelInterface;
 
-class ApplicantModel
+class ApplicantModel implements ApplicantModelInterface
 {
     private $db;
 
