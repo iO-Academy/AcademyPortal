@@ -38,8 +38,7 @@ class DisplayApplicantsController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         $params = [];
-        $sortValue = $request->getQueryParams()['sort'] ?? '';
-        $params['sort'] = $sortValue;
+        $params['sort'] = $request->getQueryParams()['sort'] ?? '';
 
         $params['data'] = $this->applicantModel->getAllApplicants($params['sort']);
 

@@ -35,11 +35,7 @@ function isPostcode(postcode) {
 }
 
 function isPresent(data) {
-    if (data) {
-        return true;
-    }
-
-    return false;
+        return (data == true);
 }
 
 function textAreaMaxLength(data) {

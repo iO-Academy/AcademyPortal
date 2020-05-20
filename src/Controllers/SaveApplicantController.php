@@ -58,7 +58,9 @@ class SaveApplicantController extends Controller
                     $newApplicationData['notes']
                 );
             } catch (Exception $e) {
-                return $response->withStatus(400);
+                $statusCode = 400;
+                $data['msg'] = $e->getMessage();
+                return $this->respondWithJson($response, $data, $statusCode);
             }
 
             $successfulRegister = $this->applicantModel->insertNewApplicantToDb($applicant);
