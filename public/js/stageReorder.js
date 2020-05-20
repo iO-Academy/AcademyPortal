@@ -19,7 +19,7 @@ Sortable.create(stageTable, {
                 stageEntity.title = tableRow.children[1].children[0].textContent;
                 stageEntity.order = (stageOrder.indexOf(tableRow.dataset.id) + 1);
                 requestData.data.push(stageEntity);
-                location.reload()
+                location.reload(true);
             });
             sendRequest('/api/updateStages', 'PUT', requestData);
         },
