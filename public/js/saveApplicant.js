@@ -1,27 +1,66 @@
-document.getElementById('submitApplicant').addEventListener('click', e => {
-    e.preventDefault()
-    let data = getCompletedFormData()
-    let validate = validateFormInputs(data)
-    if (validate) {
-        makeApiRequest(data)
+document.querySelector('#submitApplicant').addEventListener('click', e => {
+    e.preventDefault();
+    let data = getCompletedFormData();
+    let validate = validateFormInputs(data);
+    let formIsValid = true;
+
+    document.querySelectorAll('.formItem_alert').forEach(element => {
+        element.classList.remove('alert-danger');
+        element.classList.add('hidden');
+        element.innerHTML = '';
+    });
+
+    Object.keys(validate).forEach(formItem => {
+        let querySelector = `#${formItem}Error`;
+        let formItemValues = validate[formItem];
+
+        Object.keys(formItemValues).forEach(validationType => {
+            let isValid = formItemValues[validationType];
+            if (!isValid) {
+                document.querySelector(querySelector).classList.add('alert-danger');
+                document.querySelector(querySelector).classList.remove('hidden');
+                document.querySelector(querySelector).innerHTML = errorMessage(validationType);
+                formIsValid = false;
+            }
+        })
+    });
+
+    if (formIsValid) {
+        makeApiRequest(data);
     } else {
-        document.getElementById('errorMsg').innerHTML = 'Not all fields have been filled out. Try again...'
+        document.querySelector('#generalError').innerHTML = 'This form is invalid, please check all fields';
+        document.querySelector('#generalError').classList.remove('hidden');
+        document.querySelector('#generalError').classList.add('alert-danger');
     }
-})
+});
+
+let errorMessage = (validationType) => {
+    let htmlString = '';
+    if (validationType === 'isPresent') {
+        htmlString += `This is a required field, please fill in`;
+    } else if (validationType === 'validLengthVarChar') {
+        htmlString += `This field must be less than 255 characters`;
+    } else if (validationType === 'validLengthText') {
+        htmlString += `This field must be less than 10000 characters`;
+    } else {
+        htmlString += `This field is invalid`;
+    }
+
+    return htmlString;
+};
 
 let getCompletedFormData = () => {
-    let formData = document.querySelectorAll(".submitApplicant")
-    let data = {}
+    let formData = document.querySelectorAll(".submitApplicant");
+    let data = {};
     formData.forEach(formItem => {
-        data[formItem.name] = formItem.value
+        data[formItem.name] = formItem.value;
         if (formItem.type == 'checkbox') {
-            data[formItem.name] = formItem.checked
+            data[formItem.name] = formItem.checked;
         }
-    })
-    return data
-}
+    });
 
-
+    return data;
+};
 
 let makeApiRequest = async (data) => {
     return fetch('./api/saveApplicant', {
@@ -32,26 +71,30 @@ let makeApiRequest = async (data) => {
         },
         method: 'post',
         body: JSON.stringify(data)
-    })
-        .then(response => response.json())
-        .then((data) => {
-            if (data.success) {
-                window.location.href = './admin';
-            } else {
-                document.getElementById('errorMsg').innerHTML = "Please contact administrator. Or <a href='./admin'>click here</a> to return to admin page"
-            }
-        })
-}
+    }).then(response => {
+        let generalErrorMessage = document.querySelector('#generalError');
+
+        if (response.status === 200) {
+            window.location.href = './admin';
+        } else if (response.status === 400) {
+            generalErrorMessage.innerHTML = "You must fill out all form options.";
+        } else {
+            generalErrorMessage = "Something went wrong, please try again later.";
+        }
+        generalErrorMessage.classList.remove('hidden');
+        generalErrorMessage.classList.add('alert-danger');
+    });
+};
 
 let validateFormInputs = (data) => {
-    let validate = [];
+    let validate = {};
 
-    validate.push(isName(data.name) && nameMaxLength(data.name));
-    validate.push(isEmail(data.email) && varCharMaxLength(data.email));
-    validate.push(isPhoneNumber(data.phoneNumber));
-    validate.push(isPresent(data.whyDev) && textAreaMaxLength(data.whyDev));
-    validate.push(isPresent(data.codeExperience) && textAreaMaxLength(data.codeExperience));
-    validate.push(textAreaMaxLength(data.notes));
+    validate.name = {validLengthVarChar: varCharMaxLength(data.name), isName: isName(data.name), isPresent: isPresent(data.name)};
+    validate.email = {validLengthVarChar: varCharMaxLength(data.email), isEmail: isEmail(data.email), isPresent: isPresent(data.email)};
+    validate.phone = {isPhone: isPhoneNumber(data.phoneNumber), isPresent: isPresent(data.phoneNumber)};
+    validate.whyDev = {validLengthText: textAreaMaxLength(data.whyDev), isPresent: isPresent(data.whyDev)};
+    validate.codeExperience = {validLengthText: textAreaMaxLength(data.codeExperience)};
+    validate.notes = {validLengthText: textAreaMaxLength(data.notes)};
 
-    return validate.includes(false) ? false : true;
+    return validate;
 };
