@@ -49,14 +49,14 @@ class StagesPageViewHelperTest extends TestCase
         $expected .= '<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="1">Options</a></td>';
         $expected .= '</tr>';
 
-        $objectEntityMock = $this->createMock(OptionsEntity::class);
-        $objectEntityMock->method('getOptionId')->willReturn('1');
-        $objectEntityMock->method('getOptionTitle')->willReturn('aTitle');
+        $optionEntityMock = $this->createMock(OptionsEntity::class);
+        $optionEntityMock->method('getOptionId')->willReturn('1');
+        $optionEntityMock->method('getOptionTitle')->willReturn('aTitle');
 
         $stageEntityMock = $this->createMock(StageEntity::class);
         $stageEntityMock->method('getStageId')->willReturn('1');
         $stageEntityMock->method('getStageTitle')->willReturn('Stage 1 test');
-        $stageEntityMock->method('getOptions')->willReturn([$objectEntityMock]);
+        $stageEntityMock->method('getOptions')->willReturn([$optionEntityMock]);
 
         $input =  [$stageEntityMock];
         $case = StagesPageViewHelper::displayStages($input);
