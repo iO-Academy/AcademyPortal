@@ -14,16 +14,15 @@
 <?php require 'partials/layout/header.phtml'; ?>
 
 <?php require 'partials/layout/nav.phtml'; ?>
-    <h1> Registration Page</h1>
+    <h3>Register User</h3>
     <div id="message"></div>
     <form id="registerUserForm">
         <div>
-            <h4>Password</h4>
+            <label for="randomPassword">Password</label>
             <input type="text" id="randomPassword" readonly value="<?php echo $password;?>">
         </div>
     <div>
-        <h4>Email
-        </h4>
+        <label for="emailNewUser">Email</label>
         <input id="emailNewUser" type="email" name="email">
         <input type="submit" id="newUserSubmit">
         </div>
