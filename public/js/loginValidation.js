@@ -31,7 +31,9 @@ let jsonRequest = async (path, data) => {
     return response
 }
 
-let loginForm = document.getElementById('loginForm')
+const loginForm = document.getElementById('loginForm')
+const errorMessage = document.getElementById("error-message")
+
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault()
     let response = false
@@ -43,8 +45,11 @@ loginForm.addEventListener('submit', async (e) => {
     }
 
     if (response && response['success'] === true){
+        errorMessage.classList.remove('alert', 'alert-danger')
+        errorMessage.innerText = ''
         window.location.href = "./admin"
     } else {
-        document.getElementById("error-message").innerText = response['msg']
+        errorMessage.classList.add('alert', 'alert-danger')
+        errorMessage.innerText = response['msg']
     }
 })

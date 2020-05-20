@@ -1,0 +1,24 @@
+.login {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    background: #cccccc;
+    border-radius: 15px;
+}
+
+#loginForm {
+    margin-top: 10px;
+}
+
+#loginForm label {
+    display: block;
+}
+
+#loginForm .form-control {
+    max-width: 350px;
+}
+
+#loginForm .error {
+    background-color: #ffaab1;
+}
