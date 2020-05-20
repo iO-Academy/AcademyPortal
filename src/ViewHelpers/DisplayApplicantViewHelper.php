@@ -19,24 +19,28 @@ class DisplayApplicantViewHelper
         foreach ($applicants as $applicant) {
             if ($applicant instanceof ApplicantEntity) {
                 $result .= '<tr>
-                                <td><a data-id ="'. $applicant->getId().'" type="button"  class="myBtn">'
-                                     . $applicant->getName() .'</a></td>
-                                <td>'. $applicant->getEmail() .'</td>
-                                <td>'. $applicant->getDateOfApplication() .'</td>
-                                <td>'. $applicant->getCohortDate().'</td>
                                 <td>
-                                    <button id=\'editBtn\'
-                                            type="button"
-                                            class="btn btn-primary edit"
-                                            data-id="' . $applicant->getId() . '">
-                                            Edit
-                                    </button>
+                                    <a data-id ="' . $applicant->getId() . '" 
+                                       type="button"  
+                                       class="myBtn">
+                                      ' . $applicant->getName() . '
+                                    </a>
+                                </td>
+                                <td>' . $applicant->getEmail() . '</td>
+                                <td>' . $applicant->getDateOfApplication() . '</td>
+                                <td>' . $applicant->getCohortDate() . '</td>
+                                <td>                              
+                                    <a href="/editApplicant/' . $applicant->getId() . '"   
+                                       type="button"                                   
+                                       class="btn btn-primary edit">
+                                       Edit
+                                    </a>                                                                   
                                     <button id=\'deleteBtn\'
-                                            type="button"
+                                            type="delete"
                                             class="btn btn-danger delete"
                                             data-id="' . $applicant->getId() . '">
                                             Delete
-                                    </button>
+                                    </button>                                   
                                 </td>
                             </tr>';
             }
