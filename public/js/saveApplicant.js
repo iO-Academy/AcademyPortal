@@ -91,31 +91,44 @@ let makeApiRequest = async (data) => {
 let validateFormInputs = (data) => {
     let validate = {};
 
-    validate.name = {
+    applicantName = {
         validLengthVarChar: varCharMaxLength(data.name),
         isName: isName(data.name),
         isPresent: isPresent(data.name)
     };
-    validate.email = {
+
+    email = {
         validLengthVarChar: varCharMaxLength(data.email),
         isEmail: isEmail(data.email),
         isPresent: isPresent(data.email)
     };
-    validate.phone = {
+
+    phone = {
         isPhone: isPhoneNumber(data.phoneNumber),
         isPresent: isPresent(data.phoneNumber)
     };
-    validate.whyDev = {
+
+    whyDev = {
         validLengthText: textAreaMaxLength(data.whyDev),
         isPresent: isPresent(data.whyDev)
     };
-    validate.codeExperience = {
+
+    codeExperience = {
         validLengthText: textAreaMaxLength(data.codeExperience)
     };
-    validate.notes = {
+
+    notes = {
         validLengthText: textAreaMaxLength(data.notes)
     };
 
-    console.log(validate.name);
+    validate = {
+        name: {...applicantName},
+        email,
+        phone,
+        whyDev,
+        codeExperience,
+        notes
+    };
+
     return validate;
 };
