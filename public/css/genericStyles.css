@@ -116,6 +116,8 @@ input[type="submit"] {
 
 .disabled {
     pointer-events: none;
+    color: #dbdbdb;
+    cursor: text;
 }
 
 #editResponse {
