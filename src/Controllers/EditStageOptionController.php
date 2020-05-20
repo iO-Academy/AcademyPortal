@@ -6,7 +6,6 @@ use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Portal\Entities\OptionsEntity;
 
 class EditStageOptionController extends Controller
 {
@@ -49,7 +48,7 @@ class EditStageOptionController extends Controller
                 $this->optionId = $formOption['optionId'];
                 $this->optionTitle = $formOption['optionTitle'];
 
-                if($this->stageModel->updateOption($this->optionTitle, $this->optionId)){
+                if ($this->stageModel->updateOption($this->optionTitle, $this->optionId)) {
                     $data = [
                         'success' => true,
                         'msg' => 'Option edit successful.',

@@ -28,13 +28,13 @@ class StagesPageViewHelper
                 $result .= '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
                 $result .= '</form>';
                 $result .= '<div class="optionsContainer hide" data-stageId="'. $stage->getStageId().'">';
-                if(empty($stage->getOptions())){
+                if (empty($stage->getOptions())) {
                     $result .= '<div class="optionContainer multiOptionsContainer">';
                     $result .= '<form data-id="" class="optionAddForm">';
                     $result .= '<input type="text" class="optionAddTitle ';
                     $result .= 'firstOption col-xs-10" placeholder="Type the name of your new option"/>';
                 } else {
-                    foreach($stage->getOptions() as $option){
+                    foreach ($stage->getOptions() as $option) {
                         $result .= '<div class="optionContainer">';
                         $result .= '<p class="optionTitle" data-optionId="';
                         $result .= $option->getOptionId().'">'. $option->getOptionTitle();

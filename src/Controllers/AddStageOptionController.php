@@ -6,13 +6,10 @@ use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Portal\Entities\OptionsEntity;
 
 class AddStageOptionController extends Controller
 {
     private $stageModel;
-    private $options;
-    private $stageId;
 
      /** Constructor assigns StageModel to this object
      *
@@ -44,8 +41,8 @@ class AddStageOptionController extends Controller
 
         if ($_SESSION['loggedIn'] === true) {
             if (!empty($formOptions['data'])) {
-                foreach($formOptions['data'] as $option){
-                    if(empty($this->stageModel->getStageById($option['stageId'])) || empty($option['title'])){
+                foreach ($formOptions['data'] as $option) {
+                    if (empty($this->stageModel->getStageById($option['stageId'])) || empty($option['title'])) {
                         $statusCode = 400;
                         $data['message'] = 'You have not entered valid option/options';
                         return $this->respondWithJson($response, $data, $statusCode);
