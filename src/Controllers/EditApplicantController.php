@@ -22,7 +22,6 @@ class EditApplicantController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-        var_dump('success'); // this is a temporary thing to check that it works
         return $response;
     }
 }

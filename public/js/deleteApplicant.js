@@ -1,12 +1,11 @@
-window.addEventListener('load', (event) => {
+window.addEventListener('load', (event)     => {
     checkCookie()
 });
 
-let deleteButtons = document.querySelectorAll('.deleteBtn');
+const deleteButtons = document.querySelectorAll('.deleteBtn');
 deleteButtons.forEach(deleteBtn => {
     deleteBtn.addEventListener('click', (e) => {
-        let id = e.target.dataset.id;
-        console.log(id);
+        const id = e.target.dataset.id;
         fetch('/api/deleteApplicant', {
             method: 'DELETE',
             body: JSON.stringify({"id": id}),
@@ -14,25 +13,25 @@ deleteButtons.forEach(deleteBtn => {
                 "Content-Type": "application/json"
             }
         }).then((response) => {
-            return response.json()
+            return response.json();
         }).then((responseData) => {
             document.cookie = `response = ${responseData.message}`;
-            window.location.reload(true)
-        })
+            window.location.reload(true);
+        });
     });
 });
 
 function checkCookie() {
-    let elem = document.getElementById('deleteResponse');
-    let response = getCookie("response");
+    const elem = document.getElementById('deleteResponse');
+    const response = getCookie("response");
     elem.textContent = response;
     document.cookie = "response=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
 function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
+    const name = cname + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
     for(var i = 0; i <ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == ' ') {
