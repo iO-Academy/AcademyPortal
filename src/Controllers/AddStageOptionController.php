@@ -44,15 +44,20 @@ class AddStageOptionController extends Controller
         $statusCode = 500;
 
         if ($_SESSION['loggedIn'] === true) {
+            $options = OptionsValidator::validateOptionAdd($formOptions['data']);
             if (!empty($formOptions['optionTitle'])) {
                 foreach ($formOptions as $option) {
-                    if ($this->stageModel->addOption($option)) {
+                     $options = OptionsValidator::validateOptionAdd($option['data'])
+                     if ($option === true) { //needs rewriting
                         $data = [
                             'success' => true,
                             'message' => 'Option added successfully',
                             'data' => []
                         ];
-                        $options = OptionsValidator::validateOption($requestDataPackage['data']);
+                    };
+                    if ($this->stageModel->addOption($option)) {
+                        
+
                         $statusCode = 200;
                     } else {
                         $data['message'] = 'Error adding to database';

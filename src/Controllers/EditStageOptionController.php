@@ -45,7 +45,7 @@ class EditStageOptionController extends Controller
 
             try {
                 $formOption = $request->getParsedBody();
-                $option = OptionsValidator::validateOption($formOption['data']);
+                $option = OptionsValidator::validateOptionUpdate($formOption['data']);
             
                 if ($option === true) {
 
@@ -55,7 +55,7 @@ class EditStageOptionController extends Controller
                         'msg' => 'Option update successful.',
                         'data' => ''
                     ];
-                    
+
                     $statusCode = 200;
 
                 } else {
