@@ -37,14 +37,19 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
 let errorMessage = (validationType) => {
     let htmlString = '';
 
-    if (validationType === 'isPresent') {
-        htmlString += `This is a required field, please fill in`;
-    } else if (validationType === 'validLengthVarChar') {
-        htmlString += `This field must be less than 255 characters`;
-    } else if (validationType === 'validLengthText') {
-        htmlString += `This field must be less than 10000 characters`;
-    } else {
-        htmlString += `This field is invalid`;
+    switch (validationType) {
+        case 'isPresent' :
+            htmlString += `This is a required field, please fill in`;
+            break;
+        case 'validLengthVarChar' :
+            htmlString += `This field must be less than 255 characters`;
+            break;
+        case 'validLengthText':
+            htmlString += `This field must be less than 10000 characters`;
+            break;
+        default:
+            htmlString += `This field is invalid`;
+            break;
     }
 
     return htmlString;
