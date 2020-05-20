@@ -3,7 +3,6 @@ const addContactForm = document.querySelector('#add-contact-form')
 
 addHiringPartnerForm.addEventListener('submit', async e => {
     e.preventDefault()
-    console.log('bing')
 
     let data = {
         name: addHiringPartnerForm['company-name'].value.trim(),
