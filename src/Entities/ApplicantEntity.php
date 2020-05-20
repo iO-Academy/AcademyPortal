@@ -35,7 +35,8 @@ class ApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
         string $applicantEligible = null,
         string $applicantEighteenPlus = null,
         string $applicantFinance = null,
-        string $applicantNotes = null
+        string $applicantNotes = null,
+        int $applicantId = null
     ) {
         $this->name = ($this->name ?? $applicantName);
         $this->email = ($this->email ?? $applicantEmail);
@@ -48,6 +49,7 @@ class ApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
         $this->eighteenPlus = ($this->eighteenPlus ?? $applicantEighteenPlus);
         $this->finance = ($this->finance ?? $applicantFinance);
         $this->notes = ($this->notes ?? $applicantNotes);
+        $this->id = ($this->id ?? $applicantId);
 
         $this->sanitiseData();
     }
