@@ -35,7 +35,7 @@ class OptionsEntity implements \JsonSerializable
     }
 
     /**
-     * Will sanitise all the options for a stage.
+     * Will sanitise the options for a stage.
      */
     private function sanitiseData()
     {

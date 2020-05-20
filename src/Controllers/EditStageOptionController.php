@@ -4,6 +4,7 @@ namespace Portal\Controllers;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
+use Portal\Validators\OptionValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Entities\OptionsEntity;
@@ -14,7 +15,7 @@ class EditStageOptionController extends Controller
     private $optionId;
     private $option;
 
-     /** Constructor assigns StageModel to this object
+    /** Constructor assigns StageModel to this object
      *
      * EditStageOptionController constructor.
      * @param StageModel $stageModel
@@ -46,6 +47,7 @@ class EditStageOptionController extends Controller
 
             try {
                 $formOption = $request->getParsedBody();
+                $options = OptionsValidator::validateOption($requestDataPackage['data']);
                 $this->optionId = $formOption[optionId];
                 $this->option = $formOption[option];
 
