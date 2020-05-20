@@ -70,16 +70,22 @@ class ApplicantModel
      * Sorts the table via the input taken from the sorting arrows
      *
      * @param string $sortingQuery
+     * @param string $cohortId
      * @return array $results is the data retrieved.
      */
-    public function getAllApplicants(string $sortingQuery)
+    public function getAllApplicants(string $sortingQuery, string $cohortId = "")
     {
         $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
                       AS 'cohortDate'
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-                      WHERE `applicants`.`deleted` = '0' 
-                        ORDER BY ";
+                      WHERE `applicants`.`deleted` = '0' ";
+
+        if ($cohortId !== "") {
+            $stmt .= "AND `applicants`.`cohortId` = ? ";
+        }
+
+        $stmt .= "ORDER BY ";
 
         switch ($sortingQuery) {
             case 'dateAsc':
@@ -105,7 +111,13 @@ class ApplicantModel
 
         $query = $this->db->prepare($stmt);
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\BaseApplicantEntity');
-        $query->execute();
+
+        if ($cohortId === "") {
+            $query->execute();
+        } else {
+            $query->execute([$cohortId]);
+        }
+
         $results = $query->fetchAll();
         return $results;
     }
