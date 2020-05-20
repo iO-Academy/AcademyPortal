@@ -16,9 +16,13 @@ class StagesPageViewHelper
     public static function displayStages($stages)
     {
         $result = '';
+        $counter = 1;
         foreach ($stages as $stage) {
             if ($stage instanceof StageEntity) {
                 $result .= '<tr class="list-group-item" data-id="'. $stage->getStageId().'">';
+                $result .= '<td>';
+                $result .= $counter ++;
+                $result .= '</td>';
                 $result .= '<td>';
                 $result .= '<p>'. $stage->getStageTitle().'</p>';
                 $result .= '<form data-id="'. $stage->getStageId().'" class="stagesTableForm">';
