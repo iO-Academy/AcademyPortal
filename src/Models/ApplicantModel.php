@@ -2,8 +2,6 @@
 
 namespace Portal\Models;
 
-use Portal\Entities\ApplicantEntity;
-use Portal\Entities\BaseApplicantEntity;
 use Portal\Interfaces\ApplicantEntityInterface;
 
 class ApplicantModel
