@@ -7,18 +7,6 @@ use \Portal\Entities\StageEntity;
 class StagesPageViewHelper
 {
 
-    private static $hasOptions = true;
-    private static $options = ['option A', 'option B', 'option C'];
-
-    public function getHasOptions(){
-        return self::$hasOptions;
-    }
-
-    public function getOptions(){
-        return self::$options;
-    }
-
-
     /**
      *  Concatenates new stages table ready to be output.
      *
@@ -39,31 +27,34 @@ class StagesPageViewHelper
                     . $stage->getStageTitle().'"/>';
                 $result .= '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
                 $result .= '</form>';
-                if(self::$hasOptions === false){
+                $result .= '<div class="optionsContainer hide" data-stageId="'. $stage->getStageId().'">';
+                if(empty($stage->getOptions())){
                     $result .= '<form data-id="" class="optionAddForm">';
-                    $result .= '<input type="text" class="optionAddTitle col-xs-12" placeholder="Type the name of your new option"/>';
+                    $result .= '<input type="text" class="optionAddTitle col-xs-10" placeholder="Type the name of your new option"/>';
                 } else {
-                    foreach(self::$options as $option){
-                        $result .= '<p class="optionP">'. $option;
-                        $result .= '<a class="text-danger optionDeleteSubmit">Delete</a>';
-                        $result .= '<a class="optionEditSubmit">Edit</a>';
+                    foreach($stage->getOptions() as $option){
+                        $result .= '<div class="optionContainer">';
+                        $result .= '<p class="optionTitle" data-optionId="'.$option->getOptionId().'">'. $option->getOptionTitle();
+                        $result .= '<a class="text-danger optionDelete" data-optionId="'.$option->getOptionId().'">Delete</a>';
+                        $result .= '<a class="optionEdit" data-optionId="'.$option->getOptionId().'">Edit</a>';
                         $result .= '</p>';
-                        $result .= '<form data-id="'. $option.'" class="optionTableForm">';
-                        $result .= '<input type="text" class="optionEditTitle col-xs-12" value="'. $option.'"/>';
-                        $result .= '<input type="submit" class="optionEditSubmit" value="Submit">';
+                        $result .= '<form class="optionTableForm hide" data-optionId="'.$option->getOptionId().'">';
+                        $result .= '<input type="text" class="optionEditTitle col-xs-10" value="'. $option->getOptionTitle().'"/>';
+                        $result .= '<input type="submit" class="optionEditSubmit btn-success" value="Submit">';
                         $result .= '</form>';
+                        $result .= '</div>';
                     }
-                    $result .= '<form data-id="" class="optionAddForm">';
+                    $result .= '<form data-id="" class="optionAddForm ">';
                 }
-                $result .= '<input type="text" class="optionAddTitle col-xs-12" placeholder="Type the name of your new option"/>';
+                $result .= '<input type="text" class="optionAddTitle col-xs-10" placeholder="Type the name of your new option"/>';
                 $result .= '<input type="submit" class="optionAddSubmit btn-success" value="Submit">';
                 $result .= '</form>';
-
+                $result .= '</div>';
                 $result .= '</td>';
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
                 $result .= '<td class="col-xs-2 text-center"><a data-id="'. $stage->getStageId()
                     .'" class="text-danger delete">Delete</a></td>';
-                $result .= '<td class="col-xs-2 text-center"<a class="toggleEditOptions">Options</a></td>';
+                $result .= '<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="'.$stage->getStageId().'">Options</a></td>';
                 $result .= '</tr>';
             }
         }

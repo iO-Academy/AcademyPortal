@@ -133,18 +133,37 @@ input[type="submit"] {
     margin-bottom: 0;
 }
 
-
-.optionTableForm{
-    display: none;
-}
-
-
 .optionDeleteSubmit, .optionEditSubmit{
-    float: right;
-    margin-left: 3%;
+    /* float: right; */
+    /* margin-left: 3%; */
     font-family: Courier, sans-serif;
 }
 
-.optionAddForm input[type="submit"]{
-    margin-top: 1%;
+.hide{
+    display: none;
+}
+
+.optionsContainer{
+    display: block;
+}
+
+.optionTitle{
+    padding-top: 1%;
+}
+
+.optionEditSubmit{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.optionContainer{
+    position: relative;
+    height: 3em;
+}
+
+.optionEditTitle{
+    position: absolute;
+    left: 0;
+    top: 0;
 }
