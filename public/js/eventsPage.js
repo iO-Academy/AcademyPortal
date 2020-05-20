@@ -47,6 +47,12 @@ function displayEventsHandler(eventsAndHiringPartners) {
                             let targetId = 'moreInfo' + e.target.dataset.reference
                             let targetDiv = document.getElementById(targetId)
                             targetDiv.classList.toggle('hide')
+                            targetDiv.parentElement.classList.toggle('open')
+
+                            e.target.textContent = 'More info'
+                            if (!targetDiv.classList.contains('hide')) {
+                                e.target.textContent = 'Less info'
+                            }
                         })
                     })
         })
@@ -82,14 +88,11 @@ function displayEventsHandler(eventsAndHiringPartners) {
                                 body: JSON.stringify(data)
                             }).then(response => response.json())
                                 .then((responseJSON) => {
-                                    currentEventsMessage.innerText = responseJSON.message
+
                                     if(responseJSON.success) {
-                                        searchQuery = document.getElementById("academy-events-search").value
-                                        if(searchQuery != "") {
-                                            getEvents(searchQuery)
-                                        } else {
-                                            getEvents()
-                                        }
+                                        displayHiringPartnersAttending({id: data.event_id})
+                                    } else {
+                                        currentEventsMessage.innerText = responseJSON.message
                                     }
                                 })
                         } else {
@@ -117,7 +120,6 @@ async function addEventListenersToHpDelete(event){
     let hpDeleteForms = document.querySelectorAll(`.hiring-partner input[data-event='${event.id}']`)
     hpDeleteForms.forEach(function(hpDelete){
         hpDelete.addEventListener('click', function(e){
-            e.preventDefault()
             DeleteHPRequest(e, event)
         })
     })
@@ -137,16 +139,11 @@ function DeleteHPRequest(e, event) {
                 method: 'post',
                 body: JSON.stringify(data)
             }) .then (response => response.json())
-                .then (responseJSON => {
-                    let currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`)
-                    currentEventsMessage.innerText = responseJSON.message
-                    if (responseJSON.success){
-                        searchQuery = document.getElementById("academy-events-search").value
-                        if(searchQuery != "") {
-                            getEvents(searchQuery)
-                        } else {
-                            getEvents()
-                        }
+               .then (responseJSON => {
+                    if (responseJSON.success) {
+                        displayHiringPartnersAttending({id: data.event_id})
+                    } else {
+                        document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`).innerText = responseJSON.message
                     }
                 })
 }
@@ -177,24 +174,19 @@ async function displayHiringPartnersAttending(event){
     })
         .then(response => response.json())
         .then(response => {
-            if(response.length != 0) {
+            hiringPartnersDiv.innerHTML = ''
+            if (response.length > 0) {
                 let hiringPartnerHTML = ""
-                hiringPartnerHTML += `<h4>Attending hiring partners</h4>`
+                hiringPartnerHTML += `<h5>Attending hiring partners:</h5>`
                 response.forEach(function(hiringPartner) {
                     hiringPartnerHTML += `<div class="hiring-partner">`
-                    if(hiringPartner.attendees != null) {
-                        hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
-                        <form>
-                            <input type="submit" data-event="${event.id}" data-hp="${hiringPartner.id}" value="Delete">
-                        </form>
-                        </div>`
-                    } else {
-                        hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span></p>
-                        <form>
-                            <input type="submit" data-event="${event.id}" data-hp="${hiringPartner.id}" value="Delete">
-                        </form>
-                        </div>`
+                    hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span>`
+                    if (hiringPartner.attendees != null) {
+                        hiringPartnerHTML += `: ${hiringPartner.attendees}</p>`
                     }
+                    hiringPartnerHTML +=
+                        `<input type="submit" class="btn btn-danger btn-sm" data-event="${event.id}" data-hp="${hiringPartner.id}" value="Delete">
+                    </div>`
                 })
                 hiringPartnersDiv.innerHTML += hiringPartnerHTML
             }
@@ -211,13 +203,16 @@ async function displayHiringPartnersAttending(event){
  */
 async function eventGenerator(event, hiringPartners) {
     let eventInformation = ''
+    let date = new Date(event.date).toDateString()
     eventInformation +=
-        `<div class="event-name">
-        <p>${event.name}</p>
-        <button class="show-event-info" data-reference='${event.id}'>More Info</button>
+        `<div class="event">
+        <div class="header">
+            <h4>${event.name} - ${date}</h4>
+            <button class="show-event-info btn btn-primary" data-reference='${event.id}'>More Info</button>
+        </div>
         <div id="moreInfo${event.id}" class="hide moreInfo">
         <p>Event Category: ${event.category_name}</p>
-        <p>Date: ${new Date(event.date).toDateString()}</p>
+        <p>Date: ${date}</p>
         <p>Location: ${event.location}</p>
         <p>Start Time: ${event.start_time.slice(0, -3)}</p>
         <p>End Time: ${event.end_time.slice(0, -3)}</p>`
@@ -226,22 +221,25 @@ async function eventGenerator(event, hiringPartners) {
         eventInformation += `<p>Notes: ${event.notes}</p>`
     }
 
-    eventInformation += `<div class="hiring-partners" data-eventId='${event.id}'></div>
-            <div class='addHiringPartner'>
+    eventInformation += `<div class="event-attendees">`
+    eventInformation += `<div class="hiring-partners col-xs-12 col-md-6" data-eventId='${event.id}'></div>
+            <div class='addHiringPartner col-xs-12 col-md-6'>
+            <h5>Add attendees</h5>
             <form class='addHiringPartnerForm' id='${event.id}'>
 
             <select data-event=${event.id}>
-            <option value='0'>Please select a hiring partner...</option>`
-
-            eventInformation += `</select>
-            <label>Number of company attendees:</label>
-            <input data-event='${event.id}' type='number' name='companyAttendees' min='0'/>
-            <input type='submit'/> 
+                <option value='0'>Hiring partner</option>`
+    eventInformation += `</select>
+            <div>
+                <label>Number of attendees:</label>
+                <input data-event='${event.id}' type='number' name='companyAttendees' class="companyAttendees" min='0'/>
+            </div>
+            <input value="Add Attendees" class="btn btn-primary btn-sm" type='submit'/> 
             </form>
             <div class='currentEventsMessages' data-event=${event.id}></div>
             </div>`
 
-    eventInformation += `</div></div>`
+    eventInformation += `</div></div></div>`
     eventList.innerHTML += eventInformation
     const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`)
     if (hiringPartners.status) {
@@ -280,11 +278,12 @@ document.querySelector('#submit-search-event').addEventListener('click', functio
     e.preventDefault()
     if ((searchInput.length) && searchInput.length < 256) {
         message.classList.remove('alert-danger')
+        message.textContent = '';
         getEvents(searchInput)
         document.querySelector('#events-list').innerText = 'Results'
     } else {
         message.classList.add('alert-danger')
-        message.innerHTML = 'Event search: must be between 1 and 255 characters'
+        message.textContent = 'Event search: must be between 1 and 255 characters'
     }
 })
 
