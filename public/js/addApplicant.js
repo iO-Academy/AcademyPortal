@@ -1,6 +1,6 @@
 let getFormOptions = () => {
  
-    return fetch('./api/applicationForm', {
+    return fetch('../api/applicationForm', {
         credentials: "same-origin",
         headers: {
             'Accept': 'application/json',
