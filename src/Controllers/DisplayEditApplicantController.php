@@ -3,6 +3,7 @@
 namespace Portal\Controllers;
 
 use Portal\Abstracts\Controller;
+use Portal\Interfaces\ApplicantModelInterface;
 use Portal\Models\ApplicantModel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -14,10 +15,10 @@ class DisplayEditApplicantController extends Controller
     private $renderer;
     /**
      * DisplayEditApplicantController constructor.
-     * @param ApplicantModel $applicantModel
+     * @param ApplicantModelInterface $applicantModel
      * @param PhpRenderer $renderer
      */
-    public function __construct(ApplicantModel $applicantModel, PhpRenderer $renderer)
+    public function __construct(ApplicantModelInterface $applicantModel, PhpRenderer $renderer)
     {
         $this->applicantModel = $applicantModel;
         $this->renderer = $renderer;

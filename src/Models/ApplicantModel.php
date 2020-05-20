@@ -3,8 +3,9 @@
 namespace Portal\Models;
 
 use Portal\Interfaces\ApplicantEntityInterface;
+use Portal\Interfaces\ApplicantModelInterface;
 
-class ApplicantModel
+class ApplicantModel implements ApplicantModelInterface
 {
     private $db;
 
