@@ -6,7 +6,6 @@ use Exception;
 use Portal\Abstracts\Controller;
 use Portal\Entities\ApplicantEntity;
 use Portal\Models\ApplicantModel;
-use Portal\Validators\NewApplicantValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
