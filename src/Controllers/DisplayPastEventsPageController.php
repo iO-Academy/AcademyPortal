@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
-class DisplayEventsPageController extends Controller
+class DisplayPastEventsPageController extends Controller
 {
     private $renderer;
     private $eventModel;
@@ -38,7 +38,7 @@ class DisplayEventsPageController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $args['eventType'] = 'Upcoming';
+            $args['eventType'] = 'Past';
             return $this->renderer->render($response, 'events.phtml', $args);
         } else {
             return $response->withHeader('Location', './');

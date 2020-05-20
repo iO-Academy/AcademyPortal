@@ -14,6 +14,7 @@ return function (App $app) {
     $app->get('/addHiringPartner', 'AddHiringPartnerPageController');
     $app->get('/addHiringPartnerContact', 'AddHiringPartnerContactPageController');
     $app->get('/events', 'DisplayEventsPageController');
+    $app->get('/events-past', 'DisplayPastEventsPageController');
     $app->get('/addEvent', 'AddEventPageController');
     $app->get('/editStages', 'DisplayStagesController');
 

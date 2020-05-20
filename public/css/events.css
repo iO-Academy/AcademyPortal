@@ -87,3 +87,8 @@
 .addHiringPartnerForm .companyAttendees {
     width: 100px;
 }
+
+input[type="date"],
+input[type="time"] {
+    padding: 0 12px;
+}

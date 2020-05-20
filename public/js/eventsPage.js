@@ -1,6 +1,6 @@
 const eventList = document.querySelector('#events')
 const message = document.querySelector('#messages')
-
+const isPastPage = document.querySelector('#events-list').dataset.eventType === 'Past'; // this is such a hack!
 /**
  * Gets event information from the API and passes into the
  * displayEventsHandler function
@@ -8,9 +8,14 @@ const message = document.querySelector('#messages')
  * @return event data
  */
 function getEvents(search = false) {
-    let url = './api/getEvents'
+
+    let url = './api/getEvents?'
     if (search !== false) {
-        url += '?searchTerm=' + search
+        url += 'searchTerm=' + search
+    }
+
+    if (isPastPage) {
+        url += '&past=1'
     }
 
     fetch(url, {
@@ -184,9 +189,11 @@ async function displayHiringPartnersAttending(event){
                     if (hiringPartner.attendees != null) {
                         hiringPartnerHTML += `: ${hiringPartner.attendees}</p>`
                     }
-                    hiringPartnerHTML +=
-                        `<input type="submit" class="btn btn-danger btn-sm" data-event="${event.id}" data-hp="${hiringPartner.id}" value="Delete">
-                    </div>`
+                    if (!isPastPage) {
+                        hiringPartnerHTML +=
+                            `<input type="submit" class="btn btn-danger btn-sm" data-event="${event.id}" data-hp="${hiringPartner.id}" value="Delete">`
+                    }
+                    hiringPartnerHTML += `</div>`
                 })
                 hiringPartnersDiv.innerHTML += hiringPartnerHTML
             }
@@ -222,22 +229,25 @@ async function eventGenerator(event, hiringPartners) {
     }
 
     eventInformation += `<div class="event-attendees">`
-    eventInformation += `<div class="hiring-partners col-xs-12 col-md-6" data-eventId='${event.id}'></div>
+    eventInformation += `<div class="hiring-partners col-xs-12 col-md-6" data-eventId='${event.id}'></div>`;
+    if (!isPastPage) {
+        eventInformation += `
             <div class='addHiringPartner col-xs-12 col-md-6'>
-            <h5>Add attendees</h5>
-            <form class='addHiringPartnerForm' id='${event.id}'>
-
-            <select data-event=${event.id}>
-                <option value='0'>Hiring partner</option>`
-    eventInformation += `</select>
-            <div>
-                <label>Number of attendees:</label>
-                <input data-event='${event.id}' type='number' name='companyAttendees' class="companyAttendees" min='0'/>
-            </div>
-            <input value="Add Attendees" class="btn btn-primary btn-sm" type='submit'/> 
-            </form>
-            <div class='currentEventsMessages' data-event=${event.id}></div>
+                <h5>Add attendees</h5>
+                <form class='addHiringPartnerForm' id='${event.id}'>
+    
+                    <select data-event=${event.id}>
+                        <option value='0'>Hiring partner</option>`
+                eventInformation += `</select>
+                    <div>
+                        <label>Number of attendees:</label>
+                        <input data-event='${event.id}' type='number' name='companyAttendees' class="companyAttendees" min='0'/>
+                    </div>
+                    <input value="Add Attendees" class="btn btn-primary btn-sm" type='submit'/> 
+                </form>
+                <div class='currentEventsMessages' data-event=${event.id}></div>
             </div>`
+    }
 
     eventInformation += `</div></div></div>`
     eventList.innerHTML += eventInformation
