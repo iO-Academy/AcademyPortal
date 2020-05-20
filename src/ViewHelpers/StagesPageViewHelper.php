@@ -7,7 +7,9 @@ use \Portal\Entities\StageEntity;
 class StagesPageViewHelper
 {
     /**
-     *  Concatenates new stages table ready to be output. Runs an if statement to check whether or not there are options in a stage. If there are options, the delete button is disabled.
+     * Concatenates new stages table ready to be output. 
+     * Runs an if statement to check whether or not there are options in a stage. 
+     * If there are options, the delete button is disabled.
      *
      * @param $stages
      *
