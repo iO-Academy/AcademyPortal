@@ -7,11 +7,8 @@ use Portal\Validators\EmailValidator;
 use Portal\Validators\PhoneNumberValidator;
 use Portal\Validators\StringValidator;
 
-class ApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
+class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
 {
-    protected $id;
-    protected $name;
-    protected $email;
     protected $phoneNumber;
     protected $cohortId;
     protected $whyDev;
@@ -21,8 +18,6 @@ class ApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
     protected $eighteenPlus;
     protected $finance;
     protected $notes;
-    protected $cohortDate;
-    protected $dateTimeAdded;
 
     public function __construct(
         string $applicantName = null,
@@ -104,37 +99,6 @@ class ApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
         $this->whyDev = StringValidator::validateExistsAndLength($this->whyDev, 10000);
         $this->notes = StringValidator::validateLength($this->notes, 10000);
         $this->phoneNumber = PhoneNumberValidator::validatePhoneNumber($this->phoneNumber);
-    }
-
-    /**
-     * Gets the Id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Get's name.
-     *
-     * @return string, returns the name field.
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     *  Get's email.
-     *
-     * @return string, returns the email field.
-     *
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**
@@ -225,25 +189,5 @@ class ApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
     public function getNotes()
     {
         return $this->notes;
-    }
-
-    /**
-     * Get's dateOfApplication.
-     *
-     * @return string, returns the dateOfApplication field.
-     */
-    public function getDateOfApplication()
-    {
-        return $this->dateTimeAdded;
-    }
-
-    /**
-     * Get's cohortDate.
-     *
-     * @return string, returns the cohortDate field.
-     */
-    public function getCohortDate()
-    {
-        return date("F, Y", strtotime($this->cohortDate));
     }
 }

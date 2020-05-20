@@ -38,7 +38,7 @@ class SaveApplicantController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $data = ['success' => false, 'msg' => 'Application not saved', 'data' => []];
+            $data = ['success' => false, 'msg' => 'Application not saved'];
             $statusCode = 500;
 
             $newApplicationData = $request->getParsedBody();
@@ -68,8 +68,7 @@ class SaveApplicantController extends Controller
             if ($successfulRegister) {
                 $data = [
                     'success' => $successfulRegister,
-                    'msg' => 'Application Saved',
-                    'data' => [$applicant]
+                    'msg' => 'Application Saved'
                 ];
                 $statusCode = 200;
             }
