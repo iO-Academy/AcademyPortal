@@ -6,17 +6,18 @@ use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Portal\Entities\OptionsEntity;
 
-class DeleteStageOptionController extends Controller
+class DeleteAllStageOptionsController extends Controller
 {
     private $stageModel;
-    private $optionId;
+    private $stageId;
 
-    /** Constructor assigns StageModel to this object
-    *
-    * DeleteStageOptionController constructor.
-    * @param StageModel $stageModel
-    */
+     /** Constructor assigns StageModel to this object
+     *
+     * DeleteStageOptionController constructor.
+     * @param StageModel $stageModel
+     */
     public function __construct(StageModel $stageModel)
     {
         $this->stageModel = $stageModel;
@@ -24,7 +25,7 @@ class DeleteStageOptionController extends Controller
 
     /**
      * Checks if user is logged in, validates the http request data and calls
-     * the deleteOption method on stageModel
+     * the deleteAllOptions method on stageModel
      *
      * @param Request $request
      * @param Response $response
@@ -44,15 +45,16 @@ class DeleteStageOptionController extends Controller
 
             try {
                 $formOption = $request->getParsedBody();
-                $this->optionId = (int) $formOption['optionId'];
+                $this->stageId = $formOption['stageId'];
 
-                $this->stageModel->deleteOption($this->optionId);
+                $this->stageModel->deleteAllOptions($this->stageId);
                 $data = [
                     'success' => true,
-                    'msg' => 'Option delete successful.',
+                    'msg' => 'All options deleted.',
                     'data' => ''
                 ];
                 $statusCode = 200;
+
                 return $this->respondWithJson($response, $data, $statusCode);
             } catch (\Exception $e) {
                 $data['msg'] = $e->getMessage();

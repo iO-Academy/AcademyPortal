@@ -15,6 +15,15 @@ const optionTitle = document.querySelectorAll('.optionTitle');
 const optionsContainers= document.querySelectorAll('.optionsContainer');
 const optionEditForms = document.querySelectorAll('.optionTableForm');
 
+// Set up the modal for deleting the final option
+const modal=document.querySelector('.modalContainer');
+const closeModal = document.querySelector('.closeModal');
+closeModal.addEventListener('click', (e) => {
+    e.preventDefault()
+    modal.classList.add('hidden')
+})
+const deleteAllOptions = document.querySelector('.deleteAllOptions');
+
 optionEditSubmits.forEach((optionEditSubmit) => {
     optionEditSubmit.addEventListener('click', async (e) => {
         e.preventDefault()
@@ -38,14 +47,23 @@ optionDeletes.forEach((optionDelete) => {
                     "optionId" : id,
                     };
 
-        let response = await (await sendRequest('/api/deleteStageOption', 'DELETE', data)).json()
+        let response = await fetch('/api/deleteStageOption', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        
+        console.log(await response.status);
 
-        if (response.status == 100) {
-            let stageId = e.target.dataset.stageid
-            
-        }
+        // if (false) {
+        //     let stageId = e.target.dataset.stageid
+        //     modal.classList.remove('hidden')
+        // } else {
+        //     // window.location.reload(true);
+        // }
 
-        window.location.reload(true);
     })
 });
 

@@ -26,7 +26,7 @@ class StagesPageViewHelperTest extends TestCase
         $expected .= '<div class="optionsContainer hide" data-stageId="1">';
         $expected .= '<div class="optionContainer">';
         $expected .= '<p class="optionTitle" data-optionId="1">aTitle';
-        $expected .= '<a class="text-danger optionDelete" data-optionId="1">Delete</a>';
+        $expected .= '<a class="text-danger optionDelete" data-optionId="1" data-stageid="1">Delete</a>';
         $expected .= '<a class="optionEdit" data-optionId="1">Edit</a>';
         $expected .= '</p>';
         $expected .= '<form class="optionTableForm hide" data-optionId="1">';
