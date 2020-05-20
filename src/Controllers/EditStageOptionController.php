@@ -47,13 +47,26 @@ class EditStageOptionController extends Controller
                 $formOption = $request->getParsedBody();
                 $option = OptionsValidator::validateOption($formOption['data']);
             
-                $this->stageModel->editOption($option);
-                $data = [
-                    'success' => true,
-                    'msg' => 'Option edit successful.',
-                    'data' => ''
-                ];
-                $statusCode = 200;
+                if ($option === true) {
+
+                    $this->stageModel->updateOption($formOption['data']);
+                    $data = [
+                        'success' => true,
+                        'msg' => 'Option update successful.',
+                        'data' => ''
+                    ];
+                    
+                    $statusCode = 200;
+
+                } else {
+                    $data = [
+                        'success' => false,
+                        'msg' => 'Option update unsuccessful.',
+                        'data' => ''
+                    ];
+
+                    $statusCode = 400;
+                }
 
                 return $this->respondWithJson($response, $data, $statusCode);
             } catch (\Exception $e) {
