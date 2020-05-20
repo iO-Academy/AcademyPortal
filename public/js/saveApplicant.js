@@ -91,44 +91,32 @@ let makeApiRequest = async (data) => {
 let validateFormInputs = (data) => {
     let validate = {};
 
-    applicantName = {
-        validLengthVarChar: varCharMaxLength(data.name),
-        isName: isName(data.name),
-        isPresent: isPresent(data.name)
-    };
-
-    email = {
-        validLengthVarChar: varCharMaxLength(data.email),
-        isEmail: isEmail(data.email),
-        isPresent: isPresent(data.email)
-    };
-
-    phone = {
-        isPhone: isPhoneNumber(data.phoneNumber),
-        isPresent: isPresent(data.phoneNumber)
-    };
-
-    whyDev = {
-        validLengthText: textAreaMaxLength(data.whyDev),
-        isPresent: isPresent(data.whyDev)
-    };
-
-    codeExperience = {
-        validLengthText: textAreaMaxLength(data.codeExperience)
-    };
-
-    notes = {
-        validLengthText: textAreaMaxLength(data.notes)
-    };
-
     validate = {
-        name: {...applicantName},
-        email,
-        phone,
-        whyDev,
-        codeExperience,
-        notes
+        name: {
+            validLengthVarChar: varCharMaxLength(data.name),
+            isName: isName(data.name),
+            isPresent: isPresent(data.name)
+        },
+        email: {
+            validLengthVarChar: varCharMaxLength(data.email),
+            isEmail: isEmail(data.email),
+            isPresent: isPresent(data.email)
+        },
+        phone: {
+            isPhone: isPhoneNumber(data.phoneNumber),
+            isPresent: isPresent(data.phoneNumber)
+        } ,
+        whyDev: {
+            validLengthText: textAreaMaxLength(data.whyDev),
+            isPresent: isPresent(data.whyDev)
+        },
+        codeExperience: {
+            validLengthText: textAreaMaxLength(data.codeExperience)
+        },
+        notes: {
+            validLengthText: textAreaMaxLength(data.notes)
+        }
     };
-
+    
     return validate;
 };
