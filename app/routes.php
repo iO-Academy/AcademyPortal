@@ -13,6 +13,7 @@ return function (App $app) {
     $app->get('/displayHiringPartnerPage', 'DisplayHiringPartnerPageController');
     $app->get('/displayEventsPage', 'DisplayEventsPageController');
     $app->get('/displayStages', 'DisplayStagesController');
+    $app->get('/editApplicant', 'DisplayEditApplicantController');
 
     //API
     $app->get('/api/getApplicant/{id}', 'GetApplicantController');
@@ -34,5 +35,4 @@ return function (App $app) {
     $app->put('/api/updateStages', 'EditStageController');
     $app->post('/api/login', 'LoginController');
     $app->post('/api/registerUser', 'RegisterUserController');
-
 };
