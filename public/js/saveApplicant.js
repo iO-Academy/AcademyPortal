@@ -82,17 +82,21 @@ let makeApiRequest = async (data) => {
         .then(response => {
         const generalErrorMessage = document.querySelector('#generalError');
 
-        if (response.status === 200) {
-            generalErrorMessage.innerHTML = "Applicant was successfully registered!";
-            generalErrorMessage.classList.add('alert-success');
-        } else if (response.status === 400) {
-            response.json().then(data => {
-                generalErrorMessage.innerHTML = data.msg;
+        switch (response.status) {
+            case 200:
+                generalErrorMessage.innerHTML = "Applicant was successfully registered!";
+                generalErrorMessage.classList.add('alert-success');
+                break;
+            case 400:
+                response.json().then(data => {
+                    generalErrorMessage.innerHTML = data.msg;
+                    generalErrorMessage.classList.add('alert-danger');
+                });
+                break;
+            default:
+                generalErrorMessage.innerHTML = "Something went wrong, please try again later.";
                 generalErrorMessage.classList.add('alert-danger');
-            });
-        } else {
-            generalErrorMessage.innerHTML = "Something went wrong, please try again later.";
-            generalErrorMessage.classList.add('alert-danger');
+                break;
         }
         generalErrorMessage.classList.remove('hidden');
     });
