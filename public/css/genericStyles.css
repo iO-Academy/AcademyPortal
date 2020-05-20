@@ -126,3 +126,47 @@ input[type="submit"] {
     padding: 0;
     margin-bottom: 0;
 }
+
+.optionDelete, .optionEdit{
+    float: right;
+    margin-left: 3%;
+    font-family: Courier, sans-serif;
+}
+
+.hide{
+    display: none;
+}
+
+.optionsContainer{
+    display: block;
+}
+
+.optionTitle{
+    padding-top: 1%;
+}
+
+.optionEditSubmit, .optionAddSubmit{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.optionContainer{
+    position: relative;
+    height: 2.5em;
+    vertical-align: bottom;
+}
+
+.optionEditTitle, .optionAddTitle{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.multiOptionsContainer{
+    height: 6em;
+}
+
+.firstOption{
+    bottom: 3em;
+}
