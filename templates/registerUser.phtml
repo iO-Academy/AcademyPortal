@@ -15,16 +15,18 @@
 
 <?php require 'partials/layout/nav.phtml'; ?>
     <h3>Register User</h3>
-    <div id="message"></div>
     <form id="registerUserForm">
-        <div>
+        <div class="form-group">
             <label for="randomPassword">Password</label>
-            <input type="text" id="randomPassword" readonly value="<?php echo $password;?>">
+            <input type="text" id="randomPassword" class="form-control" readonly value="<?php echo $password;?>">
         </div>
-    <div>
-        <label for="emailNewUser">Email</label>
-        <input id="emailNewUser" type="email" name="email">
-        <input type="submit" id="newUserSubmit">
+        <div class="form-group">
+            <label for="emailNewUser">Email</label>
+            <input id="emailNewUser" class="form-control" type="email" name="email">
+        </div>
+        <div class="form-group">
+            <input type="submit" id="newUserSubmit" class="btn btn-success" value="Register">
+            <div id="message" class="alert"></div>
         </div>
     </form>
 <?php require 'partials/layout/footer.phtml'; ?>

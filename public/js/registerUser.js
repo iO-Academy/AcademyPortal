@@ -33,12 +33,14 @@ newUserForm.addEventListener('submit', async (e) => {
         button = document.getElementById('newUserSubmit'),
         response = await sendNewUserDetails(data)
 
-    if(!response['success']) {
-        messageBox.innerText = response['msg']
-        messageBox.classList.add('error')
-    } else if (response['success'] === true) {
-        messageBox.innerText = response['msg']
-        messageBox.classList.remove('error')
+    messageBox.innerText = response['msg']
+    debugger
+    if (response['success']) {
+        messageBox.classList.remove('alert-danger')
+        messageBox.classList.add('alert-success')
         button.style.display = 'none';
+    } else {
+        messageBox.classList.remove('alert-success')
+        messageBox.classList.add('alert-danger')
     }
 })

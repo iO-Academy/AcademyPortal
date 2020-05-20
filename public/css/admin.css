@@ -21,8 +21,3 @@
 .custom-button[href="#"]:hover {
     background: none;
 }
-
-.error {
-    background-color: #ffc0cb;
-    width:200px;
-}
