@@ -38,7 +38,13 @@ optionDeletes.forEach((optionDelete) => {
                     "optionId" : id,
                     };
 
-        await sendRequest('/api/deleteStageOption', 'DELETE', data)
+        let response = await (await sendRequest('/api/deleteStageOption', 'DELETE', data)).json()
+
+        if (response.status == 100) {
+            let stageId = e.target.dataset.stageid
+            
+        }
+
         window.location.reload(true);
     })
 });

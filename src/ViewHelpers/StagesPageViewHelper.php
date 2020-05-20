@@ -41,7 +41,8 @@ class StagesPageViewHelper
                         $result .= '<p class="optionTitle" data-optionId="';
                         $result .= $option->getOptionId().'">'. $option->getOptionTitle();
                         $result .= '<a class="text-danger optionDelete" data-optionId="';
-                        $result .= $option->getOptionId().'">Delete</a>';
+                        $result .= $option->getOptionId().'" ';
+                        $result .= 'data-stageid="' . $stage->getStageId() . '">Delete</a>';
                         $result .= '<a class="optionEdit" data-optionId="'.$option->getOptionId().'">Edit</a>';
                         $result .= '</p>';
                         $result .= '<form class="optionTableForm hide" data-optionId="'.$option->getOptionId().'">';

@@ -191,6 +191,14 @@ class StageModel
         return $query->execute();
     }
 
+    public function getOptionsByStageId(int $stageId) : Array {
+        $query = $this->db->prepare("SELECT `id`, `option`, `stageId` FROM `options` WHERE `stageId` = :stageId, `deleted` = '0';");
+        $query->bindParam(':stageId', $stageId);
+        $query->execute;
+
+        return $query->fetchAll();
+    }
+    
     /**
      * Deletes (soft delete) all the 'options' of a stage with a given id.
      * @param int $stageId

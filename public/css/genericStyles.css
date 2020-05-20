@@ -176,3 +176,33 @@ input[type="submit"] {
 .firstOption{
     bottom: 3em;
 }
+
+.modalContainer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalContainer .container {
+    width: 50%;
+    height: fit-content;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    background-color: #FFFFFF;
+}
+
+.modalContainer .container b {
+    display: block;
+    padding: 2em;
+    padding-bottom: 5em;
+}
+
+.modalContainer .container a {
+    position: relative;
+    bottom: 1em;
+    text-align: right;
+    padding: 1em;
+}
