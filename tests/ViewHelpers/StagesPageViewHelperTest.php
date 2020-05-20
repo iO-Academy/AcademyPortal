@@ -31,7 +31,6 @@ class StagesPageViewHelperTest extends TestCase
         $entityMock->method('getStageTitle')->willReturn('Stage 1 test');
         $entityMock->method('getOptions')->willReturn([]);
 
-
         $input =  [$entityMock];
         $case = StagesPageViewHelper::displayStages($input);
 
@@ -62,7 +61,6 @@ class StagesPageViewHelperTest extends TestCase
         $entityMock->method('getStageId')->willReturn('1');
         $entityMock->method('getStageTitle')->willReturn('Stage 1 test');
         $entityMock->method('getOptions')->willReturn(['Option 1 test', 'Option 2 test']);
-
 
         $input =  [$entityMock];
         $case = StagesPageViewHelper::displayStages($input);
