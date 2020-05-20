@@ -73,7 +73,7 @@ class ApplicantModel
      * @param string $cohortId
      * @return array $results is the data retrieved.
      */
-    public function getAllApplicants(string $sortingQuery, string $cohortId = "")
+    public function getAllApplicants(string $sortingQuery)
     {
         $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
                       AS 'cohortDate'
@@ -81,45 +81,32 @@ class ApplicantModel
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
                       WHERE `applicants`.`deleted` = '0' ";
 
-        if ($cohortId !== "") {
-            $stmt .= "AND `applicants`.`cohortId` = ? ";
-        }
-
-        $stmt .= "ORDER BY ";
-
-        switch ($sortingQuery) {
-            case 'dateAsc':
-                $stmt .= '`dateTimeAdded` ASC';
-                break;
-
-            case 'dateDesc':
-                $stmt .= '`dateTimeAdded` DESC';
-                break;
-
-            case 'cohortAsc':
-                $stmt .= '`date` ASC';
-                break;
-
-            case 'cohortDesc':
-                $stmt .= '`date` DESC';
-                break;
-
-            default:
-                $stmt .= '`dateTimeAdded` ASC';
-                break;
-        }
+        $stmt .= $this->sortingQuery($sortingQuery);
 
         $query = $this->db->prepare($stmt);
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\BaseApplicantEntity');
 
-        if ($cohortId === "") {
-            $query->execute();
-        } else {
-            $query->execute([$cohortId]);
-        }
+        $query->execute();
 
-        $results = $query->fetchAll();
-        return $results;
+        return $query->fetchAll();
+    }
+
+    public function getAllApplicantsByCohort(string $sortingQuery, string $cohortId)
+    {
+        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
+                      AS 'cohortDate'
+                      FROM `applicants`
+                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      WHERE `applicants`.`deleted` = '0' AND `applicants`.`cohortId` = :cohortId ;";
+
+        $stmt .= $this->sortingQuery($sortingQuery);
+
+        $query = $this->db->prepare($stmt);
+        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\BaseApplicantEntity');
+        $query->bindValue(':cohortId', $cohortId);
+        $query->execute();
+
+        return $query->fetchAll();
     }
 
     /**
@@ -161,5 +148,32 @@ class ApplicantModel
         $query = $this->db->prepare("UPDATE `applicants` SET `deleted` = '1' WHERE `id` = :id");
         $query->bindParam(':id', $id);
         return $query->execute();
+    }
+
+    private function sortingQuery($sortingQuery)
+    {
+        $stmt = "ORDER BY ";
+        switch ($sortingQuery) {
+            case 'dateAsc':
+                $stmt .= '`dateTimeAdded` ASC';
+                break;
+
+            case 'dateDesc':
+                $stmt .= '`dateTimeAdded` DESC';
+                break;
+
+            case 'cohortAsc':
+                $stmt .= '`date` ASC';
+                break;
+
+            case 'cohortDesc':
+                $stmt .= '`date` DESC';
+                break;
+
+            default:
+                $stmt .= '`dateTimeAdded` ASC';
+                break;
+        }
+        return $stmt;
     }
 }
