@@ -52,6 +52,8 @@ return function (ContainerBuilder $containerBuilder) {
     $container['DisplayApplicantsController'] = DI\factory('\Portal\Factories\DisplayApplicantsControllerFactory');
     $container['GetApplicantController'] = DI\factory('\Portal\Factories\GetApplicantControllerFactory');
     $container['DisplayHiringPartnerPageController'] = DI\factory('\Portal\Factories\DisplayHiringPartnerPageControllerFactory');
+    $container['AddHiringPartnerPageController'] = DI\factory('\Portal\Factories\AddHiringPartnerPageControllerFactory');
+    $container['AddHiringPartnerContactPageController'] = DI\factory('\Portal\Factories\AddHiringPartnerContactPageControllerFactory');
     $container['CreateHiringPartnerController'] = DI\factory('\Portal\Factories\CreateHiringPartnerControllerFactory');
     $container['GetHiringPartnersController'] = DI\factory('\Portal\Factories\GetHiringPartnerControllerFactory');
     $container['CompanyDetailsModalController'] = DI\factory('\Portal\Factories\CompanyDetailsModalControllerFactory');

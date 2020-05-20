@@ -11,6 +11,8 @@ return function (App $app) {
     $app->get('/addapplicant', 'addApplicantController');
     $app->get('/applicants', 'DisplayApplicantsController');
     $app->get('/hiringPartners', 'DisplayHiringPartnerPageController');
+    $app->get('/addHiringPartner', 'AddHiringPartnerPageController');
+    $app->get('/addHiringPartnerContact', 'AddHiringPartnerContactPageController');
     $app->get('/events', 'DisplayEventsPageController');
     $app->get('/addEvent', 'AddEventPageController');
     $app->get('/editStages', 'DisplayStagesController');
