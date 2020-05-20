@@ -6,6 +6,6 @@ class OptionValidator
 {
     private static function validateOption(array $option)
     {
-        return (isset($option['id']) && is_numeric($option['id']) && !empty($option['option']) && !empty($option['order']));
+        return (isset($option['optionId']) && is_numeric($option['optionId']) && !empty($option['optionTitle']));
     }
 }

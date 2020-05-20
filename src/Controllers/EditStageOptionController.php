@@ -12,8 +12,6 @@ use Portal\Entities\OptionsEntity;
 class EditStageOptionController extends Controller
 {
     private $stageModel;
-    private $optionId;
-    private $option;
 
     /** Constructor assigns StageModel to this object
      *
@@ -47,11 +45,9 @@ class EditStageOptionController extends Controller
 
             try {
                 $formOption = $request->getParsedBody();
-                $options = OptionsValidator::validateOption($requestDataPackage['data']);
-                $this->optionId = $formOption[optionId];
-                $this->option = $formOption[option];
-
-                $this->stageModel->editOption($this->optionId, $this->option);
+                $option = OptionsValidator::validateOption($formOption['data']);
+            
+                $this->stageModel->editOption($option);
                 $data = [
                     'success' => true,
                     'msg' => 'Option edit successful.',
