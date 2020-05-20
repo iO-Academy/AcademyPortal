@@ -8,12 +8,12 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
-class EditApplicantController extends Controller
+class DisplayEditApplicantController extends Controller
 {
     private $applicantModel;
     private $renderer;
     /**
-     * EditApplicantController constructor.
+     * DisplayEditApplicantController constructor.
      * @param ApplicantModel $applicantModel
      * @param PhpRenderer $renderer
      */
