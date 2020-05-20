@@ -108,6 +108,12 @@ input[type="submit"] {
     display: none;
 }
 
+.disabled {
+    pointer-events: none;
+    color: #dbdbdb;
+    cursor: text;
+}
+
 #editResponse {
     margin-bottom: 10px;
 }
