@@ -25,7 +25,8 @@ class EditApplicantController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $applicant = $this->applicantModel->getApplicantById($args['id']);
+        $id = $request->getQueryParams()['id'];
+        $applicant = $this->applicantModel->getApplicantById($id);
         return $this->renderer->render($response, 'applicantForm.phtml', [
             'applicantName' => $applicant->getName(),
             'applicantEmail' => $applicant->getEmail(),

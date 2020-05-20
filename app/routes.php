@@ -13,7 +13,7 @@ return function (App $app) {
     $app->get('/displayHiringPartnerPage', 'DisplayHiringPartnerPageController');
     $app->get('/displayEventsPage', 'DisplayEventsPageController');
     $app->get('/displayStages', 'DisplayStagesController');
-    $app->get('/editApplicant/{id}', 'EditApplicantController');
+    $app->get('/editApplicant', 'EditApplicantController');
 
     //API
     $app->get('/api/getApplicant/{id}', 'GetApplicantController');
