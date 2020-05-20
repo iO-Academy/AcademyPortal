@@ -13,12 +13,12 @@ return function (App $app) {
     $app->get('/displayHiringPartnerPage', 'DisplayHiringPartnerPageController');
     $app->get('/displayEventsPage', 'DisplayEventsPageController');
     $app->get('/displayStages', 'DisplayStagesController');
-    $app->get('/editApplicant', 'EditApplicantController');
 
     //API
     $app->get('/api/getApplicant/{id}', 'GetApplicantController');
     $app->post('/api/saveApplicant', 'SaveApplicantController');
     $app->delete('/api/deleteApplicant', 'DeleteApplicantController');
+    $app->get('/editApplicant/{id}', 'EditApplicantController');
     $app->get('/api/applicationForm', 'ApplicationFormController');
     $app->post('/api/createHiringPartner', 'CreateHiringPartnerController');
     $app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');
