@@ -5,8 +5,11 @@ namespace Portal\ViewHelpers;
 
 class LayoutViewHelper
 {
-    public static function outputTitle(string $title): string
+    public static function outputTitle(string $title = ''): string
     {
-        return '<title>AcademyPortal | ' . $title . '</title>';
+        if (empty($title)) {
+            return '<title>Academy Portal</title>';
+        }
+        return '<title>Academy Portal | ' . $title . '</title>';
     }
 }
