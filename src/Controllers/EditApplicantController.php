@@ -62,7 +62,6 @@ class EditApplicantController extends Controller
                 $statusCode = 200;
             }
             return $this->respondWithJson($response, $data, $statusCode);
-
         }
         return $response->withStatus(401);
     }
