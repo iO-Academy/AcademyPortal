@@ -159,12 +159,12 @@ class ApplicantModel implements ApplicantModelInterface
      */
     public function updateApplicant(ApplicantEntityInterface $applicant)
     {
-        $query = $this->db->prepare($query = $this->db->prepare(
+        $query = $this->db->prepare(
             "UPDATE `applicants`
-                        SET (
+                        SET 
                             `name` = :name,
                             `email` = :email,
-                            `phoneNumber` = :PhoneNumber,
+                            `phoneNumber` = :phoneNumber,
                             `cohortId` = :cohortId,
                             `whyDev` = :whyDev,
                             `codeExperience` = :codeExperience,
@@ -173,11 +173,11 @@ class ApplicantModel implements ApplicantModelInterface
                             `eighteenPlus` = :eighteenPlus,
                             `finance` = :finance,
                             `notes` = :notes
-                        )
+                        
                         WHERE (
                             `id` = :id
                         );"
-        ));
+        );
 
         $query->bindValue(':name', $applicant->getName());
         $query->bindValue(':email', $applicant->getEmail());
