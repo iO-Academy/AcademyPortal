@@ -12,7 +12,7 @@ const optionAddSubmits = document.querySelectorAll('.optionAddSubmit');
 const optionAddTitle = document.querySelectorAll('.optionAddTitle');
 const optionEditTitle = document.querySelectorAll('.optionEditTitle');
 const optionTitle = document.querySelectorAll('.optionTitle');
-const optionsContainers= document.querySelectorAll('.optionsContainer');
+const optionsContainers = document.querySelectorAll('.optionsContainer');
 const optionEditForms = document.querySelectorAll('.optionTableForm');
 
 // Set up the modal for deleting the final option
@@ -34,7 +34,7 @@ optionEditSubmits.forEach((optionEditSubmit) => {
             'optionId': optionId
         }
         await sendRequest('api/editStageOption', 'PUT', data)
-        window.location.reload(true);
+        window.location.reload(true)
     })
 })
 
@@ -42,7 +42,6 @@ optionDeletes.forEach((optionDelete) => {
     optionDelete.addEventListener('click', async (e) => {
         e.preventDefault()
         let id = parseInt(e.target.dataset.optionid);
-        console.log(id)
         let data = {
                     "optionId" : id,
                     };
@@ -73,16 +72,16 @@ optionAddSubmits.forEach((optionAddSubmit) => {
         let inputs = e.target.parentElement.querySelectorAll('input[type="text"]')
         let stageId = e.target.dataset.stageid
 
-        let data = {
-            "data" : []
+        let result = {
+            "data": []
         };
         inputs.forEach((input) => {
-            data.data.push({
-                            'title': input.value,
-                            'stageId': stageId
-                        })
+            result.data.push({
+                'title': input.value,
+                'stageId': stageId
+            })
         })
-        await sendRequest('/api/addStageOption', 'POST', data)
+        await sendRequest('/api/addStageOption', 'POST', result)
         window.location.reload(true)
     })
 })
@@ -102,7 +101,7 @@ function getCookie(cname) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
+    for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
         while (c.charAt(0) == ' ') {
             c = c.substring(1);
@@ -117,8 +116,8 @@ function getCookie(cname) {
 optionButtons.forEach((optionButton) => {
     optionButton.addEventListener('click', (e) => {
         e.preventDefault();
-        optionsContainers.forEach((optionContainer)=>{
-            if(optionContainer.dataset.stageid === e.target.dataset.stageid){
+        optionsContainers.forEach((optionContainer) => {
+            if (optionContainer.dataset.stageid === e.target.dataset.stageid) {
                 optionContainer.classList.toggle('hide')
             }
         })
@@ -129,7 +128,7 @@ optionButtons.forEach((optionButton) => {
 deleteButtons.forEach((deleteButton) => {
     deleteButton.addEventListener('click', async (e) => {
         let data = {
-            "id" : e.target.dataset.id
+            "id": e.target.dataset.id
         };
         await sendRequest('/api/deleteStage', 'DELETE', data)
         window.location.reload(true)
@@ -151,7 +150,7 @@ optionEdits.forEach((optionEdit) => {
     optionEdit.addEventListener('click', (e) => {
         e.preventDefault();
         optionEditForms.forEach((optionEditForm) => {
-            if(optionEditForm.dataset.optionid === e.target.dataset.optionid){
+            if (optionEditForm.dataset.optionid === e.target.dataset.optionid) {
                 optionEditForm.classList.toggle('hide')
             }
         })
@@ -166,13 +165,11 @@ editForms.forEach((editForm, index) => {
         let editTitleInput = e.target.firstElementChild.value;
         let id = e.target.dataset.id;
         let data = {
-            "data" : [
-                {
-                    "id" : id,
-                    "title" : editTitleInput,
-                    "order" : (index + 1)
-                }
-            ]
+            "data": [{
+                "id": id,
+                "title": editTitleInput,
+                "order": (index + 1)
+            }]
         };
 
         await sendRequest('/api/updateStages', 'PUT', data);
@@ -185,7 +182,7 @@ newStageForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     let newStage = e.target.firstElementChild.value;
     let data = {
-        "title" : newStage
+        "title": newStage
     };
 
     await sendRequest('/api/createStage', 'POST', data);
@@ -201,7 +198,7 @@ async function sendRequest(url, requestMethod, data) {
         method: requestMethod.toUpperCase(),
         body: requestData,
         headers: {
-            "Content-Type" : "application/json"
+            "Content-Type": "application/json"
         }
     })
 
