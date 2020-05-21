@@ -28,20 +28,7 @@ class DisplayEditApplicantController extends Controller
     {
         if ($_SESSION['loggedIn'] === true) {
             $id = $request->getQueryParams()['id'];
-            $applicant = $this->applicantModel->getApplicantById($id);
-            $data = [
-                'applicantName' => $applicant->getName(),
-                'applicantEmail' => $applicant->getEmail(),
-                'applicantPhoneNumber' => $applicant->getPhoneNumber(),
-                'applicantCohortId' => $applicant->getCohortId(),
-                'applicantWhyDev' => $applicant->getWhyDev(),
-                'applicantCodeExperience' => $applicant->getCodeExperience(),
-                'applicantHearAboutId' => $applicant->getHearAboutId(),
-                'applicantEligible' => $applicant->getEligible(),
-                'applicantEighteenPlus' => $applicant->getEighteenPlus(),
-                'applicantFinance' => $applicant->getFinance(),
-                'applicantNotes' => $applicant->getNotes()
-            ];
+            $data['applicant'] = $this->applicantModel->getApplicantById($id);
             $data['title'] = 'Edit Applicant';
             $data['returnUrl'] = './displayApplicants';
 
