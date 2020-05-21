@@ -47,7 +47,7 @@ class AddStageOptionController extends Controller
             $options = OptionsValidator::validateOptionAdd($formOptions['data']);
             if (!empty($formOptions['optionTitle'])) {
                 foreach ($formOptions as $option) {
-                     $options = OptionsValidator::validateOptionAdd($option['data'])
+                    $options = OptionsValidator::validateOptionAdd($option['data'])
                      if ($option === true) { //needs rewriting
                         $data = [
                             'success' => true,
