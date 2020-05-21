@@ -173,7 +173,6 @@ class ApplicantModel implements ApplicantModelInterface
                             `eighteenPlus` = :eighteenPlus,
                             `finance` = :finance,
                             `notes` = :notes
-                        
                         WHERE (
                             `id` = :id
                         );"
