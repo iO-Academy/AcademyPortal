@@ -42,6 +42,7 @@ class DisplayEditApplicantController extends Controller
                 'applicantFinance' => $applicant->getFinance(),
                 'applicantNotes' => $applicant->getNotes()
             ];
+            $data['title'] = 'Edit Applicant';
 
             return $this->renderer->render($response, 'applicantForm.phtml', $data);
         }
