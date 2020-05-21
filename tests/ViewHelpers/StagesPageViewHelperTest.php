@@ -23,7 +23,6 @@ class StagesPageViewHelperTest extends TestCase
         $expected .= '<input type="text" class="stageEditTitle col-xs-10" value="Stage 1 test"/>';
         $expected .= '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
         $expected .= '</form>';
-        $expected .= '</td>';
         $expected .= '<div class="optionsContainer hide" data-stageId="1">';
         $expected .= '<div class="optionContainer multiOptionsContainer">';
         $expected .= '<form data-id="" class="optionAddForm">';
@@ -40,6 +39,8 @@ class StagesPageViewHelperTest extends TestCase
         $expected .= '</td>';
         $expected .= '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
         $expected .= '<td class="col-xs-2 text-center"><a data-id="1" class="text-danger delete">Delete</a></td>';
+        $expected .= '<td class="col-xs-2 text-center">';
+        $expected .= '<a class="toggleEditOptions" data-stageId="1">Options</a></td>';
         $expected .= '</tr>';
         $stageEntityMock = $this->createMock(StageEntity::class);
         $stageEntityMock->method('getStageId')->willReturn('1');
@@ -66,13 +67,12 @@ class StagesPageViewHelperTest extends TestCase
         $expected .= '<input type="text" class="stageEditTitle col-xs-10" value="Stage 1 test"/>';
         $expected .= '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
         $expected .= '</form>';
-        $expected .= '</td>';
         $expected .= '<div class="optionsContainer hide" data-stageId="1">';
         $expected .= '<div class="optionContainer">';
         $expected .= '<p class="optionTitle" data-optionId="';
         $expected .= '1">aTitle';
         $expected .= '<a class="text-danger optionDelete" data-optionId="';
-        $expected .= '1">Delete</a>';
+        $expected .= '1" data-stageid="1">Delete</a>';
         $expected .= '<a class="optionEdit" data-optionId="1">Edit</a>';
         $expected .= '</p>';
         $expected .= '<form class="optionTableForm hide" data-optionId="1">';
@@ -97,6 +97,8 @@ class StagesPageViewHelperTest extends TestCase
         $expected .= '<a class="toggleEditForm">Edit</a></td>';
         $expected .= '<td class="col-xs-2 text-center disabled">';
         $expected .= '<a data-id="1" class="text-danger delete disabled">Delete</a></td>';
+        $expected .= '<td class="col-xs-2 text-center">';
+        $expected .= '<a class="toggleEditOptions" data-stageId="1">Options</a></td>';
         $expected .= '</tr>';
 
         $optionEntityMock = $this->createMock(OptionsEntity::class);
