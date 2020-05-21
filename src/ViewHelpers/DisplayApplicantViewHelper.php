@@ -35,12 +35,12 @@ class DisplayApplicantViewHelper
                                        class="btn btn-primary edit">
                                        Edit
                                     </a>                                                                   
-                                    <button 
+                                    <a
                                             type="delete"
                                             class="btn btn-danger delete deleteBtn"
                                             data-id="' . $applicant->getId() . '">
                                             Delete
-                                    </button>                                   
+                                    </a>                                   
                                 </td>
                             </tr>';
             }
