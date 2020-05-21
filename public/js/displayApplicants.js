@@ -10,9 +10,11 @@
         form.submit();
     });
 
-    if (cohort) {
+    if (cohort !== 'all') {
         document.querySelector(`[value='${cohort}']`).setAttribute("selected", "true");
+        document.querySelector('.cohortSort').classList.add('hidden');
     } else {
         document.querySelector("[value='all']").setAttribute("selected", "true");
+        document.querySelector('.cohortSort').classList.remove('hidden');
     }
 })();
