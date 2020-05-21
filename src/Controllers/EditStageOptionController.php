@@ -11,11 +11,6 @@ use Psr\Http\Message\ResponseInterface as Response;
 class EditStageOptionController extends Controller
 {
     private $stageModel;
-<<<<<<< HEAD
-=======
-    private $optionId;
-    private $optionTitle;
->>>>>>> 6d335a875064fbdf3c15ea6efaa001e335c325b6
 
     /** Constructor assigns StageModel to this object
      *
