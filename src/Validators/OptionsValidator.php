@@ -2,15 +2,26 @@
 
 namespace Portal\Validators;
 
-class OptionValidator
+class OptionsValidator
 {
-    private static function validateOptionUpdate(array $option)
+
+    /**
+     * Takes an edited option and validates the optionId exists, and is a number, and that optionTitle has content. If all pass, returns true.
+     * @param array $option
+     * @return bool 
+     */
+    public static function validateOptionUpdate(array $option) : bool
     {
-        return (isset($option['optionId']) && is_numeric($option['optionId']) && !empty($option['option'])); //potential error option/optionTitle
+        return (isset($option['optionId']) && is_numeric($option['optionId']) && !empty($option['optionTitle']));
     }
 
-    private static function validateOptionAdd(array $option)
+    /**
+     * Takes a new option and validates the stageId exists, and is a number, and that optionTitle has content. If all pass, returns true.
+     * @param array $option
+     * @return bool 
+     */
+    public static function validateOptionAdd(array $option) : bool
     {
-        return (isset($option['stageId']) && is_numeric($option['stageId']) && !empty($option['optionTitle'])); //potential error option/optionTitle
+        return (isset($option['stageId']) && is_numeric($option['stageId']) && !empty($option['title']));
     }
 }
