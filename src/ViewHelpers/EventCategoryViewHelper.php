@@ -14,9 +14,11 @@ class EventCategoryViewHelper
     public static function eventCategoryDropdown(array $data) : string
     {
         $eventCategoryDropdown = '';
-        foreach ($data['eventCategories'] as $eventCategory) {
-            $eventCategoryDropdown .=
-            '<option value="' . $eventCategory['id'] . '">' . $eventCategory['name'] . '</option>';
+        if (!empty($data['eventCategories'])) {
+            foreach ($data['eventCategories'] as $eventCategory) {
+                $eventCategoryDropdown .=
+                    '<option value="' . $eventCategory['id'] . '">' . $eventCategory['name'] . '</option>';
+            }
         }
         return $eventCategoryDropdown;
     }

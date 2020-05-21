@@ -23,18 +23,16 @@ class CompanySizeViewHelperTest extends TestCase
 
     public function testFailureCompanySizeDropdownIncorrectDataFormat()
     {
-        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
-        CompanySizeViewHelper::companySizeDropdown([]);
+        $result = CompanySizeViewHelper::companySizeDropdown([]);
+        $this->assertEquals('', $result);
     }
 
     public function testFailureCompanySizeDropdownIncorrectDataFormat2()
     {
         $data = [
-            'companySize' => [
-                []
-            ]
+            'companySize' => []
         ];
-        $this->expectException(\PHPUnit\Framework\Error\Notice::class);
-        CompanySizeViewHelper::companySizeDropdown($data);
+        $result = CompanySizeViewHelper::companySizeDropdown($data);
+        $this->assertEquals('', $result);
     }
 }
