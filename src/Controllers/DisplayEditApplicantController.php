@@ -26,22 +26,25 @@ class DisplayEditApplicantController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $id = $request->getQueryParams()['id'];
-        $applicant = $this->applicantModel->getApplicantById($id);
-        $data = [
-            'applicantName' => $applicant->getName(),
-            'applicantEmail' => $applicant->getEmail(),
-            'applicantPhoneNumber' => $applicant->getPhoneNumber(),
-            'applicantCohortId' => $applicant->getCohortId(),
-            'applicantWhyDev' => $applicant->getWhyDev(),
-            'applicantCodeExperience' => $applicant->getCodeExperience(),
-            'applicantHearAboutId' => $applicant->getHearAboutId(),
-            'applicantEligible' => $applicant->getEligible(),
-            'applicantEighteenPlus' => $applicant->getEighteenPlus(),
-            'applicantFinance' => $applicant->getFinance(),
-            'applicantNotes' => $applicant->getNotes()
-        ];
+        if ($_SESSION['loggedIn'] === true) {
+            $id = $request->getQueryParams()['id'];
+            $applicant = $this->applicantModel->getApplicantById($id);
+            $data = [
+                'applicantName' => $applicant->getName(),
+                'applicantEmail' => $applicant->getEmail(),
+                'applicantPhoneNumber' => $applicant->getPhoneNumber(),
+                'applicantCohortId' => $applicant->getCohortId(),
+                'applicantWhyDev' => $applicant->getWhyDev(),
+                'applicantCodeExperience' => $applicant->getCodeExperience(),
+                'applicantHearAboutId' => $applicant->getHearAboutId(),
+                'applicantEligible' => $applicant->getEligible(),
+                'applicantEighteenPlus' => $applicant->getEighteenPlus(),
+                'applicantFinance' => $applicant->getFinance(),
+                'applicantNotes' => $applicant->getNotes()
+            ];
 
-        return $this->renderer->render($response, 'applicantForm.phtml', $data);
+            return $this->renderer->render($response, 'applicantForm.phtml', $data);
+        }
+        return $response->withStatus(401);
     }
 }
