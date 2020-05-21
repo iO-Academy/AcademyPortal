@@ -17,7 +17,7 @@ class ApplicantFormViewHelperTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals('test', $actual);
     }
 
-    public function testRunMethodSucessNull()
+    public function testRunMethodSuccessNull()
     {
         $entityMock = $this->createMock(ApplicantEntity::class);
 
