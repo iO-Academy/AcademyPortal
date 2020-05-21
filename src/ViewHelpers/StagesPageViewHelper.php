@@ -69,6 +69,8 @@ class StagesPageViewHelper
                 if (empty($stage->getOptions())) {
                     $result .= '<td class="col-xs-2 text-center"><a data-id="'. $stage->getStageId()
                     .'" class="text-danger delete">Delete</a></td>';
+                $result .= '<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="';
+                $result .= $stage->getStageId().'">Options</a></td>';
                 } else {
                     $result .= '<td class="col-xs-2 text-center disabled"><a data-id="'. $stage->getStageId()
                     .'" class="text-danger delete disabled">Delete</a></td>';
