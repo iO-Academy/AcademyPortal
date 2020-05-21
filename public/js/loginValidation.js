@@ -1,7 +1,7 @@
 let isValidEmail = (inputEmail) => {
     let email = inputEmail.trim()
     // email regex from http://emailregex.com - "Email Address Regular Expression That 99.99% Works."
-    let regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     return regEx.test(email)
 }
 
@@ -27,7 +27,7 @@ let jsonRequest = async (path, data) => {
             body: JSON.stringify(data)
         })
         .then(data => data.json())
-        return response;
+        return response
 }
 
 let loginForm = document.getElementById('loginForm')
