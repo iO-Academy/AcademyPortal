@@ -9,8 +9,6 @@ const optionEditSubmits = document.querySelectorAll('.optionEditSubmit');
 const optionEdits = document.querySelectorAll('.optionEdit');
 const optionDeletes = document.querySelectorAll('.optionDelete');
 const optionAddSubmits = document.querySelectorAll('.optionAddSubmit');
-const optionAddTitle = document.querySelectorAll('.optionAddTitle');
-const optionEditTitle = document.querySelectorAll('.optionEditTitle');
 const optionsContainers = document.querySelectorAll('.optionsContainer');
 const optionEditForms = document.querySelectorAll('.optionTableForm');
 
