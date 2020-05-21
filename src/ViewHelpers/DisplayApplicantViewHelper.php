@@ -19,7 +19,7 @@ class DisplayApplicantViewHelper
         foreach ($applicants as $applicant) {
             if ($applicant instanceof BaseApplicantEntityInterface) {
                 $result .= '<tr>
-                        <td><a data-id ="'. $applicant->getId().'" type="button"  class="myBtn">'
+                        <td><a data-id ="'. $applicant->getId().'" type="button" class="myBtn">'
                             . $applicant->getName() .'</a></td>
                             <td>'. $applicant->getEmail() .'</td>
                             <td>'. $applicant->getDateOfApplication() .'</td>
