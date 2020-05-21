@@ -2,6 +2,9 @@
 
 namespace Portal\Factories;
 
+use Psr\Container\ContainerInterface;
+use Portal\Controllers\DeleteAllStageOptionsController;
+
 class DeleteAllStageOptionsControllerFactory
 {
     /**

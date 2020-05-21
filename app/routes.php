@@ -36,6 +36,6 @@ return function (App $app) {
     $app->put('/api/editStageOption', 'EditStageOptionController');
     $app->delete('/api/deleteStageOption', 'DeleteStageOptionController');
     $app->post('/api/addStageOption', 'AddStageOptionController');
-    $app->post('/api/deleteAllStageOptions', 'DeleteAllStageOptionsController');
+    $app->delete('/api/deleteAllStageOptions', 'DeleteAllStageOptionsController');
     
 };

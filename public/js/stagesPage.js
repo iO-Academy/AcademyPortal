@@ -19,8 +19,8 @@ const optionEditForms = document.querySelectorAll('.optionTableForm');
 const modal=document.querySelector('.modalContainer');
 const closeModal = document.querySelector('.closeModal');
 closeModal.addEventListener('click', (e) => {
-    e.preventDefault()
-    modal.classList.add('hidden')
+    e.preventDefault();
+    window.location.reload(true);
 })
 const deleteAllOptions = document.querySelector('.deleteAllOptions');
 
@@ -42,9 +42,10 @@ optionDeletes.forEach((optionDelete) => {
     optionDelete.addEventListener('click', async (e) => {
         e.preventDefault()
         let optionId = parseInt(e.target.dataset.optionid);
-        let stageId = parseInt()
+        let stageId = parseInt(e.target.dataset.stageid);
         let data = {
                     "optionId" : optionId,
+                    "stageId" : stageId
                     };
 
         let response = await fetch('/api/deleteStageOption', {
@@ -55,15 +56,25 @@ optionDeletes.forEach((optionDelete) => {
             body: JSON.stringify(data)
         })
         
-        console.log(await response.status);
-
-        // if (false) {
-        //     let stageId = e.target.dataset.stageid
-        //     modal.classList.remove('hidden')
-        // } else {
-        //     // window.location.reload(true);
-        // }
-
+        if (await response.status == 202) {
+            modal.classList.remove('hidden');
+            deleteAllOptions.addEventListener('click', async (e) => {
+                e.preventDefault();
+                let data = {
+                    "stageId" : stageId
+                };
+                await fetch('/api/deleteAllStageOptions', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                window.location.reload(true);
+            })
+        } else {
+            window.location.reload(true);
+        }
     })
 });
 

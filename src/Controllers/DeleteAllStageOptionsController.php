@@ -45,7 +45,7 @@ class DeleteAllStageOptionsController extends Controller
 
             try {
                 $formOption = $request->getParsedBody();
-                $this->stageId = $formOption['stageId'];
+                $this->stageId = (int) $formOption['stageId'];
 
                 $this->stageModel->deleteAllOptions($this->stageId);
                 $data = [

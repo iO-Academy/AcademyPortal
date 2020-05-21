@@ -194,9 +194,9 @@ class StageModel
     public function getOptionsByStageId(int $stageId) : array
     {
         $query = $this->db->prepare("SELECT `id`, `option`, `stageId` FROM `options` 
-                                        WHERE `stageId` = :stageId, `deleted` = '0';");
+                                        WHERE `stageId` = :stageId AND `deleted` = '0';");
         $query->bindParam(':stageId', $stageId);
-        $query->execute;
+        $query->execute();
 
         return $query->fetchAll();
     }
