@@ -70,8 +70,6 @@ return function (ContainerBuilder $containerBuilder) {
     $container['DisplayEditApplicantController'] = DI\factory('\Portal\Factories\DisplayEditApplicantControllerFactory');
     $container['EditApplicantController'] = DI\factory('\Portal\Factories\EditApplicantControllerFactory');
 
-
-
     // Models
     $container['UserModel'] = DI\factory('\Portal\Factories\UserModelFactory');
     $container['ApplicationFormModel'] = DI\factory('\Portal\Factories\ApplicationFormModelFactory');

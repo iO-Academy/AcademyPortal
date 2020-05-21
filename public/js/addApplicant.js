@@ -31,8 +31,8 @@ let outputCohorts = async () => {
 };
 
 let outputHearAbout = async () => {
-    let data = await handleFormOptions();
-    let element = document.getElementById('hear-about');
+    const data = await handleFormOptions();
+    const element = document.getElementById('hear-about');
     let hearAboutOptions = '';
 
     data.hearAbout.forEach(item => {
