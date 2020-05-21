@@ -33,6 +33,3 @@ let outputHearAbout = async () => {
 
     hearAbout.innerHTML = hearAboutOptions.join('')
 }
-
-outputCohorts()
-outputHearAbout()
