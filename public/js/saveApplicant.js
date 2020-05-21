@@ -60,9 +60,7 @@ let getCompletedFormData = () => {
     let data = {};
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const id = urlParams.get('id');
-    data['id'] = id;
-
+    data['id'] = urlParams.get('id');
 
     formData.forEach(formItem => {
         data[formItem.name] = formItem.value;
@@ -75,7 +73,7 @@ let getCompletedFormData = () => {
 };
 
 let makeApiRequest = async (data, type) => {
-    let path = './api/' + (type === '/addapplicant' ? 'saveApplicant' : 'editApplicant');
+    const path = './api/' + (type === '/addapplicant' ? 'saveApplicant' : 'editApplicant');
     return fetch(path, {
         credentials: "same-origin",
         headers: {
