@@ -52,5 +52,3 @@ $(document).ready(function(){
         $("#myModal").modal()
     })
 })
-
-outputCohorts();

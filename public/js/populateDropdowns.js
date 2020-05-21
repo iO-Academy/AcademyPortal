@@ -27,7 +27,7 @@ let outputCohorts = async () => {
         cohortOptions += `value="${item.id}">${item.date}</option>`;
     });
 
-    element.innerHTML = cohortOptions;
+    element.innerHTML += cohortOptions;
 };
 
 let outputHearAbout = async () => {
@@ -45,5 +45,3 @@ let outputHearAbout = async () => {
 
     element.innerHTML = hearAboutOptions;
 };
-
-

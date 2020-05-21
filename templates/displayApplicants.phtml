@@ -13,6 +13,7 @@
     <script src="./js/populateDropdowns.js" defer></script>
     <script defer src="./js/applicantModal.js"></script>
     <script defer src="./js/deleteApplicant.js"></script>
+    <script src="./js/displayApplicants.js" defer></script>
 </head>
 <body>
 <div class="container">
@@ -21,6 +22,7 @@
             <h1>Registered Applicants</h1>
             <div class="col-4"><label for="cohorts">Select Cohort</label>
                 <select id="cohorts" class="submitApplicant form-control" name="cohortId" required>
+                    <option selected value="all">All</option>
                 </select>
             </div>
             <form class="arrowForm" method="get">
