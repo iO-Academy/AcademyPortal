@@ -69,8 +69,7 @@ class ApplicantModel
     /**
      * Sorts the table via the input taken from the sorting arrows
      *
-     * @param string $sortingQuery
-     * @param string $cohortId
+     * @param string $sortingQuery - how you would like the results sorted
      * @return array $results is the data retrieved.
      */
     public function getAllApplicants(string $sortingQuery)
@@ -91,6 +90,13 @@ class ApplicantModel
         return $query->fetchAll();
     }
 
+    /**
+     * Gets a sorted list of appliciants assigned to a specific cohort.
+     *
+     * @param string $sortingQuery how you would like the results sorted
+     * @param string $cohortId the cohort you would like the results of
+     * @return array the data retrieved from the database
+     */
     public function getAllApplicantsByCohort(string $sortingQuery, string $cohortId)
     {
         $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
@@ -150,7 +156,13 @@ class ApplicantModel
         return $query->execute();
     }
 
-    private function sortingQuery($sortingQuery)
+    /**
+     * Generates an SQL query used for sorting the data.
+     *
+     * @param string $sortingQuery how you would like to sort the database
+     * @return string the SQL statement used for sorting
+     */
+    private function sortingQuery(string $sortingQuery): string
     {
         $stmt = "ORDER BY ";
         switch ($sortingQuery) {
