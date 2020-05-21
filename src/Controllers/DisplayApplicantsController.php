@@ -37,16 +37,19 @@ class DisplayApplicantsController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $params = [];
-        $params['sort'] = $request->getQueryParams()['sort'] ?? '';
-        $params['cohortId'] = $request->getQueryParams()['cohortId'];
 
-        if (isset($params['cohortId']) && $params['cohortId'] != 'all') {
-            $params['data'] = $this->applicantModel->getAllApplicantsByCohort($params['sort'], $params['cohortId']);
-        } else {
-            $params['data'] = $this->applicantModel->getAllApplicants($params['sort']);
+        if ($_SESSION['loggedIn'] === true) {
+            $params['sort'] = $request->getQueryParams()['sort'] ?? '';
+            $params['cohortId'] = $request->getQueryParams()['cohortId'];
+
+            if (isset($params['cohortId']) && $params['cohortId'] != 'all') {
+                $params['data'] = $this->applicantModel->getAllApplicantsByCohort($params['sort'], $params['cohortId']);
+            } else {
+                $params['data'] = $this->applicantModel->getAllApplicants($params['sort']);
+            }
+
+            return $this->renderer->render($response, 'displayApplicants.phtml', $params);
         }
-
-        return $this->renderer->render($response, 'displayApplicants.phtml', $params);
+        return $response->withStatus(401);
     }
 }

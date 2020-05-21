@@ -45,18 +45,17 @@ class EditApplicantController extends Controller
                     $newApplicationData['notes'],
                     $newApplicationData['id']
                 );
+
+                $successfulRegister = $this->applicantModel->updateApplicant($applicant);
+
+                if ($successfulRegister) {
+                    $data['success'] = $successfulRegister;
+                    $data['msg'] = 'Applicant has been updated!';
+                    $statusCode = 200;
+                }
             } catch (\Exception $e) {
                 $statusCode = 400;
                 $data['msg'] = $e->getMessage();
-                return $this->respondWithJson($response, $data, $statusCode);
-            }
-
-            $successfulRegister = $this->applicantModel->updateApplicant($applicant);
-
-            if ($successfulRegister) {
-                $data['success'] = $successfulRegister;
-                $data['msg'] = 'Applicant has been updated!';
-                $statusCode = 200;
             }
             return $this->respondWithJson($response, $data, $statusCode);
         }
