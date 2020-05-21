@@ -206,3 +206,7 @@ input[type="submit"] {
     text-align: right;
     padding: 1em;
 }
+
+.modalContainer .container a:hover {
+    cursor: pointer;
+}
