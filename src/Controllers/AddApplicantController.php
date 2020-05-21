@@ -33,7 +33,9 @@ class AddApplicantController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            return $this->renderer->render($response, 'addApplicant.phtml');
+            $data['title'] = 'Create New Applicant';
+            $data['returnUrl'] = './admin';
+            return $this->renderer->render($response, 'applicantForm.phtml', $data);
         }
 
         $_SESSION['loggedIn'] = false;
