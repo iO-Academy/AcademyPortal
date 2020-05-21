@@ -28,11 +28,14 @@ class DisplayEditApplicantController extends Controller
     {
         if ($_SESSION['loggedIn'] === true) {
             $id = $request->getQueryParams()['id'];
-            $data['applicant'] = $this->applicantModel->getApplicantById($id);
-            $data['title'] = 'Edit Applicant';
-            $data['returnUrl'] = './displayApplicants';
+            if ($id > 0) {
+                $data['applicant'] = $this->applicantModel->getApplicantById($id);
+                $data['title'] = 'Edit Applicant';
+                $data['returnUrl'] = './displayApplicants';
 
-            return $this->renderer->render($response, 'applicantForm.phtml', $data);
+                return $this->renderer->render($response, 'applicantForm.phtml', $data);
+            }
+            return $response->withHeader('Location', './displayApplicants')->withStatus(400);
         }
         return $response->withStatus(401);
     }
