@@ -4,16 +4,15 @@ namespace Portal\Controllers;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
+use Portal\Validators\OptionsValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
 class EditStageOptionController extends Controller
 {
     private $stageModel;
-    private $optionId;
-    private $optionTitle;
 
-     /** Constructor assigns StageModel to this object
+    /** Constructor assigns StageModel to this object
      *
      * EditStageOptionController constructor.
      * @param StageModel $stageModel
@@ -25,7 +24,7 @@ class EditStageOptionController extends Controller
 
     /**
      * Checks if user is logged in, validates the http request data and calls
-     * the editOption method on stageModel
+     * the updateOption method on stageModel
      *
      * @param Request $request
      * @param Response $response
@@ -42,20 +41,27 @@ class EditStageOptionController extends Controller
                 'data' => []
             ];
             $statusCode = 500;
-
             try {
                 $formOption = $request->getParsedBody();
-                $this->optionId = $formOption['optionId'];
-                $this->optionTitle = $formOption['optionTitle'];
-
-                if ($this->stageModel->updateOption($this->optionTitle, $this->optionId)) {
+                $optionValid = OptionsValidator::validateOptionUpdate($formOption);
+            
+                if ($optionValid === true) {
+                    $this->stageModel->updateOption($formOption);
                     $data = [
                         'success' => true,
-                        'msg' => 'Option edit successful.',
+                        'msg' => 'Option update successful.',
                         'data' => ''
                     ];
                     $statusCode = 200;
+                } else {
+                    $data = [
+                        'success' => false,
+                        'msg' => 'Option update unsuccessful.',
+                        'data' => ''
+                    ];
+                    $statusCode = 400;
                 }
+
                 return $this->respondWithJson($response, $data, $statusCode);
             } catch (\Exception $e) {
                 $data['msg'] = $e->getMessage();

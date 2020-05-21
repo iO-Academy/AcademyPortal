@@ -171,11 +171,11 @@ class StageModel
      * @param int $optionId
      * @return bool
      */
-    public function updateOption(string $option, int $optionId) : bool
+    public function updateOption(array $option) : bool
     {
         $query = $this->db->prepare("UPDATE `options` SET `option` = :optionText WHERE `id` = :id");
-        $query->bindParam(':id', $optionId);
-        $query->bindParam(':optionText', $option);
+        $query->bindParam(':id', $option['optionId']);
+        $query->bindParam(':optionText', $option['optionTitle']);
         return $query->execute();
     }
 

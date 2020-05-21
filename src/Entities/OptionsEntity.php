@@ -16,6 +16,8 @@ class OptionsEntity implements \JsonSerializable
         $this->option = ($this->option ?? $option);
         $this->stageId = ($this->stageId ?? $stageId);
         $this->deleted = 0;
+
+        $this->sanitiseData();
     }
 
     /**
@@ -30,6 +32,24 @@ class OptionsEntity implements \JsonSerializable
             'option' => $this->option,
             'stageId' => $this->stageId
         ];
+    }
+
+    /**
+     * Will sanitise the options for a stage.
+     */
+    private function sanitiseData()
+    {
+        $this->id = (int) $this->id;
+        $this->option = StringValidator::sanitiseString($this->option);
+
+        try {
+            $this->option = StringValidator::validateLength($this->option, 255);
+        } catch (\Exception $exception) {
+            $this->option = substr($this->option, 0, 254);
+        }
+        
+        $this->stageId = (int) $this->stageId;
+        $this->deleted = (int) $this->deleted;
     }
 
     /**

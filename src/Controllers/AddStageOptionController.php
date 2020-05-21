@@ -4,6 +4,7 @@ namespace Portal\Controllers;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
+use Portal\Validators\OptionsValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -11,7 +12,7 @@ class AddStageOptionController extends Controller
 {
     private $stageModel;
 
-     /** Constructor assigns StageModel to this object
+    /** Constructor assigns StageModel to this object
      *
      * AddStageOptionController constructor.
      * @param StageModel $stageModel
@@ -21,7 +22,8 @@ class AddStageOptionController extends Controller
         $this->stageModel = $stageModel;
     }
 
-    /** On invoke, check request input for optionTitle value, then create new OptionsEntity to send to DB via StageModel
+    /** On invoke, check request input has data, then validate the data,
+     * then create new OptionsEntity to send to DB via StageModel
      *
      * @param Request $request
      * @param Response $response
@@ -42,7 +44,7 @@ class AddStageOptionController extends Controller
         if ($_SESSION['loggedIn'] === true) {
             if (!empty($formOptions['data'])) {
                 foreach ($formOptions['data'] as $option) {
-                    if (empty($this->stageModel->getStageById($option['stageId'])) || empty($option['title'])) {
+                    if (!OptionsValidator::validateOptionAdd($option)) {
                         $statusCode = 400;
                         $data['message'] = 'You have not entered valid option/options';
                         return $this->respondWithJson($response, $data, $statusCode);
