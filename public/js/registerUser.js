@@ -7,7 +7,7 @@ let sendNewUserDetails = async (data) => {
             credentials: "same-origin",
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             method: "POST",
             body: JSON.stringify(data)
@@ -34,11 +34,13 @@ newUserForm.addEventListener('submit', async (e) => {
         response = await sendNewUserDetails(data)
 
     messageBox.innerText = response['msg']
-    debugger
     if (response['success']) {
         messageBox.classList.remove('alert-danger')
         messageBox.classList.add('alert-success')
-        button.style.display = 'none';
+        messageBox.innerText += '. A new password will be generated in 5 seconds.';
+        setTimeout(() => {
+            window.location.reload()
+        }, 5000)
     } else {
         messageBox.classList.remove('alert-success')
         messageBox.classList.add('alert-danger')

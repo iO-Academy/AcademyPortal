@@ -1,3 +1,6 @@
+// This entire file is useless, password have to be generated server side. Client side request fails due to CORS error
+// leaving this file here incase we need it later, e.g. we change API
+
 let errorMessage = () => {
     let messageBox = document.getElementById('randomPassword')
 
@@ -12,10 +15,10 @@ let getPasswordList = (numberOfPasswords) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-        }
+        },
+        method: 'GET'
     })
         .then(res => res.json())
-        .then(myJson => myJson)
         .catch(err => {
             errorMessage()
         })
@@ -41,6 +44,8 @@ let generatePassword = async () => {
 let displayPassword = async () => {
     let messageBox = document.getElementById('randomPassword'),
         password = await generatePassword()
+
+    console.log(password)
 
     if(password !== undefined) {
         messageBox.textContent = password
