@@ -34,6 +34,7 @@ class AddApplicantController extends Controller
     {
         if ($_SESSION['loggedIn'] === true) {
             $data['title'] = 'Create New Applicant';
+            $data['returnUrl'] = './admin';
             return $this->renderer->render($response, 'applicantForm.phtml', $data);
         }
 

@@ -38,7 +38,6 @@ class DisplayApplicantsController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $params = [];
             $params['sort'] = $request->getQueryParams()['sort'] ?? '';
 
             $params['data'] = $this->applicantModel->getAllApplicants($params['sort']);

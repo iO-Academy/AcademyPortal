@@ -43,6 +43,7 @@ class DisplayEditApplicantController extends Controller
                 'applicantNotes' => $applicant->getNotes()
             ];
             $data['title'] = 'Edit Applicant';
+            $data['returnUrl'] = './displayApplicants';
 
             return $this->renderer->render($response, 'applicantForm.phtml', $data);
         }
