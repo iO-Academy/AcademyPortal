@@ -1,18 +1,16 @@
 let isValidEmail = (inputEmail) => {
     let email = inputEmail.trim()
     // email regex from http://emailregex.com - "Email Address Regular Expression That 99.99% Works."
-    let regEx = new RegExp('/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/');
+    let regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return regEx.test(email)
 }
 
-let validateInputs = (cleanedEmailInput, cleanedPasswordInput) => {
+let validateEmail = (cleanedEmailInput, cleanedPasswordInput) => {
     let userEmailWarning = document.getElementById('userEmailWarning')
     if (isValidEmail(cleanedEmailInput)) {
         userEmailWarning.classList.remove('error')
         return {'userEmail' : cleanedEmailInput, 'password': cleanedPasswordInput}
     } else {
-        userEmailWarning.classList.add('error')
-        document.getElementById('submitWarning').textContent = 'Field input error'
         return false
     }
 }
@@ -29,10 +27,7 @@ let jsonRequest = async (path, data) => {
             body: JSON.stringify(data)
         })
         .then(data => data.json())
-        console.log(data);
-        console.log(response);
         return response;
-
 }
 
 let loginForm = document.getElementById('loginForm')
@@ -41,15 +36,15 @@ loginForm.addEventListener('submit', async (e) => {
     let response = false
     let cleanedEmailInput = encodeURI(document.getElementById('userEmail').value)
     let cleanedPasswordInput = encodeURI(document.getElementById('password').value)
-    let validInputs = validateInputs(cleanedEmailInput, cleanedPasswordInput)
+    let validInputs = validateEmail(cleanedEmailInput, cleanedPasswordInput)
     if (validInputs) {
         response = await jsonRequest('login', validInputs)
-    }
-    console.log(response);
-    if (response && response['success'] === true){
+    } 
+    if (response && response['success'] === true) {
         window.location.href = "./admin"
     } else {
-        document.getElementById("error-message").innerText = response['msg']
+        let responseMessage = 'Incorrect email or password'
+        document.getElementById("error-message").textContent = responseMessage
     }
 })
 
