@@ -189,4 +189,47 @@ class ApplicantModel implements ApplicantModelInterface
         }
         return $stmt;
     }
+
+    /**
+     * updateApplicant updates the applicant data.
+     *
+     * @param ApplicantEntityInterface $applicant
+     * @return bool
+     */
+    public function updateApplicant(ApplicantEntityInterface $applicant)
+    {
+        $query = $this->db->prepare(
+            "UPDATE `applicants`
+                        SET 
+                            `name` = :name,
+                            `email` = :email,
+                            `phoneNumber` = :phoneNumber,
+                            `cohortId` = :cohortId,
+                            `whyDev` = :whyDev,
+                            `codeExperience` = :codeExperience,
+                            `hearAboutId` = :hearAboutId,
+                            `eligible` = :eligible,
+                            `eighteenPlus` = :eighteenPlus,
+                            `finance` = :finance,
+                            `notes` = :notes
+                        WHERE (
+                            `id` = :id
+                        );"
+        );
+
+        $query->bindValue(':name', $applicant->getName());
+        $query->bindValue(':email', $applicant->getEmail());
+        $query->bindValue(':phoneNumber', $applicant->getPhoneNumber());
+        $query->bindValue(':cohortId', $applicant->getCohortId());
+        $query->bindValue(':whyDev', $applicant->getWhyDev());
+        $query->bindValue(':codeExperience', $applicant->getCodeExperience());
+        $query->bindValue(':hearAboutId', $applicant->getHearAboutId());
+        $query->bindValue(':eligible', $applicant->getEligible());
+        $query->bindValue(':eighteenPlus', $applicant->getEighteenPlus());
+        $query->bindValue(':finance', $applicant->getFinance());
+        $query->bindValue(':notes', $applicant->getNotes());
+        $query->bindValue(':id', $applicant->getId());
+
+        return $query->execute();
+    }
 }

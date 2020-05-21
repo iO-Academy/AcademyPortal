@@ -16,7 +16,7 @@ deleteButtons.forEach(deleteBtn => {
             return response.json();
         }).then((responseData) => {
             document.cookie = `response = ${responseData.message}`;
-            window.location.reload(true);
+            window.location.reload();
         });
     });
 });
