@@ -46,7 +46,6 @@ class EditApplicantController extends Controller
                     $applicationData['finance'],
                     $applicationData['notes']
                 );
-
             } catch (\Exception $e) {
                 return $response->withStatus(400);
             }
