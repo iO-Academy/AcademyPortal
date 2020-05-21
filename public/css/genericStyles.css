@@ -70,10 +70,6 @@ input[type="submit"] {
     border: none;
 }
 
-.arrowForm {
-    display: inline-block;
-}
-
 .active {
     color: #d64405;
 }
