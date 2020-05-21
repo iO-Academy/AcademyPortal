@@ -12,11 +12,11 @@ class DeleteStageOptionController extends Controller
     private $stageModel;
     private $optionId;
 
-     /** Constructor assigns StageModel to this object
-     *
-     * DeleteStageOptionController constructor.
-     * @param StageModel $stageModel
-     */
+    /** Constructor assigns StageModel to this object
+    *
+    * DeleteStageOptionController constructor.
+    * @param StageModel $stageModel
+    */
     public function __construct(StageModel $stageModel)
     {
         $this->stageModel = $stageModel;
@@ -45,6 +45,21 @@ class DeleteStageOptionController extends Controller
             try {
                 $formOption = $request->getParsedBody();
                 $this->optionId = (int) $formOption['optionId'];
+                $stageId = (int) $formOption['stageId'];
+                $stageOptions = $this->stageModel->getOptionsByStageId($stageId);
+                if (count($stageOptions) == 2) {
+                    $data = [
+                        'success' => true,
+                        'msg' => 'Operation cannot leave stage with one option',
+                        'data' => ''
+                    ];
+                    // status code 202 is used to indicate that the request was valid,
+                    // but further logic needs to be run before the request can be
+                    // fully resolved (in this case, the user needs either to
+                    // cancel the request or to delete all options on the stage)
+                    $statusCode = 202;
+                    return $this->respondWithJson($response, $data, $statusCode);
+                }
 
                 $this->stageModel->deleteOption($this->optionId);
                 $data = [

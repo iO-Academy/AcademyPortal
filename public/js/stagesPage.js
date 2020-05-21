@@ -15,6 +15,15 @@ const optionTitle = document.querySelectorAll('.optionTitle');
 const optionsContainers = document.querySelectorAll('.optionsContainer');
 const optionEditForms = document.querySelectorAll('.optionTableForm');
 
+// Set up the modal for deleting the final option
+const modal=document.querySelector('.modalContainer');
+const closeModal = document.querySelector('.closeModal');
+closeModal.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.reload(true);
+})
+const deleteAllOptions = document.querySelector('.deleteAllOptions');
+
 optionEditSubmits.forEach((optionEditSubmit) => {
     optionEditSubmit.addEventListener('click', async (e) => {
         e.preventDefault()
@@ -32,12 +41,40 @@ optionEditSubmits.forEach((optionEditSubmit) => {
 optionDeletes.forEach((optionDelete) => {
     optionDelete.addEventListener('click', async (e) => {
         e.preventDefault()
-        let id = parseInt(e.target.dataset.optionid);
+        let optionId = parseInt(e.target.dataset.optionid);
+        let stageId = parseInt(e.target.dataset.stageid);
         let data = {
-            "optionId": id,
-        };
-        await sendRequest('/api/deleteStageOption', 'DELETE', data)
-        window.location.reload(true);
+                    "optionId" : optionId,
+                    "stageId" : stageId
+                    };
+
+        let response = await fetch('/api/deleteStageOption', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        
+        if (await response.status == 202) {
+            modal.classList.remove('hidden');
+            deleteAllOptions.addEventListener('click', async (e) => {
+                e.preventDefault();
+                let data = {
+                    "stageId" : stageId
+                };
+                await fetch('/api/deleteAllStageOptions', {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                window.location.reload(true);
+            })
+        } else {
+            window.location.reload(true);
+        }
     })
 });
 

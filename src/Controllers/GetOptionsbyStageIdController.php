@@ -13,11 +13,11 @@ class DeleteAllStageOptionsController extends Controller
     private $stageModel;
     private $stageId;
 
-    /** Constructor assigns StageModel to this object
-    *
-    * DeleteStageOptionController constructor.
-    * @param StageModel $stageModel
-    */
+     /** Constructor assigns StageModel to this object
+     *
+     * DeleteStageOptionController constructor.
+     * @param StageModel $stageModel
+     */
     public function __construct(StageModel $stageModel)
     {
         $this->stageModel = $stageModel;
@@ -45,7 +45,7 @@ class DeleteAllStageOptionsController extends Controller
 
             try {
                 $formOption = $request->getParsedBody();
-                $this->stageId = (int) $formOption['stageId'];
+                $this->stageId = $formOption['stageId'];
 
                 $this->stageModel->deleteAllOptions($this->stageId);
                 $data = [

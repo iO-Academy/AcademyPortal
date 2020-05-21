@@ -28,7 +28,6 @@ class StageEntity implements \JsonSerializable
      */
     public function jsonSerialize()
     {
-
         return [
             'id' => $this->id,
             'title' => $this->title,
@@ -94,12 +93,12 @@ class StageEntity implements \JsonSerializable
         return $this->deleted;
     }
 
-    public function setOptions(Array $options)
+    public function setOptions(array $options)
     {
         $this->options = $options;
     }
 
-    public function getOptions():Array
+    public function getOptions():?array
     {
         return $this->options;
     }

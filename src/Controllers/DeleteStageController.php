@@ -48,7 +48,7 @@ class DeleteStageController extends Controller
                 if (isset($requestData['id']) && filter_var($requestData['id'], FILTER_VALIDATE_INT)) {
                     $stageData = $this->stageModel->getStageById($requestData['id']);
                     if ($stageData) {
-                        if (empty($stageData['options'])) {
+                        if (empty($stageData->getOptions())) {
                             if ($this->stageModel->deleteStage($requestData['id'])) {
                                 $data = [
                                     'success' => true,
@@ -57,10 +57,10 @@ class DeleteStageController extends Controller
                                 ];
                                 $statusCode = 200;
                             }
+                        } else {
+                            $data['message'] = 'Cannot delete stage with options still in it. Delete options first.';
+                            $statusCode = 400;
                         }
-                    } else {
-                        $data['message'] = 'Cannot delete stage with options still in it. Delete options first.';
-                        $statusCode = 400;
                     }
                 } else {
                     $statusCode = 400;
