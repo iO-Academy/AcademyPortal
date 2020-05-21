@@ -4,7 +4,7 @@ namespace Portal\Controllers;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
-use Portal\Validators\OptionValidator;
+use Portal\Validators\OptionsValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -24,7 +24,7 @@ class EditStageOptionController extends Controller
 
     /**
      * Checks if user is logged in, validates the http request data and calls
-     * the editOption method on stageModel
+     * the updateOption method on stageModel
      *
      * @param Request $request
      * @param Response $response
@@ -44,11 +44,11 @@ class EditStageOptionController extends Controller
 
             try {
                 $formOption = $request->getParsedBody();
-                $option = OptionsValidator::validateOptionUpdate($formOption['data']);
+                $optionValid = OptionsValidator::validateOptionUpdate($formOption);
             
-                if ($option === true) {
+                if ($optionValid === true) {
 
-                    $this->stageModel->updateOption($formOption['data']);
+                    $this->stageModel->updateOption($formOption);
                     $data = [
                         'success' => true,
                         'msg' => 'Option update successful.',
@@ -67,14 +67,6 @@ class EditStageOptionController extends Controller
                     $statusCode = 400;
                 }
 
-                if ($this->stageModel->updateOption($this->optionTitle, $this->optionId)) {
-                    $data = [
-                        'success' => true,
-                        'msg' => 'Option edit successful.',
-                        'data' => ''
-                    ];
-                    $statusCode = 200;
-                }
                 return $this->respondWithJson($response, $data, $statusCode);
             } catch (\Exception $e) {
                 $data['msg'] = $e->getMessage();

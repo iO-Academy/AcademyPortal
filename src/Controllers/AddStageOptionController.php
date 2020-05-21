@@ -4,7 +4,7 @@ namespace Portal\Controllers;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
-use Portal\Validators\OptionValidator;
+use Portal\Validators\OptionsValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -22,7 +22,7 @@ class AddStageOptionController extends Controller
         $this->stageModel = $stageModel;
     }
 
-    /** On invoke, check request input for optionTitle value, then create new OptionsEntity to send to DB via StageModel
+    /** On invoke, check request input has data, then validate the data, then create new OptionsEntity to send to DB via StageModel
      *
      * @param Request $request
      * @param Response $response
@@ -56,11 +56,8 @@ class AddStageOptionController extends Controller
                             'message' => 'Option added successfully',
                             'data' => []
                         ];
-                    };
-                    if ($this->stageModel->addOption($option)) {
-                        
-
                         $statusCode = 200;
+
                     } else {
                         $data['message'] = 'Error adding to database';
                     }
