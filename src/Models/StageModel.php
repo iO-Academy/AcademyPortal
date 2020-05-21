@@ -196,6 +196,13 @@ class StageModel
         return $query->execute();
     }
 
+    /**
+     * getOptionsByStageId - given a stage ID number, queries the DB to return all options which are assigned to that
+     * stage
+     *
+     * @param integer $stageId The id of the stage whose options are required
+     * @return array an array of all options assigned to the listed stage
+     */
     public function getOptionsByStageId(int $stageId) : array
     {
         $query = $this->db->prepare("SELECT `id`, `option`, `stageId` FROM `options` 
