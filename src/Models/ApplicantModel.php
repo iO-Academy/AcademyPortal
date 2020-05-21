@@ -104,7 +104,7 @@ class ApplicantModel implements ApplicantModelInterface
                       AS 'cohortDate'
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-                      WHERE `applicants`.`deleted` = '0' AND `applicants`.`cohortId` = :cohortId ;";
+                      WHERE `applicants`.`deleted` = '0' AND `applicants`.`cohortId` = :cohortId ";
 
         $stmt .= $this->sortingQuery($sortingQuery);
 
