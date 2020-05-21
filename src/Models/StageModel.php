@@ -191,15 +191,6 @@ class StageModel
         return $query->execute();
     }
 
-    public function getStageIdByOptionId(int $optionId) : int
-    {
-        $query = $this->db->prepare("SELECT `stageId` FROM `options` WHERE `id`=:optionId;");
-        $query->bindParam(':optionId', $optionId);
-        $query->execute();
-
-        return $query->fetch();
-    }
-
     public function getOptionsByStageId(int $stageId) : array
     {
         $query = $this->db->prepare("SELECT `id`, `option`, `stageId` FROM `options` 

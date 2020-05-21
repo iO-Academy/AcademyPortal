@@ -41,9 +41,10 @@ optionEditSubmits.forEach((optionEditSubmit) => {
 optionDeletes.forEach((optionDelete) => {
     optionDelete.addEventListener('click', async (e) => {
         e.preventDefault()
-        let id = parseInt(e.target.dataset.optionid);
+        let optionId = parseInt(e.target.dataset.optionid);
+        let stageId = parseInt()
         let data = {
-                    "optionId" : id,
+                    "optionId" : optionId,
                     };
 
         let response = await fetch('/api/deleteStageOption', {

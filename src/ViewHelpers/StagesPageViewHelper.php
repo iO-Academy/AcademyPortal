@@ -29,7 +29,6 @@ class StagesPageViewHelper
                 $result .= 'col-xs-10" value="'. $stage->getStageTitle().'"/>';
                 $result .= '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
                 $result .= '</form>';
-                $result .= '</td>';
                 $result .= '<div class="optionsContainer hide" data-stageId="'. $stage->getStageId().'">';
                 if (empty($stage->getOptions())) {
                     $result .= '<div class="optionContainer multiOptionsContainer">';
