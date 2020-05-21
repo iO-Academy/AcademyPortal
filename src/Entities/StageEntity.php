@@ -93,12 +93,23 @@ class StageEntity implements \JsonSerializable
         return $this->deleted;
     }
 
+    /**
+     * Sets options
+     *
+     * @param array $options array of desired options
+     * @return void
+     */
     public function setOptions(array $options)
     {
         $this->options = $options;
     }
 
-    public function getOptions():?array
+    /**
+     * Gets options
+     *
+     * @return array|null the options
+     */
+    public function getOptions(): ?array
     {
         return $this->options;
     }

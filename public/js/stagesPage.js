@@ -11,16 +11,15 @@ const optionDeletes = document.querySelectorAll('.optionDelete');
 const optionAddSubmits = document.querySelectorAll('.optionAddSubmit');
 const optionAddTitle = document.querySelectorAll('.optionAddTitle');
 const optionEditTitle = document.querySelectorAll('.optionEditTitle');
-const optionTitle = document.querySelectorAll('.optionTitle');
 const optionsContainers = document.querySelectorAll('.optionsContainer');
 const optionEditForms = document.querySelectorAll('.optionTableForm');
 
 // Set up the modal for deleting the final option
-const modal=document.querySelector('.modalContainer');
+const modal = document.querySelector('.modalContainer');
 const closeModal = document.querySelector('.closeModal');
 closeModal.addEventListener('click', (e) => {
     e.preventDefault();
-    window.location.reload(true);
+    window.location.reload();
 })
 const deleteAllOptions = document.querySelector('.deleteAllOptions');
 
@@ -33,8 +32,14 @@ optionEditSubmits.forEach((optionEditSubmit) => {
             'optionTitle': optionTitle,
             'optionId': optionId
         }
-        await sendRequest('api/editStageOption', 'PUT', data)
-        window.location.reload(true)
+        fetch('/api/editStageOption', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        window.location.reload()
     })
 })
 
@@ -70,10 +75,10 @@ optionDeletes.forEach((optionDelete) => {
                     },
                     body: JSON.stringify(data)
                 });
-                window.location.reload(true);
+                window.location.reload();
             })
         } else {
-            window.location.reload(true);
+            window.location.reload();
         }
     })
 });
@@ -93,8 +98,14 @@ optionAddSubmits.forEach((optionAddSubmit) => {
                 'stageId': stageId
             })
         })
-        await sendRequest('/api/addStageOption', 'POST', result)
-        window.location.reload(true)
+        await fetch('/api/addStageOption', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(result)
+        });
+        window.location.reload()
     })
 })
 
@@ -143,7 +154,7 @@ deleteButtons.forEach((deleteButton) => {
             "id": e.target.dataset.id
         };
         await sendRequest('/api/deleteStage', 'DELETE', data)
-        window.location.reload(true)
+        window.location.reload()
     })
 })
 
@@ -185,7 +196,7 @@ editForms.forEach((editForm, index) => {
         };
 
         await sendRequest('/api/updateStages', 'PUT', data);
-        window.location.reload(true);
+        window.location.reload();
     })
 });
 
@@ -198,7 +209,7 @@ newStageForm.addEventListener('submit', async (e) => {
     };
 
     await sendRequest('/api/createStage', 'POST', data);
-    window.location.reload(true);
+    window.location.reload();
 
 });
 

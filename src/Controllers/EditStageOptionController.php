@@ -30,7 +30,7 @@ class EditStageOptionController extends Controller
      * @param Response $response
      * @param array $args
      *
-     * @return Response - Returns status 200/500 with message in Json
+     * @return Response - Returns status 200/400/500 with message in Json
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
@@ -45,7 +45,7 @@ class EditStageOptionController extends Controller
                 $formOption = $request->getParsedBody();
                 $optionValid = OptionsValidator::validateOptionUpdate($formOption);
             
-                if ($optionValid === true) {
+                if ($optionValid) {
                     $this->stageModel->updateOption($formOption);
                     $data = [
                         'success' => true,

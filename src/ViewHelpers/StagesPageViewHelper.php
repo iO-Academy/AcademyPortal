@@ -63,7 +63,6 @@ class StagesPageViewHelper
                 $result .= '</form>';
                 $result .= '</div>';
                 $result .= '</div>';
-                $result .= '</div>';
                 $result .= '</td>';
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
                 if (empty($stage->getOptions())) {

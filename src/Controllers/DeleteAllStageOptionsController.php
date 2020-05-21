@@ -6,12 +6,10 @@ use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Portal\Entities\OptionsEntity;
 
 class DeleteAllStageOptionsController extends Controller
 {
     private $stageModel;
-    private $stageId;
 
     /** Constructor assigns StageModel to this object
     *
@@ -45,9 +43,9 @@ class DeleteAllStageOptionsController extends Controller
 
             try {
                 $formOption = $request->getParsedBody();
-                $this->stageId = (int) $formOption['stageId'];
+                $stageId = (int) $formOption['stageId'];
 
-                $this->stageModel->deleteAllOptions($this->stageId);
+                $this->stageModel->deleteAllOptions($stageId);
                 $data = [
                     'success' => true,
                     'msg' => 'All options deleted.',

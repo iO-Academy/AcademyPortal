@@ -117,7 +117,10 @@ class StageModel
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
         $query->bindParam(':id', $id);
         $query->execute();
-        return $query->fetch();
+        $stage = $query->fetch();
+        $stage->setOptions($this->getOptionsByStageId($id));
+
+        return $stage;
     }
 
     /**
@@ -211,11 +214,5 @@ class StageModel
         $query = $this->db->prepare("UPDATE `options` SET `deleted` = '1' WHERE `stageId` = :stageId");
         $query->bindParam(':stageId', $stageId);
         return $query->execute();
-    }
-
-
-    public function getDB() : \PDO
-    {
-        return $this->db;
     }
 }

@@ -10,7 +10,6 @@ use Psr\Http\Message\ResponseInterface as Response;
 class DeleteStageOptionController extends Controller
 {
     private $stageModel;
-    private $optionId;
 
     /** Constructor assigns StageModel to this object
     *
@@ -44,7 +43,7 @@ class DeleteStageOptionController extends Controller
 
             try {
                 $formOption = $request->getParsedBody();
-                $this->optionId = (int) $formOption['optionId'];
+                $optionId = (int) $formOption['optionId'];
                 $stageId = (int) $formOption['stageId'];
                 $stageOptions = $this->stageModel->getOptionsByStageId($stageId);
                 if (count($stageOptions) == 2) {
@@ -61,7 +60,7 @@ class DeleteStageOptionController extends Controller
                     return $this->respondWithJson($response, $data, $statusCode);
                 }
 
-                $this->stageModel->deleteOption($this->optionId);
+                $this->stageModel->deleteOption($optionId);
                 $data = [
                     'success' => true,
                     'msg' => 'Option delete successful.',

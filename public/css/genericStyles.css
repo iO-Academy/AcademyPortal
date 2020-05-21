@@ -133,47 +133,47 @@ input[type="submit"] {
     margin-bottom: 0;
 }
 
-.optionDelete, .optionEdit{
+.optionDelete, .optionEdit {
     float: right;
     margin-left: 3%;
     font-family: Courier, sans-serif;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
-.optionsContainer{
+.optionsContainer {
     display: block;
 }
 
-.optionTitle{
+.optionTitle {
     padding-top: 1%;
 }
 
-.optionEditSubmit, .optionAddSubmit{
+.optionEditSubmit, .optionAddSubmit {
     position: absolute;
     right: 0;
     bottom: 0;
 }
 
-.optionContainer{
+.optionContainer {
     position: relative;
     height: 2.5em;
     vertical-align: bottom;
 }
 
-.optionEditTitle, .optionAddTitle{
+.optionEditTitle, .optionAddTitle {
     position: absolute;
     left: 0;
     bottom: 0;
 }
 
-.multiOptionsContainer{
+.multiOptionsContainer {
     height: 6em;
 }
 
-.firstOption{
+.firstOption {
     bottom: 3em;
 }
 

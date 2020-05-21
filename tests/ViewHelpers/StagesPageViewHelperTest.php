@@ -35,7 +35,6 @@ class StagesPageViewHelperTest extends TestCase
         $expected .= '</form>';
         $expected .= '</div>';
         $expected .= '</div>';
-        $expected .= '</div>';
         $expected .= '</td>';
         $expected .= '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
         $expected .= '<td class="col-xs-2 text-center"><a data-id="1" class="text-danger delete">Delete</a></td>';
@@ -89,7 +88,6 @@ class StagesPageViewHelperTest extends TestCase
         $expected .= '<input type="submit" class="optionAddSubmit btn-success" data-stageid="1';
         $expected .= '" value="Submit">';
         $expected .= '</form>';
-        $expected .= '</div>';
         $expected .= '</div>';
         $expected .= '</div>';
         $expected .= '</td>';
