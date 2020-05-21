@@ -194,8 +194,8 @@ input[type="submit"] {
     background-color: #FFFFFF;
 }
 
-.modalContainer .container b {
-    display: block;
+.modalContainer .container p {
+    font-weight: 700;
     padding: 2em;
     padding-bottom: 5em;
 }
