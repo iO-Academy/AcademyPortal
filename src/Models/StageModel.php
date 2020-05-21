@@ -72,7 +72,7 @@ class StageModel
         $stages = $query->fetchAll();
         
         $query = $this->db->prepare(
-            'SELECT `id`, `option`, `stageId` FROM `options`;'
+            'SELECT `id`, `option`, `stageId` FROM `options` WHERE `deleted` = 0;'
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\OptionsEntity');
         $query->execute();

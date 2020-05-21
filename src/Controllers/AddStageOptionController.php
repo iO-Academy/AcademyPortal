@@ -7,13 +7,10 @@ use Portal\Models\StageModel;
 use Portal\Validators\OptionValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Portal\Entities\OptionsEntity;
 
 class AddStageOptionController extends Controller
 {
     private $stageModel;
-    private $options;
-    private $stageId;
 
     /** Constructor assigns StageModel to this object
      *
@@ -44,11 +41,16 @@ class AddStageOptionController extends Controller
         $statusCode = 500;
 
         if ($_SESSION['loggedIn'] === true) {
-            $options = OptionsValidator::validateOptionAdd($formOptions['data']);
-            if (!empty($formOptions['optionTitle'])) {
-                foreach ($formOptions as $option) {
-                    $options = OptionsValidator::validateOptionAdd($option['data'])
-                     if ($option === true) { //needs rewriting
+            if (!empty($formOptions['data'])) {
+                foreach ($formOptions['data'] as $option) {
+                    if (empty($this->stageModel->getStageById($option['stageId'])) || empty($option['title'])) {
+                        $statusCode = 400;
+                        $data['message'] = 'You have not entered valid option/options';
+                        return $this->respondWithJson($response, $data, $statusCode);
+                    }
+                }
+                foreach ($formOptions['data'] as $option) {
+                    if ($this->stageModel->createOption($option['title'], (int) $option['stageId'])) {
                         $data = [
                             'success' => true,
                             'message' => 'Option added successfully',

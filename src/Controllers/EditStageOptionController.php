@@ -7,11 +7,15 @@ use Portal\Models\StageModel;
 use Portal\Validators\OptionValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Portal\Entities\OptionsEntity;
 
 class EditStageOptionController extends Controller
 {
     private $stageModel;
+<<<<<<< HEAD
+=======
+    private $optionId;
+    private $optionTitle;
+>>>>>>> 6d335a875064fbdf3c15ea6efaa001e335c325b6
 
     /** Constructor assigns StageModel to this object
      *
@@ -68,6 +72,14 @@ class EditStageOptionController extends Controller
                     $statusCode = 400;
                 }
 
+                if ($this->stageModel->updateOption($this->optionTitle, $this->optionId)) {
+                    $data = [
+                        'success' => true,
+                        'msg' => 'Option edit successful.',
+                        'data' => ''
+                    ];
+                    $statusCode = 200;
+                }
                 return $this->respondWithJson($response, $data, $statusCode);
             } catch (\Exception $e) {
                 $data['msg'] = $e->getMessage();

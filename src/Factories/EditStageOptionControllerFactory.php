@@ -2,6 +2,9 @@
 
 namespace Portal\Factories;
 
+use Portal\Controllers\EditStageOptionController;
+use Psr\Container\ContainerInterface;
+
 class EditStageOptionControllerFactory
 {
     /**

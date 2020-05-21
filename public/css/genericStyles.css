@@ -28,12 +28,6 @@ h4 {
 p {
     font-family: Helvetica Neue;
 }
-.errorMsg {
-    color: #761c19;
-    text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-}
 
 .alertUser {
     color: #FF0000
@@ -114,6 +108,12 @@ input[type="submit"] {
     display: none;
 }
 
+.disabled {
+    pointer-events: none;
+    color: #dbdbdb;
+    cursor: text;
+}
+
 #editResponse {
     margin-bottom: 10px;
 }
@@ -131,4 +131,48 @@ input[type="submit"] {
     display: table-row;
     padding: 0;
     margin-bottom: 0;
+}
+
+.optionDelete, .optionEdit{
+    float: right;
+    margin-left: 3%;
+    font-family: Courier, sans-serif;
+}
+
+.hide{
+    display: none;
+}
+
+.optionsContainer{
+    display: block;
+}
+
+.optionTitle{
+    padding-top: 1%;
+}
+
+.optionEditSubmit, .optionAddSubmit{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.optionContainer{
+    position: relative;
+    height: 2.5em;
+    vertical-align: bottom;
+}
+
+.optionEditTitle, .optionAddTitle{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.multiOptionsContainer{
+    height: 6em;
+}
+
+.firstOption{
+    bottom: 3em;
 }
