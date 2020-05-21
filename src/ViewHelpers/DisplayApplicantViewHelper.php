@@ -22,7 +22,7 @@ class DisplayApplicantViewHelper
                                 <td>
                                     <a 
                                     href="#"
-                                    data-id ="' . $applicant->getId() . '" 
+                                    data-id="' . $applicant->getId() . '" 
                                        type="button"  
                                        class="myBtn">
                                       ' . $applicant->getName() . '
