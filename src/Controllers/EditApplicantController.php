@@ -3,7 +3,6 @@
 
 namespace Portal\Controllers;
 
-
 use Portal\Abstracts\Controller;
 use Portal\Entities\ApplicantEntity;
 use Portal\Interfaces\ApplicantModelInterface;
@@ -33,7 +32,7 @@ class EditApplicantController extends Controller
             $applicationData = $request->getParsedBody();
 
             try {
-                $applicant = new ApplicantEntity (
+                $applicant = new ApplicantEntity(
                     $applicationData['id'],
                     $applicationData['name'],
                     $applicationData['email'],
@@ -48,7 +47,7 @@ class EditApplicantController extends Controller
                     $applicationData['notes']
                 );
 
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 return $response->withStatus(400);
             }
 
