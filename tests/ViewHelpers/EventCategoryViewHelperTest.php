@@ -21,13 +21,13 @@ class EventCategoryViewHelperTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testFailureEventCategoryDropdown_incorrectData()
+    public function testFailureEventCategoryDropdownIncorrectData()
     {
         $this->expectException(\PHPUnit\Framework\Error\Notice::class);
         EventCategoryViewHelper::eventCategoryDropdown([]);
     }
 
-    public function testFailureEventCategoryDropdown_incorrectData2()
+    public function testFailureEventCategoryDropdownIncorrectData2()
     {
         $data = [
             'eventCategories' => []

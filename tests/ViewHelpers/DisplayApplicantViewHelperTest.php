@@ -30,14 +30,14 @@ class DisplayApplicantViewHelperTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testSuccessDisplayApplicants_EmptyArray()
+    public function testSuccessDisplayApplicantsEmptyArray()
     {
         $data = [];
         $result = DisplayApplicantViewHelper::displayApplicants($data);
         $this->assertEquals('', $result);
     }
 
-    public function testFailureDisplayApplicants_IncorrectEntityy()
+    public function testFailureDisplayApplicantsIncorrectEntityy()
     {
         $mock = $this->createMock(ContactEntity::class);
         $data = [$mock];
