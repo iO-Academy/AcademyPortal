@@ -20,7 +20,9 @@ class DisplayApplicantViewHelper
             if ($applicant instanceof BaseApplicantEntityInterface) {
                 $result .= '<tr>
                                 <td>
-                                    <a data-id ="' . $applicant->getId() . '" 
+                                    <a 
+                                    href="#"
+                                    data-id ="' . $applicant->getId() . '" 
                                        type="button"  
                                        class="myBtn">
                                       ' . $applicant->getName() . '
@@ -36,6 +38,7 @@ class DisplayApplicantViewHelper
                                        Edit
                                     </a>                                                                   
                                     <a
+                                            href="#"
                                             type="delete"
                                             class="btn btn-danger delete deleteBtn"
                                             data-id="' . $applicant->getId() . '">
