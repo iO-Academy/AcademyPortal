@@ -30,7 +30,7 @@ class DisplayApplicantViewHelper
                                 <td>' . $applicant->getDateOfApplication() . '</td>
                                 <td>' . $applicant->getCohortDate() . '</td>
                                 <td>                              
-                                    <a href="/editApplicant/' . $applicant->getId() . '"   
+                                    <a href="/editApplicant?id=' . $applicant->getId() . '"   
                                        type="button"                                   
                                        class="btn btn-primary edit">
                                        Edit

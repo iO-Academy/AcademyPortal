@@ -68,7 +68,7 @@ class SaveApplicantController extends Controller
             if ($successfulRegister) {
                 $data = [
                     'success' => $successfulRegister,
-                    'msg' => 'Application Saved'
+                    'msg' => 'Application successfully saved!'
                 ];
                 $statusCode = 200;
             }
