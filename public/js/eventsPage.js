@@ -183,6 +183,9 @@ async function displayHiringPartnersAttending(event){
                 hiringPartnerHTML += `<h4>Attending hiring partners</h4>`
                 response.forEach(function(hiringPartner) {
                     hiringPartnerHTML += `<div class="hiring-partner">`
+                    if(typeof hiringPartner.name === "undefined"){
+                        hiringPartner.name = "No Hiring Partner Selected Please select One"
+                    }
                     if(hiringPartner.attendees != null) {
                         hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span> Attendees: ${hiringPartner.attendees}</p>
                         <form>
