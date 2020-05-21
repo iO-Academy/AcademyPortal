@@ -39,9 +39,9 @@ class DisplayApplicantsController extends Controller
     {
         $params = [];
         $params['sort'] = $request->getQueryParams()['sort'] ?? '';
-        $params['cohortId'] = $request->getQueryParams()['cohortId'] ?? '';
+        $params['cohortId'] = $request->getQueryParams()['cohortId'];
 
-        if (isset($params['cohortId'])) {
+        if (isset($params['cohortId']) && $params['cohortId'] != 'all') {
             $params['data'] = $this->applicantModel->getAllApplicantsByCohort($params['sort'], $params['cohortId']);
         } else {
             $params['data'] = $this->applicantModel->getAllApplicants($params['sort']);
