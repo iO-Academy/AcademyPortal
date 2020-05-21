@@ -52,8 +52,10 @@ class StageModel
     public function createStage(StageEntity $stageEntity) : bool
     {
         $query = $this->db->prepare("INSERT INTO `stages` (`title`, `order`) VALUES (:title, :order); ");
-        $query->bindParam(':title', $stageEntity->getStageTitle());
-        $query->bindParam(':order', $stageEntity->getStageOrder());
+        $stageTitle = $stageEntity->getStageTitle();
+        $stageOrder = $stageEntity->getStageOrder();
+        $query->bindParam(':title', $stageTitle);
+        $query->bindParam(':order', $stageOrder);
         return $query->execute();
     }
 

@@ -209,7 +209,7 @@ newStageForm.addEventListener('submit', async (e) => {
     };
 
     await sendRequest('/api/createStage', 'POST', data);
-    window.location.reload();
+    window.location.reload(true);
 
 });
 
