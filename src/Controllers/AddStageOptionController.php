@@ -43,7 +43,7 @@ class AddStageOptionController extends Controller
         if ($_SESSION['loggedIn'] === true) {
             if (!empty($formOptions['data'])) {
                 foreach ($formOptions['data'] as $option) {
-                    if (empty($this->stageModel->getStageById($option['stageId'])) || empty($option['title'])) {
+                    if (!OptionsValidator::validateOptionAdd($option)) {
                         $statusCode = 400;
                         $data['message'] = 'You have not entered valid option/options';
                         return $this->respondWithJson($response, $data, $statusCode);
