@@ -51,9 +51,11 @@ class StageModel
      */
     public function createStage(StageEntity $stageEntity) : bool
     {
-        $query = $this->db->prepare("INSERT INTO `stages` (`title`, `order`) VALUES (:title, :order);");
-        $query->bindParam(':title', $stageEntity->getStageTitle());
-        $query->bindParam(':order', $stageEntity->getStageOrder());
+        $query = $this->db->prepare("INSERT INTO `stages` (`title`, `order`) VALUES (:title, :order); ");
+        $stageTitle = $stageEntity->getStageTitle();
+        $stageOrder = $stageEntity->getStageOrder();
+        $query->bindParam(':title', $stageTitle);
+        $query->bindParam(':order', $stageOrder);
         return $query->execute();
     }
 
@@ -69,7 +71,25 @@ class StageModel
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
         $query->execute();
-        return $query->fetchAll();
+        $stages = $query->fetchAll();
+        
+        $query = $this->db->prepare(
+            'SELECT `id`, `option`, `stageId` FROM `options` WHERE `deleted` = 0;'
+        );
+        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\OptionsEntity');
+        $query->execute();
+        $options = $query->fetchAll();
+
+        foreach ($stages as $stage) {
+            $stageOptions = [];
+            foreach ($options as $option) {
+                if ($stage->getStageId() == $option->getStageId()) {
+                    $stageOptions[] = $option;
+                }
+            }
+            $stage->setOptions($stageOptions);
+        }
+        return $stages;
     }
 
     /** Sets the 'deleted' flag to '1' and 'order' value to '0' for a record with a given id.
@@ -99,7 +119,10 @@ class StageModel
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
         $query->bindParam(':id', $id);
         $query->execute();
-        return $query->fetch();
+        $stage = $query->fetch();
+        $stage->setOptions($this->getOptionsByStageId($id));
+
+        return $stage;
     }
 
     /**
@@ -133,8 +156,72 @@ class StageModel
         }
     }
 
-    public function getDB() : \PDO
+    /**
+     * Creates a new option in the options table.
+     * @param string $option
+     * @param int $stageId
+     * @return bool
+     */
+    public function createOption(string $option, int $stageId) : bool
     {
-        return $this->db;
+        $query = $this->db->prepare("INSERT INTO `options` (`option`, `stageId`) VALUES (:optionText, :stageId);");
+        $query->bindParam(':optionText', $option);
+        $query->bindParam(':stageId', $stageId);
+        return $query->execute();
+    }
+
+    /**
+     * Updates the 'option' value of an entry in the options table with a given id.
+     * @param string $option
+     * @param int $optionId
+     * @return bool
+     */
+    public function updateOption(array $option) : bool
+    {
+        $query = $this->db->prepare("UPDATE `options` SET `option` = :optionText WHERE `id` = :id");
+        $query->bindParam(':id', $option['optionId']);
+        $query->bindParam(':optionText', $option['optionTitle']);
+        return $query->execute();
+    }
+
+    /**
+     * Deletes (soft delete) the 'option' value of an entry in the options table with a given id.
+     * @param int $optionId
+     * @return bool
+     */
+    public function deleteOption(int $optionId) : bool
+    {
+        $query = $this->db->prepare("UPDATE `options` SET `deleted` = '1' WHERE `id` = :optionId");
+        $query->bindParam(':optionId', $optionId);
+        return $query->execute();
+    }
+
+    /**
+     * getOptionsByStageId - given a stage ID number, queries the DB to return all options which are assigned to that
+     * stage
+     *
+     * @param integer $stageId The id of the stage whose options are required
+     * @return array an array of all options assigned to the listed stage
+     */
+    public function getOptionsByStageId(int $stageId) : array
+    {
+        $query = $this->db->prepare("SELECT `id`, `option`, `stageId` FROM `options` 
+                                        WHERE `stageId` = :stageId AND `deleted` = '0';");
+        $query->bindParam(':stageId', $stageId);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+    
+    /**
+     * Deletes (soft delete) all the 'options' of a stage with a given id.
+     * @param int $stageId
+     * @return bool
+     */
+    public function deleteAllOptions(int $stageId) : bool
+    {
+        $query = $this->db->prepare("UPDATE `options` SET `deleted` = '1' WHERE `stageId` = :stageId");
+        $query->bindParam(':stageId', $stageId);
+        return $query->execute();
     }
 }
