@@ -19,7 +19,7 @@ class ApplicantFormViewHelperTest extends \PHPUnit\Framework\TestCase
 
     public function testRunMethodSuccessNull()
     {
-        $entityMock = $this->createMock(ApplicantEntity::class);
+        $entityMock = null;
 
         $actual = ApplicantFormViewHelper::runMethod($entityMock, 'getName');
 
