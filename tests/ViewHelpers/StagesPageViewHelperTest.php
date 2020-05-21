@@ -17,6 +17,7 @@ class StagesPageViewHelperTest extends TestCase
     {
         $expected = '';
         $expected .= '<tr class="" data-id="1">';
+        $expected .= '<td>1</td>';
         $expected .= '<td>';
         $expected .= '<p>Stage 1 test</p>';
         $expected .= '<form data-id="1" class="stagesTableForm">';
@@ -60,6 +61,7 @@ class StagesPageViewHelperTest extends TestCase
     {
         $expected = '';
         $expected .= '<tr class="" data-id="1">';
+        $expected .= '<td>1</td>';
         $expected .= '<td>';
         $expected .= '<p>Stage 1 test</p>';
         $expected .= '<form data-id="1" class="stagesTableForm">';
