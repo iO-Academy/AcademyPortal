@@ -53,7 +53,6 @@ class EditStageOptionController extends Controller
                         'data' => ''
                     ];
                     $statusCode = 200;
-
                 } else {
                     $data = [
                         'success' => false,
@@ -62,7 +61,7 @@ class EditStageOptionController extends Controller
                     ];
                     $statusCode = 400;
                 }
-                
+
                 return $this->respondWithJson($response, $data, $statusCode);
             } catch (\Exception $e) {
                 $data['msg'] = $e->getMessage();

@@ -22,7 +22,7 @@ class AddStageOptionController extends Controller
         $this->stageModel = $stageModel;
     }
 
-    /** On invoke, check request input has data, then validate the data, 
+    /** On invoke, check request input has data, then validate the data,
      * then create new OptionsEntity to send to DB via StageModel
      *
      * @param Request $request
