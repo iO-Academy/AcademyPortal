@@ -24,7 +24,6 @@ deleteButtons.forEach(deleteBtn => {
 function checkCookie() {
     const elem = document.getElementById('deleteResponse');
     const response = getCookie("response");
-    elem.textContent = response;
     document.cookie = "response=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
