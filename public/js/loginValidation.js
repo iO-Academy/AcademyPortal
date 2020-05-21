@@ -27,7 +27,7 @@ let jsonRequest = async (path, data) => {
             body: JSON.stringify(data)
         })
         .then(data => data.json())
-        return response
+    return response
 }
 
 let loginForm = document.getElementById('loginForm')
