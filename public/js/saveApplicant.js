@@ -86,7 +86,6 @@ let makeApiRequest = async (data, type) => {
         body: JSON.stringify(data)
     })
         .then(response => {
-            console.log(response);
         const generalErrorMessage = document.querySelector('#generalError');
 
         switch (response.status) {
