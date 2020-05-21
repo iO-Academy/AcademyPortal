@@ -53,9 +53,6 @@ class EditApplicantController extends Controller
 
             $successfulRegister = $this->applicantModel->updateApplicant($applicant);
 
-            $data['msg'] = $successfulRegister;
-
-
             if ($successfulRegister) {
                 $data['success'] = $successfulRegister;
                 $data['msg'] = 'Applicant has been updated!';
