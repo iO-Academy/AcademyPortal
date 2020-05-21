@@ -1,6 +1,7 @@
 let isValidEmail = (inputEmail) => {
     let email = inputEmail.trim()
-    let regEx = new RegExp("^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$")
+    // email regex from http://emailregex.com - "Email Address Regular Expression That 99.99% Works."
+    let regEx = new RegExp('/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/');
     return regEx.test(email)
 }
 
@@ -28,7 +29,10 @@ let jsonRequest = async (path, data) => {
             body: JSON.stringify(data)
         })
         .then(data => data.json())
-    return response
+        console.log(data);
+        console.log(response);
+        return response;
+
 }
 
 let loginForm = document.getElementById('loginForm')
@@ -41,10 +45,11 @@ loginForm.addEventListener('submit', async (e) => {
     if (validInputs) {
         response = await jsonRequest('login', validInputs)
     }
-
+    console.log(response);
     if (response && response['success'] === true){
         window.location.href = "./admin"
     } else {
         document.getElementById("error-message").innerText = response['msg']
     }
 })
+
