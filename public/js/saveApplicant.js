@@ -26,7 +26,7 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
     });
 
     if (formIsValid) {
-        makeApiRequest(data);
+        makeApiRequest(data, window.location.pathname);
     } else {
         document.querySelector('#generalError').innerHTML = 'This form is invalid, please check all fields';
         document.querySelector('#generalError').classList.remove('hidden');
@@ -58,6 +58,11 @@ let errorMessage = (validationType) => {
 let getCompletedFormData = () => {
     const formData = document.querySelectorAll(".submitApplicant");
     let data = {};
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const id = urlParams.get('id');
+    data['id'] = id;
+
 
     formData.forEach(formItem => {
         data[formItem.name] = formItem.value;
@@ -69,8 +74,9 @@ let getCompletedFormData = () => {
     return data;
 };
 
-let makeApiRequest = async (data) => {
-    return fetch('./api/saveApplicant', {
+let makeApiRequest = async (data, type) => {
+    let path = './api/' + (type === '/addapplicant' ? 'saveApplicant' : 'editApplicant');
+    return fetch(path, {
         credentials: "same-origin",
         headers: {
             'Accept': 'application/json',
@@ -80,12 +86,15 @@ let makeApiRequest = async (data) => {
         body: JSON.stringify(data)
     })
         .then(response => {
+            console.log(response);
         const generalErrorMessage = document.querySelector('#generalError');
 
         switch (response.status) {
             case 200:
-                generalErrorMessage.innerHTML = "Applicant was successfully registered!";
-                generalErrorMessage.classList.add('alert-success');
+                response.json().then(data => {
+                    generalErrorMessage.innerHTML = data.msg;
+                    generalErrorMessage.classList.add('alert-success');
+                });
                 break;
             case 400:
                 response.json().then(data => {
