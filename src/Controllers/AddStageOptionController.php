@@ -28,7 +28,7 @@ class AddStageOptionController extends Controller
      * @param Request $request
      * @param Response $response
      * @param array $args
-     * @return Response - with json and status 200/500 for success or failure.
+     * @return Response - with json and status 200/400/500 for success/client error/server error
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
