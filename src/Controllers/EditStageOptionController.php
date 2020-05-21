@@ -41,20 +41,17 @@ class EditStageOptionController extends Controller
                 'data' => []
             ];
             $statusCode = 500;
-
             try {
                 $formOption = $request->getParsedBody();
                 $optionValid = OptionsValidator::validateOptionUpdate($formOption);
             
                 if ($optionValid === true) {
-
                     $this->stageModel->updateOption($formOption);
                     $data = [
                         'success' => true,
                         'msg' => 'Option update successful.',
                         'data' => ''
                     ];
-
                     $statusCode = 200;
 
                 } else {
@@ -63,10 +60,9 @@ class EditStageOptionController extends Controller
                         'msg' => 'Option update unsuccessful.',
                         'data' => ''
                     ];
-
                     $statusCode = 400;
                 }
-
+                
                 return $this->respondWithJson($response, $data, $statusCode);
             } catch (\Exception $e) {
                 $data['msg'] = $e->getMessage();

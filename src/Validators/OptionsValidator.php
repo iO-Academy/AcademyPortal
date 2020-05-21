@@ -6,9 +6,10 @@ class OptionsValidator
 {
 
     /**
-     * Takes an edited option and validates the optionId exists, and is a number, and that optionTitle has content. If all pass, returns true.
+     * Takes an edited option and validates the optionId exists, and is a number, and that optionTitle has content.
+     * If all pass, returns true.
      * @param array $option
-     * @return bool 
+     * @return bool
      */
     public static function validateOptionUpdate(array $option) : bool
     {
@@ -16,9 +17,10 @@ class OptionsValidator
     }
 
     /**
-     * Takes a new option and validates the stageId exists, and is a number, and that optionTitle has content. If all pass, returns true.
+     * Takes a new option and validates the stageId exists, and is a number, and that optionTitle has content.
+     * If all pass, returns true.
      * @param array $option
-     * @return bool 
+     * @return bool
      */
     public static function validateOptionAdd(array $option) : bool
     {
