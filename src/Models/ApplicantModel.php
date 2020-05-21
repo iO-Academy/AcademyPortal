@@ -3,8 +3,9 @@
 namespace Portal\Models;
 
 use Portal\Interfaces\ApplicantEntityInterface;
+use Portal\Interfaces\ApplicantModelInterface;
 
-class ApplicantModel
+class ApplicantModel implements ApplicantModelInterface
 {
     private $db;
 
@@ -126,7 +127,7 @@ class ApplicantModel
         $query = $this->db->prepare(
             'SELECT `applicants`.`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`,  `date` 
-                        AS "cohortDate" 
+                        AS "cohortDate", `cohortId`, `hearAboutId`  
                         FROM `applicants` 
                         LEFT JOIN `cohorts` 
                         ON `applicants`.`cohortId`=`cohorts`.`id` 
