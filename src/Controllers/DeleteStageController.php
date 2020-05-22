@@ -21,7 +21,7 @@ class DeleteStageController extends Controller
     }
 
     /**
-     * Checks if user is logged in, validates the http request data and calls
+     * Checks if user is logged in, validates the http request data, checks if the stage has options and calls
      * the delete method on stageModel
      *
      * @param Request $request
@@ -45,17 +45,21 @@ class DeleteStageController extends Controller
                 $statusCode = 400;
             } else {
                 $requestData = $request->getParsedBody();
-
                 if (isset($requestData['id']) && filter_var($requestData['id'], FILTER_VALIDATE_INT)) {
                     $stageData = $this->stageModel->getStageById($requestData['id']);
                     if ($stageData) {
-                        if ($this->stageModel->deleteStage($requestData['id'])) {
-                            $data = [
-                                'success' => true,
-                                'message' => 'Stage has been deleted successfully.',
-                                'data' => []
-                            ];
-                            $statusCode = 200;
+                        if (empty($stageData->getOptions())) {
+                            if ($this->stageModel->deleteStage($requestData['id'])) {
+                                $data = [
+                                    'success' => true,
+                                    'message' => 'Stage has been deleted successfully.',
+                                    'data' => []
+                                ];
+                                $statusCode = 200;
+                            }
+                        } else {
+                            $data['message'] = 'Cannot delete stage with options still in it. Delete options first.';
+                            $statusCode = 400;
                         }
                     }
                 } else {
@@ -63,7 +67,6 @@ class DeleteStageController extends Controller
                     $data['message'] = 'Invalid id provided.';
                 }
             }
-
             return $this->respondWithJson($response, $data, $statusCode);
         }
     }
