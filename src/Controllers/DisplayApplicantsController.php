@@ -37,30 +37,11 @@ class DisplayApplicantsController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $params = [];
-        $sortValue = $request->getQueryParams()['sort'] ?? '';
-        $params['sort'] = $sortValue;
-
-        switch ($sortValue) {
-            case 'dateAsc':
-                $params['data'] = $this->applicantModel->sortApplicants('dateAsc');
-                break;
-
-            case 'dateDesc':
-                $params['data'] = $this->applicantModel->sortApplicants('dateDesc');
-                break;
-
-            case 'cohortAsc':
-                $params['data'] = $this->applicantModel->sortApplicants('cohortAsc');
-                break;
-
-            case 'cohortDesc':
-                $params['data'] = $this->applicantModel->sortApplicants('cohortDesc');
-                break;
-
-            default:
-                $params['data'] = $this->applicantModel->getAllApplicants();
+        if ($_SESSION['loggedIn'] === true) {
+            $params['sort'] = $request->getQueryParams()['sort'] ?? '';
+            $params['data'] = $this->applicantModel->getAllApplicants($params['sort']);
+            return $this->renderer->render($response, 'applicants.phtml', $params);
         }
-        return $this->renderer->render($response, 'applicants.phtml', $params);
+        return $response->withHeader('Location', '/');
     }
 }

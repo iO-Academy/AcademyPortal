@@ -51,11 +51,11 @@ function displayEventsHandler(eventsAndHiringPartners) {
                         button.addEventListener('click', e => {
                             let targetId = 'moreInfo' + e.target.dataset.reference
                             let targetDiv = document.getElementById(targetId)
-                            targetDiv.classList.toggle('hide')
+                            targetDiv.classList.toggle('hidden')
                             targetDiv.parentElement.classList.toggle('open')
 
                             e.target.textContent = 'More info'
-                            if (!targetDiv.classList.contains('hide')) {
+                            if (!targetDiv.classList.contains('hidden')) {
                                 e.target.textContent = 'Less info'
                             }
                         })
@@ -217,7 +217,7 @@ async function eventGenerator(event, hiringPartners) {
             <h4>${event.name} - ${date}</h4>
             <button class="show-event-info btn btn-primary" data-reference='${event.id}'>More Info</button>
         </div>
-        <div id="moreInfo${event.id}" class="hide moreInfo">
+        <div id="moreInfo${event.id}" class="hidden moreInfo">
         <p>Event Category: ${event.category_name}</p>
         <p>Date: ${date}</p>
         <p>Location: ${event.location}</p>

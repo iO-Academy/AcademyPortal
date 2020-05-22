@@ -34,3 +34,91 @@
     padding: 0;
     margin-bottom: 0;
 }
+
+.disabled {
+    pointer-events: none;
+    color: #dbdbdb;
+    cursor: text;
+}
+
+.optionDelete,
+.optionEdit {
+    float: right;
+    margin-left: 3%;
+    font-family: Courier, sans-serif;
+}
+
+.optionsContainer {
+    display: block;
+}
+
+.optionTitle {
+    padding-top: 1%;
+}
+
+.optionEditSubmit,
+.optionAddSubmit {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.optionContainer {
+    position: relative;
+    height: 2.5em;
+    vertical-align: bottom;
+}
+
+.optionEditTitle,
+.optionAddTitle {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.multiOptionsContainer {
+    height: 6em;
+}
+
+.firstOption {
+    bottom: 3em;
+}
+
+.modalContainer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalContainer .container {
+    width: 50%;
+    height: fit-content;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    background-color: #FFFFFF;
+}
+
+.modalContainer .container p {
+    font-weight: 700;
+    padding: 2em;
+    padding-bottom: 5em;
+}
+
+.modalContainer .container a {
+    position: relative;
+    bottom: 1em;
+    text-align: right;
+    padding: 1em;
+}
+
+.modalContainer .container a:hover {
+    cursor: pointer;
+}
+
+.stagesInstruction {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}

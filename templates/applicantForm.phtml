@@ -1,0 +1,76 @@
+<?php
+ use \Portal\ViewHelpers\ApplicantFormViewHelper;
+ ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle($title);
+    ?>
+    <link href="css/applicants.css" rel="stylesheet" type="text/css">
+    <script src="./js/validations.js" defer></script>
+    <script src="./js/addApplicant.js" defer></script>
+    <script src="./js/saveApplicant.js" defer></script>
+</head>
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+        <h3><?php echo $title?></h3>
+        <form>
+            <label for="name">Applicant Name</label>
+            <div id="nameError" class="alert hidden formItem_alert"></div>
+            <input id="name" name="name" class="submitApplicant form-control" type="text" placeholder="name" value="<?php echo ApplicantFormViewHelper::runMethod($applicant, 'getName');?>" required>
+
+            <label for="email">Applicant Email</label>
+            <div id="emailError" class="alert hidden formItem_alert"></div>
+            <input id="email" name="email" class="submitApplicant form-control" type="email" placeholder="email" value="<?php echo ApplicantFormViewHelper::runMethod($applicant, 'getEmail');?>" required>
+
+            <label for="phone">Applicant Phone Number</label>
+            <div id="phoneError" class="alert hidden formItem_alert"></div>
+            <input id="phone" name="phoneNumber" class="submitApplicant form-control" type="text" placeholder="phone number" value="<?php echo ApplicantFormViewHelper::runMethod($applicant, 'getPhoneNumber');?>" required>
+
+            <label for="cohorts">When would you like to join us?</label>
+            <select id="cohorts" class="submitApplicant form-control" name="cohortId"  data-selected="<?php echo ApplicantFormViewHelper::runMethod($applicant, 'getCohortId');?>" required>
+            </select>
+
+            <label for="why-developer">Why do you want to become a software developer?</label>
+            <div id="whyDevError" class="alert hidden formItem_alert"></div>
+            <textarea id="why-developer" name="whyDev" class="submitApplicant form-control" placeholder="Enter here" required><?php echo ApplicantFormViewHelper::runMethod($applicant, 'getWhyDev');?></textarea>
+
+            <label for="experience">Please tell us about any relevant coding experience.</label>
+            <div id="codeExperienceError" class="alert hidden formItem_alert"></div>
+            <textarea id="experience" name="codeExperience" class="submitApplicant form-control" placeholder="Enter here"><?php echo ApplicantFormViewHelper::runMethod($applicant, 'getCodeExperience');?></textarea>
+
+            <label for="hear-about">How did you hear about Mayden Academy?</label>
+            <select id="hear-about" class="submitApplicant form-control" name="hearAboutId" data-selected="<?php echo ApplicantFormViewHelper::runMethod($applicant, 'getHearAboutId');?>" required>
+            </select>
+
+            <div class="form-group">
+                <input class="submitApplicant" name="eligible" type="checkbox" <?php echo ApplicantFormViewHelper::runMethod($applicant, 'getEligible') ? "checked" : ""; ?>/>
+                <label for="uk-eligible">I confirm I am eligible to study in the UK.</label>
+            </div>
+
+            <div>
+                <input class="submitApplicant" name="eighteenPlus" type="checkbox" <?php echo ApplicantFormViewHelper::runMethod($applicant, 'getEighteenPlus') ? "checked" : "";?>/>
+                <label for="is-18">I confirm I will be at least 18 years before my chosen cohort*.</label>
+            </div>
+
+            <div class="form-group">
+                <input class="submitApplicant" name="finance" type="checkbox" <?php echo ApplicantFormViewHelper::runMethod($applicant, 'getFinance') ? "checked" : "";?>/>
+                <label for="finance">I would like to apply for interest free finance.</label>
+            </div>
+
+            <label for="notes">Notes.</label>
+            <div id="notesError" class="alert hidden formItem_alert"></div>
+            <textarea id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here"><?php echo ApplicantFormViewHelper::runMethod($applicant, 'getNotes');?></textarea>
+
+            <input id="submitApplicant" type="submit" class="btn btn-success"/>
+            <div id="generalError" class="alert alert-danger hidden formItem_alert"></div>
+        </form>
+        <a href="<?php echo $returnUrl; ?>" class="btn btn-success">Return</a>
+<?php require 'partials/layout/footer.phtml'; ?>
+</body>
+</html>
