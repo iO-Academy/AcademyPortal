@@ -12,11 +12,33 @@ class DisplayApplicantViewHelperTest extends TestCase
     public function testSuccessDisplayApplicants()
     {
         $expected = '<tr>
-                        <td><a data-id ="1" type="button" class="myBtn">Test</a></td>
-                            <td>test@test.com</td>
-                            <td>Jan 1st</td>
-                            <td>Feb 2020</td>
-                        </tr>';
+                                <td>
+                                    <a 
+                                    href="#"
+                                    data-id="1" 
+                                       type="button"  
+                                       class="myBtn">
+                                      Test
+                                    </a>
+                                </td>
+                                <td>test@test.com</td>
+                                <td>Jan 1st</td>
+                                <td>Feb 2020</td>
+                                <td>                              
+                                    <a href="/editApplicant?id=1"   
+                                       type="button"                                   
+                                       class="btn btn-primary edit">
+                                       Edit
+                                    </a>                                                                   
+                                    <a
+                                            href="#"
+                                            type="delete"
+                                            class="btn btn-danger delete deleteBtn"
+                                            data-id="1">
+                                            Delete
+                                    </a>                                   
+                                </td>
+                            </tr>';
 
         $entityMock = $this->createMock(BaseApplicantEntity::class);
         $entityMock->method('getId')->willReturn(1);
