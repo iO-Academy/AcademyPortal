@@ -16,19 +16,24 @@
 <?php require 'partials/layout/nav.phtml'; ?>
     <main>
         <div class="applicantStages">
-            <p class="stagesInstruction">Drag a stage to change the order</p>
-            <div id="editResponse" class="text-danger"></div>
-            <table class="table">
-                <tbody id="stageTable" class="list-group">
-                <?php echo \Portal\ViewHelpers\StagesPageViewHelper::displayStages($data); ?>
-                </tbody>
-            </table>
-            <p class="stagesInstruction">Add a new stage:</p>
-            <form action="/api/createStage" method="post" id="newStageForm">
-                <input type="text" class="col-xs-7" placeholder="Type new stage" name="createNewStageTextBox"/>
-                <input type="submit" class="btn-success" value="Submit"/>
-            </form>
-            <div id="createNewResponse" class="text-danger"></div>
+            <div class="addStage">
+                <h3 class="stagesInstruction">Add a new stage</h3>
+                <form action="/api/createStage" method="post" id="newStageForm">
+                    <input type="text" class="col-xs-7" placeholder="Type new stage" name="createNewStageTextBox"/>
+                    <input type="submit" class="btn-success" value="Submit"/>
+                </form>
+                <div id="createNewResponse" class="text-danger"></div>
+            </div>
+            <div class="editStages">
+                <h3>Edit stages</h3>
+                <p>Drag a stage to change the order</p>
+                <div id="editResponse" class="text-danger"></div>
+                <table class="table">
+                    <tbody id="stageTable" class="list-group">
+                    <?php echo \Portal\ViewHelpers\StagesPageViewHelper::displayStages($data); ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </main>
 
