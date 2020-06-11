@@ -21,9 +21,6 @@ $(document).ready(function(){
                     }
                     // Examine the text in the response
                     response.json().then(function(data) {
-                        let deleteButton = document.getElementById('deleteBtn')
-                        deleteButton.dataset.id = data.id
-
                         validateField(data, 'name')
                         validateField(data, 'email')
                         validateField(data, 'phoneNumber')
