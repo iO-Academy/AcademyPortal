@@ -48,6 +48,16 @@ class BaseApplicantEntity implements BaseApplicantEntityInterface
     }
 
     /**
+     * Get's dateOfApplication.
+     *
+     * @return string, returns the dateOfApplication field.
+     */
+    public function getPrettyDateOfApplication()
+    {
+        return date("d F, Y", strtotime($this->dateTimeAdded));
+    }
+
+    /**
      * Get's cohortDate.
      *
      * @return string, returns the cohortDate field.

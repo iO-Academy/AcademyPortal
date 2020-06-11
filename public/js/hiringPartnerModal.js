@@ -26,20 +26,18 @@ function addEventListenersForModal() {
                     function(response) {
                         return response.json()
                     }).then(function(data) {
-                        validateField(data[0], 'name')
-                        validateField(data[0], 'size')
-                        validateField(data[0], 'tech_stack')
-                        validateField(data[0], 'postcode')
-                        validateField(data[0], 'phone_number')
-                        validateField(data[0], 'url_website')
+                        validateField(data.data.company, 'name')
+                        validateField(data.data.company, 'size')
+                        validateField(data.data.company, 'tech_stack')
+                        validateField(data.data.company, 'postcode')
+                        validateField(data.data.company, 'phone_number')
+                        validateField(data.data.company, 'url_website')
 
                         let contactsHTML = ''
 
-                        delete data[0]
-
                         let yesNoSub = ['No', 'Yes']
 
-                        data.forEach(function (contact) {
+                        data.data.contacts.forEach(function (contact) {
 
                             let validatedName = validateContactField(contact.name)
                             let validatedEmail = validateContactField(contact.email)

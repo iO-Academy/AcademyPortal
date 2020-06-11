@@ -213,7 +213,7 @@ class HiringPartnerModel
 					FROM `hiring_partner_companies`
 					WHERE `id` = :id;");
         $query->execute(['id'=>$id]);
-        return $query->fetchAll();
+        return $query->fetch();
     }
 
     /**

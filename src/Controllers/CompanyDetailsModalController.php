@@ -32,9 +32,8 @@ class CompanyDetailsModalController extends Controller
     {
         try {
             $id = (int)$args['id'];
-            $companyDetails = $this->model->getDetailsByCompany($id);
-            $contactDetails = $this->model->getContactsByCompany($id);
-            $data['data'] = array_merge($companyDetails, $contactDetails);
+            $data['data']['company'] = $this->model->getDetailsByCompany($id);
+            $data['data']['contacts'] = $this->model->getContactsByCompany($id);
             $data['success'] = true;
             $data['message'] = 'Company details found.';
         } catch (\Exception $e) {

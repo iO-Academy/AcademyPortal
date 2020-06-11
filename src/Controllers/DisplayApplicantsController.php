@@ -39,7 +39,14 @@ class DisplayApplicantsController extends Controller
     {
         if ($_SESSION['loggedIn'] === true) {
             $params['sort'] = $request->getQueryParams()['sort'] ?? '';
-            $params['data'] = $this->applicantModel->getAllApplicants($params['sort']);
+            $params['cohortId'] = $request->getQueryParams()['cohortId'];
+
+            if (isset($params['cohortId']) && $params['cohortId'] != 'all') {
+                $params['data'] = $this->applicantModel->getAllApplicantsByCohort($params['sort'], $params['cohortId']);
+            } else {
+                $params['data'] = $this->applicantModel->getAllApplicants($params['sort']);
+            }
+
             return $this->renderer->render($response, 'applicants.phtml', $params);
         }
         return $response->withHeader('Location', '/');
