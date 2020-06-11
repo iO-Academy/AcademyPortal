@@ -29,7 +29,7 @@ class DisplayApplicantViewHelper
                                     </a>
                                 </td>
                                 <td>' . $applicant->getEmail() . '</td>
-                                <td>' . $applicant->getDateOfApplication() . '</td>
+                                <td>' . $applicant->getPrettyDateOfApplication() . '</td>
                                 <td>' . $applicant->getCohortDate() . '</td>
                                 <td>                              
                                     <a href="/editApplicant?id=' . $applicant->getId() . '"   

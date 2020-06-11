@@ -70,7 +70,7 @@ class ApplicantModel implements ApplicantModelInterface
     /**
      * Sorts the table via the input taken from the sorting arrows
      *
-     * @param string $sortingQuery
+     * @param string $sortingQuery - how you would like the results sorted
      * @return array $results is the data retrieved.
      */
     public function getAllApplicants(string $sortingQuery)
@@ -79,36 +79,41 @@ class ApplicantModel implements ApplicantModelInterface
                       AS 'cohortDate'
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-                      WHERE `applicants`.`deleted` = '0' 
-                        ORDER BY ";
+                      WHERE `applicants`.`deleted` = '0' ";
 
-        switch ($sortingQuery) {
-            case 'dateAsc':
-                $stmt .= '`dateTimeAdded` ASC';
-                break;
-
-            case 'dateDesc':
-                $stmt .= '`dateTimeAdded` DESC';
-                break;
-
-            case 'cohortAsc':
-                $stmt .= '`date` ASC';
-                break;
-
-            case 'cohortDesc':
-                $stmt .= '`date` DESC';
-                break;
-
-            default:
-                $stmt .= '`dateTimeAdded` ASC';
-                break;
-        }
+        $stmt .= $this->sortingQuery($sortingQuery);
 
         $query = $this->db->prepare($stmt);
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\BaseApplicantEntity');
+
         $query->execute();
-        $results = $query->fetchAll();
-        return $results;
+
+        return $query->fetchAll();
+    }
+
+    /**
+     * Gets a sorted list of appliciants assigned to a specific cohort.
+     *
+     * @param string $sortingQuery how you would like the results sorted
+     * @param string $cohortId the cohort you would like the results of
+     * @return array the data retrieved from the database
+     */
+    public function getAllApplicantsByCohort(string $sortingQuery, string $cohortId)
+    {
+        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
+                      AS 'cohortDate'
+                      FROM `applicants`
+                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      WHERE `applicants`.`deleted` = '0' AND `applicants`.`cohortId` = :cohortId ";
+
+        $stmt .= $this->sortingQuery($sortingQuery);
+
+        $query = $this->db->prepare($stmt);
+        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\BaseApplicantEntity');
+        $query->bindValue(':cohortId', $cohortId);
+        $query->execute();
+
+        return $query->fetchAll();
     }
 
     /**
@@ -153,7 +158,41 @@ class ApplicantModel implements ApplicantModelInterface
     }
 
     /**
+     * Generates an SQL query used for sorting the data.
+     *
+     * @param string $sortingQuery how you would like to sort the database
+     * @return string the SQL statement used for sorting
+     */
+    private function sortingQuery(string $sortingQuery): string
+    {
+        $stmt = "ORDER BY ";
+        switch ($sortingQuery) {
+            case 'dateAsc':
+                $stmt .= '`dateTimeAdded` ASC';
+                break;
+
+            case 'dateDesc':
+                $stmt .= '`dateTimeAdded` DESC';
+                break;
+
+            case 'cohortAsc':
+                $stmt .= '`date` ASC';
+                break;
+
+            case 'cohortDesc':
+                $stmt .= '`date` DESC';
+                break;
+
+            default:
+                $stmt .= '`dateTimeAdded` ASC';
+                break;
+        }
+        return $stmt;
+    }
+
+    /**
      * updateApplicant updates the applicant data.
+     *
      * @param ApplicantEntityInterface $applicant
      * @return bool
      */
