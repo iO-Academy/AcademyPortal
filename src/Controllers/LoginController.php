@@ -32,7 +32,7 @@ class LoginController extends Controller
      *
      * @return string JSON message and status code.
      */
-    public function __invoke(Request $request, Response $response, Array $args) : Response
+    public function __invoke(Request $request, Response $response, array $args) : Response
     {
         $data = ['success' => false, 'msg' => 'Incorrect email or password.', 'data' => []];
         $statusCode = 401;

@@ -31,11 +31,11 @@ class DisplayEditApplicantController extends Controller
             if ($id > 0) {
                 $data['applicant'] = $this->applicantModel->getApplicantById($id);
                 $data['title'] = 'Edit Applicant';
-                $data['returnUrl'] = './displayApplicants';
+                $data['returnUrl'] = './applicants';
 
                 return $this->renderer->render($response, 'applicantForm.phtml', $data);
             }
-            return $response->withHeader('Location', './displayApplicants')->withStatus(400);
+            return $response->withHeader('Location', './applicants')->withStatus(400);
         }
         return $response->withStatus(401);
     }

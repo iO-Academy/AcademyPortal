@@ -19,8 +19,8 @@ function validateContactField(contactField, noDataMessage = 'No information prov
 
 function addEventListenersForModal() {
     $(document).ready(function(){
-        $(".myBtn").click(function(){
-            var url = './api/displayCompanyInfo/' + this.dataset.id
+        $(".show-partner-info").click(function(){
+            const url = './api/displayCompanyInfo/' + this.dataset.id
             fetch(url)
                 .then(
                     function(response) {
@@ -66,7 +66,7 @@ function addEventListenersForModal() {
                         document.querySelector('#contacts').style.color = 'red'
                 })
 
-            $("#myModal").modal()
+                $("#myModal").modal()
 
             })
         })

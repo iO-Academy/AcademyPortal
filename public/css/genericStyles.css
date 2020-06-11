@@ -2,207 +2,51 @@
     box-sizing: border-box;
 }
 
-.hiring-partner span {
-    font-weight: bold;
-}
-
-.hiring-partner form {
-    display: inline-block;
-}
-
-.hiring-partner p {
-    display: inline-block;
-}
-
 body {
-    font-family: Courier, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
 label {
     margin-top: 20px;
 }
+
 h4 {
     color: #157383;
-}
-
-p {
-    font-family: Helvetica Neue;
-}
-
-.alertUser {
-    color: #FF0000
-}
-
-input[type="submit"] {
-    margin-top: 30px;
-}
-
-/*Search event button on display events page, margin pushes it out of line with search box*/
-#submit-search-event {
-    margin-top: 0;
-}
-
-.company-name {
-    margin-top: 30px;
-    margin-bottom: 5px;
-    border-top: 1px solid #CCCCCC;
-}
-
-.event-name {
-    margin-top: 30px;
-    margin-bottom: 5px;
-    border-top: 1px solid #CCCCCC
-}
-
-.more-info {
-    margin: 10px 0;
-}
-
-.event-name p {
-    overflow-wrap: break-word;
 }
 
 .container {
     margin-bottom: 25px;
 }
 
-.arrowBtn {
-    border: none;
+header {
+    overflow: auto;
+    margin-top: 20px;
 }
 
-.active {
-    color: #d64405;
+header .external-links a {
+    margin-right: 15px;
+    float: left;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 5px;
 }
 
-#applicantsPageHomeBtn {
-    margin: 20px;
+header .external-links a:hover {
+    background: #dddddd;
 }
 
-#stagesPageHomeBtn {
-    margin-top: 10px;
+header .logo {
+    width: 300px;
 }
 
-.stagesInstruction {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: 2rem;
+footer {
+    border-top: 1px solid #333333;
+    padding-top: 15px;
+    margin-bottom: 30px;
+    margin-top: 15px;
 }
 
-.applicantStages td {
-    padding: 4px 8px;
-}
-
-.applicantStages tr {
-    cursor: pointer;
-}
-
-.applicantStages input[type="submit"] {
-    margin-top: 0;
-}
-
-.stagesTableForm {
-    display: none;
-}
-
-.disabled {
-    pointer-events: none;
-    color: #dbdbdb;
-    cursor: text;
-}
-
-#editResponse {
-    margin-bottom: 10px;
-}
-
-#createNewResponse {
-    margin-top: 10px;
-}
-
-#deleteResponse {
-    color: #FF0000;
-}
-
-.list-group-item {
-    position: unset;
-    display: table-row;
-    padding: 0;
-    margin-bottom: 0;
-}
-
-.optionDelete, .optionEdit {
-    float: right;
-    margin-left: 3%;
-    font-family: Courier, sans-serif;
-}
-
-.hide {
-    display: none;
-}
-
-.optionsContainer {
-    display: block;
-}
-
-.optionTitle {
-    padding-top: 1%;
-}
-
-.optionEditSubmit, .optionAddSubmit {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
-
-.optionContainer {
-    position: relative;
-    height: 2.5em;
-    vertical-align: bottom;
-}
-
-.optionEditTitle, .optionAddTitle {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-
-.multiOptionsContainer {
-    height: 6em;
-}
-
-.firstOption {
-    bottom: 3em;
-}
-
-.modalContainer {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modalContainer .container {
-    width: 50%;
-    height: fit-content;
-    position: fixed;
-    top: 25%;
-    left: 25%;
-    background-color: #FFFFFF;
-}
-
-.modalContainer .container p {
-    font-weight: 700;
-    padding: 2em;
-    padding-bottom: 5em;
-}
-
-.modalContainer .container a {
-    position: relative;
-    bottom: 1em;
-    text-align: right;
-    padding: 1em;
-}
-
-.modalContainer .container a:hover {
-    cursor: pointer;
+input[type="submit"] {
+    margin-top: 30px;
 }

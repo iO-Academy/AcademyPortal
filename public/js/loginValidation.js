@@ -30,7 +30,9 @@ let jsonRequest = async (path, data) => {
     return response
 }
 
-let loginForm = document.getElementById('loginForm')
+const loginForm = document.getElementById('loginForm')
+const errorMessage = document.getElementById("error-message")
+
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault()
     let response = false
@@ -41,10 +43,16 @@ loginForm.addEventListener('submit', async (e) => {
         response = await jsonRequest('login', validInputs)
     } 
     if (response && response['success'] === true) {
+        errorMessage.classList.remove('alert', 'alert-danger')
+        errorMessage.innerText = ''
         window.location.href = "./admin"
     } else {
+        errorMessage.classList.add('alert', 'alert-danger')
         let responseMessage = 'Incorrect email or password'
-        document.getElementById("error-message").textContent = responseMessage
+        if (response.hasOwnProperty('msg')) {
+            responseMessage = response['msg'];
+        }
+        errorMessage.textContent = responseMessage
     }
 })
 

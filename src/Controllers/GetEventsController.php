@@ -39,11 +39,17 @@ class GetEventsController extends Controller
         ];
         $statusCode = 200;
 
+        $pastEvents = $request->getQueryParams()['past'] ?? '';
+
         $eventSearchInput = $request->getQueryParams()['searchTerm'] ?? '';
         if (!empty($eventSearchInput)) {
             if (strlen($eventSearchInput) < 256) {
                 try {
-                    $data['data'] = $this->eventModel->searchEvents($eventSearchInput);
+                    if (!$pastEvents) {
+                        $data['data'] = $this->eventModel->searchFutureEvents($eventSearchInput);
+                    } else {
+                        $data['data'] = $this->eventModel->searchPastEvents($eventSearchInput);
+                    }
 
                     $data['message'] = 'No results returned matching your search';
                     if (count($data['data']) > 0) {
@@ -60,9 +66,14 @@ class GetEventsController extends Controller
 
 
         try {
-            $data['data'] = $this->eventModel->getEvents();
+            if (!$pastEvents) {
+                $data['data'] = $this->eventModel->getFutureEvents();
+            } else {
+                $data['data'] = $this->eventModel->getPastEvents();
+            }
 
             $data['message'] = 'No events scheduled';
+            $data['success'] = true;
 
             if (count($data['data']) > 0) {
                 $data['message'] = '';

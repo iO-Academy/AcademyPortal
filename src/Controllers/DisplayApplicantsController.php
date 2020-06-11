@@ -27,7 +27,7 @@ class DisplayApplicantsController extends Controller
     }
 
     /**
-     * Renders applicant data on the front end in displayApplicants.phtml.
+     * Renders applicant data on the front end in applicants.phtml.
      *
      * @param Request $request
      * @param Response $response
@@ -37,7 +37,6 @@ class DisplayApplicantsController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-
         if ($_SESSION['loggedIn'] === true) {
             $params['sort'] = $request->getQueryParams()['sort'] ?? '';
             $params['cohortId'] = $request->getQueryParams()['cohortId'];
@@ -48,8 +47,8 @@ class DisplayApplicantsController extends Controller
                 $params['data'] = $this->applicantModel->getAllApplicants($params['sort']);
             }
 
-            return $this->renderer->render($response, 'displayApplicants.phtml', $params);
+            return $this->renderer->render($response, 'applicants.phtml', $params);
         }
-        return $response->withStatus(401);
+        return $response->withHeader('Location', '/');
     }
 }

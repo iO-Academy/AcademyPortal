@@ -1,0 +1,25 @@
+.hiring-partner span {
+    font-weight: bold;
+}
+
+.hiring-partner form {
+    display: inline-block;
+}
+
+.hiring-partner p {
+    display: inline-block;
+}
+
+.partner {
+    padding: 15px;
+    border-top: 1px solid #CCCCCC;
+    overflow: auto;
+}
+
+.partner h4 {
+    float: left;
+}
+
+.partner .btn {
+    float: right;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Events');
+    ?>
+    <link href="css/events.css" rel="stylesheet" type="text/css">
+    <script defer src='./js/eventsPage.js'></script>
+</head>
+
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+        <div>
+            <h4>Search <?php echo $eventType; ?> Events</h4>
+            <input id="academy-events-search" name="search-event-input" type="text" maxlength="255">
+            <input class="btn btn-success" id="submit-search-event" value="Search" type="submit">
+            <a id="clear-search" class="btn btn-warning" href="./events">Clear Search</a>
+            <div class="alert" id="messages"></div>
+        </div>
+        <h3 id="events-list" data-event-type="<?php echo $eventType; ?>"><?php echo $eventType; ?> Events</h3>
+        <div id='events'></div>
+<?php require 'partials/layout/footer.phtml'; ?>
+</body>

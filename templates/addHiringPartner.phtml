@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Hiring Partners');
+    ?>
+    <link href="css/hiringPartner.css" rel="stylesheet" type="text/css">
+    <script defer src="./js/validations.js"></script>
+    <script defer src='./js/addHiringPartner.js'></script>
+</head>
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+        <h3>Add new hiring partner</h3>
+        <form id='add-hiring-partner-form'>
+            <label for="company-name">Company Name:</label>
+            <input id="company-name" name="company-name" class="submit-hiring-partner form-control" type="text" placeholder="name">
+            <label for='company-size'>Company Size:</label>
+            <select name='company-size' id='company-size' class='submit-hiring-partner form-control'>
+                <option value='0'>Please select a company size...</option>
+                <?php echo \Portal\ViewHelpers\CompanySizeViewHelper::companySizeDropdown($data); ?>
+            </select>
+            <label for="company-tech-stack">Company Tech Stack:</label>
+            <input id="company-tech-stack" name="company-tech-stack" class="submit-hiring-partner form-control" type="text" placeholder="Company tech stack">
+            <label for='company-postcode'>Postcode:</label>
+            <input id='company-postcode' name='company-postcode' class="submit-hiring-partner form-control" type="text" placeholder="Postcode">
+            <label for='company-phone-number'>Phone Number:</label>
+            <input id='company-phone-number' name='company-phone-number' class="submit-hiring-partner form-control" type="text" placeholder="Phone Number">
+            <label for='company-url'>Company Website URL:</label>
+            <input id='company-url' name='company-url' class="submit-hiring-partner form-control" type="text" placeholder="Company Website Url">
+            <input id="submit-hiring-partner" type="submit" class="btn btn-success" value="Add Hiring Partner"/>
+            <div id='add-hiring-partner-messages'></div>
+        </form>
+<?php require 'partials/layout/footer.phtml'; ?>
+</body>

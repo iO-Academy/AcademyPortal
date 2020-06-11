@@ -52,11 +52,15 @@ return function (ContainerBuilder $containerBuilder) {
     $container['DisplayApplicantsController'] = DI\factory('\Portal\Factories\DisplayApplicantsControllerFactory');
     $container['GetApplicantController'] = DI\factory('\Portal\Factories\GetApplicantControllerFactory');
     $container['DisplayHiringPartnerPageController'] = DI\factory('\Portal\Factories\DisplayHiringPartnerPageControllerFactory');
+    $container['AddHiringPartnerPageController'] = DI\factory('\Portal\Factories\AddHiringPartnerPageControllerFactory');
+    $container['AddHiringPartnerContactPageController'] = DI\factory('\Portal\Factories\AddHiringPartnerContactPageControllerFactory');
     $container['CreateHiringPartnerController'] = DI\factory('\Portal\Factories\CreateHiringPartnerControllerFactory');
     $container['GetHiringPartnersController'] = DI\factory('\Portal\Factories\GetHiringPartnerControllerFactory');
     $container['CompanyDetailsModalController'] = DI\factory('\Portal\Factories\CompanyDetailsModalControllerFactory');
     $container['AddContactController'] = DI\factory('\Portal\Factories\AddContactControllerFactory');
     $container['DisplayEventsPageController'] = DI\factory('\Portal\Factories\DisplayEventsPageControllerFactory');
+    $container['DisplayPastEventsPageController'] = DI\factory('\Portal\Factories\DisplayPastEventsPageControllerFactory');
+    $container['AddEventPageController'] = DI\factory('\Portal\Factories\AddEventPageControllerFactory');
     $container['GetEventsController'] = DI\factory('\Portal\Factories\GetEventsControllerFactory');
     $container['GetHiringPartnersByIdController'] = DI\factory('\Portal\Factories\GetHiringPartnersByIdControllerFactory');
     $container['AddHiringPartnerToEventController'] = DI\factory('\Portal\Factories\AddHiringPartnerToEventControllerFactory');

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <?php
+        require 'partials/layout/head.phtml';
+        echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Login');
+        ?>
+        <link rel="stylesheet" type="text/css" href="./css/login.css"/>
+        <script src="./js/loginValidation.js" defer></script>
+    </head>
+    <body>
+    <?php require 'partials/layout/header.phtml'; ?>
+        <main class="login">
+            <h1>Login</h1>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="userEmail">Email (Required)</label>
+                    <input type="email" name="userEmail" id="userEmail" required class="form-control">
+                    <span id="userEmailWarning"></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password (Required)</label>
+                    <input type="password" name="password" id="password" required class="form-control">
+                    <span id="passwordWarning"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Login" id="submit" class="btn btn-success">
+                    <span id="submitWarning" class="req"></span>
+                </div>
+                <div id="error-message"></div>
+            </form>
+        </main>
+    <?php require 'partials/layout/footer.phtml'; ?>
+    </body>
+</html>

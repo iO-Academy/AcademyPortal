@@ -2,19 +2,21 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
-    <title>Academy Events</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./css/genericStyles.css">
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Events');
+    ?>
+    <link href="css/events.css" rel="stylesheet" type="text/css">
+    <!--    @todo: does it need this?-->
     <script defer src="./js/validations.js"></script>
-    <script defer src='./js/eventsPage.js'></script>
+    <script defer src='./js/addEvent.js'></script>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Events</h1>
-        <a href="./admin" class="btn btn-success">Go Back To Admin Page</a>
-        <h2>Add new Event</h2>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+        <h3>Add new Event</h3>
         <form id='create-events-form'>
             <label for='event-category'>Event category</label>
             <select name='event-category' id='event-category' class='create-events form-control'>
@@ -42,14 +44,6 @@
 
             <input id="submit-event" type="submit" class="btn btn-success" />
         </form>
-        <div id='messages'></div>
-        <div>
-            <h2>Search Events</h2>
-            <input id="academy-events-search" name="search-event-input" type="text" maxlength="255">
-            <input class="btn btn-success" id="submit-search-event" value="Search" type="submit">
-            <a id="clear-search" class="btn btn-warning" href="./displayEventsPage">Clear Search</a>
-        </div>
-        <h2 id="events-list">Current Events</h2>
-        <div id='events'></div>
-    </div>
+        <div id='messages' class="alert"></div>
+<?php require 'partials/layout/footer.phtml'; ?>
 </body>

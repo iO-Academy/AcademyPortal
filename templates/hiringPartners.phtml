@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Hiring Partners');
+    ?>
+    <link href="css/hiringPartner.css" rel="stylesheet" type="text/css">
+    <script defer src="./js/validations.js"></script>
+    <script defer src='./js/hiringPartner.js'></script>
+    <script defer src='./js/hiringPartnerModal.js'></script>
+</head>
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+    <h3>Current Hiring Partners</h3>
+    <div id='companies'></div>
+        <!-- Modal -->
+        <?php require('partials/companyDetailsModal.phtml'); ?>
+
+<?php require 'partials/layout/footer.phtml'; ?>
+</body>

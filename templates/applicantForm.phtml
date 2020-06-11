@@ -5,20 +5,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Academy Portal | New Applicant</title>
-    <link type="text/css" rel="stylesheet" href="./css/bootstrap.min.css">
-    <link type="text/css" rel="stylesheet" href="./css/genericStyles.css">
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle($title);
+    ?>
+    <link href="css/applicants.css" rel="stylesheet" type="text/css">
     <script src="./js/populateDropdowns.js" defer></script>
     <script src="./js/validations.js" defer></script>
     <script src="./js/saveApplicant.js" defer></script>
     <script src="./js/applicantForm.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <h1><?php echo $title?></h1>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+        <h3><?php echo $title?></h3>
         <form>
             <label for="name">Applicant Name</label>
             <div id="nameError" class="alert hidden formItem_alert"></div>
@@ -71,6 +72,6 @@
             <div id="generalError" class="alert alert-danger hidden formItem_alert"></div>
         </form>
         <a href="<?php echo $returnUrl; ?>" class="btn btn-success">Return</a>
-    </div>
+<?php require 'partials/layout/footer.phtml'; ?>
 </body>
 </html>

@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\HiringPartnerModel;
 
-class DisplayHiringPartnerPageController extends Controller
+class AddHiringPartnerContactPageController extends Controller
 {
     private $hiringPartnerModel;
     private $renderer;
@@ -43,7 +43,7 @@ class DisplayHiringPartnerPageController extends Controller
         if ($_SESSION['loggedIn'] === true) {
             $args['companyName'] = $this->hiringPartnerModel->getCompanyName();
             $args['companySize'] = $this->hiringPartnerModel->getCompanySize();
-            return $this->renderer->render($response, 'hiringPartners.phtml', $args);
+            return $this->renderer->render($response, 'addHiringPartnerContact.phtml', $args);
         } else {
             return $response->withHeader('Location', './');
         }

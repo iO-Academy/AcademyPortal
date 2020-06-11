@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Hiring Partners');
+    ?>
+    <link href="css/hiringPartner.css" rel="stylesheet" type="text/css">
+    <script defer src="./js/validations.js"></script>
+    <script defer src='./js/addHiringPartnerContact.js'></script>
+</head>
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+
+    <h3>Add Contact to Hiring partner</h3>
+    <form id='add-contact-form'>
+        <label for='company'>Company:</label>
+        <select name='company' id='company' class='submit-contact form-control'>
+            <option value='0'>Please select a company</option>
+            <?php echo \Portal\ViewHelpers\SelectCompanyViewHelper::selectCompanyDropdown($data); ?>
+        </select>
+        <label for="contact-name">Name:</label>
+        <input id="contact-name" name="contact-name" class="submit-contact form-control" type="text" placeholder="Contact Name">
+        <label for='contact-email'>Email:</label>
+        <input id='contact-email' name='contact-email' class="submit-contact form-control" type="text" placeholder="email">
+        <label for='contact-job-title'>Job Title:</label>
+        <input id='contact-job-title' name='contact-job-title' class="submit-contact form-control" type="text" placeholder="Job title">
+        <label for='contact-phone-number'>Contact Phone Number:</label>
+        <input id='contact-phone-number' name='contact-phone-number' class="submit-contact form-control" type="text" placeholder="Phone Number">
+        <div class="contact-is-primary">
+            <input class="form-check-input" type="checkbox" value="" id="contact-is-primary">
+            <label class="form-check-label" for="contact-is-primary">Primary Contact</label>
+        </div>
+        <input id="submit-hiring-partner-contact" type="submit" class="btn btn-success"/>
+        <div id='add-contact-messages' class="alert"></div>
+    </form>
+
+<?php require 'partials/layout/footer.phtml'; ?>
+</body>

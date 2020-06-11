@@ -27,7 +27,7 @@ class DisplayStagesController extends Controller
     }
 
     /**
-     * Renders stages page on the front end in stagesPage.phtml
+     * Renders stages page on the front end in editStages.phtml
      *
      * @param Request $request
      * @param Response $response
@@ -38,7 +38,7 @@ class DisplayStagesController extends Controller
     {
         if ($_SESSION['loggedIn'] === true) {
             $args['data'] = $this->stageModel->getAllStages();
-            return $this->renderer->render($response, 'stagesPage.phtml', $args);
+            return $this->renderer->render($response, 'editStages.phtml', $args);
         } else {
             return $response->withHeader('Location', '/');
         }

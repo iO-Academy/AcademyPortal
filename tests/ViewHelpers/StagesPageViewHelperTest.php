@@ -24,7 +24,7 @@ class StagesPageViewHelperTest extends TestCase
         $expected .= '<input type="text" class="stageEditTitle col-xs-10" value="Stage 1 test"/>';
         $expected .= '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
         $expected .= '</form>';
-        $expected .= '<div class="optionsContainer hide" data-stageId="1">';
+        $expected .= '<div class="optionsContainer hidden" data-stageId="1">';
         $expected .= '<div class="optionContainer multiOptionsContainer">';
         $expected .= '<form data-id="" class="optionAddForm">';
         $expected .= '<input type="text" class="optionAddTitle ';
@@ -68,7 +68,7 @@ class StagesPageViewHelperTest extends TestCase
         $expected .= '<input type="text" class="stageEditTitle col-xs-10" value="Stage 1 test"/>';
         $expected .= '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
         $expected .= '</form>';
-        $expected .= '<div class="optionsContainer hide" data-stageId="1">';
+        $expected .= '<div class="optionsContainer hidden" data-stageId="1">';
         $expected .= '<div class="optionContainer">';
         $expected .= '<p class="optionTitle" data-optionId="';
         $expected .= '1">aTitle';
@@ -76,7 +76,7 @@ class StagesPageViewHelperTest extends TestCase
         $expected .= '1" data-stageid="1">Delete</a>';
         $expected .= '<a class="optionEdit" data-optionId="1">Edit</a>';
         $expected .= '</p>';
-        $expected .= '<form class="optionTableForm hide" data-optionId="1">';
+        $expected .= '<form class="optionTableForm hidden" data-optionId="1">';
         $expected .= '<input type="text" class="optionEditTitle col-xs-10" value="';
         $expected .= 'aTitle"/>';
         $expected .= '<input type="submit" class="optionEditSubmit btn-success" ';

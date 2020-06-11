@@ -1,0 +1,94 @@
+#submit-search-event {
+    margin-top: 0;
+}
+
+#messages {
+    margin: 10px 0;
+}
+
+#events-list {
+    margin-top: 0;
+}
+
+.event {
+    padding: 15px;
+    border-bottom: 1px solid #333333;
+    overflow: auto;
+}
+
+.event:last-child {
+    border-bottom: none;
+}
+
+.event.open {
+    background: #cccccc;
+}
+
+.event .header {
+    overflow: auto;
+}
+
+.event .show-event-info {
+    float: right;
+}
+
+.event h4 {
+    float: left;
+    margin: 0;
+    padding-top: 6px;
+}
+
+.event .moreInfo {
+    margin-top: 10px;
+}
+
+.event p {
+    overflow-wrap: break-word;
+}
+
+.event-attendees {
+    overflow: auto;
+    border: 1px solid #333333;
+}
+
+.hiring-partners {
+    min-height: 0;
+    border-right: 1px solid #333333;
+}
+
+.hiring-partner {
+    overflow: auto;
+}
+
+.hiring-partner p {
+    float: left;
+    margin-right: 100px;
+    margin-top: 7px;
+}
+
+.hiring-partner .btn {
+    float: right;
+    margin: 0;
+}
+
+.addHiringPartnerForm {
+    margin-bottom: 10px;
+}
+
+.addHiringPartnerForm input,
+.addHiringPartnerForm label {
+    margin: 0;
+}
+
+.addHiringPartnerForm select {
+    display: block;
+}
+
+.addHiringPartnerForm .companyAttendees {
+    width: 100px;
+}
+
+input[type="date"],
+input[type="time"] {
+    padding: 0 12px;
+}

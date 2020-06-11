@@ -33,7 +33,7 @@ class StagesPageViewHelper
                 $result .= 'col-xs-10" value="'. $stage->getStageTitle().'"/>';
                 $result .= '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
                 $result .= '</form>';
-                $result .= '<div class="optionsContainer hide" data-stageId="'. $stage->getStageId().'">';
+                $result .= '<div class="optionsContainer hidden" data-stageId="'. $stage->getStageId().'">';
                 if (empty($stage->getOptions())) {
                     $result .= '<div class="optionContainer multiOptionsContainer">';
                     $result .= '<form data-id="" class="optionAddForm">';
@@ -49,7 +49,7 @@ class StagesPageViewHelper
                         $result .= 'data-stageid="' . $stage->getStageId() . '">Delete</a>';
                         $result .= '<a class="optionEdit" data-optionId="'.$option->getOptionId().'">Edit</a>';
                         $result .= '</p>';
-                        $result .= '<form class="optionTableForm hide" data-optionId="'.$option->getOptionId().'">';
+                        $result .= '<form class="optionTableForm hidden" data-optionId="'.$option->getOptionId().'">';
                         $result .= '<input type="text" class="optionEditTitle col-xs-10" value="';
                         $result .= $option->getOptionTitle().'"/>';
                         $result .= '<input type="submit" class="optionEditSubmit btn-success" ';

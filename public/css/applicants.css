@@ -1,0 +1,22 @@
+#deleteResponse {
+    color: #FF0000;
+}
+
+.arrowBtn {
+    border: none;
+}
+
+.active {
+    color: #d64405;
+}
+
+.alertUser {
+    color: #FF0000
+}
+
+.errorMsg {
+    color: #761c19;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+}

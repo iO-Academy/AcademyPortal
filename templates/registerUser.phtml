@@ -1,35 +1,33 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <script src='js/passwordRandom.js' defer></script>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Register User');
+    ?>
     <script src='js/registerUser.js' defer></script>
-    <link rel="stylesheet" type="text/css" href="./css/genericStyles.css"/>
-    <link rel="stylesheet" href="./css/admin.css">
-
-    <title>AcademyPortal | Register User</title>
+    <link rel="stylesheet" href="./css/registerUser.css">
 </head>
 <body>
-    <div>
-        <a href="./admin" class="custom-button">Return to admin page</a>
-    </div>
-    <h1> Registration Page</h1>
-    <div id="message"></div>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+    <h3>Register User</h3>
     <form id="registerUserForm">
-        <div>
-            <h4>Password</h4>
-            <input type="text" id="randomPassword" readonly value="<?php echo $password;?>">
+        <div class="form-group">
+            <label for="randomPassword">Password</label>
+            <input type="text" id="randomPassword" class="form-control" readonly value="<?php echo $password;?>">
         </div>
-    <div>
-        <h4>Email
-        </h4>
-        <input id="emailNewUser" type="email" name="email">
-        <input type="submit" id="newUserSubmit">
+        <div class="form-group">
+            <label for="emailNewUser">Email</label>
+            <input id="emailNewUser" class="form-control" type="email" name="email">
+        </div>
+        <div class="form-group">
+            <p class="text-danger">Remember to save the password before creating the user.</p>
+            <input type="submit" id="newUserSubmit" class="btn btn-success" value="Register">
+            <div id="message" class="alert"></div>
         </div>
     </form>
+<?php require 'partials/layout/footer.phtml'; ?>
 </body>
 </html>

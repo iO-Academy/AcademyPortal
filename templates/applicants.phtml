@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Applicants');
+    ?>
+    <link rel="stylesheet" type="text/css" href="./css/applicants.css">
+    <script src="./js/populateDropdowns.js" defer></script>
+    <script defer src="./js/applicantModal.js"></script>
+    <script defer src="./js/deleteApplicant.js"></script>
+    <script defer src="./js/displayApplicants.js"></script>
+</head>
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+
+    <div class="row">
+        <div class="col-xs-12 registeredApplicants">
+            <h1>Registered Applicants</h1>
+            <form class="arrowForm" id="sortFilterApplicants" method="get">
+				<label for="cohorts">
+					Select Cohort
+					<select id="cohorts" class="submitApplicant form-control" name="cohortId">
+						<option value="all">All</option>
+					</select>
+				</label>
+                <table class="col-xs-12 table-bordered table">
+                    <tr>
+                        <th class="col-xs-2">Name</th>
+                        <th class="col-xs-4">Email</th>
+                        <th class="col-xs-2">Date of application
+                            <div>
+                                <button name="sort" value="dateAsc" class="arrowBtn <?php if ($sort == 'dateAsc' OR empty($sort)) {echo 'active';}?>" type="submit"><i id="arrowDateAsc" class="glyphicon glyphicon-triangle-top"></i></button>
+                                <button name="sort" value="dateDesc" class="arrowBtn <?php if ($sort == 'dateDesc') {echo 'active';}?>" type="submit"><i id="arrowDateDesc" class="glyphicon glyphicon-triangle-bottom"></i></button>
+                            </div>
+
+                        <th class="col-xs-2">Cohort date
+                            <div class="cohortSort">
+                                <button name="sort" value="cohortAsc" class="arrowBtn <?php if ($sort == 'cohortAsc') {echo 'active';}?>" type="submit"><i id="arrowCohortAsc" class="glyphicon glyphicon-triangle-top"></i></button>
+                                <button name="sort" value="cohortDesc" class="arrowBtn <?php if ($sort == 'cohortDesc') {echo 'active';}?>" type="submit"><i id="arrowCohortDesc" class="glyphicon glyphicon-triangle-bottom"></i></button>
+                            </div>
+                    </tr>
+                    <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayApplicants($data); ?>
+                </table>
+            </form>
+        </div>
+        <!-- Modal -->
+        <?php require('partials/applicantInfoModal.phtml'); ?>
+        <div id='deleteResponse'></div>
+    </div>
+
+<?php require 'partials/layout/footer.phtml'; ?>
+
+</body>
+</html>

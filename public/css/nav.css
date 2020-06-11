@@ -1,0 +1,17 @@
+nav {
+    margin-bottom: 15px;
+}
+
+nav .btn {
+    border-radius: 0;
+}
+
+nav a[href="#"] {
+    color: #dddddd;
+    cursor: default;
+}
+
+nav a[href="#"]:hover {
+    color: #dddddd;
+    background: none;
+}

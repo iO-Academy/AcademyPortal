@@ -3,6 +3,8 @@
 namespace Portal\Controllers;
 
 use Portal\Abstracts\Controller;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
 class HomePageController extends Controller
@@ -14,8 +16,11 @@ class HomePageController extends Controller
         $this->renderer = $renderer;
     }
 
-    public function __invoke($request, $response, $args)
+    public function __invoke(Request $request, Response $response, array $args)
     {
-        return $this->renderer->render($response, 'index.phtml', $args);
+        if ($_SESSION['loggedIn'] === true) {
+            return $response->withHeader('Location', './admin');
+        }
+        return $this->renderer->render($response, 'login.phtml', $args);
     }
 }

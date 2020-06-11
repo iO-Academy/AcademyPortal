@@ -139,7 +139,7 @@ optionButtons.forEach((optionButton) => {
         e.preventDefault();
         optionsContainers.forEach((optionContainer) => {
             if (optionContainer.dataset.stageid === e.target.dataset.stageid) {
-                optionContainer.classList.toggle('hide')
+                optionContainer.classList.toggle('hidden')
             }
         })
     })
@@ -172,10 +172,10 @@ optionEdits.forEach((optionEdit) => {
         e.preventDefault();
         optionEditForms.forEach((optionEditForm) => {
             if (optionEditForm.dataset.optionid === e.target.dataset.optionid) {
-                optionEditForm.classList.toggle('hide')
+                optionEditForm.classList.toggle('hidden')
             }
         })
-        e.target.parentElement.classList.toggle('hide')
+        e.target.parentElement.classList.toggle('hidden')
     })
 })
 
