@@ -19,7 +19,7 @@ function validateContactField(contactField, noDataMessage = 'No information prov
 
 function addEventListenersForModal() {
     $(document).ready(function(){
-        $(".myBtn").click(function(){
+        $(".show-partner-info").click(function(){
             const url = './api/displayCompanyInfo/' + this.dataset.id
             fetch(url)
                 .then(

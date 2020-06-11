@@ -24,7 +24,11 @@ getHiringPartners()
 function displayHiringPartnerHandler(partnerCompanies){
     let companyNamesHTML = '';
     partnerCompanies.forEach(function(partnerCompany){
-        companyNamesHTML += `<div class="company-name"><a data-id=${partnerCompany.id} type="button"  class="myBtn">${partnerCompany.name}</a></div>`;
+        companyNamesHTML +=
+            `<div class="partner">
+                <h4>${partnerCompany.name}</h4>
+                <button class="show-partner-info btn btn-primary" data-id=${partnerCompany.id}>More Info</button>
+            </div>`;
     })
     document.querySelector('#companies').innerHTML = companyNamesHTML;
     addEventListenersForModal();
