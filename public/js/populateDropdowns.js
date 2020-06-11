@@ -24,7 +24,9 @@ let outputCohorts = async () => {
         if (element.dataset.selected === item.id) {
             cohortOptions += "selected ";
         }
-        cohortOptions += `value="${item.id}">${item.date}</option>`;
+        let date = new Date(item.date);
+        let dateOptions = {year: 'numeric', month: 'long'};
+        cohortOptions += `value="${item.id}">${date.toLocaleDateString("en-US",dateOptions)}</option>`;
     });
 
     element.innerHTML += cohortOptions;
