@@ -31,13 +31,13 @@ CREATE TABLE `applicants` (
   `email` varchar(255) DEFAULT NULL,
   `phoneNumber` varchar(20) DEFAULT NULL,
   `cohortId` int(11) DEFAULT NULL,
-  `whyDev` varchar(2000) DEFAULT NULL,
-  `codeExperience` varchar(2000) DEFAULT NULL,
+  `whyDev` text,
+  `codeExperience` text,
   `hearAboutId` int(11) DEFAULT NULL,
   `eligible` enum('1','0') DEFAULT NULL,
   `eighteenPlus` enum('1','0') DEFAULT NULL,
   `finance` enum('1','0') DEFAULT NULL,
-  `notes` varchar(2000) DEFAULT NULL,
+  `notes` text,
   `dateTimeAdded` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
@@ -48,7 +48,6 @@ LOCK TABLES `applicants` WRITE;
 
 INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `cohortId`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`, `deleted`)
 VALUES
-	(1,'test','test@test.com','000000',4,'test','test',2,'1','1','0','test user','2018-11-15 04:29:59',0),
 	(2,'Owen Miller','weqi@mailinator.net','+532-82-1263991',2,'Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea','Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat',3,'1','1','1','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus','2018-11-24 21:26:46',0),
 	(3,'Nero Burgess','famaxykivo@yahoo.com','+124-85-7626938',2,'Perspiciatis fugiat possimus tempor dolores nesciunt consequatur voluptatem','Quibusdam officiis occaecat velit error sunt ratione voluptatem',5,'1','1','1','Sint voluptas ut nihil incididunt officia duis ab eius impedit consequatur Incidunt do aut doloribus proident quos dolores pariatur Sed','2018-11-28 14:29:58',0),
 	(4,'Matthew Jarvis','tucawohuw@mailinator.net','+848-54-4778506',3,'Natus quidem magnam autem corrupti laborum Anim quos quia','Dolor quia dignissimos qui excepturi eos voluptas est',6,'1','0','0','Quod harum esse quia maxime explicabo Voluptatem magna soluta voluptate optio','2018-11-28 14:33:41',0),
