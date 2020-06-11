@@ -44,7 +44,7 @@ class DisplayApplicantViewHelperTest extends TestCase
         $entityMock->method('getId')->willReturn(1);
         $entityMock->method('getName')->willReturn('Test');
         $entityMock->method('getEmail')->willReturn('test@test.com');
-        $entityMock->method('getDateOfApplication')->willReturn('Jan 1st');
+        $entityMock->method('getPrettyDateOfApplication')->willReturn('Jan 1st');
         $entityMock->method('getCohortDate')->willReturn('Feb 2020');
 
         $data = [$entityMock];
