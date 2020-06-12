@@ -30,7 +30,7 @@ optionEditSubmits.forEach((optionEditSubmit) => {
             'optionTitle': optionTitle,
             'optionId': optionId
         }
-        fetch('/api/editStageOption', {
+        await fetch('./api/editStageOption', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ optionDeletes.forEach((optionDelete) => {
                     "stageId" : stageId
                     };
 
-        let response = await fetch('/api/deleteStageOption', {
+        let response = await fetch('./api/deleteStageOption', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ optionDeletes.forEach((optionDelete) => {
                 let data = {
                     "stageId" : stageId
                 };
-                await fetch('/api/deleteAllStageOptions', {
+                await fetch('./api/deleteAllStageOptions', {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json'
@@ -96,7 +96,7 @@ optionAddSubmits.forEach((optionAddSubmit) => {
                 'stageId': stageId
             })
         })
-        await fetch('/api/addStageOption', {
+        await fetch('./api/addStageOption', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -151,7 +151,7 @@ deleteButtons.forEach((deleteButton) => {
         let data = {
             "id": e.target.dataset.id
         };
-        await sendRequest('/api/deleteStage', 'DELETE', data)
+        await sendRequest('./api/deleteStage', 'DELETE', data)
         window.location.reload()
     })
 })
@@ -193,7 +193,7 @@ editForms.forEach((editForm, index) => {
             }]
         };
 
-        await sendRequest('/api/updateStages', 'PUT', data);
+        await sendRequest('./api/updateStages', 'PUT', data);
         window.location.reload();
     })
 });
@@ -206,7 +206,7 @@ newStageForm.addEventListener('submit', async (e) => {
         "title": newStage
     };
 
-    await sendRequest('/api/createStage', 'POST', data);
+    await sendRequest('./api/createStage', 'POST', data);
     window.location.reload(true);
 
 });
