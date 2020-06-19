@@ -20,3 +20,27 @@
     font-weight: bold;
     font-size: 40px;
 }
+
+.collapse-header {
+    overflow: auto;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.collapse-header:hover {
+    background: #dddddd;
+}
+
+section {
+    margin-bottom: 10px;
+}
+
+.collapse-header h4 {
+    float: left;
+    padding-left: 15px;
+}
+
+.collapse-header i {
+    float: right;
+    margin: 12px;
+}

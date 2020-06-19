@@ -1,77 +1,200 @@
-<?php
- use \Portal\ViewHelpers\ApplicantFormViewHelper;
- ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <?php
     require 'partials/layout/head.phtml';
-    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle($title);
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Edit Applicant');
     ?>
     <link href="css/applicants.css" rel="stylesheet" type="text/css">
     <script src="./js/populateDropdowns.js" defer></script>
     <script src="./js/validations.js" defer></script>
     <script src="./js/saveApplicant.js" defer></script>
     <script src="./js/applicantForm.js" defer></script>
+    <script src="./js/editApplicant.js" defer></script>
 </head>
 <body>
 <?php require 'partials/layout/header.phtml'; ?>
 
 <?php require 'partials/layout/nav.phtml'; ?>
-        <h3><?php echo $title?></h3>
+        <h3>Edit Applicant</h3>
         <form>
-            <label for="name">Applicant Name</label>
-            <div id="nameError" class="alert hidden formItem_alert"></div>
-            <input id="name" name="name" class="submitApplicant form-control" type="text" placeholder="name" value="<?php echo ApplicantFormViewHelper::runMethod($applicant, 'getName');?>" required>
+            <section>
+                <div data-toggle="collapse" class="collapse-header" data-target="#personalDetails" aria-expanded="true" aria-controls="personalDetails">
+                    <h4>Personal Details</h4>
+                    <i class="glyphicon glyphicon-chevron-up"></i>
+                </div>
 
-            <label for="email">Applicant Email</label>
-            <div id="emailError" class="alert hidden formItem_alert"></div>
-            <input id="email" name="email" class="submitApplicant form-control" type="email" placeholder="email" value="<?php echo ApplicantFormViewHelper::runMethod($applicant, 'getEmail');?>" required>
+                <div id="personalDetails" class="collapse in">
+                    <label for="name">Name</label>
+                    <div id="nameError" class="alert hidden formItem_alert"></div>
+                    <input id="name" name="name" class="submitApplicant form-control" type="text" placeholder="name" value="<?php echo $applicant->getName();?>" required>
 
-            <label for="phone">Applicant Phone Number</label>
-            <div id="phoneError" class="alert hidden formItem_alert"></div>
-            <input id="phone" name="phoneNumber" class="submitApplicant form-control" type="text" placeholder="phone number" value="<?php echo ApplicantFormViewHelper::runMethod($applicant, 'getPhoneNumber');?>" required>
+                    <label for="email">Email</label>
+                    <div id="emailError" class="alert hidden formItem_alert"></div>
+                    <input id="email" name="email" class="submitApplicant form-control" type="email" placeholder="email" value="<?php echo $applicant->getEmail();?>" required>
 
-            <label for="cohorts">When would you like to join us?</label>
-            <select id="cohorts" class="submitApplicant form-control" name="cohortId"  data-selected="<?php echo ApplicantFormViewHelper::runMethod($applicant, 'getCohortId');?>" required>
-            </select>
+                    <label for="phone">Phone Number</label>
+                    <div id="phoneError" class="alert hidden formItem_alert"></div>
+                    <input id="phone" name="phoneNumber" class="submitApplicant form-control" type="text" placeholder="phone number" value="<?php echo $applicant->getPhoneNumber();?>" required>
+                </div>
+            </section>
 
-            <label for="why-developer">Why do you want to become a software developer?</label>
-            <div id="whyDevError" class="alert hidden formItem_alert"></div>
-            <textarea id="why-developer" name="whyDev" class="submitApplicant form-control" placeholder="Enter here" required><?php echo ApplicantFormViewHelper::runMethod($applicant, 'getWhyDev');?></textarea>
+            <section>
 
-            <label for="experience">Please tell us about any relevant coding experience.</label>
-            <div id="codeExperienceError" class="alert hidden formItem_alert"></div>
-            <textarea id="experience" name="codeExperience" class="submitApplicant form-control" placeholder="Enter here"><?php echo ApplicantFormViewHelper::runMethod($applicant, 'getCodeExperience');?></textarea>
+                <div data-toggle="collapse" class="collapse-header" data-target="#application" aria-expanded="false" aria-controls="application">
+                    <h4>Application Info</h4>
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                </div>
 
-            <label for="hear-about">How did you hear about Mayden Academy?</label>
-            <select id="hear-about" class="submitApplicant form-control" name="hearAboutId" data-selected="<?php echo ApplicantFormViewHelper::runMethod($applicant, 'getHearAboutId');?>" required>
-            </select>
+                <div id="application" class="collapse">
+                    <label for="cohorts">When would you like to join us?</label>
+                    <select id="cohorts" class="submitApplicant form-control" name="cohortId"  data-selected="<?php echo $applicant->getCohortId();?>" required>
+                    </select>
 
-            <div class="form-group">
-                <input class="submitApplicant" name="eligible" type="checkbox" <?php echo ApplicantFormViewHelper::runMethod($applicant, 'getEligible') ? "checked" : ""; ?>/>
-                <label for="uk-eligible">I confirm I am eligible to study in the UK.</label>
-            </div>
+                    <label for="why-developer">Why do you want to become a software developer?</label>
+                    <div id="whyDevError" class="alert hidden formItem_alert"></div>
+                    <textarea id="why-developer" name="whyDev" class="submitApplicant form-control" placeholder="Enter here" required><?php echo $applicant->getWhyDev();?></textarea>
 
-            <div>
-                <input class="submitApplicant" name="eighteenPlus" type="checkbox" <?php echo ApplicantFormViewHelper::runMethod($applicant, 'getEighteenPlus') ? "checked" : "";?>/>
-                <label for="is-18">I confirm I will be at least 18 years before my chosen cohort*.</label>
-            </div>
+                    <label for="experience">Please tell us about any relevant coding experience.</label>
+                    <div id="codeExperienceError" class="alert hidden formItem_alert"></div>
+                    <textarea id="experience" name="codeExperience" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getCodeExperience();?></textarea>
 
-            <div class="form-group">
-                <input class="submitApplicant" name="finance" type="checkbox" <?php echo ApplicantFormViewHelper::runMethod($applicant, 'getFinance') ? "checked" : "";?>/>
-                <label for="finance">I would like to apply for interest free finance.</label>
-            </div>
+                    <label for="hear-about">How did you hear about Mayden Academy?</label>
+                    <select id="hear-about" class="submitApplicant form-control" name="hearAboutId" data-selected="<?php echo $applicant->getHearAboutId();?>" required>
+                    </select>
 
-            <label for="notes">Notes.</label>
-            <div id="notesError" class="alert hidden formItem_alert"></div>
-            <textarea id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here"><?php echo ApplicantFormViewHelper::runMethod($applicant, 'getNotes');?></textarea>
+                    <div class="form-group">
+                        <input class="submitApplicant" name="eligible" type="checkbox" <?php echo $applicant->getEligible() ? "checked" : ""; ?>/>
+                        <label for="uk-eligible">I confirm I am eligible to study in the UK.</label>
+                    </div>
 
-            <input id="submitApplicant" type="submit" class="btn btn-success"/>
+                    <div class="form-group">
+                        <input class="submitApplicant" name="eighteenPlus" type="checkbox" <?php echo $applicant->getEighteenPlus() ? "checked" : "";?>/>
+                        <label for="is-18">I confirm I will be at least 18 years before my chosen cohort*.</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="submitApplicant" name="finance" type="checkbox" <?php echo $applicant->getFinance() ? "checked" : "";?>/>
+                        <label for="finance">I would like to apply for interest free finance.</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="submitApplicant" name="apprentice" type="checkbox" <?php echo $applicant->getEligible() ? "checked" : ""; ?>/> <?php //@todo: update getter ?>
+                        <label for="apprentice">Apprentice applicant</label>
+                    </div>
+
+                    <label for="notes">Notes.</label>
+                    <div id="notesError" class="alert hidden formItem_alert"></div>
+                    <textarea id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getNotes();?></textarea>
+                </div>
+            </section>
+
+            <section>
+                <div data-toggle="collapse" class="collapse-header" data-target="#taster" aria-expanded="false" aria-controls="taster">
+                    <h4>Taster session</h4>
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                </div>
+
+                <div id="taster" class="collapse"> <?php //@todo: update getters ?>
+                    <label for="taster">Taster session?</label>
+                    <select id="taster" class="submitApplicant form-control" name="taster" data-selected="<?php echo $applicant->getHearAboutId();?>">
+                    </select>
+
+                    <div class="form-group">
+                        <input class="submitApplicant" name="tasterAttendance" type="checkbox" <?php echo $applicant->getEligible() ? "checked" : ""; ?>/>
+                        <label for="tasterAttendance">Did they attend the taster session?</label>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div data-toggle="collapse" class="collapse-header" data-target="#assessment" aria-expanded="false" aria-controls="assessment">
+                    <h4>Assessment</h4>
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                </div>
+
+                <div id="assessment" class="collapse"> <?php //@todo: update getters ?>
+                    <label for="assessmentDay">Assessment day</label>
+                    <select id="assessmentDay" class="submitApplicant form-control" name="assessmentDay" data-selected="<?php echo $applicant->getHearAboutId();?>">
+                    </select>
+
+                    <label for="assessmentTime">Assessment time</label>
+                    <input id="assessmentTime" name="assessmentTime" class="submitApplicant form-control" type="time" value="<?php echo $applicant->getName();?>">
+
+                    <label for="aptitude">Aptitude Score (%)</label>
+                    <div class="input-group">
+                        <input id="aptitude" name="aptitude" class="submitApplicant form-control" type="text" placeholder="0" value="<?php echo $applicant->getName();?>">
+                        <span class="input-group-addon">%</span>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="submitApplicant" name="diversitechInterest" type="checkbox" <?php echo $applicant->getEligible() ? "checked" : ""; ?>/>
+                        <label for="diversitechInterest">Interested in Diversitech?</label>
+                    </div>
+
+                    <label for="assessmentNotes">Assessment notes</label>
+                    <div id="assessmentNotesError" class="alert hidden formItem_alert"></div>
+                    <textarea id="assessmentNotes" name="assessmentNotes" class="submitApplicant form-control" placeholder="Notes about the student assessment"><?php echo $applicant->getNotes();?></textarea>
+                </div>
+            </section>
+
+            <section>
+                <div data-toggle="collapse" class="collapse-header" data-target="#onboarding" aria-expanded="false" aria-controls="onboarding">
+                    <h4>Onboarding Info</h4>
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                </div>
+
+                <div id="onboarding" class="collapse"> <?php //@todo: update getters ?>
+
+                    <label for="diversitech">Diversitech Amount</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">&pound;</span>
+                        <input id="diversitech" name="diversitech" class="submitApplicant form-control" type="number" placeholder="0" min="0" max="10000" step="1" value="<?php echo $applicant->getName();?>">
+                    </div>
+
+                    <label for="edaid">EdAid Amount</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">&pound;</span>
+                        <input id="edaid" name="edaid" class="submitApplicant form-control" type="number" placeholder="0" min="0" max="10000" step="1" value="<?php echo $applicant->getName();?>">
+                    </div>
+
+                    <label for="upfront">Upfront Amount</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">&pound;</span>
+                        <input id="upfront" name="upfront" class="submitApplicant form-control" type="number" placeholder="0" min="0" max="10000" step="1" value="<?php echo $applicant->getName();?>">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="submitApplicant" name="laptop" type="checkbox" <?php echo $applicant->getFinance() ? "checked" : "";?>/>
+                        <label for="laptop">Academy laptop needed?</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="submitApplicant" name="laptopDeposit" type="checkbox" <?php echo $applicant->getFinance() ? "checked" : "";?>/>
+                        <label for="laptopDeposit">Paid deposit?</label>
+                    </div>
+
+                    <label for="laptopNum">Laptop number</label>
+                    <input id="laptopNum" class="submitApplicant form-control" name="laptopNum" type="number" min="1" max="99" step="1" value="<?php echo $applicant->getHearAboutId();?>">
+
+                    <label for="kitCollectionDay">Kit Collection Day</label>
+                    <input id="kitCollectionDay" class="submitApplicant form-control" name="kitCollectionDay" type="date" value="<?php echo $applicant->getHearAboutId();?>">
+
+                    <label for="kitCollectionTime">Kit Collection time</label>
+                    <input id="kitCollectionTime" name="kitCollectionTime" class="submitApplicant form-control" type="time" value="<?php echo $applicant->getName();?>">
+
+                    <label for=kitNum">Kit number</label>
+                    <input id="kitNum" class="submitApplicant form-control" name="kitNum" type="number" min="1" max="99" step="1" value="<?php echo $applicant->getHearAboutId();?>">
+
+                    <label for="team">Team</label>
+                    <input id="team" name="team" class="submitApplicant form-control" type="text" value="<?php echo $applicant->getName();?>">
+                </div>
+            </section>
+
+            <input id="submitApplicant" type="submit" class="btn btn-success" value="Save"/>
             <div id="generalError" class="alert alert-danger hidden formItem_alert"></div>
         </form>
-        <a href="<?php echo $returnUrl; ?>" class="btn btn-success">Return</a>
+        <a href="./applicants" class="btn btn-danger">Cancel</a>
 <?php require 'partials/layout/footer.phtml'; ?>
 </body>
 </html>
