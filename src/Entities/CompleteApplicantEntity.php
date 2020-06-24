@@ -44,7 +44,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         string $applicantFinance = null,
         string $applicantNotes = null,
         int $applicantId = null,
-
         bool $apprentice = null,
         $aptitude = null,
         string $assessmentDay = null,
@@ -341,6 +340,4 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->team;
     }
-
-
 }

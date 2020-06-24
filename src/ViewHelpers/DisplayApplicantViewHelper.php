@@ -13,25 +13,34 @@ class DisplayApplicantViewHelper
         $dateDesc = ($sort == 'dateDesc') ? ' active': '';
         $cohortAsc = ($sort == 'cohortAsc') ? ' active': '';
         $cohortDesc = ($sort == 'cohortDesc') ? ' active': '';
-        $active = ($type == 'paying') ? 'active' : '';
+        $active = ($type == 'paying') ? ' active' : '';
 
-        $result = '<div class="tab-pane ' . $active . '" role="tabpanel" id="' . $type . '">
-                        <table class="col-xs-12 table-bordered table">
-                            <tr>
-                                <th class="col-xs-2">Name</th>
-                                <th class="col-xs-4">Email</th>
-                                <th class="col-xs-2 sort">Application Date
-                                    <div>
-                                        <button name="sort" value="dateAsc" class="arrowBtn' . $dateAsc . '" type="submit"><i id="arrowDateAsc" class="glyphicon glyphicon-triangle-top"></i></button>
-                                        <button name="sort" value="dateDesc" class="arrowBtn' . $dateDesc . '" type="submit"><i id="arrowDateDesc" class="glyphicon glyphicon-triangle-bottom"></i></button>
-                                    </div>
-
-                                <th class="col-xs-2 sort">Cohort Date
-                                    <div class="cohortSort">
-                                        <button name="sort" value="cohortAsc" class="arrowBtn' . $cohortAsc . '" type="submit"><i id="arrowCohortAsc" class="glyphicon glyphicon-triangle-top"></i></button>
-                                        <button name="sort" value="cohortDesc" class="arrowBtn' . $cohortDesc . '" type="submit"><i id="arrowCohortDesc" class="glyphicon glyphicon-triangle-bottom"></i></button>
-                                    </div>
-                            </tr>';
+        $result = '<div class="tab-pane' . $active . '" role="tabpanel" id="' . $type . '">
+                    <table class="col-xs-12 table-bordered table">
+                        <tr>
+                        <th class="col-xs-2">Name</th>
+                        <th class="col-xs-4">Email</th>
+                        <th class="col-xs-2 sort">Application Date
+                            <div>
+                            <button name="sort" value="dateAsc" class="arrowBtn' . $dateAsc . '" type="submit">
+                                <i id="arrowDateAsc" class="glyphicon glyphicon-triangle-top"></i>
+                            </button>
+                            <button name="sort" value="dateDesc" class="arrowBtn' . $dateDesc . '" type="submit">
+                                <i id="arrowDateDesc" class="glyphicon glyphicon-triangle-bottom"></i>
+                            </button>
+                            </div>
+                        </th>
+                        <th class="col-xs-2 sort">Cohort Date
+                            <div class="cohortSort">
+                            <button name="sort" value="cohortAsc" class="arrowBtn' . $cohortAsc . '" type="submit">
+                                <i id="arrowCohortAsc" class="glyphicon glyphicon-triangle-top"></i>
+                            </button>
+                            <button name="sort" value="cohortDesc" class="arrowBtn' . $cohortDesc . '" type="submit">
+                                <i id="arrowCohortDesc" class="glyphicon glyphicon-triangle-bottom"></i>
+                            </button>
+                            </div>
+                        </th>
+                    </tr>';
         if ($type == 'paying') {
             $result .= self::displayApplicants($applicants);
         } else {
@@ -73,7 +82,7 @@ class DisplayApplicantViewHelper
     {
         $result = '';
         foreach ($applicants as $applicant) {
-            if (!empty($applicant->apprentice) && $applicant->apprentice == 1){
+            if (!empty($applicant->apprentice) && $applicant->apprentice == 1) {
                 $result .= self::outputApplicantRow($applicant);
             }
         }
@@ -101,7 +110,7 @@ class DisplayApplicantViewHelper
                            type="button"                                   
                            class="btn btn-primary edit">
                            Edit
-                        </a>                                                                   
+                        </a>
                         <a
                                 href="#"
                                 type="delete"
@@ -120,5 +129,4 @@ class DisplayApplicantViewHelper
         }
         return $output;
     }
-
 }

@@ -57,9 +57,7 @@ class DisplayApplicantViewHelperTest extends TestCase
     public function testSuccessDisplayApplicantsEmptyArray()
     {
         $data = [];
-        $expected = '<tr><td colspan="5">
-<h5 class="text-danger text-center">No Applicants Found.</h5>
-</td></tr>';
+        $expected = '<tr><td colspan="5"><h5 class="text-danger text-center">No Applicants Found.</h5></td></tr>';
         $result = DisplayApplicantViewHelper::displayApplicants($data);
         $this->assertEquals($expected, $result);
     }
