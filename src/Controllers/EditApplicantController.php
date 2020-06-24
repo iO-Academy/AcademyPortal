@@ -5,6 +5,7 @@ namespace Portal\Controllers;
 
 use Portal\Abstracts\Controller;
 use Portal\Entities\ApplicantEntity;
+use Portal\Entities\CompleteApplicantEntity;
 use Portal\Interfaces\ApplicantEntityInterface;
 use Portal\Interfaces\ApplicantModelInterface;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -31,7 +32,7 @@ class EditApplicantController extends Controller
             $newApplicationData = $request->getParsedBody();
 
             try {
-                $applicant = new ApplicantEntity(
+                $applicant = new CompleteApplicantEntity(
                     $newApplicationData['name'],
                     $newApplicationData['email'],
                     $newApplicationData['phoneNumber'],
@@ -43,13 +44,32 @@ class EditApplicantController extends Controller
                     $newApplicationData['eighteenPlus'],
                     $newApplicationData['finance'],
                     $newApplicationData['notes'],
-                    $newApplicationData['id']
+                    $newApplicationData['id'],
+                    $newApplicationData['apprentice'],
+                    $newApplicationData['aptitude'],
+                    $newApplicationData['assessmentDay'],
+                    $newApplicationData['assessmentTime'],
+                    $newApplicationData['assessmentNotes'],
+                    $newApplicationData['diversitechInterest'],
+                    $newApplicationData['diversitech'],
+                    $newApplicationData['edaid'],
+                    $newApplicationData['upfront'],
+                    $newApplicationData['kitCollectionDay'],
+                    $newApplicationData['kitCollectionTime'],
+                    $newApplicationData['kitNum'],
+                    $newApplicationData['laptop'],
+                    $newApplicationData['laptopDeposit'],
+                    $newApplicationData['laptopNum'],
+                    $newApplicationData['taster'],
+                    $newApplicationData['tasterAttendance'],
+                    $newApplicationData['team']
                 );
 
-                $successfulRegister = $this->applicantModel->updateApplicant($applicant);
+                $successfulUpdate1 = $this->applicantModel->updateApplicant($applicant);
+                $successfulUpdate2 = $this->applicantModel->updateApplicantAdditionalFields($applicant);
 
-                if ($successfulRegister) {
-                    $data['success'] = $successfulRegister;
+                if ($successfulUpdate1 && $successfulUpdate2) {
+                    $data['success'] = true;
                     $data['msg'] = 'Applicant has been updated!';
                     $statusCode = 200;
                 }

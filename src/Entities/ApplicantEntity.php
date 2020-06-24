@@ -18,8 +18,8 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     protected $eighteenPlus;
     protected $finance;
     protected $notes;
-    private const MAXVARCHARLENGTH = 255;
-    private const MAXTEXTLENGTH = 10000;
+    protected const MAXVARCHARLENGTH = 255;
+    protected const MAXTEXTLENGTH = 10000;
 
     public function __construct(
         string $applicantName = null,

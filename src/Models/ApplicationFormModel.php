@@ -31,7 +31,7 @@ class ApplicationFormModel
      */
     public function getHearAbout()
     {
-        $query = $this->db->prepare('SELECT `id`, `hearAbout` FROM `hearAbout`;');
+        $query = $this->db->prepare('SELECT `id`, `hearAbout` FROM `hear_about`;');
         $query->execute();
         $result = $query->fetchAll();
         return $result;

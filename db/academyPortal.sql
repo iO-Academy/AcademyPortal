@@ -171,12 +171,13 @@ VALUES
 UNLOCK TABLES;
 
 
-# Dump of table events_hiring_partner_link_table
+# Dump of table events_hiring_partners
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `events_hiring_partner_link_table`;
+DROP TABLE IF EXISTS `events_hiring_partners`;
 
-CREATE TABLE `events_hiring_partner_link_table` (
+CREATE TABLE `events_hiring_partners` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `event_id` int(11) unsigned NOT NULL,
   `hiring_partner_id` int(11) unsigned NOT NULL,
@@ -185,10 +186,10 @@ CREATE TABLE `events_hiring_partner_link_table` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `events_hiring_partner_link_table` WRITE;
-/*!40000 ALTER TABLE `events_hiring_partner_link_table` DISABLE KEYS */;
+LOCK TABLES `events_hiring_partners` WRITE;
+/*!40000 ALTER TABLE `events_hiring_partners` DISABLE KEYS */;
 
-INSERT INTO `events_hiring_partner_link_table` (`id`, `event_id`, `hiring_partner_id`, `people_attending`, `deleted`)
+INSERT INTO `events_hiring_partners` (`id`, `event_id`, `hiring_partner_id`, `people_attending`, `deleted`)
 VALUES
 	(1,3,3,10,0),
 	(2,4,4,12,0);
@@ -200,19 +201,19 @@ UNLOCK TABLES;
 # Dump of table hearAbout
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `hearAbout`;
+DROP TABLE IF EXISTS `hear_about`;
 
-CREATE TABLE `hearAbout` (
+CREATE TABLE `hear_about` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `hearAbout` varchar(150) DEFAULT NULL,
   `deleted` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `hearAbout` WRITE;
-/*!40000 ALTER TABLE `hearAbout` DISABLE KEYS */;
+LOCK TABLES `hear_about` WRITE;
+/*!40000 ALTER TABLE `hear_about` DISABLE KEYS */;
 
-INSERT INTO `hearAbout` (`id`, `hearAbout`, `deleted`)
+INSERT INTO `hear_about` (`id`, `hearAbout`, `deleted`)
 VALUES
 	(1,'Google',0),
 	(2,'Newspaper',0),
@@ -221,7 +222,7 @@ VALUES
 	(5,'North Korea',0),
 	(6,'Yoda',0);
 
-/*!40000 ALTER TABLE `hearAbout` ENABLE KEYS */;
+/*!40000 ALTER TABLE `hear_about` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

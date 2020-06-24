@@ -2,6 +2,8 @@
 
 namespace Portal\Models;
 
+use Portal\Entities\BaseApplicantEntity;
+use Portal\Entities\CompleteApplicantEntity;
 use Portal\Interfaces\ApplicantEntityInterface;
 use Portal\Interfaces\ApplicantModelInterface;
 
@@ -64,7 +66,13 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':finance', $applicant->getFinance());
         $query->bindValue(':notes', $applicant->getNotes());
 
-        return $query->execute();
+        $result = $query->execute();
+        if ($result) {
+            $id = $this->db->lastInsertId();
+            $query2 = $this->db->prepare('INSERT INTO `applicants_additional` (`id`) VALUIES (?)');
+            return $query2->execute([$id]);
+        }
+        return $result;
     }
 
     /**
@@ -84,7 +92,7 @@ class ApplicantModel implements ApplicantModelInterface
         $stmt .= $this->sortingQuery($sortingQuery);
 
         $query = $this->db->prepare($stmt);
-        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\BaseApplicantEntity');
+        $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
 
         $query->execute();
 
@@ -109,7 +117,7 @@ class ApplicantModel implements ApplicantModelInterface
         $stmt .= $this->sortingQuery($sortingQuery);
 
         $query = $this->db->prepare($stmt);
-        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\BaseApplicantEntity');
+        $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
         $query->bindValue(':cohortId', $cohortId);
         $query->execute();
 
@@ -126,16 +134,21 @@ class ApplicantModel implements ApplicantModelInterface
     {
         $query = $this->db->prepare(
             'SELECT `applicants`.`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
-                      `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`,  `date` 
-                        AS "cohortDate", `cohortId`, `hearAboutId`  
+                      `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`, 
+                      `date` AS "cohortDate", `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
+                      `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
+                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
+                      `tasterAttendance`, `team`, `cohortId`, `hearAboutId`  
                         FROM `applicants` 
                         LEFT JOIN `cohorts` 
                         ON `applicants`.`cohortId`=`cohorts`.`id` 
-                        LEFT JOIN `hearAbout` 
-                        ON `applicants`.`hearAboutId`=`hearAbout`.`id` 
+                        LEFT JOIN `hear_about` 
+                        ON `applicants`.`hearAboutId`=`hear_about`.`id` 
+                        LEFT JOIN `applicants_additional`
+                        ON `applicants`.`id` = `applicants_additional`.`id`
                         WHERE `applicants`.`id`= :id;'
         );
-        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\ApplicantEntity');
+        $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
         $query->execute([
             'id' => $id
         ]);
@@ -228,6 +241,63 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':eighteenPlus', $applicant->getEighteenPlus());
         $query->bindValue(':finance', $applicant->getFinance());
         $query->bindValue(':notes', $applicant->getNotes());
+        $query->bindValue(':id', $applicant->getId());
+
+        return $query->execute();
+    }
+
+    /**
+     * updateApplicant updates the applicant data.
+     *
+     * @param ApplicantEntityInterface $applicant
+     * @return bool
+     */
+    public function updateApplicantAdditionalFields(CompleteApplicantEntity $applicant)
+    {
+        $query = $this->db->prepare(
+            "UPDATE `applicants_additional`
+                        SET 
+                            `apprentice` = :apprentice,
+                            `aptitude` = :aptitude,
+                            `assessmentDay` = :assessmentDay,
+                            `assessmentTime` = :assessmentTime,
+                            `assessmentNotes` = :assessmentNotes,
+                            `diversitechInterest` = :diversitechInterest,
+                            `diversitech` = :diversitech,
+                            `edaid` = :edaid,
+                            `upfront` = :upfront,
+                            `kitCollectionDay` = :kitCollectionDay,
+                            `kitCollectionTime` = :kitCollectionTime,
+                            `kitNum` = :kitNum,
+                            `laptop` = :laptop,
+                            `laptopDeposit` = :laptopDeposit,
+                            `laptopNum` = :laptopNum,
+                            `taster` = :taster,
+                            `tasterAttendance` = :tasterAttendance,
+                            `team` = :team
+                        WHERE (
+                            `id` = :id
+                        );"
+        );
+
+        $query->bindValue(':apprentice', $applicant->getApprentice());
+        $query->bindValue(':aptitude', $applicant->getAptitude());
+        $query->bindValue(':assessmentDay', $applicant->getAssessmentDay());
+        $query->bindValue(':assessmentTime', $applicant->getAssessmentTime());
+        $query->bindValue(':assessmentNotes', $applicant->getAssessmentNotes());
+        $query->bindValue(':diversitechInterest', $applicant->getDiversitechInterest());
+        $query->bindValue(':diversitech', $applicant->getDiversitech());
+        $query->bindValue(':edaid', $applicant->getEdaid());
+        $query->bindValue(':upfront', $applicant->getUpfront());
+        $query->bindValue(':kitCollectionDay', $applicant->getKitCollectionDay());
+        $query->bindValue(':kitCollectionTime', $applicant->getKitCollectionTime());
+        $query->bindValue(':kitNum', $applicant->getKitNum());
+        $query->bindValue(':laptop', $applicant->getLaptop());
+        $query->bindValue(':laptopDeposit', $applicant->getLaptopDeposit());
+        $query->bindValue(':laptopNum', $applicant->getLaptopNum());
+        $query->bindValue(':taster', $applicant->getTaster());
+        $query->bindValue(':tasterAttendance', $applicant->getTasterAttendance());
+        $query->bindValue(':team', $applicant->getTeam());
         $query->bindValue(':id', $applicant->getId());
 
         return $query->execute();

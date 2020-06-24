@@ -184,7 +184,7 @@ class EventModel
      */
     public function addHPToEvent(int $hiringPartner, int $event, $attendees = null): bool
     {
-        $query = $this->db->prepare('INSERT INTO `events_hiring_partner_link_table` (
+        $query = $this->db->prepare('INSERT INTO `events_hiring_partners` (
             `hiring_partner_id`, 
             `event_id`, 
             `people_attending`
@@ -210,7 +210,7 @@ class EventModel
      */
     public function checkLinkHP(int $hiringPartner, int $event): bool
     {
-        $query = $this->db->prepare('SELECT `id` FROM `events_hiring_partner_link_table`
+        $query = $this->db->prepare('SELECT `id` FROM `events_hiring_partners`
         WHERE  `event_id` = :event AND
         `hiring_partner_id` = :hiringPartner AND `deleted` = 0;');
         $query->bindParam(':hiringPartner', $hiringPartner);
@@ -234,7 +234,7 @@ class EventModel
     public function hpIdsByEventId(int $eventId): array
     {
         $statement = 'SELECT `hiring_partner_id`,`people_attending` 
-        FROM `events_hiring_partner_link_table` WHERE  `event_id` = :eventId AND `deleted` = 0;';
+        FROM `events_hiring_partners` WHERE  `event_id` = :eventId AND `deleted` = 0;';
         $query = $this->db->prepare($statement);
         $query->bindParam(':eventId', $eventId);
         $success = $query->execute();
@@ -253,7 +253,7 @@ class EventModel
      */
     public function removeHiringPartnerFromEvent(int $eventId, int $hiringPartnerId): bool
     {
-        $statement = 'UPDATE events_hiring_partner_link_table SET `deleted` = 1  
+        $statement = 'UPDATE `events_hiring_partners` SET `deleted` = 1  
         WHERE `event_id` = :eventId AND `hiring_partner_id` = :hiringPartnerId;';
         $query = $this->db->prepare($statement);
         $query->bindParam(':eventId', $eventId);

@@ -26,7 +26,7 @@ let outputCohorts = async () => {
         }
         let date = new Date(item.date);
         let dateOptions = {year: 'numeric', month: 'long'};
-        cohortOptions += `value="${item.id}">${date.toLocaleDateString("en-US",dateOptions)}</option>`;
+        cohortOptions += `value="${item.id}">${date.toLocaleDateString("en-GB",dateOptions)}</option>`;
     });
 
     element.innerHTML += cohortOptions;
