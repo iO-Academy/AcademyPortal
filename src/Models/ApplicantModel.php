@@ -23,7 +23,7 @@ class ApplicantModel implements ApplicantModelInterface
      *
      * @return bool
      */
-    public function insertNewApplicantToDb(ApplicantEntityInterface $applicant)
+    public function storeApplicant(ApplicantEntityInterface $applicant)
     {
         $query = $this->db->prepare(
             "INSERT INTO `applicants` (
@@ -81,7 +81,7 @@ class ApplicantModel implements ApplicantModelInterface
      * @param string $sortingQuery - how you would like the results sorted
      * @return array $results is the data retrieved.
      */
-    public function getAllApplicants(string $sortingQuery)
+    public function getAllApplicants(string $sortingQuery = '')
     {
         $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
                       AS 'cohortDate'
@@ -106,7 +106,7 @@ class ApplicantModel implements ApplicantModelInterface
      * @param string $cohortId the cohort you would like the results of
      * @return array the data retrieved from the database
      */
-    public function getAllApplicantsByCohort(string $sortingQuery, string $cohortId)
+    public function getAllApplicantsByCohort(string $cohortId, string $sortingQuery = '')
     {
         $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
                       AS 'cohortDate'
@@ -118,6 +118,52 @@ class ApplicantModel implements ApplicantModelInterface
 
         $query = $this->db->prepare($stmt);
         $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
+        $query->bindValue(':cohortId', $cohortId);
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
+    /**
+     * Sorts the table via the input taken from the sorting arrows
+     *
+     * @param string $sortingQuery - how you would like the results sorted
+     * @return array $results is the data retrieved.
+     */
+    public function getAllStudents(string $sortingQuery = '') // @todo: only get applicants in a student stage
+    {
+        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
+                      AS 'cohortDate'
+                      FROM `applicants`
+                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      WHERE `applicants`.`deleted` = '0' ";
+
+        $stmt .= $this->sortingQuery($sortingQuery);
+
+        $query = $this->db->prepare($stmt);
+        $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
+
+        $query->execute();
+
+        return $query->fetchAll();
+    }
+
+    /**
+     * Gets a sorted list of students assigned to a specific cohort.
+     *
+     * @param string $cohortId the cohort you would like the results of
+     * @return array the data retrieved from the database
+     */
+    public function getAllStudentsByCohort(string $cohortId) // @todo: only get applicants in a student stage
+    {
+        $stmt = "SELECT `applicants`.`id`, `name`, `trainer`, `team`
+                      FROM `applicants`
+                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      LEFT JOIN `applicants_additional` ON `applicants`.`id` = `applicants_additional`.`id`
+                      LEFT JOIN `teams` ON `applicants_additional`.`team` = `teams`.`id`
+                      WHERE `applicants`.`deleted` = '0' AND `applicants`.`cohortId` = :cohortId;";
+
+        $query = $this->db->prepare($stmt);
         $query->bindValue(':cohortId', $cohortId);
         $query->execute();
 
@@ -138,14 +184,16 @@ class ApplicantModel implements ApplicantModelInterface
                       `date` AS "cohortDate", `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
-                      `tasterAttendance`, `team`, `cohortId`, `hearAboutId`  
+                      `tasterAttendance`, `trainer` AS "team", `cohortId`, `hearAboutId`  
                         FROM `applicants` 
                         LEFT JOIN `cohorts` 
-                        ON `applicants`.`cohortId`=`cohorts`.`id` 
+                            ON `applicants`.`cohortId`=`cohorts`.`id` 
                         LEFT JOIN `hear_about` 
-                        ON `applicants`.`hearAboutId`=`hear_about`.`id` 
+                            ON `applicants`.`hearAboutId`=`hear_about`.`id` 
                         LEFT JOIN `applicants_additional`
-                        ON `applicants`.`id` = `applicants_additional`.`id`
+                            ON `applicants`.`id` = `applicants_additional`.`id`
+                        LEFT JOIN `teams` 
+                            ON `applicants_additional`.`team` = `teams`.`id`
                         WHERE `applicants`.`id`= :id;'
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
@@ -176,7 +224,7 @@ class ApplicantModel implements ApplicantModelInterface
      * @param string $sortingQuery how you would like to sort the database
      * @return string the SQL statement used for sorting
      */
-    private function sortingQuery(string $sortingQuery): string
+    private function sortingQuery(string $sortingQuery = ''): string
     {
         $stmt = "ORDER BY ";
         switch ($sortingQuery) {
@@ -273,8 +321,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `laptopDeposit` = :laptopDeposit,
                             `laptopNum` = :laptopNum,
                             `taster` = :taster,
-                            `tasterAttendance` = :tasterAttendance,
-                            `team` = :team
+                            `tasterAttendance` = :tasterAttendance
                         WHERE (
                             `id` = :id
                         );"
@@ -297,9 +344,15 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':laptopNum', $applicant->getLaptopNum());
         $query->bindValue(':taster', $applicant->getTaster());
         $query->bindValue(':tasterAttendance', $applicant->getTasterAttendance());
-        $query->bindValue(':team', $applicant->getTeam());
         $query->bindValue(':id', $applicant->getId());
 
         return $query->execute();
+    }
+
+    public function addApplicantToTeam(int $teamId, int $applicantId)
+    {
+        $sql = 'UPDATE `applicants_additional` SET `team` = :teamId WHERE `id` = :applicantId';
+        $query = $this->db->prepare($sql);
+        return $query->execute([':teamId' => $teamId, ':applicantId' => $applicantId]);
     }
 }

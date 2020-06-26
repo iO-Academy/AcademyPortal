@@ -1,8 +1,8 @@
 const editButtons = document.querySelectorAll('.toggleEditForm');
 const editForms = document.querySelectorAll('.stagesTableForm');
-const editResponse = document.getElementById('editResponse');
+const editResponse = document.getElementById('editResponse'); // @todo: can we remove this?
 const newStageForm = document.getElementById('newStageForm');
-const createNewResponse = document.getElementById('createNewResponse');
+const createNewResponse = document.getElementById('createNewResponse'); // @todo: can we remove this?
 const deleteButtons = document.querySelectorAll('.delete');
 const optionButtons = document.querySelectorAll('.toggleEditOptions');
 const optionEditSubmits = document.querySelectorAll('.optionEditSubmit');
@@ -183,13 +183,12 @@ optionEdits.forEach((optionEdit) => {
 editForms.forEach((editForm, index) => {
     editForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        let editTitleInput = e.target.firstElementChild.value;
-        let id = e.target.dataset.id;
         let data = {
             "data": [{
-                "id": id,
-                "title": editTitleInput,
-                "order": (index + 1)
+                "id": e.target.dataset.id,
+                "title": e.target.querySelector('.stageEditTitle').value,
+                "order": (index + 1),
+                "student": e.target.querySelector('[name="student"]').checked
             }]
         };
 
@@ -201,9 +200,9 @@ editForms.forEach((editForm, index) => {
 //Handler for submitting a new stage
 newStageForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    let newStage = e.target.firstElementChild.value;
     let data = {
-        "title": newStage
+        "title": e.target.querySelector('[name="createNewStageTextBox"]').value,
+        "student": e.target.querySelector('[name="student"]').checked
     };
 
     await sendRequest('./api/createStage', 'POST', data);

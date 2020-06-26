@@ -9,7 +9,7 @@ interface ApplicantModelInterface
 {
     public function __construct(\PDO $db);
 
-    public function insertNewApplicantToDb(ApplicantEntityInterface $applicant);
+    public function storeApplicant(ApplicantEntityInterface $applicant);
 
     public function getAllApplicants(string $sortingQuery);
 

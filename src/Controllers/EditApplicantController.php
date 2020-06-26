@@ -61,8 +61,7 @@ class EditApplicantController extends Controller
                     $newApplicationData['laptopDeposit'],
                     $newApplicationData['laptopNum'],
                     $newApplicationData['taster'],
-                    $newApplicationData['tasterAttendance'],
-                    $newApplicationData['team']
+                    $newApplicationData['tasterAttendance']
                 );
 
                 $successfulUpdate1 = $this->applicantModel->updateApplicant($applicant);

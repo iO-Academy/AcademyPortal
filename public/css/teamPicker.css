@@ -1,0 +1,44 @@
+main .col-xs-4 {
+    margin-bottom: 15px;
+}
+
+.col-xs-4.center {
+    margin-top: 36px;
+}
+
+#team-picker {
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.team {
+    border: 1px solid #dddddd;
+    width: 33.3%;
+    min-height: 400px;
+}
+
+.team.full {
+    box-shadow: 0 0 8px rgba(60,118,61,.6);
+    border-color: #d6e9c6;
+}
+
+.applicant {
+    border: 1px solid #dddddd;
+    padding: 10px;
+    cursor: move;
+}
+
+.applicant:hover {
+    opacity: .5;
+}
+
+/* apply styles to all applicants after the 8th one */
+#team2 .applicant:nth-child(n+9),
+#team1 .applicant:nth-child(n+9) {
+    background: #f2dede;
+    color: #a94442;
+    border-color: #ebccd1;
+}

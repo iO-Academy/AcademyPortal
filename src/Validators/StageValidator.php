@@ -10,6 +10,7 @@ class StageValidator
         foreach ($stages as $k => $stage) {
             if (self::validateStage($stage)) {
                 $stages[$k]['id'] = (int)$stage['id'];
+                $stages[$k]['student'] = $stage['student'];
                 $stages[$k]['title'] = StringValidator::sanitiseString($stage['title']);
                 try {
                     $stages[$k]['title'] = StringValidator::validateLength($stage['title'], 255);
@@ -25,6 +26,12 @@ class StageValidator
 
     private static function validateStage(array $stage)
     {
-        return (isset($stage['id']) && is_numeric($stage['id']) && !empty($stage['title']) && !empty($stage['order']));
+        return (
+            isset($stage['id']) &&
+            is_numeric($stage['id']) &&
+            !empty($stage['title']) &&
+            !empty($stage['order']) &&
+            is_bool($stage['student'])
+        );
     }
 }

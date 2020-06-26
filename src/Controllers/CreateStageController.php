@@ -41,9 +41,9 @@ class CreateStageController extends Controller
         $statusCode = 500;
 
         if ($_SESSION['loggedIn'] === true) {
-            if (!empty($requestData['title'])) {
+            if (!empty($requestData['title']) && is_bool($requestData['student'])) {
                 $highestOrder = $this->stageModel->getHighestOrderNo();
-                $newStage = new StageEntity($requestData['title'], ++$highestOrder);
+                $newStage = new StageEntity($requestData['title'], ++$highestOrder, $requestData['student']);
                 if ($this->stageModel->createStage($newStage)) {
                     $data = [
                         'success' => true,

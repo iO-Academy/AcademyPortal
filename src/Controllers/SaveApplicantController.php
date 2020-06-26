@@ -63,7 +63,7 @@ class SaveApplicantController extends Controller
                 return $this->respondWithJson($response, $data, $statusCode);
             }
 
-            $successfulRegister = $this->applicantModel->insertNewApplicantToDb($applicant);
+            $successfulRegister = $this->applicantModel->storeApplicant($applicant);
 
             if ($successfulRegister) {
                 $data = [

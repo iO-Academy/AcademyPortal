@@ -51,11 +51,10 @@ class StageModel
      */
     public function createStage(StageEntity $stageEntity) : bool
     {
-        $query = $this->db->prepare("INSERT INTO `stages` (`title`, `order`) VALUES (:title, :order); ");
-        $stageTitle = $stageEntity->getStageTitle();
-        $stageOrder = $stageEntity->getStageOrder();
-        $query->bindParam(':title', $stageTitle);
-        $query->bindParam(':order', $stageOrder);
+        $query = $this->db->prepare("INSERT INTO `stages` (`title`, `order`, `student`) VALUES (:title, :order, :student); ");
+        $query->bindParam(':title', $stageEntity->getStageTitle());
+        $query->bindParam(':order', $stageEntity->getStageOrder());
+        $query->bindParam(':student', $stageEntity->getStudent());
         return $query->execute();
     }
 
@@ -64,10 +63,10 @@ class StageModel
      *
      * @return array of stage entities
      */
-    public function getAllStages()
+    public function getAllStages() : array
     {
         $query = $this->db->prepare(
-            'SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `deleted` = 0 ORDER BY `order`;'
+            'SELECT `id`, `title`, `order`, `student`, `deleted` FROM `stages` WHERE `deleted` = 0 ORDER BY `order`;'
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
         $query->execute();
@@ -131,12 +130,13 @@ class StageModel
      * @param string $newTitle
      * @return bool
      */
-    public function updateStage(int $id, string $title, int $order) : bool
+    public function updateStage(int $id, string $title, int $order, int $isStudent) : bool
     {
-        $query = $this->db->prepare("UPDATE `stages` SET `title` = :title, `order` = :newOrder WHERE `id` = :id");
+        $query = $this->db->prepare("UPDATE `stages` SET `title` = :title, `order` = :newOrder, `student` = :student WHERE `id` = :id");
         $query->bindParam(':id', $id);
         $query->bindParam(':title', $title);
         $query->bindParam(':newOrder', $order);
+        $query->bindParam(':student', $isStudent);
 
         return $query->execute();
     }
@@ -146,7 +146,7 @@ class StageModel
         try {
             $this->db->beginTransaction();
             foreach ($stages as $stage) {
-                $this->updateStage($stage['id'], $stage['title'], $stage['order']);
+                $this->updateStage($stage['id'], $stage['title'], $stage['order'], $stage['student']);
             }
             $this->db->commit();
             return true;

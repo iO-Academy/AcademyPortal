@@ -60,7 +60,6 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
      */
     public function jsonSerialize()
     {
-
         return [
                   'id' => $this->id,
                   'name' => $this->name,

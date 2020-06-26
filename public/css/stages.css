@@ -1,3 +1,11 @@
+#newStageForm label {
+    margin-top: 0;
+}
+
+#newStageForm [type="text"] {
+    width: 60%;
+}
+
 .applicantStages td {
     padding: 4px 8px;
 }
@@ -10,8 +18,16 @@
     margin-top: 0;
 }
 
+#stageTable p i {
+    margin-left: 10px;
+}
+
 .stagesTableForm {
     display: none;
+}
+
+.stagesTableForm label {
+    margin-top: 0;
 }
 
 #editResponse {
@@ -50,32 +66,15 @@
     padding-top: 1%;
 }
 
-.optionEditSubmit,
-.optionAddSubmit {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+.stagesTableForm .stageEditTitle,
+.optionsContainer .optionEditTitle,
+.optionsContainer .optionAddTitle {
+    width: 80%;
+    margin-right: 10px;
 }
 
-.optionContainer {
-    position: relative;
-    height: 2.5em;
-    vertical-align: bottom;
-}
-
-.optionEditTitle,
-.optionAddTitle {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-
-.multiOptionsContainer {
-    height: 6em;
-}
-
-.firstOption {
-    bottom: 3em;
+.optionsContainer .optionAddTitle.firstOption {
+    margin-bottom: 10px;
 }
 
 .modalContainer {

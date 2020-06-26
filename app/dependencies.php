@@ -52,6 +52,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['SaveApplicantController'] = DI\factory('\Portal\Factories\SaveApplicantControllerFactory');
     $container['DisplayApplicantsController'] = DI\factory('\Portal\Factories\DisplayApplicantsControllerFactory');
     $container['GetApplicantController'] = DI\factory('\Portal\Factories\GetApplicantControllerFactory');
+    $container['GetStudentsController'] = DI\factory('\Portal\Factories\GetStudentsControllerFactory');
     $container['DisplayHiringPartnerPageController'] = DI\factory('\Portal\Factories\DisplayHiringPartnerPageControllerFactory');
     $container['AddHiringPartnerPageController'] = DI\factory('\Portal\Factories\AddHiringPartnerPageControllerFactory');
     $container['AddHiringPartnerContactPageController'] = DI\factory('\Portal\Factories\AddHiringPartnerContactPageControllerFactory');
@@ -78,6 +79,8 @@ return function (ContainerBuilder $containerBuilder) {
     $container['EditStageOptionController'] = DI\factory('\Portal\Factories\EditStageOptionControllerFactory');
     $container['DeleteStageOptionController'] = DI\factory('\Portal\Factories\DeleteStageOptionControllerFactory');
     $container['DeleteAllStageOptionsController'] = DI\factory('\Portal\Factories\DeleteAllStageOptionsControllerFactory');
+    $container['DisplayTeamPickerController'] = DI\factory('\Portal\Factories\DisplayTeamPickerControllerFactory');
+    $container['UpdateTeamsController'] = DI\factory('\Portal\Factories\UpdateTeamsControllerFactory');
 
 
     // Models
@@ -88,6 +91,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['EventModel'] = DI\factory('\Portal\Factories\EventModelFactory');
     $container['RandomPasswordModel'] = DI\factory('\Portal\Models\RandomPasswordModel');
     $container['StageModel'] = DI\factory('\Portal\Factories\StageModelFactory');
-    
+    $container['TeamModel'] = DI\factory('\Portal\Factories\TeamModelFactory');
+
     $containerBuilder->addDefinitions($container);
 };

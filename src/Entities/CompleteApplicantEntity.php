@@ -27,9 +27,9 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $laptopNum; // int
     protected $taster; // date string
     protected $tasterAttendance; // bool
-    protected $team; // string
+    protected $team; // int
 
-    const ACADEMY_PRICE = 10000;
+    protected const ACADEMY_PRICE = 10000;
 
     public function __construct(
         string $applicantName = null,
