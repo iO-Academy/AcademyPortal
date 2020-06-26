@@ -61,7 +61,8 @@ class StagesPageViewHelper
                         $result .= 'data-stageid="' . $stage->getStageId() . '">Delete</a>';
                         $result .= '<a class="optionEdit" data-optionId="'.$option->getOptionId().'">Edit</a>';
                         $result .= '</p>';
-                        $result .= '<form class="optionTableForm hidden form-inline" data-optionId="'.$option->getOptionId().'">';
+                        $result .= '<form class="optionTableForm hidden form-inline"';
+                        $result .= ' data-optionId="'.$option->getOptionId().'">';
                         $result .= '<input type="text" class="optionEditTitle form-control" value="';
                         $result .= $option->getOptionTitle().'"/>';
                         $result .= '<input type="submit" class="optionEditSubmit btn btn-success" ';

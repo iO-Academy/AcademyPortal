@@ -22,7 +22,7 @@ class StageModel
      *
      * @return int
      */
-    public function getHighestOrderNo() : int
+    public function getHighestOrderNo(): int
     {
         $query = $this->db->prepare("SELECT MAX(`order`) FROM `stages` WHERE `deleted` = 0;");
         $query->execute();
@@ -34,7 +34,7 @@ class StageModel
      *
      * @return array
      */
-    public function stagesCount() : array
+    public function stagesCount(): array
     {
         $query = $this->db->prepare(
             "SELECT COUNT(`id`) AS 'stagesCount' FROM `stages` WHERE `deleted` = 0;"
@@ -49,9 +49,11 @@ class StageModel
      * @param StageEntity $stageEntity
      * @return bool
      */
-    public function createStage(StageEntity $stageEntity) : bool
+    public function createStage(StageEntity $stageEntity): bool
     {
-        $query = $this->db->prepare("INSERT INTO `stages` (`title`, `order`, `student`) VALUES (:title, :order, :student); ");
+        $query = $this->db->prepare(
+            "INSERT INTO `stages` (`title`, `order`, `student`) VALUES (:title, :order, :student);"
+        );
         $query->bindParam(':title', $stageEntity->getStageTitle());
         $query->bindParam(':order', $stageEntity->getStageOrder());
         $query->bindParam(':student', $stageEntity->getStudent());
@@ -63,7 +65,7 @@ class StageModel
      *
      * @return array of stage entities
      */
-    public function getAllStages() : array
+    public function getAllStages(): array
     {
         $query = $this->db->prepare(
             'SELECT `id`, `title`, `order`, `student`, `deleted` FROM `stages` WHERE `deleted` = 0 ORDER BY `order`;'
@@ -97,7 +99,7 @@ class StageModel
      *
      * @return boolean for success or failure of the query
      */
-    public function deleteStage(int $id) : bool
+    public function deleteStage(int $id): bool
     {
         $query = $this->db->prepare("UPDATE `stages` SET `deleted` = '1', `order` = '0' WHERE `id` = :id");
         $query->bindParam(':id', $id);
@@ -111,7 +113,7 @@ class StageModel
      * @return StageEntity object
      *
      */
-    public function getStageById(int $id) : StageEntity
+    public function getStageById(int $id): StageEntity
     {
         $query = $this->db->prepare('SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `id`=:id');
 
@@ -130,9 +132,11 @@ class StageModel
      * @param string $newTitle
      * @return bool
      */
-    public function updateStage(int $id, string $title, int $order, int $isStudent) : bool
+    public function updateStage(int $id, string $title, int $order, int $isStudent): bool
     {
-        $query = $this->db->prepare("UPDATE `stages` SET `title` = :title, `order` = :newOrder, `student` = :student WHERE `id` = :id");
+        $query = $this->db->prepare(
+            "UPDATE `stages` SET `title` = :title, `order` = :newOrder, `student` = :student WHERE `id` = :id"
+        );
         $query->bindParam(':id', $id);
         $query->bindParam(':title', $title);
         $query->bindParam(':newOrder', $order);
@@ -141,7 +145,7 @@ class StageModel
         return $query->execute();
     }
 
-    public function updateAllStages(array $stages) : bool
+    public function updateAllStages(array $stages): bool
     {
         try {
             $this->db->beginTransaction();
@@ -162,7 +166,7 @@ class StageModel
      * @param int $stageId
      * @return bool
      */
-    public function createOption(string $option, int $stageId) : bool
+    public function createOption(string $option, int $stageId): bool
     {
         $query = $this->db->prepare("INSERT INTO `options` (`option`, `stageId`) VALUES (:optionText, :stageId);");
         $query->bindParam(':optionText', $option);
@@ -176,7 +180,7 @@ class StageModel
      * @param int $optionId
      * @return bool
      */
-    public function updateOption(array $option) : bool
+    public function updateOption(array $option): bool
     {
         $query = $this->db->prepare("UPDATE `options` SET `option` = :optionText WHERE `id` = :id");
         $query->bindParam(':id', $option['optionId']);
@@ -189,7 +193,7 @@ class StageModel
      * @param int $optionId
      * @return bool
      */
-    public function deleteOption(int $optionId) : bool
+    public function deleteOption(int $optionId): bool
     {
         $query = $this->db->prepare("UPDATE `options` SET `deleted` = '1' WHERE `id` = :optionId");
         $query->bindParam(':optionId', $optionId);
@@ -203,7 +207,7 @@ class StageModel
      * @param integer $stageId The id of the stage whose options are required
      * @return array an array of all options assigned to the listed stage
      */
-    public function getOptionsByStageId(int $stageId) : array
+    public function getOptionsByStageId(int $stageId): array
     {
         $query = $this->db->prepare("SELECT `id`, `option`, `stageId` FROM `options` 
                                         WHERE `stageId` = :stageId AND `deleted` = '0';");
@@ -218,7 +222,7 @@ class StageModel
      * @param int $stageId
      * @return bool
      */
-    public function deleteAllOptions(int $stageId) : bool
+    public function deleteAllOptions(int $stageId): bool
     {
         $query = $this->db->prepare("UPDATE `options` SET `deleted` = '1' WHERE `stageId` = :stageId");
         $query->bindParam(':stageId', $stageId);
