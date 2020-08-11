@@ -19,7 +19,7 @@ class DisplayApplicantViewHelper
                     <table class="col-xs-12 table-bordered table">
                         <tr>
                         <th class="col-xs-2">Name</th>
-                        <th class="col-xs-4">Email</th>
+                        <th class="col-xs-3">Email</th>
                         <th class="col-xs-2 sort">Application Date
                             <div>
                             <button name="sort" value="dateAsc" class="arrowBtn' . $dateAsc . '" type="submit">
@@ -30,7 +30,7 @@ class DisplayApplicantViewHelper
                             </button>
                             </div>
                         </th>
-                        <th class="col-xs-2 sort">Cohort Date
+                        <th class="col-xs-2 sort">Cohort
                             <div class="cohortSort">
                             <button name="sort" value="cohortAsc" class="arrowBtn' . $cohortAsc . '" type="submit">
                                 <i id="arrowCohortAsc" class="glyphicon glyphicon-triangle-top"></i>
@@ -40,6 +40,8 @@ class DisplayApplicantViewHelper
                             </button>
                             </div>
                         </th>
+                        <th>Stage</th>
+                        <th></th> 
                     </tr>';
         if ($type == 'paying') {
             $result .= self::displayApplicants($applicants);
@@ -105,6 +107,7 @@ class DisplayApplicantViewHelper
                     <td>' . $applicant->getEmail() . '</td>
                     <td>' . $applicant->getPrettyDateOfApplication() . '</td>
                     <td>' . $applicant->getCohortDate() . '</td>
+                    <td>' . $applicant->getStageName() . '</td>
                     <td>                              
                         <a href="/editApplicant?id=' . $applicant->getId() . '"   
                            type="button"                                   

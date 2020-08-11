@@ -24,6 +24,7 @@ class DisplayApplicantViewHelperTest extends TestCase
                                 <td>test@test.com</td>
                                 <td>Jan 1st</td>
                                 <td>Feb 2020</td>
+                                <td>New application</td>
                                 <td>                              
                                     <a href="/editApplicant?id=1"   
                                        type="button"
@@ -47,6 +48,7 @@ class DisplayApplicantViewHelperTest extends TestCase
         $entityMock->method('getEmail')->willReturn('test@test.com');
         $entityMock->method('getPrettyDateOfApplication')->willReturn('Jan 1st');
         $entityMock->method('getCohortDate')->willReturn('Feb 2020');
+        $entityMock->method('getStageName')->willReturn('New application');
 
         $data = [$entityMock];
         $result = DisplayApplicantViewHelper::displayApplicants($data);

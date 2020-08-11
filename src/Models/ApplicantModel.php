@@ -83,10 +83,11 @@ class ApplicantModel implements ApplicantModelInterface
      */
     public function getAllApplicants(string $sortingQuery = '')
     {
-        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
-                      AS 'cohortDate'
+        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, 
+                      `date` AS 'cohortDate', `stageId` as 'stageID', `title` as 'stageName' 
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       WHERE `applicants`.`deleted` = '0' ";
 
         $stmt .= $this->sortingQuery($sortingQuery);
@@ -108,10 +109,12 @@ class ApplicantModel implements ApplicantModelInterface
      */
     public function getAllApplicantsByCohort(string $cohortId, string $sortingQuery = '')
     {
-        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
+        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, 
+                      `date` AS 'cohortDate', `stageId` as 'stageID', `title` as 'stageName' 
                       AS 'cohortDate'
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       WHERE `applicants`.`deleted` = '0' AND `applicants`.`cohortId` = :cohortId ";
 
         $stmt .= $this->sortingQuery($sortingQuery);
@@ -132,10 +135,11 @@ class ApplicantModel implements ApplicantModelInterface
      */
     public function getAllStudents(string $sortingQuery = '') // @todo: only get applicants in a student stage
     {
-        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
-                      AS 'cohortDate'
+        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`,
+                      `date` AS 'cohortDate', `stageId` as 'stageID', `title` as 'stageName' 
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       WHERE `applicants`.`deleted` = '0' ";
 
         $stmt .= $this->sortingQuery($sortingQuery);
