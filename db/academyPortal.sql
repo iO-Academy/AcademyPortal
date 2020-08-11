@@ -394,19 +394,24 @@ CREATE TABLE `stages` (
   `title` varchar(255) DEFAULT NULL,
   `order` int(11) DEFAULT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `student` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `stages` WRITE;
 /*!40000 ALTER TABLE `stages` DISABLE KEYS */;
 
-INSERT INTO `stages` (`id`, `title`, `order`, `deleted`)
+INSERT INTO `stages` (`id`, `title`, `order`, `deleted`, `student`)
 VALUES
-	(1,'email application received',1,0),
-	(2,'Aptitude Test',2,0),
-	(3,'Interview',3,0),
-	(4,'Place Awarded',5,0),
-	(5,'Charlie\'s secret initiation',4,0);
+	(2, 'Response sent', 2, 0, 0),
+	(3, 'Attendance Response', 5, 0, 0),
+	(6, 'New application', 1, 0, 0),
+	(7, 'Booked into assessment day', 3, 0, 0),
+	(8, 'Assessment Response', 4, 0, 0),
+	(9, 'Onboarding', 6, 0, 1),
+	(10, 'Attending', 7, 0, 1),
+	(11, 'Course complete', 8, 0, 1),
+	(12, 'In employment', 9, 0, 1);
 
 /*!40000 ALTER TABLE `stages` ENABLE KEYS */;
 UNLOCK TABLES;
