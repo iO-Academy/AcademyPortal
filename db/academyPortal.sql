@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.29)
+# Host: 127.0.0.1 (MySQL 5.7.30)
 # Database: academyPortal
-# Generation Time: 2020-05-19 11:29:14 +0000
+# Generation Time: 2020-08-11 14:15:42 +0000
 # ************************************************************
 
 
@@ -58,6 +58,47 @@ VALUES
 	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555',3,'Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit','2018-11-28 23:10:47',0);
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table applicants_additional
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `applicants_additional`;
+
+CREATE TABLE `applicants_additional` (
+  `id` int(11) unsigned NOT NULL,
+  `apprentice` int(1) DEFAULT NULL,
+  `aptitude` int(3) DEFAULT NULL,
+  `assessmentDay` date DEFAULT NULL,
+  `assessmentTime` varchar(5) DEFAULT NULL,
+  `assessmentNotes` text,
+  `diversitechInterest` int(1) DEFAULT NULL,
+  `diversitech` int(5) DEFAULT NULL,
+  `edaid` int(5) DEFAULT NULL,
+  `upfront` int(5) DEFAULT NULL,
+  `kitCollectionDay` date DEFAULT NULL,
+  `kitCollectionTime` varchar(5) DEFAULT NULL,
+  `kitNum` int(2) DEFAULT NULL,
+  `laptop` int(1) DEFAULT NULL,
+  `laptopDeposit` int(1) DEFAULT NULL,
+  `laptopNum` int(2) DEFAULT NULL,
+  `taster` date DEFAULT NULL,
+  `tasterAttendance` int(1) DEFAULT NULL,
+  `team` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `applicants_additional` WRITE;
+/*!40000 ALTER TABLE `applicants_additional` DISABLE KEYS */;
+
+INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, `tasterAttendance`, `team`)
+VALUES
+	(2,1,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1),
+	(3,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,2),
+	(5,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1);
+
+/*!40000 ALTER TABLE `applicants_additional` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -194,11 +235,11 @@ VALUES
 	(1,3,3,10,0),
 	(2,4,4,12,0);
 
-/*!40000 ALTER TABLE `events_hiring_partner_link_table` ENABLE KEYS */;
+/*!40000 ALTER TABLE `events_hiring_partners` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
-# Dump of table hearAbout
+# Dump of table hear_about
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `hear_about`;
@@ -223,6 +264,34 @@ VALUES
 	(6,'Yoda',0);
 
 /*!40000 ALTER TABLE `hear_about` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table hearAbout
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `hearAbout`;
+
+CREATE TABLE `hearAbout` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `hearAbout` varchar(150) DEFAULT NULL,
+  `deleted` tinyint(4) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `hearAbout` WRITE;
+/*!40000 ALTER TABLE `hearAbout` DISABLE KEYS */;
+
+INSERT INTO `hearAbout` (`id`, `hearAbout`, `deleted`)
+VALUES
+	(1,'Google',0),
+	(2,'Newspaper',0),
+	(3,'Back of the toilet door',0),
+	(4,'Telepathy',0),
+	(5,'North Korea',0),
+	(6,'Yoda',0);
+
+/*!40000 ALTER TABLE `hearAbout` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
