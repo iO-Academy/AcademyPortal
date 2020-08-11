@@ -136,7 +136,10 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'laptopNum' => $this->laptopNum,
                   'taster' => $this->taster,
                   'tasterAttendance' => $this->tasterAttendance,
-                  'team' => $this->team
+                  'team' => $this->team,
+                  'stageID' => $this->stageID,
+                  'stageName' => $this->stageName,
+                  'stageOptionName' => $this->stageOptionName
                ];
     }
 
@@ -195,6 +198,8 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         $this->tasterAttendance = $this->tasterAttendance ? 1 : 0;
         $this->team = StringValidator::sanitiseString($this->team);
         $this->team = StringValidator::validateLength($this->team, self::MAXVARCHARLENGTH);
+        $this->stageName = StringValidator::validateLength($this->stageName, self::MAXVARCHARLENGTH);
+        $this->stageID = (int)$this->stageID;
     }
 
     /**

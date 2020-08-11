@@ -14,6 +14,7 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
     protected $dateTimeAdded;
     protected $stageID;
     protected $stageName;
+    protected $stageOptionName;
 
     public function jsonSerialize()
     {
@@ -25,6 +26,7 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
             'dateTimeAdded' => $this->dateTimeAdded,
             'stageID' => $this->stageID,
             'stageName' => $this->stageName,
+            'stageOptionName' => $this->stageOptionName,
         ];
     }
 
@@ -96,5 +98,13 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
     public function getStageName()
     {
         return $this->stageName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStageOptionName()
+    {
+        return $this->stageOptionName;
     }
 }

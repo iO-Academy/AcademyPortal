@@ -30,7 +30,7 @@ class DisplayApplicantViewHelper
                             </button>
                             </div>
                         </th>
-                        <th class="col-xs-2 sort">Cohort
+                        <th class="sort">Cohort
                             <div class="cohortSort">
                             <button name="sort" value="cohortAsc" class="arrowBtn' . $cohortAsc . '" type="submit">
                                 <i id="arrowCohortAsc" class="glyphicon glyphicon-triangle-top"></i>
@@ -41,7 +41,7 @@ class DisplayApplicantViewHelper
                             </div>
                         </th>
                         <th>Stage</th>
-                        <th></th> 
+                        <th class="col-xs-2"></th> 
                     </tr>';
         if ($type == 'paying') {
             $result .= self::displayApplicants($applicants);
