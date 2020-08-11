@@ -69,7 +69,7 @@ class ApplicantModel implements ApplicantModelInterface
         $result = $query->execute();
         if ($result) {
             $id = $this->db->lastInsertId();
-            $query2 = $this->db->prepare('INSERT INTO `applicants_additional` (`id`) VALUIES (?)');
+            $query2 = $this->db->prepare('INSERT INTO `applicants_additional` (`id`) VALUES (?)');
             return $query2->execute([$id]);
         }
         return $result;
