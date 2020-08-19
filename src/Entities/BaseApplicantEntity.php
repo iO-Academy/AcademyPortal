@@ -5,13 +5,24 @@ namespace Portal\Entities;
 
 use Portal\Interfaces\BaseApplicantEntityInterface;
 
-class BaseApplicantEntity implements BaseApplicantEntityInterface
+class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInterface
 {
     protected $id;
     protected $name;
     protected $email;
     protected $cohortDate;
     protected $dateTimeAdded;
+
+    public function jsonSerialize()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'cohortDate' => $this->getCohortDate(),
+            'dateTimeAdded' => $this->dateTimeAdded
+        ];
+    }
 
     /**
      * @return mixed

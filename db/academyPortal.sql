@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.29)
-# Database: academyPortal
-# Generation Time: 2020-05-19 11:29:14 +0000
+# Host: 127.0.0.1 (MySQL 5.7.27)
+# Database: academy_portal
+# Generation Time: 2020-06-26 15:33:47 +0000
 # ************************************************************
 
 
@@ -55,9 +55,51 @@ VALUES
 	(6,'Luke Haney','wubeqyko@mailinator.com','+942-61-9779862',3,'Nemo id qui aspernatur possimus dolor adipisicing aut est sed minim','Consequatur quia voluptate delectus impedit similique',6,'0','0','0','Non sed modi ab culpa sed quia tempore debitis dolor','2018-11-28 14:52:20',0),
 	(7,'Curran Patel','pudapaceje@mailinator.net','+628-48-1465496',4,'Non voluptas eligendi assumenda et itaque cupidatat ut tempor','Et aliqua Quia sit soluta enim nesciunt vitae consequatur Aut repellendus Soluta magni',2,'1','0','0','Quos fugiat qui et enim eum tempor est modi','2018-11-28 22:53:05',0),
 	(8,'Katelyn Parsons','poipoi@qwerty.com','+567-54-9746748',3,'Aut est et est esse mollitia laborum','Fuga Enim omnis anim et error aut et voluptate anim blanditiis dolorem voluptatem facilis',2,'0','0','0','Similique velit qui nisi debitis aliquip lorem dolor commodi assumenda quod quod autem amet eu mollitia quod necessitatibus','2018-11-28 23:10:12',0),
-	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555',3,'Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit','2018-11-28 23:10:47',0);
+	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555',3,'Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit','2018-11-28 23:10:47',0),
+	(10,'fdadfvsgr','kemi@dahkof.mz','07951634661',1,'Jubbu owuvoklu ketdo elfi rakkokoku mosan finu rukuf jim jo po aluhci fuc habdi be seeho sejur wikehas. Umepeob fe figloobo fu','Unojor ku vos cu ked niezakas mepgib iribi ikearvep cagjuto kur pohumi osoca ehuura fi dawa. Tijop ceugiec tace pe sejtino juuj tevsu cohokos gavikpoh lulof doc vebev. Wonte podzuz fozdid vozmop mijerar du bowcuj ludetren zapa',1,'1','1','0','Wi cuapje va woza ubogi pet dugenbid aju emlat nukguv mas bub. Fimun saitopi gug rovasi du vinafa pednipvi mo gojrurpo uklip kuor nu civud ewicu tiuse rab. Ifabub sa dulurtuw cikebu uni se retguh piwe ricjomlu rudah detu cupi','2020-06-19 10:22:48',1);
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table applicants_additional
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `applicants_additional`;
+
+CREATE TABLE `applicants_additional` (
+  `id` int(11) unsigned NOT NULL,
+  `apprentice` int(1) DEFAULT NULL,
+  `aptitude` int(3) DEFAULT NULL,
+  `assessmentDay` date DEFAULT NULL,
+  `assessmentTime` varchar(5) DEFAULT NULL,
+  `assessmentNotes` text,
+  `diversitechInterest` int(1) DEFAULT NULL,
+  `diversitech` int(5) DEFAULT NULL,
+  `edaid` int(5) DEFAULT NULL,
+  `upfront` int(5) DEFAULT NULL,
+  `kitCollectionDay` date DEFAULT NULL,
+  `kitCollectionTime` varchar(5) DEFAULT NULL,
+  `kitNum` int(2) DEFAULT NULL,
+  `laptop` int(1) DEFAULT NULL,
+  `laptopDeposit` int(1) DEFAULT NULL,
+  `laptopNum` int(2) DEFAULT NULL,
+  `taster` date DEFAULT NULL,
+  `tasterAttendance` int(1) DEFAULT NULL,
+  `team` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `applicants_additional` WRITE;
+/*!40000 ALTER TABLE `applicants_additional` DISABLE KEYS */;
+
+INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, `tasterAttendance`, `team`)
+VALUES
+	(2,1,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1),
+	(3,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,2),
+	(5,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1);
+
+/*!40000 ALTER TABLE `applicants_additional` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -171,12 +213,12 @@ VALUES
 UNLOCK TABLES;
 
 
-# Dump of table events_hiring_partner_link_table
+# Dump of table events_hiring_partners
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `events_hiring_partner_link_table`;
+DROP TABLE IF EXISTS `events_hiring_partners`;
 
-CREATE TABLE `events_hiring_partner_link_table` (
+CREATE TABLE `events_hiring_partners` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `event_id` int(11) unsigned NOT NULL,
   `hiring_partner_id` int(11) unsigned NOT NULL,
@@ -185,34 +227,34 @@ CREATE TABLE `events_hiring_partner_link_table` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `events_hiring_partner_link_table` WRITE;
-/*!40000 ALTER TABLE `events_hiring_partner_link_table` DISABLE KEYS */;
+LOCK TABLES `events_hiring_partners` WRITE;
+/*!40000 ALTER TABLE `events_hiring_partners` DISABLE KEYS */;
 
-INSERT INTO `events_hiring_partner_link_table` (`id`, `event_id`, `hiring_partner_id`, `people_attending`, `deleted`)
+INSERT INTO `events_hiring_partners` (`id`, `event_id`, `hiring_partner_id`, `people_attending`, `deleted`)
 VALUES
 	(1,3,3,10,0),
 	(2,4,4,12,0);
 
-/*!40000 ALTER TABLE `events_hiring_partner_link_table` ENABLE KEYS */;
+/*!40000 ALTER TABLE `events_hiring_partners` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
-# Dump of table hearAbout
+# Dump of table hear_about
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `hearAbout`;
+DROP TABLE IF EXISTS `hear_about`;
 
-CREATE TABLE `hearAbout` (
+CREATE TABLE `hear_about` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `hearAbout` varchar(150) DEFAULT NULL,
   `deleted` tinyint(4) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-LOCK TABLES `hearAbout` WRITE;
-/*!40000 ALTER TABLE `hearAbout` DISABLE KEYS */;
+LOCK TABLES `hear_about` WRITE;
+/*!40000 ALTER TABLE `hear_about` DISABLE KEYS */;
 
-INSERT INTO `hearAbout` (`id`, `hearAbout`, `deleted`)
+INSERT INTO `hear_about` (`id`, `hearAbout`, `deleted`)
 VALUES
 	(1,'Google',0),
 	(2,'Newspaper',0),
@@ -221,7 +263,7 @@ VALUES
 	(5,'North Korea',0),
 	(6,'Yoda',0);
 
-/*!40000 ALTER TABLE `hearAbout` ENABLE KEYS */;
+/*!40000 ALTER TABLE `hear_about` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -301,14 +343,18 @@ LOCK TABLES `options` WRITE;
 
 INSERT INTO `options` (`id`, `option`, `stageId`, `deleted`)
 VALUES
-	(1,'application needs more info',1,0),
-	(2,'application accepted',1,0),
-	(3,'application waiting on check',1,0),
-	(4,'passed',2,0),
-	(5,'failed',2,0),
-	(6,'scored over 90%',2,0),
-	(7,'video interview',3,0),
-	(8,'in-person interview',3,0);
+	(7,'Accepted place',3,0),
+	(8,'Rejected place',3,0),
+	(9,'Confirmation sent',2,0),
+	(10,'Rejection sent',2,0),
+	(11,'Booked into assessment day',7,0),
+	(12,'Application withdrawn',7,0),
+	(13,'Accept email sent',8,0),
+	(14,'Reject email sent',8,0),
+	(15,'Deferred place',3,0),
+	(16,'Graduated',11,0),
+	(17,'Withdrew during course',11,0),
+	(18,'Not allowed to graduate',11,0);
 
 /*!40000 ALTER TABLE `options` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -324,21 +370,49 @@ CREATE TABLE `stages` (
   `title` varchar(255) DEFAULT NULL,
   `order` int(11) DEFAULT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `student` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `stages` WRITE;
 /*!40000 ALTER TABLE `stages` DISABLE KEYS */;
 
-INSERT INTO `stages` (`id`, `title`, `order`, `deleted`)
+INSERT INTO `stages` (`id`, `title`, `order`, `deleted`, `student`)
 VALUES
-	(1,'email application received',1,0),
-	(2,'Aptitude Test',2,0),
-	(3,'Interview',3,0),
-	(4,'Place Awarded',5,0),
-	(5,'Charlie\'s secret initiation',4,0);
+	(2,'Response sent',2,0,0),
+	(3,'Attendance Response',5,0,0),
+	(6,'New application',1,0,0),
+	(7,'Booked into assessment day',3,0,0),
+	(8,'Assessment Response',4,0,0),
+	(9,'Onboarding',6,0,1),
+	(10,'Attending',7,0,1),
+	(11,'Course complete',8,0,1),
+	(12,'In employment',9,0,1);
 
 /*!40000 ALTER TABLE `stages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table teams
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `teams`;
+
+CREATE TABLE `teams` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `trainer` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `teams` WRITE;
+/*!40000 ALTER TABLE `teams` DISABLE KEYS */;
+
+INSERT INTO `teams` (`id`, `trainer`)
+VALUES
+	(1,'Mike'),
+	(2,'Ash');
+
+/*!40000 ALTER TABLE `teams` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

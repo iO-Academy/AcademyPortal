@@ -9,13 +9,15 @@ class StageEntity implements \JsonSerializable
     protected $id;
     protected $title;
     protected $order;
+    protected $student;
     protected $deleted;
     protected $options;
 
-    public function __construct($title = null, $order = null)
+    public function __construct($title = null, $order = null, $student = null)
     {
         $this->title = ($this->title ?? $title);
         $this->order = ($this->order ?? $order);
+        $this->student = ($this->student ?? $student);
         $this->deleted = 0;
 
         $this->sanitiseData();
@@ -49,8 +51,9 @@ class StageEntity implements \JsonSerializable
             $this->title = substr($this->title, 0, 254);
         }
 
-        $this->order = (int) $this->order;
-        $this->deleted = (int) $this->deleted;
+        $this->order = (int)$this->order;
+        $this->student = (bool)$this->student;
+        $this->deleted = (int)$this->deleted;
     }
 
     /**
@@ -112,5 +115,13 @@ class StageEntity implements \JsonSerializable
     public function getOptions(): ?array
     {
         return $this->options;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getStudent(): ?bool
+    {
+        return $this->student;
     }
 }

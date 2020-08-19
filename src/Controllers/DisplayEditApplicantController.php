@@ -30,9 +30,6 @@ class DisplayEditApplicantController extends Controller
             $id = $request->getQueryParams()['id'];
             if ($id > 0) {
                 $data['applicant'] = $this->applicantModel->getApplicantById($id);
-                $data['title'] = 'Edit Applicant';
-                $data['returnUrl'] = './applicants';
-
                 return $this->renderer->render($response, 'applicantForm.phtml', $data);
             }
             return $response->withHeader('Location', './applicants')->withStatus(400);

@@ -40,6 +40,16 @@ header .logo {
     width: 300px;
 }
 
+form input[type="date"].form-control,
+form input[type="time"].form-control {
+    line-height: normal;
+}
+
+.no-gutter {
+    padding-left: 0;
+    padding-right: 0;
+}
+
 footer {
     border-top: 1px solid #333333;
     padding-top: 15px;

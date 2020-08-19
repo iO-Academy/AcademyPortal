@@ -26,10 +26,10 @@ class DisplayApplicantViewHelperTest extends TestCase
                                 <td>Feb 2020</td>
                                 <td>                              
                                     <a href="/editApplicant?id=1"   
-                                       type="button"                                   
+                                       type="button"
                                        class="btn btn-primary edit">
                                        Edit
-                                    </a>                                                                   
+                                    </a>
                                     <a
                                             href="#"
                                             type="delete"
@@ -39,6 +39,7 @@ class DisplayApplicantViewHelperTest extends TestCase
                                     </a>                                   
                                 </td>
                             </tr>';
+        $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
 
         $entityMock = $this->createMock(BaseApplicantEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -49,21 +50,23 @@ class DisplayApplicantViewHelperTest extends TestCase
 
         $data = [$entityMock];
         $result = DisplayApplicantViewHelper::displayApplicants($data);
+        $result = preg_replace('/\s+/', '', $result);// removes whitespace
         $this->assertEquals($expected, $result);
     }
 
     public function testSuccessDisplayApplicantsEmptyArray()
     {
         $data = [];
+        $expected = '<tr><td colspan="5"><h5 class="text-danger text-center">No Applicants Found.</h5></td></tr>';
         $result = DisplayApplicantViewHelper::displayApplicants($data);
-        $this->assertEquals('', $result);
+        $this->assertEquals($expected, $result);
     }
 
-    public function testFailureDisplayApplicantsIncorrectEntityy()
+    public function testFailureDisplayApplicantsIncorrectEntity()
     {
         $mock = $this->createMock(ContactEntity::class);
         $data = [$mock];
+        $this->expectException(\TypeError::class);
         $result = DisplayApplicantViewHelper::displayApplicants($data);
-        $this->assertEquals('', $result);
     }
 }

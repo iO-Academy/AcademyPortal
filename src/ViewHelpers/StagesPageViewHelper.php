@@ -22,23 +22,35 @@ class StagesPageViewHelper
         $counter = 1;
         foreach ($stages as $stage) {
             if ($stage instanceof StageEntity) {
+                $isStudent = $stage->getStudent() ? ' checked' : '';
+
                 $result .= '<tr class="" data-id="'. $stage->getStageId().'">';
-                $result .= '<td>';
-                $result .= $counter ++;
+                $result .= '<td class="order">';
+                $result .= $counter++;
                 $result .= '</td>';
                 $result .= '<td>';
-                $result .= '<p>'. $stage->getStageTitle().'</p>';
-                $result .= '<form data-id="'. $stage->getStageId().'" class="stagesTableForm">';
-                $result .= '<input type="text" class="stageEditTitle ';
-                $result .= 'col-xs-10" value="'. $stage->getStageTitle().'"/>';
-                $result .= '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
+                $result .= '<p class="stageTitle">' . $stage->getStageTitle();
+                if ($stage->getStudent()) {
+                    $result .= '<i class="glyphicon glyphicon-education text-success"></i>';
+                }
+                $result .= '</p>';
+                $result .= '<form data-id="'. $stage->getStageId().'" class="stagesTableForm form-inline">';
+                $result .= '<div>';
+                $result .= '<label>Student stage:';
+                $result .= ' <input type="checkbox" name="student"' . $isStudent . '> ';
+                $result .= '<i class="glyphicon glyphicon-education text-success"></i>';
+                $result .= '</label>';
+                $result .= '</div>';
+                $result .= '<input type="text" class="form-control stageEditTitle"';
+                $result .= 'value="'. $stage->getStageTitle().'"/>';
+                $result .= '<input type="submit" class="stageEditSubmit btn btn-success" value="Edit">';
                 $result .= '</form>';
                 $result .= '<div class="optionsContainer hidden" data-stageId="'. $stage->getStageId().'">';
                 if (empty($stage->getOptions())) {
                     $result .= '<div class="optionContainer multiOptionsContainer">';
-                    $result .= '<form data-id="" class="optionAddForm">';
-                    $result .= '<input type="text" class="optionAddTitle ';
-                    $result .= 'firstOption col-xs-10" placeholder="Type the name of your new option"/>';
+                    $result .= '<form data-id="" class="optionAddForm form-inline">';
+                    $result .= '<input type="text" class="optionAddTitle form-control ';
+                    $result .= 'firstOption" placeholder="Type the name of your new option"/>';
                 } else {
                     foreach ($stage->getOptions() as $option) {
                         $result .= '<div class="optionContainer">';
@@ -49,20 +61,21 @@ class StagesPageViewHelper
                         $result .= 'data-stageid="' . $stage->getStageId() . '">Delete</a>';
                         $result .= '<a class="optionEdit" data-optionId="'.$option->getOptionId().'">Edit</a>';
                         $result .= '</p>';
-                        $result .= '<form class="optionTableForm hidden" data-optionId="'.$option->getOptionId().'">';
-                        $result .= '<input type="text" class="optionEditTitle col-xs-10" value="';
+                        $result .= '<form class="optionTableForm hidden form-inline"';
+                        $result .= ' data-optionId="'.$option->getOptionId().'">';
+                        $result .= '<input type="text" class="optionEditTitle form-control" value="';
                         $result .= $option->getOptionTitle().'"/>';
-                        $result .= '<input type="submit" class="optionEditSubmit btn-success" ';
+                        $result .= '<input type="submit" class="optionEditSubmit btn btn-success" ';
                         $result .= 'value="Submit" data-optionid="'.$option->getOptionId().'">';
                         $result .= '</form>';
                         $result .= '</div>';
                     }
                     $result .= '<div class="optionContainer">';
-                    $result .= '<form data-id="" class="optionAddForm ">';
+                    $result .= '<form data-id="" class="optionAddForm form-inline">';
                 }
-                $result .= '<input type="text" class="optionAddTitle col-xs-10" ';
+                $result .= '<input type="text" class="optionAddTitle form-control" ';
                 $result .= 'placeholder="Type the name of your new option"/>';
-                $result .= '<input type="submit" class="optionAddSubmit btn-success" data-stageid="';
+                $result .= '<input type="submit" class="optionAddSubmit btn btn-success" data-stageid="';
                 $result .= $stage->getStageId().'" value="Submit">';
                 $result .= '</form>';
                 $result .= '</div>';

@@ -1,17 +1,50 @@
-#deleteResponse {
-    color: #FF0000;
+.modal-title span {
+    font-size: 12px;
 }
 
-.arrowBtn {
+.modal-title #apprentice {
+    position: relative;
+    top: -5px;
+}
+
+.modal-title #dateTimeAdded {
+    padding-top: 4px;
+    padding-right: 20px;
+}
+
+#sortFilterApplicants li label {
+    margin-top: -18px;
+}
+
+#sortFilterApplicants li select {
+    margin-top: 2px;
+}
+
+.sort {
+    white-space: nowrap;
+}
+
+.sort div {
+    display: inline;
+    padding-left: 10px;
+}
+
+.sort .arrowBtn {
     border: none;
 }
 
-.active {
+.sort .arrowBtn.active {
     color: #d64405;
 }
 
-.alertUser {
-    color: #FF0000
+p.detail {
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
+p.detail span {
+    font-weight: normal;
 }
 
 .errorMsg {
@@ -19,4 +52,32 @@
     text-align: center;
     font-weight: bold;
     font-size: 40px;
+}
+
+.collapse-header {
+    overflow: auto;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.collapse-header:hover {
+    background: #dddddd;
+}
+
+.applicationFormSection .collapse.in {
+    border-top: 1px solid black;
+}
+
+section {
+    margin-bottom: 10px;
+}
+
+.collapse-header h4 {
+    float: left;
+    padding-left: 15px;
+}
+
+.collapse-header i {
+    float: right;
+    margin: 12px;
 }

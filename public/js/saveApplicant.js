@@ -4,6 +4,7 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
     const validate = validateFormInputs(data);
     let formIsValid = true;
 
+
     document.querySelectorAll('.formItem_alert').forEach(element => {
         element.classList.remove('alert-danger');
         element.classList.add('hidden');

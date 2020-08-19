@@ -1,11 +1,46 @@
 
-function validateField(data, field, noDataMessage = 'No information provided') {
+function displayField(data, field, noDataMessage = 'No information provided', zeroMessage = null) {
+    if (data[field] === 0 && zeroMessage !== null) {
+        document.getElementById(field).innerHTML = zeroMessage
+        return
+    }
+
     if (data[field] === '' || data[field] === null || data[field] === undefined || data[field] === 0 || data[field] === false) {
-        document.getElementById(field).innerHTML = noDataMessage
+        document.getElementById(field).innerHTML = '<span class="text-danger">' + noDataMessage + '</span>'
     } else {
         document.getElementById(field).innerHTML = data[field]
     }
 }
+
+function prettyDate(date) {
+    if (typeof date !== 'string' || date.length === 0) {
+        return null;
+    }
+    date = new Date(date);
+    let dateOptions = {year: 'numeric', month: 'numeric', day: 'numeric'};
+    return date.toLocaleDateString("en-GB",dateOptions)
+}
+
+function aptitudeColors(score) {
+    if (score === null) {
+        return null
+    }
+    if (score > 97) {
+        return `<span class="text-warning">${score}%</span>`
+    } else if (score >= 70) {
+        return `<span class="text-success">${score}%</span>`
+    } else {
+        return `<span class="text-danger">${score}%</span>`
+    }
+}
+
+function addCurrency(number) {
+    if (number !== null) {
+        return '&pound;' + number.toLocaleString()
+    }
+    return 'Unknown'
+}
+
 
 $(document).ready(function(){
     $(".myBtn").click(function(){
@@ -21,31 +56,83 @@ $(document).ready(function(){
                     }
                     // Examine the text in the response
                     response.json().then(function(data) {
-                        validateField(data, 'name')
-                        validateField(data, 'email')
-                        validateField(data, 'phoneNumber')
-                        validateField(data, 'cohortDate')
-                        validateField(data, 'whyDev')
-                        validateField(data, 'codeExperience')
-                        validateField(data, 'hearAbout')
-                        validateField(data, 'eligible', '<p class="alertUser">Not eligible for studying in the UK<p/>')
-                        validateField(data, 'eighteenPlus', '<p class="alertUser">Under eighteen</p>')
-                        validateField(data, 'finance', 'Would not like to apply for finance')
+
+                        data.dateTimeAdded = prettyDate(data.dateTimeAdded);
+                        displayField(data, 'dateTimeAdded')
+                        document.getElementById('apprentice').innerHTML = ''
+                        if (data.apprentice === 1) {
+                            document.getElementById('apprentice').innerHTML = 'Apprentice'
+                        }
+
+                        displayField(data, 'name')
+                        displayField(data, 'email')
+                        displayField(data, 'phoneNumber')
+
+                        displayField(data, 'cohortDate')
+                        displayField(data, 'whyDev')
+                        displayField(data, 'codeExperience')
+                        displayField(data, 'hearAbout')
+                        displayField(data, 'eligible', 'Not eligible to study in the UK')
+                        displayField(data, 'eighteenPlus', 'Under 18')
+                        displayField(data, 'finance', 'No')
                         if (data.eligible !== 0) {
-                            document.getElementById('eligible').innerHTML = 'Eligible for studying in the UK'
+                            document.getElementById('eligible').innerHTML = 'Eligible to study in the UK'
                         }
                         if (data.eighteenPlus !== 0) {
-                            document.getElementById('eighteenPlus').innerHTML = 'Over eighteen'
+                            document.getElementById('eighteenPlus').innerHTML = 'Over 18'
                         }
                         if (data.finance !== 0) {
-                            document.getElementById('finance').innerHTML = 'Would like to apply for finance'
+                            document.getElementById('finance').innerHTML = 'Yes'
                         }
-                        validateField(data, 'notes')
-                        document.getElementById('dateTimeAdded').innerHTML =  data.dateTimeAdded
+                        displayField(data, 'notes')
+
+                        data.taster = prettyDate(data.taster)
+                        displayField(data, 'taster', 'Did not book onto a taster session')
+                        if (data.taster !== null && (data.tasterAttendance === null || data.tasterAttendance === 0)) {
+                            displayField(data, 'tasterAttendance', 'Did not attend the booked session')
+                        }
+
+                        data.assessmentDay = prettyDate(data.assessmentDay)
+                        displayField(data, 'assessmentDay', 'Not yet booked')
+                        if (data.assessmentDay !== null) {
+                            displayField(data, 'assessmentTime', 'Not yet booked')
+                        }
+                        data.aptitude = aptitudeColors(data.aptitude)
+                        displayField(data, 'aptitude', 'Not yet taken')
+
+                        displayField(data, 'diversitechInterest', 'Not asked yet', 'No')
+                        if (data.diversitechInterest === 1) {
+                            document.getElementById('diversitechInterest').innerHTML = 'Yes'
+                        }
+                        displayField(data, 'assessmentNotes', 'No notes written')
+
+                        data.diversitech = addCurrency(data.diversitech)
+                        data.edaid = addCurrency(data.edaid)
+                        data.upfront = addCurrency(data.upfront)
+                        displayField(data, 'diversitech')
+                        displayField(data, 'edaid')
+                        displayField(data, 'upfront')
+                        displayField(data, 'laptop', 'Unknown', 'No')
+                        if (data.laptop === 1) {
+                            document.getElementById('laptop').innerHTML = 'Yes'
+                        }
+                        displayField(data, 'laptopDeposit', 'No')
+                        if (data.laptopDeposit === 1) {
+                            document.getElementById('laptopDeposit').innerHTML = 'Yes'
+                        }
+                        displayField(data, 'laptopNum', 'Not assigned')
+                        data.kitCollectionDay = prettyDate(data.kitCollectionDay)
+                        displayField(data, 'kitCollectionDay', 'Not yet booked')
+                        if (data.kitCollectionDay !== null) {
+                            displayField(data, 'kitCollectionTime', 'Not yet booked')
+                        }
+                        displayField(data, 'kitNum', 'Not assiged')
+
+                        displayField(data, 'team', 'Not assigned')
                     })
                 }
             )
 
-        $("#myModal").modal()
+        $("#applicantModal").modal()
     })
 })

@@ -15,42 +15,29 @@ class StagesPageViewHelperTest extends TestCase
      */
     public function testSuccessNoOptionsDisplayStages()
     {
-        $expected = '';
-        $expected .= '<tr class="" data-id="1">';
-        $expected .= '<td>1</td>';
-        $expected .= '<td>';
-        $expected .= '<p>Stage 1 test</p>';
-        $expected .= '<form data-id="1" class="stagesTableForm">';
-        $expected .= '<input type="text" class="stageEditTitle col-xs-10" value="Stage 1 test"/>';
-        $expected .= '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
-        $expected .= '</form>';
-        $expected .= '<div class="optionsContainer hidden" data-stageId="1">';
-        $expected .= '<div class="optionContainer multiOptionsContainer">';
-        $expected .= '<form data-id="" class="optionAddForm">';
-        $expected .= '<input type="text" class="optionAddTitle ';
-        $expected .= 'firstOption col-xs-10" placeholder="Type the name of your new option"/>';
-        $expected .= '<input type="text" class="optionAddTitle col-xs-10" ';
-        $expected .= 'placeholder="Type the name of your new option"/>';
-        $expected .= '<input type="submit" class="optionAddSubmit btn-success" data-stageid="';
-        $expected .= '1" value="Submit">';
-        $expected .= '</form>';
-        $expected .= '</div>';
-        $expected .= '</div>';
-        $expected .= '</td>';
-        $expected .= '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
-        $expected .= '<td class="col-xs-2 text-center"><a data-id="1" class="text-danger delete">Delete</a></td>';
-        $expected .= '<td class="col-xs-2 text-center">';
-        $expected .= '<a class="toggleEditOptions" data-stageId="1">Options</a></td>';
-        $expected .= '</tr>';
+        $expected = '<tr class="" data-id="1"><td class="order">1</td><td><p class="stageTitle">Stage 1 test</p><form 
+data-id="1" class="stagesTableForm form-inline"><div><label>Student stage: <input type="checkbox" name="student"> 
+<i class="glyphicon glyphicon-education text-success"></i></label></div><input type="text" class="form-control 
+stageEditTitle"value="Stage 1 test"/><input type="submit" class="stageEditSubmit btn btn-success" value="Edit">
+</form><div class="optionsContainer hidden" data-stageId="1"><div class="optionContainer multiOptionsContainer">
+<form data-id="" class="optionAddForm form-inline"><input type="text" class="optionAddTitle form-control firstOption" 
+placeholder="Type the name of your new option"/><input type="text" class="optionAddTitle form-control" 
+placeholder="Type the name of your new option"/><input type="submit" class="optionAddSubmit btn btn-success" 
+data-stageid="1" value="Submit"></form></div></div></td><td class="col-xs-2 text-center">
+<a class="toggleEditForm">Edit</a></td><td class="col-xs-2 text-center">
+<a data-id="1" class="text-danger delete">Delete</a></td><td class="col-xs-2 text-center">
+<a class="toggleEditOptions" data-stageId="1">Options</a></td></tr>';
+
+        $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
         $stageEntityMock = $this->createMock(StageEntity::class);
         $stageEntityMock->method('getStageId')->willReturn('1');
         $stageEntityMock->method('getStageTitle')->willReturn('Stage 1 test');
         $stageEntityMock->method('getOptions')->willReturn([]);
 
         $input =  [$stageEntityMock];
-        $case = StagesPageViewHelper::displayStages($input);
-
-        $this->assertEquals($expected, $case);
+        $actual = StagesPageViewHelper::displayStages($input);
+        $actual = preg_replace('/\s+/', '', $actual); // removes whitespace
+        $this->assertEquals($expected, $actual);
     }
 
     /**
@@ -59,48 +46,26 @@ class StagesPageViewHelperTest extends TestCase
      */
     public function testSuccessOptionsDisplayStages()
     {
-        $expected = '';
-        $expected .= '<tr class="" data-id="1">';
-        $expected .= '<td>1</td>';
-        $expected .= '<td>';
-        $expected .= '<p>Stage 1 test</p>';
-        $expected .= '<form data-id="1" class="stagesTableForm">';
-        $expected .= '<input type="text" class="stageEditTitle col-xs-10" value="Stage 1 test"/>';
-        $expected .= '<input type="submit" class="stageEditSubmit btn-success" value="Submit">';
-        $expected .= '</form>';
-        $expected .= '<div class="optionsContainer hidden" data-stageId="1">';
-        $expected .= '<div class="optionContainer">';
-        $expected .= '<p class="optionTitle" data-optionId="';
-        $expected .= '1">aTitle';
-        $expected .= '<a class="text-danger optionDelete" data-optionId="';
-        $expected .= '1" data-stageid="1">Delete</a>';
-        $expected .= '<a class="optionEdit" data-optionId="1">Edit</a>';
-        $expected .= '</p>';
-        $expected .= '<form class="optionTableForm hidden" data-optionId="1">';
-        $expected .= '<input type="text" class="optionEditTitle col-xs-10" value="';
-        $expected .= 'aTitle"/>';
-        $expected .= '<input type="submit" class="optionEditSubmit btn-success" ';
-        $expected .= 'value="Submit" data-optionid="1">';
-        $expected .= '</form>';
-        $expected .= '</div>';
-        $expected .= '<div class="optionContainer">';
-        $expected .= '<form data-id="" class="optionAddForm ">';
-        $expected .= '<input type="text" class="optionAddTitle col-xs-10" ';
-        $expected .= 'placeholder="Type the name of your new option"/>';
-        $expected .= '<input type="submit" class="optionAddSubmit btn-success" data-stageid="1';
-        $expected .= '" value="Submit">';
-        $expected .= '</form>';
-        $expected .= '</div>';
-        $expected .= '</div>';
-        $expected .= '</td>';
-        $expected .= '<td class="col-xs-2 text-center">';
-        $expected .= '<a class="toggleEditForm">Edit</a></td>';
-        $expected .= '<td class="col-xs-2 text-center disabled">';
-        $expected .= '<a data-id="1" class="text-danger delete disabled">Delete</a></td>';
-        $expected .= '<td class="col-xs-2 text-center">';
-        $expected .= '<a class="toggleEditOptions" data-stageId="1">Options</a></td>';
-        $expected .= '</tr>';
+        $expected = '<tr class="" data-id="1"><td class="order">1</td><td><p class="stageTitle">Stage 1 test</p>
+<form data-id="1" class="stagesTableForm form-inline"><div><label>Student stage: <input type="checkbox" name="student"> 
+<i class="glyphicon glyphicon-education text-success"></i></label></div>
+<input type="text" class="form-control stageEditTitle"value="Stage 1 test"/>
+<input type="submit" class="stageEditSubmit btn btn-success" value="Edit"></form>
+<div class="optionsContainer hidden" data-stageId="1"><div class="optionContainer">
+<p class="optionTitle" data-optionId="1">aTitle
+<a class="text-danger optionDelete" data-optionId="1" data-stageid="1">Delete</a>
+<a class="optionEdit" data-optionId="1">Edit</a></p>
+<form class="optionTableForm hidden form-inline" data-optionId="1">
+<input type="text" class="optionEditTitle form-control" value="aTitle"/>
+<input type="submit" class="optionEditSubmit btn btn-success" value="Submit" data-optionid="1"></form>
+</div><div class="optionContainer"><form data-id="" class="optionAddForm form-inline">
+<input type="text" class="optionAddTitle form-control" placeholder="Type the name of your new option"/>
+<input type="submit" class="optionAddSubmit btn btn-success" data-stageid="1" value="Submit"></form>
+</div></div></td><td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>
+<td class="col-xs-2 text-center disabled"><a data-id="1" class="text-danger delete disabled">Delete</a></td>
+<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="1">Options</a></td></tr>';
 
+        $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
         $optionEntityMock = $this->createMock(OptionsEntity::class);
         $optionEntityMock->method('getOptionId')->willReturn('1');
         $optionEntityMock->method('getOptionTitle')->willReturn('aTitle');
@@ -111,8 +76,9 @@ class StagesPageViewHelperTest extends TestCase
         $stageEntityMock->method('getOptions')->willReturn([$optionEntityMock]);
 
         $input =  [$stageEntityMock];
-        $case = StagesPageViewHelper::displayStages($input);
-
-        $this->assertEquals($expected, $case);
+        $actual = StagesPageViewHelper::displayStages($input);
+        $actual = preg_replace('/\s+/', '', $actual); // removes whitespace
+        
+        $this->assertEquals($expected, $actual);
     }
 }

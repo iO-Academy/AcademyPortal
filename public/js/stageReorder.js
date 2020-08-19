@@ -4,24 +4,24 @@ var requestData = {
     "data" : []
 };
 
-Sortable.create(stageTable, {
+new Sortable(stageTable, {
     animation: 150,
-    ghostClass: 'blue-background-class',
-    group: "localStorage",
+    // handle: '.order',
     store: {
-        set: function (sortable) {
+        set: async function (sortable) {
             let stageOrder = sortable.toArray();
             requestData.data = [];
 
             stageTableRows.forEach((tableRow)=>{
                 let stageEntity = {};
                 stageEntity.id = tableRow.dataset.id;
-                stageEntity.title = tableRow.children[1].children[0].textContent;
+                stageEntity.title = tableRow.querySelector('.stageTitle').textContent;
                 stageEntity.order = (stageOrder.indexOf(tableRow.dataset.id) + 1);
+                stageEntity.student = tableRow.querySelector('[name="student"]').checked;
                 requestData.data.push(stageEntity);
-                location.reload();
             });
-            sendRequest('./api/updateStages', 'PUT', requestData);
+            await sendRequest('./api/updateStages', 'PUT', requestData);
+            location.reload();
         },
     }
 });

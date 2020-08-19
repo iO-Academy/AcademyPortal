@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Team Picker');
+    ?>
+    <link href="css/teamPicker.css" rel="stylesheet" type="text/css">
+    <script defer src="./js/Sortable.js"></script>
+    <script src="./js/populateDropdowns.js" defer></script>
+    <script defer src="./js/teamPicker.js"></script>
+
+</head>
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+    <main class="text-center">
+
+        <div class="col-xs-4 no-gutter">
+            <h3>Team 1</h3>
+            <input type="text" placeholder="Trainer name" class="form-control" id="team1name">
+        </div>
+        <div class="col-xs-4 center">
+            <strong>Select Cohort</strong>
+            <select id="cohorts" class="form-control" name="cohortId">
+                <option>Select a cohort</option>
+            </select>
+        </div>
+        <div class="col-xs-4 no-gutter">
+            <h3>Team 2</h3>
+            <input type="text" placeholder="Trainer name" class="form-control"  id="team2name">
+        </div>
+
+        <section id="team-picker">
+            <div class="team" id="team1"></div>
+            <div class="team" id="unsorted">
+                <h5>Select a cohort to begin</h5>
+            </div>
+            <div class="team" id="team2"></div>
+        </section>
+
+        <button class="btn btn-success btn-lg" id="save-teams">Save Teams</button>
+
+        <div class="alert" id="save-result"></div>
+
+    </main>
+<?php require 'partials/layout/footer.phtml'; ?>
+</body>
+</html>
