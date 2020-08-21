@@ -68,6 +68,12 @@ $(document).ready(function(){
                         displayField(data, 'email')
                         displayField(data, 'phoneNumber')
 
+                        displayField(data, 'stageName')
+                        document.querySelector('#stageOptionNameContainer').style.display = 'block'
+                        displayField(data, 'stageOptionName')
+                        if (data.stageOptionName === null) {
+                            document.querySelector('#stageOptionNameContainer').style.display = 'none'
+                        }
                         displayField(data, 'cohortDate')
                         displayField(data, 'whyDev')
                         displayField(data, 'codeExperience')

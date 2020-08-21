@@ -83,11 +83,13 @@ class ApplicantModel implements ApplicantModelInterface
      */
     public function getAllApplicants(string $sortingQuery = '')
     {
-        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
-                      AS 'cohortDate'
+        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` AS 'cohortDate', 
+                      `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-                      WHERE `applicants`.`deleted` = '0' ";
+                      LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
+                      LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
+                      WHERE `applicants`.`deleted` = '0';";
 
         $stmt .= $this->sortingQuery($sortingQuery);
 
@@ -108,10 +110,12 @@ class ApplicantModel implements ApplicantModelInterface
      */
     public function getAllApplicantsByCohort(string $cohortId, string $sortingQuery = '')
     {
-        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
-                      AS 'cohortDate'
+        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` AS 'cohortDate', 
+                      `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
+                      LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       WHERE `applicants`.`deleted` = '0' AND `applicants`.`cohortId` = :cohortId ";
 
         $stmt .= $this->sortingQuery($sortingQuery);
@@ -132,10 +136,12 @@ class ApplicantModel implements ApplicantModelInterface
      */
     public function getAllStudents(string $sortingQuery = '') // @todo: only get applicants in a student stage
     {
-        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` 
-                      AS 'cohortDate'
+        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` AS 'cohortDate', 
+                      `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
+                      LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       WHERE `applicants`.`deleted` = '0' ";
 
         $stmt .= $this->sortingQuery($sortingQuery);
@@ -179,12 +185,14 @@ class ApplicantModel implements ApplicantModelInterface
     public function getApplicantById($id)
     {
         $query = $this->db->prepare(
-            'SELECT `applicants`.`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
+            "SELECT `applicants`.`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`, 
-                      `date` AS "cohortDate", `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
+                      `date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
-                      `tasterAttendance`, `trainer` AS "team", `cohortId`, `hearAboutId`  
+                      `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
+                      `applicants`.`stageId` as 'stageID', `title` as 'stageName',
+                       `option` as 'stageOptionName' 
                         FROM `applicants` 
                         LEFT JOIN `cohorts` 
                             ON `applicants`.`cohortId`=`cohorts`.`id` 
@@ -194,7 +202,11 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`id` = `applicants_additional`.`id`
                         LEFT JOIN `teams` 
                             ON `applicants_additional`.`team` = `teams`.`id`
-                        WHERE `applicants`.`id`= :id;'
+                        LEFT JOIN `stages`
+                            ON `applicants`.`stageId` = `stages`.`id`
+                        LEFT JOIN `options` 
+                            ON `applicants`.`stageOptionId` = `options`.`id`
+                        WHERE `applicants`.`id`= :id;"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
         $query->execute([
