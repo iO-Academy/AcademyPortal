@@ -4,7 +4,7 @@
 namespace Tests\Controllers;
 
 use PHPUnit\Framework\TestCase;
-use Portal\Controllers\DeleteStageOptionController;
+use Portal\Controllers\API\DeleteStageOptionController;
 use Portal\Models\StageModel;
 
 class DeleteStageOptionControllerTest extends TestCase

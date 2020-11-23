@@ -1,25 +1,29 @@
 <?php
 
-namespace Portal\Controllers;
+namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
-use Portal\Validators\StageValidator;
+use Portal\Models\StageModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Portal\Models\StageModel;
 
-class EditStageController extends Controller
+class DeleteAllStageOptionsController extends Controller
 {
     private $stageModel;
 
-    public function __construct(StageModel $model)
+    /** Constructor assigns StageModel to this object
+    *
+    * DeleteStageOptionController constructor.
+    * @param StageModel $stageModel
+    */
+    public function __construct(StageModel $stageModel)
     {
-        $this->stageModel = $model;
+        $this->stageModel = $stageModel;
     }
 
     /**
      * Checks if user is logged in, validates the http request data and calls
-     * the updateStage method on stageModel
+     * the deleteAllOptions method on stageModel
      *
      * @param Request $request
      * @param Response $response
@@ -32,19 +36,19 @@ class EditStageController extends Controller
         if ($_SESSION['loggedIn'] === true) {
             $data = [
                 'success' => false,
-                'msg' => 'Stage not found.',
+                'msg' => 'Option not found.',
                 'data' => []
             ];
             $statusCode = 500;
 
-            $requestDataPackage = $request->getParsedBody();
-
             try {
-                $stages = StageValidator::sanitiseStageOrders($requestDataPackage['data']);
-                $this->stageModel->updateAllStages($stages);
+                $formOption = $request->getParsedBody();
+                $stageId = (int) $formOption['stageId'];
+
+                $this->stageModel->deleteAllOptions($stageId);
                 $data = [
                     'success' => true,
-                    'msg' => 'Stage edit successful.',
+                    'msg' => 'All options deleted.',
                     'data' => ''
                 ];
                 $statusCode = 200;
@@ -55,6 +59,6 @@ class EditStageController extends Controller
                 return $this->respondWithJson($response, $data, $statusCode);
             }
         }
-        return $this->respondWithJson($response, ['success' => false, 'msg'=> 'Unauthorized'], 401);
+        return $this->respondWithJson($response, ['success' => false, 'msg'=> 'Unauthorised'], 401);
     }
 }

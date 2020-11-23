@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\DeleteApplicantController;
+use Portal\Controllers\API\DeleteApplicantController;
 use Psr\Container\ContainerInterface;
 
 class DeleteApplicantControllerFactory

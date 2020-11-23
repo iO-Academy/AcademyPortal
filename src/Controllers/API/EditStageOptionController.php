@@ -1,21 +1,22 @@
 <?php
 
-namespace Portal\Controllers;
+namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
+use Portal\Validators\OptionsValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class DeleteAllStageOptionsController extends Controller
+class EditStageOptionController extends Controller
 {
     private $stageModel;
 
     /** Constructor assigns StageModel to this object
-    *
-    * DeleteStageOptionController constructor.
-    * @param StageModel $stageModel
-    */
+     *
+     * EditStageOptionController constructor.
+     * @param StageModel $stageModel
+     */
     public function __construct(StageModel $stageModel)
     {
         $this->stageModel = $stageModel;
@@ -23,13 +24,13 @@ class DeleteAllStageOptionsController extends Controller
 
     /**
      * Checks if user is logged in, validates the http request data and calls
-     * the deleteAllOptions method on stageModel
+     * the updateOption method on stageModel
      *
      * @param Request $request
      * @param Response $response
      * @param array $args
      *
-     * @return Response - Returns status 200/500 with message in Json
+     * @return Response - Returns status 200/400/500 with message in Json
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
@@ -40,18 +41,26 @@ class DeleteAllStageOptionsController extends Controller
                 'data' => []
             ];
             $statusCode = 500;
-
             try {
                 $formOption = $request->getParsedBody();
-                $stageId = (int) $formOption['stageId'];
-
-                $this->stageModel->deleteAllOptions($stageId);
-                $data = [
-                    'success' => true,
-                    'msg' => 'All options deleted.',
-                    'data' => ''
-                ];
-                $statusCode = 200;
+                $optionValid = OptionsValidator::validateOptionUpdate($formOption);
+            
+                if ($optionValid) {
+                    $this->stageModel->updateOption($formOption);
+                    $data = [
+                        'success' => true,
+                        'msg' => 'Option update successful.',
+                        'data' => ''
+                    ];
+                    $statusCode = 200;
+                } else {
+                    $data = [
+                        'success' => false,
+                        'msg' => 'Option update unsuccessful.',
+                        'data' => ''
+                    ];
+                    $statusCode = 400;
+                }
 
                 return $this->respondWithJson($response, $data, $statusCode);
             } catch (\Exception $e) {
@@ -59,6 +68,6 @@ class DeleteAllStageOptionsController extends Controller
                 return $this->respondWithJson($response, $data, $statusCode);
             }
         }
-        return $this->respondWithJson($response, ['success' => false, 'msg'=> 'Unauthorised'], 401);
+        return $this->respondWithJson($response, ['success' => false, 'msg'=> 'Unauthorized'], 401);
     }
 }

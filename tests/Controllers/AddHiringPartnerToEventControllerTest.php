@@ -2,7 +2,7 @@
 
 namespace Tests\Controllers;
 
-use Portal\Controllers\AddHiringPartnerToEventController;
+use Portal\Controllers\API\AddHiringPartnerToEventController;
 use Portal\Models\EventModel;
 use Tests\TestCase;
 

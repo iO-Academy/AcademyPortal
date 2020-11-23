@@ -3,8 +3,7 @@
 namespace Tests\Controllers;
 
 use Tests\TestCase;
-
-use Portal\Controllers\GetApplicantController;
+use Portal\Controllers\API\GetApplicantController;
 use Portal\Models\ApplicantModel;
 
 class GetApplicantControllerTest extends TestCase

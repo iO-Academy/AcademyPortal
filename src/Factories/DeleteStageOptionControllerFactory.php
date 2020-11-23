@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\DeleteStageOptionController;
+use Portal\Controllers\API\DeleteStageOptionController;
 use Psr\Container\ContainerInterface;
 
 class DeleteStageOptionControllerFactory

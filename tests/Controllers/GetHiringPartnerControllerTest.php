@@ -4,7 +4,7 @@ namespace Tests\Controllers;
 
 use Tests\TestCase;
 use Portal\Models\HiringPartnerModel;
-use Portal\Controllers\GetHiringPartnersController;
+use Portal\Controllers\API\GetHiringPartnersController;
 
 class GetHiringPartnerControllerTest extends TestCase
 {

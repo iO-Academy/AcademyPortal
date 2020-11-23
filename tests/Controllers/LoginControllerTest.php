@@ -3,7 +3,7 @@
 namespace Tests\Controllers;
 
 use Tests\TestCase;
-use Portal\Controllers\LoginController;
+use Portal\Controllers\API\LoginController;
 use Portal\Models\UserModel;
 
 class LoginControllerTest extends TestCase

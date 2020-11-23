@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\FrontEnd\DisplayTeamPickerController;
+use Portal\Controllers\FrontEnd\DisplayTeamPickerController
 use Psr\Container\ContainerInterface;
 
 class DisplayTeamPickerControllerFactory

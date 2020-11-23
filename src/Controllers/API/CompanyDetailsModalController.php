@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Portal\Controllers;
+namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\HiringPartnerModel;

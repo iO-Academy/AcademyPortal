@@ -5,7 +5,7 @@ namespace Tests\Controllers;
 use Tests\TestCase;
 use Slim\Views\PhpRenderer;
 use Portal\Models\HiringPartnerModel;
-use Portal\Controllers\CreateHiringPartnerController;
+use Portal\Controllers\API\CreateHiringPartnerController;
 
 class CreateHiringPartnerControllerTest extends TestCase
 {

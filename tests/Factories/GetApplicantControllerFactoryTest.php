@@ -6,7 +6,7 @@ use Tests\TestCase;
 
 use Portal\Factories\GetApplicantControllerFactory;
 use Portal\Models\ApplicantModel;
-use Portal\Controllers\GetApplicantController;
+use Portal\Controllers\API\GetApplicantController;
 use Psr\Container\ContainerInterface;
 
 class GetApplicantControllerFactoryTest extends TestCase

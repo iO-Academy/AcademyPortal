@@ -1,6 +1,6 @@
 <?php
 
-namespace Portal\Controllers;
+namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;

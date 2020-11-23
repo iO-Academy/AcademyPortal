@@ -3,7 +3,7 @@
 namespace Tests\Controllers;
 
 use PHPUnit\Framework\TestCase;
-use Portal\Controllers\DeleteApplicantController;
+use Portal\Controllers\API\DeleteApplicantController;
 use Portal\Models\ApplicantModel;
 
 class DeleteApplicantControllerTest extends TestCase
