@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Controllers;
+namespace Tests\Controllers\FrontEnd;
 
 use Tests\TestCase;
-use Portal\Controllers\DisplayEventsPageController;
+use Portal\Controllers\FrontEnd\DisplayEventsPageController;
 use Portal\Models\EventModel;
 use Slim\Views\PhpRenderer;
 

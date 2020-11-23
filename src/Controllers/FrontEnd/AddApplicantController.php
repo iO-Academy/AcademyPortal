@@ -1,19 +1,18 @@
 <?php
 
-namespace Portal\Controllers;
+namespace Portal\Controllers\FrontEnd;
 
 use Portal\Abstracts\Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
-class AdminController extends Controller
+class AddApplicantController extends Controller
 {
     private $renderer;
 
     /**
-     * AdminController constructor.
-     * Instantiates admin controller.
+     * Will instantiate renderer.
      *
      * @param PhpRenderer $renderer
      */
@@ -23,20 +22,21 @@ class AdminController extends Controller
     }
 
     /**
-     * Checks if the user is admin or not and if true let them into admin page, if false redirect them back.
+     * Checks if the users are logged in or not.
      *
-     * @param Request $request via HTTP request
+     * @param Request $request HTTP request
      * @param Response $response HTTP response
-     * @param array $args
+     * @param $args array
      *
-     * @return \Psr\Http\Message\ResponseInterface|Response.
+     * @return Response will return the url output.
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            return $this->renderer->render($response, 'admin.phtml');
+            return $this->renderer->render($response, 'newApplicantForm.phtml');
         }
+
         $_SESSION['loggedIn'] = false;
-        return $response->withHeader('Location', './')->withStatus(302);
+        return $response->withHeader('Location', './');
     }
 }

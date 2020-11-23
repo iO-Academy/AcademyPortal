@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Controllers;
+namespace Tests\Controllers\FrontEnd;
 
-use Portal\Controllers\DisplayStagesController;
+use Portal\Controllers\FrontEnd\DisplayStagesController;
 use PHPUnit\Framework\TestCase;
 use Portal\Models\StageModel;
 use Slim\Views\PhpRenderer;

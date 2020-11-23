@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Controllers;
+namespace Tests\Controllers\FrontEnd;
 
 use Tests\TestCase;
-use Portal\Controllers\DisplayHiringPartnerPageController;
+use Portal\Controllers\FrontEnd\DisplayHiringPartnerPageController;
 use Portal\Models\HiringPartnerModel;
 use Slim\Views\PhpRenderer;
 

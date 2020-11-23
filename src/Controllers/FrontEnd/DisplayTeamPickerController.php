@@ -1,6 +1,6 @@
 <?php
 
-namespace Portal\Controllers;
+namespace Portal\Controllers\FrontEnd;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\ApplicantModel;

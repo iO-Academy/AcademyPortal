@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Controllers;
+namespace Tests\Controllers\FrontEnd;
 
 use Tests\TestCase;
-use Portal\Controllers\AdminController;
+use Portal\Controllers\FrontEnd\AdminController;
 use Slim\Views\PhpRenderer;
 
 class AdminControllerTest extends TestCase

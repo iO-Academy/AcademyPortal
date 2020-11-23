@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Controllers;
+namespace Tests\Controllers\FrontEnd;
 
 use Tests\TestCase;
-use Portal\Controllers\RegisterController;
+use Portal\Controllers\FrontEnd\RegisterController;
 use Slim\Views\PhpRenderer;
 
 class RegisterControllerTest extends TestCase

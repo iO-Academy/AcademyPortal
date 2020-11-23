@@ -3,7 +3,7 @@
 namespace Portal\Factories;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\DisplayApplicantsController;
+use Portal\Controllers\FrontEnd\DisplayApplicantsController;
 
 class DisplayApplicantsControllerFactory
 {
@@ -21,3 +21,4 @@ class DisplayApplicantsControllerFactory
         return new DisplayApplicantsController($renderer, $applicantModel);
     }
 }
+
