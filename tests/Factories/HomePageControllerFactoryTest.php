@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Portal\Factories\HomePageControllerFactory;
 use Slim\Views\PhpRenderer;
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\HomePageController;
+use Portal\Controllers\FrontEnd\HomePageController;
 
 class HomePageControllerFactoryTest extends TestCase
 {

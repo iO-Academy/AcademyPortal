@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Controllers;
+namespace Tests\Controllers\FrontEnd;
 
 use Tests\TestCase;
-use Portal\Controllers\HomePageController;
+use Portal\Controllers\FrontEnd\HomePageController;
 use Slim\Views\PhpRenderer;
 
 class HomePageControllerTest extends TestCase
