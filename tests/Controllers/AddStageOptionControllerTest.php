@@ -4,7 +4,7 @@ namespace Tests\Controllers;
 
 use PHPUnit\Framework\TestCase;
 use Portal\Models\StageModel;
-use Portal\Controllers\AddStageOptionController;
+use Portal\Controllers\API\AddStageOptionController;
 
 class AddStageOptionControllerTest extends TestCase
 {

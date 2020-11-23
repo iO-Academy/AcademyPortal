@@ -3,7 +3,7 @@
 namespace Tests\Controllers;
 
 use Tests\TestCase;
-use Portal\Controllers\ApplicationFormController;
+use Portal\Controllers\API\ApplicationFormController;
 use Portal\Models\ApplicationFormModel;
 
 class ApplicationFormControllerTest extends TestCase

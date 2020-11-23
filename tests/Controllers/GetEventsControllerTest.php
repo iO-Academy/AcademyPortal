@@ -3,7 +3,7 @@
 namespace Tests\Controllers;
 
 use Tests\TestCase;
-use Portal\Controllers\GetEventsController;
+use Portal\Controllers\API\GetEventsController;
 use Portal\Models\EventModel;
 
 class GetEventsControllerTest extends TestCase

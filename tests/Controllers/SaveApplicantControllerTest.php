@@ -3,7 +3,7 @@
 namespace Tests\Controllers;
 
 use Tests\TestCase;
-use Portal\Controllers\SaveApplicantController;
+use Portal\Controllers\API\SaveApplicantController;
 use Portal\Models\ApplicantModel;
 
 class SaveApplicantControllerTest extends TestCase

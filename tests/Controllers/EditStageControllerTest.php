@@ -4,7 +4,7 @@
 namespace Tests\Controllers;
 
 use PHPUnit\Framework\TestCase;
-use Portal\Controllers\EditStageController;
+use Portal\Controllers\API\EditStageController;
 use Portal\Models\StageModel;
 
 class EditStageControllerTest extends TestCase

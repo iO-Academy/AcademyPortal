@@ -2,7 +2,7 @@
 
 namespace Tests\Controllers;
 
-use Portal\Controllers\GetHiringPartnersByIdController;
+use Portal\Controllers\API\GetHiringPartnersByIdController;
 use Portal\Models\EventModel;
 use Portal\Models\HiringPartnerModel;
 use Tests\TestCase;

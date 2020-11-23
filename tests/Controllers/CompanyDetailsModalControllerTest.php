@@ -2,7 +2,7 @@
 
 namespace Tests\Controllers;
 
-use Portal\Controllers\CompanyDetailsModalController;
+use Portal\Controllers\API\CompanyDetailsModalController;
 use Portal\Models\HiringPartnerModel;
 use Tests\TestCase;
 

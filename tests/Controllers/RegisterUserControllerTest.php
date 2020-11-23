@@ -3,7 +3,7 @@
 namespace Tests\Controllers;
 
 use Tests\TestCase;
-use Portal\Controllers\RegisterUserController;
+use Portal\Controllers\API\RegisterUserController;
 use Portal\Models\UserModel;
 
 class RegisterUserControllerTest extends TestCase
