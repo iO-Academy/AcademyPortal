@@ -21,4 +21,3 @@ class DisplayApplicantsControllerFactory
         return new DisplayApplicantsController($renderer, $applicantModel);
     }
 }
-
