@@ -42,6 +42,7 @@ class ApplicationFormController extends Controller
                     'data' => [
                         'cohorts' => $this->applicationFormModel->getCohorts(),
                         'hearAbout' => $this->applicationFormModel->getHearAbout(),
+                        'stages' => $this->applicationFormModel->getStages(),
                     ]
                 ];
             } catch (\Exception $e) {

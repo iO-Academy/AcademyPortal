@@ -36,4 +36,18 @@ class ApplicationFormModel
         $result = $query->fetchAll();
         return $result;
     }
+
+    /**
+     * Gets all the sages from the database.
+     *
+     * @return array $result is data from the stages fields.
+     */
+    public function getStages()
+    {
+        $query = $this->db->prepare('SELECT `titles` FROM `stages`;');
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
+
 }
