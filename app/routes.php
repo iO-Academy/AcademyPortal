@@ -47,5 +47,5 @@ return function (App $app) {
     $app->delete('/api/deleteAllStageOptions', 'DeleteAllStageOptionsController');
     $app->post('/api/updateTeams', 'UpdateTeamsController');
     //Not sure whether this goes in API or front end.
-    $app->post('/api/progressApplicantNextStage ', '');
+    $app->post('/api/progressApplicantNextStage', '');
 };
