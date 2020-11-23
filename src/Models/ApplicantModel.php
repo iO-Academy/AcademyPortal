@@ -76,39 +76,15 @@ class ApplicantModel implements ApplicantModelInterface
     }
 
     /**
-     * Sorts the table via the input taken from the sorting arrows
+     * Gets a sorted list of applicants assigned to a specific cohort.
      *
-     * @param string $sortingQuery - how you would like the results sorted
-     * @return array $results is the data retrieved.
-     */
-    public function getAllApplicants(string $sortingQuery = '')
-    {
-        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` AS 'cohortDate', 
-                      `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
-                      FROM `applicants`
-                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-                      LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
-                      LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
-                      WHERE `applicants`.`deleted` = '0';";
-
-        $stmt .= $this->sortingQuery($sortingQuery);
-
-        $query = $this->db->prepare($stmt);
-        $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
-
-        $query->execute();
-
-        return $query->fetchAll();
-    }
-
-    /**
-     * Gets a sorted list of appliciants assigned to a specific cohort.
+     * @param string $stageId       the stage to filter by
+     * @param string $cohortId      the cohort to filer by
+     * @param string $sortingQuery  how you would like the results sorted
      *
-     * @param string $sortingQuery how you would like the results sorted
-     * @param string $cohortId the cohort you would like the results of
      * @return array the data retrieved from the database
      */
-    public function getAllApplicantsByCohort(string $cohortId, string $sortingQuery = '')
+    public function getApplicants(string $stageId = '', string $cohortId = '', string $sortingQuery = '')
     {
         $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` AS 'cohortDate', 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
@@ -116,13 +92,16 @@ class ApplicantModel implements ApplicantModelInterface
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
-                      WHERE `applicants`.`deleted` = '0' AND `applicants`.`cohortId` = :cohortId ";
+                      WHERE `applicants`.`deleted` = '0'
+                      AND `applicants`.`cohortId` like :cohortId
+                      AND `applicants`.`stageId` like :stageId; ";
 
         $stmt .= $this->sortingQuery($sortingQuery);
 
         $query = $this->db->prepare($stmt);
         $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
         $query->bindValue(':cohortId', $cohortId);
+        $query->bindValue(':stageId', $stageId);
         $query->execute();
 
         return $query->fetchAll();
