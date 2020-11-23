@@ -3,7 +3,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\CompanyDetailsModalController;
+use Portal\Controllers\API\CompanyDetailsModalController;
 use Psr\Container\ContainerInterface;
 
 class CompanyDetailsModalControllerFactory

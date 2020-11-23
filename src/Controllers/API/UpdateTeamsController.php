@@ -1,6 +1,6 @@
 <?php
 
-namespace Portal\Controllers;
+namespace Portal\Controllers\API;
 
 use Exception;
 use Portal\Abstracts\Controller;

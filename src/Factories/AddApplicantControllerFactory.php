@@ -3,7 +3,7 @@
 namespace Portal\Factories;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\AddApplicantController;
+use Portal\Controllers\API\AddApplicantController;
 
 class AddApplicantControllerFactory
 {

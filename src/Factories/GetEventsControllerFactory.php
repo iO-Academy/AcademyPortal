@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\GetEventsController;
+use Portal\Controllers\API\GetEventsController;
 use Psr\Container\ContainerInterface;
 
 class GetEventsControllerFactory

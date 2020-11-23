@@ -2,8 +2,8 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\GetApplicantController;
-
+use Portal\Controllers\API\GetApplicantController;
+use Portal\Controllers\API\DisplayApplicantsController;
 use Psr\Container\ContainerInterface;
 
 class GetApplicantControllerFactory

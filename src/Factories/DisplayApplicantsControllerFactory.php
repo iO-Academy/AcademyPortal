@@ -3,7 +3,7 @@
 namespace Portal\Factories;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\DisplayApplicantsController;
+use Portal\Controllers\API\DisplayApplicantsController;
 
 class DisplayApplicantsControllerFactory
 {

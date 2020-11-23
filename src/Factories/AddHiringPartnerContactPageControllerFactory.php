@@ -3,7 +3,7 @@
 namespace Portal\Factories;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\AddHiringPartnerContactPageController;
+use Portal\Controllers\API\AddHiringPartnerContactPageController;
 
 class AddHiringPartnerContactPageControllerFactory
 {

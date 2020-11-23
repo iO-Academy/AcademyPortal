@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\DisplayPastEventsPageController;
+use Portal\Controllers\API\DisplayPastEventsPageController;
 use Psr\Container\ContainerInterface;
 
 class DisplayPastEventsPageControllerFactory
