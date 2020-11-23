@@ -107,7 +107,7 @@ class DisplayApplicantViewHelper
                     <td>' . $applicant->getEmail() . '</td>
                     <td>' . $applicant->getPrettyDateOfApplication() . '</td>
                     <td>' . $applicant->getCohortDate() . '</td>
-                    <td>' . $applicant->getStageName() . '<br><a href="/applicants"   
+                    <td>' . $applicant->getStageName() . '<br><a href="/api/progressApplicantNextStage"   
                            type="button"                                   
                            class="btn btn-info">
                            Next Stage
