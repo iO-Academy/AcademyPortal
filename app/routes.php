@@ -47,4 +47,6 @@ return function (App $app) {
     $app->delete('/api/deleteAllStageOptions', 'DeleteAllStageOptionsController');
     $app->post('/api/updateTeams', 'UpdateTeamsController');
 
+    $app->get('/api/getNextStageOptions', 'GetNextStageOptionsController');
+
 };

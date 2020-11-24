@@ -123,7 +123,7 @@ class DisplayApplicantViewHelper
                         </a>
                      
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#nextStageModal">
+                        <button type="button" class="btn btn-primary fish" data-toggle="modal" data-target="#nextStageModal">
                         Next Stage
                         </button>                            
                     </td>
