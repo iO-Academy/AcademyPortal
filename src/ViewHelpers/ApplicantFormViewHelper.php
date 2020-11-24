@@ -25,7 +25,8 @@ class ApplicantFormViewHelper
 
                 $string .= '</optgroup>';
             } else {
-                $string .= '<option class="stageOptionsDropdown" value="' . $stage['id'] . '">' . $stage['title'] . '</option>';
+                $string .=
+                    '<option class="stageDropdown" value="' . $stage['id'] . '">' . $stage['title'] . '</option>';
             }
         }
         return $string;
