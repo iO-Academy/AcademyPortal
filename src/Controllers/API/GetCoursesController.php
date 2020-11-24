@@ -40,7 +40,7 @@ class GetCoursesController extends Controller
         $statusCode = 200;
 
         try {
-            $data['data'] = $this->CourseModel->getCourses();
+            $data['data'] = $this->courseModel->getAllCourses();
             $data['message'] = 'No Courses scheduled';
             $data['success'] = true;
 

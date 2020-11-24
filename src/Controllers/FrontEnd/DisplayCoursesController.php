@@ -38,8 +38,10 @@ class DisplayCoursesController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $args['courseType'] = 'Upcoming';
-            return $this->renderer->render($response, 'courses.phtml', $args);
+            $courses = $this->courseModel->getAllCourses();
+            $data = ['data' => $courses];
+            print_r($courses);
+            return $this->renderer->render($response, 'courses.phtml', $data);
         } else {
             return $response->withHeader('Location', './');
         }

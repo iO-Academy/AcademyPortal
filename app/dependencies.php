@@ -94,6 +94,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['RandomPasswordModel'] = DI\factory('\Portal\Models\RandomPasswordModel');
     $container['StageModel'] = DI\factory('\Portal\Factories\StageModelFactory');
     $container['TeamModel'] = DI\factory('\Portal\Factories\TeamModelFactory');
+    $container['CourseModel'] = DI\factory('\Portal\Factories\CourseModelFactory');
 
     $containerBuilder->addDefinitions($container);
 };
