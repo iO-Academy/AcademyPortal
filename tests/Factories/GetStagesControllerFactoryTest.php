@@ -8,8 +8,6 @@ use Psr\Container\ContainerInterface;
 use Portal\Controllers\API\GetStagesController;
 use Portal\Factories\GetStagesControllerFactory;
 
-
-
 class GetStagesControllerFactoryTest extends TestCase
 {
     public function testInvoke()
