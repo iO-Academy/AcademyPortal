@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Portal\Factories;
-
 
 use Portal\Controllers\ProgressApplicantStageController;
 use Psr\Container\ContainerInterface;
