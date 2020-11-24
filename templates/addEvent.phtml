@@ -24,6 +24,11 @@
                 <?php echo \Portal\ViewHelpers\EventCategoryViewHelper::eventCategoryDropdown($data); ?>
             </select>
 
+            <div class="form-group">
+                <input class="" name="available-to-HP" type="checkbox"/>
+                <label for="available-to-HP">Is this event available to hiring partners?</label>
+            </div>
+
             <label for="event-name">Event Name</label>
             <input id="event-name" name="event-name" class="create-events form-control" type="text" placeholder="Event Name" data-required='true' data-max='255' maxlength="255">
 

@@ -15,6 +15,7 @@ class EventEntity
     protected $startTime;
     protected $endTime;
     protected $notes;
+    protected $availableToHP;
     protected $eventCategories;
 
     public function __construct(
@@ -25,7 +26,8 @@ class EventEntity
         string $date = null,
         string $startTime = null,
         string $endTime = null,
-        string $notes = null
+        string $notes = null,
+        int $availableToHP = null
     ) {
         $this->event_id = ($this->event_id ?? $event_id);
         $this->name = ($this->name ?? $name);
@@ -35,6 +37,7 @@ class EventEntity
         $this->startTime = ($this->startTime ?? $startTime);
         $this->endTime = ($this->endTime ?? $endTime);
         $this->notes = ($this->notes ?? $notes);
+        $this->availableToHP = ($this->availableToHP ?? $availableToHP);
 
         $this->sanitiseData();
     }
@@ -141,5 +144,9 @@ class EventEntity
         } else {
             return $this->notes;
         }
+    }
+    public function getAvailableToHP(): int
+    {
+        return $this->availableToHP;
     }
 }

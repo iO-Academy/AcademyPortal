@@ -1,6 +1,5 @@
 const eventForm = document.querySelector('form')
 const message = document.querySelector('#messages')
-
 // Submit Form + Add New Event API Call
 eventForm.addEventListener("submit", e => {
     e.preventDefault()
@@ -47,6 +46,7 @@ let getCompletedFormData = () => {
     let data = {
         name: eventForm.elements['event-name'].value,
         category: eventForm.elements['event-category'].value,
+        availableToHP: eventForm.elements['available-to-HP'].checked ? 1 : 0,
         location: eventForm.elements['event-location'].value,
         date: eventForm.elements['event-date'].value,
         startTime: eventForm.elements['event-start-time'].value,
