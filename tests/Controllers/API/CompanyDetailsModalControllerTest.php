@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Controllers\API\API\API\API\API\API\API\API\API\API\API\API\API\API\API;
+namespace Tests\Controllers\API;
 
 use Portal\Controllers\API\CompanyDetailsModalController;
 use Portal\Models\HiringPartnerModel;

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Tests\Controllers\API\API\API\API\API\API\API\API\API\API;
+namespace Tests\Controllers\API;
 
 use PHPUnit\Framework\TestCase;
 use Portal\Controllers\API\DeleteStageOptionController;
