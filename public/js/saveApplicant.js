@@ -64,9 +64,16 @@ let getCompletedFormData = () => {
     data['id'] = urlParams.get('id');
 
     formData.forEach(formItem => {
-        data[formItem.name] = formItem.value;
-        if (formItem.type == 'checkbox') {
-            data[formItem.name] = formItem.checked;
+        if (formItem.name == 'stageID') {
+            // string split on the delimeter
+            // split stageID and OptionID
+            //Append each into data object
+        }
+        else {
+            data[formItem.name] = formItem.value;
+            if (formItem.type == 'checkbox') {
+                data[formItem.name] = formItem.checked;
+            }
         }
     });
 
