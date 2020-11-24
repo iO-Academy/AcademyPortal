@@ -19,9 +19,14 @@
         <h3>Edit Applicant</h3>
         <form>
             <section class="stagesDropdown">
-                <label for="stages">Choose Applicants Stage: </label>
-                <select>
-                    <?php  ?>
+                <label for="stageTitle">Choose Applicants' Stage: </label>
+                <select id="stageTitle">
+                    <option name="default">-Select Stage-</option>
+                    <?php
+                    foreach ($stages as $title) {
+                        echo '<option value="' . $title['id'] . '">' . $title['title'] . '</option>';
+                    }
+                    ?>
                 </select>
             </section>
             <section class="applicationFormSection">

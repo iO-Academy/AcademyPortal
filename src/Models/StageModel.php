@@ -61,6 +61,22 @@ class StageModel
     }
 
     /**
+     * Gets all the stage titles from the database
+     *
+     * @param StageEntity $stageEntity
+     * @return array
+     */
+    public function getStageTitles(): array
+    {
+        $query = $this->db->prepare(
+            'SELECT `id`, `title` FROM `stages`;'
+        );
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+
+    /**
      *  Gets all the stages that are not deleted from stages table sorted by order
      *
      * @return array of stage entities
