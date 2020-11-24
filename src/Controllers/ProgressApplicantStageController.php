@@ -3,19 +3,17 @@
 
 namespace Portal\Controllers;
 
-
 use Portal\Interfaces\ApplicantModelInterface;
 use Portal\Models\StageModel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Views\PhpRenderer;
 
 class ProgressApplicantStageController
 {
     private $applicantModel;
     private $stageModel;
 
-    public function __construct(ApplicantModelInterface $applicantModel,StageModel $stageModel)
+    public function __construct(ApplicantModelInterface $applicantModel, StageModel $stageModel)
     {
         $this->applicantModel = $applicantModel;
         $this->stageModel = $stageModel;
@@ -23,19 +21,18 @@ class ProgressApplicantStageController
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $currentStage = $this->applicantModel->getApplicantStageId(6);
+        if ($_SESSION['loggedIn'] === true) {
+            $applicantId = (int) $args['id'];
+            $currentStage = (int) $this->applicantModel->getApplicantStageId($applicantId)['stageId'];
 
-        $numberOfStages = $this->stageModel->stagesCount();
+            $numberOfStages = (int) $this->stageModel->stagesCount()['stagesCount'];
 
-        if ($currentStage < $numberOfStages) {
-            $currentStage++;
-            $this->applicantModel->updateApplicantStageId($currentStage, $applicantId);
+            if ($currentStage < $numberOfStages) {
+                $currentStage++;
+                $this->applicantModel->updateApplicantStageId($currentStage, $applicantId);
+            }
+
+            return $response->withHeader('Location', '/applicants');
         }
-
-        return $response->withHeader('Location', '/');
-
     }
-
-
-
 }
