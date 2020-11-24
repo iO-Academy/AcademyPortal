@@ -11,9 +11,7 @@ interface ApplicantModelInterface
 
     public function storeApplicant(ApplicantEntityInterface $applicant);
 
-    public function getAllApplicants(string $sortingQuery);
-
-    public function getAllApplicantsByCohort(string $sortingQuery, string $cohortId);
+    public function getApplicants(string $stageID, string $cohortId, string $sortingQuery);
 
     public function getApplicantById($id);
 
