@@ -44,7 +44,7 @@ console.log('hello');
                         document.querySelector('#contacts').style.color = 'red'
                 })
 
-            $("#nextStageModal").modal()
+            $("xxnextStageModal").modal()
 
             })
         })
