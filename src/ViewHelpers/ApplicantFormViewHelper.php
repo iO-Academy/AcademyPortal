@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Portal\ViewHelpers;
-
 
 class ApplicantFormViewHelper
 {
@@ -18,7 +16,7 @@ class ApplicantFormViewHelper
                     $optionsForThisStage[] = $stageOption;
                 }
             }
-            if($stageHasOptions) {
+            if ($stageHasOptions) {
                 $string .= '<optgroup label="' . $stage['title'] . '">';
 
                 foreach ($optionsForThisStage as $option) {
