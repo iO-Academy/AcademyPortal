@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Controllers;
+namespace Tests\Controllers\API\API\API\API\API\API\API\API\API\API\API\API\API\API;
 
 use PHPUnit\Framework\TestCase;
 use Portal\Models\StageModel;

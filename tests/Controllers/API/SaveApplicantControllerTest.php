@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Controllers;
+namespace Tests\Controllers\API;
 
 use Tests\TestCase;
 use Portal\Controllers\API\SaveApplicantController;

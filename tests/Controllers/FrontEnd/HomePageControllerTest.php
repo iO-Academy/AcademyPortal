@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Controllers\FrontEnd;
+namespace Tests\Controllers\API\API\API\API\API\API\API\API\API\API\API\API\API\API\API\API\API\API\API\FrontEnd;
 
 use Tests\TestCase;
 use Portal\Controllers\FrontEnd\HomePageController;

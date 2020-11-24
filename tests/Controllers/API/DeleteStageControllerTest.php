@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Tests\Controllers;
+namespace Tests\Controllers\API\API\API\API\API\API\API\API\API\API\API;
 
 use PHPUnit\Framework\TestCase;
-use Portal\Controllers\API\EditStageOptionController;
+use Portal\Controllers\API\DeleteStageController;
 use Portal\Models\StageModel;
 
-class EditStageOptionControllerTest extends TestCase
+class DeleteStageControllerTest extends TestCase
 {
     /**
      * Tests the controller constructor and checks the class type of the output
@@ -17,8 +17,8 @@ class EditStageOptionControllerTest extends TestCase
     public function testConstruct()
     {
         $stageModel = $this->createMock(StageModel::class);
-        $case = new EditStageOptionController($stageModel);
-        $expected = EditStageOptionController::class;
+        $case = new DeleteStageController($stageModel);
+        $expected = DeleteStageController::class;
 
         $this->assertInstanceOf($expected, $case);
     }

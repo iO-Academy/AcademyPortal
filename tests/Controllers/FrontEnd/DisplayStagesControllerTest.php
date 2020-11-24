@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Controllers\FrontEnd;
+namespace Tests\Controllers\API\API\API\API\API\API\API\API\API\API\API\API\API\API\API\API\API\API\API\FrontEnd;
 
 use Portal\Controllers\FrontEnd\DisplayStagesController;
 use PHPUnit\Framework\TestCase;

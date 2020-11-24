@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Controllers;
+namespace Tests\Controllers\API\API\API\API;
 
 use Portal\Controllers\API\GetHiringPartnersByIdController;
 use Portal\Models\EventModel;
