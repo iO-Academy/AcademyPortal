@@ -23,8 +23,26 @@
                 <select id="stageTitle">
                     <option name="default">-Select Stage-</option>
                     <?php
-                    foreach ($stages as $title) {
-                        echo '<option value="' . $title['id'] . '">' . $title['title'] . '</option>';
+                    foreach ($stages as $stage) {
+                        $stageHasOptions = false;
+                        $optionsForThisStage = [];
+                        foreach ($stageOptions as $stageOption) {
+                            if ($stageOption['stageId'] == $stage['id']) {
+                                $stageHasOptions = true;
+                                $optionsForThisStage[] = $stageOption;
+                            }
+                        }
+                        if($stageHasOptions) {
+                            echo '<optgroup label="' . $stage['title'] . '">';
+
+                            foreach ($optionsForThisStage as $option) {
+                                echo '<option value="' . $option['id'] . '">' . $option['option'] . '</option>';
+                            }
+
+                            echo '</optgroup>';
+                        } else {
+                            echo '<option class="stageOptionsDropdown" value="' . $stage['id'] . '">' . $stage['title'] . '</option>';
+                        }
                     }
                     ?>
                 </select>

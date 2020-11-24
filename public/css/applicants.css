@@ -12,6 +12,10 @@
     padding-right: 20px;
 }
 
+.stageOptionsDropdown {
+    font-weight: bold;
+}
+
 #sortFilterApplicants li label {
     margin-top: -18px;
 }

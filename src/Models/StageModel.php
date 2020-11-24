@@ -63,7 +63,6 @@ class StageModel
     /**
      * Gets all the stage titles from the database
      *
-     * @param StageEntity $stageEntity
      * @return array
      */
     public function getStageTitles(): array
@@ -230,6 +229,20 @@ class StageModel
         $query->bindParam(':stageId', $stageId);
         $query->execute();
 
+        return $query->fetchAll();
+    }
+
+    /**
+     * Gets all the ids and options from the options table in the db
+     *
+     * @return array
+     */
+    public function getStageOptions(): array
+    {
+        $query = $this->db->prepare(
+            'SELECT `id`, `option`, `stageId` FROM `options`;'
+        );
+        $query->execute();
         return $query->fetchAll();
     }
     
