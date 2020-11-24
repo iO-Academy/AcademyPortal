@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Courses');
+    ?>
+    <link href="css/events.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+
+        <h3 id="events-list">Courses</h3>
+        <div id='events'></div>
+<?php require 'partials/layout/footer.phtml'; ?>
+</body>

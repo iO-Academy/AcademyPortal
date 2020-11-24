@@ -81,6 +81,8 @@ return function (ContainerBuilder $containerBuilder) {
     $container['DeleteAllStageOptionsController'] = DI\factory('\Portal\Factories\DeleteAllStageOptionsControllerFactory');
     $container['DisplayTeamPickerController'] = DI\factory('\Portal\Factories\DisplayTeamPickerControllerFactory');
     $container['UpdateTeamsController'] = DI\factory('\Portal\Factories\UpdateTeamsControllerFactory');
+    $container['DisplayCoursesController'] = DI\factory('\Portal\Factories\DisplayCoursesControllerFactory');
+    $container['GetCoursesController'] = DI\factory('\Portal\Factories\GetCoursesControllerFactory');
 
 
     // Models
