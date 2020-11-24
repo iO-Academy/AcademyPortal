@@ -44,10 +44,10 @@ class DisplayApplicantsController extends Controller
 
             if (isset($params['cohortId']) && $params['cohortId'] == 'all') {
                 $params['cohortId'] = '%';
-            } 
+            }
             if (isset($params['stageId']) && $params['stageId'] == 'all') {
                 $params['stageId'] = '%';
-            } 
+            }
 
             $params['data'] = $this->applicantModel
                 ->getApplicants($params['stageId'], $params['cohortId'], $params['sort']);
