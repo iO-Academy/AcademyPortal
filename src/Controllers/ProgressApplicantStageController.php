@@ -23,11 +23,19 @@ class ProgressApplicantStageController
 
     public function __invoke(Request $request, Response $response, array $args)
     {
+        $currentStage = $this->applicantModel->getApplicantStageId(6);
 
-        $stages = $this->stageModel->getAllStages();
-        var_dump($stages[1]);
+        $numberOfStages = $this->stageModel->stagesCount();
+
+        if ($currentStage < $numberOfStages) {
+            $currentStage++;
+            $this->applicantModel->updateApplicantStageId($currentStage, $applicantId);
+        }
+
         return $response->withHeader('Location', '/');
+
     }
+
 
 
 }
