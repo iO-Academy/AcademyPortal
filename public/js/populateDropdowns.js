@@ -2,7 +2,6 @@
 
 let getStageOptions = () => {
   return fetch('./api/getStages', {
-    //this is going to editStages.html
     credentials: 'same-origin',
     headers: {
       Accept: 'application/json',
@@ -10,11 +9,9 @@ let getStageOptions = () => {
     },
   }).then(response => response.json());
 };
-//not getting any data here.......
 
 let handleStageOptions = async () => {
   let response = await getStageOptions();
-  // console.log('*', response);
   return response.data;
 };
 
@@ -23,13 +20,17 @@ let outputStages = async () => {
   const element = document.getElementById('stages');
   let stageOptions = '';
   data.stages.forEach(item => {
-    console.log(data.stages);
     stageOptions += '<option ';
 
     if (element.dataset.selected === item.id) {
       stageOptions += 'selected ';
     }
-    stageOptions += `value="${item.id}">${item.title}</option>`;
+    stageOptions += `value="${item.id}">${item.title}`;
+    if (item.student) {
+      stageOptions += ` (Student)`;
+    }
+
+    stageOptions += `</option>`;
   });
 
   element.innerHTML += stageOptions;
@@ -49,7 +50,6 @@ let getFormOptions = () => {
 
 let handleFormOptions = async () => {
   let response = await getFormOptions();
-  // console.log(response);
   return response.data;
 };
 
@@ -71,7 +71,6 @@ let outputCohorts = async () => {
       'en-GB',
       dateOptions
     )}</option>`;
-    // console.log(cohortOptions);
   });
 
   element.innerHTML += cohortOptions;

@@ -5,7 +5,6 @@ namespace Portal\Factories;
 use Psr\Container\ContainerInterface;
 use Portal\Controllers\API\GetStagesController;
 
-
 class GetStagesControllerFactory
 {
     /**

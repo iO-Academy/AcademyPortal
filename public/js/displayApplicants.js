@@ -1,3 +1,5 @@
+//display applicant cohort dropdown
+
 (async () => {
   await outputCohorts();
 
@@ -34,6 +36,8 @@
       .classList.remove('hidden');
   }
 })();
+
+//display applicant stages dropdown
 
 (async () => {
   await outputStages();

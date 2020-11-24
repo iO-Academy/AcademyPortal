@@ -84,7 +84,7 @@ class ApplicantModel implements ApplicantModelInterface
      *
      * @return array the data retrieved from the database
      */
-    public function getApplicants(string $stageId = '', string $cohortId = '', string $sortingQuery = '')
+    public function getApplicants(string $stageId = '%', string $cohortId = '%', string $sortingQuery = '')
     {
         $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` AS 'cohortDate', 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
