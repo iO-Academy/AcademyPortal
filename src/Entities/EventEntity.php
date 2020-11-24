@@ -27,7 +27,7 @@ class EventEntity
         string $startTime = null,
         string $endTime = null,
         string $notes = null,
-        int $availableToHP = null 
+        int $availableToHP = null
     ) {
         $this->event_id = ($this->event_id ?? $event_id);
         $this->name = ($this->name ?? $name);
