@@ -5,7 +5,7 @@ namespace Tests\Factories;
 use PHPUnit\Framework\TestCase;
 use Portal\Models\StageModel;
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\EditStageController;
+use Portal\Controllers\API\EditStageController;
 use Portal\Factories\EditStageControllerFactory;
 
 class EditStageControllerFactoryTest extends TestCase

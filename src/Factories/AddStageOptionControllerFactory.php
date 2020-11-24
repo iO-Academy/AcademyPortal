@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\AddStageOptionController;
+use Portal\Controllers\API\AddStageOptionController;
 use Psr\Container\ContainerInterface;
 
 /**

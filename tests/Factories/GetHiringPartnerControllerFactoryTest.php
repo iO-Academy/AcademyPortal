@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Psr\Container\ContainerInterface;
 use Portal\Models\HiringPartnerModel;
 use Portal\Factories\GetHiringPartnerControllerFactory;
-use Portal\Controllers\GetHiringPartnersController;
+use Portal\Controllers\API\GetHiringPartnersController;
 
 class GetHiringPartnerControllerFactoryTest extends TestCase
 {
