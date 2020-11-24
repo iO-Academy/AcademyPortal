@@ -22,29 +22,7 @@
                 <label for="stageTitle">Choose Applicants' Stage: </label>
                 <select id="stageTitle">
                     <option name="default">-Select Stage-</option>
-                    <?php
-                    foreach ($stages as $stage) {
-                        $stageHasOptions = false;
-                        $optionsForThisStage = [];
-                        foreach ($stageOptions as $stageOption) {
-                            if ($stageOption['stageId'] == $stage['id']) {
-                                $stageHasOptions = true;
-                                $optionsForThisStage[] = $stageOption;
-                            }
-                        }
-                        if($stageHasOptions) {
-                            echo '<optgroup label="' . $stage['title'] . '">';
-
-                            foreach ($optionsForThisStage as $option) {
-                                echo '<option value="' . $option['id'] . '">' . $option['option'] . '</option>';
-                            }
-
-                            echo '</optgroup>';
-                        } else {
-                            echo '<option class="stageOptionsDropdown" value="' . $stage['id'] . '">' . $stage['title'] . '</option>';
-                        }
-                    }
-                    ?>
+                    <?php echo \Portal\ViewHelpers\ApplicantFormViewHelper::stagesDropdown($data['stages'], $data['stageOptions']); ?>
                 </select>
             </section>
             <section class="applicationFormSection">
