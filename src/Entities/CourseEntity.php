@@ -44,7 +44,7 @@ class CourseEntity
      */
     public function getStartDate(): ?string
     {
-        return date("d F, Y", strtotime($this->startDate));
+        return date("j F Y", strtotime($this->startDate));
     }
 
     /**
@@ -52,7 +52,7 @@ class CourseEntity
      */
     public function getEndDate(): ?string
     {
-        return date("d F, Y", strtotime($this->endDate));
+        return date("j F Y", strtotime($this->endDate));
     }
 
     /**
