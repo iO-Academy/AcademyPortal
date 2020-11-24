@@ -284,7 +284,8 @@ class ApplicantModel implements ApplicantModelInterface
                             `eligible` = :eligible,
                             `eighteenPlus` = :eighteenPlus,
                             `finance` = :finance,
-                            `notes` = :notes
+                            `notes` = :notes,
+                            `stageId` = :stageId,
                         WHERE (
                             `id` = :id
                         );"
@@ -302,7 +303,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':finance', $applicant->getFinance());
         $query->bindValue(':notes', $applicant->getNotes());
         $query->bindValue(':id', $applicant->getId());
-
+        $query->bindValue(':stageId', $applicant->getStageID());
         return $query->execute();
     }
 
