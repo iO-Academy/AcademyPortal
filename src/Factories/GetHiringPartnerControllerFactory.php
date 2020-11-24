@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\GetHiringPartnersController;
+use Portal\Controllers\API\GetHiringPartnersController;
 use Psr\Container\ContainerInterface;
 
 class GetHiringPartnerControllerFactory

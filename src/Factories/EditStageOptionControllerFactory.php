@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\EditStageOptionController;
+use Portal\Controllers\API\EditStageOptionController;
 use Psr\Container\ContainerInterface;
 
 class EditStageOptionControllerFactory

@@ -9,7 +9,7 @@
 namespace Portal\Factories;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\HomePageController;
+use Portal\Controllers\FrontEnd\HomePageController;
 
 class HomePageControllerFactory
 {

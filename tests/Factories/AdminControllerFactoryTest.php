@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Portal\Factories\AdminControllerFactory;
 use Slim\Views\PhpRenderer;
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\AdminController;
+use Portal\Controllers\FrontEnd\AdminController;
 
 class AdminControllerFactoryTest extends TestCase
 {
