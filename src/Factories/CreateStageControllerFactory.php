@@ -3,7 +3,7 @@
 namespace Portal\Factories;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\CreateStageController;
+use Portal\Controllers\API\CreateStageController;
 
 class CreateStageControllerFactory
 {

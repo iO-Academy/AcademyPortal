@@ -7,7 +7,7 @@ use Portal\Factories\AddHiringPartnerToEventControllerFactory;
 use Portal\Models\EventModel;
 use Slim\Views\PhpRenderer;
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\AddHiringPartnerToEventController;
+use Portal\Controllers\API\AddHiringPartnerToEventController;
 
 class AddHiringPartnerToEventControllerFactoryTest extends TestCase
 {

@@ -3,7 +3,7 @@
 namespace Tests\Factories;
 
 use Tests\TestCase;
-use Portal\Controllers\GetEventsController;
+use Portal\Controllers\API\GetEventsController;
 use Portal\Factories\GetEventsControllerFactory;
 use Portal\Models\EventModel;
 use Psr\Container\ContainerInterface;

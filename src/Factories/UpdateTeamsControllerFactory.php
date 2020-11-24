@@ -3,7 +3,7 @@
 namespace Portal\Factories;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\UpdateTeamsController;
+use Portal\Controllers\API\UpdateTeamsController;
 
 class UpdateTeamsControllerFactory
 {

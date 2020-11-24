@@ -4,7 +4,7 @@ namespace Test\Factories;
 
 use Tests\TestCase;
 use Portal\Factories\ApplicationFormControllerFactory;
-use Portal\Controllers\ApplicationFormController;
+use Portal\Controllers\API\ApplicationFormController;
 use Portal\Models\ApplicationFormModel;
 use Psr\Container\ContainerInterface;
 

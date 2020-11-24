@@ -3,7 +3,7 @@
 namespace Test\Factories;
 
 use Tests\TestCase;
-use Portal\Controllers\DisplayEventsPageController;
+use Portal\Controllers\FrontEnd\DisplayEventsPageController;
 use Portal\Models\EventModel;
 use Slim\Views\PhpRenderer;
 
