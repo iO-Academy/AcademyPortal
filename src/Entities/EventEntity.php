@@ -145,6 +145,12 @@ class EventEntity
             return $this->notes;
         }
     }
+
+    /**
+     * Get an int 0 or 1 which states whether hiring partners are involved or not
+     *
+     * @return int availableToHP
+     */
     public function getAvailableToHP(): int
     {
         return $this->availableToHP;
