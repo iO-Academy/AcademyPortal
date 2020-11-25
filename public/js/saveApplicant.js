@@ -1,10 +1,7 @@
 document.querySelector('#submitApplicant').addEventListener('click', e => {
     e.preventDefault();
-    console.log(1);
     const data = getCompletedFormData();
-    console.log(2);
     const validate = validateFormInputs(data);
-    console.log(3);
     let formIsValid = true;
 
 
@@ -30,7 +27,6 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
     });
 
     if (formIsValid) {
-        console.log(4);
         makeApiRequest(data, window.location.pathname);
     } else {
         document.querySelector('#generalError').innerHTML = 'This form is invalid, please check all fields';
@@ -80,7 +76,6 @@ let getCompletedFormData = () => {
             }
         }
     });
-    console.log(data)
     return data;
 };
 

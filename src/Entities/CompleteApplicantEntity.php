@@ -174,30 +174,33 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         $this->whyDev = StringValidator::validateExistsAndLength($this->whyDev, self::MAXTEXTLENGTH);
         $this->notes = StringValidator::validateLength($this->notes, self::MAXTEXTLENGTH);
         $this->phoneNumber = PhoneNumberValidator::validatePhoneNumber($this->phoneNumber);
-//
         $this->apprentice = $this->apprentice ? 1 : 0;
         $this->aptitude = $this->aptitude ? (int)$this->aptitude : null;
         $this->assessmentDay = DateTimeValidator::validateDate($this->assessmentDay);
         $this->assessmentTime = DateTimeValidator::validateTime($this->assessmentTime);
         $this->assessmentNotes = StringValidator::sanitiseString($this->assessmentNotes);
         $this->assessmentNotes = StringValidator::validateLength($this->assessmentNotes, self::MAXTEXTLENGTH);
+
         if ($this->diversitechInterest !== null) {
             $this->diversitechInterest = $this->diversitechInterest ? 1 : 0;
         }
+
         $this->diversitech = $this->diversitech ? (int)$this->diversitech : null;
         $this->edaid = $this->edaid ? (int)$this->edaid : null;
         $this->upfront = $this->upfront ? (int)$this->upfront : null;
-//
+
         if (($this->upfront + $this->edaid + $this->diversitech) > self::ACADEMY_PRICE) {
             throw new \Exception('Total payment is more than course price');
         }
-//
+
         $this->kitCollectionDay = DateTimeValidator::validateDate($this->kitCollectionDay);
         $this->kitCollectionTime = DateTimeValidator::validateTime($this->kitCollectionTime);
         $this->kitNum = $this->kitNum ? (int)$this->kitNum : null;
+
         if ($this->laptop !== null) {
             $this->laptop = $this->laptop ? 1 : 0;
         }
+        
         $this->laptopDeposit = $this->laptopDeposit ? 1 : 0;
         $this->laptopNum = $this->laptopNum ? (int)$this->laptopNum : null;
         $this->taster = DateTimeValidator::validateDate($this->taster);
