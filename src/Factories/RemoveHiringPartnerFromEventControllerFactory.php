@@ -3,7 +3,7 @@
 namespace Portal\Factories;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\RemoveHiringPartnerFromEventController;
+use Portal\Controllers\API\RemoveHiringPartnerFromEventController;
 
 class RemoveHiringPartnerFromEventControllerFactory
 {

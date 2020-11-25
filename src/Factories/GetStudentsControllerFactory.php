@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\GetStudentsController;
+use Portal\Controllers\API\GetStudentsController;
 
 use Psr\Container\ContainerInterface;
 
