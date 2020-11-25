@@ -10,6 +10,7 @@ use Portal\Interfaces\ApplicantModelInterface;
 class ApplicantModel implements ApplicantModelInterface
 {
     private $db;
+    private $numberPerPage = 3;
 
     public function __construct(\PDO $db)
     {
@@ -76,6 +77,27 @@ class ApplicantModel implements ApplicantModelInterface
     }
 
     /**
+     * Counts number of applicants (depending on filters) and divides by number of applicants to be shown per page
+     *
+     * @param string $stageId
+     * @param string $cohortId
+     *
+     * @return false|float
+     */
+    public function countPaginationPages(string $stageId = '%', string $cohortId = '%')
+    {
+        $count = "SELECT count(`id`) AS `id` FROM `applicants` 
+                    WHERE `applicants`.`deleted` = '0'
+                    AND `applicants`.`cohortId` like :cohortId
+                    AND `applicants`.`stageId` like :stageId;";
+        $query = $this->db->prepare($count);
+        $query->bindValue(':cohortId', $cohortId);
+        $query->bindValue(':stageId', $stageId);
+        $query->execute();
+        return ceil($query->fetch()['id']/$this->numberPerPage);
+    }
+
+    /**
      * Gets a sorted list of applicants assigned to a specific cohort.
      *
      * @param string $stageId       the stage to filter by
@@ -84,7 +106,12 @@ class ApplicantModel implements ApplicantModelInterface
      *
      * @return array the data retrieved from the database
      */
-    public function getApplicants(string $stageId = '', string $cohortId = '', string $sortingQuery = '')
+    public function getApplicants(
+        string $stageId = '%',
+        string $cohortId = '%',
+        string $sortingQuery = '',
+        string $pageNumber = '1'
+    )
     {
         $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` AS 'cohortDate', 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
@@ -94,14 +121,18 @@ class ApplicantModel implements ApplicantModelInterface
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       WHERE `applicants`.`deleted` = '0'
                       AND `applicants`.`cohortId` like :cohortId
-                      AND `applicants`.`stageId` like :stageId; ";
+                      AND `applicants`.`stageId` like :stageId
+                      LIMIT :offsets, :numberPerPage;";
+
 
         $stmt .= $this->sortingQuery($sortingQuery);
-
+        $offset = ($pageNumber - 1) * $this->numberPerPage;
         $query = $this->db->prepare($stmt);
         $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
         $query->bindValue(':cohortId', $cohortId);
         $query->bindValue(':stageId', $stageId);
+        $query->bindValue(':offsets', $offset, \PDO::PARAM_INT);
+        $query->bindValue(':numberPerPage', $this->numberPerPage, \PDO::PARAM_INT);
         $query->execute();
 
         return $query->fetchAll();

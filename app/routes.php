@@ -9,7 +9,7 @@ return function (App $app) {
     $app->get('/admin', 'AdminController');
     $app->get('/register', 'RegisterController');
     $app->get('/addapplicant', 'addApplicantController');
-    $app->get('/applicants', 'DisplayApplicantsController');
+    $app->get('/applicants[/{page}]', 'DisplayApplicantsController');
     $app->get('/hiringPartners', 'DisplayHiringPartnerPageController');
     $app->get('/addHiringPartner', 'AddHiringPartnerPageController');
     $app->get('/addHiringPartnerContact', 'AddHiringPartnerContactPageController');
@@ -27,6 +27,7 @@ return function (App $app) {
     $app->delete('/api/deleteApplicant', 'DeleteApplicantController');
     $app->post('/api/editApplicant', 'EditApplicantController');
     $app->get('/api/applicationForm', 'ApplicationFormController');
+    $app->get('/api/getStages', 'GetStagesController');
     $app->post('/api/createHiringPartner', 'CreateHiringPartnerController');
     $app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');
     $app->get('/api/getEvents', 'GetEventsController');

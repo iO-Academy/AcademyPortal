@@ -11,7 +11,7 @@
     <script defer src="./js/deleteApplicant.js"></script>
     <script defer src="./js/displayApplicants.js"></script>
 </head>
-<body>
+<body> 
 <?php require 'partials/layout/header.phtml'; ?>
 
 <?php require 'partials/layout/nav.phtml'; ?>
@@ -29,6 +29,14 @@
                             Apprentice Applicants
                         </a>
                     </li>
+                      <li class="pull-right">
+                        <label for="stages">
+                            Select Stages
+                            <select id="stages" class="submitApplicant form-control" name="stageId">
+                                <option value="all">All</option>
+                            </select>
+                        </label>
+                    </li>
                     <li class="pull-right">
                         <label for="cohorts">
                             Select Cohort
@@ -45,7 +53,27 @@
                 </div>
 
             </form>
+
         </div>
+        <nav aria-label="Page navigation example mt-5">
+            <ul class="pagination justify-content-center">
+                <li class="page-item <?php if($page <= 1){ echo 'disabled'; } ?>">
+                    <a class="page-link"
+                       href="<?php if($page <= 1){ echo '#'; } else { echo "?page=" . ($page-1); } ?>">Previous</a>
+                </li>
+
+                <?php for($i = 1; $i <= $count; $i++ ): ?>
+                    <li class="page-item <?php if($page == $i) {echo 'active'; } ?>">
+                        <a class="page-link" href="/applicants?page=<?= $i; ?>"> <?= $i; ?> </a>
+                    </li>
+                <?php endfor; ?>
+
+                <li class="page-item <?php if($page >= $count) { echo 'disabled'; } ?>">
+                    <a class="page-link"
+                       href="<?php if($page >= $count){ echo '#'; } else {echo "?page=". ($page+1); } ?>">Next</a>
+                </li>
+            </ul>
+        </nav>
         <!-- Modal -->
         <?php require('partials/applicantInfoModal.phtml'); ?>
     </div>
