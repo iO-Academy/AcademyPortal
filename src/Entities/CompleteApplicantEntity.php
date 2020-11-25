@@ -31,6 +31,15 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $team; // int
     protected $stageID;
     protected $stageOptionId;
+    protected $githubEduLink;
+    protected $githubUserName;
+    protected $portfolioUrl;
+    protected $pleskUrl;
+    protected $pleskUsername;
+    protected $pleskPassword;
+    protected $additionalNotes;
+    protected $hasConfirmedCourseDate;
+    protected $chosenCourseDate;
 
     protected const ACADEMY_PRICE = 10000;
 

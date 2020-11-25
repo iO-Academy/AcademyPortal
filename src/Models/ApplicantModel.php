@@ -144,8 +144,8 @@ class ApplicantModel implements ApplicantModelInterface
         $stmt = "SELECT `applicants`.`id`, `name`, `trainer`, `team`
                       FROM `applicants`
                       LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
-                      LEFT JOIN `applicants_additional` ON `applicants`.`id` = `applicants_additional`.`id`
-                      LEFT JOIN `teams` ON `applicants_additional`.`team` = `teams`.`id`
+                      LEFT JOIN `student_info` ON `applicants`.`id` = `student_info`.`id`
+                      LEFT JOIN `teams` ON `student_info`.`team` = `teams`.`id`
                       WHERE `applicants`.`deleted` = '0' AND `applicants`.`cohortId` = :cohortId;";
 
         $query = $this->db->prepare($stmt);
@@ -171,16 +171,18 @@ class ApplicantModel implements ApplicantModelInterface
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
                       `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName',
-                       `option` as 'stageOptionName' 
+                       `option` as 'stageOptionName', `githubEduLink`, `githubUserName`, `portfolioUrl`, `pleskUrl`,
+                       `pleskUsername`, `pleskPassword`, `additionalNotes`, 
+                       `confirmedCourseDate` as 'hasConfirmedCourseDate', `chosenCourseDate` 
                         FROM `applicants` 
                         LEFT JOIN `cohorts` 
                             ON `applicants`.`cohortId`=`cohorts`.`id` 
                         LEFT JOIN `hear_about` 
                             ON `applicants`.`hearAboutId`=`hear_about`.`id` 
-                        LEFT JOIN `applicants_additional`
-                            ON `applicants`.`id` = `applicants_additional`.`id`
+                        LEFT JOIN `student_info`
+                            ON `applicants`.`id` = `student_info`.`id`
                         LEFT JOIN `teams` 
-                            ON `applicants_additional`.`team` = `teams`.`id`
+                            ON `student_info`.`team` = `teams`.`id`
                         LEFT JOIN `stages`
                             ON `applicants`.`stageId` = `stages`.`id`
                         LEFT JOIN `options` 
@@ -253,6 +255,11 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare(
             "UPDATE `applicants`
                         SET 
+                            `apprentice` = :apprentice,
+                            `aptitude` = :aptitude,
+                            `assessmentDay` = :assessmentDay,
+                            `assessmentTime` = :assessmentTime,
+                            `assessmentNotes` = :assessmentNotes,
                             `name` = :name,
                             `email` = :email,
                             `phoneNumber` = :phoneNumber,
@@ -266,12 +273,19 @@ class ApplicantModel implements ApplicantModelInterface
                             `notes` = :notes,
                             `stageId` = :stageId,
                             `stageOptionId` = :stageOptionId
+                            `taster` = :taster,
+                            `tasterAttendance` = :tasterAttendance
                         WHERE (
                             `id` = :id
                         );"
         );
 
         $query->bindValue(':name', $applicant->getName());
+        $query->bindValue(':apprentice', $applicant->getApprentice());
+        $query->bindValue(':aptitude', $applicant->getAptitude());
+        $query->bindValue(':assessmentDay', $applicant->getAssessmentDay());
+        $query->bindValue(':assessmentTime', $applicant->getAssessmentTime());
+        $query->bindValue(':assessmentNotes', $applicant->getAssessmentNotes());
         $query->bindValue(':email', $applicant->getEmail());
         $query->bindValue(':phoneNumber', $applicant->getPhoneNumber());
         $query->bindValue(':cohortId', $applicant->getCohortId());
@@ -285,6 +299,8 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':id', $applicant->getId());
         $query->bindValue(':stageId', $applicant->getStageID());
         $query->bindValue(':stageOptionId', $applicant->getStageOptionId());
+        $query->bindValue(':taster', $applicant->getTaster());
+        $query->bindValue(':tasterAttendance', $applicant->getTasterAttendance());
 
         return $query->execute();
     }
@@ -298,13 +314,8 @@ class ApplicantModel implements ApplicantModelInterface
     public function updateApplicantAdditionalFields(CompleteApplicantEntity $applicant)
     {
         $query = $this->db->prepare(
-            "UPDATE `applicants_additional`
+            "UPDATE `student_info`
                         SET 
-                            `apprentice` = :apprentice,
-                            `aptitude` = :aptitude,
-                            `assessmentDay` = :assessmentDay,
-                            `assessmentTime` = :assessmentTime,
-                            `assessmentNotes` = :assessmentNotes,
                             `diversitechInterest` = :diversitechInterest,
                             `diversitech` = :diversitech,
                             `edaid` = :edaid,
@@ -315,18 +326,11 @@ class ApplicantModel implements ApplicantModelInterface
                             `laptop` = :laptop,
                             `laptopDeposit` = :laptopDeposit,
                             `laptopNum` = :laptopNum,
-                            `taster` = :taster,
-                            `tasterAttendance` = :tasterAttendance
                         WHERE (
                             `id` = :id
                         );"
         );
 
-        $query->bindValue(':apprentice', $applicant->getApprentice());
-        $query->bindValue(':aptitude', $applicant->getAptitude());
-        $query->bindValue(':assessmentDay', $applicant->getAssessmentDay());
-        $query->bindValue(':assessmentTime', $applicant->getAssessmentTime());
-        $query->bindValue(':assessmentNotes', $applicant->getAssessmentNotes());
         $query->bindValue(':diversitechInterest', $applicant->getDiversitechInterest());
         $query->bindValue(':diversitech', $applicant->getDiversitech());
         $query->bindValue(':edaid', $applicant->getEdaid());
@@ -337,8 +341,6 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':laptop', $applicant->getLaptop());
         $query->bindValue(':laptopDeposit', $applicant->getLaptopDeposit());
         $query->bindValue(':laptopNum', $applicant->getLaptopNum());
-        $query->bindValue(':taster', $applicant->getTaster());
-        $query->bindValue(':tasterAttendance', $applicant->getTasterAttendance());
         $query->bindValue(':id', $applicant->getId());
 
         return $query->execute();
