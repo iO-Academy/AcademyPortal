@@ -25,17 +25,25 @@ class ProgressApplicantStageController extends Controller
         if ($_SESSION['loggedIn'] === true) {
             $applicantId = (int) $request->getQueryParams()['applicantId'];
             $newStage = (int) $request->getQueryParams()['stageId'];
-            $optionIdValue = $request->getQueryParams()['optionId'];
-            $optionId = ($optionIdValue == 'null') ? NULL : (int) $optionIdValue;
-            $this->applicantModel->updateApplicantStageAndOptionIds($applicantId, $newStage, $optionId);
-            $newStage = $this->stageModel->getStageById($newStage);
+            $optionIdValue =  $request->getQueryParams()['optionId'] ?? NULL;
+            $result = $this->applicantModel->updateApplicantStageAndOptionIds($applicantId, $newStage, $optionIdValue);
+            if ($result) {
+                $newStageEntity = $this->stageModel->getStageById($newStage);
+                $data = [
+                    'success' => true,
+                    'message' => 'Successfully updated Applicant to Next Stage with Options',
+                    'data' => []
+                ];
+                $data['data']['newStageName'] = $newStageEntity->getStageTitle();
+                $data['data']['stageId'] = $newStage;
+                return $this->respondWithJson($response, $data, 200);
+            }
             $data = [
-                'success' => true,
-                'message' => 'Successfully updated applicant stage',
+                'success' => false,
+                'message' => 'Something went wrong when trying to update the Applicant\'s Stage and Option IDs into the database',
                 'data' => []
             ];
-            $data['data']['newStageName'] = $newStage->getStageTitle();
-            return $this->respondWithJson($response, $data, 200);
+            return $this->respondWithJson($response, $data, 500);
         }
     }
 }
