@@ -24,7 +24,7 @@ class DisplayApplicantViewHelperTest extends TestCase
                                 <td>test@test.com</td>
                                 <td>Jan 1st</td>
                                 <td>Feb 2020</td>
-                                <td>New application<br><a href="/api/progressApplicantNextStage?id=1"   
+                                <td>New application<br><a href="/api/progressApplicantStage/1"   
                                         type="button"                                   
                                         class="btn btn-info">
                                             Next Stage

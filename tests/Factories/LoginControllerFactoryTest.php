@@ -4,7 +4,7 @@ namespace Tests\Factories;
 
 use Tests\TestCase;
 use Portal\Factories\LoginControllerFactory;
-use Portal\Controllers\LoginController;
+use Portal\Controllers\API\LoginController;
 use Portal\Models\UserModel;
 use Psr\Container\ContainerInterface;
 

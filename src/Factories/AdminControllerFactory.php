@@ -3,7 +3,7 @@
 namespace Portal\Factories;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\AdminController;
+use Portal\Controllers\FrontEnd\AdminController;
 
 class AdminControllerFactory
 {
