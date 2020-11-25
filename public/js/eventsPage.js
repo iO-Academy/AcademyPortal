@@ -27,6 +27,7 @@ function getEvents(search = false) {
     })
     .then(response => response.json())
     .then(async (eventInfo) => {
+        console.log(eventInfo)
         let hiringPartners = await getHiringPartners()
         return {events: eventInfo, hiringPartners: hiringPartners}
     })
@@ -228,28 +229,32 @@ async function eventGenerator(event, hiringPartners) {
         eventInformation += `<p>Notes: ${event.notes}</p>`
     }
 
-    eventInformation += `<div class="event-attendees">`
-    eventInformation += `<div class="hiring-partners col-xs-12 col-md-6" data-eventId='${event.id}'></div>`;
-    if (!isPastPage) {
-        eventInformation += `
-            <div class='addHiringPartner col-xs-12 col-md-6'>
-                <h5>Add attendees</h5>
-                <form class='addHiringPartnerForm' id='${event.id}'>
+    if (event.availableToHP == 1) {
+        eventInformation += `<div class="event-attendees">`
+        eventInformation += `<div class="hiring-partners col-xs-12 col-md-6" data-eventId='${event.id}'></div>`;
+        if (!isPastPage) {
+            eventInformation += `
+                <div class='addHiringPartner col-xs-12 col-md-6'>
+                    <h5>Add attendees</h5>
+                    <form class='addHiringPartnerForm' id='${event.id}'>
     
-                    <select data-event=${event.id}>
-                        <option value='0'>Hiring partner</option>`
-                eventInformation += `</select>
-                    <div>
-                        <label>Number of attendees:</label>
-                        <input data-event='${event.id}' type='number' name='companyAttendees' class="companyAttendees" min='0'/>
-                    </div>
-                    <input value="Add Attendees" class="btn btn-primary btn-sm" type='submit'/> 
-                </form>
-                <div class='currentEventsMessages' data-event=${event.id}></div>
-            </div>`
+                        <select data-event=${event.id}>
+                            <option value='0'>Hiring partner</option>`
+            eventInformation += `</select>
+                        <div>
+                            <label>Number of attendees:</label>
+                            <input data-event='${event.id}' type='number' name='companyAttendees' class="companyAttendees" min='0'/>
+                        </div>
+                        <input value="Add Attendees" class="btn btn-primary btn-sm" type='submit'/> 
+                    </form>
+                    <div class='currentEventsMessages' data-event=${event.id}></div>
+                </div>
+            </div>
+           </div>`
+        }
     }
 
-    eventInformation += `</div></div></div>`
+    eventInformation += `</div>`
     eventList.innerHTML += eventInformation
     const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`)
     if (hiringPartners.status) {
@@ -304,3 +309,4 @@ document.querySelector('#clear-search').addEventListener('click', function(e) {
     }
     location.reload()
 })
+
