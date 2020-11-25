@@ -8,27 +8,27 @@ use phpDocumentor\Reflection\Types\This;
 
 class CourseEntity
 {
-    protected $id;
     protected $startDate;
     protected $endDate;
     protected $name;
     protected $trainer;
     protected $notes;
+    protected $id;
 
     public function __construct(
-        int $id = null,
         string $startDate = null,
         string $endDate = null,
         string $name = null,
         string $trainer = null,
-        string $notes = null
+        string $notes = null,
+        int $id = null
     ) {
-        $this->id = ($this->id ?? $id);
         $this->startDate = ($this->startDate ?? $startDate);
         $this->endDate = ($this->endDate ?? $endDate);
         $this->name = ($this->name ?? $name);
         $this->trainer = ($this->trainer ?? $trainer);
         $this->notes = ($this->notes ?? $notes);
+        $this->id = ($this->id ?? $id);
     }
 
     /**
@@ -44,7 +44,7 @@ class CourseEntity
      */
     public function getStartDate(): ?string
     {
-        return date("j F Y", strtotime($this->startDate));
+        return $this->startDate;
     }
 
     /**
@@ -52,7 +52,7 @@ class CourseEntity
      */
     public function getEndDate(): ?string
     {
-        return date("j F Y", strtotime($this->endDate));
+        return $this->endDate;
     }
 
     /**

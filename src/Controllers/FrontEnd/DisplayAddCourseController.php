@@ -8,13 +8,13 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
-class DisplayCoursesController extends Controller
+class DisplayAddCourseController extends Controller
 {
     private $renderer;
     private $courseModel;
 
     /**
-     * Creates new instance of DisplayCoursesController
+     * Creates new instance of DisplayAddCoursesController
      *
      * @param PhpRenderer $renderer
      * @param courseModel $courseModel
@@ -38,9 +38,7 @@ class DisplayCoursesController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $courses = $this->courseModel->getAllCourses();
-            $data = ['data' => $courses];
-            return $this->renderer->render($response, 'courses.phtml', $data);
+            return $this->renderer->render($response, 'addCourse.phtml', $args);
         } else {
             return $response->withHeader('Location', './');
         }

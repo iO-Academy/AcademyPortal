@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Add New Course');
+    ?>
+</head>
+
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+<h3>Add New Course</h3>
+<form method="post" action="api/addCourse">
+    <label for="course-name">Course Name</label>
+    <input name="name" class="create-events form-control" type="text" placeholder="Course name" data-required='true' data-max='255' maxlength="255">
+
+    <label for='course-start-date'>Start Date</label>
+    <input name='startDate' class="create-events form-control" type="date" data-required='true'>
+
+    <label for='course-end-date'>End Date</label>
+    <input name='endDate' class="create-events form-control" type="date" data-required='true'>
+
+    <label for='course-trainer'>Trainer</label>
+    <input name='trainer' class="create-events form-control" type="text" placeholder="Trainer" data-max='255' maxlength='255'>
+
+    <label for='course-notes'>Notes</label>
+    <input name='notes' class="create-events form-control" type="text" placeholder="Notes" data-max='5000' maxlength='5000'>
+
+    <input type="submit" class="btn btn-success" />
+</form>
+<div id='messages' class="alert"></div>
+<?php require 'partials/layout/footer.phtml';
+print_r($_SESSION); ?>
+</body>

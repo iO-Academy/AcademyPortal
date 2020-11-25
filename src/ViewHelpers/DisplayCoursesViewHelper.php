@@ -20,8 +20,8 @@ class DisplayCoursesViewHelper
             $result .=
                 '<tr>
                     <td>' . $course->getId() . '</td>
-                    <td>' . $course->getStartDate() . '</td>
-                    <td>' . $course->getEndDate() . '</td>
+                    <td>' . date("j F Y", strtotime($course->getStartDate())) . '</td>
+                    <td>' . date("j F Y", strtotime($course->getEndDate())) . '</td>
                     <td>' . $course->getName() . '</td>
                     <td>' . $course->getTrainer() . '</td>
                     <td>' . $course->getNotes() . '</td>

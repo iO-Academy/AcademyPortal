@@ -28,4 +28,40 @@ class CourseModel
         $query->execute();
         return $query->fetchAll();
     }
+
+    /**
+     * Add a new course to the database
+     *
+     * @param [type] $newCourse
+     * @return boolean True if operation succeeded
+     */
+    public function addCourse(CourseEntity $newCourse): bool
+    {
+        $query = $this->db->prepare("INSERT INTO `courses` (
+            `start_date`,
+            `end_date`,
+            `name`,
+            `trainer`,
+            `notes`
+            ) 
+            VALUES (
+            :startDate, 
+            :endDate, 
+            :name,
+            :trainer,
+            :notes);");
+
+        $startDate = $newCourse->getStartDate();
+        $endDate = $newCourse->getEndDate();
+        $name = $newCourse->getName();
+        $trainer = $newCourse->getTrainer();
+        $notes = $newCourse->getNotes();
+
+        $query->bindParam(':startDate', $startDate);
+        $query->bindParam(':endDate', $endDate);
+        $query->bindParam(':name', $name);
+        $query->bindParam(':trainer', $trainer);
+        $query->bindParam(':notes', $notes);
+        return $query->execute();
+    }
 }

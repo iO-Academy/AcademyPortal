@@ -82,7 +82,9 @@ return function (ContainerBuilder $containerBuilder) {
     $container['DisplayTeamPickerController'] = DI\factory('\Portal\Factories\DisplayTeamPickerControllerFactory');
     $container['UpdateTeamsController'] = DI\factory('\Portal\Factories\UpdateTeamsControllerFactory');
     $container['DisplayCoursesController'] = DI\factory('\Portal\Factories\DisplayCoursesControllerFactory');
+    $container['DisplayAddCourseController'] = DI\factory('\Portal\Factories\DisplayAddCourseControllerFactory');
     $container['GetCoursesController'] = DI\factory('\Portal\Factories\GetCoursesControllerFactory');
+    $container['AddCourseController'] = DI\factory('\Portal\Factories\AddCourseControllerFactory');
 
 
     // Models
