@@ -21,7 +21,12 @@ class CourseModel
      */
     public function getAllCourses(): array
     {
-        $sql = 'SELECT `id`, `courses`.`start_date` AS `startDate`, `courses`.`end_date` AS `endDate`, `name`, `trainer`, `notes`
+        $sql = 'SELECT `id`,
+                `courses`.`start_date` AS `startDate`,
+                `courses`.`end_date` AS `endDate`,
+                `name`,
+                `trainer`,
+                `notes`
                 FROM `courses`;';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);

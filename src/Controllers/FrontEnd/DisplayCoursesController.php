@@ -46,4 +46,3 @@ class DisplayCoursesController extends Controller
         }
     }
 }
-
