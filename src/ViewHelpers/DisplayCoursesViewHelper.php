@@ -7,11 +7,11 @@ use Portal\Interfaces\CourseEntityInterface;
 class DisplayCoursesViewHelper
 {
     /**
-     * Concatenates new applicant's name, email and cohort to join ready to be output, excluding apprentices.
+     * Concats course details into table TRs.
      *
      * @param $courses
      *
-     * @return string $result, returns name, email, cohortID and all the data for the applicant.
+     * @return string $result, returns id, startDate, endDate, name, trainer, notes.
      */
     public static function displayCourses($courses): string
     {
