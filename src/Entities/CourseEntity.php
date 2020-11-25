@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Portal\Entities;
-
 
 use phpDocumentor\Reflection\Types\This;
 
