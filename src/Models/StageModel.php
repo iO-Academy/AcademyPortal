@@ -74,6 +74,18 @@ class StageModel
     }
 
     /**
+     * Gets all the stage titles from the database
+     *
+     * @return array
+     */
+    public function getStageTitles(): array
+    {
+        $query = $this->db->prepare('SELECT `id`, `title` FROM `stages`;');
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    /**
      *  Gets all the stages that are not deleted from stages table sorted by order
      *
      * @return array of stage entities
@@ -224,6 +236,18 @@ class StageModel
     {
         $query = $this->db->prepare("SELECT `id`, `option`, `stageId` FROM `options` WHERE `stageId` = :stageId AND `deleted` = '0';");
         $query->bindParam(':stageId', $stageId);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    /**
+     * Gets all the ids and options from the options table in the db
+     *
+     * @return array
+     */
+    public function getStageOptions(): array
+    {
+        $query = $this->db->prepare('SELECT `id`, `option`, `stageId` FROM `options`;');
         $query->execute();
         return $query->fetchAll();
     }

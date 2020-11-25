@@ -5,7 +5,7 @@ namespace Tests\Factories;
 use Tests\TestCase;
 use Portal\Models\ApplicantModel;
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\SaveApplicantController;
+use Portal\Controllers\API\SaveApplicantController;
 use Portal\Factories\SaveApplicantControllerFactory;
 
 class SaveApplicantControllerFactoryTest extends TestCase

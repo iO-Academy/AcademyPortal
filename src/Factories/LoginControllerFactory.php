@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\LoginController;
+use Portal\Controllers\API\LoginController;
 use Psr\Container\ContainerInterface;
 
 class LoginControllerFactory

@@ -3,7 +3,7 @@
 namespace Portal\Factories;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\AddHiringPartnerToEventController;
+use Portal\Controllers\API\AddHiringPartnerToEventController;
 
 class AddHiringPartnerToEventControllerFactory
 {

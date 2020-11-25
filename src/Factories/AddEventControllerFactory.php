@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\AddEventController;
+use Portal\Controllers\API\AddEventController;
 use Psr\Container\ContainerInterface;
 
 class AddEventControllerFactory
