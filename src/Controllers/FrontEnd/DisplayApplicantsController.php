@@ -38,10 +38,14 @@ class DisplayApplicantsController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $params['sort'] = $request->getQueryParams()['sort'] ?? '';
-            $params['cohortId'] = $request->getQueryParams()['cohortId'] ?? '%';
-            $params['stageId'] = $request->getQueryParams()['stageId'] ?? '%';
-            $params['page'] = $request->getQueryParams()['page'] ?? '1';
+            $_SESSION['sort'] = $request->getQueryParams()['sort'] ?? $_SESSION['sort'] ?? '';
+            $_SESSION['cohortId'] = $request->getQueryParams()['cohortId'] ?? $_SESSION['cohortId'] ?? '%';
+            $_SESSION['stageId'] = $request->getQueryParams()['stageId'] ?? $_SESSION['stageId'] ?? '%';
+            $_SESSION['page'] = $request->getQueryParams()['page'] ?? $_SESSION['page'] ?? '1';
+            $params['sort'] = $_SESSION['sort'];
+            $params['cohortId'] = $_SESSION['cohortId'];
+            $params['stageId'] = $_SESSION['stageId'];
+            $params['page'] = $_SESSION['page'];
 
             if (isset($params['cohortId']) && $params['cohortId'] == 'all') {
                 $params['cohortId'] = '%';

@@ -10,7 +10,7 @@ use Portal\Interfaces\ApplicantModelInterface;
 class ApplicantModel implements ApplicantModelInterface
 {
     private $db;
-    private $numberPerPage = 3;
+    private $numberPerPage = 20;
 
     public function __construct(\PDO $db)
     {
