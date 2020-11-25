@@ -45,7 +45,6 @@ class DisplayApplicantsController extends Controller
             $params['sort'] = $_SESSION['sort'];
             $params['cohortId'] = $_SESSION['cohortId'];
             $params['stageId'] = $_SESSION['stageId'];
-            $params['page'] = $_SESSION['page'];
 
             if (isset($params['cohortId']) && $params['cohortId'] == 'all') {
                 $params['cohortId'] = '%';
@@ -55,6 +54,11 @@ class DisplayApplicantsController extends Controller
             }
 
             $params['count'] = $this->applicantModel->countPaginationPages($params['stageId'], $params['cohortId']);
+
+            if (isset($_SESSION['page']) && $_SESSION['page'] > $params['count']) {
+                $_SESSION['page'] = 1;
+            }
+            $params['page'] = $_SESSION['page'];
 
             $params['data'] = $this->applicantModel
                 ->getApplicants($params['stageId'], $params['cohortId'], $params['sort'], $params['page']);
