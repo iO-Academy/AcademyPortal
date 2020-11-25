@@ -66,10 +66,10 @@ class EditApplicantController extends Controller
                     $newApplicationData['stageId'],
                     $newApplicationData['optionId']
                 );
+
                 //If applicant is being moved to a stage that makes them a student a row in the
                 // applicant_additional table needs to be created. If it doesn't already exist.
-
-
+                
                 $successfulUpdate1 = $this->applicantModel->updateApplicant($applicant);
 
                 //Fails if applicant row doesn't exist in applicant_additional table

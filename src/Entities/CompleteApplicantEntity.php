@@ -29,7 +29,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $tasterAttendance; // bool
     protected $stageId; // int
     protected $team; // int
-    protected $stageID; //
+    protected $stageID;
     protected $stageOptionId;
 
     protected const ACADEMY_PRICE = 10000;
