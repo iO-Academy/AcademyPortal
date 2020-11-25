@@ -18,6 +18,19 @@ class StageModel
         $this->db = $db;
     }
 
+    /** Queries the database and returns the next stage id in an array
+     * @param int $currentStageId
+     * @return array
+     */
+    public function getNextStageId(int $currentStageId): array
+    {
+        $query = $this->db->prepare(
+            "SELECT `id` FROM `stages` WHERE `deleted` = 0 AND `id` > ? ORDER BY `id` ASC LIMIT 1;"
+        );
+        $query->execute([$currentStageId]);
+        return $query->fetch();
+    }
+
     /** Queries the database and returns the highest current stage number as an integer
      *
      * @return int
@@ -209,11 +222,9 @@ class StageModel
      */
     public function getOptionsByStageId(int $stageId): array
     {
-        $query = $this->db->prepare("SELECT `id`, `option`, `stageId` FROM `options` 
-                                        WHERE `stageId` = :stageId AND `deleted` = '0';");
+        $query = $this->db->prepare("SELECT `id`, `option`, `stageId` FROM `options` WHERE `stageId` = :stageId AND `deleted` = '0';");
         $query->bindParam(':stageId', $stageId);
         $query->execute();
-
         return $query->fetchAll();
     }
     
