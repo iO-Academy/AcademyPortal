@@ -27,6 +27,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $laptopNum; // int
     protected $taster; // date string
     protected $tasterAttendance; // bool
+    protected $stageId; // int
     protected $team; // int
     protected $stageID; //
     protected $stageOptionId;
@@ -66,6 +67,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         string $team = null,
         $stageID = null,
         $stageOptionId = null
+
     ) {
         $this->name = ($this->name ?? $applicantName);
         $this->email = ($this->email ?? $applicantEmail);
@@ -97,6 +99,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         $this->laptopNum = ($this->laptopNum ?? $laptopNum);
         $this->taster = ($this->taster ?? $taster);
         $this->tasterAttendance = ($this->tasterAttendance ?? $tasterAttendance);
+        $this->stageId = ($this->stageId ?? $stageId);
         $this->team = ($this->team ?? $team);
         $this->stageID = ($this->stageID ?? $stageID);
         $this->stageOptionId = ($this->stageOptionId ?? $stageOptionId);
