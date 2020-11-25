@@ -47,15 +47,9 @@
     document
       .querySelector(`[value='${stage}']`)
       .setAttribute('selected', 'true');
-    document
-      .querySelector('.stagesSort')
-      .classList.add('hidden');
   } else {
     document
       .querySelector("[value='all']")
       .setAttribute('selected', 'true');
-    document
-      .querySelector('.stagesSort')
-      .classList.remove('hidden');
   }
 })();
