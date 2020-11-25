@@ -18,6 +18,13 @@
 <?php require 'partials/layout/nav.phtml'; ?>
         <h3>Edit Applicant</h3>
         <form>
+            <section class="stagesDropdown">
+                <label for="stageTitle">Choose Applicant's Stage: </label>
+                <select class="submitApplicant" name="stageId" id="stageTitle">
+                    <option name="default">-Select Stage-</option>
+                    <?php echo \Portal\ViewHelpers\ApplicantFormViewHelper::stagesDropdown($data['stages'], $data['stageOptions']); ?>
+                </select>
+            </section>
             <section class="applicationFormSection">
                 <div data-toggle="collapse" class="collapse-header" data-target="#personalDetails" aria-expanded="true" aria-controls="personalDetails">
                     <h4>Personal Details</h4>
