@@ -306,7 +306,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':id', $applicant->getId());
         $query->bindValue(':stageId', $applicant->getStageID());
         $query->bindValue(':stageOptionId', $applicant->getStageOptionId());
-        
+
         return $query->execute();
     }
 

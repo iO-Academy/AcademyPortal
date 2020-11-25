@@ -67,7 +67,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         string $team = null,
         $stageID = null,
         $stageOptionId = null
-
     ) {
         $this->name = ($this->name ?? $applicantName);
         $this->email = ($this->email ?? $applicantEmail);
@@ -81,7 +80,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         $this->finance = ($this->finance ?? $applicantFinance);
         $this->notes = ($this->notes ?? $applicantNotes);
         $this->id = ($this->id ?? $applicantId);
-
         $this->apprentice = ($this->apprentice ?? $apprentice);
         $this->aptitude = ($this->aptitude ?? $aptitude);
         $this->assessmentDay = ($this->assessmentDay ?? $assessmentDay);
@@ -99,7 +97,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         $this->laptopNum = ($this->laptopNum ?? $laptopNum);
         $this->taster = ($this->taster ?? $taster);
         $this->tasterAttendance = ($this->tasterAttendance ?? $tasterAttendance);
-        $this->stageId = ($this->stageId ?? $stageId);
         $this->team = ($this->team ?? $team);
         $this->stageID = ($this->stageID ?? $stageID);
         $this->stageOptionId = ($this->stageOptionId ?? $stageOptionId);

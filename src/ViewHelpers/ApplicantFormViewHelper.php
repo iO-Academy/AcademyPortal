@@ -20,13 +20,15 @@ class ApplicantFormViewHelper
                 $string .= '<optgroup label="' . $stage['title'] . '">';
 
                 foreach ($optionsForThisStage as $option) {
-                    $string .= '<option name="stageId" value="' . $stage['id'] . " " . $option['id'] . '">' . $option['option'] . '</option>';
+                    $string .= '<option name="stageId" value="' . $stage['id'] . " " . $option['id'] . '">'
+                        . $option['option'] . '</option>';
                 }
 
                 $string .= '</optgroup>';
             } else {
                 $string .=
-                    '<option class="stageDropdown" name="stageId" value="' . $stage['id'] . '">' . $stage['title'] . '</option>';
+                    '<option class="stageDropdown" name="stageId" value="' . $stage['id'] . '">'
+                    . $stage['title'] . '</option>';
             }
         }
         return $string;
