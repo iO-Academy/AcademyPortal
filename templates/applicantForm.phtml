@@ -193,6 +193,44 @@
                 </div>
             </section>
 
+            <section class="applicationFormSection">
+                <div data-toggle="collapse" class="collapse-header" data-target="#studentInfo" aria-expanded="false" aria-controls="personalDetails">
+                    <h4>Student Info</h4>
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                </div>
+
+                <div id="studentInfo" class="collapse">
+                    <label for="github-username">Github Username</label>
+                    <div id="githubError" class="alert hidden formItem_alert"></div>
+                    <input id="github-username" name="github-username" class="submitApplicant form-control" type="text" placeholder="Github Username" value="">
+
+                    <label for="github-education">Github Education Link</label>
+                    <div id="githubEducationError" class="alert hidden formItem_alert"></div>
+                    <input id="github-education" name="github-education" class="submitApplicant form-control" type="text" placeholder="Github Education Link" value="">
+
+                    <label for="portfolio-url">Portfolio URL</label>
+                    <div id="portfolioError" class="alert hidden formItem_alert"></div>
+                    <input id="portfolio-url" name="portfolio-url" class="submitApplicant form-control" type="url" placeholder="Portfolio URL" value="">
+
+                    <label for="plesk-url">Plesk Hosting URL</label>
+                    <div id="pleskUrlError" class="alert hidden formItem_alert"></div>
+                    <input id="plesk-url" name="plesk-url" class="submitApplicant form-control" type="url" placeholder="Plesk URL" value="">
+
+                    <label for="plesk-username">Plesk Username</label>
+                    <div id="pleskUsernameError" class="alert hidden formItem_alert"></div>
+                    <input id="plesk-username" name="plesk-username" class="submitApplicant form-control" type="text" placeholder="Plesk Username" value="">
+
+                    <label for="plesk-password">Plesk Password</label>
+                    <div id="pleskPasswordError" class="alert hidden formItem_alert"></div>
+                    <input id="plesk-password" name="plesk-password" class="submitApplicant form-control" type="text" placeholder="Plesk Password" value="">
+
+                    <label for="additional-notes">Additional Notes</label>
+                    <div id="notesError" class="alert hidden formItem_alert"></div>
+                    <textarea id="additional-notes" name="additional-notes" class="submitApplicant form-control" rows="4" placeholder="Notes" value=""></textarea>
+
+                </div>
+            </section>
+
             <input id="submitApplicant" type="submit" class="btn btn-success" value="Save"/>
             <div id="generalError" class="alert alert-danger hidden formItem_alert"></div>
         </form>
