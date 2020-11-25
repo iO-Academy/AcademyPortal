@@ -11,7 +11,7 @@
     <script defer src="./js/deleteApplicant.js"></script>
     <script defer src="./js/displayApplicants.js"></script>
 </head>
-<body>
+<body> 
 <?php require 'partials/layout/header.phtml'; ?>
 
 <?php require 'partials/layout/nav.phtml'; ?>
@@ -28,6 +28,14 @@
                         <a href="#apprentice" aria-controls="apprentice" role="tab" data-toggle="tab">
                             Apprentice Applicants
                         </a>
+                    </li>
+                      <li class="pull-right">
+                        <label for="stages">
+                            Select Stages
+                            <select id="stages" class="submitApplicant form-control" name="stageId">
+                                <option value="all">All</option>
+                            </select>
+                        </label>
                     </li>
                     <li class="pull-right">
                         <label for="cohorts">
