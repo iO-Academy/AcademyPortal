@@ -41,6 +41,7 @@ class DisplayApplicantsController extends Controller
             $params['sort'] = $request->getQueryParams()['sort'] ?? '';
             $params['cohortId'] = $request->getQueryParams()['cohortId'] ?? '%';
             $params['stageId'] = $request->getQueryParams()['stageId'] ?? '%';
+            $params['page'] = $request->getQueryParams()['page'] ?? '1';
 
             if (isset($params['cohortId']) && $params['cohortId'] == 'all') {
                 $params['cohortId'] = '%';
@@ -49,8 +50,10 @@ class DisplayApplicantsController extends Controller
                 $params['stageId'] = '%';
             }
 
+            $params['count'] = $this->applicantModel->countPaginationPages($params['stageId'], $params['cohortId']);
+
             $params['data'] = $this->applicantModel
-                ->getApplicants($params['stageId'], $params['cohortId'], $params['sort']);
+                ->getApplicants($params['stageId'], $params['cohortId'], $params['sort'], $params['page']);
             return $this->renderer->render($response, 'applicants.phtml', $params);
         }
         return $response->withHeader('Location', '/');
