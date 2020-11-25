@@ -1,7 +1,10 @@
 document.querySelector('#submitApplicant').addEventListener('click', e => {
     e.preventDefault();
+    console.log(1);
     const data = getCompletedFormData();
+    console.log(2);
     const validate = validateFormInputs(data);
+    console.log(3);
     let formIsValid = true;
 
 
@@ -27,6 +30,7 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
     });
 
     if (formIsValid) {
+        console.log(4);
         makeApiRequest(data, window.location.pathname);
     } else {
         document.querySelector('#generalError').innerHTML = 'This form is invalid, please check all fields';
@@ -64,10 +68,10 @@ let getCompletedFormData = () => {
     data['id'] = urlParams.get('id');
 
     formData.forEach(formItem => {
-        if (formItem.name == 'stageID') {
-            // string split on the delimeter
-            // split stageID and OptionID
-            //Append each into data object
+        if (formItem.name == 'stageId') {
+            let stageOptionArray = formItem.value.split(" ");
+            data['stageId'] = stageOptionArray[0];
+            data['optionId'] = stageOptionArray[1] ?? null;
         }
         else {
             data[formItem.name] = formItem.value;
@@ -76,7 +80,7 @@ let getCompletedFormData = () => {
             }
         }
     });
-
+    console.log(data)
     return data;
 };
 

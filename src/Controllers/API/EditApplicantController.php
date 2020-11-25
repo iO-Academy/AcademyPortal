@@ -61,13 +61,21 @@ class EditApplicantController extends Controller
                     $newApplicationData['laptopDeposit'],
                     $newApplicationData['laptopNum'],
                     $newApplicationData['taster'],
-                    $newApplicationData['tasterAttendance']
+                    $newApplicationData['tasterAttendance'],
+                    null,
+                    $newApplicationData['stageId'],
+                    $newApplicationData['optionId']
                 );
+                //If applicant is being moved to a stage that makes them a student a row in the
+                // applicant_additional table needs to be created. If it doesn't already exist.
+
 
                 $successfulUpdate1 = $this->applicantModel->updateApplicant($applicant);
+
+                //Fails if applicant row doesn't exist in applicant_additional table
                 $successfulUpdate2 = $this->applicantModel->updateApplicantAdditionalFields($applicant);
 
-                if ($successfulUpdate1 && $successfulUpdate2) {
+                if ($successfulUpdate1) {
                     $data['success'] = true;
                     $data['msg'] = 'Applicant has been updated!';
                     $statusCode = 200;
