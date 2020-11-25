@@ -27,7 +27,10 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $laptopNum; // int
     protected $taster; // date string
     protected $tasterAttendance; // bool
+    protected $stageId; // int
     protected $team; // int
+    protected $stageID;
+    protected $stageOptionId;
 
     protected const ACADEMY_PRICE = 10000;
 
@@ -61,7 +64,9 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         $laptopNum = null,
         string $taster = null,
         bool $tasterAttendance = null,
-        string $team = null
+        string $team = null,
+        $stageID = null,
+        $stageOptionId = null
     ) {
         $this->name = ($this->name ?? $applicantName);
         $this->email = ($this->email ?? $applicantEmail);
@@ -75,7 +80,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         $this->finance = ($this->finance ?? $applicantFinance);
         $this->notes = ($this->notes ?? $applicantNotes);
         $this->id = ($this->id ?? $applicantId);
-
         $this->apprentice = ($this->apprentice ?? $apprentice);
         $this->aptitude = ($this->aptitude ?? $aptitude);
         $this->assessmentDay = ($this->assessmentDay ?? $assessmentDay);
@@ -94,6 +98,8 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         $this->taster = ($this->taster ?? $taster);
         $this->tasterAttendance = ($this->tasterAttendance ?? $tasterAttendance);
         $this->team = ($this->team ?? $team);
+        $this->stageID = ($this->stageID ?? $stageID);
+        $this->stageOptionId = ($this->stageOptionId ?? $stageOptionId);
 
         $this->sanitiseData();
     }
@@ -168,16 +174,17 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         $this->whyDev = StringValidator::validateExistsAndLength($this->whyDev, self::MAXTEXTLENGTH);
         $this->notes = StringValidator::validateLength($this->notes, self::MAXTEXTLENGTH);
         $this->phoneNumber = PhoneNumberValidator::validatePhoneNumber($this->phoneNumber);
-
         $this->apprentice = $this->apprentice ? 1 : 0;
         $this->aptitude = $this->aptitude ? (int)$this->aptitude : null;
         $this->assessmentDay = DateTimeValidator::validateDate($this->assessmentDay);
         $this->assessmentTime = DateTimeValidator::validateTime($this->assessmentTime);
         $this->assessmentNotes = StringValidator::sanitiseString($this->assessmentNotes);
         $this->assessmentNotes = StringValidator::validateLength($this->assessmentNotes, self::MAXTEXTLENGTH);
+
         if ($this->diversitechInterest !== null) {
             $this->diversitechInterest = $this->diversitechInterest ? 1 : 0;
         }
+
         $this->diversitech = $this->diversitech ? (int)$this->diversitech : null;
         $this->edaid = $this->edaid ? (int)$this->edaid : null;
         $this->upfront = $this->upfront ? (int)$this->upfront : null;
@@ -189,16 +196,18 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         $this->kitCollectionDay = DateTimeValidator::validateDate($this->kitCollectionDay);
         $this->kitCollectionTime = DateTimeValidator::validateTime($this->kitCollectionTime);
         $this->kitNum = $this->kitNum ? (int)$this->kitNum : null;
+
         if ($this->laptop !== null) {
             $this->laptop = $this->laptop ? 1 : 0;
         }
+        
         $this->laptopDeposit = $this->laptopDeposit ? 1 : 0;
         $this->laptopNum = $this->laptopNum ? (int)$this->laptopNum : null;
         $this->taster = DateTimeValidator::validateDate($this->taster);
         $this->tasterAttendance = $this->tasterAttendance ? 1 : 0;
         $this->team = StringValidator::sanitiseString($this->team);
         $this->team = StringValidator::validateLength($this->team, self::MAXVARCHARLENGTH);
-        $this->stageName = StringValidator::validateLength($this->stageName, self::MAXVARCHARLENGTH);
+        $this->stageName = StringValidator::validateLength($this->stageName ?? '', self::MAXVARCHARLENGTH);
         $this->stageID = (int)$this->stageID;
     }
 
@@ -344,5 +353,21 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getTeam(): ?string
     {
         return $this->team;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStageID()
+    {
+        return $this->stageID;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStageOptionId(): ?int
+    {
+        return $this->stageOptionId;
     }
 }

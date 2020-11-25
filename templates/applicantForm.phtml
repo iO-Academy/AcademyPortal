@@ -20,7 +20,7 @@
         <form>
             <section class="stagesDropdown">
                 <label for="stageTitle">Choose Applicant's Stage: </label>
-                <select id="stageTitle">
+                <select class="submitApplicant" name="stageId" id="stageTitle">
                     <option name="default">-Select Stage-</option>
                     <?php echo \Portal\ViewHelpers\ApplicantFormViewHelper::stagesDropdown($data['stages'], $data['stageOptions']); ?>
                 </select>

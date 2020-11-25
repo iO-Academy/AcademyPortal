@@ -18,6 +18,8 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     protected $eighteenPlus;
     protected $finance;
     protected $notes;
+    protected $stageID;
+
     protected const MAXVARCHARLENGTH = 255;
     protected const MAXTEXTLENGTH = 10000;
 

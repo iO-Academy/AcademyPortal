@@ -64,12 +64,18 @@ let getCompletedFormData = () => {
     data['id'] = urlParams.get('id');
 
     formData.forEach(formItem => {
-        data[formItem.name] = formItem.value;
-        if (formItem.type == 'checkbox') {
-            data[formItem.name] = formItem.checked;
+        if (formItem.name == 'stageId') {
+            let stageOptionArray = formItem.value.split(" ");
+            data['stageId'] = stageOptionArray[0];
+            data['optionId'] = stageOptionArray[1] ?? null;
+        }
+        else {
+            data[formItem.name] = formItem.value;
+            if (formItem.type == 'checkbox') {
+                data[formItem.name] = formItem.checked;
+            }
         }
     });
-
     return data;
 };
 
