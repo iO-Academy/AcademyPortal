@@ -67,13 +67,10 @@ class StageModel
      */
     public function getStageTitles(): array
     {
-        $query = $this->db->prepare(
-            'SELECT `id`, `title` FROM `stages`;'
-        );
+        $query = $this->db->prepare('SELECT `id`, `title` FROM `stages`;');
         $query->execute();
         return $query->fetchAll();
     }
-
 
     /**
      *  Gets all the stages that are not deleted from stages table sorted by order
@@ -239,9 +236,7 @@ class StageModel
      */
     public function getStageOptions(): array
     {
-        $query = $this->db->prepare(
-            'SELECT `id`, `option`, `stageId` FROM `options`;'
-        );
+        $query = $this->db->prepare('SELECT `id`, `option`, `stageId` FROM `options`;');
         $query->execute();
         return $query->fetchAll();
     }
