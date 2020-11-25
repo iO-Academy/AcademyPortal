@@ -144,7 +144,7 @@ class EventModel
     public function searchFutureEvents(string $searchTerm):array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
-                `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`, `availableToHP`
+                `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
                 FROM `events` 
                 LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
                 WHERE `events`.`name` LIKE ? AND `date` > NOW() ORDER BY `date` DESC;';

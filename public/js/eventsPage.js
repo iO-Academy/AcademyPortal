@@ -27,7 +27,6 @@ function getEvents(search = false) {
     })
     .then(response => response.json())
     .then(async (eventInfo) => {
-        console.log(eventInfo)
         let hiringPartners = await getHiringPartners()
         return {events: eventInfo, hiringPartners: hiringPartners}
     })
