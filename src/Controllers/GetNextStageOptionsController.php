@@ -34,58 +34,22 @@ class GetNextStageOptionsController extends Controller
     {
         $data = [
             'success' => false,
-            'message' => 'Something went wrong. This is new',
+            'message' => 'Something went wrong',
             'data' => []
         ];
         $statusCode = 200;
-//        var_dump('---------------------');
-//        var_dump($data);
-//        var_dump('---------------------');
-        $data['data'] = $this->stageModel->getOptionsByStageID(3);
-
-
-//        $pastEvents = $request->getQueryParams()['past'] ?? '';
-//
-//        $eventSearchInput = $request->getQueryParams()['searchTerm'] ?? '';
-//        if (!empty($eventSearchInput)) {
-//            if (strlen($eventSearchInput) < 256) {
-//                try {
-//                    if (!$pastEvents) {
-//                        $data['data'] = $this->stageModel->searchFutureEvents($eventSearchInput);
-//                    } else {
-//                        $data['data'] = $this->stageModel->searchPastEvents($eventSearchInput);
-//                    }
-//
-//                    $data['message'] = 'No results returned matching your search';
-//                    if (count($data['data']) > 0) {
-//                        $data['message'] = '';
-//                    }
-//                } catch (\PDOException $exception) {
-//                    $data['message'] = $exception->getMessage();
-//                }
-//            } else {
-//                $data['message'] = 'Search term cannot be greater than 255 characters.';
-//            }
-//            return $this->respondWithJson($response, $data, $statusCode);
-//        }
-//
-//
-//        try {
-//            if (!$pastEvents) {
-//                $data['data'] = $this->stageModel->getOptionsByStageID(3);
-//            } else {
-//                $data['data'] = $this->stageModel->getPastEvents();
-//            }
-//
-//            $data['message'] = 'No events scheduled';
-//            $data['success'] = true;
-//
-//            if (count($data['data']) > 0) {
-//                $data['message'] = '';
-//            }
-//        } catch (\PDOException $exception) {
-//            $data['message'] = $exception->getMessage();
-//        }
+        $stageId = intval($args['stageid']);
+        try {
+            $nextId = intval($this->stageModel->getNextStageId($stageId)['id']);
+            $data['data']['nextStageOptions'] = $this->stageModel->getOptionsByStageID($nextId);
+            $data['data']['nextStageId'] = $nextId;
+            $data['success'] = true;
+            $data['message'] = 'Found data';
+        }
+        catch (\Exception $e) {
+            $data['success'] = false;
+            $data['message'] = $e->getMessage();
+        }
         return $this->respondWithJson($response, $data, $statusCode);
     }
 }
