@@ -76,7 +76,7 @@ class ApplicantModel implements ApplicantModelInterface
     }
 
     /**
-     * Gets a sorted list of applicants assigned to a specific cohort.
+     * Gets a sorted list of applicants assigned to a specific cohort and stage.
      *
      * @param string $stageId       the stage to filter by
      * @param string $cohortId      the cohort to filer by

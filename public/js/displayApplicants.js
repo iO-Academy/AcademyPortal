@@ -19,22 +19,6 @@
     form.insertAdjacentHTML('beforeend', filter);
     form.submit();
   });
-
-  if (cohort !== 'all') {
-    document
-      .querySelector(`[value='${cohort}']`)
-      .setAttribute('selected', 'true');
-    document
-      .querySelector('.cohortSort')
-      .classList.add('hidden');
-  } else {
-    document
-      .querySelector("[value='all']")
-      .setAttribute('selected', 'true');
-    document
-      .querySelector('.cohortSort')
-      .classList.remove('hidden');
-  }
 })();
 
 //display applicant stages dropdown
