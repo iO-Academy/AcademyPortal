@@ -5,7 +5,7 @@ namespace Tests\Factories;
 use PHPUnit\Framework\TestCase;
 use Portal\Models\ApplicantModel;
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\DeleteApplicantController;
+use Portal\Controllers\API\DeleteApplicantController;
 use Portal\Factories\DeleteApplicantControllerFactory;
 
 class DeleteApplicantControllerFactoryTest extends TestCase

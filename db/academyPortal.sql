@@ -5,9 +5,9 @@
 # http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.30)
+# Host: 127.0.0.1 (MySQL 5.7.31)
 # Database: academyPortal
-# Generation Time: 2020-08-11 15:51:04 +0000
+# Generation Time: 2020-11-24 15:51:51 +0000
 # ************************************************************
 
 
@@ -199,6 +199,7 @@ CREATE TABLE `events` (
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
   `notes` text,
+  `availableToHP` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `category` (`category`),
   CONSTRAINT `events_ibfk_1` FOREIGN KEY (`category`) REFERENCES `event_categories` (`id`)
@@ -207,11 +208,13 @@ CREATE TABLE `events` (
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
 
-INSERT INTO `events` (`id`, `name`, `category`, `location`, `date`, `start_time`, `end_time`, `notes`)
+INSERT INTO `events` (`id`, `name`, `category`, `location`, `date`, `start_time`, `end_time`, `notes`, `availableToHP`)
 VALUES
-	(1,'test',2,'bath','2020-02-08','09:01:00','11:00:00','sf'),
-	(2,'bath',1,'bath','2020-12-12','19:00:00','20:00:00','sd'),
-	(3,'bath',3,'bath','2020-12-12','19:00:00','20:00:00','ats');
+	(1,'test',2,'bath','2020-02-08','09:01:00','11:00:00','sf',0),
+	(2,'bath',1,'bath','2020-12-12','19:00:00','20:00:00','sd',0),
+	(3,'bath',3,'bath','2020-12-12','19:00:00','20:00:00','ats',0),
+	(4,'Hi',2,'hui','2022-12-12','11:11:00','22:22:00','',1),
+	(5,'Hi',1,'hui','2222-02-20','10:10:00','12:12:00','',0);
 
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;

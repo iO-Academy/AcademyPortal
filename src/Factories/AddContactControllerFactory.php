@@ -3,7 +3,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\AddContactController;
+use Portal\Controllers\API\AddContactController;
 use Psr\Container\ContainerInterface;
 
 class AddContactControllerFactory
