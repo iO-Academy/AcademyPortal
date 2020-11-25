@@ -121,11 +121,9 @@ class DisplayApplicantViewHelper
                                 data-id="' . $applicant->getId() . '">
                                 Delete
                         </a>
-                     
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary fish" data-toggle="modal" data-target="#nextStageModal">
+                        <button type="button" class="btn btn-primary btnNextStage" data-stageid="' . $applicant->getStageID() . '" >
                         Next Stage
-                        </button>                            
+                        </button>              
                     </td>
                 </tr>';
     }
