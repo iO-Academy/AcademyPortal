@@ -3,7 +3,7 @@
 namespace Portal\Factories;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\RegisterController;
+use Portal\Controllers\FrontEnd\RegisterController;
 
 class RegisterControllerFactory
 {

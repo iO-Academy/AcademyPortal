@@ -3,7 +3,7 @@
 namespace Test\Factories;
 
 use PHPUnit\Framework\TestCase;
-use Portal\Controllers\DisplayStagesController;
+use Portal\Controllers\FrontEnd\DisplayStagesController;
 use Portal\Models\StageModel;
 use Slim\Views\PhpRenderer;
 

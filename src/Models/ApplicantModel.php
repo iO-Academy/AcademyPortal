@@ -367,4 +367,19 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare($sql);
         return $query->execute([':teamId' => $teamId, ':applicantId' => $applicantId]);
     }
+
+    public function getApplicantStageId(int $applicantId)
+    {
+        $query = $this->db->prepare(
+            'SELECT `stageId` FROM `applicants` WHERE `id` = :applicantId'
+        );
+        $query->execute([':applicantId' => $applicantId]);
+        return $query->fetch();
+    }
+
+    public function updateApplicantStageId(int $stageId, int $applicantId)
+    {
+        $query = $this->db->prepare("UPDATE `applicants` SET `stageId` = :stageId WHERE `id` = :applicantId");
+        return $query->execute([':applicantId' => $applicantId, ':stageId' => $stageId]);
+    }
 }

@@ -5,7 +5,7 @@ namespace Tests\Factories;
 use Tests\TestCase;
 use Slim\Views\PhpRenderer;
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\RegisterController;
+use Portal\Controllers\FrontEnd\RegisterController;
 use Portal\Factories\RegisterControllerFactory;
 
 class RegisterControllerFactoryTest extends TestCase
