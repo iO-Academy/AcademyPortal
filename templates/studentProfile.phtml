@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Applicants');
+    ?>
+    <link rel="stylesheet" type="text/css" href="css/applicants.css">
+    <script src="./js/populateDropdowns.js" defer></script>
+    <script defer src="./js/applicantModal.js"></script>
+    <script defer src="./js/deleteApplicant.js"></script>
+    <script defer src="./js/displayApplicants.js"></script>
+</head>
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<div class="row">
+    <div class="col-xs-12 registeredApplicants">
+        <h1>Profile</h1>
+        <div id="applicantModal" role="dialog">
+            <div>
+                <!-- Modal content-->
+                <div>
+                    <div>
+                        <h2>
+                            Applicant Details
+                            <span id="apprentice" class="label label-warning"></span>
+                            <span class="pull-right" id="dateTimeAdded"></span>
+                        </h2>
+                    </div>
+                    <div class='row'>
+                        <div class='row'>
+                            <?php echo \Portal\ViewHelpers\DisplayStudentProfileViewHelper::outputApplicant($applicant); ?>
+
+                            <hr>
+                            <section>
+                                <h4>Application Info</h4>
+                                <p class="detail">Stage: <span id="stageName"></span></p>
+                                <p class="detail" id="stageOptionNameContainer">Stage Option: <span id="stageOptionName"></span></p>
+                                <p class="detail">Cohort: <span id="cohortDate"></span></p>
+                                <p class="detail">Reason for wanting to be a dev:</p>
+                                <p id="whyDev"></p>
+                                <p class="detail">Code Experience:</p>
+                                <p id="codeExperience"></p>
+                                <p class="detail">Heard About Us: <span id="hearAbout"></span></p>
+                                <p class="detail" id="eligible"></p>
+                                <p class="detail" id="eighteenPlus"></p>
+                                <p class="detail">Finance: <span id="finance"></span></p>
+                                <p class="detail">Notes:</p>
+                                <p id="notes"></p>
+                            </section>
+                            <hr>
+                            <section>
+                                <h4>Taster session</h4>
+                                <p class="detail">Taster session: <span id="taster"></span></p>
+                                <p class="detail" id="tasterAttendance"></p>
+                            </section>
+                            <hr>
+                            <section>
+                                <h4>Assessment</h4>
+                                <p class="detail">Assessment day: <span id="assessmentDay"></span></p>
+                                <p class="detail">Assessment Time: <span id="assessmentTime"></span></p>
+                                <p class="detail">Aptitude Score: <span id="aptitude"></span></p>
+                                <p class="detail">Diversitech: <span id="diversitechInterest"></span></p>
+                                <p class="detail">Assessment notes:</p>
+                                <p id="assessmentNotes"></p>
+                            </section>
+                            <hr>
+                            <section>
+                                <h4>Onboarding Info</h4>
+                                <p class="detail">Diversitech amount: <span id="diversitech"></span></p>
+                                <p class="detail">EdAid amount: <span id="edaid"></span></p>
+                                <p class="detail">Upfront amount: <span id="upfront"></span></p>
+                                <p class="detail">Laptop required: <span id="laptop"></span></p>
+                                <p class="detail">Laptop deposit paid: <span id="laptopDeposit"></span></p>
+                                <p class="detail">Laptop number: <span id="laptopNum"></span></p>
+                                <p class="detail">Kit collection date: <span id="kitCollectionDay"></span></p>
+                                <p class="detail">Kit collection time: <span id="kitCollectionTime"></span></p>
+                                <p class="detail">Kit number: <span id="kitNum"></span></p>
+                                <p class="detail">Team: <span id="team"></span></p>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <?php require('partials/applicantInfoModal.phtml'); ?>
+</div>
+
+<?php require 'partials/layout/footer.phtml'; ?>
+
+</body>
+</html>
