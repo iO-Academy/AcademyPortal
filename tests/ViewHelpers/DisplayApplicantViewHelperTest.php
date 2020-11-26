@@ -24,11 +24,7 @@ class DisplayApplicantViewHelperTest extends TestCase
                                 <td>test@test.com</td>
                                 <td>Jan 1st</td>
                                 <td>Feb 2020</td>
-                                <td>New application<br><a href="/api/progressApplicantStage/1"   
-                                        type="button"                                   
-                                        class="btn btn-info">
-                                            Next Stage
-                                        </a>
+                                <td id="currentStageName1">New application
                                 </td>
                                 <td>                              
                                     <a href="/editApplicant?id=1"   
@@ -42,7 +38,8 @@ class DisplayApplicantViewHelperTest extends TestCase
                                             class="btn btn-danger delete deleteBtn"
                                             data-id="1">
                                             Delete
-                                    </a>                                   
+                                    </a>    
+                                    <button type="button" class="btn btn-info btnNextStage" data-stageid="1" data-applicantid="1">Next Stage</button>                               
                                 </td>
                             </tr>';
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
@@ -54,6 +51,7 @@ class DisplayApplicantViewHelperTest extends TestCase
         $entityMock->method('getPrettyDateOfApplication')->willReturn('Jan 1st');
         $entityMock->method('getCohortDate')->willReturn('Feb 2020');
         $entityMock->method('getStageName')->willReturn('New application');
+        $entityMock->method('getStageID')->willReturn('1');
 
         $data = [$entityMock];
         $result = DisplayApplicantViewHelper::displayApplicants($data);

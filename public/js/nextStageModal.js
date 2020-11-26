@@ -3,7 +3,6 @@ function updateStage(url, applicantId, btnNextStage) {
         function(response) {
             response.json().then(
                 function(data) {
-                    console.log(data);
                     document.querySelector('#currentStageName' + applicantId).innerHTML = data['data']['newStageName'];
                     btnNextStage.dataset.stageid =  data['data']['stageId'];
                     console.log(data['data']['isLastStage']);

@@ -107,8 +107,7 @@ class DisplayApplicantViewHelper
                     <td>' . $applicant->getEmail() . '</td>
                     <td>' . $applicant->getPrettyDateOfApplication() . '</td>
                     <td>' . $applicant->getCohortDate() . '</td>
-                    <td id="currentStageName' . $applicant->getId() . '">' . $applicant->getStageName() . '<br>
-                    </td>
+                    <td id="currentStageName' . $applicant->getId() . '">' . $applicant->getStageName() . '</td>
                     <td>                              
                         <a href="/editApplicant?id=' . $applicant->getId() . '"   
                            type="button"                                   
@@ -121,10 +120,10 @@ class DisplayApplicantViewHelper
                                 class="btn btn-danger delete deleteBtn"
                                 data-id="' . $applicant->getId() . '">
                                 Delete
-                        </a>
+                        </a>   
                         <button type="button" class="btn btn-info btnNextStage" data-stageid="' . $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" >
                         Next Stage
-                        </button>              
+                        </button>         
                     </td>
                 </tr>';
     }
