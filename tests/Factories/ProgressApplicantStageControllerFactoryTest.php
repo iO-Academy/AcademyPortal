@@ -3,7 +3,6 @@
 
 namespace Tests\Factories;
 
-
 use Portal\Factories\ProgressApplicantStageControllerFactory;
 use Portal\Models\ApplicantModel;
 use Portal\Models\StageModel;
@@ -31,5 +30,4 @@ class ProgressApplicantStageControllerFactoryTest extends TestCase
         $expected = ProgressApplicantStageController::class;
         $this->assertInstanceOf($expected, $case);
     }
-
 }
