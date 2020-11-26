@@ -24,8 +24,7 @@ class DisplayApplicantViewHelperTest extends TestCase
                                 <td>test@test.com</td>
                                 <td>Jan 1st</td>
                                 <td>Feb 2020</td>
-                                <td id="currentStageName1">New application
-                                </td>
+                                <td id="currentStageName1">New application</td>
                                 <td>                              
                                     <a href="/editApplicant?id=1"   
                                        type="button"
@@ -53,7 +52,7 @@ class DisplayApplicantViewHelperTest extends TestCase
         $entityMock->method('getStageName')->willReturn('New application');
         $entityMock->method('getStageID')->willReturn('1');
 
-        $data = [$entityMock];
+        $data = ['applicants' => [$entityMock], 'lastStage' => '9'];
         $result = DisplayApplicantViewHelper::displayApplicants($data);
         $result = preg_replace('/\s+/', '', $result);// removes whitespace
         $this->assertEquals($expected, $result);
@@ -61,7 +60,7 @@ class DisplayApplicantViewHelperTest extends TestCase
 
     public function testSuccessDisplayApplicantsEmptyArray()
     {
-        $data = [];
+        $data = ['applicants' => [], 'lastStage' => '9'];
         $expected = '<tr><td colspan="5"><h5 class="text-danger text-center">No Applicants Found.</h5></td></tr>';
         $result = DisplayApplicantViewHelper::displayApplicants($data);
         $this->assertEquals($expected, $result);
@@ -70,7 +69,7 @@ class DisplayApplicantViewHelperTest extends TestCase
     public function testFailureDisplayApplicantsIncorrectEntity()
     {
         $mock = $this->createMock(ContactEntity::class);
-        $data = [$mock];
+        $data = ['applicants' => [$mock], 'lastStage' => '9'];
         $this->expectException(\TypeError::class);
         $result = DisplayApplicantViewHelper::displayApplicants($data);
     }
