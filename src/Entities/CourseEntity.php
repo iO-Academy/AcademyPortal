@@ -3,6 +3,8 @@
 namespace Portal\Entities;
 
 use phpDocumentor\Reflection\Types\This;
+use Portal\Validators\DateTimeValidator;
+use Portal\Validators\StringValidator;
 
 class CourseEntity
 {
@@ -27,6 +29,22 @@ class CourseEntity
         $this->trainer = ($this->trainer ?? $trainer);
         $this->notes = ($this->notes ?? $notes);
         $this->id = ($this->id ?? $id);
+
+        $this->sanitiseData();
+    }
+
+    /**
+     * To validate course start/end dates.
+     */
+    private function sanitiseData()
+    {
+        $this->startDate= DateTimeValidator::validateDate($this->startDate);
+        $this->endDate = DateTimeValidator::validateDate($this->endDate);
+        DateTimeValidator::validateStartEndTime($this->getStartDate(), $this->getEndDate());
+        $this->name = StringValidator::sanitiseString($this->name);
+        $this->trainer = StringValidator::sanitiseString($this->trainer);
+        $this->notes = StringValidator::sanitiseString($this->notes);
+        $this->id = (int) $this->id;
     }
 
     /**

@@ -30,6 +30,13 @@ class DisplayCoursesViewHelper
         return self::handleNoCourses($result);
     }
 
+    /**
+     * If no courses found, returns message saying no courses found.
+     *
+     * @param string $output
+     *
+     * @return string
+     */
     private static function handleNoCourses(string $output): string
     {
         if (empty($output)) {

@@ -10,7 +10,7 @@ use Psr\Container\ContainerInterface;
 
 class GetCoursesControllerFactoryTest extends TestCase
 {
-    public function testController()
+    public function testGetCoursesController()
     {
         $container = $this->createMock(ContainerInterface::class);
         $courseModel = $this->createMock(CourseModel::class);
