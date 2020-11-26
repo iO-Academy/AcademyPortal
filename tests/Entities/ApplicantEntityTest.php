@@ -21,8 +21,6 @@ class ApplicantEntityTest extends TestCase
             '1',
             '1',
             'notes',
-            '1',
-            1
         );
     }
 
@@ -101,19 +99,5 @@ class ApplicantEntityTest extends TestCase
         $applicant = $this->createApplicant();
         $result = $applicant->getNotes();
         $this->assertEquals($result, 'notes');
-    }
-
-    public function testGetStageIDSuccess()
-    {
-        $applicant = $this->createApplicant();
-        $result = $applicant->getStageID();
-        $this->assertEquals($result, '1');
-    }
-
-    public function testGetStageOptionId()
-    {
-        $applicant = $this->createApplicant();
-        $result = $applicant->getStageOptionId();
-        $this->assertEquals($result, 1);
     }
 }
