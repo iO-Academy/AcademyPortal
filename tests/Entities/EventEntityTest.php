@@ -209,7 +209,4 @@ class EventEntityTest extends TestCase
         );
         $this->assertInstanceOf(EventEntity::class, $actual);
     }
-
-
-
 }
