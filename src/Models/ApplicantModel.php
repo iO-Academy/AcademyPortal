@@ -281,7 +281,7 @@ class ApplicantModel implements ApplicantModelInterface
         );
 
         $query->bindValue(':name', $applicant['name']);
-        $query->bindValue(':apprentice', $applicant['apprentice']);
+        $query->bindValue(':apprentice', (int)$applicant['apprentice']);
         $query->bindValue(':aptitude', $applicant['aptitude']);
         $query->bindValue(':assessmentDay', $applicant['assessmentDay']);
         $query->bindValue(':assessmentTime', $applicant['assessmentTime']);
@@ -292,15 +292,15 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':whyDev', $applicant['whyDev']);
         $query->bindValue(':codeExperience', $applicant['codeExperience']);
         $query->bindValue(':hearAboutId', $applicant['hearAboutId']);
-        $query->bindValue(':eligible', $applicant['eligible']);
-        $query->bindValue(':eighteenPlus', $applicant['eighteenPlus']);
-        $query->bindValue(':finance', $applicant['finance']);
+        $query->bindValue(':eligible', (int)$applicant['eligible']);
+        $query->bindValue(':eighteenPlus', (int)$applicant['eighteenPlus']);
+        $query->bindValue(':finance', (int)$applicant['finance']);
         $query->bindValue(':notes', $applicant['notes']);
         $query->bindValue(':id', $applicant['id']);
         $query->bindValue(':stageId', $applicant['stageId']);
         $query->bindValue(':stageOptionId', $applicant['optionId']);
         $query->bindValue(':taster', $applicant['taster']);
-        $query->bindValue(':tasterAttendance', $applicant['tasterAttendance']);
+        $query->bindValue(':tasterAttendance', (int)$applicant['tasterAttendance']);
 
         return $query->execute();
     }
