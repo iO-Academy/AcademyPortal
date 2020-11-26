@@ -23,6 +23,6 @@ class DisplayEditApplicantControllerFactoryTest extends TestCase
         $factory = new DisplayEditApplicantControllerFactory;
         $case = $factory($container);
         $expected = DisplayEditApplicantController::class;
-        $this->assertInstanceOf($expected, $applicant);
+        $this->assertInstanceOf($expected, $case);
     }
 }
