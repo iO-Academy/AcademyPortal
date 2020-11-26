@@ -25,10 +25,16 @@ class StageModel
     public function getNextStageId(int $currentStageId): array
     {
         $query = $this->db->prepare(
-            "SELECT `id` FROM `stages` WHERE `deleted` = 0 AND `id` > ? ORDER BY `id` ASC LIMIT 1;"
-        );
+            "SELECT `id` FROM `stages` WHERE `deleted` = 0 AND `id` > ? ORDER BY `id` ASC LIMIT 1;");
         $query->execute([$currentStageId]);
-        return $query->fetch();
+        $result = $query->fetch();
+        var_dump($result);
+//        exit;
+//        if ($result) {
+//            return [];
+//        }
+        return $result;
+        //this returns false if no id!
     }
 
     /** Queries the database and returns the highest current stage number as an integer
