@@ -3,7 +3,6 @@
 
 namespace Tests\ViewHelpers;
 
-
 use Portal\Entities\ApplicantEntity;
 use Portal\ViewHelpers\DisplayStudentProfileViewHelper;
 use Tests\TestCase;
@@ -23,22 +22,29 @@ class DisplayStudentProfileHelperTest extends TestCase
                     <section>
                         <h4>ApplicationInfo</h4>
                         <pclass="detail">Stage:<spanid="stageName">Onboarding</span></p>
-                        <pclass="detail"id="stageOptionNameContainer">StageOption:<spanid="stageOptionName">Onboarding</span></p>
+                        <pclass="detail"id="stageOptionNameContainer">StageOption:
+                        <spanid="stageOptionName">Onboarding</span></p>
                         <pclass="detail">Cohort:<spanid="cohortDate">February,2019</span></p>
                         <pclass="detail">Reasonforwantingtobeadev:</p>
-                        <pid="whyDev">Ametverominimrepudiandaeautrationevoluptasperferendissequieunonquaeratquasiutestnostrudnihiladcorporisea</p>
+                        <pid="whyDev">Ametverominimrepudiandaeautrationevoluptasperferendissequieunonquaerat
+                        quasiutestnostrudnihiladcorporisea</p>
                         <pclass="detail">CodeExperience:</p>
-                        <pid="codeExperience">Ullamcoquiaquaeexcepturipossimusquibusdamelitoccaecatcommodidolorefacereanimquaerat</p>
+                        <pid="codeExperience">Ullamcoquiaquaeexcepturipossimusquibusdamelitoccaecatcommodido
+                        lorefacereanimquaerat</p>
                         <pclass="detail">HeardAboutUs:<spanid="hearAbout">Backofthetoiletdoor</span></p>
                         <pclass="detail"id="eligible">EligibletostudyintheUK:<span>No</span></p>
                         <pclass="detail"id="eighteenPlus">Over18years:<span>No</span></p>
                         <pclass="detail">Finance:<spanid="finance">No</span></p><pclass="detail">Notes:</p>
-                        <pid="notes">LaborumcumquereprehenderitutquisapientenobiscommodoiustoveritatisprovidentvoluptatesNambeataequisquamillovoluptatibus</p>
+                        <pid="notes">Laborumcumquereprehenderitutquisapientenobiscommodoiustoveritatisprovidentvolu
+                        ptatesNambeataequisquamillovoluptatibus</p>
                         </section>
-                        <hr><section><h4>Assessment</h4><pclass="detail">Assessmentday:<spanid="assessmentDay">2020-06-20</span></p>
+                        <hr><section><h4>Assessment</h4>
+                        <pclass="detail">Assessmentday:<spanid="assessmentDay">2020-06-20</span></p>
                         <pclass="detail">AssessmentTime:<spanid="assessmentTime">13:00</span>
-                        <pclass="detail">AptitudeScore:<spanid="aptitude">73</span></p><pclass="detail">Assessmentnotes:</p>
-                        <pid="assessmentNotes">LaborumcumquereprehenderitutquisapientenobiscommodoiustoveritatisprovidentvoluptatesNambeataequisquamillovoluptatibus</p>
+                        <pclass="detail">AptitudeScore:<spanid="aptitude">73</span></p>
+                        <pclass="detail">Assessmentnotes:</p>
+                        <pid="assessmentNotes">Laborumcumquereprehenderitutquisapientenobiscommodoiustoveritatisprovid
+                        entvoluptatesNambeataequisquamillovoluptatibus</p>
                         </section>
                     <hr>
                     <section>
@@ -76,17 +82,21 @@ class DisplayStudentProfileHelperTest extends TestCase
         $applicantEntityMock->method('getStageName')->willReturn('Onboarding');
         $applicantEntityMock->method('getStageOptionName')->willReturn('Onboarding');
         $applicantEntityMock->method('getCohortDate')->willReturn('February, 2019');
-        $applicantEntityMock->method('getWhyDev')->willReturn('Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea');
-        $applicantEntityMock->method('getCodeExperience')->willReturn('Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat');
+        $applicantEntityMock->method('getWhyDev')->willReturn('Amet vero minim repudiandae aut 
+        ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea');
+        $applicantEntityMock->method('getCodeExperience')->willReturn('Ullamco quia quae excepturi 
+        possimus quibusdam elit occaecat commodi dolore facere anim quaerat');
         $applicantEntityMock->hearAbout = 'Back of the toilet door';
         $applicantEntityMock->method('getEligible')->willReturn('Yes');
         $applicantEntityMock->method('getEighteenPlus')->willReturn('Yes');
         $applicantEntityMock->method('getFinance')->willReturn('Yes');
-        $applicantEntityMock->method('getNotes')->willReturn('Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus');
+        $applicantEntityMock->method('getNotes')->willReturn('Laborum cumque reprehenderit ut qui 
+        sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus');
         $applicantEntityMock->method('getAssessmentDay')->willReturn('2020-06-20');
         $applicantEntityMock->method('getAssessmentTime')->willReturn('13:00');
         $applicantEntityMock->method('getAptitude')->willReturn('73');
-        $applicantEntityMock->method('getAssessmentNotes')->willReturn('Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus');
+        $applicantEntityMock->method('getAssessmentNotes')->willReturn('Laborum cumque reprehenderit ut qui 
+        sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus');
         $applicantEntityMock->method('getDiversitech')->willReturn('1000');
         $applicantEntityMock->method('getEdAid')->willReturn('8000');
         $applicantEntityMock->method('getUpfront')->willReturn('1000');
@@ -102,4 +112,4 @@ class DisplayStudentProfileHelperTest extends TestCase
         $result = preg_replace('/\s+/', '', $result);// removes whitespace
         $this->assertEquals($expected, $result);
     }
-}
+ }
