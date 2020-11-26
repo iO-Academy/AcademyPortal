@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\ApplicantModel;
+use Portal\Models\ApplicationFormModel;
 
 class DisplayStudentProfileController extends Controller
 {
