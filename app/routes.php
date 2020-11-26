@@ -9,7 +9,7 @@ return function (App $app) {
     $app->get('/admin', 'AdminController');
     $app->get('/register', 'RegisterController');
     $app->get('/addapplicant', 'addApplicantController');
-    $app->get('/applicants[/{page}]', 'DisplayApplicantsController');
+    $app->get('/applicants', 'DisplayApplicantsController');
     $app->get('/hiringPartners', 'DisplayHiringPartnerPageController');
     $app->get('/addHiringPartner', 'AddHiringPartnerPageController');
     $app->get('/addHiringPartnerContact', 'AddHiringPartnerContactPageController');

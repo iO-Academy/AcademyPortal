@@ -10,7 +10,7 @@ use Portal\Interfaces\ApplicantModelInterface;
 class ApplicantModel implements ApplicantModelInterface
 {
     private $db;
-    private $numberPerPage = 3;
+    private $numberPerPage = 20;
 
     public function __construct(\PDO $db)
     {
@@ -120,11 +120,10 @@ class ApplicantModel implements ApplicantModelInterface
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       WHERE `applicants`.`deleted` = '0'
                       AND `applicants`.`cohortId` like :cohortId
-                      AND `applicants`.`stageId` like :stageId
-                      LIMIT :offsets, :numberPerPage;";
-
+                      AND `applicants`.`stageId` like :stageId ";
 
         $stmt .= $this->sortingQuery($sortingQuery);
+        $stmt .= " LIMIT :offsets, :numberPerPage;";
         $offset = ($pageNumber - 1) * $this->numberPerPage;
         $query = $this->db->prepare($stmt);
         $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
