@@ -3,7 +3,6 @@
 
 namespace Portal\ViewHelpers;
 
-
 class PaginationViewHelper
 {
 
@@ -36,7 +35,7 @@ class PaginationViewHelper
         }
         $applicantPagination .= '">Previous</a></li>';
 
-        for ($i = 1; $i <= $count; $i++):
+        for ($i = 1; $i <= $count; $i++) :
             $applicantPagination .= '<li class="page-item ';
             if ($page == $i) {
                 $applicantPagination .= 'active';
@@ -46,9 +45,9 @@ class PaginationViewHelper
         endfor;
 
         $applicantPagination .= '<li class="page-item ';
-                if ($page >= $count) {
-                    $applicantPagination .= 'disabled';
-                }
+        if ($page >= $count) {
+            $applicantPagination .= 'disabled';
+        }
         $applicantPagination .= '">';
         $applicantPagination .= '<a class="page-link" href="';
         if ($page >= $count) {
