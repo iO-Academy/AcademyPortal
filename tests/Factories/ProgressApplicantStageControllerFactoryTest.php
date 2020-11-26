@@ -17,7 +17,6 @@ class ProgressApplicantStageControllerFactoryTest extends TestCase
      * Success test for __invoke() method on ProgressApplicantStageControllerFactory class.
      */
 
-
     public function testInvoke()
     {
         $container = $this->createMock(ContainerInterface::class);
