@@ -36,6 +36,7 @@ class ProgressApplicantStageController extends Controller
                 ];
                 $data['data']['newStageName'] = $newStageEntity->getStageTitle();
                 $data['data']['stageId'] = $newStage;
+                $data['data']['isLastStage'] = $this->stageModel->getHighestOrderNo();
                 return $this->respondWithJson($response, $data, 200);
             }
             $data = [

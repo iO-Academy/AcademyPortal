@@ -42,7 +42,6 @@ class GetNextStageOptionsController extends Controller
         try {
             //this resturns false if no next stage id - this could be empty array now
             $nextId = intval($this->stageModel->getNextStageId($stageId)['id']);
-            var_dump($nextId);
 //            exit;
 //            if ($nextId) {
 //                //set last stage here
@@ -52,7 +51,7 @@ class GetNextStageOptionsController extends Controller
             $data['data']['nextStageId'] = $nextId;
             $data['success'] = true;
             $data['message'] = 'Found data in GetNextStageOptionsController';
-            $data['isLastStage'] = ( $nextId == $this->stageModel->getHighestOrderNo() ) ? TRUE : FALSE;
+
         }
         catch (\Exception $e) {
             $data['success'] = false;

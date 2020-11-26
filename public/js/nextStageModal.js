@@ -1,17 +1,14 @@
-
 function updateStage(url, applicantId, btnNextStage) {
     fetch(url).then(
         function(response) {
             response.json().then(
                 function(data) {
-                    console.log('line 7');
+                    console.log(data);
                     document.querySelector('#currentStageName' + applicantId).innerHTML = data['data']['newStageName'];
                     btnNextStage.dataset.stageid =  data['data']['stageId'];
-                    //this is not yet working ie doenst hide Next Stage button if its hte last stage
-                    if (data['data']['isLastStage']) {
-                        btnNextStage.style.display = "none";
-                        // console.log(btnNextStage.style.display);
-                        // $('.btnNextStage').modal('hide');
+                    console.log(data['data']['isLastStage']);
+                    if (data['data']['isLastStage'] === data['data']['stageId']) {
+                        $(btnNextStage).remove();
                     }
                 }
             )
@@ -34,10 +31,8 @@ $(document).ready(function(){
                         return;
                     }
                     response.json().then(function(data) {
-                        console.log('line 36');
                         document.querySelector('#next-stage-options').innerHTML = '<option>Please select an Option</option>';
-                        if (data['data']['nextStageOptions'].length == 0) {
-                            console.log('line 44');
+                        if (data['data']['nextStageOptions'].length === 0) {
                             var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId;
                             updateStage(url, applicantId, thisButton);
                         }

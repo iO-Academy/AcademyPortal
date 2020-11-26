@@ -28,7 +28,6 @@ class StageModel
             "SELECT `id` FROM `stages` WHERE `deleted` = 0 AND `id` > ? ORDER BY `id` ASC LIMIT 1;");
         $query->execute([$currentStageId]);
         $result = $query->fetch();
-        var_dump($result);
 //        exit;
 //        if ($result) {
 //            return [];
