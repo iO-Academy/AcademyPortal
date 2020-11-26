@@ -19,15 +19,19 @@ class DisplayEditApplicantControllerFactoryTest extends TestCase
         $container = $this->createMock(ContainerInterface::class);
         $stage = $this->createMock(StageModel::class);
         $applicant = $this->createMock(ApplicantModel::class);
-        $container->method('get')
-            ->with(['StageModel'])
-            ->willReturn($stage);
-        $container->method('get')
-            ->with(['ApplicantModel'])
-            ->willReturn($applicant);
-        $container->method('get')
-            ->with(['renderer'])
+        $container->expects($this->at(0))
+            ->method('get')
+            ->with($this->equalTo('renderer'))
             ->willReturn($renderer);
+        $container->expects($this->at(1))
+            ->method('get')
+            ->with($this->equalTo('ApplicantModel'))
+            ->willReturn($applicant);
+        $container->expects($this->at(2))
+            ->method('get')
+            ->with($this->equalTo('StageModel'))
+            ->willReturn($stage);
+
 
         $factory = new DisplayEditApplicantControllerFactory;
         $case = $factory($container);
