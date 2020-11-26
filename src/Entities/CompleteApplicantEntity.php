@@ -31,6 +31,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $team; // int
     protected $stageID;
     protected $stageOptionId;
+    protected $stageOptionName;
 
     protected const ACADEMY_PRICE = 10000;
 
@@ -369,5 +370,13 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getStageOptionId(): ?int
     {
         return $this->stageOptionId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStageOptionName(): ?string
+    {
+        return $this->stageOptionName;
     }
 }

@@ -7,6 +7,7 @@ class ApplicantFormViewHelper
     public static function stagesDropdown($stages, $stageOptions)
     {
         $string = '';
+
         foreach ($stages as $stage) {
             $stageHasOptions = false;
             $optionsForThisStage = [];

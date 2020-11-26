@@ -192,7 +192,7 @@ class ApplicantModel implements ApplicantModelInterface
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
                       `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName',
-                       `option` as 'stageOptionName' 
+                       `option` as 'stageOptionName'
                         FROM `applicants` 
                         LEFT JOIN `cohorts` 
                             ON `applicants`.`cohortId`=`cohorts`.`id` 

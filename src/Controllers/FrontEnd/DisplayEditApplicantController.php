@@ -37,6 +37,13 @@ class DisplayEditApplicantController extends Controller
                 $data['applicant'] = $this->applicantModel->getApplicantById($id);
                 $data['stages'] = $this->stageModel->getStageTitles();
                 $data['stageOptions'] = $this->stageModel->getStageOptions();
+                $applicantStageId = $data['applicant']->getStageID();
+                $applicantOptionName = $data['applicant']->getStageOptionName();
+                $stageIdEntity = $this->stageModel->getStageById($applicantStageId);
+                if ($applicantOptionName != null) {
+                    $data['currentOption'] = $applicantOptionName;
+                }
+                $data['currentStage'] = $stageIdEntity->getStageTitle();
                 return $this->renderer->render($response, 'applicantForm.phtml', $data);
             }
             return $response->withHeader('Location', './applicants')->withStatus(400);
