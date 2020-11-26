@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Add New Course');
+    ?>
+    <link href="css/events.css" rel="stylesheet" type="text/css">
+    <script defer src="./js/validations.js"></script>
+    <script defer src='./js/addCourse.js'></script>
+</head>
+
+<body>
+    <?php require 'partials/layout/header.phtml'; ?>
+
+    <?php require 'partials/layout/nav.phtml'; ?>
+    <h3>Add New Course</h3>
+    <form>
+        <label for="course-name">Course Name</label>
+        <input name="name" class="create-courses form-control" type="text" placeholder="Course name" data-required="true" data-max='255' maxlength="255" />
+
+        <label for="course-start-date">Start Date</label>
+        <input id="startDate" name="startDate" class="create-courses form-control" type="date" data-required="true" />
+
+        <label for="course-end-date">End Date</label>
+        <input id="endDate" name="endDate" class="create-courses form-control" type="date" data-required="true" />
+
+        <label for="course-trainer">Trainer</label>
+        <input name="trainer" class="create-courses form-control" type="text" placeholder="Trainer" data-max="255" maxlength="255" />
+
+        <label for="course-notes">Notes</label>
+        <textarea name="notes" class="create-courses form-control" placeholder="Notes" data-max="5000" maxlength="5000"></textarea>
+
+        <input type="submit" class="btn btn-success" />
+    </form>
+    <div id="messages" class="alert"></div>
+    <?php require 'partials/layout/footer.phtml'; ?>
+</body>

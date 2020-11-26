@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Courses');
+    ?>
+</head>
+
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+
+        <h1>Courses</h1>
+        <div id="courses" class="row">
+            <table class="col-xs-12 table-bordered table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Course Name</th>
+                        <th>Trainer</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($data); ?>
+                </tbody>
+            </table>
+        </div>
+<?php require 'partials/layout/footer.phtml'; ?>
+</body>
+</html>
