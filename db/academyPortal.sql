@@ -1,13 +1,13 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 5446
+# Version 4541
 #
-# https://www.sequelpro.com/
+# http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
 # Host: 127.0.0.1 (MySQL 5.7.31)
-# Database: AcademyPortal
-# Generation Time: 2020-11-24 09:39:09 +0000
+# Database: academyPortal
+# Generation Time: 2020-11-26 15:39:08 +0000
 # ************************************************************
 
 
@@ -15,7 +15,6 @@
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-SET NAMES utf8mb4;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
@@ -88,7 +87,7 @@ CREATE TABLE `applicants_additional` (
   `laptop` int(1) DEFAULT NULL,
   `laptopDeposit` int(1) DEFAULT NULL,
   `laptopNum` int(2) DEFAULT NULL,
-  `taster` date DEFAULT NULL,
+  `tasterId` int(11) DEFAULT NULL,
   `tasterAttendance` int(1) DEFAULT NULL,
   `team` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -97,9 +96,9 @@ CREATE TABLE `applicants_additional` (
 LOCK TABLES `applicants_additional` WRITE;
 /*!40000 ALTER TABLE `applicants_additional` DISABLE KEYS */;
 
-INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, `tasterAttendance`, `team`)
+INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `tasterId`, `tasterAttendance`, `team`)
 VALUES
-	(2,1,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1),
+	(2,1,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,3,NULL,1),
 	(3,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,2),
 	(5,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1),
 	(15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
@@ -296,34 +295,6 @@ VALUES
 	(6,'Yoda',0);
 
 /*!40000 ALTER TABLE `hear_about` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table hearAbout
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `hearAbout`;
-
-CREATE TABLE `hearAbout` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `hearAbout` varchar(150) DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-LOCK TABLES `hearAbout` WRITE;
-/*!40000 ALTER TABLE `hearAbout` DISABLE KEYS */;
-
-INSERT INTO `hearAbout` (`id`, `hearAbout`, `deleted`)
-VALUES
-	(1,'Google',0),
-	(2,'Newspaper',0),
-	(3,'Back of the toilet door',0),
-	(4,'Telepathy',0),
-	(5,'North Korea',0),
-	(6,'Yoda',0);
-
-/*!40000 ALTER TABLE `hearAbout` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

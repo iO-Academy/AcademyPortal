@@ -197,7 +197,7 @@ class ApplicantModel implements ApplicantModelInterface
                       `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`, 
                       `date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
-                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
+                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `tasterId`, 
                       `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName',
                        `option` as 'stageOptionName' 
@@ -340,7 +340,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `laptop` = :laptop,
                             `laptopDeposit` = :laptopDeposit,
                             `laptopNum` = :laptopNum,
-                            `taster` = :taster,
+                            `tasterId` = :tasterId,
                             `tasterAttendance` = :tasterAttendance
                         WHERE (
                             `id` = :id
@@ -362,7 +362,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':laptop', $applicant->getLaptop());
         $query->bindValue(':laptopDeposit', $applicant->getLaptopDeposit());
         $query->bindValue(':laptopNum', $applicant->getLaptopNum());
-        $query->bindValue(':taster', $applicant->getTaster());
+        $query->bindValue(':tasterId', $applicant->getTasterId());
         $query->bindValue(':tasterAttendance', $applicant->getTasterAttendance());
         $query->bindValue(':id', $applicant->getId());
 

@@ -97,8 +97,8 @@
 
                 <div id="taster" class="collapse">
                     <label for="taster">Taster session?</label>
-                    <input id="taster" name="taster" class="submitApplicant form-control" type="date" value="<?php echo $applicant->getTaster();?>">
-<!--                    <select id="taster" class="submitApplicant form-control" name="taster" data-selected="--><?php //echo $applicant->getTaster();?><!--">-->
+                    <input id="taster" name="taster" class="submitApplicant form-control" type="date" value="<?php echo $applicant->getTasterId();?>">
+<!--                    <select id="taster" class="submitApplicant form-control" name="taster" data-selected="--><?php //echo $applicant->getTasterId();?><!--">-->
 <!--                    </select>-->
 
                     <div class="form-group">
@@ -176,7 +176,98 @@
                         <label for="laptopDeposit">Laptop deposit paid?</label>
                     </div>
 
+                    <label fo-->
+
+                        <div class="form-group">
+                            <input class="submitApplicant" name="tasterAttendance" type="checkbox" <?php echo $applicant->getTasterAttendance() ? "checked" : ""; ?>/>
+                            <label for="tasterAttendance">Did they attend the taster session?</label>
+                        </div>
+                </div>
+            </section>
+
+            <section class="applicationFormSection">
+                <div data-toggle="collapse" class="collapse-header" data-target="#assessment" aria-expanded="false" aria-controls="assessment">
+                    <h4>Assessment</h4>
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                </div>
+
+                <div id="assessment" class="collapse">
+                    <label for="assessmentDay">Assessment day</label>
+                    <input id="assessmentDay" name="assessmentDay" class="submitApplicant form-control" type="date" value="<?php echo $applicant->getAssessmentDay();?>">
+                    <!--                    <select id="assessmentDay" class="submitApplicant form-control" name="assessmentDay" data-selected="--><?php //echo $applicant->getAssessmentDay();?><!--">-->
+                    <!--                    </select>-->
+
+                    <label for="assessmentTime">Assessment time</label>
+                    <input id="assessmentTime" name="assessmentTime" class="submitApplicant form-control" type="time" value="<?php echo $applicant->getAssessmentTime();?>">
+
+                    <label for="aptitude">Aptitude Score (%)</label>
+                    <div class="input-group">
+                        <input id="aptitude" name="aptitude" class="submitApplicant form-control" type="number" min="0" max="100" placeholder="0" value="<?php echo $applicant->getAptitude();?>">
+                        <span class="input-group-addon">%</span>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="submitApplicant" name="diversitechInterest" type="checkbox" <?php echo $applicant->getdiversitechInterest() ? "checked" : ""; ?>/>
+                        <label for="diversitechInterest">Interested in Diversitech?</label>
+                    </div>
+
+                    <label for="assessmentNotes">Assessment notes</label>
+                    <div id="assessmentNotesError" class="alert hidden formItem_alert"></div>
+                    <textarea id="assessmentNotes" name="assessmentNotes" class="submitApplicant form-control" placeholder="Notes about the student assessment"><?php echo $applicant->getAssessmentNotes();?></textarea>
+                </div>
+            </section>
+
+            <section class="applicationFormSection">
+                <div data-toggle="collapse" class="collapse-header" data-target="#onboarding" aria-expanded="false" aria-controls="onboarding">
+                    <h4>Onboarding Info</h4>
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                </div>
+
+                <div id="onboarding" class="collapse">
+
+                    <label for="diversitech">Diversitech Amount</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">&pound;</span>
+                        <input id="diversitech" name="diversitech" class="submitApplicant form-control" type="number" placeholder="0" min="0" max="10000" step="1" value="<?php echo $applicant->getDiversitech();?>">
+                    </div>
+
+                    <label for="edaid">EdAid Amount</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">&pound;</span>
+                        <input id="edaid" name="edaid" class="submitApplicant form-control" type="number" placeholder="0" min="0" max="10000" step="1" value="<?php echo $applicant->getEdaid();?>">
+                    </div>
+
+                    <label for="upfront">Upfront Amount</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">&pound;</span>
+                        <input id="upfront" name="upfront" class="submitApplicant form-control" type="number" placeholder="0" min="0" max="10000" step="1" value="<?php echo $applicant->getUpfront();?>">
+                    </div>
+
+                    <div class="form-group">
+                        <input class="submitApplicant" name="laptop" type="checkbox" <?php echo $applicant->getLaptop() ? "checked" : "";?>/>
+                        <label for="laptop">Academy laptop needed?</label>
+                    </div>
+
+                    <div class="form-group">
+                        <input class="submitApplicant" name="laptopDeposit" type="checkbox" <?php echo $applicant->getLaptopDeposit() ? "checked" : "";?>/>
+                        <label for="laptopDeposit">Laptop deposit paid?</label>
+                    </div>
+
                     <label for="laptopNum">Laptop number</label>
+                    <input id="laptopNum" class="submitApplicant form-control" name="laptopNum" type="number" min="1" max="99" step="1" value="<?php echo $applicant->getLaptopNum();?>">
+
+                    <label for="kitCollectionDay">Kit Collection Day</label>
+                    <input id="kitCollectionDay" class="submitApplicant form-control" name="kitCollectionDay" type="date" value="<?php echo $applicant->getKitCollectionDay();?>">
+
+                    <label for="kitCollectionTime">Kit Collection time</label>
+                    <input id="kitCollectionTime" name="kitCollectionTime" class="submitApplicant form-control" type="time" value="<?php echo $applicant->getKitCollectionTime();?>">
+
+                    <label for=kitNum">Kit number</label>
+                    <input id="kitNum" class="submitApplicant form-control" name="kitNum" type="number" min="1" max="99" step="1" value="<?php echo $applicant->getKitNum();?>">
+
+                    <label for="team">Team</label>
+                    <input id="team" class="submitApplicant form-control" type="text" readonly value="<?php echo $applicant->getTeam();?>">
+                    r="laptopNum">Laptop number</label>
                     <input id="laptopNum" class="submitApplicant form-control" name="laptopNum" type="number" min="1" max="99" step="1" value="<?php echo $applicant->getLaptopNum();?>">
 
                     <label for="kitCollectionDay">Kit Collection Day</label>

@@ -25,7 +25,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $laptop; // bool
     protected $laptopDeposit; // bool
     protected $laptopNum; // int
-    protected $taster; // date string
+    protected $tasterId; // int
     protected $tasterAttendance; // bool
     protected $team; // int
 
@@ -59,7 +59,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         bool $laptop = null,
         bool $laptopDeposit = null,
         $laptopNum = null,
-        string $taster = null,
+        int $tasterId = null,
         bool $tasterAttendance = null,
         string $team = null
     ) {
@@ -91,7 +91,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         $this->laptop = ($this->laptop ?? $laptop);
         $this->laptopDeposit = ($this->laptopDeposit ?? $laptopDeposit);
         $this->laptopNum = ($this->laptopNum ?? $laptopNum);
-        $this->taster = ($this->taster ?? $taster);
+        $this->tasterId = ($this->tasterId ?? $tasterId);
         $this->tasterAttendance = ($this->tasterAttendance ?? $tasterAttendance);
         $this->team = ($this->team ?? $team);
 
@@ -134,7 +134,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'kitNum' => $this->kitNum,
                   'laptop' => $this->laptop,
                   'laptopNum' => $this->laptopNum,
-                  'taster' => $this->taster,
+                  'tasterId' => $this->tasterId,
                   'tasterAttendance' => $this->tasterAttendance,
                   'team' => $this->team,
                   'stageID' => $this->stageID,
@@ -194,7 +194,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         }
         $this->laptopDeposit = $this->laptopDeposit ? 1 : 0;
         $this->laptopNum = $this->laptopNum ? (int)$this->laptopNum : null;
-        $this->taster = DateTimeValidator::validateDate($this->taster);
+        $this->tasterId = $this->tasterId ? (int)$this->tasterId : null;
         $this->tasterAttendance = $this->tasterAttendance ? 1 : 0;
         $this->team = StringValidator::sanitiseString($this->team);
         $this->team = StringValidator::validateLength($this->team, self::MAXVARCHARLENGTH);
@@ -323,11 +323,11 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getTaster(): ?string
+    public function getTasterId(): ?int
     {
-        return $this->taster;
+        return $this->tasterId;
     }
 
     /**

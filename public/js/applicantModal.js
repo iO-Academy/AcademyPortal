@@ -92,9 +92,8 @@ $(document).ready(function(){
                         }
                         displayField(data, 'notes')
 
-                        data.taster = prettyDate(data.taster)
-                        displayField(data, 'taster', 'Did not book onto a taster session')
-                        if (data.taster !== null && (data.tasterAttendance === null || data.tasterAttendance === 0)) {
+                        displayField(data, 'tasterId', 'Did not book onto a taster session')
+                        if (data.tasterId !== null && (data.tasterAttendance === null || data.tasterAttendance === 0)) {
                             displayField(data, 'tasterAttendance', 'Did not attend the booked session')
                         }
 

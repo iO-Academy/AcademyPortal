@@ -60,7 +60,7 @@ class EditApplicantController extends Controller
                     $newApplicationData['laptop'],
                     $newApplicationData['laptopDeposit'],
                     $newApplicationData['laptopNum'],
-                    $newApplicationData['taster'],
+                    $newApplicationData['tasterId'],
                     $newApplicationData['tasterAttendance']
                 );
 
