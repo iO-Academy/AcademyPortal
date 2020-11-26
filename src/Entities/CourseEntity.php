@@ -2,7 +2,6 @@
 
 namespace Portal\Entities;
 
-use phpDocumentor\Reflection\Types\This;
 use Portal\Validators\DateTimeValidator;
 use Portal\Validators\StringValidator;
 
