@@ -41,6 +41,7 @@ return function (App $app) {
     $app->post('/api/createStage', 'CreateStageController');
     $app->delete('/api/deleteStage', 'DeleteStageController');
     $app->put('/api/updateStages', 'EditStageController');
+    $app->get('/api/getStages', 'GetStagesController');
     $app->post('/api/login', 'LoginController');
     $app->post('/api/registerUser', 'RegisterUserController');
     $app->put('/api/editStageOption', 'EditStageOptionController');

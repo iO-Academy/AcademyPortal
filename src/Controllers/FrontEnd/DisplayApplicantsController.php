@@ -39,14 +39,18 @@ class DisplayApplicantsController extends Controller
     {
         if ($_SESSION['loggedIn'] === true) {
             $params['sort'] = $request->getQueryParams()['sort'] ?? '';
-            $params['cohortId'] = $request->getQueryParams()['cohortId'];
+            $params['cohortId'] = $request->getQueryParams()['cohortId'] ?? '%';
+            $params['stageId'] = $request->getQueryParams()['stageId'] ?? '%';
 
-            if (isset($params['cohortId']) && $params['cohortId'] != 'all') {
-                $params['data'] = $this->applicantModel->getAllApplicantsByCohort($params['cohortId'], $params['sort']);
-            } else {
-                $params['data'] = $this->applicantModel->getAllApplicants($params['sort']);
+            if (isset($params['cohortId']) && $params['cohortId'] == 'all') {
+                $params['cohortId'] = '%';
+            }
+            if (isset($params['stageId']) && $params['stageId'] == 'all') {
+                $params['stageId'] = '%';
             }
 
+            $params['data'] = $this->applicantModel
+                ->getApplicants($params['stageId'], $params['cohortId'], $params['sort']);
             return $this->renderer->render($response, 'applicants.phtml', $params);
         }
         return $response->withHeader('Location', '/');
