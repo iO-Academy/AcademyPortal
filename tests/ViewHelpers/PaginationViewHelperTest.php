@@ -16,9 +16,11 @@ class PaginationViewHelperTest extends TestCase
                             <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
                         </ul>
                      </nav>';
+        $expected = preg_replace('/\s+/', '', $expected);
         $page = 1;
         $count = 1;
         $actual = PaginationViewHelper::applicantsPagination($page, $count);
+        $actual = preg_replace('/\s+/', '', $actual);
         $this->assertEquals($expected, $actual);
     }
 
