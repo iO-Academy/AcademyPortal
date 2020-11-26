@@ -25,7 +25,7 @@ class ProgressApplicantStageController extends Controller
         if ($_SESSION['loggedIn'] === true) {
             $applicantId = (int) $request->getQueryParams()['applicantId'];
             $newStage = (int) $request->getQueryParams()['stageId'];
-            $optionIdValue =  $request->getQueryParams()['optionId'] ?? NULL;
+            $optionIdValue =  $request->getQueryParams()['optionId'] ?? null;
             $result = $this->applicantModel->updateApplicantStageAndOptionIds($applicantId, $newStage, $optionIdValue);
             if ($result) {
                 $newStageEntity = $this->stageModel->getStageById($newStage);
@@ -41,7 +41,8 @@ class ProgressApplicantStageController extends Controller
             }
             $data = [
                 'success' => false,
-                'message' => 'Something went wrong when trying to update the Applicant\'s Stage and Option IDs into the database',
+                'message' => 'Something went wrong when trying to update the Applicant\'s Stage 
+                            and Option IDs into the database',
                 'data' => []
             ];
             return $this->respondWithJson($response, $data, 500);

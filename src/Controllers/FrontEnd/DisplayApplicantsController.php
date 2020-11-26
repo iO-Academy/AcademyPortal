@@ -47,7 +47,8 @@ class DisplayApplicantsController extends Controller
             $params['data']['lastStage'] = $this->stageModel->getHighestOrderNo();
 
             if (isset($params['cohortId']) && $params['cohortId'] != 'all') {
-                $params['data']['applicants'] = $this->applicantModel->getAllApplicantsByCohort($params['cohortId'], $params['sort']);
+                $params['data']['applicants'] =
+                    $this->applicantModel->getAllApplicantsByCohort($params['cohortId'], $params['sort']);
             } else {
                 $params['data']['applicants'] = $this->applicantModel->getAllApplicants($params['sort']);
             }

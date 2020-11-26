@@ -38,7 +38,8 @@ class DisplayApplicantViewHelperTest extends TestCase
                                             data-id="1">
                                             Delete
                                     </a>    
-                                    <button type="button" class="btn btn-info btnNextStage" data-stageid="1" data-applicantid="1">Next Stage</button>                               
+                                    <button type="button" class="btn btn-info btnNextStage" data-stageid="1" 
+                                    data-applicantid="1">Next Stage</button>                               
                                 </td>
                             </tr>';
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace

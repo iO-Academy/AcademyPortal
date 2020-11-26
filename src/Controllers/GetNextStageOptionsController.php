@@ -40,18 +40,11 @@ class GetNextStageOptionsController extends Controller
         $statusCode = 200;
         $stageId = intval($args['stageid']);
         try {
-            //this resturns false if no next stage id - this could be empty array now
             $nextId = intval($this->stageModel->getNextStageId($stageId)['id']);
-//            exit;
-//            if ($nextId) {
-//                //set last stage here
-//                $nextId = 9;
-//            }
             $data['data']['nextStageOptions'] = $this->stageModel->getOptionsByStageID($nextId);
             $data['data']['nextStageId'] = $nextId;
             $data['success'] = true;
             $data['message'] = 'Found data in GetNextStageOptionsController';
-
         }
         catch (\Exception $e) {
             $data['success'] = false;

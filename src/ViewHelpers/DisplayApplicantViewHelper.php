@@ -121,13 +121,13 @@ class DisplayApplicantViewHelper
                                 data-id="' . $applicant->getId() . '">
                                 Delete
                         </a>';
-                        if ($applicant->getStageID() != $lastStage) {
-                            $string .= '<button type="button" class="btn btn-info btnNextStage" data-stageid="' . $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" >
-                        Next Stage
-                        </button>';
-                        }
-                    $string .= '</td>
-                </tr>';
+        if ($applicant->getStageID() != $lastStage) {
+            $string .= '<button type="button" class="btn btn-info btnNextStage" data-stageid="' .
+                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" >
+                Next Stage
+            </button>';
+        }
+        $string .= '</td></tr>';
         return $string;
     }
 
@@ -139,5 +139,3 @@ class DisplayApplicantViewHelper
         return $output;
     }
 }
-
-
