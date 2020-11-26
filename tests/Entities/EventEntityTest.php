@@ -160,4 +160,21 @@ class EventEntityTest extends TestCase
         );
         $this->assertInstanceOf(EventEntity::class, $newEventEntity);
     }
+
+    public function testGetAvailableToHPSuccess()
+    {
+        $name = new EventEntity(
+            1,
+            'hiring event',
+            2,
+            '1 Widcombe Cres, Bath BA2 6AH',
+            '2019-10-02',
+            '18:00',
+            '21:00',
+            'notes',
+            0
+        );
+        $result = $name->getAvailableToHP();
+        $this->assertEquals($result, 0);
+    }
 }
