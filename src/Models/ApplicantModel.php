@@ -69,7 +69,7 @@ class ApplicantModel implements ApplicantModelInterface
         $result = $query->execute();
         if ($result) {
             $id = $this->db->lastInsertId();
-            $query2 = $this->db->prepare('INSERT INTO `applicants_additional` (`id`) VALUES (?)');
+            $query2 = $this->db->prepare('INSERT INTO `student_info` (`id`) VALUES (?)');
             return $query2->execute([$id]);
         }
         return $result;
@@ -280,27 +280,27 @@ class ApplicantModel implements ApplicantModelInterface
                         );"
         );
 
-        $query->bindValue(':name', $applicant->getName());
-        $query->bindValue(':apprentice', $applicant->getApprentice());
-        $query->bindValue(':aptitude', $applicant->getAptitude());
-        $query->bindValue(':assessmentDay', $applicant->getAssessmentDay());
-        $query->bindValue(':assessmentTime', $applicant->getAssessmentTime());
-        $query->bindValue(':assessmentNotes', $applicant->getAssessmentNotes());
-        $query->bindValue(':email', $applicant->getEmail());
-        $query->bindValue(':phoneNumber', $applicant->getPhoneNumber());
-        $query->bindValue(':cohortId', $applicant->getCohortId());
-        $query->bindValue(':whyDev', $applicant->getWhyDev());
-        $query->bindValue(':codeExperience', $applicant->getCodeExperience());
-        $query->bindValue(':hearAboutId', $applicant->getHearAboutId());
-        $query->bindValue(':eligible', $applicant->getEligible());
-        $query->bindValue(':eighteenPlus', $applicant->getEighteenPlus());
-        $query->bindValue(':finance', $applicant->getFinance());
-        $query->bindValue(':notes', $applicant->getNotes());
-        $query->bindValue(':id', $applicant->getId());
-        $query->bindValue(':stageId', $applicant->getStageID());
-        $query->bindValue(':stageOptionId', $applicant->getStageOptionId());
-        $query->bindValue(':taster', $applicant->getTaster());
-        $query->bindValue(':tasterAttendance', $applicant->getTasterAttendance());
+        $query->bindValue(':name', $applicant['name']);
+        $query->bindValue(':apprentice', $applicant['apprentice']);
+        $query->bindValue(':aptitude', $applicant['aptitude']);
+        $query->bindValue(':assessmentDay', $applicant['assessmentDay']);
+        $query->bindValue(':assessmentTime', $applicant['assessmentTime']);
+        $query->bindValue(':assessmentNotes', $applicant['assessmentNotes']);
+        $query->bindValue(':email', $applicant['email']);
+        $query->bindValue(':phoneNumber', $applicant['phoneNumber']);
+        $query->bindValue(':cohortId', $applicant['cohortId']);
+        $query->bindValue(':whyDev', $applicant['whyDev']);
+        $query->bindValue(':codeExperience', $applicant['codeExperience']);
+        $query->bindValue(':hearAboutId', $applicant['hearAboutId']);
+        $query->bindValue(':eligible', $applicant['eligible']);
+        $query->bindValue(':eighteenPlus', $applicant['eighteenPlus']);
+        $query->bindValue(':finance', $applicant['finance']);
+        $query->bindValue(':notes', $applicant['notes']);
+        $query->bindValue(':id', $applicant['id']);
+        $query->bindValue(':stageId', $applicant['stageId']);
+        $query->bindValue(':stageOptionId', $applicant['optionId']);
+        $query->bindValue(':taster', $applicant['taster']);
+        $query->bindValue(':tasterAttendance', $applicant['tasterAttendance']);
 
         return $query->execute();
     }
@@ -326,6 +326,15 @@ class ApplicantModel implements ApplicantModelInterface
                             `laptop` = :laptop,
                             `laptopDeposit` = :laptopDeposit,
                             `laptopNum` = :laptopNum,
+                            `githubEduLink` = :githubEdulink,
+                            `githubUserName` = :githubUserName,
+                            `portfolioUrl` = :portfolioUrl,
+                            `pleskUrl` = :pleskUrl,
+                            `pleskUsername` = :pleskUsername,
+                            `pleskPassword` = :pleskPassword,
+                            `additionalNotes` = :additionalNotes,
+                            `confirmedCourseDate` = :hasConfirmedCourseDate,
+                            `chosenCourseDate` = :chosenCourseDate
                         WHERE (
                             `id` = :id
                         );"
@@ -348,7 +357,7 @@ class ApplicantModel implements ApplicantModelInterface
 
     public function addApplicantToTeam(int $teamId, int $applicantId)
     {
-        $sql = 'UPDATE `applicants_additional` SET `team` = :teamId WHERE `id` = :applicantId';
+        $sql = 'UPDATE `student_info` SET `team` = :teamId WHERE `id` = :applicantId';
         $query = $this->db->prepare($sql);
         return $query->execute([':teamId' => $teamId, ':applicantId' => $applicantId]);
     }

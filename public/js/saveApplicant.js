@@ -1,7 +1,9 @@
 document.querySelector('#submitApplicant').addEventListener('click', e => {
     e.preventDefault();
     const data = getCompletedFormData();
+    console.log(1)
     const validate = validateFormInputs(data);
+    console.log(2)
     let formIsValid = true;
 
 
@@ -27,6 +29,7 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
     });
 
     if (formIsValid) {
+        console.log(3)
         makeApiRequest(data, window.location.pathname);
     } else {
         document.querySelector('#generalError').innerHTML = 'This form is invalid, please check all fields';
@@ -80,7 +83,9 @@ let getCompletedFormData = () => {
 };
 
 let makeApiRequest = async (data, type) => {
+    console.log(4)
     const path = './api/' + (type === '/addapplicant' ? 'saveApplicant' : 'editApplicant');
+    console.log(5)
     return fetch(path, {
         credentials: "same-origin",
         headers: {
@@ -92,7 +97,7 @@ let makeApiRequest = async (data, type) => {
     })
         .then(response => {
         const generalErrorMessage = document.querySelector('#generalError');
-
+            console.log(6)
         switch (response.status) {
             case 200:
                 response.json().then(data => {
@@ -113,6 +118,7 @@ let makeApiRequest = async (data, type) => {
         }
         generalErrorMessage.classList.remove('hidden');
     });
+    console.log(7)
 };
 
 let validateFormInputs = (data) => {
