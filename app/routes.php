@@ -20,7 +20,7 @@ return function (App $app) {
     $app->get('/editApplicant', 'DisplayEditApplicantController');
     $app->get('/teamPicker', 'DisplayTeamPickerController');
     $app->get('/student', 'DisplayTeamPickerController');
-    $app->get('/public', 'DisplayStudentProfileController');
+    $app->get('/public[/{id}]', 'DisplayStudentProfileController');
     $app->get('/courses', 'DisplayCoursesController');
     $app->get('/addCourse', 'DisplayAddCourseController');
 

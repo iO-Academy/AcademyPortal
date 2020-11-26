@@ -6,10 +6,10 @@
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Applicants');
     ?>
     <link rel="stylesheet" type="text/css" href="css/applicants.css">
-    <script src="./js/populateDropdowns.js" defer></script>
-    <script defer src="./js/applicantModal.js"></script>
-    <script defer src="./js/deleteApplicant.js"></script>
-    <script defer src="./js/displayApplicants.js"></script>
+    <script src="/js/populateDropdowns.js" defer></script>
+    <script defer src="/js/applicantModal.js"></script>
+    <script defer src="/js/deleteApplicant.js"></script>
+    <script defer src="/js/displayApplicants.js"></script>
 </head>
 <body>
 <div class="container">
@@ -17,7 +17,12 @@
         <h1>Profile</h1>
             
                     
-                    <?php echo \Portal\ViewHelpers\DisplayStudentProfileViewHelper::outputApplicant($applicant); ?>
+                    <?php if($applicant) {
+                        echo \Portal\ViewHelpers\DisplayStudentProfileViewHelper::outputApplicant($applicant);
+                    } else {
+                        echo 'Sorry, profile not found. Please contact the office.';
+                    }?>
+
 
             <div class="modal-footer">
             </div>
