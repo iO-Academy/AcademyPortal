@@ -20,7 +20,9 @@ class ApplicantEntityTest extends TestCase
             '1',
             '1',
             '1',
-            'notes'
+            'notes',
+            '1',
+            1
         );
     }
 
