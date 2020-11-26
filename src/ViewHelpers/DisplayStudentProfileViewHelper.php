@@ -8,7 +8,8 @@ class DisplayStudentProfileViewHelper
 {
     public static function outputApplicant(CompleteApplicantEntity $applicant): string
     {
-        return '<section>
+        return '<hr>
+                <section>
                     <h4>Personal Information</h4>
                     <p class="detail">Name: <span>' . $applicant->getName() . '</span></p>
                     <p class="detail">Email: <span>' . $applicant->getEmail() . '</span></p>
