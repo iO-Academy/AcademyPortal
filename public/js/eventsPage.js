@@ -228,7 +228,7 @@ async function eventGenerator(event, hiringPartners) {
         eventInformation += `<p>Notes: ${event.notes}</p>`
     }
 
-    if (event.availableToHP) {
+    if (event.availableToHP == 1) {
         eventInformation += `<div class="event-attendees">`
         eventInformation += `<div class="hiring-partners col-xs-12 col-md-6" data-eventId='${event.id}'></div>`;
         if (!isPastPage) {
