@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Portal\ViewHelpers;
-
 
 use Portal\Entities\CompleteApplicantEntity;
 
