@@ -16,8 +16,8 @@ class DisplayCoursesControllerFactory
      */
     public function __invoke(ContainerInterface $container) : DisplayCoursesController
     {
-        $courseModel = $container->get('CourseModel');
         $renderer = $container->get('renderer');
+        $courseModel = $container->get('CourseModel');
         return new DisplayCoursesController($renderer, $courseModel);
     }
 }

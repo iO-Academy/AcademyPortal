@@ -3,10 +3,8 @@
 namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
-use Portal\Validators\DateTimeValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Views\PhpRenderer;
 use Portal\Models\CourseModel;
 use Portal\Entities\CourseEntity;
 
@@ -24,6 +22,15 @@ class AddCourseController extends Controller
         $this->courseModel = $courseModel;
     }
 
+    /**
+     * Get user input and send to CourseModel to add to db.
+     *
+     * @param Request  $request
+     * @param Response $response
+     * @param array    $args
+     *
+     * @return Response
+     */
     public function __invoke(Request $request, Response $response, array $args)
     {
         $newCourse = $request->getParsedBody();
@@ -35,7 +42,6 @@ class AddCourseController extends Controller
         $statusCode = 400;
 
         try {
-            $validDate = DateTimeValidator::validateStartEndTime($newCourse['startDate'], $newCourse['endDate']);
             $course = new CourseEntity(
                 $newCourse['startDate'],
                 $newCourse['endDate'],
@@ -44,7 +50,7 @@ class AddCourseController extends Controller
                 $newCourse['notes']
             );
 
-            if (!empty($course) && $validDate) {
+            if (!empty($course)) {
                 $result = $this->courseModel->addCourse($course);
             }
         } catch (\Exception $exception) {
