@@ -3,7 +3,6 @@
 
 namespace Tests\Controllers\FrontEnd;
 
-
 use Portal\Controllers\FrontEnd\DisplayEditApplicantController;
 use Portal\Interfaces\ApplicantModelInterface;
 use Portal\Models\ApplicantModel;
@@ -15,11 +14,11 @@ class DisplayEditApplicantControllerTest extends TestCase
 {
     public function testConstruct()
     {
-       $renderer = $this->createMock(PhpRenderer::class);
-       $applicant = $this->createMock(ApplicantModelInterface::class);
-       $stage = $this->createMock(StageModel::class);
-       $case = new DisplayEditApplicantController($applicant, $stage, $renderer);
-       $expected = DisplayEditApplicantController::class;
-       $this->assertInstanceOf($expected, $case);
+        $renderer = $this->createMock(PhpRenderer::class);
+        $applicant = $this->createMock(ApplicantModelInterface::class);
+        $stage = $this->createMock(StageModel::class);
+        $case = new DisplayEditApplicantController($applicant, $stage, $renderer);
+        $expected = DisplayEditApplicantController::class;
+        $this->assertInstanceOf($expected, $case);
     }
 }
