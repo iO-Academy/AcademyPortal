@@ -28,5 +28,3 @@ class DisplayEditApplicantControllerFactoryTest extends TestCase
         $this->assertInstanceOf($expected, $case);
     }
 }
-// 1) Tests\Factories\DisplayEditApplicantControllerFactoryTest::testInvoke
-//TypeError: Argument 2 passed to Portal\Controllers\FrontEnd\DisplayEditApplicantController::__construct() must be an instance of Portal\Models\StageModel, null given, called in /var/www/html/src/Factories/DisplayEditApplicantControllerFactory.php on line 16
