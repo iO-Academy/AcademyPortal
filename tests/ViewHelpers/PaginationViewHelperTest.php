@@ -18,8 +18,8 @@ class PaginationViewHelperTest extends TestCase
                      </nav>';
         $page = 1;
         $count = 1;
-        $actual = PaginationViewHelper::applicantsPagination($page,$count);
-        $this->assertEquals($expected,$actual);
+        $actual = PaginationViewHelper::applicantsPagination($page, $count);
+        $this->assertEquals($expected, $actual);
     }
 
     public function testMalformedPaginationViewHelper()
@@ -27,6 +27,6 @@ class PaginationViewHelperTest extends TestCase
         $page = [];
         $count = [];
         $this->expectException(\Error::class);
-        $actual = PaginationViewHelper::applicantsPagination($page,$count);
+        $actual = PaginationViewHelper::applicantsPagination($page, $count);
     }
 }
