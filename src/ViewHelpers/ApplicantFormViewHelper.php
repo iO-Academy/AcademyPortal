@@ -31,4 +31,13 @@ class ApplicantFormViewHelper
         }
         return $string;
     }
+
+    public static function tasterDropdown($tasterSessions)
+    {
+        $string = '';
+        foreach ($tasterSessions as $tasterSession) {
+            $string .= '<option class="tasterDropdown" value="' . $tasterSession['id'] . '">' . $tasterSession['name'] . ' - ' . $tasterSession['date'] . '</option>';
+        }
+        return $string;
+    }
 }

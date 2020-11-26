@@ -41,7 +41,7 @@ class ApplicationFormController extends Controller
                     'message' => 'Retrieved dropdown info.',
                     'data' => [
                         'cohorts' => $this->applicationFormModel->getCohorts(),
-                        'hearAbout' => $this->applicationFormModel->getHearAbout(),
+                        'hearAbout' => $this->applicationFormModel->getHearAbout()
                     ]
                 ];
             } catch (\Exception $e) {

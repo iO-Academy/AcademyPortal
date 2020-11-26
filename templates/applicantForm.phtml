@@ -105,10 +105,9 @@
                 <div id="taster" class="collapse">
                     <label for="taster">Taster session?</label>
                     <select id="taster" class="submitApplicant form-control" name="taster" ">
-                        <option name="default">-Select Stage-</option>
-                        <?php echo \Portal\ViewHelpers\ApplicantFormViewHelper::tasterDropdown($data); ?>
+                        <option name="default">-Select Taster Session-</option>
+                        <?php echo \Portal\ViewHelpers\ApplicantFormViewHelper::tasterDropdown($data['tasterSessions']); ?>
                     </select>
-
                     <div class="form-group">
                         <input class="submitApplicant" name="tasterAttendance" type="checkbox" <?php echo $applicant->getTasterAttendance() ? "checked" : ""; ?>/>
                         <label for="tasterAttendance">Did they attend the taster session?</label>
