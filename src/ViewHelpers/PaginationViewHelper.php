@@ -14,50 +14,50 @@ class PaginationViewHelper
      *
      * @return string
      */
-    public static function applicantsPagination($page, $count)
+    public static function pagination($page, $count)
     {
         $next = (strval($page+1));
         $prev = (strval($page-1));
 
-        $applicantPagination = '';
+        $string = '';
 
-        $applicantPagination .= '<nav aria-label="Page navigation mt-5">';
-        $applicantPagination .= '<ul class="pagination justify-content-center">';
-        $applicantPagination .= '<li class="page-item ';
+        $string .= '<nav class="mt-5">';
+        $string .= '<ul class="pagination justify-content-center">';
+        $string .= '<li class="page-item ';
         if ($page <= 1) {
-            $applicantPagination .= 'disabled';
+            $string .= 'disabled';
         }
-        $applicantPagination .= '"><a class="page-link" href="';
+        $string .= '"><a class="page-link" href="';
         if ($page <= 1) {
-            $applicantPagination .= '#';
+            $string .= '#';
         } else {
-            $applicantPagination .= '/applicants?page=' . $prev;
+            $string .= '?page=' . $prev;
         }
-        $applicantPagination .= '">Previous</a></li>';
+        $string .= '">Previous</a></li>';
 
-        for ($i = 1; $i <= $count; $i++) :
-            $applicantPagination .= '<li class="page-item ';
+        for ($i = 1; $i <= $count; $i++) {
+            $string .= '<li class="page-item ';
             if ($page == $i) {
-                $applicantPagination .= 'active';
+                $string .= 'active';
             }
-            $applicantPagination .= '">';
-            $applicantPagination .= '<a class="page-link" href="/applicants?page=' . $i . '">' . $i . '</a></li>';
-        endfor;
-
-        $applicantPagination .= '<li class="page-item ';
-        if ($page >= $count) {
-            $applicantPagination .= 'disabled';
+            $string .= '">';
+            $string .= '<a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
         }
-        $applicantPagination .= '">';
-        $applicantPagination .= '<a class="page-link" href="';
+
+        $string .= '<li class="page-item ';
         if ($page >= $count) {
-            $applicantPagination .= '#';
+            $string .= 'disabled';
+        }
+        $string .= '">';
+        $string .= '<a class="page-link" href="';
+        if ($page >= $count) {
+            $string .= '#';
         } else {
-            $applicantPagination .= '/applicants?page=' . ($next);
+            $string .= '?page=' . ($next);
         }
-        $applicantPagination .= '">Next</a>';
-        $applicantPagination .= '</li></ul></nav>';
+        $string .= '">Next</a>';
+        $string .= '</li></ul></nav>';
 
-        return $applicantPagination;
+        return $string;
     }
 }
