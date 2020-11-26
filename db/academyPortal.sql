@@ -1,13 +1,13 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 4541
+# Version 5446
 #
-# http://www.sequelpro.com/
+# https://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.30)
-# Database: academyPortal
-# Generation Time: 2020-08-11 15:51:04 +0000
+# Host: 127.0.0.1 (MySQL 5.7.31)
+# Database: AcademyPortal
+# Generation Time: 2020-11-24 09:39:09 +0000
 # ************************************************************
 
 
@@ -15,6 +15,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+SET NAMES utf8mb4;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
@@ -157,6 +158,33 @@ VALUES
 	(6,'250+');
 
 /*!40000 ALTER TABLE `company_sizes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table courses
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `courses`;
+
+CREATE TABLE `courses` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `trainer` varchar(255) DEFAULT NULL,
+  `notes` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `courses` WRITE;
+/*!40000 ALTER TABLE `courses` DISABLE KEYS */;
+
+INSERT INTO `courses` (`id`, `start_date`, `end_date`, `name`, `trainer`, `notes`)
+VALUES
+	(1,'2021-01-01','2021-03-30','Defence against the dark Json','Harry Potter',NULL),
+	(2,'2020-12-10','2021-02-02','Care of Magical Methods','Hagrid',NULL);
+
+/*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

@@ -81,3 +81,8 @@ section {
     float: right;
     margin: 12px;
 }
+
+
+.disabled {
+    pointer-events: none;
+}

@@ -83,6 +83,10 @@ return function (ContainerBuilder $containerBuilder) {
     $container['DeleteAllStageOptionsController'] = DI\factory('\Portal\Factories\DeleteAllStageOptionsControllerFactory');
     $container['DisplayTeamPickerController'] = DI\factory('\Portal\Factories\DisplayTeamPickerControllerFactory');
     $container['UpdateTeamsController'] = DI\factory('\Portal\Factories\UpdateTeamsControllerFactory');
+    $container['DisplayCoursesController'] = DI\factory('\Portal\Factories\DisplayCoursesControllerFactory');
+    $container['DisplayAddCourseController'] = DI\factory('\Portal\Factories\DisplayAddCourseControllerFactory');
+    $container['GetCoursesController'] = DI\factory('\Portal\Factories\GetCoursesControllerFactory');
+    $container['AddCourseController'] = DI\factory('\Portal\Factories\AddCourseControllerFactory');
 
 
     // Models
@@ -94,6 +98,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['RandomPasswordModel'] = DI\factory('\Portal\Models\RandomPasswordModel');
     $container['StageModel'] = DI\factory('\Portal\Factories\StageModelFactory');
     $container['TeamModel'] = DI\factory('\Portal\Factories\TeamModelFactory');
+    $container['CourseModel'] = DI\factory('\Portal\Factories\CourseModelFactory');
 
     $containerBuilder->addDefinitions($container);
 };

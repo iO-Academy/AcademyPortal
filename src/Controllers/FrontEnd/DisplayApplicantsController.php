@@ -38,9 +38,13 @@ class DisplayApplicantsController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $params['sort'] = $request->getQueryParams()['sort'] ?? '';
-            $params['cohortId'] = $request->getQueryParams()['cohortId'] ?? '%';
-            $params['stageId'] = $request->getQueryParams()['stageId'] ?? '%';
+            $_SESSION['sort'] = $request->getQueryParams()['sort'] ?? $_SESSION['sort'] ?? '';
+            $_SESSION['cohortId'] = $request->getQueryParams()['cohortId'] ?? $_SESSION['cohortId'] ?? '%';
+            $_SESSION['stageId'] = $request->getQueryParams()['stageId'] ?? $_SESSION['stageId'] ?? '%';
+            $_SESSION['page'] = $request->getQueryParams()['page'] ?? $_SESSION['page'] ?? '1';
+            $params['sort'] = $_SESSION['sort'];
+            $params['cohortId'] = $_SESSION['cohortId'];
+            $params['stageId'] = $_SESSION['stageId'];
 
             if (isset($params['cohortId']) && $params['cohortId'] == 'all') {
                 $params['cohortId'] = '%';
@@ -49,8 +53,15 @@ class DisplayApplicantsController extends Controller
                 $params['stageId'] = '%';
             }
 
+            $params['count'] = $this->applicantModel->countPaginationPages($params['stageId'], $params['cohortId']);
+
+            if (isset($_SESSION['page']) && $_SESSION['page'] > $params['count']) {
+                $_SESSION['page'] = 1;
+            }
+            $params['page'] = $_SESSION['page'];
+
             $params['data'] = $this->applicantModel
-                ->getApplicants($params['stageId'], $params['cohortId'], $params['sort']);
+                ->getApplicants($params['stageId'], $params['cohortId'], $params['sort'], $params['page']);
             return $this->renderer->render($response, 'applicants.phtml', $params);
         }
         return $response->withHeader('Location', '/');
