@@ -102,7 +102,7 @@ class ApplicantModel implements ApplicantModelInterface
     }
 
     /**
-     * Gets a sorted list of appliciants assigned to a specific cohort.
+     * Gets a sorted list of applicants assigned to a specific cohort.
      *
      * @param string $sortingQuery how you would like the results sorted
      * @param string $cohortId the cohort you would like the results of
@@ -381,9 +381,11 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->fetch();
     }
 
-    public function updateApplicantStageId(int $stageId, int $applicantId)
+    public function updateApplicantStageAndOptionIds(int $applicantId, int $stageId, ?int $optionId)
     {
-        $query = $this->db->prepare("UPDATE `applicants` SET `stageId` = :stageId WHERE `id` = :applicantId");
-        return $query->execute([':applicantId' => $applicantId, ':stageId' => $stageId]);
+        $query = $this->db->prepare(
+            "UPDATE `applicants` SET `stageId` = :stageId, `stageOptionId` = :optionId WHERE `id` = :applicantId"
+        );
+        return $query->execute([':applicantId' => $applicantId, ':stageId' => $stageId, ':optionId' => $optionId]);
     }
 }

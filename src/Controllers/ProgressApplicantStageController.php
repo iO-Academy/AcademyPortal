@@ -3,12 +3,13 @@
 
 namespace Portal\Controllers;
 
+use Portal\Abstracts\Controller;
 use Portal\Interfaces\ApplicantModelInterface;
 use Portal\Models\StageModel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-class ProgressApplicantStageController
+class ProgressApplicantStageController extends Controller
 {
     private $applicantModel;
     private $stageModel;
@@ -22,17 +23,29 @@ class ProgressApplicantStageController
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $applicantId = (int) $args['id'];
-            $currentStage = (int) $this->applicantModel->getApplicantStageId($applicantId)['stageId'];
-
-            $numberOfStages = (int) $this->stageModel->stagesCount()['stagesCount'];
-
-            if ($currentStage < $numberOfStages) {
-                $currentStage++;
-                $this->applicantModel->updateApplicantStageId($currentStage, $applicantId);
+            $applicantId = (int) $request->getQueryParams()['applicantId'];
+            $newStage = (int) $request->getQueryParams()['stageId'];
+            $optionIdValue =  $request->getQueryParams()['optionId'] ?? null;
+            $result = $this->applicantModel->updateApplicantStageAndOptionIds($applicantId, $newStage, $optionIdValue);
+            if ($result) {
+                $newStageEntity = $this->stageModel->getStageById($newStage);
+                $data = [
+                    'success' => true,
+                    'message' => 'Successfully updated Applicant to Next Stage with Options',
+                    'data' => []
+                ];
+                $data['data']['newStageName'] = $newStageEntity->getStageTitle();
+                $data['data']['stageId'] = $newStage;
+                $data['data']['isLastStage'] = $this->stageModel->getHighestOrderNo();
+                return $this->respondWithJson($response, $data, 200);
             }
-
-            return $response->withHeader('Location', '/applicants');
+            $data = [
+                'success' => false,
+                'message' => 'Something went wrong when trying to update the Applicant\'s Stage 
+                            and Option IDs into the database',
+                'data' => []
+            ];
+            return $this->respondWithJson($response, $data, 500);
         }
     }
 }
