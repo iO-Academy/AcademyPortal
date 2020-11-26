@@ -30,7 +30,7 @@ class EditApplicantController extends Controller
             $data = ['success' => false, 'msg' => 'Application not saved'];
             $statusCode = 500;
             $newApplicationData = $request->getParsedBody();
-
+            var_dump($newApplicationData);
             try {
                 $applicant = new CompleteApplicantEntity(
                     $newApplicationData['name'],
