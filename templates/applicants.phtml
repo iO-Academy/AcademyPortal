@@ -11,7 +11,7 @@
     <script defer src="./js/deleteApplicant.js"></script>
     <script defer src="./js/displayApplicants.js"></script>
 </head>
-<body>
+<body> 
 <?php require 'partials/layout/header.phtml'; ?>
 
 <?php require 'partials/layout/nav.phtml'; ?>
@@ -29,6 +29,14 @@
                             Apprentice Applicants
                         </a>
                     </li>
+                      <li class="pull-right">
+                        <label for="stages">
+                            Select Stages
+                            <select id="stages" class="submitApplicant form-control" name="stageId">
+                                <option value="all">All</option>
+                            </select>
+                        </label>
+                    </li>
                     <li class="pull-right">
                         <label for="cohorts">
                             Select Cohort
@@ -45,7 +53,9 @@
                 </div>
 
             </form>
+            <?php echo \Portal\ViewHelpers\PaginationViewHelper::pagination($page, $count);?>
         </div>
+
         <!-- Modal -->
         <?php require('partials/applicantInfoModal.phtml'); ?>
     </div>

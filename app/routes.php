@@ -19,6 +19,8 @@ return function (App $app) {
     $app->get('/editStages', 'DisplayStagesController');
     $app->get('/editApplicant', 'DisplayEditApplicantController');
     $app->get('/teamPicker', 'DisplayTeamPickerController');
+    $app->get('/courses', 'DisplayCoursesController');
+    $app->get('/addCourse', 'DisplayAddCourseController');
 
     //API
     $app->get('/api/getStudents', 'GetStudentsController');
@@ -39,6 +41,7 @@ return function (App $app) {
     $app->post('/api/createStage', 'CreateStageController');
     $app->delete('/api/deleteStage', 'DeleteStageController');
     $app->put('/api/updateStages', 'EditStageController');
+    $app->get('/api/getStages', 'GetStagesController');
     $app->post('/api/login', 'LoginController');
     $app->post('/api/registerUser', 'RegisterUserController');
     $app->put('/api/editStageOption', 'EditStageOptionController');
@@ -46,5 +49,8 @@ return function (App $app) {
     $app->post('/api/addStageOption', 'AddStageOptionController');
     $app->delete('/api/deleteAllStageOptions', 'DeleteAllStageOptionsController');
     $app->post('/api/updateTeams', 'UpdateTeamsController');
+    $app->get('/api/getCourses', 'GetCoursesController');
+    $app->post('/api/addCourse', 'AddCourseController');
+
 
 };

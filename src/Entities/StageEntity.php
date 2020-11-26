@@ -33,7 +33,8 @@ class StageEntity implements \JsonSerializable
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'order' => $this->order
+            'order' => $this->order,
+            'student' => $this->student
         ];
     }
 

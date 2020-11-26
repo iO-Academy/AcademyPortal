@@ -70,6 +70,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['RemoveHiringPartnerFromEventController'] = DI\factory('\Portal\Factories\RemoveHiringPartnerFromEventControllerFactory');
     $container['DeleteApplicantController'] = DI\factory('\Portal\Factories\DeleteApplicantControllerFactory');
     $container['CreateStageController'] = DI\factory('\Portal\Factories\CreateStageControllerFactory');
+    $container['GetStagesController'] = DI\factory('\Portal\Factories\GetStagesControllerFactory');
     $container['DisplayStagesController'] = DI\factory('\Portal\Factories\DisplayStagesControllerFactory');
     $container['DeleteStageController'] = DI\factory('\Portal\Factories\DeleteStageControllerFactory');
     $container['EditStageController'] = DI\factory('\Portal\Factories\EditStageControllerFactory');
@@ -81,6 +82,10 @@ return function (ContainerBuilder $containerBuilder) {
     $container['DeleteAllStageOptionsController'] = DI\factory('\Portal\Factories\DeleteAllStageOptionsControllerFactory');
     $container['DisplayTeamPickerController'] = DI\factory('\Portal\Factories\DisplayTeamPickerControllerFactory');
     $container['UpdateTeamsController'] = DI\factory('\Portal\Factories\UpdateTeamsControllerFactory');
+    $container['DisplayCoursesController'] = DI\factory('\Portal\Factories\DisplayCoursesControllerFactory');
+    $container['DisplayAddCourseController'] = DI\factory('\Portal\Factories\DisplayAddCourseControllerFactory');
+    $container['GetCoursesController'] = DI\factory('\Portal\Factories\GetCoursesControllerFactory');
+    $container['AddCourseController'] = DI\factory('\Portal\Factories\AddCourseControllerFactory');
 
 
     // Models
@@ -92,6 +97,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['RandomPasswordModel'] = DI\factory('\Portal\Models\RandomPasswordModel');
     $container['StageModel'] = DI\factory('\Portal\Factories\StageModelFactory');
     $container['TeamModel'] = DI\factory('\Portal\Factories\TeamModelFactory');
+    $container['CourseModel'] = DI\factory('\Portal\Factories\CourseModelFactory');
 
     $containerBuilder->addDefinitions($container);
 };
