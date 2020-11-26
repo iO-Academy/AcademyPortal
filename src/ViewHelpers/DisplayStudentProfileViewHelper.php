@@ -62,6 +62,19 @@ class DisplayStudentProfileViewHelper
                         . $applicant->getKitCollectionTime() . '</p>
                     <p class="detail">Kit number: <span id="kitNum">' . $applicant->getKitNum() . '</span></p>
                 </section>
+                <hr>
+                <section>
+                    <h4>Student profile</h4>
+                    <p class="detail">GitHub Username: <span id="githubUser"></span></p>
+                    <p class="detail">GitHub Link: <span id="githubLink"></span></p>
+                    <p class="detail">Portfolio: <span id="portfolio"></span></p>
+                    <p class="detail">Plesk Hosting URL: <span id="pleskHostUrl"></span></p>
+                    <p class="detail">Plesk Username: <span id="pleskUsername"></span></p>
+                    <p class="detail">Plesk Password: <span id="pleskPassword"></span></p>
+                    <p class="detail">GitHub Education Link: <span id="githubEduLink"></span></p>
+                    <p class="detail">Notes: <span id="notes"></span></p>
+                    <p class="detail">Course Date Confirmed: <span id="courseDate"></span></p>
+                </section>
                 </section>';
     }
 }
