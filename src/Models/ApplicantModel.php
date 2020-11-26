@@ -102,7 +102,7 @@ class ApplicantModel implements ApplicantModelInterface
     }
 
     /**
-     * Gets a sorted list of appliciants assigned to a specific cohort.
+     * Gets a sorted list of applicants assigned to a specific cohort.
      *
      * @param string $sortingQuery how you would like the results sorted
      * @param string $cohortId the cohort you would like the results of
