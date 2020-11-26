@@ -112,4 +112,4 @@ class DisplayStudentProfileHelperTest extends TestCase
         $result = preg_replace('/\s+/', '', $result);// removes whitespace
         $this->assertEquals($expected, $result);
     }
- }
+}
