@@ -31,6 +31,7 @@ class EditApplicantController extends Controller
             $statusCode = 500;
             $newApplicationData = $request->getParsedBody();
 
+            $password = null;
             if (isset($newApplicationData['password'])) {
                 $password = password_hash($newApplicationData['password'], PASSWORD_BCRYPT);
             }
@@ -48,7 +49,7 @@ class EditApplicantController extends Controller
                     $newApplicationData['eighteenPlus'],
                     $newApplicationData['finance'],
                     $newApplicationData['notes'],
-                    $password ?? 'test',
+                    $password,
                     $newApplicationData['id'],
                     $newApplicationData['apprentice'],
                     $newApplicationData['aptitude'],
