@@ -19,8 +19,11 @@ return function (App $app) {
     $app->get('/editStages', 'DisplayStagesController');
     $app->get('/editApplicant', 'DisplayEditApplicantController');
     $app->get('/teamPicker', 'DisplayTeamPickerController');
+    $app->get('/student', 'DisplayTeamPickerController');
+    $app->get('/public[/{id}]', 'DisplayStudentProfileController');
     $app->get('/courses', 'DisplayCoursesController');
     $app->get('/addCourse', 'DisplayAddCourseController');
+
 
     //API
     $app->get('/api/getStudents', 'GetStudentsController');

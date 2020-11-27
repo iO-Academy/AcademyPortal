@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Applicants');
+    ?>
+    <link rel="stylesheet" type="text/css" href="css/applicants.css">
+    <script src="/js/populateDropdowns.js" defer></script>
+    <script defer src="/js/applicantModal.js"></script>
+    <script defer src="/js/deleteApplicant.js"></script>
+    <script defer src="/js/displayApplicants.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="col-xs-12 registeredApplicants">
+        <h1>Profile</h1>
+            
+                    
+                    <?php if($applicant) {
+                        echo \Portal\ViewHelpers\DisplayStudentProfileViewHelper::outputApplicant($applicant);
+                    } else {
+                        echo 'Sorry, profile not found. Please contact the office.';
+                    }?>
+
+
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+<div class="container">
+<?php require 'partials/layout/footer.phtml'; ?>
+</div>
+</body>
+</html>
