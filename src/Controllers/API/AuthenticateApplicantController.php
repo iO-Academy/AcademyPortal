@@ -33,15 +33,16 @@ class AuthenticateApplicantController
      */
     public function __invoke(Request $request, Response $response, array $args) : Response
     {
+        $_SESSION['authenticated'] = false;
+        $_SESSION['authenticateId'] = null;
 
         $id = $request->getParsedBody()['id'];
-        $_SESSION['authenticated: ' . $id] = false;
         $password = $request->getParsedBody()['password'];
         $applicant = $this->applicantModel->getApplicantById($id);
         $hash = $applicant->getPassword();
-
         if (password_verify($password, $hash)) {
-            $_SESSION['authenticated: ' . $id] = true;
+            $_SESSION['authenticated'] = true;
+            $_SESSION['authenticateId'] = $id;
             return $response->withHeader('Location', '/public/' . $id);
         }
 

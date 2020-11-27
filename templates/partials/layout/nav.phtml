@@ -1,3 +1,4 @@
+<?php if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) { ?>
 <nav class="btn-group" role="group">
     <a href="/admin" class="btn btn-default">Home</a>
 
@@ -40,4 +41,16 @@
         </ul>
     </div>
 
+    <div class="btn-group">
+        <a href="/courses" class="btn btn-default">Courses</a>
+        <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="/addCourse">Add New Course</a></li>
+        </ul>
+    </div>
+
 </nav>
+<?php } ?>

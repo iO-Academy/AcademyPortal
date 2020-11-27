@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <?php
-    require 'partials/layout/head.phtml';
-    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Authenticate');
-    ?>
-    <link rel="stylesheet" type="text/css" href="./css/login.css"/>
-</head>
-<body>
-<?php require 'partials/layout/header.phtml'; ?>
-<main class="login">
-    <h1>Authenticate</h1>
-    <form id="loginForm" action='/authenticatePassword' method='post'>
-        <input type='number' name='id' value='<?= $id ?>' hidden>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" required class="form-control">
-            <span id="passwordWarning"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Login" id="submit" class="btn btn-success">
-            <span id="submitWarning" class="req"></span>
-        </div>
-        <div id="error-message"></div>
-    </form>
-</main>
-<?php require 'partials/layout/footer.phtml'; ?>
-</body>
+    <head>
+        <?php
+        require 'partials/layout/head.phtml';
+        echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Authenticate');
+        ?>
+        <link rel="stylesheet" type="text/css" href="./css/login.css"/>
+    </head>
+    <body>
+        <?php require 'partials/layout/header.phtml'; ?>
+        <?php require 'partials/layout/nav.phtml'; ?>
+        <main class="login">
+            <h1>Authenticate</h1>
+            <form id="loginForm" action='/api/authenticatePassword' method='post'>
+                <div class="form-group">
+                    <input type='number' name='id' value='<?= $id ?>' hidden>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password" required class="form-control">
+                    <span id="passwordWarning"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Login" id="submit" class="btn btn-success">
+                    <span id="submitWarning" class="req"></span>
+                </div>
+                <div id="error-message"></div>
+            </form>
+        </main>
+        <?php require 'partials/layout/footer.phtml'; ?>
+    </body>
 </html>

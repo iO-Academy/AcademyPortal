@@ -30,6 +30,7 @@ $repositories($containerBuilder);
 $container = $containerBuilder->build();
 
 session_start();
+//$_SESSION['loggedIn'] = false; // uncomment then refresh to force sign out (then recomment)
 
 // Instantiate the app
 AppFactory::setContainer($container);

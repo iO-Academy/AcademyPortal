@@ -38,10 +38,12 @@ class DisplayStudentProfileController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        if ($_SESSION['authenticated: ' . $args['id']] === true) {
+        if ($_SESSION['loggedIn']
+            || ($_SESSION['authenticated'] === true && $_SESSION['authenticateId'] === $args['id'])) {
             $params['applicant'] = $this->applicantModel->getApplicantById($args['id']);
             return $this->renderer->render($response, 'studentProfile.phtml', $params);
         }
+
         return $response->withHeader('Location', '/authenticate/' . $args['id']);
     }
 }

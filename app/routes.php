@@ -20,9 +20,11 @@ return function (App $app) {
     $app->get('/editApplicant', 'DisplayEditApplicantController');
     $app->get('/teamPicker', 'DisplayTeamPickerController');
     $app->get('/student', 'DisplayTeamPickerController');
-    $app->get('/public/{id}', 'DisplayStudentProfileController');
     $app->get('/authenticate/{id}', 'AuthenticatePageController');
-    $app->post('/authenticatePassword', 'AuthenticateApplicantController');
+    $app->get('/public[/{id}]', 'DisplayStudentProfileController');
+    $app->get('/courses', 'DisplayCoursesController');
+    $app->get('/addCourse', 'DisplayAddCourseController');
+
 
     //API
     $app->post('/api/getStudents', 'GetStudentsController');
@@ -45,11 +47,15 @@ return function (App $app) {
     $app->put('/api/updateStages', 'EditStageController');
     $app->get('/api/getStages', 'GetStagesController');
     $app->post('/api/login', 'LoginController');
+    $app->post('/api/authenticatePassword', 'AuthenticateApplicantController');
     $app->post('/api/registerUser', 'RegisterUserController');
     $app->put('/api/editStageOption', 'EditStageOptionController');
     $app->delete('/api/deleteStageOption', 'DeleteStageOptionController');
     $app->post('/api/addStageOption', 'AddStageOptionController');
     $app->delete('/api/deleteAllStageOptions', 'DeleteAllStageOptionsController');
     $app->post('/api/updateTeams', 'UpdateTeamsController');
+    $app->get('/api/getCourses', 'GetCoursesController');
+    $app->post('/api/addCourse', 'AddCourseController');
+
 
 };

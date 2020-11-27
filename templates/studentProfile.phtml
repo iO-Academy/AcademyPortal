@@ -17,7 +17,12 @@
         <h1>Profile</h1>
             
                     
-                    <?php echo \Portal\ViewHelpers\DisplayStudentProfileViewHelper::outputApplicant($applicant); ?>
+                    <?php if($applicant) {
+                        echo \Portal\ViewHelpers\DisplayStudentProfileViewHelper::outputApplicant($applicant);
+                    } else {
+                        echo 'Sorry, profile not found. Please contact the office.';
+                    }?>
+
 
             <div class="modal-footer">
             </div>

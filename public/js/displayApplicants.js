@@ -6,7 +6,7 @@
   const params = new URLSearchParams(
     window.location.search
   );
-  const cohort = params.get('cohortId') || 'all';
+  sessionStorage['cohortID'] = params.get('cohortId') || sessionStorage['cohortID'] || 'all';
   const form = document.querySelector(
     '#sortFilterApplicants'
   );
@@ -19,9 +19,10 @@
     form.insertAdjacentHTML('beforeend', filter);
     form.submit();
   });
-  if (cohort !== 'all') {
+
+  if (sessionStorage['cohortID'] !== 'all') {
     document
-      .querySelector(`[value='${cohort}']`)
+      .querySelector(`[value='${sessionStorage['cohortID']}`)
       .setAttribute('selected', 'true');
     document
       .querySelector('.cohortSort')
@@ -44,7 +45,7 @@
   const params = new URLSearchParams(
     window.location.search
   );
-  const stage = params.get('stageId') || 'all';
+  sessionStorage['stageId']= params.get('stageId') || sessionStorage['stageId'] || 'all';
   const form = document.querySelector(
     '#sortFilterApplicants'
   );
@@ -58,9 +59,9 @@
     form.submit();
   });
 
-  if (stage !== 'all') {
+  if (sessionStorage['stageId'] !== 'all') {
     document
-      .querySelector(`[value='${stage}']`)
+      .querySelector(`[value='${sessionStorage['stageId']}']`)
       .setAttribute('selected', 'true');
   } else {
     document

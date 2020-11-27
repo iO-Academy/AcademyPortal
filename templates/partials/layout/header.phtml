@@ -1,4 +1,5 @@
 <div class="container">
+<?php if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) { ?>
     <header>
         <div class="external-links pull-left">
             <a href="http://mayden.academy" target="_blank">
@@ -17,3 +18,4 @@
 
         <div class="logo pull-right"><img src="https://mayden.academy/wp-content/themes/academy3/images/logo-academy.svg" alt="Mayden Academy"></div>
     </header>
+<?php } ?>
