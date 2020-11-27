@@ -43,6 +43,8 @@ class SaveApplicantController extends Controller
 
             $newApplicationData = $request->getParsedBody();
 
+            $password = password_hash($newApplicationData['password'], PASSWORD_BCRYPT);
+
             try {
                 $applicant = new ApplicantEntity(
                     $newApplicationData['name'],
@@ -55,7 +57,8 @@ class SaveApplicantController extends Controller
                     $newApplicationData['eligible'],
                     $newApplicationData['eighteenPlus'],
                     $newApplicationData['finance'],
-                    $newApplicationData['notes']
+                    $newApplicationData['notes'],
+                    $password
                 );
             } catch (Exception $e) {
                 $statusCode = 400;

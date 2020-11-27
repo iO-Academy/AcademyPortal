@@ -46,6 +46,8 @@ return function (ContainerBuilder $containerBuilder) {
     $container['AdminController'] = DI\factory('\Portal\Factories\AdminControllerFactory');
     $container['RegisterController'] = DI\factory('\Portal\Factories\RegisterControllerFactory');
     $container['LoginController'] = DI\factory('\Portal\Factories\LoginControllerFactory');
+    $container['AuthenticatePageController'] = DI\factory('\Portal\Factories\AuthenticatePageControllerFactory');
+    $container['AuthenticateApplicantController'] = DI\factory('\Portal\Factories\AuthenticateApplicantControllerFactory');
     $container['RegisterUserController'] = DI\factory('\Portal\Factories\RegisterUserControllerFactory');
     $container['addApplicantController'] = DI\factory('\Portal\Factories\AddApplicantControllerFactory');
     $container['ApplicationFormController'] = DI\factory('\Portal\Factories\ApplicationFormControllerFactory');

@@ -18,6 +18,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     protected $eighteenPlus;
     protected $finance;
     protected $notes;
+    protected $password;
     protected const MAXVARCHARLENGTH = 255;
     protected const MAXTEXTLENGTH = 10000;
 
@@ -33,6 +34,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
         string $applicantEighteenPlus = null,
         string $applicantFinance = null,
         string $applicantNotes = null,
+        string $applicantPassword = null,
         int $applicantId = null
     ) {
         $this->name = ($this->name ?? $applicantName);
@@ -46,6 +48,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
         $this->eighteenPlus = ($this->eighteenPlus ?? $applicantEighteenPlus);
         $this->finance = ($this->finance ?? $applicantFinance);
         $this->notes = ($this->notes ?? $applicantNotes);
+        $this->password = ($this->password ?? $applicantPassword);
         $this->id = ($this->id ?? $applicantId);
 
         $this->sanitiseData();
@@ -192,5 +195,15 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     public function getNotes()
     {
         return $this->notes;
+    }
+
+    /**
+     * Gets password.
+     *
+     * @return string, returns the notes field.
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 }

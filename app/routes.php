@@ -20,10 +20,12 @@ return function (App $app) {
     $app->get('/editApplicant', 'DisplayEditApplicantController');
     $app->get('/teamPicker', 'DisplayTeamPickerController');
     $app->get('/student', 'DisplayTeamPickerController');
-    $app->get('/public', 'DisplayStudentProfileController');
+    $app->get('/public/{id}', 'DisplayStudentProfileController');
+    $app->get('/authenticate/{id}', 'AuthenticatePageController');
+    $app->post('/authenticatePassword', 'AuthenticateApplicantController');
 
     //API
-    $app->get('/api/getStudents', 'GetStudentsController');
+    $app->post('/api/getStudents', 'GetStudentsController');
     $app->get('/api/getApplicant/{id}', 'GetApplicantController');
     $app->post('/api/saveApplicant', 'SaveApplicantController');
     $app->delete('/api/deleteApplicant', 'DeleteApplicantController');

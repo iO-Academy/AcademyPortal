@@ -15,6 +15,7 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
     protected $stageID;
     protected $stageName;
     protected $stageOptionName;
+    protected $password;
 
     public function jsonSerialize()
     {

@@ -37,7 +37,8 @@ class ApplicantModel implements ApplicantModelInterface
                             `eligible`,
                             `eighteenPlus`,
                             `finance`,
-                            `notes`
+                            `notes`,
+                            `password`
                             )
                         VALUES (
                             :name,
@@ -50,7 +51,8 @@ class ApplicantModel implements ApplicantModelInterface
                             :eligible,
                             :eighteenPlus,
                             :finance,
-                            :notes
+                            :notes,
+                            :password
                         );"
         );
 
@@ -65,6 +67,8 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':eighteenPlus', $applicant->getEighteenPlus());
         $query->bindValue(':finance', $applicant->getFinance());
         $query->bindValue(':notes', $applicant->getNotes());
+        $query->bindValue(':notes', $applicant->getNotes());
+        $query->bindValue(':password', $applicant->getPassword());
 
         $result = $query->execute();
         if ($result) {
@@ -165,7 +169,7 @@ class ApplicantModel implements ApplicantModelInterface
     {
         $query = $this->db->prepare(
             "SELECT `applicants`.`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
-                      `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`, 
+                      `eligible`, `eighteenPlus`, `finance`, `notes`, `password`, `dateTimeAdded`,  `hearAbout`, 
                       `date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
