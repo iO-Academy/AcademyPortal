@@ -41,7 +41,7 @@ class EventModel
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
         `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`, 
-        `end_time`, `notes` 
+        `end_time`, `notes`, `availableToHP`
         FROM `events`
         LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id`
         WHERE `date` > NOW()
@@ -99,7 +99,8 @@ class EventModel
             `date`,
             `start_time`,
             `end_time`,
-            `notes`
+            `notes`,
+            `availableToHP`
             ) 
             VALUES (
             :eventId, 
@@ -109,7 +110,8 @@ class EventModel
             :date, 
             :startTime, 
             :endTime, 
-            :notes);");
+            :notes,
+            :availableToHP);");
 
         $eventId = $newEvent->getEventId();
         $name = $newEvent->getName();
@@ -119,6 +121,7 @@ class EventModel
         $startTime = $newEvent->getStartTime();
         $endTime = $newEvent->getEndTime();
         $notes = $newEvent->getNotes();
+        $availableToHP = $newEvent->getAvailableToHP();
 
         $query->bindParam(':eventId', $eventId);
         $query->bindParam(':name', $name);
@@ -128,6 +131,7 @@ class EventModel
         $query->bindParam(':startTime', $startTime);
         $query->bindParam(':endTime', $endTime);
         $query->bindParam(':notes', $notes);
+        $query->bindParam(':availableToHP', $availableToHP);
         return $query->execute();
     }
 
@@ -140,7 +144,7 @@ class EventModel
     public function searchFutureEvents(string $searchTerm):array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
-                `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes` 
+                `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
                 FROM `events` 
                 LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
                 WHERE `events`.`name` LIKE ? AND `date` > NOW() ORDER BY `date` DESC;';
