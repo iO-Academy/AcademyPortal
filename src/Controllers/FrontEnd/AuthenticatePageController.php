@@ -17,9 +17,12 @@ class AuthenticatePageController
 
     public function __invoke(Request $request, Response $response, array $args)
     {
+
+        $params['id'] = $args['id'];
         if (isset($_SESSION['authenticated: ' . $args['id']]) && $_SESSION['authenticated: ' . $args['id']] === true) {
             return $response->withHeader('Location', '/public/' . $args['id']);
         }
-        return $this->renderer->render($response, 'authenticate.phtml', $args);
+
+        return $this->renderer->render($response, 'authenticate.phtml', $params);
     }
 }

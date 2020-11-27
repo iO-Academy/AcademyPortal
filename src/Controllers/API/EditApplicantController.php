@@ -31,6 +31,10 @@ class EditApplicantController extends Controller
             $statusCode = 500;
             $newApplicationData = $request->getParsedBody();
 
+            if (isset($newApplicationData['password'])) {
+                $password = password_hash($newApplicationData['password'], PASSWORD_BCRYPT);
+            }
+
             try {
                 $applicant = new CompleteApplicantEntity(
                     $newApplicationData['name'],
@@ -44,6 +48,7 @@ class EditApplicantController extends Controller
                     $newApplicationData['eighteenPlus'],
                     $newApplicationData['finance'],
                     $newApplicationData['notes'],
+                    $password ?? 'test',
                     $newApplicationData['id'],
                     $newApplicationData['apprentice'],
                     $newApplicationData['aptitude'],

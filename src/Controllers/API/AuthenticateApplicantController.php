@@ -35,6 +35,7 @@ class AuthenticateApplicantController
     {
         $_SESSION['authenticated'] = false;
         $_SESSION['authenticateId'] = null;
+        $_SESSION['authenticationError'] = null;
 
         $id = $request->getParsedBody()['id'];
         $password = $request->getParsedBody()['password'];
@@ -46,6 +47,7 @@ class AuthenticateApplicantController
             return $response->withHeader('Location', '/public/' . $id);
         }
 
+        $_SESSION['authenticationError'] = 'Wrong, try again.';
         return $response->withHeader('Location', '/authenticate/' . $id);
     }
 }

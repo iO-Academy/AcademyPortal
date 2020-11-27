@@ -43,6 +43,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         string $applicantEighteenPlus = null,
         string $applicantFinance = null,
         string $applicantNotes = null,
+        string $applicantPassword = null,
         int $applicantId = null,
         bool $apprentice = null,
         $aptitude = null,
@@ -74,6 +75,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         $this->eighteenPlus = ($this->eighteenPlus ?? $applicantEighteenPlus);
         $this->finance = ($this->finance ?? $applicantFinance);
         $this->notes = ($this->notes ?? $applicantNotes);
+        $this->password = ($this->password ?? $applicantPassword);
         $this->id = ($this->id ?? $applicantId);
 
         $this->apprentice = ($this->apprentice ?? $apprentice);
