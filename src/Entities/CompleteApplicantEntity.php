@@ -120,6 +120,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'eighteenPlus' => $this->eighteenPlus,
                   'finance' => $this->finance,
                   'notes' => $this->notes,
+                  'password' => $this->password,
                   'cohortDate' => $this->getCohortDate(),
                   'dateTimeAdded' => $this->dateTimeAdded,
                   'apprentice' => $this->apprentice,
@@ -164,6 +165,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         $this->eighteenPlus = $this->eighteenPlus ? 1 : 0;
         $this->finance = $this->finance ? 1 : 0;
         $this->notes = StringValidator::sanitiseString($this->notes);
+        $this->password = StringValidator::sanitiseString($this->password);
         $this->name = StringValidator::validateExistsAndLength($this->name, self::MAXVARCHARLENGTH);
         $this->email = StringValidator::validateExistsAndLength($this->email, self::MAXVARCHARLENGTH);
         $this->codeExperience = StringValidator::validateLength($this->codeExperience, self::MAXTEXTLENGTH);
