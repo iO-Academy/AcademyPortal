@@ -46,6 +46,7 @@ class GetNextStageOptionsController extends Controller
             $data['success'] = true;
             $data['message'] = 'Found data in GetNextStageOptionsController';
         } catch (\Exception $e) {
+            $statusCode = 400;
             $data['success'] = false;
             $data['message'] = $e->getMessage();
         }

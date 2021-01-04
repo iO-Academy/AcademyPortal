@@ -8,6 +8,7 @@ class ApplicantFormViewHelper
     {
         $string = '';
 
+        /* Tech debt - to be tidied up */
         foreach ($stages as $stage) {
             $stageHasOptions = false;
             $optionsForThisStage = [];

@@ -66,8 +66,8 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         string $taster = null,
         bool $tasterAttendance = null,
         string $team = null,
-        $stageID = null,
-        $stageOptionId = null
+        int $stageID = null,
+        int $stageOptionId = null
     ) {
         $this->name = ($this->name ?? $applicantName);
         $this->email = ($this->email ?? $applicantEmail);
@@ -357,9 +357,9 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getStageID()
+    public function getStageID() : ?int
     {
         return $this->stageID;
     }
