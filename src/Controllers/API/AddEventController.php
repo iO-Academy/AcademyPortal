@@ -39,7 +39,6 @@ class AddEventController extends Controller
                 $newEvent['category'],
                 $this->eventModel->getEventCategories()
             );
-
             $event = new EventEntity(
                 $newEvent['id'] ?? '',
                 $newEvent['name'],
@@ -48,7 +47,8 @@ class AddEventController extends Controller
                 $newEvent['date'],
                 $newEvent['startTime'],
                 $newEvent['endTime'],
-                $newEvent['notes']
+                $newEvent['notes'],
+                $newEvent['availableToHP']
             );
             if (!empty($event) && $event instanceof EventEntity) {
                 $result = $this->eventModel->addEvent($event);
