@@ -200,7 +200,7 @@ class ApplicantModel implements ApplicantModelInterface
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
                       `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName',
-                       `option` as 'stageOptionName' 
+                       `option` as 'stageOptionName'
                         FROM `applicants` 
                         LEFT JOIN `cohorts` 
                             ON `applicants`.`cohortId`=`cohorts`.`id` 
@@ -292,7 +292,9 @@ class ApplicantModel implements ApplicantModelInterface
                             `eligible` = :eligible,
                             `eighteenPlus` = :eighteenPlus,
                             `finance` = :finance,
-                            `notes` = :notes
+                            `notes` = :notes,
+                            `stageId` = :stageId,
+                            `stageOptionId` = :stageOptionId
                         WHERE (
                             `id` = :id
                         );"
@@ -310,6 +312,8 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':finance', $applicant->getFinance());
         $query->bindValue(':notes', $applicant->getNotes());
         $query->bindValue(':id', $applicant->getId());
+        $query->bindValue(':stageId', $applicant->getStageID());
+        $query->bindValue(':stageOptionId', $applicant->getStageOptionId());
 
         return $query->execute();
     }
@@ -374,5 +378,22 @@ class ApplicantModel implements ApplicantModelInterface
         $sql = 'UPDATE `applicants_additional` SET `team` = :teamId WHERE `id` = :applicantId';
         $query = $this->db->prepare($sql);
         return $query->execute([':teamId' => $teamId, ':applicantId' => $applicantId]);
+    }
+
+    public function getApplicantStageId(int $applicantId)
+    {
+        $query = $this->db->prepare(
+            'SELECT `stageId` FROM `applicants` WHERE `id` = :applicantId'
+        );
+        $query->execute([':applicantId' => $applicantId]);
+        return $query->fetch();
+    }
+
+    public function updateApplicantStageAndOptionIds(int $applicantId, int $stageId, ?int $optionId)
+    {
+        $query = $this->db->prepare(
+            "UPDATE `applicants` SET `stageId` = :stageId, `stageOptionId` = :optionId WHERE `id` = :applicantId"
+        );
+        return $query->execute([':applicantId' => $applicantId, ':stageId' => $stageId, ':optionId' => $optionId]);
     }
 }

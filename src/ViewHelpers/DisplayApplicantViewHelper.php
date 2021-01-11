@@ -65,9 +65,9 @@ class DisplayApplicantViewHelper
     public static function displayApplicants($applicants): string
     {
         $result = '';
-        foreach ($applicants as $applicant) {
+        foreach ($applicants['applicants'] as $applicant) {
             if (empty($applicant->apprentice)) {
-                $result .= self::outputApplicantRow($applicant);
+                $result .= self::outputApplicantRow($applicant, $applicants['lastStage']);
             }
         }
         return self::handleNoApplicants($result);
@@ -92,9 +92,9 @@ class DisplayApplicantViewHelper
     }
 
 
-    private static function outputApplicantRow(BaseApplicantEntityInterface $applicant): string
+    private static function outputApplicantRow(BaseApplicantEntityInterface $applicant, $lastStage): string
     {
-        return '<tr>
+        $string = '<tr>
                     <td>
                         <a 
                         href="#"
@@ -107,7 +107,7 @@ class DisplayApplicantViewHelper
                     <td>' . $applicant->getEmail() . '</td>
                     <td>' . $applicant->getPrettyDateOfApplication() . '</td>
                     <td>' . $applicant->getCohortDate() . '</td>
-                    <td>' . $applicant->getStageName() . '</td>
+                    <td id="currentStageName' . $applicant->getId() . '">' . $applicant->getStageName() . '</td>
                     <td>                              
                         <a href="/editApplicant?id=' . $applicant->getId() . '"   
                            type="button"                                   
@@ -120,9 +120,15 @@ class DisplayApplicantViewHelper
                                 class="btn btn-danger delete deleteBtn"
                                 data-id="' . $applicant->getId() . '">
                                 Delete
-                        </a>                                   
-                    </td>
-                </tr>';
+                        </a>';
+        if ($applicant->getStageID() != $lastStage) {
+            $string .= '<button type="button" class="btn btn-info btnNextStage" data-stageid="' .
+                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" >
+                Next Stage
+            </button>';
+        }
+        $string .= '</td></tr>';
+        return $string;
     }
 
     private static function handleNoApplicants(string $output): string

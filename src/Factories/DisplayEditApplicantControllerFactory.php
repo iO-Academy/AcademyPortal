@@ -12,7 +12,8 @@ class DisplayEditApplicantControllerFactory
     {
         $renderer = $container->get('renderer');
         $applicantModel = $container->get('ApplicantModel');
-        $editApplicantController = new DisplayEditApplicantController($applicantModel, $renderer);
+        $stageModel = $container->get('StageModel');
+        $editApplicantController = new DisplayEditApplicantController($applicantModel, $stageModel, $renderer);
         return $editApplicantController;
     }
 }

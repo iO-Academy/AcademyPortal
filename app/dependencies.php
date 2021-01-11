@@ -83,11 +83,12 @@ return function (ContainerBuilder $containerBuilder) {
     $container['DeleteAllStageOptionsController'] = DI\factory('\Portal\Factories\DeleteAllStageOptionsControllerFactory');
     $container['DisplayTeamPickerController'] = DI\factory('\Portal\Factories\DisplayTeamPickerControllerFactory');
     $container['UpdateTeamsController'] = DI\factory('\Portal\Factories\UpdateTeamsControllerFactory');
+    $container['GetNextStageOptionsController'] = DI\factory('\Portal\Factories\GetNextStageOptionsControllerFactory');
+    $container['ProgressApplicantStageController'] = DI\factory('\Portal\Factories\ProgressApplicantStageControllerFactory');
     $container['DisplayCoursesController'] = DI\factory('\Portal\Factories\DisplayCoursesControllerFactory');
     $container['DisplayAddCourseController'] = DI\factory('\Portal\Factories\DisplayAddCourseControllerFactory');
     $container['GetCoursesController'] = DI\factory('\Portal\Factories\GetCoursesControllerFactory');
     $container['AddCourseController'] = DI\factory('\Portal\Factories\AddCourseControllerFactory');
-
 
     // Models
     $container['UserModel'] = DI\factory('\Portal\Factories\UserModelFactory');

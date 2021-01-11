@@ -52,8 +52,9 @@ return function (App $app) {
     $app->post('/api/addStageOption', 'AddStageOptionController');
     $app->delete('/api/deleteAllStageOptions', 'DeleteAllStageOptionsController');
     $app->post('/api/updateTeams', 'UpdateTeamsController');
+    $app->get('/api/getNextStageOptions/{stageid}', 'GetNextStageOptionsController');
+    $app->get('/api/progressApplicantStage', 'ProgressApplicantStageController');
     $app->get('/api/getCourses', 'GetCoursesController');
     $app->post('/api/addCourse', 'AddCourseController');
-
 
 };

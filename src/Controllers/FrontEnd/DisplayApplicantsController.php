@@ -7,22 +7,26 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\ApplicantModel;
+use Portal\Models\StageModel;
 
 class DisplayApplicantsController extends Controller
 {
     private $renderer;
     private $applicantModel;
+    private $stageModel;
 
     /**
      * DisplayApplicantsController constructor.
      *
      * @param PhpRenderer $renderer
      *
+     * @param StageModel $stageModel
      * @param ApplicantModel $applicantModel
      */
-    public function __construct(PhpRenderer $renderer, ApplicantModel $applicantModel)
+    public function __construct(PhpRenderer $renderer, StageModel $stageModel, ApplicantModel $applicantModel)
     {
         $this->renderer = $renderer;
+        $this->stageModel = $stageModel;
         $this->applicantModel = $applicantModel;
     }
 
@@ -45,6 +49,7 @@ class DisplayApplicantsController extends Controller
             $params['sort'] = $_SESSION['sort'];
             $params['cohortId'] = $_SESSION['cohortId'];
             $params['stageId'] = $_SESSION['stageId'];
+            $params['data']['lastStage'] = $this->stageModel->getHighestOrderNo();
 
             if (isset($params['cohortId']) && $params['cohortId'] == 'all') {
                 $params['cohortId'] = '%';
@@ -60,7 +65,7 @@ class DisplayApplicantsController extends Controller
             }
             $params['page'] = $_SESSION['page'];
 
-            $params['data'] = $this->applicantModel
+            $params['data']['applicants'] = $this->applicantModel
                 ->getApplicants($params['stageId'], $params['cohortId'], $params['sort'], $params['page']);
             return $this->renderer->render($response, 'applicants.phtml', $params);
         }
