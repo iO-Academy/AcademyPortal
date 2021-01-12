@@ -3,7 +3,7 @@
 
 namespace Tests\Factories;
 
-use Portal\Controllers\ProgressApplicantStageController;
+use Portal\Controllers\API\ProgressApplicantStageController;
 use Portal\Factories\ProgressApplicantStageControllerFactory;
 use Portal\Models\ApplicantModel;
 use Portal\Models\StageModel;

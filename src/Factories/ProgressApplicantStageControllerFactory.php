@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\ProgressApplicantStageController;
+use Portal\Controllers\API\ProgressApplicantStageController;
 use Psr\Container\ContainerInterface;
 
 class ProgressApplicantStageControllerFactory

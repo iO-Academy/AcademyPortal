@@ -2,7 +2,7 @@
 
 namespace Portal\Factories;
 
-use Portal\Controllers\GetNextStageOptionsController;
+use Portal\Controllers\API\GetNextStageOptionsController;
 use Psr\Container\ContainerInterface;
 
 class GetNextStageOptionsControllerFactory
