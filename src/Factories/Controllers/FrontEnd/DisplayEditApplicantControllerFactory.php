@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Portal\Factories;
+namespace Portal\Factories\Controllers\FrontEnd;
 
 use Portal\Controllers\FrontEnd\DisplayEditApplicantController;
 use Psr\Container\ContainerInterface;

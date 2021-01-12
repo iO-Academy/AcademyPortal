@@ -1,6 +1,6 @@
 <?php
 
-namespace Portal\Factories;
+namespace Portal\Factories\Controllers\FrontEnd;
 
 use Portal\Controllers\FrontEnd\DisplayAddCourseController;
 use Psr\Container\ContainerInterface;

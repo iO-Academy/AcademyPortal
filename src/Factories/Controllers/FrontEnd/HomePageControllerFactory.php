@@ -6,7 +6,7 @@
  * Time: 10:30
  */
 
-namespace Portal\Factories;
+namespace Portal\Factories\Controllers\FrontEnd;
 
 use Psr\Container\ContainerInterface;
 use Portal\Controllers\FrontEnd\HomePageController;

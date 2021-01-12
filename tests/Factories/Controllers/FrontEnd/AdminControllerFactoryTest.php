@@ -1,14 +1,14 @@
 <?php
 
-namespace Test\Factories;
+namespace Tests\Factories\Controllers\FrontEnd;
 
 use Tests\TestCase;
-use Portal\Factories\HomePageControllerFactory;
+use Portal\Factories\Controllers\FrontEnd\AdminControllerFactory;
 use Slim\Views\PhpRenderer;
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\FrontEnd\HomePageController;
+use Portal\Controllers\FrontEnd\AdminController;
 
-class HomePageControllerFactoryTest extends TestCase
+class AdminControllerFactoryTest extends TestCase
 {
     public function testInvoke()
     {
@@ -17,9 +17,9 @@ class HomePageControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($renderer);
 
-        $factory = new HomePageControllerFactory;
+        $factory = new AdminControllerFactory;
         $case = $factory($container);
-        $expected = HomePageController::class;
+        $expected = AdminController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

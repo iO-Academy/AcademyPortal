@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Factories;
+namespace Tests\Factories\Controllers\FrontEnd;
 
 use PHPUnit\Framework\TestCase;
 use Portal\Controllers\FrontEnd\DisplayStagesController;

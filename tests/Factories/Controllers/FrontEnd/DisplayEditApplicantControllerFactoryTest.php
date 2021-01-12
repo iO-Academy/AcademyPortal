@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Tests\Factories;
+namespace Tests\Factories\Controllers\FrontEnd;
 
 use Portal\Controllers\FrontEnd\DisplayEditApplicantController;
-use Portal\Factories\DisplayEditApplicantControllerFactory;
+use Portal\Factories\Controllers\FrontEnd\DisplayEditApplicantControllerFactory;
 use Portal\Models\ApplicantModel;
 use Portal\Models\StageModel;
 use Psr\Container\ContainerInterface;

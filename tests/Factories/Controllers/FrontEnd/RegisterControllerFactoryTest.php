@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Factories;
+namespace Tests\Factories\Controllers\FrontEnd;
 
 use Tests\TestCase;
 use Slim\Views\PhpRenderer;
 use Psr\Container\ContainerInterface;
 use Portal\Controllers\FrontEnd\RegisterController;
-use Portal\Factories\RegisterControllerFactory;
+use Portal\Factories\Controllers\FrontEnd\RegisterControllerFactory;
 
 class RegisterControllerFactoryTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Portal\Factories;
+namespace Portal\Factories\Controllers\FrontEnd;
 
 use Portal\Controllers\FrontEnd\DisplayStudentProfileController;
 use Psr\Container\ContainerInterface;

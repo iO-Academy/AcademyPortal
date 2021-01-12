@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Factories;
+namespace Tests\Factories\Controllers\FrontEnd;
 
 use Tests\TestCase;
 

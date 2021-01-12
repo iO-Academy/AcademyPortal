@@ -1,12 +1,12 @@
 <?php
 
-namespace Tests\Factories;
+namespace Tests\Factories\Controllers\FrontEnd;
 
 use Psr\Container\ContainerInterface;
 use Slim\Views\PhpRenderer;
 use Tests\TestCase;
 use Portal\Controllers\Frontend\DisplayCoursesController;
-use Portal\Factories\DisplayCoursesControllerFactory;
+use Portal\Factories\Controllers\FrontEnd\DisplayCoursesControllerFactory;
 use Portal\Models\CourseModel;
 
 class DisplayCoursesControllerFactoryTest extends TestCase
