@@ -1,6 +1,6 @@
 <?php
 
-namespace Portal\Factories;
+namespace Portal\Factories\Models;
 
 use Portal\Models\UserModel;
 use Psr\Container\ContainerInterface;

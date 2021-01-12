@@ -3,7 +3,7 @@
 namespace Test\Factories;
 
 use Tests\TestCase;
-use Portal\Factories\ApplicationFormModelFactory;
+use Portal\Factories\Models\ApplicationFormModelFactory;
 use Portal\Models\ApplicationFormModel;
 use Psr\Container\ContainerInterface;
 

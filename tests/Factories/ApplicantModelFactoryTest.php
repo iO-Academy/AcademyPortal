@@ -4,7 +4,7 @@ namespace Tests\Factories;
 
 use Psr\Container\ContainerInterface;
 use Tests\TestCase;
-use Portal\Factories\ApplicantModelFactory;
+use Portal\Factories\Models\ApplicantModelFactory;
 use Portal\Models\ApplicantModel;
 
 class ApplicantModelFactoryTest extends TestCase

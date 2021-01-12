@@ -3,7 +3,7 @@
 namespace Test\Factories;
 
 use Tests\TestCase;
-use Portal\Factories\UserModelFactory;
+use Portal\Factories\Models\UserModelFactory;
 use Portal\Models\UserModel;
 use Psr\Container\ContainerInterface;
 

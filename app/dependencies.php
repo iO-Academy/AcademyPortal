@@ -91,15 +91,15 @@ return function (ContainerBuilder $containerBuilder) {
     $container['AddCourseController'] = DI\factory('\Portal\Factories\AddCourseControllerFactory');
 
     // Models
-    $container['UserModel'] = DI\factory('\Portal\Factories\UserModelFactory');
-    $container['ApplicationFormModel'] = DI\factory('\Portal\Factories\ApplicationFormModelFactory');
-    $container['ApplicantModel'] = DI\factory('\Portal\Factories\ApplicantModelFactory');
-    $container['HiringPartnerModel'] = DI\factory('\Portal\Factories\HiringPartnerModelFactory');
-    $container['EventModel'] = DI\factory('\Portal\Factories\EventModelFactory');
+    $container['UserModel'] = DI\factory('\Portal\Factories\Models\UserModelFactory');
+    $container['ApplicationFormModel'] = DI\factory('\Portal\Factories\Models\ApplicationFormModelFactory');
+    $container['ApplicantModel'] = DI\factory('\Portal\Factories\Models\ApplicantModelFactory');
+    $container['HiringPartnerModel'] = DI\factory('\Portal\Factories\Models\HiringPartnerModelFactory');
+    $container['EventModel'] = DI\factory('\Portal\Factories\Models\EventModelFactory');
     $container['RandomPasswordModel'] = DI\factory('\Portal\Models\RandomPasswordModel');
-    $container['StageModel'] = DI\factory('\Portal\Factories\StageModelFactory');
-    $container['TeamModel'] = DI\factory('\Portal\Factories\TeamModelFactory');
-    $container['CourseModel'] = DI\factory('\Portal\Factories\CourseModelFactory');
+    $container['StageModel'] = DI\factory('\Portal\Factories\Models\StageModelFactory');
+    $container['TeamModel'] = DI\factory('\Portal\Factories\Models\TeamModelFactory');
+    $container['CourseModel'] = DI\factory('\Portal\Factories\Models\CourseModelFactory');
 
     $containerBuilder->addDefinitions($container);
 };

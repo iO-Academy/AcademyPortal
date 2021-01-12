@@ -4,7 +4,7 @@ namespace Test\Factories;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use Portal\Factories\StageModelFactory;
+use Portal\Factories\Models\StageModelFactory;
 use Portal\Models\StageModel;
 
 class StageModelFactoryTest extends TestCase

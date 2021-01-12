@@ -4,7 +4,7 @@ namespace Test\Factories;
 
 use Tests\TestCase;
 use Psr\Container\ContainerInterface;
-use Portal\Factories\EventModelFactory;
+use Portal\Factories\Models\EventModelFactory;
 use Portal\Models\EventModel;
 
 class EventModelFactoryTest extends TestCase

@@ -1,22 +1,22 @@
 <?php
 
-namespace Portal\Factories;
+namespace Portal\Factories\Models;
 
 use Psr\Container\ContainerInterface;
-use Portal\Models\ApplicantModel;
+use Portal\Models\TeamModel;
 
-class ApplicantModelFactory
+class TeamModelFactory
 {
     /**
      * Creates applicant model with dependencies.
      *
      * @param ContainerInterface $container
      *
-     * @return ApplicantModel returns object with db connection injected.
+     * @return TeamModel returns object with db connection injected.
      */
     public function __invoke(ContainerInterface $container)
     {
         $db = $container->get('dbConnection');
-        return new ApplicantModel($db);
+        return new TeamModel($db);
     }
 }
