@@ -1,0 +1,22 @@
+<?php
+
+namespace Portal\Factories\Controllers\API;
+
+use Psr\Container\ContainerInterface;
+use Portal\Controllers\API\SaveApplicantController;
+
+class SaveApplicantControllerFactory
+{
+    /**
+     * Creates SaveApplicantController with dependencies.
+     *
+     * @param ContainerInterface $container
+     *
+     * @return SaveApplicantController returns object with db connection injected.
+     */
+    public function __invoke(ContainerInterface $container): SaveApplicantController
+    {
+        $applicantModel = $container->get('ApplicantModel');
+        return new SaveApplicantController($applicantModel);
+    }
+}
