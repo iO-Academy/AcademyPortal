@@ -3,14 +3,14 @@
 namespace Tests\Factories\Controllers\API;
 
 use PHPUnit\Framework\TestCase;
-use Portal\Factories\Controllers\API\CreateStageControllerFactory;
+use Portal\Factories\Controllers\API\AddStageControllerFactory;
 
 class CreateStageControllerFactoryTest extends TestCase
 {
     public function testSuccessInvoke()
     {
-        $factory = new CreateStageControllerFactory();
-        $expected = CreateStageControllerFactory::class;
+        $factory = new AddStageControllerFactory();
+        $expected = AddStageControllerFactory::class;
         $this->assertInstanceOf($expected, $factory);
     }
 }

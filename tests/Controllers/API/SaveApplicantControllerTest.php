@@ -3,7 +3,7 @@
 namespace Tests\Controllers\API;
 
 use Tests\TestCase;
-use Portal\Controllers\API\SaveApplicantController;
+use Portal\Controllers\API\AddApplicantController;
 use Portal\Models\ApplicantModel;
 
 class SaveApplicantControllerTest extends TestCase
@@ -13,8 +13,8 @@ class SaveApplicantControllerTest extends TestCase
     {
         $applicantModel = $this->createMock(ApplicantModel::class);
 
-        $case = new SaveApplicantController($applicantModel);
-        $expected = SaveApplicantController::class;
+        $case = new AddApplicantController($applicantModel);
+        $expected = AddApplicantController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

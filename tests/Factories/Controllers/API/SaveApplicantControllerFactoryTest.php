@@ -5,8 +5,8 @@ namespace Tests\Factories\Controllers\API;
 use Tests\TestCase;
 use Portal\Models\ApplicantModel;
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\API\SaveApplicantController;
-use Portal\Factories\Controllers\API\SaveApplicantControllerFactory;
+use Portal\Controllers\API\AddApplicantController;
+use Portal\Factories\Controllers\API\AddApplicantControllerFactory;
 
 class SaveApplicantControllerFactoryTest extends TestCase
 {
@@ -17,9 +17,9 @@ class SaveApplicantControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($applicant);
 
-        $factory = new SaveApplicantControllerFactory;
+        $factory = new AddApplicantControllerFactory;
         $case = $factory($container);
-        $expected = SaveApplicantController::class;
+        $expected = AddApplicantController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

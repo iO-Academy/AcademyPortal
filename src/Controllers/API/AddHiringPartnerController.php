@@ -9,13 +9,13 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 use Portal\Models\HiringPartnerModel;
 
-class CreateHiringPartnerController extends Controller
+class AddHiringPartnerController extends Controller
 {
     public $hiringPartnerModel;
     public $renderer;
 
     /**
-     * CreateHiringPartnerController constructor.
+     * AddHiringPartnerController constructor.
      *
      * @param $hiringPartnerModel
      */

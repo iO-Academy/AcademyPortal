@@ -8,13 +8,13 @@ use Portal\Entities\StageEntity;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class CreateStageController extends Controller
+class AddStageController extends Controller
 {
     private $stageModel;
 
     /** Constructor assigns StageModel to this object
      *
-     * CreateStageController constructor.
+     * AddStageController constructor.
      * @param StageModel $stageModel
      */
     public function __construct(StageModel $stageModel)

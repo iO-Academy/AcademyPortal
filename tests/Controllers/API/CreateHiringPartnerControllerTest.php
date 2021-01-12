@@ -5,7 +5,7 @@ namespace Tests\Controllers\API;
 use Tests\TestCase;
 use Slim\Views\PhpRenderer;
 use Portal\Models\HiringPartnerModel;
-use Portal\Controllers\API\CreateHiringPartnerController;
+use Portal\Controllers\API\AddHiringPartnerController;
 
 class CreateHiringPartnerControllerTest extends TestCase
 {
@@ -13,8 +13,8 @@ class CreateHiringPartnerControllerTest extends TestCase
     public function testConstruct()
     {
         $hiringPartnerModel = $this->createMock(HiringPartnerModel::class);
-        $case = new CreateHiringPartnerController($hiringPartnerModel);
-        $expected = CreateHiringPartnerController::class;
+        $case = new AddHiringPartnerController($hiringPartnerModel);
+        $expected = AddHiringPartnerController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

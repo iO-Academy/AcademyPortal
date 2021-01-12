@@ -8,7 +8,7 @@ use Portal\Models\EventModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class RemoveHiringPartnerFromEventController extends Controller
+class DeleteHiringPartnerFromEventController extends Controller
 {
     private $eventModel;
 

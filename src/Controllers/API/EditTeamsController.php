@@ -10,7 +10,7 @@ use Portal\Models\TeamModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class UpdateTeamsController extends Controller
+class EditTeamsController extends Controller
 {
     private $applicantModel;
     private $teamModel;

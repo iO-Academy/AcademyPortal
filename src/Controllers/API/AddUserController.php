@@ -7,12 +7,12 @@ use Portal\Models\UserModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class RegisterUserController extends Controller
+class AddUserController extends Controller
 {
     private $userModel;
 
     /**
-     * Instantiates RegisterUserController.
+     * Instantiates AddUserController.
      *
      * @param UserModel $userModel userModel object dependency
      */

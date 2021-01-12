@@ -3,7 +3,7 @@
 namespace Tests\Controllers\API;
 
 use Tests\TestCase;
-use Portal\Controllers\API\RegisterUserController;
+use Portal\Controllers\API\AddUserController;
 use Portal\Models\UserModel;
 
 class RegisterUserControllerTest extends TestCase
@@ -17,8 +17,8 @@ class RegisterUserControllerTest extends TestCase
 
     public function testConstruct()
     {
-        $case = new RegisterUserController($this->mockUserModel);
-        $expected = RegisterUserController::class;
+        $case = new AddUserController($this->mockUserModel);
+        $expected = AddUserController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

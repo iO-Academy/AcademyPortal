@@ -9,12 +9,12 @@ use Portal\Models\ApplicantModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class SaveApplicantController extends Controller
+class AddApplicantController extends Controller
 {
     private $applicantModel;
 
     /**
-     * Instantiates SaveApplicantController.
+     * Instantiates AddApplicantController.
      *
      * @param ApplicantModel $applicantModel userModel object dependency
      */
