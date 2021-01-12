@@ -1,6 +1,6 @@
 <?php
 
-namespace Test\Factories;
+namespace Tests\Factories\Models;
 
 use Tests\TestCase;
 use Portal\Factories\Models\UserModelFactory;

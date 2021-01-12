@@ -1,13 +1,13 @@
 <?php
 
-namespace Test\Factories;
+namespace Tests\Factories\Models;
 
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
-use Portal\Factories\Models\CourseModelFactory;
-use Portal\Models\CourseModel;
+use Portal\Factories\Models\StageModelFactory;
+use Portal\Models\StageModel;
 
-class CourseModelFactoryTest extends TestCase
+class StageModelFactoryTest extends TestCase
 {
     public function testInvoke()
     {
@@ -15,9 +15,9 @@ class CourseModelFactoryTest extends TestCase
         $db = $this->createMock(\PDO::class);
         $container->method('get')
             ->willReturn($db);
-        $factory = new CourseModelFactory();
+        $factory = new StageModelFactory();
         $case = $factory($container);
-        $expected = CourseModel::class;
+        $expected = StageModel::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

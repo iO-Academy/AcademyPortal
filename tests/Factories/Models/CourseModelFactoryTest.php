@@ -1,24 +1,23 @@
 <?php
 
-namespace Test\Factories;
+namespace Tests\Factories\Models;
 
 use Tests\TestCase;
-use Portal\Factories\Models\ApplicationFormModelFactory;
-use Portal\Models\ApplicationFormModel;
 use Psr\Container\ContainerInterface;
+use Portal\Factories\Models\CourseModelFactory;
+use Portal\Models\CourseModel;
 
-class ApplicationFormModelFactoryTest extends TestCase
+class CourseModelFactoryTest extends TestCase
 {
     public function testInvoke()
     {
-        $db = $this->createMock(\PDO::class);
         $container = $this->createMock(ContainerInterface::class);
+        $db = $this->createMock(\PDO::class);
         $container->method('get')
             ->willReturn($db);
-
-        $factory = new ApplicationFormModelFactory;
+        $factory = new CourseModelFactory();
         $case = $factory($container);
-        $expected = ApplicationFormModel::class;
+        $expected = CourseModel::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

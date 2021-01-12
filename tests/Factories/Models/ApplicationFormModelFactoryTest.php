@@ -1,13 +1,13 @@
 <?php
 
-namespace Tests\Factories;
+namespace Tests\Factories\Models;
 
-use Psr\Container\ContainerInterface;
 use Tests\TestCase;
-use Portal\Factories\Models\ApplicantModelFactory;
-use Portal\Models\ApplicantModel;
+use Portal\Factories\Models\ApplicationFormModelFactory;
+use Portal\Models\ApplicationFormModel;
+use Psr\Container\ContainerInterface;
 
-class ApplicantModelFactoryTest extends TestCase
+class ApplicationFormModelFactoryTest extends TestCase
 {
     public function testInvoke()
     {
@@ -16,9 +16,9 @@ class ApplicantModelFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($db);
 
-        $factory = new ApplicantModelFactory;
+        $factory = new ApplicationFormModelFactory;
         $case = $factory($container);
-        $expected = ApplicantModel::class;
+        $expected = ApplicationFormModel::class;
         $this->assertInstanceOf($expected, $case);
     }
 }
