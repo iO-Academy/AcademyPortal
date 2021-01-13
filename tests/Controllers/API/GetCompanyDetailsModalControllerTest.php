@@ -2,17 +2,17 @@
 
 namespace Tests\Controllers\API;
 
-use Portal\Controllers\API\CompanyDetailsModalController;
+use Portal\Controllers\API\GetCompanyDetailsModalController;
 use Portal\Models\HiringPartnerModel;
 use Tests\TestCase;
 
-class CompanyDetailsModalControllerTest extends TestCase
+class GetCompanyDetailsModalControllerTest extends TestCase
 {
     public function testConstruct()
     {
         $mockModel = $this->createMock(HiringPartnerModel::class);
-        $case = new CompanyDetailsModalController($mockModel);
-        $expected = CompanyDetailsModalController::class;
+        $case = new GetCompanyDetailsModalController($mockModel);
+        $expected = GetCompanyDetailsModalController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

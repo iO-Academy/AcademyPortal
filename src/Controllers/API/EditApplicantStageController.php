@@ -9,7 +9,7 @@ use Portal\Models\StageModel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-class ProgressApplicantStageController extends Controller
+class EditApplicantStageController extends Controller
 {
     private $applicantModel;
     private $stageModel;

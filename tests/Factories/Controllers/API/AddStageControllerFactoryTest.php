@@ -5,7 +5,7 @@ namespace Tests\Factories\Controllers\API;
 use PHPUnit\Framework\TestCase;
 use Portal\Factories\Controllers\API\AddStageControllerFactory;
 
-class CreateStageControllerFactoryTest extends TestCase
+class AddStageControllerFactoryTest extends TestCase
 {
     public function testSuccessInvoke()
     {

@@ -8,12 +8,12 @@ use Portal\Models\HiringPartnerModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class CompanyDetailsModalController extends Controller
+class GetCompanyDetailsModalController extends Controller
 {
     private $model;
 
     /**
-     * CompanyDetailsModalController constructor.
+     * GetCompanyDetailsModalController constructor.
      * @param $model
      * @param $view
      */

@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Portal\Controllers\API\AddApplicantController;
 use Portal\Models\ApplicantModel;
 
-class SaveApplicantControllerTest extends TestCase
+class AddApplicantControllerTest extends TestCase
 {
 
     public function testConstruct()

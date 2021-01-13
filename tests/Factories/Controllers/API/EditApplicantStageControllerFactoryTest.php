@@ -3,18 +3,18 @@
 
 namespace Tests\Factories\Controllers\API;
 
-use Portal\Controllers\API\ProgressApplicantStageController;
-use Portal\Factories\Controllers\API\ProgressApplicantStageControllerFactory;
+use Portal\Controllers\API\EditApplicantStageController;
+use Portal\Factories\Controllers\API\EditApplicantStageControllerFactory;
 use Portal\Models\ApplicantModel;
 use Portal\Models\StageModel;
 use Psr\Container\ContainerInterface;
 use Tests\TestCase;
 
-class ProgressApplicantStageControllerFactoryTest extends TestCase
+class EditApplicantStageControllerFactoryTest extends TestCase
 {
 
     /**
-     * Success test for __invoke() method on ProgressApplicantStageControllerFactory class.
+     * Success test for __invoke() method on EditApplicantStageControllerFactory class.
      */
 
     public function testInvoke()
@@ -25,9 +25,9 @@ class ProgressApplicantStageControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($stage, $applicant);
 
-        $factory = new ProgressApplicantStageControllerFactory;
+        $factory = new EditApplicantStageControllerFactory;
         $case = $factory($container);
-        $expected = ProgressApplicantStageController::class;
+        $expected = EditApplicantStageController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

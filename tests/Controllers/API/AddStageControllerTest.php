@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use Portal\Models\StageModel;
 use Portal\Controllers\API\AddStageController;
 
-class CreateStageControllerTest extends TestCase
+class AddStageControllerTest extends TestCase
 {
     public function testSuccessConstruct()
     {

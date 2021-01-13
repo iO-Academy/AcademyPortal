@@ -8,7 +8,7 @@ use Psr\Container\ContainerInterface;
 use Portal\Controllers\API\AddApplicantController;
 use Portal\Factories\Controllers\API\AddApplicantControllerFactory;
 
-class SaveApplicantControllerFactoryTest extends TestCase
+class AddApplicantControllerFactoryTest extends TestCase
 {
     public function testInvoke()
     {

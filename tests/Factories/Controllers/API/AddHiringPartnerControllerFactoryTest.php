@@ -5,7 +5,7 @@ namespace Tests\Factories\Controllers\API;
 use Tests\TestCase;
 use Portal\Factories\Controllers\API\AddHiringPartnerControllerFactory;
 
-class CreateHiringPartnerControllerFactoryTest extends TestCase
+class AddHiringPartnerControllerFactoryTest extends TestCase
 {
     public function testInvoke()
     {

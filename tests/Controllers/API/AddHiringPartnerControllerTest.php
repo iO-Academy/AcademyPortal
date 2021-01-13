@@ -7,7 +7,7 @@ use Slim\Views\PhpRenderer;
 use Portal\Models\HiringPartnerModel;
 use Portal\Controllers\API\AddHiringPartnerController;
 
-class CreateHiringPartnerControllerTest extends TestCase
+class AddHiringPartnerControllerTest extends TestCase
 {
 
     public function testConstruct()

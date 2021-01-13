@@ -12,7 +12,7 @@ class GetStagesController extends Controller
     private $stageModel;
 
     /**
-     * ApplicationFormController constructor.
+     * GetApplicationFormController constructor.
      *
      * @param StageModel $stageModel
      */

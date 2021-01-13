@@ -62,14 +62,14 @@ return function (ContainerBuilder $containerBuilder) {
     $container['DisplayAddCourseController'] = DI\factory('\Portal\Factories\Controllers\FrontEnd\DisplayAddCourseControllerFactory');
     // API Controllers
     $container['AddUserController'] = DI\factory('\Portal\Factories\Controllers\API\AddUserControllerFactory');
-    $container['ApplicationFormController'] = DI\factory('\Portal\Factories\Controllers\API\ApplicationFormControllerFactory');
+    $container['GetApplicationFormController'] = DI\factory('\Portal\Factories\Controllers\API\GetApplicationFormControllerFactory');
     $container['AddApplicantController'] = DI\factory('\Portal\Factories\Controllers\API\AddApplicantControllerFactory');
     $container['GetApplicantController'] = DI\factory('\Portal\Factories\Controllers\API\GetApplicantControllerFactory');
     $container['GetStudentsController'] = DI\factory('\Portal\Factories\Controllers\API\GetStudentsControllerFactory');
     $container['LoginController'] = DI\factory('\Portal\Factories\Controllers\API\LoginControllerFactory');
     $container['AddHiringPartnerController'] = DI\factory('\Portal\Factories\Controllers\API\AddHiringPartnerControllerFactory');
     $container['GetHiringPartnersController'] = DI\factory('\Portal\Factories\Controllers\API\GetHiringPartnerControllerFactory');
-    $container['CompanyDetailsModalController'] = DI\factory('\Portal\Factories\Controllers\API\CompanyDetailsModalControllerFactory');
+    $container['GetCompanyDetailsModalController'] = DI\factory('\Portal\Factories\Controllers\API\GetCompanyDetailsModalControllerFactory');
     $container['AddContactController'] = DI\factory('\Portal\Factories\Controllers\API\AddContactControllerFactory');
     $container['GetEventsController'] = DI\factory('\Portal\Factories\Controllers\API\GetEventsControllerFactory');
     $container['GetHiringPartnersByIdController'] = DI\factory('\Portal\Factories\Controllers\API\GetHiringPartnersByIdControllerFactory');
@@ -88,7 +88,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['DeleteAllStageOptionsController'] = DI\factory('\Portal\Factories\Controllers\API\DeleteAllStageOptionsControllerFactory');
     $container['EditTeamsController'] = DI\factory('\Portal\Factories\Controllers\API\EditTeamsControllerFactory');
     $container['GetNextStageOptionsController'] = DI\factory('\Portal\Factories\Controllers\API\GetNextStageOptionsControllerFactory');
-    $container['ProgressApplicantStageController'] = DI\factory('\Portal\Factories\Controllers\API\ProgressApplicantStageControllerFactory');
+    $container['EditApplicantStageController'] = DI\factory('\Portal\Factories\Controllers\API\EditApplicantStageControllerFactory');
     $container['GetCoursesController'] = DI\factory('\Portal\Factories\Controllers\API\GetCoursesControllerFactory');
     $container['AddCourseController'] = DI\factory('\Portal\Factories\Controllers\API\AddCourseControllerFactory');
 

@@ -7,12 +7,12 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Models\ApplicationFormModel;
 
-class ApplicationFormController extends Controller
+class GetApplicationFormController extends Controller
 {
     private $applicationFormModel;
 
     /**
-     * ApplicationFormController constructor.
+     * GetApplicationFormController constructor.
      *
      * @param ApplicationFormModel $applicationFormModel
      */

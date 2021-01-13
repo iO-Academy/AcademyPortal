@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Portal\Controllers\API\AddUserController;
 use Portal\Models\UserModel;
 
-class RegisterUserControllerTest extends TestCase
+class AddUserControllerTest extends TestCase
 {
     private $mockUserModel;
 
