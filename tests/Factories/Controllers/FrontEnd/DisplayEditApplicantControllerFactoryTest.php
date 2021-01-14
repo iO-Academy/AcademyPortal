@@ -3,8 +3,8 @@
 
 namespace Tests\Factories\Controllers\FrontEnd;
 
-use Portal\Controllers\FrontEnd\DisplayEditApplicantController;
-use Portal\Factories\Controllers\FrontEnd\DisplayEditApplicantControllerFactory;
+use Portal\Controllers\FrontEnd\EditApplicantPageController;
+use Portal\Factories\Controllers\FrontEnd\EditApplicantPageControllerFactory;
 use Portal\Models\ApplicantModel;
 use Portal\Models\StageModel;
 use Psr\Container\ContainerInterface;
@@ -33,9 +33,9 @@ class DisplayEditApplicantControllerFactoryTest extends TestCase
             ->willReturn($stage);
 
 
-        $factory = new DisplayEditApplicantControllerFactory;
+        $factory = new EditApplicantPageControllerFactory;
         $case = $factory($container);
-        $expected = DisplayEditApplicantController::class;
+        $expected = EditApplicantPageController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

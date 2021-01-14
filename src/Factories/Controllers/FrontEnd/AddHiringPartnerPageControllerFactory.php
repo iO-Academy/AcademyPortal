@@ -8,7 +8,7 @@ use Portal\Controllers\FrontEnd\AddHiringPartnerPageController;
 class AddHiringPartnerPageControllerFactory
 {
     /**
-     * Instantiates DisplayHiringPartnerPageController with dependencies.
+     * Instantiates HiringPartnerPageController with dependencies.
      *
      * @param ContainerInterface $container
      *

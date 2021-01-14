@@ -6,23 +6,23 @@ use Slim\App;
 return function (App $app) {
     //Frontend
     $app->get('/', 'HomePageController');
-    $app->get('/admin', 'AdminController');
-    $app->get('/register', 'RegisterController');
-    $app->get('/addapplicant', 'addApplicantController');
-    $app->get('/applicants', 'DisplayApplicantsController');
-    $app->get('/hiringPartners', 'DisplayHiringPartnerPageController');
+    $app->get('/admin', 'AdminPageController');
+    $app->get('/register', 'RegisterPageController');
+    $app->get('/addapplicant', 'addApplicantPageController');
+    $app->get('/applicants', 'ApplicantsPageController');
+    $app->get('/hiringPartners', 'HiringPartnerPageController');
     $app->get('/addHiringPartner', 'AddHiringPartnerPageController');
     $app->get('/addHiringPartnerContact', 'AddHiringPartnerContactPageController');
-    $app->get('/events', 'DisplayEventsPageController');
-    $app->get('/events-past', 'DisplayPastEventsPageController');
+    $app->get('/events', 'EventsPageController');
+    $app->get('/events-past', 'PastEventsPageController');
     $app->get('/addEvent', 'AddEventPageController');
-    $app->get('/editStages', 'DisplayStagesController');
-    $app->get('/editApplicant', 'DisplayEditApplicantController');
-    $app->get('/teamPicker', 'DisplayTeamPickerController');
-    $app->get('/student', 'DisplayTeamPickerController');
-    $app->get('/public[/{id}]', 'DisplayStudentProfileController');
-    $app->get('/courses', 'DisplayCoursesController');
-    $app->get('/addCourse', 'DisplayAddCourseController');
+    $app->get('/editStages', 'StagesPageController');
+    $app->get('/editApplicant', 'EditApplicantPageController');
+    $app->get('/teamPicker', 'TeamPickerPageController');
+    $app->get('/student', 'TeamPickerPageController');
+    $app->get('/public[/{id}]', 'StudentProfilePageController');
+    $app->get('/courses', 'CoursesPageController');
+    $app->get('/addCourse', 'AddCoursePageController');
 
 
     //API

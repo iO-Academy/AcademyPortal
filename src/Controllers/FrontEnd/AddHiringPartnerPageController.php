@@ -14,7 +14,7 @@ class AddHiringPartnerPageController extends Controller
     private $renderer;
 
     /**
-     * DisplayHiringPartnerPageController constructor.
+     * HiringPartnerPageController constructor.
      *
      * @param PhpRenderer $renderer
      *

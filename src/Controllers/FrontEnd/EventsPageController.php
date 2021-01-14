@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
-class AddEventPageController extends Controller
+class EventsPageController extends Controller
 {
     private $renderer;
     private $eventModel;
@@ -38,8 +38,8 @@ class AddEventPageController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $args['eventCategories'] = $this->eventModel->getEventCategories();
-            return $this->renderer->render($response, 'addEvent.phtml', $args);
+            $args['eventType'] = 'Upcoming';
+            return $this->renderer->render($response, 'events.phtml', $args);
         } else {
             return $response->withHeader('Location', './');
         }

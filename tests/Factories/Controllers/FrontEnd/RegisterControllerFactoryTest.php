@@ -5,8 +5,8 @@ namespace Tests\Factories\Controllers\FrontEnd;
 use Tests\TestCase;
 use Slim\Views\PhpRenderer;
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\FrontEnd\RegisterController;
-use Portal\Factories\Controllers\FrontEnd\RegisterControllerFactory;
+use Portal\Controllers\FrontEnd\RegisterPageController;
+use Portal\Factories\Controllers\FrontEnd\RegisterPageControllerFactory;
 
 class RegisterControllerFactoryTest extends TestCase
 {
@@ -24,9 +24,9 @@ class RegisterControllerFactoryTest extends TestCase
             ->with($this->equalTo('RandomPasswordModel'))
             ->willReturn('password');
 
-        $factory =  new RegisterControllerFactory;
+        $factory =  new RegisterPageControllerFactory;
         $case = $factory($container);
-        $expected = RegisterController::class;
+        $expected = RegisterPageController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

@@ -3,22 +3,22 @@
 namespace Portal\Factories\Controllers\FrontEnd;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\FrontEnd\AddHiringPartnerContactPageController;
+use Portal\Controllers\FrontEnd\HiringPartnerPageController;
 
-class AddHiringPartnerContactPageControllerFactory
+class HiringPartnerPageControllerFactory
 {
     /**
      * Instantiates HiringPartnerPageController with dependencies.
      *
      * @param ContainerInterface $container
      *
-     * @return AddHiringPartnerContactPageController
+     * @return HiringPartnerPageController
      */
 
-    public function __invoke(ContainerInterface $container) : AddHiringPartnerContactPageController
+    public function __invoke(ContainerInterface $container) : HiringPartnerPageController
     {
         $renderer = $container->get('renderer');
         $hiringPartnerModel = $container->get('HiringPartnerModel');
-        return new AddHiringPartnerContactPageController($renderer, $hiringPartnerModel);
+        return new HiringPartnerPageController($renderer, $hiringPartnerModel);
     }
 }

@@ -3,10 +3,10 @@
 namespace Tests\Factories\Controllers\FrontEnd;
 
 use Tests\TestCase;
-use Portal\Factories\Controllers\FrontEnd\AdminControllerFactory;
+use Portal\Factories\Controllers\FrontEnd\AdminPageControllerFactory;
 use Slim\Views\PhpRenderer;
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\FrontEnd\AdminController;
+use Portal\Controllers\FrontEnd\AdminPageController;
 
 class AdminControllerFactoryTest extends TestCase
 {
@@ -17,9 +17,9 @@ class AdminControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($renderer);
 
-        $factory = new AdminControllerFactory;
+        $factory = new AdminPageControllerFactory;
         $case = $factory($container);
-        $expected = AdminController::class;
+        $expected = AdminPageController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

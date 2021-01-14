@@ -3,14 +3,14 @@
 namespace Tests\Factories\Controllers\FrontEnd;
 
 use PHPUnit\Framework\TestCase;
-use Portal\Controllers\FrontEnd\DisplayStagesController;
+use Portal\Controllers\FrontEnd\StagesPageController;
 use Portal\Models\StageModel;
 use Slim\Views\PhpRenderer;
 
 class DisplayStagesControllerFactoryTest extends TestCase
 {
     /**
-     * Checks if DisplayStagesControllerFactory instantiates an object of the class
+     * Checks if StagesPageControllerFactory instantiates an object of the class
      * DisplayChangesController, passing in
      * a mock PhpRenderer and mock StageModel
      */
@@ -18,8 +18,8 @@ class DisplayStagesControllerFactoryTest extends TestCase
     {
         $renderer = $this->createMock(PhpRenderer::class);
         $model = $this->createMock(StageModel::class);
-        $case = new DisplayStagesController($renderer, $model);
-        $expected = DisplayStagesController::class;
+        $case = new StagesPageController($renderer, $model);
+        $expected = StagesPageController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

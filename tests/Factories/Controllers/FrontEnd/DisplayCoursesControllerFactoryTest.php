@@ -5,8 +5,8 @@ namespace Tests\Factories\Controllers\FrontEnd;
 use Psr\Container\ContainerInterface;
 use Slim\Views\PhpRenderer;
 use Tests\TestCase;
-use Portal\Controllers\Frontend\DisplayCoursesController;
-use Portal\Factories\Controllers\FrontEnd\DisplayCoursesControllerFactory;
+use Portal\Controllers\Frontend\CoursesPageController;
+use Portal\Factories\Controllers\FrontEnd\CoursesPageControllerFactory;
 use Portal\Models\CourseModel;
 
 class DisplayCoursesControllerFactoryTest extends TestCase
@@ -26,9 +26,9 @@ class DisplayCoursesControllerFactoryTest extends TestCase
             ->with($this->equalTo('CourseModel'))
             ->willReturn($model);
 
-        $factory = new DisplayCoursesControllerFactory();
+        $factory = new CoursesPageControllerFactory();
         $case = $factory($container);
-        $expected = DisplayCoursesController::class;
+        $expected = CoursesPageController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

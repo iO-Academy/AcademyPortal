@@ -14,7 +14,7 @@ class AddApplicantController extends Controller
     private $applicantModel;
 
     /**
-     * Instantiates AddApplicantController.
+     * Instantiates AddApplicantPageController.
      *
      * @param ApplicantModel $applicantModel userModel object dependency
      */

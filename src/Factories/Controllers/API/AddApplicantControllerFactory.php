@@ -8,7 +8,7 @@ use Portal\Controllers\API\AddApplicantController;
 class AddApplicantControllerFactory
 {
     /**
-     * Creates AddApplicantController with dependencies.
+     * Creates AddApplicantPageController with dependencies.
      *
      * @param ContainerInterface $container
      *
