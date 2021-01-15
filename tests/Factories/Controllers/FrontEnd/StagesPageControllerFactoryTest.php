@@ -7,7 +7,7 @@ use Portal\Controllers\FrontEnd\StagesPageController;
 use Portal\Models\StageModel;
 use Slim\Views\PhpRenderer;
 
-class DisplayStagesControllerFactoryTest extends TestCase
+class StagesPageControllerFactoryTest extends TestCase
 {
     /**
      * Checks if StagesPageControllerFactory instantiates an object of the class

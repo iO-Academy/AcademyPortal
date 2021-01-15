@@ -7,7 +7,7 @@ use Portal\Controllers\FrontEnd\EventsPageController;
 use Portal\Models\EventModel;
 use Slim\Views\PhpRenderer;
 
-class DisplayEventsPageControllerFactoryTest extends TestCase
+class EventsPageControllerFactoryTest extends TestCase
 {
 
     public function testDisplayEventsPageControllerFactory()

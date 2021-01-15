@@ -4,7 +4,7 @@ namespace Tests\Factories\Controllers\FrontEnd;
 
 use Tests\TestCase;
 
-class DisplayHiringPartnerPageControllerFactoryTest extends TestCase
+class HiringPartnerPageControllerFactoryTest extends TestCase
 {
 
     public function testDisplayHiringPartnerPageControllerFactory()

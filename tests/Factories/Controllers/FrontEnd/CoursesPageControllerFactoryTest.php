@@ -9,7 +9,7 @@ use Portal\Controllers\Frontend\CoursesPageController;
 use Portal\Factories\Controllers\FrontEnd\CoursesPageControllerFactory;
 use Portal\Models\CourseModel;
 
-class DisplayCoursesControllerFactoryTest extends TestCase
+class CoursesPageControllerFactoryTest extends TestCase
 {
     public function testDisplayCoursesControllerFactory()
     {

@@ -11,7 +11,7 @@ use Psr\Container\ContainerInterface;
 use Slim\Views\PhpRenderer;
 use Tests\TestCase;
 
-class DisplayEditApplicantControllerFactoryTest extends TestCase
+class EditApplicantPageControllerFactoryTest extends TestCase
 {
     public function testInvoke()
     {
