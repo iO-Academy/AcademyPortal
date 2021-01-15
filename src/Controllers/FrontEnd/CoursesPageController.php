@@ -3,32 +3,32 @@
 namespace Portal\Controllers\FrontEnd;
 
 use Portal\Abstracts\Controller;
-use Portal\Models\EventModel;
+use Portal\Models\CourseModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
-class AddEventPageController extends Controller
+class CoursesPageController extends Controller
 {
     private $renderer;
-    private $eventModel;
-    
+    private $courseModel;
+
     /**
-     * Creates new instance of EventsPageController
+     * Creates new instance of CoursesPageController
      *
      * @param PhpRenderer $renderer
-     * @param EventsModel $eventsModel
+     * @param courseModel $courseModel
      */
-    public function __construct(PhpRenderer $renderer, EventModel $eventModel)
+    public function __construct(PhpRenderer $renderer, CourseModel $courseModel)
     {
         $this->renderer = $renderer;
-        $this->eventModel = $eventModel;
+        $this->courseModel = $courseModel;
     }
 
     /**
      * Checks for logged-in status,
-     * gets event categories from DB
-     * and returns rendered landing screen for Events page
+     * gets courses categories from DB
+     * and returns rendered landing screen for Courses page
      *
      * @param Request $request
      * @param Response $response
@@ -38,8 +38,9 @@ class AddEventPageController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $args['eventCategories'] = $this->eventModel->getEventCategories();
-            return $this->renderer->render($response, 'addEvent.phtml', $args);
+            $courses = $this->courseModel->getAllCourses();
+            $data = ['data' => $courses];
+            return $this->renderer->render($response, 'courses.phtml', $data);
         } else {
             return $response->withHeader('Location', './');
         }

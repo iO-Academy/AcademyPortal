@@ -5,20 +5,20 @@ namespace Portal\Controllers\API;
 use Portal\Abstracts\Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Portal\Models\StageModel;
+use Portal\Models\ApplicationFormModel;
 
-class GetStagesController extends Controller
+class GetApplicationFormController extends Controller
 {
-    private $stageModel;
+    private $applicationFormModel;
 
     /**
      * GetApplicationFormController constructor.
      *
-     * @param StageModel $stageModel
+     * @param ApplicationFormModel $applicationFormModel
      */
-    public function __construct(StageModel $stageModel)
+    public function __construct(ApplicationFormModel $applicationFormModel)
     {
-        $this->stageModel = $stageModel;
+        $this->applicationFormModel = $applicationFormModel;
     }
 
     /**
@@ -40,8 +40,8 @@ class GetStagesController extends Controller
                     'success' => true,
                     'message' => 'Retrieved dropdown info.',
                     'data' => [
-                        'stages' => $this->stageModel->getAllStages()
-                        
+                        'cohorts' => $this->applicationFormModel->getCohorts(),
+                        'hearAbout' => $this->applicationFormModel->getHearAbout(),
                     ]
                 ];
             } catch (\Exception $e) {
