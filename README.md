@@ -57,7 +57,7 @@ POST
 GET
 - Gets available dropdown values from database for:
 	- When would you like to join us? 
-	- How did you hear about Mayden Academy? 
+	- How did you hear about iO Academy? 
 - Returns:
 	- if GET request is successful
 		- `{'success':true, 'msg':'Retrieved dropdown info.', 'data':['cohorts':'Available cohort values', 'hearAbout':'Available hear about values']}`

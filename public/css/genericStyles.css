@@ -40,6 +40,10 @@ header .logo {
     width: 300px;
 }
 
+header .logo img {
+    width: 100%
+}
+
 form input[type="date"].form-control,
 form input[type="time"].form-control {
     line-height: normal;
