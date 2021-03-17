@@ -3,8 +3,9 @@
 namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
-use Portal\Entities\ContactEntity;
 use Portal\Models\HiringPartnerModel;
+use Portal\Sanitisers\ContactSanitiser;
+use Portal\Validators\ContactValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -33,16 +34,9 @@ class AddContactController extends Controller
         $statusCode = 400;
 
         try {
-            $contact = new ContactEntity(
-                $newContact['contactName'],
-                $newContact['contactEmail'],
-                $newContact['contactJobTitle'],
-                $newContact['contactPhone'],
-                (int)$newContact['contactCompanyId'],
-                (int)$newContact['contactIsPrimary']
-            );
-            if (!empty($contact) && $contact instanceof ContactEntity) {
-                $result = $this->hiringPartnerModel->addNewContact($contact);
+            if (ContactValidator::validate($newContact)) {
+                $newContact = ContactSanitiser::sanitise($newContact);
+                $result = $this->hiringPartnerModel->addNewContact($newContact);
             }
         } catch (\Exception $exception) {
             $data['message'] = $exception->getMessage();

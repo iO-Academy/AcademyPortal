@@ -4,7 +4,6 @@ namespace Tests\ViewHelpers;
 
 use PHPUnit\Framework\TestCase;
 use Portal\Entities\BaseApplicantEntity;
-use Portal\Entities\ContactEntity;
 use Portal\ViewHelpers\DisplayApplicantViewHelper;
 
 class DisplayApplicantViewHelperTest extends TestCase
@@ -69,7 +68,7 @@ class DisplayApplicantViewHelperTest extends TestCase
 
     public function testFailureDisplayApplicantsIncorrectEntity()
     {
-        $mock = $this->createMock(ContactEntity::class);
+        $mock = $this->createMock(\stdClass::class);
         $data = ['applicants' => [$mock], 'lastStage' => '9'];
         $this->expectException(\TypeError::class);
         $result = DisplayApplicantViewHelper::displayApplicants($data);

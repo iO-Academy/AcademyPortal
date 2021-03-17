@@ -2,7 +2,6 @@
 
 namespace Portal\Models;
 
-use Portal\Entities\ContactEntity;
 use Portal\Entities\HiringPartnerEntity;
 
 class HiringPartnerModel
@@ -80,17 +79,15 @@ class HiringPartnerModel
         return $query->fetchAll();
     }
 
-    public function addNewContact(ContactEntity $contact): bool
+    public function addNewContact(array $contact): bool
     {
         $this->db->beginTransaction();
-        if ($contact->getPrimaryContact() == 1) {
+        if ($contact['contactIsPrimary']) {
             $resetPrimaryQuery = $this->db->prepare("UPDATE `hiring_partner_contacts` 
                 SET `is_primary_contact` = 0 
                 WHERE `hiring_partner_company_id` = :id;");
 
-            $hiringPartnerCompanyId = $contact->getHiringPartnerCompanyId();
-
-            $resetPrimaryQuery->bindParam(':id', $hiringPartnerCompanyId, \PDO::PARAM_INT);
+            $resetPrimaryQuery->bindParam(':id', $contact['hiringPartnerCompanyId'], \PDO::PARAM_INT);
             $resetPrimaryQuery->execute();
         }
         $query = $this->db->prepare("INSERT INTO `hiring_partner_contacts`(
@@ -110,19 +107,12 @@ class HiringPartnerModel
             :primaryContact
             );");
 
-        $contactName = $contact->getContactName();
-        $contactEmail = $contact->getContactEmail();
-        $jobTitle = $contact->getJobTitle();
-        $contactPhone = $contact->getContactPhone();
-        $hiringPartnerCompanyId = $contact->getHiringPartnerCompanyId();
-        $primaryContact = $contact->getPrimaryContact();
-
-        $query->bindParam(':contactName', $contactName, \PDO::PARAM_STR);
-        $query->bindParam(':contactEmail', $contactEmail, \PDO::PARAM_STR);
-        $query->bindParam(':jobTitle', $jobTitle, \PDO::PARAM_STR);
-        $query->bindParam(':contactPhone', $contactPhone, \PDO::PARAM_STR);
-        $query->bindParam(':hiringPartnerCompanyId', $hiringPartnerCompanyId, \PDO::PARAM_INT);
-        $query->bindParam(':primaryContact', $primaryContact, \PDO::PARAM_INT);
+        $query->bindParam(':contactName', $contact['contactName'], \PDO::PARAM_STR);
+        $query->bindParam(':contactEmail', $contact['contactEmail'], \PDO::PARAM_STR);
+        $query->bindParam(':jobTitle', $contact['jobTitle'], \PDO::PARAM_STR);
+        $query->bindParam(':contactPhone', $contact['contactPhone'], \PDO::PARAM_STR);
+        $query->bindParam(':hiringPartnerCompanyId', $contact['contactCompanyId'], \PDO::PARAM_INT);
+        $query->bindParam(':primaryContact', $contact['contactIsPrimary'], \PDO::PARAM_INT);
         $success = $query->execute();
         $this->db->commit();
         return $success;
