@@ -2,6 +2,7 @@
 
 namespace Portal\Entities;
 
+use Portal\Sanitisers\StringSanitiser;
 use Portal\Validators\StringValidator;
 
 class HiringPartnerEntity
@@ -38,17 +39,21 @@ class HiringPartnerEntity
     private function sanitiseData()
     {
         $this->companyId = (int)$this->companyId;
-        $this->companyName = StringValidator::sanitiseString($this->companyName);
-        $this->companyName = StringValidator::validateExistsAndLength($this->companyName, 255);
+        $this->companyName = StringSanitiser::sanitiseString($this->companyName);
+        $this->companyName =
+            StringValidator::validateExistsAndLength($this->companyName, StringValidator::MAXVARCHARLENGTH);
         $this->companySize = (int)$this->companySize;
-        $this->techStack = StringValidator::sanitiseString($this->techStack);
+        $this->techStack = StringSanitiser::sanitiseString($this->techStack);
         $this->techStack = StringValidator::validateExistsAndLength($this->techStack, 600);
-        $this->postcode = StringValidator::sanitiseString($this->postcode);
+        $this->postcode = StringSanitiser::sanitiseString($this->postcode);
         $this->postcode = StringValidator::validateExistsAndLength($this->postcode, 10);
-        $this->phoneNumber = StringValidator::sanitiseString($this->phoneNumber);
-        $this->phoneNumber = StringValidator::validateLength($this->phoneNumber, 20);
-        $this->websiteUrl = StringValidator::sanitiseString($this->websiteUrl);
-        $this->websiteUrl = StringValidator::validateLength($this->websiteUrl, 255);
+        if (StringValidator::validateLength($this->phoneNumber, 20)) {
+            $this->phoneNumber = StringSanitiser::sanitiseString($this->phoneNumber);
+        }
+
+        if (StringValidator::validateLength($this->websiteUrl, StringValidator::MAXVARCHARLENGTH)) {
+            $this->websiteUrl = StringSanitiser::sanitiseString($this->websiteUrl);
+        }
     }
 
     /**
@@ -56,7 +61,7 @@ class HiringPartnerEntity
      *
      * @return string of company ID
      */
-    public function getCompanyId(): Int
+    public function getCompanyId(): int
     {
         return $this->companyId;
     }
@@ -124,7 +129,7 @@ class HiringPartnerEntity
     /**
      * @return array of hiring entity properties
      */
-    public function hiringPartnerEntityToArray() :array
+    public function hiringPartnerEntityToArray(): array
     {
         $hiringPartnerEntityAsArray = [
             'companyID' => $this->getCompanyId(),

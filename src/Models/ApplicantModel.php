@@ -4,7 +4,6 @@ namespace Portal\Models;
 
 use Portal\Entities\BaseApplicantEntity;
 use Portal\Entities\CompleteApplicantEntity;
-use Portal\Interfaces\ApplicantEntityInterface;
 use Portal\Interfaces\ApplicantModelInterface;
 
 class ApplicantModel implements ApplicantModelInterface
@@ -24,7 +23,7 @@ class ApplicantModel implements ApplicantModelInterface
      *
      * @return bool
      */
-    public function storeApplicant(ApplicantEntityInterface $applicant)
+    public function storeApplicant(array $applicant)
     {
         $query = $this->db->prepare(
             "INSERT INTO `applicants` (
@@ -55,17 +54,17 @@ class ApplicantModel implements ApplicantModelInterface
                         );"
         );
 
-        $query->bindValue(':name', $applicant->getName());
-        $query->bindValue(':email', $applicant->getEmail());
-        $query->bindValue(':phoneNumber', $applicant->getPhoneNumber());
-        $query->bindValue(':cohortId', $applicant->getCohortId());
-        $query->bindValue(':whyDev', $applicant->getWhyDev());
-        $query->bindValue(':codeExperience', $applicant->getCodeExperience());
-        $query->bindValue(':hearAboutId', $applicant->getHearAboutId());
-        $query->bindValue(':eligible', $applicant->getEligible());
-        $query->bindValue(':eighteenPlus', $applicant->getEighteenPlus());
-        $query->bindValue(':finance', $applicant->getFinance());
-        $query->bindValue(':notes', $applicant->getNotes());
+        $query->bindValue(':name', $applicant['name']);
+        $query->bindValue(':email', $applicant['email']);
+        $query->bindValue(':phoneNumber', $applicant['phoneNumber']);
+        $query->bindValue(':cohortId', $applicant['cohortId']);
+        $query->bindValue(':whyDev', $applicant['whyDev']);
+        $query->bindValue(':codeExperience', $applicant['codeExperience']);
+        $query->bindValue(':hearAboutId', $applicant['hearAboutId']);
+        $query->bindValue(':eligible', $applicant['eligible']);
+        $query->bindValue(':eighteenPlus', $applicant['eighteenPlus']);
+        $query->bindValue(':finance', $applicant['finance']);
+        $query->bindValue(':notes', $applicant['notes']);
 
         $result = $query->execute();
         if ($result) {
@@ -94,7 +93,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':cohortId', $cohortId);
         $query->bindValue(':stageId', $stageId);
         $query->execute();
-        return ceil($query->fetch()['id']/$this->numberPerPage);
+        return ceil($query->fetch()['id'] / $this->numberPerPage);
     }
 
     /**
@@ -274,10 +273,10 @@ class ApplicantModel implements ApplicantModelInterface
     /**
      * updateApplicant updates the applicant data.
      *
-     * @param ApplicantEntityInterface $applicant
+     * @param array $applicant
      * @return bool
      */
-    public function updateApplicant(ApplicantEntityInterface $applicant)
+    public function updateApplicant(array $applicant): bool
     {
         $query = $this->db->prepare(
             "UPDATE `applicants`
@@ -300,20 +299,20 @@ class ApplicantModel implements ApplicantModelInterface
                         );"
         );
 
-        $query->bindValue(':name', $applicant->getName());
-        $query->bindValue(':email', $applicant->getEmail());
-        $query->bindValue(':phoneNumber', $applicant->getPhoneNumber());
-        $query->bindValue(':cohortId', $applicant->getCohortId());
-        $query->bindValue(':whyDev', $applicant->getWhyDev());
-        $query->bindValue(':codeExperience', $applicant->getCodeExperience());
-        $query->bindValue(':hearAboutId', $applicant->getHearAboutId());
-        $query->bindValue(':eligible', $applicant->getEligible());
-        $query->bindValue(':eighteenPlus', $applicant->getEighteenPlus());
-        $query->bindValue(':finance', $applicant->getFinance());
-        $query->bindValue(':notes', $applicant->getNotes());
-        $query->bindValue(':id', $applicant->getId());
-        $query->bindValue(':stageId', $applicant->getStageID());
-        $query->bindValue(':stageOptionId', $applicant->getStageOptionId());
+        $query->bindValue(':name', $applicant['name']);
+        $query->bindValue(':email', $applicant['email']);
+        $query->bindValue(':phoneNumber', $applicant['phoneNumber']);
+        $query->bindValue(':cohortId', $applicant['cohortId']);
+        $query->bindValue(':whyDev', $applicant['whyDev']);
+        $query->bindValue(':codeExperience', $applicant['codeExperience']);
+        $query->bindValue(':hearAboutId', $applicant['hearAboutId']);
+        $query->bindValue(':eligible', $applicant['eligible']);
+        $query->bindValue(':eighteenPlus', $applicant['eighteenPlus']);
+        $query->bindValue(':finance', $applicant['finance']);
+        $query->bindValue(':notes', $applicant['notes']);
+        $query->bindValue(':id', $applicant['id']);
+        $query->bindValue(':stageId', $applicant['stageId']);
+        $query->bindValue(':stageOptionId', $applicant['stageOptionId']);
 
         return $query->execute();
     }
@@ -321,10 +320,10 @@ class ApplicantModel implements ApplicantModelInterface
     /**
      * updateApplicant updates the applicant data.
      *
-     * @param ApplicantEntityInterface $applicant
+     * @param array $applicant
      * @return bool
      */
-    public function updateApplicantAdditionalFields(CompleteApplicantEntity $applicant)
+    public function updateApplicantAdditionalFields(array $applicant)
     {
         $query = $this->db->prepare(
             "UPDATE `applicants_additional`
@@ -351,24 +350,24 @@ class ApplicantModel implements ApplicantModelInterface
                         );"
         );
 
-        $query->bindValue(':apprentice', $applicant->getApprentice());
-        $query->bindValue(':aptitude', $applicant->getAptitude());
-        $query->bindValue(':assessmentDay', $applicant->getAssessmentDay());
-        $query->bindValue(':assessmentTime', $applicant->getAssessmentTime());
-        $query->bindValue(':assessmentNotes', $applicant->getAssessmentNotes());
-        $query->bindValue(':diversitechInterest', $applicant->getDiversitechInterest());
-        $query->bindValue(':diversitech', $applicant->getDiversitech());
-        $query->bindValue(':edaid', $applicant->getEdaid());
-        $query->bindValue(':upfront', $applicant->getUpfront());
-        $query->bindValue(':kitCollectionDay', $applicant->getKitCollectionDay());
-        $query->bindValue(':kitCollectionTime', $applicant->getKitCollectionTime());
-        $query->bindValue(':kitNum', $applicant->getKitNum());
-        $query->bindValue(':laptop', $applicant->getLaptop());
-        $query->bindValue(':laptopDeposit', $applicant->getLaptopDeposit());
-        $query->bindValue(':laptopNum', $applicant->getLaptopNum());
-        $query->bindValue(':taster', $applicant->getTaster());
-        $query->bindValue(':tasterAttendance', $applicant->getTasterAttendance());
-        $query->bindValue(':id', $applicant->getId());
+        $query->bindValue(':apprentice', $applicant['apprentice']);
+        $query->bindValue(':aptitude', $applicant['aptitude']);
+        $query->bindValue(':assessmentDay', $applicant['assessmentDay']);
+        $query->bindValue(':assessmentTime', $applicant['assessmentTime']);
+        $query->bindValue(':assessmentNotes', $applicant['assessmentNotes']);
+        $query->bindValue(':diversitechInterest', $applicant['diversitechInterest']);
+        $query->bindValue(':diversitech', $applicant['diversitech']);
+        $query->bindValue(':edaid', $applicant['edaid']);
+        $query->bindValue(':upfront', $applicant['upfront']);
+        $query->bindValue(':kitCollectionDay', $applicant['kitCollectionDay']);
+        $query->bindValue(':kitCollectionTime', $applicant['kitCollectionTime']);
+        $query->bindValue(':kitNum', $applicant['kitNum']);
+        $query->bindValue(':laptop', $applicant['laptop']);
+        $query->bindValue(':laptopDeposit', $applicant['laptopDeposit']);
+        $query->bindValue(':laptopNum', $applicant['laptopNum']);
+        $query->bindValue(':taster', $applicant['taster']);
+        $query->bindValue(':tasterAttendance', $applicant['tasterAttendance']);
+        $query->bindValue(':id', $applicant['id']);
 
         return $query->execute();
     }

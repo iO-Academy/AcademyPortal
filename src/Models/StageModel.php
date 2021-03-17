@@ -68,9 +68,9 @@ class StageModel
         $query = $this->db->prepare(
             "INSERT INTO `stages` (`title`, `order`, `student`) VALUES (:title, :order, :student);"
         );
-        $query->bindParam(':title', $stageEntity->getStageTitle());
-        $query->bindParam(':order', $stageEntity->getStageOrder());
-        $query->bindParam(':student', $stageEntity->getStudent());
+        $query->bindValue(':title', $stageEntity->getStageTitle());
+        $query->bindValue(':order', $stageEntity->getStageOrder());
+        $query->bindValue(':student', (int)$stageEntity->getStudent());
         return $query->execute();
     }
 
@@ -99,7 +99,7 @@ class StageModel
         $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
         $query->execute();
         $stages = $query->fetchAll();
-        
+
         $query = $this->db->prepare(
             'SELECT `id`, `option`, `stageId` FROM `options` WHERE `deleted` = 0;'
         );
@@ -254,7 +254,7 @@ class StageModel
         $query->execute();
         return $query->fetchAll();
     }
-    
+
     /**
      * Deletes (soft delete) all the 'options' of a stage with a given id.
      * @param int $stageId

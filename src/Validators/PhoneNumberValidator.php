@@ -1,13 +1,12 @@
 <?php
 
-
 namespace Portal\Validators;
 
 use Exception;
 
 class PhoneNumberValidator
 {
-    private const PATTERN = '/^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?'.
+    private const PATTERN = '/^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?' .
     '[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/';
 
     /**
@@ -17,7 +16,7 @@ class PhoneNumberValidator
      * @return string|null
      * @throws Exception
      */
-    public static function validatePhoneNumber(string $phoneNumber)
+    public static function validatePhoneNumber(string $phoneNumber): string
     {
         if (preg_match(self::PATTERN, $phoneNumber)) {
             return $phoneNumber;

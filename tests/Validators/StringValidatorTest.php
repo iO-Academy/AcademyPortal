@@ -44,13 +44,13 @@ class StringValidatorTest extends TestCase
         $characterLength = 255;
         $location = '1 Widcombe Cres, Bath BA2 6AH';
         $result = StringValidator::ValidateLength($location, $characterLength);
-        $this->assertEquals($result, '1 Widcombe Cres, Bath BA2 6AH');
+        $this->assertTrue($result);
     }
 
     public function testValidateLengthEmptySuccess()
     {
         $result = StringValidator::ValidateLength('', 1);
-        $this->assertEquals($result, null);
+        $this->assertTrue($result);
     }
 
     public function testValidateLengthFailure()

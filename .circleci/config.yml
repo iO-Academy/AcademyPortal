@@ -34,7 +34,7 @@ jobs:
           command: php composer.phar dump-autoload
       - run:
           name: Run CS Tests
-          command: vendor/bin/phpcs --standard=PSR2 src templates tests
+          command: vendor/bin/phpcs --standard=PSR12 src templates tests
       - run:
           name: Run Unit tests
           command: vendor/bin/phpunit

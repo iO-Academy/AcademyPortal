@@ -2,6 +2,8 @@
 
 namespace Portal\Validators;
 
+use Portal\Sanitisers\StringSanitiser;
+
 class StageValidator
 {
 
@@ -11,9 +13,9 @@ class StageValidator
             if (self::validateStage($stage)) {
                 $stages[$k]['id'] = (int)$stage['id'];
                 $stages[$k]['student'] = $stage['student'];
-                $stages[$k]['title'] = StringValidator::sanitiseString($stage['title']);
+                $stages[$k]['title'] = StringSanitiser::sanitiseString($stage['title']);
                 try {
-                    $stages[$k]['title'] = StringValidator::validateLength($stage['title'], 255);
+                    StringValidator::validateLength($stage['title'], StringValidator::MAXVARCHARLENGTH, 'title');
                 } catch (\Exception $exception) {
                     $stages[$k]['title'] = substr($stage['title'], 0, 254);
                 }

@@ -3,9 +3,6 @@
 namespace Portal\Entities;
 
 use Portal\Interfaces\ApplicantEntityInterface;
-use Portal\Validators\EmailValidator;
-use Portal\Validators\PhoneNumberValidator;
-use Portal\Validators\StringValidator;
 
 class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
 {
@@ -20,45 +17,10 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     protected $notes;
     protected $stageID;
 
-    protected const MAXVARCHARLENGTH = 255;
-    protected const MAXTEXTLENGTH = 10000;
-
-    public function __construct(
-        string $applicantName = null,
-        string $applicantEmail = null,
-        string $applicantPhoneNumber = null,
-        int $applicantCohortId = null,
-        string $applicantWhyDev = null,
-        string $applicantCodeExperience = null,
-        int $applicantHearAboutId = null,
-        string $applicantEligible = null,
-        string $applicantEighteenPlus = null,
-        string $applicantFinance = null,
-        string $applicantNotes = null,
-        int $applicantId = null
-    ) {
-        $this->name = ($this->name ?? $applicantName);
-        $this->email = ($this->email ?? $applicantEmail);
-        $this->phoneNumber = ($this->phoneNumber ?? $applicantPhoneNumber);
-        $this->cohortId = ($this->cohortId ?? $applicantCohortId);
-        $this->whyDev = ($this->whyDev ?? $applicantWhyDev);
-        $this->codeExperience = ($this->codeExperience ?? $applicantCodeExperience);
-        $this->hearAboutId = ($this->hearAboutId ?? $applicantHearAboutId);
-        $this->eligible = ($this->eligible ?? $applicantEligible);
-        $this->eighteenPlus = ($this->eighteenPlus ?? $applicantEighteenPlus);
-        $this->finance = ($this->finance ?? $applicantFinance);
-        $this->notes = ($this->notes ?? $applicantNotes);
-        $this->id = ($this->id ?? $applicantId);
-
-        $this->sanitiseData();
-    }
-
-
-
     /**
      * Returns private properties from object.
      *
-     * @return array|mixed
+     * @return array
      */
     public function jsonSerialize()
     {
@@ -78,32 +40,6 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
                   'cohortDate' => $this->getCohortDate(),
                   'dateTimeAdded' => $this->dateTimeAdded
                ];
-    }
-
-    /**
-     * Will sanitise all the fields for an applicant.
-     */
-    private function sanitiseData()
-    {
-        $this->id = (int) $this->id;
-        $this->name = StringValidator::sanitiseString($this->name);
-        $this->email = StringValidator::sanitiseString($this->email);
-        $this->email = EmailValidator::validateEmail($this->email);
-        $this->phoneNumber = StringValidator::sanitiseString($this->phoneNumber);
-        $this->cohortId = (int)$this->cohortId;
-        $this->whyDev = StringValidator::sanitiseString($this->whyDev);
-        $this->codeExperience = StringValidator::sanitiseString($this->codeExperience);
-        $this->hearAboutId = (int)$this->hearAboutId;
-        $this->eligible = $this->eligible ? 1 : 0;
-        $this->eighteenPlus = $this->eighteenPlus ? 1 : 0;
-        $this->finance = $this->finance ? 1 : 0;
-        $this->notes = StringValidator::sanitiseString($this->notes);
-        $this->name = StringValidator::validateExistsAndLength($this->name, self::MAXVARCHARLENGTH);
-        $this->email = StringValidator::validateExistsAndLength($this->email, self::MAXVARCHARLENGTH);
-        $this->codeExperience = StringValidator::validateLength($this->codeExperience, self::MAXTEXTLENGTH);
-        $this->whyDev = StringValidator::validateExistsAndLength($this->whyDev, self::MAXTEXTLENGTH);
-        $this->notes = StringValidator::validateLength($this->notes, self::MAXTEXTLENGTH);
-        $this->phoneNumber = PhoneNumberValidator::validatePhoneNumber($this->phoneNumber);
     }
 
     /**

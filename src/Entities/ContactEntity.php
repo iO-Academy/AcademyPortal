@@ -2,6 +2,7 @@
 
 namespace Portal\Entities;
 
+use Portal\Sanitisers\StringSanitiser;
 use Portal\Validators\StringValidator;
 
 class ContactEntity
@@ -99,18 +100,16 @@ class ContactEntity
      */
     private function sanitiseData()
     {
-        $this->contactName = StringValidator::sanitiseString($this->contactName);
+        $this->contactName = StringSanitiser::sanitiseString($this->contactName);
         $this->contactName = StringValidator::validateExistsAndLength($this->contactName, 255);
 
-        $this->contactEmail = StringValidator::sanitiseString($this->contactEmail);
+        $this->contactEmail = StringSanitiser::sanitiseString($this->contactEmail);
         $this->contactEmail = StringValidator::validateExistsAndLength($this->contactEmail, 255);
-        if ($this->jobTitle !== null) {
-            $this->jobTitle = StringValidator::sanitiseString($this->jobTitle);
-            $this->jobTitle = StringValidator::ValidateLength($this->jobTitle, 255);
+        if ($this->jobTitle !== null && StringValidator::ValidateLength($this->jobTitle, 255)) {
+            $this->jobTitle = StringSanitiser::sanitiseString($this->jobTitle);
         }
-        if ($this->contactPhone !== null) {
-            $this->contactPhone = StringValidator::sanitiseString($this->contactPhone);
-            $this->contactPhone = StringValidator::ValidateLength($this->contactPhone, 20);
+        if ($this->contactPhone !== null && StringValidator::ValidateLength($this->contactPhone, 20)) {
+            $this->contactPhone = StringSanitiser::sanitiseString($this->contactPhone);
         }
         $this->hiringPartnerCompanyId = (int)$this->hiringPartnerCompanyId;
         $this->primaryContact = (int)$this->primaryContact;

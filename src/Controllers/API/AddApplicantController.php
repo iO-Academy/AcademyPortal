@@ -6,6 +6,8 @@ use Exception;
 use Portal\Abstracts\Controller;
 use Portal\Entities\ApplicantEntity;
 use Portal\Models\ApplicantModel;
+use Portal\Sanitisers\ApplicantSanitiser;
+use Portal\Validators\ApplicantValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -44,19 +46,11 @@ class AddApplicantController extends Controller
             $newApplicationData = $request->getParsedBody();
 
             try {
-                $applicant = new ApplicantEntity(
-                    $newApplicationData['name'],
-                    $newApplicationData['email'],
-                    $newApplicationData['phoneNumber'],
-                    $newApplicationData['cohortId'],
-                    $newApplicationData['whyDev'],
-                    $newApplicationData['codeExperience'],
-                    $newApplicationData['hearAboutId'],
-                    $newApplicationData['eligible'],
-                    $newApplicationData['eighteenPlus'],
-                    $newApplicationData['finance'],
-                    $newApplicationData['notes']
-                );
+                if (ApplicantValidator::validate($newApplicationData)) {
+                    $applicant = ApplicantSanitiser::sanitise($newApplicationData);
+                } else {
+                    throw new Exception('Applicant data failed validation');
+                }
             } catch (Exception $e) {
                 $statusCode = 400;
                 $data['msg'] = $e->getMessage();

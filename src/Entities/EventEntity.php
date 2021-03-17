@@ -2,6 +2,7 @@
 
 namespace Portal\Entities;
 
+use Portal\Sanitisers\StringSanitiser;
 use Portal\Validators\DateTimeValidator;
 use Portal\Validators\StringValidator;
 
@@ -48,17 +49,16 @@ class EventEntity
     private function sanitiseData()
     {
         $this->event_id = (int)$this->event_id;
-        $this->name = StringValidator::sanitiseString($this->name);
-        $this->name = StringValidator::validateExistsAndLength($this->name, 255);
-        $this->location = StringValidator::sanitiseString($this->location);
-        $this->location = StringValidator::validateExistsAndLength($this->location, 255);
+        $this->name = StringSanitiser::sanitiseString($this->name);
+        $this->name = StringValidator::validateExistsAndLength($this->name, StringValidator::MAXVARCHARLENGTH);
+        $this->location = StringSanitiser::sanitiseString($this->location);
+        $this->location = StringValidator::validateExistsAndLength($this->location, StringValidator::MAXVARCHARLENGTH);
         $this->date = DateTimeValidator::validateDate($this->date);
         $this->startTime = DateTimeValidator::validateTime($this->startTime);
         $this->endTime = DateTimeValidator::validateTime($this->endTime);
         DateTimeValidator::validateStartEndTime($this->startTime, $this->endTime);
-        if ($this->notes !== null) {
-            $this->notes = StringValidator::sanitiseString($this->notes);
-            $this->notes = StringValidator::validateLength($this->notes, 5000);
+        if ($this->notes !== null && StringValidator::validateLength($this->notes, 5000)) {
+            $this->notes = StringSanitiser::sanitiseString($this->notes);
         }
     }
 

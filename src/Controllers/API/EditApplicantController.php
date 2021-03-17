@@ -1,13 +1,11 @@
 <?php
 
-
 namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
-use Portal\Entities\ApplicantEntity;
-use Portal\Entities\CompleteApplicantEntity;
-use Portal\Interfaces\ApplicantEntityInterface;
 use Portal\Interfaces\ApplicantModelInterface;
+use Portal\Sanitisers\ApplicantSanitiser;
+use Portal\Validators\ApplicantValidator;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -32,53 +30,28 @@ class EditApplicantController extends Controller
             $newApplicationData = $request->getParsedBody();
 
             try {
-                $applicant = new CompleteApplicantEntity(
-                    $newApplicationData['name'],
-                    $newApplicationData['email'],
-                    $newApplicationData['phoneNumber'],
-                    $newApplicationData['cohortId'],
-                    $newApplicationData['whyDev'],
-                    $newApplicationData['codeExperience'],
-                    $newApplicationData['hearAboutId'],
-                    $newApplicationData['eligible'],
-                    $newApplicationData['eighteenPlus'],
-                    $newApplicationData['finance'],
-                    $newApplicationData['notes'],
-                    $newApplicationData['id'],
-                    $newApplicationData['apprentice'],
-                    $newApplicationData['aptitude'],
-                    $newApplicationData['assessmentDay'],
-                    $newApplicationData['assessmentTime'],
-                    $newApplicationData['assessmentNotes'],
-                    $newApplicationData['diversitechInterest'],
-                    $newApplicationData['diversitech'],
-                    $newApplicationData['edaid'],
-                    $newApplicationData['upfront'],
-                    $newApplicationData['kitCollectionDay'],
-                    $newApplicationData['kitCollectionTime'],
-                    $newApplicationData['kitNum'],
-                    $newApplicationData['laptop'],
-                    $newApplicationData['laptopDeposit'],
-                    $newApplicationData['laptopNum'],
-                    $newApplicationData['taster'],
-                    $newApplicationData['tasterAttendance'],
-                    null,
-                    $newApplicationData['stageId'],
-                    $newApplicationData['optionId']
-                );
+                if (
+                    ApplicantValidator::validate($newApplicationData) &&
+                    ApplicantValidator::validateAdditionalFields($newApplicationData)
+                ) {
+                    $applicant = ApplicantSanitiser::sanitise($newApplicationData);
+                    $applicant = ApplicantSanitiser::sanitiseAdditionalFields($applicant);
 
-                //If applicant is being moved to a stage that makes them a student a row in the
-                // applicant_additional table needs to be created. If it doesn't already exist.
-                
-                $successfulUpdate1 = $this->applicantModel->updateApplicant($applicant);
+                    //If applicant is being moved to a stage that makes them a student a row in the
+                    // applicant_additional table needs to be created. If it doesn't already exist.
 
-                //Fails if applicant row doesn't exist in applicant_additional table
-                $successfulUpdate2 = $this->applicantModel->updateApplicantAdditionalFields($applicant);
+                    $successfulUpdate1 = $this->applicantModel->updateApplicant($applicant);
 
-                if ($successfulUpdate1) {
-                    $data['success'] = true;
-                    $data['msg'] = 'Applicant has been updated!';
-                    $statusCode = 200;
+                    //Fails if applicant row doesn't exist in applicant_additional table
+                    $successfulUpdate2 = $this->applicantModel->updateApplicantAdditionalFields($applicant);
+
+                    if ($successfulUpdate1) {
+                        $data['success'] = true;
+                        $data['msg'] = 'Applicant has been updated!';
+                        $statusCode = 200;
+                    }
+                } else {
+                    throw new \Exception('Invalid applicant data');
                 }
             } catch (\Exception $e) {
                 $statusCode = 400;

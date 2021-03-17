@@ -2,6 +2,7 @@
 
 namespace Portal\Entities;
 
+use Portal\Sanitisers\StringSanitiser;
 use Portal\Validators\StringValidator;
 
 class StageEntity implements \JsonSerializable
@@ -44,10 +45,10 @@ class StageEntity implements \JsonSerializable
     private function sanitiseData()
     {
         $this->id = (int) $this->id;
-        $this->title = StringValidator::sanitiseString($this->title);
+        $this->title = StringSanitiser::sanitiseString($this->title);
 
         try {
-            $this->title = StringValidator::validateLength($this->title, 255);
+            StringValidator::validateLength($this->title, StringValidator::MAXVARCHARLENGTH);
         } catch (\Exception $exception) {
             $this->title = substr($this->title, 0, 254);
         }
@@ -92,7 +93,7 @@ class StageEntity implements \JsonSerializable
      *
      * @return string
      */
-    public function getStageDeleted() : int
+    public function getStageDeleted(): int
     {
         return $this->deleted;
     }

@@ -2,6 +2,7 @@
 
 namespace Portal\Entities;
 
+use Portal\Sanitisers\StringSanitiser;
 use Portal\Validators\DateTimeValidator;
 use Portal\Validators\StringValidator;
 
@@ -37,12 +38,14 @@ class CourseEntity
      */
     private function sanitiseData()
     {
-        $this->startDate= DateTimeValidator::validateDate($this->startDate);
+        $this->startDate = DateTimeValidator::validateDate($this->startDate);
         $this->endDate = DateTimeValidator::validateDate($this->endDate);
         DateTimeValidator::validateStartEndTime($this->getStartDate(), $this->getEndDate());
-        $this->name = StringValidator::sanitiseString($this->name);
-        $this->trainer = StringValidator::sanitiseString($this->trainer);
-        $this->notes = StringValidator::sanitiseString($this->notes);
+        $this->name = StringSanitiser::sanitiseString($this->name);
+        $this->trainer = StringSanitiser::sanitiseString($this->trainer);
+        if (!is_null($this->notes) && StringValidator::validateLength($this->notes, 500, 'notes')) {
+            $this->notes = StringSanitiser::sanitiseString($this->notes);
+        }
         $this->id = (int) $this->id;
     }
 

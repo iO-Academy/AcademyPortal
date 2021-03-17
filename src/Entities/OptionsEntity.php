@@ -2,6 +2,7 @@
 
 namespace Portal\Entities;
 
+use Portal\Sanitisers\StringSanitiser;
 use Portal\Validators\StringValidator;
 
 class OptionsEntity implements \JsonSerializable
@@ -40,14 +41,14 @@ class OptionsEntity implements \JsonSerializable
     private function sanitiseData()
     {
         $this->id = (int) $this->id;
-        $this->option = StringValidator::sanitiseString($this->option);
+        $this->option = StringSanitiser::sanitiseString($this->option);
 
         try {
-            $this->option = StringValidator::validateLength($this->option, 255);
+            StringValidator::validateLength($this->option, StringValidator::MAXVARCHARLENGTH);
         } catch (\Exception $exception) {
             $this->option = substr($this->option, 0, 254);
         }
-        
+
         $this->stageId = (int) $this->stageId;
         $this->deleted = (int) $this->deleted;
     }
