@@ -3,7 +3,6 @@
 namespace Tests\Factories\Controllers\API;
 
 use Tests\TestCase;
-
 use Portal\Factories\Controllers\API\GetApplicantControllerFactory;
 use Portal\Models\ApplicantModel;
 use Portal\Controllers\API\GetApplicantController;

@@ -17,7 +17,7 @@ class DeleteApplicantControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($applicant);
 
-        $factory = new DeleteApplicantControllerFactory;
+        $factory = new DeleteApplicantControllerFactory();
         $case = $factory($container);
         $expected = DeleteApplicantController::class;
         $this->assertInstanceOf($expected, $case);

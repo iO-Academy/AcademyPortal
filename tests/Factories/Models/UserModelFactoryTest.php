@@ -16,7 +16,7 @@ class UserModelFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($db);
 
-        $factory = new UserModelFactory;
+        $factory = new UserModelFactory();
         $case = $factory($container);
         $expected = UserModel::class;
         $this->assertInstanceOf($expected, $case);

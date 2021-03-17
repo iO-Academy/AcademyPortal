@@ -55,6 +55,6 @@ class EditStageController extends Controller
                 return $this->respondWithJson($response, $data, $statusCode);
             }
         }
-        return $this->respondWithJson($response, ['success' => false, 'msg'=> 'Unauthorized'], 401);
+        return $this->respondWithJson($response, ['success' => false, 'msg' => 'Unauthorized'], 401);
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Tests\Controllers\API;
 
 use PHPUnit\Framework\TestCase;

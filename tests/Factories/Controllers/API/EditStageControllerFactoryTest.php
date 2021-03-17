@@ -20,7 +20,7 @@ class EditStageControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($stage);
 
-        $factory = new EditStageControllerFactory;
+        $factory = new EditStageControllerFactory();
         $case = $factory($container);
         $expected = EditStageController::class;
         $this->assertInstanceOf($expected, $case);

@@ -11,7 +11,7 @@ class EventCategoryViewHelper
      * @param array $data
      * @return string
      */
-    public static function eventCategoryDropdown(array $data) : string
+    public static function eventCategoryDropdown(array $data): string
     {
         $eventCategoryDropdown = '';
         if (!empty($data['eventCategories'])) {

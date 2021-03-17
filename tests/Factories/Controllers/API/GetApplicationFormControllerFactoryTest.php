@@ -17,7 +17,7 @@ class GetApplicationFormControllerFactoryTest extends TestCase
         $container->method('get')
                          ->willReturn($applicationForm);
 
-        $factory = new GetApplicationFormControllerFactory;
+        $factory = new GetApplicationFormControllerFactory();
         $case = $factory($container);
         $expected = GetApplicationFormController::class;
         $this->assertInstanceOf($expected, $case);

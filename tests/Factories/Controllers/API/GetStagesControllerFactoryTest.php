@@ -17,7 +17,7 @@ class GetStagesControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($stage);
 
-        $factory = new GetStagesControllerFactory;
+        $factory = new GetStagesControllerFactory();
         $case = $factory($container);
         $expected = GetStagesController::class;
         $this->assertInstanceOf($expected, $case);

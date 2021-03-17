@@ -24,7 +24,7 @@ class RegisterControllerFactoryTest extends TestCase
             ->with($this->equalTo('RandomPasswordModel'))
             ->willReturn('password');
 
-        $factory =  new RegisterPageControllerFactory;
+        $factory =  new RegisterPageControllerFactory();
         $case = $factory($container);
         $expected = RegisterPageController::class;
         $this->assertInstanceOf($expected, $case);

@@ -12,7 +12,7 @@ use Psr\Container\ContainerInterface;
      */
 class AddStageOptionControllerFactory
 {
-    public function __invoke(ContainerInterface $container):AddStageOptionController
+    public function __invoke(ContainerInterface $container): AddStageOptionController
     {
         $model = $container->get('StageModel');
         return new AddStageOptionController($model);

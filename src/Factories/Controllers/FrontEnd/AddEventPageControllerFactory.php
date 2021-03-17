@@ -14,7 +14,7 @@ class AddEventPageControllerFactory
      * @param ContainerInterface $container
      * @return AddEventPageController
      */
-    public function __invoke(ContainerInterface $container) : AddEventPageController
+    public function __invoke(ContainerInterface $container): AddEventPageController
     {
         $eventModel = $container->get('EventModel');
         $renderer = $container->get('renderer');

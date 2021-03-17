@@ -14,7 +14,7 @@ class PastEventsPageControllerFactory
      * @param ContainerInterface $container
      * @return PastEventsPageController
      */
-    public function __invoke(ContainerInterface $container) : PastEventsPageController
+    public function __invoke(ContainerInterface $container): PastEventsPageController
     {
         $eventModel = $container->get('EventModel');
         $renderer = $container->get('renderer');

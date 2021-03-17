@@ -27,9 +27,9 @@ class DisplayStudentProfileViewHelper
                     <p id="codeExperience">' . $applicant->getCodeExperience() . '</p>
                     <p class="detail">Heard About Us: <span id="hearAbout">' . $applicant->hearAbout . '</span></p>
                     <p class="detail" id="eligible">Eligible to study in the UK: ' . '<span>'
-                        . ($applicant->getEligible() === 1 ? 'Yes' : 'No'). '</span></p>
+                        . ($applicant->getEligible() === 1 ? 'Yes' : 'No') . '</span></p>
                     <p class="detail" id="eighteenPlus">Over 18 years: ' . '<span>'
-                        . ($applicant->getEighteenPlus() === 1 ? 'Yes' : 'No'). '</span></p>
+                        . ($applicant->getEighteenPlus() === 1 ? 'Yes' : 'No') . '</span></p>
                     <p class="detail">Finance: <span id="finance">'
                         . ($applicant->getFinance() === 1 ? 'Yes' : 'No') . '</span></p>
                     <p class="detail">Notes: </p>

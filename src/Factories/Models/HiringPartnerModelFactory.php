@@ -14,7 +14,7 @@ class HiringPartnerModelFactory
      *
      * @return HiringPartnerModel
      */
-    public function __invoke(ContainerInterface $container) : HiringPartnerModel
+    public function __invoke(ContainerInterface $container): HiringPartnerModel
     {
         $db = $container->get('dbConnection');
         return new HiringPartnerModel($db);

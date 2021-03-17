@@ -13,7 +13,7 @@ class AddStageControllerFactory
      * @param ContainerInterface $container
      * @return AddStageController
      */
-    public function __invoke(ContainerInterface $container) : AddStageController
+    public function __invoke(ContainerInterface $container): AddStageController
     {
         $stageModel = $container->get('StageModel');
         return new AddStageController($stageModel);

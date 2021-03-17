@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Tests\Factories\Controllers\API;
 
 use Portal\Controllers\API\EditApplicantStageController;
@@ -25,7 +24,7 @@ class EditApplicantStageControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($stage, $applicant);
 
-        $factory = new EditApplicantStageControllerFactory;
+        $factory = new EditApplicantStageControllerFactory();
         $case = $factory($container);
         $expected = EditApplicantStageController::class;
         $this->assertInstanceOf($expected, $case);

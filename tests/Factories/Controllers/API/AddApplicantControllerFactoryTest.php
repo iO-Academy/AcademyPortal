@@ -17,7 +17,7 @@ class AddApplicantControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($applicant);
 
-        $factory = new AddApplicantControllerFactory;
+        $factory = new AddApplicantControllerFactory();
         $case = $factory($container);
         $expected = AddApplicantController::class;
         $this->assertInstanceOf($expected, $case);

@@ -12,7 +12,7 @@ class AddEventPageController extends Controller
 {
     private $renderer;
     private $eventModel;
-    
+
     /**
      * Creates new instance of EventsPageController
      *

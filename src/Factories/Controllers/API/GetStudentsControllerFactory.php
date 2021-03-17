@@ -3,7 +3,6 @@
 namespace Portal\Factories\Controllers\API;
 
 use Portal\Controllers\API\GetStudentsController;
-
 use Psr\Container\ContainerInterface;
 
 class GetStudentsControllerFactory

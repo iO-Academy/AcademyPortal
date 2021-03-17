@@ -3,7 +3,7 @@
 namespace Tests\Entities;
 
 use Portal\Entities\EventEntity;
-use \Exception;
+use Exception;
 use Tests\TestCase;
 use TypeError;
 

@@ -14,7 +14,7 @@ class StudentProfilePageControllerFactory
      *
      * @return StudentProfilePageController.
      */
-    public function __invoke(ContainerInterface $container) : StudentProfilePageController
+    public function __invoke(ContainerInterface $container): StudentProfilePageController
     {
         $renderer = $container->get('renderer');
         $applicantModel = $container->get('ApplicantModel');

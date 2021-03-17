@@ -9,10 +9,10 @@ class DisplayApplicantViewHelper
 
     public static function displayTab(array $applicants, string $type, string $sort)
     {
-        $dateAsc = ($sort == 'dateAsc' || empty($sort)) ? ' active': '';
-        $dateDesc = ($sort == 'dateDesc') ? ' active': '';
-        $cohortAsc = ($sort == 'cohortAsc') ? ' active': '';
-        $cohortDesc = ($sort == 'cohortDesc') ? ' active': '';
+        $dateAsc = ($sort == 'dateAsc' || empty($sort)) ? ' active' : '';
+        $dateDesc = ($sort == 'dateDesc') ? ' active' : '';
+        $cohortAsc = ($sort == 'cohortAsc') ? ' active' : '';
+        $cohortDesc = ($sort == 'cohortDesc') ? ' active' : '';
         $active = ($type == 'paying') ? ' active' : '';
 
         $result = '<div class="tab-pane' . $active . '" role="tabpanel" id="' . $type . '">

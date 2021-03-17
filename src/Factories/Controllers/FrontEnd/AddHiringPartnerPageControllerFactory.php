@@ -15,7 +15,7 @@ class AddHiringPartnerPageControllerFactory
      * @return AddHiringPartnerPageController
      */
 
-    public function __invoke(ContainerInterface $container) : AddHiringPartnerPageController
+    public function __invoke(ContainerInterface $container): AddHiringPartnerPageController
     {
         $renderer = $container->get('renderer');
         $hiringPartnerModel = $container->get('HiringPartnerModel');

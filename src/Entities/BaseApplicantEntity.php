@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Portal\Entities;
 
 use Portal\Interfaces\BaseApplicantEntityInterface;

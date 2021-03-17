@@ -13,7 +13,7 @@ class AddEventControllerFactory
      * @param ContainerInterface $container
      * @return AddEventController
      */
-    public function __invoke(ContainerInterface $container):AddEventController
+    public function __invoke(ContainerInterface $container): AddEventController
     {
         $eventModel = $container->get('EventModel');
         return new AddEventController($eventModel);

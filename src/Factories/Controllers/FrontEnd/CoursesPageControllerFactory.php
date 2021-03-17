@@ -14,7 +14,7 @@ class CoursesPageControllerFactory
      * @param ContainerInterface $container
      * @return CoursesPageController
      */
-    public function __invoke(ContainerInterface $container) : CoursesPageController
+    public function __invoke(ContainerInterface $container): CoursesPageController
     {
         $renderer = $container->get('renderer');
         $courseModel = $container->get('CourseModel');

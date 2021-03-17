@@ -12,7 +12,7 @@ class DeleteStageOptionControllerFactory
      * @param ContainerInterface $container
      * @return DeleteStageOptionController
      */
-    public function __invoke(ContainerInterface $container):DeleteStageOptionController
+    public function __invoke(ContainerInterface $container): DeleteStageOptionController
     {
         $model = $container->get('StageModel');
         return new DeleteStageOptionController($model);

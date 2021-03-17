@@ -3,7 +3,7 @@
 namespace Portal\Models;
 
 use phpDocumentor\Reflection\Types\Boolean;
-use \Portal\Entities\StageEntity;
+use Portal\Entities\StageEntity;
 
 class StageModel
 {

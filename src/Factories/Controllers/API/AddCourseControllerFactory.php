@@ -13,7 +13,7 @@ class AddCourseControllerFactory
      * @param ContainerInterface $container
      * @return AddCourseController
      */
-    public function __invoke(ContainerInterface $container):AddCourseController
+    public function __invoke(ContainerInterface $container): AddCourseController
     {
         $courseModel = $container->get('CourseModel');
         return new AddCourseController($courseModel);

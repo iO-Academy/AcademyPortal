@@ -41,7 +41,7 @@ class GetStagesController extends Controller
                     'message' => 'Retrieved dropdown info.',
                     'data' => [
                         'stages' => $this->stageModel->getAllStages()
-                        
+
                     ]
                 ];
             } catch (\Exception $e) {

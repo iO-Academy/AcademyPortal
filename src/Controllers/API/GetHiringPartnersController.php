@@ -24,7 +24,7 @@ class GetHiringPartnersController extends Controller
      * @param array $args
      * @return Response returns JSON with hiring partner data
      */
-    public function __invoke(Request $request, Response $response, array $args) :Response
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $data = [
             'status' => false,

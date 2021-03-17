@@ -78,7 +78,7 @@ data-stageid="1" value="Submit"></form></div></div></td><td class="col-xs-2 text
         $input =  [$stageEntityMock];
         $actual = StagesPageViewHelper::displayStages($input);
         $actual = preg_replace('/\s+/', '', $actual); // removes whitespace
-        
+
         $this->assertEquals($expected, $actual);
     }
 }

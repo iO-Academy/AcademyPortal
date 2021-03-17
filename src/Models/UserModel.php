@@ -45,7 +45,8 @@ class UserModel
      */
     public function userLoginVerify(string $userEmail, string $password, $userCredentials): bool
     {
-        if ((is_array($userCredentials)) &&
+        if (
+            (is_array($userCredentials)) &&
             ($userEmail === $userCredentials['email']) &&
             (password_verify($password, $userCredentials['password']))
         ) {

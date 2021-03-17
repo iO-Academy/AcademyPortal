@@ -17,7 +17,7 @@ class LoginControllerFactoryTest extends TestCase
         $container->method('get')
                          ->willReturn($user);
 
-        $factory = new LoginControllerFactory;
+        $factory = new LoginControllerFactory();
         $case = $factory($container);
         $expected = LoginController::class;
         $this->assertInstanceOf($expected, $case);

@@ -14,7 +14,7 @@ class GetHiringPartnerControllerFactory
      *
      * @return GetHiringPartnerController a new instance of the GetHiringPartnerController
      */
-    public function __invoke(ContainerInterface $container) :GetHiringPartnersController
+    public function __invoke(ContainerInterface $container): GetHiringPartnersController
     {
         $hiringPartnerModel = $container->get('HiringPartnerModel');
         return new GetHiringPartnersController($hiringPartnerModel);

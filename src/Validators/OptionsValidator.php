@@ -11,7 +11,7 @@ class OptionsValidator
      * @param array $option
      * @return bool
      */
-    public static function validateOptionUpdate(array $option) : bool
+    public static function validateOptionUpdate(array $option): bool
     {
         return (isset($option['optionId']) && is_numeric($option['optionId']) && !empty($option['optionTitle']));
     }
@@ -22,7 +22,7 @@ class OptionsValidator
      * @param array $option
      * @return bool
      */
-    public static function validateOptionAdd(array $option) : bool
+    public static function validateOptionAdd(array $option): bool
     {
         return (isset($option['stageId']) && is_numeric($option['stageId']) && !empty($option['title']));
     }

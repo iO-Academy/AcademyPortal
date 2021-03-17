@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Portal\ViewHelpers;
 
 class PaginationViewHelper
@@ -16,8 +15,8 @@ class PaginationViewHelper
      */
     public static function pagination($page, $count)
     {
-        $next = (strval($page+1));
-        $prev = (strval($page-1));
+        $next = (strval($page + 1));
+        $prev = (strval($page - 1));
 
         $string = '';
 

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Tests\Factories\Controllers\FrontEnd;
 
 use Portal\Controllers\FrontEnd\EditApplicantPageController;
@@ -33,7 +32,7 @@ class EditApplicantPageControllerFactoryTest extends TestCase
             ->willReturn($stage);
 
 
-        $factory = new EditApplicantPageControllerFactory;
+        $factory = new EditApplicantPageControllerFactory();
         $case = $factory($container);
         $expected = EditApplicantPageController::class;
         $this->assertInstanceOf($expected, $case);

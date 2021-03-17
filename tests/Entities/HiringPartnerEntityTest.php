@@ -2,7 +2,7 @@
 
 namespace Test\Entities;
 
-use \Exception;
+use Exception;
 use Tests\TestCase;
 use TypeError;
 

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Portal\Factories\Controllers\FrontEnd;
 
 use Portal\Controllers\FrontEnd\EditApplicantPageController;

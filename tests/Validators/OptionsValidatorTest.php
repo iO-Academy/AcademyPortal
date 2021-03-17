@@ -20,14 +20,14 @@ class OptionsValidatorTest extends TestCase
         $result = OptionsValidator::validateOptionUpdate($option);
         $this->assertEquals($result, false);
     }
-    
+
     public function testvalidateOptionUpdateFailureIdNumber()
     {
         $option = ['optionId' => 'l', 'optionTitle' => 'test past'];
         $result = OptionsValidator::validateOptionUpdate($option);
         $this->assertEquals($result, false);
     }
-    
+
     public function testvalidateOptionUpdateFailureIdExists()
     {
         $option = ['optionId' => '', 'optionTitle' => 'test past'];

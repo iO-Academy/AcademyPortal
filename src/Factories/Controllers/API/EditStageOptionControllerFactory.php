@@ -12,7 +12,7 @@ class EditStageOptionControllerFactory
      * @param ContainerInterface $container
      * @return EditStageController
      */
-    public function __invoke(ContainerInterface $container):EditStageOptionController
+    public function __invoke(ContainerInterface $container): EditStageOptionController
     {
         $model = $container->get('StageModel');
         return new EditStageOptionController($model);

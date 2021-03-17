@@ -11,7 +11,7 @@ class OptionsEntity implements \JsonSerializable
     protected $option;
     protected $stageId;
     protected $deleted;
-    
+
     public function __construct($option = null, $stageId = null)
     {
         $this->option = ($this->option ?? $option);
@@ -88,7 +88,7 @@ class OptionsEntity implements \JsonSerializable
      *
      * @return int
      */
-    public function getOptionDeleted() : int
+    public function getOptionDeleted(): int
     {
         return $this->deleted;
     }

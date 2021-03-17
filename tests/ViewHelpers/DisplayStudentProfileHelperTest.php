@@ -1,9 +1,7 @@
 <?php
 
-
 namespace Tests\ViewHelpers;
 
-use Portal\Entities\ApplicantEntity;
 use Portal\ViewHelpers\DisplayStudentProfileViewHelper;
 use Tests\TestCase;
 use Portal\Entities\CompleteApplicantEntity;

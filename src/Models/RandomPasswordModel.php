@@ -4,15 +4,15 @@ namespace Portal\Models;
 
 class RandomPasswordModel
 {
-    const URL = 'https://passwordwolf.com/api/?repeat=';
-    const NUMBEROFPASSWORDS = '10';
+    private const URL = 'https://passwordwolf.com/api/?repeat=';
+    private const NUMBEROFPASSWORDS = '10';
 
     public function __invoke()
     {
         $ch = curl_init();
 
         // set url
-        curl_setopt($ch, CURLOPT_URL, self::URL.self::NUMBEROFPASSWORDS);
+        curl_setopt($ch, CURLOPT_URL, self::URL . self::NUMBEROFPASSWORDS);
 
         //return the transfer as a string
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);

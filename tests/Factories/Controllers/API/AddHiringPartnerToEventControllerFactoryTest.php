@@ -18,7 +18,7 @@ class AddHiringPartnerToEventControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($eventModel);
 
-        $factory = new AddHiringPartnerToEventControllerFactory;
+        $factory = new AddHiringPartnerToEventControllerFactory();
         $case = $factory($container);
         $expected = AddHiringPartnerToEventController::class;
         $this->assertInstanceOf($expected, $case);

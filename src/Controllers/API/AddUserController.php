@@ -51,9 +51,9 @@ class AddUserController extends Controller
                     'success' => $successfulRegister,
                     'msg' => "New user added email:' "
                         . $validatedUserData['email']
-                        ." ' password:' "
+                        . " ' password:' "
                         . $validatedUserData['password']
-                        ." '",
+                        . " '",
                     'data' => []
                 ];
                 $statusCode = 200;

@@ -2,7 +2,7 @@
 
 namespace Tests\Entities;
 
-use \Exception;
+use Exception;
 use Tests\TestCase;
 use Portal\Entities\ContactEntity;
 

@@ -14,7 +14,7 @@ class StagesPageControllerFactory
      *
      * @return StagesPageController.
      */
-    public function __invoke(ContainerInterface $container) : StagesPageController
+    public function __invoke(ContainerInterface $container): StagesPageController
     {
         $renderer = $container->get('renderer');
         $stageModel = $container->get('StageModel');

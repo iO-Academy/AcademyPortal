@@ -19,7 +19,7 @@ class HiringPartnerModel
      * @param HiringPartnerEntity $company Sanitise and validate the hiring partner properties as required.
      * @return bool
      */
-    public function addHiringPartner(HiringPartnerEntity $company) :bool
+    public function addHiringPartner(HiringPartnerEntity $company): bool
     {
         $query = $this->db->prepare("INSERT INTO `hiring_partner_companies`(
             `id`,
@@ -63,7 +63,7 @@ class HiringPartnerModel
      *
      * @return array array with the info
      */
-    public function getContactsByCompany(int $companyId) :array
+    public function getContactsByCompany(int $companyId): array
     {
         $query = $this->db->prepare("SELECT
             `name`,
@@ -80,7 +80,7 @@ class HiringPartnerModel
         return $query->fetchAll();
     }
 
-    public function addNewContact(ContactEntity $contact) :bool
+    public function addNewContact(ContactEntity $contact): bool
     {
         $this->db->beginTransaction();
         if ($contact->getPrimaryContact() == 1) {
@@ -132,7 +132,7 @@ class HiringPartnerModel
      *
      * @return array
      */
-    public function getCompanyName() :array
+    public function getCompanyName(): array
     {
         $query = $this->db->prepare("SELECT `id`,`name` FROM `hiring_partner_companies`");
         $query->execute();
@@ -143,7 +143,7 @@ class HiringPartnerModel
      *
      * @return array
      */
-    public function getCompanySize() :array
+    public function getCompanySize(): array
     {
         $query = $this->db->prepare("SELECT `id`,`size` FROM `company_sizes`");
         $query->execute();
@@ -168,7 +168,7 @@ class HiringPartnerModel
         string $postcode,
         string $phoneNumber,
         string $websiteUrl
-    ) :HiringPartnerEntity {
+    ): HiringPartnerEntity {
         return new HiringPartnerEntity(
             $companyName,
             $companySize,
@@ -184,7 +184,7 @@ class HiringPartnerModel
      *
      * @return array array with the info
      */
-    public function getHiringPartners() :array
+    public function getHiringPartners(): array
     {
         $query = $this->db->prepare("SELECT 
 				`hiring_partner_companies`.`id`,
@@ -206,13 +206,13 @@ class HiringPartnerModel
      *
      * @return array array with the info
      */
-    public function getDetailsByCompany(int $id) :array
+    public function getDetailsByCompany(int $id): array
     {
         $query = $this->db->prepare("SELECT 
 					`id`, `name`, `size`, `tech_stack`, `postcode`, `phone_number`, `url_website`
 					FROM `hiring_partner_companies`
 					WHERE `id` = :id;");
-        $query->execute(['id'=>$id]);
+        $query->execute(['id' => $id]);
         return $query->fetch();
     }
 
@@ -223,13 +223,13 @@ class HiringPartnerModel
      *
      * @return HiringPartnerEntity hiring partner entity
      */
-    public function getHiringPartnerById(int $id) :array
+    public function getHiringPartnerById(int $id): array
     {
         $query = $this->db->prepare("SELECT 
 					`id`, `name`, `size`, `tech_stack`, `postcode`, `phone_number`, `url_website`
 					FROM `hiring_partner_companies`
 					WHERE `id` = :id;");
-        $success = $query->execute(['id'=>$id]);
+        $success = $query->execute(['id' => $id]);
         $entity = $query->fetch();
         $returnData = ['entity' => $entity, 'success' => $success];
         return $returnData;

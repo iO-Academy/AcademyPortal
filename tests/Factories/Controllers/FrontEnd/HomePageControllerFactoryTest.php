@@ -17,7 +17,7 @@ class HomePageControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($renderer);
 
-        $factory = new HomePageControllerFactory;
+        $factory = new HomePageControllerFactory();
         $case = $factory($container);
         $expected = HomePageController::class;
         $this->assertInstanceOf($expected, $case);

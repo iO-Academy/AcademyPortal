@@ -14,7 +14,7 @@ class DeleteHiringPartnerFromEventControllerFactory
      *
      * @return DeleteHiringPartnerFromEventController
      */
-    public function __invoke(ContainerInterface $container) :DeleteHiringPartnerFromEventController
+    public function __invoke(ContainerInterface $container): DeleteHiringPartnerFromEventController
     {
         $eventModel = $container->get('EventModel');
         return new DeleteHiringPartnerFromEventController($eventModel);

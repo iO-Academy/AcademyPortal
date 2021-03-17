@@ -59,6 +59,6 @@ class DeleteAllStageOptionsController extends Controller
                 return $this->respondWithJson($response, $data, $statusCode);
             }
         }
-        return $this->respondWithJson($response, ['success' => false, 'msg'=> 'Unauthorised'], 401);
+        return $this->respondWithJson($response, ['success' => false, 'msg' => 'Unauthorised'], 401);
     }
 }

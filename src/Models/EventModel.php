@@ -141,7 +141,7 @@ class EventModel
      * @param string of validated search term
      * @return array An array of Events based on input search criteria
      */
-    public function searchFutureEvents(string $searchTerm):array
+    public function searchFutureEvents(string $searchTerm): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
                 `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
@@ -161,7 +161,7 @@ class EventModel
      * @param string of validated search term
      * @return array An array of Events based on input search criteria
      */
-    public function searchPastEvents(string $searchTerm):array
+    public function searchPastEvents(string $searchTerm): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
                 `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes` 

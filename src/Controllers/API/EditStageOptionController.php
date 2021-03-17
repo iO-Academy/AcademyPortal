@@ -44,7 +44,7 @@ class EditStageOptionController extends Controller
             try {
                 $formOption = $request->getParsedBody();
                 $optionValid = OptionsValidator::validateOptionUpdate($formOption);
-            
+
                 if ($optionValid) {
                     $this->stageModel->updateOption($formOption);
                     $data = [
@@ -68,6 +68,6 @@ class EditStageOptionController extends Controller
                 return $this->respondWithJson($response, $data, $statusCode);
             }
         }
-        return $this->respondWithJson($response, ['success' => false, 'msg'=> 'Unauthorized'], 401);
+        return $this->respondWithJson($response, ['success' => false, 'msg' => 'Unauthorized'], 401);
     }
 }

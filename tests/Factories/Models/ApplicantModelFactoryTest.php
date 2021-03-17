@@ -16,7 +16,7 @@ class ApplicantModelFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($db);
 
-        $factory = new ApplicantModelFactory;
+        $factory = new ApplicantModelFactory();
         $case = $factory($container);
         $expected = ApplicantModel::class;
         $this->assertInstanceOf($expected, $case);

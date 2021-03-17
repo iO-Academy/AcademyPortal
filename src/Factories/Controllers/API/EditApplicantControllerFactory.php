@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Portal\Factories\Controllers\API;
 
 use Portal\Controllers\API\EditApplicantController;

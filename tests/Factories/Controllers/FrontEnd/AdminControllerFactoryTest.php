@@ -17,7 +17,7 @@ class AdminControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($renderer);
 
-        $factory = new AdminPageControllerFactory;
+        $factory = new AdminPageControllerFactory();
         $case = $factory($container);
         $expected = AdminPageController::class;
         $this->assertInstanceOf($expected, $case);

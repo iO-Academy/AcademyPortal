@@ -13,7 +13,7 @@ class DeleteApplicantControllerFactory
      * @param ContainerInterface $container
      * @return DeleteApplicantController
      */
-    public function __invoke(ContainerInterface $container) : DeleteApplicantController
+    public function __invoke(ContainerInterface $container): DeleteApplicantController
     {
         $model = $container->get('ApplicantModel');
         return new DeleteApplicantController($model);

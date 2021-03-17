@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Tests\Controllers\FrontEnd;
 
 use Portal\Controllers\FrontEnd\EditApplicantPageController;

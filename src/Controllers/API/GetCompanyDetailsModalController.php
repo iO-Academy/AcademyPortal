@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;

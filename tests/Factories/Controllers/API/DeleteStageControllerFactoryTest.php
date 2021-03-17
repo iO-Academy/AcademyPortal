@@ -20,7 +20,7 @@ class DeleteStageControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($stage);
 
-        $factory = new DeleteStageControllerFactory;
+        $factory = new DeleteStageControllerFactory();
         $case = $factory($container);
         $expected = DeleteStageController::class;
         $this->assertInstanceOf($expected, $case);

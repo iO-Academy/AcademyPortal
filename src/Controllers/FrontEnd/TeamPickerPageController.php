@@ -12,7 +12,7 @@ class TeamPickerPageController extends Controller
 {
     private $renderer;
     private $applicantModel;
-    
+
     public function __construct(PhpRenderer $renderer, ApplicantModel $applicantModel)
     {
         $this->renderer = $renderer;

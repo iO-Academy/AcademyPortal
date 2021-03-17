@@ -14,7 +14,7 @@ class TeamPickerPageControllerFactory
      * @param ContainerInterface $container
      * @return TeamPickerPageController
      */
-    public function __invoke(ContainerInterface $container) : TeamPickerPageController
+    public function __invoke(ContainerInterface $container): TeamPickerPageController
     {
         $applicantModel = $container->get('ApplicantModel');
         $renderer = $container->get('renderer');

@@ -19,7 +19,7 @@ class ApplicantFormViewHelperTest extends TestCase
         ];
 
         $expected = '<optgroup label="' . $stages['string']['title'] . '"><option name="stageId" value="' .
-            $stages['string']['id'] . " " . $stageOptions['stringThree']['id'] . '">'.
+            $stages['string']['id'] . " " . $stageOptions['stringThree']['id'] . '">' .
             $stageOptions['stringThree']['option'] .
             '</option></optgroup><option class="stageDropdown" name="stageId" value="' .
             $stages['stringTwo']['id'] . '">' . $stages['stringTwo']['title'] . '</option>';

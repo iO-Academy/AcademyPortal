@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Portal\ViewHelpers;
 
 class SelectCompanyViewHelper
