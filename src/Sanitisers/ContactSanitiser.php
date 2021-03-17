@@ -15,5 +15,4 @@ class ContactSanitiser
 
         return $contact;
     }
-
 }
