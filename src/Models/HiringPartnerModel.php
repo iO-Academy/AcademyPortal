@@ -2,8 +2,6 @@
 
 namespace Portal\Models;
 
-use Portal\Entities\HiringPartnerEntity;
-
 class HiringPartnerModel
 {
     private $db;
@@ -15,13 +13,12 @@ class HiringPartnerModel
 
     /** Inserts the properties to the database
      *
-     * @param HiringPartnerEntity $company Sanitise and validate the hiring partner properties as required.
+     * @param array $company Sanitise and validate the hiring partner properties as required.
      * @return bool
      */
-    public function addHiringPartner(HiringPartnerEntity $company): bool
+    public function addHiringPartner(array $company): bool
     {
         $query = $this->db->prepare("INSERT INTO `hiring_partner_companies`(
-            `id`,
             `name`,
             `size`, 
             `tech_stack`,
@@ -30,7 +27,6 @@ class HiringPartnerModel
             `url_website`
             )
             VALUES (
-            :companyId,
             :companyName,
             :companySize,
             :techStack,
@@ -39,21 +35,12 @@ class HiringPartnerModel
             :websiteUrl
             );");
 
-        $companyId = $company->getCompanyId();
-        $companyName = $company->getCompanyName();
-        $companySize = $company->getCompanySize();
-        $techStack = $company->getTechStack();
-        $postCode = $company->getPostcode();
-        $phoneNumber = $company->getPhoneNumber();
-        $websiteUrl = $company->getWebsiteUrl();
-
-        $query->bindParam(':companyId', $companyId);
-        $query->bindParam(':companyName', $companyName);
-        $query->bindParam(':companySize', $companySize);
-        $query->bindParam(':techStack', $techStack);
-        $query->bindParam(':postcode', $postCode);
-        $query->bindParam(':phoneNumber', $phoneNumber);
-        $query->bindParam(':websiteUrl', $websiteUrl);
+        $query->bindParam(':companyName', $company['name']);
+        $query->bindParam(':companySize', $company['companySize']);
+        $query->bindParam(':techStack', $company['techStack']);
+        $query->bindParam(':postcode', $company['postcode']);
+        $query->bindParam(':phoneNumber', $company['phoneNumber']);
+        $query->bindParam(':websiteUrl', $company['websiteUrl']);
         return $query->execute();
     }
 
@@ -138,35 +125,6 @@ class HiringPartnerModel
         $query = $this->db->prepare("SELECT `id`,`size` FROM `company_sizes`");
         $query->execute();
         return $query->fetchAll();
-    }
-
-    /** Instantiate a HiringPartnerEntity
-     *
-     * @param string $companyId
-     * @param string $companyName
-     * @param string $companySize
-     * @param string $techStack
-     * @param string $postcode
-     * @param string $phoneNumber
-     * @param string $websiteUrl
-     * @return HiringPartnerEntity
-     */
-    public function createNewHiringPartner(
-        string $companyName,
-        string $companySize,
-        string $techStack,
-        string $postcode,
-        string $phoneNumber,
-        string $websiteUrl
-    ): HiringPartnerEntity {
-        return new HiringPartnerEntity(
-            $companyName,
-            $companySize,
-            $techStack,
-            $postcode,
-            $phoneNumber,
-            $websiteUrl
-        );
     }
 
     /**

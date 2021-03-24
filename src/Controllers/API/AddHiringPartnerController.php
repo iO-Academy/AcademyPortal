@@ -3,7 +3,8 @@
 namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
-use Portal\Entities\HiringPartnerEntity;
+use Portal\Sanitisers\HiringPartnerSanitiser;
+use Portal\Validators\HiringPartnerValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
@@ -45,16 +46,9 @@ class AddHiringPartnerController extends Controller
         $statusCode = 400;
 
         try {
-            $hiringPartner = $this->hiringPartnerModel->createNewHiringPartner(
-                $newHiringPartner['name'],
-                $newHiringPartner['companySize'],
-                $newHiringPartner['techStack'],
-                $newHiringPartner['postcode'],
-                $newHiringPartner['phoneNumber'],
-                $newHiringPartner['companyUrl']
-            );
-            if (!empty($hiringPartner) && $hiringPartner instanceof HiringPartnerEntity) {
-                $result = $this->hiringPartnerModel->addHiringPartner($hiringPartner);
+            if (HiringPartnerValidator::validate($newHiringPartner)) {
+                $newHiringPartner = HiringPartnerSanitiser::sanitise($newHiringPartner);
+                $result = $this->hiringPartnerModel->addHiringPartner($newHiringPartner);
             }
         } catch (\Exception $exception) {
             $data['message'] = $exception->getMessage();
