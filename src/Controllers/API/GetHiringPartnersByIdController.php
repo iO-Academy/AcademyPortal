@@ -44,20 +44,19 @@ class GetHiringPartnersByIdController extends Controller
      *
      * @param Response $response
      *
-     * @param $args an array of arguments
+     * @param $args array of url arguments
      *
-     * @return JSON response containing hpEntities
+     * @return Response response containing hpEntities
      */
-    public function __invoke(Request $request, Response $response, $args): Response
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $id = $request->getParsedBody()['event_id'];
         $this->hpIdsData = $this->event->hpIdsByEventId($id);
         foreach ($this->hpIdsData as $hpId) {
-            $getHiringPartnerIdData = $this->model->getHiringPartnerById($hpId['hiring_partner_id']);
-            if ($getHiringPartnerIdData['success']) {
-                $hpEntity = $getHiringPartnerIdData['entity'];
-                $hpEntity['attendees'] = $hpId['people_attending'];
-                array_push($this->hpEntities, $hpEntity);
+            $hiringPartner = $this->model->getHiringPartnerById($hpId['hiring_partner_id']);
+            if ($hiringPartner !== false) {
+                $hiringPartner['attendees'] = $hpId['people_attending'];
+                array_push($this->hpEntities, $hiringPartner);
             } else {
                 return $this->respondWithJson($response, ['message' => 'Database error'], 500);
             }

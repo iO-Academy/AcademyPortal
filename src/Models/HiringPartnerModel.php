@@ -185,7 +185,7 @@ class HiringPartnerModel
 				`hiring_partner_companies`.`phone_number`,
 				`hiring_partner_companies`.`url_website`
 				FROM `hiring_partner_companies` 
-				Left JOIN `company_sizes`
+				LEFT JOIN `company_sizes`
 				ON `hiring_partner_companies`.`size` = `company_sizes`.`id`;");
         $query->execute();
         return $query->fetchAll();
@@ -211,7 +211,7 @@ class HiringPartnerModel
      *
      * @param int Hiring Partner Id
      *
-     * @return HiringPartnerEntity hiring partner entity
+     * @return array hiring partner data
      */
     public function getHiringPartnerById(int $id): array
     {
@@ -219,9 +219,7 @@ class HiringPartnerModel
 					`id`, `name`, `size`, `tech_stack`, `postcode`, `phone_number`, `url_website`
 					FROM `hiring_partner_companies`
 					WHERE `id` = :id;");
-        $success = $query->execute(['id' => $id]);
-        $entity = $query->fetch();
-        $returnData = ['entity' => $entity, 'success' => $success];
-        return $returnData;
+        $query->execute(['id' => $id]);
+        return $query->fetch();
     }
 }

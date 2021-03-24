@@ -3,7 +3,6 @@
 namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
-use Portal\Entities\HiringPartnerEntity;
 use Portal\Models\EventModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
