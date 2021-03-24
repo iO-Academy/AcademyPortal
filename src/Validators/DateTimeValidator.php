@@ -15,7 +15,7 @@ class DateTimeValidator
      * @return string|null
      * @throws \Exception
      */
-    public static function validateDate(?string $date)
+    public static function validateDate(?string $date): ?string
     {
         if (!empty($date) && !preg_match(self::DATE_REGEX, $date)) {
             throw new \Exception('Please enter correct date');

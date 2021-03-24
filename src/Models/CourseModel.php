@@ -40,7 +40,7 @@ class CourseModel
      * @param [type] $newCourse
      * @return boolean True if operation succeeded
      */
-    public function addCourse(CourseEntity $newCourse): bool
+    public function addCourse(array $newCourse): bool
     {
         $query = $this->db->prepare("INSERT INTO `courses` (
             `start_date`,
@@ -56,11 +56,11 @@ class CourseModel
             :trainer,
             :notes);");
 
-        $startDate = $newCourse->getStartDate();
-        $endDate = $newCourse->getEndDate();
-        $name = $newCourse->getName();
-        $trainer = $newCourse->getTrainer();
-        $notes = $newCourse->getNotes();
+        $startDate = $newCourse['startDate'];
+        $endDate = $newCourse['endDate'];
+        $name = $newCourse['name'];
+        $trainer = $newCourse['trainer'];
+        $notes = $newCourse['notes'];
 
         $query->bindParam(':startDate', $startDate);
         $query->bindParam(':endDate', $endDate);

@@ -3,10 +3,11 @@
 namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
+use Portal\Sanitisers\CourseSanitiser;
+use Portal\Validators\CourseValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Models\CourseModel;
-use Portal\Entities\CourseEntity;
 
 class AddCourseController extends Controller
 {
@@ -31,7 +32,7 @@ class AddCourseController extends Controller
      *
      * @return Response
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $newCourse = $request->getParsedBody();
         $responseData = [
@@ -42,16 +43,9 @@ class AddCourseController extends Controller
         $statusCode = 400;
 
         try {
-            $course = new CourseEntity(
-                $newCourse['startDate'],
-                $newCourse['endDate'],
-                $newCourse['name'],
-                $newCourse['trainer'],
-                $newCourse['notes']
-            );
-
-            if (!empty($course)) {
-                $result = $this->courseModel->addCourse($course);
+            if (CourseValidator::validate($newCourse)) {
+                $newCourse = CourseSanitiser::sanitise($newCourse);
+                $result = $this->courseModel->addCourse($newCourse);
             }
         } catch (\Exception $exception) {
             $responseData['message'] = $exception->getMessage();
