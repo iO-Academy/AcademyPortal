@@ -2,10 +2,6 @@
 
 namespace Portal\Entities;
 
-use Portal\Sanitisers\StringSanitiser;
-use Portal\Validators\DateTimeValidator;
-use Portal\Validators\StringValidator;
-
 class EventEntity
 {
     protected $event_id;
@@ -18,49 +14,6 @@ class EventEntity
     protected $notes;
     protected $availableToHP;
     protected $eventCategories;
-
-    public function __construct(
-        string $event_id = null,
-        string $name = null,
-        int $category = null,
-        string $location = null,
-        string $date = null,
-        string $startTime = null,
-        string $endTime = null,
-        string $notes = null,
-        int $availableToHP = null
-    ) {
-        $this->event_id = ($this->event_id ?? $event_id);
-        $this->name = ($this->name ?? $name);
-        $this->category = ($this->category ?? $category);
-        $this->location = ($this->location ?? $location);
-        $this->date = ($this->date ?? $date);
-        $this->startTime = ($this->startTime ?? $startTime);
-        $this->endTime = ($this->endTime ?? $endTime);
-        $this->notes = ($this->notes ?? $notes);
-        $this->availableToHP = ($this->availableToHP ?? $availableToHP);
-
-        $this->sanitiseData();
-    }
-
-    /**
-     * Will sanitise all the fields for an event.
-     */
-    private function sanitiseData()
-    {
-        $this->event_id = (int)$this->event_id;
-        $this->name = StringSanitiser::sanitiseString($this->name);
-        $this->name = StringValidator::validateExistsAndLength($this->name, StringValidator::MAXVARCHARLENGTH);
-        $this->location = StringSanitiser::sanitiseString($this->location);
-        $this->location = StringValidator::validateExistsAndLength($this->location, StringValidator::MAXVARCHARLENGTH);
-        $this->date = DateTimeValidator::validateDate($this->date);
-        $this->startTime = DateTimeValidator::validateTime($this->startTime);
-        $this->endTime = DateTimeValidator::validateTime($this->endTime);
-        DateTimeValidator::validateStartEndTime($this->startTime, $this->endTime);
-        if ($this->notes !== null && StringValidator::validateLength($this->notes, 5000)) {
-            $this->notes = StringSanitiser::sanitiseString($this->notes);
-        }
-    }
 
     /**
      * Get event id

@@ -3,6 +3,7 @@
 namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
+use Portal\Sanitisers\EventSanitiser;
 use Portal\Validators\EventValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -35,23 +36,15 @@ class AddEventController extends Controller
         $statusCode = 400;
 
         try {
-            $newEvent['category'] = EventValidator::validateCategoryExists(
-                $newEvent['category'],
-                $this->eventModel->getEventCategories()
-            );
-            $event = new EventEntity(
-                $newEvent['id'] ?? '',
-                $newEvent['name'],
-                $newEvent['category'],
-                $newEvent['location'],
-                $newEvent['date'],
-                $newEvent['startTime'],
-                $newEvent['endTime'],
-                $newEvent['notes'],
-                $newEvent['availableToHP']
-            );
-            if (!empty($event) && $event instanceof EventEntity) {
-                $result = $this->eventModel->addEvent($event);
+            if (
+                EventValidator::validate($newEvent) &&
+                EventValidator::validateCategoryExists(
+                    $newEvent['category'],
+                    $this->eventModel->getEventCategories()
+                )
+            ) {
+                $newEvent = EventSanitiser::sanitise($newEvent);
+                $result = $this->eventModel->addEvent($newEvent);
             }
         } catch (\Exception $exception) {
             $responseData['message'] = $exception->getMessage();

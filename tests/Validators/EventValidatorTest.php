@@ -11,9 +11,8 @@ class EventValidatorTest extends TestCase
     {
         $category = 3;
         $categoryList = ['1' => 'Other', '2' => 'Tasty', '3' => 'Armageddon', '4' => 'Visit'];
-        $expected = 3;
         $result = EventValidator::validateCategoryExists($category, $categoryList);
-        $this->assertEquals($expected, $result);
+        $this->assertTrue($result);
     }
 
     public function testValidateCategoryExistsInvalidCategory()

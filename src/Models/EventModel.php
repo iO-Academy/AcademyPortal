@@ -86,13 +86,12 @@ class EventModel
     /**
      * Add a new event to the database
      *
-     * @param [type] $newEvent
+     * @param array $newEvent
      * @return boolean True if operation succeeded
      */
-    public function addEvent(EventEntity $newEvent): bool
+    public function addEvent(array $newEvent): bool
     {
         $query = $this->db->prepare("INSERT INTO `events` (
-            `id`,
             `name`,
             `category`,
             `location`,
@@ -103,7 +102,6 @@ class EventModel
             `availableToHP`
             ) 
             VALUES (
-            :eventId, 
             :name, 
             :category, 
             :location,
@@ -113,25 +111,14 @@ class EventModel
             :notes,
             :availableToHP);");
 
-        $eventId = $newEvent->getEventId();
-        $name = $newEvent->getName();
-        $category = $newEvent->getCategory();
-        $location = $newEvent->getLocation();
-        $date = $newEvent->getDate();
-        $startTime = $newEvent->getStartTime();
-        $endTime = $newEvent->getEndTime();
-        $notes = $newEvent->getNotes();
-        $availableToHP = $newEvent->getAvailableToHP();
-
-        $query->bindParam(':eventId', $eventId);
-        $query->bindParam(':name', $name);
-        $query->bindParam(':category', $category);
-        $query->bindParam(':location', $location);
-        $query->bindParam(':date', $date);
-        $query->bindParam(':startTime', $startTime);
-        $query->bindParam(':endTime', $endTime);
-        $query->bindParam(':notes', $notes);
-        $query->bindParam(':availableToHP', $availableToHP);
+        $query->bindParam(':name', $newEvent['name']);
+        $query->bindParam(':category', $newEvent['category']);
+        $query->bindParam(':location', $newEvent['location']);
+        $query->bindParam(':date', $newEvent['date']);
+        $query->bindParam(':startTime', $newEvent['startTime']);
+        $query->bindParam(':endTime', $newEvent['endTime']);
+        $query->bindParam(':notes', $newEvent['notes']);
+        $query->bindParam(':availableToHP', $newEvent['availableToHP']);
         return $query->execute();
     }
 

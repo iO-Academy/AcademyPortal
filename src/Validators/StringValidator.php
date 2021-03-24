@@ -12,6 +12,7 @@ class StringValidator
      *
      * @param string $validateData
      * @param int $characterLength
+     * @param string $fieldName
      * @return string, which will return the validateData
      * @throws \Exception if the array is empty
      */
