@@ -3,7 +3,6 @@
 namespace Portal\Models;
 
 use PDO;
-use Portal\Entities\EventEntity;
 
 class EventModel
 {

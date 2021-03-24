@@ -7,9 +7,7 @@ use Portal\Sanitisers\EventSanitiser;
 use Portal\Validators\EventValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Views\PhpRenderer;
 use Portal\Models\EventModel;
-use Portal\Entities\EventEntity;
 
 class AddEventController extends Controller
 {
