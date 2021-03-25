@@ -4,7 +4,8 @@ namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
-use Portal\Entities\StageEntity;
+use Portal\Sanitisers\StageSanitiser;
+use Portal\Validators\StageValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
@@ -41,9 +42,10 @@ class AddStageController extends Controller
         $statusCode = 500;
 
         if ($_SESSION['loggedIn'] === true) {
-            if (!empty($requestData['title']) && is_bool($requestData['student'])) {
-                $highestOrder = $this->stageModel->getHighestOrderNo();
-                $newStage = new StageEntity($requestData['title'], ++$highestOrder, $requestData['student']);
+            if (StageValidator::validateNewStage($requestData)) {
+                $requestData['order'] = $this->stageModel->getHighestOrderNo();
+                $newStage = StageSanitiser::sanitise($requestData);
+                $newStage['order']++;
                 if ($this->stageModel->createStage($newStage)) {
                     $data = [
                         'success' => true,

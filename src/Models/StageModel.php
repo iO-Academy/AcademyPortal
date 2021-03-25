@@ -61,17 +61,17 @@ class StageModel
 
     /** Adds new stage to database and returns a boolean based on success or failure
      *
-     * @param StageEntity $stageEntity
+     * @param array $stageEntity
      * @return bool
      */
-    public function createStage(StageEntity $stageEntity): bool
+    public function createStage(array $stageEntity): bool
     {
         $query = $this->db->prepare(
             "INSERT INTO `stages` (`title`, `order`, `student`) VALUES (:title, :order, :student);"
         );
-        $query->bindValue(':title', $stageEntity->getStageTitle());
-        $query->bindValue(':order', $stageEntity->getStageOrder());
-        $query->bindValue(':student', (int)$stageEntity->getStudent());
+        $query->bindValue(':title', $stageEntity['title']);
+        $query->bindValue(':order', $stageEntity['order']);
+        $query->bindValue(':student', $stageEntity['student']);
         return $query->execute();
     }
 

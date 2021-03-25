@@ -40,7 +40,7 @@ class EditStageController extends Controller
             $requestDataPackage = $request->getParsedBody();
 
             try {
-                $stages = StageValidator::sanitiseStageOrders($requestDataPackage['data']);
+                $stages = StageValidator::validateStages($requestDataPackage['data']);
                 $this->stageModel->updateAllStages($stages);
                 $data = [
                     'success' => true,

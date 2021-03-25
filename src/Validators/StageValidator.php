@@ -2,31 +2,27 @@
 
 namespace Portal\Validators;
 
-use Portal\Sanitisers\StringSanitiser;
+use Portal\Sanitisers\StageSanitiser;
 
 class StageValidator
 {
 
-    public static function sanitiseStageOrders(array $stages): array
+    public static function validateStages(array $stages): array
     {
         foreach ($stages as $k => $stage) {
-            if (self::validateStage($stage)) {
-                $stages[$k]['id'] = (int)$stage['id'];
-                $stages[$k]['student'] = $stage['student'];
-                $stages[$k]['title'] = StringSanitiser::sanitiseString($stage['title']);
-                try {
-                    StringValidator::validateLength($stage['title'], StringValidator::MAXVARCHARLENGTH, 'title');
-                } catch (\Exception $exception) {
-                    $stages[$k]['title'] = substr($stage['title'], 0, 254);
-                }
-
-                $stages[$k]['order'] = (int)$stage['order'];
+            if (self::validateExistingStage($stage)) {
+                $stages[$k] = StageSanitiser::sanitise($stage);
             }
         }
         return $stages;
     }
 
-    private static function validateStage(array $stage)
+    public static function validateNewStage(array $stage): bool
+    {
+        return (!empty($stage['title']) && is_bool($stage['student']));
+    }
+
+    private static function validateExistingStage(array $stage)
     {
         return (
             isset($stage['id']) &&
