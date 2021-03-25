@@ -2,9 +2,6 @@
 
 namespace Portal\Entities;
 
-use Portal\Sanitisers\StringSanitiser;
-use Portal\Validators\StringValidator;
-
 class StageEntity implements \JsonSerializable
 {
     protected $id;
@@ -13,16 +10,6 @@ class StageEntity implements \JsonSerializable
     protected $student;
     protected $deleted;
     protected $options;
-
-    public function __construct($title = null, $order = null, $student = null)
-    {
-        $this->title = ($this->title ?? $title);
-        $this->order = ($this->order ?? $order);
-        $this->student = ($this->student ?? $student);
-        $this->deleted = 0;
-
-        $this->sanitiseData();
-    }
 
     /**
      * Returns private properties from object.
@@ -37,25 +24,6 @@ class StageEntity implements \JsonSerializable
             'order' => $this->order,
             'student' => $this->student
         ];
-    }
-
-    /**
-     * Will sanitise all the fields for a stage.
-     */
-    private function sanitiseData()
-    {
-        $this->id = (int) $this->id;
-        $this->title = StringSanitiser::sanitiseString($this->title);
-
-        try {
-            StringValidator::validateLength($this->title, StringValidator::MAXVARCHARLENGTH);
-        } catch (\Exception $exception) {
-            $this->title = substr($this->title, 0, 254);
-        }
-
-        $this->order = (int)$this->order;
-        $this->student = (bool)$this->student;
-        $this->deleted = (int)$this->deleted;
     }
 
     /**
