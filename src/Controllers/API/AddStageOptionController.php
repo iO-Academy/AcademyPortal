@@ -4,6 +4,7 @@ namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
+use Portal\Sanitisers\OptionsSanitiser;
 use Portal\Validators\OptionsValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -44,14 +45,15 @@ class AddStageOptionController extends Controller
         if ($_SESSION['loggedIn'] === true) {
             if (!empty($formOptions['data'])) {
                 foreach ($formOptions['data'] as $option) {
-                    if (!OptionsValidator::validateOptionAdd($option)) {
+                    if (!OptionsValidator::validateOption($option)) {
                         $statusCode = 400;
                         $data['message'] = 'You have not entered valid option/options';
                         return $this->respondWithJson($response, $data, $statusCode);
                     }
                 }
                 foreach ($formOptions['data'] as $option) {
-                    if ($this->stageModel->createOption($option['title'], (int) $option['stageId'])) {
+                    $option = OptionsSanitiser::sanitise($option);
+                    if ($this->stageModel->createOption($option['option'], (int) $option['stageId'])) {
                         $data = [
                             'success' => true,
                             'message' => 'Option added successfully',

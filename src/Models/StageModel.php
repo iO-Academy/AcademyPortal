@@ -3,6 +3,7 @@
 namespace Portal\Models;
 
 use phpDocumentor\Reflection\Types\Boolean;
+use Portal\Entities\OptionsEntity;
 use Portal\Entities\StageEntity;
 
 class StageModel
@@ -96,14 +97,14 @@ class StageModel
         $query = $this->db->prepare(
             'SELECT `id`, `title`, `order`, `student`, `deleted` FROM `stages` WHERE `deleted` = 0 ORDER BY `order`;'
         );
-        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
+        $query->setFetchMode(\PDO::FETCH_CLASS, StageEntity::class);
         $query->execute();
         $stages = $query->fetchAll();
 
         $query = $this->db->prepare(
             'SELECT `id`, `option`, `stageId` FROM `options` WHERE `deleted` = 0;'
         );
-        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\OptionsEntity');
+        $query->setFetchMode(\PDO::FETCH_CLASS, OptionsEntity::class);
         $query->execute();
         $options = $query->fetchAll();
 
@@ -210,7 +211,7 @@ class StageModel
     {
         $query = $this->db->prepare("UPDATE `options` SET `option` = :optionText WHERE `id` = :id");
         $query->bindParam(':id', $option['optionId']);
-        $query->bindParam(':optionText', $option['optionTitle']);
+        $query->bindParam(':optionText', $option['option']);
         return $query->execute();
     }
 

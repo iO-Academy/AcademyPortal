@@ -4,6 +4,7 @@ namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\StageModel;
+use Portal\Sanitisers\OptionsSanitiser;
 use Portal\Validators\OptionsValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -43,9 +44,9 @@ class EditStageOptionController extends Controller
             $statusCode = 500;
             try {
                 $formOption = $request->getParsedBody();
-                $optionValid = OptionsValidator::validateOptionUpdate($formOption);
 
-                if ($optionValid) {
+                if (OptionsValidator::validateOption($formOption)) {
+                    $formOption = OptionsSanitiser::sanitise($formOption);
                     $this->stageModel->updateOption($formOption);
                     $data = [
                         'success' => true,
@@ -56,7 +57,7 @@ class EditStageOptionController extends Controller
                 } else {
                     $data = [
                         'success' => false,
-                        'msg' => 'Option update unsuccessful.',
+                        'msg' => 'Option data invalid.',
                         'data' => ''
                     ];
                     $statusCode = 400;

@@ -7,73 +7,38 @@ use Tests\TestCase;
 
 class OptionsValidatorTest extends TestCase
 {
-    public function testValidateOptionUpdateSuccess()
+    public function testvalidateOptionSuccess()
     {
-        $option = ['optionId' => 1, 'optionTitle' => 'Option 1'];
-        $result = OptionsValidator::validateOptionUpdate($option);
+        $option = ['stageId' => 1, 'option' => 'Option 1'];
+        $result = OptionsValidator::validateOption($option);
         $this->assertEquals($result, true);
     }
 
-    public function testvalidateOptionUpdateFailureTitleExists()
+    public function testvalidateOptionFailureTitleExists()
     {
-        $option = ['optionId' => 1, 'optionTitle' => ''];
-        $result = OptionsValidator::validateOptionUpdate($option);
+        $option = ['stageId' => 1, 'option' => ''];
+        $result = OptionsValidator::validateOption($option);
         $this->assertEquals($result, false);
     }
 
-    public function testvalidateOptionUpdateFailureIdNumber()
+    public function testvalidateOptionFailureIdNumber()
     {
-        $option = ['optionId' => 'l', 'optionTitle' => 'test past'];
-        $result = OptionsValidator::validateOptionUpdate($option);
+        $option = ['stageId' => 'j', 'option' => 'Option 1'];
+        $result = OptionsValidator::validateOption($option);
         $this->assertEquals($result, false);
     }
 
-    public function testvalidateOptionUpdateFailureIdExists()
+    public function testvalidateOptionFailureIdExists()
     {
-        $option = ['optionId' => '', 'optionTitle' => 'test past'];
-        $result = OptionsValidator::validateOptionUpdate($option);
+        $option = ['stageId' => '', 'option' => 'Option 1'];
+        $result = OptionsValidator::validateOption($option);
         $this->assertEquals($result, false);
     }
 
-    public function testvalidateOptionUpdateMalformed()
-    {
-        $option = 0.1223;
-        $this->expectException(\TypeError::class);
-        $result = OptionsValidator::validateOptionUpdate($option);
-    }
-
-    public function testvalidateOptionAddSuccess()
-    {
-        $option = ['stageId' => 1, 'title' => 'Option 1'];
-        $result = OptionsValidator::validateOptionAdd($option);
-        $this->assertEquals($result, true);
-    }
-
-    public function testvalidateOptionAddFailureTitleExists()
-    {
-        $option = ['stageId' => 1, 'title' => ''];
-        $result = OptionsValidator::validateOptionAdd($option);
-        $this->assertEquals($result, false);
-    }
-
-    public function testvalidateOptionAddFailureIdNumber()
-    {
-        $option = ['stageId' => 'j', 'title' => 'Option 1'];
-        $result = OptionsValidator::validateOptionAdd($option);
-        $this->assertEquals($result, false);
-    }
-
-    public function testvalidateOptionAddFailureIdExists()
-    {
-        $option = ['stageId' => '', 'title' => 'Option 1'];
-        $result = OptionsValidator::validateOptionAdd($option);
-        $this->assertEquals($result, false);
-    }
-
-    public function testvalidateOptionAddMalformed()
+    public function testvalidateOptionMalformed()
     {
         $option = 'hello';
         $this->expectException(\TypeError::class);
-        $result = OptionsValidator::validateOptionAdd($option);
+        OptionsValidator::validateOption($option);
     }
 }

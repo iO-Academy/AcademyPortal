@@ -395,8 +395,8 @@ DROP TABLE IF EXISTS `options`;
 
 CREATE TABLE `options` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `option` varchar(255) DEFAULT NULL,
-  `stageId` int(11) DEFAULT NULL,
+  `option` varchar(255) NOT NULL,
+  `stageId` int(11) NOT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

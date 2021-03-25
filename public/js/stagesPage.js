@@ -27,7 +27,7 @@ optionEditSubmits.forEach((optionEditSubmit) => {
         let optionTitle = e.target.parentElement.querySelector('.optionEditTitle').value
         let optionId = e.target.dataset.optionid
         let data = {
-            'optionTitle': optionTitle,
+            'option': optionTitle,
             'optionId': optionId
         }
         await fetch('./api/editStageOption', {
@@ -47,9 +47,9 @@ optionDeletes.forEach((optionDelete) => {
         let optionId = parseInt(e.target.dataset.optionid);
         let stageId = parseInt(e.target.dataset.stageid);
         let data = {
-                    "optionId" : optionId,
-                    "stageId" : stageId
-                    };
+            "optionId" : optionId,
+            "stageId" : stageId
+        };
 
         let response = await fetch('./api/deleteStageOption', {
             method: 'DELETE',
@@ -92,7 +92,7 @@ optionAddSubmits.forEach((optionAddSubmit) => {
         };
         inputs.forEach((input) => {
             result.data.push({
-                'title': input.value,
+                'option': input.value,
                 'stageId': stageId
             })
         })
