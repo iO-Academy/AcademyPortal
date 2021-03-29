@@ -2,10 +2,7 @@
 
 namespace Portal\Sanitisers;
 
-use Portal\Abstracts\Globals;
-use Portal\Validators\DateTimeValidator;
 use Portal\Validators\EmailValidator;
-use Portal\Validators\StringValidator;
 
 class ApplicantSanitiser
 {
