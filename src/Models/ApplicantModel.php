@@ -198,7 +198,7 @@ class ApplicantModel implements ApplicantModelInterface
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`,
                       `githubUsername`, `taster`, `pleskHostingUrl`, `pleskUsername`, `pleskPassword`,
-                      `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
+                      `coursesId`, `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName',
                        `option` as 'stageOptionName'
                         FROM `applicants` 
@@ -349,7 +349,8 @@ class ApplicantModel implements ApplicantModelInterface
                             `tasterAttendance` = :tasterAttendance,
                             `pleskHostingUrl` = :pleskHostingUrl,
                             `pleskUsername` = :pleskUsername,
-                            `pleskPassword` = :pleskPassword        
+                            `pleskPassword` = :pleskPassword,
+                            `coursesId` = :coursesId
                         WHERE (
                             `id` = :id
                         );"
@@ -376,6 +377,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':pleskHostingUrl', $applicant['pleskHostingUrl']);
         $query->bindValue(':pleskUsername', $applicant['pleskUsername']);
         $query->bindValue(':pleskPassword', $applicant['pleskPassword']);
+        $query->bindValue(':coursesId', $applicant['coursesId']);
         $query->bindValue(':id', $applicant['id']);
 
         return $query->execute();
