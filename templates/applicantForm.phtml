@@ -124,23 +124,15 @@
                     <label for="pleskHostingUrl">Plesk Hosting URL</label>
                     <input id="pleskHostingUrl" class="submitApplicant form-control" name="pleskHostingUrl" type="text" value="<?php echo $applicant->getPleskHostingUrl();?>">
 
-                    <label for="notes">Additional Notes.</label>
+                    <label for="portfolioUrl">Portfolio URL</label>
+                    <input id="portfolioUrl" class="submitApplicant form-control" name="portfolioUrl" type="text" value="<?php echo $applicant->getPortfolioUrl();?>">
+
+                    <label for="githubEducationLink">Github Education Link</label>
+                    <input id="githubEducationLink" class="submitApplicant form-control" name="githubEducationLink" type="text" value="<?php echo $applicant->getGithubEducationLink();?>">
+
+                    <label for="additionalNotes">Additional Notes.</label>
                     <div id="notesError" class="alert hidden formItem_alert"></div>
-
-                    <textarea id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getNotes();?></textarea>
-                </div>
-            </section>
-
-            <section class="applicationFormSection">
-
-                <div data-toggle="collapse" class="collapse-header" data-target="#student-info" aria-expanded="false" aria-controls="student-info">
-                    <h4>Student Info</h4>
-                    <i class="glyphicon glyphicon-chevron-down"></i>
-                </div>
-
-                <div id="student-info" class="collapse">
-                    <label for="githubUsername">Please enter GitHub Username.</label>
-                    <input id="githubUsername" class="submitApplicant form-control" name="githubUsername" type="text" placeholder="<?php echo $applicant->getGithubUsername();?>">
+                    <textarea id="additionalNotes" name="additionalNotes" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getAdditionalNotes();?></textarea>
                 </div>
             </section>
 

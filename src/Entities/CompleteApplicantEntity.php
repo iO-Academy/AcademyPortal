@@ -32,6 +32,9 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $pleskUsername;
     protected $pleskPassword;
     protected $pleskHostingUrl;
+    protected $portfolioUrl;
+    protected $githubEducationLink;
+    protected $additionalNotes;
 
 
     /**
@@ -79,7 +82,10 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'stageOptionName' => $this->stageOptionName,
                   'pleskUsername' => $this->pleskUsername,
                   'pleskPassword' => $this->pleskPassword,
-                  'pleskHostingUrl' => $this->pleskHostingUrl
+                  'pleskHostingUrl' => $this->pleskHostingUrl,
+                  'portfolioUrl' => $this->portfolioUrl,
+                  'githubEducationLink' => $this->githubEducationLink,
+                  'additionalNotes' => $this->additionalNotes,
                ];
     }
 
@@ -281,5 +287,29 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getPleskHostingUrl(): ?string
     {
         return $this->pleskHostingUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPortfolioUrl(): ?string
+    {
+        return $this->portfolioUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGithubEducationLink(): ?string
+    {
+        return $this->githubEducationLink;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdditionalNotes(): ?string
+    {
+        return $this->additionalNotes;
     }
 }
