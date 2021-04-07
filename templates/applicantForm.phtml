@@ -202,10 +202,16 @@
                     <label for=kitNum">Kit number</label>
                     <input id="kitNum" class="submitApplicant form-control" name="kitNum" type="number" min="1" max="99" step="1" value="<?php echo $applicant->getKitNum();?>">
 
+                    <label for="githubUsername">GitHub Username</label>
+                    <input id="githubUsername" class="submitApplicant form-control" name="githubUsername" type="text" value="<?php echo $applicant->getGithubUsername();?>">
+
                     <label for="team">Team</label>
                     <input id="team" class="submitApplicant form-control" type="text" readonly value="<?php echo $applicant->getTeam();?>">
                 </div>
             </section>
+
+
+
 
             <input id="submitApplicant" type="submit" class="btn btn-success" value="Save"/>
             <div id="generalError" class="alert alert-danger hidden formItem_alert"></div>
