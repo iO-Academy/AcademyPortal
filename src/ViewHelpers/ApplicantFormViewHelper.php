@@ -24,7 +24,7 @@ class ApplicantFormViewHelper
                 foreach ($optionsForThisStage as $option) {
                     $string .= '<option name="stageId" value="' . $stage['id'] . " " . $option['id'] . '"';
 
-                    if ($currentStage === $stage['option']) {
+                    if ($currentStage === $option['option']) {
                         $string .= ' selected="selected">' . $option['option'] . '</option>';
 
                     } else {
