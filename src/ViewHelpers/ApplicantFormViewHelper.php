@@ -4,7 +4,7 @@ namespace Portal\ViewHelpers;
 
 class ApplicantFormViewHelper
 {
-    public static function stagesDropdown($stages, $stageOptions)
+    public static function stagesDropdown($stages, $stageOptions, $currentStage)
     {
         $string = '';
 
@@ -19,20 +19,30 @@ class ApplicantFormViewHelper
                 }
             }
             if ($stageHasOptions) {
-                $string .= '<optgroup label="' . $stage['title'] . '">';
+                $string .= '<optgroup label="' . $stage['title'] . '" >';
 
                 foreach ($optionsForThisStage as $option) {
-                    $string .= '<option name="stageId" value="' . $stage['id'] . " " . $option['id'] . '">'
-                        . $option['option'] . '</option>';
-                }
+                    $string .= '<option name="stageId" value="' . $stage['id'] . " " . $option['id'] . '"';
 
-                $string .= '</optgroup>';
+                    if ($currentStage === $stage['option']) {
+                        $string .= ' selected="selected">' . $option['option'] . '</option>';
+
+                    } else {
+                        $string .= '>' . $option['option']  . '</option>';
+                    }
+
+                    $string .= '</optgroup>';
+                }
             } else {
-                $string .=
-                    '<option class="stageDropdown" name="stageId" value="' . $stage['id'] . '">'
-                    . $stage['title'] . '</option>';
+                $string .= '<option class="stageDropdown" name="stageId" value="' . $stage['id'] . '"';
+                if ($currentStage === $stage['title']) {
+                    $string .= ' selected="selected">' . $stage['title'] . '</option>';
+                } else {
+                    $string .= '>' . $stage['title'] . '</option>';
+                }
             }
         }
         return $string;
     }
 }
+
