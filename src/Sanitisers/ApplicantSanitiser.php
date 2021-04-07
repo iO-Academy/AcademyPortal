@@ -3,6 +3,7 @@
 namespace Portal\Sanitisers;
 
 use Portal\Validators\EmailValidator;
+use Portal\Validators\UrlValidator;
 
 class ApplicantSanitiser
 {
@@ -67,6 +68,9 @@ class ApplicantSanitiser
         $applicant['tasterAttendance'] = $applicant['tasterAttendance'] ? 1 : 0;
         $applicant['team'] = StringSanitiser::sanitiseString($applicant['team']);
         $applicant['stageID'] = (int)$applicant['stageID'];
+
+        $applicant['url'] = StringSanitiser::sanitiseString($applicant['url']);
+        $applicant['url'] = UrlValidator::validateUrl($applicant['url']);
 
         return $applicant;
     }

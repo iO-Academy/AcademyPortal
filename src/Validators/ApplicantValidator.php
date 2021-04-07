@@ -82,7 +82,12 @@ class ApplicantValidator
                 is_null($applicant['stageName']) ||
                 StringValidator::validateLength($applicant['stageName'], StringValidator::MAXVARCHARLENGTH, 'stageName')
             ) &&
+            (
             is_numeric($applicant['stageId'])
+            ) &&
+            (
+                StringValidator::validateExistsAndLength($applicant['url'], StringValidator::MAXVARCHARLENGTH) &&
+                filter_var($applicant['url'], FILTER_VALIDATE_URL) !== false)
         );
     }
 }
