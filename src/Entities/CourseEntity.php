@@ -10,6 +10,7 @@ class CourseEntity
     protected $trainer;
     protected $notes;
     protected $id;
+    protected $coursesId;
 
     /**
      * @return int|null
@@ -57,5 +58,9 @@ class CourseEntity
     public function getNotes(): ?string
     {
         return $this->notes;
+    }
+    public function getcoursesId(): ?string
+    {
+        return $this->getcoursesId;
     }
 }
