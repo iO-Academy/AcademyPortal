@@ -21,6 +21,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $laptop; // bool
     protected $laptopDeposit; // bool
     protected $laptopNum; // int
+    protected $githubUsername; // string
     protected $taster; // date string
     protected $tasterAttendance; // bool
     protected $stageId; // int
@@ -28,6 +29,10 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $stageID;
     protected $stageOptionId;
     protected $stageOptionName;
+    protected $pleskUsername;
+    protected $pleskPassword;
+    protected $pleskHostingUrl;
+
 
     /**
      * Returns private properties from object.
@@ -65,12 +70,16 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'kitNum' => $this->kitNum,
                   'laptop' => $this->laptop,
                   'laptopNum' => $this->laptopNum,
+                  'githubUsername' => $this->githubUsername,
                   'taster' => $this->taster,
                   'tasterAttendance' => $this->tasterAttendance,
                   'team' => $this->team,
                   'stageID' => $this->stageID,
                   'stageName' => $this->stageName,
-                  'stageOptionName' => $this->stageOptionName
+                  'stageOptionName' => $this->stageOptionName,
+                  'pleskUsername' => $this->pleskUsername,
+                  'pleskPassword' => $this->pleskPassword,
+                  'pleskHostingUrl' => $this->pleskHostingUrl
                ];
     }
 
@@ -195,6 +204,14 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     }
 
     /**
+    * @return string
+    */
+    public function getGithubUsername(): ?string
+    {
+        return $this->githubUsername;
+    }
+
+    /**
      * @return string
      */
     public function getTaster(): ?string
@@ -240,5 +257,29 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getStageOptionName(): ?string
     {
         return $this->stageOptionName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPleskUsername(): ?string
+    {
+        return $this->pleskUsername;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPleskPassword(): ?string
+    {
+        return $this->pleskPassword;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPleskHostingUrl(): ?string
+    {
+        return $this->pleskHostingUrl;
     }
 }
