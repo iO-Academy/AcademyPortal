@@ -197,7 +197,7 @@ class ApplicantModel implements ApplicantModelInterface
                       `date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`,
-                      `githubUsername`, `taster`, 
+                      `githubUsername`, `taster`, `pleskHostingUrl`, `pleskUsername`, `pleskPassword`,
                       `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName',
                        `option` as 'stageOptionName'
@@ -344,7 +344,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `laptop` = :laptop,
                             `laptopDeposit` = :laptopDeposit,
                             `laptopNum` = :laptopNum,
-                            `githubUserName` = :githubUsername,
+                            `githubUsername` = :githubUsername,
                             `taster` = :taster,
                             `tasterAttendance` = :tasterAttendance
                             `pleskHostingUrl` = :pleskHostingUrl
