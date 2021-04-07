@@ -103,18 +103,18 @@
                 </div>
             </section>
 
-<!--            <section class="applicationFormSection">-->
-<!---->
-<!--                <div data-toggle="collapse" class="collapse-header" data-target="#student-info" aria-expanded="false" aria-controls="student-info">-->
-<!--                    <h4>Student Info</h4>-->
-<!--                    <i class="glyphicon glyphicon-chevron-down"></i>-->
-<!--                </div>-->
-<!---->
-<!--                <div id="student-info" class="collapse">-->
-<!--                    <label for="githubUsername">Please enter GitHub Username.</label>-->
-<!--                    <textarea id="githubUsername" class="submitApplicant form-control" name="githubUsername" type="text" placeholder="Enter here"></textarea>--><?php //echo $applicant->getGithubUsername();?><!--"</textarea>-->
-<!--                </div>-->
-<!--            </section>-->
+            <section class="applicationFormSection">
+
+                <div data-toggle="collapse" class="collapse-header" data-target="#student-info" aria-expanded="false" aria-controls="student-info">
+                    <h4>Student Info</h4>
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                </div>
+
+                <div id="student-info" class="collapse">
+                    <label for="githubUsername">Please enter GitHub Username.</label>
+                    <input id="githubUsername" class="submitApplicant form-control" name="githubUsername" type="text" placeholder="<?php echo $applicant->getGithubUsername();?>">
+                </div>
+            </section>
 
             <section class="applicationFormSection">
                 <div data-toggle="collapse" class="collapse-header" data-target="#taster" aria-expanded="false" aria-controls="taster">
