@@ -196,7 +196,8 @@ class ApplicantModel implements ApplicantModelInterface
                       `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`, 
                       `date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
-                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `githubUsername`, `taster`, 
+                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`,
+                      `githubUsername`, `taster`, 
                       `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName',
                        `option` as 'stageOptionName'
@@ -293,8 +294,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `finance` = :finance,
                             `notes` = :notes,
                             `stageId` = :stageId,
-                            `stageOptionId` = :stageOptionId,
-                            `githubUsername` = :githubUsername
+                            `stageOptionId` = :stageOptionId
                         WHERE (
                             `id` = :id
                         );"
@@ -314,7 +314,6 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':id', $applicant['id']);
         $query->bindValue(':stageId', $applicant['stageId']);
         $query->bindValue(':stageOptionId', $applicant['stageOptionId']);
-        $query->bindValue(':githubUsername', $applicant['githubUsername']);
 
         return $query->execute();
     }
@@ -345,7 +344,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `laptop` = :laptop,
                             `laptopDeposit` = :laptopDeposit,
                             `laptopNum` = :laptopNum,
-                            `githubUserName` = :githubUsername
+                            `githubUserName` = :githubUsername,
                             `taster` = :taster,
                             `tasterAttendance` = :tasterAttendance
                         WHERE (
