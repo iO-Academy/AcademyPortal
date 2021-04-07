@@ -29,9 +29,9 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $stageID;
     protected $stageOptionId;
     protected $stageOptionName;
-    protected $pleskHostingUsername;
+    protected $pleskUsername;
     protected $pleskPassword;
-    protected $pleskUrl;
+    protected $pleskHostingUrl;
 
 
     /**
@@ -77,9 +77,9 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'stageID' => $this->stageID,
                   'stageName' => $this->stageName,
                   'stageOptionName' => $this->stageOptionName,
-                  'pleskHostingUsername' => $this->pleskHostingUsername,
+                  'pleskUsername' => $this->pleskUsername,
                   'pleskPassword' => $this->pleskPassword,
-                  'pleskUrl' => $this->pleskUrl
+                  'pleskHostingUrl' => $this->pleskHostingUrl
                ];
     }
 
@@ -262,9 +262,9 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     /**
      * @return string
      */
-    public function getPleskHostingUsername(): ?string
+    public function getPleskUsername(): ?string
     {
-        return $this->pleskHostingUsername;
+        return $this->pleskUsername;
     }
 
     /**
@@ -278,8 +278,8 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     /**
      * @return string
      */
-    public function getPleskUrl(): ?string
+    public function getPleskHostingUrl(): ?string
     {
-        return $this->pleskUrl;
+        return $this->pleskHostingUrl;
     }
 }

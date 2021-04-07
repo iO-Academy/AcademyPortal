@@ -346,9 +346,9 @@ class ApplicantModel implements ApplicantModelInterface
                             `laptopNum` = :laptopNum,
                             `githubUsername` = :githubUsername,
                             `taster` = :taster,
-                            `tasterAttendance` = :tasterAttendance
-                            `pleskHostingUrl` = :pleskHostingUrl
-                            `pleskUsername` = :pleskUsername
+                            `tasterAttendance` = :tasterAttendance,
+                            `pleskHostingUrl` = :pleskHostingUrl,
+                            `pleskUsername` = :pleskUsername,
                             `pleskPassword` = :pleskPassword        
                         WHERE (
                             `id` = :id
