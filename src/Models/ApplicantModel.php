@@ -196,8 +196,13 @@ class ApplicantModel implements ApplicantModelInterface
                       `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`, 
                       `date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
+<<<<<<< HEAD
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, 
                       `githubUsername`, `taster`, 
+=======
+                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`,
+                      `githubUsername`, `taster`, `pleskHostingUrl`, `pleskUsername`, `pleskPassword`,
+>>>>>>> 365944cb018d2dcd372f2010c65ae1bff972599f
                       `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName',
                        `option` as 'stageOptionName'
@@ -346,7 +351,10 @@ class ApplicantModel implements ApplicantModelInterface
                             `laptopNum` = :laptopNum,
                             `githubUsername` = :githubUsername,
                             `taster` = :taster,
-                            `tasterAttendance` = :tasterAttendance
+                            `tasterAttendance` = :tasterAttendance,
+                            `pleskHostingUrl` = :pleskHostingUrl,
+                            `pleskUsername` = :pleskUsername,
+                            `pleskPassword` = :pleskPassword        
                         WHERE (
                             `id` = :id
                         );"
@@ -370,6 +378,9 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':githubUsername', $applicant['githubUsername']);
         $query->bindValue(':taster', $applicant['taster']);
         $query->bindValue(':tasterAttendance', $applicant['tasterAttendance']);
+        $query->bindValue(':pleskHostingUrl', $applicant['pleskHostingUrl']);
+        $query->bindValue(':pleskUsername', $applicant['pleskUsername']);
+        $query->bindValue(':pleskPassword', $applicant['pleskPassword']);
         $query->bindValue(':id', $applicant['id']);
 
         return $query->execute();

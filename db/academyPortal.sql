@@ -94,9 +94,7 @@ CREATE TABLE `applicants_additional` (
   `portfolioUrl` varchar(100) DEFAULT NULL,
   `pleskHostingUrl` varchar(100) DEFAULT NULL,
   `pleskUsername` varchar(100) DEFAULT NULL,
-  `pleskPassword
-pleskPassword
-pleskPassword` varchar(100) DEFAULT NULL,
+  `pleskPassword` varchar(100) DEFAULT NULL,
   `githubEducationLink` varchar(100) DEFAULT NULL,
   `additionalNotes` varchar(2000) DEFAULT NULL,
   `coursesId` varchar(50) DEFAULT NULL,
@@ -106,9 +104,7 @@ pleskPassword` varchar(100) DEFAULT NULL,
 LOCK TABLES `applicants_additional` WRITE;
 /*!40000 ALTER TABLE `applicants_additional` DISABLE KEYS */;
 
-INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, `tasterAttendance`, `team`, `githubUsername`, `portfolioUrl`, `pleskHostingUrl`, `pleskUsername`, `pleskPassword
-pleskPassword
-pleskPassword`, `githubEducationLink`, `additionalNotes`, `coursesId`)
+INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, `tasterAttendance`, `team`, `githubUsername`, `portfolioUrl`, `pleskHostingUrl`, `pleskUsername`, `pleskPassword`, `githubEducationLink`, `additionalNotes`, `coursesId`)
 VALUES
 	(2,1,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1,'bobthebuilder','bobthebuilder.com','bobplesk.com','bobbuildswebsites','blahblah','https://education.github.com/','I like to eat bananas and build websites.',NULL),
 	(3,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
