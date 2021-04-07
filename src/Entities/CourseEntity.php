@@ -10,7 +10,7 @@ class CourseEntity
     protected $trainer;
     protected $notes;
     protected $id;
-    protected $courseDateConfirmed;
+    protected $coursesId;
 
     /**
      * @return int|null
@@ -59,8 +59,8 @@ class CourseEntity
     {
         return $this->notes;
     }
-    public function getcourseDateConfirmed(): ?string
+    public function getcoursesId(): ?string
     {
-        return $this->getcourseDateConfirmed;
+        return $this->getcoursesId;
     }
 }
