@@ -94,9 +94,7 @@ CREATE TABLE `applicants_additional` (
   `portfolioUrl` varchar(100) DEFAULT NULL,
   `pleskHostingUrl` varchar(100) DEFAULT NULL,
   `pleskUsername` varchar(100) DEFAULT NULL,
-  `pleskPassword
-pleskPassword
-pleskPassword` varchar(100) DEFAULT NULL,
+  `pleskPassword` varchar(100) DEFAULT NULL,
   `githubEducationLink` varchar(100) DEFAULT NULL,
   `additionalNotes` varchar(2000) DEFAULT NULL,
   `coursesId` varchar(50) DEFAULT NULL,

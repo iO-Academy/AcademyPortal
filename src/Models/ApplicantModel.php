@@ -345,6 +345,9 @@ class ApplicantModel implements ApplicantModelInterface
                             `laptopNum` = :laptopNum,
                             `taster` = :taster,
                             `tasterAttendance` = :tasterAttendance
+                            `pleskHostingUrl` = :pleskHostingUrl
+                            `pleskUsername` = :pleskUsername
+                            `pleskPassword` = :pleskPassword        
                         WHERE (
                             `id` = :id
                         );"
@@ -367,6 +370,9 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':laptopNum', $applicant['laptopNum']);
         $query->bindValue(':taster', $applicant['taster']);
         $query->bindValue(':tasterAttendance', $applicant['tasterAttendance']);
+        $query->bindValue(':pleskHostingUrl', $applicant['pleskHostingUrl']);
+        $query->bindValue(':pleskUsername', $applicant['pleskUsername']);
+        $query->bindValue(':pleskPassword', $applicant['pleskPassword']);
         $query->bindValue(':id', $applicant['id']);
 
         return $query->execute();
