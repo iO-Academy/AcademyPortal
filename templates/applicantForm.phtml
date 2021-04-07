@@ -114,17 +114,14 @@
                     <label for="githubUsername">Please enter GitHub Username.</label>
                     <input id="githubUsername" class="submitApplicant form-control" name="githubUsername" type="text" value="<?php echo $applicant->getGithubUsername();?>">
 
-                    <label for="why-developer">TO BE CHANGED.</label>
-                    <div id="whyDevError" class="alert hidden formItem_alert"></div>
-                    <textarea id="why-developer" name="whyDev" class="submitApplicant form-control" placeholder="Enter here" required><?php echo $applicant->getWhyDev();?></textarea>
+                    <label for="pleskHostingUsername">Plesk Hosting Username</label>
+                    <input id="pleskHostingUsername" class="submitApplicant form-control" name="pleskHostingUsername" type="text" value="<?php echo $applicant->getPleskHostingUsername();?>">
 
-                    <label for="experience">TO BE CHANGED.</label>
-                    <div id="codeExperienceError" class="alert hidden formItem_alert"></div>
-                    <textarea id="experience" name="codeExperience" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getCodeExperience();?></textarea>
+                    <label for="pleskPassword">Plesk Password</label>
+                    <input id="pleskPassword" class="submitApplicant form-control" name="pleskPassword" type="text" value="<?php echo $applicant->getPleskPassword();?>">
 
-                    <label for="hear-about">TO BE CHANGED.</label>
-                    <select id="hear-about" class="submitApplicant form-control" name="hearAboutId" data-selected="<?php echo $applicant->getHearAboutId();?>" required>
-                    </select>
+                    <label for="pleskUrl">Plesk URL</label>
+                    <input id="pleskUrl" class="submitApplicant form-control" name="pleskUrl" type="text" value="<?php echo $applicant->getPleskUrl();?>">
 
                     <label for="notes">Additional Notes.</label>
                     <div id="notesError" class="alert hidden formItem_alert"></div>
