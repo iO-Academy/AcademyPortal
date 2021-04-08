@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <?php
     require 'partials/layout/head.phtml';
@@ -99,7 +99,8 @@
 
                     <label for="notes">Notes.</label>
                     <div id="notesError" class="alert hidden formItem_alert"></div>
-                    <text id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getNotes();?></text>
+
+                    <textarea id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getNotes();?></textarea>
                 </div>
             </section>
 
@@ -123,9 +124,15 @@
                     <label for="pleskHostingUrl">Plesk Hosting URL</label>
                     <input id="pleskHostingUrl" class="submitApplicant form-control" name="pleskHostingUrl" type="text" value="<?php echo $applicant->getPleskHostingUrl();?>">
 
-                    <label for="notes">Additional Notes.</label>
+                    <label for="portfolioUrl">Portfolio URL</label>
+                    <input id="portfolioUrl" class="submitApplicant form-control" name="portfolioUrl" type="text" value="<?php echo $applicant->getPortfolioUrl();?>">
+
+                    <label for="githubEducationLink">Github Education Link</label>
+                    <input id="githubEducationLink" class="submitApplicant form-control" name="githubEducationLink" type="text" value="<?php echo $applicant->getGithubEducationLink();?>">
+
+                    <label for="additionalNotes">Additional Notes.</label>
                     <div id="notesError" class="alert hidden formItem_alert"></div>
-                    <textarea id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getNotes();?></textarea>
+                    <textarea id="additionalNotes" name="additionalNotes" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getAdditionalNotes();?></textarea>
                 </div>
             </section>
 

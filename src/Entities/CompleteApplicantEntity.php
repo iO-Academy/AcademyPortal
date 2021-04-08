@@ -33,6 +33,10 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $pleskPassword;
     protected $pleskHostingUrl;
     protected $coursesId;
+    protected $portfolioUrl;
+    protected $githubEducationLink;
+    protected $additionalNotes;
+
 
 
     /**
@@ -82,6 +86,9 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'pleskPassword' => $this->pleskPassword,
                   'pleskHostingUrl' => $this->pleskHostingUrl,
                   'coursesId' => $this->coursesId
+                  'portfolioUrl' => $this->portfolioUrl,
+                  'githubEducationLink' => $this->githubEducationLink,
+                  'additionalNotes' => $this->additionalNotes
                ];
     }
 
@@ -288,5 +295,27 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getCoursesId(): ?int
     {
         return $this->coursesId;
+    /**
+     * @return string
+     */
+    public function getPortfolioUrl(): ?string
+    {
+        return $this->portfolioUrl;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGithubEducationLink(): ?string
+    {
+        return $this->githubEducationLink;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdditionalNotes(): ?string
+    {
+        return $this->additionalNotes;
     }
 }
