@@ -231,6 +231,10 @@
                     <label for="githubUsername">GitHub Username</label>
                     <input id="githubUsername" class="submitApplicant form-control" name="githubUsername" type="text" value="<?php echo $applicant->getGithubUsername();?>">
 
+                    <label for="coursesId">Courses date confirm</label>
+                    <select id="coursesId" class="submitApplicant form-control" name="coursesId"  data-selected="<?php echo $applicant->getCoursesId();?>">
+                    </select>
+
                     <label for="team">Team</label>
                     <input id="team" class="submitApplicant form-control" type="text" readonly value="<?php echo $applicant->getTeam();?>">
                 </div>
