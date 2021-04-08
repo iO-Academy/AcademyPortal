@@ -103,8 +103,8 @@ let outputCoursesId = async () => {
     if (element.dataset.selected === item.id) {
       coursesIdOptions += 'selected ';
     }
-    let date = new Date(item.date);
-    let dateOptions = {year: 'numeric', month: 'long'};
+    let date = new Date(item.start_date);
+    let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
     coursesIdOptions += `value="${
         item.id
     }">${date.toLocaleDateString(

@@ -13,6 +13,8 @@ class DisplayApplicantViewHelper
         $dateDesc = ($sort == 'dateDesc') ? ' active' : '';
         $cohortAsc = ($sort == 'cohortAsc') ? ' active' : '';
         $cohortDesc = ($sort == 'cohortDesc') ? ' active' : '';
+        $coursesIdAsc = ($sort == 'coursesIdAsc') ? ' active' : '';
+        $coursesIdDesc = ($sort == 'coursesIdDesc') ? ' active' : '';
         $active = ($type == 'paying') ? ' active' : '';
 
         $result = '<div class="tab-pane' . $active . '" role="tabpanel" id="' . $type . '">
@@ -40,6 +42,16 @@ class DisplayApplicantViewHelper
                             </button>
                             </div>
                         </th>
+                       <th class="sort">Courses 
+                             <div class="coursesIdSort"> 
+                             <button name="sort" value="coursesIdAsc" class="arrowBtn' . $coursesIdAsc . '" type="submit"> 
+                                 <i id="arrowCoursesIdAsc" class="glyphicon glyphicon-triangle-top"></i> 
+                             </button> 
+                             <button name="sort" value="coursesIdDesc" class="arrowBtn' . $coursesIdDesc . '" type="submit"> 
+                                 <i id="arrowCoursesIdDesc" class="glyphicon glyphicon-triangle-bottom"></i> 
+                             </button> 
+                           </div> 
+                         </th> 
                         <th>Stage</th>
                         <th class="col-xs-2"></th> 
                     </tr>';
