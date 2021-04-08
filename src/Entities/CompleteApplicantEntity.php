@@ -44,7 +44,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
      *
      * @return array|mixed
      */
-    public function jsonSerialize(): array
+    public function jsonSerialize():array
     {
         return [
                   'id' => $this->id,
@@ -85,7 +85,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'pleskUsername' => $this->pleskUsername,
                   'pleskPassword' => $this->pleskPassword,
                   'pleskHostingUrl' => $this->pleskHostingUrl,
-                  'coursesId' => $this->coursesId
+                  'coursesId' => $this->coursesId,
                   'portfolioUrl' => $this->portfolioUrl,
                   'githubEducationLink' => $this->githubEducationLink,
                   'additionalNotes' => $this->additionalNotes
@@ -99,7 +99,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->apprentice;
     }
-
     /**
      * @return int
      */
@@ -107,7 +106,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->aptitude;
     }
-
     /**
      * @return string
      */
@@ -115,7 +113,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->assessmentDay;
     }
-
     /**
      * @return string
      */
@@ -123,7 +120,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->assessmentTime;
     }
-
     /**
      * @return string
      */
@@ -131,7 +127,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->assessmentNotes;
     }
-
     /**
      * @return bool
      */
@@ -139,7 +134,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->diversitechInterest;
     }
-
     /**
      * @return int
      */
@@ -147,7 +141,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->diversitech;
     }
-
     /**
      * @return int
      */
@@ -155,7 +148,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->edaid;
     }
-
     /**
      * @return int
      */
@@ -163,7 +155,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->upfront;
     }
-
     /**
      * @return string
      */
@@ -171,7 +162,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->kitCollectionDay;
     }
-
     /**
      * @return string
      */
@@ -179,7 +169,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->kitCollectionTime;
     }
-
     /**
      * @return int
      */
@@ -187,7 +176,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->kitNum;
     }
-
     /**
      * @return bool
      */
@@ -195,7 +183,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->laptop;
     }
-
     /**
      * @return int // for some reason it doesnt like it if this is a bool?!
      */
@@ -203,7 +190,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->laptopDeposit;
     }
-
     /**
      * @return int
      */
@@ -211,7 +197,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->laptopNum;
     }
-
     /**
     * @return string
     */
@@ -219,7 +204,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->githubUsername;
     }
-
     /**
      * @return string
      */
@@ -227,7 +211,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->taster;
     }
-
     /**
      * @return bool
      */
@@ -235,7 +218,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->tasterAttendance;
     }
-
     /**
      * @return string
      */
@@ -243,7 +225,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->team;
     }
-
     /**
      * @return int
      */
@@ -251,7 +232,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->stageID;
     }
-
     /**
      * @return int
      */
@@ -259,7 +239,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->stageOptionId;
     }
-
     /**
      * @return string
      */
@@ -267,7 +246,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->stageOptionName;
     }
-
     /**
      * @return string
      */
@@ -275,7 +253,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->pleskUsername;
     }
-
     /**
      * @return string
      */
@@ -283,7 +260,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->pleskPassword;
     }
-
     /**
      * @return string
      */
@@ -291,10 +267,10 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->pleskHostingUrl;
     }
-
     public function getCoursesId(): ?int
     {
         return $this->coursesId;
+    }
     /**
      * @return string
      */
@@ -302,7 +278,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->portfolioUrl;
     }
-
     /**
      * @return string
      */
@@ -310,7 +285,6 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->githubEducationLink;
     }
-
     /**
      * @return string
      */
