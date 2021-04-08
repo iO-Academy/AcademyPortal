@@ -65,6 +65,14 @@ class ApplicantValidator
                 )
             ) &&
             (
+                is_null($applicant['additionalNotes']) ||
+                StringValidator::validateLength(
+                    $applicant['additionalNotes'],
+                    StringValidator::MAXTEXTLENGTH,
+                    'additionalNotes'
+                )
+            ) &&
+            (
                 $applicant['diversitechInterest'] == 1 ||
                 $applicant['diversitechInterest'] == 0 ||
                 is_null($applicant['diversitechInterest'])
@@ -82,8 +90,31 @@ class ApplicantValidator
                 is_null($applicant['stageName']) ||
                 StringValidator::validateLength($applicant['stageName'], StringValidator::MAXVARCHARLENGTH, 'stageName')
             ) &&
-            is_numeric($applicant['stageId'])
-
+                is_numeric($applicant['stageId'])
+            (
+                is_null($applicant['githubUsername']) ||
+                StringValidator::validateLength($applicant['githubUsername'], StringValidator::MAXVARCHARLENGTH, 'githubUsername')
+            ) &&
+            (
+                is_null($applicant['pleskUsername']) ||
+                StringValidator::validateLength($applicant['pleskUsername'], StringValidator::MAXVARCHARLENGTH, 'pleskUsername')
+            ) &&
+            (
+                is_null($applicant['pleskPassword']) ||
+                StringValidator::validateLength($applicant['pleskPassword'], StringValidator::MAXVARCHARLENGTH, 'pleskPassword')
+            ) &&
+            (
+                is_null($applicant['pleskHostingUrl']) ||
+                UrlValidator::validateUrl($applicant['pleskHostingUrl'])
+            ) &&
+            (
+                is_null($applicant['portfolioUrl']) ||
+                UrlValidator::validateUrl($applicant['portfolioUrl'])
+            ) &&
+            (
+                is_null($applicant['githubEducationLink']) ||
+                UrlValidator::validateUrl($applicant['githubEducationLink'])
+            )
         );
     }
 }

@@ -375,14 +375,14 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':laptop', $applicant['laptop']);
         $query->bindValue(':laptopDeposit', $applicant['laptopDeposit']);
         $query->bindValue(':laptopNum', $applicant['laptopNum']);
-        $query->bindValue(':githubUsername', $applicant['githubUsername']);
+        $query->bindValue(':githubUsername', $applicant['githubUsername']);             //string
         $query->bindValue(':taster', $applicant['taster']);
         $query->bindValue(':tasterAttendance', $applicant['tasterAttendance']);
-        $query->bindValue(':pleskHostingUrl', $applicant['pleskHostingUrl']);
-        $query->bindValue(':pleskUsername', $applicant['pleskUsername']);
+        $query->bindValue(':pleskHostingUrl', $applicant['pleskHostingUrl']);           //url
+        $query->bindValue(':pleskUsername', $applicant['pleskUsername']);               //string
         $query->bindValue(':pleskPassword', $applicant['pleskPassword']);
-        $query->bindValue(':portfolioUrl', $applicant['portfolioUrl']);
-        $query->bindValue(':githubEducationLink', $applicant['githubEducationLink']);
+        $query->bindValue(':portfolioUrl', $applicant['portfolioUrl']);                 //url
+        $query->bindValue(':githubEducationLink', $applicant['githubEducationLink']);   //url
         $query->bindValue(':additionalNotes', $applicant['additionalNotes']);
         $query->bindValue(':id', $applicant['id']);
 

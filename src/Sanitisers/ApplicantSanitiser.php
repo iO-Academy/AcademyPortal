@@ -67,6 +67,13 @@ class ApplicantSanitiser
         $applicant['tasterAttendance'] = $applicant['tasterAttendance'] ? 1 : 0;
         $applicant['team'] = StringSanitiser::sanitiseString($applicant['team']);
         $applicant['stageID'] = (int)$applicant['stageID'];
+        $applicant['additionalNotes'] = StringSanitiser::sanitiseString($applicant['additionalNotes']);
+        $applicant['githubUsername'] = StringSanitiser::sanitiseString($applicant['githubUsername']);
+        $applicant['pleskUsername'] = StringSanitiser::sanitiseString($applicant['pleskUsername']);
+        $applicant['pleskPassword'] = StringSanitiser::sanitiseString($applicant['pleskPassword']);
+        $applicant['pleskHostingUrl'] = StringSanitiser::sanitiseString($applicant['pleskHostingUrl']);
+        $applicant['portfolioUrl'] = StringSanitiser::sanitiseString($applicant['portfolioUrl']);
+        $applicant['githubEducationLink'] = StringSanitiser::sanitiseString($applicant['githubEducationLink']);
 
         return $applicant;
     }

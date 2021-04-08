@@ -35,7 +35,7 @@ class EditApplicantController extends Controller
                     ApplicantValidator::validateAdditionalFields($newApplicationData)
                 ) {
                     $applicant = ApplicantSanitiser::sanitise($newApplicationData);
-                    $applicant = ApplicantSanitiser::sanitiseAdditionalFields($applicant);
+                    $applicant = ApplicantValidator::validateAdditionalFields($newApplicationData);
 
                     //If applicant is being moved to a stage that makes them a student a row in the
                     // applicant_additional table needs to be created. If it doesn't already exist.
