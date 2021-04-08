@@ -85,7 +85,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'pleskHostingUrl' => $this->pleskHostingUrl,
                   'portfolioUrl' => $this->portfolioUrl,
                   'githubEducationLink' => $this->githubEducationLink,
-                  'additionalNotes' => $this->additionalNotes,
+                  'additionalNotes' => $this->additionalNotes
                ];
     }
 
