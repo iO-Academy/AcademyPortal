@@ -44,7 +44,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
      *
      * @return array|mixed
      */
-    public function jsonSerialize():array
+    public function jsonSerialize(): array
     {
         return [
                   'id' => $this->id,
