@@ -31,8 +31,9 @@ class ApplicantFormViewHelper
                         $string .= ">" . $option['option']  . '</option>';
                     }
 
-                    $string .= '</optgroup>';
+
                 }
+                $string .= '</optgroup>';
             } else {
                 $string .= '<option class="stageDropdown" name="stageId" value="' . $stage['id'] . '"';
                 if ($currentStage === $stage['title']) {
