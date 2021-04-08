@@ -25,10 +25,10 @@ class ApplicantFormViewHelper
                     $string .= '<option name="stageId" value="' . $stage['id'] . " " . $option['id'] . '"';
 
                     if ($currentStage === $option['option']) {
-                        $string .= ' selected="selected">' . $option['option'] . '</option>';
+                        $string .= 'selected="selected">' . $option['option'] . '</option>';
 
                     } else {
-                        $string .= '>' . $option['option']  . '</option>';
+                        $string .= ">" . $option['option']  . '</option>';
                     }
 
                     $string .= '</optgroup>';
@@ -40,6 +40,7 @@ class ApplicantFormViewHelper
                 } else {
                     $string .= '>' . $stage['title'] . '</option>';
                 }
+
             }
         }
         return $string;
