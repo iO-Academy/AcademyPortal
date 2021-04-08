@@ -51,7 +51,9 @@ class ApplicantModel implements ApplicantModelInterface
                             :eighteenPlus,
                             :finance,
                             :notes
-                        );"
+                        ) 
+                        ;"
+
         );
 
         $query->bindValue(':name', $applicant['name']);
