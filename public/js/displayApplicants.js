@@ -37,6 +37,45 @@
   }
 })();
 
+//display coursesId:
+(async () => {
+  await outputCoursesId();
+
+  const params = new URLSearchParams(
+      window.location.search
+  );
+  sessionStorage['coursesId'] = params.get('coursesId') || sessionStorage['coursesId'] || 'all';
+  const form = document.querySelector(
+      '#sortFilterApplicants'
+  );
+  const select = document.querySelector('#coursesId');
+
+  select.addEventListener('change', () => {
+    // this feels like a hack but best solution I can come up with without rewritting the filter
+    let sort = form.querySelector('.arrowBtn.active').value;
+    let filter = `<input type="hidden" name="sort" value="${sort}">`;
+    form.insertAdjacentHTML('beforeend', filter);
+    form.submit();
+  });
+
+  if (sessionStorage['coursesId'] !== 'all') {
+    document
+        .querySelector(`[value='${sessionStorage['coursesId']}`)
+        .setAttribute('selected', 'true');
+    document
+        .querySelector('.coursesIdSort')
+        .classList.add('hidden');
+  } else {
+    document
+        .querySelector("[value='all']")
+        .setAttribute('selected', 'true');
+    document
+        .querySelector('.coursesIdSort')
+        .classList.remove('hidden');
+  }
+})();
+//*****
+
 //display applicant stages dropdown
 
 (async () => {

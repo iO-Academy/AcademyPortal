@@ -7,7 +7,6 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.33)
 # Database: academyPortal
-# Generation Time: 2021-04-08 10:57:10 +0000
 # ************************************************************
 
 
@@ -54,6 +53,7 @@ CREATE TABLE `applicants_additional` (
   `additionalNotes` varchar(2000) DEFAULT NULL,
   `coursesId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `applicants_additional` WRITE;

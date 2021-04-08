@@ -30,7 +30,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `name`,
                             `email`,
                             `phoneNumber`,
-                            `cohortId`,
+                            `courseAppliedToId`,
                             `whyDev`,
                             `codeExperience`,
                             `hearAboutId`,
@@ -43,7 +43,7 @@ class ApplicantModel implements ApplicantModelInterface
                             :name,
                             :email,
                             :phoneNumber,
-                            :cohortId,
+                            :courseAppliedToId,
                             :whyDev,
                             :codeExperience,
                             :hearAboutId,
@@ -58,7 +58,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':name', $applicant['name']);
         $query->bindValue(':email', $applicant['email']);
         $query->bindValue(':phoneNumber', $applicant['phoneNumber']);
-        $query->bindValue(':cohortId', $applicant['cohortId']);
+        $query->bindValue(':courseAppliedToId', $applicant['courseAppliedToId']);
         $query->bindValue(':whyDev', $applicant['whyDev']);
         $query->bindValue(':codeExperience', $applicant['codeExperience']);
         $query->bindValue(':hearAboutId', $applicant['hearAboutId']);
@@ -80,18 +80,18 @@ class ApplicantModel implements ApplicantModelInterface
      * Counts number of applicants (depending on filters) and divides by number of applicants to be shown per page
      *
      * @param string $stageId
-     * @param string $cohortId
+     * @param string $courseAppliedToId
      *
      * @return false|float
      */
-    public function countPaginationPages(string $stageId = '%', string $cohortId = '%')
+    public function countPaginationPages(string $stageId = '%', string $courseAppliedToId = '%')
     {
         $count = "SELECT count(`id`) AS `id` FROM `applicants` 
                     WHERE `applicants`.`deleted` = '0'
-                    AND `applicants`.`cohortId` like :cohortId
+                    AND `applicants`.`courseAppliedToId` like :courseAppliedToId
                     AND `applicants`.`stageId` like :stageId;";
         $query = $this->db->prepare($count);
-        $query->bindValue(':cohortId', $cohortId);
+        $query->bindValue(':courseAppliedToId', $courseAppliedToId);
         $query->bindValue(':stageId', $stageId);
         $query->execute();
         return ceil($query->fetch()['id'] / $this->numberPerPage);
@@ -101,25 +101,25 @@ class ApplicantModel implements ApplicantModelInterface
      * Gets a sorted list of applicants assigned to a specific cohort and stage.
      *
      * @param string $stageId       the stage to filter by
-     * @param string $cohortId      the cohort to filer by
+     * @param string $courseAppliedToId      the cohort to filer by
      * @param string $sortingQuery  how you would like the results sorted
      *
      * @return array the data retrieved from the database
      */
     public function getApplicants(
         string $stageId = '%',
-        string $cohortId = '%',
+        string $courseAppliedToId = '%',
         string $sortingQuery = '',
         string $pageNumber = '1'
     ) {
-        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` AS 'cohortDate', 
+        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, `start_date` AS 'cohortDate', 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
                       FROM `applicants`
-                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      LEFT JOIN `courses` ON `applicants`.`courseAppliedToId`=`courses`.`id`
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       WHERE `applicants`.`deleted` = '0'
-                      AND `applicants`.`cohortId` like :cohortId
+                      AND `applicants`.`courseAppliedToId` like :courseAppliedToId
                       AND `applicants`.`stageId` like :stageId ";
 
         $stmt .= $this->sortingQuery($sortingQuery);
@@ -127,7 +127,7 @@ class ApplicantModel implements ApplicantModelInterface
         $offset = ($pageNumber - 1) * $this->numberPerPage;
         $query = $this->db->prepare($stmt);
         $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
-        $query->bindValue(':cohortId', $cohortId);
+        $query->bindValue(':courseAppliedToId', $courseAppliedToId);
         $query->bindValue(':stageId', $stageId);
         $query->bindValue(':offsets', $offset, \PDO::PARAM_INT);
         $query->bindValue(':numberPerPage', $this->numberPerPage, \PDO::PARAM_INT);
@@ -193,19 +193,20 @@ class ApplicantModel implements ApplicantModelInterface
     public function getApplicantById($id)
     {
         $query = $this->db->prepare(
-            "SELECT `applicants`.`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
-                      `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`, 
-                      `date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
+            "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
+                      `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`,  `hearAbout`, 
+                      `start_date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`,
                       `githubUsername`, `taster`, `pleskHostingUrl`, `pleskUsername`, `pleskPassword`,
+                      `coursesId`, `tasterAttendance`, `teams`.`trainer` AS 'team', `courseAppliedToId`, `hearAboutId`, 
                       `portfolioUrl`, `githubEducationLink`, `additionalNotes`,
                       `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName',
                        `option` as 'stageOptionName'
                         FROM `applicants` 
-                        LEFT JOIN `cohorts` 
-                            ON `applicants`.`cohortId`=`cohorts`.`id` 
+                        LEFT JOIN `courses` 
+                            ON `applicants`.`courseAppliedToId`=`courses`.`id` 
                         LEFT JOIN `hear_about` 
                             ON `applicants`.`hearAboutId`=`hear_about`.`id` 
                         LEFT JOIN `applicants_additional`
@@ -287,7 +288,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `name` = :name,
                             `email` = :email,
                             `phoneNumber` = :phoneNumber,
-                            `cohortId` = :cohortId,
+                            `courseAppliedToId` = :courseAppliedToId,
                             `whyDev` = :whyDev,
                             `codeExperience` = :codeExperience,
                             `hearAboutId` = :hearAboutId,
@@ -305,7 +306,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':name', $applicant['name']);
         $query->bindValue(':email', $applicant['email']);
         $query->bindValue(':phoneNumber', $applicant['phoneNumber']);
-        $query->bindValue(':cohortId', $applicant['cohortId']);
+        $query->bindValue(':courseAppliedToId', $applicant['courseAppliedToId']);
         $query->bindValue(':whyDev', $applicant['whyDev']);
         $query->bindValue(':codeExperience', $applicant['codeExperience']);
         $query->bindValue(':hearAboutId', $applicant['hearAboutId']);
@@ -352,6 +353,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `pleskHostingUrl` = :pleskHostingUrl,
                             `pleskUsername` = :pleskUsername,
                             `pleskPassword` = :pleskPassword,
+                            `coursesId` = :coursesId
                             `portfolioUrl` = :portfolioUrl,
                             `githubEducationLink` = :githubEducationLink,
                             `additionalNotes` = :additionalNotes
@@ -383,6 +385,9 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':pleskPassword', $applicant['pleskPassword']);
         $query->bindValue(':portfolioUrl', $applicant['portfolioUrl']);                 //url
         $query->bindValue(':githubEducationLink', $applicant['githubEducationLink']);   //url
+        $query->bindValue(':coursesId', $applicant['coursesId']);
+        $query->bindValue(':portfolioUrl', $applicant['portfolioUrl']);
+        $query->bindValue(':githubEducationLink', $applicant['githubEducationLink']);
         $query->bindValue(':additionalNotes', $applicant['additionalNotes']);
         $query->bindValue(':id', $applicant['id']);
 

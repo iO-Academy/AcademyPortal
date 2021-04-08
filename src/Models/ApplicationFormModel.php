@@ -18,7 +18,7 @@ class ApplicationFormModel
      */
     public function getCohorts()
     {
-        $query = $this->db->prepare('SELECT `id`, `date` FROM `cohorts`;');
+        $query = $this->db->prepare('SELECT `id`, `start_date` FROM `courses`;');
         $query->execute();
         $result = $query->fetchAll();
         return $result;
@@ -32,6 +32,14 @@ class ApplicationFormModel
     public function getHearAbout()
     {
         $query = $this->db->prepare('SELECT `id`, `hearAbout` FROM `hear_about`;');
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
+
+    public function getCoursesId()
+    {
+        $query = $this->db->prepare('SELECT `id`, `start_date` FROM `courses`;');
         $query->execute();
         $result = $query->fetchAll();
         return $result;

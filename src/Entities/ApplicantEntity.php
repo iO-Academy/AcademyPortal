@@ -7,7 +7,7 @@ use Portal\Interfaces\ApplicantEntityInterface;
 class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
 {
     protected $phoneNumber;
-    protected $cohortId;
+    protected $courseAppliedToId;
     protected $whyDev;
     protected $codeExperience;
     protected $hearAboutId;
@@ -29,7 +29,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
                   'name' => $this->name,
                   'email' => $this->email,
                   'phoneNumber' => $this->phoneNumber,
-                  'cohortID' => $this->cohortId,
+                  'cohortID' => $this->courseAppliedToId,
                   'whyDev' => $this->whyDev,
                   'codeExperience' => $this->codeExperience,
                   'hearAboutId' => $this->hearAboutId,
@@ -59,7 +59,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
      */
     public function getCohortId()
     {
-        return $this->cohortId;
+        return $this->courseAppliedToId;
     }
 
     /**

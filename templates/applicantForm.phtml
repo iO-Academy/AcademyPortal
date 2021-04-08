@@ -62,7 +62,8 @@
 
                 <div id="application" class="collapse">
                     <label for="cohorts">When would you like to join us?</label>
-                    <select id="cohorts" class="submitApplicant form-control" name="cohortId"  data-selected="<?php echo $applicant->getCohortId();?>" required>
+                    <select id="cohorts" class="submitApplicant form-control" name="courseAppliedToId"  data-selected="<?php
+                    echo $applicant->getCohortDate();?>" required>
                     </select>
 
                     <label for="why-developer">Why do you want to become a software developer?</label>
@@ -234,6 +235,13 @@
 
                     <label for=kitNum">Kit number</label>
                     <input id="kitNum" class="submitApplicant form-control" name="kitNum" type="number" min="1" max="99" step="1" value="<?php echo $applicant->getKitNum();?>">
+
+                    <label for="githubUsername">GitHub Username</label>
+                    <input id="githubUsername" class="submitApplicant form-control" name="githubUsername" type="text" value="<?php echo $applicant->getGithubUsername();?>">
+
+                    <label for="coursesId">Confirmed course date</label>
+                    <select id="coursesId" class="submitApplicant form-control" name="coursesId"  data-selected="<?php echo $applicant->getCoursesId();?>">
+                    </select>
 
                     <label for="team">Team</label>
                     <input id="team" class="submitApplicant form-control" type="text" readonly value="<?php echo $applicant->getTeam();?>">
