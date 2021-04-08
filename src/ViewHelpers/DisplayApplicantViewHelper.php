@@ -134,7 +134,7 @@ class DisplayApplicantViewHelper
     private static function handleNoApplicants(string $output): string
     {
         if (empty($output)) {
-            return '<tr><td colspan="5"><h5 class="text-danger text-center">No Applicants Found.</h5></td></tr>';
+            return '<tr><td colspan="6"><h5 class="text-danger text-center">No Applicants Found.</h5></td></tr>';
         }
         return $output;
     }
