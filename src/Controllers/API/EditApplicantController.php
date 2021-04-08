@@ -45,7 +45,7 @@ class EditApplicantController extends Controller
                     //Fails if applicant row doesn't exist in applicant_additional table
                     $successfulUpdate2 = $this->applicantModel->updateApplicantAdditionalFields($applicant);
 
-                    if ($successfulUpdate1 && $successfulUpdate2) {
+                    if ($successfulUpdate1) {
                         $data['success'] = true;
                         $data['msg'] = 'Applicant has been updated!';
                         $statusCode = 200;

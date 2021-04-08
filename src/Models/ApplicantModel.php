@@ -53,7 +53,6 @@ class ApplicantModel implements ApplicantModelInterface
                             :notes
                         ) 
                         ;"
-
         );
 
         $query->bindValue(':name', $applicant['name']);
