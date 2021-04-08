@@ -19,7 +19,7 @@ class ApplicantFormViewHelper
                 }
             }
             if ($stageHasOptions) {
-                $string .= '<optgroup label="' . $stage['title'] . '" >';
+                $string .= '<optgroup label="' . $stage['title'] . '">';
 
                 foreach ($optionsForThisStage as $option) {
                     $string .= '<option name="stageId" value="' . $stage['id'] . " " . $option['id'] . '"';
