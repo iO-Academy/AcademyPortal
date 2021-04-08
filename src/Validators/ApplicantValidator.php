@@ -83,6 +83,7 @@ class ApplicantValidator
                 StringValidator::validateLength($applicant['stageName'], StringValidator::MAXVARCHARLENGTH, 'stageName')
             ) &&
             is_numeric($applicant['stageId'])
+
         );
     }
 }
