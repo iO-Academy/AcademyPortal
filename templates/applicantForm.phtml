@@ -101,7 +101,7 @@
                     <label for="notes">Notes.</label>
                     <div id="notesError" class="alert hidden formItem_alert"></div>
 
-                    <text id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getNotes();?></text>
+                    <textarea id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getNotes();?></textarea>
                 </div>
             </section>
 
@@ -125,12 +125,18 @@
                     <label for="pleskHostingUrl">Plesk Hosting URL</label>
                     <input id="pleskHostingUrl" class="submitApplicant form-control" name="pleskHostingUrl" type="text" value="<?php echo $applicant->getPleskHostingUrl();?>">
 
-                    <label for="notes">Additional Notes.</label>
-                    <div id="notesError" class="alert hidden formItem_alert"></div>
+                    <label for="portfolioUrl">Portfolio URL</label>
+                    <input id="portfolioUrl" class="submitApplicant form-control" name="portfolioUrl" type="text" value="<?php echo $applicant->getPortfolioUrl();?>">
 
-                    <textarea id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getNotes();?></textarea>
+                    <label for="githubEducationLink">Github Education Link</label>
+                    <input id="githubEducationLink" class="submitApplicant form-control" name="githubEducationLink" type="text" value="<?php echo $applicant->getGithubEducationLink();?>">
+
+                    <label for="additionalNotes">Additional Notes.</label>
+                    <div id="notesError" class="alert hidden formItem_alert"></div>
+                    <textarea id="additionalNotes" name="additionalNotes" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getAdditionalNotes();?></textarea>
                 </div>
             </section>
+
             <section class="applicationFormSection">
                 <div data-toggle="collapse" class="collapse-header" data-target="#taster" aria-expanded="false" aria-controls="taster">
                     <h4>Taster session</h4>
@@ -229,6 +235,13 @@
 
                     <label for=kitNum">Kit number</label>
                     <input id="kitNum" class="submitApplicant form-control" name="kitNum" type="number" min="1" max="99" step="1" value="<?php echo $applicant->getKitNum();?>">
+
+                    <label for="githubUsername">GitHub Username</label>
+                    <input id="githubUsername" class="submitApplicant form-control" name="githubUsername" type="text" value="<?php echo $applicant->getGithubUsername();?>">
+
+                    <label for="coursesId">Confirmed course date</label>
+                    <select id="coursesId" class="submitApplicant form-control" name="coursesId"  data-selected="<?php echo $applicant->getCoursesId();?>">
+                    </select>
 
                     <label for="team">Team</label>
                     <input id="team" class="submitApplicant form-control" type="text" readonly value="<?php echo $applicant->getTeam();?>">

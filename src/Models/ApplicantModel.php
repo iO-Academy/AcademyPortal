@@ -51,7 +51,8 @@ class ApplicantModel implements ApplicantModelInterface
                             :eighteenPlus,
                             :finance,
                             :notes
-                        );"
+                        ) 
+                        ;"
         );
 
         $query->bindValue(':name', $applicant['name']);
@@ -198,7 +199,9 @@ class ApplicantModel implements ApplicantModelInterface
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`,
                       `githubUsername`, `taster`, `pleskHostingUrl`, `pleskUsername`, `pleskPassword`,
-                      `tasterAttendance`, `teams`.`trainer` AS 'team', `courseAppliedToId`, `hearAboutId`, 
+                      `coursesId`, `tasterAttendance`, `teams`.`trainer` AS 'team', `courseAppliedToId`, `hearAboutId`, 
+                      `portfolioUrl`, `githubEducationLink`, `additionalNotes`,
+                      `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName',
                        `option` as 'stageOptionName'
                         FROM `applicants` 
@@ -349,7 +352,11 @@ class ApplicantModel implements ApplicantModelInterface
                             `tasterAttendance` = :tasterAttendance,
                             `pleskHostingUrl` = :pleskHostingUrl,
                             `pleskUsername` = :pleskUsername,
-                            `pleskPassword` = :pleskPassword        
+                            `pleskPassword` = :pleskPassword,
+                            `coursesId` = :coursesId
+                            `portfolioUrl` = :portfolioUrl,
+                            `githubEducationLink` = :githubEducationLink,
+                            `additionalNotes` = :additionalNotes
                         WHERE (
                             `id` = :id
                         );"
@@ -376,6 +383,10 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':pleskHostingUrl', $applicant['pleskHostingUrl']);
         $query->bindValue(':pleskUsername', $applicant['pleskUsername']);
         $query->bindValue(':pleskPassword', $applicant['pleskPassword']);
+        $query->bindValue(':coursesId', $applicant['coursesId']);
+        $query->bindValue(':portfolioUrl', $applicant['portfolioUrl']);
+        $query->bindValue(':githubEducationLink', $applicant['githubEducationLink']);
+        $query->bindValue(':additionalNotes', $applicant['additionalNotes']);
         $query->bindValue(':id', $applicant['id']);
 
         return $query->execute();

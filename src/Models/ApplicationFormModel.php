@@ -36,4 +36,12 @@ class ApplicationFormModel
         $result = $query->fetchAll();
         return $result;
     }
+
+    public function getCoursesId()
+    {
+        $query = $this->db->prepare('SELECT `id`, `start_date` FROM `courses`;');
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
 }
