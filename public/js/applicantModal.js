@@ -81,6 +81,7 @@ $(document).ready(function(){
                         displayField(data, 'eligible', 'Not eligible to study in the UK')
                         displayField(data, 'eighteenPlus', 'Under 18')
                         displayField(data, 'finance', 'No')
+                        displayField(data, 'coursesId')
                         if (data.eligible !== 0) {
                             document.getElementById('eligible').innerHTML = 'Eligible to study in the UK'
                         }

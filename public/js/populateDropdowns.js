@@ -76,6 +76,48 @@ let outputCohorts = async () => {
   element.innerHTML += cohortOptions;
 };
 
+///coursesId:
+
+let getCoursesId = () => {
+  return fetch('./api/applicationForm', {
+    credentials: 'same-origin',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  }).then(response => response.json());
+};
+
+let handleCoursesId = async () => {
+  let response = await getCoursesId();
+  return response.data;
+};
+
+let outputCoursesId = async () => {
+  const data = await handleCoursesId();
+  const element = document.getElementById('coursesId');
+  let coursesIdOptions = '';
+
+  data.coursesId.forEach(item => {
+    coursesIdOptions += '<option ';
+    if (element.dataset.selected === item.id) {
+      coursesIdOptions += 'selected ';
+    }
+    let date = new Date(item.start_date);
+    let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
+    coursesIdOptions += `value="${
+        item.id
+    }">${date.toLocaleDateString(
+        'en-GB',
+        dateOptions
+    )}</option>`;
+  });
+
+  element.innerHTML += coursesIdOptions;
+};
+
+///up to here coursesId.
+
 let outputHearAbout = async () => {
   const data = await handleFormOptions();
   const element = document.getElementById('hear-about');

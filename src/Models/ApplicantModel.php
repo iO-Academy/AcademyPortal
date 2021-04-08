@@ -199,6 +199,7 @@ class ApplicantModel implements ApplicantModelInterface
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`,
                       `githubUsername`, `taster`, `pleskHostingUrl`, `pleskUsername`, `pleskPassword`,
+                      `coursesId`, `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `portfolioUrl`, `githubEducationLink`, `additionalNotes`,
                       `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName',
@@ -352,6 +353,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `pleskHostingUrl` = :pleskHostingUrl,
                             `pleskUsername` = :pleskUsername,
                             `pleskPassword` = :pleskPassword,
+                            `coursesId` = :coursesId
                             `portfolioUrl` = :portfolioUrl,
                             `githubEducationLink` = :githubEducationLink,
                             `additionalNotes` = :additionalNotes
@@ -381,6 +383,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':pleskHostingUrl', $applicant['pleskHostingUrl']);
         $query->bindValue(':pleskUsername', $applicant['pleskUsername']);
         $query->bindValue(':pleskPassword', $applicant['pleskPassword']);
+        $query->bindValue(':coursesId', $applicant['coursesId']);
         $query->bindValue(':portfolioUrl', $applicant['portfolioUrl']);
         $query->bindValue(':githubEducationLink', $applicant['githubEducationLink']);
         $query->bindValue(':additionalNotes', $applicant['additionalNotes']);
