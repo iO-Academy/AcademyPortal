@@ -55,7 +55,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'eighteenPlus' => $this->eighteenPlus,
                   'finance' => $this->finance,
                   'notes' => $this->notes,
-                  'cohortDate' => $this->getCohortDate(),
+                  'cohortDate' => $this->getCohortDate,
                   'dateTimeAdded' => $this->dateTimeAdded,
                   'apprentice' => $this->apprentice,
                   'aptitude' => $this->aptitude,
