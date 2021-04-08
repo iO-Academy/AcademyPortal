@@ -26,7 +26,7 @@ class ApplicantFormViewHelperTest extends TestCase
             '</option></optgroup><option class="stageDropdown" name="stageId" value="' .
             $stages['stringTwo']['id'] . '">' . $stages['stringTwo']['title'] . '</option>';
 
-        $result = ApplicantFormViewHelper::stagesDropdown($stages, $stageOptions,$currentStage);
+        $result = ApplicantFormViewHelper::stagesDropdown($stages, $stageOptions, $currentStage);
         $this->assertEquals($expected, $result);
     }
 }
