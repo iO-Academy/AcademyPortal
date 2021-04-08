@@ -60,11 +60,25 @@ let outputCohorts = async () => {
 
   data.cohorts.forEach(item => {
     cohortOptions += '<option ';
-    if (element.dataset.selected === item.id) {
+
+    let date = new Date(item.start_date);
+    let selectedDate = new Date(element.dataset.selected)
+    let dateOptions = {year: 'numeric', month: 'long'};
+
+    // making item.date and selected date the same format so they are comparable
+    let shortDate = date.toLocaleDateString(
+        'en-GB',
+        dateOptions
+    )
+
+    let shortSelectedDate = selectedDate.toLocaleDateString(
+        'en-GB',
+        dateOptions
+    )
+
+    if (shortSelectedDate === shortDate) {
       cohortOptions += 'selected ';
     }
-    let date = new Date(item.date);
-    let dateOptions = {year: 'numeric', month: 'long'};
     cohortOptions += `value="${
       item.id
     }">${date.toLocaleDateString(

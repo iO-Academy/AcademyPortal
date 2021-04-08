@@ -53,6 +53,7 @@ CREATE TABLE `applicants_additional` (
   `additionalNotes` varchar(2000) DEFAULT NULL,
   `coursesId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `applicants_additional` WRITE;
