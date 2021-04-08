@@ -71,7 +71,6 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `applicants_additional`;
 
 CREATE TABLE `applicants_additional` (
-<<<<<<< HEAD
   `id` int(11) unsigned NOT NULL,
   `apprentice` int(1) DEFAULT NULL,
   `aptitude` int(3) DEFAULT NULL,
@@ -100,35 +99,6 @@ CREATE TABLE `applicants_additional` (
   `additionalNotes` varchar(2000) DEFAULT NULL,
   `coursesId` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-=======
-                                         `id` int(11) unsigned NOT NULL,
-                                         `apprentice` int(1) DEFAULT NULL,
-                                         `aptitude` int(3) DEFAULT NULL,
-                                         `assessmentDay` date DEFAULT NULL,
-                                         `assessmentTime` varchar(5) DEFAULT NULL,
-                                         `assessmentNotes` text,
-                                         `diversitechInterest` int(1) DEFAULT NULL,
-                                         `diversitech` int(5) DEFAULT NULL,
-                                         `edaid` int(5) DEFAULT NULL,
-                                         `upfront` int(5) DEFAULT NULL,
-                                         `kitCollectionDay` date DEFAULT NULL,
-                                         `kitCollectionTime` varchar(5) DEFAULT NULL,
-                                         `kitNum` int(2) DEFAULT NULL,
-                                         `laptop` int(1) DEFAULT NULL,
-                                         `laptopDeposit` int(1) DEFAULT NULL,
-                                         `laptopNum` int(2) DEFAULT NULL,
-                                         `taster` date DEFAULT NULL,
-                                         `tasterAttendance` int(1) DEFAULT NULL,
-                                         `team` int(1) DEFAULT NULL,
-                                         `githubUsername` varchar(100) DEFAULT NULL,
-                                         `portfolioUrl` varchar(100) DEFAULT NULL,
-                                         `pleskHostingUrl` varchar(100) DEFAULT NULL,
-                                         `pleskUsername` varchar(100) DEFAULT NULL,
-                                         `pleskPassword` varchar(100) DEFAULT NULL,
-                                         `githubEducationLink` varchar(100) DEFAULT NULL,
-                                         `additionalNotes` varchar(2000) DEFAULT NULL,
-                                         `coursesId` varchar(50) DEFAULT NULL,
-                                         PRIMARY KEY (`id`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

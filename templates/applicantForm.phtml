@@ -62,7 +62,8 @@
 
                 <div id="application" class="collapse">
                     <label for="cohorts">When would you like to join us?</label>
-                    <select id="cohorts" class="submitApplicant form-control" name="cohortId"  data-selected="<?php echo $applicant->getCohortId();?>" required>
+                    <select id="cohorts" class="submitApplicant form-control" name="courseAppliedToId"  data-selected="<?php
+                    echo $applicant->getCohortDate();?>" required>
                     </select>
 
                     <label for="why-developer">Why do you want to become a software developer?</label>
@@ -130,20 +131,6 @@
                     <textarea id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getNotes();?></textarea>
                 </div>
             </section>
-
-            <section class="applicationFormSection">
-
-                <div data-toggle="collapse" class="collapse-header" data-target="#student-info" aria-expanded="false" aria-controls="student-info">
-                    <h4>Student Info</h4>
-                    <i class="glyphicon glyphicon-chevron-down"></i>
-                </div>
-
-                <div id="student-info" class="collapse">
-                    <label for="githubUsername">Please enter GitHub Username.</label>
-                    <input id="githubUsername" class="submitApplicant form-control" name="githubUsername" type="text" placeholder="<?php echo $applicant->getGithubUsername();?>">
-                </div>
-            </section>
-
             <section class="applicationFormSection">
                 <div data-toggle="collapse" class="collapse-header" data-target="#taster" aria-expanded="false" aria-controls="taster">
                     <h4>Taster session</h4>
@@ -233,9 +220,6 @@
 
                     <label for="laptopNum">Laptop number</label>
                     <input id="laptopNum" class="submitApplicant form-control" name="laptopNum" type="number" min="1" max="99" step="1" value="<?php echo $applicant->getLaptopNum();?>">
-
-                    <label for="githubUsername">GitHub Username</label>
-                    <input id="githubUsername" class="submitApplicant form-control" name="githubUsername" type="text" value="<?php echo $applicant->getGithubUsername();?>">
 
                     <label for="kitCollectionDay">Kit Collection Day</label>
                     <input id="kitCollectionDay" class="submitApplicant form-control" name="kitCollectionDay" type="date" value="<?php echo $applicant->getKitCollectionDay();?>">

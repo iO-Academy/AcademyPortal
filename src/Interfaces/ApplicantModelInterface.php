@@ -8,7 +8,7 @@ interface ApplicantModelInterface
 
     public function storeApplicant(array $applicant);
 
-    public function getApplicants(string $stageID, string $cohortId, string $sortingQuery);
+    public function getApplicants(string $stageID, string $courseAppliedToId, string $sortingQuery);
 
     public function getApplicantById($id);
 

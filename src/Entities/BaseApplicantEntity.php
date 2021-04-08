@@ -46,7 +46,7 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
     }
 
     /**
-     * @return mixed
+     * @return
      */
     public function getEmail()
     {
