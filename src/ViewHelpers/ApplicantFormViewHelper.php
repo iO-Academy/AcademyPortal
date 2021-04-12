@@ -25,19 +25,19 @@ class ApplicantFormViewHelper
                     $string .= '<option name="stageId" value="' . $stage['id'] . " " . $option['id'] . '"';
 
                     if ($currentStage === $option['option']) {
-                        $string .= 'selected="selected">' . $option['option'] . '</option>';
-                    } else {
-                        $string .= ">" . $option['option']  . '</option>';
+                        $string .= ' selected';
                     }
+
+                    $string .= ">" . $option['option']  . '</option>';
                 }
                 $string .= '</optgroup>';
             } else {
                 $string .= '<option class="stageDropdown" name="stageId" value="' . $stage['id'] . '"';
                 if ($currentStage === $stage['title']) {
-                    $string .= ' selected="selected">' . $stage['title'] . '</option>';
-                } else {
-                    $string .= '>' . $stage['title'] . '</option>';
+                    $string .= ' selected';
                 }
+
+                $string .= '>' . $stage['title'] . '</option>';
             }
         }
         return $string;
