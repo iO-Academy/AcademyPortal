@@ -4,7 +4,7 @@ namespace Portal\ViewHelpers;
 
 class ApplicantFormViewHelper
 {
-    public static function stagesDropdown($stages, $stageOptions)
+    public static function stagesDropdown($stages, $stageOptions, $currentStage)
     {
         $string = '';
 
@@ -22,15 +22,22 @@ class ApplicantFormViewHelper
                 $string .= '<optgroup label="' . $stage['title'] . '">';
 
                 foreach ($optionsForThisStage as $option) {
-                    $string .= '<option name="stageId" value="' . $stage['id'] . " " . $option['id'] . '">'
-                        . $option['option'] . '</option>';
-                }
+                    $string .= '<option name="stageId" value="' . $stage['id'] . " " . $option['id'] . '"';
 
+                    if ($currentStage === $option['option']) {
+                        $string .= ' selected';
+                    }
+
+                    $string .= ">" . $option['option']  . '</option>';
+                }
                 $string .= '</optgroup>';
             } else {
-                $string .=
-                    '<option class="stageDropdown" name="stageId" value="' . $stage['id'] . '">'
-                    . $stage['title'] . '</option>';
+                $string .= '<option class="stageDropdown" name="stageId" value="' . $stage['id'] . '"';
+                if ($currentStage === $stage['title']) {
+                    $string .= ' selected';
+                }
+
+                $string .= '>' . $stage['title'] . '</option>';
             }
         }
         return $string;
