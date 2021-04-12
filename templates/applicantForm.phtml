@@ -21,15 +21,7 @@
             <section class="stagesDropdown">
                 <label for="stageTitle">Choose Applicant's Stage: </label>
                 <select class="submitApplicant" name="stageId" id="stageTitle">
-                    <option name="stageId"><?php
-                        if(!empty($data['currentOption'])) {
-                        echo $data['currentStage'] . ". Option: " . $data['currentOption'];
-                        } else {
-                            echo $data['currentStage'];
-                        }
-                        ?>
-                    </option>
-                    <?php echo \Portal\ViewHelpers\ApplicantFormViewHelper::stagesDropdown($data['stages'], $data['stageOptions']); ?>
+                    <?php echo \Portal\ViewHelpers\ApplicantFormViewHelper::stagesDropdown($data['stages'], $data['stageOptions'],$data['currentStage']); ?>
                 </select>
             </section>
             <section class="applicationFormSection">

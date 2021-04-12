@@ -18,13 +18,15 @@ class ApplicantFormViewHelperTest extends TestCase
             'stringThree' => ['id' => 1, 'option' => 'dummy-option', 'stageId' => 1]
         ];
 
+        $currentStage = 'dummy-option';
+
         $expected = '<optgroup label="' . $stages['string']['title'] . '"><option name="stageId" value="' .
-            $stages['string']['id'] . " " . $stageOptions['stringThree']['id'] . '">' .
+            $stages['string']['id'] . " " . $stageOptions['stringThree']['id'] . '" selected>' .
             $stageOptions['stringThree']['option'] .
             '</option></optgroup><option class="stageDropdown" name="stageId" value="' .
             $stages['stringTwo']['id'] . '">' . $stages['stringTwo']['title'] . '</option>';
 
-        $result = ApplicantFormViewHelper::stagesDropdown($stages, $stageOptions);
+        $result = ApplicantFormViewHelper::stagesDropdown($stages, $stageOptions, $currentStage);
         $this->assertEquals($expected, $result);
     }
 }
