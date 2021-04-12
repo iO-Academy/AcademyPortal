@@ -21,7 +21,7 @@ class ApplicantFormViewHelperTest extends TestCase
         $currentStage = 'dummy-option';
 
         $expected = '<optgroup label="' . $stages['string']['title'] . '"><option name="stageId" value="' .
-            $stages['string']['id'] . " " . $stageOptions['stringThree']['id'] . '"selected="selected">' .
+            $stages['string']['id'] . " " . $stageOptions['stringThree']['id'] . '" selected>' .
             $stageOptions['stringThree']['option'] .
             '</option></optgroup><option class="stageDropdown" name="stageId" value="' .
             $stages['stringTwo']['id'] . '">' . $stages['stringTwo']['title'] . '</option>';
