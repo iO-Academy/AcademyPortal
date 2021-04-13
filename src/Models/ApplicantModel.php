@@ -111,10 +111,10 @@ class ApplicantModel implements ApplicantModelInterface
         string $sortingQuery = '',
         string $pageNumber = '1'
     ) {
-        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` AS 'cohortDate', 
+        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, `start_date` AS 'cohortDate', 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
                       FROM `applicants`
-                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      LEFT JOIN `courses` ON `applicants`.`cohortId`=`courses`.`id`
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       WHERE `applicants`.`deleted` = '0'
@@ -143,10 +143,10 @@ class ApplicantModel implements ApplicantModelInterface
      */
     public function getAllStudents(string $sortingQuery = '') // @todo: only get applicants in a student stage
     {
-        $stmt = "SELECT `applicants`.`id`, `name`, `email`, `dateTimeAdded`, `date` AS 'cohortDate', 
+        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, `start_date` AS 'cohortDate', 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
                       FROM `applicants`
-                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      LEFT JOIN `courses` ON `applicants`.`cohortId` = `courses`.`id`
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       WHERE `applicants`.`deleted` = '0' ";
@@ -169,9 +169,9 @@ class ApplicantModel implements ApplicantModelInterface
      */
     public function getAllStudentsByCohort(string $cohortId) // @todo: only get applicants in a student stage
     {
-        $stmt = "SELECT `applicants`.`id`, `name`, `trainer`, `team`
+        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `teams`.`trainer`, `team`
                       FROM `applicants`
-                      LEFT JOIN `cohorts` ON `applicants`.`cohortId`=`cohorts`.`id`
+                      LEFT JOIN `courses` ON `applicants`.`cohortId`=`courses`.`id`
                       LEFT JOIN `applicants_additional` ON `applicants`.`id` = `applicants_additional`.`id`
                       LEFT JOIN `teams` ON `applicants_additional`.`team` = `teams`.`id`
                       WHERE `applicants`.`deleted` = '0' AND `applicants`.`cohortId` = :cohortId;";
@@ -192,17 +192,17 @@ class ApplicantModel implements ApplicantModelInterface
     public function getApplicantById($id)
     {
         $query = $this->db->prepare(
-            "SELECT `applicants`.`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
-                      `eligible`, `eighteenPlus`, `finance`, `notes`, `dateTimeAdded`,  `hearAbout`, 
-                      `date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
+            "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
+                      `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`,  `hearAbout`, 
+                      `start_date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
-                      `tasterAttendance`, `trainer` AS 'team', `cohortId`, `hearAboutId`, 
+                      `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName',
                        `option` as 'stageOptionName'
                         FROM `applicants` 
-                        LEFT JOIN `cohorts` 
-                            ON `applicants`.`cohortId`=`cohorts`.`id` 
+                        LEFT JOIN `courses` 
+                            ON `applicants`.`cohortId`=`courses`.`id` 
                         LEFT JOIN `hear_about` 
                             ON `applicants`.`hearAboutId`=`hear_about`.`id` 
                         LEFT JOIN `applicants_additional`
@@ -256,11 +256,11 @@ class ApplicantModel implements ApplicantModelInterface
                 break;
 
             case 'cohortAsc':
-                $stmt .= '`date` ASC';
+                $stmt .= '`start_date` ASC';
                 break;
 
             case 'cohortDesc':
-                $stmt .= '`date` DESC';
+                $stmt .= '`start_date` DESC';
                 break;
 
             default:

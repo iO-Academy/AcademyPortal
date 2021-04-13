@@ -108,30 +108,7 @@ VALUES
 UNLOCK TABLES;
 
 
-# Dump of table cohorts
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `cohorts`;
-
-CREATE TABLE `cohorts` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `date` date DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-LOCK TABLES `cohorts` WRITE;
-/*!40000 ALTER TABLE `cohorts` DISABLE KEYS */;
-
-INSERT INTO `cohorts` (`id`, `date`, `deleted`)
-VALUES
-	(1,'2018-08-01',0),
-	(2,'2019-02-01',0),
-	(3,'2019-08-01',0),
-	(4,'2020-02-01',0);
-
-/*!40000 ALTER TABLE `cohorts` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `cohorts`; /* DO NOT REMOVE THIS LINE! */
 
 
 # Dump of table company_sizes
