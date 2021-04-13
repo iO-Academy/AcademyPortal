@@ -75,10 +75,12 @@ class ApplicantValidator
                 is_null($applicant['laptop'])
             ) &&
             (
+                !isset($applicant['team']) ||
                 is_null($applicant['team']) ||
                 StringValidator::validateLength($applicant['team'], StringValidator::MAXVARCHARLENGTH, 'team')
             ) &&
             (
+                !isset($applicant['stageName']) ||
                 is_null($applicant['stageName']) ||
                 StringValidator::validateLength($applicant['stageName'], StringValidator::MAXVARCHARLENGTH, 'stageName')
             ) &&
