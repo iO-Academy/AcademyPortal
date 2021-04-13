@@ -12,16 +12,15 @@ class ApplicationFormModel
     }
 
     /**
-     * Gets all the cohorts from the database.
+     * Gets the courses data needed for the application form
      *
-     * @return array $result is data from cohorts fields.
+     * @return array $result is data from courses table
      */
     public function getCohorts()
     {
-        $query = $this->db->prepare('SELECT `id`, `date` FROM `cohorts`;');
+        $query = $this->db->prepare('SELECT `id`, `start_date` AS "date" FROM `courses` WHERE `deleted` != 1;');
         $query->execute();
-        $result = $query->fetchAll();
-        return $result;
+        return $query->fetchAll();
     }
 
     /**
