@@ -194,21 +194,25 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare(
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`,  `hearAbout`, 
-                      `start_date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
+                      `applicant_course`.`start_date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
                       `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, 
-                      `applicants`.`stageId` as 'stageID', `title` as 'stageName',
-                       `option` as 'stageOptionName'
+                      `applicants`.`stageId` as 'stageID', `title` as 'stageName', `stages`.`student` AS 'isStudentStage',
+                      `option` as 'stageOptionName', `githubUsername`, `portfolioUrl`, `pleskHostingUrl`,
+                      `githubEducationLink`, `additionalNotes`, `student_course`.`start_date` AS 'chosenCourseDate',
+                      `applicants_additional`.`chosenCourseId` AS 'chosenCourseId'
                         FROM `applicants` 
-                        LEFT JOIN `courses` 
-                            ON `applicants`.`cohortId`=`courses`.`id` 
+                        LEFT JOIN `courses` applicant_course
+                            ON `applicants`.`cohortId` = `applicant_course`.`id`
                         LEFT JOIN `hear_about` 
-                            ON `applicants`.`hearAboutId`=`hear_about`.`id` 
+                            ON `applicants`.`hearAboutId` = `hear_about`.`id` 
                         LEFT JOIN `applicants_additional`
                             ON `applicants`.`id` = `applicants_additional`.`id`
                         LEFT JOIN `teams` 
                             ON `applicants_additional`.`team` = `teams`.`id`
+                        LEFT JOIN `courses` student_course 
+                            ON `applicants_additional`.`chosenCourseId` = `student_course`.`id` 
                         LEFT JOIN `stages`
                             ON `applicants`.`stageId` = `stages`.`id`
                         LEFT JOIN `options` 

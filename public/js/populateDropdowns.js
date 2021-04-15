@@ -53,8 +53,8 @@ let handleFormOptions = async () => {
   return response.data;
 };
 
-let outputCohorts = (cohorts) => {
-  const element = document.getElementById('cohorts');
+let outputCohorts = (cohorts, el = null) => {
+  const element = el || document.getElementById('cohorts');
   let cohortOptions = '';
 
   cohorts.forEach(item => {
