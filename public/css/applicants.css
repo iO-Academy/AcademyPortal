@@ -76,6 +76,17 @@ section {
     margin-bottom: 10px;
 }
 
+#applicantModal section {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+#applicantModal section:last-child {
+    border: none;
+    padding-bottom: 0;
+}
+
 .collapse-header h4 {
     float: left;
     padding-left: 15px;
@@ -86,7 +97,14 @@ section {
     margin: 12px;
 }
 
-
 .disabled {
     pointer-events: none;
+}
+
+#submitApplicant {
+    margin: 0;
+}
+
+.formItem_alert {
+    margin-top: 15px;
 }

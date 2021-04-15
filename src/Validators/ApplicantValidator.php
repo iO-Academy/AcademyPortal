@@ -54,10 +54,10 @@ class ApplicantValidator
                 $applicant['apprentice'] == 1 || $applicant['apprentice'] == 0
             ) &&
             (
-                is_numeric($applicant['aptitude']) || is_null($applicant['aptitude'])
+                is_numeric($applicant['aptitude']) || empty($applicant['aptitude'])
             ) &&
             (
-                is_null($applicant['assessmentNotes']) ||
+                empty($applicant['assessmentNotes']) ||
                 StringValidator::validateLength(
                     $applicant['assessmentNotes'],
                     StringValidator::MAXTEXTLENGTH,
@@ -67,22 +67,58 @@ class ApplicantValidator
             (
                 $applicant['diversitechInterest'] == 1 ||
                 $applicant['diversitechInterest'] == 0 ||
-                is_null($applicant['diversitechInterest'])
+                empty($applicant['diversitechInterest'])
             ) &&
             (
                 $applicant['laptop'] == 1 ||
                 $applicant['laptop'] == 0 ||
-                is_null($applicant['laptop'])
+                empty($applicant['laptop'])
             ) &&
             (
-                is_null($applicant['team']) ||
+                empty($applicant['team']) ||
                 StringValidator::validateLength($applicant['team'], StringValidator::MAXVARCHARLENGTH, 'team')
             ) &&
             (
-                is_null($applicant['stageName']) ||
+                empty($applicant['stageName']) ||
                 StringValidator::validateLength($applicant['stageName'], StringValidator::MAXVARCHARLENGTH, 'stageName')
             ) &&
-            is_numeric($applicant['stageId'])
+            (
+                empty($applicant['stageOptionId']) ||
+                is_numeric($applicant['stageOptionId'])
+            ) &&
+            is_numeric($applicant['stageId']) &&
+            (
+                empty($applicant['githubUsername']) ||
+                StringValidator::validateLength(
+                    $applicant['githubUsername'],
+                    StringValidator::MAXVARCHARLENGTH,
+                    'githubUsername'
+                )
+            ) &&
+            (
+                empty($applicant['portfolioUrl']) ||
+                filter_var($applicant['portfolioUrl'], FILTER_VALIDATE_URL)
+            ) &&
+            (
+                empty($applicant['pleskHostingUrl']) ||
+                PleskValidator::validate($applicant['pleskHostingUrl'])
+            ) &&
+            (
+                empty($applicant['githubEducationLink']) ||
+                GithubEducationValidator::validate($applicant['githubEducationLink'])
+            ) &&
+            (
+                empty($applicant['additionalNotes']) ||
+                StringValidator::validateLength(
+                    $applicant['additionalNotes'],
+                    StringValidator::MAXTEXTLENGTH,
+                    'additionalNotes'
+                )
+            ) &&
+            (
+                empty($applicant['chosenCourseId']) ||
+                is_numeric($applicant['chosenCourseId'])
+            )
         );
     }
 }

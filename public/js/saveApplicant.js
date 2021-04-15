@@ -67,7 +67,7 @@ let getCompletedFormData = () => {
         if (formItem.name == 'stageId') {
             let stageOptionArray = formItem.value.split(" ");
             data['stageId'] = stageOptionArray[0];
-            data['optionId'] = stageOptionArray[1] ?? null;
+            data['stageOptionId'] = stageOptionArray[1] ?? null;
         }
         else {
             data[formItem.name] = formItem.value;

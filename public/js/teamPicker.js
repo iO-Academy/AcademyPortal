@@ -78,7 +78,8 @@ new Sortable(unsorted, {
 
 
 (async () => {
-    await outputCohorts();
+    const data = await handleFormOptions();
+    outputCohorts(data.cohorts);
     document.querySelector("#cohorts").addEventListener('change', async e => {
         saveResult.classList.add('hidden')
 

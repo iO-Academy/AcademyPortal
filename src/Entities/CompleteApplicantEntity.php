@@ -26,8 +26,16 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $stageId; // int
     protected $team; // int
     protected $stageID;
+    protected $isStudentStage;
     protected $stageOptionId;
     protected $stageOptionName;
+    protected $githubUsername;
+    protected $portfolioUrl;
+    protected $pleskHostingUrl;
+    protected $githubEducationLink;
+    protected $additionalNotes;
+    protected $chosenCourseId;
+    protected $chosenCourseDate;
 
     /**
      * Returns private properties from object.
@@ -69,9 +77,18 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'tasterAttendance' => $this->tasterAttendance,
                   'team' => $this->team,
                   'stageID' => $this->stageID,
+                  'isStudentStage' => $this->isStudentStage,
                   'stageName' => $this->stageName,
-                  'stageOptionName' => $this->stageOptionName
-               ];
+                  'stageOptionName' => $this->stageOptionName,
+                  'githubUsername' => $this->githubUsername,
+                  'portfolioUrl' => $this->portfolioUrl,
+                  'pleskHostingUrl' => $this->pleskHostingUrl,
+                  'githubEducationLink' => $this->githubEducationLink,
+                  'additionalNotes' => $this->additionalNotes,
+                  'chosenCourseId' => $this->chosenCourseId,
+                  'chosenCourseDate' => $this->chosenCourseDate,
+                  'chosenCourseDatePretty' => $this->getChosenCourseDatePretty()
+        ];
     }
 
     /**
@@ -227,6 +244,14 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     }
 
     /**
+     * @return mixed
+     */
+    public function isStudentStage()
+    {
+        return $this->isStudentStage;
+    }
+
+    /**
      * @return int
      */
     public function getStageOptionId(): ?int
@@ -240,5 +265,61 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getStageOptionName(): ?string
     {
         return $this->stageOptionName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGithubUsername(): ?string
+    {
+        return $this->githubUsername;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPortfolioUrl(): ?string
+    {
+        return $this->portfolioUrl;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPleskHostingUrl(): ?string
+    {
+        return $this->pleskHostingUrl;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGithubEducationLink(): ?string
+    {
+        return $this->githubEducationLink;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdditionalNotes(): ?string
+    {
+        return $this->additionalNotes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChosenCourseId(): ?int
+    {
+        return $this->chosenCourseId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChosenCourseDatePretty(): ?string
+    {
+        return !empty($this->chosenCourseDate) ? date("F, Y", strtotime($this->chosenCourseDate)) : null;
     }
 }

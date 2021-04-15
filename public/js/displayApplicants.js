@@ -1,7 +1,8 @@
 //display applicant cohort dropdown
 
 (async () => {
-  await outputCohorts();
+  const data = await handleFormOptions();
+  outputCohorts(data.cohorts);
 
   const params = new URLSearchParams(
     window.location.search

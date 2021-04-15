@@ -140,13 +140,18 @@
                         <label for="diversitechInterest">Interested in Diversitech?</label>
                     </div>
 
+                    <label for="chosenCourseId">Chosen Course</label>
+                    <select id="chosenCourseId" class="submitApplicant form-control" name="chosenCourseId"  data-selected="<?php echo $applicant->getChosenCourseId();?>" required>
+                        <option value="">Unconfirmed</option>
+                    </select>
+
                     <label for="assessmentNotes">Assessment notes</label>
                     <div id="assessmentNotesError" class="alert hidden formItem_alert"></div>
                     <textarea id="assessmentNotes" name="assessmentNotes" class="submitApplicant form-control" placeholder="Notes about the student assessment"><?php echo $applicant->getAssessmentNotes();?></textarea>
                 </div>
             </section>
 
-            <section class="applicationFormSection">
+            <section class="applicationFormSection student<?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
                 <div data-toggle="collapse" class="collapse-header" data-target="#onboarding" aria-expanded="false" aria-controls="onboarding">
                     <h4>Onboarding Info</h4>
                     <i class="glyphicon glyphicon-chevron-down"></i>
@@ -199,10 +204,35 @@
                 </div>
             </section>
 
+            <section class="applicationFormSection student<?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
+                <div data-toggle="collapse" class="collapse-header" data-target="#studentinfo" aria-expanded="false" aria-controls="studentinfo">
+                    <h4>Student Info</h4>
+                    <i class="glyphicon glyphicon-chevron-down"></i>
+                </div>
+
+                <div id="studentinfo" class="collapse">
+
+                    <label for="githubUsername">Github Username</label>
+                    <input id="githubUsername" name="githubUsername" class="submitApplicant form-control" type="text" value="<?php echo $applicant->getGithubUsername();?>">
+
+                    <label for="portfolioUrl">Portfolio URL</label>
+                    <input id="portfolioUrl" name="portfolioUrl" class="submitApplicant form-control" type="url" value="<?php echo $applicant->getPortfolioUrl();?>">
+
+                    <label for="pleskHostingUrl">Plesk Hosting Url</label>
+                    <input id="pleskHostingUrl" name="pleskHostingUrl" class="submitApplicant form-control" type="url" value="<?php echo $applicant->getPleskHostingUrl();?>">
+
+                    <label for="githubEducationLink">Github Education Url</label>
+                    <input id="githubEducationLink" name="githubEducationLink" class="submitApplicant form-control" type="url" value="<?php echo $applicant->getGithubEducationLink();?>">
+
+                    <label for="additionalNotes">Notes</label>
+                    <textarea id="additionalNotes" name="additionalNotes" class="submitApplicant form-control"><?php echo $applicant->getAdditionalNotes();?></textarea>
+                </div>
+            </section>
+
             <input id="submitApplicant" type="submit" class="btn btn-success" value="Save"/>
+            <a href="./applicants" class="btn btn-danger">Cancel</a>
             <div id="generalError" class="alert alert-danger hidden formItem_alert"></div>
         </form>
-        <a href="./applicants" class="btn btn-danger">Cancel</a>
 <?php require 'partials/layout/footer.phtml'; ?>
 </body>
 </html>

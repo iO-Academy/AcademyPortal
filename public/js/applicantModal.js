@@ -57,6 +57,15 @@ $(document).ready(function(){
                     // Examine the text in the response
                     response.json().then(function(data) {
 
+                        document.querySelectorAll('#applicantModal section.student').forEach(section => {
+                            if (data.isStudentStage === "1") {
+                                section.classList.remove('hidden')
+                            } else {
+                                section.classList.add('hidden')
+                            }
+                        })
+
+
                         data.dateTimeAdded = prettyDate(data.dateTimeAdded);
                         displayField(data, 'dateTimeAdded')
                         document.getElementById('apprentice').innerHTML = ''
@@ -135,6 +144,14 @@ $(document).ready(function(){
                         displayField(data, 'kitNum', 'Not assiged')
 
                         displayField(data, 'team', 'Not assigned')
+
+                        displayField(data, 'githubUsername', 'Unknown')
+                        displayField(data, 'portfolioUrl', 'Unknown')
+                        displayField(data, 'pleskHostingUrl', 'Not created')
+                        displayField(data, 'githubEducationLink', 'Not created')
+                        displayField(data, 'additionalNotes', 'No notes')
+                        data.chosenCourseDate = prettyDate(data.chosenCourseDate)
+                        displayField(data, 'chosenCourseDatePretty', 'Not asked yet')
                     })
                 }
             )

@@ -65,8 +65,16 @@ class ApplicantSanitiser
         $applicant['laptopNum'] = $applicant['laptopNum'] ? (int)$applicant['laptopNum'] : null;
         $applicant['taster'] = !empty($applicant['taster']) ? $applicant['taster'] : null;
         $applicant['tasterAttendance'] = $applicant['tasterAttendance'] ? 1 : 0;
-        $applicant['team'] = StringSanitiser::sanitiseString($applicant['team']);
-        $applicant['stageID'] = (int)$applicant['stageID'];
+        $applicant['team'] = !empty($applicant['team']) ? StringSanitiser::sanitiseString($applicant['team']) : null;
+        $applicant['stageId'] = (int)$applicant['stageId'];
+        $applicant['stageOptionId'] = $applicant['stageOptionId'] ?? null;
+
+        $applicant['githubUsername'] =
+            !empty($applicant['githubUsername']) ? StringSanitiser::sanitiseString($applicant['githubUsername']) : null;
+        $applicant['additionalNotes'] =
+            !empty($applicant['additionalNotes']) ?
+                StringSanitiser::sanitiseString($applicant['additionalNotes']) : null;
+        $applicant['chosenCourseId'] = !empty($applicant['chosenCourseId']) ? (int)$applicant['chosenCourseId'] : null;
 
         return $applicant;
     }

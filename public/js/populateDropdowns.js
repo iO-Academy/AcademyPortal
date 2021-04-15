@@ -53,12 +53,11 @@ let handleFormOptions = async () => {
   return response.data;
 };
 
-let outputCohorts = async () => {
-  const data = await handleFormOptions();
-  const element = document.getElementById('cohorts');
+let outputCohorts = (cohorts, el = null) => {
+  const element = el || document.getElementById('cohorts');
   let cohortOptions = '';
 
-  data.cohorts.forEach(item => {
+  cohorts.forEach(item => {
     cohortOptions += '<option ';
     if (element.dataset.selected === item.id) {
       cohortOptions += 'selected ';
@@ -76,12 +75,11 @@ let outputCohorts = async () => {
   element.innerHTML += cohortOptions;
 };
 
-let outputHearAbout = async () => {
-  const data = await handleFormOptions();
+let outputHearAbout = (options) => {
   const element = document.getElementById('hear-about');
   let hearAboutOptions = '';
 
-  data.hearAbout.forEach(item => {
+  options.forEach(item => {
     hearAboutOptions += '<option ';
     if (element.dataset.selected === item.id) {
       hearAboutOptions += 'selected ';
