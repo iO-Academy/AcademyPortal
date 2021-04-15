@@ -101,11 +101,11 @@ class ApplicantValidator
             ) &&
             (
                 empty($applicant['pleskHostingUrl']) ||
-                filter_var($applicant['pleskHostingUrl'], FILTER_VALIDATE_URL)
+                PleskValidator::validate($applicant['pleskHostingUrl'])
             ) &&
             (
                 empty($applicant['githubEducationLink']) ||
-                filter_var($applicant['githubEducationLink'], FILTER_VALIDATE_URL)
+                GithubEducationValidator::validate($applicant['githubEducationLink'])
             ) &&
             (
                 empty($applicant['additionalNotes']) ||
