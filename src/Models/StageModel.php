@@ -82,7 +82,7 @@ class StageModel
      */
     public function getStageTitles(): array
     {
-        $query = $this->db->prepare('SELECT `id`, `title` FROM `stages`;');
+        $query = $this->db->prepare('SELECT `id`, `title`, `student` FROM `stages`;');
         $query->execute();
         return $query->fetchAll();
     }

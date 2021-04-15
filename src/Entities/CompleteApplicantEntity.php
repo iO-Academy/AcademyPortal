@@ -244,7 +244,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     /**
      * @return mixed
      */
-    public function getIsStudentStage()
+    public function isStudentStage()
     {
         return $this->isStudentStage;
     }

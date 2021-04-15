@@ -151,7 +151,7 @@
                 </div>
             </section>
 
-            <section class="applicationFormSection">
+            <section class="applicationFormSection student<?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
                 <div data-toggle="collapse" class="collapse-header" data-target="#onboarding" aria-expanded="false" aria-controls="onboarding">
                     <h4>Onboarding Info</h4>
                     <i class="glyphicon glyphicon-chevron-down"></i>
@@ -204,7 +204,7 @@
                 </div>
             </section>
 
-            <section class="applicationFormSection">
+            <section class="applicationFormSection student<?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
                 <div data-toggle="collapse" class="collapse-header" data-target="#studentinfo" aria-expanded="false" aria-controls="studentinfo">
                     <h4>Student Info</h4>
                     <i class="glyphicon glyphicon-chevron-down"></i>
