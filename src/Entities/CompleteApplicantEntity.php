@@ -85,7 +85,9 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'pleskHostingUrl' => $this->pleskHostingUrl,
                   'githubEducationLink' => $this->githubEducationLink,
                   'additionalNotes' => $this->additionalNotes,
-                  'chosenCourseId' => $this->chosenCourseId
+                  'chosenCourseId' => $this->chosenCourseId,
+                  'chosenCourseDate' => $this->chosenCourseDate,
+                  'chosenCourseDatePretty' => $this->getChosenCourseDatePretty()
         ];
     }
 
@@ -316,8 +318,8 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     /**
      * @return mixed
      */
-    public function getChosenCourseDate(): ?string
+    public function getChosenCourseDatePretty(): ?string
     {
-        return $this->chosenCourseDate;
+        return !empty($this->chosenCourseDate) ? date("F, Y", strtotime($this->chosenCourseDate)) : null;
     }
 }

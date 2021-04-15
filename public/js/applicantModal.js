@@ -150,6 +150,8 @@ $(document).ready(function(){
                         displayField(data, 'pleskHostingUrl', 'Not created')
                         displayField(data, 'githubEducationLink', 'Not created')
                         displayField(data, 'additionalNotes', 'No notes')
+                        data.chosenCourseDate = prettyDate(data.chosenCourseDate)
+                        displayField(data, 'chosenCourseDatePretty', 'Not asked yet')
                     })
                 }
             )
