@@ -72,26 +72,34 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `applicants_additional`;
 
 CREATE TABLE `applicants_additional` (
-  `id` int(11) unsigned NOT NULL,
-  `apprentice` int(1) DEFAULT NULL,
-  `aptitude` int(3) DEFAULT NULL,
-  `assessmentDay` date DEFAULT NULL,
-  `assessmentTime` varchar(5) DEFAULT NULL,
-  `assessmentNotes` text,
-  `diversitechInterest` int(1) DEFAULT NULL,
-  `diversitech` int(5) DEFAULT NULL,
-  `edaid` int(5) DEFAULT NULL,
-  `upfront` int(5) DEFAULT NULL,
-  `kitCollectionDay` date DEFAULT NULL,
-  `kitCollectionTime` varchar(5) DEFAULT NULL,
-  `kitNum` int(2) DEFAULT NULL,
-  `laptop` int(1) DEFAULT NULL,
-  `laptopDeposit` int(1) DEFAULT NULL,
-  `laptopNum` int(2) DEFAULT NULL,
-  `taster` date DEFAULT NULL,
-  `tasterAttendance` int(1) DEFAULT NULL,
-  `team` int(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+ `id` int(11) unsigned NOT NULL,
+ `apprentice` int(1) DEFAULT NULL,
+ `aptitude` int(3) DEFAULT NULL,
+ `assessmentDay` date DEFAULT NULL,
+ `assessmentTime` varchar(5) DEFAULT NULL,
+ `assessmentNotes` text,
+ `diversitechInterest` int(1) DEFAULT NULL,
+ `diversitech` int(5) DEFAULT NULL,
+ `edaid` int(5) DEFAULT NULL,
+ `upfront` int(5) DEFAULT NULL,
+ `kitCollectionDay` date DEFAULT NULL,
+ `kitCollectionTime` varchar(5) DEFAULT NULL,
+ `kitNum` int(2) DEFAULT NULL,
+ `laptop` int(1) DEFAULT NULL,
+ `laptopDeposit` int(1) DEFAULT NULL,
+ `laptopNum` int(2) DEFAULT NULL,
+ `taster` date DEFAULT NULL,
+ `tasterAttendance` int(1) DEFAULT NULL,
+ `team` int(1) DEFAULT NULL,
+ `githubUsername` varchar(255) DEFAULT NULL,
+ `portfolioUrl` varchar(255) DEFAULT NULL,
+ `pleskHostingUrl` varchar(255) DEFAULT NULL,
+ `githubEducationLink` varchar(255) DEFAULT NULL,
+ `additionalNotes` text,
+ `chosenCourseId` int(11) unsigned DEFAULT NULL,
+ PRIMARY KEY (`id`),
+ KEY `CourseID` (`chosenCourseId`),
+ CONSTRAINT `CourseID` FOREIGN KEY (`chosenCourseId`) REFERENCES `courses` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `applicants_additional` WRITE;
@@ -150,6 +158,7 @@ CREATE TABLE `courses` (
   `name` varchar(255) DEFAULT NULL,
   `trainer` varchar(255) DEFAULT NULL,
   `notes` varchar(500) DEFAULT NULL,
+  `deleted` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -277,35 +286,6 @@ VALUES
 
 /*!40000 ALTER TABLE `hear_about` ENABLE KEYS */;
 UNLOCK TABLES;
-
-
-# Dump of table hearAbout
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `hearAbout`;
-
-CREATE TABLE `hearAbout` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `hearAbout` varchar(150) DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-LOCK TABLES `hearAbout` WRITE;
-/*!40000 ALTER TABLE `hearAbout` DISABLE KEYS */;
-
-INSERT INTO `hearAbout` (`id`, `hearAbout`, `deleted`)
-VALUES
-	(1,'Google',0),
-	(2,'Newspaper',0),
-	(3,'Back of the toilet door',0),
-	(4,'Telepathy',0),
-	(5,'North Korea',0),
-	(6,'Yoda',0);
-
-/*!40000 ALTER TABLE `hearAbout` ENABLE KEYS */;
-UNLOCK TABLES;
-
 
 # Dump of table hiring_partner_companies
 # ------------------------------------------------------------
