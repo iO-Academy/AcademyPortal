@@ -348,7 +348,13 @@ class ApplicantModel implements ApplicantModelInterface
                             `laptopDeposit` = :laptopDeposit,
                             `laptopNum` = :laptopNum,
                             `taster` = :taster,
-                            `tasterAttendance` = :tasterAttendance
+                            `tasterAttendance` = :tasterAttendance,
+                            `githubUsername` = :githubUsername,
+                            `portfolioUrl` = :portfolioUrl,
+                            `pleskHostingUrl` = :pleskHostingUrl,
+                            `githubEducationLink` = :githubEducationLink,
+                            `additionalNotes` = :additionalNotes,
+                            `chosenCourseId` = :chosenCourseId
                         WHERE (
                             `id` = :id
                         );"
@@ -371,6 +377,12 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':laptopNum', $applicant['laptopNum']);
         $query->bindValue(':taster', $applicant['taster']);
         $query->bindValue(':tasterAttendance', $applicant['tasterAttendance']);
+        $query->bindValue(':githubUsername', $applicant['githubUsername']);
+        $query->bindValue(':portfolioUrl', $applicant['portfolioUrl']);
+        $query->bindValue(':pleskHostingUrl', $applicant['pleskHostingUrl']);
+        $query->bindValue(':githubEducationLink', $applicant['githubEducationLink']);
+        $query->bindValue(':additionalNotes', $applicant['additionalNotes']);
+        $query->bindValue(':chosenCourseId', $applicant['chosenCourseId']);
         $query->bindValue(':id', $applicant['id']);
 
         return $query->execute();

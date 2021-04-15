@@ -69,6 +69,13 @@ class ApplicantSanitiser
         $applicant['stageId'] = (int)$applicant['stageId'];
         $applicant['stageOptionId'] = $applicant['stageOptionId'] ?? null;
 
+        $applicant['githubUsername'] =
+            !empty($applicant['githubUsername']) ? StringSanitiser::sanitiseString($applicant['githubUsername']) : null;
+        $applicant['additionalNotes'] =
+            !empty($applicant['additionalNotes']) ?
+                StringSanitiser::sanitiseString($applicant['additionalNotes']) : null;
+        $applicant['chosenCourseId'] = !empty($applicant['chosenCourseId']) ? (int)$applicant['chosenCourseId'] : null;
+
         return $applicant;
     }
 }

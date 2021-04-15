@@ -86,7 +86,39 @@ class ApplicantValidator
                 empty($applicant['stageOptionId']) ||
                 is_numeric($applicant['stageOptionId'])
             ) &&
-            is_numeric($applicant['stageId'])
+            is_numeric($applicant['stageId']) &&
+            (
+                empty($applicant['githubUsername']) ||
+                StringValidator::validateLength(
+                    $applicant['githubUsername'],
+                    StringValidator::MAXVARCHARLENGTH,
+                    'githubUsername'
+                )
+            ) &&
+            (
+                empty($applicant['portfolioUrl']) ||
+                filter_var($applicant['portfolioUrl'], FILTER_VALIDATE_URL)
+            ) &&
+            (
+                empty($applicant['pleskHostingUrl']) ||
+                filter_var($applicant['pleskHostingUrl'], FILTER_VALIDATE_URL)
+            ) &&
+            (
+                empty($applicant['githubEducationLink']) ||
+                filter_var($applicant['githubEducationLink'], FILTER_VALIDATE_URL)
+            ) &&
+            (
+                empty($applicant['additionalNotes']) ||
+                StringValidator::validateLength(
+                    $applicant['additionalNotes'],
+                    StringValidator::MAXTEXTLENGTH,
+                    'additionalNotes'
+                )
+            ) &&
+            (
+                empty($applicant['chosenCourseId']) ||
+                is_numeric($applicant['chosenCourseId'])
+            )
         );
     }
 }

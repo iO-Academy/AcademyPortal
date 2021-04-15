@@ -142,7 +142,7 @@
 
                     <label for="chosenCourseId">Chosen Course</label>
                     <select id="chosenCourseId" class="submitApplicant form-control" name="chosenCourseId"  data-selected="<?php echo $applicant->getChosenCourseId();?>" required>
-                        <option>Unconfirmed</option>
+                        <option value="">Unconfirmed</option>
                     </select>
 
                     <label for="assessmentNotes">Assessment notes</label>
@@ -216,25 +216,16 @@
                     <input id="githubUsername" name="githubUsername" class="submitApplicant form-control" type="text" value="<?php echo $applicant->getGithubUsername();?>">
 
                     <label for="portfolioUrl">Portfolio URL</label>
-                    <div class="input-group">
-                        <span class="input-group-addon">https://</span>
-                        <input id="portfolioUrl" name="portfolioUrl" class="submitApplicant form-control" type="url" value="<?php echo $applicant->getPortfolioUrl();?>">
-                    </div>
+                    <input id="portfolioUrl" name="portfolioUrl" class="submitApplicant form-control" type="url" value="<?php echo $applicant->getPortfolioUrl();?>">
 
                     <label for="pleskHostingUrl">Plesk Hosting Url</label>
-                    <div class="input-group">
-                        <span class="input-group-addon">https://</span>
-                        <input id="pleskHostingUrl" name="pleskHostingUrl" class="submitApplicant form-control" type="url" value="<?php echo $applicant->getPleskHostingUrl();?>">
-                    </div>
+                    <input id="pleskHostingUrl" name="pleskHostingUrl" class="submitApplicant form-control" type="url" value="<?php echo $applicant->getPleskHostingUrl();?>">
 
                     <label for="githubEducationLink">Github Education Url</label>
-                    <div class="input-group">
-                        <span class="input-group-addon">https://</span>
-                        <input id="githubEducationLink" name="githubEducationLink" class="submitApplicant form-control" type="url" value="<?php echo $applicant->getGithubEducationLink();?>">
-                    </div>
+                    <input id="githubEducationLink" name="githubEducationLink" class="submitApplicant form-control" type="url" value="<?php echo $applicant->getGithubEducationLink();?>">
 
                     <label for="additionalNotes">Notes</label>
-                    <textarea id="additionalNotes" name="additionalNotes" class="form-control"><?php echo $applicant->getAdditionalNotes();?></textarea>
+                    <textarea id="additionalNotes" name="additionalNotes" class="submitApplicant form-control"><?php echo $applicant->getAdditionalNotes();?></textarea>
                 </div>
             </section>
 
