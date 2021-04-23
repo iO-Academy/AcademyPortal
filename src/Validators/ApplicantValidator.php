@@ -13,7 +13,10 @@ class ApplicantValidator
          StringValidator::validateExistsAndLength($applicant['email'], StringValidator::MAXVARCHARLENGTH) &&
          filter_var($applicant['email'], FILTER_VALIDATE_EMAIL) !== false &&
          StringValidator::validateExistsAndLength($applicant['name'], StringValidator::MAXVARCHARLENGTH) &&
-         PhoneNumberValidator::validatePhoneNumber($applicant['phoneNumber']) &&
+         (
+            empty($applicant['phoneNumber']) ||
+            PhoneNumberValidator::validatePhoneNumber($applicant['phoneNumber'])
+         ) &&
          is_numeric($applicant['cohortId']) &&
          StringValidator::validateExistsAndLength($applicant['whyDev'], StringValidator::MAXTEXTLENGTH) &&
          StringValidator::validateExistsAndLength($applicant['codeExperience'], StringValidator::MAXTEXTLENGTH) &&

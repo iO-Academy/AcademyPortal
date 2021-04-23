@@ -130,8 +130,7 @@ let validateFormInputs = (data) => {
             isPresent: isPresent(data.email)
         },
         phone: {
-            isPhone: isPhoneNumber(data.phoneNumber),
-            isPresent: isPresent(data.phoneNumber)
+            isPhone: isPhoneNumber(data.phoneNumber)
         } ,
         whyDev: {
             validLengthText: textAreaMaxLength(data.whyDev),
