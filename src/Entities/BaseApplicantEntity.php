@@ -62,6 +62,15 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
     {
         return $this->dateTimeAdded;
     }
+    /**
+     * Get's dateOfApplication.
+     *
+     * @return string, returns the dateOfApplication field.
+     */
+    public function getDateOfApplicationForRFC3339()
+    {
+        return date('Y-m-d\TH:i', strtotime($this->dateTimeAdded));
+    }
 
     /**
      * Get's dateOfApplication.

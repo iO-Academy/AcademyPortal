@@ -6,6 +6,7 @@ class DateTimeValidator
 {
     private const TIME_REGEX = '/([01][0-9]|2[0-3]):[0-5][0-9]/';
     private const DATE_REGEX = '/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/';
+    private const DATETIME_REGEX = '/[\d]{4}-[01][0-9]-[0-3][0-9]T[0-2][0-9]:[0-5][0-9]/';
 
     /**
      * Sanitise as a date in YYYY-MM-DD format
@@ -58,6 +59,17 @@ class DateTimeValidator
             throw new \Exception('End time should be later than start time');
         } else {
             return true;
+        }
+    }
+
+    public static function validateDateTime(string $dateTime)
+    {
+        if (!empty($dateTime) && !preg_match(self::DATETIME_REGEX, $dateTime)) {
+            throw new \Exception('Please enter correct date/time');
+        } if (empty($dateTime)) {
+            return null;
+        } else {
+            return $dateTime;
         }
     }
 }

@@ -299,7 +299,8 @@ class ApplicantModel implements ApplicantModelInterface
                             `finance` = :finance,
                             `notes` = :notes,
                             `stageId` = :stageId,
-                            `stageOptionId` = :stageOptionId
+                            `stageOptionId` = :stageOptionId,
+                            `dateTimeAdded` = :dateTimeAdded
                         WHERE (
                             `id` = :id
                         );"
@@ -319,6 +320,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':id', $applicant['id']);
         $query->bindValue(':stageId', $applicant['stageId']);
         $query->bindValue(':stageOptionId', $applicant['stageOptionId']);
+        $query->bindValue(':dateTimeAdded', $applicant['dateTimeAdded']);
 
         return $query->execute();
     }

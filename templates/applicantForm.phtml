@@ -89,7 +89,12 @@
                         <label for="apprentice">Apprentice applicant</label>
                     </div>
 
-                    <label for="notes">Notes.</label>
+                    <div class="form-group">
+                        <label for="dateTimeAdded">Date/Time of application</label>
+                        <input id="dateTimeAdded" name="dateTimeAdded" class="submitApplicant form-control" type="datetime-local" value="<?php echo $applicant->getDateOfApplicationForRFC3339(); ?>" />
+                    </div>
+
+                    <label for="notes">Notes</label>
                     <div id="notesError" class="alert hidden formItem_alert"></div>
                     <textarea id="notes" name="notes" class="submitApplicant form-control" placeholder="Enter here"><?php echo $applicant->getNotes();?></textarea>
                 </div>
