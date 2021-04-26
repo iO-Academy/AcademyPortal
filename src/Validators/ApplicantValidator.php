@@ -39,6 +39,7 @@ class ApplicantValidator
         DateTimeValidator::validateDate($applicant['assessmentDay']);
         DateTimeValidator::validateDate($applicant['assessmentDay']);
         DateTimeValidator::validateTime($applicant['assessmentTime']);
+        DateTimeValidator::validateDateTime($applicant['dateTimeAdded']);
 
         if (
             (
