@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests\Sanitisers;
 
 use Portal\Sanitisers\StringSanitiser;
@@ -13,20 +14,18 @@ class StringSanitiserTest extends TestCase
         $expected = 'Hello World!';
         $this->assertEquals($result, $expected);
     }
+
     public function testSanitiseStringSuccessNull()
     {
         $result = StringSanitiser::sanitiseString(null);
         $expected = '';
         $this->assertEquals($result, $expected);
     }
+
     public function testSanitiseStringFailure()
     {
         $arr = [];
         $this->expectException(\TypeError::class);
         StringSanitiser::sanitiseString($arr);
     }
-//    public function testSanitiseStringMalformed()
-//    {
-//
-//    }
 }
