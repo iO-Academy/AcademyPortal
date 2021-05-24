@@ -160,6 +160,24 @@ class EventModel
         return $query->fetchAll();
     }
 
+    /**
+     * Gets events based on a specific category ID from the database
+     *
+     * @param string of category ID
+     * @return array An array of Events based on category ID
+     */
+    public function getEventsByCategoryId(string $categoryId): array
+    {
+        $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
+                `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
+                FROM `events` 
+                LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
+                WHERE `events`.`category` = :categoryId ORDER BY `date` DESC;';
+        $query = $this->db->prepare($sql);
+        $query->bindParam(':categoryId', $categoryId);
+        $query->execute();
+        return $query->fetchAll();
+    }
 
     /**
      *Adds event id, hiring partner id and people attending to database
