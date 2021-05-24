@@ -64,11 +64,4 @@ class DateTimeValidatorTest extends TestCase
         $this->expectException(\Exception::class);
         DateTimeValidator::validateDateTime($dateTime);
     }
-
-    public function testValidateDateTimeMalform()
-    {
-        $arr = [1];
-        $this->expectException(\TypeError::class);
-        DateTimeValidator::validateDateTime($arr);
-    }
 }
