@@ -57,4 +57,18 @@ class DateTimeValidatorTest extends TestCase
         $result = DateTimeValidator::validateDateTime($dateTime);
         $this->assertEquals($result, $dateTime);
     }
+
+    public function testValidateDateTimeFailure()
+    {
+        $dateTime = '202139301';
+        $this->expectException(\Exception::class);
+        DateTimeValidator::validateDateTime($dateTime);
+    }
+
+    public function testValidateDateTimeMalform()
+    {
+        $arr = [1];
+        $this->expectException(\TypeError::class);
+        DateTimeValidator::validateDateTime($arr);
+    }
 }
