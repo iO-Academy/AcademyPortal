@@ -204,7 +204,9 @@ class ApplicantModel implements ApplicantModelInterface
                       `stages`.`student` AS 'isStudentStage',
                       `option` as 'stageOptionName', `githubUsername`, `portfolioUrl`, `pleskHostingUrl`,
                       `githubEducationLink`, `additionalNotes`, `student_course`.`start_date` AS 'chosenCourseDate',
-                      `applicants_additional`.`chosenCourseId` AS 'chosenCourseId'
+                      `applicants_additional`.`chosenCourseId` AS 'chosenCourseId',
+                      `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`, `inductionEmailSent`, `signedNDA`,
+                      `checkedID`, `dpName`, `dpPhoto`, `dpTestimonial`, `dpBio`, `dpVideo`
                         FROM `applicants` 
                         LEFT JOIN `courses` applicant_course
                             ON `applicants`.`cohortId` = `applicant_course`.`id`
