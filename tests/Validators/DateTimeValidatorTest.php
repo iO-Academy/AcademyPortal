@@ -50,4 +50,11 @@ class DateTimeValidatorTest extends TestCase
         $this->expectException(\Exception::class);
         DateTimeValidator::validateDate($date);
     }
+
+    public function testValidateDateTimeSuccess()
+    {
+        $dateTime = '2021-05-05T18:00';
+        $result = DateTimeValidator::validateDateTime($dateTime);
+        $this->assertEquals($result, $dateTime);
+    }
 }
