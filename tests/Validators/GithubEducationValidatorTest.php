@@ -25,7 +25,8 @@ class GithubEducationValidatorTest extends TestCase
 
     public function testGitHubEducationValidatorMalformed()
     {
-        $url = ['https://education.github.com/student/verify?school_id=22531&student_id=46&signature=908202655653833e97a0c5c7e8379f7c935938d5e3f79d961348acd886349b51'];
+        $url = ['https://education.github.com/student/verify?school_id=22531&student_id=46
+        &signature=908202655653833e97a0c5c7e8379f7c935938d5e3f79d961348acd886349b51'];
         $this->expectException(\TypeError::class);
         GithubEducationValidator::validate($url);
     }
