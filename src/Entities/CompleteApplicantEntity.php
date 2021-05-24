@@ -36,6 +36,20 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $additionalNotes;
     protected $chosenCourseId;
     protected $chosenCourseDate;
+    protected $attitude;
+    protected $averageScore;
+    protected $fee;
+    protected $signedTerms;
+    protected $signedDiversitech;
+    protected $inductionEmailSent;
+    protected $signedNDA;
+    protected $checkedID;
+    protected $dpName;
+    protected $dpPhoto;
+    protected $dpTestimonial;
+    protected $dpBio;
+    protected $dpVideo;
+
 
     /**
      * Returns private properties from object.
@@ -86,6 +100,19 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'githubEducationLink' => $this->githubEducationLink,
                   'additionalNotes' => $this->additionalNotes,
                   'chosenCourseId' => $this->chosenCourseId,
+                  'attitude' => $this->attitude,
+                  'averageScore' => $this->averageScore,
+                  'fee' => $this->fee,
+                  'signedTerms' => $this->signedTerms,
+                  'signedDiversitech' => $this->signedDiversitech,
+                  'inductionEmailSent' => $this->inductionEmailSent,
+                  'signedNDA' => $this->signedNDA,
+                  'checkedID' => $this->checkedID,
+                  'dpName' => $this->dpName,
+                  'dpPhoto' => $this->dpPhoto,
+                  'dpTestimonial' => $this->dpTestimonial,
+                  'dpBio' => $this->dpBio,
+                  'dpVideo' => $this->dpVideo,
                   'chosenCourseDate' => $this->chosenCourseDate,
                   'chosenCourseDatePretty' => $this->getChosenCourseDatePretty()
         ];
@@ -321,5 +348,117 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getChosenCourseDatePretty(): ?string
     {
         return !empty($this->chosenCourseDate) ? date("F, Y", strtotime($this->chosenCourseDate)) : null;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAttitude()
+    {
+        return $this->attitude;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAverageScore()
+    {
+        return $this->averageScore;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFee()
+    {
+        return $this->fee;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSignedTerms()
+    {
+        return $this->signedTerms;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSignedDiversitech()
+    {
+        return $this->signedDiversitech;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInductionEmailSent()
+    {
+        return $this->inductionEmailSent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSignedNDA()
+    {
+        return $this->signedNDA;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCheckedID()
+    {
+        return $this->checkedID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDpName()
+    {
+        return $this->dpName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDpPhoto()
+    {
+        return $this->dpPhoto;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDpTestimonial()
+    {
+        return $this->dpTestimonial;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDpBio()
+    {
+        return $this->dpBio;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDpVideo()
+    {
+        return $this->dpVideo;
     }
 }
