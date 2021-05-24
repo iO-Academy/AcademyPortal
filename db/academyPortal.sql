@@ -5,9 +5,9 @@
 # https://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.31)
+# Host: 127.0.0.1 (MySQL 5.7.33)
 # Database: academyPortal
-# Generation Time: 2020-11-24 15:51:51 +0000
+# Generation Time: 2021-05-24 13:18:03 +0000
 # ************************************************************
 
 
@@ -43,24 +43,25 @@ CREATE TABLE `applicants` (
   `stageOptionId` int(11) DEFAULT NULL,
   `dateTimeAdded` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted` tinyint(4) DEFAULT '0',
+  `backgroundInfoID` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `applicants` WRITE;
 /*!40000 ALTER TABLE `applicants` DISABLE KEYS */;
 
-INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `cohortId`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`)
+INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `cohortId`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`, `backgroundInfoID`)
 VALUES
-	(2,'Owen Miller','weqi@mailinator.net','+532-82-1263991',2,'Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea','Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat',3,'1','1','1','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',6,NULL,'2018-11-24 21:26:46',0),
-	(3,'Nero Burgess','famaxykivo@yahoo.com','+124-85-7626938',2,'Perspiciatis fugiat possimus tempor dolores nesciunt consequatur voluptatem','Quibusdam officiis occaecat velit error sunt ratione voluptatem',5,'1','1','1','Sint voluptas ut nihil incididunt officia duis ab eius impedit consequatur Incidunt do aut doloribus proident quos dolores pariatur Sed',6,NULL,'2018-11-28 14:29:58',0),
-	(4,'Matthew Jarvis','tucawohuw@mailinator.net','+848-54-4778506',3,'Natus quidem magnam autem corrupti laborum Anim quos quia','Dolor quia dignissimos qui excepturi eos voluptas est',6,'1','0','0','Quod harum esse quia maxime explicabo Voluptatem magna soluta voluptate optio',1,NULL,'2018-11-28 14:33:41',0),
-	(5,'Ignacia Watkins','qewopepodi@mailinator.com','+613-35-8385501',2,'Excepturi consequatur Est culpa enim itaque ratione optio minima ullamco voluptates dolor et totam','Earum est iure sed fuga Velit',6,'0','0','0','Impedit aut duis laborum aspernatur amet aliquip tempora harum nulla aut',6,NULL,'2018-11-28 14:42:01',0),
-	(6,'Luke Haney','wubeqyko@mailinator.com','+942-61-9779862',3,'Nemo id qui aspernatur possimus dolor adipisicing aut est sed minim','Consequatur quia voluptate delectus impedit similique',6,'0','0','0','Non sed modi ab culpa sed quia tempore debitis dolor',1,NULL,'2018-11-28 14:52:20',0),
-	(7,'Curran Patel','pudapaceje@mailinator.net','+628-48-1465496',4,'Non voluptas eligendi assumenda et itaque cupidatat ut tempor','Et aliqua Quia sit soluta enim nesciunt vitae consequatur Aut repellendus Soluta magni',2,'1','0','0','Quos fugiat qui et enim eum tempor est modi',3,7,'2018-11-28 22:53:05',0),
-	(8,'Katelyn Parsons','poipoi@qwerty.com','+567-54-9746748',3,'Aut est et est esse mollitia laborum','Fuga Enim omnis anim et error aut et voluptate anim blanditiis dolorem voluptatem facilis',2,'0','0','0','Similique velit qui nisi debitis aliquip lorem dolor commodi assumenda quod quod autem amet eu mollitia quod necessitatibus',1,NULL,'2018-11-28 23:10:12',0),
-	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555',3,'Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit',1,NULL,'2018-11-28 23:10:47',0),
-	(10,'fdadfvsgr','kemi@dahkof.mz','07951634661',1,'Jubbu owuvoklu ketdo elfi rakkokoku mosan finu rukuf jim jo po aluhci fuc habdi be seeho sejur wikehas. Umepeob fe figloobo fu','Unojor ku vos cu ked niezakas mepgib iribi ikearvep cagjuto kur pohumi osoca ehuura fi dawa. Tijop ceugiec tace pe sejtino juuj tevsu cohokos gavikpoh lulof doc vebev. Wonte podzuz fozdid vozmop mijerar du bowcuj ludetren zapa',1,'1','1','0','Wi cuapje va woza ubogi pet dugenbid aju emlat nukguv mas bub. Fimun saitopi gug rovasi du vinafa pednipvi mo gojrurpo uklip kuor nu civud ewicu tiuse rab. Ifabub sa dulurtuw cikebu uni se retguh piwe ricjomlu rudah detu cupi',1,NULL,'2020-06-19 10:22:48',1),
-	(15,'Lucia','livagi@welif.va','01249701100',1,'Zu wemcujid sooro fopmali cimogifa fojzoz puub ocepode fujdovel baewi efela zanpa wondohun vepje ifah abwewa. Roos to rof wig hob','Ju gono navaretu tudupemu nideted jeh inure cinisje na rupeniz na ezo suwpekje risocder an. Hobun vuj ugecafo pek fifcugak upu ta kutucla olzobi zu begudigo guzjucmo ijfu igu rotvi tovu huzfi za. Funinin lawhiar fotus piwzeli nup ozaguk uzd',1,'1','1','1','Igma cag dupaj hawar bi iluirizi mooj tocnofmin aponak net zu tigetes wahagivo era ecme. Vagmipec lokke odo muv fabdaw ebujuroj resabje sap ni buma ref lo aruma badjavir jij sazjep. Hudsal do fow dus ceulo nov puratin nonozu vi ewleco ruefi relofivu hu hiohefo kuc',1,NULL,'2020-08-11 14:49:15',0);
+	(2,'Owen Miller','weqi@mailinator.net','+532-82-1263991',2,'Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea','Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat',3,'1','1','1','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',6,NULL,'2018-11-24 21:26:46',0,NULL),
+	(3,'Nero Burgess','famaxykivo@yahoo.com','+124-85-7626938',2,'Perspiciatis fugiat possimus tempor dolores nesciunt consequatur voluptatem','Quibusdam officiis occaecat velit error sunt ratione voluptatem',5,'1','1','1','Sint voluptas ut nihil incididunt officia duis ab eius impedit consequatur Incidunt do aut doloribus proident quos dolores pariatur Sed',6,NULL,'2018-11-28 14:29:58',0,NULL),
+	(4,'Matthew Jarvis','tucawohuw@mailinator.net','+848-54-4778506',3,'Natus quidem magnam autem corrupti laborum Anim quos quia','Dolor quia dignissimos qui excepturi eos voluptas est',6,'1','0','0','Quod harum esse quia maxime explicabo Voluptatem magna soluta voluptate optio',1,NULL,'2018-11-28 14:33:41',0,NULL),
+	(5,'Ignacia Watkins','qewopepodi@mailinator.com','+613-35-8385501',2,'Excepturi consequatur Est culpa enim itaque ratione optio minima ullamco voluptates dolor et totam','Earum est iure sed fuga Velit',6,'0','0','0','Impedit aut duis laborum aspernatur amet aliquip tempora harum nulla aut',6,NULL,'2018-11-28 14:42:01',0,NULL),
+	(6,'Luke Haney','wubeqyko@mailinator.com','+942-61-9779862',3,'Nemo id qui aspernatur possimus dolor adipisicing aut est sed minim','Consequatur quia voluptate delectus impedit similique',6,'0','0','0','Non sed modi ab culpa sed quia tempore debitis dolor',1,NULL,'2018-11-28 14:52:20',0,NULL),
+	(7,'Curran Patel','pudapaceje@mailinator.net','+628-48-1465496',4,'Non voluptas eligendi assumenda et itaque cupidatat ut tempor','Et aliqua Quia sit soluta enim nesciunt vitae consequatur Aut repellendus Soluta magni',2,'1','0','0','Quos fugiat qui et enim eum tempor est modi',3,7,'2018-11-28 22:53:05',0,NULL),
+	(8,'Katelyn Parsons','poipoi@qwerty.com','+567-54-9746748',3,'Aut est et est esse mollitia laborum','Fuga Enim omnis anim et error aut et voluptate anim blanditiis dolorem voluptatem facilis',2,'0','0','0','Similique velit qui nisi debitis aliquip lorem dolor commodi assumenda quod quod autem amet eu mollitia quod necessitatibus',1,NULL,'2018-11-28 23:10:12',0,NULL),
+	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555',3,'Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit',1,NULL,'2018-11-28 23:10:47',0,NULL),
+	(10,'fdadfvsgr','kemi@dahkof.mz','07951634661',1,'Jubbu owuvoklu ketdo elfi rakkokoku mosan finu rukuf jim jo po aluhci fuc habdi be seeho sejur wikehas. Umepeob fe figloobo fu','Unojor ku vos cu ked niezakas mepgib iribi ikearvep cagjuto kur pohumi osoca ehuura fi dawa. Tijop ceugiec tace pe sejtino juuj tevsu cohokos gavikpoh lulof doc vebev. Wonte podzuz fozdid vozmop mijerar du bowcuj ludetren zapa',1,'1','1','0','Wi cuapje va woza ubogi pet dugenbid aju emlat nukguv mas bub. Fimun saitopi gug rovasi du vinafa pednipvi mo gojrurpo uklip kuor nu civud ewicu tiuse rab. Ifabub sa dulurtuw cikebu uni se retguh piwe ricjomlu rudah detu cupi',1,NULL,'2020-06-19 10:22:48',1,NULL),
+	(15,'Lucia','livagi@welif.va','01249701100',1,'Zu wemcujid sooro fopmali cimogifa fojzoz puub ocepode fujdovel baewi efela zanpa wondohun vepje ifah abwewa. Roos to rof wig hob','Ju gono navaretu tudupemu nideted jeh inure cinisje na rupeniz na ezo suwpekje risocder an. Hobun vuj ugecafo pek fifcugak upu ta kutucla olzobi zu begudigo guzjucmo ijfu igu rotvi tovu huzfi za. Funinin lawhiar fotus piwzeli nup ozaguk uzd',1,'1','1','1','Igma cag dupaj hawar bi iluirizi mooj tocnofmin aponak net zu tigetes wahagivo era ecme. Vagmipec lokke odo muv fabdaw ebujuroj resabje sap ni buma ref lo aruma badjavir jij sazjep. Hudsal do fow dus ceulo nov puratin nonozu vi ewleco ruefi relofivu hu hiohefo kuc',1,NULL,'2020-08-11 14:49:15',0,NULL);
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -72,51 +73,87 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `applicants_additional`;
 
 CREATE TABLE `applicants_additional` (
- `id` int(11) unsigned NOT NULL,
- `apprentice` int(1) DEFAULT NULL,
- `aptitude` int(3) DEFAULT NULL,
- `assessmentDay` date DEFAULT NULL,
- `assessmentTime` varchar(5) DEFAULT NULL,
- `assessmentNotes` text,
- `diversitechInterest` int(1) DEFAULT NULL,
- `diversitech` int(5) DEFAULT NULL,
- `edaid` int(5) DEFAULT NULL,
- `upfront` int(5) DEFAULT NULL,
- `kitCollectionDay` date DEFAULT NULL,
- `kitCollectionTime` varchar(5) DEFAULT NULL,
- `kitNum` int(2) DEFAULT NULL,
- `laptop` int(1) DEFAULT NULL,
- `laptopDeposit` int(1) DEFAULT NULL,
- `laptopNum` int(2) DEFAULT NULL,
- `taster` date DEFAULT NULL,
- `tasterAttendance` int(1) DEFAULT NULL,
- `team` int(1) DEFAULT NULL,
- `githubUsername` varchar(255) DEFAULT NULL,
- `portfolioUrl` varchar(255) DEFAULT NULL,
- `pleskHostingUrl` varchar(255) DEFAULT NULL,
- `githubEducationLink` varchar(255) DEFAULT NULL,
- `additionalNotes` text,
- `chosenCourseId` int(11) unsigned DEFAULT NULL,
- PRIMARY KEY (`id`),
- KEY `CourseID` (`chosenCourseId`),
- CONSTRAINT `CourseID` FOREIGN KEY (`chosenCourseId`) REFERENCES `courses` (`id`)
+  `id` int(11) unsigned NOT NULL,
+  `apprentice` int(1) DEFAULT NULL,
+  `aptitude` int(3) DEFAULT NULL,
+  `assessmentDay` date DEFAULT NULL,
+  `assessmentTime` varchar(5) DEFAULT NULL,
+  `assessmentNotes` text,
+  `diversitechInterest` int(1) DEFAULT NULL,
+  `diversitech` int(5) DEFAULT NULL,
+  `edaid` int(5) DEFAULT NULL,
+  `upfront` int(5) DEFAULT NULL,
+  `kitCollectionDay` date DEFAULT NULL,
+  `kitCollectionTime` varchar(5) DEFAULT NULL,
+  `kitNum` int(2) DEFAULT NULL,
+  `laptop` int(1) DEFAULT NULL,
+  `laptopDeposit` int(1) DEFAULT NULL,
+  `laptopNum` int(2) DEFAULT NULL,
+  `taster` date DEFAULT NULL,
+  `tasterAttendance` int(1) DEFAULT NULL,
+  `team` int(1) DEFAULT NULL,
+  `githubUsername` varchar(255) DEFAULT NULL,
+  `portfolioUrl` varchar(255) DEFAULT NULL,
+  `pleskHostingUrl` varchar(255) DEFAULT NULL,
+  `githubEducationLink` varchar(255) DEFAULT NULL,
+  `additionalNotes` text,
+  `chosenCourseId` int(11) unsigned DEFAULT NULL,
+  `attitude` int(3) DEFAULT NULL,
+  `averageScore` int(3) DEFAULT NULL,
+  `fee` int(5) DEFAULT NULL,
+  `signedTerms` tinyint(1) DEFAULT NULL,
+  `signedDiversitech` tinyint(1) DEFAULT NULL,
+  `inductionEmailSent` tinyint(1) DEFAULT NULL,
+  `signedNDA` tinyint(1) DEFAULT NULL,
+  `checkedID` tinyint(1) DEFAULT NULL,
+  `dpName` tinyint(1) DEFAULT NULL,
+  `dpPhoto` tinyint(1) DEFAULT NULL,
+  `dpTestimonial` tinyint(1) DEFAULT NULL,
+  `dpBio` tinyint(1) DEFAULT NULL,
+  `dpVideo` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `CourseID` (`chosenCourseId`),
+  CONSTRAINT `CourseID` FOREIGN KEY (`chosenCourseId`) REFERENCES `courses` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `applicants_additional` WRITE;
 /*!40000 ALTER TABLE `applicants_additional` DISABLE KEYS */;
 
-INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, `tasterAttendance`, `team`)
+INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, `tasterAttendance`, `team`, `githubUsername`, `portfolioUrl`, `pleskHostingUrl`, `githubEducationLink`, `additionalNotes`, `chosenCourseId`, `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`, `inductionEmailSent`, `signedNDA`, `checkedID`, `dpName`, `dpPhoto`, `dpTestimonial`, `dpBio`, `dpVideo`)
 VALUES
-	(2,1,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1),
-	(3,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,2),
-	(5,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1),
-	(15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+	(2,1,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(3,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(5,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `applicants_additional` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `cohorts`; /* DO NOT REMOVE THIS LINE! */
+# Dump of table background_info
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `background_info`;
+
+CREATE TABLE `background_info` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `backkgroundInfo` varchar(40) DEFAULT NULL,
+  `deleted` tinyint(4) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `background_info` WRITE;
+/*!40000 ALTER TABLE `background_info` DISABLE KEYS */;
+
+INSERT INTO `background_info` (`id`, `backkgroundInfo`, `deleted`)
+VALUES
+	(1,'Changing careers',0),
+	(2,'Returning to work',0),
+	(3,'Recent university graduate',0),
+	(4,'School leaver',0);
+
+/*!40000 ALTER TABLE `background_info` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table company_sizes
@@ -165,10 +202,10 @@ CREATE TABLE `courses` (
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
 
-INSERT INTO `courses` (`id`, `start_date`, `end_date`, `name`, `trainer`, `notes`)
+INSERT INTO `courses` (`id`, `start_date`, `end_date`, `name`, `trainer`, `notes`, `deleted`)
 VALUES
-	(1,'2021-01-01','2021-03-30','Defence against the dark Json','Harry Potter',NULL),
-	(2,'2020-12-10','2021-02-02','Care of Magical Methods','Hagrid',NULL);
+	(1,'2021-01-01','2021-03-30','Defence against the dark Json','Harry Potter',NULL,0),
+	(2,'2020-12-10','2021-02-02','Care of Magical Methods','Hagrid',NULL,0);
 
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -286,6 +323,7 @@ VALUES
 
 /*!40000 ALTER TABLE `hear_about` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 # Dump of table hiring_partner_companies
 # ------------------------------------------------------------
