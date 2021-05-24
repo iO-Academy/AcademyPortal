@@ -193,7 +193,8 @@ class ApplicantModel implements ApplicantModelInterface
     {
         $query = $this->db->prepare(
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
-                      `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, `backgroundInfo`, `hearAbout`, 
+                      `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
+                      `backgroundInfo`, `hearAbout`, 
                       `applicant_course`.`start_date` AS 'cohortDate',
                       `apprentice`, `aptitude`, `assessmentDay`, 
                       `assessmentTime`,
@@ -205,7 +206,8 @@ class ApplicantModel implements ApplicantModelInterface
                       `option` as 'stageOptionName', `githubUsername`, `portfolioUrl`, `pleskHostingUrl`,
                       `githubEducationLink`, `additionalNotes`, `student_course`.`start_date` AS 'chosenCourseDate',
                       `applicants_additional`.`chosenCourseId` AS 'chosenCourseId',
-                      `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`, `inductionEmailSent`, `signedNDA`,
+                      `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`,
+                      `inductionEmailSent`, `signedNDA`,
                       `checkedID`, `dpName`, `dpPhoto`, `dpTestimonial`, `dpBio`, `dpVideo`
                         FROM `applicants` 
                         LEFT JOIN `courses` applicant_course

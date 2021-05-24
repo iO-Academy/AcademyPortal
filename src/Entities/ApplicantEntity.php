@@ -141,6 +141,4 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     {
         return $this->backgroundInfoId;
     }
-
-
 }
