@@ -5,9 +5,9 @@
 # https://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.31)
+# Host: 127.0.0.1 (MySQL 5.7.33)
 # Database: academyPortal
-# Generation Time: 2020-11-24 15:51:51 +0000
+# Generation Time: 2021-05-24 15:03:21 +0000
 # ************************************************************
 
 
@@ -72,51 +72,69 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `applicants_additional`;
 
 CREATE TABLE `applicants_additional` (
- `id` int(11) unsigned NOT NULL,
- `apprentice` int(1) DEFAULT NULL,
- `aptitude` int(3) DEFAULT NULL,
- `assessmentDay` date DEFAULT NULL,
- `assessmentTime` varchar(5) DEFAULT NULL,
- `assessmentNotes` text,
- `diversitechInterest` int(1) DEFAULT NULL,
- `diversitech` int(5) DEFAULT NULL,
- `edaid` int(5) DEFAULT NULL,
- `upfront` int(5) DEFAULT NULL,
- `kitCollectionDay` date DEFAULT NULL,
- `kitCollectionTime` varchar(5) DEFAULT NULL,
- `kitNum` int(2) DEFAULT NULL,
- `laptop` int(1) DEFAULT NULL,
- `laptopDeposit` int(1) DEFAULT NULL,
- `laptopNum` int(2) DEFAULT NULL,
- `taster` date DEFAULT NULL,
- `tasterAttendance` int(1) DEFAULT NULL,
- `team` int(1) DEFAULT NULL,
- `githubUsername` varchar(255) DEFAULT NULL,
- `portfolioUrl` varchar(255) DEFAULT NULL,
- `pleskHostingUrl` varchar(255) DEFAULT NULL,
- `githubEducationLink` varchar(255) DEFAULT NULL,
- `additionalNotes` text,
- `chosenCourseId` int(11) unsigned DEFAULT NULL,
- PRIMARY KEY (`id`),
- KEY `CourseID` (`chosenCourseId`),
- CONSTRAINT `CourseID` FOREIGN KEY (`chosenCourseId`) REFERENCES `courses` (`id`)
+  `id` int(11) unsigned NOT NULL,
+  `apprentice` int(1) DEFAULT NULL,
+  `aptitude` int(3) DEFAULT NULL,
+  `assessmentDay` date DEFAULT NULL,
+  `assessmentTime` varchar(5) DEFAULT NULL,
+  `assessmentNotes` text,
+  `diversitechInterest` int(1) DEFAULT NULL,
+  `diversitech` int(5) DEFAULT NULL,
+  `edaid` int(5) DEFAULT NULL,
+  `upfront` int(5) DEFAULT NULL,
+  `kitCollectionDay` date DEFAULT NULL,
+  `kitCollectionTime` varchar(5) DEFAULT NULL,
+  `kitNum` int(2) DEFAULT NULL,
+  `laptop` int(1) DEFAULT NULL,
+  `laptopDeposit` int(1) DEFAULT NULL,
+  `laptopNum` int(2) DEFAULT NULL,
+  `taster` date DEFAULT NULL,
+  `tasterId` int(11) unsigned DEFAULT NULL,
+  `tasterAttendance` int(1) DEFAULT NULL,
+  `team` int(1) DEFAULT NULL,
+  `githubUsername` varchar(255) DEFAULT NULL,
+  `portfolioUrl` varchar(255) DEFAULT NULL,
+  `pleskHostingUrl` varchar(255) DEFAULT NULL,
+  `githubEducationLink` varchar(255) DEFAULT NULL,
+  `additionalNotes` text,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `applicants_additional` WRITE;
 /*!40000 ALTER TABLE `applicants_additional` DISABLE KEYS */;
 
-INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, `tasterAttendance`, `team`)
+INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, `tasterId`, `tasterAttendance`, `team`, `githubUsername`, `portfolioUrl`, `pleskHostingUrl`, `githubEducationLink`, `additionalNotes`)
 VALUES
-	(2,1,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1),
-	(3,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,2),
-	(5,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1),
-	(15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+	(2,1,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,3,NULL,1,NULL,NULL,NULL,NULL,NULL),
+	(3,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL),
+	(5,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL),
+	(15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `applicants_additional` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
-DROP TABLE IF EXISTS `cohorts`; /* DO NOT REMOVE THIS LINE! */
+# Dump of table applicants_courses
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `applicants_courses`;
+
+CREATE TABLE `applicants_courses` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `applicant_id` int(11) unsigned NOT NULL,
+  `course_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `applicants_courses` WRITE;
+/*!40000 ALTER TABLE `applicants_courses` DISABLE KEYS */;
+
+INSERT INTO `applicants_courses` (`id`, `applicant_id`, `course_id`)
+VALUES
+	(1,2,1);
+
+/*!40000 ALTER TABLE `applicants_courses` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table company_sizes
@@ -165,10 +183,10 @@ CREATE TABLE `courses` (
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
 
-INSERT INTO `courses` (`id`, `start_date`, `end_date`, `name`, `trainer`, `notes`)
+INSERT INTO `courses` (`id`, `start_date`, `end_date`, `name`, `trainer`, `notes`, `deleted`)
 VALUES
-	(1,'2021-01-01','2021-03-30','Defence against the dark Json','Harry Potter',NULL),
-	(2,'2020-12-10','2021-02-02','Care of Magical Methods','Hagrid',NULL);
+	(1,'2021-01-01','2021-03-30','Defence against the dark Json','Harry Potter',NULL,0),
+	(2,'2020-12-10','2021-02-02','Care of Magical Methods','Hagrid',NULL,0);
 
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -286,6 +304,7 @@ VALUES
 
 /*!40000 ALTER TABLE `hear_about` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 # Dump of table hiring_partner_companies
 # ------------------------------------------------------------
