@@ -2,10 +2,10 @@
 
 namespace Tests\Sanitisers;
 
-use Portal\Validators\ApplicantSanitiser;
+use Portal\Validators\ContactSanitiser;
 use Tests\TestCase;
 
-class ApplicantSanitiserTest extends TestCase
+class ContactSanitiserTest extends TestCase
 {
     public function testSanitise()
     {
