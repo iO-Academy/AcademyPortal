@@ -12,4 +12,3 @@ class ApplicantSanitiserTest extends TestCase
         $this->markTestSkipped('Cannot unit test as method calls other methods');
     }
 }
-
