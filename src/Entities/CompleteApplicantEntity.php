@@ -36,6 +36,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $additionalNotes;
     protected $chosenCourseId;
     protected $chosenCourseDate;
+    protected $backgroundInfoId;
     protected $attitude;
     protected $averageScore;
     protected $fee;
@@ -100,6 +101,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'githubEducationLink' => $this->githubEducationLink,
                   'additionalNotes' => $this->additionalNotes,
                   'chosenCourseId' => $this->chosenCourseId,
+                  'backgroundInfoId' => $this->backgroundInfoId,
                   'attitude' => $this->attitude,
                   'averageScore' => $this->averageScore,
                   'fee' => $this->fee,
@@ -116,6 +118,14 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'chosenCourseDate' => $this->chosenCourseDate,
                   'chosenCourseDatePretty' => $this->getChosenCourseDatePretty()
         ];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBackgroundInfoId()
+    {
+        return $this->backgroundInfoId;
     }
 
     /**

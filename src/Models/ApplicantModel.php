@@ -38,6 +38,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `eighteenPlus`,
                             `finance`,
                             `notes`
+                            `backgroundInfoId`
                             )
                         VALUES (
                             :name,
@@ -50,7 +51,8 @@ class ApplicantModel implements ApplicantModelInterface
                             :eligible,
                             :eighteenPlus,
                             :finance,
-                            :notes
+                            :notes,
+                            :backgroundInfoId
                         );"
         );
 
@@ -65,6 +67,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':eighteenPlus', $applicant['eighteenPlus']);
         $query->bindValue(':finance', $applicant['finance']);
         $query->bindValue(':notes', $applicant['notes']);
+        $query->bindValue(':backgroundInfoId', $applicant['backgroundInfoId']);
 
         $result = $query->execute();
         if ($result) {
@@ -194,7 +197,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare(
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
-                      `backgroundInfo`, `hearAbout`, 
+                      `backgroundInfoID`, `hearAbout`, 
                       `applicant_course`.`start_date` AS 'cohortDate',
                       `apprentice`, `aptitude`, `assessmentDay`, 
                       `assessmentTime`,
@@ -226,7 +229,7 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`stageId` = `stages`.`id`
                         LEFT JOIN `options` 
                             ON `applicants`.`stageOptionId` = `options`.`id`
-                        WHERE `applicants`.`id`= ':id';"
+                        WHERE `applicants`.`id`= :id;"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
         $query->execute([
