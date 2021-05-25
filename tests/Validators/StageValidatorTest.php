@@ -25,7 +25,7 @@ class StageValidatorTest extends TestCase
         StageValidator::ValidateNewStage(55);
     }
 
-    public function validateExistingStageSuccess()
+    public function testValidateExistingStageSuccess()
     {
         $stage = ['id' => 1, 'title' => 'Attending', 'order' => 7, 'student' => true];
         $result = StageValidator::validateExistingStage($stage);
