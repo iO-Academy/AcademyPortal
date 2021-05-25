@@ -80,9 +80,6 @@ let outputEvents = (events, element) => {
 
   events.forEach(item => {
     eventOptions += '<option ';
-    if (element.dataset.selected === item.id) {
-      eventOptions += 'selected ';
-    }
     let date = new Date(item.date);
     let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
     eventOptions += `value="${

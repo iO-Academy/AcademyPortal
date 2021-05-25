@@ -108,7 +108,8 @@
 
                 <div id="taster" class="collapse">
                     <label for="tasterDate">Taster session?</label>
-                    <select id="tasterDate" class="submitApplicant form-control" name="taster" data-selected="<?= $applicant->getTasterId();?>" required>
+                    <select id="tasterDate" class="submitApplicant form-control" name="taster" required>
+                        <?= $applicant->getTaster() ? '<option value="' . $applicant->getTasterId() . '">' . date_format(date_create($applicant->getTaster()), 'j F Y') . '</option>' : '' ?>
                         <option value="">Not booked onto a taster session</option>
                     </select>
 
