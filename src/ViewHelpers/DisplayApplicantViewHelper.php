@@ -107,8 +107,9 @@ class DisplayApplicantViewHelper
                     <td>' . $applicant->getEmail() . '</td>
                     <td>' . $applicant->getPrettyDateOfApplication() . '</td>
                     <td>' . $applicant->getCohortDate() . '</td>
-                    <td id="currentStageName' . $applicant->getId() . '">' . $applicant->getStageName() . '</td>
-                    <td>                              
+                    <td id="currentStageName' . $applicant->getId() . '">' . $applicant->getStageName() .
+            ($applicant->getStageOptionName() ? ' - ' . $applicant->getStageOptionName() : ' ' ) . '</td>
+                    <td>                        
                         <a href="/editApplicant?id=' . $applicant->getId() . '"   
                            type="button"                                   
                            class="btn btn-primary edit">
