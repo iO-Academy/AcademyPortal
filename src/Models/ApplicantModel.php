@@ -368,7 +368,21 @@ class ApplicantModel implements ApplicantModelInterface
                             `pleskHostingUrl` = :pleskHostingUrl,
                             `githubEducationLink` = :githubEducationLink,
                             `additionalNotes` = :additionalNotes,
-                            `chosenCourseId` = :chosenCourseId
+                            `chosenCourseId` = :chosenCourseId,
+                            `attitude` = :attitude,
+                            `averageScore` = :averageScore,
+                            `fee` = :fee,
+                            `signedTerms` = :signedTerms,
+                            `signedDiversitech` = :signedDiversitech,
+                            `signedNDA` = :signedNDA,
+                            `inductionEmailSent` = :inductionEmailSent,
+                            `checkedID` = :checkedID,
+                            `contactFormSigned` = :contactFormSigned,
+                            `dpName` = :dpName,
+                            `dpPhoto` = :dpPhoto,
+                            `dpTestimonial` = :dpTestimonial,
+                            `dpBio` = :dpBio,
+                            `dpVideo` = :dpVideo
                         WHERE (
                             `id` = :id
                         );"
@@ -398,6 +412,20 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':additionalNotes', $applicant['additionalNotes']);
         $query->bindValue(':chosenCourseId', $applicant['chosenCourseId']);
         $query->bindValue(':id', $applicant['id']);
+        $query->bindValue(':attitude', $applicant['attitude']);
+        $query->bindValue(':averageScore', $applicant['averageScore']);
+        $query->bindValue(':fee', $applicant['fee']);
+        $query->bindValue(':signedTerms', $applicant['signedTerms']);
+        $query->bindValue(':signedDiversitech', $applicant['signedDiversitech']);
+        $query->bindValue(':signedNDA', $applicant['signedNDA']);
+        $query->bindValue(':inductionEmailSent', $applicant['inductionEmailSent']);
+        $query->bindValue(':checkedID', $applicant['checkedID']);
+        $query->bindValue(':contactFormSigned', $applicant['contactFormSigned']);
+        $query->bindValue(':dpName', $applicant['dpName']);
+        $query->bindValue(':dpPhoto', $applicant['dpPhoto']);
+        $query->bindValue(':dpTestimonial', $applicant['dpTestimonial']);
+        $query->bindValue(':dpBio', $applicant['dpBio']);
+        $query->bindValue(':dpVideo', $applicant['dpVideo']);
 
         return $query->execute();
     }

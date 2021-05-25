@@ -122,6 +122,70 @@ class ApplicantValidator
             (
                 empty($applicant['chosenCourseId']) ||
                 is_numeric($applicant['chosenCourseId'])
+            ) &&
+            (
+                is_numeric($applicant['attitude']) || empty($applicant['attitude'])
+            ) &&
+            (
+                is_numeric($applicant['averageScore']) || empty($applicant['averageScore'])
+            ) &&
+            (
+                is_numeric($applicant['fee']) || empty($applicant['fee'])
+            ) &&
+            (
+                $applicant['signedTerms'] == 1 ||
+                $applicant['signedTerms'] == 0 ||
+                empty($applicant['signedTerms'])
+            ) &&
+            (
+                $applicant['signedDiversitech'] == 1 ||
+                $applicant['signedDiversitech'] == 0 ||
+                empty($applicant['signedDiversitech'])
+            ) &&
+            (
+                $applicant['signedNDA'] == 1 ||
+                $applicant['signedNDA'] == 0 ||
+                empty($applicant['signedNDA'])
+            ) &&
+            (
+                $applicant['inductionEmailSent'] == 1 ||
+                $applicant['inductionEmailSent'] == 0 ||
+                empty($applicant['inductionEmailSent'])
+            ) &&
+            (
+                $applicant['checkedID'] == 1 ||
+                $applicant['checkedID'] == 0 ||
+                empty($applicant['checkedID'])
+            ) &&
+            (
+                $applicant['contactFormSigned'] == 1 ||
+                $applicant['contactFormSigned'] == 0 ||
+                empty($applicant['contactFormSigned'])
+            ) &&
+            (
+                $applicant['dpName'] == 1 ||
+                $applicant['dpName'] == 0 ||
+                empty($applicant['dpName'])
+            ) &&
+            (
+                $applicant['dpPhoto'] == 1 ||
+                $applicant['dpPhoto'] == 0 ||
+                empty($applicant['dpPhoto'])
+            ) &&
+            (
+                $applicant['dpTestimonial'] == 1 ||
+                $applicant['dpTestimonial'] == 0 ||
+                empty($applicant['dpTestimonial'])
+            ) &&
+            (
+                $applicant['dpBio'] == 1 ||
+                $applicant['dpBio'] == 0 ||
+                empty($applicant['dpBio'])
+            ) &&
+            (
+                $applicant['dpVideo'] == 1 ||
+                $applicant['dpVideo'] == 0 ||
+                empty($applicant['dpVideo'])
             )
         );
     }

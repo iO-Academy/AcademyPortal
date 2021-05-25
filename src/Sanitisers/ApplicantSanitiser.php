@@ -76,6 +76,24 @@ class ApplicantSanitiser
                 StringSanitiser::sanitiseString($applicant['additionalNotes']) : null;
         $applicant['chosenCourseId'] = !empty($applicant['chosenCourseId']) ? (int)$applicant['chosenCourseId'] : null;
 
+        $applicant['attitude'] = $applicant['attitude'] ? (int)$applicant['attitude'] : null;
+        $applicant['averageScore'] = $applicant['averageScore'] ? (int)$applicant['averageScore'] : null;
+        $applicant['fee'] = $applicant['fee'] ? (int)$applicant['fee'] : null;
+
+        $applicant['signedTerms'] = $applicant['signedTerms'] ? 1 : 0;
+        $applicant['signedDiversitech'] = $applicant['signedDiversitech'] ? 1 : 0;
+
+        $applicant['signedNDA'] = $applicant['signedNDA'] ? 1 : 0;
+        $applicant['inductionEmailSent'] = $applicant['inductionEmailSent'] ? 1 : 0;
+        $applicant['checkedID'] = $applicant['checkedID'] ? 1 : 0;
+        $applicant['contactFormSigned'] = $applicant['contactFormSigned'] ? 1 : 0;
+
+        $applicant['dpName'] = $applicant['dpName'] ? 1 : 0;
+        $applicant['dpPhoto'] = $applicant['dpPhoto'] ? 1 : 0;
+        $applicant['dpTestimonial'] = $applicant['dpTestimonial'] ? 1 : 0;
+        $applicant['dpBio'] = $applicant['dpBio'] ? 1 : 0;
+        $applicant['dpVideo'] = $applicant['dpVideo'] ? 1 : 0;
+
         return $applicant;
     }
 }
