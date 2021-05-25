@@ -193,22 +193,29 @@ class ApplicantModel implements ApplicantModelInterface
     {
         $query = $this->db->prepare(
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
-                      `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`,  `hearAbout`, 
-                      `applicant_course`.`start_date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, 
+                      `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
+                      `backgroundInfo`, `hearAbout`, 
+                      `applicant_course`.`start_date` AS 'cohortDate',
+                      `apprentice`, `aptitude`, `assessmentDay`, 
                       `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
-                      `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, 
+                      `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, `backgroundInfoID`,
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', 
                       `stages`.`student` AS 'isStudentStage',
                       `option` as 'stageOptionName', `githubUsername`, `portfolioUrl`, `pleskHostingUrl`,
                       `githubEducationLink`, `additionalNotes`, `student_course`.`start_date` AS 'chosenCourseDate',
-                      `applicants_additional`.`chosenCourseId` AS 'chosenCourseId'
+                      `applicants_additional`.`chosenCourseId` AS 'chosenCourseId',
+                      `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`,
+                      `inductionEmailSent`, `signedNDA`,
+                      `checkedID`, `dpName`, `dpPhoto`, `dpTestimonial`, `dpBio`, `dpVideo`
                         FROM `applicants` 
                         LEFT JOIN `courses` applicant_course
                             ON `applicants`.`cohortId` = `applicant_course`.`id`
                         LEFT JOIN `hear_about` 
-                            ON `applicants`.`hearAboutId` = `hear_about`.`id` 
+                            ON `applicants`.`hearAboutId` = `hear_about`.`id`
+                        LEFT JOIN `background_info` 
+                            ON `applicants`.`backgroundInfoID` = `background_info`.`id` 
                         LEFT JOIN `applicants_additional`
                             ON `applicants`.`id` = `applicants_additional`.`id`
                         LEFT JOIN `teams` 
