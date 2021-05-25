@@ -45,6 +45,7 @@ function addCurrency(number) {
 $(document).ready(function(){
     $(".myBtn").click(function(){
         var url = './api/getApplicant/' + this.dataset.id
+        let studentUrl = 'localhost:8080/public/'+this.dataset.id
         fetch(url)
             .then(
                 function(response) {
@@ -120,7 +121,7 @@ $(document).ready(function(){
                             document.getElementById('diversitechInterest').innerHTML = 'Yes'
                         }
                         displayField(data, 'assessmentNotes', 'No notes written')
-
+                        console.log(studentUrl);
                         data.diversitech = addCurrency(data.diversitech)
                         data.edaid = addCurrency(data.edaid)
                         data.upfront = addCurrency(data.upfront)
@@ -142,9 +143,8 @@ $(document).ready(function(){
                             displayField(data, 'kitCollectionTime', 'Not yet booked')
                         }
                         displayField(data, 'kitNum', 'Not assiged')
-
                         displayField(data, 'team', 'Not assigned')
-
+                        document.getElementById('userProfileLink').innerHTML = studentUrl;
                         displayField(data, 'githubUsername', 'Unknown')
                         displayField(data, 'portfolioUrl', 'Unknown')
                         displayField(data, 'pleskHostingUrl', 'Not created')
@@ -152,6 +152,7 @@ $(document).ready(function(){
                         displayField(data, 'additionalNotes', 'No notes')
                         data.chosenCourseDate = prettyDate(data.chosenCourseDate)
                         displayField(data, 'chosenCourseDatePretty', 'Not asked yet')
+                        // displayField(data,'userProfileLink', 'No Link Yet' )
                     })
                 }
             )
