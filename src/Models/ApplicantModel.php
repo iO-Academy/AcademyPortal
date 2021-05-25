@@ -354,7 +354,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `laptop` = :laptop,
                             `laptopDeposit` = :laptopDeposit,
                             `laptopNum` = :laptopNum,
-                            `taster` = :taster,
+                            `tasterId` = :taster,
                             `tasterAttendance` = :tasterAttendance,
                             `githubUsername` = :githubUsername,
                             `portfolioUrl` = :portfolioUrl,
