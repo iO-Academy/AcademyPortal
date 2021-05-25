@@ -75,6 +75,27 @@ let outputCohorts = (cohorts, el = null) => {
   element.innerHTML += cohortOptions;
 };
 
+let outputEvents = (events, element) => {
+  let eventOptions = '';
+
+  events.forEach(item => {
+    eventOptions += '<option ';
+    if (element.dataset.selected === item.id) {
+      eventOptions += 'selected ';
+    }
+    let date = new Date(item.date);
+    let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
+    eventOptions += `value="${
+        item.id
+    }">${date.toLocaleDateString(
+        'en-GB',
+        dateOptions
+    )}</option>`;
+  });
+
+  element.innerHTML += eventOptions;
+};
+
 let outputHearAbout = (options) => {
   const element = document.getElementById('hear-about');
   let hearAboutOptions = '';
