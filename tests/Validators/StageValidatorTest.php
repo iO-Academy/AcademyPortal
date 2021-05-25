@@ -31,4 +31,10 @@ class StageValidatorTest extends TestCase
         $result = StageValidator::validateExistingStage($stage);
         $this->assertEquals($result, true);
     }
+
+    public function testValidateExistingStageMalformed()
+    {
+        $this->expectException(\TypeError::class);
+        StageValidator::ValidateExistingStage(55);
+    }
 }
