@@ -42,6 +42,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $signedTerms;
     protected $signedDiversitech;
     protected $inductionEmailSent;
+    protected $contactFormSigned;
     protected $signedNDA;
     protected $checkedID;
     protected $dpName;

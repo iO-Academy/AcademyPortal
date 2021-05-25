@@ -37,7 +37,8 @@ class ApplicantModel implements ApplicantModelInterface
                             `eligible`,
                             `eighteenPlus`,
                             `finance`,
-                            `notes`
+                            `notes`,
+                            `backgroundInfoId`
                             )
                         VALUES (
                             :name,
@@ -50,7 +51,8 @@ class ApplicantModel implements ApplicantModelInterface
                             :eligible,
                             :eighteenPlus,
                             :finance,
-                            :notes
+                            :notes,
+                            :backgroundInfoId
                         );"
         );
 
@@ -65,6 +67,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':eighteenPlus', $applicant['eighteenPlus']);
         $query->bindValue(':finance', $applicant['finance']);
         $query->bindValue(':notes', $applicant['notes']);
+        $query->bindValue(':backgroundInfoId', $applicant['backgroundInfoId']);
 
         $result = $query->execute();
         if ($result) {
@@ -307,7 +310,21 @@ class ApplicantModel implements ApplicantModelInterface
                             `notes` = :notes,
                             `stageId` = :stageId,
                             `stageOptionId` = :stageOptionId,
-                            `dateTimeAdded` = :dateTimeAdded
+                            `dateTimeAdded` = :dateTimeAdded,
+                            `attitude` = :attitude,
+                            `averageScore` = :averageScore,
+                            `fee` = :fee,
+                            `signedTerms` = :signedTerms,
+                            `signedDiversitech` = :signedDiversitech,
+                            `inductionEmailSent` = :inductionEmailSent,
+                            `contactFormSigned` = :contactFormSigned                            
+                            `signedNDA` = :signedNDA,
+                            `checkedID` = :checkedID,
+                            `dpName` = :dpName,
+                            `dpPhoto` = :dpPhoto,
+                            `dpTestimonial` = :dbTestimonial,
+                            `dpBio` = :dpBio,
+                            `dpVideo` = :dpVideo
                         WHERE (
                             `id` = :id
                         );"
@@ -328,6 +345,20 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':stageId', $applicant['stageId']);
         $query->bindValue(':stageOptionId', $applicant['stageOptionId']);
         $query->bindValue(':dateTimeAdded', $applicant['dateTimeAdded']);
+        $query->bindValue(':attitude', $applicant['attitude']);
+        $query->bindValue(':averageScore', $applicant['averageScore']);
+        $query->bindValue(':fee', $applicant['fee']);
+        $query->bindValue(':signedTerms', $applicant['signedTerms']);
+        $query->bindValue(':signedDiversitech', $applicant['signedDiversitiech']);
+        $query->bindValue(':inductionEmailSent', $applicant['inductionEmailSent']);
+        $query->bindValue(':contactFormSigned', $applicant['contactFormSigned']);
+        $query->bindValue(':signedNDA', $applicant['signedNDA']);
+        $query->bindValue(':checkedID', $applicant['checkedID']);
+        $query->bindValue(':dpName', $applicant['dpName']);
+        $query->bindValue(':dpPhoto', $applicant['dpPhoto']);
+        $query->bindValue(':dpTestimonial', $applicant['dpTestimonial']);
+        $query->bindValue(':dpBio', $applicant['dpBio']);
+        $query->bindValue(':dpVideo', $applicant['dpVideo']);
 
         return $query->execute();
     }
