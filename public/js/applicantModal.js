@@ -40,7 +40,14 @@ function addCurrency(number) {
     }
     return 'Unknown'
 }
-
+function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+    document.querySelector("button.clipboard").innerText = 'Copied';
+}
 
 $(document).ready(function(){
     $(".myBtn").click(function(){
