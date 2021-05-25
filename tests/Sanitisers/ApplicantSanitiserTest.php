@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Validators;
+namespace Tests\Sanitisers;
 
-use Portal\Validators\ApplicantValidator;
+use Portal\Validators\ApplicantSanitiser;
 use Tests\TestCase;
 
-class ApplicantSanitiserTestTest extends TestCase
+class ApplicantSanitiserTest extends TestCase
 {
     public function testSanitiseStageOrders()
     {
