@@ -165,11 +165,12 @@ class EventModel
      * Gets events based on a specific category ID from the database
      *
      * @param string of category ID
-     * @param mixed optional parameter indicating how many previous X months from the current date and the future to be retrieved, default to all dates
+     * @param mixed optional parameter indicating how many previous X months from the current date and the future to be
+     * retrieved, defaults to all dates
      * @return array An array of Events based on category ID and previous X months from current date.
      */
 
-    public function getEventsByCategoryId(string $categoryId, $previousMonths = NULL): array
+    public function getEventsByCategoryId(string $categoryId, $previousMonths = null): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
                 `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
