@@ -472,4 +472,12 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->dpVideo;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getContactFormSigned()
+    {
+        return $this->contactFormSigned;
+    }
 }
