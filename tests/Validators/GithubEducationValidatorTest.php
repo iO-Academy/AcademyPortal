@@ -25,7 +25,7 @@ class GithubEducationValidatorTest extends TestCase
 
     public function testGitHubEducationValidatorMalformed()
     {
-        $url = ['i am an array'];
+        $url = [1];
         $this->expectException(\TypeError::class);
         GithubEducationValidator::validate($url);
     }
