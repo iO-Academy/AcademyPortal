@@ -9,10 +9,12 @@ class ApplicantValidator
     public static function validate(array $applicant): bool
     {
         return (
-         StringValidator::validateExistsAndLength($applicant['name'], StringValidator::MAXVARCHARLENGTH) &&
+        (
+            StringValidator::validateExistsAndLength($applicant['name'], StringValidator::MAXVARCHARLENGTH) &&
+            NameValidator::validateName($applicant['name'])
+        ) &&
          StringValidator::validateExistsAndLength($applicant['email'], StringValidator::MAXVARCHARLENGTH) &&
          filter_var($applicant['email'], FILTER_VALIDATE_EMAIL) !== false &&
-         StringValidator::validateExistsAndLength($applicant['name'], StringValidator::MAXVARCHARLENGTH) &&
          (
             empty($applicant['phoneNumber']) ||
             PhoneNumberValidator::validatePhoneNumber($applicant['phoneNumber'])
