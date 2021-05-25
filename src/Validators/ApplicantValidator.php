@@ -9,16 +9,18 @@ class ApplicantValidator
     public static function validate(array $applicant): bool
     {
         return (
-         StringValidator::validateExistsAndLength($applicant['name'], StringValidator::MAXVARCHARLENGTH) &&
-         StringValidator::validateExistsAndLength($applicant['email'], StringValidator::MAXVARCHARLENGTH) &&
+        (
+            StringValidator::validateExistsAndLength($applicant['name'], StringValidator::MAXVARCHARLENGTH, 'name') &&
+            NameValidator::validateName($applicant['name'])
+        ) &&
+         StringValidator::validateExistsAndLength($applicant['email'], StringValidator::MAXVARCHARLENGTH, 'email address') &&
          filter_var($applicant['email'], FILTER_VALIDATE_EMAIL) !== false &&
-         StringValidator::validateExistsAndLength($applicant['name'], StringValidator::MAXVARCHARLENGTH) &&
          (
             empty($applicant['phoneNumber']) ||
             PhoneNumberValidator::validatePhoneNumber($applicant['phoneNumber'])
          ) &&
          is_numeric($applicant['cohortId']) &&
-         StringValidator::validateExistsAndLength($applicant['whyDev'], StringValidator::MAXTEXTLENGTH) &&
+         StringValidator::validateExistsAndLength($applicant['whyDev'], StringValidator::MAXTEXTLENGTH, '') &&
          StringValidator::validateExistsAndLength($applicant['codeExperience'], StringValidator::MAXTEXTLENGTH) &&
          is_numeric($applicant['hearAboutId']) &&
          (

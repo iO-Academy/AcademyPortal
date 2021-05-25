@@ -24,7 +24,7 @@ class StringValidator
         if (empty($validateData) == false && strlen($validateData) <= $characterLength) {
             return $validateData;
         } else {
-            throw new \Exception($fieldName . ' input string does not exist or is too long');
+            throw new \Exception('You have either not inputted any information for ' . $fieldName . ' or it exceeds our character limits');
         }
     }
 

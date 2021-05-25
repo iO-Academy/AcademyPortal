@@ -48,6 +48,9 @@ let errorMessage = (validationType) => {
         case 'validLengthText':
             htmlString += `This field must be less than 10000 characters`;
             break;
+        case 'isName' :
+            htmlString += `Please use only alpha characters`;
+            break;
         default:
             htmlString += `This field is invalid`;
             break;
@@ -137,7 +140,8 @@ let validateFormInputs = (data) => {
             isPresent: isPresent(data.whyDev)
         },
         codeExperience: {
-            validLengthText: textAreaMaxLength(data.codeExperience)
+            validLengthText: textAreaMaxLength(data.codeExperience),
+            isPresent: isPresent(data.codeExperience)
         },
         notes: {
             validLengthText: textAreaMaxLength(data.notes)
