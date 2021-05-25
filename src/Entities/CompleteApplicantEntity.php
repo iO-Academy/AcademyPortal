@@ -307,13 +307,13 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         return $this->additionalNotes;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getChosenCourseId(): ?int
-    {
-        return $this->chosenCourseId;
-    }
+//    /**
+//     * @return mixed
+//     */
+//    public function getChosenCourseId(): ?int
+//    {
+//        return $this->chosenCourseId;
+//    }
 
     /**
      * @return mixed

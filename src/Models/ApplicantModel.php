@@ -199,11 +199,11 @@ class ApplicantModel implements ApplicantModelInterface
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
                       `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, 
-                      `applicants`.`stageId` as 'stageID', `title` as 'stageName', 
+                      `applicants`.`stageId` AS 'stageID', `title` AS 'stageName', 
                       `stages`.`student` AS 'isStudentStage',
-                      `option` as 'stageOptionName', `githubUsername`, `portfolioUrl`, `pleskHostingUrl`,
+                      `option` AS 'stageOptionName', `githubUsername`, `portfolioUrl`, `pleskHostingUrl`,
                       `githubEducationLink`, `additionalNotes`, `student_course`.`start_date` AS 'chosenCourseDate',
-                      `applicants_additional`.`chosenCourseId` AS 'chosenCourseId'
+                      `applicants_additional`.`` AS ''
                         FROM `applicants` 
                         LEFT JOIN `courses` applicant_course
                             ON `applicants`.`cohortId` = `applicant_course`.`id`
@@ -213,8 +213,10 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`id` = `applicants_additional`.`id`
                         LEFT JOIN `teams` 
                             ON `applicants_additional`.`team` = `teams`.`id`
-                        LEFT JOIN `courses` student_course 
-                            ON `applicants_additional`.`chosenCourseId` = `student_course`.`id` 
+                        LEFT JOIN `applicants_courses`
+                            ON `applicants`.`id` = `applicant_id`
+                        LEFT JOIN `courses` student_course
+                            ON `course_id` = `student_course`.`id` 
                         LEFT JOIN `stages`
                             ON `applicants`.`stageId` = `stages`.`id`
                         LEFT JOIN `options` 
@@ -227,6 +229,11 @@ class ApplicantModel implements ApplicantModelInterface
         ]);
         $results = $query->fetch();
         return $results;
+    }
+
+    public function formatApplicantCourses($applicantData)
+    {
+        $query =
     }
 
     /**
