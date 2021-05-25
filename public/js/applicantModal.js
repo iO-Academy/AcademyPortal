@@ -40,12 +40,18 @@ function addCurrency(number) {
     }
     return 'Unknown'
 }
-
+function copyToClipboard(element) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+}
 
 $(document).ready(function(){
     $(".myBtn").click(function(){
         var url = './api/getApplicant/' + this.dataset.id
-        let studentUrl = 'https://localhost:8080/public/'+this.dataset.id
+        let studentUrl = 'http://localhost:8080/public/'+this.dataset.id
         fetch(url)
             .then(
                 function(response) {
@@ -121,7 +127,6 @@ $(document).ready(function(){
                             document.getElementById('diversitechInterest').innerHTML = 'Yes'
                         }
                         displayField(data, 'assessmentNotes', 'No notes written')
-                        console.log(studentUrl);
                         data.diversitech = addCurrency(data.diversitech)
                         data.edaid = addCurrency(data.edaid)
                         data.upfront = addCurrency(data.upfront)
