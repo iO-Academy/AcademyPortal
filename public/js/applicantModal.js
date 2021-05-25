@@ -45,7 +45,7 @@ function addCurrency(number) {
 $(document).ready(function(){
     $(".myBtn").click(function(){
         var url = './api/getApplicant/' + this.dataset.id
-        let studentUrl = 'localhost:8080/public/'+this.dataset.id
+        let studentUrl = 'https://localhost:8080/public/'+this.dataset.id
         fetch(url)
             .then(
                 function(response) {
@@ -145,6 +145,7 @@ $(document).ready(function(){
                         displayField(data, 'kitNum', 'Not assiged')
                         displayField(data, 'team', 'Not assigned')
                         document.getElementById('userProfileLink').innerHTML = studentUrl;
+                        document.getElementById('userProfileLink').href = studentUrl;
                         displayField(data, 'githubUsername', 'Unknown')
                         displayField(data, 'portfolioUrl', 'Unknown')
                         displayField(data, 'pleskHostingUrl', 'Not created')
