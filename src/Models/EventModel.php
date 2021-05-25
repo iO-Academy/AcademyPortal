@@ -3,6 +3,7 @@
 namespace Portal\Models;
 
 use PDO;
+use phpDocumentor\Reflection\Types\Mixed_;
 
 class EventModel
 {
@@ -164,17 +165,24 @@ class EventModel
      * Gets events based on a specific category ID from the database
      *
      * @param string of category ID
-     * @return array An array of Events based on category ID
+     * @param mixed optional parameter indicating how many previous X months from the current date and the future to be retrieved, default to all dates
+     * @return array An array of Events based on category ID and previous X months from current date.
      */
-    public function getEventsByCategoryId(string $categoryId): array
+
+    public function getEventsByCategoryId(string $categoryId, $previousMonths = NULL): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
                 `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
                 FROM `events` 
                 LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
-                WHERE `events`.`category` = :categoryId ORDER BY `date` DESC;';
+                WHERE `events`.`category` = :categoryId';
+        if (is_int($previousMonths)) {
+            $sql .= ' AND `date` > curdate() - INTERVAL :previousMonths MONTH';
+        }
+        $sql .= ' ORDER BY `date` DESC;';
         $query = $this->db->prepare($sql);
         $query->bindParam(':categoryId', $categoryId);
+        $query->bindParam(':previousMonths', $previousMonths);
         $query->execute();
         return $query->fetchAll();
     }
