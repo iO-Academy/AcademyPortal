@@ -226,7 +226,7 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`stageId` = `stages`.`id`
                         LEFT JOIN `options` 
                             ON `applicants`.`stageOptionId` = `options`.`id`
-                        WHERE `applicants`.`id`= ':id';"
+                        WHERE `applicants`.`id`= :id;"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
         $query->execute([
