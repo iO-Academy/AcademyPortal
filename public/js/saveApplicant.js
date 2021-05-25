@@ -137,7 +137,8 @@ let validateFormInputs = (data) => {
             isPresent: isPresent(data.whyDev)
         },
         codeExperience: {
-            validLengthText: textAreaMaxLength(data.codeExperience)
+            validLengthText: textAreaMaxLength(data.codeExperience),
+            isPresent: isPresent(data.codeExperience)
         },
         notes: {
             validLengthText: textAreaMaxLength(data.notes)
