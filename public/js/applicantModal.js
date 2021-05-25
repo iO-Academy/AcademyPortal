@@ -52,7 +52,7 @@ function copyToClipboard(element) {
 $(document).ready(function(){
     $(".myBtn").click(function(){
         var url = './api/getApplicant/' + this.dataset.id
-        let studentUrl = 'http://localhost:8080/public/'+this.dataset.id
+        var studentUrl = 'http://localhost:8080/public/'+this.dataset.id
         fetch(url)
             .then(
                 function(response) {
@@ -152,6 +152,9 @@ $(document).ready(function(){
                         displayField(data, 'team', 'Not assigned')
                         document.getElementById('userProfileLink').innerHTML = studentUrl;
                         document.getElementById('userProfileLink').href = studentUrl;
+                        $(".clipboard").click(function(){
+                            copyToClipboard('#userProfileLink')
+                        })
                         displayField(data, 'githubUsername', 'Unknown')
                         displayField(data, 'portfolioUrl', 'Unknown')
                         displayField(data, 'pleskHostingUrl', 'Not created')
