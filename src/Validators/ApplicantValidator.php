@@ -163,29 +163,29 @@ class ApplicantValidator
                 empty($applicant['contactFormSigned'])
             ) &&
             (
-                $applicant['dpName'] == 1 ||
-                $applicant['dpName'] == 0 ||
-                empty($applicant['dpName'])
+                $applicant['dataProtectionName'] == 1 ||
+                $applicant['dataProtectionName'] == 0 ||
+                empty($applicant['dataProtectionName'])
             ) &&
             (
-                $applicant['dpPhoto'] == 1 ||
-                $applicant['dpPhoto'] == 0 ||
-                empty($applicant['dpPhoto'])
+                $applicant['dataProtectionPhoto'] == 1 ||
+                $applicant['dataProtectionPhoto'] == 0 ||
+                empty($applicant['dataProtectionPhoto'])
             ) &&
             (
-                $applicant['dpTestimonial'] == 1 ||
-                $applicant['dpTestimonial'] == 0 ||
-                empty($applicant['dpTestimonial'])
+                $applicant['dataProtectionTestimonial'] == 1 ||
+                $applicant['dataProtectionTestimonial'] == 0 ||
+                empty($applicant['dataProtectionTestimonial'])
             ) &&
             (
-                $applicant['dpBio'] == 1 ||
-                $applicant['dpBio'] == 0 ||
-                empty($applicant['dpBio'])
+                $applicant['dataProtectionBio'] == 1 ||
+                $applicant['dataProtectionBio'] == 0 ||
+                empty($applicant['dataProtectionBio'])
             ) &&
             (
-                $applicant['dpVideo'] == 1 ||
-                $applicant['dpVideo'] == 0 ||
-                empty($applicant['dpVideo'])
+                $applicant['dataProtectionVideo'] == 1 ||
+                $applicant['dataProtectionVideo'] == 0 ||
+                empty($applicant['dataProtectionVideo'])
             )
         );
     }

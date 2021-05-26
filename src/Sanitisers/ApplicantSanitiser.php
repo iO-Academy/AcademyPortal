@@ -88,11 +88,11 @@ class ApplicantSanitiser
         $applicant['checkedID'] = $applicant['checkedID'] ? 1 : 0;
         $applicant['contactFormSigned'] = $applicant['contactFormSigned'] ? 1 : 0;
 
-        $applicant['dpName'] = $applicant['dpName'] ? 1 : 0;
-        $applicant['dpPhoto'] = $applicant['dpPhoto'] ? 1 : 0;
-        $applicant['dpTestimonial'] = $applicant['dpTestimonial'] ? 1 : 0;
-        $applicant['dpBio'] = $applicant['dpBio'] ? 1 : 0;
-        $applicant['dpVideo'] = $applicant['dpVideo'] ? 1 : 0;
+        $applicant['dataProtectionName'] = $applicant['dataProtectionName'] ? 1 : 0;
+        $applicant['dataProtectionPhoto'] = $applicant['dataProtectionPhoto'] ? 1 : 0;
+        $applicant['dataProtectionTestimonial'] = $applicant['dataProtectionTestimonial'] ? 1 : 0;
+        $applicant['dataProtectionBio'] = $applicant['dataProtectionBio'] ? 1 : 0;
+        $applicant['dataProtectionVideo'] = $applicant['dataProtectionVideo'] ? 1 : 0;
 
         return $applicant;
     }

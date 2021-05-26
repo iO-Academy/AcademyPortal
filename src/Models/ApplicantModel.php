@@ -210,8 +210,8 @@ class ApplicantModel implements ApplicantModelInterface
                       `githubEducationLink`, `additionalNotes`, `student_course`.`start_date` AS 'chosenCourseDate',
                       `applicants_additional`.`chosenCourseId` AS 'chosenCourseId',
                       `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`,
-                      `inductionEmailSent`, `signedNDA`,
-                      `checkedID`, `dpName`, `dpPhoto`, `dpTestimonial`, `dpBio`, `dpVideo`
+                      `inductionEmailSent`, `signedNDA`, `checkedID`,
+                      `dataProtectionName`, `dataProtectionPhoto`, `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`
                         FROM `applicants` 
                         LEFT JOIN `courses` applicant_course
                             ON `applicants`.`cohortId` = `applicant_course`.`id`
@@ -378,11 +378,11 @@ class ApplicantModel implements ApplicantModelInterface
                             `inductionEmailSent` = :inductionEmailSent,
                             `checkedID` = :checkedID,
                             `contactFormSigned` = :contactFormSigned,
-                            `dpName` = :dpName,
-                            `dpPhoto` = :dpPhoto,
-                            `dpTestimonial` = :dpTestimonial,
-                            `dpBio` = :dpBio,
-                            `dpVideo` = :dpVideo
+                            `dataProtectionName` = :dataProtectionName,
+                            `dataProtectionPhoto` = :dataProtectionPhoto,
+                            `dataProtectionTestimonial` = :dataProtectionTestimonial,
+                            `dataProtectionBio` = :dataProtectionBio,
+                            `dataProtectionVideo` = :dataProtectionVideo
                         WHERE (
                             `id` = :id
                         );"
@@ -421,11 +421,11 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':inductionEmailSent', $applicant['inductionEmailSent']);
         $query->bindValue(':checkedID', $applicant['checkedID']);
         $query->bindValue(':contactFormSigned', $applicant['contactFormSigned']);
-        $query->bindValue(':dpName', $applicant['dpName']);
-        $query->bindValue(':dpPhoto', $applicant['dpPhoto']);
-        $query->bindValue(':dpTestimonial', $applicant['dpTestimonial']);
-        $query->bindValue(':dpBio', $applicant['dpBio']);
-        $query->bindValue(':dpVideo', $applicant['dpVideo']);
+        $query->bindValue(':dataProtectionName', $applicant['dataProtectionName']);
+        $query->bindValue(':dataProtectionPhoto', $applicant['dataProtectionPhoto']);
+        $query->bindValue(':dataProtectionTestimonial', $applicant['dataProtectionTestimonial']);
+        $query->bindValue(':dataProtectionBio', $applicant['dataProtectionBio']);
+        $query->bindValue(':dataProtectionVideo', $applicant['dataProtectionVideo']);
 
         return $query->execute();
     }
