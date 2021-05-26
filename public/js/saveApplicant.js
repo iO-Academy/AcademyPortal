@@ -51,7 +51,7 @@ let errorMessage = (validationType) => {
         case 'isEmail' :
             htmlString += `This doesn't appear to be a valid email address. Please try again.`;
             break;
-        case 'isPhoneNumber' :
+        case 'isPhone' :
             htmlString += `This doesn't appear to be a valid telephone number. Please try again.`;
             break;
         case 'isPresent' :

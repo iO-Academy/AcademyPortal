@@ -15,10 +15,7 @@ function isName(name) {
 
 function isPhoneNumber(phone) {
     let regEx = /^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/;
-    if (phone !== "") {
-        return regEx.test(phone);
-    }
-    return false;
+    return regEx.test(phone);
 }
 
 function isEmail(email) {
