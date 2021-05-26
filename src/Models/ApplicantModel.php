@@ -197,7 +197,8 @@ class ApplicantModel implements ApplicantModelInterface
                       `applicant_course`.`start_date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, 
                       `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
-                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
+                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`,
+                      `tasterEvent`.`date` AS `taster`, `tasterId`,
                       `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', 
                       `stages`.`student` AS 'isStudentStage',
@@ -211,6 +212,8 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`hearAboutId` = `hear_about`.`id` 
                         LEFT JOIN `applicants_additional`
                             ON `applicants`.`id` = `applicants_additional`.`id`
+                        LEFT JOIN `events` AS `tasterEvent`
+                            ON `applicants_additional`.`tasterId` = `tasterEvent`.`id`
                         LEFT JOIN `teams` 
                             ON `applicants_additional`.`team` = `teams`.`id`
                         LEFT JOIN `courses` student_course 
@@ -355,7 +358,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `laptop` = :laptop,
                             `laptopDeposit` = :laptopDeposit,
                             `laptopNum` = :laptopNum,
-                            `taster` = :taster,
+                            `tasterId` = :taster,
                             `tasterAttendance` = :tasterAttendance,
                             `githubUsername` = :githubUsername,
                             `portfolioUrl` = :portfolioUrl,

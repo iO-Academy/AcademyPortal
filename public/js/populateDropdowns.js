@@ -75,6 +75,7 @@ let outputCohorts = (cohorts, el = null) => {
   element.innerHTML += cohortOptions;
 };
 
+
 let outputCohortsAvailable = (cohorts, el = null) => {
   const element = el || document.getElementById('cohorts');
   let cohortOptions = '';
@@ -93,6 +94,27 @@ let outputCohortsAvailable = (cohorts, el = null) => {
   element.innerHTML += cohortOptions;
 };
 
+
+
+let outputEvents = (events, element) => {
+  let eventOptions = '';
+
+  events.forEach(item => {
+    if (element.innerHTML.indexOf('value="' + item.id) === -1) {
+      eventOptions += '<option ';
+      let date = new Date(item.date);
+      let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
+      eventOptions += `value="${
+          item.id
+      }">${date.toLocaleDateString(
+          'en-GB',
+          dateOptions
+      )}</option>`;
+    }
+  });
+
+  element.innerHTML += eventOptions;
+};
 
 let outputHearAbout = (options) => {
   const element = document.getElementById('hear-about');
