@@ -54,6 +54,8 @@
 
                 <div id="application" class="collapse">
                     <label for="cohorts">When would you like to join us?</label>
+                    <div id="cohorts" data-selected="<?php echo $applicant->getCohortsAppliedTo();?>">
+                    </div>
                     <select id="cohorts" class="submitApplicant form-control" name="cohortId"  data-selected="<?php echo $applicant->getCohortId();?>" required>
                     </select>
 

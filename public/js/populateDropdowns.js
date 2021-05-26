@@ -75,6 +75,25 @@ let outputCohorts = (cohorts, el = null) => {
   element.innerHTML += cohortOptions;
 };
 
+let outputCohortsAvailable = (cohorts, el = null) => {
+  const element = el || document.getElementById('cohorts');
+  let cohortOptions = '';
+
+  cohorts.forEach(item => {
+    cohortOptions += '<input type="checkbox" ';
+    cohortOptions += `name="cohortId" `;
+    let date = new Date(item.date);
+    let dateOptions = {year: 'numeric', month: 'long'};
+    cohortOptions += `value="${
+        item.id
+    }">`;
+    cohortOptions += `<label for="${item.id}">${date.toLocaleDateString('en-GB', dateOptions)}</label>`;
+  });
+
+  element.innerHTML += cohortOptions;
+};
+
+
 let outputHearAbout = (options) => {
   const element = document.getElementById('hear-about');
   let hearAboutOptions = '';
