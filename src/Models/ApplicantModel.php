@@ -197,7 +197,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare(
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
-                      `backgroundInfoID`, `hearAbout`, 
+                      `backgroundInfo`, `hearAbout`, 
                       `applicant_course`.`start_date` AS 'cohortDate',
                       `apprentice`, `aptitude`, `assessmentDay`, 
                       `assessmentTime`,

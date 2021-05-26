@@ -35,4 +35,16 @@ class ApplicationFormModel
         $result = $query->fetchAll();
         return $result;
     }
+
+    /**
+     * @return array
+     */
+    public function getBackgroundInfo()
+    {
+        $query = $this->db->prepare('SELECT `id`, `backgroundInfo` FROM `background_info`;');
+        $query->execute();
+        $result = $query->fetchAll();
+        return $result;
+    }
+
 }
