@@ -136,6 +136,7 @@ class ApplicantModel implements ApplicantModelInterface
     }
 
     public function getApplicantByName(
+        string $name = '%',
         string $stageId = '%',
         string $cohortId = '%',
         string $sortingQuery = '',
@@ -148,6 +149,7 @@ class ApplicantModel implements ApplicantModelInterface
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       WHERE `applicants`.`deleted` = '0'
+                        AND `applicants`.`name` like CONCAT('%', :name, '%')
                       AND `applicants`.`cohortId` like :cohortId
                       AND `applicants`.`stageId` like :stageId ";
 
