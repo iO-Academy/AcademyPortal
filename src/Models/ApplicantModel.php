@@ -211,7 +211,8 @@ class ApplicantModel implements ApplicantModelInterface
                       `applicants_additional`.`chosenCourseId` AS 'chosenCourseId',
                       `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`,
                       `inductionEmailSent`, `signedNDA`, `checkedID`,
-                      `dataProtectionName`, `dataProtectionPhoto`, `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`
+                      `dataProtectionName`, `dataProtectionPhoto`, 
+                      `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`
                         FROM `applicants` 
                         LEFT JOIN `courses` applicant_course
                             ON `applicants`.`cohortId` = `applicant_course`.`id`
