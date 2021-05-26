@@ -228,47 +228,7 @@ class ApplicantModel implements ApplicantModelInterface
         $results = $query->fetch();
         return $results;
     }
-
-    /**
-     * Retrieves applicant based on name or alpha characters
-     *
-     * @param string $name
-     * @param string $stageId
-     * @param string $cohortId
-     * @param string $sortingQuery
-     * @param string $pageNumber
-     * @return array
-     */
-    public function getApplicantByName(
-        string $name = '%',
-        string $stageId = '%',
-        string $cohortId = '%',
-        string $sortingQuery = '',
-        string $pageNumber = '1'
-    ) {
-        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, `start_date` AS 'cohortDate', 
-                      `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
-                      FROM `applicants`
-                      LEFT JOIN `courses` ON `applicants`.`cohortId`=`courses`.`id`
-                      LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
-                      LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
-                      WHERE `applicants`.`deleted` = '0'
-                        AND `applicants`.`name` like CONCAT('%', :name, '%')
-                      AND `applicants`.`cohortId` like :cohortId
-                      AND `applicants`.`stageId` like :stageId ";
-        $stmt .= $this->sortingQuery($sortingQuery);
-        $stmt .= " LIMIT :offsets, :numberPerPage;";
-        $offset = ($pageNumber - 1) * $this->numberPerPage;
-        $query = $this->db->prepare($stmt);
-        $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
-        $query->bindValue(':cohortId', $cohortId);
-        $query->bindValue(':stageId', $stageId);
-        $query->bindValue(':offsets', $offset, \PDO::PARAM_INT);
-        $query->bindValue(':numberPerPage', $this->numberPerPage, \PDO::PARAM_INT);
-        $query->execute();
-        return $query->fetchAll();
-    }
-
+    
     /**
      * Deletes record with the given id from the database
      *
