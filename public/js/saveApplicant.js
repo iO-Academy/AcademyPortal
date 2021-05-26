@@ -39,20 +39,26 @@ let errorMessage = (validationType) => {
     let htmlString = '';
 
     switch (validationType) {
-        case 'isPresent' :
-            htmlString += `This is a required field, please fill in`;
-            break;
         case 'validLengthVarChar' :
-            htmlString += `This field must be less than 255 characters`;
+            htmlString += `This field must be less than 255 characters.`;
             break;
         case 'validLengthText':
-            htmlString += `This field must be less than 10000 characters`;
+            htmlString += `This field must be less than 10000 characters.`;
             break;
         case 'isName' :
-            htmlString += `Please use only alpha characters`;
+            htmlString += `Please use alpha characters only.`;
+            break;
+        case 'isEmail' :
+            htmlString += `This doesn't appear to be a valid email address. Please try again.`;
+            break;
+        case 'isPhoneNumber' :
+            htmlString += `This doesn't appear to be a valid telephone number. Please try again.`;
+            break;
+        case 'isPresent' :
+            htmlString += `This field must be filled in.`;
             break;
         default:
-            htmlString += `This field is invalid`;
+            htmlString += `This field is invalid.`;
             break;
     }
 
