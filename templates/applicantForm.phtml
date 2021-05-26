@@ -57,6 +57,9 @@
                     <select id="cohorts" class="submitApplicant form-control" name="cohortId"  data-selected="<?php echo $applicant->getCohortId();?>" required>
                     </select>
 
+                    <label for="backgroundInfoId">Background Info</label>
+                    <select id="backgroundInfo" class="submitApplicant form-control" name="backgroundInfoId" required></select>
+
                     <label for="why-developer">Why do you want to become a software developer?</label>
                     <div id="whyDevError" class="alert hidden formItem_alert"></div>
                     <textarea id="why-developer" name="whyDev" class="submitApplicant form-control" placeholder="Enter here" required><?php echo $applicant->getWhyDev();?></textarea>
@@ -220,15 +223,11 @@
                         <label for="contactFormSigned">Signed Contact Form?</label>
                     </div>
 
-                    <?php
-                    $val = $applicant->getSignedDiversitech() ? 'checked' : '';
-                    if ($applicant->getDiversitech()) {
-                    echo "<div class='form-group'>";
-                    echo "<input id='signedDiversitech' class='submitApplicant' name='signedDiversitech' type='checkbox' $val/>";
-                    echo "<label for='signedDiversitech'>Signed Diversitech Terms & Conditions?</label>";
-                    echo "</div>";
-                    }
-                    ?>
+                    <div class="form-group <?php echo $applicant->getDiversitech() ? '' : ' hidden'; ?>">
+                    <input id='signedDiversitech' class='submitApplicant' name='signedDiversitech' type='checkbox' <?php echo $applicant->getSignedDiversitech() ? "checked" : "";?> ?>
+                    <label for='signedDiversitech'>Signed Diversitech Terms & Conditions?</label>
+                    </div>
+
 
                     <label for="laptopNum">Laptop number</label>
                     <input id="laptopNum" class="submitApplicant form-control" name="laptopNum" type="number" min="1" max="99" step="1" value="<?php echo $applicant->getLaptopNum();?>">

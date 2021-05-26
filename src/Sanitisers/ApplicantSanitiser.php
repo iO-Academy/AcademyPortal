@@ -24,6 +24,7 @@ class ApplicantSanitiser
         $applicant['whyDev'] = StringSanitiser::sanitiseString($applicant['whyDev']);
         $applicant['codeExperience'] = StringSanitiser::sanitiseString($applicant['codeExperience']);
         $applicant['hearAboutId'] = (int)$applicant['hearAboutId'];
+        $applicant['backgroundInfoId'] = (int)$applicant['backgroundInfoId'];
         $applicant['eligible'] = $applicant['eligible'] ? 1 : 0;
         $applicant['eighteenPlus'] = $applicant['eighteenPlus'] ? 1 : 0;
         $applicant['finance'] = $applicant['finance'] ? 1 : 0;

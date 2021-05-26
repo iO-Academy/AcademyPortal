@@ -197,7 +197,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare(
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
-                      `backgroundInfoId`, `hearAbout`, 
+                      `backgroundInfo`, `hearAbout`, 
                       `applicant_course`.`start_date` AS 'cohortDate',
                       `apprentice`, `aptitude`, `assessmentDay`, 
                       `assessmentTime`,
@@ -311,7 +311,8 @@ class ApplicantModel implements ApplicantModelInterface
                             `notes` = :notes,
                             `stageId` = :stageId,
                             `stageOptionId` = :stageOptionId,
-                            `dateTimeAdded` = :dateTimeAdded
+                            `dateTimeAdded` = :dateTimeAdded,
+                            `backgroundInfoId` = :backgroundInfoId
                         WHERE (
                             `id` = :id
                         );"
@@ -332,6 +333,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':stageId', $applicant['stageId']);
         $query->bindValue(':stageOptionId', $applicant['stageOptionId']);
         $query->bindValue(':dateTimeAdded', $applicant['dateTimeAdded']);
+        $query->bindValue(':backgroundInfoId', $applicant['backgroundInfoId']);
 
         return $query->execute();
     }

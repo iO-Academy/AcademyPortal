@@ -20,7 +20,7 @@ class ApplicantValidator
          is_numeric($applicant['cohortId']) &&
          StringValidator::validateExistsAndLength($applicant['whyDev'], StringValidator::MAXTEXTLENGTH) &&
          StringValidator::validateExistsAndLength($applicant['codeExperience'], StringValidator::MAXTEXTLENGTH) &&
-         is_numeric($applicant['hearAboutId']) &&
+         is_numeric($applicant['hearAboutId']) && is_numeric($applicant['backgroundInfoId']) &&
          (
              $applicant['eligible'] == 1 || $applicant['eligible'] == 0
          ) &&
