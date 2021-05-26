@@ -57,6 +57,9 @@
                     <select id="cohorts" class="submitApplicant form-control" name="cohortId"  data-selected="<?php echo $applicant->getCohortId();?>" required>
                     </select>
 
+                    <label for="backgroundInfoId">Background Info</label>
+                    <select id="backgroundInfo" class="submitApplicant form-control" name="backgroundInfoId" required>
+
                     <label for="why-developer">Why do you want to become a software developer?</label>
                     <div id="whyDevError" class="alert hidden formItem_alert"></div>
                     <textarea id="why-developer" name="whyDev" class="submitApplicant form-control" placeholder="Enter here" required><?php echo $applicant->getWhyDev();?></textarea>

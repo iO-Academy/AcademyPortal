@@ -46,5 +46,4 @@ class ApplicationFormModel
         $result = $query->fetchAll();
         return $result;
     }
-
 }
