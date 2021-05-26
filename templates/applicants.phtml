@@ -30,7 +30,19 @@
                             Apprentice Applicants
                         </a>
                     </li>
-                      <li class="pull-right">
+                    <li>
+                        <div class="input-group rounded searchForm">
+                            <input type="search" class="form-control rounded" id="searchBarForApplicants" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                            <!--                            <span class="input-group-text border-0" id="search-addon"></span>-->
+                        </div>
+                    </li>
+                    <li>
+                        <input type="reset" value="X" class="searchForm" id="navClearButton"/>
+                    </li>
+                    <li>
+                        <input type="submit" value="Search" class="searchForm" id="navSubmitButton"/>
+                    </li>
+                    <li class="pull-right">
                         <label for="stages">
                             Select Stages
                             <select id="stages" class="submitApplicant form-control" name="stageId">
