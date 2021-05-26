@@ -150,8 +150,8 @@ class ApplicantModel implements ApplicantModelInterface
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       WHERE `applicants`.`deleted` = '0'
                         AND `applicants`.`name` like CONCAT('%', :name, '%')
-                      AND `applicants`.`cohortId` like :cohortId
-                      AND `applicants`.`stageId` like :stageId ";
+                        AND `applicants`.`cohortId` like :cohortId
+                        AND `applicants`.`stageId` like :stageId ";
 
         $stmt .= $this->sortingQuery($sortingQuery);
         $stmt .= " LIMIT :offsets, :numberPerPage;";
