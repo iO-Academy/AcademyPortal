@@ -3,7 +3,6 @@
 namespace Portal\Models;
 
 use PDO;
-use phpDocumentor\Reflection\Types\Mixed_;
 
 class EventModel
 {
