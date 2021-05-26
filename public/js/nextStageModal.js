@@ -38,14 +38,13 @@ $(document).ready(function(){
                                 .then(passwordResponse => {
                                     console.log(passwordResponse)
                                 })
-
                             var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId;
                             updateStage(url, applicantId, thisButton)
-                            document.querySelector('.btnSavePassword').addEventListener('click',
-                                function() {
-                                    window.location.reload();
+                            document.querySelector('.btnOk').addEventListener('click', () => {
+                                $passwordChecked = document.getElementById('copied-password-check');
+                                if ($passwordChecked.checked) {
                                     $('#studentPasswordModal').modal('hide');
-                                })
+                                }})
                         } else if (data['data']['nextStageOptions'].length === 0) {
                             var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId;
                             updateStage(url, applicantId, thisButton);
