@@ -149,9 +149,13 @@
                         <span class="input-group-addon">%</span>
                     </div>
 
-                    <label for="averageScore">Average of Aptitude/Attitude Score (%)</label>
+                    <label for="averageScore">Average of Aptitude/Attitude Score (%) <?php if ($applicant->getAverageScore()) {echo "[Edited by admin]";} ?> </label>
                     <div class="input-group">
-                        <input id="averageScore" name="averageScore" class="submitApplicant form-control" type="number" min="0" max="100" placeholder="0" value="<?php echo (($applicant->getAttitude() + $applicant->getAptitude()) / 2)  ;?>">
+                        <input id="averageScore" name="averageScore" class="submitApplicant form-control" type="number" min="0" max="100" placeholder="0" value="<?php if ($applicant->getAverageScore()) {
+                            echo $applicant->getAverageScore();
+                        } elseif ($applicant->getAttitude() && $applicant->getAptitude()) {
+                            echo (($applicant->getAttitude() + $applicant->getAptitude()) / 2);
+                        }?>">
                         <span class="input-group-addon">%</span>
                     </div>
 
@@ -171,7 +175,7 @@
                 </div>
             </section>
 
-            <section class="applicationFormSection student<?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
+            <section class="applicationFormSection student <?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
                 <div data-toggle="collapse" class="collapse-header" data-target="#onboarding" aria-expanded="false" aria-controls="onboarding">
                     <h4>Onboarding Info</h4>
                     <i class="glyphicon glyphicon-chevron-down"></i>
@@ -223,15 +227,10 @@
                         <label for="contactFormSigned">Signed Contact Form?</label>
                     </div>
 
-                    <?php
-                    $val = $applicant->getSignedDiversitech() ? 'checked' : '';
-                    if ($applicant->getDiversitech()) {
-                    echo "<div class='form-group'>";
-                    echo "<input id='signedDiversitech' class='submitApplicant' name='signedDiversitech' type='checkbox' $val/>";
-                    echo "<label for='signedDiversitech'>Signed Diversitech Terms & Conditions?</label>";
-                    echo "</div>";
-                    }
-                    ?>
+                    <div class="form-group <?php echo $applicant->getDiversitech() ? "" : " hidden"; ?>">
+                        <input id="signedDiversitech" class="submitApplicant" name="signedDiversitech" type="checkbox" <?php $applicant->getSignedDiversitech() ? 'checked' : ''?>/>
+                        <label for="signedDiversitech">Signed Diversitech Terms & Conditions?</label>
+                    </div>
 
                     <label for="laptopNum">Laptop number</label>
                     <input id="laptopNum" class="submitApplicant form-control" name="laptopNum" type="number" min="1" max="99" step="1" value="<?php echo $applicant->getLaptopNum();?>">
