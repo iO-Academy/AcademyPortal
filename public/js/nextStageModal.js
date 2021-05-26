@@ -45,7 +45,8 @@ $(document).ready(function(){
                                 function() {
                                         const optionId =  document.querySelector('#next-stage-options').value;
                                         var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId + '&optionId=' + optionId;
-                                        updateStage(url, applicantId, thisButton);
+                                        updateStage(url, applicantId, thisButton)
+                                        window.location.reload();
                                         $('#nextStageModal').modal('hide');
                                 }
                             )
