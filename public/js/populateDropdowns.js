@@ -79,15 +79,17 @@ let outputEvents = (events, element) => {
   let eventOptions = '';
 
   events.forEach(item => {
-    eventOptions += '<option ';
-    let date = new Date(item.date);
-    let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
-    eventOptions += `value="${
-        item.id
-    }">${date.toLocaleDateString(
-        'en-GB',
-        dateOptions
-    )}</option>`;
+    if (element.innerHTML.indexOf('value="' + item.id) === -1) {
+      eventOptions += '<option ';
+      let date = new Date(item.date);
+      let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
+      eventOptions += `value="${
+          item.id
+      }">${date.toLocaleDateString(
+          'en-GB',
+          dateOptions
+      )}</option>`;
+    }
   });
 
   element.innerHTML += eventOptions;
