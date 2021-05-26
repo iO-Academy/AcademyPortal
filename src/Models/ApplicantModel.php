@@ -284,13 +284,11 @@ class ApplicantModel implements ApplicantModelInterface
      */
     public function updateApplicant(array $applicant): bool
     {
-        $query = $this->db->prepare(
-            "UPDATE `applicants`
+        $queryString = "UPDATE `applicants`
                         SET 
                             `name` = :name,
                             `email` = :email,
                             `phoneNumber` = :phoneNumber,
-                            `cohortId` = :cohortId,
                             `whyDev` = :whyDev,
                             `codeExperience` = :codeExperience,
                             `hearAboutId` = :hearAboutId,
@@ -303,13 +301,19 @@ class ApplicantModel implements ApplicantModelInterface
                             `dateTimeAdded` = :dateTimeAdded
                         WHERE (
                             `id` = :id
-                        );"
-        );
+                        );
+                        DELETE FROM `applicants_courses` WHERE `applicant_id` = :id;
+                        ";
+        $queryString .= "INSERT INTO `applicants_courses` (`applicant_id`, `course_id`)
+                        VALUES (2, 3), (2, 4)";
+        
+        $query = $this->db->prepare($queryString);
+
+
 
         $query->bindValue(':name', $applicant['name']);
         $query->bindValue(':email', $applicant['email']);
         $query->bindValue(':phoneNumber', $applicant['phoneNumber']);
-        $query->bindValue(':cohortId', $applicant['cohortId']);
         $query->bindValue(':whyDev', $applicant['whyDev']);
         $query->bindValue(':codeExperience', $applicant['codeExperience']);
         $query->bindValue(':hearAboutId', $applicant['hearAboutId']);
