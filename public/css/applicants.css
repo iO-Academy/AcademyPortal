@@ -112,3 +112,8 @@ section {
 .clipboard {
     margin-left: 10px;
 }
+.navClearButton {
+    margin: 7px;
+    background-color: transparent;
+    border: none;
+}
