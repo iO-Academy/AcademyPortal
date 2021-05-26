@@ -42,13 +42,14 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $signedTerms;
     protected $signedDiversitech;
     protected $inductionEmailSent;
+    protected $contactFormSigned;
     protected $signedNDA;
     protected $checkedID;
-    protected $dpName;
-    protected $dpPhoto;
-    protected $dpTestimonial;
-    protected $dpBio;
-    protected $dpVideo;
+    protected $dataProtectionName;
+    protected $dataProtectionPhoto;
+    protected $dataProtectionTestimonial;
+    protected $dataProtectionBio;
+    protected $dataProtectionVideo;
 
 
     /**
@@ -108,11 +109,11 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'inductionEmailSent' => $this->inductionEmailSent,
                   'signedNDA' => $this->signedNDA,
                   'checkedID' => $this->checkedID,
-                  'dpName' => $this->dpName,
-                  'dpPhoto' => $this->dpPhoto,
-                  'dpTestimonial' => $this->dpTestimonial,
-                  'dpBio' => $this->dpBio,
-                  'dpVideo' => $this->dpVideo,
+                  'dataProtectionName' => $this->dataProtectionName,
+                  'dataProtectionPhoto' => $this->dataProtectionPhoto,
+                  'dataProtectionTestimonial' => $this->dataProtectionTestimonial,
+                  'dataProtectionBio' => $this->dataProtectionBio,
+                  'dataProtectionVideo' => $this->dataProtectionVideo,
                   'chosenCourseDate' => $this->chosenCourseDate,
                   'chosenCourseDatePretty' => $this->getChosenCourseDatePretty()
         ];
@@ -425,40 +426,48 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     /**
      * @return mixed
      */
-    public function getDpName()
+    public function getDataProtectionName()
     {
-        return $this->dpName;
+        return $this->dataProtectionName;
     }
 
     /**
      * @return mixed
      */
-    public function getDpPhoto()
+    public function getDataProtectionPhoto()
     {
-        return $this->dpPhoto;
+        return $this->dataProtectionPhoto;
     }
 
     /**
      * @return mixed
      */
-    public function getDpTestimonial()
+    public function getDataProtectionTestimonial()
     {
-        return $this->dpTestimonial;
+        return $this->dataProtectionTestimonial;
     }
 
     /**
      * @return mixed
      */
-    public function getDpBio()
+    public function getDataProtectionBio()
     {
-        return $this->dpBio;
+        return $this->dataProtectionBio;
     }
 
     /**
      * @return mixed
      */
-    public function getDpVideo()
+    public function getDataProtectionVideo()
     {
-        return $this->dpVideo;
+        return $this->dataProtectionVideo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContactFormSigned()
+    {
+        return $this->contactFormSigned;
     }
 }
