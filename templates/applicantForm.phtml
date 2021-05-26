@@ -223,7 +223,7 @@
                     <?php
                     $val = $applicant->getSignedDiversitech() ? 'checked' : '';
                     if ($applicant->getDiversitech()) {
-                    echo '<div class="form-group">';
+                    echo "<div class='form-group'>";
                     echo "<input id='signedDiversitech' class='submitApplicant' name='signedDiversitech' type='checkbox' $val/>";
                     echo "<label for='signedDiversitech'>Signed Diversitech Terms & Conditions?</label>";
                     echo "</div>";
@@ -264,7 +264,7 @@
 
             <section class="applicationFormSection student<?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
                 <div data-toggle="collapse" class="collapse-header" data-target="#dataProtection" aria-expanded="false" aria-controls="dataProtection">
-                    <h4>Data Protection Protection Permissions</h4>
+                    <h4>Data Protection Permissions</h4>
                     <i class="glyphicon glyphicon-chevron-down"></i>
                 </div>
 
