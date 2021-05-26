@@ -227,9 +227,9 @@
                         <label for="contactFormSigned">Signed Contact Form?</label>
                     </div>
 
-                    <div class="form-group <?php echo $applicant->getDiversitech() ? "" : " hidden"; ?>">
-                        <input id="signedDiversitech" class="submitApplicant" name="signedDiversitech" type="checkbox" <?php $applicant->getSignedDiversitech() ? 'checked' : ''?>/>
-                        <label for="signedDiversitech">Signed Diversitech Terms & Conditions?</label>
+                    <div class="form-group <?php echo $applicant->getDiversitech() ? '' : ' hidden'; ?>">
+                    <input id='signedDiversitech' class='submitApplicant' name='signedDiversitech' type='checkbox' <?php echo $applicant->getSignedDiversitech() ? "checked" : "";?> ?>
+                    <label for='signedDiversitech'>Signed Diversitech Terms & Conditions?</label>
                     </div>
 
                     <label for="laptopNum">Laptop number</label>
