@@ -149,7 +149,7 @@
                         <span class="input-group-addon">%</span>
                     </div>
 
-                    <label for="averageScore">Average of Aptitude/Attitude Score (%) <?php if ($applicant->getAverageScore()) {echo "[Edited by admin]";} ?> </label>
+                    <label for="averageScore">Average of Aptitude/Attitude Score (%) <?php if ($applicant->getAverageScore()) {echo "<span class='text-danger'>[Edited by admin]</span>";} ?> </label>
                     <div class="input-group">
                         <input id="averageScore" name="averageScore" class="submitApplicant form-control" type="number" min="0" max="100" placeholder="0" value="<?php if ($applicant->getAverageScore()) {
                             echo $applicant->getAverageScore();
