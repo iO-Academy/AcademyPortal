@@ -89,3 +89,18 @@ let outputHearAbout = (options) => {
 
   element.innerHTML = hearAboutOptions;
 };
+
+let outputBackgroundInfo = (options) => {
+  const element = document.getElementById('background-info');
+  let backgroundInfoOptions = '';
+
+  options.forEach(item => {
+    backgroundInfoOptions += '<option ';
+    if (element.dataset.selected === item.id) {
+      backgroundInfoOptions += 'selected ';
+    }
+    backgroundInfoOptions += `value="${item.id}">${item.backgroundInfo}</option>`;
+  });
+
+  element.innerHTML = backgroundInfoOptions;
+};
