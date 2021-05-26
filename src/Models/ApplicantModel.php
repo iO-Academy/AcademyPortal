@@ -210,8 +210,8 @@ class ApplicantModel implements ApplicantModelInterface
                       `githubEducationLink`, `additionalNotes`, `student_course`.`start_date` AS 'chosenCourseDate',
                       `applicants_additional`.`chosenCourseId` AS 'chosenCourseId',
                       `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`,
-                      `inductionEmailSent`, `signedNDA`,
-                      `checkedID`, `dpName`, `dpPhoto`, `dpTestimonial`, `dpBio`, `dpVideo`
+                      `inductionEmailSent`, `signedNDA`, `checkedID`,
+                      `dataProtectionName`, `dataProtectionPhoto`, `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`
                         FROM `applicants` 
                         LEFT JOIN `courses` applicant_course
                             ON `applicants`.`cohortId` = `applicant_course`.`id`
@@ -368,7 +368,21 @@ class ApplicantModel implements ApplicantModelInterface
                             `pleskHostingUrl` = :pleskHostingUrl,
                             `githubEducationLink` = :githubEducationLink,
                             `additionalNotes` = :additionalNotes,
-                            `chosenCourseId` = :chosenCourseId
+                            `chosenCourseId` = :chosenCourseId,
+                            `attitude` = :attitude,
+                            `averageScore` = :averageScore,
+                            `fee` = :fee,
+                            `signedTerms` = :signedTerms,
+                            `signedDiversitech` = :signedDiversitech,
+                            `signedNDA` = :signedNDA,
+                            `inductionEmailSent` = :inductionEmailSent,
+                            `checkedID` = :checkedID,
+                            `contactFormSigned` = :contactFormSigned,
+                            `dataProtectionName` = :dataProtectionName,
+                            `dataProtectionPhoto` = :dataProtectionPhoto,
+                            `dataProtectionTestimonial` = :dataProtectionTestimonial,
+                            `dataProtectionBio` = :dataProtectionBio,
+                            `dataProtectionVideo` = :dataProtectionVideo
                         WHERE (
                             `id` = :id
                         );"
@@ -398,6 +412,20 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':additionalNotes', $applicant['additionalNotes']);
         $query->bindValue(':chosenCourseId', $applicant['chosenCourseId']);
         $query->bindValue(':id', $applicant['id']);
+        $query->bindValue(':attitude', $applicant['attitude']);
+        $query->bindValue(':averageScore', $applicant['averageScore']);
+        $query->bindValue(':fee', $applicant['fee']);
+        $query->bindValue(':signedTerms', $applicant['signedTerms']);
+        $query->bindValue(':signedDiversitech', $applicant['signedDiversitech']);
+        $query->bindValue(':signedNDA', $applicant['signedNDA']);
+        $query->bindValue(':inductionEmailSent', $applicant['inductionEmailSent']);
+        $query->bindValue(':checkedID', $applicant['checkedID']);
+        $query->bindValue(':contactFormSigned', $applicant['contactFormSigned']);
+        $query->bindValue(':dataProtectionName', $applicant['dataProtectionName']);
+        $query->bindValue(':dataProtectionPhoto', $applicant['dataProtectionPhoto']);
+        $query->bindValue(':dataProtectionTestimonial', $applicant['dataProtectionTestimonial']);
+        $query->bindValue(':dataProtectionBio', $applicant['dataProtectionBio']);
+        $query->bindValue(':dataProtectionVideo', $applicant['dataProtectionVideo']);
 
         return $query->execute();
     }
