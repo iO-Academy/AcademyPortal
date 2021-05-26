@@ -149,9 +149,13 @@
                         <span class="input-group-addon">%</span>
                     </div>
 
-                    <label for="averageScore">Average of Aptitude/Attitude Score (%)</label>
+                    <label for="averageScore">Average of Aptitude/Attitude Score (%) <?php if ($applicant->getAverageScore()) {echo "<span class='text-danger'>[Edited by admin]</span>";} ?> </label>
                     <div class="input-group">
-                        <input id="averageScore" name="averageScore" class="submitApplicant form-control" type="number" min="0" max="100" placeholder="0" value="<?php echo (($applicant->getAttitude() + $applicant->getAptitude()) / 2)  ;?>">
+                        <input id="averageScore" name="averageScore" class="submitApplicant form-control" type="number" min="0" max="100" placeholder="0" value="<?php if ($applicant->getAverageScore()) {
+                            echo $applicant->getAverageScore();
+                        } elseif ($applicant->getAttitude() && $applicant->getAptitude()) {
+                            echo (($applicant->getAttitude() + $applicant->getAptitude()) / 2);
+                        }?>">
                         <span class="input-group-addon">%</span>
                     </div>
 
