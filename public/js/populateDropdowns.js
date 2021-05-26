@@ -91,7 +91,7 @@ let outputHearAbout = (options) => {
 };
 
 let outputBackgroundInfo = (options) => {
-  const element = document.getElementById('background-info');
+  const element = document.getElementById('backgroundInfo');
   let backgroundInfoOptions = '';
 
   options.forEach(item => {
