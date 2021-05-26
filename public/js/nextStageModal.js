@@ -32,6 +32,13 @@ $(document).ready(function(){
                         if (parseInt(data.data.nextStageId) === 6) {
                             console.log('hello');
                             $('#studentPasswordModal').modal('show');
+                            fetch(`/api/applicantPassword/${applicantId}`, {
+                                method: 'POST'
+                            }).then(data => data.json())
+                                .then(passwordResponse => {
+                                    console.log(passwordResponse)
+                                })
+
                             var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId;
                             updateStage(url, applicantId, thisButton)
                             document.querySelector('.btnSavePassword').addEventListener('click',

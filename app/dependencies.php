@@ -123,6 +123,7 @@ return function (ContainerBuilder $containerBuilder) {
         DI\factory('\Portal\Factories\Controllers\API\EditApplicantStageControllerFactory');
     $container['GetCoursesController'] = DI\factory('\Portal\Factories\Controllers\API\GetCoursesControllerFactory');
     $container['AddCourseController'] = DI\factory('\Portal\Factories\Controllers\API\AddCourseControllerFactory');
+    $container['StudentPasswordModalController'] = DI\factory('\Portal\Factories\Controllers\API\StudentPasswordModalControllerFactory');
 
     // Models
     $container['UserModel'] = DI\factory('\Portal\Factories\Models\UserModelFactory');

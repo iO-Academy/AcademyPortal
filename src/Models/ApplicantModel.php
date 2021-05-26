@@ -417,4 +417,23 @@ class ApplicantModel implements ApplicantModelInterface
         );
         return $query->execute([':applicantId' => $applicantId, ':stageId' => $stageId, ':optionId' => $optionId]);
     }
+
+    /**
+     * Inserts new user into database - registering.
+     *
+     * @param int $id
+     * @param string $password
+     *
+     * @return bool $query insert password into database.
+     */
+    public function addApplicantPassword(int $id, string $password)
+    {
+        $query = $this->db->prepare(
+            "UPDATE `applicants` SET `password` = :password WHERE `id` = :id");
+        $query->bindParam(':id', $id);
+        $query->bindParam(':password', $password);
+        return $query->execute();
+    }
+
+
 }

@@ -1,16 +1,16 @@
 <?php
 
-namespace Portal\Factories\Controllers\FrontEnd;
+namespace Portal\Factories\Controllers\API;
 
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\FrontEnd\StudentPasswordModalController;
+use Portal\Controllers\API\StudentPasswordModalController;
 
 class StudentPasswordModalControllerFactory
 {
     public function __invoke(ContainerInterface $container): StudentPasswordModalController
     {
-        $renderer = $container->get('renderer');
         $password = $container->get('RandomPasswordModel');
-        return new StudentPasswordModalController($renderer, $password);
+        $applicantModel = $container->get('ApplicantModel');
+        return new StudentPasswordModalController($password, $applicantModel);
     }
 }
