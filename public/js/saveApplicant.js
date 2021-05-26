@@ -26,9 +26,9 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
         })
     });
 
-    if (formIsValid) {
+if (formIsValid) {
         makeApiRequest(data, window.location.pathname);
-    } else {
+} else {
         document.querySelector('#generalError').innerHTML = 'This form is invalid, please check all fields';
         document.querySelector('#generalError').classList.remove('hidden');
         document.querySelector('#generalError').classList.add('alert-danger');
@@ -51,14 +51,14 @@ let errorMessage = (validationType) => {
         case 'isEmail' :
             htmlString += `This doesn't appear to be a valid email address. Please try again.`;
             break;
-        case 'isPhoneNumber' :
+        case 'isPhone' :
             htmlString += `This doesn't appear to be a valid telephone number. Please try again.`;
             break;
         case 'isPresent' :
             htmlString += `This field must be filled in.`;
             break;
         default:
-            htmlString += `This field is invalid.`;
+            htmlString += `This field must be filled in.`;
             break;
     }
 
