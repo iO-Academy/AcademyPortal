@@ -6,8 +6,8 @@
 # https://github.com/sequelpro/sequelpro
 #
 # Host: 127.0.0.1 (MySQL 5.7.33)
-# Database: academy-portal
-# Generation Time: 2021-05-25 09:36:55 +0000
+# Database: academyportal
+# Generation Time: 2021-05-25 12:56:00 +0000
 # ************************************************************
 
 
@@ -30,7 +30,7 @@ CREATE TABLE `applicants` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `password` char(60) DEFAULT NULL,
+  `password` varchar(65) DEFAULT NULL,
   `phoneNumber` varchar(20) DEFAULT NULL,
   `cohortId` int(11) DEFAULT NULL,
   `whyDev` text,

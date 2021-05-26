@@ -3,6 +3,7 @@
 namespace Portal\Controllers\FrontEnd;
 
 use Portal\Abstracts\Controller;
+use Portal\Models\RandomPasswordModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
@@ -14,6 +15,7 @@ class ApplicantsPageController extends Controller
     private $renderer;
     private $applicantModel;
     private $stageModel;
+    private $randomPassword;
 
     /**
      * ApplicantsPageController constructor.
@@ -23,9 +25,10 @@ class ApplicantsPageController extends Controller
      * @param StageModel $stageModel
      * @param ApplicantModel $applicantModel
      */
-    public function __construct(PhpRenderer $renderer, StageModel $stageModel, ApplicantModel $applicantModel)
+    public function __construct(PhpRenderer $renderer, StageModel $stageModel, ApplicantModel $applicantModel, string $randomPassword)
     {
         $this->renderer = $renderer;
+        $this->randomPassword = $randomPassword;
         $this->stageModel = $stageModel;
         $this->applicantModel = $applicantModel;
     }
@@ -64,7 +67,7 @@ class ApplicantsPageController extends Controller
                 $_SESSION['page'] = 1;
             }
             $params['page'] = $_SESSION['page'];
-
+            $params['password'] = $this->randomPassword;
             $params['data']['applicants'] = $this->applicantModel
                 ->getApplicants($params['stageId'], $params['cohortId'], $params['sort'], $params['page']);
             return $this->renderer->render($response, 'applicants.phtml', $params);

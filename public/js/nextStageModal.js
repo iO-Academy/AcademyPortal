@@ -29,26 +29,35 @@ $(document).ready(function(){
                         return;
                     }
                     response.json().then(function(data) {
-                        document.querySelector('#next-stage-options').innerHTML = '<option>Please select an Option</option>';
-                        if (data['data']['nextStageOptions'].length === 0) {
+                        if (parseInt(data.data.nextStageId) === 6) {
+                            console.log('hello');
+                            $('#studentPasswordModal').modal('show');
+                            var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId;
+                            updateStage(url, applicantId, thisButton)
+                            document.querySelector('.btnSavePassword').addEventListener('click',
+                                function() {
+                                    window.location.reload();
+                                    $('#studentPasswordModal').modal('hide');
+                                })
+                        } else if (data['data']['nextStageOptions'].length === 0) {
                             var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId;
                             updateStage(url, applicantId, thisButton);
-                        }
-                        else {
-                            let optionValues = "";
-                            data['data']['nextStageOptions'].forEach(item => {
-                                optionValues += `<option value="${item.id}">${item.option}</option>`;
-                            })
-                            document.querySelector('#next-stage-options').innerHTML += optionValues;
-                            $('#nextStageModal').modal('show');
-                            document.querySelector('.btnNextStageOptions').addEventListener('click',
-                                function() {
-                                        const optionId =  document.querySelector('#next-stage-options').value;
-                                        var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId + '&optionId=' + optionId;
-                                        updateStage(url, applicantId, thisButton)
-                                        window.location.reload();
-                                        $('#nextStageModal').modal('hide');
-                                }
+                        } else {
+                        document.querySelector('#next-stage-options').innerHTML = '<option>Please select an Option</option>';
+                        let optionValues = "";
+                        data['data']['nextStageOptions'].forEach(item => {
+                            optionValues += `<option value="${item.id}">${item.option}</option>`;
+                        })
+                        document.querySelector('#next-stage-options').innerHTML += optionValues;
+                        $('#nextStageModal').modal('show');
+                        document.querySelector('.btnNextStageOptions').addEventListener('click',
+                            function() {
+                                    const optionId =  document.querySelector('#next-stage-options').value;
+                                    var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId + '&optionId=' + optionId;
+                                    updateStage(url, applicantId, thisButton)
+                                    window.location.reload();
+                                    $('#nextStageModal').modal('hide');
+                            }
                             )
                         }
                     })
