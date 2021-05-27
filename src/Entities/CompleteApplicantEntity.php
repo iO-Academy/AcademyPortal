@@ -22,6 +22,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $laptopDeposit; // bool
     protected $laptopNum; // int
     protected $taster; // date string
+    protected $tasterId; // int
     protected $tasterAttendance; // bool
     protected $stageId; // int
     protected $team; // int
@@ -90,6 +91,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'laptop' => $this->laptop,
                   'laptopNum' => $this->laptopNum,
                   'taster' => $this->taster,
+                  'tasterId' => $this->tasterId,
                   'tasterAttendance' => $this->tasterAttendance,
                   'team' => $this->team,
                   'stageID' => $this->stageID,
@@ -255,6 +257,14 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getTaster(): ?string
     {
         return $this->taster;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTasterId(): ?int
+    {
+        return $this->tasterId;
     }
 
     /**

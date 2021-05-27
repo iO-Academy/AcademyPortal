@@ -110,10 +110,11 @@
                 </div>
 
                 <div id="taster" class="collapse">
-                    <label for="taster">Taster session?</label>
-                    <input id="taster" name="taster" class="submitApplicant form-control" type="date" value="<?php echo $applicant->getTaster();?>">
-<!--                    <select id="taster" class="submitApplicant form-control" name="taster" data-selected="--><?php //echo $applicant->getTaster();?><!--">-->
-<!--                    </select>-->
+                    <label for="tasterDate">Taster session?</label>
+                    <select id="tasterDate" class="submitApplicant form-control" name="taster" required>
+                        <?= $applicant->getTaster() ? '<option value="' . $applicant->getTasterId() . '">' . date_format(date_create($applicant->getTaster()), 'j F Y') . '</option>' : '' ?>
+                        <option value="">Not booked onto a taster session</option>
+                    </select>
 
                     <div class="form-group">
                         <input class="submitApplicant" name="tasterAttendance" type="checkbox" <?php echo $applicant->getTasterAttendance() ? "checked" : ""; ?>/>
