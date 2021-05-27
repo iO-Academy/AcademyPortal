@@ -18,6 +18,7 @@ class GetApplicationFormControllerFactory
     public function __invoke(ContainerInterface $container)
     {
         $applicationFormModel = $container->get('ApplicationFormModel');
-        return new GetApplicationFormController($applicationFormModel);
+        $eventModel = $container->get('EventModel');
+        return new GetApplicationFormController($applicationFormModel, $eventModel);
     }
 }

@@ -24,6 +24,7 @@ class ApplicantSanitiser
         $applicant['whyDev'] = StringSanitiser::sanitiseString($applicant['whyDev']);
         $applicant['codeExperience'] = StringSanitiser::sanitiseString($applicant['codeExperience']);
         $applicant['hearAboutId'] = (int)$applicant['hearAboutId'];
+        $applicant['backgroundInfoId'] = (int)$applicant['backgroundInfoId'];
         $applicant['eligible'] = $applicant['eligible'] ? 1 : 0;
         $applicant['eighteenPlus'] = $applicant['eighteenPlus'] ? 1 : 0;
         $applicant['finance'] = $applicant['finance'] ? 1 : 0;
@@ -75,6 +76,24 @@ class ApplicantSanitiser
             !empty($applicant['additionalNotes']) ?
                 StringSanitiser::sanitiseString($applicant['additionalNotes']) : null;
         $applicant['chosenCourseId'] = !empty($applicant['chosenCourseId']) ? (int)$applicant['chosenCourseId'] : null;
+
+        $applicant['attitude'] = $applicant['attitude'] ? (int)$applicant['attitude'] : null;
+        $applicant['averageScore'] = $applicant['averageScore'] ? (int)$applicant['averageScore'] : null;
+        $applicant['fee'] = $applicant['fee'] ? (int)$applicant['fee'] : null;
+
+        $applicant['signedTerms'] = $applicant['signedTerms'] ? 1 : 0;
+        $applicant['signedDiversitech'] = $applicant['signedDiversitech'] ? 1 : 0;
+
+        $applicant['signedNDA'] = $applicant['signedNDA'] ? 1 : 0;
+        $applicant['inductionEmailSent'] = $applicant['inductionEmailSent'] ? 1 : 0;
+        $applicant['checkedID'] = $applicant['checkedID'] ? 1 : 0;
+        $applicant['contactFormSigned'] = $applicant['contactFormSigned'] ? 1 : 0;
+
+        $applicant['dataProtectionName'] = $applicant['dataProtectionName'] ? 1 : 0;
+        $applicant['dataProtectionPhoto'] = $applicant['dataProtectionPhoto'] ? 1 : 0;
+        $applicant['dataProtectionTestimonial'] = $applicant['dataProtectionTestimonial'] ? 1 : 0;
+        $applicant['dataProtectionBio'] = $applicant['dataProtectionBio'] ? 1 : 0;
+        $applicant['dataProtectionVideo'] = $applicant['dataProtectionVideo'] ? 1 : 0;
 
         return $applicant;
     }
