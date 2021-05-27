@@ -22,7 +22,7 @@ class ApplicantFormViewHelper
                 $string .= '<optgroup label="' . $stage['title'] . '">';
 
                 foreach ($optionsForThisStage as $option) {
-                    $string .= '<option data-student="' . $stage['student'] . '" 
+                    $string .= '<option data-stage="' . $stage['id'] . '"data-student="' . $stage['student'] . '" 
                     name="stageId" value="' . $stage['id'] . " " . $option['id'] . '"';
 
                     if ($currentStage === $option['option']) {
@@ -34,7 +34,7 @@ class ApplicantFormViewHelper
                 $string .= '</optgroup>';
             } else {
                 $string .=
-                    '<option data-student="' . $stage['student'] . '"
+                    '<option data-stage="' . $stage['id'] . '" data-student="' . $stage['student'] . '"
                     class="stageDropdown" name="stageId" value="' . $stage['id'] . '"';
                 if ($currentStage === $stage['title']) {
                     $string .= ' selected';
