@@ -6,8 +6,8 @@
 # https://github.com/sequelpro/sequelpro
 #
 # Host: 127.0.0.1 (MySQL 5.7.33)
-# Database: academyPortal
-# Generation Time: 2021-05-26 13:23:45 +0000
+# Database: academyportal
+# Generation Time: 2021-05-27 10:00:44 +0000
 # ************************************************************
 
 
@@ -113,6 +113,32 @@ VALUES
 	(17,0,NULL,NULL,'','',0,NULL,NULL,NULL,NULL,'',NULL,0,0,NULL,6,0,NULL,NULL,'','','',NULL,NULL);
 
 /*!40000 ALTER TABLE `applicants_additional` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table applicants_courses
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `applicants_courses`;
+
+CREATE TABLE `applicants_courses` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `applicant_id` int(10) unsigned NOT NULL,
+  `course_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `applicants_courses` WRITE;
+/*!40000 ALTER TABLE `applicants_courses` DISABLE KEYS */;
+
+INSERT INTO `applicants_courses` (`id`, `applicant_id`, `course_id`)
+VALUES
+	(1,2,1),
+	(2,2,2),
+	(3,3,1),
+	(4,4,2);
+
+/*!40000 ALTER TABLE `applicants_courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
