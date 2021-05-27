@@ -112,7 +112,8 @@ class ApplicantModel implements ApplicantModelInterface
         string $sortingQuery = '',
         string $pageNumber = '1'
     ) {
-        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, GROUP_CONCAT(`start_date` SEPARATOR ', ') AS 'cohortDate', 
+        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, 
+                      GROUP_CONCAT(`start_date` SEPARATOR ', ') AS 'cohortDate', 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
                       FROM `applicants`
                       LEFT JOIN `applicants_courses` ON `applicants`.`id` = `applicants_courses`.`applicant_id`
@@ -196,12 +197,13 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare(
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`,  `hearAbout`, 
-                      GROUP_CONCAT(`applicant_course`.`start_date` SEPARATOR ', ') AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, 
-                      `assessmentTime`,
+                      GROUP_CONCAT(`applicant_course`.`start_date` SEPARATOR ', ') AS 'cohortDate', `apprentice`, 
+                      `aptitude`, `assessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`,
                       `tasterEvent`.`date` AS `taster`, `tasterId`,
-                      `tasterAttendance`, `teams`.`trainer` AS 'team', GROUP_CONCAT(`applicant_course`.`id` SEPARATOR ', ') AS 'cohortId',      `hearAboutId`, 
+                      `tasterAttendance`, `teams`.`trainer` AS 'team', 
+                       GROUP_CONCAT(`applicant_course`.`id` SEPARATOR ', ') AS 'cohortId', `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', 
                       `stages`.`student` AS 'isStudentStage',
                       `option` as 'stageOptionName', `githubUsername`, `portfolioUrl`, `pleskHostingUrl`,
