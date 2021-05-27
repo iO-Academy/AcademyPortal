@@ -13,7 +13,7 @@ class StudentPasswordModalControllerTest extends TestCase
     public function testConstruct()
     {
         $applicantModel = $this->createMock(ApplicantModel::class);
-        $password = $this->createMock(RandomPasswordModel::class);
+        $password = 'freaky fish were here again';
         $case = new StudentPasswordModalController($password, $applicantModel);
         $expected = StudentPasswordModalController::class;
         $this->assertInstanceOf($expected, $case);

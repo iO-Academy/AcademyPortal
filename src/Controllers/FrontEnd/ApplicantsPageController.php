@@ -26,8 +26,11 @@ class ApplicantsPageController extends Controller
      * @param ApplicantModel $applicantModel
      */
     public function __construct(
-        PhpRenderer $renderer, StageModel $stageModel, ApplicantModel $applicantModel, string $randomPassword)
-    {
+        PhpRenderer $renderer,
+        StageModel $stageModel,
+        ApplicantModel $applicantModel,
+        string $randomPassword
+    ){
         $this->renderer = $renderer;
         $this->randomPassword = $randomPassword;
         $this->stageModel = $stageModel;

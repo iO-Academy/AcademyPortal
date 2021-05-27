@@ -19,7 +19,7 @@ class StudentPasswordModalController extends Controller
      * @param string $password
      * @param ApplicantModel $applicantModel
      */
-    public function __construct(RandomPasswordModel $password, ApplicantModel $applicantModel)
+    public function __construct(string $password, ApplicantModel $applicantModel)
     {
         $this->password = $password;
         $this->applicantModel = $applicantModel;

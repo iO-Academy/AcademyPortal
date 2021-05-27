@@ -14,7 +14,7 @@ class StudentPasswordModalControllerFactoryTest extends TestCase
     public function testInvoke()
     {
         $container = $this->createMock(ContainerInterface::class);
-        $password = $this->createMock(RandomPasswordModel::class);
+        $password = 'freaky fish were here';
         $applicant = $this->createMock(ApplicantModel::class);
         $container->method('get')
             ->willReturn($password, $applicant);

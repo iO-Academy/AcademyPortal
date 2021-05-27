@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
 class RegisterPageController extends Controller
-            {
+{
     private $renderer;
     private $password;
 
