@@ -2,14 +2,28 @@
 (async ()=> {
   sessionStorage['name'] = '';
   const nameInput = document.querySelector('#name');
+  const search =  document.querySelector('#navSubmitButton');
   const params = new URLSearchParams(
       window.location.search
   );
   sessionStorage['name'] = params.get('name') || sessionStorage['name'] || "";
-  document.querySelector('#navSubmitButton').addEventListener('change', ()=>{
-   nameInput.value = sessionStorage['name'];
+
+  nameInput.addEventListener('change', (e)=>{
+    nameInput.value = e.target.value;
   })
+
+  search.addEventListener('click', ()=>{
+    sessionStorage['name'] = nameInput.value;
+  })
+
   nameInput.value = sessionStorage['name'];
+  nameInput.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      search.click();
+    }
+  })
+
   document.querySelector('#navClearButton').addEventListener('click', ()=>{
     sessionStorage['name'] = '';
     nameInput.value = sessionStorage['name'];
