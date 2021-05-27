@@ -6,19 +6,23 @@ use Portal\Abstracts\Controller;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Models\ApplicationFormModel;
+use Portal\Models\EventModel;
 
 class GetApplicationFormController extends Controller
 {
     private $applicationFormModel;
+    private $eventModel;
 
     /**
      * GetApplicationFormController constructor.
      *
      * @param ApplicationFormModel $applicationFormModel
+     * @param EventModel $eventModel
      */
-    public function __construct(ApplicationFormModel $applicationFormModel)
+    public function __construct(ApplicationFormModel $applicationFormModel, EventModel $eventModel)
     {
         $this->applicationFormModel = $applicationFormModel;
+        $this->eventModel = $eventModel;
     }
 
     /**
@@ -42,7 +46,8 @@ class GetApplicationFormController extends Controller
                     'data' => [
                         'cohorts' => $this->applicationFormModel->getCohorts(),
                         'hearAbout' => $this->applicationFormModel->getHearAbout(),
-                        'backgroundInfo' => $this->applicationFormModel->getBackgroundInfo()
+                        'backgroundInfo' => $this->applicationFormModel->getBackgroundInfo(),
+                        'tasters' => $this->eventModel->getEventsByCategoryId(3, 3)
                     ]
                 ];
             } catch (\Exception $e) {

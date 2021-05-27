@@ -202,8 +202,9 @@ class ApplicantModel implements ApplicantModelInterface
                       `apprentice`, `aptitude`, `assessmentDay`, 
                       `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
-                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
-                      `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, `backgroundInfoId`,
+                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, 
+                      `tasterEvent`.`date` AS `taster`, `tasterId`,
+                      `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, `backgroundInfoID`,
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', 
                       `stages`.`student` AS 'isStudentStage',
                       `option` as 'stageOptionName', `githubUsername`, `portfolioUrl`, `pleskHostingUrl`,
@@ -219,9 +220,11 @@ class ApplicantModel implements ApplicantModelInterface
                         LEFT JOIN `hear_about` 
                             ON `applicants`.`hearAboutId` = `hear_about`.`id`
                         LEFT JOIN `background_info` 
-                            ON `applicants`.`backgroundInfoId` = `background_info`.`id` 
+                            ON `applicants`.`backgroundInfoID` = `background_info`.`id` 
                         LEFT JOIN `applicants_additional`
                             ON `applicants`.`id` = `applicants_additional`.`id`
+                        LEFT JOIN `events` AS `tasterEvent`
+                            ON `applicants_additional`.`tasterId` = `tasterEvent`.`id`
                         LEFT JOIN `teams` 
                             ON `applicants_additional`.`team` = `teams`.`id`
                         LEFT JOIN `courses` student_course 
@@ -364,7 +367,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `laptop` = :laptop,
                             `laptopDeposit` = :laptopDeposit,
                             `laptopNum` = :laptopNum,
-                            `taster` = :taster,
+                            `tasterId` = :taster,
                             `tasterAttendance` = :tasterAttendance,
                             `githubUsername` = :githubUsername,
                             `portfolioUrl` = :portfolioUrl,

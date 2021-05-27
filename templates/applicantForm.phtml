@@ -110,10 +110,11 @@
                 </div>
 
                 <div id="taster" class="collapse">
-                    <label for="taster">Taster session?</label>
-                    <input id="taster" name="taster" class="submitApplicant form-control" type="date" value="<?php echo $applicant->getTaster();?>">
-<!--                    <select id="taster" class="submitApplicant form-control" name="taster" data-selected="--><?php //echo $applicant->getTaster();?><!--">-->
-<!--                    </select>-->
+                    <label for="tasterDate">Taster session?</label>
+                    <select id="tasterDate" class="submitApplicant form-control" name="taster" required>
+                        <?= $applicant->getTaster() ? '<option value="' . $applicant->getTasterId() . '">' . date_format(date_create($applicant->getTaster()), 'j F Y') . '</option>' : '' ?>
+                        <option value="">Not booked onto a taster session</option>
+                    </select>
 
                     <div class="form-group">
                         <input class="submitApplicant" name="tasterAttendance" type="checkbox" <?php echo $applicant->getTasterAttendance() ? "checked" : ""; ?>/>
@@ -175,7 +176,7 @@
                 </div>
             </section>
 
-            <section class="applicationFormSection student<?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
+            <section class="applicationFormSection student <?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
                 <div data-toggle="collapse" class="collapse-header" data-target="#onboarding" aria-expanded="false" aria-controls="onboarding">
                     <h4>Onboarding Info</h4>
                     <i class="glyphicon glyphicon-chevron-down"></i>
@@ -231,7 +232,6 @@
                     <input id='signedDiversitech' class='submitApplicant' name='signedDiversitech' type='checkbox' <?php echo $applicant->getSignedDiversitech() ? "checked" : "";?> ?>
                     <label for='signedDiversitech'>Signed Diversitech Terms & Conditions?</label>
                     </div>
-
 
                     <label for="laptopNum">Laptop number</label>
                     <input id="laptopNum" class="submitApplicant form-control" name="laptopNum" type="number" min="1" max="99" step="1" value="<?php echo $applicant->getLaptopNum();?>">
