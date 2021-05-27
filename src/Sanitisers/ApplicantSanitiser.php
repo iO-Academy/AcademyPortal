@@ -31,7 +31,7 @@ class ApplicantSanitiser
 
         return $applicant;
     }
-invalid
+
     /**
      * Sanitise additional field data for an applicant
      *

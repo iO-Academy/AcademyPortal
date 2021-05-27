@@ -68,14 +68,14 @@ let getCompletedFormData = () => {
             let stageOptionArray = formItem.value.split(" ");
             data['stageId'] = stageOptionArray[0];
             data['stageOptionId'] = stageOptionArray[1] ?? null;
+        } else if(formItem.name == 'cohortId') {
+            if(formItem.checked){
+                data['cohortId'].push(formItem.value)
+            }
         }
         else {
             if (formItem.type == 'checkbox') {
-                if(formItem.name == 'cohortId' && formItem.checked) {
-                    data['cohortId'].push(formItem.value)
-                } else {
                     data[formItem.name] = formItem.checked;
-                }
             } else {
                 data[formItem.name] = formItem.value;
             }
