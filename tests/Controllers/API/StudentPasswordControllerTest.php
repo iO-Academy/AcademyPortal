@@ -7,7 +7,7 @@ use Portal\Controllers\API\StudentPasswordController;
 use Portal\Models\ApplicantModel;
 use Portal\Models\RandomPasswordModel;
 
-class StudentPasswordModalControllerTest extends TestCase
+class StudentPasswordControllerTest extends TestCase
 {
 
     public function testConstruct()
