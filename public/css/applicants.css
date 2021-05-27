@@ -120,3 +120,8 @@ section {
 #navSubmitButton {
     background-color: #337ab7;
 }
+.nav-tabs {
+    display: grid;
+    grid-template-columns: 0fr 2fr 2fr 1.5fr 0.3fr 2fr 2fr 2fr;
+    justify-items: left;
+}
