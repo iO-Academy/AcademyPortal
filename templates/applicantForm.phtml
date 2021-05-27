@@ -30,7 +30,7 @@
                     <i class="glyphicon glyphicon-chevron-up"></i>
                 </div>
 
-                <div id="personalDetails" class="collapse in">
+                <div id="personalDetails" data-applicantid="<?= $id ?>" class="collapse in">
                     <label for="name">Name</label>
                     <div id="nameError" class="alert hidden formItem_alert"></div>
                     <input id="name" name="name" class="submitApplicant form-control" type="text" placeholder="name" value="<?php echo $applicant->getName();?>" required>
@@ -240,5 +240,6 @@
             <div id="generalError" class="alert alert-danger hidden formItem_alert"></div>
         </form>
 <?php require 'partials/layout/footer.phtml'; ?>
+<?php require('partials/studentPasswordModal.phtml'); ?>
 </body>
 </html>

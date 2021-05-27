@@ -34,6 +34,8 @@ class EditApplicantPageController extends Controller
         if ($_SESSION['loggedIn'] === true) {
             $id = $request->getQueryParams()['id'];
             if ($id > 0) {
+                $data['stageId'] = $stageId;
+                $data['id'] = $id;
                 $data['applicant'] = $this->applicantModel->getApplicantById($id);
                 $data['stages'] = $this->stageModel->getStageTitles();
                 $data['stageOptions'] = $this->stageModel->getStageOptions();
