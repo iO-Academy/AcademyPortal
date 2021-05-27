@@ -11,6 +11,10 @@
    nameInput.value = sessionStorage['name'];
   })
   nameInput.value = sessionStorage['name'];
+  document.querySelector('#navClearButton').addEventListener('click', ()=>{
+    sessionStorage['name'] = '';
+    nameInput.value = sessionStorage['name'];
+  })
 })();
 
 (async () => {
