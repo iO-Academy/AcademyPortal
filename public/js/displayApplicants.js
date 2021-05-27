@@ -1,4 +1,36 @@
-//display applicant cohort dropdown
+
+(async ()=> {
+  sessionStorage['name'] = '';
+  const nameInput = document.querySelector('#name');
+  const search =  document.querySelector('#navSubmitButton');
+  const params = new URLSearchParams(
+      window.location.search
+  );
+  sessionStorage['name'] = params.get('name') || sessionStorage['name'] || "";
+
+  nameInput.addEventListener('change', (e)=>{
+    nameInput.value = e.target.value;
+  })
+
+  search.addEventListener('click', ()=>{
+    sessionStorage['name'] = nameInput.value;
+  })
+
+  nameInput.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      search.click();
+    }
+  })
+
+  document.querySelector('#navClearButton').addEventListener('click', ()=>{
+    sessionStorage['name'] = '';
+    nameInput.value = sessionStorage['name'];
+  })
+
+  nameInput.value = sessionStorage['name'];
+
+})();
 
 (async () => {
   const data = await handleFormOptions();
