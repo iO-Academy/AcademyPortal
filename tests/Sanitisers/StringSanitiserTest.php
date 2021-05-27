@@ -24,6 +24,7 @@ class StringSanitiserTest extends TestCase
 
     public function testSanitiseStringFailure()
     {
+
         $int = 2;
         $result = StringSanitiser::sanitiseString($int);
         $expected = '2';
@@ -32,6 +33,7 @@ class StringSanitiserTest extends TestCase
 
     public function testSanitiseStringMalform()
     {
+
         $arr = [];
         $this->expectException(\TypeError::class);
         StringSanitiser::sanitiseString($arr);

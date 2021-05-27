@@ -245,7 +245,6 @@ class ApplicantModel implements ApplicantModelInterface
         $results = $query->fetch();
         return $results;
     }
-
     /**
      * Deletes record with the given id from the database
      *
