@@ -112,6 +112,7 @@ section {
 .clipboard {
     margin-left: 10px;
 }
+
 #navClearButton, #navSubmitButton {
     margin: 0 5px;
     border-radius: 5px;
@@ -121,6 +122,13 @@ section {
     padding: 6px 12px;
     font-size: 14px;
 }
+
 #navSubmitButton {
     background-color: #337ab7;
+}
+
+.nav-tabs {
+    display: grid;
+    grid-template-columns: 0fr 2fr 2fr 1.5fr 0.3fr 2fr 2fr 2fr;
+    justify-items: left;
 }
