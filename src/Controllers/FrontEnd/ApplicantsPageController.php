@@ -56,6 +56,9 @@ class ApplicantsPageController extends Controller
             if (isset($params['cohortId']) && $params['cohortId'] == 'all') {
                 $params['cohortId'] = '%';
             }
+            if (isset($params['name']) && $params['name'] == '') {
+                $params['name'] = '%';
+            }
             if (isset($params['stageId']) && $params['stageId'] == 'all') {
                 $params['stageId'] = '%';
             }

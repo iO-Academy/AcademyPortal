@@ -1,16 +1,16 @@
-//display applicant cohort dropdown
 
-// if sessionStorage['name'] exists, then pass that into the value field of input tag.
-// clear button will delete name from sessionStorage
 (async ()=> {
+  sessionStorage['name'] = '';
   const nameInput = document.querySelector('#name');
   console.log(nameInput.value);
   const params = new URLSearchParams(
       window.location.search
   );
-  sessionStorage['name'] = params.get('name') || sessionStorage['name'] || 'all';
-  console.log(sessionStorage);
-
+  sessionStorage['name'] = params.get('name') || sessionStorage['name'] || "";
+  document.querySelector('#navSubmitButton').addEventListener('change', ()=>{
+   nameInput.value = sessionStorage['name'];
+  })
+  nameInput.value = sessionStorage['name'];
 })();
 
 (async () => {
@@ -27,7 +27,6 @@
   const select = document.querySelector('#cohorts');
 
   select.addEventListener('change', () => {
-    console.log('CHANGE');
     // this feels like a hack but best solution I can come up with without rewritting the filter
     let sort = form.querySelector('.arrowBtn.active').value;
     let filter = `<input type="hidden" name="sort" value="${sort}">`;
@@ -67,7 +66,6 @@
   const select = document.querySelector('#stages');
 
   select.addEventListener('change', () => {
-    console.log('Stage');
     // this feels like a hack but best solution I can come up with without rewritting the filter
     let sort = form.querySelector('.arrowBtn.active').value;
     let filter = `<input type="hidden" name="sort" value="${sort}">`;
