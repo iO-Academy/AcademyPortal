@@ -81,7 +81,7 @@ let outputCohortsAvailable = (cohorts, el = null) => {
   let selectedCohorts = element.dataset.selected.split(', ');
   let cohortOptions = '';
   cohorts.forEach(item => {
-    cohortOptions += '<input type="checkbox" class="submitApplicant" ';
+    cohortOptions += '<div><input type="checkbox" class="submitApplicant" ';
     cohortOptions += `name="cohortId" `;
     for(let i = 0; i < selectedCohorts.length; i++) {
       if(selectedCohorts[i] == item.id){
@@ -95,7 +95,7 @@ let outputCohortsAvailable = (cohorts, el = null) => {
     cohortOptions += `value="${
         item.id
     }">`;
-    cohortOptions += `<label for="CohortOption${item.id}">${date.toLocaleDateString('en-GB', dateOptions)}</label>`;
+    cohortOptions += `<label for="CohortOption${item.id}">${date.toLocaleDateString('en-GB', dateOptions)}</label></div>`;
   });
 
   element.innerHTML += cohortOptions;
