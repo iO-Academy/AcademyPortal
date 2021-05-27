@@ -68,4 +68,29 @@ class StringValidatorTest extends TestCase
         $this->expectException(\TypeError::class);
         StringValidator::ValidateLength($name, $characterLength);
     }
+
+    public function testValidateAlphaSuccess()
+    {
+        $alpha = 'Ashley Coles';
+        $result = StringValidator::validateAlpha($alpha);
+        $this->assertEquals($result, $alpha);
+    }
+
+    public function testValidateAlphaFailure()
+    {
+        $this->expectException(\Exception::class);
+        StringValidator::validateAlpha('$533Haha');
+    }
+
+    public function testValidateAlphaEmptyFailure()
+    {
+        $this->expectException(\Exception::class);
+        StringValidator::validateAlpha('');
+    }
+
+    public function testValidateAlphaMalformed()
+    {
+        $this->expectException(\typeError::class);
+        StringValidator::validateAlpha([1]);
+    }
 }
