@@ -41,11 +41,11 @@ class ApplicantValidator
         DateTimeValidator::validateTime($applicant['assessmentTime']);
         DateTimeValidator::validateDateTime($applicant['dateTimeAdded']);
 
-        if (
-            (
-                (int)$applicant['upfront'] + (int)$applicant['edaid'] + (int)$applicant['diversitech']
-            ) > (int)$applicant['fee']
-        ) {
+        $feePaymentMethods = (int)$applicant['upfront'] + (int)$applicant['edaid'] + (int)$applicant['diversitech'];
+
+        if ((int)$applicant['fee'] > 0 && $feePaymentMethods > (int)$applicant['fee']) {
+            throw new \Exception('Total payment is more than course price');
+        } elseif ($feePaymentMethods > Globals::ACADEMYPRICE) {
             throw new \Exception('Total payment is more than course price');
         }
 

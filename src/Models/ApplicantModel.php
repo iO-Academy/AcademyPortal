@@ -203,7 +203,7 @@ class ApplicantModel implements ApplicantModelInterface
                       `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
-                      `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, `backgroundInfoID`,
+                      `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, `backgroundInfoId`,
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', 
                       `stages`.`student` AS 'isStudentStage',
                       `option` as 'stageOptionName', `githubUsername`, `portfolioUrl`, `pleskHostingUrl`,
@@ -219,7 +219,7 @@ class ApplicantModel implements ApplicantModelInterface
                         LEFT JOIN `hear_about` 
                             ON `applicants`.`hearAboutId` = `hear_about`.`id`
                         LEFT JOIN `background_info` 
-                            ON `applicants`.`backgroundInfoID` = `background_info`.`id` 
+                            ON `applicants`.`backgroundInfoId` = `background_info`.`id` 
                         LEFT JOIN `applicants_additional`
                             ON `applicants`.`id` = `applicants_additional`.`id`
                         LEFT JOIN `teams` 
