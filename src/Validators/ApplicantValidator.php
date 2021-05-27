@@ -44,14 +44,14 @@ class ApplicantValidator
         if (
             (
                 (int)$applicant['upfront'] + (int)$applicant['edaid'] + (int)$applicant['diversitech']
-            ) > Globals::ACADEMYPRICE
+            ) > (int)$applicant['fee']
         ) {
             throw new \Exception('Total payment is more than course price');
         }
 
         DateTimeValidator::validateDate($applicant['kitCollectionDay']);
         DateTimeValidator::validateTime($applicant['kitCollectionTime']);
-        DateTimeValidator::validateDate($applicant['taster']);
+        $applicant['taster'] = filter_var($applicant['taster'], FILTER_VALIDATE_INT);
 
         return (
             (
