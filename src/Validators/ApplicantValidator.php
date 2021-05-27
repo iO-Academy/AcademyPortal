@@ -53,7 +53,7 @@ class ApplicantValidator
 
         DateTimeValidator::validateDate($applicant['kitCollectionDay']);
         DateTimeValidator::validateTime($applicant['kitCollectionTime']);
-        DateTimeValidator::validateDate($applicant['taster']);
+        $applicant['taster'] = filter_var($applicant['taster'], FILTER_VALIDATE_INT);
 
         return (
             (
