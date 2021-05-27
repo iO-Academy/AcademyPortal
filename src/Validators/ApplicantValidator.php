@@ -17,9 +17,8 @@ class ApplicantValidator
             empty($applicant['phoneNumber']) ||
             PhoneNumberValidator::validatePhoneNumber($applicant['phoneNumber'])
          ) &&
-//         is_array($applicant['cohortId'])
-//         && filter_var_array($applicant['cohortId'], FILTER_VALIDATE_INT)
-//         &&
+         is_array($applicant['cohortId']) &&
+         (filter_var_array($applicant['cohortId'], FILTER_VALIDATE_INT) || count($applicant['cohortId']) == 0) &&
          StringValidator::validateExistsAndLength($applicant['whyDev'], StringValidator::MAXTEXTLENGTH) &&
          StringValidator::validateExistsAndLength($applicant['codeExperience'], StringValidator::MAXTEXTLENGTH) &&
          is_numeric($applicant['hearAboutId']) &&
