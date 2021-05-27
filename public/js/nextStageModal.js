@@ -30,7 +30,6 @@ $(document).ready(function(){
                     }
                     response.json().then(function(data) {
                         if (parseInt(data.data.nextStageId) === 6) {
-                            console.log('hello');
                             $('#studentPasswordModal').modal('show');
                             fetch(`/api/applicantPassword/${applicantId}`, {
                                 method: 'POST'

@@ -7,7 +7,7 @@ document.querySelectorAll('.collapse-header').forEach(section => {
 
 const studentStages = document.querySelectorAll('section.student')
 document.querySelector('#stageTitle').addEventListener('change', e => {
-    if (e.target.querySelector('option:checked').dataset.student === "1") {
+        if (e.target.querySelector('option:checked').dataset.student === "1") {
         studentStages.forEach(studentStage => {
             studentStage.classList.remove('hidden')
         })
@@ -17,3 +17,5 @@ document.querySelector('#stageTitle').addEventListener('change', e => {
         })
     }
 })
+
+
