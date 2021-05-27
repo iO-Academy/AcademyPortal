@@ -13,15 +13,26 @@ class ApplicantValidator
             StringValidator::validateExistsAndLength($applicant['name'], StringValidator::MAXVARCHARLENGTH, 'name') &&
             NameValidator::validateName($applicant['name'])
         ) &&
-         StringValidator::validateExistsAndLength($applicant['email'], StringValidator::MAXVARCHARLENGTH, 'email address') &&
+         StringValidator::validateExistsAndLength($applicant['email'], StringValidator::MAXVARCHARLENGTH, 'email')
+         &&
          filter_var($applicant['email'], FILTER_VALIDATE_EMAIL) !== false &&
          (
             empty($applicant['phoneNumber']) ||
             PhoneNumberValidator::validatePhoneNumber($applicant['phoneNumber'])
          ) &&
          is_numeric($applicant['cohortId']) &&
-         StringValidator::validateExistsAndLength($applicant['whyDev'], StringValidator::MAXTEXTLENGTH, '') &&
-         StringValidator::validateExistsAndLength($applicant['codeExperience'], StringValidator::MAXTEXTLENGTH) &&
+         StringValidator::validateExistsAndLength(
+             $applicant['whyDev'],
+             StringValidator::MAXTEXTLENGTH,
+             'your reasons for wanting to become a developer'
+         )
+        &&
+         StringValidator::validateExistsAndLength(
+             $applicant['codeExperience'],
+             StringValidator::MAXTEXTLENGTH,
+             'your experience of coding'
+         )
+        &&
          is_numeric($applicant['hearAboutId']) &&
          (
              $applicant['eligible'] == 1 || $applicant['eligible'] == 0

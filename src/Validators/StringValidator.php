@@ -24,7 +24,8 @@ class StringValidator
         if (empty($validateData) == false && strlen($validateData) <= $characterLength) {
             return $validateData;
         } else {
-            throw new \Exception('You have either not inputted any information for ' . $fieldName . ' or it exceeds our character limits');
+            throw new \Exception('You have either not inputted any information for ' . $fieldName . ' or ' . '
+            it exceeds our character limits');
         }
     }
 
@@ -44,9 +45,8 @@ class StringValidator
         string $fieldName = 'Unknown'
     ): bool {
         if (strlen($validateData) > $characterLength) {
-            throw new \Exception(
-                $fieldName . ' input string is too long, expected ' . $characterLength . ' characters or less'
-            );
+            throw new \Exception('You have either not inputted any information for ' . $fieldName . ' or ' . '
+            it exceeds our character limits');
         }
         return true;
     }
