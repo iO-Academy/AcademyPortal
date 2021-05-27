@@ -43,9 +43,11 @@ class ApplicantValidator
 
         $feePaymentMethods = (int)$applicant['upfront'] + (int)$applicant['edaid'] + (int)$applicant['diversitech'];
 
-        if ((int)$applicant['fee'] > 0 && $feePaymentMethods > (int)$applicant['fee']) {
-            throw new \Exception('Total payment is more than course price');
-        } elseif ($feePaymentMethods > Globals::ACADEMYPRICE) {
+        if (
+            ((int)$applicant['fee'] > 0
+            && $feePaymentMethods > (int)$applicant['fee'])
+            || ($feePaymentMethods > Globals::ACADEMYPRICE)
+        ) {
             throw new \Exception('Total payment is more than course price');
         }
 

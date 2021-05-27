@@ -73,22 +73,22 @@
                     </select>
 
                     <div class="form-group">
-                        <input class="submitApplicant" name="eligible" type="checkbox" <?php echo $applicant->getEligible() ? "checked" : ""; ?>/>
+                        <input class="submitApplicant" name="eligible" type="checkbox"<?php echo $applicant->getEligible() ? " checked" : ""; ?>/>
                         <label for="uk-eligible">I confirm I am eligible to study in the UK.</label>
                     </div>
 
                     <div class="form-group">
-                        <input class="submitApplicant" name="eighteenPlus" type="checkbox" <?php echo $applicant->getEighteenPlus() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="eighteenPlus" type="checkbox"<?php echo $applicant->getEighteenPlus() ? " checked" : "";?>/>
                         <label for="is-18">I confirm I will be at least 18 years before my chosen cohort*.</label>
                     </div>
 
                     <div class="form-group">
-                        <input class="submitApplicant" name="finance" type="checkbox" <?php echo $applicant->getFinance() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="finance" type="checkbox"<?php echo $applicant->getFinance() ? " checked" : "";?>/>
                         <label for="finance">I would like to apply for interest free finance.</label>
                     </div>
 
                     <div class="form-group">
-                        <input class="submitApplicant" name="apprentice" type="checkbox" <?php echo $applicant->getApprentice() ? "checked" : ""; ?>/>
+                        <input class="submitApplicant" name="apprentice" type="checkbox"<?php echo $applicant->getApprentice() ? " checked" : ""; ?>/>
                         <label for="apprentice">Apprentice applicant</label>
                     </div>
 
@@ -117,7 +117,7 @@
                     </select>
 
                     <div class="form-group">
-                        <input class="submitApplicant" name="tasterAttendance" type="checkbox" <?php echo $applicant->getTasterAttendance() ? "checked" : ""; ?>/>
+                        <input class="submitApplicant" name="tasterAttendance" type="checkbox"<?php echo $applicant->getTasterAttendance() ? " checked" : ""; ?>/>
                         <label for="tasterAttendance">Did they attend the taster session?</label>
                     </div>
                 </div>
@@ -161,7 +161,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input class="submitApplicant" name="diversitechInterest" type="checkbox" <?php echo $applicant->getdiversitechInterest() ? "checked" : ""; ?>/>
+                        <input class="submitApplicant" name="diversitechInterest" type="checkbox"<?php echo $applicant->getdiversitechInterest() ? " checked" : ""; ?>/>
                         <label for="diversitechInterest">Interested in Diversitech?</label>
                     </div>
 
@@ -176,7 +176,7 @@
                 </div>
             </section>
 
-            <section class="applicationFormSection student <?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
+            <section class="applicationFormSection student<?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
                 <div data-toggle="collapse" class="collapse-header" data-target="#onboarding" aria-expanded="false" aria-controls="onboarding">
                     <h4>Onboarding Info</h4>
                     <i class="glyphicon glyphicon-chevron-down"></i>
@@ -209,28 +209,28 @@
                     </div>
 
                     <div class="form-group">
-                        <input class="submitApplicant" name="laptop" type="checkbox" <?php echo $applicant->getLaptop() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="laptop" type="checkbox"<?php echo $applicant->getLaptop() ? " checked" : "";?>/>
                         <label for="laptop">Academy laptop needed?</label>
                     </div>
 
                     <div class="form-group">
-                        <input class="submitApplicant" name="laptopDeposit" type="checkbox" <?php echo $applicant->getLaptopDeposit() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="laptopDeposit" type="checkbox"<?php echo $applicant->getLaptopDeposit() ? " checked" : "";?>/>
                         <label for="laptopDeposit">Laptop deposit paid?</label>
                     </div>
 
                     <div class="form-group">
-                        <input class="submitApplicant" name="signedTerms" type="checkbox" <?php echo $applicant->getSignedTerms() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="signedTerms" type="checkbox"<?php echo $applicant->getSignedTerms() ? " checked" : "";?>/>
                         <label for="signedTerms">Signed Terms & Conditions?</label>
                     </div>
 
                     <div class="form-group">
-                        <input class="submitApplicant" name="contactFormSigned" type="checkbox" <?php echo $applicant->getContactFormSigned() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="contactFormSigned" type="checkbox"<?php echo $applicant->getContactFormSigned() ? " checked" : "";?>/>
                         <label for="contactFormSigned">Signed Contact Form?</label>
                     </div>
 
                     <div class="form-group <?php echo $applicant->getDiversitech() ? '' : ' hidden'; ?>">
-                    <input id='signedDiversitech' class='submitApplicant' name='signedDiversitech' type='checkbox' <?php echo $applicant->getSignedDiversitech() ? "checked" : "";?> ?>
-                    <label for='signedDiversitech'>Signed Diversitech Terms & Conditions?</label>
+                    <input id="signedDiversitech" class="submitApplicant" name="signedDiversitech" type="checkbox"<?php echo $applicant->getSignedDiversitech() ? " checked" : "";?> ?>
+                    <label for="signedDiversitech">Signed Diversitech Terms & Conditions?</label>
                     </div>
 
                     <label for="laptopNum">Laptop number</label>
@@ -246,17 +246,17 @@
                     <input id="kitNum" class="submitApplicant form-control" name="kitNum" type="number" min="1" max="99" step="1" value="<?php echo $applicant->getKitNum();?>">
 
                     <div class="form-group">
-                        <input class="submitApplicant" name="inductionEmailSent" type="checkbox" <?php echo $applicant->getInductionEmailSent() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="inductionEmailSent" type="checkbox"<?php echo $applicant->getInductionEmailSent() ? " checked" : "";?>/>
                         <label for="inductionEmailSent">Induction Email Sent?</label>
                     </div>
 
                     <div class="form-group">
-                        <input class="submitApplicant" name="signedNDA" type="checkbox" <?php echo $applicant->getSignedNDA() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="signedNDA" type="checkbox"<?php echo $applicant->getSignedNDA() ? " checked" : "";?>/>
                         <label for="signedNDA">Signed NDA?</label>
                     </div>
 
                     <div class="form-group">
-                        <input class="submitApplicant" name="checkedID" type="checkbox" <?php echo $applicant->getCheckedID() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="checkedID" type="checkbox"<?php echo $applicant->getCheckedID() ? " checked" : "";?>/>
                         <label for="checkedID">ID Check Completed?</label>
                     </div>
 
@@ -273,23 +273,23 @@
 
                 <div id="dataProtection" class="collapse">
                     <div class="form-group">
-                        <input class="submitApplicant" name="dataProtectionName" type="checkbox" <?php echo $applicant->getDataProtectionName() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="dataProtectionName" type="checkbox"<?php echo $applicant->getDataProtectionName() ? " checked" : "";?>/>
                         <label for="dataProtectionName">Name?</label>
                     </div>
                     <div class="form-group">
-                        <input class="submitApplicant" name="dataProtectionPhoto" type="checkbox" <?php echo $applicant->getDataProtectionPhoto() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="dataProtectionPhoto" type="checkbox"<?php echo $applicant->getDataProtectionPhoto() ? " checked" : "";?>/>
                         <label for="dataProtectionPhoto">Photo?</label>
                     </div>
                     <div class="form-group">
-                        <input class="submitApplicant" name="dataProtectionTestimonial" type="checkbox" <?php echo $applicant->getDataProtectionTestimonial() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="dataProtectionTestimonial" type="checkbox"<?php echo $applicant->getDataProtectionTestimonial() ? " checked" : "";?>/>
                         <label for="dataProtectionTestimonial">Testimonial?</label>
                     </div>
                     <div class="form-group">
-                        <input class="submitApplicant" name="dataProtectionBio" type="checkbox" <?php echo $applicant->getDataProtectionBio() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="dataProtectionBio" type="checkbox"<?php echo $applicant->getDataProtectionBio() ? " checked" : "";?>/>
                         <label for="dataProtectionBio">Bio?</label>
                     </div>
                     <div class="form-group">
-                        <input class="submitApplicant" name="dataProtectionVideo" type="checkbox" <?php echo $applicant->getDataProtectionVideo() ? "checked" : "";?>/>
+                        <input class="submitApplicant" name="dataProtectionVideo" type="checkbox"<?php echo $applicant->getDataProtectionVideo() ? " checked" : "";?>/>
                         <label for="dataProtectionVideo">Video?</label>
                     </div>
                 </div>
