@@ -231,35 +231,6 @@ class ApplicantModel implements ApplicantModelInterface
             'id' => $id
         ]);
         $results = $query->fetch();
-        $applicantCourses = $this->getAppliedCourses($id);
-        $results->setCohortsAppliedTo($applicantCourses);
-        return $results;
-    }
-
-    public function formatApplicantWithApplicant_Course($applicantsData, $applicant_CourseFieldNames) {
-        //loop over the applicantsdata as applicantdata
-        // create a new array called result which we intend to fill with the formatted data
-        // if the property doesn't have the word cohort as it's variable name,
-        // store that data as is in the result array
-        // if the property does have the word cohort in it, ?????
-        // tada, now our the applicant in our result array has a property called cohortsData which has
-        // all the courses (stored as an array of objects) that person has selected
-
-        // additional problem, currently cohort id is in applicantentity and cohortdate is in base applicant
-        // entity so the question is where do we store the cohortsData property?
-    }
-
-    public function getAppliedCourses(int $applicantId): array
-    {
-        $query = $this->db->prepare("SELECT `courses`.`id`, `start_date`, `end_date`, `name`, `trainer`, `notes`, 
-       `deleted` FROM `applicants_courses`
-            LEFT JOIN `courses`
-            ON `applicants_courses`.`course_id` = `courses`.`id`
-            WHERE `applicant_id` = ':applicantId';");
-        $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
-        $query->bindParam(':applicantId', $applicantId);
-        $query->execute();
-        $results = $query->fetchAll();
         return $results;
     }
 

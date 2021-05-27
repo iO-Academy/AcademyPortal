@@ -8,7 +8,6 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
 {
     protected $phoneNumber;
     protected $cohortId;
-    protected $cohortsAppliedTo;
     protected $whyDev;
     protected $codeExperience;
     protected $hearAboutId;
@@ -31,7 +30,6 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
                   'email' => $this->email,
                   'phoneNumber' => $this->phoneNumber,
                   'cohortID' => $this->cohortId,
-                  'cohortsAppliedTo' => $this->cohortsAppliedTo,
                   'whyDev' => $this->whyDev,
                   'codeExperience' => $this->codeExperience,
                   'hearAboutId' => $this->hearAboutId,
@@ -62,27 +60,6 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     public function getCohortId()
     {
         return $this->cohortId;
-    }
-
-    public function getCohortsAppliedTo()
-    {
-        return $this->cohortsAppliedTo;
-    }
-
-    public function setCohortsAppliedTo(array $cohortsAppliedTo): void
-    {
-        // for typehinting purposes: loop over the to check that it is an array of course objects, not just an array of anything
-        $this->cohortsAppliedTo = $cohortsAppliedTo;
-    }
-
-    public function getCohortDates(): string
-    {
-        $cohortsAppliedTo = $this->getCohortsAppliedTo();
-        $dates = '';
-        foreach ($cohortsAppliedTo as $cohortAppliedTo) {
-            $cohortDate = $cohortsAppliedTo->getCohortDate();
-            $dates .= $cohortDate . ', ';
-        }
     }
 
     /**
