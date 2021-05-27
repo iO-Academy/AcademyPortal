@@ -15,7 +15,7 @@ class ApplicantValidator
                     StringValidator::MAXVARCHARLENGTH,
                     'name'
                 )
-                && NameValidator::validateName($applicant['name'])
+                && StringValidator::validateAlpha($applicant['name'])
             ) &&
             StringValidator::validateExistsAndLength($applicant['email'], StringValidator::MAXVARCHARLENGTH, 'email')
             &&
