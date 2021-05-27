@@ -432,7 +432,7 @@ class ApplicantModel implements ApplicantModelInterface
     public function addApplicantPassword(int $id, string $password)
     {
         $query = $this->db->prepare(
-        "UPDATE `applicants` SET `password` = :password WHERE `id` = :id"
+            "UPDATE `applicants` SET `password` = :password WHERE `id` = :id"
         );
         $query->bindParam(':id', $id);
         $query->bindParam(':password', $password);

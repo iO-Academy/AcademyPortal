@@ -30,7 +30,7 @@ class ApplicantsPageController extends Controller
         StageModel $stageModel,
         ApplicantModel $applicantModel,
         string $randomPassword
-    ){
+    ) {
         $this->renderer = $renderer;
         $this->randomPassword = $randomPassword;
         $this->stageModel = $stageModel;
