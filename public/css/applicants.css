@@ -112,3 +112,15 @@ section {
 .clipboard {
     margin-left: 10px;
 }
+#navClearButton, #navSubmitButton {
+    margin: 0 5px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    background-color: #d9534f;
+    padding: 6px 12px;
+    font-size: 14px;
+}
+#navSubmitButton {
+    background-color: #337ab7;
+}
