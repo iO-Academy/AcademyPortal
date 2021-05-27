@@ -112,16 +112,17 @@ class ApplicantModel implements ApplicantModelInterface
         string $sortingQuery = '',
         string $pageNumber = '1'
     ) {
-        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, `start_date` AS 'cohortDate', 
+        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, GROUP_CONCAT(`start_date` SEPARATOR ', ') AS 'cohortDate', 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
                       FROM `applicants`
-                      LEFT JOIN `courses` ON `applicants`.`cohortId`=`courses`.`id`
+                      LEFT JOIN `applicants_courses` ON `applicants`.`id` = `applicants_courses`.`applicant_id`
+                      LEFT JOIN `courses` ON `applicants_courses`.`course_id`=`courses`.`id`
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       WHERE `applicants`.`deleted` = '0'
                       AND `applicants`.`cohortId` like :cohortId
-                      AND `applicants`.`stageId` like :stageId ";
-
+                      AND `applicants`.`stageId` like :stageId 
+                      GROUP BY `applicants`.`id`;";
         $stmt .= $this->sortingQuery($sortingQuery);
         $stmt .= " LIMIT :offsets, :numberPerPage;";
         $offset = ($pageNumber - 1) * $this->numberPerPage;
@@ -195,11 +196,11 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare(
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`,  `hearAbout`, 
-                      `applicant_course`.`start_date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, 
+                      GROUP_CONCAT(`applicant_course`.`start_date` SEPARATOR ', ') AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, 
                       `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `taster`, 
-                      `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, 
+                      `tasterAttendance`, `teams`.`trainer` AS 'team', GROUP_CONCAT(`applicant_course`.`id` SEPARATOR ', ') AS 'cohortId', `hearAboutId`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', 
                       `stages`.`student` AS 'isStudentStage',
                       `option` as 'stageOptionName', `githubUsername`, `portfolioUrl`, `pleskHostingUrl`,
@@ -222,7 +223,8 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`stageId` = `stages`.`id`
                         LEFT JOIN `options` 
                             ON `applicants`.`stageOptionId` = `options`.`id`
-                        WHERE `applicants`.`id`= :id;"
+                        WHERE `applicants`.`id`= :id
+                        GROUP BY `applicants`.`id`;"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
         $query->execute([

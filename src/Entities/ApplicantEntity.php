@@ -75,6 +75,16 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
         $this->cohortsAppliedTo = $cohortsAppliedTo;
     }
 
+    public function getCohortDates(): string
+    {
+        $cohortsAppliedTo = $this->getCohortsAppliedTo();
+        $dates = '';
+        foreach ($cohortsAppliedTo as $cohortAppliedTo) {
+            $cohortDate = $cohortsAppliedTo->getCohortDate();
+            $dates .= $cohortDate . ', ';
+        }
+    }
+
     /**
      * Get's whyDev.
      *
