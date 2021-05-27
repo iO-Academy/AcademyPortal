@@ -6,7 +6,7 @@ class StringValidator
 {
     public const MAXVARCHARLENGTH = 255;
     public const MAXTEXTLENGTH = 10000;
-    private const PATTERN = "/^[a-z ,.'-]+$/i";
+    private const ALPHAREGEXPATTERN = "/^[a-z ,.'-]+$/i";
 
     /**
      * Validate that a string exists and is within length allowed, throws an error if not
@@ -53,7 +53,7 @@ class StringValidator
     }
 
     /**
-     * Make sure the Name is valid
+     * Make sure the alpha string is valid
      *
      * @param string $alpha
      * @return string|null
@@ -61,7 +61,7 @@ class StringValidator
      */
     public static function validateAlpha(string $alpha): string
     {
-        if (preg_match(self::PATTERN, $alpha)) {
+        if (preg_match(self::ALPHAREGEXPATTERN, $alpha)) {
             return $alpha;
         } else {
             throw new \Exception('Please use alpha characters only');
