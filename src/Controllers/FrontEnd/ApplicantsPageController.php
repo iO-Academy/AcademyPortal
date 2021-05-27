@@ -68,7 +68,13 @@ class ApplicantsPageController extends Controller
             $params['page'] = $_SESSION['page'];
 
             $params['data']['applicants'] = $this->applicantModel
-                ->getApplicants($params['name'], $params['stageId'], $params['cohortId'], $params['sort'], $params['page']);
+                ->getApplicants(
+                    $params['name'],
+                    $params['stageId'],
+                    $params['cohortId'],
+                    $params['sort'],
+                    $params['page']
+                );
             return $this->renderer->render($response, 'applicants.phtml', $params);
         }
         return $response->withHeader('Location', '/');
