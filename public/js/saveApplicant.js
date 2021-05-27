@@ -29,7 +29,7 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
     if (formIsValid) {
         makeApiRequest(data, window.location.pathname);
     } else {
-        document.querySelector('#generalError').innerHTML = 'This form is invalid, please check all fields';
+        document.querySelector('#generalError').innerHTML = 'Please make sure all fields have been filled in correctly.';
         document.querySelector('#generalError').classList.remove('hidden');
         document.querySelector('#generalError').classList.add('alert-danger');
     }
