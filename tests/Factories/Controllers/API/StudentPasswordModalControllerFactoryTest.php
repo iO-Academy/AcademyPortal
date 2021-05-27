@@ -2,6 +2,7 @@
 
 namespace Tests\Factories\Controllers\API;
 
+use Portal\Models\RandomPasswordModel;
 use Tests\TestCase;
 use Portal\Models\ApplicantModel;
 use Psr\Container\ContainerInterface;
@@ -13,9 +14,10 @@ class StudentPasswordModalControllerFactoryTest extends TestCase
     public function testInvoke()
     {
         $container = $this->createMock(ContainerInterface::class);
+        $password = $this->createMock(RandomPasswordModel::class);
         $applicant = $this->createMock(ApplicantModel::class);
         $container->method('get')
-            ->willReturn($applicant);
+            ->willReturn($password, $applicant);
 
         $factory = new StudentPasswordModalControllerFactory();
         $case = $factory($container);

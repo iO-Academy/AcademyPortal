@@ -6,6 +6,7 @@ use Portal\Abstracts\Controller;
 use Portal\Models\ApplicantModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Portal\Models\RandomPasswordModel;
 
 class StudentPasswordModalController extends Controller
 {
@@ -18,7 +19,7 @@ class StudentPasswordModalController extends Controller
      * @param string $password
      * @param ApplicantModel $applicantModel
      */
-    public function __construct(string $password, ApplicantModel $applicantModel)
+    public function __construct(RandomPasswordModel $password, ApplicantModel $applicantModel)
     {
         $this->password = $password;
         $this->applicantModel = $applicantModel;

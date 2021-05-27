@@ -20,10 +20,10 @@ class ApplicantFormViewHelperTest extends TestCase
 
         $currentStage = 'dummy-option';
 
-        $expected = '<optgroup label="dummy-title"><option data-student="0" name="stageId" value="1 1" selected>' .
+        $expected = '<optgroup label="dummy-title"><option data-stage="1" data-student="0" name="stageId" value="1 1" selected>' .
                     'dummy-option</option>' .
                     '</optgroup>' .
-                    '<option data-student="1" class="stageDropdown" name="stageId" value="2">dummy-title-Two</option>';
+                    '<option data-stage="2" data-student="1" class="stageDropdown" name="stageId" value="2">dummy-title-Two</option>';
 
         $result = ApplicantFormViewHelper::stagesDropdown($stages, $stageOptions, $currentStage);
 
