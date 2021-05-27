@@ -314,7 +314,7 @@ class ApplicantModel implements ApplicantModelInterface
                         );
                         DELETE FROM `applicants_courses` WHERE `applicant_id` = :id;
                         ";
-        if(count($applicant['cohortId']) > 0) {
+        if (count($applicant['cohortId']) > 0) {
             $queryString .= "INSERT INTO `applicants_courses` (`applicant_id`, `course_id`) VALUES";
             for ($i = 0; $i < count($applicant['cohortId']); $i++) {
                 $queryString .= "(:id, :cohortId{$i}), ";
@@ -339,7 +339,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':stageId', $applicant['stageId']);
         $query->bindValue(':stageOptionId', $applicant['stageOptionId']);
         $query->bindValue(':dateTimeAdded', $applicant['dateTimeAdded']);
-        if(count($applicant['cohortId']) > 0) {
+        if (count($applicant['cohortId']) > 0) {
             for ($i = 0; $i < count($applicant['cohortId']); $i++) {
                 $query->bindValue(":cohortId{$i}", $applicant['cohortId'][$i]);
             }
