@@ -81,6 +81,7 @@ let getCompletedFormData = () => {
             }
         }
     });
+    console.log(data)
     return data;
 };
 

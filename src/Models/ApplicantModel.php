@@ -324,7 +324,6 @@ class ApplicantModel implements ApplicantModelInterface
 
         $query = $this->db->prepare($queryString);
 
-        echo $_SERVER($queryString);
 
         $query->bindValue(':name', $applicant['name']);
         $query->bindValue(':email', $applicant['email']);
