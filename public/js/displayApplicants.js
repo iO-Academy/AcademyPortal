@@ -2,7 +2,6 @@
 (async ()=> {
   sessionStorage['name'] = '';
   const nameInput = document.querySelector('#name');
-  console.log(nameInput.value);
   const params = new URLSearchParams(
       window.location.search
   );
