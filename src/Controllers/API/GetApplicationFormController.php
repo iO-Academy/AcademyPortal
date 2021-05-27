@@ -46,7 +46,7 @@ class GetApplicationFormController extends Controller
                     'data' => [
                         'cohorts' => $this->applicationFormModel->getCohorts(),
                         'hearAbout' => $this->applicationFormModel->getHearAbout(),
-                        'backgroundInfo' => $this->applicationFormModel->getBackgroundInfo()
+                        'backgroundInfo' => $this->applicationFormModel->getBackgroundInfo(),
                         'tasters' => $this->eventModel->getEventsByCategoryId(3, 3)
                     ]
                 ];
