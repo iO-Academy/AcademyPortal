@@ -41,7 +41,7 @@ function addCurrency(number) {
     return 'Unknown'
 }
 function copyToClipboard(element) {
-    var $temp = $("<input>");
+    let $temp = $("<input>");
     $("body").append($temp);
     $temp.val($(element).text()).select();
     document.execCommand("copy");
@@ -51,8 +51,8 @@ function copyToClipboard(element) {
 
 $(document).ready(function(){
     $(".myBtn").click(function(){
-        var url = './api/getApplicant/' + this.dataset.id
-        var studentUrl = 'http://localhost:8080/public/'+this.dataset.id
+        let url = './api/getApplicant/' + this.dataset.id
+        let studentUrl = 'http://localhost:8080/public/'+this.dataset.id
         fetch(url)
             .then(
                 function(response) {
