@@ -89,7 +89,11 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
      */
     public function getCohortDate()
     {
-        return date("F, Y", strtotime($this->cohortDate));
+        $dateArray = explode(', ', $this->cohortDate);
+        $formattedDateArray = array_map(function ($date) {
+            return date("F Y", strtotime($date));
+        }, $dateArray);
+        return implode(', ', $formattedDateArray);
     }
 
     /**
