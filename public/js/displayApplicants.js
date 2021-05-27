@@ -16,7 +16,6 @@
     sessionStorage['name'] = nameInput.value;
   })
 
-  nameInput.value = sessionStorage['name'];
   nameInput.addEventListener('keydown', (e)=>{
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -28,6 +27,9 @@
     sessionStorage['name'] = '';
     nameInput.value = sessionStorage['name'];
   })
+
+  nameInput.value = sessionStorage['name'];
+
 })();
 
 (async () => {
