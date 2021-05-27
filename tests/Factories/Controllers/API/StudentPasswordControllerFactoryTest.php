@@ -9,7 +9,7 @@ use Psr\Container\ContainerInterface;
 use Portal\Controllers\API\StudentPasswordController;
 use Portal\Factories\Controllers\API\StudentPasswordControllerFactory;
 
-class StudentPasswordModalControllerFactoryTest extends TestCase
+class StudentPasswordControllerFactoryTest extends TestCase
 {
     public function testInvoke()
     {
