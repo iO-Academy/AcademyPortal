@@ -37,6 +37,22 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $additionalNotes;
     protected $chosenCourseId;
     protected $chosenCourseDate;
+    protected $backgroundInfoId;
+    protected $attitude;
+    protected $averageScore;
+    protected $fee;
+    protected $signedTerms;
+    protected $signedDiversitech;
+    protected $inductionEmailSent;
+    protected $contactFormSigned;
+    protected $signedNDA;
+    protected $checkedID;
+    protected $dataProtectionName;
+    protected $dataProtectionPhoto;
+    protected $dataProtectionTestimonial;
+    protected $dataProtectionBio;
+    protected $dataProtectionVideo;
+
 
     /**
      * Returns private properties from object.
@@ -88,9 +104,31 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'githubEducationLink' => $this->githubEducationLink,
                   'additionalNotes' => $this->additionalNotes,
                   'chosenCourseId' => $this->chosenCourseId,
+                  'backgroundInfoId' => $this->backgroundInfoId,
+                  'attitude' => $this->attitude,
+                  'averageScore' => $this->averageScore,
+                  'fee' => $this->fee,
+                  'signedTerms' => $this->signedTerms,
+                  'signedDiversitech' => $this->signedDiversitech,
+                  'inductionEmailSent' => $this->inductionEmailSent,
+                  'signedNDA' => $this->signedNDA,
+                  'checkedID' => $this->checkedID,
+                  'dataProtectionName' => $this->dataProtectionName,
+                  'dataProtectionPhoto' => $this->dataProtectionPhoto,
+                  'dataProtectionTestimonial' => $this->dataProtectionTestimonial,
+                  'dataProtectionBio' => $this->dataProtectionBio,
+                  'dataProtectionVideo' => $this->dataProtectionVideo,
                   'chosenCourseDate' => $this->chosenCourseDate,
                   'chosenCourseDatePretty' => $this->getChosenCourseDatePretty()
         ];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBackgroundInfoId()
+    {
+        return $this->backgroundInfoId;
     }
 
     /**
@@ -331,5 +369,125 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getChosenCourseDatePretty(): ?string
     {
         return !empty($this->chosenCourseDate) ? date("F, Y", strtotime($this->chosenCourseDate)) : null;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhoneNumber()
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAttitude()
+    {
+        return $this->attitude;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAverageScore()
+    {
+        return $this->averageScore;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFee()
+    {
+        return $this->fee;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSignedTerms()
+    {
+        return $this->signedTerms;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSignedDiversitech()
+    {
+        return $this->signedDiversitech;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInductionEmailSent()
+    {
+        return $this->inductionEmailSent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSignedNDA()
+    {
+        return $this->signedNDA;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCheckedID()
+    {
+        return $this->checkedID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataProtectionName()
+    {
+        return $this->dataProtectionName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataProtectionPhoto()
+    {
+        return $this->dataProtectionPhoto;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataProtectionTestimonial()
+    {
+        return $this->dataProtectionTestimonial;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataProtectionBio()
+    {
+        return $this->dataProtectionBio;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataProtectionVideo()
+    {
+        return $this->dataProtectionVideo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContactFormSigned()
+    {
+        return $this->contactFormSigned;
     }
 }

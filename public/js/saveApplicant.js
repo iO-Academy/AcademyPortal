@@ -29,7 +29,7 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
     if (formIsValid) {
         makeApiRequest(data, window.location.pathname);
     } else {
-        document.querySelector('#generalError').innerHTML = 'This form is invalid, please check all fields';
+        document.querySelector('#generalError').innerHTML = 'Please make sure all fields have been filled in correctly.';
         document.querySelector('#generalError').classList.remove('hidden');
         document.querySelector('#generalError').classList.add('alert-danger');
     }
@@ -39,17 +39,26 @@ let errorMessage = (validationType) => {
     let htmlString = '';
 
     switch (validationType) {
-        case 'isPresent' :
-            htmlString += `This is a required field, please fill in`;
-            break;
         case 'validLengthVarChar' :
-            htmlString += `This field must be less than 255 characters`;
+            htmlString += `This field must be less than 255 characters.`;
             break;
         case 'validLengthText':
-            htmlString += `This field must be less than 10000 characters`;
+            htmlString += `This field must be less than 10000 characters.`;
+            break;
+        case 'isName' :
+            htmlString += `Please use alpha characters only.`;
+            break;
+        case 'isEmail' :
+            htmlString += `This doesn't appear to be a valid email address. Please try again.`;
+            break;
+        case 'isPhone' :
+            htmlString += `This doesn't appear to be a valid telephone number. Please try again.`;
+            break;
+        case 'isPresent' :
+            htmlString += `This field must be filled in.`;
             break;
         default:
-            htmlString += `This field is invalid`;
+            htmlString += `This field is invalid.`;
             break;
     }
 
@@ -137,7 +146,8 @@ let validateFormInputs = (data) => {
             isPresent: isPresent(data.whyDev)
         },
         codeExperience: {
-            validLengthText: textAreaMaxLength(data.codeExperience)
+            validLengthText: textAreaMaxLength(data.codeExperience),
+            isPresent: isPresent(data.codeExperience)
         },
         notes: {
             validLengthText: textAreaMaxLength(data.notes)

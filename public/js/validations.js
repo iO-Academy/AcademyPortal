@@ -1,5 +1,5 @@
 function isDate(date) {
-    let pattern = /([12]\d{3})-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/;
+    let pattern = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
     return pattern.test(date);
 }
 
@@ -14,11 +14,8 @@ function isName(name) {
 }
 
 function isPhoneNumber(phone) {
-    let regEx = /^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/gm;
-    if (phone !== "") {
-        return regEx.test(phone);
-    }
-    return true;
+    let regEx = /^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/;
+    return regEx.test(phone);
 }
 
 function isEmail(email) {

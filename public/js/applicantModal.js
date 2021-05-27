@@ -84,6 +84,7 @@ $(document).ready(function(){
                             document.querySelector('#stageOptionNameContainer').style.display = 'none'
                         }
                         displayField(data, 'cohortDate')
+                        displayField(data, 'backgroundInfo')
                         displayField(data, 'whyDev')
                         displayField(data, 'codeExperience')
                         displayField(data, 'hearAbout')
