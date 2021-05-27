@@ -37,7 +37,8 @@ class ApplicantModel implements ApplicantModelInterface
                             `eligible`,
                             `eighteenPlus`,
                             `finance`,
-                            `notes`
+                            `notes`,
+                            `backgroundInfoId`
                             )
                         VALUES (
                             :name,
@@ -50,7 +51,8 @@ class ApplicantModel implements ApplicantModelInterface
                             :eligible,
                             :eighteenPlus,
                             :finance,
-                            :notes
+                            :notes,
+                            :backgroundInfoId
                         );"
         );
 
@@ -65,6 +67,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':eighteenPlus', $applicant['eighteenPlus']);
         $query->bindValue(':finance', $applicant['finance']);
         $query->bindValue(':notes', $applicant['notes']);
+        $query->bindValue(':backgroundInfoId', $applicant['backgroundInfoId']);
 
         $result = $query->execute();
         if ($result) {
@@ -193,23 +196,31 @@ class ApplicantModel implements ApplicantModelInterface
     {
         $query = $this->db->prepare(
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
-                      `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`,  `hearAbout`, 
-                      `applicant_course`.`start_date` AS 'cohortDate', `apprentice`, `aptitude`, `assessmentDay`, 
+                      `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
+                      `backgroundInfo`, `hearAbout`, 
+                      `applicant_course`.`start_date` AS 'cohortDate',
+                      `apprentice`, `aptitude`, `assessmentDay`, 
                       `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
-                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`,
+                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, 
                       `tasterEvent`.`date` AS `taster`, `tasterId`,
-                      `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, 
+                      `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, `backgroundInfoID`,
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', 
                       `stages`.`student` AS 'isStudentStage',
                       `option` as 'stageOptionName', `githubUsername`, `portfolioUrl`, `pleskHostingUrl`,
                       `githubEducationLink`, `additionalNotes`, `student_course`.`start_date` AS 'chosenCourseDate',
-                      `applicants_additional`.`chosenCourseId` AS 'chosenCourseId'
+                      `applicants_additional`.`chosenCourseId` AS 'chosenCourseId',
+                      `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`,
+                      `inductionEmailSent`, `signedNDA`, `checkedID`,
+                      `dataProtectionName`, `dataProtectionPhoto`, 
+                      `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`
                         FROM `applicants` 
                         LEFT JOIN `courses` applicant_course
                             ON `applicants`.`cohortId` = `applicant_course`.`id`
                         LEFT JOIN `hear_about` 
-                            ON `applicants`.`hearAboutId` = `hear_about`.`id` 
+                            ON `applicants`.`hearAboutId` = `hear_about`.`id`
+                        LEFT JOIN `background_info` 
+                            ON `applicants`.`backgroundInfoID` = `background_info`.`id` 
                         LEFT JOIN `applicants_additional`
                             ON `applicants`.`id` = `applicants_additional`.`id`
                         LEFT JOIN `events` AS `tasterEvent`
@@ -303,7 +314,8 @@ class ApplicantModel implements ApplicantModelInterface
                             `notes` = :notes,
                             `stageId` = :stageId,
                             `stageOptionId` = :stageOptionId,
-                            `dateTimeAdded` = :dateTimeAdded
+                            `dateTimeAdded` = :dateTimeAdded,
+                            `backgroundInfoId` = :backgroundInfoId
                         WHERE (
                             `id` = :id
                         );"
@@ -324,6 +336,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':stageId', $applicant['stageId']);
         $query->bindValue(':stageOptionId', $applicant['stageOptionId']);
         $query->bindValue(':dateTimeAdded', $applicant['dateTimeAdded']);
+        $query->bindValue(':backgroundInfoId', $applicant['backgroundInfoId']);
 
         return $query->execute();
     }
@@ -361,7 +374,21 @@ class ApplicantModel implements ApplicantModelInterface
                             `pleskHostingUrl` = :pleskHostingUrl,
                             `githubEducationLink` = :githubEducationLink,
                             `additionalNotes` = :additionalNotes,
-                            `chosenCourseId` = :chosenCourseId
+                            `chosenCourseId` = :chosenCourseId,
+                            `attitude` = :attitude,
+                            `averageScore` = :averageScore,
+                            `fee` = :fee,
+                            `signedTerms` = :signedTerms,
+                            `signedDiversitech` = :signedDiversitech,
+                            `signedNDA` = :signedNDA,
+                            `inductionEmailSent` = :inductionEmailSent,
+                            `checkedID` = :checkedID,
+                            `contactFormSigned` = :contactFormSigned,
+                            `dataProtectionName` = :dataProtectionName,
+                            `dataProtectionPhoto` = :dataProtectionPhoto,
+                            `dataProtectionTestimonial` = :dataProtectionTestimonial,
+                            `dataProtectionBio` = :dataProtectionBio,
+                            `dataProtectionVideo` = :dataProtectionVideo
                         WHERE (
                             `id` = :id
                         );"
@@ -391,6 +418,20 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':additionalNotes', $applicant['additionalNotes']);
         $query->bindValue(':chosenCourseId', $applicant['chosenCourseId']);
         $query->bindValue(':id', $applicant['id']);
+        $query->bindValue(':attitude', $applicant['attitude']);
+        $query->bindValue(':averageScore', $applicant['averageScore']);
+        $query->bindValue(':fee', $applicant['fee']);
+        $query->bindValue(':signedTerms', $applicant['signedTerms']);
+        $query->bindValue(':signedDiversitech', $applicant['signedDiversitech']);
+        $query->bindValue(':signedNDA', $applicant['signedNDA']);
+        $query->bindValue(':inductionEmailSent', $applicant['inductionEmailSent']);
+        $query->bindValue(':checkedID', $applicant['checkedID']);
+        $query->bindValue(':contactFormSigned', $applicant['contactFormSigned']);
+        $query->bindValue(':dataProtectionName', $applicant['dataProtectionName']);
+        $query->bindValue(':dataProtectionPhoto', $applicant['dataProtectionPhoto']);
+        $query->bindValue(':dataProtectionTestimonial', $applicant['dataProtectionTestimonial']);
+        $query->bindValue(':dataProtectionBio', $applicant['dataProtectionBio']);
+        $query->bindValue(':dataProtectionVideo', $applicant['dataProtectionVideo']);
 
         return $query->execute();
     }

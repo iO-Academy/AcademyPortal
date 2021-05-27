@@ -22,7 +22,7 @@ class StageValidator
         return (!empty($stage['title']) && is_bool($stage['student']));
     }
 
-    private static function validateExistingStage(array $stage)
+    public static function validateExistingStage(array $stage)
     {
         return (
             isset($stage['id']) &&
