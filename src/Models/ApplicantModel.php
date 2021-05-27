@@ -307,12 +307,17 @@ class ApplicantModel implements ApplicantModelInterface
                         );
                         DELETE FROM `applicants_courses` WHERE `applicant_id` = :id;
                         ";
-        $queryString .= "INSERT INTO `applicants_courses` (`applicant_id`, `course_id`)
-                        VALUES (2, 3), (2, 4)";
-        
+        if(array_key_exists('cohortId', $applicant)) {
+            $queryString .= "INSERT INTO `applicants_courses` (`applicant_id`, `course_id`) VALUES";
+            for ($i = 0; $i < count($applicant['cohortId']); $i++) {
+                $queryString .= "(:id, :cohortId{$i}), ";
+            }
+            $queryString = rtrim($queryString, ", ");
+        }
+
         $query = $this->db->prepare($queryString);
 
-
+        echo $_SERVER($queryString);
 
         $query->bindValue(':name', $applicant['name']);
         $query->bindValue(':email', $applicant['email']);
@@ -328,7 +333,11 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':stageId', $applicant['stageId']);
         $query->bindValue(':stageOptionId', $applicant['stageOptionId']);
         $query->bindValue(':dateTimeAdded', $applicant['dateTimeAdded']);
-
+        if(array_key_exists('cohortId', $applicant)) {
+            for ($i = 0; $i < count($applicant['cohortId']); $i++) {
+                $query->bindValue(":cohortId{$i}", $applicant['cohortId'][$i]);
+            }
+        }
         return $query->execute();
     }
 

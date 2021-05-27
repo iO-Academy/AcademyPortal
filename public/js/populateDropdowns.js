@@ -81,8 +81,8 @@ let outputCohortsAvailable = (cohorts, el = null) => {
   let cohortOptions = '';
 
   cohorts.forEach(item => {
-    cohortOptions += '<input type="checkbox" ';
-    cohortOptions += `name="cohortId[]" `;
+    cohortOptions += '<input type="checkbox" class="submitApplicant" ';
+    cohortOptions += `name="cohortId" `;
     let date = new Date(item.date);
     let dateOptions = {year: 'numeric', month: 'long'};
     cohortOptions += `value="${
