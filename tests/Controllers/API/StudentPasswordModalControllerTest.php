@@ -3,7 +3,7 @@
 namespace Tests\Controllers\API;
 
 use Tests\TestCase;
-use Portal\Controllers\API\StudentPasswordModalController;
+use Portal\Controllers\API\StudentPasswordController;
 use Portal\Models\ApplicantModel;
 use Portal\Models\RandomPasswordModel;
 
@@ -14,8 +14,8 @@ class StudentPasswordModalControllerTest extends TestCase
     {
         $applicantModel = $this->createMock(ApplicantModel::class);
         $password = 'freaky fish were here again';
-        $case = new StudentPasswordModalController($password, $applicantModel);
-        $expected = StudentPasswordModalController::class;
+        $case = new StudentPasswordController($password, $applicantModel);
+        $expected = StudentPasswordController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }

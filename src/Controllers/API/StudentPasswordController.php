@@ -8,13 +8,13 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Models\RandomPasswordModel;
 
-class StudentPasswordModalController extends Controller
+class StudentPasswordController extends Controller
 {
     private $password;
     private $applicantModel;
 
     /**
-     * Constructs an instance of StudentPasswordModalController with the given renderer and password.
+     * Constructs an instance of StudentPasswordController with the given renderer and password.
      *
      * @param string $password
      * @param ApplicantModel $applicantModel

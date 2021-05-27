@@ -6,8 +6,8 @@ use Portal\Models\RandomPasswordModel;
 use Tests\TestCase;
 use Portal\Models\ApplicantModel;
 use Psr\Container\ContainerInterface;
-use Portal\Controllers\API\StudentPasswordModalController;
-use Portal\Factories\Controllers\API\StudentPasswordModalControllerFactory;
+use Portal\Controllers\API\StudentPasswordController;
+use Portal\Factories\Controllers\API\StudentPasswordControllerFactory;
 
 class StudentPasswordModalControllerFactoryTest extends TestCase
 {
@@ -19,9 +19,9 @@ class StudentPasswordModalControllerFactoryTest extends TestCase
         $container->method('get')
             ->willReturn($password, $applicant);
 
-        $factory = new StudentPasswordModalControllerFactory();
+        $factory = new StudentPasswordControllerFactory();
         $case = $factory($container);
-        $expected = StudentPasswordModalController::class;
+        $expected = StudentPasswordController::class;
         $this->assertInstanceOf($expected, $case);
     }
 }
