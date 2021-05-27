@@ -98,7 +98,7 @@ class ApplicantModel implements ApplicantModelInterface
 
     /**
      * Gets a sorted list of applicants assigned to a specific cohort and stage.
-     *
+     * @param string $name
      * @param string $stageId       the stage to filter by
      * @param string $cohortId      the cohort to filer by
      * @param string $sortingQuery  how you would like the results sorted
@@ -106,6 +106,7 @@ class ApplicantModel implements ApplicantModelInterface
      * @return array the data retrieved from the database
      */
     public function getApplicants(
+        string $name = '%',
         string $stageId = '%',
         string $cohortId = '%',
         string $sortingQuery = '',
@@ -118,6 +119,7 @@ class ApplicantModel implements ApplicantModelInterface
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       WHERE `applicants`.`deleted` = '0'
+                        AND `applicants`.`name` like CONCAT(:name, '%')
                       AND `applicants`.`cohortId` like :cohortId
                       AND `applicants`.`stageId` like :stageId ";
 
@@ -126,6 +128,7 @@ class ApplicantModel implements ApplicantModelInterface
         $offset = ($pageNumber - 1) * $this->numberPerPage;
         $query = $this->db->prepare($stmt);
         $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
+        $query->bindValue(':name', $name);
         $query->bindValue(':cohortId', $cohortId);
         $query->bindValue(':stageId', $stageId);
         $query->bindValue(':offsets', $offset, \PDO::PARAM_INT);
