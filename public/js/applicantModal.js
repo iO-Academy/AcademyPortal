@@ -40,11 +40,19 @@ function addCurrency(number) {
     }
     return 'Unknown'
 }
-
+function copyToClipboard(element) {
+    let $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val($(element).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+    document.querySelector("button.clipboard").innerText = 'Copied';
+}
 
 $(document).ready(function(){
     $(".myBtn").click(function(){
-        var url = './api/getApplicant/' + this.dataset.id
+        let url = './api/getApplicant/' + this.dataset.id
+        let studentUrl = 'http://localhost:8080/public/'+this.dataset.id
         fetch(url)
             .then(
                 function(response) {
@@ -84,6 +92,7 @@ $(document).ready(function(){
                             document.querySelector('#stageOptionNameContainer').style.display = 'none'
                         }
                         displayField(data, 'cohortDate')
+                        displayField(data, 'backgroundInfo')
                         displayField(data, 'whyDev')
                         displayField(data, 'codeExperience')
                         displayField(data, 'hearAbout')
@@ -120,7 +129,6 @@ $(document).ready(function(){
                             document.getElementById('diversitechInterest').innerHTML = 'Yes'
                         }
                         displayField(data, 'assessmentNotes', 'No notes written')
-
                         data.diversitech = addCurrency(data.diversitech)
                         data.edaid = addCurrency(data.edaid)
                         data.upfront = addCurrency(data.upfront)
@@ -142,9 +150,12 @@ $(document).ready(function(){
                             displayField(data, 'kitCollectionTime', 'Not yet booked')
                         }
                         displayField(data, 'kitNum', 'Not assiged')
-
                         displayField(data, 'team', 'Not assigned')
-
+                        document.getElementById('userProfileLink').innerHTML = studentUrl;
+                        document.getElementById('userProfileLink').href = studentUrl;
+                        $(".clipboard").click(function(){
+                            copyToClipboard('#userProfileLink')
+                        })
                         displayField(data, 'githubUsername', 'Unknown')
                         displayField(data, 'portfolioUrl', 'Unknown')
                         displayField(data, 'pleskHostingUrl', 'Not created')
@@ -152,6 +163,7 @@ $(document).ready(function(){
                         displayField(data, 'additionalNotes', 'No notes')
                         data.chosenCourseDate = prettyDate(data.chosenCourseDate)
                         displayField(data, 'chosenCourseDatePretty', 'Not asked yet')
+                        // displayField(data,'userProfileLink', 'No Link Yet' )
                     })
                 }
             )
