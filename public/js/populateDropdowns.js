@@ -91,16 +91,15 @@ let outputCohortsAvailable = (cohorts, el = null) => {
     }
     let date = new Date(item.date);
     let dateOptions = {year: 'numeric', month: 'long'};
+    cohortOptions += `id="CohortOption${item.id}"`
     cohortOptions += `value="${
         item.id
     }">`;
-    cohortOptions += `<label for="${item.id}">${date.toLocaleDateString('en-GB', dateOptions)}</label>`;
+    cohortOptions += `<label for="CohortOption${item.id}">${date.toLocaleDateString('en-GB', dateOptions)}</label>`;
   });
 
   element.innerHTML += cohortOptions;
 };
-
-
 
 let outputEvents = (events, element) => {
   let eventOptions = '';
