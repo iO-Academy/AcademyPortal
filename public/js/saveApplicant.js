@@ -58,7 +58,7 @@ let errorMessage = (validationType) => {
 
 let getCompletedFormData = () => {
     const formData = document.querySelectorAll(".submitApplicant");
-    let data = {};
+    let data = {cohortId:new Array()};
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     data['id'] = urlParams.get('id');
@@ -68,11 +68,16 @@ let getCompletedFormData = () => {
             let stageOptionArray = formItem.value.split(" ");
             data['stageId'] = stageOptionArray[0];
             data['stageOptionId'] = stageOptionArray[1] ?? null;
+        } else if(formItem.name == 'cohortId') {
+            if(formItem.checked){
+                data['cohortId'].push(formItem.value)
+            }
         }
         else {
-            data[formItem.name] = formItem.value;
             if (formItem.type == 'checkbox') {
-                data[formItem.name] = formItem.checked;
+                    data[formItem.name] = formItem.checked;
+            } else {
+                data[formItem.name] = formItem.value;
             }
         }
     });
@@ -80,7 +85,7 @@ let getCompletedFormData = () => {
 };
 
 let makeApiRequest = async (data, type) => {
-    const path = './api/' + (type === '/addapplicant' ? 'saveApplicant' : 'editApplicant');
+    const path = './api/' + (type === '/addApplicant' ? 'saveApplicant' : 'editApplicant');
     return fetch(path, {
         credentials: "same-origin",
         headers: {

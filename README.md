@@ -71,7 +71,7 @@ POST
 	- `{'name': 'example',
    	    'email': 'example@example.com',
  	    'phoneNumber': '0123456789',
-	    'cohortId': 2,
+	    'cohortId': [2,3],
 	    'whyDev': 'example interest in development',
 	    'codeExperience': 'example coding experience',
 	    'hearAboutId': 3,

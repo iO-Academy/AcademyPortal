@@ -1,6 +1,6 @@
 (async () => {
     const data = await handleFormOptions();
-    outputCohorts(data.cohorts);
+    outputCohortsAvailable(data.cohorts);
     if (document.getElementById('tasterDate')) {
         outputEvents(data.tasters, document.getElementById('tasterDate'));
     }

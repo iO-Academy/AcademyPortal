@@ -64,6 +64,10 @@ p.detail span {
     border-radius: 10px;
 }
 
+#cohorts input {
+    margin-right: 0.5rem;
+}
+
 .collapse-header:hover {
     background: #dddddd;
 }
