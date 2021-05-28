@@ -38,6 +38,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $chosenCourseId;
     protected $chosenCourseDate;
     protected $backgroundInfoId;
+    protected $backgroundInfo;
     protected $attitude;
     protected $averageScore;
     protected $fee;
@@ -105,6 +106,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'additionalNotes' => $this->additionalNotes,
                   'chosenCourseId' => $this->chosenCourseId,
                   'backgroundInfoId' => $this->backgroundInfoId,
+                  'backgroundInfo' => $this->backgroundInfo,
                   'attitude' => $this->attitude,
                   'averageScore' => $this->averageScore,
                   'fee' => $this->fee,
@@ -489,5 +491,13 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getContactFormSigned()
     {
         return $this->contactFormSigned;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBackgroundInfo()
+    {
+        return $this->backgroundInfo;
     }
 }
