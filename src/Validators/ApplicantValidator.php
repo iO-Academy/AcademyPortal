@@ -9,30 +9,49 @@ class ApplicantValidator
     public static function validate(array $applicant): bool
     {
         return (
-         StringValidator::validateExistsAndLength($applicant['name'], StringValidator::MAXVARCHARLENGTH) &&
-         StringValidator::validateExistsAndLength($applicant['email'], StringValidator::MAXVARCHARLENGTH) &&
-         filter_var($applicant['email'], FILTER_VALIDATE_EMAIL) !== false &&
-         StringValidator::validateExistsAndLength($applicant['name'], StringValidator::MAXVARCHARLENGTH) &&
-         (
-            empty($applicant['phoneNumber']) ||
-            PhoneNumberValidator::validatePhoneNumber($applicant['phoneNumber'])
-         ) &&
-         is_numeric($applicant['cohortId']) &&
-         StringValidator::validateExistsAndLength($applicant['whyDev'], StringValidator::MAXTEXTLENGTH) &&
-         StringValidator::validateExistsAndLength($applicant['codeExperience'], StringValidator::MAXTEXTLENGTH) &&
-         is_numeric($applicant['hearAboutId']) && is_numeric($applicant['backgroundInfoId']) &&
-         (
-             $applicant['eligible'] == 1 || $applicant['eligible'] == 0
-         ) &&
-         (
-             $applicant['eighteenPlus'] == 1 || $applicant['eighteenPlus'] == 0
-         ) &&
-         (
-             $applicant['finance'] == 1 || $applicant['finance'] == 0
-         ) &&
-         strlen($applicant['notes']) <= StringValidator::MAXTEXTLENGTH
+            (
+                StringValidator::validateExistsAndLength(
+                    $applicant['name'],
+                    StringValidator::MAXVARCHARLENGTH,
+                    'name'
+                )
+                && StringValidator::validateAlpha($applicant['name'])
+            ) &&
+            StringValidator::validateExistsAndLength($applicant['email'], StringValidator::MAXVARCHARLENGTH, 'email')
+            &&
+            filter_var($applicant['email'], FILTER_VALIDATE_EMAIL) !== false &&
+            (
+                empty($applicant['phoneNumber']) ||
+                PhoneNumberValidator::validatePhoneNumber($applicant['phoneNumber'])
+            ) &&
+            is_numeric($applicant['cohortId']) &&
+            StringValidator::validateExistsAndLength(
+                $applicant['whyDev'],
+                StringValidator::MAXTEXTLENGTH,
+                'your reasons for wanting to become a developer'
+            )
+            &&
+            StringValidator::validateExistsAndLength(
+                $applicant['codeExperience'],
+                StringValidator::MAXTEXTLENGTH,
+                'your experience of coding'
+            )
+            &&
+            is_numeric($applicant['hearAboutId']) &&
+            is_numeric($applicant['backgroundInfoId']) &&
+            (
+                $applicant['eligible'] == 1 || $applicant['eligible'] == 0
+            ) &&
+            (
+                $applicant['eighteenPlus'] == 1 || $applicant['eighteenPlus'] == 0
+            ) &&
+            (
+                $applicant['finance'] == 1 || $applicant['finance'] == 0
+            ) &&
+            strlen($applicant['notes']) <= StringValidator::MAXTEXTLENGTH
         );
     }
+
 
     public static function validateAdditionalFields(array $applicant): bool
     {

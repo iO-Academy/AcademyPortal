@@ -6,6 +6,7 @@ class StringValidator
 {
     public const MAXVARCHARLENGTH = 255;
     public const MAXTEXTLENGTH = 10000;
+    private const ALPHAREGEXPATTERN = "/^[a-z ,.'-]+$/i";
 
     /**
      * Validate that a string exists and is within length allowed, throws an error if not
@@ -24,7 +25,8 @@ class StringValidator
         if (empty($validateData) == false && strlen($validateData) <= $characterLength) {
             return $validateData;
         } else {
-            throw new \Exception($fieldName . ' input string does not exist or is too long');
+            throw new \Exception('You have either not inputted any information for ' . $fieldName . ' or ' . '
+            it exceeds our character limits');
         }
     }
 
@@ -44,10 +46,25 @@ class StringValidator
         string $fieldName = 'Unknown'
     ): bool {
         if (strlen($validateData) > $characterLength) {
-            throw new \Exception(
-                $fieldName . ' input string is too long, expected ' . $characterLength . ' characters or less'
-            );
+            throw new \Exception('You have either not inputted any information for ' . $fieldName . ' or ' . '
+            it exceeds our character limits');
         }
         return true;
+    }
+
+    /**
+     * Make sure the alpha string is valid
+     *
+     * @param string $alpha
+     * @return string|null
+     * @throws \Exception
+     */
+    public static function validateAlpha(string $alpha): string
+    {
+        if (preg_match(self::ALPHAREGEXPATTERN, $alpha)) {
+            return $alpha;
+        } else {
+            throw new \Exception('Please use alpha characters only');
+        }
     }
 }
