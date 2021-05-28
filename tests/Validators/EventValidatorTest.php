@@ -7,6 +7,11 @@ use Tests\TestCase;
 
 class EventValidatorTest extends TestCase
 {
+    public function testValidate()
+    {
+        $this->markTestSkipped('Cannot unit test as method calls other methods');
+    }
+
     public function testValidateCategoryExistsSuccess()
     {
         $category = 3;
