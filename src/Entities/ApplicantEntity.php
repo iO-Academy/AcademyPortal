@@ -11,12 +11,31 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     protected $whyDev;
     protected $codeExperience;
     protected $hearAboutId;
+    protected $hearAbout;
     protected $eligible;
     protected $eighteenPlus;
     protected $finance;
     protected $notes;
     protected $stageID;
     protected $backgroundInfoId;
+    protected $backgroundInfo;
+
+    /**
+     * @return mixed
+     */
+    public function getBackgroundInfo()
+    {
+        return $this->backgroundInfo;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getHearAbout()
+    {
+        return $this->hearAbout;
+    }
 
     /**
      * Returns private properties from object.
@@ -34,14 +53,24 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
                   'whyDev' => $this->whyDev,
                   'codeExperience' => $this->codeExperience,
                   'hearAboutId' => $this->hearAboutId,
+                  'hearAbout' => $this->hearAbout,
                   'eligible' => $this->eligible,
                   'eighteenPlus' => $this->eighteenPlus,
                   'finance' => $this->finance,
                   'notes' => $this->notes,
                   'cohortDate' => $this->getCohortDate(),
                   'dateTimeAdded' => $this->dateTimeAdded,
-                  'backgroundInfoId' => $this->backgroundInfoId
+                  'backgroundInfoId' => $this->backgroundInfoId,
+                  'backgroundInfo' => $this->backgroundInfo
                ];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStageID()
+    {
+        return $this->stageID;
     }
 
     /**
