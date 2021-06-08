@@ -6,6 +6,11 @@
 2. Create database with name `academyPortal` and populate using latest version in db/
 3. To run the application locally: `composer start`
 
+### Login Details
+
+- Email: test@test.com
+- Password: nickloveslemons
+
 ### Running tests
 
 - To run the unit tests locally: `composer test`
