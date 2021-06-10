@@ -2,16 +2,16 @@
 
 Live Version at: https://portal.dev.io-academy.uk/
 
+### Login Details
+
+- Email: test@test.com
+- Password: nickloveslemons
+
 ### Setup
 
 1. Run `composer install` in root of project
 2. Create database with name `academyPortal` and populate using latest version in db/
 3. To run the application locally: `composer start`
-
-### Login Details
-
-- Email: test@test.com
-- Password: nickloveslemons
 
 ### Running tests
 
