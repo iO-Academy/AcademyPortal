@@ -17,6 +17,16 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     protected $notes;
     protected $stageID;
     protected $backgroundInfoId;
+    protected $backgroundInfo;
+
+    /**
+     * @return mixed
+     */
+    public function getBackgroundInfo()
+    {
+        return $this->backgroundInfo;
+    }
+
 
     /**
      * Returns private properties from object.
@@ -40,8 +50,17 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
                   'notes' => $this->notes,
                   'cohortDate' => $this->getCohortDate(),
                   'dateTimeAdded' => $this->dateTimeAdded,
-                  'backgroundInfoId' => $this->backgroundInfoId
+                  'backgroundInfoId' => $this->backgroundInfoId,
+                  'backgroundInfo' => $this->backgroundInfo
                ];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStageID()
+    {
+        return $this->stageID;
     }
 
     /**
