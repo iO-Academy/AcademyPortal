@@ -1,5 +1,12 @@
 # AcademyPortal API
 
+Live Version at: https://portal.dev.io-academy.uk/
+
+### Login Details
+
+- Email: test@test.com
+- Password: nickloveslemons
+
 ### Setup
 
 1. Run `composer install` in root of project
