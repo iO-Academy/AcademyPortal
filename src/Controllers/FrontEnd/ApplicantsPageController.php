@@ -42,6 +42,7 @@ class ApplicantsPageController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
+            $_SESSION['name'] = $request->getQueryParams()['name'] ?? $_SESSION['name'] ?? '%';
             $_SESSION['sort'] = $request->getQueryParams()['sort'] ?? $_SESSION['sort'] ?? '';
             $_SESSION['cohortId'] = $request->getQueryParams()['cohortId'] ?? $_SESSION['cohortId'] ?? '%';
             $_SESSION['stageId'] = $request->getQueryParams()['stageId'] ?? $_SESSION['stageId'] ?? '%';
@@ -50,9 +51,13 @@ class ApplicantsPageController extends Controller
             $params['cohortId'] = $_SESSION['cohortId'];
             $params['stageId'] = $_SESSION['stageId'];
             $params['data']['lastStage'] = $this->stageModel->getHighestOrderNo();
+            $params['name'] = $_SESSION['name'];
 
             if (isset($params['cohortId']) && $params['cohortId'] == 'all') {
                 $params['cohortId'] = '%';
+            }
+            if (isset($params['name']) && $params['name'] == '') {
+                $params['name'] = '%';
             }
             if (isset($params['stageId']) && $params['stageId'] == 'all') {
                 $params['stageId'] = '%';
@@ -66,7 +71,13 @@ class ApplicantsPageController extends Controller
             $params['page'] = $_SESSION['page'];
 
             $params['data']['applicants'] = $this->applicantModel
-                ->getApplicants($params['stageId'], $params['cohortId'], $params['sort'], $params['page']);
+                ->getApplicants(
+                    $params['name'],
+                    $params['stageId'],
+                    $params['cohortId'],
+                    $params['sort'],
+                    $params['page']
+                );
             return $this->renderer->render($response, 'applicants.phtml', $params);
         }
         return $response->withHeader('Location', '/');
