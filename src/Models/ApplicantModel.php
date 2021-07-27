@@ -438,6 +438,13 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->execute();
     }
 
+    public function addApplicantPassword(string $password, int $applicantId)
+    {
+        $sql = 'UPDATE `applicants` SET `profile_password` = :password WHERE `id` = :applicantId';
+        $query = $this->db->prepare($sql);
+        return $query->execute([':password' => $password, ':applicantId' => $applicantId]);
+    }
+
     public function addApplicantToTeam(int $teamId, int $applicantId)
     {
         $sql = 'UPDATE `applicants_additional` SET `team` = :teamId WHERE `id` = :applicantId';
