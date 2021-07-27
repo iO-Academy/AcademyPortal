@@ -127,7 +127,8 @@ class ApplicantModel implements ApplicantModelInterface
                       WHERE `applicants`.`deleted` = '0'
                         AND `coursesid`  like :cohortId
                         AND `applicants`.`name` like CONCAT('%', :name, '%')
-                      AND `applicants`.`stageId` like :stageId ";
+                      AND `applicants`.`stageId` like :stageId 
+                      GROUP BY `applicants`.`id`";
         $stmt .= $this->sortingQuery($sortingQuery);
         $stmt .= " LIMIT :offsets, :numberPerPage;";
         $offset = ($pageNumber - 1) * $this->numberPerPage;
@@ -140,7 +141,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':numberPerPage', $this->numberPerPage, \PDO::PARAM_INT);
         $query->execute();
         $applicants = $query->fetchAll();
-        foreach ($applicants as $applicant){
+        foreach ($applicants as $applicant) {
             $queryDate = $this->db->prepare('SELECT `start_date` FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` WHERE `applicantsid` = :id');
             $queryDate->execute([
                 'id' => $applicant->getId()
