@@ -40,6 +40,10 @@ class StudentProfilePageController extends Controller
     {
         $params['id'] = $args['id'];
         $params['applicant'] = $this->applicantModel->getApplicantById($params['id']);
-        return $this->renderer->render($response, 'studentProfile.phtml', $params);
+        if (false) {
+            return $this->renderer->render($response, 'studentProfile.phtml', $params);
+        } else {
+            return $this->renderer->render($response, 'studentLogin.phtml', $params);
+        }
     }
 }
