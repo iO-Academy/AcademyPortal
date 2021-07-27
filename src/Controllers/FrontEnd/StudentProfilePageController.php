@@ -1,4 +1,5 @@
 <?php
+
 namespace Portal\Controllers\FrontEnd;
 
 use Portal\Abstracts\Controller;
