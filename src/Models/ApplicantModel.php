@@ -118,15 +118,13 @@ class ApplicantModel implements ApplicantModelInterface
         string $pageNumber = '1'
     )
     {
-        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, `start_date` AS 'cohortDate', 
+        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
                       FROM `applicants`
-                      LEFT JOIN `courses` ON `applicants`.`cohortId`=`courses`.`id`
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       WHERE `applicants`.`deleted` = '0'
                         AND `applicants`.`name` like CONCAT('%', :name, '%')
-                      AND `applicants`.`cohortId` like :cohortId
                       AND `applicants`.`stageId` like :stageId ";
 
         $stmt .= $this->sortingQuery($sortingQuery);
@@ -135,13 +133,21 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare($stmt);
         $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
         $query->bindValue(':name', $name);
-        $query->bindValue(':cohortId', $cohortId);
         $query->bindValue(':stageId', $stageId);
         $query->bindValue(':offsets', $offset, \PDO::PARAM_INT);
         $query->bindValue(':numberPerPage', $this->numberPerPage, \PDO::PARAM_INT);
         $query->execute();
+        $applicants = $query->fetchAll();
+        foreach ($applicants as $applicant){
+            $queryDate = $this->db->prepare('SELECT `start_date` FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` WHERE `applicantsid` = :id');
+            $queryDate->execute([
+                'id' => $applicant->getId()
+            ]);
+            $results2 = $queryDate->fetchAll(\PDO::FETCH_COLUMN);
+            $applicant->setCohortDates($results2);
+        }
+        return $applicants;
 
-        return $query->fetchAll();
     }
 
     /**
@@ -238,19 +244,18 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`stageOptionId` = `options`.`id`
                         WHERE `applicants`.`id`= :id;"
         );
-
-        $query2 = $this->db->prepare('SELECT `start_date` FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` WHERE `applicantsid` = :id');
-
-        $query2->execute([
+        $queryDate = $this->db->prepare('SELECT `start_date` FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` WHERE `applicantsid` = :id');
+        $queryDate->execute([
             'id' => $id
         ]);
-        $results2 = $query2->fetchAll(\PDO::FETCH_COLUMN);
+        $results2 = $queryDate->fetchAll(\PDO::FETCH_COLUMN);
 
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
         $query->execute([
             'id' => $id
         ]);
         $results = $query->fetch();
+
         $results->setCohortDates($results2);
         return $results;
     }
