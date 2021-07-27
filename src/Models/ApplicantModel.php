@@ -123,10 +123,11 @@ class ApplicantModel implements ApplicantModelInterface
                       FROM `applicants`
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
+                      LEFT JOIN `course_choice` ON `applicants`.`id`= `course_choice`.`applicantsid`
                       WHERE `applicants`.`deleted` = '0'
+                        AND `coursesid`  like :cohortId
                         AND `applicants`.`name` like CONCAT('%', :name, '%')
                       AND `applicants`.`stageId` like :stageId ";
-
         $stmt .= $this->sortingQuery($sortingQuery);
         $stmt .= " LIMIT :offsets, :numberPerPage;";
         $offset = ($pageNumber - 1) * $this->numberPerPage;
@@ -134,6 +135,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
         $query->bindValue(':name', $name);
         $query->bindValue(':stageId', $stageId);
+        $query->bindValue(':cohortId', $cohortId);
         $query->bindValue(':offsets', $offset, \PDO::PARAM_INT);
         $query->bindValue(':numberPerPage', $this->numberPerPage, \PDO::PARAM_INT);
         $query->execute();
