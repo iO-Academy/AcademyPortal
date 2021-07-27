@@ -89,9 +89,10 @@ class ApplicantModel implements ApplicantModelInterface
      */
     public function countPaginationPages(string $stageId = '%', string $cohortId = '%')
     {
-        $count = "SELECT count(`id`) AS `id` FROM `applicants` 
+        $count = "SELECT count(`applicants`.`id`) AS `id` FROM `applicants`
+                  JOIN `course_choice` ON `applicants`.`id` = `course_choice`.`applicantsid`
                     WHERE `applicants`.`deleted` = '0'
-                    AND `applicants`.`cohortId` like :cohortId
+                    AND `course_choice`.`coursesid` like :cohortId
                     AND `applicants`.`stageId` like :stageId;";
         $query = $this->db->prepare($count);
         $query->bindValue(':cohortId', $cohortId);
