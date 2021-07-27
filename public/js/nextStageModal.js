@@ -34,8 +34,9 @@ $(document).ready(function(){
                         const alert = document.querySelector('#passwordMessage')
                         if (data['data']['password']) {
                             $('#applicantPassword').modal('show');
-                            document.querySelector('#applicant_password_link').textContent += applicantId;
-                            document.querySelector('#applicant_password_link').href += applicantId;
+                            let applicantLink = document.querySelector('#applicant_password_link')
+                            applicantLink.querySelector('span').textContent = applicantId;
+                            applicantLink.href = applicantLink.dataset.href + applicantId;
                             document.querySelector('#copyPassword').addEventListener('click', function copyPassword() {
                                 document.querySelector('#randomPassword').select();
                                 document.execCommand("copy");
@@ -48,6 +49,9 @@ $(document).ready(function(){
                             {
                                 if (document.querySelector('#password_checkbox').checked) {
                                     $('#applicantPassword').modal('hide');
+                                    alert.classList.remove('alert-danger', 'alert-success')
+                                    alert.innerHTML = ''
+                                    document.querySelector('#password_checkbox').checked = false
                                 } else {
                                     alert.classList.add('alert-danger')
                                     alert.innerHTML = '↑↑↑ Please confirm that you saved the password ↑↑↑ !'
