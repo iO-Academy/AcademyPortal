@@ -40,10 +40,18 @@ class StudentProfilePageController extends Controller
     {
         $params['id'] = $args['id'];
         $params['applicant'] = $this->applicantModel->getApplicantById($params['id']);
-        if (false) {
-            return $this->renderer->render($response, 'studentProfile.phtml', $params);
-        } else {
-            return $this->renderer->render($response, 'studentLogin.phtml', $params);
+        if ($request->getParsedBody()['password']) {
+            if ($request->getParsedBody()['password'] === 'Saskia') { ///remove dummy test password Saskia with the data base password
+                $_SESSION['studentLogin'] = true;
+            } else {
+                $_SESSION['studentLogin'] = false;
+            }
+
+            if ($_SESSION['studentLogin']) {
+                return $this->renderer->render($response, 'studentProfile.phtml', $params);
+            } else {
+                return $this->renderer->render($response, 'studentLogin.phtml', $params);
+            }
         }
     }
 }
