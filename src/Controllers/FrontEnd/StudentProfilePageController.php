@@ -46,7 +46,6 @@ class StudentProfilePageController extends Controller
             } else {
                 $_SESSION['studentLogin'] = false;
             }
-
             if ($_SESSION['studentLogin']) {
                 return $this->renderer->render($response, 'studentProfile.phtml', $params);
             } else {
