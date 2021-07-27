@@ -29,8 +29,7 @@ class ApplicantModel implements ApplicantModelInterface
             "INSERT INTO `applicants` (
                             `name`,
                             `email`,
-                            `phoneNumber`,
-                            `cohortId`,
+                            `phoneNumber`,                 
                             `whyDev`,
                             `codeExperience`,
                             `hearAboutId`,
@@ -44,7 +43,6 @@ class ApplicantModel implements ApplicantModelInterface
                             :name,
                             :email,
                             :phoneNumber,
-                            :cohortId,
                             :whyDev,
                             :codeExperience,
                             :hearAboutId,
@@ -59,7 +57,6 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':name', $applicant['name']);
         $query->bindValue(':email', $applicant['email']);
         $query->bindValue(':phoneNumber', $applicant['phoneNumber']);
-        $query->bindValue(':cohortId', $applicant['cohortId']);
         $query->bindValue(':whyDev', $applicant['whyDev']);
         $query->bindValue(':codeExperience', $applicant['codeExperience']);
         $query->bindValue(':hearAboutId', $applicant['hearAboutId']);
@@ -72,6 +69,10 @@ class ApplicantModel implements ApplicantModelInterface
         $result = $query->execute();
         if ($result) {
             $id = $this->db->lastInsertId();
+            foreach ($applicant['cohort'] as $cohortId) {
+                $query2 = $this->db->prepare('INSERT INTO `course_choice` (`coursesid`, `applicantsid`) VALUES (?,?)');
+                $query2->execute([$cohortId, $id]);
+            }
             $query2 = $this->db->prepare('INSERT INTO `applicants_additional` (`id`) VALUES (?)');
             return $query2->execute([$id]);
         }
@@ -102,9 +103,9 @@ class ApplicantModel implements ApplicantModelInterface
     /**
      * Gets a sorted list of applicants assigned to a specific cohort and stage.
      * @param string $name
-     * @param string $stageId       the stage to filter by
-     * @param string $cohortId      the cohort to filer by
-     * @param string $sortingQuery  how you would like the results sorted
+     * @param string $stageId the stage to filter by
+     * @param string $cohortId the cohort to filer by
+     * @param string $sortingQuery how you would like the results sorted
      *
      * @return array the data retrieved from the database
      */
@@ -114,7 +115,8 @@ class ApplicantModel implements ApplicantModelInterface
         string $cohortId = '%',
         string $sortingQuery = '',
         string $pageNumber = '1'
-    ) {
+    )
+    {
         $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, `start_date` AS 'cohortDate', 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
                       FROM `applicants`
@@ -245,6 +247,7 @@ class ApplicantModel implements ApplicantModelInterface
         $results = $query->fetch();
         return $results;
     }
+
     /**
      * Deletes record with the given id from the database
      *
