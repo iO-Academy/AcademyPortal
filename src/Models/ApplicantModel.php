@@ -463,9 +463,7 @@ class ApplicantModel implements ApplicantModelInterface
 
     public function getApplicantStageId(int $applicantId)
     {
-        $query = $this->db->prepare(
-            'SELECT `stageId` FROM `applicants` WHERE `id` = :applicantId'
-        );
+        $query = $this->db->prepare('SELECT `stageId` FROM `applicants` WHERE `id` = :applicantId');
         $query->execute([':applicantId' => $applicantId]);
         return $query->fetch();
     }
@@ -477,6 +475,4 @@ class ApplicantModel implements ApplicantModelInterface
         );
         return $query->execute([':applicantId' => $applicantId, ':stageId' => $stageId, ':optionId' => $optionId]);
     }
-
-
 }
