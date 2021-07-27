@@ -204,13 +204,12 @@ class ApplicantModel implements ApplicantModelInterface
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
                       `backgroundInfo`, `hearAbout`, 
-                      `applicant_course`.`start_date` AS 'cohortDate',
                       `apprentice`, `aptitude`, `assessmentDay`, 
                       `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, 
                       `tasterEvent`.`date` AS `taster`, `tasterId`,
-                      `tasterAttendance`, `teams`.`trainer` AS 'team', `cohortId`, `hearAboutId`, `backgroundInfoId`,
+                      `tasterAttendance`, `teams`.`trainer` AS 'team', `hearAboutId`, `backgroundInfoId`,
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', 
                       `stages`.`student` AS 'isStudentStage',
                       `option` as 'stageOptionName', `githubUsername`, `portfolioUrl`, `pleskHostingUrl`,
@@ -221,8 +220,6 @@ class ApplicantModel implements ApplicantModelInterface
                       `dataProtectionName`, `dataProtectionPhoto`, 
                       `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`
                         FROM `applicants` 
-                        LEFT JOIN `courses` applicant_course
-                            ON `applicants`.`cohortId` = `applicant_course`.`id`
                         LEFT JOIN `hear_about` 
                             ON `applicants`.`hearAboutId` = `hear_about`.`id`
                         LEFT JOIN `background_info` 
@@ -241,11 +238,20 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`stageOptionId` = `options`.`id`
                         WHERE `applicants`.`id`= :id;"
         );
+
+        $query2 = $this->db->prepare('SELECT `start_date` FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` WHERE `applicantsid` = :id');
+
+        $query2->execute([
+            'id' => $id
+        ]);
+        $results2 = $query2->fetchAll(\PDO::FETCH_COLUMN);
+
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
         $query->execute([
             'id' => $id
         ]);
         $results = $query->fetch();
+        $results->setCohortDates($results2);
         return $results;
     }
 
