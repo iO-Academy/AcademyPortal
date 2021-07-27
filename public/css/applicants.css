@@ -132,3 +132,16 @@ section {
     grid-template-columns: 0fr 2fr 2fr 1.5fr 0.3fr 2fr 2fr 2fr;
     justify-items: left;
 }
+
+.form_pass {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+.passwordElements {
+    margin: 2% 3%;
+}
+
+.div_pass {
+    display: flex;
+}
