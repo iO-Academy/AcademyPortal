@@ -40,17 +40,22 @@ class StudentProfilePageController extends Controller
     {
         $params['id'] = $args['id'];
         $params['applicant'] = $this->applicantModel->getApplicantById($params['id']);
-        if ($request->getParsedBody()['password']) {
-            if ($request->getParsedBody()['password'] === 'Saskia') { ///remove dummy test password Saskia with the data base password
+
+        if (!empty($request->getParsedBody()['password'])) {
+            $hashPassword = $this->applicantModel->getApplicantPassword($params['id'])['profile_password'];
+            $password = $request->getParsedBody()['password'];
+
+            if (password_verify( $password,  $hashPassword)) {
                 $_SESSION['studentLogin'] = true;
+                $_SESSION['studentId'] =  $params['id'];
             } else {
-                $_SESSION['studentLogin'] = false;
+                unset($_SESSION['studentLogin']);
             }
-            if ($_SESSION['studentLogin']) {
-                return $this->renderer->render($response, 'studentProfile.phtml', $params);
-            } else {
-                return $this->renderer->render($response, 'studentLogin.phtml', $params);
-            }
+        }
+        if (!empty($_SESSION['studentLogin']) && $_SESSION['studentLogin'] && $_SESSION['studentId'] == $params['id'] || !empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
+            return $this->renderer->render($response, 'studentProfile.phtml', $params);
+        } else {
+            return $this->renderer->render($response, 'studentLogin.phtml', $params);
         }
     }
 }
