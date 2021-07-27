@@ -310,7 +310,6 @@ class ApplicantModel implements ApplicantModelInterface
                             `name` = :name,
                             `email` = :email,
                             `phoneNumber` = :phoneNumber,
-                            `cohortId` = :cohortId,
                             `whyDev` = :whyDev,
                             `codeExperience` = :codeExperience,
                             `hearAboutId` = :hearAboutId,
@@ -330,7 +329,6 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':name', $applicant['name']);
         $query->bindValue(':email', $applicant['email']);
         $query->bindValue(':phoneNumber', $applicant['phoneNumber']);
-        $query->bindValue(':cohortId', $applicant['cohortId']);
         $query->bindValue(':whyDev', $applicant['whyDev']);
         $query->bindValue(':codeExperience', $applicant['codeExperience']);
         $query->bindValue(':hearAboutId', $applicant['hearAboutId']);
@@ -343,7 +341,12 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':stageOptionId', $applicant['stageOptionId']);
         $query->bindValue(':dateTimeAdded', $applicant['dateTimeAdded']);
         $query->bindValue(':backgroundInfoId', $applicant['backgroundInfoId']);
-
+        $deleteQuery = $this->db->prepare('DELETE FROM `course_choice` WHERE `applicantsid` = ?');
+        $deleteQuery->execute([$applicant['id']]);
+        foreach ($applicant['cohort'] as $cohortId) {
+            $query2 = $this->db->prepare('INSERT INTO `course_choice` (`coursesid`, `applicantsid`) VALUES (?,?)');
+            $query2->execute([$cohortId, $applicant['id']]);
+        }
         return $query->execute();
     }
 
