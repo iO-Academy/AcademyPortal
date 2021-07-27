@@ -19,7 +19,8 @@ $(document).ready(function(){
         const stageId = this.dataset.stageid;
         const applicantId = this.dataset.applicantid;
         const thisButton  = this;
-        var url = './api/getNextStageOptions/' + stageId;
+        var url = './api/getNextStageOptions/' + stageId + '?applicantId=' + applicantId;
+
         fetch(url)
             .then(
                 function(response) {
@@ -30,6 +31,33 @@ $(document).ready(function(){
                     }
                     response.json().then(function(data) {
                         document.querySelector('#next-stage-options').innerHTML = '<option>Please select an Option</option>';
+                        const alert = document.querySelector('#passwordMessage')
+                        if (data['data']['password']) {
+                            $('#applicantPassword').modal('show');
+                            let applicantLink = document.querySelector('#applicant_password_link')
+                            applicantLink.querySelector('span').textContent = applicantId;
+                            applicantLink.href = applicantLink.dataset.href + applicantId;
+                            document.querySelector('#copyPassword').addEventListener('click', function copyPassword() {
+                                document.querySelector('#randomPassword').select();
+                                document.execCommand("copy");
+                                alert.classList.remove('alert-danger')
+                                alert.classList.add('alert-success')
+                                alert.innerHTML = 'Password successfully copied!'
+                            })
+                            document.querySelector('#randomPassword').value = data['data']['password']
+                            document.querySelector('.btnPasswordGenerate').addEventListener('click', function()
+                            {
+                                if (document.querySelector('#password_checkbox').checked) {
+                                    $('#applicantPassword').modal('hide');
+                                    alert.classList.remove('alert-danger', 'alert-success')
+                                    alert.innerHTML = ''
+                                    document.querySelector('#password_checkbox').checked = false
+                                } else {
+                                    alert.classList.add('alert-danger')
+                                    alert.innerHTML = '↑↑↑ Please confirm that you saved the password ↑↑↑ !'
+                                }
+                            })
+                        }
                         if (data['data']['nextStageOptions'].length === 0) {
                             var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId;
                             updateStage(url, applicantId, thisButton);
@@ -41,12 +69,13 @@ $(document).ready(function(){
                             })
                             document.querySelector('#next-stage-options').innerHTML += optionValues;
                             $('#nextStageModal').modal('show');
+
                             document.querySelector('.btnNextStageOptions').addEventListener('click',
                                 function() {
                                         const optionId =  document.querySelector('#next-stage-options').value;
                                         var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId + '&optionId=' + optionId;
                                         updateStage(url, applicantId, thisButton)
-                                        window.location.reload();
+                                        // window.location.reload();
                                         $('#nextStageModal').modal('hide');
                                 }
                             )

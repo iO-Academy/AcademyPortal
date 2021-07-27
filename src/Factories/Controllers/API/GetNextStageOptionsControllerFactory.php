@@ -17,6 +17,8 @@ class GetNextStageOptionsControllerFactory
     public function __invoke(ContainerInterface $container)
     {
         $stageModel = $container->get('StageModel');
-        return new GetNextStageOptionsController($stageModel);
+        $password = $container->get('RandomPasswordModel');
+        $applicantModel = $container->get('ApplicantModel');
+        return new GetNextStageOptionsController($stageModel, $password, $applicantModel);
     }
 }

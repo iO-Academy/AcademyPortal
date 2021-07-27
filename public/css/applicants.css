@@ -133,6 +133,20 @@ section {
     justify-items: left;
 }
 
+.form_pass {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+.passwordElements {
+    margin: 2% 3%;
+}
+
+.div_pass {
+    display: flex;
+}
+
 .cohort_checkbox {
     margin-left: 1.5%;
 }
+
