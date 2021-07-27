@@ -21,7 +21,7 @@
             <section class="stagesDropdown">
                 <label for="stageTitle">Choose Applicant's Stage: </label>
                 <select class="submitApplicant" name="stageId" id="stageTitle">
-                    <?php echo \Portal\ViewHelpers\ApplicantFormViewHelper::stagesDropdown($data['stages'], $data['stageOptions'],$data['currentStage']); ?>
+                    <?php echo \Portal\ViewHelpers\ApplicantFormViewHelper::stagesDropdown($data['stages'], $data['stageOptions'],$data['currentStage']);?>
                 </select>
             </section>
             <section class="applicationFormSection">
@@ -53,9 +53,8 @@
                 </div>
 
                 <div id="application" class="collapse">
-                    <label for="cohorts">When would you like to join us?</label>
-                    <select id="cohorts" class="submitApplicant form-control" name="cohortId"  data-selected="<?php echo $applicant->getCohortId();?>" required>
-                    </select>
+                    <label>When would you like to join us?</label>
+                    <div id="cohorts"></div>
 
                     <label for="backgroundInfoId">Background Info</label>
                     <select id="backgroundInfo" class="submitApplicant form-control" name="backgroundInfoId" data-selected="<?php echo $applicant->getBackgroundInfoId();?>" required></select>
