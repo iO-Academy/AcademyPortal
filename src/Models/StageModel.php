@@ -275,7 +275,4 @@ class StageModel
         return $query->fetchColumn();
 
     }
-
-    // function for getting the first student stage  ID
-
 }

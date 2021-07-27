@@ -48,10 +48,12 @@ class GetNextStageOptionsController extends Controller
         try {
             $nextId = intval($this->stageModel->getNextStageId($stageId)['id']);
             $firstStudentStageId = $this->stageModel->getFirstStudentStage();
-            if ($nextId === $firstStudentStageId && !empty($request->getQueryParams()['applicantId'])){
+            if ($nextId === $firstStudentStageId && !empty($request->getQueryParams()['applicantId'])) {
                 $data['data']['password'] = $this->password;
                 $encryptedPassword = password_hash($data['data']['password'], PASSWORD_DEFAULT);
-                $this->applicantModel->addApplicantPassword($encryptedPassword, $request->getQueryParams()['applicantId']);
+                $this->applicantModel->addApplicantPassword(
+                    $encryptedPassword,
+                    $request->getQueryParams()['applicantId']);
             }
             $data['data']['nextStageOptions'] = $this->stageModel->getOptionsByStageID($nextId);
             $data['data']['nextStageId'] = $nextId;
