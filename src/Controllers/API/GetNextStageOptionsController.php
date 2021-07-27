@@ -52,8 +52,9 @@ class GetNextStageOptionsController extends Controller
                 $data['data']['password'] = $this->password;
                 $encryptedPassword = password_hash($data['data']['password'], PASSWORD_DEFAULT);
                 $this->applicantModel->addApplicantPassword(
-                    $encryptedPassword,
-                    $request->getQueryParams()['applicantId']);
+                $encryptedPassword,
+                $request->getQueryParams()['applicantId']
+                );
             }
             $data['data']['nextStageOptions'] = $this->stageModel->getOptionsByStageID($nextId);
             $data['data']['nextStageId'] = $nextId;

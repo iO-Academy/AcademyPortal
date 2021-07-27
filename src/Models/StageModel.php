@@ -273,6 +273,5 @@ class StageModel
         $query = $this->db->prepare("SELECT MIN(`id`) AS 'id' FROM `stages` WHERE `student` = 1");
         $query->execute();
         return $query->fetchColumn();
-
     }
 }
