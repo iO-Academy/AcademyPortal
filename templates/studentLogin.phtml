@@ -6,7 +6,6 @@
         echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Login');
         ?>
         <link rel="stylesheet" type="text/css" href="../css/login.css"/>
-        <script src="../js/loginValidation.js" defer></script>
     </head>
     <body>
         <div class="container">
@@ -16,7 +15,7 @@
         </div>
         <main class="login">
             <h1>Login</h1>
-            <form id="loginForm">
+            <form method="post" id="loginForm">
                 <div class="form-group">
                     <label for="password">Password (Required)</label>
                     <input type="password" name="password" id="password" required class="form-control">

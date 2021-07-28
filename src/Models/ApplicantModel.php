@@ -445,6 +445,15 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->execute([':password' => $password, ':applicantId' => $applicantId]);
     }
 
+
+    public function getApplicantPassword(int $applicantId)
+    {
+        $sql = 'SELECT `profile_password` FROM `applicants` WHERE `id` = :applicantId';
+        $query = $this->db->prepare($sql);
+        $query->execute([':applicantId' => $applicantId]);
+        return $query->fetch();
+    }
+
     public function addApplicantToTeam(int $teamId, int $applicantId)
     {
         $sql = 'UPDATE `applicants_additional` SET `team` = :teamId WHERE `id` = :applicantId';
@@ -454,9 +463,7 @@ class ApplicantModel implements ApplicantModelInterface
 
     public function getApplicantStageId(int $applicantId)
     {
-        $query = $this->db->prepare(
-            'SELECT `stageId` FROM `applicants` WHERE `id` = :applicantId'
-        );
+        $query = $this->db->prepare('SELECT `stageId` FROM `applicants` WHERE `id` = :applicantId');
         $query->execute([':applicantId' => $applicantId]);
         return $query->fetch();
     }
