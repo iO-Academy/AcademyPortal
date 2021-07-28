@@ -116,8 +116,7 @@ class ApplicantModel implements ApplicantModelInterface
         string $cohortId = '%',
         string $sortingQuery = '',
         string $pageNumber = '1'
-    )
-    {
+    ) {
         $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
                       FROM `applicants`
@@ -255,11 +254,9 @@ class ApplicantModel implements ApplicantModelInterface
             'SELECT `courses`.`id` as "id", `start_date` 
                     FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` 
                     WHERE `applicantsid` = :id');
-        $queryDate->execute(
-            [
-                'id' => $id
-            ]
-        );
+        $queryDate->execute([
+            'id' => $id
+        ]);
         $results2 = $queryDate->fetchAll();
 
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
