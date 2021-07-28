@@ -247,11 +247,13 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`stageOptionId` = `options`.`id`
                         WHERE `applicants`.`id`= :id;"
         );
-        $queryDate = $this->db->prepare('SELECT `start_date` FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` WHERE `applicantsid` = :id');
+
+
+        $queryDate = $this->db->prepare('SELECT `courses`.`id` as "id", `start_date` FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` WHERE `applicantsid` = :id');
         $queryDate->execute([
             'id' => $id
         ]);
-        $results2 = $queryDate->fetchAll(\PDO::FETCH_COLUMN);
+        $results2 = $queryDate->fetchAll();
 
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
         $query->execute([
