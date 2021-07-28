@@ -20,7 +20,7 @@ class ApplicantSanitiser
         $applicant['email'] = StringSanitiser::sanitiseString($applicant['email']);
         $applicant['email'] = EmailValidator::validateEmail($applicant['email']);
         $applicant['phoneNumber'] = StringSanitiser::sanitiseString($applicant['phoneNumber']);
-        foreach ($applicant['cohort'] as $key=>$cohortId) {
+        foreach ($applicant['cohort'] as $key => $cohortId) {
             $applicant['cohort'][$key] = (int)$cohortId;
         }
         $applicant['whyDev'] = StringSanitiser::sanitiseString($applicant['whyDev']);

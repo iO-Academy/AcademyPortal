@@ -142,7 +142,11 @@ class ApplicantModel implements ApplicantModelInterface
         $query->execute();
         $applicants = $query->fetchAll();
         foreach ($applicants as $applicant) {
-            $queryDate = $this->db->prepare('SELECT `start_date` FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` WHERE `applicantsid` = :id');
+            $queryDate = $this->db->prepare(
+                'SELECT `start_date` FROM `courses` 
+                        JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` 
+                        WHERE `applicantsid` = :id'
+            );
             $queryDate->execute([
                 'id' => $applicant->getId()
             ]);
@@ -150,7 +154,6 @@ class ApplicantModel implements ApplicantModelInterface
             $applicant->setCohortDates($results2);
         }
         return $applicants;
-
     }
 
     /**
@@ -248,8 +251,10 @@ class ApplicantModel implements ApplicantModelInterface
                         WHERE `applicants`.`id`= :id;"
         );
 
-
-        $queryDate = $this->db->prepare('SELECT `courses`.`id` as "id", `start_date` FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` WHERE `applicantsid` = :id');
+        $queryDate = $this->db->prepare(
+            'SELECT `courses`.`id` as "id", `start_date` 
+                    FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` 
+                    WHERE `applicantsid` = :id');
         $queryDate->execute([
             'id' => $id
         ]);
