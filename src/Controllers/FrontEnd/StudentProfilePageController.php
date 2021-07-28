@@ -50,6 +50,7 @@ class StudentProfilePageController extends Controller
                 $_SESSION['studentId'] =  $params['id'];
             } else {
                 unset($_SESSION['studentLogin']);
+                $params['error'] = 'Invalid password';
             }
         }
         if (
