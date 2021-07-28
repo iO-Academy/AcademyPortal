@@ -1,13 +1,13 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 4541
+# Version 5446
 #
-# http://www.sequelpro.com/
+# https://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.33)
-# Database: academyportal
-# Generation Time: 2021-05-27 13:55:46 +0000
+# Host: 127.0.0.1 (MySQL 5.7.34)
+# Database: academyPortal
+# Generation Time: 2021-07-26 12:21:40 +0000
 # ************************************************************
 
 
@@ -15,6 +15,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+SET NAMES utf8mb4;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
@@ -30,7 +31,6 @@ CREATE TABLE `applicants` (
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `phoneNumber` varchar(20) DEFAULT NULL,
-  `cohortId` int(11) DEFAULT NULL,
   `whyDev` text,
   `codeExperience` text,
   `hearAboutId` int(11) DEFAULT NULL,
@@ -49,16 +49,16 @@ CREATE TABLE `applicants` (
 LOCK TABLES `applicants` WRITE;
 /*!40000 ALTER TABLE `applicants` DISABLE KEYS */;
 
-INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `cohortId`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`, `backgroundInfoId`)
+INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`, `backgroundInfoId`)
 VALUES
-	(2,'Owen Miller','weqi@mailinator.net','+532-82-1263991',2,'Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea','Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat',3,'1','1','1','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',6,NULL,'2018-11-24 21:26:00',0,NULL),
-	(3,'Nero Burgess','famaxykivo@yahoo.com','+124-85-7626938',2,'Perspiciatis fugiat possimus tempor dolores nesciunt consequatur voluptatem','Quibusdam officiis occaecat velit error sunt ratione voluptatem',5,'1','1','1','Sint voluptas ut nihil incididunt officia duis ab eius impedit consequatur Incidunt do aut doloribus proident quos dolores pariatur Sed',6,NULL,'2018-11-28 14:29:58',0,NULL),
-	(4,'Matthew Jarvis','tucawohuw@mailinator.net','+848-54-4778506',3,'Natus quidem magnam autem corrupti laborum Anim quos quia','Dolor quia dignissimos qui excepturi eos voluptas est',6,'1','0','0','Quod harum esse quia maxime explicabo Voluptatem magna soluta voluptate optio',1,NULL,'2018-11-28 14:33:41',0,NULL),
-	(5,'Ignacia Watkins','qewopepodi@mailinator.com','+613-35-8385501',2,'Excepturi consequatur Est culpa enim itaque ratione optio minima ullamco voluptates dolor et totam','Earum est iure sed fuga Velit',6,'0','0','0','Impedit aut duis laborum aspernatur amet aliquip tempora harum nulla aut',6,NULL,'2018-11-28 14:42:01',0,NULL),
-	(6,'Luke Haney','wubeqyko@mailinator.com','+942-61-9779862',3,'Nemo id qui aspernatur possimus dolor adipisicing aut est sed minim','Consequatur quia voluptate delectus impedit similique',6,'0','0','0','Non sed modi ab culpa sed quia tempore debitis dolor',1,NULL,'2018-11-28 14:52:20',0,NULL),
-	(7,'Curran Patel','pudapaceje@mailinator.net','+628-48-1465496',4,'Non voluptas eligendi assumenda et itaque cupidatat ut tempor','Et aliqua Quia sit soluta enim nesciunt vitae consequatur Aut repellendus Soluta magni',2,'1','0','0','Quos fugiat qui et enim eum tempor est modi',3,7,'2018-11-28 22:53:05',0,NULL),
-	(8,'Katelyn Parsons','poipoi@qwerty.com','+567-54-9746748',3,'Aut est et est esse mollitia laborum','Fuga Enim omnis anim et error aut et voluptate anim blanditiis dolorem voluptatem facilis',2,'0','0','0','Similique velit qui nisi debitis aliquip lorem dolor commodi assumenda quod quod autem amet eu mollitia quod necessitatibus',1,NULL,'2018-11-28 23:10:12',0,NULL),
-	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555',3,'Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit',1,NULL,'2018-11-28 23:10:47',0,NULL);
+	(2,'Owen Miller','weqi@mailinator.net','+532-82-1263991','Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea','Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat',3,'1','1','1','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',6,NULL,'2018-11-24 21:26:00',0,NULL),
+	(3,'Nero Burgess','famaxykivo@yahoo.com','+124-85-7626938','Perspiciatis fugiat possimus tempor dolores nesciunt consequatur voluptatem','Quibusdam officiis occaecat velit error sunt ratione voluptatem',5,'1','1','1','Sint voluptas ut nihil incididunt officia duis ab eius impedit consequatur Incidunt do aut doloribus proident quos dolores pariatur Sed',6,NULL,'2018-11-28 14:29:58',0,NULL),
+	(4,'Matthew Jarvis','tucawohuw@mailinator.net','+848-54-4778506','Natus quidem magnam autem corrupti laborum Anim quos quia','Dolor quia dignissimos qui excepturi eos voluptas est',6,'1','0','0','Quod harum esse quia maxime explicabo Voluptatem magna soluta voluptate optio',1,NULL,'2018-11-28 14:33:41',0,NULL),
+	(5,'Ignacia Watkins','qewopepodi@mailinator.com','+613-35-8385501','Excepturi consequatur Est culpa enim itaque ratione optio minima ullamco voluptates dolor et totam','Earum est iure sed fuga Velit',6,'0','0','0','Impedit aut duis laborum aspernatur amet aliquip tempora harum nulla aut',6,NULL,'2018-11-28 14:42:01',0,NULL),
+	(6,'Luke Haney','wubeqyko@mailinator.com','+942-61-9779862','Nemo id qui aspernatur possimus dolor adipisicing aut est sed minim','Consequatur quia voluptate delectus impedit similique',6,'0','0','0','Non sed modi ab culpa sed quia tempore debitis dolor',1,NULL,'2018-11-28 14:52:20',0,NULL),
+	(7,'Curran Patel','pudapaceje@mailinator.net','+628-48-1465496','Non voluptas eligendi assumenda et itaque cupidatat ut tempor','Et aliqua Quia sit soluta enim nesciunt vitae consequatur Aut repellendus Soluta magni',2,'1','0','0','Quos fugiat qui et enim eum tempor est modi',3,7,'2018-11-28 22:53:05',0,NULL),
+	(8,'Katelyn Parsons','poipoi@qwerty.com','+567-54-9746748','Aut est et est esse mollitia laborum','Fuga Enim omnis anim et error aut et voluptate anim blanditiis dolorem voluptatem facilis',2,'0','0','0','Similique velit qui nisi debitis aliquip lorem dolor commodi assumenda quod quod autem amet eu mollitia quod necessitatibus',1,NULL,'2018-11-28 23:10:12',0,NULL),
+	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555','Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit',1,NULL,'2018-11-28 23:10:47',0,NULL);
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -131,6 +131,30 @@ VALUES
 	(19,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `applicants_additional` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table course_choice
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `course_choice`;
+
+CREATE TABLE `course_choice` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `coursesid` int(11) DEFAULT NULL,
+  `applicantsid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `course_choice` WRITE;
+/*!40000 ALTER TABLE `course_choice` DISABLE KEYS */;
+
+INSERT INTO `course_choice` (`id`, `coursesid`, `applicantsid`)
+VALUES
+	(2,1,2),
+	(3,2,3);
+
+/*!40000 ALTER TABLE `course_choice` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

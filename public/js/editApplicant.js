@@ -1,5 +1,5 @@
 document.querySelectorAll('.collapse-header').forEach(section => {
-    section.addEventListener('click', function(e) {
+    section.addEventListener('click', function (e) {
         this.querySelector('i').classList.toggle('glyphicon-chevron-down')
         this.querySelector('i').classList.toggle('glyphicon-chevron-up')
     })
@@ -17,3 +17,12 @@ document.querySelector('#stageTitle').addEventListener('change', e => {
         })
     }
 })
+const checkedCohortDates = () => {
+    let cohortIds = document.querySelector('#cohorts').dataset.dates;
+    cohortIds = cohortIds.split(',')
+    document.querySelectorAll('#cohorts input').forEach(input => {
+        if (cohortIds.includes(input.value)) {
+            input.checked = true;
+        }
+    })
+}
