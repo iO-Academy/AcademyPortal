@@ -149,7 +149,7 @@ class ApplicantModel implements ApplicantModelInterface
             $queryDate->execute([
                 'id' => $applicant->getId()
             ]);
-            $results2 = $queryDate->fetchAll(\PDO::FETCH_COLUMN);
+            $results2 = $queryDate->fetchAll();
             $applicant->setCohortDates($results2);
         }
         return $applicants;
