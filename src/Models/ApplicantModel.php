@@ -253,7 +253,8 @@ class ApplicantModel implements ApplicantModelInterface
         $queryDate = $this->db->prepare(
             'SELECT `courses`.`id` as "id", `start_date` 
                     FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` 
-                    WHERE `applicantsid` = :id');
+                    WHERE `applicantsid` = :id'
+        );
         $queryDate->execute([
             'id' => $id
         ]);
