@@ -90,6 +90,16 @@ let outputCohortsAsCheckboxes = (cohorts, el = null) => {
   element.innerHTML += cohortOptions;
 };
 
+const checkedCohortDates = () => {
+  let cohortIds = document.querySelector('#cohorts').dataset.dates || '';
+  cohortIds = cohortIds.split(',')
+  document.querySelectorAll('#cohorts input').forEach(input => {
+    if (cohortIds.includes(input.value)) {
+      input.checked = true;
+    }
+  })
+}
+
 let outputEvents = (events, element) => {
   let eventOptions = '';
 

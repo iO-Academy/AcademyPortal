@@ -17,12 +17,3 @@ document.querySelector('#stageTitle').addEventListener('change', e => {
         })
     }
 })
-const checkedCohortDates = () => {
-    let cohortIds = document.querySelector('#cohorts').dataset.dates;
-    cohortIds = cohortIds.split(',')
-    document.querySelectorAll('#cohorts input').forEach(input => {
-        if (cohortIds.includes(input.value)) {
-            input.checked = true;
-        }
-    })
-}
