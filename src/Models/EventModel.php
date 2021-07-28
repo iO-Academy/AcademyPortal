@@ -169,7 +169,7 @@ class EventModel
      * @return array An array of Events based on category ID and previous X months from current date.
      */
 
-    public function getEventsByCategoryId(string $categoryId, $previousMonths = null): array
+    public function getEventsByCategoryId(string $categoryId, $previousMonths = 0): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
                 `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
@@ -179,7 +179,7 @@ class EventModel
         if (is_int($previousMonths)) {
             $sql .= ' AND `date` > curdate() - INTERVAL :previousMonths MONTH';
         }
-        $sql .= ' ORDER BY `date` DESC;';
+        $sql .= ' ORDER BY `date` ASC';
         $query = $this->db->prepare($sql);
         $query->bindParam(':categoryId', $categoryId);
         $query->bindParam(':previousMonths', $previousMonths);

@@ -55,8 +55,11 @@ class ApplicantValidator
 
     public static function validateAdditionalFields(array $applicant): bool
     {
-        DateTimeValidator::validateDate($applicant['assessmentDay']);
-        DateTimeValidator::validateDate($applicant['assessmentDay']);
+        if (!empty($applicant['assessmentDay'])) {
+            if (!is_numeric($applicant['assessmentDay'])) {
+                throw new \Exception('Invalid assessment date!');
+            }
+        }
         DateTimeValidator::validateTime($applicant['assessmentTime']);
         DateTimeValidator::validateDateTime($applicant['dateTimeAdded']);
 
