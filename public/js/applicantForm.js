@@ -2,7 +2,7 @@
     const data = await handleFormOptions();
 
     outputAssessmentDates(data.assessments);
-    outputCohorts(data.cohorts);
+    outputCohortsAsCheckboxes(data.cohorts);
 
     if (document.getElementById('tasterDate')) {
         outputEvents(data.tasters, document.getElementById('tasterDate'));

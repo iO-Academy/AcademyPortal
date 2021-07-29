@@ -16,8 +16,9 @@ function prettyDate(date) {
         return null;
     }
     date = new Date(date);
-    let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
-    return date.toLocaleDateString("en-GB",dateOptions)
+    let dateOptions = {year: 'numeric', month: 'numeric', day: 'numeric'};
+    return date.toLocaleDateString("en-GB", dateOptions)
+
 }
 
 function aptitudeColors(score) {

@@ -71,6 +71,7 @@ let outputCohorts = (cohorts, el = null) => {
         dateOptions
     )}</option>`;
   });
+
   element.innerHTML += cohortOptions;
 };
 
@@ -86,31 +87,7 @@ let outputCohortsAsCheckboxes = (cohorts, el = null) => {
         dateOptions
     )}</label>`;
   });
-
   element.innerHTML += cohortOptions;
-};
-
-
-  let outputAssessmentDates = (dates, el = null) => {
-    const element = el || document.querySelector('#assessmentDay');
-    let assessmentOptions = '';
-
-    dates.forEach(item => {
-      assessmentOptions += '<option ';
-      if (element.dataset.selected === item.date) {
-        assessmentOptions += 'selected ';
-      }
-      let date = new Date(item.date);
-      let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
-      assessmentOptions += `value="${
-          item.id
-      }">${date.toLocaleDateString(
-          'en-GB',
-          dateOptions
-      )}</option>`;
-    });
-
-  element.innerHTML += assessmentOptions;
 };
 
 const checkedCohortDates = () => {
@@ -123,6 +100,30 @@ const checkedCohortDates = () => {
   })
 }
 
+  let outputAssessmentDates = (dates, el = null) => {
+    const element = el || document.querySelector('#assessmentDay');
+    let assessmentOptions = '';
+
+    if (element) {
+      dates.forEach(item => {
+        assessmentOptions += '<option ';
+        if (element.dataset.selected === item.date) {
+          assessmentOptions += 'selected ';
+        }
+        let date = new Date(item.date);
+        let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
+        assessmentOptions += `value="${
+            item.id
+        }">${date.toLocaleDateString(
+            'en-GB',
+            dateOptions
+        )}</option>`;
+      });
+      
+      element.innerHTML += assessmentOptions;
+    }
+
+};
 
 let outputEvents = (events, element) => {
   let eventOptions = '';
