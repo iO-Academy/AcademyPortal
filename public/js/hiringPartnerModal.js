@@ -44,7 +44,7 @@ function addEventListenersForModal() {
                                 <th></th>
                             </tr>`
 
-                        let yesNoSub = ['', '<i class="bi bi-person-check-fill"></i>']
+                        let yesNoSub = ['', '<i class="glyphicon glyphicon-king"></i>']
 
                         data.data.contacts.forEach(function (contact) {
 
