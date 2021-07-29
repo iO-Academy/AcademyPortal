@@ -70,13 +70,13 @@ class ApplicantModel implements ApplicantModelInterface
         if ($result) {
             $id = $this->db->lastInsertId();
             foreach ($applicant['cohort'] as $cohortId) {
-                $courseChoiceQuery = $this->db->prepare(
+                $applicantsAdditionalQuery = $this->db->prepare(
                     'INSERT INTO `course_choice` (`courseId`, `applicantId`) VALUES (?,?)'
                 );
-                $courseChoiceQuery->execute([$cohortId, $id]);
+                $applicantsAdditionalQuery->execute([$cohortId, $id]);
             }
-            $courseChoiceQuery = $this->db->prepare('INSERT INTO `applicants_additional` (`id`) VALUES (?)');
-            return $courseChoiceQuery->execute([$id]);
+            $applicantsAdditionalQuery = $this->db->prepare('INSERT INTO `applicants_additional` (`id`) VALUES (?)');
+            return $applicantsAdditionalQuery->execute([$id]);
         }
         return $result;
     }
