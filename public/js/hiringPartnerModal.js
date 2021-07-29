@@ -34,8 +34,17 @@ function addEventListenersForModal() {
                         validateField(data.data.company, 'url_website')
 
                         let contactsHTML = ''
+                        contactsHTML +=`                           
+                            <table class="table table-bordered">
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Job title</th>
+                                <th>Phone</th>
+                                <th></th>
+                            </tr>`
 
-                        let yesNoSub = ['No', 'Yes']
+                        let yesNoSub = ['', '<i class="glyphicon glyphicon-king"></i>']
 
                         data.data.contacts.forEach(function (contact) {
 
@@ -43,16 +52,20 @@ function addEventListenersForModal() {
                             let validatedEmail = validateContactField(contact.email)
                             let validatedJobTitle = validateContactField(contact.job_title)
                             let validatedPhone = validateContactField(contact.phone)
-                            let validatedIsPrimaryContact = validateContactField(yesNoSub[contact.is_primary_contact])
+                            let validatedIsPrimaryContact = validateContactField(yesNoSub[contact.is_primary_contact], '')
 
                             contactsHTML += `
-                                <h4>Name</h4><p>${validatedName}</p>
-                                <h4>Email</h4><p>${validatedEmail}</p>
-                                <h4>Job title</h4><p>${validatedJobTitle}</p>
-                                <h4>Phone</h4><p>${validatedPhone}</p>
-                                <h4>Primary Contact</h4><p>${validatedIsPrimaryContact}</p>`
-                            contactsHTML += '<hr>'
+                                <tr>
+                                <td>${validatedName}</td>
+                                <td>${validatedEmail}</td>
+                                <td>${validatedJobTitle}</td>
+                                <td>${validatedPhone}</td>
+                                <td class="text-center h3">${validatedIsPrimaryContact}</td>
+                                </tr>`
+
                         })
+                            contactsHTML += '</table>'
+
 
                         let contactDetails = {}
 

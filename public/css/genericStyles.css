@@ -10,7 +10,7 @@ label {
     margin-top: 20px;
 }
 
-h4 {
+h4, th {
     color: #157383;
 }
 
@@ -67,4 +67,8 @@ input[type="submit"] {
 
 .glyphicon-check {
     margin-left: 1px;
+}
+
+table {
+    width: 100%;
 }
