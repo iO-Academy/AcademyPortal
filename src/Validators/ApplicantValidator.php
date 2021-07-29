@@ -24,7 +24,8 @@ class ApplicantValidator
                 empty($applicant['phoneNumber']) ||
                 PhoneNumberValidator::validatePhoneNumber($applicant['phoneNumber'])
             ) &&
-            is_numeric($applicant['cohortId']) &&
+            is_array($applicant['cohort']) &&
+            !empty($applicant['cohort']) &&
             StringValidator::validateExistsAndLength(
                 $applicant['whyDev'],
                 StringValidator::MAXTEXTLENGTH,

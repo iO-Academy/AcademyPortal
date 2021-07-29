@@ -57,6 +57,9 @@ let errorMessage = (validationType) => {
         case 'isPresent' :
             htmlString += `This field must be filled in.`;
             break;
+        case 'isChecked' :
+            htmlString += 'You must select at least one checkbox';
+            break;
         default:
             htmlString += `This field is invalid.`;
             break;
@@ -71,17 +74,24 @@ let getCompletedFormData = () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     data['id'] = urlParams.get('id');
+    data['cohort'] = [];
 
     formData.forEach(formItem => {
         if (formItem.name == 'stageId') {
             let stageOptionArray = formItem.value.split(" ");
             data['stageId'] = stageOptionArray[0];
             data['stageOptionId'] = stageOptionArray[1] ?? null;
-        }
-        else {
-            data[formItem.name] = formItem.value;
+        } else {
             if (formItem.type == 'checkbox') {
-                data[formItem.name] = formItem.checked;
+                if (formItem.name == 'cohort') {
+                    if (formItem.checked) {
+                        data[formItem.name].push(formItem.value);
+                    }
+                } else {
+                    data[formItem.name] = formItem.checked;
+                }
+            } else {
+                data[formItem.name] = formItem.value;
             }
         }
     });
@@ -100,28 +110,28 @@ let makeApiRequest = async (data, type) => {
         body: JSON.stringify(data)
     })
         .then(response => {
-        const generalErrorMessage = document.querySelector('#generalError');
+            const generalErrorMessage = document.querySelector('#generalError');
 
-        switch (response.status) {
-            case 200:
-                response.json().then(data => {
-                    generalErrorMessage.innerHTML = data.msg;
-                    generalErrorMessage.classList.add('alert-success');
-                });
-                break;
-            case 400:
-                response.json().then(data => {
-                    generalErrorMessage.innerHTML = data.msg;
+            switch (response.status) {
+                case 200:
+                    response.json().then(data => {
+                        generalErrorMessage.innerHTML = data.msg;
+                        generalErrorMessage.classList.add('alert-success');
+                    });
+                    break;
+                case 400:
+                    response.json().then(data => {
+                        generalErrorMessage.innerHTML = data.msg;
+                        generalErrorMessage.classList.add('alert-danger');
+                    });
+                    break;
+                default:
+                    generalErrorMessage.innerHTML = "Something went wrong, please try again later.";
                     generalErrorMessage.classList.add('alert-danger');
-                });
-                break;
-            default:
-                generalErrorMessage.innerHTML = "Something went wrong, please try again later.";
-                generalErrorMessage.classList.add('alert-danger');
-                break;
-        }
-        generalErrorMessage.classList.remove('hidden');
-    });
+                    break;
+            }
+            generalErrorMessage.classList.remove('hidden');
+        });
 };
 
 let validateFormInputs = (data) => {
@@ -140,7 +150,7 @@ let validateFormInputs = (data) => {
         },
         phone: {
             isPhone: isPhoneNumber(data.phoneNumber)
-        } ,
+        },
         whyDev: {
             validLengthText: textAreaMaxLength(data.whyDev),
             isPresent: isPresent(data.whyDev)
@@ -151,8 +161,10 @@ let validateFormInputs = (data) => {
         },
         notes: {
             validLengthText: textAreaMaxLength(data.notes)
+        },
+        cohort: {
+            isChecked: requiredCheckboxes(document.querySelectorAll('#cohorts .cohort_checkbox input'))
         }
     };
-    
     return validate;
 };

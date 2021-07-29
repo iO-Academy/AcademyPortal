@@ -1,4 +1,3 @@
-
 function displayField(data, field, noDataMessage = 'No information provided', zeroMessage = null) {
     if (data[field] === 0 && zeroMessage !== null) {
         document.getElementById(field).innerHTML = zeroMessage
@@ -40,6 +39,7 @@ function addCurrency(number) {
     }
     return 'Unknown'
 }
+
 function copyToClipboard(element) {
     let $temp = $("<input>");
     $("body").append($temp);
@@ -49,21 +49,21 @@ function copyToClipboard(element) {
     document.querySelector("button.clipboard").innerText = 'Copied';
 }
 
-$(document).ready(function(){
-    $(".myBtn").click(function(){
+$(document).ready(function () {
+    $(".myBtn").click(function () {
         let url = './api/getApplicant/' + this.dataset.id
-        let studentUrl = 'http://localhost:8080/public/'+this.dataset.id
+        let studentUrl = 'http://localhost:8080/public/' + this.dataset.id
         fetch(url)
             .then(
-                function(response) {
+                function (response) {
                     if (response.status !== 200) {
                         document.querySelector('#modal-main').innerHTML = ''
                         document.querySelector('#modal-main').innerHTML += '<div class="alert alert-danger" role="alert">Looks like there was a problem. Status Code: ' +
-                        response.status + '</div>'
+                            response.status + '</div>'
                         return
                     }
                     // Examine the text in the response
-                    response.json().then(function(data) {
+                    response.json().then(function (data) {
 
                         document.querySelectorAll('#applicantModal section.student').forEach(section => {
                             if (data.isStudentStage === "1") {
@@ -72,7 +72,6 @@ $(document).ready(function(){
                                 section.classList.add('hidden')
                             }
                         })
-
 
                         data.dateTimeAdded = prettyDate(data.dateTimeAdded);
                         displayField(data, 'dateTimeAdded')
@@ -153,7 +152,7 @@ $(document).ready(function(){
                         displayField(data, 'team', 'Not assigned')
                         document.getElementById('userProfileLink').innerHTML = studentUrl;
                         document.getElementById('userProfileLink').href = studentUrl;
-                        $(".clipboard").click(function(){
+                        $(".clipboard").click(function () {
                             copyToClipboard('#userProfileLink')
                         })
                         displayField(data, 'githubUsername', 'Unknown')

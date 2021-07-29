@@ -62,6 +62,7 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
     {
         return $this->dateTimeAdded;
     }
+
     /**
      * Get's dateOfApplication.
      *
@@ -89,7 +90,23 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
      */
     public function getCohortDate()
     {
-        return date("F, Y", strtotime($this->cohortDate));
+        $dates = array_map(function ($date) {
+            return date("F, Y", strtotime($date['start_date']));
+        }, $this->cohortDate);
+        return implode('; ', $dates);
+    }
+
+    public function getCohortIds()
+    {
+        $dates = array_map(function ($date) {
+            return $date['id'];
+        }, $this->cohortDate);
+        return implode(',', $dates);
+    }
+
+    public function setCohortDates(array $array)
+    {
+        $this->cohortDate = $array;
     }
 
     /**

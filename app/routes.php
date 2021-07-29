@@ -21,6 +21,7 @@ return function (App $app) {
     $app->get('/teamPicker', 'TeamPickerPageController');
     $app->get('/student', 'TeamPickerPageController');
     $app->get('/public[/{id}]', 'StudentProfilePageController');
+    $app->post('/public[/{id}]', 'StudentProfilePageController');
     $app->get('/courses', 'CoursesPageController');
     $app->get('/addCourse', 'AddCoursePageController');
 
