@@ -119,14 +119,17 @@ class ApplicantModel implements ApplicantModelInterface
         string $sortingQuery = '',
         string $pageNumber = '1'
     ) {
-        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, 
-                      `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
+        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`,
+        `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName',
+        `start_date` as 'chosenStartDate', `chosenCourseId`
                       FROM `applicants`
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       LEFT JOIN `course_choice` ON `applicants`.`id`= `course_choice`.`applicantId`
+                      LEFT JOIN `applicants_additional` ON `applicants`.`id`= `applicants_additional`.`id`
+                      LEFT JOIN `courses` ON `applicants_additional`.`chosenCourseId`= `courses`.`id`
                       WHERE `applicants`.`deleted` = '0'
-                        AND `courseId`  like :cohortId
+                        AND (`courseId`  like :cohortId OR `chosenCourseId`  like :cohortId2)
                         AND `applicants`.`name` like CONCAT('%', :name, '%')
                       AND `applicants`.`stageId` like :stageId 
                       GROUP BY `applicants`.`id`";
@@ -138,11 +141,20 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':name', $name);
         $query->bindValue(':stageId', $stageId);
         $query->bindValue(':cohortId', $cohortId);
+        $query->bindValue(':cohortId2', $cohortId);
         $query->bindValue(':offsets', $offset, \PDO::PARAM_INT);
         $query->bindValue(':numberPerPage', $this->numberPerPage, \PDO::PARAM_INT);
         $query->execute();
         $applicants = $query->fetchAll();
-        foreach ($applicants as $applicant) {
+        foreach ($applicants as $key => $applicant) {
+            if (
+                !empty($applicant->getChosenCourseId()) && $cohortId !== '%' &&
+                $applicant->getChosenCourseId() !== $cohortId
+            ) {
+                //removes applicants where chosen applicants doesn't match filter
+                unset($applicants[$key]);
+                continue;
+            }
             $queryDate = $this->db->prepare(
                 'SELECT `start_date` FROM `courses` 
                         JOIN `course_choice` ON `courses`.`id` = `course_choice`.`courseId` 

@@ -14,6 +14,8 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
     protected $stageID;
     protected $stageName;
     protected $stageOptionName;
+    protected $chosenStartDate;
+    protected $chosenCourseId;
 
     public function jsonSerialize()
     {
@@ -26,6 +28,7 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
             'stageID' => $this->stageID,
             'stageName' => $this->stageName,
             'stageOptionName' => $this->stageOptionName,
+            'chosenStartDate' => $this->chosenStartDate
         ];
     }
 
@@ -96,6 +99,16 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
         return implode('; ', $dates);
     }
 
+    /**
+     * @return mixed
+     */
+    public function getChosenStartDate()
+    {
+        if (!empty($this->chosenStartDate)) {
+            return date("F, Y", strtotime($this->chosenStartDate));
+        }
+    }
+
     public function getCohortIds()
     {
         $dates = array_map(function ($date) {
@@ -107,6 +120,14 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
     public function setCohortDates(array $array)
     {
         $this->cohortDate = $array;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChosenCourseId()
+    {
+        return $this->chosenCourseId;
     }
 
     /**
