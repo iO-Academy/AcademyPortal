@@ -44,8 +44,6 @@ class AddApplicantController extends Controller
             $statusCode = 500;
 
             $newApplicationData = $request->getParsedBody();
-            var_dump($newApplicationData);
-            exit();
 
             try {
                 if (ApplicantValidator::validate($newApplicationData)) {

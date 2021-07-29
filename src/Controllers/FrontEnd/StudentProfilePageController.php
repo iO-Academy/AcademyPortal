@@ -50,12 +50,16 @@ class StudentProfilePageController extends Controller
                 $_SESSION['studentId'] =  $params['id'];
             } else {
                 unset($_SESSION['studentLogin']);
+                unset($_SESSION['studentId']);
                 $params['error'] = 'Invalid password';
             }
         }
         if (
-            !empty($_SESSION['studentLogin']) && $_SESSION['studentLogin'] && $_SESSION['studentId'] == $params['id'] ||
-            !empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']
+            !empty($_SESSION['studentLogin']) &&
+            $_SESSION['studentLogin'] &&
+            $_SESSION['studentId'] == $params['id'] ||
+            !empty($_SESSION['loggedIn']) &&
+            $_SESSION['loggedIn']
         ) {
             return $this->renderer->render($response, 'studentProfile.phtml', $params);
         } else {

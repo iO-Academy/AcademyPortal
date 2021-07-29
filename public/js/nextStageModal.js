@@ -34,10 +34,10 @@ $(document).ready(function(){
                         const alert = document.querySelector('#passwordMessage')
                         if (data['data']['password']) {
                             $('#applicantPassword').modal('show');
-                            let applicantLink = document.querySelector('#applicant_password_link')
+                            const applicantLink = document.querySelector('#applicant_password_link')
                             applicantLink.querySelector('span').textContent = applicantId;
                             applicantLink.href = applicantLink.dataset.href + applicantId;
-                            document.querySelector('#copyPassword').addEventListener('click', function copyPassword() {
+                            document.querySelector('#copyPassword').addEventListener('click', () => {
                                 document.querySelector('#randomPassword').select();
                                 document.execCommand("copy");
                                 alert.classList.remove('alert-danger')
@@ -75,7 +75,6 @@ $(document).ready(function(){
                                         const optionId =  document.querySelector('#next-stage-options').value;
                                         var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId + '&optionId=' + optionId;
                                         updateStage(url, applicantId, thisButton)
-                                        // window.location.reload();
                                         $('#nextStageModal').modal('hide');
                                 }
                             )
