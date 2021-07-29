@@ -118,8 +118,7 @@ class ApplicantModel implements ApplicantModelInterface
         string $cohortId = '%',
         string $sortingQuery = '',
         string $pageNumber = '1'
-    )
-    {
+    ) {
         $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
                       FROM `applicants`
