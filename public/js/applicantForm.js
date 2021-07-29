@@ -1,5 +1,7 @@
 (async () => {
     const data = await handleFormOptions();
+
+    outputAssessmentDates(data.assessments);
     outputCohortsAsCheckboxes(data.cohorts);
 
     if (document.getElementById('tasterDate')) {

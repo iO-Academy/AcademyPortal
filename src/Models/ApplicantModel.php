@@ -217,7 +217,7 @@ class ApplicantModel implements ApplicantModelInterface
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
                       `backgroundInfo`, `hearAbout`, 
-                      `apprentice`, `aptitude`, `assessmentDay`, 
+                      `apprentice`, `aptitude`,`events`.`date` AS 'assessmentDay',
                       `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, 
@@ -249,6 +249,8 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`stageId` = `stages`.`id`
                         LEFT JOIN `options` 
                             ON `applicants`.`stageOptionId` = `options`.`id`
+                        LEFT JOIN `events`
+                            ON `applicants_additional`.`assessmentDay` = `events`.`id`
                         WHERE `applicants`.`id`= :id;"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
