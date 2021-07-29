@@ -15,6 +15,7 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
     protected $stageName;
     protected $stageOptionName;
     protected $chosenStartDate;
+    protected $chosenCourseId;
 
     public function jsonSerialize()
     {
@@ -119,6 +120,14 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
     public function setCohortDates(array $array)
     {
         $this->cohortDate = $array;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getChosenCourseId()
+    {
+        return $this->chosenCourseId;
     }
 
     /**
