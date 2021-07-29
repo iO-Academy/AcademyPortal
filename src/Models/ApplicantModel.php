@@ -446,12 +446,12 @@ class ApplicantModel implements ApplicantModelInterface
     }
 
 
-    public function getApplicantPassword(int $applicantId): array
+    public function getApplicantPassword(int $applicantId): string
     {
         $sql = 'SELECT `profile_password` FROM `applicants` WHERE `id` = :applicantId';
         $query = $this->db->prepare($sql);
         $query->execute([':applicantId' => $applicantId]);
-        return $query->fetch();
+        return $query->fetch(PDO::FETCH_COLUMN, 0);
     }
 
     public function addApplicantToTeam(int $teamId, int $applicantId): bool
