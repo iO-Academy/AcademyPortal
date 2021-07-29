@@ -42,7 +42,6 @@ class AddApplicantController extends Controller
         if ($_SESSION['loggedIn'] === true) {
             $data = ['success' => false, 'msg' => 'Application not saved'];
             $statusCode = 500;
-
             $newApplicationData = $request->getParsedBody();
 
             try {

@@ -30,16 +30,7 @@ class DisplayApplicantViewHelper
                             </button>
                             </div>
                         </th>
-                        <th class="sort">Cohort
-                            <div class="cohortSort">
-                            <button name="sort" value="cohortAsc" class="arrowBtn' . $cohortAsc . '" type="submit">
-                                <i id="arrowCohortAsc" class="glyphicon glyphicon-triangle-top"></i>
-                            </button>
-                            <button name="sort" value="cohortDesc" class="arrowBtn' . $cohortDesc . '" type="submit">
-                                <i id="arrowCohortDesc" class="glyphicon glyphicon-triangle-bottom"></i>
-                            </button>
-                            </div>
-                        </th>
+                        <th>Cohort</th>
                         <th>Stage</th>
                         <th class="col-xs-2"></th> 
                     </tr>';

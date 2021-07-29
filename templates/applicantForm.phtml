@@ -54,7 +54,8 @@
 
                 <div id="application" class="collapse">
                     <label>When would you like to join us?</label>
-                    <div id="cohorts"></div>
+                    <div id="cohortError" class="alert hidden formItem_alert"></div>
+                    <div id="cohorts" data-dates="<?php echo $applicant->getCohortIds();?>"></div>
 
                     <label for="backgroundInfoId">Background Info</label>
                     <select id="backgroundInfo" class="submitApplicant form-control" name="backgroundInfoId" data-selected="<?php echo $applicant->getBackgroundInfoId();?>" required></select>

@@ -78,7 +78,7 @@ let outputCohortsAsCheckboxes = (cohorts, el = null) => {
   const element = el || document.querySelector('#cohorts');
   let cohortOptions = '';
   cohorts.forEach(item => {
-    cohortOptions += `<label class="cohort_checkbox"><input name="cohort[]" type="checkbox" value="${item.id}"> `;
+    cohortOptions += `<label class="cohort_checkbox"><input name="cohort" class="submitApplicant" type="checkbox" value="${item.id}"> `;
     let date = new Date(item.date);
     let dateOptions = {year: 'numeric', month: 'long'};
     cohortOptions += `${date.toLocaleDateString(
@@ -89,6 +89,16 @@ let outputCohortsAsCheckboxes = (cohorts, el = null) => {
 
   element.innerHTML += cohortOptions;
 };
+
+const checkedCohortDates = () => {
+  let cohortIds = document.querySelector('#cohorts').dataset.dates || '';
+  cohortIds = cohortIds.split(',')
+  document.querySelectorAll('#cohorts input').forEach(input => {
+    if (cohortIds.includes(input.value)) {
+      input.checked = true;
+    }
+  })
+}
 
 let outputEvents = (events, element) => {
   let eventOptions = '';
