@@ -451,7 +451,7 @@ class ApplicantModel implements ApplicantModelInterface
         $sql = 'SELECT `profile_password` FROM `applicants` WHERE `id` = :applicantId';
         $query = $this->db->prepare($sql);
         $query->execute([':applicantId' => $applicantId]);
-        return $query->fetch(PDO::FETCH_COLUMN, 0);
+        return $query->fetch(\PDO::FETCH_COLUMN, 0);
     }
 
     public function addApplicantToTeam(int $teamId, int $applicantId): bool
@@ -465,7 +465,7 @@ class ApplicantModel implements ApplicantModelInterface
     {
         $query = $this->db->prepare('SELECT `stageId` FROM `applicants` WHERE `id` = :applicantId');
         $query->execute([':applicantId' => $applicantId]);
-        return $query->fetch(PDO::FETCH_COLUMN, 0);
+        return $query->fetch(\PDO::FETCH_COLUMN, 0);
     }
 
     public function updateApplicantStageAndOptionIds(int $applicantId, int $stageId, ?int $optionId): bool

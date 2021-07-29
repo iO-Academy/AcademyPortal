@@ -42,7 +42,7 @@ class StudentProfilePageController extends Controller
         $params['applicant'] = $this->applicantModel->getApplicantById($params['id']);
 
         if (!empty($request->getParsedBody()['password'])) {
-            $hashPassword = $this->applicantModel->getApplicantPassword($params['id'])['profile_password'];
+            $hashPassword = $this->applicantModel->getApplicantPassword($params['id']);
             $password = $request->getParsedBody()['password'];
 
             if (password_verify($password, $hashPassword)) {
