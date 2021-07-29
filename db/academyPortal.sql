@@ -243,17 +243,15 @@ DROP TABLE IF EXISTS `course_choice`;
 CREATE TABLE `course_choice` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `courseId` int(11) DEFAULT NULL,
-  `applicantsId` int(11) DEFAULT NULL,
+  `applicantId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `course_choice` WRITE;
 /*!40000 ALTER TABLE `course_choice` DISABLE KEYS */;
 
-INSERT INTO `course_choice` (`id`, `courseId`, `applicantsId`)
+INSERT INTO `course_choice` (`id`, `courseId`, `applicantId`)
 VALUES
-	(2,2,NULL),
-	(3,2,2),
 	(4,2,2),
 	(8,2,8),
 	(15,1,13),
