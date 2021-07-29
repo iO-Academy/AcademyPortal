@@ -43,6 +43,7 @@ CREATE TABLE `applicants` (
   `dateTimeAdded` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted` tinyint(4) DEFAULT '0',
   `backgroundInfoId` varchar(1) DEFAULT NULL,
+  `profile_password` varchar(68) DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -85,6 +86,7 @@ VALUES
 	(34,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:24',0,'1'),
 	(35,'piteerrr','yqasv@znkn.com','09876656545','zzrlJZk0S0','huTCwPP5pa',1,'1','1','0','WaVcYvEmeJ',1,NULL,'2021-07-28 13:07:22',0,'1'),
 	(36,'teeeessssteeeer','8bqqt@zjqt.com','09876656545','p6SMpIbkfu','dKFIBUFxMT',1,'1','1','1','kKAwYxjlgz',1,NULL,'2021-07-28 13:15:42',0,'1');
+
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -444,7 +446,6 @@ VALUES
 /*!40000 ALTER TABLE `hear_about` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
 # Dump of table hiring_partner_companies
 # ------------------------------------------------------------
 
@@ -471,7 +472,6 @@ VALUES
 
 /*!40000 ALTER TABLE `hiring_partner_companies` ENABLE KEYS */;
 UNLOCK TABLES;
-
 
 # Dump of table hiring_partner_contacts
 # ------------------------------------------------------------
@@ -536,7 +536,6 @@ VALUES
 
 /*!40000 ALTER TABLE `options` ENABLE KEYS */;
 UNLOCK TABLES;
-
 
 # Dump of table stages
 # ------------------------------------------------------------

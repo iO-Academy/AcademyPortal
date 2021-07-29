@@ -468,23 +468,37 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->execute();
     }
 
-    public function addApplicantToTeam(int $teamId, int $applicantId)
+    public function addApplicantPassword(string $password, int $applicantId): bool
+    {
+        $sql = 'UPDATE `applicants` SET `profile_password` = :password WHERE `id` = :applicantId';
+        $query = $this->db->prepare($sql);
+        return $query->execute([':password' => $password, ':applicantId' => $applicantId]);
+    }
+
+
+    public function getApplicantPassword(int $applicantId): string
+    {
+        $sql = 'SELECT `profile_password` FROM `applicants` WHERE `id` = :applicantId';
+        $query = $this->db->prepare($sql);
+        $query->execute([':applicantId' => $applicantId]);
+        return $query->fetch(\PDO::FETCH_COLUMN, 0);
+    }
+
+    public function addApplicantToTeam(int $teamId, int $applicantId): bool
     {
         $sql = 'UPDATE `applicants_additional` SET `team` = :teamId WHERE `id` = :applicantId';
         $query = $this->db->prepare($sql);
         return $query->execute([':teamId' => $teamId, ':applicantId' => $applicantId]);
     }
 
-    public function getApplicantStageId(int $applicantId)
+    public function getApplicantStageId(int $applicantId): string
     {
-        $query = $this->db->prepare(
-            'SELECT `stageId` FROM `applicants` WHERE `id` = :applicantId'
-        );
+        $query = $this->db->prepare('SELECT `stageId` FROM `applicants` WHERE `id` = :applicantId');
         $query->execute([':applicantId' => $applicantId]);
-        return $query->fetch();
+        return $query->fetch(\PDO::FETCH_COLUMN, 0);
     }
 
-    public function updateApplicantStageAndOptionIds(int $applicantId, int $stageId, ?int $optionId)
+    public function updateApplicantStageAndOptionIds(int $applicantId, int $stageId, ?int $optionId): bool
     {
         $query = $this->db->prepare(
             "UPDATE `applicants` SET `stageId` = :stageId, `stageOptionId` = :optionId WHERE `id` = :applicantId"

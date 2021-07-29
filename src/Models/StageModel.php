@@ -267,4 +267,11 @@ class StageModel
         $query->bindParam(':stageId', $stageId);
         return $query->execute();
     }
+
+    public function getFirstStudentStage(): int
+    {
+        $query = $this->db->prepare("SELECT MIN(`id`) AS 'id' FROM `stages` WHERE `student` = 1");
+        $query->execute();
+        return $query->fetchColumn();
+    }
 }
