@@ -98,7 +98,8 @@ class DisplayApplicantViewHelper
                     <td>' . $applicant->getEmail() . '</td>
                     <td>' . $applicant->getPrettyDateOfApplication() . '</td>';
         if (!empty($applicant->getChosenStartDate())) {
-            $string .= '<td>' . $applicant->getChosenStartDate() . '<i class="glyphicon glyphicon-check text-success"></i></td>';
+            $string .= '<td>' . $applicant->getChosenStartDate() . '<i class="glyphicon glyphicon-check text-success">
+            </i></td>';
         } else {
             $string .= '<td>' . $applicant->getCohortDate() . '</td>';
         };
