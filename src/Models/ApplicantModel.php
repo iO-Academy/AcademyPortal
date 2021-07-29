@@ -71,7 +71,8 @@ class ApplicantModel implements ApplicantModelInterface
             $id = $this->db->lastInsertId();
             foreach ($applicant['cohort'] as $cohortId) {
                 $courseChoiceQuery = $this->db->prepare(
-                    'INSERT INTO `course_choice` (`courseId`, `applicantsid`) VALUES (?,?)');
+                    'INSERT INTO `course_choice` (`courseId`, `applicantsid`) VALUES (?,?)'
+                );
                 $courseChoiceQuery->execute([$cohortId, $id]);
             }
             $courseChoiceQuery = $this->db->prepare('INSERT INTO `applicants_additional` (`id`) VALUES (?)');
@@ -117,7 +118,8 @@ class ApplicantModel implements ApplicantModelInterface
         string $cohortId = '%',
         string $sortingQuery = '',
         string $pageNumber = '1'
-    ) {
+    )
+    {
         $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
                       FROM `applicants`
@@ -365,7 +367,8 @@ class ApplicantModel implements ApplicantModelInterface
         $deleteQuery->execute([$applicant['id']]);
         foreach ($applicant['cohort'] as $cohortId) {
             $updateCourseDate = $this->db->prepare(
-                'INSERT INTO `course_choice` (`courseId`, `applicantsid`) VALUES (?,?)');
+                'INSERT INTO `course_choice` (`courseId`, `applicantsid`) VALUES (?,?)'
+            );
             $updateCourseDate->execute([$cohortId, $applicant['id']]);
         }
         return $query->execute();
