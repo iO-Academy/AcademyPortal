@@ -1,5 +1,5 @@
 document.querySelectorAll('.collapse-header').forEach(section => {
-    section.addEventListener('click', function(e) {
+    section.addEventListener('click', function (e) {
         this.querySelector('i').classList.toggle('glyphicon-chevron-down')
         this.querySelector('i').classList.toggle('glyphicon-chevron-up')
     })

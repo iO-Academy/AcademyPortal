@@ -132,3 +132,7 @@ section {
     grid-template-columns: 0fr 2fr 2fr 1.5fr 0.3fr 2fr 2fr 2fr;
     justify-items: left;
 }
+
+.cohort_checkbox {
+    margin-left: 1.5%;
+}

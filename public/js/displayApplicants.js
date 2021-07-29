@@ -57,16 +57,10 @@
     document
       .querySelector(`[value='${sessionStorage['cohortID']}`)
       .setAttribute('selected', 'true');
-    document
-      .querySelector('.cohortSort')
-      .classList.add('hidden');
   } else {
     document
       .querySelector("[value='all']")
       .setAttribute('selected', 'true');
-    document
-      .querySelector('.cohortSort')
-      .classList.remove('hidden');
   }
 })();
 

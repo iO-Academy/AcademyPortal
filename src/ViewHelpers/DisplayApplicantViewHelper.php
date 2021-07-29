@@ -30,16 +30,7 @@ class DisplayApplicantViewHelper
                             </button>
                             </div>
                         </th>
-                        <th class="sort">Cohort
-                            <div class="cohortSort">
-                            <button name="sort" value="cohortAsc" class="arrowBtn' . $cohortAsc . '" type="submit">
-                                <i id="arrowCohortAsc" class="glyphicon glyphicon-triangle-top"></i>
-                            </button>
-                            <button name="sort" value="cohortDesc" class="arrowBtn' . $cohortDesc . '" type="submit">
-                                <i id="arrowCohortDesc" class="glyphicon glyphicon-triangle-bottom"></i>
-                            </button>
-                            </div>
-                        </th>
+                        <th>Cohort</th>
                         <th>Stage</th>
                         <th class="col-xs-2"></th> 
                     </tr>';
@@ -105,9 +96,14 @@ class DisplayApplicantViewHelper
                         </a>
                     </td>
                     <td>' . $applicant->getEmail() . '</td>
-                    <td>' . $applicant->getPrettyDateOfApplication() . '</td>
-                    <td>' . $applicant->getCohortDate() . '</td>
-                    <td id="currentStageName' . $applicant->getId() . '">' . $applicant->getStageName() .
+                    <td>' . $applicant->getPrettyDateOfApplication() . '</td>';
+        if (!empty($applicant->getChosenStartDate())) {
+            $string .= '<td>' . $applicant->getChosenStartDate() . '<i class="glyphicon glyphicon-check text-success">
+            </i></td>';
+        } else {
+            $string .= '<td>' . $applicant->getCohortDate() . '</td>';
+        };
+                    $string .= '<td id="currentStageName' . $applicant->getId() . '">' . $applicant->getStageName() .
             ($applicant->getStageOptionName() ? ' - ' . $applicant->getStageOptionName() : ' ' ) . '</td>
                     <td>                        
                         <a href="/editApplicant?id=' . $applicant->getId() . '"   
