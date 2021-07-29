@@ -217,7 +217,7 @@ class ApplicantModel implements ApplicantModelInterface
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
                       `backgroundInfo`, `hearAbout`, 
-                      `apprentice`, `aptitude`, `assessmentDay`, 
+                      `apprentice`, `aptitude`,`events`.`date` AS 'assessmentDay',
                       `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, 

@@ -119,7 +119,7 @@ const checkedCohortDates = () => {
             dateOptions
         )}</option>`;
       });
-      
+
       element.innerHTML += assessmentOptions;
     }
 
