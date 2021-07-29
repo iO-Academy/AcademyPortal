@@ -71,7 +71,7 @@ class ApplicantModel implements ApplicantModelInterface
             $id = $this->db->lastInsertId();
             foreach ($applicant['cohort'] as $cohortId) {
                 $courseChoiceQuery = $this->db->prepare(
-                    'INSERT INTO `course_choice` (`courseId`, `applicantsid`) VALUES (?,?)'
+                    'INSERT INTO `course_choice` (`courseId`, `applicantId`) VALUES (?,?)'
                 );
                 $courseChoiceQuery->execute([$cohortId, $id]);
             }
@@ -92,7 +92,7 @@ class ApplicantModel implements ApplicantModelInterface
     public function countPaginationPages(string $stageId = '%', string $cohortId = '%')
     {
         $count = "SELECT count(`applicants`.`id`) AS `id` FROM `applicants`
-                  JOIN `course_choice` ON `applicants`.`id` = `course_choice`.`applicantsid`
+                  JOIN `course_choice` ON `applicants`.`id` = `course_choice`.`applicantId`
                     WHERE `applicants`.`deleted` = '0'
                     AND `course_choice`.`courseId` like :cohortId
                     AND `applicants`.`stageId` like :stageId;";
@@ -124,7 +124,7 @@ class ApplicantModel implements ApplicantModelInterface
                       FROM `applicants`
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
-                      LEFT JOIN `course_choice` ON `applicants`.`id`= `course_choice`.`applicantsid`
+                      LEFT JOIN `course_choice` ON `applicants`.`id`= `course_choice`.`applicantId`
                       WHERE `applicants`.`deleted` = '0'
                         AND `courseId`  like :cohortId
                         AND `applicants`.`name` like CONCAT('%', :name, '%')
@@ -146,7 +146,7 @@ class ApplicantModel implements ApplicantModelInterface
             $queryDate = $this->db->prepare(
                 'SELECT `start_date` FROM `courses` 
                         JOIN `course_choice` ON `courses`.`id` = `course_choice`.`courseId` 
-                        WHERE `applicantsid` = :id'
+                        WHERE `applicantId` = :id'
             );
             $queryDate->execute([
                 'id' => $applicant->getId()
@@ -260,7 +260,7 @@ class ApplicantModel implements ApplicantModelInterface
         $queryDate = $this->db->prepare(
             'SELECT `courses`.`id` as "id", `start_date` 
                     FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`courseId` 
-                    WHERE `applicantsid` = :id'
+                    WHERE `applicantId` = :id'
         );
         $queryDate->execute([
             'id' => $id
@@ -362,11 +362,11 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':stageOptionId', $applicant['stageOptionId']);
         $query->bindValue(':dateTimeAdded', $applicant['dateTimeAdded']);
         $query->bindValue(':backgroundInfoId', $applicant['backgroundInfoId']);
-        $deleteQuery = $this->db->prepare('DELETE FROM `course_choice` WHERE `applicantsid` = ?');
+        $deleteQuery = $this->db->prepare('DELETE FROM `course_choice` WHERE `applicantId` = ?');
         $deleteQuery->execute([$applicant['id']]);
         foreach ($applicant['cohort'] as $cohortId) {
             $updateCourseDate = $this->db->prepare(
-                'INSERT INTO `course_choice` (`courseId`, `applicantsid`) VALUES (?,?)'
+                'INSERT INTO `course_choice` (`courseId`, `applicantId`) VALUES (?,?)'
             );
             $updateCourseDate->execute([$cohortId, $applicant['id']]);
         }
