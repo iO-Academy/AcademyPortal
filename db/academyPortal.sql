@@ -1,13 +1,13 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 4541
+# Version 5446
 #
-# http://www.sequelpro.com/
+# https://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.33)
-# Database: academyportal
-# Generation Time: 2021-05-27 13:55:46 +0000
+# Host: 127.0.0.1 (MySQL 5.7.34)
+# Database: academyPortal
+# Generation Time: 2021-07-29 13:24:11 +0000
 # ************************************************************
 
 
@@ -15,6 +15,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+SET NAMES utf8mb4;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
@@ -51,7 +52,7 @@ LOCK TABLES `applicants` WRITE;
 
 INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `cohortId`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`, `backgroundInfoId`)
 VALUES
-	(2,'Owen Miller','weqi@mailinator.net','+532-82-1263991',2,'Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea','Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat',3,'1','1','1','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',6,NULL,'2018-11-24 21:26:00',0,NULL),
+	(2,'Owen Miller','weqi@mailinator.net','+532-82-1263991',2,'Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea','Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat',3,'1','1','1','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',6,NULL,'2018-11-24 21:26:00',0,'1'),
 	(3,'Nero Burgess','famaxykivo@yahoo.com','+124-85-7626938',2,'Perspiciatis fugiat possimus tempor dolores nesciunt consequatur voluptatem','Quibusdam officiis occaecat velit error sunt ratione voluptatem',5,'1','1','1','Sint voluptas ut nihil incididunt officia duis ab eius impedit consequatur Incidunt do aut doloribus proident quos dolores pariatur Sed',6,NULL,'2018-11-28 14:29:58',0,NULL),
 	(4,'Matthew Jarvis','tucawohuw@mailinator.net','+848-54-4778506',3,'Natus quidem magnam autem corrupti laborum Anim quos quia','Dolor quia dignissimos qui excepturi eos voluptas est',6,'1','0','0','Quod harum esse quia maxime explicabo Voluptatem magna soluta voluptate optio',1,NULL,'2018-11-28 14:33:41',0,NULL),
 	(5,'Ignacia Watkins','qewopepodi@mailinator.com','+613-35-8385501',2,'Excepturi consequatur Est culpa enim itaque ratione optio minima ullamco voluptates dolor et totam','Earum est iure sed fuga Velit',6,'0','0','0','Impedit aut duis laborum aspernatur amet aliquip tempora harum nulla aut',6,NULL,'2018-11-28 14:42:01',0,NULL),
@@ -73,7 +74,7 @@ CREATE TABLE `applicants_additional` (
   `id` int(11) unsigned NOT NULL,
   `apprentice` int(1) DEFAULT NULL,
   `aptitude` int(3) DEFAULT NULL,
-  `assessmentDay` date DEFAULT NULL,
+  `assessmentDay` int(3) DEFAULT NULL,
   `assessmentTime` varchar(5) DEFAULT NULL,
   `assessmentNotes` text,
   `diversitechInterest` int(1) DEFAULT NULL,
@@ -121,9 +122,9 @@ LOCK TABLES `applicants_additional` WRITE;
 
 INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `tasterId`, `tasterAttendance`, `team`, `githubUsername`, `portfolioUrl`, `pleskHostingUrl`, `githubEducationLink`, `additionalNotes`, `chosenCourseId`, `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`, `inductionEmailSent`, `signedNDA`, `checkedID`, `dataProtectionName`, `dataProtectionPhoto`, `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`, `contactFormSigned`)
 VALUES
-	(2,1,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',0,1000,8000,1000,'2020-08-05','10:30',3,1,0,3,NULL,0,1,NULL,'','','',NULL,NULL,NULL,36,NULL,0,0,0,0,0,0,0,0,0,0,1),
-	(3,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(5,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(2,1,73,8,'13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',0,1000,8000,1000,'2020-08-05','10:30',3,1,0,3,NULL,0,1,NULL,'','','',NULL,NULL,NULL,36,NULL,0,0,0,0,0,0,0,0,0,0,0),
+	(3,0,73,NULL,'','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(5,0,73,NULL,'','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(16,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(17,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -187,6 +188,71 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table course_choice
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `course_choice`;
+
+CREATE TABLE `course_choice` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `coursesid` int(11) DEFAULT NULL,
+  `applicantsid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `course_choice` WRITE;
+/*!40000 ALTER TABLE `course_choice` DISABLE KEYS */;
+
+INSERT INTO `course_choice` (`id`, `coursesid`, `applicantsid`)
+VALUES
+	(2,2,NULL),
+	(3,2,2),
+	(4,2,2),
+	(8,2,8),
+	(15,1,13),
+	(16,2,13),
+	(18,1,14),
+	(19,2,14),
+	(20,1,15),
+	(21,1,16),
+	(22,1,17),
+	(25,1,20),
+	(26,2,20),
+	(27,1,21),
+	(28,2,21),
+	(29,1,22),
+	(30,2,22),
+	(31,1,23),
+	(32,2,23),
+	(33,1,24),
+	(34,2,24),
+	(35,1,25),
+	(36,2,25),
+	(37,1,26),
+	(38,2,26),
+	(39,1,27),
+	(40,2,27),
+	(41,1,28),
+	(42,2,28),
+	(43,1,29),
+	(44,2,29),
+	(45,1,30),
+	(46,2,30),
+	(47,1,31),
+	(48,2,31),
+	(49,1,32),
+	(50,2,32),
+	(51,1,33),
+	(52,2,33),
+	(53,1,34),
+	(54,2,34),
+	(60,1,18),
+	(61,1,19);
+
+/*!40000 ALTER TABLE `course_choice` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table courses
 # ------------------------------------------------------------
 
@@ -234,7 +300,8 @@ VALUES
 	(1,'Hiring Event'),
 	(2,'Sprint Review'),
 	(3,'Taster Session'),
-	(4,'Other');
+	(4,'Assessment'),
+	(5,'Other');
 
 /*!40000 ALTER TABLE `event_categories` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -270,7 +337,9 @@ VALUES
 	(3,'bath',3,'bath','2020-12-12','19:00:00','20:00:00','ats',0),
 	(4,'Hi',2,'hui','2022-12-12','11:11:00','22:22:00','',1),
 	(5,'Hi',1,'hui','2222-02-20','10:10:00','12:12:00','',0),
-	(6,'bath',3,'bath','2021-07-01','19:30:00','20:00:00','Hello!',0);
+	(6,'bath',3,'bath','2021-07-01','19:30:00','20:00:00','Hello!',0),
+	(7,'hat',4,'london','2021-07-09','13:00:00','00:00:00',NULL,0),
+	(8,'agt',4,'bath','2021-10-12','09:00:00','00:00:00',NULL,0);
 
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
