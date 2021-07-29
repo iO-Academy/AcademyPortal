@@ -117,12 +117,15 @@ class ApplicantModel implements ApplicantModelInterface
         string $sortingQuery = '',
         string $pageNumber = '1'
     ) {
-        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, 
-                      `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
+        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`,
+        `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName',
+        `start_date` as 'chosenStartDate'
                       FROM `applicants`
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
                       LEFT JOIN `course_choice` ON `applicants`.`id`= `course_choice`.`applicantsid`
+                      LEFT JOIN `applicants_additional` ON `applicants`.`id`= `applicants_additional`.`id`
+                      LEFT JOIN `courses` ON `applicants_additional`.`chosenCourseId`= `courses`.`id`
                       WHERE `applicants`.`deleted` = '0'
                         AND `coursesid`  like :cohortId
                         AND `applicants`.`name` like CONCAT('%', :name, '%')

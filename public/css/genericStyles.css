@@ -64,3 +64,7 @@ footer {
 input[type="submit"] {
     margin-top: 30px;
 }
+
+.glyphicon-check {
+    margin-left: 1px;
+}
