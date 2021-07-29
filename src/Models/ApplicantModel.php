@@ -70,11 +70,13 @@ class ApplicantModel implements ApplicantModelInterface
         if ($result) {
             $id = $this->db->lastInsertId();
             foreach ($applicant['cohort'] as $cohortId) {
-                $query2 = $this->db->prepare('INSERT INTO `course_choice` (`coursesid`, `applicantsid`) VALUES (?,?)');
-                $query2->execute([$cohortId, $id]);
+                $applicantModel = $this->db->prepare(
+                    'INSERT INTO `course_choice` (`courseId`, `applicantId`) VALUES (?,?)'
+                );
+                $applicantModel->execute([$cohortId, $id]);
             }
-            $query2 = $this->db->prepare('INSERT INTO `applicants_additional` (`id`) VALUES (?)');
-            return $query2->execute([$id]);
+            $applicantsAdditionalQuery = $this->db->prepare('INSERT INTO `applicants_additional` (`id`) VALUES (?)');
+            return $applicantsAdditionalQuery->execute([$id]);
         }
         return $result;
     }
@@ -90,9 +92,9 @@ class ApplicantModel implements ApplicantModelInterface
     public function countPaginationPages(string $stageId = '%', string $cohortId = '%')
     {
         $count = "SELECT count(`applicants`.`id`) AS `id` FROM `applicants`
-                  JOIN `course_choice` ON `applicants`.`id` = `course_choice`.`applicantsid`
+                  JOIN `course_choice` ON `applicants`.`id` = `course_choice`.`applicantId`
                     WHERE `applicants`.`deleted` = '0'
-                    AND `course_choice`.`coursesid` like :cohortId
+                    AND `course_choice`.`courseId` like :cohortId
                     AND `applicants`.`stageId` like :stageId;";
         $query = $this->db->prepare($count);
         $query->bindValue(':cohortId', $cohortId);
@@ -123,11 +125,11 @@ class ApplicantModel implements ApplicantModelInterface
                       FROM `applicants`
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
-                      LEFT JOIN `course_choice` ON `applicants`.`id`= `course_choice`.`applicantsid`
+                      LEFT JOIN `course_choice` ON `applicants`.`id`= `course_choice`.`applicantId`
                       LEFT JOIN `applicants_additional` ON `applicants`.`id`= `applicants_additional`.`id`
                       LEFT JOIN `courses` ON `applicants_additional`.`chosenCourseId`= `courses`.`id`
                       WHERE `applicants`.`deleted` = '0'
-                        AND (`coursesid`  like :cohortId OR `chosenCourseId`  like :cohortId2)
+                        AND (`courseId`  like :cohortId OR `chosenCourseId`  like :cohortId2)
                         AND `applicants`.`name` like CONCAT('%', :name, '%')
                       AND `applicants`.`stageId` like :stageId 
                       GROUP BY `applicants`.`id`";
@@ -149,19 +151,20 @@ class ApplicantModel implements ApplicantModelInterface
                 !empty($applicant->getChosenCourseId()) && $cohortId !== '%' &&
                 $applicant->getChosenCourseId() !== $cohortId
             ) {
+                //removes applicants where chosen applicants doesn't match filter
                 unset($applicants[$key]);
                 continue;
             }
             $queryDate = $this->db->prepare(
                 'SELECT `start_date` FROM `courses` 
-                        JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` 
-                        WHERE `applicantsid` = :id'
+                        JOIN `course_choice` ON `courses`.`id` = `course_choice`.`courseId` 
+                        WHERE `applicantId` = :id'
             );
             $queryDate->execute([
                 'id' => $applicant->getId()
             ]);
-            $results2 = $queryDate->fetchAll();
-            $applicant->setCohortDates($results2);
+            $cohorts = $queryDate->fetchAll();
+            $applicant->setCohortDates($cohorts);
         }
         return $applicants;
     }
@@ -226,7 +229,7 @@ class ApplicantModel implements ApplicantModelInterface
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
                       `backgroundInfo`, `hearAbout`, 
-                      `apprentice`, `aptitude`, `assessmentDay`, 
+                      `apprentice`, `aptitude`,`events`.`date` AS 'assessmentDay',
                       `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, 
@@ -258,26 +261,26 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`stageId` = `stages`.`id`
                         LEFT JOIN `options` 
                             ON `applicants`.`stageOptionId` = `options`.`id`
+                        LEFT JOIN `events`
+                            ON `applicants_additional`.`assessmentDay` = `events`.`id`
                         WHERE `applicants`.`id`= :id;"
         );
-
-        $queryDate = $this->db->prepare(
-            'SELECT `courses`.`id` as "id", `start_date` 
-                    FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`coursesid` 
-                    WHERE `applicantsid` = :id'
-        );
-        $queryDate->execute([
-            'id' => $id
-        ]);
-        $results2 = $queryDate->fetchAll();
-
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
         $query->execute([
             'id' => $id
         ]);
         $results = $query->fetch();
 
-        $results->setCohortDates($results2);
+        $queryDate = $this->db->prepare(
+            'SELECT `courses`.`id` as "id", `start_date` 
+                    FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`courseId` 
+                    WHERE `applicantId` = :id'
+        );
+        $queryDate->execute([
+            'id' => $id
+        ]);
+        $applicantCohortDate = $queryDate->fetchAll();
+        $results->setCohortDates($applicantCohortDate);
         return $results;
     }
 
@@ -373,11 +376,13 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':stageOptionId', $applicant['stageOptionId']);
         $query->bindValue(':dateTimeAdded', $applicant['dateTimeAdded']);
         $query->bindValue(':backgroundInfoId', $applicant['backgroundInfoId']);
-        $deleteQuery = $this->db->prepare('DELETE FROM `course_choice` WHERE `applicantsid` = ?');
+        $deleteQuery = $this->db->prepare('DELETE FROM `course_choice` WHERE `applicantId` = ?');
         $deleteQuery->execute([$applicant['id']]);
         foreach ($applicant['cohort'] as $cohortId) {
-            $query2 = $this->db->prepare('INSERT INTO `course_choice` (`coursesid`, `applicantsid`) VALUES (?,?)');
-            $query2->execute([$cohortId, $applicant['id']]);
+            $updateCourseDate = $this->db->prepare(
+                'INSERT INTO `course_choice` (`courseId`, `applicantId`) VALUES (?,?)'
+            );
+            $updateCourseDate->execute([$cohortId, $applicant['id']]);
         }
         return $query->execute();
     }
@@ -477,23 +482,37 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->execute();
     }
 
-    public function addApplicantToTeam(int $teamId, int $applicantId)
+    public function addApplicantPassword(string $password, int $applicantId): bool
+    {
+        $sql = 'UPDATE `applicants` SET `profile_password` = :password WHERE `id` = :applicantId';
+        $query = $this->db->prepare($sql);
+        return $query->execute([':password' => $password, ':applicantId' => $applicantId]);
+    }
+
+
+    public function getApplicantPassword(int $applicantId): string
+    {
+        $sql = 'SELECT `profile_password` FROM `applicants` WHERE `id` = :applicantId';
+        $query = $this->db->prepare($sql);
+        $query->execute([':applicantId' => $applicantId]);
+        return $query->fetch(\PDO::FETCH_COLUMN, 0);
+    }
+
+    public function addApplicantToTeam(int $teamId, int $applicantId): bool
     {
         $sql = 'UPDATE `applicants_additional` SET `team` = :teamId WHERE `id` = :applicantId';
         $query = $this->db->prepare($sql);
         return $query->execute([':teamId' => $teamId, ':applicantId' => $applicantId]);
     }
 
-    public function getApplicantStageId(int $applicantId)
+    public function getApplicantStageId(int $applicantId): string
     {
-        $query = $this->db->prepare(
-            'SELECT `stageId` FROM `applicants` WHERE `id` = :applicantId'
-        );
+        $query = $this->db->prepare('SELECT `stageId` FROM `applicants` WHERE `id` = :applicantId');
         $query->execute([':applicantId' => $applicantId]);
-        return $query->fetch();
+        return $query->fetch(\PDO::FETCH_COLUMN, 0);
     }
 
-    public function updateApplicantStageAndOptionIds(int $applicantId, int $stageId, ?int $optionId)
+    public function updateApplicantStageAndOptionIds(int $applicantId, int $stageId, ?int $optionId): bool
     {
         $query = $this->db->prepare(
             "UPDATE `applicants` SET `stageId` = :stageId, `stageOptionId` = :optionId WHERE `id` = :applicantId"

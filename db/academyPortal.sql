@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.34)
 # Database: academyPortal
-# Generation Time: 2021-07-28 13:05:01 +0000
+# Generation Time: 2021-07-29 15:34:29 +0000
 # ************************************************************
 
 
@@ -43,46 +43,47 @@ CREATE TABLE `applicants` (
   `dateTimeAdded` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted` tinyint(4) DEFAULT '0',
   `backgroundInfoId` varchar(1) DEFAULT NULL,
+  `profile_password` varchar(68) DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `applicants` WRITE;
 /*!40000 ALTER TABLE `applicants` DISABLE KEYS */;
 
-INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`, `backgroundInfoId`)
+INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`, `backgroundInfoId`, `profile_password`)
 VALUES
-	(2,'Owen Miller','weqi@mailinator.net','+532-82-1263991','Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea','Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat',3,'1','1','1','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',6,NULL,'2018-11-24 21:26:00',0,'1'),
-	(3,'Nero Burgess','famaxykivo@yahoo.com','+124-85-7626938','Perspiciatis fugiat possimus tempor dolores nesciunt consequatur voluptatem','Quibusdam officiis occaecat velit error sunt ratione voluptatem',5,'1','1','1','Sint voluptas ut nihil incididunt officia duis ab eius impedit consequatur Incidunt do aut doloribus proident quos dolores pariatur Sed',6,NULL,'2018-11-28 14:29:58',0,NULL),
-	(4,'Matthew Jarvis','tucawohuw@mailinator.net','+848-54-4778506','Natus quidem magnam autem corrupti laborum Anim quos quia','Dolor quia dignissimos qui excepturi eos voluptas est',6,'1','0','0','Quod harum esse quia maxime explicabo Voluptatem magna soluta voluptate optio',1,NULL,'2018-11-28 14:33:41',0,NULL),
-	(5,'Ignacia Watkins','qewopepodi@mailinator.com','+613-35-8385501','Excepturi consequatur Est culpa enim itaque ratione optio minima ullamco voluptates dolor et totam','Earum est iure sed fuga Velit',6,'0','0','0','Impedit aut duis laborum aspernatur amet aliquip tempora harum nulla aut',6,NULL,'2018-11-28 14:42:01',0,NULL),
-	(6,'Luke Haney','wubeqyko@mailinator.com','+942-61-9779862','Nemo id qui aspernatur possimus dolor adipisicing aut est sed minim','Consequatur quia voluptate delectus impedit similique',6,'0','0','0','Non sed modi ab culpa sed quia tempore debitis dolor',1,NULL,'2018-11-28 14:52:20',0,NULL),
-	(7,'Curran Patel','pudapaceje@mailinator.net','+628-48-1465496','Non voluptas eligendi assumenda et itaque cupidatat ut tempor','Et aliqua Quia sit soluta enim nesciunt vitae consequatur Aut repellendus Soluta magni',2,'1','0','0','Quos fugiat qui et enim eum tempor est modi',3,7,'2018-11-28 22:53:05',0,NULL),
-	(8,'Katelyn Parsons','poipoi@qwerty.com','+567-54-9746748','Aut est et est esse mollitia laborum','Fuga Enim omnis anim et error aut et voluptate anim blanditiis dolorem voluptatem facilis',2,'0','0','0','Similique velit qui nisi debitis aliquip lorem dolor commodi assumenda quod quod autem amet eu mollitia quod necessitatibus',2,9,'2018-11-28 23:10:12',0,NULL),
-	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555','Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit',1,NULL,'2018-11-28 23:10:47',0,NULL),
-	(10,'ss','2@c.com','07405576505','s','s',1,'1','1','1','s',1,NULL,'2021-07-27 09:15:17',0,'1'),
-	(11,'ss','2@c.com','07405576505','s','s',1,'1','1','1','s',1,NULL,'2021-07-27 09:20:05',0,'1'),
-	(13,'EStera','2@c.com','09878878676','for making friends','none',1,'1','1','1','n/a',2,10,'2021-07-27 11:49:00',0,'1'),
-	(14,'alex ferreira','alex@yahoo.com','098778767654','for making friends','none',1,'1','1','1','bonjour',2,9,'2021-07-27 13:36:00',0,'1'),
-	(15,'dasdasd','dasds@ii.com','07405576505','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,10,'2021-07-27 15:53:09',0,'1'),
-	(16,'dasdasd','dasds@ii.com','07405576505','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,9,'2021-07-27 15:53:17',0,'1'),
-	(17,'dasdasd','dasds@iyahoo.com','07405576505','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,9,'2021-07-27 15:53:28',0,'1'),
-	(18,'dasdasd','dasds@yahoo.com','07405576505','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',6,NULL,'2021-07-27 15:53:00',0,'1'),
-	(19,'dasdasd','dasds@yahoo.com','07405576505','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',1,NULL,'2021-07-27 15:53:00',0,'1'),
-	(20,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:54:58',0,'1'),
-	(21,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:25',0,'1'),
-	(22,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:26',0,'1'),
-	(23,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:26',0,'1'),
-	(24,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1'),
-	(25,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1'),
-	(26,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1'),
-	(27,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:35',0,'1'),
-	(28,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:35',0,'1'),
-	(29,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:36',0,'1'),
-	(30,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:20',0,'1'),
-	(31,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:23',0,'1'),
-	(32,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:23',0,'1'),
-	(33,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:24',0,'1'),
-	(34,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:24',0,'1');
+	(2,'Owen Miller','weqi@mailinator.net','+532-82-1263991','Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea','Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat',3,'1','1','1','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',6,NULL,'2018-11-24 21:26:00',0,'1',''),
+	(3,'Nero Burgess','famaxykivo@yahoo.com','+124-85-7626938','Perspiciatis fugiat possimus tempor dolores nesciunt consequatur voluptatem','Quibusdam officiis occaecat velit error sunt ratione voluptatem',5,'1','1','1','Sint voluptas ut nihil incididunt officia duis ab eius impedit consequatur Incidunt do aut doloribus proident quos dolores pariatur Sed',6,NULL,'2018-11-28 14:29:58',0,NULL,''),
+	(4,'Matthew Jarvis','tucawohuw@mailinator.net','+848-54-4778506','Natus quidem magnam autem corrupti laborum Anim quos quia','Dolor quia dignissimos qui excepturi eos voluptas est',6,'1','0','0','Quod harum esse quia maxime explicabo Voluptatem magna soluta voluptate optio',1,NULL,'2018-11-28 14:33:41',0,NULL,''),
+	(5,'Ignacia Watkins','qewopepodi@mailinator.com','+613-35-8385501','Excepturi consequatur Est culpa enim itaque ratione optio minima ullamco voluptates dolor et totam','Earum est iure sed fuga Velit',6,'0','0','0','Impedit aut duis laborum aspernatur amet aliquip tempora harum nulla aut',6,NULL,'2018-11-28 14:42:01',0,NULL,''),
+	(6,'Luke Haney','wubeqyko@mailinator.com','+942-61-9779862','Nemo id qui aspernatur possimus dolor adipisicing aut est sed minim','Consequatur quia voluptate delectus impedit similique',6,'0','0','0','Non sed modi ab culpa sed quia tempore debitis dolor',1,NULL,'2018-11-28 14:52:20',0,NULL,''),
+	(7,'Curran Patel','pudapaceje@mailinator.net','+628-48-1465496','Non voluptas eligendi assumenda et itaque cupidatat ut tempor','Et aliqua Quia sit soluta enim nesciunt vitae consequatur Aut repellendus Soluta magni',2,'1','0','0','Quos fugiat qui et enim eum tempor est modi',3,7,'2018-11-28 22:53:05',0,NULL,''),
+	(8,'Katelyn Parsons','poipoi@qwerty.com','+567-54-9746748','Aut est et est esse mollitia laborum','Fuga Enim omnis anim et error aut et voluptate anim blanditiis dolorem voluptatem facilis',2,'0','0','0','Similique velit qui nisi debitis aliquip lorem dolor commodi assumenda quod quod autem amet eu mollitia quod necessitatibus',2,9,'2018-11-28 23:10:12',0,NULL,''),
+	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555','Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit',1,NULL,'2018-11-28 23:10:47',0,NULL,''),
+	(13,'EStera','2@c.com','09878878676','for making friends','none',1,'1','1','1','n/a',2,10,'2021-07-27 11:49:00',0,'1',''),
+	(14,'alex ferreira','alex@yahoo.com','098778767654','for making friends','none',1,'1','1','1','bonjour',2,9,'2021-07-27 13:36:00',0,'1',''),
+	(15,'dasdasd','dasds@ii.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,10,'2021-07-27 15:53:09',0,'1',''),
+	(16,'dasdasd','dasds@ii.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,9,'2021-07-27 15:53:17',0,'1',''),
+	(17,'dasdasd','dasds@iyahoo.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,9,'2021-07-27 15:53:28',0,'1',''),
+	(18,'dasdasd','dasds@yahoo.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',6,NULL,'2021-07-27 15:53:00',0,'1',''),
+	(19,'dasdasd','dasds@yahoo.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',1,NULL,'2021-07-27 15:53:00',0,'1',''),
+	(20,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:54:58',0,'1',''),
+	(21,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:25',0,'1',''),
+	(22,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:26',0,'1',''),
+	(23,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:26',0,'1',''),
+	(24,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1',''),
+	(25,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1',''),
+	(26,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1',''),
+	(27,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:35',0,'1',''),
+	(28,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:35',0,'1',''),
+	(29,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:36',0,'1',''),
+	(30,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:20',0,'1',''),
+	(31,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:23',0,'1',''),
+	(32,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:23',0,'1',''),
+	(33,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:24',0,'1',''),
+	(34,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:24',0,'1',''),
+	(35,'piteerrr','yqasv@znkn.com','09876656545','zzrlJZk0S0','huTCwPP5pa',1,'1','1','0','WaVcYvEmeJ',1,NULL,'2021-07-28 13:07:22',0,'1',''),
+	(36,'teeeessssteeeer','8bqqt@zjqt.com','09876656545','p6SMpIbkfu','dKFIBUFxMT',1,'1','1','1','kKAwYxjlgz',1,NULL,'2021-07-28 13:15:00',0,'1','');
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -97,7 +98,7 @@ CREATE TABLE `applicants_additional` (
   `id` int(11) unsigned NOT NULL,
   `apprentice` int(1) DEFAULT NULL,
   `aptitude` int(3) DEFAULT NULL,
-  `assessmentDay` date DEFAULT NULL,
+  `assessmentDay` int(3) DEFAULT NULL,
   `assessmentTime` varchar(5) DEFAULT NULL,
   `assessmentNotes` text,
   `diversitechInterest` int(1) DEFAULT NULL,
@@ -145,9 +146,9 @@ LOCK TABLES `applicants_additional` WRITE;
 
 INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `tasterId`, `tasterAttendance`, `team`, `githubUsername`, `portfolioUrl`, `pleskHostingUrl`, `githubEducationLink`, `additionalNotes`, `chosenCourseId`, `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`, `inductionEmailSent`, `signedNDA`, `checkedID`, `dataProtectionName`, `dataProtectionPhoto`, `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`, `contactFormSigned`)
 VALUES
-	(2,1,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',0,1000,8000,1000,'2020-08-05','10:30',3,1,0,3,NULL,0,1,NULL,'','','',NULL,NULL,NULL,36,NULL,0,0,0,0,0,0,0,0,0,0,0),
-	(3,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(5,0,73,'2020-06-20','13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(2,1,73,2020,'13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',0,1000,8000,1000,'2020-08-05','10:30',3,1,0,3,NULL,0,1,NULL,'','','',NULL,NULL,NULL,36,NULL,0,0,0,0,0,0,0,0,0,0,0),
+	(3,0,73,2020,'13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(5,0,73,2020,'13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(11,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(12,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -172,7 +173,9 @@ VALUES
 	(31,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(32,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(33,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(34,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+	(34,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(35,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(36,0,NULL,NULL,'','',0,NULL,NULL,NULL,NULL,'',NULL,0,0,NULL,NULL,0,NULL,NULL,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0);
 
 /*!40000 ALTER TABLE `applicants_additional` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -238,18 +241,16 @@ DROP TABLE IF EXISTS `course_choice`;
 
 CREATE TABLE `course_choice` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `coursesid` int(11) DEFAULT NULL,
-  `applicantsid` int(11) DEFAULT NULL,
+  `courseId` int(11) DEFAULT NULL,
+  `applicantId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `course_choice` WRITE;
 /*!40000 ALTER TABLE `course_choice` DISABLE KEYS */;
 
-INSERT INTO `course_choice` (`id`, `coursesid`, `applicantsid`)
+INSERT INTO `course_choice` (`id`, `courseId`, `applicantId`)
 VALUES
-	(2,2,NULL),
-	(3,2,2),
 	(4,2,2),
 	(8,2,8),
 	(15,1,13),
@@ -290,7 +291,11 @@ VALUES
 	(53,1,34),
 	(54,2,34),
 	(60,1,18),
-	(61,1,19);
+	(61,1,19),
+	(62,1,35),
+	(63,2,35),
+	(66,1,36),
+	(67,2,36);
 
 /*!40000 ALTER TABLE `course_choice` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -343,7 +348,8 @@ VALUES
 	(1,'Hiring Event'),
 	(2,'Sprint Review'),
 	(3,'Taster Session'),
-	(4,'Other');
+	(4,'Assessment'),
+	(5,'Other');
 
 /*!40000 ALTER TABLE `event_categories` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -379,7 +385,9 @@ VALUES
 	(3,'bath',3,'bath','2020-12-12','19:00:00','20:00:00','ats',0),
 	(4,'Hi',2,'hui','2022-12-12','11:11:00','22:22:00','',1),
 	(5,'Hi',1,'hui','2222-02-20','10:10:00','12:12:00','',0),
-	(6,'bath',3,'bath','2021-07-01','19:30:00','20:00:00','Hello!',0);
+	(6,'bath',3,'bath','2021-07-01','19:30:00','20:00:00','Hello!',0),
+	(7,'hat',4,'london','2021-07-09','13:00:00','00:00:00',NULL,0),
+	(8,'agt',4,'bath','2021-10-12','09:00:00','00:00:00',NULL,0);
 
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;

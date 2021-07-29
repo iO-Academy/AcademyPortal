@@ -47,7 +47,8 @@ class GetApplicationFormController extends Controller
                         'cohorts' => $this->applicationFormModel->getCohorts(),
                         'hearAbout' => $this->applicationFormModel->getHearAbout(),
                         'backgroundInfo' => $this->applicationFormModel->getBackgroundInfo(),
-                        'tasters' => $this->eventModel->getEventsByCategoryId(3, 3)
+                        'tasters' => $this->eventModel->getEventsByCategoryId(3, 3),
+                        'assessments' => $this->eventModel->getEventsByCategoryId(4)
                     ]
                 ];
             } catch (\Exception $e) {

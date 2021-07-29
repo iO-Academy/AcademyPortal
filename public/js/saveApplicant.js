@@ -57,6 +57,9 @@ let errorMessage = (validationType) => {
         case 'isPresent' :
             htmlString += `This field must be filled in.`;
             break;
+        case 'isChecked' :
+            htmlString += 'You must select at least one checkbox';
+            break;
         default:
             htmlString += `This field is invalid.`;
             break;
@@ -158,8 +161,10 @@ let validateFormInputs = (data) => {
         },
         notes: {
             validLengthText: textAreaMaxLength(data.notes)
+        },
+        cohort: {
+            isChecked: requiredCheckboxes(document.querySelectorAll('#cohorts .cohort_checkbox input'))
         }
     };
-
     return validate;
 };

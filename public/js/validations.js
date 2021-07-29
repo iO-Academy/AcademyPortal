@@ -45,3 +45,10 @@ function textAreaMaxLength(data) {
 function varCharMaxLength(data) {
     return data.length <= 255;
 }
+
+function requiredCheckboxes(checkboxes) {
+    let checkedArray  = Array.from(checkboxes).map(checkbox => {
+        return checkbox.checked
+    })
+    return checkedArray.includes(true)
+}
