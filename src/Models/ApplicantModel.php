@@ -70,7 +70,8 @@ class ApplicantModel implements ApplicantModelInterface
         if ($result) {
             $id = $this->db->lastInsertId();
             foreach ($applicant['cohort'] as $cohortId) {
-                $courseChoiceQuery = $this->db->prepare('INSERT INTO `course_choice` (`courseId`, `applicantsid`) VALUES (?,?)');
+                $courseChoiceQuery = $this->db->prepare(
+                    'INSERT INTO `course_choice` (`courseId`, `applicantsid`) VALUES (?,?)');
                 $courseChoiceQuery->execute([$cohortId, $id]);
             }
             $courseChoiceQuery = $this->db->prepare('INSERT INTO `applicants_additional` (`id`) VALUES (?)');
@@ -363,7 +364,8 @@ class ApplicantModel implements ApplicantModelInterface
         $deleteQuery = $this->db->prepare('DELETE FROM `course_choice` WHERE `applicantsid` = ?');
         $deleteQuery->execute([$applicant['id']]);
         foreach ($applicant['cohort'] as $cohortId) {
-            $updateCourseDate = $this->db->prepare('INSERT INTO `course_choice` (`courseId`, `applicantsid`) VALUES (?,?)');
+            $updateCourseDate = $this->db->prepare(
+                'INSERT INTO `course_choice` (`courseId`, `applicantsid`) VALUES (?,?)');
             $updateCourseDate->execute([$cohortId, $applicant['id']]);
         }
         return $query->execute();
