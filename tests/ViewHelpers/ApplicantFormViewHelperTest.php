@@ -15,17 +15,19 @@ class ApplicantFormViewHelperTest extends TestCase
         ];
 
         $stageOptions = [
-            ['id' => 1, 'option' => 'dummy-option', 'stageId' => 1]
+            ['id' => 1, 'option' => 'dummy-option', 'stageId' => "1"],
         ];
 
-        $currentStage = 'dummy-option';
+        $currentStage = 'dummy-title';
+
+        $currentOption = 'dummy-option';
 
         $expected = '<optgroup label="dummy-title"><option data-student="0" name="stageId" value="1 1" selected>' .
                     'dummy-option</option>' .
                     '</optgroup>' .
                     '<option data-student="1" class="stageDropdown" name="stageId" value="2">dummy-title-Two</option>';
 
-        $result = ApplicantFormViewHelper::stagesDropdown($stages, $stageOptions, $currentStage);
+        $result = ApplicantFormViewHelper::stagesDropdown($stages, $stageOptions, $currentStage, $currentOption);
 
         // using DOMDocument means no whitespace issues
         $expectedHTML = new \DOMDocument();
