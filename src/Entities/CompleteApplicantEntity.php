@@ -9,6 +9,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $apprentice; // bool
     protected $aptitude; // int
     protected $assessmentDay; // date string
+    protected $customAssessmentDay; // date string
     protected $assessmentTime; // time string
     protected $assessmentNotes; // string
     protected $diversitechInterest; // bool
@@ -80,6 +81,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
                   'apprentice' => $this->apprentice,
                   'aptitude' => $this->aptitude,
                   'assessmentDay' => $this->assessmentDay,
+                  'customAssessmentDay' => $this->customAssessmentDay,
                   'assessmentTime' => $this->assessmentTime,
                   'assessmentNotes' => $this->assessmentNotes,
                   'diversitechInterest' => $this->diversitechInterest,
@@ -155,6 +157,15 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getAssessmentDay(): ?string
     {
         return $this->assessmentDay;
+    }
+
+    /**
+     * @return mixed
+     */
+
+    public function getCustomAssessmentDay()
+    {
+        return $this->customAssessmentDay;
     }
 
     /**
