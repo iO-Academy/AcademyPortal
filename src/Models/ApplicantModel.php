@@ -229,7 +229,7 @@ class ApplicantModel implements ApplicantModelInterface
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
                       `backgroundInfo`, `hearAbout`, 
-                      `apprentice`, `aptitude`,`events`.`date` AS 'assessmentDay',
+                      `apprentice`, `aptitude`,`events`.`date` AS 'assessmentDay', 
                       `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, 
@@ -400,7 +400,7 @@ class ApplicantModel implements ApplicantModelInterface
                         SET 
                             `apprentice` = :apprentice,
                             `aptitude` = :aptitude,
-                            `assessmentDay` = :assessmentDay,
+                            `assessmentDay` = :assessmentDay,                
                             `assessmentTime` = :assessmentTime,
                             `assessmentNotes` = :assessmentNotes,
                             `diversitechInterest` = :diversitechInterest,
