@@ -76,6 +76,7 @@ $(document).ready(function(){
                                         var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId + '&optionId=' + optionId;
                                         updateStage(url, applicantId, thisButton)
                                         $('#nextStageModal').modal('hide');
+                                        location.reload();
                                 }
                             )
                         }
