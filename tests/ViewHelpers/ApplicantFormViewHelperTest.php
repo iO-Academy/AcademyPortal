@@ -15,7 +15,7 @@ class ApplicantFormViewHelperTest extends TestCase
         ];
 
         $stageOptions = [
-            ['id' => 1, 'option' => 'dummy-option', 'stageId' => "1"],
+            ['id' => 1, 'option' => 'dummy-option', 'stageId' => 1],
         ];
 
         $currentStage = 'dummy-title';
