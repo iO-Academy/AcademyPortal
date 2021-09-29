@@ -213,15 +213,20 @@ async function eventGenerator(event, hiringPartners) {
     let date = new Date(event.date).toDateString()
 
     if(event.people_attending) {
-        let peopleAttendingBadge = '<span class="badge">${event.people_attending}</span>'
+        let peopleAttendingBadge = '<span class="badge">'+ event.people_attending + '</span>'
     } else {
-        let peopleAttendingBadge = ''
+        let peopleAttendingBadge = ""
     }
     eventInformation +=
         `<div class="event">
         <div class="header">
-            <h4>${event.name} - ${date}</h4><span class="badge">${event.category_name}</span>${peopleAttendingBadge}
-            <button class="show-event-info btn btn-primary" data-reference='${event.id}'>More Info</button>
+            <h4>${event.name} - ${date}</h4><span class="badge">${event.category_name}</span>`
+    if(event.people_attending) {
+        eventInformation += `<span class="badge">`+ event.people_attending + `</span>`
+    } else {
+        eventInformation += ``
+    }
+            `<button class="show-event-info btn btn-primary" data-reference='${event.id}'>More Info</button>
         </div>
         <div id="moreInfo${event.id}" class="hidden moreInfo">
         <p>Event Category: ${event.category_name}</p>
