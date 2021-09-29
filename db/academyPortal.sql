@@ -1,13 +1,13 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 4541
+# Version 5446
 #
-# http://www.sequelpro.com/
+# https://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
 # Host: 127.0.0.1 (MySQL 5.7.34)
 # Database: academyPortal
-# Generation Time: 2021-09-29 14:35:25 +0000
+# Generation Time: 2021-09-29 15:20:23 +0000
 # ************************************************************
 
 
@@ -15,6 +15,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+SET NAMES utf8mb4;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
@@ -51,7 +52,38 @@ LOCK TABLES `applicants` WRITE;
 
 INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`, `backgroundInfoId`, `profile_password`)
 VALUES
-	(2,'Owen Miller','weqi@mailinator.net','+532-82-1263991','Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea','Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat',3,'1','1','1','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',1,NULL,'2018-11-24 21:26:00',0,'1','');
+	(2,'Owen Miller','weqi@mailinator.net','+532-82-1263991','Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea','Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat',3,'1','1','1','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',6,NULL,'2018-11-24 21:26:00',0,'1',''),
+	(3,'Nero Burgess','famaxykivo@yahoo.com','+124-85-7626938','Perspiciatis fugiat possimus tempor dolores nesciunt consequatur voluptatem','Quibusdam officiis occaecat velit error sunt ratione voluptatem',5,'1','1','1','Sint voluptas ut nihil incididunt officia duis ab eius impedit consequatur Incidunt do aut doloribus proident quos dolores pariatur Sed',6,NULL,'2018-11-28 14:29:58',0,NULL,''),
+	(4,'Matthew Jarvis','tucawohuw@mailinator.net','+848-54-4778506','Natus quidem magnam autem corrupti laborum Anim quos quia','Dolor quia dignissimos qui excepturi eos voluptas est',6,'1','0','0','Quod harum esse quia maxime explicabo Voluptatem magna soluta voluptate optio',1,NULL,'2018-11-28 14:33:41',0,NULL,''),
+	(5,'Ignacia Watkins','qewopepodi@mailinator.com','+613-35-8385501','Excepturi consequatur Est culpa enim itaque ratione optio minima ullamco voluptates dolor et totam','Earum est iure sed fuga Velit',6,'0','0','0','Impedit aut duis laborum aspernatur amet aliquip tempora harum nulla aut',6,NULL,'2018-11-28 14:42:01',0,NULL,''),
+	(6,'Luke Haney','wubeqyko@mailinator.com','+942-61-9779862','Nemo id qui aspernatur possimus dolor adipisicing aut est sed minim','Consequatur quia voluptate delectus impedit similique',6,'0','0','0','Non sed modi ab culpa sed quia tempore debitis dolor',1,NULL,'2018-11-28 14:52:20',0,NULL,''),
+	(7,'Curran Patel','pudapaceje@mailinator.net','+628-48-1465496','Non voluptas eligendi assumenda et itaque cupidatat ut tempor','Et aliqua Quia sit soluta enim nesciunt vitae consequatur Aut repellendus Soluta magni',2,'1','0','0','Quos fugiat qui et enim eum tempor est modi',3,7,'2018-11-28 22:53:05',0,NULL,''),
+	(8,'Katelyn Parsons','poipoi@qwerty.com','+567-54-9746748','Aut est et est esse mollitia laborum','Fuga Enim omnis anim et error aut et voluptate anim blanditiis dolorem voluptatem facilis',2,'0','0','0','Similique velit qui nisi debitis aliquip lorem dolor commodi assumenda quod quod autem amet eu mollitia quod necessitatibus',2,9,'2018-11-28 23:10:12',0,NULL,''),
+	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555','Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit',1,NULL,'2018-11-28 23:10:47',0,NULL,''),
+	(13,'EStera','2@c.com','09878878676','for making friends','none',1,'1','1','1','n/a',2,10,'2021-07-27 11:49:00',0,'1',''),
+	(14,'alex ferreira','alex@yahoo.com','098778767654','for making friends','none',1,'1','1','1','bonjour',2,9,'2021-07-27 13:36:00',0,'1',''),
+	(15,'dasdasd','dasds@ii.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,10,'2021-07-27 15:53:09',0,'1',''),
+	(16,'dasdasd','dasds@ii.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,9,'2021-07-27 15:53:17',0,'1',''),
+	(17,'dasdasd','dasds@iyahoo.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,9,'2021-07-27 15:53:28',0,'1',''),
+	(18,'dasdasd','dasds@yahoo.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',6,NULL,'2021-07-27 15:53:00',0,'1',''),
+	(19,'dasdasd','dasds@yahoo.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',1,NULL,'2021-07-27 15:53:00',0,'1',''),
+	(20,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:54:58',0,'1',''),
+	(21,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:25',0,'1',''),
+	(22,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:26',0,'1',''),
+	(23,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:26',0,'1',''),
+	(24,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1',''),
+	(25,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1',''),
+	(26,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1',''),
+	(27,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:35',0,'1',''),
+	(28,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:35',0,'1',''),
+	(29,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:36',0,'1',''),
+	(30,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:20',0,'1',''),
+	(31,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:23',0,'1',''),
+	(32,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:23',0,'1',''),
+	(33,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:24',0,'1',''),
+	(34,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:24',0,'1',''),
+	(35,'piteerrr','yqasv@znkn.com','09876656545','zzrlJZk0S0','huTCwPP5pa',1,'1','1','0','WaVcYvEmeJ',1,NULL,'2021-07-28 13:07:22',0,'1',''),
+	(36,'teeeessssteeeer','8bqqt@zjqt.com','09876656545','p6SMpIbkfu','dKFIBUFxMT',1,'1','1','1','kKAwYxjlgz',1,NULL,'2021-07-28 13:15:00',0,'1','');
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -67,8 +99,8 @@ CREATE TABLE `applicants_additional` (
   `apprentice` int(1) DEFAULT NULL,
   `aptitude` int(3) DEFAULT NULL,
   `assessmentDay` int(3) DEFAULT NULL,
-  `customAssessmentDay` varchar(30) DEFAULT NULL,
   `assessmentTime` varchar(5) DEFAULT NULL,
+  `customAssessmentDay` varchar(30) DEFAULT NULL,
   `assessmentNotes` text,
   `diversitechInterest` int(1) DEFAULT NULL,
   `diversitech` int(5) DEFAULT NULL,
@@ -113,9 +145,38 @@ CREATE TABLE `applicants_additional` (
 LOCK TABLES `applicants_additional` WRITE;
 /*!40000 ALTER TABLE `applicants_additional` DISABLE KEYS */;
 
-INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `customAssessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `tasterId`, `tasterAttendance`, `team`, `githubUsername`, `portfolioUrl`, `pleskHostingUrl`, `githubEducationLink`, `additionalNotes`, `chosenCourseId`, `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`, `inductionEmailSent`, `signedNDA`, `checkedID`, `dataProtectionName`, `dataProtectionPhoto`, `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`, `contactFormSigned`)
+INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `customAssessmentDay`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `tasterId`, `tasterAttendance`, `team`, `githubUsername`, `portfolioUrl`, `pleskHostingUrl`, `githubEducationLink`, `additionalNotes`, `chosenCourseId`, `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`, `inductionEmailSent`, `signedNDA`, `checkedID`, `dataProtectionName`, `dataProtectionPhoto`, `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`, `contactFormSigned`)
 VALUES
-	(2,1,73,8,'2021-11-17','06:07','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',0,1000,8000,1000,'2020-08-05','10:30',3,1,0,3,NULL,0,1,NULL,'','','',NULL,NULL,79788279,36,NULL,0,0,0,0,0,0,0,0,0,0,0);
+	(0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(2,1,73,2020,'13:00',NULL,'Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',0,1000,8000,1000,'2020-08-05','10:30',3,1,0,3,NULL,0,1,NULL,'','','',NULL,NULL,NULL,36,NULL,0,0,0,0,0,0,0,0,0,0,0),
+	(3,0,73,2020,'13:00',NULL,'Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(5,0,73,2020,'13:00',NULL,'Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(11,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(12,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(13,1,NULL,NULL,'',NULL,'',0,NULL,NULL,NULL,NULL,'',NULL,0,0,NULL,NULL,0,NULL,NULL,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
+	(14,0,NULL,NULL,'',NULL,'',0,NULL,NULL,NULL,NULL,'',NULL,0,0,NULL,NULL,0,NULL,NULL,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
+	(15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(16,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(17,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(18,0,NULL,NULL,'',NULL,'',0,NULL,NULL,NULL,NULL,'',NULL,0,0,NULL,NULL,0,NULL,NULL,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
+	(19,0,NULL,NULL,'',NULL,'',0,NULL,NULL,NULL,NULL,'',NULL,0,0,NULL,NULL,0,NULL,NULL,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
+	(20,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(21,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(22,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(23,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(24,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(25,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(26,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(27,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(28,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(29,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(30,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(31,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(32,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(33,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(34,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(35,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `applicants_additional` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -191,11 +252,17 @@ LOCK TABLES `course_choice` WRITE;
 
 INSERT INTO `course_choice` (`id`, `courseId`, `applicantId`)
 VALUES
+	(4,2,2),
+	(8,2,8),
+	(15,1,13),
+	(16,2,13),
 	(18,1,14),
 	(19,2,14),
 	(20,1,15),
 	(21,1,16),
 	(22,1,17),
+	(25,1,20),
+	(26,2,20),
 	(27,1,21),
 	(28,2,21),
 	(29,1,22),
@@ -214,6 +281,8 @@ VALUES
 	(42,2,28),
 	(43,1,29),
 	(44,2,29),
+	(45,1,30),
+	(46,2,30),
 	(47,1,31),
 	(48,2,31),
 	(49,1,32),
@@ -222,21 +291,12 @@ VALUES
 	(52,2,33),
 	(53,1,34),
 	(54,2,34),
+	(60,1,18),
 	(61,1,19),
 	(62,1,35),
 	(63,2,35),
-	(72,2,8),
-	(77,1,18),
-	(201,1,13),
-	(202,2,13),
-	(239,1,30),
-	(240,2,30),
-	(243,1,20),
-	(244,2,20),
-	(245,1,36),
-	(246,2,36),
-	(248,1,37),
-	(250,2,2);
+	(66,1,36),
+	(67,2,36);
 
 /*!40000 ALTER TABLE `course_choice` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -511,6 +571,55 @@ VALUES
 	(9,'In employment',9,0,1);
 
 /*!40000 ALTER TABLE `stages` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table tasks
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tasks`;
+
+CREATE TABLE `tasks` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `userID` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL DEFAULT '',
+  `text` text NOT NULL,
+  `creationTime` varchar(20) NOT NULL DEFAULT 'N/A',
+  `complete` tinyint(1) NOT NULL DEFAULT '0',
+  `completionTime` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT 'N/A',
+  `archived` tinyint(4) NOT NULL DEFAULT '0',
+  `archivedTime` varchar(20) NOT NULL DEFAULT 'N/A',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `tasks` WRITE;
+/*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
+
+INSERT INTO `tasks` (`id`, `userID`, `title`, `text`, `creationTime`, `complete`, `completionTime`, `archived`, `archivedTime`)
+VALUES
+	(179,14,'What is Lorem Ipsum?','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.','2021-09-26 17:17:08',1,X'323032312D30392D32382031333A30313A3532',1,'2021-09-28 13:01:59'),
+	(181,14,'Where does it come from?','Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.','2021-09-26 17:18:12',1,X'323032312D30392D32382031333A30313A3534',1,'2021-09-28 13:02:01'),
+	(182,14,'Why do we use it?','t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).','2021-09-26 17:18:26',1,X'323032312D30392D32382031333A30313A3535',1,'2021-09-28 13:02:01'),
+	(183,14,'Where can I get some?','There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.','2021-09-26 17:18:45',1,X'323032312D30392D32362031373A32323A3033',1,'2021-09-28 13:01:58'),
+	(184,14,'Lorem ipsum dolor sit amet, consectetur adipiscing elit.','Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Felis eget velit aliquet sagittis id consectetur purus ut faucibus. Sed augue lacus viverra vitae congue eu consequat. Urna et pharetra pharetra massa massa ultricies mi. Enim praesent elementum facilisis leo vel fringilla est ullamcorper. Nibh cras pulvinar mattis nunc sed blandit libero. Maecenas pharetra convallis posuere morbi leo urna molestie at. A cras semper auctor neque vitae tempus. Suspendisse in est ante in nibh mauris cursus. Magna fringilla urna porttitor rhoncus dolor purus non enim. Viverra aliquet eget sit amet tellus cras. Non pulvinar neque laoreet suspendisse interdum consectetur. Euismod quis viverra nibh cras pulvinar mattis nunc. Nibh praesent tristique magna sit amet purus gravida quis. Tempor commodo ullamcorper a lacus vestibulum sed. Nisi lacus sed viverra tellus in hac habitasse platea. Posuere morbi leo urna molestie at elementum eu.','2021-09-26 17:20:13',1,X'323032312D30392D32362031373A32323A3038',1,'2021-09-28 13:02:02'),
+	(185,14,'Enim neque volutpat ac tincidunt vitae semper quis.','Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu. Interdum velit euismod in pellentesque massa placerat duis ultricies. Volutpat sed cras ornare arcu dui vivamus. Cursus eget nunc scelerisque viverra mauris. Integer malesuada nunc vel risus commodo viverra maecenas accumsan lacus. Lorem mollis aliquam ut porttitor leo a. Sagittis id consectetur purus ut faucibus. Ac tortor dignissim convallis aenean et. Nunc eget lorem dolor sed. Quis eleifend quam adipiscing vitae proin sagittis nisl rhoncus. Ullamcorper malesuada proin libero nunc consequat interdum. Eu consequat ac felis donec. Nunc eget lorem dolor sed viverra ipsum nunc aliquet bibendum. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque.','2021-09-26 17:20:44',1,X'323032312D30392D32362031373A32323A3236',1,'2021-09-26 17:22:45'),
+	(186,14,'Eu augue ut lectus arcu bibendum.','Enim nulla aliquet porttitor lacus luctus. Mi tempus imperdiet nulla malesuada pellentesque elit eget. At augue eget arcu dictum. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis aliquam. Augue ut lectus arcu bibendum at varius vel pharetra. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis. Condimentum id venenatis a condimentum vitae. Molestie a iaculis at erat pellentesque adipiscing. Interdum posuere lorem ipsum dolor sit. Arcu non sodales neque sodales. Morbi leo urna molestie at elementum eu facilisis sed. Sit amet nisl suscipit adipiscing bibendum est ultricies. Dictum fusce ut placerat orci nulla pellentesque. Nec feugiat in fermentum posuere urna nec tincidunt praesent semper.','2021-09-26 17:20:56',1,X'323032312D30392D32362031373A32323A3239',1,'2021-09-28 13:02:03'),
+	(187,14,'Id aliquet lectus proin nibh nisl condimentum id venenatis a.','Duis ultricies lacus sed turpis tincidunt. Sagittis vitae et leo duis ut diam quam nulla porttitor. Quis lectus nulla at volutpat diam ut venenatis tellus in. Et ultrices neque ornare aenean euismod. Duis convallis convallis tellus id interdum velit laoreet id donec. Venenatis lectus magna fringilla urna porttitor. Sed faucibus turpis in eu mi. Ultrices neque ornare aenean euismod. Risus nec feugiat in fermentum posuere urna nec. Dui nunc mattis enim ut tellus elementum.','2021-09-26 17:21:12',1,X'323032312D30392D32362031373A32323A3331',1,'2021-09-26 17:22:41'),
+	(188,14,'Faucibus vitae aliquet nec ullamcorper sit amet risus nullam.','Mattis molestie a iaculis at erat pellentesque. Eget felis eget nunc lobortis mattis aliquam. Interdum velit laoreet id donec ultrices tincidunt. Elit at imperdiet dui accumsan. Ac tortor dignissim convallis aenean et tortor at risus. Blandit turpis cursus in hac habitasse. Facilisis gravida neque convallis a cras semper auctor neque. Posuere lorem ipsum dolor sit. Urna cursus eget nunc scelerisque. Adipiscing vitae proin sagittis nisl rhoncus. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Enim nec dui nunc mattis enim ut. Et tortor at risus viverra adipiscing at in tellus integer.','2021-09-26 17:21:26',1,X'323032312D30392D32362031373A32323A3333',1,'2021-09-26 17:22:50'),
+	(189,23,'Something something something dark sidegfdfdgfdgdg','','2021-09-28 17:21:20',0,X'4E2F41',0,'N/A'),
+	(190,23,'Where does it come from?','','2021-09-28 17:21:23',0,X'4E2F41',0,'N/A'),
+	(193,35,'444','','2021-09-28 19:31:34',1,X'323032312D30392D32382031393A33313A3335',0,'N/A'),
+	(194,35,'444','','2021-09-28 19:31:37',0,X'4E2F41',0,'N/A'),
+	(195,35,'444','','2021-09-28 19:31:39',0,X'4E2F41',0,'N/A'),
+	(196,35,'444','','2021-09-28 19:31:40',0,X'4E2F41',0,'N/A'),
+	(197,35,'444','','2021-09-28 19:31:41',0,X'4E2F41',0,'N/A'),
+	(198,35,'444','','2021-09-28 19:31:43',0,X'4E2F41',0,'N/A'),
+	(199,44,'Something something something dark sidegfdfdgfdgdg','','2021-09-28 21:40:15',0,X'4E2F41',1,'2021-09-28 21:40:21'),
+	(200,44,'fdgfdhfdhhdh','','2021-09-28 21:40:17',0,X'4E2F41',1,'2021-09-28 21:40:23'),
+	(201,44,'Something something something dark side','','2021-09-28 21:40:19',0,X'4E2F41',1,'2021-09-28 21:40:22'),
+	(203,51,'walk the dawgs','','2021-09-29 11:57:28',0,X'4E2F41',0,'N/A');
+
+/*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
