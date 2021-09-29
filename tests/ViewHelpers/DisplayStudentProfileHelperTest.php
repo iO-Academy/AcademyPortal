@@ -38,7 +38,7 @@ class DisplayStudentProfileHelperTest extends TestCase
                         </section>
                         <hr><section><h4>Assessment</h4>
                         <pclass="detail">Assessmentday:<spanid="assessmentDay">2020-06-20</span></p>
-                        <pclass="detail">CustomAssessmentDay:<spanid="customAssessmentDay">1995-09-01</span></p>
+                        <pclass="detail">Customassessmentday:<spanid="customAssessmentDay">1995-09-01</span></p>
                         <pclass="detail">AssessmentTime:<spanid="assessmentTime">13:00</span>
                         <pclass="detail">AptitudeScore:<spanid="aptitude">73</span></p>
                         <pclass="detail">Assessmentnotes:</p>
