@@ -135,6 +135,10 @@
                         <option value="">Unselected assessment day</option>
                     </select>
 
+
+                    <label for="customAssessmentDay">Custom assessment day</label>
+                    <input type="date" id="customAssessmentDay" name="customAssessmentDay" class="submitApplicant form-control" value="<?php echo $applicant->getCustomAssessmentDay();?>">
+
                     <label for="assessmentTime">Assessment time</label>
                     <input id="assessmentTime" name="assessmentTime" class="submitApplicant form-control" type="time" value="<?php echo $applicant->getAssessmentTime();?>">
 

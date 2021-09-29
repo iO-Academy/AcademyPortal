@@ -38,6 +38,7 @@ class DisplayStudentProfileHelperTest extends TestCase
                         </section>
                         <hr><section><h4>Assessment</h4>
                         <pclass="detail">Assessmentday:<spanid="assessmentDay">2020-06-20</span></p>
+                        <pclass="detail">Customassessmentday:<spanid="customAssessmentDay">1995-09-01</span></p>
                         <pclass="detail">AssessmentTime:<spanid="assessmentTime">13:00</span>
                         <pclass="detail">AptitudeScore:<spanid="aptitude">73</span></p>
                         <pclass="detail">Assessmentnotes:</p>
@@ -91,6 +92,7 @@ class DisplayStudentProfileHelperTest extends TestCase
         $applicantEntityMock->method('getNotes')->willReturn('Laborum cumque reprehenderit ut qui 
         sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus');
         $applicantEntityMock->method('getAssessmentDay')->willReturn('2020-06-20');
+        $applicantEntityMock->method('getCustomAssessmentDay')->willReturn('1995-09-01');
         $applicantEntityMock->method('getAssessmentTime')->willReturn('13:00');
         $applicantEntityMock->method('getAptitude')->willReturn('73');
         $applicantEntityMock->method('getAssessmentNotes')->willReturn('Laborum cumque reprehenderit ut qui 

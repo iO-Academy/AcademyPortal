@@ -40,6 +40,8 @@ class DisplayStudentProfileViewHelper
                     <h4>Assessment</h4>
                     <p class="detail">Assessment day: <span id="assessmentDay">'
                         . $applicant->getAssessmentDay() . '</span></p>
+                    <p class="detail">Custom assessment day: <span id="customAssessmentDay">'
+                        . $applicant->getCustomAssessmentDay() . '</span></p>
                     <p class="detail">Assessment Time: <span id="assessmentTime">'
                         . $applicant->getAssessmentTime() . '</span>
                     <p class="detail">Aptitude Score: <span id="aptitude">' . $applicant->getAptitude() . '</span></p>
