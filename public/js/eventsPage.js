@@ -211,10 +211,16 @@ async function displayHiringPartnersAttending(event){
 async function eventGenerator(event, hiringPartners) {
     let eventInformation = ''
     let date = new Date(event.date).toDateString()
+
+    if(event.people_attending) {
+        let peopleAttendingBadge = '<span class="badge">${event.people_attending}</span>'
+    } else {
+        let peopleAttendingBadge = ''
+    }
     eventInformation +=
         `<div class="event">
         <div class="header">
-            <h4>${event.name} - ${date}</h4><span class="badge">${event.category_name}</span><span class="badge">${hiringPartners.people_attending}</span>
+            <h4>${event.name} - ${date}</h4><span class="badge">${event.category_name}</span>${peopleAttendingBadge}
             <button class="show-event-info btn btn-primary" data-reference='${event.id}'>More Info</button>
         </div>
         <div id="moreInfo${event.id}" class="hidden moreInfo">
