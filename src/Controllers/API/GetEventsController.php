@@ -77,6 +77,12 @@ class GetEventsController extends Controller
 
             if (count($data['data']) > 0) {
                 $data['message'] = '';
+                for ($i = 0; $i < count($data['data']); $i++) {
+                    if ($this->eventModel->hpIdsByEventId($data['data'][$i]['id'])) {
+                        $data['data'][$i]['people_attending'] = $this->eventModel
+                            ->hpIdsByEventId($data['data'][$i]['id'])[0]['people_attending'];
+                    }
+                }
             }
         } catch (\PDOException $exception) {
             $data['message'] = $exception->getMessage();
