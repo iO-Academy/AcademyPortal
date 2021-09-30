@@ -25,14 +25,14 @@ function getEvents(search = false) {
             'Content-Type': 'application/json',
         },
     })
-    .then(response => response.json())
-    .then(async (eventInfo) => {
-        let hiringPartners = await getHiringPartners()
-        return {events: eventInfo, hiringPartners: hiringPartners}
-    })
-    .then(eventsAndHiringPartners => {
-        displayEventsHandler(eventsAndHiringPartners)
-    })
+        .then(response => response.json())
+        .then(async (eventInfo) => {
+            let hiringPartners = await getHiringPartners()
+            return {events: eventInfo, hiringPartners: hiringPartners}
+        })
+        .then(eventsAndHiringPartners => {
+            displayEventsHandler(eventsAndHiringPartners)
+        })
 }
 
 /**
@@ -46,69 +46,64 @@ function displayEventsHandler(eventsAndHiringPartners) {
     } else {
         eventList.innerHTML = ''
         displayEvents(eventsAndHiringPartners.events.data, eventsAndHiringPartners.hiringPartners).then(() => {
-            let showInfoButtons = document.querySelectorAll('.show-event-info')
-                    showInfoButtons.forEach(function (button) {
-                        button.addEventListener('click', e => {
-                            let targetId = 'moreInfo' + e.target.dataset.reference
-                            let targetDiv = document.getElementById(targetId)
-                            targetDiv.classList.toggle('hidden')
-                            targetDiv.parentElement.classList.toggle('open')
-
-                            e.target.textContent = 'More info'
-                            if (!targetDiv.classList.contains('hidden')) {
-                                e.target.textContent = 'Less info'
-                            }
-                        })
-                    })
-        })
-        .then(() => {
-            let hpForms = document.querySelectorAll('.addHiringPartnerForm')
-            hpForms.forEach(function (hpForm) {
-                hpForm.addEventListener('submit', function (e) {
-                    e.preventDefault()
-                    let eventIdForm = e.target.id
-                    const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${eventIdForm}"]`)
-                    let hpId = document.querySelector(`select[data-event='${eventIdForm}']`).value
-                    let attendees = document.querySelector(`[name='companyAttendees'][data-event='${eventIdForm}']`).value
-
-                    if (attendees == "") {
-                        attendees = null
-                    }
-
-                    let data = {
-                        hiring_partner_id: hpId,
-                        event_id: eventIdForm,
-                        people_attending: attendees
-                    }
-
-                    if (attendees >= 0) {
-                        if (hpId != 0) {
-                            fetch('./api/addHiringPartnerToEvent', {
-                                credentials: 'same-origin',
-                                headers: {
-                                    'Accept': 'application/json',
-                                    'Content-Type': 'application/json',
-                                },
-                                method: 'post',
-                                body: JSON.stringify(data)
-                            }).then(response => response.json())
-                                .then((responseJSON) => {
-
-                                    if(responseJSON.success) {
-                                        displayHiringPartnersAttending({id: data.event_id})
-                                    } else {
-                                        currentEventsMessage.innerText = responseJSON.message
-                                    }
-                                })
-                        } else {
-                            currentEventsMessage.innerText = "Please select a hiring partner"
-                        }
-                    } else {
-                        currentEventsMessage.innerText = "Please enter a valid number of attendees"
-                    }
+            let showEventInfoBars = document.querySelectorAll('.event-bar')
+            showEventInfoBars.forEach(function (showEventInfoBar) {
+                showEventInfoBar.addEventListener('click', e => {
+                    let targetId = 'moreInfo' + e.target.dataset.reference
+                    let targetDiv = document.getElementById(targetId)
+                    targetDiv.classList.toggle('hidden')
+                    targetDiv.parentElement.classList.toggle('open')
                 })
             })
         })
+            .then(() => {
+                let hpForms = document.querySelectorAll('.addHiringPartnerForm')
+                hpForms.forEach(function (hpForm) {
+                    hpForm.addEventListener('submit', function (e) {
+                        e.preventDefault()
+                        let eventIdForm = e.target.id
+                        const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${eventIdForm}"]`)
+                        let hpId = document.querySelector(`select[data-event='${eventIdForm}']`).value
+                        let attendees = document.querySelector(`[name='companyAttendees'][data-event='${eventIdForm}']`).value
+
+                        if (attendees == "") {
+                            attendees = null
+                        }
+
+                        let data = {
+                            hiring_partner_id: hpId,
+                            event_id: eventIdForm,
+                            people_attending: attendees
+                        }
+
+                        if (attendees >= 0) {
+                            if (hpId != 0) {
+                                fetch('./api/addHiringPartnerToEvent', {
+                                    credentials: 'same-origin',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json',
+                                    },
+                                    method: 'post',
+                                    body: JSON.stringify(data)
+                                }).then(response => response.json())
+                                    .then((responseJSON) => {
+
+                                        if (responseJSON.success) {
+                                            displayHiringPartnersAttending({id: data.event_id})
+                                        } else {
+                                            currentEventsMessage.innerText = responseJSON.message
+                                        }
+                                    })
+                            } else {
+                                currentEventsMessage.innerText = "Please select a hiring partner"
+                            }
+                        } else {
+                            currentEventsMessage.innerText = "Please enter a valid number of attendees"
+                        }
+                    })
+                })
+            })
     }
 };
 
@@ -121,36 +116,36 @@ async function displayEvents(events, hiringPartners) {
     })
 }
 
-async function addEventListenersToHpDelete(event){
+async function addEventListenersToHpDelete(event) {
     let hpDeleteForms = document.querySelectorAll(`.hiring-partner input[data-event='${event.id}']`)
-    hpDeleteForms.forEach(function(hpDelete){
-        hpDelete.addEventListener('click', function(e){
+    hpDeleteForms.forEach(function (hpDelete) {
+        hpDelete.addEventListener('click', function (e) {
             DeleteHPRequest(e, event)
         })
     })
 }
 
 function DeleteHPRequest(e, event) {
-            let data = {
-                event_id: e.target.dataset.event,
-                hp_id: e.target.dataset.hp
+    let data = {
+        event_id: e.target.dataset.event,
+        hp_id: e.target.dataset.hp
+    }
+    fetch('./api/deleteHiringPartnerFromEvent', {
+        credentials: 'same-origin',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'post',
+        body: JSON.stringify(data)
+    }).then(response => response.json())
+        .then(responseJSON => {
+            if (responseJSON.success) {
+                displayHiringPartnersAttending({id: data.event_id})
+            } else {
+                document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`).innerText = responseJSON.message
             }
-            fetch('./api/deleteHiringPartnerFromEvent', {
-                credentials: 'same-origin',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                method: 'post',
-                body: JSON.stringify(data)
-            }) .then (response => response.json())
-               .then (responseJSON => {
-                    if (responseJSON.success) {
-                        displayHiringPartnersAttending({id: data.event_id})
-                    } else {
-                        document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`).innerText = responseJSON.message
-                    }
-                })
+        })
 }
 
 /**
@@ -160,7 +155,7 @@ function DeleteHPRequest(e, event) {
  *
  * @returns a response putting HTML on front end for the attending hiring partners
  */
-async function displayHiringPartnersAttending(event){
+async function displayHiringPartnersAttending(event) {
     let data = {
         event_id: event.id
     }
@@ -183,7 +178,7 @@ async function displayHiringPartnersAttending(event){
             if (response.length > 0) {
                 let hiringPartnerHTML = ""
                 hiringPartnerHTML += `<h5>Attending hiring partners:</h5>`
-                response.forEach(function(hiringPartner) {
+                response.forEach(function (hiringPartner) {
                     hiringPartnerHTML += `<div class="hiring-partner">`
                     hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span>`
                     if (hiringPartner.attendees != null) {
@@ -197,7 +192,7 @@ async function displayHiringPartnersAttending(event){
                 })
                 hiringPartnersDiv.innerHTML += hiringPartnerHTML
             }
-        }) .then(() => {
+        }).then(() => {
         addEventListenersToHpDelete(event)
     })
     return event
@@ -214,16 +209,19 @@ async function eventGenerator(event, hiringPartners) {
 
     eventInformation +=
         `<div class="event">
+        <div class="event-bar"></div>
         <div class="header">
-            <h4>${event.name} - ${date}</h4><span class="badge">${event.category_name}</span>`
-    if(event.people_attending) {
+            <h4 class="event-title" data-reference="${event.id}">${event.name} - ${date}<span class="badge">${event.category_name}</span>`
+
+    if (event.people_attending) {
         eventInformation += `<span class="badge">${event.people_attending}</span>`
     } else {
         eventInformation += ""
     }
+
     eventInformation +=
-        `<button class="show-event-info btn btn-primary" data-reference='${event.id}'>More Info</button>
-        </div>
+        // <!--<button class="show-event-info btn btn-primary"'>More Info</button>-->
+        `</h4></div>
         <div id="moreInfo${event.id}" class="hidden moreInfo">
         <p>Event Category: ${event.category_name}</p>
         <p>Date: ${date}</p>
@@ -294,7 +292,7 @@ async function getHiringPartners() {
 }
 
 
-document.querySelector('#submit-search-event').addEventListener('click', function(e) {
+document.querySelector('#submit-search-event').addEventListener('click', function (e) {
     const searchInput = document.querySelector('#academy-events-search').value
     e.preventDefault()
     if ((searchInput.length) && searchInput.length < 256) {
@@ -308,7 +306,7 @@ document.querySelector('#submit-search-event').addEventListener('click', functio
     }
 })
 
-document.querySelector('#clear-search').addEventListener('click', function(e) {
+document.querySelector('#clear-search').addEventListener('click', function (e) {
     e.preventDefault()
     if (!window.location.href.includes('#events-list')) {
         window.location.href += '#events-list'
