@@ -4,12 +4,10 @@ function updateStage(url, applicantId, btnNextStage) {
             response.json().then(
                 function(data) {
                     let option = " "
-                        if (data['data']['option'][0] === undefined) {
-                            option = " "
-                        } else {
+                        if (data['data']['option'][0] !== undefined) {
                             option = " - " + data['data']['option'][0]['option']
                         }
-                        
+
                     document.querySelector('#currentStageName' + applicantId).innerHTML = data['data']['newStageName'] + option;
                     btnNextStage.dataset.stageid = data['data']['stageId'];
                     if (data['data']['isLastStage'] === data['data']['stageId']) {
@@ -21,7 +19,7 @@ function updateStage(url, applicantId, btnNextStage) {
     )
 }
 
-$(document).ready( function(){
+$(document).ready(function(){
     $(".btnNextStage").click(function(){
         const stageId = this.dataset.stageid;
         const applicantId = this.dataset.applicantid;
