@@ -17,3 +17,19 @@ document.querySelector('#stageTitle').addEventListener('change', e => {
         })
     }
 })
+
+const assessmentDayInput = document.querySelector('#assessmentDay');
+const assessmentDaySelected = assessmentDayInput.dataset.selected;
+const customAssessmentDayContainer = document.querySelector('#customAssessmentDayContainer');
+if (assessmentDaySelected === ''){
+    customAssessmentDayContainer.classList.add('hidden');
+}
+assessmentDayInput.addEventListener('change', evt => {
+    const optionIDSelected = assessmentDayInput.options[assessmentDayInput.selectedIndex].value;
+    if (optionIDSelected === '0'){
+        customAssessmentDayContainer.classList.add('hidden');
+        document.querySelector('#customAssessmentDay').value = 0;
+    } else {
+        customAssessmentDayContainer.classList.remove('hidden');
+    }
+})

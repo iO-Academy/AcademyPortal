@@ -132,12 +132,13 @@
                 <div id="assessment" class="collapse">
                     <label for="assessmentDay">Assessment day</label>
                     <select id="assessmentDay" class="submitApplicant form-control" name="assessmentDay" data-selected="<?php echo $applicant->getAssessmentDay();?>">
-                        <option value="">Unselected assessment day</option>
+                        <option value="0">Unselected assessment day</option>
                     </select>
 
-
-                    <label for="customAssessmentDay">Custom assessment day</label>
-                    <input type="date" id="customAssessmentDay" name="customAssessmentDay" class="submitApplicant form-control" value="<?php echo $applicant->getCustomAssessmentDay();?>">
+                    <div id="customAssessmentDayContainer">
+                        <label for="customAssessmentDay">Custom assessment day (optional)</label>
+                        <input type="date" id="customAssessmentDay" name="customAssessmentDay" class="submitApplicant form-control" value="<?php echo $applicant->getCustomAssessmentDay();?>">
+                    </div>
 
                     <label for="assessmentTime">Assessment time</label>
                     <input id="assessmentTime" name="assessmentTime" class="submitApplicant form-control" type="time" value="<?php echo $applicant->getAssessmentTime();?>">
