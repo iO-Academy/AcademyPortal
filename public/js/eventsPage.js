@@ -79,7 +79,7 @@ function displayEventsHandler(eventsAndHiringPartners) {
                                 }).then(response => response.json())
                                     .then((responseJSON) => {
 
-                                        if (responseJSON.success) {
+                                        if(responseJSON.success) {
                                             displayHiringPartnersAttending({id: data.event_id})
                                         } else {
                                             currentEventsMessage.innerText = responseJSON.message
@@ -106,10 +106,10 @@ async function displayEvents(events, hiringPartners) {
     })
 }
 
-async function addEventListenersToHpDelete(event) {
+async function addEventListenersToHpDelete(event){
     let hpDeleteForms = document.querySelectorAll(`.hiring-partner input[data-event='${event.id}']`)
-    hpDeleteForms.forEach(function (hpDelete) {
-        hpDelete.addEventListener('click', function (e) {
+    hpDeleteForms.forEach(function(hpDelete){
+        hpDelete.addEventListener('click', function(e){
             DeleteHPRequest(e, event)
         })
     })
@@ -128,8 +128,8 @@ function DeleteHPRequest(e, event) {
         },
         method: 'post',
         body: JSON.stringify(data)
-    }).then(response => response.json())
-        .then(responseJSON => {
+    }) .then (response => response.json())
+        .then (responseJSON => {
             if (responseJSON.success) {
                 displayHiringPartnersAttending({id: data.event_id})
             } else {
@@ -145,7 +145,7 @@ function DeleteHPRequest(e, event) {
  *
  * @returns a response putting HTML on front end for the attending hiring partners
  */
-async function displayHiringPartnersAttending(event) {
+async function displayHiringPartnersAttending(event){
     let data = {
         event_id: event.id
     }
@@ -168,7 +168,7 @@ async function displayHiringPartnersAttending(event) {
             if (response.length > 0) {
                 let hiringPartnerHTML = ""
                 hiringPartnerHTML += `<h5>Attending hiring partners:</h5>`
-                response.forEach(function (hiringPartner) {
+                response.forEach(function(hiringPartner) {
                     hiringPartnerHTML += `<div class="hiring-partner">`
                     hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span>`
                     if (hiringPartner.attendees != null) {
@@ -182,7 +182,7 @@ async function displayHiringPartnersAttending(event) {
                 })
                 hiringPartnersDiv.innerHTML += hiringPartnerHTML
             }
-        }).then(() => {
+        }) .then(() => {
         addEventListenersToHpDelete(event)
     })
     return event
@@ -198,8 +198,6 @@ async function eventGenerator(event, hiringPartners) {
     let totalGuestsAttending = 0
     let date = new Date(event.date).toDateString()
     eventInformation +=
-//         `<a data-toggle="collapse" href="#footwear${event.id}" aria-expanded="false" aria-controls="footwear${event.id}">Heading</a>
-// <div class="collapse" id="footwear${event.id}">
         `<div class="event">
         <div class="header" data-toggle="collapse" data-reference='${event.id}' href="#moreInfo${event.id}" aria-expanded="false" aria-controls="moreInfo${event.id}">
             <h4 data-reference='${event.id}'> ${event.name} - ${date}</h4><span class="badge" data-reference='${event.id}'>${event.category_name}</span>`
@@ -284,7 +282,7 @@ async function getHiringPartners() {
 }
 
 
-document.querySelector('#submit-search-event').addEventListener('click', function (e) {
+document.querySelector('#submit-search-event').addEventListener('click', function(e) {
     const searchInput = document.querySelector('#academy-events-search').value
     e.preventDefault()
     if ((searchInput.length) && searchInput.length < 256) {
@@ -298,11 +296,10 @@ document.querySelector('#submit-search-event').addEventListener('click', functio
     }
 })
 
-document.querySelector('#clear-search').addEventListener('click', function (e) {
+document.querySelector('#clear-search').addEventListener('click', function(e) {
     e.preventDefault()
     if (!window.location.href.includes('#events-list')) {
         window.location.href += '#events-list'
     }
     location.reload()
 })
-
