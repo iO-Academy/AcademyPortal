@@ -13,8 +13,7 @@ function updateStage(url, applicantId, btnNextStage) {
 
                     let option = getCorrectOption()
 
-                        document.querySelector('#currentStageName' + applicantId).innerHTML = data['data']['newStageName'] + option;
-                   console.log(data);
+                    document.querySelector('#currentStageName' + applicantId).innerHTML = data['data']['newStageName'] + option;
                     btnNextStage.dataset.stageid =  data['data']['stageId'];
                     if (data['data']['isLastStage'] === data['data']['stageId']) {
                         $(btnNextStage).remove();
