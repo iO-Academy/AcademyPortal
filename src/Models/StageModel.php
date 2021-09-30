@@ -274,4 +274,12 @@ class StageModel
         $query->execute();
         return $query->fetchColumn();
     }
+
+    public function getOptionById($id): ?array
+    {
+        $query = $this->db->prepare("SELECT * FROM `options` WHERE `id` = :id ;");
+        $query->bindParam(':id', $id);
+        $query->execute();
+        return $query->fetchAll();
+    }
 }

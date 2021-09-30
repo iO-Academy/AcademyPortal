@@ -28,11 +28,14 @@ class EditApplicantStageController extends Controller
             $result = $this->applicantModel->updateApplicantStageAndOptionIds($applicantId, $newStage, $optionIdValue);
             if ($result) {
                 $newStageEntity = $this->stageModel->getStageById($newStage);
+                $newOption = $this->stageModel->getOptionById($optionIdValue);
                 $data = [
                     'success' => true,
                     'message' => 'Successfully updated Applicant to Next Stage with Options',
                     'data' => []
                 ];
+
+                $data['data']['option'] = $newOption;
                 $data['data']['newStageName'] = $newStageEntity->getStageTitle();
                 $data['data']['stageId'] = $newStage;
                 $data['data']['isLastStage'] = $this->stageModel->getHighestOrderNo();

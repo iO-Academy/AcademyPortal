@@ -3,8 +3,13 @@ function updateStage(url, applicantId, btnNextStage) {
         function(response) {
             response.json().then(
                 function(data) {
-                    document.querySelector('#currentStageName' + applicantId).innerHTML = data['data']['newStageName'];
-                    btnNextStage.dataset.stageid =  data['data']['stageId'];
+                    let option = " "
+                        if (data['data']['option'][0] !== undefined) {
+                            option = " - " + data['data']['option'][0]['option']
+                        }
+
+                    document.querySelector('#currentStageName' + applicantId).innerHTML = data['data']['newStageName'] + option;
+                    btnNextStage.dataset.stageid = data['data']['stageId'];
                     if (data['data']['isLastStage'] === data['data']['stageId']) {
                         $(btnNextStage).remove();
                     }
@@ -67,12 +72,13 @@ $(document).ready(function(){
                             data['data']['nextStageOptions'].forEach(item => {
                                 optionValues += `<option value="${item.id}">${item.option}</option>`;
                             })
+
                             document.querySelector('#next-stage-options').innerHTML += optionValues;
                             $('#nextStageModal').modal('show');
 
                             document.querySelector('.btnNextStageOptions').addEventListener('click',
                                 function() {
-                                        const optionId =  document.querySelector('#next-stage-options').value;
+                                        let optionId =  document.querySelector('#next-stage-options').value;
                                         var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId + '&optionId=' + optionId;
                                         updateStage(url, applicantId, thisButton)
                                         $('#nextStageModal').modal('hide');
