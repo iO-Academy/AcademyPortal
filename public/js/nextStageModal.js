@@ -3,16 +3,13 @@ function updateStage(url, applicantId, btnNextStage) {
         function(response) {
             response.json().then(
                 function(data) {
-                    function getCorrectOption() {
+                    let option = " "
                         if (data['data']['option'][0] === undefined) {
-                            return " "
+                            option = " "
                         } else {
-                            return " - " + data['data']['option'][0]['option']
+                            option = " - " + data['data']['option'][0]['option']
                         }
-                    }
-
-                    let option = getCorrectOption()
-
+                        
                     document.querySelector('#currentStageName' + applicantId).innerHTML = data['data']['newStageName'] + option;
                     btnNextStage.dataset.stageid = data['data']['stageId'];
                     if (data['data']['isLastStage'] === data['data']['stageId']) {
