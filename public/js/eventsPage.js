@@ -210,14 +210,17 @@ async function displayHiringPartnersAttending(event){
  */
 async function eventGenerator(event, hiringPartners) {
     let eventInformation = ''
+    let totalGuestsAttending = 0
     let date = new Date(event.date).toDateString()
-
     eventInformation +=
         `<div class="event">
         <div class="header">
             <h4>${event.name} - ${date}</h4><span class="badge">${event.category_name}</span>`
-    if(event.people_attending) {
-        eventInformation += `<span class="badge">${event.people_attending}</span>`
+    if(event.hiring_partner_guests) {
+        event.hiring_partner_guests.forEach(guest => {
+            totalGuestsAttending += +guest.people_attending
+        })
+        eventInformation += `<span class="badge">` + totalGuestsAttending + `</span>`
     } else {
         eventInformation += ""
     }
