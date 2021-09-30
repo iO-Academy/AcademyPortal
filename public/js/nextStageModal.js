@@ -3,7 +3,18 @@ function updateStage(url, applicantId, btnNextStage) {
         function(response) {
             response.json().then(
                 function(data) {
-                    document.querySelector('#currentStageName' + applicantId).innerHTML = data['data']['newStageName'];
+                     function getCorrectOption() {
+                         if (data['data']['option'][0] == undefined) {
+                             return " "
+                         } else {
+                             return " - " + data['data']['option'][0]['option']
+                         }
+                     }
+
+                    let option = getCorrectOption()
+
+                        document.querySelector('#currentStageName' + applicantId).innerHTML = data['data']['newStageName'] + option;
+                   console.log(data);
                     btnNextStage.dataset.stageid =  data['data']['stageId'];
                     if (data['data']['isLastStage'] === data['data']['stageId']) {
                         $(btnNextStage).remove();
@@ -14,7 +25,7 @@ function updateStage(url, applicantId, btnNextStage) {
     )
 }
 
-$(document).ready(function(){
+$(document).ready( function(){
     $(".btnNextStage").click(function(){
         const stageId = this.dataset.stageid;
         const applicantId = this.dataset.applicantid;
@@ -67,16 +78,19 @@ $(document).ready(function(){
                             data['data']['nextStageOptions'].forEach(item => {
                                 optionValues += `<option value="${item.id}">${item.option}</option>`;
                             })
+
                             document.querySelector('#next-stage-options').innerHTML += optionValues;
                             $('#nextStageModal').modal('show');
 
+
                             document.querySelector('.btnNextStageOptions').addEventListener('click',
                                 function() {
-                                        const optionId =  document.querySelector('#next-stage-options').value;
+                                        let optionId =  document.querySelector('#next-stage-options').value;
+
+
                                         var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId + '&optionId=' + optionId;
                                         updateStage(url, applicantId, thisButton)
                                         $('#nextStageModal').modal('hide');
-                                        location.reload();
                                 }
                             )
                         }
