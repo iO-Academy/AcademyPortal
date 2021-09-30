@@ -32,18 +32,6 @@
     cursor: pointer;
 }
 
-.event-title {
-    width: 100%;
-    position: relative;
-}
-
-.event-bar {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-}
-
 .event .show-event-info {
     float: right;
 }

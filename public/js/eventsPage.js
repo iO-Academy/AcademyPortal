@@ -46,7 +46,7 @@ function displayEventsHandler(eventsAndHiringPartners) {
     } else {
         eventList.innerHTML = ''
         displayEvents(eventsAndHiringPartners.events.data, eventsAndHiringPartners.hiringPartners).then(() => {
-            let showEventInfoBars = document.querySelectorAll('.event-bar')
+            let showEventInfoBars = document.querySelectorAll('.header')
             showEventInfoBars.forEach(function (showEventInfoBar) {
                 showEventInfoBar.addEventListener('click', e => {
                     let targetId = 'moreInfo' + e.target.dataset.reference
@@ -209,10 +209,8 @@ async function eventGenerator(event, hiringPartners) {
 
     eventInformation +=
         `<div class="event">
-        <div class="event-bar"></div>
-        <div class="header">
-            <h4 class="event-title" data-reference="${event.id}">${event.name} - ${date}<span class="badge">${event.category_name}</span>`
-
+        <div class="header" data-reference="${event.id}">
+            <h4 class="event-title">${event.name} - ${date}</h4><span class="badge">${event.category_name}</span>`
     if (event.people_attending) {
         eventInformation += `<span class="badge">${event.people_attending}</span>`
     } else {
@@ -221,7 +219,7 @@ async function eventGenerator(event, hiringPartners) {
 
     eventInformation +=
         // <!--<button class="show-event-info btn btn-primary"'>More Info</button>-->
-        `</h4></div>
+        `</div>
         <div id="moreInfo${event.id}" class="hidden moreInfo">
         <p>Event Category: ${event.category_name}</p>
         <p>Date: ${date}</p>
