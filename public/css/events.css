@@ -24,6 +24,14 @@
     background: #cccccc;
 }
 
+.header[aria-expanded="true"] button::before {
+    content: "Less Info";
+}
+
+.header[aria-expanded="false"] button::after {
+    content: "More Info";
+}
+
 .event .header {
     overflow: auto;
 }

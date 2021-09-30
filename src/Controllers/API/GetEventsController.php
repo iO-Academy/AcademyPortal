@@ -79,8 +79,8 @@ class GetEventsController extends Controller
                 $data['message'] = '';
                 for ($i = 0; $i < count($data['data']); $i++) {
                     if ($this->eventModel->hpIdsByEventId($data['data'][$i]['id'])) {
-                        $data['data'][$i]['people_attending'] = $this->eventModel
-                            ->hpIdsByEventId($data['data'][$i]['id'])[0]['people_attending'];
+                        $data['data'][$i]['hiring_partner_guests'] = $this->eventModel
+                            ->hpIdsByEventId(($data['data'][$i]['id']));
                     }
                 }
             }

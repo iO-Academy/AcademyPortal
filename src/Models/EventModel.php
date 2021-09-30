@@ -253,7 +253,7 @@ class EventModel
         FROM `events_hiring_partners` WHERE  `event_id` = :eventId AND `deleted` = 0;';
         $query = $this->db->prepare($statement);
         $query->bindParam(':eventId', $eventId);
-        $success = $query->execute();
+        $query->execute();
         $hpIds = $query->fetchAll();
         return $hpIds;
     }

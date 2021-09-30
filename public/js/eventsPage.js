@@ -45,17 +45,7 @@ function displayEventsHandler(eventsAndHiringPartners) {
         eventList.innerHTML = eventsAndHiringPartners.events.message
     } else {
         eventList.innerHTML = ''
-        displayEvents(eventsAndHiringPartners.events.data, eventsAndHiringPartners.hiringPartners).then(() => {
-            let showEventInfoBars = document.querySelectorAll('.event-bar')
-            showEventInfoBars.forEach(function (showEventInfoBar) {
-                showEventInfoBar.addEventListener('click', e => {
-                    let targetId = 'moreInfo' + e.target.dataset.reference
-                    let targetDiv = document.getElementById(targetId)
-                    targetDiv.classList.toggle('hidden')
-                    targetDiv.parentElement.classList.toggle('open')
-                })
-            })
-        })
+        displayEvents(eventsAndHiringPartners.events.data, eventsAndHiringPartners.hiringPartners)
             .then(() => {
                 let hpForms = document.querySelectorAll('.addHiringPartnerForm')
                 hpForms.forEach(function (hpForm) {
@@ -205,24 +195,26 @@ async function displayHiringPartnersAttending(event) {
  */
 async function eventGenerator(event, hiringPartners) {
     let eventInformation = ''
+    let totalGuestsAttending = 0
     let date = new Date(event.date).toDateString()
-
     eventInformation +=
+//         `<a data-toggle="collapse" href="#footwear${event.id}" aria-expanded="false" aria-controls="footwear${event.id}">Heading</a>
+// <div class="collapse" id="footwear${event.id}">
         `<div class="event">
-        <div class="event-bar"></div>
-        <div class="header">
-            <h4 class="event-title" data-reference="${event.id}">${event.name} - ${date}<span class="badge">${event.category_name}</span>`
-
-    if (event.people_attending) {
-        eventInformation += `<span class="badge">${event.people_attending}</span>`
+        <div class="header" data-toggle="collapse" data-reference='${event.id}' href="#moreInfo${event.id}" aria-expanded="false" aria-controls="moreInfo${event.id}">
+            <h4 data-reference='${event.id}'> ${event.name} - ${date}</h4><span class="badge" data-reference='${event.id}'>${event.category_name}</span>`
+    if (event.hiring_partner_guests) {
+        event.hiring_partner_guests.forEach(guest => {
+            totalGuestsAttending += +guest.people_attending
+        })
+        eventInformation += `<span class="badge" data-reference='${event.id}'>` + totalGuestsAttending + `</span>`
     } else {
         eventInformation += ""
     }
-
     eventInformation +=
-        // <!--<button class="show-event-info btn btn-primary"'>More Info</button>-->
-        `</h4></div>
-        <div id="moreInfo${event.id}" class="hidden moreInfo">
+        `<button class="show-event-info btn btn-primary info-button${event.id}" data-reference='${event.id}' data-toggle="collapse" href="#moreInfo${event.id}" aria-expanded="false" aria-controls="moreInfo${event.id}"></button>
+        </div>
+        <div class="moreInfo collapse" id="moreInfo${event.id}">
         <p>Event Category: ${event.category_name}</p>
         <p>Date: ${date}</p>
         <p>Location: ${event.location}</p>
