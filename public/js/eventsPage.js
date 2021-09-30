@@ -79,7 +79,7 @@ function displayEventsHandler(eventsAndHiringPartners) {
                                 }).then(response => response.json())
                                     .then((responseJSON) => {
 
-                                        if(responseJSON.success) {
+                                        if (responseJSON.success) {
                                             displayHiringPartnersAttending({id: data.event_id})
                                         } else {
                                             currentEventsMessage.innerText = responseJSON.message
@@ -106,10 +106,10 @@ async function displayEvents(events, hiringPartners) {
     })
 }
 
-async function addEventListenersToHpDelete(event){
+async function addEventListenersToHpDelete(event) {
     let hpDeleteForms = document.querySelectorAll(`.hiring-partner input[data-event='${event.id}']`)
-    hpDeleteForms.forEach(function(hpDelete){
-        hpDelete.addEventListener('click', function(e){
+    hpDeleteForms.forEach(function (hpDelete) {
+        hpDelete.addEventListener('click', function (e) {
             DeleteHPRequest(e, event)
         })
     })
@@ -128,8 +128,8 @@ function DeleteHPRequest(e, event) {
         },
         method: 'post',
         body: JSON.stringify(data)
-    }) .then (response => response.json())
-        .then (responseJSON => {
+    }).then(response => response.json())
+        .then(responseJSON => {
             if (responseJSON.success) {
                 displayHiringPartnersAttending({id: data.event_id})
             } else {
@@ -145,7 +145,7 @@ function DeleteHPRequest(e, event) {
  *
  * @returns a response putting HTML on front end for the attending hiring partners
  */
-async function displayHiringPartnersAttending(event){
+async function displayHiringPartnersAttending(event) {
     let data = {
         event_id: event.id
     }
@@ -167,8 +167,8 @@ async function displayHiringPartnersAttending(event){
             hiringPartnersDiv.innerHTML = ''
             if (response.length > 0) {
                 let hiringPartnerHTML = ""
-                hiringPartnerHTML += `<h5>Attending hiring partners:</h5>`
-                response.forEach(function(hiringPartner) {
+                hiringPartnerHTML += `<p><span>Attending hiring partners:</span></p>`
+                response.forEach(function (hiringPartner) {
                     hiringPartnerHTML += `<div class="hiring-partner">`
                     hiringPartnerHTML += `<p data-hpid='${hiringPartner.id}'><span class='bold-text-hp'>${hiringPartner.name}</span>`
                     if (hiringPartner.attendees != null) {
@@ -182,7 +182,7 @@ async function displayHiringPartnersAttending(event){
                 })
                 hiringPartnersDiv.innerHTML += hiringPartnerHTML
             }
-        }) .then(() => {
+        }).then(() => {
         addEventListenersToHpDelete(event)
     })
     return event
@@ -200,7 +200,7 @@ async function eventGenerator(event, hiringPartners) {
     eventInformation +=
         `<div class="event">
         <div class="header" data-toggle="collapse" data-reference='${event.id}' href="#moreInfo${event.id}" aria-expanded="false" aria-controls="moreInfo${event.id}">
-            <h4 data-reference='${event.id}'> ${event.name} - ${date}</h4><span class="badge" data-reference='${event.id}'>${event.category_name}</span>`
+            <h4 data-reference='${event.id}'> ${event.name} - ${date}<span class="badge" data-reference='${event.id}'>${event.category_name}</span>`
     if (event.hiring_partner_guests) {
         event.hiring_partner_guests.forEach(guest => {
             totalGuestsAttending += +guest.people_attending
@@ -210,17 +210,20 @@ async function eventGenerator(event, hiringPartners) {
         eventInformation += ""
     }
     eventInformation +=
-        `<button class="show-event-info btn btn-primary info-button${event.id}" data-reference='${event.id}' data-toggle="collapse" href="#moreInfo${event.id}" aria-expanded="false" aria-controls="moreInfo${event.id}"></button>
+        `</h4>
+        <button class="show-event-info btn btn-primary info-button${event.id}" data-reference='${event.id}' data-toggle="collapse" href="#moreInfo${event.id}" aria-expanded="false" aria-controls="moreInfo${event.id}"></button>
         </div>
         <div class="moreInfo collapse" id="moreInfo${event.id}">
-        <p>Event Category: ${event.category_name}</p>
-        <p>Date: ${date}</p>
-        <p>Location: ${event.location}</p>
-        <p>Start Time: ${event.start_time.slice(0, -3)}</p>
-        <p>End Time: ${event.end_time.slice(0, -3)}</p>`
+        <div class="mainInfoEvent">
+            <p><span><span></span>Event Category</span> ${event.category_name}</p>
+            <p><span>Date</span>${date}</p>
+            <p><span>Location</span>${event.location}</p>
+            <p><span>Start Time</span>${event.start_time.slice(0, -3)}</p>
+            <p><span>End Time</span> ${event.end_time.slice(0, -3)}</p>
+        </div>`
 
     if (event.notes !== null) {
-        eventInformation += `<p>Notes: ${event.notes}</p>`
+        eventInformation += `<p><span>Notes:</span>${event.notes}</p>`
     }
 
     if (event.availableToHP == 1) {
@@ -229,9 +232,8 @@ async function eventGenerator(event, hiringPartners) {
         if (!isPastPage) {
             eventInformation += `
                 <div class='addHiringPartner col-xs-12 col-md-6'>
-                    <h5>Add attendees</h5>
-                    <form class='addHiringPartnerForm' id='${event.id}'>
-    
+                   <p><span>Add attendees</span></p>
+                   <form class='addHiringPartnerForm' id='${event.id}'>
                         <select data-event=${event.id}>
                             <option value='0'>Hiring partner</option>`
             eventInformation += `</select>
@@ -239,7 +241,7 @@ async function eventGenerator(event, hiringPartners) {
                             <label>Number of attendees:</label>
                             <input data-event='${event.id}' type='number' name='companyAttendees' class="companyAttendees" min='0'/>
                         </div>
-                        <input value="Add Attendees" class="btn btn-primary btn-sm" type='submit'/> 
+                        <button class="btn btn-primary btn-sm" type='submit'>Add Attendees</button> 
                     </form>
                     <div class='currentEventsMessages' data-event=${event.id}></div>
                 </div>
@@ -282,7 +284,7 @@ async function getHiringPartners() {
 }
 
 
-document.querySelector('#submit-search-event').addEventListener('click', function(e) {
+document.querySelector('#submit-search-event').addEventListener('click', function (e) {
     const searchInput = document.querySelector('#academy-events-search').value
     e.preventDefault()
     if ((searchInput.length) && searchInput.length < 256) {
@@ -296,7 +298,7 @@ document.querySelector('#submit-search-event').addEventListener('click', functio
     }
 })
 
-document.querySelector('#clear-search').addEventListener('click', function(e) {
+document.querySelector('#clear-search').addEventListener('click', function (e) {
     e.preventDefault()
     if (!window.location.href.includes('#events-list')) {
         window.location.href += '#events-list'

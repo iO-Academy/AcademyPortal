@@ -16,6 +16,17 @@
     overflow: auto;
 }
 
+.event .header h4 span {
+    padding: 7px 10px;
+    border-radius: 3px;
+}
+.event .header h4 span:nth-child(1) {
+    margin-left: 20px;
+}
+.event .header h4 span:nth-child(2) {
+    margin-left: 10px;
+}
+
 .event:last-child {
     border-bottom: none;
 }
@@ -53,19 +64,54 @@
 .event .moreInfo {
     margin-top: 10px;
 }
+.moreInfo span {
+    font-weight: bold;
+    color: #333333;
+    font-size: 20px;
+    display: block;
+}
+
+.moreInfo p {
+    font-size: 18px;
+}
+
+.mainInfoEvent {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 20px 0;
+}
+
+.mainInfoEvent p:nth-child(1) {
+    padding: 0 25px 0 0;
+}
+
+.mainInfoEvent p:nth-child(1n + 2) {
+    padding: 0 25px;
+    border-left: 1px solid #333333;
+}
 
 .event p {
     overflow-wrap: break-word;
 }
 
 .event-attendees {
+    margin-top: 30px;
+    padding: 15px 20px;
     overflow: auto;
-    border: 1px solid #333333;
+    background: #eee;
 }
+
+.event-attendees div.addHiringPartner:nth-child(2) {
+    border-left: 1px solid #333333;
+    padding: 0 20px 0 40px;
+
+}
+
 
 .hiring-partners {
     min-height: 0;
-    border-right: 1px solid #333333;
+    padding: 0 40px 0 0;
 }
 
 .hiring-partner {
@@ -78,6 +124,11 @@
     margin-top: 7px;
 }
 
+.hiring-partner span {
+    display: inline-block;
+    font-size: 18px;
+}
+
 .hiring-partner .btn {
     float: right;
     margin: 0;
@@ -87,13 +138,25 @@
     margin-bottom: 10px;
 }
 
+.addHiringPartnerForm button {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
 .addHiringPartnerForm input,
 .addHiringPartnerForm label {
     margin: 0;
+    font-size: 18px;
+}
+.addHiringPartnerForm label {
+    font-weight: bold;
 }
 
 .addHiringPartnerForm select {
     display: block;
+    margin: 10px 0;
+    font-size: 18px;
+    padding: 5px;
 }
 
 .addHiringPartnerForm .companyAttendees {
