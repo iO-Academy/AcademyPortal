@@ -25,8 +25,7 @@ if (assessmentDaySelected === ''){
     customAssessmentDayContainer.classList.add('hidden');
 }
 assessmentDayInput.addEventListener('change', evt => {
-    const optionIDSelected = assessmentDayInput.options[assessmentDayInput.selectedIndex].value;
-    if (optionIDSelected === '0'){
+    if (assessmentDayInput.selectedIndex === 0){
         customAssessmentDayContainer.classList.add('hidden');
         document.querySelector('#customAssessmentDay').value = '';
     } else {
