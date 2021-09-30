@@ -64,6 +64,11 @@ class ApplicantValidator
         DateTimeValidator::validateTime($applicant['assessmentTime']);
         DateTimeValidator::validateDateTime($applicant['dateTimeAdded']);
 
+        if (empty($applicant['assessmentDay']) && !empty($applicant['customAssessmentDay'])){
+        	throw new \Exception('Cannot have a custom assessment date without an assessment day assigned.');
+        }
+        DateTimeValidator::validateDateTime($applicant['customAssessmentDay']);
+
         $feePaymentMethods = (int)$applicant['upfront'] + (int)$applicant['edaid'] + (int)$applicant['diversitech'];
 
         if (
