@@ -22,6 +22,7 @@
     }
   ],
   "require": {
+    "sendgrid/sendgrid": "~7",
     "php": ">=7.1",
     "ext-json": "*",
     "ext-pdo": "*",
