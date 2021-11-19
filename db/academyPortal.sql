@@ -5,9 +5,9 @@
 # https://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.34)
+# Host: 127.0.0.1 (MySQL 5.7.30)
 # Database: academyPortal
-# Generation Time: 2021-07-29 15:34:29 +0000
+# Generation Time: 2021-11-19 09:34:12 +0000
 # ************************************************************
 
 
@@ -146,7 +146,7 @@ LOCK TABLES `applicants_additional` WRITE;
 
 INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `tasterId`, `tasterAttendance`, `team`, `githubUsername`, `portfolioUrl`, `pleskHostingUrl`, `githubEducationLink`, `additionalNotes`, `chosenCourseId`, `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`, `inductionEmailSent`, `signedNDA`, `checkedID`, `dataProtectionName`, `dataProtectionPhoto`, `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`, `contactFormSigned`)
 VALUES
-	(2,1,73,2020,'13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',0,1000,8000,1000,'2020-08-05','10:30',3,1,0,3,NULL,0,1,NULL,'','','',NULL,NULL,NULL,36,NULL,0,0,0,0,0,0,0,0,0,0,0),
+	(2,1,73,8,'13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',0,1000,8000,1000,'2020-08-05','10:30',3,1,0,3,NULL,0,1,NULL,'','','',NULL,2,NULL,36,NULL,0,0,0,0,0,0,0,0,0,0,0),
 	(3,0,73,2020,'13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(5,0,73,2020,'13:00','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',NULL,1000,8000,1000,'2020-08-05','10:30',3,1,NULL,3,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(10,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -207,6 +207,32 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table cohorts
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `cohorts`;
+
+CREATE TABLE `cohorts` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `date` date DEFAULT NULL,
+  `deleted` tinyint(4) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `cohorts` WRITE;
+/*!40000 ALTER TABLE `cohorts` DISABLE KEYS */;
+
+INSERT INTO `cohorts` (`id`, `date`, `deleted`)
+VALUES
+	(1,'2018-08-01',0),
+	(2,'2019-02-01',0),
+	(3,'2019-08-01',0),
+	(4,'2020-02-01',0);
+
+/*!40000 ALTER TABLE `cohorts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table company_sizes
 # ------------------------------------------------------------
 
@@ -251,7 +277,6 @@ LOCK TABLES `course_choice` WRITE;
 
 INSERT INTO `course_choice` (`id`, `courseId`, `applicantId`)
 VALUES
-	(4,2,2),
 	(8,2,8),
 	(15,1,13),
 	(16,2,13),
@@ -295,7 +320,8 @@ VALUES
 	(62,1,35),
 	(63,2,35),
 	(66,1,36),
-	(67,2,36);
+	(67,2,36),
+	(68,2,2);
 
 /*!40000 ALTER TABLE `course_choice` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -393,6 +419,32 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table events_hiring_partner_link_table
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `events_hiring_partner_link_table`;
+
+CREATE TABLE `events_hiring_partner_link_table` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) unsigned NOT NULL,
+  `hiring_partner_id` int(11) unsigned NOT NULL,
+  `people_attending` int(11) unsigned DEFAULT NULL,
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `events_hiring_partner_link_table` WRITE;
+/*!40000 ALTER TABLE `events_hiring_partner_link_table` DISABLE KEYS */;
+
+INSERT INTO `events_hiring_partner_link_table` (`id`, `event_id`, `hiring_partner_id`, `people_attending`, `deleted`)
+VALUES
+	(1,3,3,10,0),
+	(2,4,4,12,0);
+
+/*!40000 ALTER TABLE `events_hiring_partner_link_table` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table events_hiring_partners
 # ------------------------------------------------------------
 
@@ -444,6 +496,34 @@ VALUES
 	(6,'Yoda',0);
 
 /*!40000 ALTER TABLE `hear_about` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table hearAbout
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `hearAbout`;
+
+CREATE TABLE `hearAbout` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `hearAbout` varchar(150) DEFAULT NULL,
+  `deleted` tinyint(4) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `hearAbout` WRITE;
+/*!40000 ALTER TABLE `hearAbout` DISABLE KEYS */;
+
+INSERT INTO `hearAbout` (`id`, `hearAbout`, `deleted`)
+VALUES
+	(1,'Google',0),
+	(2,'Newspaper',0),
+	(3,'Back of the toilet door',0),
+	(4,'Telepathy',0),
+	(5,'North Korea',0),
+	(6,'Yoda',0);
+
+/*!40000 ALTER TABLE `hearAbout` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
