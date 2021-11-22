@@ -1,3 +1,5 @@
+
+
 function updateStage(url, applicantId, btnNextStage) {
     fetch(url).then(
         function(response) {
@@ -22,6 +24,7 @@ function updateStage(url, applicantId, btnNextStage) {
 $(document).ready(function(){
     $(".btnNextStage").click(function(){
         const stageId = this.dataset.stageid;
+        const nextStageId = parseInt(stageId) + 1;
         const applicantId = this.dataset.applicantid;
         const thisButton  = this;
         var url = './api/getNextStageOptions/' + stageId + '?applicantId=' + applicantId;
@@ -35,6 +38,8 @@ $(document).ready(function(){
                         return;
                     }
                     response.json().then(function(data) {
+                        document.getElementById('currentStageNumber').innerHTML =  '<h4>Stage ' + stageId + ' of 9</h4>';
+                        document.getElementById('nextStageNumber').innerHTML ='<h4>Stage ' + nextStageId  + ' of 9</h4>';
                         document.querySelector('#next-stage-options').innerHTML = '<option>Please select an Option</option>';
                         const alert = document.querySelector('#passwordMessage')
                         if (data['data']['password']) {
