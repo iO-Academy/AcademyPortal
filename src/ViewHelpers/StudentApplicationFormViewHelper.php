@@ -43,7 +43,8 @@ class StudentApplicationFormViewHelper
         // REPLACE WITH A DROPDOWN - - > hear about us dropdown list.
         $output .= '<label> Course Report </label>';
         $output .= '<input type="radio" value="I am eligible to live and work in the UK"/>';
-        $output .= '<input type="radio" value="I confirm that I am at least 18 years of age before my chosen course start date"/>';
+        $output .= '<input type="radio" value="I confirm that I am at least 18 years 
+of age before my chosen course start date"/>';
         $output .= '<input type="radio" value="I am eligible to live and work in the UK"/>';
         $output .= '<p>By using this form you agree with the storage and handling of your data
  by this website in accordance with our terms and conditions and privacy policy.</p>';
@@ -56,10 +57,15 @@ class StudentApplicationFormViewHelper
         $output = '<h2>Ready to submit?</h2>';
         $output .= '<p>Next Steps</p>';
         $output .= '<ul>';
-        $output .= '<li>We’ll read through your application and be in touch within the next few days.</li>';
-        $output .= '<li>We will send you our problem-solving test via email. You’ll have ten days to complete this. (Don’t worry, no coding knowledge needed!)</li>';
-        $output .= '<li>We will also arrange an informal chat between you and one of our trainers.</li>';
-        $output .= '<li>After your chat with a trainer, we will be in touch within five working days to let you know whether your application has been successful and talk next steps!</li>';
+        $output .= '<li>We’ll read through your application and 
+be in touch within the next few days.</li>';
+        $output .= '<li>We will send you our problem-solving test via email. 
+You’ll have ten days to complete this. (Don’t worry, no coding knowledge needed!)</li>';
+        $output .= '<li>We will also arrange an informal chat 
+between you and one of our trainers.</li>';
+        $output .= '<li>After your chat with a trainer, we will be in touch within
+ five working days to let you know whether your application 
+ has been successful and talk next steps!</li>';
         $output .= '</ul>';
         return $output;
     }
