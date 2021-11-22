@@ -4,7 +4,8 @@ namespace Portal\ViewHelpers;
 
 class StudentApplicationFormViewHelper
 {
-    protected static function displayPageFormOne(array $data): string {
+    protected static function displayPageFormOne(array $data): string
+    {
         $output = '<input type="text" placeholder="Full Name">';
         $output .= '<input type="email" placeholder="Email">';
         $output .= '<input type="tel" placeholder="Phone Number">';
@@ -12,7 +13,8 @@ class StudentApplicationFormViewHelper
         return $output;
     }
 
-    protected static function displayPageFormTwo(array $data): string {
+    protected static function displayPageFormTwo(array $data): string
+    {
         $output = '<label>Background </label>'; // REPLACE WITH A DROPDOWN --> fetch background from DB and add to populateDropdown
         $output .= '<label>Why do you want to become a developer?';
         $output .= '<input type="text" placeholder="(100 - 500 characters)">';
@@ -20,14 +22,16 @@ class StudentApplicationFormViewHelper
         return $output;
     }
 
-    protected static function displayPageFormThree(): string {
+    protected static function displayPageFormThree(): string
+    {
         $output = '<label>Any past coding experience?';
         $output .= '<input type="text" placeholder="Most people write a few sentences">';
         $output .= '</label>';
         return $output;
     }
 
-    protected static function displayPageFormFour(array $data): string {
+    protected static function displayPageFormFour(array $data): string
+    {
         $output = '<label>Select start date(s)';
         $output .= '<input type="checkbox">'; //get cohorts from DB and for each
         $output .= '<input type="checkbox" value="next available online course">';
@@ -43,7 +47,8 @@ class StudentApplicationFormViewHelper
         return $output;
     }
 
-    protected static function displayPageFormFive(): string {
+    protected static function displayPageFormFive(): string
+    {
         $output = '<h2>Ready to submit?</h2>';
         $output .= '<p>Next Steps</p>';
         $output .= '<ul>';
@@ -55,10 +60,11 @@ class StudentApplicationFormViewHelper
         return $output;
     }
 
-    public static function displayPageByNumber(int $applicationFormPageNumber = 1, array $data = []): string {
-        switch ($applicationFormPageNumber){
+    public static function displayPageByNumber(int $applicationFormPageNumber = 1, array $data = []): string
+    {
+        switch ($applicationFormPageNumber) {
             case 2:
-               $output = self::displayPageFormTwo($data);
+                $output = self::displayPageFormTwo($data);
                 break;
             case 3:
                 $output = self::displayPageFormThree();
