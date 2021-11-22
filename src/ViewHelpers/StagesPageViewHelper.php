@@ -22,7 +22,9 @@ class StagesPageViewHelper
         $counter = 1;
         foreach ($stages as $stage) {
             if ($stage instanceof StageEntity) {
-                $isStudent = $stage->getStudent() ? ' checked' : '';
+                $isStudent = $stage->getStudent() ? 'checked' : '';
+                $isWithdrawn = $stage->getWithdrawn() ? 'checked' : '';
+                $isRejected = $stage->getRejected() ? 'checked' : '';
 
                 $result .= '<tr class="" data-id="' . $stage->getStageId() . '">';
                 $result .= '<td class="order">';
@@ -32,15 +34,45 @@ class StagesPageViewHelper
                 $result .= '<p class="stageTitle">' . $stage->getStageTitle();
                 if ($stage->getStudent()) {
                     $result .= '<i class="glyphicon glyphicon-education text-success"></i>';
+                } elseif ($stage->getWithdrawn()) {
+                    $result .= '<i class="glyphicon glyphicon-remove text-success"></i>';
+                } elseif ($stage->getRejected()) {
+                    $result .= '<i class="glyphicon glyphicon-exclamation-sign text-success"></i>';
                 }
                 $result .= '</p>';
                 $result .= '<form data-id="' . $stage->getStageId() . '" class="stagesTableForm form-inline">';
+               //Test dropdown:
+//                $result .= '<div>';
+//                $result .= '<label for="stages">Select Stage:</label>';
+//                $result .= '<select name="stages" id="stages">';
+//                $result .= '<option type="checkbox" name="student"' . $isStudent . '>Student</option>';
+//                $result .= '<option type="checkbox" name="withdrawn"' . $isWithdrawn . '>Withdrawn</option>';
+//                $result .= '<option type="checkbox" name="rejected"' . $isRejected . '>Rejected</option>';
+//                $result .= '</select>';
+//                $result .= '</div>';
+
+                //Previous Student Stage checkbox:
                 $result .= '<div>';
                 $result .= '<label>Student stage:';
-                $result .= ' <input type="checkbox" name="student"' . $isStudent . '> ';
+                $result .= '</label>';
+                $result .= '<input type="checkbox" name="student"' . $isStudent . '>';
                 $result .= '<i class="glyphicon glyphicon-education text-success"></i>';
+                $result .= '</div>';
+
+                $result .= '<div>';
+                $result .= '<label>Withdrawn stage:';
+                $result .= '<input type="checkbox" name="withdrawn"' . $isWithdrawn . '>';
+                $result .= '<i class="glyphicon glyphicon-remove text-success"></i>';
                 $result .= '</label>';
                 $result .= '</div>';
+
+                $result .= '<div>';
+                $result .= '<label>Rejected stage:';
+                $result .= '<input type="checkbox" name="rejected"' . $isRejected . '>';
+                $result .= '<i class="glyphicon glyphicon-exclamation-sign text-success"></i>';
+                $result .= '</label>';
+                $result .= '</div>';
+
                 $result .= '<input type="text" class="form-control stageEditTitle"';
                 $result .= 'value="' . $stage->getStageTitle() . '"/>';
                 $result .= '<input type="submit" class="stageEditSubmit btn btn-success" value="Edit">';
