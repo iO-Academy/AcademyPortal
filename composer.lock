@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "897b2af5a363f7ddad72dd2fa5c3fa6d",
+    "content-hash": "0905095d29f23a319d0da8d30ac2cdaa",
     "packages": [
         {
             "name": "fig/http-message-util",
@@ -866,16 +866,16 @@
         },
         {
             "name": "sendgrid/sendgrid",
-            "version": "7.10.0",
+            "version": "7.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sendgrid/sendgrid-php.git",
-                "reference": "61ecad42aa205a5ac8369675120ff577e2a9da36"
+                "reference": "3dcfc4db6583d5fa581248bb486418963804620d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sendgrid/sendgrid-php/zipball/61ecad42aa205a5ac8369675120ff577e2a9da36",
-                "reference": "61ecad42aa205a5ac8369675120ff577e2a9da36",
+                "url": "https://api.github.com/repos/sendgrid/sendgrid-php/zipball/3dcfc4db6583d5fa581248bb486418963804620d",
+                "reference": "3dcfc4db6583d5fa581248bb486418963804620d",
                 "shasum": ""
             },
             "require": {
@@ -925,9 +925,9 @@
             ],
             "support": {
                 "issues": "https://github.com/sendgrid/sendgrid-php/issues",
-                "source": "https://github.com/sendgrid/sendgrid-php/tree/7.10.0"
+                "source": "https://github.com/sendgrid/sendgrid-php/tree/7.11.0"
             },
-            "time": "2021-10-18T18:35:30+00:00"
+            "time": "2021-11-17T19:32:14+00:00"
         },
         {
             "name": "slim/php-view",
@@ -3062,7 +3062,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1",
+        "php": ">=7.4",
         "ext-json": "*",
         "ext-pdo": "*"
     },
