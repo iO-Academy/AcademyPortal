@@ -3,26 +3,23 @@
 namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Models\ApplicationFormModel;
 use Portal\Models\EventModel;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 
-class GetApplicationFormController extends Controller
+class GetGenderController extends Controller
 {
     private $applicationFormModel;
-    private $eventModel;
 
     /**
      * GetApplicationFormController constructor.
      *
      * @param ApplicationFormModel $applicationFormModel
-     * @param EventModel $eventModel
      */
-    public function __construct(ApplicationFormModel $applicationFormModel, EventModel $eventModel)
+    public function __construct(ApplicationFormModel $applicationFormModel)
     {
         $this->applicationFormModel = $applicationFormModel;
-        $this->eventModel = $eventModel;
     }
 
     /**
@@ -44,12 +41,8 @@ class GetApplicationFormController extends Controller
                     'success' => true,
                     'message' => 'Retrieved dropdown info.',
                     'data' => [
-                        'cohorts' => $this->applicationFormModel->getCohorts(),
-                        'hearAbout' => $this->applicationFormModel->getHearAbout(),
-                        'gender' => $this->applicationFormModel->getGenders(),
-                        'backgroundInfo' => $this->applicationFormModel->getBackgroundInfo(),
-                        'tasters' => $this->eventModel->getEventsByCategoryId(3, 3),
-                        'assessments' => $this->eventModel->getEventsByCategoryId(4)
+                        'stages' => $this->applicationFormModel->getGenders()
+
                     ]
                 ];
             } catch (\Exception $e) {

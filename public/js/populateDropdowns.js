@@ -10,8 +10,23 @@ let getStageOptions = () => {
   }).then(response => response.json());
 };
 
+let getGenderOptions = () => {
+  return fetch('./api/getGender', {
+    credentials: 'same-origin',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  }).then(response => response.json());
+};
+
 let handleStageOptions = async () => {
   let response = await getStageOptions();
+  return response.data;
+};
+
+let handleGenderOptions = async () => {
+  let response = await getGenderOptions();
   return response.data;
 };
 
@@ -158,6 +173,21 @@ let outputHearAbout = (options) => {
   });
 
   element.innerHTML = hearAboutOptions;
+};
+
+let outputGender = (options) => {
+  const element = document.getElementById('gender');
+  let genderOptions = '';
+
+  options.forEach(item => {
+    genderOptions += '<option ';
+    if (element.dataset.selected === item.id) {
+      genderOptions += 'selected ';
+    }
+    genderOptions += `value="${item.id}">${item.gender}</option>`;
+  });
+
+  element.innerHTML = genderOptions;
 };
 
 let outputBackgroundInfo = (options) => {
