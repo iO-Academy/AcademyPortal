@@ -5,9 +5,9 @@
 # https://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.30)
+# Host: 127.0.0.1 (MySQL 5.5.5-10.6.4-MariaDB-1:10.6.4+maria~focal)
 # Database: academyPortal
-# Generation Time: 2021-11-19 09:34:12 +0000
+# Generation Time: 2021-11-22 16:18:19 +0000
 # ************************************************************
 
 
@@ -31,59 +31,61 @@ CREATE TABLE `applicants` (
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `phoneNumber` varchar(20) DEFAULT NULL,
-  `whyDev` text,
-  `codeExperience` text,
+  `whyDev` text DEFAULT NULL,
+  `codeExperience` text DEFAULT NULL,
   `hearAboutId` int(11) DEFAULT NULL,
   `eligible` enum('1','0') DEFAULT NULL,
   `eighteenPlus` enum('1','0') DEFAULT NULL,
   `finance` enum('1','0') DEFAULT NULL,
-  `notes` text,
-  `stageId` int(11) NOT NULL DEFAULT '1',
+  `notes` text DEFAULT NULL,
+  `stageId` int(11) NOT NULL DEFAULT 1,
   `stageOptionId` int(11) DEFAULT NULL,
-  `dateTimeAdded` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `deleted` tinyint(4) DEFAULT '0',
+  `dateTimeAdded` timestamp NULL DEFAULT current_timestamp(),
+  `deleted` tinyint(4) DEFAULT 0,
   `backgroundInfoId` varchar(1) DEFAULT NULL,
   `profile_password` varchar(68) DEFAULT '',
+  `gender` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `applicants` WRITE;
 /*!40000 ALTER TABLE `applicants` DISABLE KEYS */;
 
-INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`, `backgroundInfoId`, `profile_password`)
+INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`, `backgroundInfoId`, `profile_password`, `gender`)
 VALUES
-	(2,'Owen Miller','weqi@mailinator.net','+532-82-1263991','Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea','Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat',3,'1','1','1','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',6,NULL,'2018-11-24 21:26:00',0,'1',''),
-	(3,'Nero Burgess','famaxykivo@yahoo.com','+124-85-7626938','Perspiciatis fugiat possimus tempor dolores nesciunt consequatur voluptatem','Quibusdam officiis occaecat velit error sunt ratione voluptatem',5,'1','1','1','Sint voluptas ut nihil incididunt officia duis ab eius impedit consequatur Incidunt do aut doloribus proident quos dolores pariatur Sed',6,NULL,'2018-11-28 14:29:58',0,NULL,''),
-	(4,'Matthew Jarvis','tucawohuw@mailinator.net','+848-54-4778506','Natus quidem magnam autem corrupti laborum Anim quos quia','Dolor quia dignissimos qui excepturi eos voluptas est',6,'1','0','0','Quod harum esse quia maxime explicabo Voluptatem magna soluta voluptate optio',1,NULL,'2018-11-28 14:33:41',0,NULL,''),
-	(5,'Ignacia Watkins','qewopepodi@mailinator.com','+613-35-8385501','Excepturi consequatur Est culpa enim itaque ratione optio minima ullamco voluptates dolor et totam','Earum est iure sed fuga Velit',6,'0','0','0','Impedit aut duis laborum aspernatur amet aliquip tempora harum nulla aut',6,NULL,'2018-11-28 14:42:01',0,NULL,''),
-	(6,'Luke Haney','wubeqyko@mailinator.com','+942-61-9779862','Nemo id qui aspernatur possimus dolor adipisicing aut est sed minim','Consequatur quia voluptate delectus impedit similique',6,'0','0','0','Non sed modi ab culpa sed quia tempore debitis dolor',1,NULL,'2018-11-28 14:52:20',0,NULL,''),
-	(7,'Curran Patel','pudapaceje@mailinator.net','+628-48-1465496','Non voluptas eligendi assumenda et itaque cupidatat ut tempor','Et aliqua Quia sit soluta enim nesciunt vitae consequatur Aut repellendus Soluta magni',2,'1','0','0','Quos fugiat qui et enim eum tempor est modi',3,7,'2018-11-28 22:53:05',0,NULL,''),
-	(8,'Katelyn Parsons','poipoi@qwerty.com','+567-54-9746748','Aut est et est esse mollitia laborum','Fuga Enim omnis anim et error aut et voluptate anim blanditiis dolorem voluptatem facilis',2,'0','0','0','Similique velit qui nisi debitis aliquip lorem dolor commodi assumenda quod quod autem amet eu mollitia quod necessitatibus',2,9,'2018-11-28 23:10:12',0,NULL,''),
-	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555','Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit',1,NULL,'2018-11-28 23:10:47',0,NULL,''),
-	(13,'EStera','2@c.com','09878878676','for making friends','none',1,'1','1','1','n/a',2,10,'2021-07-27 11:49:00',0,'1',''),
-	(14,'alex ferreira','alex@yahoo.com','098778767654','for making friends','none',1,'1','1','1','bonjour',2,9,'2021-07-27 13:36:00',0,'1',''),
-	(15,'dasdasd','dasds@ii.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,10,'2021-07-27 15:53:09',0,'1',''),
-	(16,'dasdasd','dasds@ii.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,9,'2021-07-27 15:53:17',0,'1',''),
-	(17,'dasdasd','dasds@iyahoo.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,9,'2021-07-27 15:53:28',0,'1',''),
-	(18,'dasdasd','dasds@yahoo.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',6,NULL,'2021-07-27 15:53:00',0,'1',''),
-	(19,'dasdasd','dasds@yahoo.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',1,NULL,'2021-07-27 15:53:00',0,'1',''),
-	(20,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:54:58',0,'1',''),
-	(21,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:25',0,'1',''),
-	(22,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:26',0,'1',''),
-	(23,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:26',0,'1',''),
-	(24,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1',''),
-	(25,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1',''),
-	(26,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1',''),
-	(27,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:35',0,'1',''),
-	(28,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:35',0,'1',''),
-	(29,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:36',0,'1',''),
-	(30,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:20',0,'1',''),
-	(31,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:23',0,'1',''),
-	(32,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:23',0,'1',''),
-	(33,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:24',0,'1',''),
-	(34,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:24',0,'1',''),
-	(35,'piteerrr','yqasv@znkn.com','09876656545','zzrlJZk0S0','huTCwPP5pa',1,'1','1','0','WaVcYvEmeJ',1,NULL,'2021-07-28 13:07:22',0,'1',''),
-	(36,'teeeessssteeeer','8bqqt@zjqt.com','09876656545','p6SMpIbkfu','dKFIBUFxMT',1,'1','1','1','kKAwYxjlgz',1,NULL,'2021-07-28 13:15:00',0,'1','');
+	(2,'Owen Miller','weqi@mailinator.net','+532-82-1263991','Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea','Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat',3,'1','1','1','Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus',6,NULL,'2018-11-24 21:26:00',0,'1','',NULL),
+	(3,'Nero Burgess','famaxykivo@yahoo.com','+124-85-7626938','Perspiciatis fugiat possimus tempor dolores nesciunt consequatur voluptatem','Quibusdam officiis occaecat velit error sunt ratione voluptatem',5,'1','1','1','Sint voluptas ut nihil incididunt officia duis ab eius impedit consequatur Incidunt do aut doloribus proident quos dolores pariatur Sed',6,NULL,'2018-11-28 14:29:58',0,NULL,'',NULL),
+	(4,'Matthew Jarvis','tucawohuw@mailinator.net','+848-54-4778506','Natus quidem magnam autem corrupti laborum Anim quos quia','Dolor quia dignissimos qui excepturi eos voluptas est',6,'1','0','0','Quod harum esse quia maxime explicabo Voluptatem magna soluta voluptate optio',1,NULL,'2018-11-28 14:33:41',0,NULL,'',NULL),
+	(5,'Ignacia Watkins','qewopepodi@mailinator.com','+613-35-8385501','Excepturi consequatur Est culpa enim itaque ratione optio minima ullamco voluptates dolor et totam','Earum est iure sed fuga Velit',6,'0','0','0','Impedit aut duis laborum aspernatur amet aliquip tempora harum nulla aut',6,NULL,'2018-11-28 14:42:01',0,NULL,'',NULL),
+	(6,'Luke Haney','wubeqyko@mailinator.com','+942-61-9779862','Nemo id qui aspernatur possimus dolor adipisicing aut est sed minim','Consequatur quia voluptate delectus impedit similique',6,'0','0','0','Non sed modi ab culpa sed quia tempore debitis dolor',1,NULL,'2018-11-28 14:52:20',0,NULL,'',NULL),
+	(7,'Curran Patel','pudapaceje@mailinator.net','+628-48-1465496','Non voluptas eligendi assumenda et itaque cupidatat ut tempor','Et aliqua Quia sit soluta enim nesciunt vitae consequatur Aut repellendus Soluta magni',2,'1','0','0','Quos fugiat qui et enim eum tempor est modi',3,7,'2018-11-28 22:53:05',0,NULL,'',NULL),
+	(8,'Katelyn Parsons','poipoi@qwerty.com','+567-54-9746748','Aut est et est esse mollitia laborum','Fuga Enim omnis anim et error aut et voluptate anim blanditiis dolorem voluptatem facilis',2,'0','0','0','Similique velit qui nisi debitis aliquip lorem dolor commodi assumenda quod quod autem amet eu mollitia quod necessitatibus',2,9,'2018-11-28 23:10:12',0,NULL,'',NULL),
+	(9,'Keith Owens','tovipuz@mailinator.net','+353-29-4533555','Non molestias eos do aperiam quia vitae elit nihil sed autem id quia voluptate in ea ullam officiis','In quas corrupti commodo id non et tempora vitae vel ad',2,'0','1','1','Magni sed sit qui odit',1,NULL,'2018-11-28 23:10:47',0,NULL,'',NULL),
+	(13,'EStera','2@c.com','09878878676','for making friends','none',1,'1','1','1','n/a',2,10,'2021-07-27 11:49:00',0,'1','',NULL),
+	(14,'alex ferreira','alex@yahoo.com','098778767654','for making friends','none',1,'1','1','1','bonjour',2,9,'2021-07-27 13:36:00',0,'1','',NULL),
+	(15,'dasdasd','dasds@ii.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,10,'2021-07-27 15:53:09',0,'1','',NULL),
+	(16,'dasdasd','dasds@ii.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,9,'2021-07-27 15:53:17',0,'1','',NULL),
+	(17,'dasdasd','dasds@iyahoo.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',2,9,'2021-07-27 15:53:28',0,'1','',NULL),
+	(18,'dasdasd','dasds@yahoo.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',6,NULL,'2021-07-27 15:53:00',0,'1','',NULL),
+	(19,'dasdasd','dasds@yahoo.com','07405678902','HQtxlQCKXD','NurzxLjFJX',1,'1','1','1','K1CADDi4Xc',1,NULL,'2021-07-27 15:53:00',0,'1','',NULL),
+	(20,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:54:58',0,'1','',NULL),
+	(21,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:25',0,'1','',NULL),
+	(22,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:26',0,'1','',NULL),
+	(23,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:26',0,'1','',NULL),
+	(24,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1','',NULL),
+	(25,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1','',NULL),
+	(26,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:34',0,'1','',NULL),
+	(27,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:35',0,'1','',NULL),
+	(28,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:35',0,'1','',NULL),
+	(29,'estera','bur4c@lsvx.com','09876656545','akWlcIQQQs','wxiPfdEllG',1,'1','1','1','Ou1uPvs8Iv',1,NULL,'2021-07-27 15:56:36',0,'1','',NULL),
+	(30,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:20',0,'1','',NULL),
+	(31,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:23',0,'1','',NULL),
+	(32,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:23',0,'1','',NULL),
+	(33,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:24',0,'1','',NULL),
+	(34,'piteerrr','pcxvl@r7cs.com','09876656545','Cz3KGHOe3I','0SlVMtzIts',1,'1','1','1','Ms5ZXBf3tr',1,NULL,'2021-07-27 15:57:24',0,'1','',NULL),
+	(35,'piteerrr','yqasv@znkn.com','09876656545','zzrlJZk0S0','huTCwPP5pa',1,'1','1','0','WaVcYvEmeJ',1,NULL,'2021-07-28 13:07:22',0,'1','',NULL),
+	(36,'teeeessssteeeer','8bqqt@zjqt.com','09876656545','p6SMpIbkfu','dKFIBUFxMT',1,'1','1','1','kKAwYxjlgz',1,NULL,'2021-07-28 13:15:00',0,'1','',NULL),
+	(37,'Potato','potato@potato.com','07777777777','Because I love potatoes','I made potatoes into a code snippet which will solve world peace',4,'1','1','1','Potatoes',1,NULL,'2021-11-22 15:34:55',0,'1','','male');
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -100,7 +102,7 @@ CREATE TABLE `applicants_additional` (
   `aptitude` int(3) DEFAULT NULL,
   `assessmentDay` int(3) DEFAULT NULL,
   `assessmentTime` varchar(5) DEFAULT NULL,
-  `assessmentNotes` text,
+  `assessmentNotes` text DEFAULT NULL,
   `diversitechInterest` int(1) DEFAULT NULL,
   `diversitech` int(5) DEFAULT NULL,
   `edaid` int(5) DEFAULT NULL,
@@ -118,7 +120,7 @@ CREATE TABLE `applicants_additional` (
   `portfolioUrl` varchar(255) DEFAULT NULL,
   `pleskHostingUrl` varchar(255) DEFAULT NULL,
   `githubEducationLink` varchar(255) DEFAULT NULL,
-  `additionalNotes` text,
+  `additionalNotes` text DEFAULT NULL,
   `chosenCourseId` int(11) unsigned DEFAULT NULL,
   `attitude` int(3) DEFAULT NULL,
   `averageScore` int(3) DEFAULT NULL,
@@ -175,7 +177,8 @@ VALUES
 	(33,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(34,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(35,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(36,0,NULL,NULL,'','',0,NULL,NULL,NULL,NULL,'',NULL,0,0,NULL,NULL,0,NULL,NULL,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0);
+	(36,0,NULL,NULL,'','',0,NULL,NULL,NULL,NULL,'',NULL,0,0,NULL,NULL,0,NULL,NULL,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
+	(37,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `applicants_additional` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -189,7 +192,7 @@ DROP TABLE IF EXISTS `background_info`;
 CREATE TABLE `background_info` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `backgroundInfo` varchar(40) DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
+  `deleted` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -215,7 +218,7 @@ DROP TABLE IF EXISTS `cohorts`;
 CREATE TABLE `cohorts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `date` date DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
+  `deleted` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -321,7 +324,8 @@ VALUES
 	(63,2,35),
 	(66,1,36),
 	(67,2,36),
-	(68,2,2);
+	(68,2,2),
+	(69,2,37);
 
 /*!40000 ALTER TABLE `course_choice` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -339,7 +343,7 @@ CREATE TABLE `courses` (
   `name` varchar(255) DEFAULT NULL,
   `trainer` varchar(255) DEFAULT NULL,
   `notes` varchar(500) DEFAULT NULL,
-  `deleted` int(1) NOT NULL DEFAULT '0',
+  `deleted` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -394,8 +398,8 @@ CREATE TABLE `events` (
   `date` date NOT NULL,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
-  `notes` text,
-  `availableToHP` tinyint(1) NOT NULL DEFAULT '0',
+  `notes` text DEFAULT NULL,
+  `availableToHP` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `category` (`category`),
   CONSTRAINT `events_ibfk_1` FOREIGN KEY (`category`) REFERENCES `event_categories` (`id`)
@@ -429,7 +433,7 @@ CREATE TABLE `events_hiring_partner_link_table` (
   `event_id` int(11) unsigned NOT NULL,
   `hiring_partner_id` int(11) unsigned NOT NULL,
   `people_attending` int(11) unsigned DEFAULT NULL,
-  `deleted` tinyint(4) NOT NULL DEFAULT '0',
+  `deleted` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -455,7 +459,7 @@ CREATE TABLE `events_hiring_partners` (
   `event_id` int(11) unsigned NOT NULL,
   `hiring_partner_id` int(11) unsigned NOT NULL,
   `people_attending` int(11) unsigned DEFAULT NULL,
-  `deleted` tinyint(4) NOT NULL DEFAULT '0',
+  `deleted` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -471,6 +475,31 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table gender
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `gender`;
+
+CREATE TABLE `gender` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `gender` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `gender` WRITE;
+/*!40000 ALTER TABLE `gender` DISABLE KEYS */;
+
+INSERT INTO `gender` (`id`, `gender`)
+VALUES
+	(1,'Male'),
+	(2,'Female'),
+	(3,'Non-binary'),
+	(4,'Prefer not to say');
+
+/*!40000 ALTER TABLE `gender` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table hear_about
 # ------------------------------------------------------------
 
@@ -479,7 +508,7 @@ DROP TABLE IF EXISTS `hear_about`;
 CREATE TABLE `hear_about` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `hearAbout` varchar(150) DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
+  `deleted` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -507,7 +536,7 @@ DROP TABLE IF EXISTS `hearAbout`;
 CREATE TABLE `hearAbout` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `hearAbout` varchar(150) DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
+  `deleted` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -535,7 +564,7 @@ DROP TABLE IF EXISTS `hiring_partner_companies`;
 CREATE TABLE `hiring_partner_companies` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `size` tinyint(2) DEFAULT '0',
+  `size` tinyint(2) DEFAULT 0,
   `tech_stack` varchar(600) DEFAULT NULL,
   `postcode` varchar(255) DEFAULT NULL,
   `phone_number` varchar(255) DEFAULT NULL,
@@ -564,7 +593,7 @@ CREATE TABLE `hiring_partner_contacts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `email` varchar(255) NOT NULL DEFAULT '',
-  `is_primary_contact` tinyint(1) NOT NULL DEFAULT '1',
+  `is_primary_contact` tinyint(1) NOT NULL DEFAULT 1,
   `job_title` varchar(255) DEFAULT NULL,
   `hiring_partner_company_id` int(11) unsigned NOT NULL,
   `phone` varchar(255) DEFAULT NULL,
@@ -594,7 +623,7 @@ CREATE TABLE `options` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `option` varchar(255) NOT NULL,
   `stageId` int(11) NOT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -629,8 +658,8 @@ CREATE TABLE `stages` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `order` int(11) DEFAULT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
-  `student` int(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `student` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -685,7 +714,7 @@ CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL DEFAULT '',
   `password` varchar(65) NOT NULL DEFAULT '',
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
