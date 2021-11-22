@@ -16,3 +16,4 @@ class CompanySizeViewHelper
         return $companySizeDropdown;
     }
 }
+§
