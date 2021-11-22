@@ -9,13 +9,15 @@ class StudentApplicationFormViewHelper
         $output = '<input type="text" placeholder="Full Name">';
         $output .= '<input type="email" placeholder="Email">';
         $output .= '<input type="tel" placeholder="Phone Number">';
-        $output .= '<label>Gender </label>'; // REPLACE WITH A DROPDOWN --> separate component for gender drop down options?
+        // REPLACE WITH A DROPDOWN --> separate component for gender drop down options?
+        $output .= '<label>Gender </label>';
         return $output;
     }
 
     protected static function displayPageFormTwo(array $data): string
     {
-        $output = '<label>Background </label>'; // REPLACE WITH A DROPDOWN --> fetch background from DB and add to populateDropdown
+        // REPLACE WITH A DROPDOWN --> fetch background from DB and add to populateDropdown
+        $output = '<label>Background </label>';
         $output .= '<label>Why do you want to become a developer?';
         $output .= '<input type="text" placeholder="(100 - 500 characters)">';
         $output .= '</label>';
@@ -33,11 +35,13 @@ class StudentApplicationFormViewHelper
     protected static function displayPageFormFour(array $data): string
     {
         $output = '<label>Select start date(s)';
-        $output .= '<input type="checkbox">'; //get cohorts from DB and for each
+        //get cohorts from DB and for each
+        $output .= '<input type="checkbox">';
         $output .= '<input type="checkbox" value="next available online course">';
         $output .= '<p>Some course dates may also be offered with a remote option. Contact us to find out more.</p>';
         $output .= '<label> How did you hear about us?';
-        $output .= '<label> Course Report </label>'; // REPLACE WITH A DROPDOWN - - > hear about us dropdown list.
+        // REPLACE WITH A DROPDOWN - - > hear about us dropdown list.
+        $output .= '<label> Course Report </label>';
         $output .= '<input type="radio" value="I am eligible to live and work in the UK"/>';
         $output .= '<input type="radio" value="I confirm that I am at least 18 years of age before my chosen course start date"/>';
         $output .= '<input type="radio" value="I am eligible to live and work in the UK"/>';
