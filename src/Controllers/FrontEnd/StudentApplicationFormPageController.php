@@ -23,14 +23,15 @@ class StudentApplicationFormPageController
     }
 
     /**
-     * Renders the studentApplicationsForm.phtml page, passing in backgroundInfo and hearAbout variables to be used on the page.
+     * Renders the studentApplicationsForm page,
+     * passes in backgroundInfo and hearAbout variables to be used on the page.
      *
      * @param RequestInterface $request
      * @param ResponseInterface $response
      * @param array $args
      * @return ResponseInterface
      */
-    public function __invoke(RequestInterface $request,ResponseInterface $response,array $args): ResponseInterface
+    public function __invoke(RequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
         $data = [
             'backgroundInfo' => $this->model->getBackgroundInfo(),

@@ -15,7 +15,7 @@ class StudentApplicationFormPageControllerFactory
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function __invoke(ContainerInterface $container) : StudentApplicationFormPageController
+    public function __invoke(ContainerInterface $container): StudentApplicationFormPageController
     {
         $model = $container->get('ApplicationFormModel');
         $view = $container->get('renderer');
