@@ -29,7 +29,8 @@ class ApplicantModel implements ApplicantModelInterface
             "INSERT INTO `applicants` (
                             `name`,
                             `email`,
-                            `phoneNumber`,                 
+                            `phoneNumber`,
+                            `gender`,
                             `whyDev`,
                             `codeExperience`,
                             `hearAboutId`,
@@ -43,6 +44,7 @@ class ApplicantModel implements ApplicantModelInterface
                             :name,
                             :email,
                             :phoneNumber,
+                            :gender,
                             :whyDev,
                             :codeExperience,
                             :hearAboutId,
@@ -57,6 +59,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':name', $applicant['name']);
         $query->bindValue(':email', $applicant['email']);
         $query->bindValue(':phoneNumber', $applicant['phoneNumber']);
+        $query->bindValue(':gender', $applicant['gender']);
         $query->bindValue(':whyDev', $applicant['whyDev']);
         $query->bindValue(':codeExperience', $applicant['codeExperience']);
         $query->bindValue(':hearAboutId', $applicant['hearAboutId']);
