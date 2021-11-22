@@ -170,6 +170,4 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     {
         return $this->gender;
     }
-
-
 }
