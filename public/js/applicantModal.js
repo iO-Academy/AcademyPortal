@@ -121,6 +121,13 @@ $(document).ready(function () {
                         if (data.assessmentDay !== null) {
                             displayField(data, 'assessmentTime', 'Not yet booked')
                         }
+
+                        data.customAssessmentDay = prettyDate(data.customAssessmentDay)
+                        displayField(data, 'customAssessmentDay', 'Not booked')
+                        if (data.customAssessmentDay !== null) {
+                            displayField(data, 'assessmentTime', 'Not yet booked')
+                        }
+
                         data.aptitude = aptitudeColors(data.aptitude)
                         displayField(data, 'aptitude', 'Not yet taken')
 

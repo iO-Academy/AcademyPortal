@@ -9,6 +9,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $apprentice; // bool
     protected $aptitude; // int
     protected $assessmentDay; // date string
+    protected $customAssessmentDay; // date string
     protected $assessmentTime; // time string
     protected $assessmentNotes; // string
     protected $diversitechInterest; // bool
@@ -63,65 +64,66 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function jsonSerialize(): array
     {
         return [
-                  'id' => $this->id,
-                  'name' => $this->name,
-                  'email' => $this->email,
-                  'phoneNumber' => $this->phoneNumber,
-                  'cohortID' => $this->cohortId,
-                  'whyDev' => $this->whyDev,
-                  'codeExperience' => $this->codeExperience,
-                  'hearAboutId' => $this->hearAboutId,
-                  'eligible' => $this->eligible,
-                  'eighteenPlus' => $this->eighteenPlus,
-                  'finance' => $this->finance,
-                  'notes' => $this->notes,
-                  'cohortDate' => $this->getCohortDate(),
-                  'dateTimeAdded' => $this->dateTimeAdded,
-                  'apprentice' => $this->apprentice,
-                  'aptitude' => $this->aptitude,
-                  'assessmentDay' => $this->assessmentDay,
-                  'assessmentTime' => $this->assessmentTime,
-                  'assessmentNotes' => $this->assessmentNotes,
-                  'diversitechInterest' => $this->diversitechInterest,
-                  'diversitech' => $this->diversitech,
-                  'edaid' => $this->edaid,
-                  'upfront' => $this->upfront,
-                  'kitCollectionDay' => $this->kitCollectionDay,
-                  'kitCollectionTime' => $this->kitCollectionTime,
-                  'kitNum' => $this->kitNum,
-                  'laptop' => $this->laptop,
-                  'laptopNum' => $this->laptopNum,
-                  'taster' => $this->taster,
-                  'tasterId' => $this->tasterId,
-                  'tasterAttendance' => $this->tasterAttendance,
-                  'team' => $this->team,
-                  'stageID' => $this->stageID,
-                  'isStudentStage' => $this->isStudentStage,
-                  'stageName' => $this->stageName,
-                  'stageOptionName' => $this->stageOptionName,
-                  'githubUsername' => $this->githubUsername,
-                  'portfolioUrl' => $this->portfolioUrl,
-                  'pleskHostingUrl' => $this->pleskHostingUrl,
-                  'githubEducationLink' => $this->githubEducationLink,
-                  'additionalNotes' => $this->additionalNotes,
-                  'chosenCourseId' => $this->chosenCourseId,
-                  'backgroundInfoId' => $this->backgroundInfoId,
-                  'backgroundInfo' => $this->backgroundInfo,
-                  'attitude' => $this->attitude,
-                  'averageScore' => $this->averageScore,
-                  'fee' => $this->fee,
-                  'signedTerms' => $this->signedTerms,
-                  'signedDiversitech' => $this->signedDiversitech,
-                  'inductionEmailSent' => $this->inductionEmailSent,
-                  'signedNDA' => $this->signedNDA,
-                  'checkedID' => $this->checkedID,
-                  'dataProtectionName' => $this->dataProtectionName,
-                  'dataProtectionPhoto' => $this->dataProtectionPhoto,
-                  'dataProtectionTestimonial' => $this->dataProtectionTestimonial,
-                  'dataProtectionBio' => $this->dataProtectionBio,
-                  'dataProtectionVideo' => $this->dataProtectionVideo,
-                  'chosenCourseDate' => $this->chosenCourseDate,
-                  'chosenCourseDatePretty' => $this->getChosenCourseDatePretty()
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email,
+            'phoneNumber' => $this->phoneNumber,
+            'cohortID' => $this->cohortId,
+            'whyDev' => $this->whyDev,
+            'codeExperience' => $this->codeExperience,
+            'hearAboutId' => $this->hearAboutId,
+            'eligible' => $this->eligible,
+            'eighteenPlus' => $this->eighteenPlus,
+            'finance' => $this->finance,
+            'notes' => $this->notes,
+            'cohortDate' => $this->getCohortDate(),
+            'dateTimeAdded' => $this->dateTimeAdded,
+            'apprentice' => $this->apprentice,
+            'aptitude' => $this->aptitude,
+            'assessmentDay' => $this->assessmentDay,
+            'customAssessmentDay' => $this->customAssessmentDay,
+            'assessmentTime' => $this->assessmentTime,
+            'assessmentNotes' => $this->assessmentNotes,
+            'diversitechInterest' => $this->diversitechInterest,
+            'diversitech' => $this->diversitech,
+            'edaid' => $this->edaid,
+            'upfront' => $this->upfront,
+            'kitCollectionDay' => $this->kitCollectionDay,
+            'kitCollectionTime' => $this->kitCollectionTime,
+            'kitNum' => $this->kitNum,
+            'laptop' => $this->laptop,
+            'laptopNum' => $this->laptopNum,
+            'taster' => $this->taster,
+            'tasterId' => $this->tasterId,
+            'tasterAttendance' => $this->tasterAttendance,
+            'team' => $this->team,
+            'stageID' => $this->stageID,
+            'isStudentStage' => $this->isStudentStage,
+            'stageName' => $this->stageName,
+            'stageOptionName' => $this->stageOptionName,
+            'githubUsername' => $this->githubUsername,
+            'portfolioUrl' => $this->portfolioUrl,
+            'pleskHostingUrl' => $this->pleskHostingUrl,
+            'githubEducationLink' => $this->githubEducationLink,
+            'additionalNotes' => $this->additionalNotes,
+            'chosenCourseId' => $this->chosenCourseId,
+            'backgroundInfoId' => $this->backgroundInfoId,
+            'backgroundInfo' => $this->backgroundInfo,
+            'attitude' => $this->attitude,
+            'averageScore' => $this->averageScore,
+            'fee' => $this->fee,
+            'signedTerms' => $this->signedTerms,
+            'signedDiversitech' => $this->signedDiversitech,
+            'inductionEmailSent' => $this->inductionEmailSent,
+            'signedNDA' => $this->signedNDA,
+            'checkedID' => $this->checkedID,
+            'dataProtectionName' => $this->dataProtectionName,
+            'dataProtectionPhoto' => $this->dataProtectionPhoto,
+            'dataProtectionTestimonial' => $this->dataProtectionTestimonial,
+            'dataProtectionBio' => $this->dataProtectionBio,
+            'dataProtectionVideo' => $this->dataProtectionVideo,
+            'chosenCourseDate' => $this->chosenCourseDate,
+            'chosenCourseDatePretty' => $this->getChosenCourseDatePretty()
         ];
     }
 
@@ -155,6 +157,14 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getAssessmentDay(): ?string
     {
         return $this->assessmentDay;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCustomAssessmentDay(): ?string
+    {
+        return $this->customAssessmentDay;
     }
 
     /**
