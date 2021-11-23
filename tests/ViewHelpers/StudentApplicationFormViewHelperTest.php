@@ -40,7 +40,9 @@ class StudentApplicationFormViewHelperTest extends TestCase
     public function testSuccessDisplayNextButtons()
     {
         $result = StudentApplicationFormViewHelper::displayNextButtons(1, 5);
-        $expected = '<button disabled>Prev</button><button class="nextButton" type="submit" for="studentApplicationForm" value="2">Next</button>';
+        $expected = '<button disabled>Prev</button>
+<button class="nextButton" type="submit"
+ for="studentApplicationForm" value="2">Next</button>';
         $this->assertEquals($expected, $result);
     }
 
