@@ -8,7 +8,6 @@ use Portal\Models\EventModel;
 
 class GetEventsControllerTest extends TestCase
 {
-
     public function testConstruct()
     {
         $eventModel = $this->createMock(EventModel::class);
