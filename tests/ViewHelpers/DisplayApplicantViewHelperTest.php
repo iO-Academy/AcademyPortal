@@ -38,7 +38,7 @@ class DisplayApplicantViewHelperTest extends TestCase
                                             Delete
                                     </a>    
                                     <button type="button" class="btn btn-info btnNextStage" data-stageid="1" 
-                                    data-applicantid="1">Next Stage</button>                               
+                                    data-applicantid="1" data-stagecount="9">Next Stage</button>                               
                                 </td>
                             </tr>';
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
@@ -51,6 +51,7 @@ class DisplayApplicantViewHelperTest extends TestCase
         $entityMock->method('getCohortDate')->willReturn('Feb 2020');
         $entityMock->method('getStageName')->willReturn('New application');
         $entityMock->method('getStageID')->willReturn('1');
+        $entityMock->method('getStageCount')->willReturn('9');
 
         $data = ['applicants' => [$entityMock], 'lastStage' => '9'];
         $result = DisplayApplicantViewHelper::displayApplicants($data);
@@ -69,7 +70,7 @@ class DisplayApplicantViewHelperTest extends TestCase
     public function testFailureDisplayApplicantsIncorrectEntity()
     {
         $mock = $this->createMock(\stdClass::class);
-        $data = ['applicants' => [$mock], 'lastStage' => '9'];
+        $data = ['applicants' => [$mock], 'lastStage' => '9', 'stageCount' => '9'];
         $this->expectException(\TypeError::class);
         $result = DisplayApplicantViewHelper::displayApplicants($data);
     }
