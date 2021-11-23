@@ -193,7 +193,6 @@ editForms.forEach((editForm, index) => {
                 "rejected": e.target.querySelector('[name="rejected"]').checked,
             }]
         };
-
         await sendRequest('./api/updateStages', 'PUT', data);
         window.location.reload();
     })
@@ -208,16 +207,13 @@ newStageForm.addEventListener('submit', async (e) => {
         "withdrawn": e.target.querySelector('[name="student"]').checked,
         "rejected": e.target.querySelector('[name="student"]').checked
     };
-
     await sendRequest('./api/createStage', 'POST', data);
     window.location.reload(true);
-
 });
 
 //Fetch template
 async function sendRequest(url, requestMethod, data) {
     let requestData = JSON.stringify(data);
-
     let response = await fetch(url, {
         method: requestMethod.toUpperCase(),
         body: requestData,
@@ -225,7 +221,6 @@ async function sendRequest(url, requestMethod, data) {
             "Content-Type": "application/json"
         }
     })
-
     let responseData = await response.json();
     if (response.status === 500) {
         document.cookie = `response=${responseData.msg}`;
