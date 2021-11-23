@@ -12,11 +12,11 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormOne(array $data): string
     {
-        $output = '<input type="text" placeholder="Full Name">';
-        $output .= '<input type="email" placeholder="Email">';
-        $output .= '<input type="tel" placeholder="Phone Number">';
+        $output = '<div class="row "><input type="text" placeholder="Full Name" class="form-control"></div>';
+        $output .= '<div class="row"><input type="email" placeholder="Email" class="form-control"></div>';
+        $output .= '<div class="row"><input type="tel" placeholder="Phone Number" class="form-control"></div>';
         // REPLACE WITH A DROPDOWN --> separate component for gender drop down options?
-        $output .= '<label>Gender </label>';
+        $output .= '<div class="row"><label>Gender </label></div>';
         return $output;
     }
 
@@ -29,10 +29,10 @@ class StudentApplicationFormViewHelper
     protected static function displayPageFormTwo(array $data): string
     {
         // REPLACE WITH A DROPDOWN --> fetch background from DB and add to populateDropdown
-        $output = '<label>Background </label>';
-        $output .= '<label>Why do you want to become a developer?';
-        $output .= '<input type="text" placeholder="(100 - 500 characters)">';
-        $output .= '</label>';
+        $output = '<div class="row"><label>Background </label></div>';
+        $output .= '<div class="row form-group"><div class="col-md-12"><label for="whyDev">Why do you want to become a developer?</label>';
+        $output .= '<textarea id="whyDev" type="text" placeholder="(100 - 500 characters)" class="form-control" rows="5"></textarea>';
+        $output .= '</div></div>';
         return $output;
     }
 
@@ -43,9 +43,9 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormThree(): string
     {
-        $output = '<label>Any past coding experience?';
-        $output .= '<input type="text" placeholder="Most people write a few sentences">';
-        $output .= '</label>';
+        $output = '<label for="pastCoding">Any past coding experience?</label>';
+        $output .= '<input id="pastCoding" type="text" placeholder="Most people write a few sentences" class="form-control">';
+        $output .= '';
         return $output;
     }
 
@@ -66,8 +66,8 @@ class StudentApplicationFormViewHelper
         // REPLACE WITH A DROPDOWN - - > hear about us dropdown list.
         $output .= '<label> Course Report </label>';
         $output .= '<input type="radio" value="I am eligible to live and work in the UK"/>';
-        $output .= '<input type="radio" value="I confirm that I am at least 18 years 
-of age before my chosen course start date"/>';
+        $output .= '<input type="radio" value="I confirm that I am at least 18 years of age before my
+ chosen course start date"/>';
         $output .= '<input type="radio" value="I am eligible to live and work in the UK"/>';
         $output .= '<p>By using this form you agree with the storage and handling of your data
  by this website in accordance with our terms and conditions and privacy policy.</p>';
@@ -129,14 +129,14 @@ between you and one of our trainers.</li>';
     public static function displayNextButtons(int $applicationFormPageNumber = 1, int $finalPage)
     {
         if($applicationFormPageNumber === 1){
-            $output = '<a href="/studentApplicationForm" disabled>Prev</a>';
+            $output = '<div class="row"><div class="col-md-2 col-md-offset-8"><a class="btn btn-lg" href="/studentApplicationForm" disabled="disabled">Prev</a></div>';
         }else{
-            $output = '<a href="/studentApplicationForm/' .  ($applicationFormPageNumber - 1) .'">Prev</a>';
+            $output = '<div class="row"><div class="col-md-2 col-md-offset-8"><a class="btn btn-lg" href="/studentApplicationForm/' .  ($applicationFormPageNumber - 1) .'">Prev</a></div>';
         }
         if($applicationFormPageNumber >= $finalPage){
-            $output .= '<a href="/studentApplicationForm">Finish</a>';
+            $output .= '<div class="col-md-2"><a class="btn btn-lg" href="/studentApplicationForm">Finish</a></div></div>';
         }else {
-            $output .= '<a href="/studentApplicationForm/' . ($applicationFormPageNumber + 1) . '">Next</a>';
+            $output .= '<div class="col-md-2"><a class="btn btn-lg" href="/studentApplicationForm/' . ($applicationFormPageNumber + 1) . '">Next</a></div></div>';
         }
         return $output;
     }
