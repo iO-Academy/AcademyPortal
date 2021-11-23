@@ -3,10 +3,19 @@
     font-family: 'JetBrains Mono';
 }
 
+.studentApplicationForm p,
+.studentApplicationForm input,
+.studentApplicationForm label,
+.studentApplicationForm textarea,
+.studentApplicationForm select {
+    font-size: calc(15px + 1vw);
+    height: auto;
+}
+
 body {
     width: 100%;
-    height:100%;
-    background: linear-gradient(-30deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+    height: 100%;
+    background: linear-gradient(-30deg, #EE7752, #E73C7E, #23A6D5, #23d576);
     animation: gradient 15s ease infinite;
     background-size: 5000% 5000%;
 }
@@ -23,8 +32,25 @@ body {
     height: 0;
 }
 
-.studentApplicationForm input {
+.progress {
+    height: 30px;
+    border-radius: 30px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+#progressBar {
+    background-color: #5FFFB4;
+    border-radius: 30px;
+}
+
+.studentApplicationForm input, .studentApplicationForm select {
     margin: 10px 0;
+    border: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #d8d8d8;
 }
 
 .studentApplicationForm .btn {

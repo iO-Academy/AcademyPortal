@@ -15,12 +15,12 @@ class StudentApplicationFormViewHelper
         $output = '<div class="row "><input type="text" placeholder="Full Name" class="form-control"></div>';
         $output .= '<div class="row"><input type="email" placeholder="Email" class="form-control"></div>';
         $output .= '<div class="row"><input type="tel" placeholder="Phone Number" class="form-control"></div>';
-        $output .= '<select>';
-        $output .= '<option>Gender</option>';
+        $output .= '<div class="row"><select class="form-control" >';
+        $output .= '<option value="" disabled selected>Gender</option>';
         foreach ($data['genders'] as $genders) {
             $output .= '<option value="' . $genders['id'] . '">' . $genders['gender'] . '</option>';
         }
-        $output .= '</select>';
+        $output .= '</select></div>';
         return $output;
     }
 
@@ -32,15 +32,15 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormTwo(array $data): string
     {
-        $output = '<select>';
-        $output .= '<option>Background</option>';
+        $output = '<div class="row"><select class="form-control">';
+        $output .= '<option value="" disabled selected>Background</option>';
         foreach ($data['backgroundInfo'] as $backgroundInfo) {
             $output .= '<option value="' . $backgroundInfo['id'] . '">' . $backgroundInfo['backgroundInfo'] . '</option>';
         }
-        $output .= '</select>';
-        $output .= '<div class="row form-group"><div class="col-md-12"><label for="whyDev">Why do you want to become a developer?</label>';
+        $output .= '</select></div>';
+        $output .= '<div class="row form-group"><label for="whyDev" class="label-control">Why do you want to become a developer?</label>';
         $output .= '<textarea id="whyDev" type="text" placeholder="(100 - 500 characters)" class="form-control" rows="5"></textarea>';
-        $output .= '</div></div>';
+        $output .= '</div>';
         return $output;
     }
 
@@ -51,9 +51,9 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormThree(): string
     {
-        $output = '<div><label>Any past coding experience?</label></div>';
-        $output .= '<textarea rows="10" placeholder="Most people write a few sentences" class="form-control"> </textarea>';
-        $output .= '</label>';
+        $output = '<div class="row"><label for="pastCoding" class="label-control">Any past coding experience?</label>';
+        $output .= '<textarea id="pastCoding" placeholder="Most people write a few sentences" class="form-control" rows="5"></textarea>';
+        $output .= '</div>';
         return $output;
     }
 
@@ -141,14 +141,14 @@ between you and one of our trainers.</li>';
     public static function displayNextButtons(int $applicationFormPageNumber, int $finalPage): string
     {
         if($applicationFormPageNumber === 1){
-            $output = '<div class="row"><div class="col-md-2 col-md-offset-8"><button class="btn btn-lg" disabled>Prev</button></div>';
+            $output = '<div class="row buttons"><div class="col-md-2 col-md-offset-8 col-sm-2 col-sm-offset-8"><button class="btn btn-lg" disabled>Prev</button></div>';
         }else{
-            $output = '<div class="row"><div class="col-md-2 col-md-offset-8"><button class="btn btn-lg prevButton" value="' . ($applicationFormPageNumber - 1) . '">Prev</button></div>';
+            $output = '<div class="row buttons"><div class="col-md-2 col-md-offset-8"><button class="btn btn-lg prevButton" value="' . ($applicationFormPageNumber - 1) . '">Prev</button></div>';
         }
         if($applicationFormPageNumber >= $finalPage){
-            $output .= '<div class="col-md-2"><button class="btn btn-lg finishButton">Finish</button></div></div>';
+            $output .= '<div class="col-md-2 col-sm-1"><button class="btn btn-lg finishButton">Finish</button></div></div>';
         }else {
-            $output .= '<div class="col-md-2"><button class="nextButton btn btn-lg" type="submit" for="studentApplicationForm" value="' . ($applicationFormPageNumber + 1) . '">Next</button></div></div>';
+            $output .= '<div class="col-md-2 col-sm-1"><button class="nextButton btn btn-lg" type="submit" for="studentApplicationForm" value="' . ($applicationFormPageNumber + 1) . '">Next</button></div></div>';
         }
         return $output;
     }
@@ -156,7 +156,7 @@ between you and one of our trainers.</li>';
     {
         $output = '';
         for ($i = 1; $i <= $pages; $i++) {
-            $output .= '<div class="studentApplicationForm hidden" id="' . $i .  '">';
+            $output .= '<div class="studentApplicationFormPages hidden" id="' . $i .  '">';
             $output .= self::displayPageByNumber($i, $data);
             $output .= self::displayNextButtons($i, $pages);
             $output .= '</div>';

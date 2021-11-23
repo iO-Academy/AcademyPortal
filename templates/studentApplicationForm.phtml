@@ -2,7 +2,8 @@
 
 use Portal\ViewHelpers\StudentApplicationFormViewHelper;
 
-$pageNumber = 5;
+$numberOfPages = 5;
+$pageNumber = 1;
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +16,6 @@ $pageNumber = 5;
     <link href="css/studentApplicationForm.css" rel="stylesheet">
     <script defer src="./js/studentApplicationForm.js"></script>
     <title>Your Application</title>
-    <link href="css/studentApplicationForm.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
@@ -40,19 +40,12 @@ $pageNumber = 5;
             <h1 class="text-center"> Your Application</h1>
         </div>
         <div class="row">
-            <p>Step <?php echo $pageNumber; ?> of 5</p> <!--    REPLACE WITH PAGE NUMBERS-->
+            <p>Step <span id="pageCounter">1</span> of 5</p>
             <div class="progress column">
-                <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $pageNumber; ?>" aria-valuemin="0" aria-valuemax="4" style="width: <?php echo (($pageNumber - 1) * 25); ?>%"></div> <!-- REPLACE WITH SCSS TO CALC PAGE PROGRESS-->
+                <div id="progressBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4" style="width: 0%"></div> <!-- REPLACE WITH SCSS TO CALC PAGE PROGRESS-->
             </div>
         </div>
-<!--            --><?php //echo StudentApplicationFormViewHelper::displayPageByNumber($pageNumber, $dropDownData); ?>
-            <?php echo StudentApplicationFormViewHelper::displayPageByNumber(1, $dropDownData); ?>
-<!--            --><?php //echo StudentApplicationFormViewHelper::displayPageByNumber(2, $dropDownData); ?>
-<!--            --><?php //echo StudentApplicationFormViewHelper::displayPageByNumber(3, $dropDownData); ?>
-<!--            --><?php //echo StudentApplicationFormViewHelper::displayPageByNumber(4, $dropDownData); ?>
-<!--            --><?php //echo StudentApplicationFormViewHelper::displayPageByNumber(5, $dropDownData); ?>
-            <?php echo StudentApplicationFormViewHelper::displayNextButtons($pageNumber, 5); ?>
-
+            <?php echo StudentApplicationFormViewHelper::displayForm($numberOfPages, $dropDownData); ?>
     </div>
 </div>
 </body>
