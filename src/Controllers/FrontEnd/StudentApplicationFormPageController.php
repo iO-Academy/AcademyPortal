@@ -34,7 +34,7 @@ class StudentApplicationFormPageController
     public function __invoke(RequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
         $data = [
-            'data' =>[
+            'data' => [
                 'backgroundInfo' => $this->model->getBackgroundInfo(),
                 'hearAbout' => $this->model->getHearAbout(),
                 'Cohorts' => $this->model->getCohorts(),
