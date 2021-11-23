@@ -35,9 +35,9 @@ class StagesPageViewHelper
                 if ($stage->getStudent()) {
                     $result .= '<i class="glyphicon glyphicon-education text-success"></i>';
                 } elseif ($stage->getWithdrawn()) {
-                    $result .= '<i class="glyphicon glyphicon-remove text-success"></i>';
+                    $result .= '<i class="glyphicon glyphicon-ban-circle text-danger"></i>';
                 } elseif ($stage->getRejected()) {
-                    $result .= '<i class="glyphicon glyphicon-exclamation-sign text-success"></i>';
+                    $result .= '<i class="glyphicon glyphicon-remove text-warning-custom-color"></i>';
                 }
                 $result .= '</p>';
                 $result .= '<form data-id="' . $stage->getStageId() . '" class="stagesTableForm form-inline">';
@@ -62,14 +62,14 @@ class StagesPageViewHelper
                 $result .= '<div>';
                 $result .= '<label>Withdrawn stage:';
                 $result .= '<input type="checkbox" name="withdrawn"' . $isWithdrawn . '>';
-                $result .= '<i class="glyphicon glyphicon-remove text-success"></i>';
+                $result .= '<i class="glyphicon glyphicon-ban-circle text-danger"></i>';
                 $result .= '</label>';
                 $result .= '</div>';
 
                 $result .= '<div>';
                 $result .= '<label>Rejected stage:';
                 $result .= '<input type="checkbox" name="rejected"' . $isRejected . '>';
-                $result .= '<i class="glyphicon glyphicon-exclamation-sign text-success"></i>';
+                $result .= '<i class="glyphicon glyphicon-remove text-warning-custom-color"></i>';
                 $result .= '</label>';
                 $result .= '</div>';
 
