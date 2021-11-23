@@ -12,11 +12,14 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormOne(array $data): string
     {
-        $output = '<input type="text" placeholder="Full Name">';
-        $output .= '<input type="email" placeholder="Email">';
-        $output .= '<input type="tel" placeholder="Phone Number">';
+        $output = '<input type="text" placeholder="Full Name" required>';
+        $output .= '<div id="nameError" class="alert hidden formItem_alert"></div>';
+        $output .= '<input type="email" placeholder="Email" required>';
+        $output .= '<div id="emailError" class="alert hidden formItem_alert"></div>';
+        $output .= '<input type="tel" placeholder="Phone Number" required>';
+        $output .= '<div id="phoneError" class="alert hidden formItem_alert"></div>';
         $output .= '<select>';
-        $output .= '<option>Gender</option>';
+        $output .= '<option>Gender</option>slack';
         foreach ($data['genders'] as $genders) {
             $output .= '<option value="' . $genders['id'] . '">' . $genders['gender'] . '</option>';
         }
@@ -39,6 +42,7 @@ class StudentApplicationFormViewHelper
         }
         $output .= '</select>';
         $output .= '<label>Why do you want to become a developer?';
+        $output .= '<div id="whyDevError" class="alert hidden formItem_alert"></div>';
         $output .= '<textarea rows="10" placeholder="(100-500 Characters)"> </textarea>';
         $output .= '</label>';
         return $output;
@@ -52,6 +56,7 @@ class StudentApplicationFormViewHelper
     protected static function displayPageFormThree(): string
     {
         $output = '<label>Any past coding experience?</label>';
+        $output .= ' <div id="codeExperienceError" class="alert hidden formItem_alert"></div>';
         $output .= '<textarea rows="10" placeholder="Most people write a few sentences"> </textarea>';
         $output .= '</label>';
         return $output;
@@ -69,7 +74,7 @@ class StudentApplicationFormViewHelper
         foreach ($data['cohorts'] as $cohorts) {
             $output .= '<label><input type="checkbox" value="' . $cohorts['id'] . '"/>' . $cohorts['date'] . '</label>';
         }
-        $output .= '<label><input type="checkbox" value="next available online course">Some course dates may also be offered with a remote option. Contact us to find out more.</label>';
+        $output .= '<label><input type="checkbox" value="next available online course" required>Some course dates may also be offered with a remote option. Contact us to find out more.</label>';
         $output .= '<label> How did you hear about us?</label>';
         $output .= '<select>';
         $output .= '<option>Background</option>';
@@ -77,13 +82,13 @@ class StudentApplicationFormViewHelper
             $output .= '<option value="' . $hearAbout['id'] . '">' . $hearAbout['hearAbout'] . '</option>';
         }
         $output .= '</select>';
-        $output .= '<label><input type="checkbox" value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK</label>';
+        $output .= '<label><input type="checkbox" value="I am eligible to live and work in the UK"/ required>I am eligible to live and work in the UK</label>';
         $output .= '<label><input type="checkbox" value="I confirm that I am at least 18 years 
-of age before my chosen course start date"/>I confirm that I am at least 18 years 
+of age before my chosen course start date" required/>I confirm that I am at least 18 years 
 of age before my chosen course start date<label>';
         $output .= '<p>By using this form you agree with the storage and handling of your data
  by this website in accordance with our terms and conditions and privacy policy.</p>';
-        $output .= '<label><input type="checkbox" value="I accept the terms and conditions"/>I accept the terms and conditions</label>';
+        $output .= '<label><input type="checkbox" value="I accept the terms and conditions" required/>I accept the terms and conditions</label>';
         return $output;
     }
 
