@@ -17,7 +17,7 @@ class StudentApplicationFormViewHelper
         $output .= '<input type="tel" placeholder="Phone Number">';
         $output .= '<select>';
         $output .= '<option>Gender</option>';
-        foreach($data['genders'] as $genders){
+        foreach ($data['genders'] as $genders) {
             $output .= '<option value="' . $genders['id'] . '">' . $genders['gender'] . '</option>';
         }
         $output .= '</select>';
@@ -34,7 +34,7 @@ class StudentApplicationFormViewHelper
     {
         $output = '<select>';
         $output .= '<option>Background</option>';
-        foreach($data['backgroundInfo'] as $backgroundInfo){
+        foreach ($data['backgroundInfo'] as $backgroundInfo) {
             $output .= '<option value="' . $backgroundInfo['id'] . '">' . $backgroundInfo['backgroundInfo'] . '</option>';
         }
         $output .= '</select>';
@@ -66,14 +66,14 @@ class StudentApplicationFormViewHelper
     protected static function displayPageFormFour(array $data): string
     {
         $output = '<label>Select start date(s)</label>';
-        foreach($data['cohorts'] as $cohorts){
+        foreach ($data['cohorts'] as $cohorts) {
             $output .= '<label><input type="checkbox" value="' . $cohorts['id'] . '"/>' . $cohorts['date'] . '</label>';
         }
         $output .= '<label><input type="checkbox" value="next available online course">Some course dates may also be offered with a remote option. Contact us to find out more.</label>';
         $output .= '<label> How did you hear about us?</label>';
         $output .= '<select>';
         $output .= '<option>Background</option>';
-        foreach($data['hearAbout'] as $hearAbout){
+        foreach ($data['hearAbout'] as $hearAbout) {
             $output .= '<option value="' . $hearAbout['id'] . '">' . $hearAbout['hearAbout'] . '</option>';
         }
         $output .= '</select>';
@@ -140,14 +140,14 @@ between you and one of our trainers.</li>';
 
     public static function displayNextButtons(int $applicationFormPageNumber = 1, int $finalPage)
     {
-        if($applicationFormPageNumber === 1){
+        if ($applicationFormPageNumber === 1) {
             $output = '<a href="/studentApplicationForm" disabled>Prev</a>';
-        }else{
-            $output = '<a href="/studentApplicationForm/' .  ($applicationFormPageNumber - 1) .'">Prev</a>';
+        } else {
+            $output = '<a href="/studentApplicationForm/' .  ($applicationFormPageNumber - 1) . '">Prev</a>';
         }
-        if($applicationFormPageNumber >= $finalPage){
+        if ($applicationFormPageNumber >= $finalPage) {
             $output .= '<a href="/studentApplicationForm">Finish</a>';
-        }else {
+        } else {
             $output .= '<a href="/studentApplicationForm/' . ($applicationFormPageNumber + 1) . '">Next</a>';
         }
         return $output;

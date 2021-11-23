@@ -6,7 +6,6 @@ use Portal\Interfaces\BaseApplicantEntityInterface;
 
 class DisplayApplicantViewHelper
 {
-
     public static function displayTab(array $applicants, string $type, string $sort)
     {
         $dateAsc = ($sort == 'dateAsc' || empty($sort)) ? ' active' : '';
