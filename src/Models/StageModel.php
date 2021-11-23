@@ -86,7 +86,10 @@ class StageModel
      */
     public function getStageTitles(): array
     {
-        $query = $this->db->prepare('SELECT `id`, `title`, `student`, `withdrawn`, `rejected`, `notAssigned` FROM `stages`;');
+        $query = $this->db->prepare(
+            'SELECT `id`, `title`, `student`, `withdrawn`, `rejected`, `notAssigned` 
+            FROM `stages`;'
+        );
         $query->execute();
         return $query->fetchAll();
     }
@@ -173,8 +176,7 @@ class StageModel
         int $isWithdrawn,
         int $isRejected,
         int $isNotAssigned
-    ): bool
-    {
+    ): bool {
         $query = $this->db->prepare("UPDATE `stages` 
             SET `title` = :title, 
             `order` = :newOrder, 
