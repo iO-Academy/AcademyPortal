@@ -173,15 +173,13 @@ class StageModel
         int $isRejected
     ): bool
     {
-        $query = $this->db->prepare(
-            "UPDATE `stages` 
+        $query = $this->db->prepare("UPDATE `stages` 
             SET `title` = :title, 
             `order` = :newOrder, 
             `student` = :student, 
             `withdrawn` = :withdrawn, 
             `rejected` = :rejected  
-            WHERE `id` = :id"
-        );
+            WHERE `id` = :id");
         $query->bindParam(':id', $id);
         $query->bindParam(':title', $title);
         $query->bindParam(':newOrder', $order);

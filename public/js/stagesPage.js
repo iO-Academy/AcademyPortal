@@ -188,9 +188,9 @@ editForms.forEach((editForm, index) => {
                 "id": e.target.dataset.id,
                 "title": e.target.querySelector('.stageEditTitle').value,
                 "order": (index + 1),
-                "student": e.target.querySelector('[name="student"]').checked,
-                "withdrawn": e.target.querySelector('[name="withdrawn"]').checked,
-                "rejected": e.target.querySelector('[name="rejected"]').checked,
+                "student": e.target.querySelector('[name="student"]').selected,
+                "withdrawn": e.target.querySelector('[name="withdrawn"]').selected,
+                "rejected": e.target.querySelector('[name="rejected"]').selected,
             }]
         };
         await sendRequest('./api/updateStages', 'PUT', data);
@@ -203,9 +203,9 @@ newStageForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     let data = {
         "title": e.target.querySelector('[name="createNewStageTextBox"]').value,
-        "student": e.target.querySelector('[name="student"]').checked,
-        "withdrawn": e.target.querySelector('[name="student"]').checked,
-        "rejected": e.target.querySelector('[name="student"]').checked
+        "student": e.target.querySelector('[name="student"]').selected,
+        "withdrawn": e.target.querySelector('[name="student"]').selected,
+        "rejected": e.target.querySelector('[name="student"]').selected
     };
     await sendRequest('./api/createStage', 'POST', data);
     window.location.reload(true);
