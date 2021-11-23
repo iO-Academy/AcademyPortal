@@ -1,7 +1,7 @@
 
 const prevButtons = document.querySelectorAll('.prevButton')
 const nextButtons = document.querySelectorAll('.nextButton')
-const formWrappers = document.querySelectorAll('.studentApplicationForm')
+const formWrappers = document.querySelectorAll('.studentApplicationFormPages')
 formWrappers[0].classList.remove('hidden')
 
 prevButtons.forEach(($prevButton) => {

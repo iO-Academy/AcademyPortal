@@ -117,7 +117,7 @@ between you and one of our trainers.</li>';
      * @param array $data
      * @return string
      */
-    public static function displayPageByNumber(int $applicationFormPageNumber = 1, array $data = []): string
+    public static function displayPageByNumber(int $applicationFormPageNumber, array $data): string
     {
         switch ($applicationFormPageNumber) {
             case 2:
@@ -138,6 +138,13 @@ between you and one of our trainers.</li>';
         return $output;
     }
 
+    /**
+     * Displays the correct next buttons for a given page number and total number of pages.
+     *
+     * @param int $applicationFormPageNumber
+     * @param int $finalPage
+     * @return string
+     */
     public static function displayNextButtons(int $applicationFormPageNumber, int $finalPage): string
     {
         if ($applicationFormPageNumber === 1) {
@@ -152,11 +159,19 @@ between you and one of our trainers.</li>';
         }
         return $output;
     }
-    public static function displayform(int $pages, array $data): string
+
+    /**
+     * Displays all the form pages and next buttons in divs with a class of hidden
+     *
+     * @param int $pages
+     * @param array $data
+     * @return string
+     */
+    public static function displayForm(int $pages, array $data): string
     {
         $output = '';
         for ($i = 1; $i <= $pages; $i++) {
-            $output .= '<div class="studentApplicationForm hidden" id="' . $i .  '">';
+            $output .= '<div class="studentApplicationFormPages hidden" id="' . $i .  '">';
             $output .= self::displayPageByNumber($i, $data);
             $output .= self::displayNextButtons($i, $pages);
             $output .= '</div>';
