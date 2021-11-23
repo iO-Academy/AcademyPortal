@@ -12,6 +12,7 @@ class StageEntity implements \JsonSerializable
     protected $options;
     protected $withdrawn;
     protected $rejected;
+    protected $notAssigned;
 
     /**
      * Returns private properties from object.
@@ -26,7 +27,8 @@ class StageEntity implements \JsonSerializable
             'order' => $this->order,
             'student' => $this->student,
             'withdrawn' => $this->withdrawn,
-            'rejected' => $this->rejected
+            'rejected' => $this->rejected,
+            'notAssigned' => $this->notAssigned
         ];
     }
 
@@ -117,5 +119,15 @@ class StageEntity implements \JsonSerializable
     public function getRejected(): ?bool
     {
         return $this->rejected;
+    }
+
+    /**
+     * Gets stage not assigned
+     *
+     * @return bool|null
+     */
+    public function getNotAssigned(): ?bool
+    {
+        return $this->notAssigned;
     }
 }

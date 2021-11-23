@@ -25,6 +25,7 @@ class StagesPageViewHelper
                 $isStudent = $stage->getStudent() ? 'selected' : '';
                 $isWithdrawn = $stage->getWithdrawn() ? 'selected' : '';
                 $isRejected = $stage->getRejected() ? 'selected' : '';
+                $isNotAssigned = $stage->getNotAssigned() ? 'selected' : '';
 
                 $result .= '<tr class="" data-id="' . $stage->getStageId() . '">';
                 $result .= '<td class="order">';
@@ -38,23 +39,23 @@ class StagesPageViewHelper
                     $result .= '<i class="glyphicon glyphicon-ban-circle text-danger"></i>';
                 } elseif ($stage->getRejected()) {
                     $result .= '<i class="glyphicon glyphicon-remove text-warning-custom-color"></i>';
+                } elseif ($stage->getNotAssigned()) {
+                    $result .= '';
                 }
                 $result .= '</p>';
                 $result .= '<form data-id="' . $stage->getStageId() . '" class="stagesTableForm form-inline">';
-
-               //Test dropdown:
                 $result .= '<div>';
-                $result .= '<label for="stages">Select Stage:</label>';
+                $result .= '<label for="stages">Select Stage Status:</label>';
                 $result .= '<select name="stages" id="stages">';
+                $result .= '<option name="notAssigned"' . $isNotAssigned . '>Not assigned</option>';
                 $result .= '<option name="student"' . $isStudent . '>Student</option>';
                 $result .= '<option name="withdrawn"' . $isWithdrawn . '>Withdrawn</option>';
                 $result .= '<option name="rejected"' . $isRejected . '>Rejected</option>';
                 $result .= '</select>';
                 $result .= '</div>';
-
                 $result .= '<input type="text" class="form-control stageEditTitle"';
                 $result .= 'value="' . $stage->getStageTitle() . '"/>';
-                $result .= '<input type="submit" class="stageEditSubmit btn btn-success" value="Edit">';
+                $result .= '<input type="submit" class="stageEditSubmit btn btn-success" value="Save">';
                 $result .= '</form>';
                 $result .= '<div class="optionsContainer hidden" data-stageId="' . $stage->getStageId() . '">';
                 if (empty($stage->getOptions())) {
