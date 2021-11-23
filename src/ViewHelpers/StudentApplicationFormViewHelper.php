@@ -19,7 +19,7 @@ class StudentApplicationFormViewHelper
         $output .= '<input type="tel" placeholder="Phone Number" required>';
         $output .= '<div id="phoneError" class="alert hidden formItem_alert"></div>';
         $output .= '<select>';
-        $output .= '<option>Gender</option>slack';
+        $output .= '<option>Gender</option>';
         foreach ($data['genders'] as $genders) {
             $output .= '<option value="' . $genders['id'] . '">' . $genders['gender'] . '</option>';
         }
@@ -41,7 +41,7 @@ class StudentApplicationFormViewHelper
             $output .= '<option value="' . $backgroundInfo['id'] . '">' . $backgroundInfo['backgroundInfo'] . '</option>';
         }
         $output .= '</select>';
-        $output .= '<label>Why do you want to become a developer?';
+        $output .= '<div><label>Why do you want to become a developer?</label></div>';
         $output .= '<div id="whyDevError" class="alert hidden formItem_alert"></div>';
         $output .= '<textarea rows="10" placeholder="(100-500 Characters)"> </textarea>';
         $output .= '</label>';
@@ -55,7 +55,7 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormThree(): string
     {
-        $output = '<label>Any past coding experience?</label>';
+        $output = '<div><label>Any past coding experience?</label></div>';
         $output .= ' <div id="codeExperienceError" class="alert hidden formItem_alert"></div>';
         $output .= '<textarea rows="10" placeholder="Most people write a few sentences"> </textarea>';
         $output .= '</label>';
@@ -143,17 +143,28 @@ between you and one of our trainers.</li>';
         return $output;
     }
 
-    public static function displayNextButtons(int $applicationFormPageNumber = 1, int $finalPage)
+    public static function displayNextButtons(int $applicationFormPageNumber, int $finalPage): string
     {
         if ($applicationFormPageNumber === 1) {
-            $output = '<a href="/studentApplicationForm" disabled>Prev</a>';
+            $output = '<button disabled>Prev</button>';
         } else {
-            $output = '<a href="/studentApplicationForm/' .  ($applicationFormPageNumber - 1) . '">Prev</a>';
+            $output = '<button class="prevButton" value="' . ($applicationFormPageNumber - 1) . '">Prev</button>';
         }
         if ($applicationFormPageNumber >= $finalPage) {
-            $output .= '<a href="/studentApplicationForm">Finish</a>';
+            $output .= '<button class="finishButton">Finish</button>';
         } else {
-            $output .= '<a href="/studentApplicationForm/' . ($applicationFormPageNumber + 1) . '">Next</a>';
+            $output .= '<button class="nextButton" type="submit" for="studentApplicationForm" value="' . ($applicationFormPageNumber + 1) . '">Next</button>';
+        }
+        return $output;
+    }
+    public static function displayform(int $pages, array $data): string
+    {
+        $output = '';
+        for ($i = 1; $i <= $pages; $i++) {
+            $output .= '<div class="studentApplicationForm hidden" id="' . $i .  '">';
+            $output .= self::displayPageByNumber($i, $data);
+            $output .= self::displayNextButtons($i, $pages);
+            $output .= '</div>';
         }
         return $output;
     }
