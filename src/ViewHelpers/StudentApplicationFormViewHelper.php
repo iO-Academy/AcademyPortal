@@ -39,7 +39,7 @@ class StudentApplicationFormViewHelper
         }
         $output .= '</select>';
         $output .= '<label>Why do you want to become a developer?';
-        $output = '<textarea rows="10" placeholder="(100-500 Characters)"> </textarea>';
+        $output .= '<textarea rows="10" placeholder="(100-500 Characters)"> </textarea>';
         $output .= '</label>';
         return $output;
     }
@@ -52,7 +52,7 @@ class StudentApplicationFormViewHelper
     protected static function displayPageFormThree(): string
     {
         $output = '<label>Any past coding experience?</label>';
-        $output = '<textarea rows="10" placeholder="Most people write a few sentences"> </textarea>';
+        $output .= '<textarea rows="10" placeholder="Most people write a few sentences"> </textarea>';
         $output .= '</label>';
         return $output;
     }
