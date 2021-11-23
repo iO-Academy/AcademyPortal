@@ -33,15 +33,7 @@ class StudentApplicationFormPageController
      */
     public function __invoke(RequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
-        $pageNumber = $args['pageNumber'] ?? 1;
-        if(is_numeric($pageNumber)){
-            $pageNumber = (int) $pageNumber;
-        }
-        if(!is_int($pageNumber) || $pageNumber < 1){
-            $pageNumber = 1;
-        }
         $data = [
-            'pageNumber' => $pageNumber,
             'dropDownData' => [
                 'backgroundInfo' => $this->model->getBackgroundInfo(),
                 'hearAbout' => $this->model->getHearAbout(),

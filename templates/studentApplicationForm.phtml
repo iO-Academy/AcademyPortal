@@ -1,25 +1,29 @@
 <?php
 
 use Portal\ViewHelpers\StudentApplicationFormViewHelper;
+
+$pageNumber = 5;
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="css/studentApplicationForm.css" rel="stylesheet">
+    <script defer src="./js/studentApplicationForm.js"></script>
     <title>Your Application</title>
 </head>
 <body>
 <div>
     <h1> Your Application</h1>
-    <p>Step X of Y</p> <!--    REPLACE WITH PAGE NUMBERS-->
+    <p>Page 1 of <?php echo $pageNumber ?></p>
     <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="5" style="width: 0%"></div> <!-- REPLACE WITH SCSS TO CALC PAGE PROGRESS-->
     </div>
-    <form>
-        <?php echo StudentApplicationFormViewHelper::displayPageByNumber($pageNumber, $dropDownData); ?>
+    <form id="studentApplicationForm">
+        <?php echo StudentApplicationFormViewHelper::displayform($pageNumber,$dropDownData) ?>
     </form>
-    <?php echo StudentApplicationFormViewHelper::displayNextButtons($pageNumber, 5); ?>
+
 </div>
 </body>
 </html>
