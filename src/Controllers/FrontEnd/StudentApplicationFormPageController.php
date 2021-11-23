@@ -34,7 +34,7 @@ class StudentApplicationFormPageController
     public function __invoke(RequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
         $data = [
-            'data' => [
+            'dropDownData' => [
                 'backgroundInfo' => $this->model->getBackgroundInfo(),
                 'hearAbout' => $this->model->getHearAbout(),
                 'cohorts' => $this->model->getCohorts(),

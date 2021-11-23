@@ -11,7 +11,6 @@ use Tests\TestCase;
 
 class EditApplicantStageControllerFactoryTest extends TestCase
 {
-
     /**
      * Success test for __invoke() method on EditApplicantStageControllerFactory class.
      */

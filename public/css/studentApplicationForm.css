@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+    font-family: 'JetBrains Mono';
+}
+
+body {
+    width: 100%;
+    height:100%;
+    background: linear-gradient(-30deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+    animation: gradient 15s ease infinite;
+    background-size: 5000% 5000%;
+}
+.content-container {
+    background-color: #FFFFFF;
+    z-index: 1;
+    width: 100%;
+    margin: 100px auto;
+    padding: 80px 120px;
+}
+
+.hidden{
+    visibility: hidden;
+    height: 0;
+}
+
+.studentApplicationForm input {
+    margin: 10px 0;
+}
+
+.studentApplicationForm .btn {
+    background-color: #0F0028;
+    color: #FFFFFF;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+#apply-page-bg--left {
+    width: 100%;
+    left: 0;
+}
+
+#apply-page-bg--right {
+    width: 80%;
+    right: 0;
+}
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
