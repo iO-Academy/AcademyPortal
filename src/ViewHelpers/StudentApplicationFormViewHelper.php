@@ -4,6 +4,12 @@ namespace Portal\ViewHelpers;
 
 class StudentApplicationFormViewHelper
 {
+    /**
+     * html to display the first question page
+     *
+     * @param array $data
+     * @return string
+     */
     protected static function displayPageFormOne(array $data): string
     {
         $output = '<input type="text" placeholder="Full Name">';
@@ -14,6 +20,12 @@ class StudentApplicationFormViewHelper
         return $output;
     }
 
+    /**
+     * html to display the second question page
+     *
+     * @param array $data
+     * @return string
+     */
     protected static function displayPageFormTwo(array $data): string
     {
         // REPLACE WITH A DROPDOWN --> fetch background from DB and add to populateDropdown
@@ -24,6 +36,11 @@ class StudentApplicationFormViewHelper
         return $output;
     }
 
+    /**
+     * html to display the third question page
+     *
+     * @return string
+     */
     protected static function displayPageFormThree(): string
     {
         $output = '<label>Any past coding experience?';
@@ -32,6 +49,12 @@ class StudentApplicationFormViewHelper
         return $output;
     }
 
+    /**
+     * html to display the fourth question page
+     *
+     * @param array $data
+     * @return string
+     */
     protected static function displayPageFormFour(array $data): string
     {
         $output = '<label>Select start date(s)';
@@ -52,6 +75,11 @@ of age before my chosen course start date"/>';
         return $output;
     }
 
+    /**
+     * html to display the fifth question page
+     *
+     * @return string
+     */
     protected static function displayPageFormFive(): string
     {
         $output = '<h2>Ready to submit?</h2>';
@@ -70,6 +98,13 @@ between you and one of our trainers.</li>';
         return $output;
     }
 
+    /**
+     * selects a question page based on number and passes it the data array if needed.
+     *
+     * @param int $applicationFormPageNumber
+     * @param array $data
+     * @return string
+     */
     public static function displayPageByNumber(int $applicationFormPageNumber = 1, array $data = []): string
     {
         switch ($applicationFormPageNumber) {
@@ -87,6 +122,21 @@ between you and one of our trainers.</li>';
                 break;
             default:
                 $output = self::displayPageFormOne($data);
+        }
+        return $output;
+    }
+
+    public static function displayNextButtons(int $applicationFormPageNumber = 1, int $finalPage)
+    {
+        if($applicationFormPageNumber === 1){
+            $output = '<a href="/studentApplicationForm" disabled>Prev</a>';
+        }else{
+            $output = '<a href="/studentApplicationForm/' .  ($applicationFormPageNumber - 1) .'">Prev</a>';
+        }
+        if($applicationFormPageNumber >= $finalPage){
+            $output .= '<a href="/studentApplicationForm">Finish</a>';
+        }else {
+            $output .= '<a href="/studentApplicationForm/' . ($applicationFormPageNumber + 1) . '">Next</a>';
         }
         return $output;
     }

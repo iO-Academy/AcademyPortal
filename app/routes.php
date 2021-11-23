@@ -24,7 +24,7 @@ return function (App $app) {
     $app->post('/public[/{id}]', 'StudentProfilePageController');
     $app->get('/courses', 'CoursesPageController');
     $app->get('/addCourse', 'AddCoursePageController');
-    $app->get('/studentApplicationForm', 'StudentApplicationFormPageController');
+    $app->get('/studentApplicationForm[/{pageNumber}]', 'StudentApplicationFormPageController');
 
 
     //API
