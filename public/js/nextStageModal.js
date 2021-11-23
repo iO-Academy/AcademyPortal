@@ -78,10 +78,11 @@ $(document).ready(function(){
 
                             document.querySelector('.btnNextStageOptions').addEventListener('click',
                                 function() {
-                                        let optionId =  document.querySelector('#next-stage-options').value;
-                                        var url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId + '&optionId=' + optionId;
-                                        updateStage(url, applicantId, thisButton)
-                                        $('#nextStageModal').modal('hide');
+                                            let optionId =  document.querySelector('#next-stage-options').value;
+                                            let url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId + '&optionId=' + optionId;
+                                            updateStage(url, applicantId, thisButton)
+                                            $('#nextStageModal').modal('hide');
+                                            this.removeEventListener('click', arguments.callee);
                                 }
                             )
                         }
