@@ -632,23 +632,25 @@ CREATE TABLE `stages` (
   `order` int(11) DEFAULT NULL,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `student` int(1) NOT NULL DEFAULT '0',
+  `withdrawn` int(1) NOT NULL DEFAULT '0',
+  `rejected` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `stages` WRITE;
 /*!40000 ALTER TABLE `stages` DISABLE KEYS */;
 
-INSERT INTO `stages` (`id`, `title`, `order`, `deleted`, `student`)
+INSERT INTO `stages` (`id`, `title`, `order`, `deleted`, `student`, `withdrawn`, `rejected`)
 VALUES
-	(1,'New application',1,0,0),
-	(2,'Response sent',2,0,0),
-	(3,'Booked into assessment day',3,0,0),
-	(4,'Assessment Response',4,0,0),
-	(5,'Attendance Response',5,0,0),
-	(6,'Onboarding',6,0,1),
-	(7,'Attending',7,0,1),
-	(8,'Course complete',8,0,1),
-	(9,'In employment',9,0,1);
+	(1,'New application',1,0,0,0,0),
+	(2,'Response sent',2,0,0,0,0),
+	(3,'Booked into assessment day',3,0,0,0,0),
+	(4,'Assessment Response',4,0,0,0,0),
+	(5,'Attendance Response',5,0,0,0,0),
+	(6,'Onboarding',6,0,1,0,0),
+	(7,'Attending',7,0,1,0,0),
+	(8,'Course complete',8,0,1,0,0),
+	(9,'In employment',9,0,1,0,0);
 
 /*!40000 ALTER TABLE `stages` ENABLE KEYS */;
 UNLOCK TABLES;
