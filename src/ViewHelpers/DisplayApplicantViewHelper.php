@@ -58,7 +58,7 @@ class DisplayApplicantViewHelper
         $result = '';
         foreach ($applicants['applicants'] as $applicant) {
             if (empty($applicant->apprentice)) {
-                $result .= self::outputApplicantRow($applicant, $applicants['lastStage']);
+                $result .= self::outputApplicantRow($applicant, $applicants['lastStage'], $applicants['stageCount']);
             }
         }
         return self::handleNoApplicants($result);
@@ -83,7 +83,7 @@ class DisplayApplicantViewHelper
     }
 
 
-    private static function outputApplicantRow(BaseApplicantEntityInterface $applicant, $lastStage): string
+    private static function outputApplicantRow(BaseApplicantEntityInterface $applicant, $lastStage, $stageCount): string
     {
         $string = '<tr>
                     <td>
@@ -120,7 +120,7 @@ class DisplayApplicantViewHelper
                         </a>';
         if ($applicant->getStageID() != $lastStage) {
             $string .= '<button type="button" class="btn btn-info btnNextStage" data-stageid="' .
-                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" >
+                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" . data-stageCount="' . $stageCount['stagesCount'] . '" >
                 Next Stage
             </button>';
         }
