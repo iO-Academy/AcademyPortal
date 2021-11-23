@@ -26,7 +26,7 @@ let outputStages = async () => {
       stageOptions += 'selected ';
     }
     stageOptions += `value="${item.id}">${item.title}`;
-    if (item.student) {
+    if (item.student === '1') {
       stageOptions += ` (Student)`;
     }
 
