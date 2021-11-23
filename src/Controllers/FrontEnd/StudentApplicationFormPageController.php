@@ -37,8 +37,8 @@ class StudentApplicationFormPageController
             'data' => [
                 'backgroundInfo' => $this->model->getBackgroundInfo(),
                 'hearAbout' => $this->model->getHearAbout(),
-                'Cohorts' => $this->model->getCohorts(),
-                'Gender' => $this->model->getGenders()
+                'cohorts' => $this->model->getCohorts(),
+                'gender' => $this->model->getGenders()
             ]
         ];
         return $this->view->render($response, 'studentApplicationForm.phtml', $data);
