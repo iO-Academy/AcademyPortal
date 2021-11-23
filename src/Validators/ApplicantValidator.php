@@ -9,38 +9,48 @@ class ApplicantValidator
     public static function validate(array $applicant): bool
     {
         return (
+            // Check that the name exists and is of the correct length
             (
                 StringValidator::validateExistsAndLength(
                     $applicant['name'],
                     StringValidator::MAXVARCHARLENGTH,
                     'name'
                 )
+                    // Check that the name only uses alpha characters
                 && StringValidator::validateAlpha($applicant['name'])
             ) &&
+            // Check that the email address exists and is of the correct length
             StringValidator::validateExistsAndLength($applicant['email'], StringValidator::MAXVARCHARLENGTH, 'email')
             &&
             filter_var($applicant['email'], FILTER_VALIDATE_EMAIL) !== false &&
             (
+                // check that the applicant phone number is a phone number
                 empty($applicant['phoneNumber']) ||
                 PhoneNumberValidator::validatePhoneNumber($applicant['phoneNumber'])
             ) &&
+            // Check that the cohort value is an array and isn't empty
             is_array($applicant['cohort']) &&
             !empty($applicant['cohort']) &&
+            // Check that the whyDev field exists and is the correct length
             StringValidator::validateExistsAndLength(
                 $applicant['whyDev'],
                 StringValidator::MAXTEXTLENGTH,
                 'your reasons for wanting to become a developer'
             )
             &&
+            // Check that the codeExperience field exists and does not exceed the max length
             StringValidator::validateExistsAndLength(
                 $applicant['codeExperience'],
                 StringValidator::MAXTEXTLENGTH,
                 'your experience of coding'
             )
             &&
+            // Check that the hearAboutId, backgroundInfoId and gender are all numeric (as they represent ids for other tables)
             is_numeric($applicant['hearAboutId']) &&
             is_numeric($applicant['backgroundInfoId']) &&
+            is_numeric($applicant['gender']) &&
             (
+                // Check that the applicant eligible, eighteenPlus and finance fields are binary
                 $applicant['eligible'] == 1 || $applicant['eligible'] == 0
             ) &&
             (
@@ -49,6 +59,7 @@ class ApplicantValidator
             (
                 $applicant['finance'] == 1 || $applicant['finance'] == 0
             ) &&
+            // Ensure the notes don't exceed max characters
             strlen($applicant['notes']) <= StringValidator::MAXTEXTLENGTH
         );
     }
