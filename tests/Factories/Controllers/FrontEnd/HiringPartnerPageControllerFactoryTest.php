@@ -6,7 +6,6 @@ use Tests\TestCase;
 
 class HiringPartnerPageControllerFactoryTest extends TestCase
 {
-
     public function testDisplayHiringPartnerPageControllerFactory()
     {
         $renderer = $this->createMock(\Slim\Views\PhpRenderer::class);

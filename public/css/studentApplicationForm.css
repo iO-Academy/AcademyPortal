@@ -18,6 +18,11 @@ body {
     padding: 80px 120px;
 }
 
+.hidden{
+    visibility: hidden;
+    height: 0;
+}
+
 .studentApplicationForm input {
     margin: 10px 0;
 }
@@ -53,4 +58,5 @@ svg {
         background-position: 0% 50%;
     }
 }
+
 

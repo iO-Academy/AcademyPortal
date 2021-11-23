@@ -6,7 +6,6 @@ use Portal\Validators\PhoneNumberValidator;
 
 class PhoneNumberValidatorTest extends \PHPUnit\Framework\TestCase
 {
-
     public function testValidatePhoneNumberSuccess()
     {
         $numbers = ['786780670434', '+31 166 094'];
