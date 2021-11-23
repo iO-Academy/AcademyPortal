@@ -17,7 +17,7 @@ class StudentApplicationFormViewHelper
         $output .= '<input type="tel" placeholder="Phone Number">';
         $output .= '<select>';
         $output .= '<option>Gender</option>';
-        foreach($data['genders'] as $genders){
+        foreach ($data['genders'] as $genders) {
             $output .= '<option value="' . $genders['id'] . '">' . $genders['gender'] . '</option>';
         }
         $output .= '</select>';
@@ -34,7 +34,7 @@ class StudentApplicationFormViewHelper
     {
         $output = '<select>';
         $output .= '<option>Background</option>';
-        foreach($data['backgroundInfo'] as $backgroundInfo){
+        foreach ($data['backgroundInfo'] as $backgroundInfo) {
             $output .= '<option value="' . $backgroundInfo['id'] . '">' . $backgroundInfo['backgroundInfo'] . '</option>';
         }
         $output .= '</select>';
@@ -66,14 +66,14 @@ class StudentApplicationFormViewHelper
     protected static function displayPageFormFour(array $data): string
     {
         $output = '<label>Select start date(s)</label>';
-        foreach($data['cohorts'] as $cohorts){
+        foreach ($data['cohorts'] as $cohorts) {
             $output .= '<label><input type="checkbox" value="' . $cohorts['id'] . '"/>' . $cohorts['date'] . '</label>';
         }
         $output .= '<label><input type="checkbox" value="next available online course">Some course dates may also be offered with a remote option. Contact us to find out more.</label>';
         $output .= '<label> How did you hear about us?</label>';
         $output .= '<select>';
         $output .= '<option>Background</option>';
-        foreach($data['hearAbout'] as $hearAbout){
+        foreach ($data['hearAbout'] as $hearAbout) {
             $output .= '<option value="' . $hearAbout['id'] . '">' . $hearAbout['hearAbout'] . '</option>';
         }
         $output .= '</select>';
@@ -138,24 +138,24 @@ between you and one of our trainers.</li>';
         return $output;
     }
 
-    public static function displayNextButtons(int $applicationFormPageNumber, int $finalPage) : string
+    public static function displayNextButtons(int $applicationFormPageNumber, int $finalPage): string
     {
-        if($applicationFormPageNumber === 1){
+        if ($applicationFormPageNumber === 1) {
             $output = '<button disabled>Prev</button>';
-        }else{
+        } else {
             $output = '<button class="prevButton" value="' . ($applicationFormPageNumber - 1) . '">Prev</button>';
         }
-        if($applicationFormPageNumber >= $finalPage){
+        if ($applicationFormPageNumber >= $finalPage) {
             $output .= '<button class="finishButton">Finish</button>';
-        }else {
+        } else {
             $output .= '<button class="nextButton" type="submit" for="studentApplicationForm" value="' . ($applicationFormPageNumber + 1) . '">Next</button>';
         }
         return $output;
     }
-    public static function displayform(int $pages,array $data) : string
+    public static function displayform(int $pages, array $data): string
     {
         $output = '';
-        for ($i = 1;$i <= $pages;$i++){
+        for ($i = 1; $i <= $pages; $i++) {
             $output .= '<div class="studentApplicationForm hidden" id="' . $i .  '">';
             $output .= self::displayPageByNumber($i, $data);
             $output .= self::displayNextButtons($i, $pages);

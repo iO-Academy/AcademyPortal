@@ -6,7 +6,6 @@ use Portal\Sanitisers\StageSanitiser;
 
 class StageValidator
 {
-
     public static function validateStages(array $stages): array
     {
         foreach ($stages as $k => $stage) {

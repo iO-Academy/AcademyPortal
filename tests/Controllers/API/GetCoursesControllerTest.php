@@ -8,7 +8,6 @@ use Portal\Models\CourseModel;
 
 class GetCoursesControllerTest extends TestCase
 {
-
     public function testConstruct()
     {
         $courseModel = $this->createMock(CourseModel::class);
