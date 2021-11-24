@@ -45,7 +45,8 @@ $(document).ready(function(){
                     response.json().then(function(data) {
                         document.getElementById('currentStageNumber').innerHTML =  '<h4>Stage ' + stageId + ' of ' + stageCount + '</h4>';
                         document.getElementById('nextStageNumber').innerHTML ='<h4>Stage ' + nextStageId  + ' of ' + stageCount + '</h4>';
-                        document.getElementById('currentStageTitle').innerHTML ='<h4>Stage Name Here ' + currentStageTitle + '</h4>';
+                        document.getElementById('currentStageTitle').innerHTML ='<h4>Stage Name Here ' + data['data']['currentStageTitle'] + '</h4>';
+                        // document.getElementById('nextStageTitle').innerHTML ='<h4>Stage Name Here ' + nextStageTitle + '</h4>';
                         document.querySelector('#next-stage-options').innerHTML = '<option>Please select an Option</option>';
                         const alert = document.querySelector('#passwordMessage')
                         if (data['data']['password']) {
