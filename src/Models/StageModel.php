@@ -95,7 +95,8 @@ class StageModel
     public function getAllStages(): array
     {
         $query = $this->db->prepare(
-            "SELECT `st`.`id`, `st`.`title`, `st`.`order`, `st`.`student`, `st`.`deleted`, count(`a`.`id`) AS 'hasAssignees'
+            "SELECT `st`.`id`, `st`.`title`, `st`.`order`, `st`.`student`, `st`.`deleted`, 
+                count(`a`.`id`) AS 'hasAssignees'
                 FROM `stages` AS `st`
                 LEFT JOIN `applicants` AS `a` ON `st`.`id` = `a`.`stageId`
                 AND `st`.`deleted` = '0' 
