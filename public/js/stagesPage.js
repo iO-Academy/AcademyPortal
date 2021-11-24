@@ -11,7 +11,7 @@ const optionDeletes = document.querySelectorAll('.optionDelete');
 const optionAddSubmits = document.querySelectorAll('.optionAddSubmit');
 const optionsContainers = document.querySelectorAll('.optionsContainer');
 const optionEditForms = document.querySelectorAll('.optionTableForm');
-const activeStageLocks = document.querySelectorAll('.stageLock');
+const stageLocks = document.querySelectorAll('.stageLock');
 
 // Set up the modal for deleting the final option
 const modal = document.querySelector('.modalContainer');
@@ -212,11 +212,11 @@ newStageForm.addEventListener('submit', async (e) => {
 });
 
 //Event listener for the lock icons. Provides ability to disable/enable delete functionality of stages
-activeStageLocks.forEach((stageLock) => {
+stageLocks.forEach((stageLock) => {
     stageLock.addEventListener('click', () => {
         //if padlock is locked -> unlocked, trigger the allowStageDeletionModal
         if(stageLock.dataset.locked === '1') {
-            $('#allowStageDeletionModal').modal('show')
+            $('#stageDeletionModal').modal('show')
         } else {
             //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
             stageLock.dataset.locked = '1'
