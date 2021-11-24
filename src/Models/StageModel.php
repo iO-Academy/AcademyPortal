@@ -67,11 +67,15 @@ class StageModel
     public function createStage(array $stageEntity): bool
     {
         $query = $this->db->prepare(
-            "INSERT INTO `stages` (`title`, `order`, `student`) VALUES (:title, :order, :student);"
+            "INSERT INTO `stages` (`title`, `order`, `student`, `withdrawn`, `rejected`, `notAssigned`) 
+            VALUES (:title, :order, :student, :withdrawn, :rejected, :notAssigned);"
         );
         $query->bindValue(':title', $stageEntity['title']);
         $query->bindValue(':order', $stageEntity['order']);
         $query->bindValue(':student', $stageEntity['student']);
+        $query->bindValue(':withdrawn', $stageEntity['withdrawn']);
+        $query->bindValue(':rejected', $stageEntity['rejected']);
+        $query->bindValue(':notAssigned', $stageEntity['notAssigned']);
         return $query->execute();
     }
 
@@ -82,7 +86,10 @@ class StageModel
      */
     public function getStageTitles(): array
     {
-        $query = $this->db->prepare('SELECT `id`, `title`, `student` FROM `stages`;');
+        $query = $this->db->prepare(
+            'SELECT `id`, `title`, `student`, `withdrawn`, `rejected`, `notAssigned` 
+            FROM `stages`;'
+        );
         $query->execute();
         return $query->fetchAll();
     }
@@ -95,7 +102,9 @@ class StageModel
     public function getAllStages(): array
     {
         $query = $this->db->prepare(
-            'SELECT `id`, `title`, `order`, `student`, `deleted` FROM `stages` WHERE `deleted` = 0 ORDER BY `order`;'
+            'SELECT `id`, `title`, `order`, `student`, `withdrawn`, `rejected`, `deleted`, `notAssigned` FROM `stages` 
+            WHERE `deleted` = 0 
+            ORDER BY `order`;'
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, StageEntity::class);
         $query->execute();
@@ -159,15 +168,30 @@ class StageModel
      * @param string $newTitle
      * @return bool
      */
-    public function updateStage(int $id, string $title, int $order, int $isStudent): bool
-    {
-        $query = $this->db->prepare(
-            "UPDATE `stages` SET `title` = :title, `order` = :newOrder, `student` = :student WHERE `id` = :id"
-        );
+    public function updateStage(
+        int $id,
+        string $title,
+        int $order,
+        int $isStudent,
+        int $isWithdrawn,
+        int $isRejected,
+        int $isNotAssigned
+    ): bool {
+        $query = $this->db->prepare("UPDATE `stages` 
+            SET `title` = :title, 
+            `order` = :newOrder, 
+            `student` = :student, 
+            `withdrawn` = :withdrawn, 
+            `rejected` = :rejected,
+            `notAssigned` = :notAssigned
+            WHERE `id` = :id");
         $query->bindParam(':id', $id);
         $query->bindParam(':title', $title);
         $query->bindParam(':newOrder', $order);
         $query->bindParam(':student', $isStudent);
+        $query->bindParam(':withdrawn', $isWithdrawn);
+        $query->bindParam(':rejected', $isRejected);
+        $query->bindParam(':notAssigned', $isNotAssigned);
 
         return $query->execute();
     }
@@ -177,7 +201,15 @@ class StageModel
         try {
             $this->db->beginTransaction();
             foreach ($stages as $stage) {
-                $this->updateStage($stage['id'], $stage['title'], $stage['order'], $stage['student']);
+                $this->updateStage(
+                    $stage['id'],
+                    $stage['title'],
+                    $stage['order'],
+                    $stage['student'],
+                    $stage['withdrawn'],
+                    $stage['rejected'],
+                    $stage['notAssigned']
+                );
             }
             $this->db->commit();
             return true;
