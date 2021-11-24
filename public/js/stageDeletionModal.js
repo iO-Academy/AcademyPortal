@@ -1,9 +1,11 @@
 $(document).ready(function(){
-    $("#padlockLocked").click(function(){
+    $('.openMe').click(function(){
         $('#stageDeletionModal').modal('show');
     })
-    $("#stageDeletionModalYes").click(function(){
+    $("#stageDeletionModalYes").on("click",function(){
         // add functionality to the Yes button
+        $('#padlockLocked').attr('data-locked', '0');
+        console.log('worked');
         $('#stageDeletionModal').modal('hide');
     })
 
@@ -11,4 +13,8 @@ $(document).ready(function(){
         $('#stageDeletionModal').modal('hide');
     })
 })
+
+// custom data attr
+// multiple event listeners - other group
+
 
