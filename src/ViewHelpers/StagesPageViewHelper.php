@@ -87,7 +87,7 @@ class StagesPageViewHelper
                 $result .= $stage->getStageId() . '">Options</a></td>';
                 $result .= '<td class="col-xs-2 text-center">';
                 $result .= '<i data-stageId="' . $stage->getStageId()
-                . '" data-locked="1" id="padlockLocked" class="stageLock fas fa-lock "></i>';
+                . '" data-locked="0" id="padlockLocked" class="stageLock fas fa-lock-open"></i>';
                 $result .= '</td>';
                 $result .= '</tr>';
             }

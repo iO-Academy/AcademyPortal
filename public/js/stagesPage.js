@@ -211,25 +211,25 @@ newStageForm.addEventListener('submit', async (e) => {
 
 });
 
-//Event listener for the lock icons. Provides ability to disable/enable delete functionality of stages
-stageLocks.forEach((stageLock) => {
-    stageLock.addEventListener('click', () => {
-        //if padlock is locked -> unlocked, trigger the allowStageDeletionModal
-        if(stageLock.dataset.locked === '1') {
-            $('#stageDeletionModal').modal('show')
-        } else {
-            //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
-            stageLock.dataset.locked = '1'
-            stageLock.classList.remove('glyphicon-lock-open')
-            stageLock.classList.add('glyphicon-lock')
-            deleteButtons.forEach((deleteButton)=>{
-                if(deleteButton.dataset.id === stageLock.dataset.stageId) {
-                    deleteButton.classList.add('disabled')
-                }
-            })
-        }
-    })
-})
+// //Event listener for the lock icons. Provides ability to disable/enable delete functionality of stages
+// stageLocks.forEach((stageLock) => {
+//     stageLock.addEventListener('click', () => {
+//         //if padlock is locked -> unlocked, trigger the allowStageDeletionModal
+//         if (stageLock.dataset.locked === '1') {
+//             $('#stageDeletionModal').modal('show')
+//         } else {
+//             //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
+//             stageLock.dataset.locked = '1'
+//             stageLock.classList.remove('fa-lock-open')
+//             stageLock.classList.add('fa-lock')
+//             deleteButtons.forEach((deleteButton)=>{
+//                 if (deleteButton.dataset.id === stageLock.dataset.stageId) {
+//                     deleteButton.classList.add('disabled')
+//                 }
+//             })
+//         }
+//     })
+// })
 
 
 //Fetch template
@@ -249,3 +249,26 @@ async function sendRequest(url, requestMethod, data) {
         document.cookie = `response=${responseData.msg}`;
     }
 }
+
+$(document).ready(function(){
+    $(".stageLock").each(function() {
+        $(this).click(function(){
+            console.log($(this).data('locked'))
+                if ($(this).data('locked') === '1') {
+                    $('#stageDeletionModal').modal('show')
+                } else {
+                    //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
+                    console.log(this)
+                    $(this).data('locked', '1')
+                    this.classList.remove('fa-lock-open')
+                    this.classList.add('fa-lock')
+                    // deleteButtons.forEach((deleteButton)=>{
+                    //     if (deleteButton.dataset.id === this.dataset.stageId) {
+                    //         deleteButton.classList.add('disabled')
+                    //     }
+                    // })
+                }
+    })
+
+    })
+})
