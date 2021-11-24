@@ -4,7 +4,6 @@ namespace Portal\ViewHelpers;
 
 class EventCategoryViewHelper
 {
-
     /**
      * Takes event category data and returns html for events category dropdown in an <option> format
      *
