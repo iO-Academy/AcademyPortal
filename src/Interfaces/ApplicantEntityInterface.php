@@ -10,3 +10,4 @@ interface ApplicantEntityInterface
 
     public function getId();
 }
+

@@ -27,8 +27,9 @@ function getEvents(search = false) {
     })
     .then(response => response.json())
     .then(async (eventInfo) => {
-        let hiringPartners = await getHiringPartners()
-        return {events: eventInfo, hiringPartners: hiringPartners}
+        let hiringPartners = await getHiringPartners();
+        let applicants = await getAssessmentApplicants();
+        return {events: eventInfo, hiringPartners: hiringPartners, applicants: applicants};
     })
     .then(eventsAndHiringPartners => {
         displayEventsHandler(eventsAndHiringPartners)
@@ -113,9 +114,9 @@ function displayEventsHandler(eventsAndHiringPartners) {
     }
 };
 
-async function displayEvents(events, hiringPartners) {
+async function displayEvents(events, hiringPartners, applicants) {
     events.forEach(async (event) => {
-        await eventGenerator(event, hiringPartners).then(event => {
+        await eventGenerator(event, hiringPartners, applicants).then(event => {
             displayHiringPartnersAttending(event)
         })
         return event
@@ -209,7 +210,7 @@ async function displayHiringPartnersAttending(event){
  *
  * @param events an object which contains information about an event
  */
-async function eventGenerator(event, hiringPartners) {
+async function eventGenerator(event, hiringPartners, applicants) {
     let eventInformation = ''
     let date = new Date(event.date).toDateString()
     let headerDate = new Date(event.date).toDateString().substring(0,3) + ' ' + new Date(event.date).getUTCDate() + '/' + new Date(event.date).getUTCMonth() + '/' + new Date(event.date).getUTCFullYear()
@@ -230,6 +231,26 @@ async function eventGenerator(event, hiringPartners) {
 
     if (event.notes !== null) {
         eventInformation += `<p>Notes: ${event.notes}</p>`
+    }
+
+    if (event.category_name === 'Assessment') {
+        // put code for assessment event type here!
+        eventInformation += '<div>';
+        eventInformation += '<table class="col-xs-12 table-bordered table">';
+        eventInformation += '<tr>';
+        eventInformation += '<th class="col-xs-2">Name</th>';
+        eventInformation += '<th class="col-xs-3">Email</th>';
+        eventInformation += '</tr>';
+            applicants.forEach((applicant) => {
+                if (applicant.assessmentDay == event.id) {
+                    eventInformation += `<tr>`;
+                    eventInformation += `<td>${applicant.name}</td>`;
+                    eventInformation += `<td>${applicant.email}</td>`;
+                    eventInformation += `</tr>`;
+                }
+            });
+        eventInformation += '</table>';
+        eventInformation += '</div>';
     }
 
     if (event.availableToHP == 1) {
@@ -290,6 +311,24 @@ async function getHiringPartners() {
     return await response.json()
 }
 
+/**
+ * Get all the applicants booked for assessment from the API
+ *
+ * @return array The JSON response
+ */
+async function getAssessmentApplicants() {
+
+    let response = await fetch('./api/getAssessmentApplicants', {
+        credentials: 'same-origin',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'get',
+    })
+    return await response.json()
+
+}
 
 document.querySelector('#submit-search-event').addEventListener('click', function(e) {
     const searchInput = document.querySelector('#academy-events-search').value
