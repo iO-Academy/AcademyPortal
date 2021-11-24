@@ -55,6 +55,7 @@ class DisplayApplicantViewHelper
      */
     public static function displayApplicants($applicants): string
     {
+        $applicants['stageTitle'] = 'cheese';
         $result = '';
         foreach ($applicants['applicants'] as $applicant) {
             if (empty($applicant->apprentice)) {
@@ -120,7 +121,7 @@ class DisplayApplicantViewHelper
                         </a>';
         if ($applicant->getStageID() != $lastStage) {
             $string .= '<button type="button" class="btn btn-info btnNextStage" data-stageid="' .
-                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" . data-stageCount="' . $stageCount['stagesCount'] . '" . data-stageTitle="' . $stageTitle . '" >
+                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" . data-stagecount="' . $stageCount['stagesCount'] . '" . data-stageTitle="' . $stageTitle . '" >
                 Next Stage
             </button>';
         }

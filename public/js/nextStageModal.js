@@ -25,7 +25,7 @@ function updateStage(url, applicantId, btnNextStage) {
 $(document).ready(function(){
     $(".btnNextStage").click(function(){
         const stageId = this.dataset.stageid;
-        const stageName = this.dataset.stagename;
+        const stageName = this.dataset.stagetitle;
         console.log(stageName);
         const stageCount = this.dataset.stagecount;
         const nextStageId = parseInt(stageId) + 1;
