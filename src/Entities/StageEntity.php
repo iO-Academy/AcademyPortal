@@ -10,6 +10,7 @@ class StageEntity implements \JsonSerializable
     protected $student;
     protected $deleted;
     protected $options;
+    protected $hasAssignees;
 
     /**
      * Returns private properties from object.
@@ -93,5 +94,14 @@ class StageEntity implements \JsonSerializable
     public function getStudent(): ?bool
     {
         return $this->student;
+    }
+
+    /**
+     * Returns number of assignees to stage
+     * @return int
+     */
+    public function getHasAssignees(): int
+    {
+        return $this->hasAssignees;
     }
 }

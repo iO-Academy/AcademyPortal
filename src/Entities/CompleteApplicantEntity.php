@@ -159,9 +159,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         return $this->assessmentDay;
     }
 
-    /**
-     * @return string|null
-     */
+
     public function getCustomAssessmentDay(): ?string
     {
         return $this->customAssessmentDay;

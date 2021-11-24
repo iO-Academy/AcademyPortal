@@ -56,9 +56,12 @@ class StagesPageViewHelper
                         $result .= '<div class="optionContainer">';
                         $result .= '<p class="optionTitle" data-optionId="';
                         $result .= $option->getOptionId() . '">' . $option->getOptionTitle();
-                        $result .= '<a class="text-danger optionDelete" data-optionId="';
-                        $result .= $option->getOptionId() . '" ';
+
+                        $result .= '<a class="text-danger optionDelete';
+                        $result .= $option->getHasAssignees() > 0 ? ' disabled" ' : '"';
+                        $result .= 'data-optionId="' . $option->getOptionId() . '" ';
                         $result .= 'data-stageid="' . $stage->getStageId() . '">Delete</a>';
+
                         $result .= '<a class="optionEdit" data-optionId="' . $option->getOptionId() . '">Edit</a>';
                         $result .= '</p>';
                         $result .= '<form class="optionTableForm hidden form-inline"';
@@ -82,7 +85,7 @@ class StagesPageViewHelper
                 $result .= '</div>';
                 $result .= '</td>';
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
-                if (empty($stage->getOptions())) {
+                if (empty($stage->getOptions()) && $stage->getHasAssignees() == 0) {
                     $result .= '<td class="col-xs-2 text-center"><a data-id="' . $stage->getStageId()
                     . '" class="text-danger delete">Delete</a></td>';
                 } else {
@@ -91,6 +94,11 @@ class StagesPageViewHelper
                 }
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="';
                 $result .= $stage->getStageId() . '">Options</a></td>';
+
+                $result .= '<td class="col-xs-2 text-center"><a href="/applicants?name=&stageId=';
+                $result .= $stage->getStageId() . '&cohortId=all&sort=dateAsc';
+                $result .= '">Assignees</a></td>';
+
                 $result .= '</tr>';
             }
         }
