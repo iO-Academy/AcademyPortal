@@ -44,7 +44,6 @@ startDatesCheckboxes.forEach(($checkbox) => {
 })
 
 function handleCheckbox(e) {
-    // e.currentTarget.checked = !e.currentTarget.checked;
     if (e.currentTarget.checked) {
         e.currentTarget.parentElement.classList.add('clicked')
     } else {

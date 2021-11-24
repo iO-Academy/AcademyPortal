@@ -69,7 +69,7 @@ class StudentApplicationFormViewHelper
     {
         $output = '<div class="row"><label>Select start date(s)</label><ul class="startDatesList">';
         foreach ($data['cohorts'] as $cohorts) {
-            $output .= '<li><label><input type="checkbox" class="startDatesCheckbox" name="startDatesCheckbox" value="' . $cohorts['id'] . '"/>' . $cohorts['date'] . '</label></li>';
+            $output .= '<li><label><input type="checkbox" class="startDatesCheckbox" name="startDatesCheckbox" value="' . $cohorts['id'] . '"/>' . date_format(date_create_from_format("Y-m-d", $cohorts['date']), "D j M Y") . '</label></li>';
         }
         $output .= '</ul><label><input type="checkbox" value="next available online course">Some course dates may also be offered with a remote option. Contact us to find out more.</label></div>';
         $output .= '<div class="row"><label> How did you hear about us?</label>';
@@ -79,13 +79,13 @@ class StudentApplicationFormViewHelper
             $output .= '<option value="' . $hearAbout['id'] . '">' . $hearAbout['hearAbout'] . '</option>';
         }
         $output .= '</select></div>';
-        $output .= '<div class="row"><label><input type="checkbox" value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK</label></div>';
+        $output .= '<div class="termsAndConditions"><div class="row"><label><input type="checkbox" value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK</label></div>';
         $output .= '<div class="row"><label><input type="checkbox" value="I confirm that I am at least 18 years 
 of age before my chosen course start date"/>I confirm that I am at least 18 years 
 of age before my chosen course start date</label></div>';
         $output .= '<div class="row"><p>By using this form you agree with the storage and handling of your data
  by this website in accordance with our terms and conditions and privacy policy.</p>';
-        $output .= '<label><input type="checkbox" value="I accept the terms and conditions"/>I accept the terms and conditions</label></div>';
+        $output .= '<label><input type="checkbox" value="I accept the terms and conditions"/>I accept the terms and conditions</label></div></div>';
         return $output;
     }
 
