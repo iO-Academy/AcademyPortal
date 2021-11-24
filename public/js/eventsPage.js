@@ -204,7 +204,7 @@ async function displayHiringPartnersAttending(event){
 }
 
 /**
- * Outputs HTML elements with event details
+ * Outputs HTML elements with event details.
  *
  * @param events an object which contains information about an event
  */
