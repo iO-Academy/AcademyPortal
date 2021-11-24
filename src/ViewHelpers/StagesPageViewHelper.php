@@ -45,7 +45,7 @@ class StagesPageViewHelper
                 $result .= '</p>';
                 $result .= '<form data-id="' . $stage->getStageId() . '" class="stagesTableForm form-inline">';
                 $result .= '<div>';
-                $result .= '<label for="stages">Select Stage Status:</label>';
+                $result .= '<label for="stages">Select Stage Flag:</label>';
                 $result .= '<select name="stages" id="stages">';
                 $result .= '<option name="notAssigned"' . $isNotAssigned . '>Not assigned</option>';
                 $result .= '<option name="student"' . $isStudent . '>Student</option>';
