@@ -83,10 +83,10 @@ class StudentApplicationFormViewHelper
         $output .= '<label><input type="checkbox" value="I am eligible to live and work in the UK"/>';
         $output .= 'I am eligible to live and work in the UK</label>';
         $output .= '<label><input type="checkbox" value="';
-        $output .= 'I confirm that I am at least 18 years';
-        $output .= 'of age before my chosen course start date"/>I confirm that I am at least 18 years';
+        $output .= 'I confirm that I am at least 18 years ';
+        $output .= 'of age before my chosen course start date"/>I confirm that I am at least 18 years ';
         $output .= 'of age before my chosen course start date<label>';
-        $output .= '<p>By using this form you agree with';
+        $output .= '<p>By using this form you agree with ';
         $output .= 'the storage and handling of your data';
         $output .= ' by this website in accordance with our terms and conditions and privacy policy.</p>';
         $output .= '<label><input type="checkbox" value="I accept the terms and conditions"/>';
@@ -104,15 +104,15 @@ class StudentApplicationFormViewHelper
         $output = '<h2>Ready to submit?</h2>';
         $output .= '<p>Next Steps</p>';
         $output .= '<ul>';
-        $output .= '<li>We’ll read through your application and '.
-'be in touch within the next few days.</li>';
-        $output .= '<li>We will send you our problem-solving test via email. '.
-'You’ll have ten days to complete this. (Don’t worry, no coding knowledge needed!)</li>';
-        $output .= '<li>We will also arrange an informal chat '.
-'between you and one of our trainers.</li>';
-        $output .= '<li>After your chat with a trainer, we will be in touch within'.
-' five working days to let you know whether your application'.
-' has been successful and talk next steps!</li>';
+        $output .= '<li>We’ll read through your application and ' .
+        'be in touch within the next few days.</li>';
+        $output .= '<li>We will send you our problem-solving test via email. ' .
+        'You’ll have ten days to complete this. (Don’t worry, no coding knowledge needed!)</li>';
+        $output .= '<li>We will also arrange an informal chat ' .
+        'between you and one of our trainers.</li>';
+        $output .= '<li>After your chat with a trainer, we will be in touch within' .
+        ' five working days to let you know whether your application' .
+        ' has been successful and talk next steps!</li>';
         $output .= '</ul>';
         return $output;
     }
@@ -157,16 +157,16 @@ class StudentApplicationFormViewHelper
         if ($applicationFormPageNumber === 1) {
             $output = '<button disabled>Prev</button>';
         } else {
-            $output = '<button class="prevButton"'.
+            $output = '<button class="prevButton" ' .
             'value="' . ($applicationFormPageNumber - 1) .
                 '">Prev</button>';
         }
         if ($applicationFormPageNumber >= $finalPage) {
-            $output .= '<button class="finishButton">Finish</button>';
+            $output .= '<button class="finishButton" type="submit">Finish</button>';
         } else {
-            $output .= '<button class="nextButton"'.
-                ' type="submit" for="studentApplicationForm" value="'
-                . ($applicationFormPageNumber + 1) . '">Next</button>';
+            $output .= '<button class="nextButton" ';
+            $output .= 'for="studentApplicationForm" value="';
+            $output .= ($applicationFormPageNumber + 1) . '">Next</button>';
         }
         return $output;
     }
