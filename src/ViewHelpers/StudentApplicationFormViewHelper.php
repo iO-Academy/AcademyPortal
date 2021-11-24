@@ -43,9 +43,10 @@ class StudentApplicationFormViewHelper
                 '">' . $backgroundInfo['backgroundInfo'] . '</option>';
         }
         $output .= '</select>';
+        $output .= '<div id="backgroundError" class="alert hidden formItem_alert">Field Required.</div>';
         $output .= '<div><label>Why do you want to become a developer?</label></div>';
-        $output .= '<div id="whyDevError" class="alert hidden formItem_alert"></div>';
         $output .= '<textarea rows="10" placeholder="(100-500 Characters)"> </textarea>';
+        $output .= '<div id="whyDevError" class="alert hidden formItem_alert"></div>';
         $output .= '</label>';
         return $output;
     }
