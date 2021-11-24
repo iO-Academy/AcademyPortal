@@ -95,13 +95,15 @@ class StageModel
     public function getAllStages(): array
     {
         $query = $this->db->prepare(
-            "SELECT `st`.`id`, `st`.`title`, `st`.`order`, `st`.`student`, `st`.`deleted`, 
+            "SELECT `st`.`id`, `st`.`title`, `st`.`order`, `st`.`student`, `st`.`deleted`,
+                `st`.`withdrawn`, `st`.`rejected`, `st`.`notAssigned`,
                 count(`a`.`id`) AS 'hasAssignees'
                 FROM `stages` AS `st`
                 LEFT JOIN `applicants` AS `a` ON `st`.`id` = `a`.`stageId`
-                AND `st`.`deleted` = '0' 
+                AND `st`.`deleted` = '0'
                 AND `a`.`deleted` = '0'
-                GROUP BY `st`.`id`"
+                GROUP BY `st`.`id`
+                ORDER BY `st`.`order`;"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, StageEntity::class);
         $query->execute();
