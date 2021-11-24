@@ -47,6 +47,7 @@ class ApplicantSanitiser
         $applicant['apprentice'] = $applicant['apprentice'] ? 1 : 0;
         $applicant['aptitude'] = $applicant['aptitude'] ? (int)$applicant['aptitude'] : null;
         $applicant['assessmentDay'] = !empty($applicant['assessmentDay']) ? $applicant['assessmentDay'] : null;
+        $applicant['customAssessmentDay'] = !empty($applicant['customAssessmentDay']) ? $applicant['customAssessmentDay'] : null;
         $applicant['assessmentNotes'] = StringSanitiser::sanitiseString($applicant['assessmentNotes']);
 
         if ($applicant['diversitechInterest'] !== null) {
