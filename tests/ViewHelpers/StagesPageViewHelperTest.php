@@ -16,17 +16,19 @@ class StagesPageViewHelperTest extends TestCase
     public function testSuccessNoOptionsDisplayStages()
     {
         $expected = '<trclass=""data-id="1"><tdclass="col-xs-1order">1</td><tdclass="col-xs-2"><pclass="stageTitle">
-        Stage1test</p><formdata-id="1"class="stagesTableFormform-inline"><div><label>Studentstage:<inputtype="checkbox"
-        name="student"><iclass="glyphiconglyphicon-educationtext-success"></i></label></div><inputtype="text"
-        class="form-controlstageEditTitle"value="Stage1test"/><inputtype="submit"class="stageEditSubmitbtnbtn-success"
-        value="Edit"></form><divclass="optionsContainerhidden"data-stageId="1"><divclass="optionContainermultiOptionsContainer">
+        Stage1test</p><formdata-id="1"class="stagesTableFormform-inline"><div><label>Studentstage:
+        <inputtype="checkbox"name="student"><iclass="glyphiconglyphicon-educationtext-success"></i>
+        </label></div><inputtype="text"class="form-controlstageEditTitle"value="Stage1test"/>
+        <inputtype="submit"class="stageEditSubmitbtnbtn-success"value="Edit"></form>
+        <divclass="optionsContainerhidden"data-stageId="1"><divclass="optionContainermultiOptionsContainer">
         <formdata-id=""class="optionAddFormform-inline"><inputtype="text"class="optionAddTitleform-controlfirstOption"
         placeholder="Typethenameofyournewoption"/><inputtype="text"class="optionAddTitleform-control"
         placeholder="Typethenameofyournewoption"/><inputtype="submit"class="optionAddSubmitbtnbtn-success"
-        data-stageid="1"value="Submit"></form></div></div></td><tdclass="col-xs-2text-center"><aclass="toggleEditForm">Edit</a>
-        </td><tdclass="col-xs-2text-centerdisabled"><adata-id="1"class="text-dangerdeletedisabled">Delete</a></td>
+        data-stageid="1"value="Submit"></form></div></div></td>
+        <tdclass="col-xs-2text-center"><aclass="toggleEditForm">Edit</a></td>
+        <tdclass="col-xs-2text-centerdisabled"><adata-id="1"class="text-dangerdeletedisabled">Delete</a></td>
         <tdclass="col-xs-2text-center"><aclass="toggleEditOptions"data-stageId="1">Options</a></td><td
-        class="col-xs-2text-center"><idata-stageId="1"data-locked="1"class="stageLockfasfa-lock"></i></td></tr>';
+        class="col-xs-2text-center"><idata-stageId="1"data-locked="1"id="padlockLocked"class="stageLockfasfa-lock"></i></td></tr>';
 
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
         $stageEntityMock = $this->createMock(StageEntity::class);
@@ -60,7 +62,7 @@ class StagesPageViewHelperTest extends TestCase
         data-stageid="1"value="Submit"></form></div></div></td><tdclass="col-xs-2text-center"><aclass="toggleEditForm">
         Edit</a></td><tdclass="col-xs-2text-centerdisabled"><adata-id="1"class="text-dangerdeletedisabled">Delete</a></td>
         <tdclass="col-xs-2text-center"><aclass="toggleEditOptions"data-stageId="1">Options</a></td><td
-        class="col-xs-2text-center"><idata-stageId="1"data-locked="1"class="fasfa-lock-open"></i></td></tr>';
+        class="col-xs-2text-center"><idata-stageId="1"data-locked="1"id="padlockUnlocked"class="fasfa-lock-open"></i></td></tr>';
 
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
         $optionEntityMock = $this->createMock(OptionsEntity::class);

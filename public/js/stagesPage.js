@@ -11,7 +11,6 @@ const optionDeletes = document.querySelectorAll('.optionDelete');
 const optionAddSubmits = document.querySelectorAll('.optionAddSubmit');
 const optionsContainers = document.querySelectorAll('.optionsContainer');
 const optionEditForms = document.querySelectorAll('.optionTableForm');
-const activeStageLocks = document.querySelectorAll('.stageLock');
 
 // Set up the modal for deleting the final option
 const modal = document.querySelector('.modalContainer');
@@ -143,26 +142,6 @@ optionButtons.forEach((optionButton) => {
                 optionContainer.classList.toggle('hidden')
             }
         })
-    })
-})
-
-//Event listener for the lock icons. Provides ability to disable/enable delete functionality of stages
-activeStageLocks.forEach((stageLock) => {
-    stageLock.addEventListener('click', () => {
-        //if padlock is locked -> unlocked, trigger the allowStageDeletionModal
-        if(stageLock.dataset.locked === '1') {
-            $('#allowStageDeletionModal').modal('show')
-        } else {
-            //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
-            stageLock.dataset.locked = '1'
-            stageLock.classList.remove('glyphicon-lock-open')
-            stageLock.classList.add('glyphicon-lock')
-            deleteButtons.forEach((deleteButton)=>{
-                if(deleteButton.dataset.id === stageLock.dataset.stageId) {
-                    deleteButton.classList.add('disabled')
-                }
-            })
-        }
     })
 })
 
