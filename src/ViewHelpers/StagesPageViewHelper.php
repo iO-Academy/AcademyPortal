@@ -89,20 +89,15 @@ class StagesPageViewHelper
                     $result .= '<td class="col-xs-2 text-center"><a data-id="' . $stage->getStageId()
                     . '" class="text-danger delete">Delete</a></td>';
                 } else {
-                    $result .= '<td class="col-xs-2 text-center"><a data-id="' . $stage->getStageId()
-                    . '" class="text-danger" data-toggle="tooltip"'
-                    . 'title="Cannot delete a stage with assigned applicants,'
-                    . 'click to view applicants assigned to this stage">'
-                    . '<i class="tooltiptext glyphicon glyphicon-ban-circle text-success"></i></a></td>';
-                    
+                    $result .= '<td class="col-xs-2 text-center"><a href="/applicants?name=&stageId='
+                        . $stage->getStageId() . '&cohortId=all&sort=dateAsc'
+                        . '" class="text-danger" data-toggle="tooltip"'
+                        . 'title="Cannot delete a stage with assigned applicants, '
+                        . 'click to view applicants assigned to this stage">'
+                        . '<i class="tooltiptext glyphicon glyphicon-ban-circle text-success"></i></a></td>';
                 }
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="';
                 $result .= $stage->getStageId() . '">Options</a></td>';
-
-                $result .= '<td class="col-xs-2 text-center"><a href="/applicants?name=&stageId=';
-                $result .= $stage->getStageId() . '&cohortId=all&sort=dateAsc';
-                $result .= '">Assignees</a></td>';
-
                 $result .= '</tr>';
             }
         }
