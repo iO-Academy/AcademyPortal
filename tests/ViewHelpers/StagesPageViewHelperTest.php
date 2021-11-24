@@ -64,8 +64,8 @@ class StagesPageViewHelperTest extends TestCase
         Edit</a></td><tdclass="col-xs-2text-centerdisabled"><adata-id="1"
         class="text-dangerdeletedisabled">Delete</a></td>
         <tdclass="col-xs-2text-center"><aclass="toggleEditOptions"data-stageId="1">Options</a></td><td
-        class="col-xs-2text-center"><idata-stageId="1"data-locked="1"id="padlockUnlocked"
-        class="fasfa-lock-open"></i></td></tr>';
+        class="col-xs-2text-center"><idata-stageId="1"data-locked="1"id="padlockLocked"
+        class="stageLockfasfa-lock"></i></td></tr>';
 
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
         $optionEntityMock = $this->createMock(OptionsEntity::class);

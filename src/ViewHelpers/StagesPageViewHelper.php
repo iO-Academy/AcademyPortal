@@ -86,13 +86,8 @@ class StagesPageViewHelper
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="';
                 $result .= $stage->getStageId() . '">Options</a></td>';
                 $result .= '<td class="col-xs-2 text-center">';
-                if (empty($stage->getOptions())) {
-                    $result .= '<i data-stageId="' . $stage->getStageId()
-                    . '" data-locked="1" id="padlockLocked" class="stageLock fas fa-lock "></i>';
-                } else {
-                    $result .= '<i data-stageId="' . $stage->getStageId() . '" data-locked="1" id="padlockUnlocked" 
-                    class="fas fa-lock-open" ></i >';
-                }
+                $result .= '<i data-stageId="' . $stage->getStageId()
+                . '" data-locked="1" id="padlockLocked" class="stageLock fas fa-lock "></i>';
                 $result .= '</td>';
                 $result .= '</tr>';
             }
