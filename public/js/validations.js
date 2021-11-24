@@ -13,6 +13,11 @@ function isName(name) {
     return pattern.test(name);
 }
 
+function isFullName(name) {
+    let pattern = /^([\w]{3,})+\s+([\w\s]{3,})+$/i;
+    return pattern.test(name)
+}
+
 function isPhoneNumber(phone) {
     let regEx = /^(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})$/;
     return regEx.test(phone);

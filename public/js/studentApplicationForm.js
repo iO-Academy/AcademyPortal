@@ -39,7 +39,7 @@ function pageOneValidation(formWrapper) {
     alerts.forEach((a) => {
         a.classList.add('hidden')
     })
-    let checks = [isName(inputs[0].value), isEmail(inputs[1].value), isPhoneNumber(inputs[2].value), dropdown.value !== 'Gender']
+    let checks = [isFullName(inputs[0].value), isEmail(inputs[1].value), isPhoneNumber(inputs[2].value), dropdown.value !== 'Gender']
     checks.forEach((check,index)=>{
         if(!check){
             if(inputs[index].value === '' || index === 3){
