@@ -90,7 +90,8 @@ class StagesPageViewHelper
                     $result .= '<i data-stageId="' . $stage->getStageId()
                     . '" data-locked="1" id="padlockLocked" class="stageLock fas fa-lock "></i>';
                 } else {
-                    $result .= '<i data-stageId="' . $stage->getStageId() . '" data-locked="1" id="padlockUnlocked" class="fas fa-lock-open" ></i >';
+                    $result .= '<i data-stageId="' . $stage->getStageId() . '" data-locked="1" id="padlockUnlocked" 
+                    class="fas fa-lock-open" ></i >';
                 }
                 $result .= '</td>';
                 $result .= '</tr>';
