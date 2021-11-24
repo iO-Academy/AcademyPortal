@@ -42,9 +42,16 @@ function pageOneValidation(formWrapper) {
     let checks = [isName(inputs[0].value), isEmail(inputs[1].value), isPhoneNumber(inputs[2].value), dropdown.value !== 'Gender']
     checks.forEach((check,index)=>{
         if(!check){
+            if(inputs[index].value === '' || index === 3){
+                alerts[index].textContent = 'Field Required'
+            }else {
+                alerts[index].textContent = 'Invalid ' + alerts[index].dataset.field
+            }
             alerts[index].classList.remove('hidden')
         }
     })
-    return
+    return checks.every((check)=>{
+        return check
+    })
 }
 
