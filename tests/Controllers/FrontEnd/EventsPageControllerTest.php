@@ -9,7 +9,6 @@ use Slim\Views\PhpRenderer;
 
 class EventsPageControllerTest extends TestCase
 {
-
     public function testConstruct()
     {
         $mockRender = $this->createMock(PhpRenderer::class);

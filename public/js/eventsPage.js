@@ -46,20 +46,21 @@ function displayEventsHandler(eventsAndHiringPartners) {
     } else {
         eventList.innerHTML = ''
         displayEvents(eventsAndHiringPartners.events.data, eventsAndHiringPartners.hiringPartners).then(() => {
-            let showInfoButtons = document.querySelectorAll('.show-event-info')
-                    showInfoButtons.forEach(function (button) {
-                        button.addEventListener('click', e => {
-                            let targetId = 'moreInfo' + e.target.dataset.reference
-                            let targetDiv = document.getElementById(targetId)
-                            targetDiv.classList.toggle('hidden')
-                            targetDiv.parentElement.classList.toggle('open')
+            let showInfoHeaders = document.querySelectorAll('.header-show-event-info')
+            showInfoHeaders.forEach(function (header) {
+                header.addEventListener('click', e => {
+                    let buttonId = 'button' + e.target.dataset.reference
+                    let targetId = 'moreInfo' + e.target.dataset.reference
+                    let targetDiv = document.getElementById(targetId)
+                    targetDiv.classList.toggle('hidden')
+                    targetDiv.parentElement.classList.toggle('open')
 
-                            e.target.textContent = 'More info'
-                            if (!targetDiv.classList.contains('hidden')) {
-                                e.target.textContent = 'Less info'
-                            }
-                        })
-                    })
+                    document.querySelector(`[data-button-id = '${buttonId}']`).textContent = 'More info'
+                    if (!targetDiv.classList.contains('hidden')) {
+                        document.querySelector(`[data-button-id ='${buttonId}']`).textContent = 'Less info'
+                    }
+                })
+            })
         })
         .then(() => {
             let hpForms = document.querySelectorAll('.addHiringPartnerForm')
@@ -211,11 +212,14 @@ async function displayHiringPartnersAttending(event){
 async function eventGenerator(event, hiringPartners) {
     let eventInformation = ''
     let date = new Date(event.date).toDateString()
+    let headerDate = new Date(event.date).toDateString().substring(0,3) + ' ' + new Date(event.date).getUTCDate() + '/' + new Date(event.date).getUTCMonth() + '/' + new Date(event.date).getUTCFullYear()
     eventInformation +=
         `<div class="event">
-        <div class="header">
-            <h4>${event.name} - ${date}</h4>
-            <button class="show-event-info btn btn-primary" data-reference='${event.id}'>More Info</button>
+        <div class="header header-show-event-info" data-reference='${event.id}'>
+            <h4>${event.name} - ${headerDate} Time: ${event.start_time.slice(0, -3)} - ${event.end_time.slice(0, -3)} <span class="badge badge-secondary">${event.category_name}</span></h4>
+            
+            
+            <button class="show-event-info btn btn-primary" data-button-id='button${event.id}' data-reference='${event.id}'>More Info</button>
         </div>
         <div id="moreInfo${event.id}" class="hidden moreInfo">
         <p>Event Category: ${event.category_name}</p>

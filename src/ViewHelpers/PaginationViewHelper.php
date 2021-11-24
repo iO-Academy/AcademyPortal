@@ -4,7 +4,6 @@ namespace Portal\ViewHelpers;
 
 class PaginationViewHelper
 {
-
     /**
      * Takes in count of pages required and current page, and returns pagination for applicants list.
      *
