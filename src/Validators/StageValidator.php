@@ -35,12 +35,9 @@ class StageValidator
             !empty($stage['title']) &&
             !empty($stage['order']) &&
             (is_bool($stage['student']) ||
-                (is_bool($stage['withdrawn']) ||
-                    (is_bool($stage['rejected']) ||
-                        (is_bool($stage['notAssigned']))
-                    )
-                )
-            )
+                is_bool($stage['withdrawn']) ||
+                is_bool($stage['rejected']) ||
+                is_bool($stage['notAssigned']))
         );
     }
 }
