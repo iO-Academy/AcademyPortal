@@ -16,6 +16,7 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
     protected $stageOptionName;
     protected $chosenStartDate;
     protected $chosenCourseId;
+    protected $stageCount;
 
     public function jsonSerialize()
     {
@@ -28,7 +29,8 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
             'stageID' => $this->stageID,
             'stageName' => $this->stageName,
             'stageOptionName' => $this->stageOptionName,
-            'chosenStartDate' => $this->chosenStartDate
+            'chosenStartDate' => $this->chosenStartDate,
+            'stageCount' => $this->stageCount
         ];
     }
 
@@ -38,6 +40,11 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getStageCount()
+    {
+        return $this->stageCount;
     }
 
     /**

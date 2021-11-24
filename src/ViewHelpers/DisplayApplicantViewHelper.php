@@ -58,7 +58,7 @@ class DisplayApplicantViewHelper
         $result = '';
         foreach ($applicants['applicants'] as $applicant) {
             if (empty($applicant->apprentice)) {
-                $result .= self::outputApplicantRow($applicant, $applicants['lastStage'], $applicants['stageCount']);
+                $result .= self::outputApplicantRow($applicant, $applicants['lastStage'], $applicants['stageCount'], $applicants['stageTitle']);
             }
         }
         return self::handleNoApplicants($result);
@@ -83,7 +83,7 @@ class DisplayApplicantViewHelper
     }
 
 
-    private static function outputApplicantRow(BaseApplicantEntityInterface $applicant, $lastStage, $stageCount): string
+    private static function outputApplicantRow(BaseApplicantEntityInterface $applicant, $lastStage, $stageCount, $stageTitle): string
     {
         $string = '<tr>
                     <td>
@@ -106,7 +106,7 @@ class DisplayApplicantViewHelper
                     $string .= '<td id="currentStageName' . $applicant->getId() . '">' . $applicant->getStageName() .
             ($applicant->getStageOptionName() ? ' - ' . $applicant->getStageOptionName() : ' ' ) . '</td>
                     <td>                        
-                        <a href="/editApplicant?id=' . $applicant->getId() . '"   
+                        <a href="/editApplicant?id=' . $applicant->getId() . '"                                                                                              
                            type="button"                                   
                            class="btn btn-primary edit">
                            Edit
@@ -120,7 +120,7 @@ class DisplayApplicantViewHelper
                         </a>';
         if ($applicant->getStageID() != $lastStage) {
             $string .= '<button type="button" class="btn btn-info btnNextStage" data-stageid="' .
-                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" . data-stageCount="' . $stageCount['stagesCount'] . '" >
+                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" . data-stageCount="' . $stageCount['stagesCount'] . '" . data-stageTitle="' . $stageTitle . '" >
                 Next Stage
             </button>';
         }
