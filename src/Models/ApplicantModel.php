@@ -520,12 +520,13 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->execute([':applicantId' => $applicantId, ':stageId' => $stageId, ':optionId' => $optionId]);
     }
 
-    public function getAssessmentApplicants():array
+    public function getAssessmentApplicants(): array
     {
-        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `applicants`.`email`, `applicants_additional`.`assessmentDay` 
-                FROM `applicants` INNER JOIN `applicants_additional` ON `applicants`.`id`=`applicants_additional`.`id`;";
+        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `applicants`.`email`, 
+                    `applicants_additional`.`assessmentDay` 
+                FROM `applicants` INNER JOIN `applicants_additional` 
+                ON `applicants`.`id`=`applicants_additional`.`id`;";
         $query = $this->db->prepare($stmt);
-//        $query->setFetchMode(\PDO::FETCH_ASSOC);
         $query->execute();
         return $query->fetchAll();
     }
