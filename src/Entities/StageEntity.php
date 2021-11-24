@@ -98,6 +98,7 @@ class StageEntity implements \JsonSerializable
 
     /**
      * Returns number of assignees to stage
+     *
      * @return int
      */
     public function getHasAssignees(): int

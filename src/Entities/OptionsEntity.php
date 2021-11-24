@@ -66,6 +66,7 @@ class OptionsEntity implements \JsonSerializable
 
     /**
      * Returns number of assignees to option
+     *
      * @return int
      */
     public function getHasAssignees(): int
