@@ -2,7 +2,7 @@
 
 use Portal\ViewHelpers\StudentApplicationFormViewHelper;
 
-$pageNumber = 5;
+$pages = 5;
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +19,12 @@ $pageNumber = 5;
 <body>
 <div>
     <h1> Your Application</h1>
-    <p>Page 1 of <?php echo $pageNumber ?></p>
+    <p >Page <span id="pageCounter">1</span> of <?php echo $pages ?></p>
     <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="5" style="width: 0%"></div> <!-- REPLACE WITH SCSS TO CALC PAGE PROGRESS-->
     </div>
     <form id="studentApplicationForm">
-        <?php echo StudentApplicationFormViewHelper::displayform($pageNumber,$dropDownData) ?>
+        <?php echo StudentApplicationFormViewHelper::displayform($pages, $dropDownData) ?>
     </form>
 
 </div>
