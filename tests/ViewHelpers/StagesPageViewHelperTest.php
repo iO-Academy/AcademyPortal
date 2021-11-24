@@ -2,7 +2,7 @@
 
 namespace Tests\ViewHelpers;
 
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Portal\ViewHelpers\StagesPageViewHelper;
 use Portal\Entities\StageEntity;
 use Portal\Entities\OptionsEntity;
@@ -15,18 +15,22 @@ class StagesPageViewHelperTest extends TestCase
      */
     public function testSuccessNoOptionsDisplayStages()
     {
-        $expected = '<tr class="" data-id="1"><td class="order">1</td><td><p class="stageTitle">Stage 1 test</p><form 
-data-id="1" class="stagesTableForm form-inline"><div><label>Student stage: <input type="checkbox" name="student"> 
-<i class="glyphicon glyphicon-education text-success"></i></label></div><input type="text" class="form-control 
-stageEditTitle"value="Stage 1 test"/><input type="submit" class="stageEditSubmit btn btn-success" value="Edit">
-</form><div class="optionsContainer hidden" data-stageId="1"><div class="optionContainer multiOptionsContainer">
-<form data-id="" class="optionAddForm form-inline"><input type="text" class="optionAddTitle form-control firstOption" 
-placeholder="Type the name of your new option"/><input type="text" class="optionAddTitle form-control" 
-placeholder="Type the name of your new option"/><input type="submit" class="optionAddSubmit btn btn-success" 
-data-stageid="1" value="Submit"></form></div></div></td><td class="col-xs-2 text-center">
-<a class="toggleEditForm">Edit</a></td><td class="col-xs-2 text-center">
-<a data-id="1" class="text-danger delete">Delete</a></td><td class="col-xs-2 text-center">
-<a class="toggleEditOptions" data-stageId="1">Options</a></td></tr>';
+        $expected = '<trclass=""data-id="1"><tdclass="col-xs-1order">1</td><tdclass="col-xs-2">
+        <pclass="stageTitle">Stage1test</p><formdata-id="1"class="stagesTableFormform-inline">
+        <div><label>Studentstage:<inputtype="checkbox"name="student">
+        <iclass="glyphiconglyphicon-educationtext-success"></i></label></div>
+        <inputtype="text"class="form-controlstageEditTitle"value="Stage1test"/>
+        <inputtype="submit"class="stageEditSubmitbtnbtn-success"value="Edit"></form>
+        <divclass="optionsContainerhidden"data-stageId="1">
+        <divclass="optionContainermultiOptionsContainer"><formdata-id=""class="optionAddFormform-inline">
+        <inputtype="text"class="optionAddTitleform-controlfirstOption"placeholder=
+        "Typethenameofyournewoption"/><inputtype="text"class="optionAddTitleform-control"placeholder=
+        "Typethenameofyournewoption"/><inputtype="submit"class="optionAddSubmitbtnbtn-success"data-stageid="1"value="Submit">
+        </form></div></div></td><tdclass="col-xs-2text-center"><aclass="toggleEditForm">Edit</a></td>
+        <tdclass="col-xs-2text-centerdisabled"><adata-id="1"class="text-dangerdeletedisabled">Delete</a></td>
+        <tdclass="col-xs-2text-center"><aclass="toggleEditOptions"data-stageId="1">Options</a></td>
+        <tdclass="col-xs-2text-center"><idata-stageId="1"data-locked="1"class=
+        "stageLockglyphiconglyphicon-locktext-success"></i></td></tr>';
 
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
         $stageEntityMock = $this->createMock(StageEntity::class);
@@ -46,24 +50,21 @@ data-stageid="1" value="Submit"></form></div></div></td><td class="col-xs-2 text
      */
     public function testSuccessOptionsDisplayStages()
     {
-        $expected = '<tr class="" data-id="1"><td class="order">1</td><td><p class="stageTitle">Stage 1 test</p>
-<form data-id="1" class="stagesTableForm form-inline"><div><label>Student stage: <input type="checkbox" name="student"> 
-<i class="glyphicon glyphicon-education text-success"></i></label></div>
-<input type="text" class="form-control stageEditTitle"value="Stage 1 test"/>
-<input type="submit" class="stageEditSubmit btn btn-success" value="Edit"></form>
-<div class="optionsContainer hidden" data-stageId="1"><div class="optionContainer">
-<p class="optionTitle" data-optionId="1">aTitle
-<a class="text-danger optionDelete" data-optionId="1" data-stageid="1">Delete</a>
-<a class="optionEdit" data-optionId="1">Edit</a></p>
-<form class="optionTableForm hidden form-inline" data-optionId="1">
-<input type="text" class="optionEditTitle form-control" value="aTitle"/>
-<input type="submit" class="optionEditSubmit btn btn-success" value="Submit" data-optionid="1"></form>
-</div><div class="optionContainer"><form data-id="" class="optionAddForm form-inline">
-<input type="text" class="optionAddTitle form-control" placeholder="Type the name of your new option"/>
-<input type="submit" class="optionAddSubmit btn btn-success" data-stageid="1" value="Submit"></form>
-</div></div></td><td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>
-<td class="col-xs-2 text-center disabled"><a data-id="1" class="text-danger delete disabled">Delete</a></td>
-<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="1">Options</a></td></tr>';
+        $expected = '<trclass=""data-id="1"><tdclass="col-xs-1order">1</td><tdclass="col-xs-2"><pclass="stageTitle">Stage1test</p>
+        <formdata-id="1"class="stagesTableFormform-inline"><div><label>Studentstage:<inputtype="checkbox"name="student">
+        <iclass="glyphiconglyphicon-educationtext-success"></i></label></div><inputtype="text"class="form-control
+        stageEditTitle"value="Stage1test"/><inputtype="submit"class="stageEditSubmitbtnbtn-success"value="Edit"></form>
+        <divclass="optionsContainerhidden"data-stageId="1"><divclass="optionContainer"><pclass="optionTitle"data-optionId="1">
+        aTitle<aclass="text-dangeroptionDelete"data-optionId="1"data-stageid="1">Delete</a><aclass="optionEdit"data-optionId="1">
+        Edit</a></p><formclass="optionTableFormhiddenform-inline"data-optionId="1"><inputtype="text"class="optionEditTitle
+        form-control"value="aTitle"/><inputtype="submit"class="optionEditSubmitbtnbtn-success"value="Submit"data-optionid="1">
+        </form></div><divclass="optionContainer"><formdata-id=""class="optionAddFormform-inline"><inputtype="text"
+        class="optionAddTitleform-control"placeholder="Typethenameofyournewoption"/><inputtype="submit"
+        class="optionAddSubmitbtnbtn-success"data-stageid="1"value="Submit"></form></div></div></td><tdclass="col-xs-2
+        text-center"><aclass="toggleEditForm">Edit</a></td><tdclass="col-xs-2text-centerdisabled"><adata-id="1"
+        class="text-dangerdeletedisabled">Delete</a></td><tdclass="col-xs-2text-center"><aclass="toggleEditOptions"
+        data-stageId="1">Options</a></td><tdclass="col-xs-2text-center"><imgdata-stageId="1"data-locked="1"class="stageLock
+        text-success"src="../../assets/reshot-icon-lock-disabled-9TKYNWASVB.svg"/></td></tr>';
 
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
         $optionEntityMock = $this->createMock(OptionsEntity::class);
