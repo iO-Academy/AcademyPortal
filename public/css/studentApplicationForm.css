@@ -5,11 +5,41 @@
 
 .studentApplicationForm p,
 .studentApplicationForm input,
+.studentApplicationForm button,
 .studentApplicationForm label,
 .studentApplicationForm textarea,
+.studentApplicationForm li,
 .studentApplicationForm select {
-    font-size: calc(15px + 1vw);
+    font-size: calc(10px + 1vw);
     height: auto;
+}
+
+ul.startDatesList {
+    list-style: none;
+    padding: 20px;
+}
+
+ul.startDatesList li {
+    display: inline;
+}
+
+ul.startDatesList li label {
+    display: inline-block;
+    background-color: #D3D3D3;
+    border-radius: 10px;
+    white-space: nowrap;
+    margin: 5px 5px;
+    padding: 8px 12px;
+    font-size: calc(7px + 1vw);
+}
+
+ul.startDatesList li label.clicked {
+    background-color: #5FFFB4;
+}
+
+ul.startDatesList li input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
 }
 
 body {
@@ -27,23 +57,72 @@ body {
     padding: 80px 120px;
 }
 
-.hidden{
+.studentApplicationForm h1 {
+    font-size: calc(18px + 2vw);
+    margin: 70px 0;
+}
+
+.studentApplicationForm .row {
+    margin: 30px 0;
+}
+
+.studentApplicationForm .hidden {
     visibility: hidden;
     height: 0;
 }
 
-.progress {
+.studentApplicationForm .progress {
     height: 30px;
     border-radius: 30px;
 }
 
+.studentApplicationForm #whyDev,
+.studentApplicationForm #pastCoding {
+    background-color: #f3f6fa;
+}
+
+.studentApplicationForm .textAreaCounter {
+    color: #696969;
+    text-align: end;
+    font-size: calc(5px + 1vw);
+}
+
 .buttons {
     margin-top: 20px;
+    display: flex;
+    justify-content: end;
+}
+
+.buttons button {
+    margin: 10px;
 }
 
 #progressBar {
     background-color: #5FFFB4;
     border-radius: 30px;
+}
+
+.pastCodingTooltip {
+    border-radius: 50%;
+    background-color: #5FFFB4;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    width: 50px;
+    font-size: 2em;
+    font-weight: bold;
+    border: none;
+}
+
+.tooltip.top {
+    font-size: calc(3px + 1vw);
+    display: flex;
+    max-width: 300px;
+}
+
+.withTooltip {
+    display: flex;
+    justify-content: space-between;
 }
 
 .studentApplicationForm input, .studentApplicationForm select {
@@ -73,6 +152,14 @@ svg {
     width: 80%;
     right: 0;
 }
+
+@media only screen and (max-width: 500px) {
+    .content-container {
+        padding: 40px 60px;
+    }
+}
+
+
 @keyframes gradient {
     0% {
         background-position: 0% 50%;

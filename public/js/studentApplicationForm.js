@@ -4,6 +4,10 @@ const nextButtons = document.querySelectorAll('.nextButton')
 const formWrappers = document.querySelectorAll('.studentApplicationFormPages')
 const progressBar = document.querySelector('#progressBar')
 const pageCounter = document.querySelector('#pageCounter')
+const textAreaToCount = document.querySelector('#whyDev')
+const textAreaCount = document.querySelector('#textAreaCount')
+const startDatesCheckboxes = document.querySelectorAll('.startDatesCheckbox')
+
 
 formWrappers[0].classList.remove('hidden')
 
@@ -30,4 +34,26 @@ function handleClick(e){
     })
 }
 
+textAreaToCount.onkeyup = function () {
+    textAreaCount.innerHTML = this.value.length;
+};
+
+
+startDatesCheckboxes.forEach(($checkbox) => {
+    $checkbox.addEventListener('click', handleCheckbox)
+})
+
+function handleCheckbox(e) {
+    // e.currentTarget.checked = !e.currentTarget.checked;
+    if (e.currentTarget.checked) {
+        e.currentTarget.parentElement.classList.add('clicked')
+    } else {
+        e.currentTarget.parentElement.classList.remove('clicked')
+    }
+}
+
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
 

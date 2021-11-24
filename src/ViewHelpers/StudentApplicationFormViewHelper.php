@@ -39,7 +39,8 @@ class StudentApplicationFormViewHelper
         }
         $output .= '</select></div>';
         $output .= '<div class="row form-group"><label for="whyDev" class="label-control">Why do you want to become a developer?</label>';
-        $output .= '<textarea id="whyDev" type="text" placeholder="(100 - 500 characters)" class="form-control" rows="5"></textarea>';
+        $output .= '<textarea id="whyDev" type="text" placeholder="(100 - 500 characters)" class="form-control textAreaToCount" rows="5"></textarea>';
+        $output .= '<div class="textAreaCounter"><span id="textAreaCount">0</span> of 500 max characters</div>';
         $output .= '</div>';
         return $output;
     }
@@ -51,7 +52,8 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormThree(): string
     {
-        $output = '<div class="row"><label for="pastCoding" class="label-control">Any past coding experience?</label>';
+        $output = '<div class="row"><label for="pastCoding" class="label-control withTooltip">Any past coding experience?';
+        $output .= '<button class="pastCodingTooltip" data-toggle="tooltip" data-placement="top" title="Taken an online course? Given WordPress a try? Our courses require no past experience, but it would be useful to know about any existing knowledge.">?</button></label>';
         $output .= '<textarea id="pastCoding" placeholder="Most people write a few sentences" class="form-control" rows="5"></textarea>';
         $output .= '</div>';
         return $output;
@@ -65,25 +67,25 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormFour(array $data): string
     {
-        $output = '<label>Select start date(s)</label>';
+        $output = '<div class="row"><label>Select start date(s)</label><ul class="startDatesList">';
         foreach ($data['cohorts'] as $cohorts) {
-            $output .= '<label><input type="checkbox" value="' . $cohorts['id'] . '"/>' . $cohorts['date'] . '</label>';
+            $output .= '<li><label><input type="checkbox" class="startDatesCheckbox" name="startDatesCheckbox" value="' . $cohorts['id'] . '"/>' . $cohorts['date'] . '</label></li>';
         }
-        $output .= '<label><input type="checkbox" value="next available online course">Some course dates may also be offered with a remote option. Contact us to find out more.</label>';
-        $output .= '<label> How did you hear about us?</label>';
-        $output .= '<select>';
-        $output .= '<option>Background</option>';
+        $output .= '</ul><label><input type="checkbox" value="next available online course">Some course dates may also be offered with a remote option. Contact us to find out more.</label></div>';
+        $output .= '<div class="row"><label> How did you hear about us?</label>';
+        $output .= '<select class="form-control">';
+        $output .= '<option value="" disabled selected>Background</option>';
         foreach ($data['hearAbout'] as $hearAbout) {
             $output .= '<option value="' . $hearAbout['id'] . '">' . $hearAbout['hearAbout'] . '</option>';
         }
-        $output .= '</select>';
-        $output .= '<label><input type="checkbox" value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK</label>';
-        $output .= '<label><input type="checkbox" value="I confirm that I am at least 18 years 
+        $output .= '</select></div>';
+        $output .= '<div class="row"><label><input type="checkbox" value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK</label></div>';
+        $output .= '<div class="row"><label><input type="checkbox" value="I confirm that I am at least 18 years 
 of age before my chosen course start date"/>I confirm that I am at least 18 years 
-of age before my chosen course start date<label>';
-        $output .= '<p>By using this form you agree with the storage and handling of your data
+of age before my chosen course start date</label></div>';
+        $output .= '<div class="row"><p>By using this form you agree with the storage and handling of your data
  by this website in accordance with our terms and conditions and privacy policy.</p>';
-        $output .= '<label><input type="checkbox" value="I accept the terms and conditions"/>I accept the terms and conditions</label>';
+        $output .= '<label><input type="checkbox" value="I accept the terms and conditions"/>I accept the terms and conditions</label></div>';
         return $output;
     }
 
@@ -141,14 +143,14 @@ between you and one of our trainers.</li>';
     public static function displayNextButtons(int $applicationFormPageNumber, int $finalPage): string
     {
         if($applicationFormPageNumber === 1){
-            $output = '<div class="row buttons"><div class="col-md-2 col-md-offset-8 col-sm-2 col-sm-offset-8"><button class="btn btn-lg" disabled>Prev</button></div>';
+            $output = '<div class="row buttons"><button class="btn btn-lg" disabled>Prev</button>';
         }else{
-            $output = '<div class="row buttons"><div class="col-md-2 col-md-offset-8"><button class="btn btn-lg prevButton" value="' . ($applicationFormPageNumber - 1) . '">Prev</button></div>';
+            $output = '<div class="row buttons"><button class="btn btn-lg prevButton" value="' . ($applicationFormPageNumber - 1) . '">Prev</button>';
         }
         if($applicationFormPageNumber >= $finalPage){
-            $output .= '<div class="col-md-2 col-sm-1"><button class="btn btn-lg finishButton">Finish</button></div></div>';
+            $output .= '<button class="btn btn-lg finishButton">Finish</button></div></div>';
         }else {
-            $output .= '<div class="col-md-2 col-sm-1"><button class="nextButton btn btn-lg" type="submit" for="studentApplicationForm" value="' . ($applicationFormPageNumber + 1) . '">Next</button></div></div>';
+            $output .= '<button class="nextButton btn btn-lg" type="submit" for="studentApplicationForm" value="' . ($applicationFormPageNumber + 1) . '">Next</button></div>';
         }
         return $output;
     }
