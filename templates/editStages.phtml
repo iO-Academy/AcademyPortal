@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <?php
     require 'partials/layout/head.phtml';
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Edit Applicant Stages');
@@ -9,6 +10,11 @@
     <script defer src="./js/Sortable.js"></script>
     <script defer src="./js/stagesPage.js"></script>
     <script defer src="./js/stageReorder.js"></script>
+<!--enabling all tooltips in the document-->
+    <script>$(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </head>
 <body>
 <?php require 'partials/layout/header.phtml'; ?>
@@ -44,7 +50,7 @@
         </div>
     </main>
 
-<div class="modalContainer hidden">
+<div class="modalContainer" hidden>
     <div class="container">
         <div class="body">
             <p>Warning: Deleting this option will delete all options from this stage.
