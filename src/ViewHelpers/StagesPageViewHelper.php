@@ -6,7 +6,6 @@ use Portal\Entities\StageEntity;
 
 class StagesPageViewHelper
 {
-
     /**
      * Concatenates new stages table ready to be output.
      * Runs an if statement to check whether or not there are options in a stage.
@@ -89,10 +88,9 @@ class StagesPageViewHelper
                 $result .= '<td class="col-xs-2 text-center">';
                 if (empty($stage->getOptions())) {
                     $result .= '<i data-stageId="' . $stage->getStageId()
-                    . '" data-locked="1" class="stageLock glyphicon glyphicon-lock text-success"></i>';
+                    . '" data-locked="1" class="stageLock fas fa-lock "></i>';
                 } else {
-                    $result .= '<img data-stageId="' . $stage->getStageId() . '" data-locked="1" 
-                    class="stageLock text-success" src="../../assets/reshot-icon-lock-disabled-9TKYNWASVB.svg" />';
+                    $result .= '<i data-stageId="' . $stage->getStageId() . '" data-locked="1" class="fas fa-lock-open" ></i >';
                 }
                 $result .= '</td>';
                 $result .= '</tr>';
