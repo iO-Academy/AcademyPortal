@@ -25,9 +25,8 @@ function updateStage(url, applicantId, btnNextStage) {
 $(document).ready(function(){
     $(".btnNextStage").click(function(){
         const stageId = this.dataset.stageid;
-        const currentStageTitle = this.dataset.currentstagetitle;
-        console.log(currentStageTitle);
         const stageCount = this.dataset.stagecount;
+        const currentOptionName = this.dataset.currentoptionname;
         const nextStageId = parseInt(stageId) + 1;
         const applicantId = this.dataset.applicantid;
         const thisButton  = this;
@@ -45,9 +44,10 @@ $(document).ready(function(){
                     response.json().then(function(data) {
                         document.getElementById('currentStageNumber').innerHTML =  '<h4>Stage ' + stageId + ' of ' + stageCount + '</h4>';
                         document.getElementById('nextStageNumber').innerHTML ='<h4>Stage ' + nextStageId  + ' of ' + stageCount + '</h4>';
-                        document.getElementById('currentStageTitle').innerHTML ='<h4>Stage Name Here ' + data['data']['currentStageTitle'] + '</h4>';
-                        // document.getElementById('nextStageTitle').innerHTML ='<h4>Stage Name Here ' + nextStageTitle + '</h4>';
+                        document.getElementById('currentStageTitle').innerHTML ='<h4>Stage Name Here ' + data.data.currentStageTitle.title + '</h4>';
+                        document.getElementById('nextStageTitle').innerHTML ='<h4>Stage Name Here ' + data.data.nextStageTitle.title + '</h4>';
                         document.querySelector('#next-stage-options').innerHTML = '<option>Please select an Option</option>';
+                        document.getElementById('currentOption').innerHTML ='<p>' + currentOptionName + '</p>';
                         const alert = document.querySelector('#passwordMessage')
                         if (data['data']['password']) {
                             $('#applicantPassword').modal('show');

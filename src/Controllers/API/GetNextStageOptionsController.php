@@ -9,6 +9,7 @@ use Portal\Models\StageModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
+
 class GetNextStageOptionsController extends Controller
 {
     private $stageModel;
@@ -58,8 +59,8 @@ class GetNextStageOptionsController extends Controller
             }
             $data['data']['nextStageOptions'] = $this->stageModel->getOptionsByStageID($nextId);
             $data['data']['nextStageId'] = $nextId;
-            $data['data']['currentStageTitle'] = 'currentStageTitleTest'; // this is where we call our method
-            $data['data']['nextStageTitle'] = 'nextStageTitle';
+            $data['data']['currentStageTitle'] = $this->stageModel->getStageTitleById($stageId);
+            $data['data']['nextStageTitle'] = $this->stageModel->getStageTitleById($nextId);
             $data['success'] = true;
             $data['message'] = 'Found data in GetNextStageOptionsController';
         } catch (\Exception $e) {

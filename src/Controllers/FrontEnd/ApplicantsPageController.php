@@ -52,7 +52,6 @@ class ApplicantsPageController extends Controller
             $params['stageId'] = $_SESSION['stageId'];
             $params['data']['lastStage'] = $this->stageModel->getHighestOrderNo();
             $params['data']['stageCount'] = $this->stageModel->stagesCount();
-//            $params['data']['currentStageTitle'] = $this->stageModel->getStageTitleById(intval($request->getQueryParams()['stageId']));
             $params['name'] = $_SESSION['name'];
 
             if (isset($params['cohortId']) && $params['cohortId'] == 'all') {
