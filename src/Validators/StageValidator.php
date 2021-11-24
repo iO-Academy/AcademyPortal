@@ -38,6 +38,9 @@ class StageValidator
                 (is_bool($stage['withdrawn']) ||
                     (is_bool($stage['rejected']) ||
                         (is_bool($stage['notAssigned']))
-        ))));
+                    )
+                )
+            )
+        );
     }
 }
