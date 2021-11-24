@@ -160,7 +160,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     }
 
     /**
-     * @return string|null 
+     * @return string|null
      */
     public function getCustomAssessmentDay(): ?string
     {
