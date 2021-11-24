@@ -9,4 +9,6 @@ interface ApplicantEntityInterface
     public function getEmail();
 
     public function getId();
+
+    public function getAssessmentDay();
 }
