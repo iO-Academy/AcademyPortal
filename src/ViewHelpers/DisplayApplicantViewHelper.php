@@ -55,11 +55,11 @@ class DisplayApplicantViewHelper
      */
     public static function displayApplicants($applicants): string
     {
-        $applicants['stageTitle'] = 'cheese';
+//        $applicants['stageTitle'] = 'cheese';
         $result = '';
         foreach ($applicants['applicants'] as $applicant) {
             if (empty($applicant->apprentice)) {
-                $result .= self::outputApplicantRow($applicant, $applicants['lastStage'], $applicants['stageCount'], $applicants['stageTitle']);
+                $result .= self::outputApplicantRow($applicant, $applicants['lastStage'], $applicants['stageCount'], $applicants['currentStageTitle']);
             }
         }
         return self::handleNoApplicants($result);
@@ -84,7 +84,7 @@ class DisplayApplicantViewHelper
     }
 
 
-    private static function outputApplicantRow(BaseApplicantEntityInterface $applicant, $lastStage, $stageCount, $stageTitle): string
+    private static function outputApplicantRow(BaseApplicantEntityInterface $applicant, $lastStage, $stageCount, $currentStageTitle): string
     {
         $string = '<tr>
                     <td>
@@ -121,7 +121,7 @@ class DisplayApplicantViewHelper
                         </a>';
         if ($applicant->getStageID() != $lastStage) {
             $string .= '<button type="button" class="btn btn-info btnNextStage" data-stageid="' .
-                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" . data-stagecount="' . $stageCount['stagesCount'] . '" . data-stageTitle="' . $stageTitle . '" >
+                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" . data-stagecount="' . $stageCount['stagesCount'] . '" . data-currentstagetitle="' . $currentStageTitle['title'] . '" >
                 Next Stage
             </button>';
         }

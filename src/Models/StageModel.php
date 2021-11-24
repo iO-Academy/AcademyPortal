@@ -153,6 +153,18 @@ class StageModel
         return $stage;
     }
 
+    public function getStageTitleById(int $id): array
+    {
+        $query = $this->db->prepare('SELECT `title` FROM `stages` WHERE `id`= :id');
+
+        $query->setFetchMode(\PDO::FETCH_ASSOC );
+        $query->bindParam(':id', $id);
+        $query->execute();
+        $stageTitle = $query->fetch();
+
+        return $stageTitle;
+    }
+
     /**
      * Updates the 'title' value of a record with a given id.
      * @param int $id
