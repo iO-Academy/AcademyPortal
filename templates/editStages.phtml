@@ -6,14 +6,17 @@
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Edit Applicant Stages');
     ?>
     <link href="css/stages.css" rel="stylesheet" type="text/css">
+    <link href="css/stageDeletionModal.css" rel="stylesheet" type="text/css">
     <script defer src="./js/Sortable.js"></script>
     <script defer src="./js/stagesPage.js"></script>
     <script defer src="./js/stageReorder.js"></script>
+    <script defer src="./js/stageDeletionModal.js"></script>
 </head>
 <body>
 <?php require 'partials/layout/header.phtml'; ?>
 
 <?php require 'partials/layout/nav.phtml'; ?>
+
     <main>
         <div class="applicantStages">
             <div class="addStage">
@@ -54,6 +57,8 @@
         </div>
     </div>
 </div>
+
+<?php require 'partials/allowStageDeletionModal.phtml'; ?>
 <?php require 'partials/layout/footer.phtml'; ?>
 </body>
 </html>
