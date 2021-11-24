@@ -6,7 +6,6 @@ use Portal\Entities\StageEntity;
 
 class StagesPageViewHelper
 {
-
     /**
      * Concatenates new stages table ready to be output.
      * Runs an if statement to check whether or not there are options in a stage.
@@ -25,10 +24,10 @@ class StagesPageViewHelper
                 $isStudent = $stage->getStudent() ? ' checked' : '';
 
                 $result .= '<tr class="" data-id="' . $stage->getStageId() . '">';
-                $result .= '<td class="order">';
+                $result .= '<td class="col-xs-1 order">';
                 $result .= $counter++;
                 $result .= '</td>';
-                $result .= '<td>';
+                $result .= '<td class="col-xs-2">';
                 $result .= '<p class="stageTitle">' . $stage->getStageTitle();
                 if ($stage->getStudent()) {
                     $result .= '<i class="glyphicon glyphicon-education text-success"></i>';
@@ -82,15 +81,14 @@ class StagesPageViewHelper
                 $result .= '</div>';
                 $result .= '</td>';
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
-                if (empty($stage->getOptions())) {
-                    $result .= '<td class="col-xs-2 text-center"><a data-id="' . $stage->getStageId()
-                    . '" class="text-danger delete">Delete</a></td>';
-                } else {
-                    $result .= '<td class="col-xs-2 text-center disabled"><a data-id="' . $stage->getStageId()
-                    . '" class="text-danger delete disabled">Delete</a></td>';
-                }
+                $result .= '<td class="col-xs-2 text-center disabled"><a data-id="' . $stage->getStageId()
+                . '" class="text-danger delete disabled">Delete</a></td>';
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="';
                 $result .= $stage->getStageId() . '">Options</a></td>';
+                $result .= '<td class="col-xs-2 text-center">';
+                $result .= '<i data-stageId="' . $stage->getStageId()
+                . '" data-locked="1" id="padlockLocked" class="stageLock fas fa-lock "></i>';
+                $result .= '</td>';
                 $result .= '</tr>';
             }
         }
