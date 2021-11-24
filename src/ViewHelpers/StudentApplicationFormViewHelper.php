@@ -13,17 +13,18 @@ class StudentApplicationFormViewHelper
     protected static function displayPageFormOne(array $data): string
     {
         $output = '<input type="text" placeholder="Full Name" required>';
-        $output .= '<div id="nameError" class="alert hidden formItem_alert"></div>';
+        $output .= '<div id="nameError" class="alert hidden formItem_alert">Field Required.</div>';
         $output .= '<input type="email" placeholder="Email" required>';
-        $output .= '<div id="emailError" class="alert hidden formItem_alert"></div>';
-        $output .= '<input type="tel" placeholder="Phone Number" required>';
-        $output .= '<div id="phoneError" class="alert hidden formItem_alert"></div>';
+        $output .= '<div id="emailError" class="alert hidden formItem_alert">Field Required.</div>';
+        $output .= '<input type="tel" placeholder="Phone Number" min="8" required>';
+        $output .= '<div id="phoneError" class="alert hidden formItem_alert">Field Required.</div>';
         $output .= '<select>';
         $output .= '<option>Gender</option>';
         foreach ($data['genders'] as $genders) {
             $output .= '<option value="' . $genders['id'] . '">' . $genders['gender'] . '</option>';
         }
         $output .= '</select>';
+        $output .= '<div id="genderError" class="alert hidden formItem_alert">Field Required.</div>';
         return $output;
     }
 
@@ -169,7 +170,8 @@ class StudentApplicationFormViewHelper
         } else {
             $output .= '<button class="nextButton" ';
             $output .= 'for="studentApplicationForm" value="';
-            $output .= ($applicationFormPageNumber + 1) . '">Next</button>';
+            $output .= ($applicationFormPageNumber + 1);
+            $output .= '" data-page="' . $applicationFormPageNumber . '">Next</button>';
         }
         return $output;
     }

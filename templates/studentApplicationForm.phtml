@@ -10,11 +10,11 @@ $pages = 5;
 <head>
     <meta charset="UTF-8">
     <link href="css/studentApplicationForm.css" rel="stylesheet">
-    <script defer src="./js/studentApplicationForm.js"></script>
     <title>Your Application</title>
     <script src="./js/validations.js" defer></script>
     <script src="./js/saveApplicant.js" defer></script>
-    <script src="./js/applicantForm.js" defer></script>
+<!--    <script src="./js/applicantForm.js" defer></script>-->
+    <script defer src="./js/studentApplicationForm.js"></script>
 </head>
 <body>
 <div>
@@ -26,7 +26,6 @@ $pages = 5;
     <form id="studentApplicationForm">
         <?php echo StudentApplicationFormViewHelper::displayform($pages, $dropDownData) ?>
     </form>
-
 </div>
 </body>
 </html>
