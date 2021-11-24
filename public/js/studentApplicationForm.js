@@ -39,22 +39,12 @@ function pageOneValidation(formWrapper) {
     alerts.forEach((a) => {
         a.classList.add('hidden')
     })
-    let check1 = isName(inputs[0].value)
-    let check2 = isEmail(inputs[1].value)
-    let check3 = isPhoneNumber(inputs[2].value)
-    let check4 = dropdown.value !== 'Gender'
-    if(!check1){
-        alerts[0].classList.remove('hidden')
-    }
-    if(!check2){
-        alerts[1].classList.remove('hidden')
-    }
-    if(!check3){
-        alerts[2].classList.remove('hidden')
-    }
-    if(!check4){
-        alerts[3].classList.remove('hidden')
-    }
-    return check1 && check2 && check3 && check4
+    let checks = [isName(inputs[0].value), isEmail(inputs[1].value), isPhoneNumber(inputs[2].value), dropdown.value !== 'Gender']
+    checks.forEach((check,index)=>{
+        if(!check){
+            alerts[index].classList.remove('hidden')
+        }
+    })
+    return
 }
 
