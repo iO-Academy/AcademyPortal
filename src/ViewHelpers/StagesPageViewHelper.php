@@ -89,13 +89,15 @@ class StagesPageViewHelper
 //                    $result .= '<td class="col-xs-2 text-center disabled"><a data-id="' . $stage->getStageId()
 //                    . '" class="text-danger delete disabled">Delete</a></td>';
 //                }
-                $result .= '<td class="col-xs-1 text-center disabled"><a data-id="' . $stage->getStageId() . '" class="text-danger delete disabled">Delete</a></td>';
+                $result .= '<td class="col-xs-1 text-center disabled"><a data-id="' . $stage->getStageId()
+                    . '" class="text-danger delete disabled">Delete</a></td>';
                 $result .= '<td class="col-xs-1 text-center">';
                 if (empty($stage->getOptions())) {
                 $result .= '<i data-stageId="' . $stage->getStageId() . '" data-locked="1" 
-                class="stageLock glyphicon glyphicon-lock text-success"></i>';
-                    } else {
-                    $result .= '<img data-stageId="' . $stage->getStageId() . '" data-locked="1" class="stageLock text-success" src="../../assets/reshot-icon-lock-disabled-9TKYNWASVB.svg" />';
+                    class="stageLock glyphicon glyphicon-lock text-success"></i>';
+                } else {
+                    $result .= '<img data-stageId="' . $stage->getStageId()
+                    . '" data-locked="1" class="stageLock text-success" src="../../assets/reshot-icon-lock-disabled-9TKYNWASVB.svg" />';
                 }
                 $result .= '</td>';
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="';
