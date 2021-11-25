@@ -7,7 +7,6 @@ use Tests\TestCase;
 
 class EmailValidatorTest extends TestCase
 {
-
     public function testValidateEmailSuccess()
     {
         $result = EmailValidator::validateEmail('Example@example.com');

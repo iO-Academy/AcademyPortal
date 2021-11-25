@@ -27,8 +27,9 @@ function getEvents(search = false) {
     })
     .then(response => response.json())
     .then(async (eventInfo) => {
-        let hiringPartners = await getHiringPartners()
-        return {events: eventInfo, hiringPartners: hiringPartners}
+        let hiringPartners = await getHiringPartners();
+        let applicants = await getAssessmentApplicants();
+        return {events: eventInfo, hiringPartners: hiringPartners, applicants: applicants};
     })
     .then(eventsAndHiringPartners => {
         displayEventsHandler(eventsAndHiringPartners)
@@ -45,21 +46,22 @@ function displayEventsHandler(eventsAndHiringPartners) {
         eventList.innerHTML = eventsAndHiringPartners.events.message
     } else {
         eventList.innerHTML = ''
-        displayEvents(eventsAndHiringPartners.events.data, eventsAndHiringPartners.hiringPartners).then(() => {
-            let showInfoButtons = document.querySelectorAll('.show-event-info')
-                    showInfoButtons.forEach(function (button) {
-                        button.addEventListener('click', e => {
-                            let targetId = 'moreInfo' + e.target.dataset.reference
-                            let targetDiv = document.getElementById(targetId)
-                            targetDiv.classList.toggle('hidden')
-                            targetDiv.parentElement.classList.toggle('open')
+        displayEvents(eventsAndHiringPartners.events.data, eventsAndHiringPartners.hiringPartners, eventsAndHiringPartners.applicants).then(() => {
+            let showInfoHeaders = document.querySelectorAll('.header-show-event-info')
+            showInfoHeaders.forEach(function (header) {
+                header.addEventListener('click', e => {
+                    let buttonId = 'button' + e.target.dataset.reference
+                    let targetId = 'moreInfo' + e.target.dataset.reference
+                    let targetDiv = document.getElementById(targetId)
+                    targetDiv.classList.toggle('hidden')
+                    targetDiv.parentElement.classList.toggle('open')
 
-                            e.target.textContent = 'More info'
-                            if (!targetDiv.classList.contains('hidden')) {
-                                e.target.textContent = 'Less info'
-                            }
-                        })
-                    })
+                    document.querySelector(`[data-button-id = '${buttonId}']`).textContent = 'More info'
+                    if (!targetDiv.classList.contains('hidden')) {
+                        document.querySelector(`[data-button-id ='${buttonId}']`).textContent = 'Less info'
+                    }
+                })
+            })
         })
         .then(() => {
             let hpForms = document.querySelectorAll('.addHiringPartnerForm')
@@ -112,9 +114,9 @@ function displayEventsHandler(eventsAndHiringPartners) {
     }
 };
 
-async function displayEvents(events, hiringPartners) {
+async function displayEvents(events, hiringPartners, applicants) {
     events.forEach(async (event) => {
-        await eventGenerator(event, hiringPartners).then(event => {
+        await eventGenerator(event, hiringPartners, applicants).then(event => {
             displayHiringPartnersAttending(event)
         })
         return event
@@ -208,24 +210,55 @@ async function displayHiringPartnersAttending(event){
  *
  * @param events an object which contains information about an event
  */
-async function eventGenerator(event, hiringPartners) {
+async function eventGenerator(event, hiringPartners, applicants) {
     let eventInformation = ''
     let date = new Date(event.date).toDateString()
+    let numberOfAttendees
+    if (event.category_name === 'Assessment') {
+        let assessmentApplicants = applicants.filter(applicant => applicant.assessmentDay === event.id)
+        numberOfAttendees = assessmentApplicants.length
+    }
+    let headerDate = new Date(event.date).toDateString().substring(0,3) + ' ' + new Date(event.date).getUTCDate() + '/' + new Date(event.date).getUTCMonth() + '/' + new Date(event.date).getUTCFullYear()
     eventInformation +=
         `<div class="event">
-        <div class="header">
-            <h4>${event.name} - ${date}</h4>
-            <button class="show-event-info btn btn-primary" data-reference='${event.id}'>More Info</button>
+        <div class="header header-show-event-info" data-reference='${event.id}'>
+            <h4>${event.name} - <span class="headerDateTime">${headerDate} Time: ${event.start_time.slice(0, -3)} - ${event.end_time.slice(0, -3)} </span><span class="badge">${event.category_name}</span>`
+    if (event.category_name === 'Assessment') {
+        eventInformation += `<span class="badge">Attendees: ${numberOfAttendees}</span>`
+    }
+    eventInformation +=
+            `</h4> 
+            <button class="show-event-info btn" data-button-id='button${event.id}' data-reference='${event.id}'>More Info</button>
         </div>
         <div id="moreInfo${event.id}" class="hidden moreInfo">
-        <p>Event Category: ${event.category_name}</p>
-        <p>Date: ${date}</p>
-        <p>Location: ${event.location}</p>
-        <p>Start Time: ${event.start_time.slice(0, -3)}</p>
-        <p>End Time: ${event.end_time.slice(0, -3)}</p>`
+        <p><span>Event Category:</span> ${event.category_name}</p>
+        <p><span>Date:</span> ${date}</p>
+        <p><span>Location:</span> ${event.location}</p>
+        <p><span>Start Time:</span> ${event.start_time.slice(0, -3)}</p>
+        <p><span>End Time:</span> ${event.end_time.slice(0, -3)}</p>`
 
     if (event.notes !== null) {
-        eventInformation += `<p>Notes: ${event.notes}</p>`
+        eventInformation += `<p><span>Notes:</span> ${event.notes}</p>`
+    }
+
+    if (event.category_name === 'Assessment') {
+        // put code for assessment event type here!
+        eventInformation += '<div>';
+        eventInformation += '<table class="col-xs-12 table-bordered table">';
+        eventInformation += '<tr>';
+        eventInformation += '<th class="col-xs-2">Name</th>';
+        eventInformation += '<th class="col-xs-3">Email</th>';
+        eventInformation += '</tr>';
+            applicants.forEach((applicant) => {
+                if (applicant.assessmentDay == event.id) {
+                    eventInformation += `<tr>`;
+                    eventInformation += `<td>${applicant.name}</td>`;
+                    eventInformation += `<td>${applicant.email}</td>`;
+                    eventInformation += `</tr>`;
+                }
+            });
+        eventInformation += '</table>';
+        eventInformation += '</div>';
     }
 
     if (event.availableToHP == 1) {
@@ -234,7 +267,7 @@ async function eventGenerator(event, hiringPartners) {
         if (!isPastPage) {
             eventInformation += `
                 <div class='addHiringPartner col-xs-12 col-md-6'>
-                    <h5>Add attendees</h5>
+                    <h4>Add attendees</h4>
                     <form class='addHiringPartnerForm' id='${event.id}'>
     
                         <select data-event=${event.id}>
@@ -286,6 +319,24 @@ async function getHiringPartners() {
     return await response.json()
 }
 
+/**
+ * Get all the applicants booked for assessment from the API
+ *
+ * @return array The JSON response
+ */
+async function getAssessmentApplicants() {
+
+    let response = await fetch('./api/getAssessmentApplicants', {
+        credentials: 'same-origin',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'get',
+    })
+    return await response.json()
+
+}
 
 document.querySelector('#submit-search-event').addEventListener('click', function(e) {
     const searchInput = document.querySelector('#academy-events-search').value

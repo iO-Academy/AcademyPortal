@@ -7,7 +7,6 @@ use Psr\Container\ContainerInterface;
 
 class GetHiringPartnersByIdControllerFactory
 {
-
     /**
      * Invoke function to create new GetHiringPartnersByIdControllers
      *

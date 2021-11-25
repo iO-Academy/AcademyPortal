@@ -6,7 +6,6 @@ use Portal\Entities\StageEntity;
 
 class StagesPageViewHelper
 {
-
     /**
      * Concatenates new stages table ready to be output.
      * Runs an if statement to check whether or not there are options in a stage.
@@ -22,16 +21,17 @@ class StagesPageViewHelper
         $counter = 1;
         foreach ($stages as $stage) {
             if ($stage instanceof StageEntity) {
+//                $isStudent = $stage->getStudent() ? ' checked' : '';
                 $isStudent = $stage->getStudent() ? 'selected' : '';
                 $isWithdrawn = $stage->getWithdrawn() ? 'selected' : '';
                 $isRejected = $stage->getRejected() ? 'selected' : '';
                 $isNotAssigned = $stage->getNotAssigned() ? 'selected' : '';
 
                 $result .= '<tr class="" data-id="' . $stage->getStageId() . '">';
-                $result .= '<td class="order">';
+                $result .= '<td class="col-xs-1 order">';
                 $result .= $counter++;
                 $result .= '</td>';
-                $result .= '<td>';
+                $result .= '<td class="col-xs-2">';
                 $result .= '<p class="stageTitle">' . $stage->getStageTitle();
                 if ($stage->getStudent()) {
                     $result .= '<i class="glyphicon glyphicon-education text-success"></i>';
@@ -97,19 +97,26 @@ class StagesPageViewHelper
                 $result .= '</div>';
                 $result .= '</td>';
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
-                if (empty($stage->getOptions()) && $stage->getHasAssignees() == 0) {
-                    $result .= '<td class="col-xs-2 text-center"><a data-id="' . $stage->getStageId()
-                    . '" class="text-danger delete">Delete</a></td>';
+                if (empty($stage->getOptions()) && $stage->getHasAssignees() === 0) {
+                    $result .= '<td class="col-xs-2 text-center"><a data-hasOptions="0" data-id="'
+                        . $stage->getStageId() . '" class="text-danger delete disabled">Delete</a></td>';
                 } else {
-                    $result .= '<td class="col-xs-2 text-center"><a href="/applicants?name=&stageId='
+                    $result .= '<td class="col-xs-2 text-center"><a data-id="'
+                        . $stage->getStageId()
+                        . '" data-hasOptions="1" href="/applicants?name=&stageId='
                         . $stage->getStageId() . '&cohortId=all&sort=dateAsc'
                         . '" class="text-danger" data-toggle="tooltip"'
                         . 'title="Cannot delete a stage with assigned applicants, '
                         . 'click to view applicants assigned to this stage">'
                         . '<i class="tooltiptext glyphicon glyphicon-ban-circle text-success"></i></a></td>';
                 }
+
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="';
                 $result .= $stage->getStageId() . '">Options</a></td>';
+                $result .= '<td class="col-xs-2 text-center stageLock" data-stageId="' . $stage->getStageId()
+                    . '" data-locked="1">';
+                $result .= '<i class="fas fa-lock"></i>';
+                $result .= '</td>';
                 $result .= '</tr>';
             }
         }

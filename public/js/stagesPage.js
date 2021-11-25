@@ -11,6 +11,7 @@ const optionDeletes = document.querySelectorAll('.optionDelete');
 const optionAddSubmits = document.querySelectorAll('.optionAddSubmit');
 const optionsContainers = document.querySelectorAll('.optionsContainer');
 const optionEditForms = document.querySelectorAll('.optionTableForm');
+const stageLocks = document.querySelectorAll('.stageLock');
 
 // Set up the modal for deleting the final option
 const modal = document.querySelector('.modalContainer');
@@ -228,3 +229,44 @@ async function sendRequest(url, requestMethod, data) {
         document.cookie = `response=${responseData.msg}`;
     }
 }
+
+$(document).ready(function(){
+    $("#stageDeletionModalCancel").click(function(){
+        $('#stageDeletionModal').modal('hide');
+    })
+
+    $('.stageLock').click(function(){
+        //if locked
+        if ($(this).attr('data-locked') === '1') {
+            let currentLockStatus = $(this);
+            $('#stageDeletionModal').modal('show');
+            $("#stageDeletionModalYes").off('click');
+            $("#stageDeletionModalYes").on('click',function() {
+                currentLockStatus.attr('data-locked', '0');
+                currentLockStatus.find('svg').removeClass('fa-lock');
+                currentLockStatus.find('svg').addClass('fa-lock-open');
+
+                let currentStageId = currentLockStatus.attr('data-stageId')
+                $('.delete').each(function () {
+                    if ($(this).attr('data-id') === currentStageId && $(this).attr('data-hasOptions') === '0')  {
+                        $(this).removeClass('disabled')
+                    }
+                })
+                $('#stageDeletionModal').modal('hide');
+            })
+        } else {
+            //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
+            $(this).attr('data-locked', "1")
+            $(this).find('svg').removeClass('fa-lock-open')
+            $(this).find('svg').addClass('fa-lock')
+
+            let currentStageId = $(this).attr('data-stageId')
+            $('.delete').each(function(){
+                if ($(this).attr('data-id') === currentStageId) {
+                    $(this).addClass('disabled')
+                }
+            })
+        }
+    })
+})
+
