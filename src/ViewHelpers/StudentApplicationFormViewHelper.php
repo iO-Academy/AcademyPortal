@@ -71,7 +71,8 @@ class StudentApplicationFormViewHelper
         foreach ($data['cohorts'] as $cohorts) {
             $output .= '<li><label><input type="checkbox" class="startDatesCheckbox" name="startDatesCheckbox" value="' . $cohorts['id'] . '"/>' . date_format(date_create_from_format("Y-m-d", $cohorts['date']), "D j M Y") . '</label></li>';
         }
-        $output .= '</ul><label><input type="checkbox" value="next available online course">Some course dates may also be offered with a remote option. Contact us to find out more.</label></div>';
+        $output .= '<li><label><input type="checkbox" class="startDatesCheckbox" name="startDatesCheckbox" value="register interest">next available online course (register interest)</label></li></ul>';
+        $output .= '<p>Some course dates may also be offered with a remote option. Contact us to find out more.</p></div>';
         $output .= '<div class="row"><label> How did you hear about us?</label>';
         $output .= '<select class="form-control">';
         $output .= '<option value="" disabled selected>Background</option>';
@@ -84,7 +85,7 @@ class StudentApplicationFormViewHelper
 of age before my chosen course start date"/>I confirm that I am at least 18 years 
 of age before my chosen course start date</label></div>';
         $output .= '<div class="row"><p>By using this form you agree with the storage and handling of your data
- by this website in accordance with our terms and conditions and privacy policy.</p>';
+ by this website in accordance with our <a href="https://io-academy.uk/terms-conditions" target="_blank">terms and conditions</a> and <a href="https://io-academy.uk/privacy-policy" target="_blank">privacy policy</a>.</p>';
         $output .= '<label><input type="checkbox" value="I accept the terms and conditions"/>I accept the terms and conditions</label></div></div>';
         return $output;
     }
@@ -96,8 +97,8 @@ of age before my chosen course start date</label></div>';
      */
     protected static function displayPageFormFive(): string
     {
-        $output = '<h2>Ready to submit?</h2>';
-        $output .= '<p>Next Steps</p>';
+        $output = '<div class="finalPage"><h2>Ready to submit?</h2>';
+        $output .= '<p class="nextSteps">Next Steps</p>';
         $output .= '<ul>';
         $output .= '<li>We’ll read through your application and 
 be in touch within the next few days.</li>';
@@ -108,7 +109,7 @@ between you and one of our trainers.</li>';
         $output .= '<li>After your chat with a trainer, we will be in touch within
  five working days to let you know whether your application 
  has been successful and talk next steps!</li>';
-        $output .= '</ul>';
+        $output .= '</ul></div>';
         return $output;
     }
 

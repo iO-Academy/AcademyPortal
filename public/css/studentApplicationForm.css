@@ -42,6 +42,18 @@ ul.startDatesList li input[type="checkbox"] {
     width: 0;
 }
 
+.termsAndConditions label {
+    font-family: 'Inter', Papyrus;
+    font-weight: bold;
+}
+
+.termsAndConditions p a:hover,
+.termsAndConditions p a,
+.termsAndConditions p a:active,
+.termsAndConditions p a:visited {
+    color: inherit;
+    text-decoration: underline;
+}
 .termsAndConditions label input[type="checkbox"] {
     appearance: none;
     background-color: #fff;
@@ -57,7 +69,7 @@ ul.startDatesList li input[type="checkbox"] {
 }
 
 .termsAndConditions label input[type="checkbox"]:focus {
-    border: none;
+    outline: none;
     border: 0.15em solid #743dfb;
 }
 
@@ -73,6 +85,25 @@ ul.startDatesList li input[type="checkbox"] {
 
 .termsAndConditions label input[type="checkbox"]:checked::before {
     transform: scale(1);
+}
+
+.studentApplicationForm .finalPage h2 {
+    text-align: center;
+    font-size: calc(16px + 2vw);
+}
+
+.studentApplicationForm .nextSteps {
+    color: #743dfb;
+    text-align: center;
+}
+
+.studentApplicationForm .finalPage ul {
+    list-style-type: '> ';
+}
+
+.studentApplicationForm .finalPage ul li::marker {
+    color: #743dfb;
+    font-weight: bolder;
 }
 
 body {
