@@ -211,27 +211,6 @@ newStageForm.addEventListener('submit', async (e) => {
 
 });
 
-// //Event listener for the lock icons. Provides ability to disable/enable delete functionality of stages
-// stageLocks.forEach((stageLock) => {
-//     stageLock.addEventListener('click', () => {
-//         //if padlock is locked -> unlocked, trigger the allowStageDeletionModal
-//         if (stageLock.dataset.locked === '1') {
-//             $('#stageDeletionModal').modal('show')
-//         } else {
-//             //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
-//             stageLock.dataset.locked = '1'
-//             stageLock.classList.remove('fa-lock-open')
-//             stageLock.classList.add('fa-lock')
-//             deleteButtons.forEach((deleteButton)=>{
-//                 if (deleteButton.dataset.id === stageLock.dataset.stageId) {
-//                     deleteButton.classList.add('disabled')
-//                 }
-//             })
-//         }
-//     })
-// })
-
-
 //Fetch template
 async function sendRequest(url, requestMethod, data) {
     let requestData = JSON.stringify(data);
@@ -250,28 +229,23 @@ async function sendRequest(url, requestMethod, data) {
     }
 }
 
+// Event listener for stageLocks
 $(document).ready(function(){
-    console.log('hi')
-    $('.padlockThing').click(function(){
-        console.log('hi')
-        console.log($(this).attr('data-locked'))
+    $('.stageLock').click(function(){
+        // If stageLock is locked -> unlocked, displays the allowStageDeletionModal
         if ($(this).attr('data-locked') === '1') {
             $('#stageDeletionModal').modal('show')
         } else {
-            //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
-            console.log(this)
-            $(this).attr('data-locked', "1")
+            //if stageLock is unlocked -> locked, data-locked changes to 1, change icon, disable delete button
+            $(this).attr('data-locked', '1')
             $(this).find('svg').removeClass('fa-lock-open')
             $(this).find('svg').addClass('fa-lock')
-            // this.classList.remove('fa-lock-open')
-            // this.classList.add('fa-lock')
-            // deleteButtons.forEach((deleteButton)=>{
-            //     if (deleteButton.dataset.id === this.dataset.stageId) {
-            //         deleteButton.classList.add('disabled')
-            //     }
-            // })
+            let currentStageId = $(this).attr('data-stageId')
+            $('.delete').each(function(){
+                if ($(this).attr('data-id') === currentStageId) {
+                    $(this).addClass('disabled')
+                }
+            })
         }
     })
-
-    // })
 })
