@@ -36,6 +36,7 @@ return function (App $app) {
     $app->post('/api/createHiringPartner', 'AddHiringPartnerController');
     $app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');
     $app->get('/api/getEvents', 'GetEventsController');
+    $app->get('/api/getAssessmentApplicants', 'GetAssessmentApplicantsController');
     $app->post('/api/addEvent', 'AddEventController');
     $app->post('/api/addContact', 'AddContactController');
     $app->post('/api/addHiringPartnerToEvent', 'AddHiringPartnerToEventController');

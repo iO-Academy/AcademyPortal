@@ -93,6 +93,7 @@ return function (ContainerBuilder $containerBuilder) {
         DI\factory('\Portal\Factories\Controllers\API\GetCompanyDetailsModalControllerFactory');
     $container['AddContactController'] = DI\factory('\Portal\Factories\Controllers\API\AddContactControllerFactory');
     $container['GetEventsController'] = DI\factory('\Portal\Factories\Controllers\API\GetEventsControllerFactory');
+    $container['GetAssessmentApplicantsController'] = DI\factory('\Portal\Factories\Controllers\API\GetAssessmentApplicantsControllerFactory');
     $container['GetHiringPartnersByIdController'] =
         DI\factory('\Portal\Factories\Controllers\API\GetHiringPartnersByIdControllerFactory');
     $container['AddHiringPartnerToEventController'] =
