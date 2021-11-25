@@ -107,8 +107,8 @@ class StageModel
                 count(`a`.`id`) AS 'hasAssignees'
                 FROM `stages` AS `st`
                 LEFT JOIN `applicants` AS `a` ON `st`.`id` = `a`.`stageId`
-                AND `st`.`deleted` = '0' 
-                AND `a`.`deleted` = '0'
+                    AND `a`.`deleted` = '0'
+                WHERE `st`.`deleted` = '0'     
                 GROUP BY `st`.`id`
                 ORDER BY `st`.`order`;"
         );
