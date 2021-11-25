@@ -13,7 +13,7 @@ function updateStage(url, applicantId, btnNextStage) {
                     document.querySelector('#currentStageName' + applicantId).innerHTML = data['data']['newStageName'] + option;
                     btnNextStage.dataset.stageid = data['data']['stageId'];
                     btnNextStage.dataset.stagename = data['data']['newStageName'];
-                    if (data['data']['isLastStage'] === data['data']['stageId']) {
+                    if (parseInt(data['data']['isLastStage']) === parseInt(data['data']['currentOrder'])) {
                         $(btnNextStage).remove();
                     }
                 }
@@ -41,7 +41,6 @@ $(document).ready(function(){
                         return;
                     }
                     response.json().then(function(data) {
-                        console.log(data)
                         document.getElementById('currentStageNumber').innerHTML =  '<h4>Stage ' + data.data.currentStage.order + ' of ' + stageCount + '</h4>';
                         document.getElementById('nextStageNumber').innerHTML ='<h4>Stage ' + (parseInt(data.data.currentStage.order)+1)  + ' of ' + stageCount + '</h4>';
                         document.getElementById('currentStageTitle').innerHTML ='<h4>' + data.data.currentStage.title + '</h4>';

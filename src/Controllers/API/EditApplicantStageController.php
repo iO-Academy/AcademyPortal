@@ -38,6 +38,7 @@ class EditApplicantStageController extends Controller
                 $data['data']['option'] = $newOption;
                 $data['data']['newStageName'] = $newStageEntity->getStageTitle();
                 $data['data']['stageId'] = $newStage;
+                $data['data']['currentOrder'] = $newStageEntity->getStageOrder();
                 $data['data']['isLastStage'] = $this->stageModel->getHighestOrderNo();
                 return $this->respondWithJson($response, $data, 200);
             }
