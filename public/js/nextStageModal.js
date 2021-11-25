@@ -44,7 +44,7 @@ $(document).ready(function(){
                     response.json().then(function(data) {
                         console.log(data)
                         document.getElementById('currentStageNumber').innerHTML =  '<h4>Stage ' + data.data.currentStage.order + ' of ' + stageCount + '</h4>';
-                        document.getElementById('nextStageNumber').innerHTML ='<h4>Stage ' + nextStageId  + ' of ' + stageCount + '</h4>';
+                        document.getElementById('nextStageNumber').innerHTML ='<h4>Stage ' + (parseInt(data.data.currentStage.order)+1)  + ' of ' + stageCount + '</h4>';
                         document.getElementById('currentStageTitle').innerHTML ='<h4>' + data.data.currentStageTitle.title + '</h4>';
                         document.getElementById('nextStageTitle').innerHTML ='<h4>' + data.data.nextStageTitle.title + '</h4>';
                         document.querySelector('#next-stage-options').innerHTML = '<option>Please select an Option</option>';
