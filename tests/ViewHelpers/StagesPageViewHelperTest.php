@@ -67,7 +67,9 @@ class StagesPageViewHelperTest extends TestCase
 <input type="text" class="optionAddTitle form-control" placeholder="Type the name of your new option"/>
 <input type="submit" class="optionAddSubmit btn btn-success" data-stageid="1" value="Submit"></form>
 </div></div></td><td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>
-<td class="col-xs-2 text-center disabled"><a data-id="1" class="text-danger delete disabled">Delete</a></td>
+<td class="col-xs-2 text-center"><a href="/applicants?name=&stageId=1&cohortId=all&sort=dateAsc" 
+class="text-danger" data-toggle="tooltip" title="Cannot delete a stage with assigned applicants, click to view 
+applicants assigned to this stage"><i class="tooltiptext glyphicon glyphicon-ban-circle text-success"></i></a></td>
 <td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="1">Options</a></td></tr>';
 
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace

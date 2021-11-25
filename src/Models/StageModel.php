@@ -102,16 +102,27 @@ class StageModel
     public function getAllStages(): array
     {
         $query = $this->db->prepare(
-            'SELECT `id`, `title`, `order`, `student`, `withdrawn`, `rejected`, `deleted`, `notAssigned` FROM `stages` 
-            WHERE `deleted` = 0 
-            ORDER BY `order`;'
+            "SELECT `st`.`id`, `st`.`title`, `st`.`order`, `st`.`student`, `st`.`deleted`,
+                `st`.`withdrawn`, `st`.`rejected`, `st`.`notAssigned`,
+                count(`a`.`id`) AS 'hasAssignees'
+                FROM `stages` AS `st`
+                LEFT JOIN `applicants` AS `a` ON `st`.`id` = `a`.`stageId`
+                AND `st`.`deleted` = '0' 
+                AND `a`.`deleted` = '0'
+                GROUP BY `st`.`id`
+                ORDER BY `st`.`order`;"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, StageEntity::class);
         $query->execute();
         $stages = $query->fetchAll();
 
         $query = $this->db->prepare(
-            'SELECT `id`, `option`, `stageId` FROM `options` WHERE `deleted` = 0;'
+            "SELECT `op`.`id`, `op`.`option`, `op`.`stageId`, count(`a`.`id`) AS 'hasAssignees'
+                FROM `options` AS `op`
+                LEFT JOIN `applicants` AS `a` ON `op`.`id` = `a`.`stageOptionId`
+                AND `op`.`deleted` = '0' 
+                AND `a`.`deleted` = '0'
+                GROUP BY `op`.`id`"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, OptionsEntity::class);
         $query->execute();

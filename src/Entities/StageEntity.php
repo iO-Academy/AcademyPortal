@@ -10,6 +10,7 @@ class StageEntity implements \JsonSerializable
     protected $student;
     protected $deleted;
     protected $options;
+    protected $hasAssignees;
     protected $withdrawn;
     protected $rejected;
     protected $notAssigned;
@@ -102,7 +103,16 @@ class StageEntity implements \JsonSerializable
     }
 
     /**
-     * Gets stage withdrawn
+     * Returns number of assignees to stage
+     *
+     * @return int
+     */
+    public function getHasAssignees(): int
+    {
+        return $this->hasAssignees;
+    }
+
+     /** Gets stage withdrawn
      *
      * @return bool|null
      */
