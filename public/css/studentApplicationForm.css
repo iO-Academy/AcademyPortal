@@ -16,7 +16,11 @@
 
 ul.startDatesList {
     list-style: none;
-    padding: 20px;
+    padding: 20px 0;
+}
+
+.finalPage li {
+    margin-bottom: 15px;
 }
 
 ul.startDatesList li {
