@@ -45,7 +45,8 @@ class ApplicantValidator
                 'your experience of coding'
             )
             &&
-            // Check that the hearAboutId, backgroundInfoId and gender are all numeric (as they represent ids for other tables)
+            // Check that the hearAboutId, backgroundInfoId and gender are all numeric
+            // (as they represent ids for other tables)
             is_numeric($applicant['hearAboutId']) &&
             is_numeric($applicant['backgroundInfoId']) &&
             is_numeric($applicant['gender']) &&
