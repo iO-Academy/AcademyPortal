@@ -76,7 +76,7 @@ $(document).ready(function(){
                             document.querySelector('#next-stage-options').innerHTML += optionValues;
                             document.getElementById('nextStageSaveButtonContainer').innerHTML = ''
                             let btn = document.createElement("BUTTON")
-                            btn.innerHTML = "Save me"
+                            btn.innerHTML = "Save"
                             btn.classList.add('btn');
                             btn.classList.add('btn-primary');
                             btn.classList.add('btnNextStageOptions');
