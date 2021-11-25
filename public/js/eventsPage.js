@@ -109,9 +109,25 @@ function displayEventsHandler(eventsAndHiringPartners) {
                     }
                 })
             })
-        })
-    }
-};
+        }).then(() => {
+            let copyEmailButtons = document.querySelectorAll('.copy-button')
+            copyEmailButtons.forEach(function (button) {
+                button.addEventListener('click', async e => {
+                    e.preventDefault();
+                    let targetEventId = e.target.id.charAt(e.target.id.length-1);
+                    let targetEmails = window['applicantEmailsEvent'+targetEventId];
+                    await navigator.clipboard.writeText(targetEmails.join(' ')).then(function() {
+                        /* clipboard successfully set */
+                        alert('Emails copied successfully');
+                    }, function() {
+                        /* clipboard write failed */
+                        alert('Failed writing to clipboard!');
+                    });
+                    })
+                })
+            })
+        }
+}
 
 async function displayEvents(events, hiringPartners, applicants) {
     events.forEach(async (event) => {
@@ -230,21 +246,23 @@ async function eventGenerator(event, hiringPartners, applicants) {
     }
 
     if (event.category_name === 'Assessment') {
-        // put code for assessment event type here!
         eventInformation += '<div>';
         eventInformation += '<table class="col-xs-12 table-bordered table">';
         eventInformation += '<tr>';
         eventInformation += '<th class="col-xs-2">Name</th>';
         eventInformation += '<th class="col-xs-3">Email</th>';
         eventInformation += '</tr>';
-            applicants.forEach((applicant) => {
+        window['applicantEmailsEvent'+event.id] = [];
+        applicants.forEach((applicant) => {
                 if (applicant.assessmentDay == event.id) {
+                    window['applicantEmailsEvent'+event.id].push(applicant.email);
                     eventInformation += `<tr>`;
                     eventInformation += `<td>${applicant.name}</td>`;
                     eventInformation += `<td>${applicant.email}</td>`;
                     eventInformation += `</tr>`;
                 }
             });
+        eventInformation += `<button class="btn btn-primary copy-button" id="copy-button-${event.id}">Copy all emails</button>`;
         eventInformation += '</table>';
         eventInformation += '</div>';
     }
@@ -273,7 +291,6 @@ async function eventGenerator(event, hiringPartners, applicants) {
            </div>`
         }
     }
-
     eventInformation += `</div>`
     eventList.innerHTML += eventInformation
     const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`)
@@ -347,4 +364,13 @@ document.querySelector('#clear-search').addEventListener('click', function(e) {
     }
     location.reload()
 })
+
+// document.querySelector('copy-button-${event.id}').addEventListener('click', function (e) {
+//     e.preventDefault();
+//     navigator.clipboard.writeText(emaillist.join(' ')).then(function() {
+//         /* clipboard successfully set */
+//     }, function() {
+//         /* clipboard write failed */
+//     });
+// });
 
