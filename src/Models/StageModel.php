@@ -166,7 +166,7 @@ class StageModel
     {
         $query = $this->db->prepare('SELECT `title` FROM `stages` WHERE `id`= :id');
 
-        $query->setFetchMode(\PDO::FETCH_ASSOC );
+        $query->setFetchMode(\PDO::FETCH_ASSOC);
         $query->bindParam(':id', $id);
         $query->execute();
         $stageTitle = $query->fetch();
