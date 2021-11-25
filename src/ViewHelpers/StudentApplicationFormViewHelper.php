@@ -39,8 +39,10 @@ class StudentApplicationFormViewHelper
                 '">' . $backgroundInfo['backgroundInfo'] . '</option>';
         }
         $output .= '</select></div>';
-        $output .= '<div class="row form-group"><label for="whyDev" class="label-control">Why do you want to become a developer?</label>';
-        $output .= '<textarea id="whyDev" type="text" placeholder="(100 - 500 characters)" class="form-control textAreaToCount" rows="5"></textarea>';
+        $output .= '<div class="row form-group"><label for="whyDev" class="label-control">';
+        $output .= 'Why do you want to become a developer?</label>';
+        $output .= '<textarea id="whyDev" type="text" placeholder="(100 - 500 characters)" ';
+        $output .= 'class="form-control textAreaToCount" rows="5"></textarea>';
         $output .= '<div class="textAreaCounter"><span id="textAreaCount">0</span> of 500 max characters</div>';
         $output .= '</div>';
         return $output;
@@ -53,9 +55,13 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormThree(): string
     {
-        $output = '<div class="row"><label for="pastCoding" class="label-control withTooltip">Any past coding experience?';
-        $output .= '<button class="pastCodingTooltip" data-toggle="tooltip" data-placement="top" title="Taken an online course? Given WordPress a try? Our courses require no past experience, but it would be useful to know about any existing knowledge.">?</button></label>';
-        $output .= '<textarea id="pastCoding" placeholder="Most people write a few sentences" class="form-control" rows="5"></textarea>';
+        $output = '<div class="row"><label for="pastCoding" class="label-control withTooltip">';
+        $output .= 'Any past coding experience?';
+        $output .= '<button class="pastCodingTooltip" data-toggle="tooltip" data-placement="top" ';
+        $output .= 'title="Taken an online course? Given WordPress a try? Our courses require no past experience,';
+        $output .= ' but it would be useful to know about any existing knowledge.">?</button></label>';
+        $output .= '<textarea id="pastCoding" placeholder="Most people write a few sentences" ';
+        $output .= 'class="form-control" rows="5"></textarea>';
         $output .= '</div>';
         return $output;
     }
@@ -70,10 +76,16 @@ class StudentApplicationFormViewHelper
     {
         $output = '<div class="row"><label>Select start date(s)</label><ul class="startDatesList">';
         foreach ($data['cohorts'] as $cohorts) {
-            $output .= '<li><label><input type="checkbox" class="startDatesCheckbox" name="startDatesCheckbox" value="' . $cohorts['id'] . '"/>' . date_format(date_create_from_format("Y-m-d", $cohorts['date']), "D j M Y") . '</label></li>';
+            $output .= '<li><label><input type="checkbox" class="startDatesCheckbox" name="startDatesCheckbox"';
+            $output .= ' value="' . $cohorts['id'] . '"/>';
+            $output .= date_format(date_create_from_format("Y-m-d", $cohorts['date']), "D j M Y");
+            $output .= '</label></li>';
         }
-        $output .= '<li><label><input type="checkbox" class="startDatesCheckbox" name="startDatesCheckbox" value="register interest">next available online course (register interest)</label></li></ul>';
-        $output .= '<p>Some course dates may also be offered with a remote option. Contact us to find out more.</p></div>';
+        $output .= '<li><label><input type="checkbox" class="startDatesCheckbox" name="startDatesCheckbox"';
+        $output .= ' value="register interest">next available online course (register interest)';
+        $output .= '</label></li></ul>';
+        $output .= '<p>Some course dates may also be offered with a remote option. ';
+        $output .= 'Contact us to find out more.</p></div>';
         $output .= '<div class="row"><label> How did you hear about us?</label>';
         $output .= '<select class="form-control">';
         $output .= '<option value="" disabled selected>Background</option>';
@@ -82,16 +94,22 @@ class StudentApplicationFormViewHelper
         }
         $output .= '</select></div>';
         $output .= '<div class="row hidden"><label for="additionalNotesWordOfMouth">Who referred you?</label>';
-        $output .= '<input type="text" class="form-control" id="additionalNotesWordOfMouth" name="additionalNotes"></div>';
+        $output .= '<input type="text" class="form-control" id="additionalNotesWordOfMouth" name="additionalNotes">';
+        $output .= '</div>';
         $output .= '<div class="row hidden"><label for="additionalNotesOther">Please specify further</label>';
         $output .= '<input type="text" class="form-control" id="additionalNotesOther" name="additionalNotes"></div>';
-        $output .= '<div class="termsAndConditions"><div class="row"><label><input type="checkbox" value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK</label></div>';
-        $output .= '<div class="row"><label><input type="checkbox" value="I confirm that I am at least 18 years 
-of age before my chosen course start date"/>I confirm that I am at least 18 years 
-of age before my chosen course start date</label></div>';
-        $output .= '<div class="row"><p>By using this form you agree with the storage and handling of your data
- by this website in accordance with our <a href="https://io-academy.uk/terms-conditions" target="_blank">terms and conditions</a> and <a href="https://io-academy.uk/privacy-policy" target="_blank">privacy policy</a>.</p>';
-        $output .= '<label><input type="checkbox" value="I accept the terms and conditions"/>I accept the terms and conditions</label></div></div>';
+        $output .= '<div class="termsAndConditions"><div class="row"><label><input type="checkbox" ';
+        $output .= 'value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK';
+        $output .= '</label></div>';
+        $output .= '<div class="row"><label><input type="checkbox" value="I confirm that I am at least ';
+        $output .= '18 years of age before my chosen course start date"/>I confirm that I am at least 18 ';
+        $output .= 'years of age before my chosen course start date</label></div>';
+        $output .= '<div class="row"><p>By using this form you agree with the storage and handling of your ';
+        $output .= 'data by this website in accordance with our <a href="https://io-academy.uk/terms-conditions" ';
+        $output .= 'target="_blank">terms and conditions</a>';
+        $output .= ' and <a href="https://io-academy.uk/privacy-policy" target="_blank">privacy policy</a>.</p>';
+        $output .= '<label><input type="checkbox" value="I accept the terms and conditions"/>';
+        $output .= 'I accept the terms and conditions</label></div></div>';
         return $output;
     }
 
@@ -155,16 +173,17 @@ of age before my chosen course start date</label></div>';
      */
     public static function displayNextButtons(int $applicationFormPageNumber, int $finalPage): string
     {
-        if($applicationFormPageNumber === 1){
+        if ($applicationFormPageNumber === 1) {
             $output = '<div class="row buttons"><button class="btn btn-lg" disabled>Prev</button>';
-        }else{
-            $output = '<div class="row buttons"><button class="btn btn-lg prevButton" value="' . ($applicationFormPageNumber - 1) . '">Prev</button>';
+        } else {
+            $output = '<div class="row buttons"><button class="btn btn-lg prevButton" value="';
+            $output .= ($applicationFormPageNumber - 1) . '">Prev</button>';
         }
-        if($applicationFormPageNumber >= $finalPage){
+        if ($applicationFormPageNumber >= $finalPage) {
             $output .= '<button class="btn btn-lg finishButton">Finish</button></div></div>';
-        }else {
-            $output .= '<button class="nextButton btn btn-lg" type="submit" for="studentApplicationForm" value="' . ($applicationFormPageNumber + 1) . '">Next</button></div>';
-
+        } else {
+            $output .= '<button class="nextButton btn btn-lg" type="submit" for="studentApplicationForm" value="';
+            $output .= ($applicationFormPageNumber + 1) . '">Next</button></div>';
         }
         return $output;
     }
