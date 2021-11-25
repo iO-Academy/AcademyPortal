@@ -1,3 +1,5 @@
+
+
 function updateStage(url, applicantId, btnNextStage) {
     fetch(url).then(
         function(response) {
@@ -10,7 +12,8 @@ function updateStage(url, applicantId, btnNextStage) {
 
                     document.querySelector('#currentStageName' + applicantId).innerHTML = data['data']['newStageName'] + option;
                     btnNextStage.dataset.stageid = data['data']['stageId'];
-                    if (data['data']['isLastStage'] === data['data']['stageId']) {
+                    btnNextStage.dataset.stagename = data['data']['newStageName'];
+                    if (parseInt(data['data']['isLastStage']) === parseInt(data['data']['currentOrder'])) {
                         $(btnNextStage).remove();
                     }
                 }
@@ -22,9 +25,12 @@ function updateStage(url, applicantId, btnNextStage) {
 $(document).ready(function(){
     $(".btnNextStage").click(function(){
         const stageId = this.dataset.stageid;
+        const stageCount = this.dataset.stagecount;
+        const currentOptionName = this.dataset.currentoptionname;
         const applicantId = this.dataset.applicantid;
         const thisButton  = this;
         var url = './api/getNextStageOptions/' + stageId + '?applicantId=' + applicantId;
+
 
         fetch(url)
             .then(
@@ -35,7 +41,12 @@ $(document).ready(function(){
                         return;
                     }
                     response.json().then(function(data) {
+                        document.getElementById('currentStageNumber').innerHTML =  '<h4>Stage ' + data.data.currentStage.order + ' of ' + stageCount + '</h4>';
+                        document.getElementById('nextStageNumber').innerHTML ='<h4>Stage ' + (parseInt(data.data.currentStage.order)+1)  + ' of ' + stageCount + '</h4>';
+                        document.getElementById('currentStageTitle').innerHTML ='<h4>' + data.data.currentStage.title + '</h4>';
+                        document.getElementById('nextStageTitle').innerHTML ='<h4>' + data.data.nextStageTitle.title + '</h4>';
                         document.querySelector('#next-stage-options').innerHTML = '<option>Please select an Option</option>';
+                        document.getElementById('currentOption').innerHTML ='<p>' + currentOptionName + '</p>';
                         const alert = document.querySelector('#passwordMessage')
                         if (data['data']['password']) {
                             $('#applicantPassword').modal('show');
