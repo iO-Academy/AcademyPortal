@@ -27,7 +27,7 @@ SET NAMES utf8mb4;
 DROP TABLE IF EXISTS `applicants`;
 
 CREATE TABLE `applicants` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `phoneNumber` varchar(20) DEFAULT NULL,
