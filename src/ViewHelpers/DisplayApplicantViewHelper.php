@@ -3,6 +3,7 @@
 namespace Portal\ViewHelpers;
 
 use Portal\Interfaces\BaseApplicantEntityInterface;
+use Portal\Interfaces\ApplicantEntityInterface;
 
 class DisplayApplicantViewHelper
 {
@@ -42,8 +43,6 @@ class DisplayApplicantViewHelper
         $result .= '</table></div>';
         return $result;
     }
-
-
 
 
     /**
@@ -103,8 +102,8 @@ class DisplayApplicantViewHelper
         } else {
             $string .= '<td>' . $applicant->getCohortDate() . '</td>';
         };
-                    $string .= '<td id="currentStageName' . $applicant->getId() . '">' . $applicant->getStageName() .
-            ($applicant->getStageOptionName() ? ' - ' . $applicant->getStageOptionName() : ' ' ) . '</td>
+        $string .= '<td id="currentStageName' . $applicant->getId() . '">' . $applicant->getStageName() .
+            ($applicant->getStageOptionName() ? ' - ' . $applicant->getStageOptionName() : ' ') . '</td>
                     <td>                        
                         <a href="/editApplicant?id=' . $applicant->getId() . '"   
                            type="button"                                   

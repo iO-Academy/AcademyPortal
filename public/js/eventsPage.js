@@ -27,8 +27,9 @@ function getEvents(search = false) {
     })
     .then(response => response.json())
     .then(async (eventInfo) => {
-        let hiringPartners = await getHiringPartners()
-        return {events: eventInfo, hiringPartners: hiringPartners}
+        let hiringPartners = await getHiringPartners();
+        let applicants = await getAssessmentApplicants();
+        return {events: eventInfo, hiringPartners: hiringPartners, applicants: applicants};
     })
     .then(eventsAndHiringPartners => {
         displayEventsHandler(eventsAndHiringPartners)
@@ -45,7 +46,7 @@ function displayEventsHandler(eventsAndHiringPartners) {
         eventList.innerHTML = eventsAndHiringPartners.events.message
     } else {
         eventList.innerHTML = ''
-        displayEvents(eventsAndHiringPartners.events.data, eventsAndHiringPartners.hiringPartners).then(() => {
+        displayEvents(eventsAndHiringPartners.events.data, eventsAndHiringPartners.hiringPartners, eventsAndHiringPartners.applicants).then(() => {
             let showInfoButtons = document.querySelectorAll('.show-event-info')
                     showInfoButtons.forEach(function (button) {
                         button.addEventListener('click', e => {
@@ -108,13 +109,29 @@ function displayEventsHandler(eventsAndHiringPartners) {
                     }
                 })
             })
-        })
-    }
-};
+        }).then(() => {
+            let copyEmailButtons = document.querySelectorAll('.copy-button')
+            copyEmailButtons.forEach(function (button) {
+                button.addEventListener('click', async e => {
+                    e.preventDefault();
+                    let targetEventId = e.target.id.charAt(e.target.id.length-1);
+                    let targetEmails = window['applicantEmailsEvent'+targetEventId];
+                    await navigator.clipboard.writeText(targetEmails.join(' ')).then(function() {
+                        /* clipboard successfully set */
+                        alert('Emails copied successfully');
+                    }, function() {
+                        /* clipboard write failed */
+                        alert('Failed writing to clipboard!');
+                    });
+                    })
+                })
+            })
+        }
+}
 
-async function displayEvents(events, hiringPartners) {
+async function displayEvents(events, hiringPartners, applicants) {
     events.forEach(async (event) => {
-        await eventGenerator(event, hiringPartners).then(event => {
+        await eventGenerator(event, hiringPartners, applicants).then(event => {
             displayHiringPartnersAttending(event)
         })
         return event
@@ -208,7 +225,7 @@ async function displayHiringPartnersAttending(event){
  *
  * @param events an object which contains information about an event
  */
-async function eventGenerator(event, hiringPartners) {
+async function eventGenerator(event, hiringPartners, applicants) {
     let eventInformation = ''
     let date = new Date(event.date).toDateString()
     eventInformation +=
@@ -226,6 +243,28 @@ async function eventGenerator(event, hiringPartners) {
 
     if (event.notes !== null) {
         eventInformation += `<p>Notes: ${event.notes}</p>`
+    }
+
+    if (event.category_name === 'Assessment') {
+        eventInformation += '<div>';
+        eventInformation += '<table class="col-xs-12 table-bordered table">';
+        eventInformation += '<tr>';
+        eventInformation += '<th class="col-xs-2">Name</th>';
+        eventInformation += '<th class="col-xs-3">Email</th>';
+        eventInformation += '</tr>';
+        window['applicantEmailsEvent'+event.id] = [];
+        applicants.forEach((applicant) => {
+                if (applicant.assessmentDay == event.id) {
+                    window['applicantEmailsEvent'+event.id].push(applicant.email);
+                    eventInformation += `<tr>`;
+                    eventInformation += `<td>${applicant.name}</td>`;
+                    eventInformation += `<td>${applicant.email}</td>`;
+                    eventInformation += `</tr>`;
+                }
+            });
+        eventInformation += `<button class="btn btn-primary copy-button" id="copy-button-${event.id}">Copy all emails</button>`;
+        eventInformation += '</table>';
+        eventInformation += '</div>';
     }
 
     if (event.availableToHP == 1) {
@@ -252,7 +291,6 @@ async function eventGenerator(event, hiringPartners) {
            </div>`
         }
     }
-
     eventInformation += `</div>`
     eventList.innerHTML += eventInformation
     const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`)
@@ -286,6 +324,24 @@ async function getHiringPartners() {
     return await response.json()
 }
 
+/**
+ * Get all the applicants booked for assessment from the API
+ *
+ * @return array The JSON response
+ */
+async function getAssessmentApplicants() {
+
+    let response = await fetch('./api/getAssessmentApplicants', {
+        credentials: 'same-origin',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'get',
+    })
+    return await response.json()
+
+}
 
 document.querySelector('#submit-search-event').addEventListener('click', function(e) {
     const searchInput = document.querySelector('#academy-events-search').value
@@ -308,4 +364,3 @@ document.querySelector('#clear-search').addEventListener('click', function(e) {
     }
     location.reload()
 })
-
