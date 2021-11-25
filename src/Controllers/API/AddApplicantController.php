@@ -39,34 +39,38 @@ class AddApplicantController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        if ($_SESSION['loggedIn'] === true) {
-            $data = ['success' => false, 'msg' => 'Application not saved'];
-            $statusCode = 500;
-            $newApplicationData = $request->getParsedBody();
-
-            try {
-                if (ApplicantValidator::validate($newApplicationData)) {
-                    $applicant = ApplicantSanitiser::sanitise($newApplicationData);
-                } else {
-                    throw new Exception('Applicant data failed validation');
-                }
-            } catch (Exception $e) {
-                $statusCode = 400;
-                $data['msg'] = $e->getMessage();
-                return $this->respondWithJson($response, $data, $statusCode);
+        $data = ['success' => false, 'msg' => 'Application not saved'];
+        $statusCode = 500;
+        $newApplicationData = $request->getParsedBody();
+        try {
+            if (ApplicantValidator::validate($newApplicationData)) {
+                $applicant = ApplicantSanitiser::sanitise($newApplicationData);
+            } else {
+                throw new Exception('Applicant data failed validation');
             }
-
-            $successfulRegister = $this->applicantModel->storeApplicant($applicant);
-
-            if ($successfulRegister) {
-                $data = [
-                    'success' => $successfulRegister,
-                    'msg' => 'Application successfully saved!'
-                ];
-                $statusCode = 200;
-            }
+        } catch (Exception $e) {
+            $statusCode = 400;
+            $data['msg'] = $e->getMessage();
             return $this->respondWithJson($response, $data, $statusCode);
         }
-        return $response->withStatus(401);
+
+        $successfulRegister = $this->applicantModel->storeApplicant($applicant);
+
+        if ($successfulRegister) {
+            $data = [
+                'success' => $successfulRegister,
+                'msg' => 'Application successfully saved!'
+            ];
+            $statusCode = 200;
+        }
+        if ($_SESSION['loggedIn'] === true) {
+            return $this->respondWithJson($response, $data, $statusCode);
+        } else {
+            if ($successfulRegister) {
+                return $response->withHeader('Location', '/studentApplicationSuccessPage');
+            } else {
+                echo ("Please check your application is correct");
+            }
+        }
     }
 }

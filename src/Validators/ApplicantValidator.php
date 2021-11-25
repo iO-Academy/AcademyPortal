@@ -57,10 +57,11 @@ class ApplicantValidator
                 $applicant['eighteenPlus'] == 1 || $applicant['eighteenPlus'] == 0
             ) &&
             (
-                $applicant['finance'] == 1 || $applicant['finance'] == 0
+                !isset($applicant['finance']) || ($applicant['finance'] == 1 || $applicant['finance'] == 0)
+
             ) &&
             // Ensure the notes don't exceed max characters
-            strlen($applicant['notes']) <= StringValidator::MAXTEXTLENGTH
+            !isset($applicant['notes']) || strlen($applicant['notes']) <= StringValidator::MAXTEXTLENGTH
         );
     }
 

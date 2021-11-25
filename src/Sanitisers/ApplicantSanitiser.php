@@ -15,7 +15,9 @@ class ApplicantSanitiser
      */
     public static function sanitise(array $applicant): array
     {
-        $applicant['id'] = (int)$applicant['id'];
+        if (isset($applicant['id'])) {
+            $applicant['id'] = (int)$applicant['id'];
+        }
         $applicant['name'] = StringSanitiser::sanitiseString($applicant['name']);
         $applicant['email'] = StringSanitiser::sanitiseString($applicant['email']);
         $applicant['email'] = EmailValidator::validateEmail($applicant['email']);
@@ -29,10 +31,13 @@ class ApplicantSanitiser
         $applicant['backgroundInfoId'] = (int)$applicant['backgroundInfoId'];
         $applicant['eligible'] = $applicant['eligible'] ? 1 : 0;
         $applicant['eighteenPlus'] = $applicant['eighteenPlus'] ? 1 : 0;
-        $applicant['finance'] = $applicant['finance'] ? 1 : 0;
-        $applicant['notes'] = StringSanitiser::sanitiseString($applicant['notes']);
-
-        return $applicant;
+        if (isset($applicant['finance'])) {
+            $applicant['finance'] = $applicant['finance'] ? 1 : 0;
+        }
+        if (isset($applicant['notes'])) {
+            $applicant['notes'] = StringSanitiser::sanitiseString($applicant['notes']);
+        }
+            return $applicant;
     }
 
     /**

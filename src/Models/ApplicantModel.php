@@ -25,8 +25,7 @@ class ApplicantModel implements ApplicantModelInterface
      */
     public function storeApplicant(array $applicant)
     {
-        $query = $this->db->prepare(
-            "INSERT INTO `applicants` (
+        $mysql = "INSERT INTO `applicants` (
                             `name`,
                             `email`,
                             `phoneNumber`,
@@ -35,10 +34,14 @@ class ApplicantModel implements ApplicantModelInterface
                             `codeExperience`,
                             `hearAboutId`,
                             `eligible`,
-                            `eighteenPlus`,
-                            `finance`,
-                            `notes`,
-                            `backgroundInfoId`
+                            `eighteenPlus`,";
+        if (isset($applicant['finance'])) {
+            $mysql .= "`finance`,";
+        }
+        if (isset($applicant['notes'])) {
+            $mysql .= "`notes`,";
+        }
+        $mysql .= "`backgroundInfoId`
                             )
                         VALUES (
                             :name,
@@ -49,12 +52,15 @@ class ApplicantModel implements ApplicantModelInterface
                             :codeExperience,
                             :hearAboutId,
                             :eligible,
-                            :eighteenPlus,
-                            :finance,
-                            :notes,
-                            :backgroundInfoId
-                        );"
-        );
+                            :eighteenPlus,";
+        if (isset($applicant['finance'])) {
+            $mysql .= ":finance,";
+        }
+        if (isset($applicant['notes'])) {
+            $mysql .= ":notes,";
+        }
+        $mysql .= ":backgroundInfoId);";
+        $query = $this->db->prepare($mysql);
 
         $query->bindValue(':name', $applicant['name']);
         $query->bindValue(':email', $applicant['email']);
@@ -65,8 +71,12 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':hearAboutId', $applicant['hearAboutId']);
         $query->bindValue(':eligible', $applicant['eligible']);
         $query->bindValue(':eighteenPlus', $applicant['eighteenPlus']);
-        $query->bindValue(':finance', $applicant['finance']);
-        $query->bindValue(':notes', $applicant['notes']);
+        if (isset($applicant['finance'])) {
+            $query->bindValue(':finance', $applicant['finance']);
+        }
+        if (isset($applicant['notes'])) {
+            $query->bindValue(':notes', $applicant['notes']);
+        }
         $query->bindValue(':backgroundInfoId', $applicant['backgroundInfoId']);
 
         $result = $query->execute();
