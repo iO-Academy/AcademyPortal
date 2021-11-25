@@ -20,7 +20,7 @@ class StudentApplicationFormViewHelperTest extends TestCase
         $expected = '<div class="row "><input type="text" placeholder="Full Name" ';
         $expected .= 'class="form-control"></div><div class="row"><input type="email" ';
         $expected .= 'placeholder="Email" class="form-control"></div><div class="row">';
-        $expected .= '<input type="tel" placeholder="Phone Number" class="form-control">';
+        $expected .= '<input type="tel" placeholder="Phone Number" class="form-control" name="name">';
         $expected .= '</div><div class="row"><select class="form-control" >';
         $expected .= '<option value="" disabled selected>Gender</option>';
         $expected .= '<option value="1">male</option></select></div>';
@@ -70,7 +70,7 @@ class StudentApplicationFormViewHelperTest extends TestCase
         $expected .= '<div class="row "><input type="text" placeholder="Full Name" ';
         $expected .= 'class="form-control"></div><div class="row"><input type="email"';
         $expected .= ' placeholder="Email" class="form-control"></div><div class="row">';
-        $expected .= '<input type="tel" placeholder="Phone Number" class="form-control">';
+        $expected .= '<input type="tel" placeholder="Phone Number" class="form-control" name="name">';
         $expected .= '</div><div class="row"><select class="form-control" ><option value="" ';
         $expected .= 'disabled selected>Gender</option><option value="1">male</option>';
         $expected .= '</select></div><div class="row buttons"><button class="btn btn-lg"';
