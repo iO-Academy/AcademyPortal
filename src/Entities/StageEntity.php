@@ -10,14 +10,11 @@ class StageEntity implements \JsonSerializable
     protected $student;
     protected $deleted;
     protected $options;
-<<<<<<< HEAD
     protected $hasAssignees;
     protected $withdrawn;
     protected $rejected;
     protected $notAssigned;
-=======
     protected $stageCount;
->>>>>>> 056a687e170c789694efd18d0e6c6243c13357f9
 
     /**
      * Returns private properties from object.
