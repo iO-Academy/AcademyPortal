@@ -8,6 +8,7 @@ class OptionsEntity implements \JsonSerializable
     protected $option;
     protected $stageId;
     protected $deleted;
+    protected $hasAssignees;
 
     /**
      * Returns private properties from object.
@@ -61,5 +62,15 @@ class OptionsEntity implements \JsonSerializable
     public function getOptionDeleted(): int
     {
         return $this->deleted;
+    }
+
+    /**
+     * Returns number of assignees to option
+     *
+     * @return int
+     */
+    public function getHasAssignees(): int
+    {
+        return $this->hasAssignees;
     }
 }

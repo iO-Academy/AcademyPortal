@@ -16,6 +16,9 @@ class StageSanitiser
             $stage['title'] = substr($stage['title'], 0, 254);
         }
         $stage['student'] = (int)$stage['student'];
+        $stage['withdrawn'] = (int)$stage['withdrawn'];
+        $stage['rejected'] = (int)$stage['rejected'];
+        $stage['notAssigned'] = (int)$stage['notAssigned'];
         $stage['order'] = (int)$stage['order'];
         return $stage;
     }
