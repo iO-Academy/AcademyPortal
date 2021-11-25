@@ -80,6 +80,10 @@ class StudentApplicationFormViewHelper
             $output .= '<option value="' . $hearAbout['id'] . '">' . $hearAbout['hearAbout'] . '</option>';
         }
         $output .= '</select></div>';
+        $output .= '<div class="row hidden"><label for="additionalNotesWordOfMouth">Who referred you?</label>';
+        $output .= '<input type="text" class="form-control" id="additionalNotesWordOfMouth" name="additionalNotes"></div>';
+        $output .= '<div class="row hidden"><label for="additionalNotesOther">Please specify further</label>';
+        $output .= '<input type="text" class="form-control" id="additionalNotesOther" name="additionalNotes"></div>';
         $output .= '<div class="termsAndConditions"><div class="row"><label><input type="checkbox" value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK</label></div>';
         $output .= '<div class="row"><label><input type="checkbox" value="I confirm that I am at least 18 years 
 of age before my chosen course start date"/>I confirm that I am at least 18 years 
