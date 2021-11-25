@@ -28,7 +28,7 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
             'stageID' => $this->stageID,
             'stageName' => $this->stageName,
             'stageOptionName' => $this->stageOptionName,
-            'chosenStartDate' => $this->chosenStartDate
+            'chosenStartDate' => $this->chosenStartDate,
         ];
     }
 
