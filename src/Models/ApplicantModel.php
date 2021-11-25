@@ -521,4 +521,15 @@ class ApplicantModel implements ApplicantModelInterface
         );
         return $query->execute([':applicantId' => $applicantId, ':stageId' => $stageId, ':optionId' => $optionId]);
     }
+
+    public function getAssessmentApplicants(): array
+    {
+        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `applicants`.`email`, `applicants`.`deleted`,
+                    `applicants_additional`.`assessmentDay` 
+                FROM `applicants` INNER JOIN `applicants_additional` 
+                ON `applicants`.`id`=`applicants_additional`.`id` WHERE `deleted` NOT IN (1);";
+        $query = $this->db->prepare($stmt);
+        $query->execute();
+        return $query->fetchAll();
+    }
 }
