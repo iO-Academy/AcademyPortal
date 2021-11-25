@@ -11,6 +11,7 @@ const optionDeletes = document.querySelectorAll('.optionDelete');
 const optionAddSubmits = document.querySelectorAll('.optionAddSubmit');
 const optionsContainers = document.querySelectorAll('.optionsContainer');
 const optionEditForms = document.querySelectorAll('.optionTableForm');
+const stageLocks = document.querySelectorAll('.stageLock');
 
 // Set up the modal for deleting the final option
 const modal = document.querySelector('.modalContainer');
@@ -233,34 +234,56 @@ $(document).ready(function(){
         $('#stageDeletionModal').modal('hide');
     })
 
-    $('.padlockThing').click(function(){
+    $('.stageLock').click(function(){
+        //if locked
         if ($(this).attr('data-locked') === '1') {
+            let currentLockStatus = $(this);
             $('#stageDeletionModal').modal('show')
+            $("#stageDeletionModalYes").off('click');
+            $("#stageDeletionModalYes").on('click',function() {
+                console.log(currentLockStatus);
+                currentLockStatus.attr('data-locked', '0');
+                currentLockStatus.find('svg').removeClass('fa-lock');
+                currentLockStatus.find('svg').addClass('fa-lock-open');
+
+                let currentStageId = currentLockStatus.attr('data-stageId')
+                $('.delete').each(function () {
+                    if ($(this).attr('data-id') === currentStageId )  {
+                        $(this).removeClass('disabled')
+                    }
+                })
+
+                // if (empty($stage->getOptions())) {
+                //     $result .= '<td class="col-xs-2 text-center"><a data-id="' . $stage->getStageId()
+                //         . '" class="text-danger delete">Delete</a></td>';
+                // } else {
+                //     $result .= '<td class="col-xs-2 text-center disabled"><a data-id="' . $stage->getStageId()
+                //         . '" class="text-danger delete disabled">Delete</a></td>';
+                // }
+
+
+                $('#stageDeletionModal').modal('hide');
+                // allow delete if no options
+                //access parent?
+                //access stage id?
+                // let stageId = accessData.attr('data-stageId');
+                // console.log(stageId);
+                // let test1= document.querySelectorAll('data-id="' + stageId + '"');
+                // console.log(test1);
+            })
         } else {
             //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
             $(this).attr('data-locked', "1")
             $(this).find('svg').removeClass('fa-lock-open')
             $(this).find('svg').addClass('fa-lock')
 
-            let accessData = $(this);
-            $("#stageDeletionModalYes").off('click');
-            $("#stageDeletionModalYes").on('click',function(){
-                accessData.attr('data-locked', "0")
-                accessData.find('svg').removeClass('fa-lock')
-                accessData.find('svg').addClass('fa-lock-open')
-
-                // allow delete if no options
-                //access parent?
-                //access stage id?
-                let stageId = accessData.attr('data-stageId');
-                console.log(stageId);
-                let test1= document.querySelectorAll('data-id="' + stageId + '"');
-                console.log(test1);
-
-                $('#stageDeletionModal').modal('hide');
+            let currentStageId = $(this).attr('data-stageId')
+            $('.delete').each(function(){
+                if ($(this).attr('data-id') === currentStageId) {
+                    $(this).addClass('disabled')
+                }
             })
         }
     })
 })
-
 
