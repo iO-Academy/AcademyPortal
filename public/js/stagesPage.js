@@ -229,17 +229,37 @@ async function sendRequest(url, requestMethod, data) {
     }
 }
 
-// Event listener for stageLocks
 $(document).ready(function(){
+    $("#stageDeletionModalCancel").click(function(){
+        $('#stageDeletionModal').modal('hide');
+    })
+
     $('.stageLock').click(function(){
-        // If stageLock is locked -> unlocked, displays the allowStageDeletionModal
+        //if locked
         if ($(this).attr('data-locked') === '1') {
+            let currentLockStatus = $(this);
             $('#stageDeletionModal').modal('show')
+            $("#stageDeletionModalYes").off('click');
+            $("#stageDeletionModalYes").on('click',function() {
+                console.log(currentLockStatus);
+                currentLockStatus.attr('data-locked', '0');
+                currentLockStatus.find('svg').removeClass('fa-lock');
+                currentLockStatus.find('svg').addClass('fa-lock-open');
+
+                let currentStageId = currentLockStatus.attr('data-stageId')
+                $('.delete').each(function () {
+                    if ($(this).attr('data-id') === currentStageId && $(this).attr('data-hasOptions') === '0')  {
+                        $(this).removeClass('disabled')
+                    }
+                })
+                $('#stageDeletionModal').modal('hide');
+            })
         } else {
-            //if stageLock is unlocked -> locked, data-locked changes to 1, change icon, disable delete button
-            $(this).attr('data-locked', '1')
+            //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
+            $(this).attr('data-locked', "1")
             $(this).find('svg').removeClass('fa-lock-open')
             $(this).find('svg').addClass('fa-lock')
+
             let currentStageId = $(this).attr('data-stageId')
             $('.delete').each(function(){
                 if ($(this).attr('data-id') === currentStageId) {
@@ -249,3 +269,4 @@ $(document).ready(function(){
         }
     })
 })
+
