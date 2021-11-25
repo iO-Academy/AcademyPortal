@@ -248,6 +248,15 @@ $(document).ready(function(){
                 accessData.attr('data-locked', "0")
                 accessData.find('svg').removeClass('fa-lock')
                 accessData.find('svg').addClass('fa-lock-open')
+
+                // allow delete if no options
+                //access parent?
+                //access stage id?
+                let stageId = accessData.attr('data-stageId');
+                console.log(stageId);
+                let test1= document.querySelectorAll('data-id="' + stageId + '"');
+                console.log(test1);
+
                 $('#stageDeletionModal').modal('hide');
             })
         }
@@ -255,4 +264,3 @@ $(document).ready(function(){
 })
 
 
-// allow delete if no options
