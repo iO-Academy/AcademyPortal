@@ -241,7 +241,6 @@ $(document).ready(function(){
             $('#stageDeletionModal').modal('show')
             $("#stageDeletionModalYes").off('click');
             $("#stageDeletionModalYes").on('click',function() {
-                console.log(currentLockStatus);
                 currentLockStatus.attr('data-locked', '0');
                 currentLockStatus.find('svg').removeClass('fa-lock');
                 currentLockStatus.find('svg').addClass('fa-lock-open');
