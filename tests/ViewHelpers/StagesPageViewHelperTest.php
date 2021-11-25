@@ -48,16 +48,16 @@ class StagesPageViewHelperTest extends TestCase
      */
     public function testSuccessOptionsDisplayStages()
     {
-        $expected = '<trclass=""data-id="1"><tdclass="col-xs-1order">1</td><tdclass="col-xs-2"><pclass="stageTitle">Stage1test
-        </p><formdata-id="1"class="stagesTableFormform-inline"><div><label>Studentstage:<inputtype="checkbox"name="student">
-        <iclass="glyphiconglyphicon-educationtext-success"></i></label></div>
+        $expected = '<trclass=""data-id="1"><tdclass="col-xs-1order">1</td><tdclass="col-xs-2"><pclass="stageTitle">
+        Stage1test</p><formdata-id="1"class="stagesTableFormform-inline"><div><label>Studentstage:
+        <inputtype="checkbox"name="student"><iclass="glyphiconglyphicon-educationtext-success"></i></label></div>
         <inputtype="text"class="form-controlstageEditTitle"value="Stage1test"/>
         <inputtype="submit"class="stageEditSubmitbtnbtn-success"value="Edit"></form>
         <divclass="optionsContainerhidden"data-stageId="1"><divclass="optionContainer">
         <pclass="optionTitle"data-optionId="1">aTitle
         <aclass="text-dangeroptionDelete"data-optionId="1"data-stageid="1">Delete</a>
-        <aclass="optionEdit"data-optionId="1">Edit</a></p><formclass="optionTableFormhiddenform-inline"data-optionId="1">
-        <inputtype="text"class="optionEditTitleform-control"value="aTitle"/>
+        <aclass="optionEdit"data-optionId="1">Edit</a></p><formclass="optionTableFormhiddenform-inline"
+        data-optionId="1"><inputtype="text"class="optionEditTitleform-control"value="aTitle"/>
         <inputtype="submit"class="optionEditSubmitbtnbtn-success"value="Submit"data-optionid="1"></form></div>
         <divclass="optionContainer"><formdata-id=""class="optionAddFormform-inline">
         <inputtype="text"class="optionAddTitleform-control"placeholder="Typethenameofyournewoption"/>
