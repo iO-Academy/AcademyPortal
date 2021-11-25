@@ -9,7 +9,6 @@ use Portal\Controllers\API\AddHiringPartnerController;
 
 class AddHiringPartnerControllerTest extends TestCase
 {
-
     public function testConstruct()
     {
         $hiringPartnerModel = $this->createMock(HiringPartnerModel::class);

@@ -34,9 +34,12 @@ class StudentApplicationFormPageController
     public function __invoke(RequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
     {
         $data = [
-            'backgroundInfo' => $this->model->getBackgroundInfo(),
-            'hearAbout' => $this->model->getHearAbout(),
-            'Cohorts' => $this->model->getCohorts()
+            'dropDownData' => [
+                'backgroundInfo' => $this->model->getBackgroundInfo(),
+                'hearAbout' => $this->model->getHearAbout(),
+                'cohorts' => $this->model->getCohorts(),
+                'genders' => $this->model->getGenders()
+            ]
         ];
         return $this->view->render($response, 'studentApplicationForm.phtml', $data);
     }

@@ -8,7 +8,6 @@ use Portal\Models\ApplicantModel;
 
 class AddApplicantControllerTest extends TestCase
 {
-
     public function testConstruct()
     {
         $applicantModel = $this->createMock(ApplicantModel::class);
