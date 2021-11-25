@@ -76,6 +76,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['AddCoursePageController'] =
         DI\factory('\Portal\Factories\Controllers\FrontEnd\AddCoursePageControllerFactory');
     $container['StudentApplicationFormPageController'] =
+        DI\factory('Portal\Factories\Controllers\FrontEnd\StudentApplicationFormPageControllerFactory');
     $container['StudentApplicationSuccessPageController'] =
         DI\factory('Portal\Factories\Controllers\FrontEnd\StudentApplicationSuccessPageControllerFactory');
     // API Controllers
