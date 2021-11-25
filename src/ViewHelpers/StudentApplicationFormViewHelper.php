@@ -57,9 +57,9 @@ class StudentApplicationFormViewHelper
     {
         $output = '<div class="row"><label for="pastCoding" class="label-control withTooltip">';
         $output .= 'Any past coding experience?';
-        $output .= '<button class="pastCodingTooltip" data-toggle="tooltip" data-placement="top" ';
+        $output .= '<p class="pastCodingTooltip" data-toggle="tooltip" data-placement="top" ';
         $output .= 'title="Taken an online course? Given WordPress a try? Our courses require no past experience,';
-        $output .= ' but it would be useful to know about any existing knowledge.">?</button></label>';
+        $output .= ' but it would be useful to know about any existing knowledge.">?</p></label>';
         $output .= '<textarea id="pastCoding" placeholder="Most people write a few sentences" ';
         $output .= 'class="form-control" rows="5"></textarea>';
         $output .= '</div>';
