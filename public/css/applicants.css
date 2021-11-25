@@ -12,6 +12,14 @@
     padding-right: 20px;
 }
 
+#currentStageContainer h4, #currentStageContainer p {
+    color: #5cb85c;
+}
+
+#nextStageContainer h4 {
+    color: #337AB7;
+}
+
 .stageDropdown {
     font-weight: bold;
 }
@@ -148,5 +156,9 @@ section {
 
 .cohort_checkbox {
     margin-left: 1.5%;
+}
+
+.centralArrow {
+    margin-top: 22px;
 }
 

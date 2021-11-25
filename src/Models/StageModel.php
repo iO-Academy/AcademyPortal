@@ -6,6 +6,9 @@ use phpDocumentor\Reflection\Types\Boolean;
 use Portal\Entities\OptionsEntity;
 use Portal\Entities\StageEntity;
 
+/**
+ *
+ */
 class StageModel
 {
     private $db;
@@ -151,6 +154,24 @@ class StageModel
         $stage->setOptions($this->getOptionsByStageId($id));
 
         return $stage;
+    }
+
+    /**
+     * Retrieves a stage title by the specified id
+     *
+     * @param int $id
+     * @return array
+     */
+    public function getStageTitleById(int $id): array
+    {
+        $query = $this->db->prepare('SELECT `title` FROM `stages` WHERE `id`= :id');
+
+        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        $query->bindParam(':id', $id);
+        $query->execute();
+        $stageTitle = $query->fetch();
+
+        return $stageTitle;
     }
 
     /**
