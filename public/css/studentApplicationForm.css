@@ -110,6 +110,12 @@ ul.startDatesList li input[type="checkbox"] {
     font-weight: bolder;
 }
 
+.formItem_alert {
+    color: #8a0000;
+    font-size: calc(8px + 1vw);
+
+}
+
 body {
     width: 100%;
     height: 100%;
