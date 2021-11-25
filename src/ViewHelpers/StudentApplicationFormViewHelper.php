@@ -12,9 +12,11 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormOne(array $data): string
     {
-        $output = '<div class="row "><input type="text" placeholder="Full Name" class="form-control" name="name"></div>';
-        $output .= '<div class="row"><input type="email" placeholder="Email" class="form-control" name="email"></div>';
-        $output .= '<div class="row"><input type="tel" placeholder="Phone Number" class="form-control" name="phoneNumber"></div>';
+        $output = '<div class="row "><input type="text" placeholder="Full Name" class="form-control" name="name">';
+        $output .= '</div><div class="row"><input type="email" placeholder="Email" class="form-control" name="email">';
+        $output .= '</div><div class="row"><input type="tel" placeholder="Phone Number" ';
+        $output .= '</div><div class="row"><input type="tel" placeholder="Phone Number" class="form-control" name="phoneNumber"></div>';
+        $output .= 'class="form-control" name="phoneNumber"></div>';
         $output .= '<div class="row"><select class="form-control" name="gender" >';
         $output .= '<option value="" disabled selected>Gender</option>';
         foreach ($data['genders'] as $genders) {
