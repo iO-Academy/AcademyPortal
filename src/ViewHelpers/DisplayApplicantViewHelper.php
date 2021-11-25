@@ -55,7 +55,6 @@ class DisplayApplicantViewHelper
      */
     public static function displayApplicants($applicants): string
     {
-//        $applicants['currentStageTitle'] = 'cheese';
         $result = '';
         foreach ($applicants['applicants'] as $applicant) {
             if (empty($applicant->apprentice)) {
@@ -75,9 +74,9 @@ class DisplayApplicantViewHelper
     public static function displayApprentices($applicants): string
     {
         $result = '';
-        foreach ($applicants as $applicant) {
+        foreach ($applicants['applicants'] as $applicant) {
             if (!empty($applicant->apprentice) && $applicant->apprentice == 1) {
-                $result .= self::outputApplicantRow($applicant);
+                $result .= self::outputApplicantRow($applicant, $applicants['lastStage'], $applicants['stageCount']);
             }
         }
         return self::handleNoApplicants($result);
