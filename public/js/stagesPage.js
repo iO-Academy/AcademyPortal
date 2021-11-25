@@ -238,7 +238,7 @@ $(document).ready(function(){
         //if locked
         if ($(this).attr('data-locked') === '1') {
             let currentLockStatus = $(this);
-            $('#stageDeletionModal').modal('show')
+            $('#stageDeletionModal').modal('show');
             $("#stageDeletionModalYes").off('click');
             $("#stageDeletionModalYes").on('click',function() {
                 currentLockStatus.attr('data-locked', '0');
