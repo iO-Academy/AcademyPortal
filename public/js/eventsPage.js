@@ -215,11 +215,7 @@ async function eventGenerator(event, hiringPartners, applicants) {
     let date = new Date(event.date).toDateString()
     let numberOfAttendees
     if (event.category_name === 'Assessment') {
-        let assessmentApplicants = applicants.filter(function (applicant) {
-            if (applicant.assessmentDay == event.id) {
-                return applicant
-            }
-            })
+        let assessmentApplicants = applicants.filter(applicant => applicant.assessmentDay === event.id)
         numberOfAttendees = assessmentApplicants.length
     }
     let headerDate = new Date(event.date).toDateString().substring(0,3) + ' ' + new Date(event.date).getUTCDate() + '/' + new Date(event.date).getUTCMonth() + '/' + new Date(event.date).getUTCFullYear()
