@@ -227,3 +227,32 @@ async function sendRequest(url, requestMethod, data) {
         document.cookie = `response=${responseData.msg}`;
     }
 }
+
+$(document).ready(function(){
+    $("#stageDeletionModalCancel").click(function(){
+        $('#stageDeletionModal').modal('hide');
+    })
+
+    $('.padlockThing').click(function(){
+        if ($(this).attr('data-locked') === '1') {
+            $('#stageDeletionModal').modal('show')
+        } else {
+            //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
+            $(this).attr('data-locked', "1")
+            $(this).find('svg').removeClass('fa-lock-open')
+            $(this).find('svg').addClass('fa-lock')
+
+            let accessData = $(this);
+            $("#stageDeletionModalYes").off('click');
+            $("#stageDeletionModalYes").on('click',function(){
+                accessData.attr('data-locked', "0")
+                accessData.find('svg').removeClass('fa-lock')
+                accessData.find('svg').addClass('fa-lock-open')
+                $('#stageDeletionModal').modal('hide');
+            })
+        }
+    })
+})
+
+
+// allow delete if no options
