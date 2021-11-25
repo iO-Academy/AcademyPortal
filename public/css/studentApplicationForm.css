@@ -1,8 +1,241 @@
 * {
     box-sizing: border-box;
+    font-family: 'JetBrains Mono';
 }
 
-.hidden{
+.studentApplicationForm p,
+.studentApplicationForm input,
+.studentApplicationForm button,
+.studentApplicationForm label,
+.studentApplicationForm textarea,
+.studentApplicationForm li,
+.studentApplicationForm select {
+    font-size: calc(10px + 1vw);
+    height: auto;
+}
+
+ul.startDatesList {
+    list-style: none;
+    padding: 20px 0;
+}
+
+.finalPage li {
+    margin-bottom: 15px;
+}
+
+ul.startDatesList li {
+    display: inline;
+}
+
+ul.startDatesList li label {
+    display: inline-block;
+    background-color: #D3D3D3;
+    border-radius: 10px;
+    white-space: nowrap;
+    margin: 5px 5px;
+    padding: 8px 12px;
+    font-size: calc(7px + 1vw);
+}
+
+ul.startDatesList li label.clicked {
+    background-color: #5FFFB4;
+}
+
+ul.startDatesList li input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+}
+
+.termsAndConditions label {
+    font-family: 'Inter', Papyrus;
+    font-weight: bold;
+}
+
+.termsAndConditions p a:hover,
+.termsAndConditions p a,
+.termsAndConditions p a:active,
+.termsAndConditions p a:visited {
+    color: inherit;
+    text-decoration: underline;
+}
+.termsAndConditions label input[type="checkbox"] {
+    appearance: none;
+    background-color: #fff;
+    margin: 5px;
+    margin-right: 20px;
+    width: 1.15em;
+    height: 1.15em;
+    border: 0.15em solid #743dfb;
+    border-radius: 50%;
+    transform: translateY(-0.075em);
+    display: inline-grid;
+    place-content: center;
+}
+
+.termsAndConditions label input[type="checkbox"]:focus {
+    outline: none;
+    border: 0.15em solid #743dfb;
+}
+
+.termsAndConditions label input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em #743dfb;
+}
+
+.termsAndConditions label input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.studentApplicationForm .finalPage h2 {
+    text-align: center;
+    font-size: calc(16px + 2vw);
+}
+
+.studentApplicationForm .nextSteps {
+    color: #743dfb;
+    text-align: center;
+}
+
+.studentApplicationForm .finalPage ul {
+    list-style-type: '> ';
+}
+
+.studentApplicationForm .finalPage ul li::marker {
+    color: #743dfb;
+    font-weight: bolder;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-30deg, #EE7752, #E73C7E, #23A6D5, #23d576);
+    animation: gradient 15s ease infinite;
+    background-size: 5000% 5000%;
+}
+.content-container {
+    background-color: #FFFFFF;
+    z-index: 1;
+    width: 100%;
+    margin: 100px auto;
+    padding: 80px 120px;
+}
+
+.studentApplicationForm h1 {
+    font-size: calc(18px + 2vw);
+    margin: 70px 0;
+}
+
+.studentApplicationForm .row {
+    margin: 30px 0;
+}
+
+.studentApplicationForm .hidden {
     visibility: hidden;
     height: 0;
+}
+
+.studentApplicationForm .progress {
+    height: 30px;
+    border-radius: 30px;
+}
+
+.studentApplicationForm #whyDev,
+.studentApplicationForm #pastCoding {
+    background-color: #f3f6fa;
+}
+
+.studentApplicationForm .textAreaCounter {
+    color: #696969;
+    text-align: end;
+    font-size: calc(5px + 1vw);
+}
+
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: end;
+}
+
+.buttons button {
+    margin: 10px;
+}
+
+#progressBar {
+    background-color: #5FFFB4;
+    border-radius: 30px;
+}
+
+.pastCodingTooltip {
+    border-radius: 50%;
+    background-color: #5FFFB4;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    width: 50px;
+    font-size: 2em;
+    font-weight: bold;
+    border: none;
+}
+
+.tooltip.top {
+    font-size: calc(3px + 1vw);
+    display: flex;
+    max-width: 300px;
+}
+
+.withTooltip {
+    display: flex;
+    justify-content: space-between;
+}
+
+.studentApplicationForm input, .studentApplicationForm select {
+    margin: 10px 0;
+    border: 0;
+    box-shadow: none;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.studentApplicationForm .btn {
+    background-color: #0F0028;
+    color: #FFFFFF;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+#apply-page-bg--left {
+    width: 100%;
+    left: 0;
+}
+
+#apply-page-bg--right {
+    width: 80%;
+    right: 0;
+}
+
+@media only screen and (max-width: 500px) {
+    .content-container {
+        padding: 40px 60px;
+    }
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
