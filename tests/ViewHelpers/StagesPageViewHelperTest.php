@@ -64,8 +64,8 @@ class StagesPageViewHelperTest extends TestCase
         class="optionAddSubmitbtnbtn-success"data-stageid="1"value="Submit"></form></div></div></td><td
         class="col-xs-2text-center"><aclass="toggleEditForm">Edit</a></td><tdclass="col-xs-2text-center">
         <adata-id="1"data-hasOptions="1"href="/applicants?name=&stageId=1&cohortId=all&sort=dateAsc"
-        class="text-danger"data-toggle="tooltip"title="Cannotdeleteastagewithassignedapplicants,
-        clicktoviewapplicantsassignedtothisstage"><iclass="tooltiptextglyphiconglyphicon-ban-circletext-success">
+        class="text-danger"data-toggle="tooltip"title="Cannotdeleteastagewithassignedapplicantsoroptions,
+        clicktoviewassigneesofthisstage"><iclass="tooltiptextglyphiconglyphicon-ban-circletext-success">
         </i></a></td><tdclass="col-xs-2text-center"><aclass="toggleEditOptions"data-stageId="1">Options</a></td>
         <tdclass="col-xs-2text-centerstageLock"data-stageId="1"data-locked="1"><iclass="fasfa-lock"></i></td></tr>';
 
