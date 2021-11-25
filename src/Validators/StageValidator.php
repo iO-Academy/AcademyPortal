@@ -19,7 +19,12 @@ class StageValidator
 
     public static function validateNewStage(array $stage): bool
     {
-        return (!empty($stage['title']) && (is_bool($stage['student']) || is_bool($stage['withdrawn']) || is_bool($stage['rejected'])));
+        return (!empty($stage['title']) &&
+            (is_bool($stage['student']) ||
+                is_bool($stage['withdrawn']) ||
+                is_bool($stage['rejected']) ||
+                is_bool($stage['notAssigned']))
+        );
     }
 
     public static function validateExistingStage(array $stage)
@@ -30,8 +35,9 @@ class StageValidator
             !empty($stage['title']) &&
             !empty($stage['order']) &&
             (is_bool($stage['student']) ||
-                (is_bool($stage['withdrawn']) ||
-                    (is_bool($stage['rejected'])
-        ))));
+                is_bool($stage['withdrawn']) ||
+                is_bool($stage['rejected']) ||
+                is_bool($stage['notAssigned']))
+        );
     }
 }

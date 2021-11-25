@@ -67,14 +67,15 @@ class StageModel
     public function createStage(array $stageEntity): bool
     {
         $query = $this->db->prepare(
-            "INSERT INTO `stages` (`title`, `order`, `student`, `withdrawn`, `rejected`) 
-            VALUES (:title, :order, :student, :withdrawn, :rejected);"
+            "INSERT INTO `stages` (`title`, `order`, `student`, `withdrawn`, `rejected`, `notAssigned`) 
+            VALUES (:title, :order, :student, :withdrawn, :rejected, :notAssigned);"
         );
         $query->bindValue(':title', $stageEntity['title']);
         $query->bindValue(':order', $stageEntity['order']);
         $query->bindValue(':student', $stageEntity['student']);
         $query->bindValue(':withdrawn', $stageEntity['withdrawn']);
         $query->bindValue(':rejected', $stageEntity['rejected']);
+        $query->bindValue(':notAssigned', $stageEntity['notAssigned']);
         return $query->execute();
     }
 
@@ -85,7 +86,10 @@ class StageModel
      */
     public function getStageTitles(): array
     {
-        $query = $this->db->prepare('SELECT `id`, `title`, `student`, `withdrawn`, `rejected` FROM `stages`;');
+        $query = $this->db->prepare(
+            'SELECT `id`, `title`, `student`, `withdrawn`, `rejected`, `notAssigned` 
+            FROM `stages`;'
+        );
         $query->execute();
         return $query->fetchAll();
     }
@@ -98,16 +102,27 @@ class StageModel
     public function getAllStages(): array
     {
         $query = $this->db->prepare(
-            'SELECT `id`, `title`, `order`, `student`, `withdrawn`, `rejected`, `deleted` FROM `stages` 
-            WHERE `deleted` = 0 
-            ORDER BY `order`;'
+            "SELECT `st`.`id`, `st`.`title`, `st`.`order`, `st`.`student`, `st`.`deleted`,
+                `st`.`withdrawn`, `st`.`rejected`, `st`.`notAssigned`,
+                count(`a`.`id`) AS 'hasAssignees'
+                FROM `stages` AS `st`
+                LEFT JOIN `applicants` AS `a` ON `st`.`id` = `a`.`stageId`
+                AND `st`.`deleted` = '0' 
+                AND `a`.`deleted` = '0'
+                GROUP BY `st`.`id`
+                ORDER BY `st`.`order`;"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, StageEntity::class);
         $query->execute();
         $stages = $query->fetchAll();
 
         $query = $this->db->prepare(
-            'SELECT `id`, `option`, `stageId` FROM `options` WHERE `deleted` = 0;'
+            "SELECT `op`.`id`, `op`.`option`, `op`.`stageId`, count(`a`.`id`) AS 'hasAssignees'
+                FROM `options` AS `op`
+                LEFT JOIN `applicants` AS `a` ON `op`.`id` = `a`.`stageOptionId`
+                AND `op`.`deleted` = '0' 
+                AND `a`.`deleted` = '0'
+                GROUP BY `op`.`id`"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, OptionsEntity::class);
         $query->execute();
@@ -170,15 +185,16 @@ class StageModel
         int $order,
         int $isStudent,
         int $isWithdrawn,
-        int $isRejected
-    ): bool
-    {
+        int $isRejected,
+        int $isNotAssigned
+    ): bool {
         $query = $this->db->prepare("UPDATE `stages` 
             SET `title` = :title, 
             `order` = :newOrder, 
             `student` = :student, 
             `withdrawn` = :withdrawn, 
-            `rejected` = :rejected  
+            `rejected` = :rejected,
+            `notAssigned` = :notAssigned
             WHERE `id` = :id");
         $query->bindParam(':id', $id);
         $query->bindParam(':title', $title);
@@ -186,6 +202,7 @@ class StageModel
         $query->bindParam(':student', $isStudent);
         $query->bindParam(':withdrawn', $isWithdrawn);
         $query->bindParam(':rejected', $isRejected);
+        $query->bindParam(':notAssigned', $isNotAssigned);
 
         return $query->execute();
     }
@@ -201,7 +218,8 @@ class StageModel
                     $stage['order'],
                     $stage['student'],
                     $stage['withdrawn'],
-                    $stage['rejected']
+                    $stage['rejected'],
+                    $stage['notAssigned']
                 );
             }
             $this->db->commit();

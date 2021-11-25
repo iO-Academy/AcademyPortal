@@ -25,6 +25,7 @@ class StagesPageViewHelper
                 $isStudent = $stage->getStudent() ? 'selected' : '';
                 $isWithdrawn = $stage->getWithdrawn() ? 'selected' : '';
                 $isRejected = $stage->getRejected() ? 'selected' : '';
+                $isNotAssigned = $stage->getNotAssigned() ? 'selected' : '';
 
                 $result .= '<tr class="" data-id="' . $stage->getStageId() . '">';
                 $result .= '<td class="order">';
@@ -38,23 +39,23 @@ class StagesPageViewHelper
                     $result .= '<i class="glyphicon glyphicon-ban-circle text-danger"></i>';
                 } elseif ($stage->getRejected()) {
                     $result .= '<i class="glyphicon glyphicon-remove text-warning-custom-color"></i>';
+                } elseif ($stage->getNotAssigned()) {
+                    $result .= '';
                 }
                 $result .= '</p>';
                 $result .= '<form data-id="' . $stage->getStageId() . '" class="stagesTableForm form-inline">';
-
-               //Test dropdown:
                 $result .= '<div>';
-                $result .= '<label for="stages">Select Stage:</label>';
+                $result .= '<label for="stages">Select Stage Flag:</label>';
                 $result .= '<select name="stages" id="stages">';
+                $result .= '<option name="notAssigned"' . $isNotAssigned . '>Not assigned</option>';
                 $result .= '<option name="student"' . $isStudent . '>Student</option>';
                 $result .= '<option name="withdrawn"' . $isWithdrawn . '>Withdrawn</option>';
                 $result .= '<option name="rejected"' . $isRejected . '>Rejected</option>';
                 $result .= '</select>';
                 $result .= '</div>';
-
                 $result .= '<input type="text" class="form-control stageEditTitle"';
                 $result .= 'value="' . $stage->getStageTitle() . '"/>';
-                $result .= '<input type="submit" class="stageEditSubmit btn btn-success" value="Edit">';
+                $result .= '<input type="submit" class="stageEditSubmit btn btn-success" value="Save">';
                 $result .= '</form>';
                 $result .= '<div class="optionsContainer hidden" data-stageId="' . $stage->getStageId() . '">';
                 if (empty($stage->getOptions())) {
@@ -67,9 +68,12 @@ class StagesPageViewHelper
                         $result .= '<div class="optionContainer">';
                         $result .= '<p class="optionTitle" data-optionId="';
                         $result .= $option->getOptionId() . '">' . $option->getOptionTitle();
-                        $result .= '<a class="text-danger optionDelete" data-optionId="';
-                        $result .= $option->getOptionId() . '" ';
+
+                        $result .= '<a class="text-danger optionDelete';
+                        $result .= $option->getHasAssignees() > 0 ? ' disabled" ' : '"';
+                        $result .= 'data-optionId="' . $option->getOptionId() . '" ';
                         $result .= 'data-stageid="' . $stage->getStageId() . '">Delete</a>';
+
                         $result .= '<a class="optionEdit" data-optionId="' . $option->getOptionId() . '">Edit</a>';
                         $result .= '</p>';
                         $result .= '<form class="optionTableForm hidden form-inline"';
@@ -93,12 +97,16 @@ class StagesPageViewHelper
                 $result .= '</div>';
                 $result .= '</td>';
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
-                if (empty($stage->getOptions())) {
+                if (empty($stage->getOptions()) && $stage->getHasAssignees() == 0) {
                     $result .= '<td class="col-xs-2 text-center"><a data-id="' . $stage->getStageId()
                     . '" class="text-danger delete">Delete</a></td>';
                 } else {
-                    $result .= '<td class="col-xs-2 text-center disabled"><a data-id="' . $stage->getStageId()
-                    . '" class="text-danger delete disabled">Delete</a></td>';
+                    $result .= '<td class="col-xs-2 text-center"><a href="/applicants?name=&stageId='
+                        . $stage->getStageId() . '&cohortId=all&sort=dateAsc'
+                        . '" class="text-danger" data-toggle="tooltip"'
+                        . 'title="Cannot delete a stage with assigned applicants, '
+                        . 'click to view applicants assigned to this stage">'
+                        . '<i class="tooltiptext glyphicon glyphicon-ban-circle text-success"></i></a></td>';
                 }
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="';
                 $result .= $stage->getStageId() . '">Options</a></td>';

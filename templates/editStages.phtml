@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <?php
     require 'partials/layout/head.phtml';
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Edit Applicant Stages');
@@ -9,6 +10,11 @@
     <script defer src="./js/Sortable.js"></script>
     <script defer src="./js/stagesPage.js"></script>
     <script defer src="./js/stageReorder.js"></script>
+<!--enabling all tooltips in the document-->
+    <script>$(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 </head>
 <body>
 <?php require 'partials/layout/header.phtml'; ?>
@@ -20,20 +26,16 @@
                 <h3 class="stagesInstruction">Add a new stage</h3>
                 <form action="/api/createStage" method="post" id="newStageForm" class="form-inline">
                     <div>
-<!--                        <label>-->
-<!--                            Student stage:-->
-<!--                            <input type="checkbox" name="student">-->
-<!--                            <i class="glyphicon glyphicon-education text-success"></i>-->
-<!--                        </label>-->
-                        <label for="stages">Select Stage:</label>
+                        <label for="stages">Select Stage Flag: </label>
                         <select name="stages" id="stages">
+                            <option name="notAssigned">Not assigned</option>
                             <option name="student">Student</option>
                             <option name="withdrawn">Withdrawn</option>
                             <option name="rejected">Rejected</option>
                         </select>
                     </div>
                     <input type="text" class="form-control" placeholder="Stage Name" name="createNewStageTextBox"/>
-                    <input type="submit" class="btn-success btn" value="Save"/>
+                    <input type="submit" class="btn-success btn" value="Add"/>
                 </form>
                 <div id="createNewResponse" class="text-danger"></div>
             </div>
@@ -50,7 +52,7 @@
         </div>
     </main>
 
-<div class="modalContainer hidden">
+<div class="modalContainer" hidden>
     <div class="container">
         <div class="body">
             <p>Warning: Deleting this option will delete all options from this stage.

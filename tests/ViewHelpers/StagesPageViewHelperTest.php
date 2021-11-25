@@ -15,18 +15,21 @@ class StagesPageViewHelperTest extends TestCase
      */
     public function testSuccessNoOptionsDisplayStages()
     {
-        $expected = '<tr class="" data-id="1"><td class="order">1</td><td><p class="stageTitle">Stage 1 test</p><form 
-data-id="1" class="stagesTableForm form-inline"><div><label>Student stage: <input type="checkbox" name="student"> 
-<i class="glyphicon glyphicon-education text-success"></i></label></div><input type="text" class="form-control 
-stageEditTitle"value="Stage 1 test"/><input type="submit" class="stageEditSubmit btn btn-success" value="Edit">
-</form><div class="optionsContainer hidden" data-stageId="1"><div class="optionContainer multiOptionsContainer">
-<form data-id="" class="optionAddForm form-inline"><input type="text" class="optionAddTitle form-control firstOption" 
-placeholder="Type the name of your new option"/><input type="text" class="optionAddTitle form-control" 
-placeholder="Type the name of your new option"/><input type="submit" class="optionAddSubmit btn btn-success" 
-data-stageid="1" value="Submit"></form></div></div></td><td class="col-xs-2 text-center">
-<a class="toggleEditForm">Edit</a></td><td class="col-xs-2 text-center">
-<a data-id="1" class="text-danger delete">Delete</a></td><td class="col-xs-2 text-center">
-<a class="toggleEditOptions" data-stageId="1">Options</a></td></tr>';
+        $expected = '<tr class="" data-id="1"><td class="order">1</td><td><p class="stageTitle">Stage 1 test</p>
+<form data-id="1" class="stagesTableForm form-inline"><div><label for="stages">Select Stage Flag:</label>
+<select name="stages" id="stages"><option name="notAssigned">Not assigned</option>
+<option name="student">Student</option><option name="withdrawn">Withdrawn</option>
+<option name="rejected">Rejected</option></select></div>
+<input type="text" class="form-control stageEditTitle"value="Stage 1 test"/>
+<input type="submit" class="stageEditSubmit btn btn-success" value="Save"></form>
+<div class="optionsContainer hidden" data-stageId="1"><div class="optionContainer multiOptionsContainer">
+<form data-id="" class="optionAddForm form-inline">
+<input type="text" class="optionAddTitle form-control firstOption" placeholder="Type the name of your new option"/>
+<input type="text" class="optionAddTitle form-control" placeholder="Type the name of your new option"/>
+<input type="submit" class="optionAddSubmit btn btn-success" data-stageid="1" value="Submit"></form>
+</div></div></td><td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>
+<td class="col-xs-2 text-center"><a data-id="1" class="text-danger delete">Delete</a></td>
+<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="1">Options</a></td></tr>';
 
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
         $stageEntityMock = $this->createMock(StageEntity::class);
@@ -47,10 +50,12 @@ data-stageid="1" value="Submit"></form></div></div></td><td class="col-xs-2 text
     public function testSuccessOptionsDisplayStages()
     {
         $expected = '<tr class="" data-id="1"><td class="order">1</td><td><p class="stageTitle">Stage 1 test</p>
-<form data-id="1" class="stagesTableForm form-inline"><div><label>Student stage: <input type="checkbox" name="student"> 
-<i class="glyphicon glyphicon-education text-success"></i></label></div>
+<form data-id="1" class="stagesTableForm form-inline"><div><label for="stages">Select Stage Flag:</label>
+<select name="stages" id="stages"><option name="notAssigned">Not assigned</option>
+<option name="student">Student</option><option name="withdrawn">Withdrawn</option>
+<option name="rejected">Rejected</option></select></div>
 <input type="text" class="form-control stageEditTitle"value="Stage 1 test"/>
-<input type="submit" class="stageEditSubmit btn btn-success" value="Edit"></form>
+<input type="submit" class="stageEditSubmit btn btn-success" value="Save"></form>
 <div class="optionsContainer hidden" data-stageId="1"><div class="optionContainer">
 <p class="optionTitle" data-optionId="1">aTitle
 <a class="text-danger optionDelete" data-optionId="1" data-stageid="1">Delete</a>
@@ -62,7 +67,9 @@ data-stageid="1" value="Submit"></form></div></div></td><td class="col-xs-2 text
 <input type="text" class="optionAddTitle form-control" placeholder="Type the name of your new option"/>
 <input type="submit" class="optionAddSubmit btn btn-success" data-stageid="1" value="Submit"></form>
 </div></div></td><td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>
-<td class="col-xs-2 text-center disabled"><a data-id="1" class="text-danger delete disabled">Delete</a></td>
+<td class="col-xs-2 text-center"><a href="/applicants?name=&stageId=1&cohortId=all&sort=dateAsc" 
+class="text-danger" data-toggle="tooltip" title="Cannot delete a stage with assigned applicants, click to view 
+applicants assigned to this stage"><i class="tooltiptext glyphicon glyphicon-ban-circle text-success"></i></a></td>
 <td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="1">Options</a></td></tr>';
 
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace

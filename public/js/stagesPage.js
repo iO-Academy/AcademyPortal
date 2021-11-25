@@ -191,6 +191,7 @@ editForms.forEach((editForm, index) => {
                 "student": e.target.querySelector('[name="student"]').selected,
                 "withdrawn": e.target.querySelector('[name="withdrawn"]').selected,
                 "rejected": e.target.querySelector('[name="rejected"]').selected,
+                "notAssigned": e.target.querySelector('[name="notAssigned"]').selected
             }]
         };
         await sendRequest('./api/updateStages', 'PUT', data);
@@ -204,11 +205,12 @@ newStageForm.addEventListener('submit', async (e) => {
     let data = {
         "title": e.target.querySelector('[name="createNewStageTextBox"]').value,
         "student": e.target.querySelector('[name="student"]').selected,
-        "withdrawn": e.target.querySelector('[name="student"]').selected,
-        "rejected": e.target.querySelector('[name="student"]').selected
+        "withdrawn": e.target.querySelector('[name="withdrawn"]').selected,
+        "rejected": e.target.querySelector('[name="rejected"]').selected,
+        "notAssigned": e.target.querySelector('[name="notAssigned"]').selected
     };
     await sendRequest('./api/createStage', 'POST', data);
-    window.location.reload(true);
+    window.location.reload();
 });
 
 //Fetch template
