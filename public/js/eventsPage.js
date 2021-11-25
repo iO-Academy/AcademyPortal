@@ -222,23 +222,23 @@ async function eventGenerator(event, hiringPartners, applicants) {
     eventInformation +=
         `<div class="event">
         <div class="header header-show-event-info" data-reference='${event.id}'>
-            <h4>${event.name} - ${headerDate} Time: ${event.start_time.slice(0, -3)} - ${event.end_time.slice(0, -3)} <span class="badge badge-secondary">${event.category_name}</span>`
+            <h4>${event.name} - <span class="headerDateTime">${headerDate} Time: ${event.start_time.slice(0, -3)} - ${event.end_time.slice(0, -3)} </span><span class="badge">${event.category_name}</span>`
     if (event.category_name === 'Assessment') {
-        eventInformation += `<span class="badge badge-secondary">Attendees: ${numberOfAttendees}</span>`
+        eventInformation += `<span class="badge">Attendees: ${numberOfAttendees}</span>`
     }
     eventInformation +=
             `</h4> 
-            <button class="show-event-info btn btn-primary" data-button-id='button${event.id}' data-reference='${event.id}'>More Info</button>
+            <button class="show-event-info btn" data-button-id='button${event.id}' data-reference='${event.id}'>More Info</button>
         </div>
         <div id="moreInfo${event.id}" class="hidden moreInfo">
-        <p>Event Category: ${event.category_name}</p>
-        <p>Date: ${date}</p>
-        <p>Location: ${event.location}</p>
-        <p>Start Time: ${event.start_time.slice(0, -3)}</p>
-        <p>End Time: ${event.end_time.slice(0, -3)}</p>`
+        <p><span>Event Category:</span> ${event.category_name}</p>
+        <p><span>Date:</span> ${date}</p>
+        <p><span>Location:</span> ${event.location}</p>
+        <p><span>Start Time:</span> ${event.start_time.slice(0, -3)}</p>
+        <p><span>End Time:</span> ${event.end_time.slice(0, -3)}</p>`
 
     if (event.notes !== null) {
-        eventInformation += `<p>Notes: ${event.notes}</p>`
+        eventInformation += `<p><span>Notes:</span> ${event.notes}</p>`
     }
 
     if (event.category_name === 'Assessment') {
@@ -267,7 +267,7 @@ async function eventGenerator(event, hiringPartners, applicants) {
         if (!isPastPage) {
             eventInformation += `
                 <div class='addHiringPartner col-xs-12 col-md-6'>
-                    <h5>Add attendees</h5>
+                    <h4>Add attendees</h4>
                     <form class='addHiringPartnerForm' id='${event.id}'>
     
                         <select data-event=${event.id}>
