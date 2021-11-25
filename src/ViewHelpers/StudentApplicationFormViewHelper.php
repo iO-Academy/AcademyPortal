@@ -17,7 +17,8 @@ class StudentApplicationFormViewHelper
         $output .= '<div class="row"><input type="email" placeholder="Email" class="form-control"></div>';
         $output .= '<div id="emailError" data-field="Email" class="alert hidden formItem_alert">Field Required.</div>';
         $output .= '<div class="row"><input type="tel" placeholder="Phone Number" class="form-control"></div>';
-        $output .= '<div id="telError" data-field="phone number" class="alert hidden formItem_alert">Field Required.</div>';
+        $output .= '<div id="telError" data-field="phone number" ';
+        $output .= 'class="alert hidden formItem_alert">Field Required.</div>';
         $output .= '<div class="row"><select class="form-control" >';
         $output .= '<option value="" disabled selected>Gender</option>';
         foreach ($data['genders'] as $genders) {
@@ -83,12 +84,14 @@ class StudentApplicationFormViewHelper
     {
         $output = '<div class="row"><label>Select start date(s)</label><ul class="startDatesList">';
         foreach ($data['cohorts'] as $cohorts) {
-            $output .= '<li><label><input type="checkbox" data-nextcourse="false" class="startDatesCheckbox" name="startDatesCheckbox"';
+            $output .= '<li><label><input type="checkbox" data-nextcourse="false" ';
+            $output .= 'class="startDatesCheckbox" name="startDatesCheckbox"';
             $output .= ' value="' . $cohorts['id'] . '"/>';
             $output .= date_format(date_create_from_format("Y-m-d", $cohorts['date']), "D j M Y");
             $output .= '</label></li>';
         }
-        $output .= '<li><label><input type="checkbox" data-nextcourse="true" class="startDatesCheckbox" name="startDatesCheckbox"';
+        $output .= '<li><label><input type="checkbox" data-nextcourse="true" ';
+        $output .= 'class="startDatesCheckbox" name="startDatesCheckbox"';
         $output .= ' value="register interest">next available online course (register interest)';
         $output .= '</label></li></ul>';
         $output .= '<div id="startDateError" class="alert hidden formItem_alert"></div>';
@@ -102,11 +105,15 @@ class StudentApplicationFormViewHelper
         }
         $output .= '</select></div>';
         $output .= '<div id="hearAboutError" class="alert hidden formItem_alert"></div>';
-        $output .= '<div class="row hidden" id="additionalNotesWordOfMouth"><label for="additionalNotesWordOfMouthInput">Who referred you?</label>';
-        $output .= '<input type="text" class="form-control" id="additionalNotesWordOfMouthInput" name="additionalNotes">';
+        $output .= '<div class="row hidden" id="additionalNotesWordOfMouth">';
+        $output .= '<label for="additionalNotesWordOfMouthInput">Who referred you?</label>';
+        $output .= '<input type="text" class="form-control" ';
+        $output .= 'id="additionalNotesWordOfMouthInput" name="additionalNotes">';
         $output .= '</div>';
-        $output .= '<div class="row hidden" id="additionalNotesOther"><label for="additionalNotesOtherInput">Please specify further</label>';
-        $output .= '<input type="text" class="form-control" id="additionalNotesOtherInput" name="additionalNotes"></div>';
+        $output .= '<div class="row hidden" id="additionalNotesOther">';
+        $output .= '<label for="additionalNotesOtherInput">Please specify further</label>';
+        $output .= '<input type="text" class="form-control" ';
+        $output .= 'id="additionalNotesOtherInput" name="additionalNotes"></div>';
         $output .= '<div id="additionalNotesError" class="alert hidden formItem_alert"></div>';
         $output .= '<div class="termsAndConditions"><div class="row"><label><input type="checkbox" ';
         $output .= 'value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK';
@@ -195,9 +202,10 @@ class StudentApplicationFormViewHelper
         if ($applicationFormPageNumber >= $finalPage) {
             $output .= '<button class="btn btn-lg finishButton">Finish</button></div></div>';
         } else {
-            $output .= '<button class="nextButton btn btn-lg" data-buttontype="next" type="submit" for="studentApplicationForm" value="';
-            $output .= ($applicationFormPageNumber + 1) . '" data-page="' . $applicationFormPageNumber . '">Next</button></div>';
-
+            $output .= '<button class="nextButton btn btn-lg" data-buttontype="next" ';
+            $output .= 'type="submit" for="studentApplicationForm" value="';
+            $output .= ($applicationFormPageNumber + 1) . '" data-page="';
+            $output .=  $applicationFormPageNumber . '">Next</button></div>';
         }
         return $output;
     }
