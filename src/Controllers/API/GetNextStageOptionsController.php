@@ -36,6 +36,7 @@ class GetNextStageOptionsController extends Controller
      * @param array $args
      * @return Response returns JSON with hiring partner data
      */
+
     public function __invoke(Request $request, Response $response, array $args)
     {
         $data = [
@@ -58,6 +59,8 @@ class GetNextStageOptionsController extends Controller
             }
             $data['data']['nextStageOptions'] = $this->stageModel->getOptionsByStageID($nextId);
             $data['data']['nextStageId'] = $nextId;
+            $data['data']['nextStageTitle'] = $this->stageModel->getStageTitleById($nextId);
+            $data['data']['currentStage'] = $this->stageModel->getStageById($stageId);
             $data['success'] = true;
             $data['message'] = 'Found data in GetNextStageOptionsController';
         } catch (\Exception $e) {
