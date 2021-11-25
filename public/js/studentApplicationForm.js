@@ -8,7 +8,6 @@ const textAreaToCount = document.querySelector('#whyDev')
 const textAreaCount = document.querySelector('#textAreaCount')
 const startDatesCheckboxes = document.querySelectorAll('.startDatesCheckbox')
 
-
 formWrappers[0].classList.remove('hidden')
 
 prevButtons.forEach(($prevButton) => {
@@ -32,6 +31,7 @@ function handleClick(e){
             formWrapper.classList.add('hidden')
         }
     })
+    pageCounter.textContent = e.currentTarget.value
 }
 
 textAreaToCount.onkeyup = function () {

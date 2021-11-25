@@ -35,7 +35,8 @@ class StudentApplicationFormViewHelper
         $output = '<div class="row"><select class="form-control">';
         $output .= '<option value="" disabled selected>Background</option>';
         foreach ($data['backgroundInfo'] as $backgroundInfo) {
-            $output .= '<option value="' . $backgroundInfo['id'] . '">' . $backgroundInfo['backgroundInfo'] . '</option>';
+            $output .= '<option value="' . $backgroundInfo['id'] .
+                '">' . $backgroundInfo['backgroundInfo'] . '</option>';
         }
         $output .= '</select></div>';
         $output .= '<div class="row form-group"><label for="whyDev" class="label-control">Why do you want to become a developer?</label>';
@@ -104,15 +105,15 @@ of age before my chosen course start date</label></div>';
         $output = '<div class="finalPage"><h2>Ready to submit?</h2>';
         $output .= '<p class="nextSteps">Next Steps</p>';
         $output .= '<ul>';
-        $output .= '<li>We’ll read through your application and 
-be in touch within the next few days.</li>';
-        $output .= '<li>We will send you our problem-solving test via email. 
-You’ll have ten days to complete this. (Don’t worry, no coding knowledge needed!)</li>';
-        $output .= '<li>We will also arrange an informal chat 
-between you and one of our trainers.</li>';
-        $output .= '<li>After your chat with a trainer, we will be in touch within
- five working days to let you know whether your application 
- has been successful and talk next steps!</li>';
+        $output .= '<li>We’ll read through your application and ' .
+        'be in touch within the next few days.</li>';
+        $output .= '<li>We will send you our problem-solving test via email. ' .
+        'You’ll have ten days to complete this. (Don’t worry, no coding knowledge needed!)</li>';
+        $output .= '<li>We will also arrange an informal chat ' .
+        'between you and one of our trainers.</li>';
+        $output .= '<li>After your chat with a trainer, we will be in touch within' .
+        ' five working days to let you know whether your application' .
+        ' has been successful and talk next steps!</li>';
         $output .= '</ul></div>';
         return $output;
     }
@@ -124,7 +125,7 @@ between you and one of our trainers.</li>';
      * @param array $data
      * @return string
      */
-    public static function displayPageByNumber(int $applicationFormPageNumber = 1, array $data = []): string
+    public static function displayPageByNumber(int $applicationFormPageNumber, array $data): string
     {
         switch ($applicationFormPageNumber) {
             case 2:
@@ -145,6 +146,13 @@ between you and one of our trainers.</li>';
         return $output;
     }
 
+    /**
+     * Displays the correct next buttons for a given page number and total number of pages.
+     *
+     * @param int $applicationFormPageNumber
+     * @param int $finalPage
+     * @return string
+     */
     public static function displayNextButtons(int $applicationFormPageNumber, int $finalPage): string
     {
         if($applicationFormPageNumber === 1){
@@ -156,10 +164,19 @@ between you and one of our trainers.</li>';
             $output .= '<button class="btn btn-lg finishButton">Finish</button></div></div>';
         }else {
             $output .= '<button class="nextButton btn btn-lg" type="submit" for="studentApplicationForm" value="' . ($applicationFormPageNumber + 1) . '">Next</button></div>';
+
         }
         return $output;
     }
-    public static function displayform(int $pages, array $data): string
+
+    /**
+     * Displays all the form pages and next buttons in divs with a class of hidden
+     *
+     * @param int $pages
+     * @param array $data
+     * @return string
+     */
+    public static function displayForm(int $pages, array $data): string
     {
         $output = '';
         for ($i = 1; $i <= $pages; $i++) {
