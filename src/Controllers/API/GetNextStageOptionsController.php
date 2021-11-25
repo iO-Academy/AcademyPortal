@@ -61,6 +61,7 @@ class GetNextStageOptionsController extends Controller
             $data['data']['nextStageId'] = $nextId;
             $data['data']['currentStageTitle'] = $this->stageModel->getStageTitleById($stageId);
             $data['data']['nextStageTitle'] = $this->stageModel->getStageTitleById($nextId);
+            $data['data']['currentStage'] = $this->stageModel->getStageById($stageId);
             $data['success'] = true;
             $data['message'] = 'Found data in GetNextStageOptionsController';
         } catch (\Exception $e) {
