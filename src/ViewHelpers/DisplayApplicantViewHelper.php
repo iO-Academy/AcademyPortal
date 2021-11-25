@@ -106,17 +106,17 @@ class DisplayApplicantViewHelper
                     $string .= '<td id="currentStageName' . $applicant->getId() . '">' . $applicant->getStageName() .
             ($applicant->getStageOptionName() ? ' - ' . $applicant->getStageOptionName() : ' ' ) . '</td>
                     <td>                        
-                        <a href="/editApplicant?id=' . $applicant->getId() . '"                                                                                              
-                           type="button"                                   
+                        <a href="/editApplicant?id=' . $applicant->getId() . '"
+                           type="button" 
                            class="btn btn-primary edit">
                            Edit
                         </a>
                         <a
-                                href="#"
-                                type="delete"
-                                class="btn btn-danger delete deleteBtn"
-                                data-id="' . $applicant->getId() . '">
-                                Delete
+                            href="#"
+                            type="delete"
+                            class="btn btn-danger delete deleteBtn"
+                            data-id="' . $applicant->getId() . '">
+                            Delete
                         </a>';
         if ($applicant->getStageID() != $lastStage) {
             $string .= '<button type="button" class="btn btn-info btnNextStage" data-stageid="' .

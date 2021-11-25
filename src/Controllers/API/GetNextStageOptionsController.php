@@ -9,7 +9,6 @@ use Portal\Models\StageModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-
 class GetNextStageOptionsController extends Controller
 {
     private $stageModel;
