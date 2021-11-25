@@ -251,24 +251,27 @@ async function sendRequest(url, requestMethod, data) {
 }
 
 $(document).ready(function(){
-    $(".stageLock").each(function() {
-        $(this).click(function(){
-            console.log($(this).data('locked'))
-                if ($(this).data('locked') === '1') {
-                    $('#stageDeletionModal').modal('show')
-                } else {
-                    //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
-                    console.log(this)
-                    $(this).data('locked', '1')
-                    this.classList.remove('fa-lock-open')
-                    this.classList.add('fa-lock')
-                    // deleteButtons.forEach((deleteButton)=>{
-                    //     if (deleteButton.dataset.id === this.dataset.stageId) {
-                    //         deleteButton.classList.add('disabled')
-                    //     }
-                    // })
-                }
+    console.log('hi')
+    $('.padlockThing').click(function(){
+        console.log('hi')
+        console.log($(this).attr('data-locked'))
+        if ($(this).attr('data-locked') === '1') {
+            $('#stageDeletionModal').modal('show')
+        } else {
+            //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
+            console.log(this)
+            $(this).attr('data-locked', "1")
+            $(this).find('svg').removeClass('fa-lock-open')
+            $(this).find('svg').addClass('fa-lock')
+            // this.classList.remove('fa-lock-open')
+            // this.classList.add('fa-lock')
+            // deleteButtons.forEach((deleteButton)=>{
+            //     if (deleteButton.dataset.id === this.dataset.stageId) {
+            //         deleteButton.classList.add('disabled')
+            //     }
+            // })
+        }
     })
 
-    })
+    // })
 })
