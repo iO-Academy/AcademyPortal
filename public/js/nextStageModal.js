@@ -74,6 +74,13 @@ $(document).ready(function(){
                             })
 
                             document.querySelector('#next-stage-options').innerHTML += optionValues;
+                            document.getElementById('nextStageSaveButtonContainer').innerHTML = ''
+                            let btn = document.createElement("BUTTON")
+                            btn.innerHTML = "Save"
+                            btn.classList.add('btn');
+                            btn.classList.add('btn-primary');
+                            btn.classList.add('btnNextStageOptions');
+                            document.getElementById('nextStageSaveButtonContainer').appendChild(btn);
                             $('#nextStageModal').modal('show');
 
                             document.querySelector('.btnNextStageOptions').addEventListener('click',
@@ -82,7 +89,6 @@ $(document).ready(function(){
                                             let url = './api/progressApplicantStage?stageId=' + data['data']['nextStageId'] + '&applicantId=' + applicantId + '&optionId=' + optionId;
                                             updateStage(url, applicantId, thisButton)
                                             $('#nextStageModal').modal('hide');
-                                            this.removeEventListener('click', arguments.callee);
                                 }
                             )
                         }

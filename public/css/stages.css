@@ -110,3 +110,7 @@
 .modalContainer .container a:hover {
     cursor: pointer;
 }
+
+.text-warning-custom-color {
+    color: #f0ad4e;
+}
