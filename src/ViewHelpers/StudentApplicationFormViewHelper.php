@@ -12,14 +12,15 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormOne(array $data): string
     {
-        $output = '<input type="text" placeholder="Full Name" required>';
+        $output = '<input type="text" name="name" placeholder="Full Name" required>';
         $output .= '<div id="nameError" data-field="name" class="alert hidden formItem_alert">Field Required.</div>';
-        $output .= '<input type="email" placeholder="email" required>';
+        $output .= '<input type="email" name="email" placeholder="email" required>';
         $output .= '<div id="emailError" data-field="Email" class="alert hidden formItem_alert">Field Required.</div>';
-        $output .= '<input type="tel" placeholder="Phone Number" min="8" required>';
-        $output .= '<div id="phoneError" data-field="phone number" class="alert hidden formItem_alert">Field Required.</div>';
-        $output .= '<select>';
-        $output .= '<option>Gender</option>';
+        $output .= '<input type="tel" name="Phone Number" placeholder="Phone Number" min="8" required>';
+        $output .= '<div id="phoneError" data-field="phone number" ';
+        $output .= 'class="alert hidden formItem_alert">Field Required.</div>';
+        $output .= '<select name="gender">';
+        $output .= '<option selected disabled>Gender</option>';
         foreach ($data['genders'] as $genders) {
             $output .= '<option value="' . $genders['id'] . '">' . $genders['gender'] . '</option>';
         }
@@ -36,8 +37,8 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormTwo(array $data): string
     {
-        $output = '<select>';
-        $output .= '<option>Background</option>';
+        $output = '<select name="backgroundInfo">';
+        $output .= '<option selected disabled>Background</option>';
         foreach ($data['backgroundInfo'] as $backgroundInfo) {
             $output .= '<option value="' . $backgroundInfo['id'] .
                 '">' . $backgroundInfo['backgroundInfo'] . '</option>';
@@ -45,7 +46,7 @@ class StudentApplicationFormViewHelper
         $output .= '</select>';
         $output .= '<div id="backgroundError" class="alert hidden formItem_alert">Field Required.</div>';
         $output .= '<div><label>Why do you want to become a developer?</label></div>';
-        $output .= '<textarea rows="10" placeholder="(100-500 Characters)"> </textarea>';
+        $output .= '<textarea rows="10" name="whyDev" placeholder="(100-500 Characters)"> </textarea>';
         $output .= '<div id="whyDevError" class="alert hidden formItem_alert"></div>';
         $output .= '</label>';
         return $output;
@@ -59,8 +60,9 @@ class StudentApplicationFormViewHelper
     protected static function displayPageFormThree(): string
     {
         $output = '<div><label>Any past coding experience?</label></div>';
-        $output .= ' <div id="codeExperienceError" class="alert hidden formItem_alert"></div>';
-        $output .= '<textarea rows="10" placeholder="Most people write a few sentences"> </textarea>';
+        $output .= '<div id="codeExperienceError" class="alert hidden formItem_alert"></div>';
+        $output .= '<textarea rows="10" name="codeExperience" ';
+        $output .= 'placeholder="Most people write a few sentences"> </textarea>';
         $output .= '</label>';
         return $output;
     }
@@ -75,27 +77,45 @@ class StudentApplicationFormViewHelper
     {
         $output = '<label>Select start date(s)</label>';
         foreach ($data['cohorts'] as $cohorts) {
-            $output .= '<label><input type="checkbox" value="' . $cohorts['id'] . '"/>' . $cohorts['date'] . '</label>';
+            $output .= '<label><input type="checkbox" data-nextcourse="false" ';
+            $output .= 'name="date' . $cohorts['id'] . '" value="' . $cohorts['id'] . '"/>';
+            $output .= $cohorts['date'] . '</label>';
         }
-        $output .= '<label><input type="checkbox" value="next available online course" required>';
-        $output .= 'Some course dates may also be offered with a remote option.';
-        $output .= ' Contact us to find out more.</label>';
+        $output .= '<label><input type="checkbox" data-nextcourse="true" ';
+        $output .= 'name="nextCourse" required>Next available online course</label>';
+        $output .= '<div id="startDateError" class="alert hidden formItem_alert"></div>';
+        $output .= '<p>Some course dates may also be offered with a remote option.';
+        $output .= ' Contact us to find out more.</p></label>';
         $output .= '<label> How did you hear about us?</label>';
-        $output .= '<select>';
-        $output .= '<option>Background</option>';
+        $output .= '<select id="hearAbout" name="hearAbout">';
+        $output .= '<option selected disabled>Pick one</option>';
         foreach ($data['hearAbout'] as $hearAbout) {
             $output .= '<option value="' . $hearAbout['id'] . '">' . $hearAbout['hearAbout'] . '</option>';
         }
         $output .= '</select>';
-        $output .= '<label><input type="checkbox" value="I am eligible to live and work in the UK"/ required>';
+        $output .= '<div id="hearAboutError" class="alert hidden formItem_alert"></div>';
+        $output .= '<div class="row hidden" id="additionalNotesWordOfMouth">';
+        $output .= '<label for="additionalNotesWordOfMouthInput">Who referred you?</label>';
+        $output .= '<input type="text" class="form-control" ';
+        $output .= 'id="additionalNotesWordOfMouthInput" name="additionalNotes">';
+        $output .= '</div>';
+        $output .= '<div class="row hidden" id="additionalNotesOther">';
+        $output .= '<label for="additionalNotesOtherInput">Please specify further</label>';
+        $output .= '<input type="text" class="form-control" ';
+        $output .= 'id="additionalNotesOtherInput"  name="additionalNotes">';
+        $output .= '<div id="additionalNotesError" class="alert hidden formItem_alert"></div>';
+        $output .= '</div>';
+        $output .= '<label><input type="checkbox" name="workInUK" required/>';
         $output .= 'I am eligible to live and work in the UK</label>';
-        $output .= '<label><input type="checkbox" value="I confirm that I am at least 18 years ';
-        $output .= 'of age before my chosen course start date" required/>I confirm that I am at least 18 years ';
+        $output .= '<div id="UKWorkError" class="alert hidden formItem_alert"></div>';
+        $output .= '<label><input type="checkbox" name="18years" required/>I confirm that I am at least 18 years ';
         $output .= 'of age before my chosen course start date<label>';
+        $output .= '<div id="18Error" class="alert hidden formItem_alert"></div>';
         $output .= '<p>By using this form you agree with the storage and handling of your data ';
         $output .= 'by this website in accordance with our terms and conditions and privacy policy.</p>';
-        $output .= '<label><input type="checkbox" value="I accept the terms and conditions" required/>';
+        $output .= '<label><input type="checkbox" name="termsAndCons" required/>';
         $output .= 'I accept the terms and conditions</label>';
+        $output .= '<div id="termsConditionsError" class="alert hidden formItem_alert"></div>';
         return $output;
     }
 

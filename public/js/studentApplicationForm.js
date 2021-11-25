@@ -2,6 +2,9 @@ const prevButtons = document.querySelectorAll('.prevButton')
 const nextButtons = document.querySelectorAll('.nextButton')
 const formWrappers = document.querySelectorAll('.studentApplicationFormPages')
 const pageCounter = document.querySelector('#pageCounter')
+const hearAbout = formWrappers[3].querySelector('select')
+
+
 formWrappers[0].classList.remove('hidden')
 
 prevButtons.forEach(($prevButton) => {
@@ -11,6 +14,25 @@ prevButtons.forEach(($prevButton) => {
 nextButtons.forEach(($prevButton) => {
     $prevButton.addEventListener('click', handleClick)
 })
+
+hearAbout.addEventListener('change', handlePage4Change)
+
+
+function handlePage4Change(){
+    if(this[this.selectedIndex].text === 'Word of mouth'){
+        formWrappers[3].querySelector('#additionalNotesWordOfMouth').classList.remove('hidden')
+    }
+    else{
+        formWrappers[3].querySelector('#additionalNotesWordOfMouth').classList.add('hidden')
+    }
+    if(this[this.selectedIndex].text === 'Other'){
+        formWrappers[3].querySelector('#additionalNotesOther').classList.remove('hidden')
+    }
+    else{
+        formWrappers[3].querySelector('#additionalNotesOther').classList.add('hidden')
+    }
+}
+
 
 function handleClick(e){
     e.preventDefault()
@@ -35,6 +57,9 @@ function handleClick(e){
 function findPageValidation(number, formWrapper){
     let output = false
     switch (number) {
+        case 4:
+            output = pageFourValidation(formWrapper)
+            break;
         case 3:
             output = pageThreeValidation(formWrapper)
             break;
@@ -68,9 +93,7 @@ function pageOneValidation(formWrapper) {
             alerts[index].classList.remove('hidden')
         }
     })
-    return checks.every((check)=>{
-        return check
-    })
+    return checks.every((check)=>check)
 }
 
 function pageTwoValidation(formWrapper) {
@@ -94,9 +117,7 @@ function pageTwoValidation(formWrapper) {
             alerts[index].classList.remove('hidden')
         }
     })
-    return checks.every((check)=>{
-        return check
-    })
+    return checks.every((check)=>check)
 }
 
 function pageThreeValidation(formWrapper) {
@@ -112,27 +133,50 @@ function pageThreeValidation(formWrapper) {
             alerts[index].classList.remove('hidden')
         }
     })
-    return checks.every((check)=>{
-        return check
-    })
+    return checks.every((check)=>check)
 }
 
 function pageFourValidation(formWrapper) {
     let inputs = formWrapper.querySelectorAll('input')
     let dropdown = formWrapper.querySelector('select')
     let alerts = formWrapper.querySelectorAll('.formItem_alert')
+    let inputsArray = []
     alerts.forEach((a) => {
         a.classList.add('hidden')
     })
-    let checks = [textArea.value.length > 0]
+    if(dropdown[dropdown.selectedIndex].text !== 'Other'){
+        inputs.forEach((input)=>{
+            if(input.id !== 'additionalNotesOtherInput'){
+                inputsArray.push(input)
+            }
+        })
+    }else{
+        inputs.forEach((input)=>{
+            inputsArray.push(input)
+        })
+    }
+    let checks = []
+    let miniCheck = []
+    let toggle = true
+    checks.push(dropdown.value !== 'Pick one')
+    inputsArray.forEach((input)=>{
+        if(toggle){
+            miniCheck.push(input.checked)
+            if(input.dataset.nextcourse === 'true'){
+                toggle = false
+            }
+        } else{
+            checks.push(input.checked)
+        }
+    });
+
+    checks.unshift(miniCheck.some((miniCheck)=>miniCheck))
     checks.forEach((check, index)=>{
         if(!check){
             alerts[index].textContent = 'Field Required'
             alerts[index].classList.remove('hidden')
         }
     })
-    return checks.every((check)=>{
-        return check
-    })
+    return checks.every((check)=>check)
 }
 
