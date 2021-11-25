@@ -14,7 +14,6 @@ class StageEntity implements \JsonSerializable
     protected $withdrawn;
     protected $rejected;
     protected $notAssigned;
-    protected $stageCount;
 
     /**
      * Returns private properties from object.
@@ -42,11 +41,6 @@ class StageEntity implements \JsonSerializable
     public function getStageId()
     {
         return $this->id;
-    }
-
-    public function getStageCount()
-    {
-        return $this->stageCount;
     }
 
     /**

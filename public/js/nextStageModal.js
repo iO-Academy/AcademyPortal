@@ -27,7 +27,6 @@ $(document).ready(function(){
         const stageId = this.dataset.stageid;
         const stageCount = this.dataset.stagecount;
         const currentOptionName = this.dataset.currentoptionname;
-        const nextStageId = parseInt(stageId) + 1;
         const applicantId = this.dataset.applicantid;
         const thisButton  = this;
         var url = './api/getNextStageOptions/' + stageId + '?applicantId=' + applicantId;
@@ -45,7 +44,7 @@ $(document).ready(function(){
                         console.log(data)
                         document.getElementById('currentStageNumber').innerHTML =  '<h4>Stage ' + data.data.currentStage.order + ' of ' + stageCount + '</h4>';
                         document.getElementById('nextStageNumber').innerHTML ='<h4>Stage ' + (parseInt(data.data.currentStage.order)+1)  + ' of ' + stageCount + '</h4>';
-                        document.getElementById('currentStageTitle').innerHTML ='<h4>' + data.data.currentStageTitle.title + '</h4>';
+                        document.getElementById('currentStageTitle').innerHTML ='<h4>' + data.data.currentStage.title + '</h4>';
                         document.getElementById('nextStageTitle').innerHTML ='<h4>' + data.data.nextStageTitle.title + '</h4>';
                         document.querySelector('#next-stage-options').innerHTML = '<option>Please select an Option</option>';
                         document.getElementById('currentOption').innerHTML ='<p>' + currentOptionName + '</p>';
