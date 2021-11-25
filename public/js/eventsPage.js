@@ -364,13 +364,3 @@ document.querySelector('#clear-search').addEventListener('click', function(e) {
     }
     location.reload()
 })
-
-// document.querySelector('copy-button-${event.id}').addEventListener('click', function (e) {
-//     e.preventDefault();
-//     navigator.clipboard.writeText(emaillist.join(' ')).then(function() {
-//         /* clipboard successfully set */
-//     }, function() {
-//         /* clipboard write failed */
-//     });
-// });
-
