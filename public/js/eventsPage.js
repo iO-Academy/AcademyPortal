@@ -46,7 +46,7 @@ function displayEventsHandler(eventsAndHiringPartners) {
         eventList.innerHTML = eventsAndHiringPartners.events.message
     } else {
         eventList.innerHTML = ''
-        displayEvents(eventsAndHiringPartners.events.data, eventsAndHiringPartners.hiringPartners).then(() => {
+        displayEvents(eventsAndHiringPartners.events.data, eventsAndHiringPartners.hiringPartners, eventsAndHiringPartners.applicants).then(() => {
             let showInfoHeaders = document.querySelectorAll('.header-show-event-info')
             showInfoHeaders.forEach(function (header) {
                 header.addEventListener('click', e => {
@@ -213,13 +213,21 @@ async function displayHiringPartnersAttending(event){
 async function eventGenerator(event, hiringPartners, applicants) {
     let eventInformation = ''
     let date = new Date(event.date).toDateString()
+    let numberOfAttendees
+    if (event.category_name === 'Assessment') {
+        numberOfAttendees = applicants.length
+        console.log(numberOfAttendees)
+    }
     let headerDate = new Date(event.date).toDateString().substring(0,3) + ' ' + new Date(event.date).getUTCDate() + '/' + new Date(event.date).getUTCMonth() + '/' + new Date(event.date).getUTCFullYear()
     eventInformation +=
         `<div class="event">
         <div class="header header-show-event-info" data-reference='${event.id}'>
-            <h4>${event.name} - ${headerDate} Time: ${event.start_time.slice(0, -3)} - ${event.end_time.slice(0, -3)} <span class="badge badge-secondary">${event.category_name}</span></h4>
-            
-            
+            <h4>${event.name} - ${headerDate} Time: ${event.start_time.slice(0, -3)} - ${event.end_time.slice(0, -3)} <span class="badge badge-secondary">${event.category_name}</span>`
+    if (event.category_name === 'Assessment') {
+        eventInformation += `<span class="badge badge-secondary">Attendees: ${numberOfAttendees}</span>`
+    }
+    eventInformation +=
+            `</h4> 
             <button class="show-event-info btn btn-primary" data-button-id='button${event.id}' data-reference='${event.id}'>More Info</button>
         </div>
         <div id="moreInfo${event.id}" class="hidden moreInfo">
