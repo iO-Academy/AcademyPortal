@@ -80,8 +80,16 @@ class StagesPageViewHelper
                 $result .= '</div>';
                 $result .= '</td>';
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
-                $result .= '<td class="col-xs-2 text-center"><a data-id="' . $stage->getStageId()
-                . '" class="text-danger delete disabled">Delete</a></td>';
+//                $result .= '<td class="col-xs-2 text-center"><a data-id="' . $stage->getStageId()
+//                . '" class="text-danger delete disabled">Delete</a></td>';
+                if (empty($stage->getOptions())) {
+                    $result .= '<td class="col-xs-2 text-center"><a data-hasOptions="0" data-id="' . $stage->getStageId()
+                        . '" class="text-danger delete disabled">Delete</a></td>';
+                } else {
+                    $result .= '<td class="col-xs-2 text-center disabled"><a data-hasOptions="1" data-id="' . $stage->getStageId()
+                        . '" class="text-danger delete disabled">Delete</a></td>';
+                }
+
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditOptions" data-stageId="';
                 $result .= $stage->getStageId() . '">Options</a></td>';
                 $result .= '<td class="col-xs-2 text-center stageLock" data-stageId="' . $stage->getStageId()

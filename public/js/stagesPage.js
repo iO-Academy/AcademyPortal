@@ -248,28 +248,11 @@ $(document).ready(function(){
 
                 let currentStageId = currentLockStatus.attr('data-stageId')
                 $('.delete').each(function () {
-                    if ($(this).attr('data-id') === currentStageId )  {
+                    if ($(this).attr('data-id') === currentStageId && $(this).attr('data-hasOptions') === '0')  {
                         $(this).removeClass('disabled')
                     }
                 })
-
-                // if (empty($stage->getOptions())) {
-                //     $result .= '<td class="col-xs-2 text-center"><a data-id="' . $stage->getStageId()
-                //         . '" class="text-danger delete">Delete</a></td>';
-                // } else {
-                //     $result .= '<td class="col-xs-2 text-center disabled"><a data-id="' . $stage->getStageId()
-                //         . '" class="text-danger delete disabled">Delete</a></td>';
-                // }
-
-
                 $('#stageDeletionModal').modal('hide');
-                // allow delete if no options
-                //access parent?
-                //access stage id?
-                // let stageId = accessData.attr('data-stageId');
-                // console.log(stageId);
-                // let test1= document.querySelectorAll('data-id="' + stageId + '"');
-                // console.log(test1);
             })
         } else {
             //if padlock is unlocked -> locked, data-locked = 1, change icon, disable delete button
