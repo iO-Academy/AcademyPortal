@@ -120,7 +120,7 @@ class DisplayApplicantViewHelper
                         </a>';
         if ($applicant->getStageID() != $lastStage) {
             $string .= '<button type="button" class="btn btn-info btnNextStage" data-stageid="' .
-                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" . data-stagecount="' . $stageCount['stagesCount'] . '" data-applicantid="' . $applicant->getId() . '" data-currentoptionname="' . $applicant->getStageOptionName() . '">
+                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" data-stagecount="' . $stageCount['stagesCount']  . '" data-currentoptionname="' . $applicant->getStageOptionName() . '">
                 Next Stage
             </button>';
         }

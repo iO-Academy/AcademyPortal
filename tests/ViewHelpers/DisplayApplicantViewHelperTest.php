@@ -23,7 +23,7 @@ class DisplayApplicantViewHelperTest extends TestCase
                                 <td>test@test.com</td>
                                 <td>Jan 1st</td>
                                 <td>Feb 2020</td>
-                                <td id="currentStageName1">New application</td>
+                                <td id="currentStageName1">New application-Acceptemailsent</td>
                                 <td>                              
                                     <a href="/editApplicant?id=1"   
                                        type="button"
@@ -38,7 +38,7 @@ class DisplayApplicantViewHelperTest extends TestCase
                                             Delete
                                     </a>    
                                     <button type="button" class="btn btn-info btnNextStage" data-stageid="1" 
-                                    data-applicantid="1" data-stagecount="9">Next Stage</button>                               
+                                    data-applicantid="1" data-stagecount="9" data-currentoptionname="Accept email sent">Next Stage</button>                               
                                 </td>
                             </tr>';
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
@@ -51,9 +51,9 @@ class DisplayApplicantViewHelperTest extends TestCase
         $entityMock->method('getCohortDate')->willReturn('Feb 2020');
         $entityMock->method('getStageName')->willReturn('New application');
         $entityMock->method('getStageID')->willReturn('1');
-        $entityMock->method('getStageCount')->willReturn('9');
+        $entityMock->method('getStageOptionName')->willReturn('Accept email sent');
 
-        $data = ['applicants' => [$entityMock], 'lastStage' => '9'];
+        $data = ['applicants' => [$entityMock], 'lastStage' => '9', 'stageCount' => ['stagesCount'=> '9']];
         $result = DisplayApplicantViewHelper::displayApplicants($data);
         $result = preg_replace('/\s+/', '', $result);// removes whitespace
         $this->assertEquals($expected, $result);
