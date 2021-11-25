@@ -15,6 +15,7 @@ $(document).ready(function(){
 })
 
 // custom data attr
+// remove modal button
 // multiple event listeners - other group
 
 

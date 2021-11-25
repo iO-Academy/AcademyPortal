@@ -22,7 +22,6 @@ class StagesPageViewHelper
         foreach ($stages as $stage) {
             if ($stage instanceof StageEntity) {
                 $isStudent = $stage->getStudent() ? ' checked' : '';
-
                 $result .= '<tr class="" data-id="' . $stage->getStageId() . '">';
                 $result .= '<td class="col-xs-1 order">';
                 $result .= $counter++;
@@ -87,7 +86,7 @@ class StagesPageViewHelper
                 $result .= $stage->getStageId() . '">Options</a></td>';
                 $result .= '<td class="col-xs-2 text-center">';
                 $result .= '<i data-stageId="' . $stage->getStageId()
-                . '" data-locked="1" id="padlockLocked" class="stageLock fas fa-lock "></i>';
+                . '" data-locked="1" id="padlockLocked" class="stageLock fas fa-lock"></i>';
                 $result .= '</td>';
                 $result .= '</tr>';
             }
