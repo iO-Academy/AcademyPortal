@@ -3,16 +3,23 @@ const nextButtons = document.querySelectorAll('.nextButton')
 const formWrappers = document.querySelectorAll('.studentApplicationFormPages')
 const progressBar = document.querySelector('#progressBar')
 const pageCounter = document.querySelector('#pageCounter')
-
-const hearAbout = formWrappers[3].querySelector('select')
-
-
 const textAreaToCount = document.querySelector('#whyDev')
 const textAreaCount = document.querySelector('#textAreaCount')
 const startDatesCheckboxes = document.querySelectorAll('.startDatesCheckbox')
 
+const hearAbout = formWrappers[3].querySelector('select')
 
 formWrappers[0].classList.remove('hidden')
+
+textAreaToCount.onkeyup = function () {
+    textAreaCount.innerHTML = this.value.length;
+};
+
+startDatesCheckboxes.forEach(($checkbox) => {
+    $checkbox.addEventListener('click', handleCheckbox)
+})
+
+hearAbout.addEventListener('change', handlePage4Change)
 
 prevButtons.forEach(($prevButton) => {
     $prevButton.addEventListener('click', handlePrevNextClick)
@@ -23,9 +30,9 @@ nextButtons.forEach(($prevButton) => {
 
 })
 
-hearAbout.addEventListener('change', handlePage4Change)
-
-
+/**
+ * Adds an event listener to the dropdown box on page 4 to un hide the extra info inputs corresponding to the Word of mouth and Other options
+ */
 function handlePage4Change(){
     if(this[this.selectedIndex].text === 'Word of mouth'){
         formWrappers[3].querySelector('#additionalNotesWordOfMouth').classList.remove('hidden')
@@ -41,7 +48,11 @@ function handlePage4Change(){
     }
 }
 
-
+/**
+ * The event listener for handling click on the previous and next buttons if the next button is clicked it runs the Page validation function for the corresponding page
+ * If the page validation function returns false the next button wont navigate the user to the next page. This also changes the page number.
+ * @param e
+ */
 function handlePrevNextClick(e){
     e.preventDefault()
     let check = true
@@ -65,7 +76,13 @@ function handlePrevNextClick(e){
     }
 }
 
-
+/**
+ * Finds the correct validation function for a given page number and passes it the page needed.
+ *
+ * @param number
+ * @param formWrapper
+ * @returns {this is *[Boolean]}
+ */
 function findPageValidation(number, formWrapper){
     let output = false
     switch (number) {
@@ -87,6 +104,12 @@ function findPageValidation(number, formWrapper){
     return output
 }
 
+/**
+ * Checks all the input fields on page 1 and displays error messages if required fields arent filled in.
+ *
+ * @param formWrapper The div wrapping page 1
+ * @returns {this is (boolean|boolean)[]}
+ */
 function pageOneValidation(formWrapper) {
     let inputs = formWrapper.querySelectorAll('input')
     let dropdown = formWrapper.querySelector('select')
@@ -111,6 +134,12 @@ function pageOneValidation(formWrapper) {
     return checks.every((check)=>check)
 }
 
+/**
+ * Checks all the input fields on page 2 and displays error messages if required fields arent filled in.
+ *
+ * @param formWrapper The div wrapping page 2
+ * @returns {this is boolean[]}
+ */
 function pageTwoValidation(formWrapper) {
     let textArea = formWrapper.querySelector('textarea')
     let dropdown = formWrapper.querySelector('select')
@@ -135,6 +164,12 @@ function pageTwoValidation(formWrapper) {
     return checks.every((check)=>check)
 }
 
+/**
+ * Checks all the input fields on page 3 and displays error messages if required fields arent filled in.
+ *
+ * @param formWrapper The div wrapping page 3
+ * @returns {this is boolean[]}
+ */
 function pageThreeValidation(formWrapper) {
     let textArea = formWrapper.querySelector('textarea')
     let alerts = formWrapper.querySelectorAll('.formItem_alert')
@@ -151,6 +186,12 @@ function pageThreeValidation(formWrapper) {
     return checks.every((check)=>check)
 }
 
+/**
+ * Checks all the input fields on page 4 and displays error messages if required fields arent filled in.
+ *
+ * @param formWrapper The div wrapping page 4
+ * @returns {this is *[]}
+ */
 function pageFourValidation(formWrapper) {
     let inputs = formWrapper.querySelectorAll('input')
     let dropdown = formWrapper.querySelector('select')
@@ -204,20 +245,18 @@ function pageFourValidation(formWrapper) {
     return checks.every((check)=>check)
 }
 
-textAreaToCount.onkeyup = function () {
-    textAreaCount.innerHTML = this.value.length;
-};
-
-
-startDatesCheckboxes.forEach(($checkbox) => {
-    $checkbox.addEventListener('click', handleCheckbox)
-})
-
+/**
+ *Toggles the clicked class on the date checkboxes on page 4
+ *
+ * @param e
+ */
 function handleCheckbox(e) {
     e.currentTarget.parentElement.classList.toggle('clicked')
 }
 
-
+/**
+ *  jQuery :( responsible for setting up tooltip functionality
+ */
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
