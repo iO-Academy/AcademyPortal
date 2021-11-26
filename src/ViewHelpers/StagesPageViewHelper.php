@@ -106,8 +106,8 @@ class StagesPageViewHelper
                         . '" data-hasOptions="1" href="/applicants?name=&stageId='
                         . $stage->getStageId() . '&cohortId=all&sort=dateAsc'
                         . '" class="text-danger" data-toggle="tooltip"'
-                        . 'title="Cannot delete a stage with assigned applicants, '
-                        . 'click to view applicants assigned to this stage">'
+                        . 'title="Cannot delete a stage with assigned applicants or options, '
+                        . 'click to view assignees of this stage">'
                         . '<i class="tooltiptext glyphicon glyphicon-ban-circle text-success"></i></a></td>';
                 }
 
