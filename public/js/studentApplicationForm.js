@@ -179,8 +179,10 @@ function pageTwoValidation(formWrapper) {
  * @returns {this is boolean[]}
  */
 function pageThreeValidation(formWrapper) {
+    //selects the inputs and error messages
     let textArea = formWrapper.querySelector('textarea')
     let alerts = formWrapper.querySelectorAll('.formItem_alert')
+    //adds a hidden class to the error messages
     alerts.forEach((a) => {
         a.classList.add('hidden')
     })
@@ -203,14 +205,17 @@ function pageThreeValidation(formWrapper) {
  * @returns {this is *[Boolean]}
  */
 function pageFourValidation(formWrapper) {
+    //selects the inputs and error messages
     let inputs = formWrapper.querySelectorAll('input')
     let dropdown = formWrapper.querySelector('select')
     let alerts = formWrapper.querySelectorAll('.formItem_alert')
     let inputsArray = []
     let alertsArray = []
+    //adds a hidden class to the error messages
     alerts.forEach((a) => {
         a.classList.add('hidden')
     })
+    // checks what items to add to the inputs and alerts array based on the dropdown list selection
     if(dropdown[dropdown.selectedIndex].text !== 'Other'){
         inputs.forEach((input)=>{
             if(input.id !== 'additionalNotesOtherInput'){
@@ -230,6 +235,9 @@ function pageFourValidation(formWrapper) {
             alertsArray.push(alert)
         })
     }
+    // Creates an array of true/false booleans based on checks in the for each also changes the text content of the error messages based on the checks
+    // Takes th value with an id additionalNotesWordOfMouthInput out of the inputs array then creates the checks
+    // Creates the mini checks array from the date checkboxes
     let checks = []
     let miniCheck = []
     let toggle = true
@@ -248,7 +256,7 @@ function pageFourValidation(formWrapper) {
             checks.push(input.checked)
         }
     });
-    // Creates an array of true/false booleans based on checks in the for each also changes the text content of the error messages based on the checks.
+    // checks if one value in the mini check array is true then returns true and adds it to the start of checks
     checks.unshift(miniCheck.some((miniCheck)=>miniCheck))
     checks.forEach((check, index)=>{
         if(!check){
@@ -256,6 +264,7 @@ function pageFourValidation(formWrapper) {
             alertsArray[index].classList.remove('hidden')
         }
     })
+    // returns true if all values in the array are true otherwise returns false
     return checks.every((check)=>check)
 }
 
