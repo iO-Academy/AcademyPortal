@@ -190,7 +190,7 @@ function pageThreeValidation(formWrapper) {
  * Checks all the input fields on page 4 and displays error messages if required fields arent filled in.
  *
  * @param formWrapper The div wrapping page 4
- * @returns {this is *[]}
+ * @returns {this is *[Boolean]}
  */
 function pageFourValidation(formWrapper) {
     let inputs = formWrapper.querySelectorAll('input')
