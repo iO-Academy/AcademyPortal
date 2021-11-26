@@ -111,12 +111,15 @@ function findPageValidation(number, formWrapper){
  * @returns {this is (boolean|boolean)[]}
  */
 function pageOneValidation(formWrapper) {
+    //selects the inputs and error messages
     let inputs = formWrapper.querySelectorAll('input')
     let dropdown = formWrapper.querySelector('select')
     let alerts = formWrapper.querySelectorAll('.formItem_alert')
+    //adds a hidden class to the error messages
     alerts.forEach((a) => {
         a.classList.add('hidden')
     })
+    // Creates an array of true/false booleans based on checks in the for each also changes the text content of the error messages based on the checks.
     let checks = [isFullName(inputs[0].value), isEmail(inputs[1].value), isPhoneNumber(inputs[2].value), dropdown[dropdown.selectedIndex].text !== 'Gender']
     checks.forEach((check,index)=>{
         if(!check){
@@ -131,6 +134,7 @@ function pageOneValidation(formWrapper) {
             alerts[index].classList.remove('hidden')
         }
     })
+    // returns true if all values in the array are true otherwise returns false
     return checks.every((check)=>check)
 }
 
@@ -141,26 +145,30 @@ function pageOneValidation(formWrapper) {
  * @returns {this is boolean[]}
  */
 function pageTwoValidation(formWrapper) {
+    //selects the inputs and error messages
     let textArea = formWrapper.querySelector('textarea')
     let dropdown = formWrapper.querySelector('select')
     let alerts = formWrapper.querySelectorAll('.formItem_alert')
+    //adds a hidden class to the error messages
     alerts.forEach((a) => {
         a.classList.add('hidden')
     })
-    let checks = [dropdown.value !== 'Background', textArea.value.length >= 100, textArea.value.length <= 500]
+    // Creates an array of true/false booleans based on checks in the for each also changes the text content of the error messages based on the checks.
+    let checks = [dropdown[dropdown.selectedIndex].text !== 'Background', textArea.value.length >= 100, textArea.value.length <= 500]
     checks.forEach((check, index)=>{
         if(!check){
             if(index === 1 && textArea.value.length > 0){
-                alerts[index].textContent = 'Not enough characters'
+                alerts[1].textContent = 'Not enough characters'
             }
             else if(index === 2 && textArea.value.length > 0){
-                alerts[index].textContent = 'Too many characters'
+                alerts[1].textContent = 'Too many characters'
             }else{
                 alerts[index].textContent = 'Field Required'
             }
             alerts[index].classList.remove('hidden')
         }
     })
+    // returns true if all values in the array are true otherwise returns false
     return checks.every((check)=>check)
 }
 
@@ -176,6 +184,7 @@ function pageThreeValidation(formWrapper) {
     alerts.forEach((a) => {
         a.classList.add('hidden')
     })
+    // Creates an array of true/false booleans based on checks in the for each also changes the text content of the error messages based on the checks.
     let checks = [textArea.value.length > 0]
     checks.forEach((check, index)=>{
         if(!check){
@@ -183,6 +192,7 @@ function pageThreeValidation(formWrapper) {
             alerts[index].classList.remove('hidden')
         }
     })
+    // returns true if all values in the array are true otherwise returns false
     return checks.every((check)=>check)
 }
 
@@ -223,7 +233,10 @@ function pageFourValidation(formWrapper) {
     let checks = []
     let miniCheck = []
     let toggle = true
-    inputsArray.forEach((input)=>{
+    checks.push(dropdown[dropdown.selectedIndex].text !== 'Pick one')
+    inputsArray.filter((input)=>{
+        return input.id !== 'additionalNotesWordOfMouthInput'
+    }).forEach((input)=>{
         if(toggle){
             miniCheck.push(input.checked)
             if(input.dataset.nextcourse === 'true'){
@@ -231,10 +244,11 @@ function pageFourValidation(formWrapper) {
             }
         } else if(input.id === 'additionalNotesOtherInput') {
             checks.push(input.value.length > 0)
-        }else {
+        } else {
             checks.push(input.checked)
         }
     });
+    // Creates an array of true/false booleans based on checks in the for each also changes the text content of the error messages based on the checks.
     checks.unshift(miniCheck.some((miniCheck)=>miniCheck))
     checks.forEach((check, index)=>{
         if(!check){
