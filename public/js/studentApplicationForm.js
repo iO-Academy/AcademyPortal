@@ -154,14 +154,14 @@ function pageTwoValidation(formWrapper) {
         a.classList.add('hidden')
     })
     // Creates an array of true/false booleans based on checks in the for each also changes the text content of the error messages based on the checks.
-    let checks = [dropdown[dropdown.selectedIndex].text !== 'Background', textArea.value.length >= 100, textArea.value.length <= 500]
+    let checks = [dropdown[dropdown.selectedIndex].text !== 'Background', textArea.value.length >= 100 && textArea.value.length <= 500]
     checks.forEach((check, index)=>{
         if(!check){
-            if(index === 1 && textArea.value.length > 0){
-                alerts[1].textContent = 'Not enough characters'
+            if(index === 1 && textArea.value.length > 0 && textArea.value.length < 100){
+                alerts[index].textContent = 'Not enough characters'
             }
-            else if(index === 2 && textArea.value.length > 0){
-                alerts[1].textContent = 'Too many characters'
+            else if(index === 1 &&  textArea.value.length > 0 && textArea.value.length > 500){
+                alerts[index].textContent = 'Too many characters'
             }else{
                 alerts[index].textContent = 'Field Required'
             }
