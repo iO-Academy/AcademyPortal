@@ -15,11 +15,11 @@ const startDatesCheckboxes = document.querySelectorAll('.startDatesCheckbox')
 formWrappers[0].classList.remove('hidden')
 
 prevButtons.forEach(($prevButton) => {
-    $prevButton.addEventListener('click', handleClick)
+    $prevButton.addEventListener('click', handlePrevNextClick)
 })
 
 nextButtons.forEach(($prevButton) => {
-    $prevButton.addEventListener('click', handleClick)
+    $prevButton.addEventListener('click', handlePrevNextClick)
 
 })
 
@@ -42,7 +42,7 @@ function handlePage4Change(){
 }
 
 
-function handleClick(e){
+function handlePrevNextClick(e){
     e.preventDefault()
     let check = true
     formWrappers.forEach((formWrapper)=>{
@@ -194,13 +194,9 @@ function pageFourValidation(formWrapper) {
             checks.push(input.checked)
         }
     });
-    console.log(inputsArray)
-    console.log(alertsArray)
     checks.unshift(miniCheck.some((miniCheck)=>miniCheck))
-    console.log(checks)
     checks.forEach((check, index)=>{
         if(!check){
-            console.log(alertsArray[index])
             alertsArray[index].textContent = 'Field Required'
             alertsArray[index].classList.remove('hidden')
         }
@@ -218,11 +214,7 @@ startDatesCheckboxes.forEach(($checkbox) => {
 })
 
 function handleCheckbox(e) {
-    if (e.currentTarget.checked) {
-        e.currentTarget.parentElement.classList.add('clicked')
-    } else {
-        e.currentTarget.parentElement.classList.remove('clicked')
-    }
+    e.currentTarget.parentElement.classList.toggle('clicked')
 }
 
 
