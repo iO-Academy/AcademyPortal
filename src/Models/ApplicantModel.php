@@ -232,8 +232,8 @@ class ApplicantModel implements ApplicantModelInterface
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
                       `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
                       `backgroundInfo`, `hearAbout`, 
-                      `apprentice`, `aptitude`,`events`.`date` AS 'assessmentDay',
-                      `assessmentTime`,
+                      `apprentice`, `aptitude`,`events`.`date` AS 'assessmentDay', 
+                      `applicants_additional`.`customAssessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, 
                       `tasterEvent`.`date` AS `taster`, `tasterId`,
@@ -404,6 +404,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `apprentice` = :apprentice,
                             `aptitude` = :aptitude,
                             `assessmentDay` = :assessmentDay,
+                            `customAssessmentDay` = :customAssessmentDay,
                             `assessmentTime` = :assessmentTime,
                             `assessmentNotes` = :assessmentNotes,
                             `diversitechInterest` = :diversitechInterest,
@@ -446,6 +447,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':apprentice', $applicant['apprentice']);
         $query->bindValue(':aptitude', $applicant['aptitude']);
         $query->bindValue(':assessmentDay', $applicant['assessmentDay']);
+        $query->bindValue(':customAssessmentDay', $applicant['customAssessmentDay']);
         $query->bindValue(':assessmentTime', $applicant['assessmentTime']);
         $query->bindValue(':assessmentNotes', $applicant['assessmentNotes']);
         $query->bindValue(':diversitechInterest', $applicant['diversitechInterest']);
@@ -521,5 +523,16 @@ class ApplicantModel implements ApplicantModelInterface
             "UPDATE `applicants` SET `stageId` = :stageId, `stageOptionId` = :optionId WHERE `id` = :applicantId"
         );
         return $query->execute([':applicantId' => $applicantId, ':stageId' => $stageId, ':optionId' => $optionId]);
+    }
+
+    public function getAssessmentApplicants(): array
+    {
+        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `applicants`.`email`, `applicants`.`deleted`,
+                    `applicants_additional`.`assessmentDay` 
+                FROM `applicants` INNER JOIN `applicants_additional` 
+                ON `applicants`.`id`=`applicants_additional`.`id` WHERE `deleted` NOT IN (1);";
+        $query = $this->db->prepare($stmt);
+        $query->execute();
+        return $query->fetchAll();
     }
 }

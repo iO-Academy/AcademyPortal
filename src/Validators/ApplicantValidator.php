@@ -61,6 +61,7 @@ class ApplicantValidator
                 throw new \Exception('Invalid assessment date!');
             }
         }
+        DateTimeValidator::validateDate($applicant['customAssessmentDay']);
         DateTimeValidator::validateTime($applicant['assessmentTime']);
         DateTimeValidator::validateDateTime($applicant['dateTimeAdded']);
 

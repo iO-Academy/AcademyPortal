@@ -10,13 +10,29 @@
                 <h5 class="modal-title" id="nextStageModalLabel">Next Stage Options</h5>
             </div>
             <div class="modal-body">
-                <section>
-                    <select name="next-stage-options" id="next-stage-options"></select>
-                </section>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div id="currentStageContainer" class="col-xs-4" >
+                            <h4 id="currentStageNumber"></h4>
+                            <h4 id="currentStageTitle"></h4>
+                            <p id="currentOption"></p>
+                        </div>
+                        <div class="col-xs-2 centralArrow">
+                            <i id="arrow-right" class="glyphicon glyphicon-arrow-right"></i>
+                        </div>
+                        <div id="nextStageContainer" class="col-xs-4">
+                            <h4 id="nextStageNumber" ></h4>
+                            <h4 id="nextStageTitle"></h4>
+                          <select name="next-stage-options" id="next-stage-options"></select>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary btnNextStageOptions">Save</button>
+                <div class="col-xs-2 col-xs-offset-8">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                <div id="nextStageSaveButtonContainer" class="col-xs-2"></div>
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@
 namespace Portal\ViewHelpers;
 
 use Portal\Interfaces\BaseApplicantEntityInterface;
+use Portal\Interfaces\ApplicantEntityInterface;
 
 class DisplayApplicantViewHelper
 {
@@ -43,8 +44,6 @@ class DisplayApplicantViewHelper
     }
 
 
-
-
     /**
      * Concatenates new applicant's name, email and cohort to join ready to be output, excluding apprentices.
      *
@@ -57,7 +56,7 @@ class DisplayApplicantViewHelper
         $result = '';
         foreach ($applicants['applicants'] as $applicant) {
             if (empty($applicant->apprentice)) {
-                $result .= self::outputApplicantRow($applicant, $applicants['lastStage']);
+                $result .= self::outputApplicantRow($applicant, $applicants['lastStage'], $applicants['stageCount']);
             }
         }
         return self::handleNoApplicants($result);
@@ -73,16 +72,16 @@ class DisplayApplicantViewHelper
     public static function displayApprentices($applicants): string
     {
         $result = '';
-        foreach ($applicants as $applicant) {
+        foreach ($applicants['applicants'] as $applicant) {
             if (!empty($applicant->apprentice) && $applicant->apprentice == 1) {
-                $result .= self::outputApplicantRow($applicant);
+                $result .= self::outputApplicantRow($applicant, $applicants['lastStage'], $applicants['stageCount']);
             }
         }
         return self::handleNoApplicants($result);
     }
 
 
-    private static function outputApplicantRow(BaseApplicantEntityInterface $applicant, $lastStage): string
+    private static function outputApplicantRow(BaseApplicantEntityInterface $applicant, $lastStage, $stageCount): string
     {
         $string = '<tr>
                     <td>
@@ -102,24 +101,25 @@ class DisplayApplicantViewHelper
         } else {
             $string .= '<td>' . $applicant->getCohortDate() . '</td>';
         };
-                    $string .= '<td id="currentStageName' . $applicant->getId() . '">' . $applicant->getStageName() .
-            ($applicant->getStageOptionName() ? ' - ' . $applicant->getStageOptionName() : ' ' ) . '</td>
+        $string .= '<td id="currentStageName' . $applicant->getId() . '">' . $applicant->getStageName() .
+            ($applicant->getStageOptionName() ? ' - ' . $applicant->getStageOptionName() : ' ') . '</td>
                     <td>                        
-                        <a href="/editApplicant?id=' . $applicant->getId() . '"   
-                           type="button"                                   
+                        <a href="/editApplicant?id=' . $applicant->getId() . '"
+                           type="button" 
                            class="btn btn-primary edit">
                            Edit
                         </a>
                         <a
-                                href="#"
-                                type="delete"
-                                class="btn btn-danger delete deleteBtn"
-                                data-id="' . $applicant->getId() . '">
-                                Delete
+                            href="#"
+                            type="delete"
+                            class="btn btn-danger delete deleteBtn"
+                            data-id="' . $applicant->getId() . '">
+                            Delete
                         </a>';
         if ($applicant->getStageID() != $lastStage) {
             $string .= '<button type="button" class="btn btn-info btnNextStage" data-stageid="' .
-                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" >
+                $applicant->getStageID() . '" data-applicantid="' . $applicant->getId() . '" data-stagecount="' .
+                $stageCount['stagesCount']  . '" data-currentoptionname="' . $applicant->getStageOptionName() . '">
                 Next Stage
             </button>';
         }
