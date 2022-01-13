@@ -26,9 +26,16 @@ jobs:
           command: |
             php -v
             php composer.phar --version
+      - restore_cache:
+          keys:
+            - v1-deps-{{ checksum "composer.lock" }}
       - run:
           name: Install project dependencies
           command: php composer.phar install
+      - save_cache:
+          key: v1-deps-{{ checksum "composer.lock" }}
+          paths:
+            - vendor
       - run:
           name: Setup Autoloader
           command: php composer.phar dump-autoload
