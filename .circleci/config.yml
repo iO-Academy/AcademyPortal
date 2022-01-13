@@ -43,7 +43,7 @@ jobs:
           name: Run CS Tests
           command: | 
             vendor/bin/phpcs --standard=PSR12 src templates
-            vendor/bin/phpcs --standard=./rulseset.xml tests
+            vendor/bin/phpcs --standard=/var/www/html/rulseset.xml tests
       - run:
           name: Run Unit tests
           command: vendor/bin/phpunit
