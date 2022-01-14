@@ -1,21 +1,24 @@
-#newStageForm label {
-    margin-top: 0;
+#newStageForm {
+    label {
+        margin-top: 0;
+    }
+    [type="text"] {
+        width: 60%;
+    }
 }
 
-#newStageForm [type="text"] {
-    width: 60%;
-}
+.applicantStages {
+    td {
+        padding: 4px 8px;
+    }
 
-.applicantStages td {
-    padding: 4px 8px;
-}
+    tr {
+        cursor: pointer;
+    }
 
-.applicantStages tr {
-    cursor: pointer;
-}
-
-.applicantStages input[type="submit"] {
-    margin-top: 0;
+    input[type="submit"] {
+        margin-top: 0;
+    }
 }
 
 #stageTable p i {
@@ -24,10 +27,9 @@
 
 .stagesTableForm {
     display: none;
-}
-
-.stagesTableForm label {
-    margin-top: 0;
+    label {
+        margin-top: 0;
+    }
 }
 
 #editResponse {
@@ -83,32 +85,27 @@
     position: fixed;
     top: 0;
     background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modalContainer .container {
-    width: 50%;
-    height: fit-content;
-    position: fixed;
-    top: 25%;
-    left: 25%;
-    background-color: #FFFFFF;
-}
-
-.modalContainer .container p {
-    font-weight: 700;
-    padding: 2em;
-    padding-bottom: 5em;
-}
-
-.modalContainer .container a {
-    position: relative;
-    bottom: 1em;
-    text-align: right;
-    padding: 1em;
-}
-
-.modalContainer .container a:hover {
-    cursor: pointer;
+    .container {
+        width: 50%;
+        height: fit-content;
+        position: fixed;
+        top: 25%;
+        left: 25%;
+        background-color: #FFFFFF;
+        p {
+            font-weight: 700;
+            padding: 2em 2em 5em;
+        }
+        a {
+            position: relative;
+            bottom: 1em;
+            text-align: right;
+            padding: 1em;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
 }
 
 .text-warning-custom-color {

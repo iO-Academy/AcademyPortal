@@ -9,16 +9,13 @@
 
 #loginForm {
     margin-top: 10px;
-}
-
-#loginForm label {
-    display: block;
-}
-
-#loginForm .form-control {
-    max-width: 350px;
-}
-
-#loginForm .error {
-    background-color: #ffaab1;
+    label {
+        display: block;
+    }
+    .form-control {
+        max-width: 350px;
+    }
+    .error {
+        background-color: #ffaab1;
+    }
 }

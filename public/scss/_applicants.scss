@@ -1,15 +1,15 @@
-.modal-title span {
-    font-size: 12px;
-}
-
-.modal-title #apprentice {
-    position: relative;
-    top: -5px;
-}
-
-.modal-title #dateTimeAdded {
-    padding-top: 4px;
-    padding-right: 20px;
+.modal-title {
+    span {
+        font-size: 12px;
+    }
+    #apprentice {
+        position: relative;
+        top: -5px;
+    }
+    #dateTimeAdded {
+        padding-top: 4px;
+        padding-right: 20px;
+    }
 }
 
 #currentStageContainer h4, #currentStageContainer p {
@@ -24,39 +24,37 @@
     font-weight: bold;
 }
 
-#sortFilterApplicants li label {
-    margin-top: -18px;
-}
-
-#sortFilterApplicants li select {
-    margin-top: 2px;
+#sortFilterApplicants li {
+    label {
+        margin-top: -18px;
+    }
+    select {
+        margin-top: 2px;
+    }
 }
 
 .sort {
     white-space: nowrap;
-}
+    div {
+        display: inline;
+        padding-left: 10px;
+    }
+    .arrowBtn {
+        border: none;
+        &.active {
+            color: #d64405;
 
-.sort div {
-    display: inline;
-    padding-left: 10px;
-}
-
-.sort .arrowBtn {
-    border: none;
-}
-
-.sort .arrowBtn.active {
-    color: #d64405;
+        }
+    }
 }
 
 p.detail {
     font-weight: bold;
     margin-bottom: 0;
     margin-top: 10px;
-}
-
-p.detail span {
-    font-weight: normal;
+    span {
+        font-weight: normal;
+    }
 }
 
 .errorMsg {
@@ -70,10 +68,9 @@ p.detail span {
     overflow: auto;
     cursor: pointer;
     border-radius: 10px;
-}
-
-.collapse-header:hover {
-    background: #dddddd;
+    &:hover {
+        background: #dddddd;
+    }
 }
 
 .applicationFormSection .collapse.in {
@@ -88,21 +85,22 @@ section {
     padding-bottom: 20px;
     margin-bottom: 20px;
     border-bottom: 1px solid #eee;
+    &:last-child {
+        border: none;
+        padding-bottom: 0;
+    }
 }
 
-#applicantModal section:last-child {
-    border: none;
-    padding-bottom: 0;
-}
+.collapse-header {
+    h4 {
+        float: left;
+        padding-left: 15px;
+    }
 
-.collapse-header h4 {
-    float: left;
-    padding-left: 15px;
-}
-
-.collapse-header i {
-    float: right;
-    margin: 12px;
+    i {
+        float: right;
+        margin: 12px;
+    }
 }
 
 .disabled {

@@ -10,18 +10,15 @@ main {
     display: block;
     text-align: center;
     margin-bottom: 30px;
-}
-
-.custom-button:hover {
-    text-decoration: none;
-    background: #dddddd;
-}
-
-.custom-button[href="#"] {
-    color: #dddddd;
-    cursor: default;
-}
-
-.custom-button[href="#"]:hover {
-    background: none;
+    &:hover {
+        text-decoration: none;
+        background: #dddddd;
+    }
+    &[href="#"] {
+        color: #dddddd;
+        cursor: default;
+        &:hover {
+            background: none;
+        }
+    }
 }
