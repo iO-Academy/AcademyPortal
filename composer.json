@@ -52,6 +52,7 @@
   },
   "scripts": {
     "start": "php -S localhost:8080 -t public",
-    "test": "phpunit"
+    "test": "phpunit",
+    "watch": "sass --watch public/scss/styles.scss public/css/style.css"
   }
 }
