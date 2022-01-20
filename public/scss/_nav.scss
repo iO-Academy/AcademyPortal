@@ -4,10 +4,10 @@ nav {
         border-radius: 0;
     }
     a[href="#"] {
-        color: #dddddd;
+        color: $light-grey;
         cursor: default;
         &:hover {
-            color: #dddddd;
+            color: $light-grey;
             background: none;
         }
     }

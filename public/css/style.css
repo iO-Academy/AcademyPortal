@@ -226,7 +226,7 @@ section {
   margin: 0 5px;
   border-radius: 5px;
   border: none;
-  color: #fff;
+  color: #ffffff;
   background-color: #d9534f;
   padding: 6px 12px;
   font-size: 14px;
@@ -352,7 +352,7 @@ section {
   position: fixed;
   top: 25%;
   left: 25%;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 .modalContainer .container p {
   font-weight: 700;
@@ -377,7 +377,7 @@ section {
   width: 100%;
   margin: 0 auto;
   padding: 15px;
-  background: #cccccc;
+  background: #dddddd;
   border-radius: 15px;
 }
 
@@ -570,6 +570,28 @@ main .col-xs-4 {
 
 #stageDeletionModalCancel {
   margin-left: 10px;
+}
+
+.hiring-partner span {
+  font-weight: bold;
+}
+.hiring-partner form {
+  display: inline-block;
+}
+.hiring-partner p {
+  display: inline-block;
+}
+
+.partner {
+  padding: 15px;
+  border-top: 1px solid #dddddd;
+  overflow: auto;
+}
+.partner h4 {
+  float: left;
+}
+.partner .btn {
+  float: right;
 }
 
 /*# sourceMappingURL=style.css.map */

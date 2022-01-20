@@ -12,7 +12,7 @@
 
 .event {
     padding: 15px;
-    border-bottom: 1px solid #333333;
+    border-bottom: 1px solid $dark-grey;
     overflow: auto;
     .header {
         overflow: auto;
@@ -61,7 +61,7 @@
 
 .event-attendees {
     overflow: auto;
-    border: 1px solid #333333;
+    border: 1px solid $dark-grey;
 }
 
 .headerDateTime {
@@ -70,7 +70,7 @@
 
 .hiring-partners {
     min-height: 0;
-    border-right: 1px solid #333333;
+    border-right: 1px solid $dark-grey;
 }
 
 .hiring-partner {

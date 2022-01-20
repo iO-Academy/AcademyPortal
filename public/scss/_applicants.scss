@@ -69,7 +69,7 @@ p.detail {
     cursor: pointer;
     border-radius: 10px;
     &:hover {
-        background: #dddddd;
+        background: $light-grey;
     }
 }
 
@@ -123,7 +123,7 @@ section {
     margin: 0 5px;
     border-radius: 5px;
     border: none;
-    color: #fff;
+    color: $white;
     background-color: #d9534f;
     padding: 6px 12px;
     font-size: 14px;

@@ -35,7 +35,7 @@ header {
         border-radius: 5px;
         padding: 5px;
         &:hover {
-            background: #dddddd;
+            background: $light-grey;
         }
     }
 }
@@ -53,7 +53,7 @@ form input[type="time"] {
 }
 
 footer {
-    border-top: 1px solid #333333;
+    border-top: 1px solid $dark-grey;
     padding-top: 15px;
     margin-bottom: 30px;
     margin-top: 15px;

@@ -12,10 +12,10 @@ main {
     margin-bottom: 30px;
     &:hover {
         text-decoration: none;
-        background: #dddddd;
+        background: $light-grey;
     }
     &[href="#"] {
-        color: #dddddd;
+        color: $light-grey;
         cursor: default;
         &:hover {
             background: none;
