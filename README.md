@@ -13,6 +13,9 @@ Live Version at: https://portal.dev.io-academy.uk/
 2. Create database with name `academyPortal` and populate using latest version in db/
 3. To run the application locally: `composer start`
 
+### Compiling SCSS
+- Run `composer watch` in the root of the project
+
 ### Running tests
 
 - To run the unit tests locally: `composer test`
