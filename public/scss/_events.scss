@@ -19,7 +19,7 @@
     }
     .show-event-info {
         float: right;
-        background-color: #743DFB;
+        background-color: $io-purple;
         color: #ebeef1;
     }
     &:last-child {
@@ -49,7 +49,7 @@
         font-weight: bold;
     }
     .badge {
-        background-color: #FF3366;
+        background-color: $io-pink;
         padding: 6px;
         margin: 0 3px;
         font-size: 14px;
