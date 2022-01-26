@@ -1,6 +1,7 @@
 .idea/
 .DS_Store
 /coverage/
+/public/css/
 /vendor/
 /logs/*
 !/logs/README.md
