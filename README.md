@@ -14,6 +14,7 @@ Live Version at: https://portal.dev.io-academy.uk/
 3. To run the application locally: `composer start`
 
 ### Compiling SCSS
+- Must have SASS installed globally for this to work
 - Run `composer watch` in the root of the project
 
 ### Running tests
