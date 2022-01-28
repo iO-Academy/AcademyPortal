@@ -229,8 +229,8 @@ class ApplicantModel implements ApplicantModelInterface
     public function getApplicantById($id)
     {
         $query = $this->db->prepare(
-            "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `gender`, `whyDev`, `codeExperience`, 
-                      `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
+            "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `gender`, `whyDev`, 
+                      `codeExperience`, `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
                       `backgroundInfo`, `hearAbout`, 
                       `apprentice`, `aptitude`,`events`.`date` AS 'assessmentDay', 
                       `applicants_additional`.`customAssessmentDay`, `assessmentTime`,
