@@ -9,6 +9,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     protected $cohortId;
     protected $phoneNumber;
     protected $whyDev;
+    protected $genderId;
     protected $gender;
     protected $codeExperience;
     protected $hearAboutId;
@@ -161,6 +162,14 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     public function getBackgroundInfoId()
     {
         return $this->backgroundInfoId;
+    }
+
+    /** Gets applicant gender ID
+     * @return mixed
+     */
+    public function getGenderId()
+    {
+        return $this->genderId;
     }
 
     /** Gets applicant gender

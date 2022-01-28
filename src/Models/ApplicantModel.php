@@ -229,9 +229,9 @@ class ApplicantModel implements ApplicantModelInterface
     public function getApplicantById($id)
     {
         $query = $this->db->prepare(
-            "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `gender`, `whyDev`, 
-                      `codeExperience`, `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
-                      `backgroundInfo`, `hearAbout`, 
+            "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `applicants`.`gender` AS `genderId`,
+                      `whyDev`, `codeExperience`, `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`,
+                      `dateTimeAdded`, `backgroundInfo`, `hearAbout`, `gender`.`gender`,
                       `apprentice`, `aptitude`,`events`.`date` AS 'assessmentDay', 
                       `applicants_additional`.`customAssessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
@@ -266,6 +266,8 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`stageOptionId` = `options`.`id`
                         LEFT JOIN `events`
                             ON `applicants_additional`.`assessmentDay` = `events`.`id`
+                        LEFT JOIN `gender`
+                            ON `applicants`.`gender` = `gender`.`id`
                         WHERE `applicants`.`id`= :id;"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);

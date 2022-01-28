@@ -80,11 +80,11 @@ $(document).ready(function () {
                         if (data.apprentice === 1) {
                             document.getElementById('apprentice').innerHTML = 'Apprentice'
                         }
-
+                        console.log(data);
                         displayField(data, 'name')
                         displayField(data, 'email')
                         displayField(data, 'phoneNumber')
-
+                        displayField(data, 'gender')
                         displayField(data, 'stageName')
                         document.querySelector('#stageOptionNameContainer').style.display = 'block'
                         displayField(data, 'stageOptionName')
