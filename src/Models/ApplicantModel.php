@@ -348,6 +348,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `name` = :name,
                             `email` = :email,
                             `phoneNumber` = :phoneNumber,
+                            `gender` = :gender,
                             `whyDev` = :whyDev,
                             `codeExperience` = :codeExperience,
                             `hearAboutId` = :hearAboutId,
@@ -367,6 +368,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':name', $applicant['name']);
         $query->bindValue(':email', $applicant['email']);
         $query->bindValue(':phoneNumber', $applicant['phoneNumber']);
+        $query->bindValue(':gender', $applicant['gender']);
         $query->bindValue(':whyDev', $applicant['whyDev']);
         $query->bindValue(':codeExperience', $applicant['codeExperience']);
         $query->bindValue(':hearAboutId', $applicant['hearAboutId']);
