@@ -6,9 +6,11 @@ use Portal\Interfaces\ApplicantEntityInterface;
 
 class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, ApplicantEntityInterface
 {
-    protected $phoneNumber;
     protected $cohortId;
+    protected $phoneNumber;
     protected $whyDev;
+    protected $genderId;
+    protected $gender;
     protected $codeExperience;
     protected $hearAboutId;
     protected $eligible;
@@ -40,6 +42,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
                   'name' => $this->name,
                   'email' => $this->email,
                   'phoneNumber' => $this->phoneNumber,
+                  'gender' => $this->gender,
                   'cohortID' => $this->cohortId,
                   'whyDev' => $this->whyDev,
                   'codeExperience' => $this->codeExperience,
@@ -64,7 +67,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     }
 
     /**
-     * Get's phoneNumber.
+     * Gets phoneNumber.
      *
      * @return string, returns the phoneNumber field.
      */
@@ -74,7 +77,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     }
 
     /**
-     * Get's cohortId.
+     * Gets cohortId.
      *
      * @return string, returns the cohortId field.
      */
@@ -84,7 +87,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     }
 
     /**
-     * Get's whyDev.
+     * Gets whyDev.
      *
      * @return string, returns the whyDev field.
      */
@@ -94,7 +97,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     }
 
     /**
-     * Get's codeExperience.
+     * Gets codeExperience.
      *
      * @return string, returns the experience field.
      */
@@ -104,7 +107,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     }
 
     /**
-     * Get's hearAboutID.
+     * Gets hearAboutID.
      *
      * @return string, returns the hearAboutID field.
      */
@@ -114,7 +117,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     }
 
     /**
-     * Get's eligible.
+     * Gets eligible.
      *
      * @return string, returns the eligible field.
      */
@@ -124,7 +127,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     }
 
     /**
-     * Get's eighteenPlus.
+     * Gets eighteenPlus.
      *
      * @return string, returns the eighteenPlus field.
      */
@@ -134,7 +137,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     }
 
     /**
-     * Get's finance.
+     * Gets finance.
      *
      * @return string, returns the finance field.
      */
@@ -144,7 +147,7 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
     }
 
     /**
-     * Get's notes.
+     * Gets notes.
      *
      * @return string, returns the notes field.
      */
@@ -153,11 +156,27 @@ class ApplicantEntity extends BaseApplicantEntity implements \JsonSerializable, 
         return $this->notes;
     }
 
-    /**
+    /** Gets backgroundInfoID
      * @return mixed
      */
     public function getBackgroundInfoId()
     {
         return $this->backgroundInfoId;
+    }
+
+    /** Gets applicant gender ID
+     * @return mixed
+     */
+    public function getGenderId()
+    {
+        return $this->genderId;
+    }
+
+    /** Gets applicant gender
+     * @return mixed
+     */
+    public function getGender()
+    {
+        return $this->gender;
     }
 }

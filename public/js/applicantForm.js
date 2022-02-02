@@ -8,6 +8,7 @@
         outputEvents(data.tasters, document.getElementById('tasterDate'));
     }
     outputHearAbout(data.hearAbout);
+    outputGender(data.gender);
     outputBackgroundInfo(data.backgroundInfo);
     checkedCohortDates();
 

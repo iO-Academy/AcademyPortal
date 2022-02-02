@@ -39,6 +39,7 @@ class ApplicantValidator
             )
             &&
             is_numeric($applicant['hearAboutId']) &&
+            is_numeric($applicant['gender']) &&
             is_numeric($applicant['backgroundInfoId']) &&
             (
                 $applicant['eligible'] == 1 || $applicant['eligible'] == 0

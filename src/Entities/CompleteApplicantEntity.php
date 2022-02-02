@@ -68,6 +68,8 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
             'name' => $this->name,
             'email' => $this->email,
             'phoneNumber' => $this->phoneNumber,
+            'gender' => $this->gender,
+            'genderId' => $this->genderId,
             'cohortID' => $this->cohortId,
             'whyDev' => $this->whyDev,
             'codeExperience' => $this->codeExperience,

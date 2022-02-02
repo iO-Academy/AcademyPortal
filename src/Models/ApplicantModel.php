@@ -29,7 +29,8 @@ class ApplicantModel implements ApplicantModelInterface
             "INSERT INTO `applicants` (
                             `name`,
                             `email`,
-                            `phoneNumber`,                 
+                            `phoneNumber`,
+                            `gender`,
                             `whyDev`,
                             `codeExperience`,
                             `hearAboutId`,
@@ -43,6 +44,7 @@ class ApplicantModel implements ApplicantModelInterface
                             :name,
                             :email,
                             :phoneNumber,
+                            :gender,
                             :whyDev,
                             :codeExperience,
                             :hearAboutId,
@@ -57,6 +59,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':name', $applicant['name']);
         $query->bindValue(':email', $applicant['email']);
         $query->bindValue(':phoneNumber', $applicant['phoneNumber']);
+        $query->bindValue(':gender', $applicant['gender']);
         $query->bindValue(':whyDev', $applicant['whyDev']);
         $query->bindValue(':codeExperience', $applicant['codeExperience']);
         $query->bindValue(':hearAboutId', $applicant['hearAboutId']);
@@ -226,9 +229,9 @@ class ApplicantModel implements ApplicantModelInterface
     public function getApplicantById($id)
     {
         $query = $this->db->prepare(
-            "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, 
-                      `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`, `dateTimeAdded`, 
-                      `backgroundInfo`, `hearAbout`, 
+            "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `applicants`.`gender` AS `genderId`,
+                      `whyDev`, `codeExperience`, `eligible`, `eighteenPlus`, `finance`, `applicants`.`notes`,
+                      `dateTimeAdded`, `backgroundInfo`, `hearAbout`, `gender`.`gender`,
                       `apprentice`, `aptitude`,`events`.`date` AS 'assessmentDay', 
                       `applicants_additional`.`customAssessmentDay`, `assessmentTime`,
                       `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
@@ -263,6 +266,8 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`stageOptionId` = `options`.`id`
                         LEFT JOIN `events`
                             ON `applicants_additional`.`assessmentDay` = `events`.`id`
+                        LEFT JOIN `gender`
+                            ON `applicants`.`gender` = `gender`.`id`
                         WHERE `applicants`.`id`= :id;"
         );
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
@@ -345,6 +350,7 @@ class ApplicantModel implements ApplicantModelInterface
                             `name` = :name,
                             `email` = :email,
                             `phoneNumber` = :phoneNumber,
+                            `gender` = :gender,
                             `whyDev` = :whyDev,
                             `codeExperience` = :codeExperience,
                             `hearAboutId` = :hearAboutId,
@@ -364,6 +370,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':name', $applicant['name']);
         $query->bindValue(':email', $applicant['email']);
         $query->bindValue(':phoneNumber', $applicant['phoneNumber']);
+        $query->bindValue(':gender', $applicant['gender']);
         $query->bindValue(':whyDev', $applicant['whyDev']);
         $query->bindValue(':codeExperience', $applicant['codeExperience']);
         $query->bindValue(':hearAboutId', $applicant['hearAboutId']);

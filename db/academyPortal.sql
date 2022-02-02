@@ -31,42 +31,43 @@ CREATE TABLE `applicants` (
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `phoneNumber` varchar(20) DEFAULT NULL,
-  `whyDev` text,
-  `codeExperience` text,
+  `whyDev` text DEFAULT NULL,
+  `codeExperience` text DEFAULT NULL,
   `hearAboutId` int(11) DEFAULT NULL,
   `eligible` enum('1','0') DEFAULT NULL,
   `eighteenPlus` enum('1','0') DEFAULT NULL,
   `finance` enum('1','0') DEFAULT NULL,
-  `notes` text,
-  `stageId` int(11) NOT NULL DEFAULT '1',
+  `notes` text DEFAULT NULL,
+  `stageId` int(11) NOT NULL DEFAULT 1,
   `stageOptionId` int(11) DEFAULT NULL,
-  `dateTimeAdded` datetime DEFAULT CURRENT_TIMESTAMP,
-  `deleted` int(11) DEFAULT '0',
+  `dateTimeAdded` timestamp NULL DEFAULT current_timestamp(),
+  `deleted` tinyint(4) DEFAULT 0,
   `backgroundInfoId` varchar(1) DEFAULT NULL,
-  `profile_password` varchar(68) NOT NULL DEFAULT '',
+  `profile_password` varchar(68) DEFAULT '',
+  `gender` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 LOCK TABLES `applicants` WRITE;
 /*!40000 ALTER TABLE `applicants` DISABLE KEYS */;
 
-INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`, `backgroundInfoId`, `profile_password`)
+INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`, `backgroundInfoId`, `profile_password`, `gender`)
 VALUES
-	(11,'Melinde Rentoll','mrentoll0@salon.com','07671138755','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'1','1','1','Loves stilton!',1,NULL,'2021-11-25 16:29:00',0,'1',''),
-	(12,'Trumaine Digger','tdigger1@utexas.edu','07938905902','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',4,'1','0','1','Loves cheddar',1,NULL,'2021-11-25 16:32:00',0,'2',''),
-	(13,'Morgan Graundisson','mgraundisson2@tuttocitta.it','07933387264','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',5,'1','1','0','Brie for me!',1,NULL,'2021-11-25 16:35:33',0,'3',''),
-	(14,'Ignazio Hairesnape','ihairesnape3@themeforest.net','07121444941','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',5,'1','1','1','Cheddar',1,NULL,'2021-11-25 16:36:35',0,'4',''),
-	(15,'Alexandra Chandlar','achandlar4@php.net','07127430101','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',5,'1','1','0','Brie',1,NULL,'2021-11-25 16:37:18',0,'4',''),
-	(16,'Algernon Inns','ainns5@gmpg.org','07240830839','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',5,'1','1','1','Red Leicester',1,NULL,'2021-11-25 16:38:12',0,'2',''),
-	(17,'Dareen Spriggs','dspriggs7@delicious.com','07512910944','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',4,'0','1','0','',1,NULL,'2021-11-25 16:40:05',0,'3',''),
-	(18,'Sorcha Staden','sstaden8@biglobe.ne.jp','07077948068','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',5,'0','0','0','',1,NULL,'2021-11-25 16:43:12',0,'3',''),
-	(19,'Herculie Ashwood','hashwood9@census.gov','07695095821','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',3,'1','1','1','Cheesestring',1,NULL,'2021-11-25 16:44:03',0,'2',''),
-	(20,'Dylan Lucchi','dlucchia@nba.com','07116680439','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',3,'1','1','0','',1,NULL,'2021-11-25 16:44:49',0,'3',''),
-	(21,'Nessy Weekes','nweekesb@bravesites.com','07448564580','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',3,'1','1','1','',1,NULL,'2021-11-25 16:45:29',0,'1',''),
-	(22,'Sibylla Forsyth','sforsythc@statcounter.com','07046179858','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'1','1','0','',1,NULL,'2021-11-25 16:46:04',0,'3',''),
-	(23,'Arluene Moody','amoodyd@gizmodo.com','07343959417','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'0','0','0','',1,NULL,'2021-11-25 16:46:38',0,'4',''),
-	(24,'Creighton Gebbie','cgebbiee@ucla.edu','07866296968','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',4,'0','1','0','',1,NULL,'2021-11-25 16:47:16',0,'3',''),
-	(25,'Jacinthe Towse','jtowsef@godaddy.com','07528968799','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',2,'1','1','1','',1,NULL,'2021-11-25 16:47:57',0,'3','');
+	(11,'Melinde Rentoll','mrentoll0@salon.com','07671138755','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'1','1','1','Loves stilton!',1,NULL,'2021-11-25 16:29:00',0,'1','', NULL),
+	(12,'Trumaine Digger','tdigger1@utexas.edu','07938905902','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',4,'1','0','1','Loves cheddar',1,NULL,'2021-11-25 16:32:00',0,'2','', NULL),
+	(13,'Morgan Graundisson','mgraundisson2@tuttocitta.it','07933387264','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',5,'1','1','0','Brie for me!',1,NULL,'2021-11-25 16:35:33',0,'3','', NULL),
+	(14,'Ignazio Hairesnape','ihairesnape3@themeforest.net','07121444941','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',5,'1','1','1','Cheddar',1,NULL,'2021-11-25 16:36:35',0,'4','', NULL),
+	(15,'Alexandra Chandlar','achandlar4@php.net','07127430101','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',5,'1','1','0','Brie',1,NULL,'2021-11-25 16:37:18',0,'4','', NULL),
+	(16,'Algernon Inns','ainns5@gmpg.org','07240830839','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',5,'1','1','1','Red Leicester',1,NULL,'2021-11-25 16:38:12',0,'2','', NULL),
+	(17,'Dareen Spriggs','dspriggs7@delicious.com','07512910944','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',4,'0','1','0','',1,NULL,'2021-11-25 16:40:05',0,'3','', NULL),
+	(18,'Sorcha Staden','sstaden8@biglobe.ne.jp','07077948068','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',5,'0','0','0','',1,NULL,'2021-11-25 16:43:12',0,'3','', NULL),
+	(19,'Herculie Ashwood','hashwood9@census.gov','07695095821','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',3,'1','1','1','Cheesestring',1,NULL,'2021-11-25 16:44:03',0,'2','', NULL),
+	(20,'Dylan Lucchi','dlucchia@nba.com','07116680439','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',3,'1','1','0','',1,NULL,'2021-11-25 16:44:49',0,'3','', NULL),
+	(21,'Nessy Weekes','nweekesb@bravesites.com','07448564580','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',3,'1','1','1','',1,NULL,'2021-11-25 16:45:29',0,'1','', NULL),
+	(22,'Sibylla Forsyth','sforsythc@statcounter.com','07046179858','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'1','1','0','',1,NULL,'2021-11-25 16:46:04',0,'3','', NULL),
+	(23,'Arluene Moody','amoodyd@gizmodo.com','07343959417','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'0','0','0','',1,NULL,'2021-11-25 16:46:38',0,'4','', NULL),
+	(24,'Creighton Gebbie','cgebbiee@ucla.edu','07866296968','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',4,'0','1','0','',1,NULL,'2021-11-25 16:47:16',0,'3','', NULL),
+	(25,'Jacinthe Towse','jtowsef@godaddy.com','07528968799','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',2,'1','1','1','',1,NULL,'2021-11-25 16:47:57',0,'3','', NULL);
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -84,7 +85,7 @@ CREATE TABLE `applicants_additional` (
   `assessmentDay` int(3) DEFAULT NULL,
   `customAssessmentDay` date DEFAULT NULL,
   `assessmentTime` varchar(5) DEFAULT NULL,
-  `assessmentNotes` text,
+  `assessmentNotes` text DEFAULT NULL,
   `diversitechInterest` int(1) DEFAULT NULL,
   `diversitech` int(5) DEFAULT NULL,
   `edaid` int(5) DEFAULT NULL,
@@ -102,7 +103,7 @@ CREATE TABLE `applicants_additional` (
   `portfolioUrl` varchar(255) DEFAULT NULL,
   `pleskHostingUrl` varchar(255) DEFAULT NULL,
   `githubEducationLink` varchar(255) DEFAULT NULL,
-  `additionalNotes` text,
+  `additionalNotes` text DEFAULT NULL,
   `chosenCourseId` int(11) unsigned DEFAULT NULL,
   `attitude` int(3) DEFAULT NULL,
   `averageScore` int(3) DEFAULT NULL,
@@ -145,7 +146,6 @@ VALUES
 	(23,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(24,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(25,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-
 /*!40000 ALTER TABLE `applicants_additional` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,7 +158,7 @@ DROP TABLE IF EXISTS `background_info`;
 CREATE TABLE `background_info` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `backgroundInfo` varchar(40) DEFAULT NULL,
-  `deleted` int(4) DEFAULT '0',
+  `deleted` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
@@ -210,7 +210,7 @@ DROP TABLE IF EXISTS `cohorts`;
 CREATE TABLE `cohorts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `date` date DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
+  `deleted` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
@@ -342,7 +342,7 @@ CREATE TABLE `courses` (
   `name` varchar(255) DEFAULT NULL,
   `trainer` varchar(255) DEFAULT NULL,
   `notes` varchar(500) DEFAULT NULL,
-  `deleted` int(1) NOT NULL DEFAULT '0',
+  `deleted` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
@@ -403,8 +403,8 @@ CREATE TABLE `events` (
   `date` date NOT NULL,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
-  `notes` text,
-  `availableToHP` tinyint(1) NOT NULL DEFAULT '0',
+  `notes` text DEFAULT NULL,
+  `availableToHP` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `category` (`category`),
   CONSTRAINT `events_ibfk_1` FOREIGN KEY (`category`) REFERENCES `event_categories` (`id`)
@@ -446,7 +446,7 @@ CREATE TABLE `events_hiring_partner_link_table` (
   `event_id` int(11) unsigned NOT NULL,
   `hiring_partner_id` int(11) unsigned NOT NULL,
   `people_attending` int(11) unsigned DEFAULT NULL,
-  `deleted` int(11) NOT NULL DEFAULT '0',
+  `deleted` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -462,7 +462,7 @@ CREATE TABLE `events_hiring_partners` (
   `event_id` int(11) unsigned NOT NULL,
   `hiring_partner_id` int(11) unsigned NOT NULL,
   `people_attending` int(11) unsigned DEFAULT NULL,
-  `deleted` tinyint(4) NOT NULL DEFAULT '0',
+  `deleted` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
@@ -478,6 +478,31 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table gender
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `gender`;
+
+CREATE TABLE `gender` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `gender` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `gender` WRITE;
+/*!40000 ALTER TABLE `gender` DISABLE KEYS */;
+
+INSERT INTO `gender` (`id`, `gender`)
+VALUES
+	(1,'Male'),
+	(2,'Female'),
+	(3,'Non-binary'),
+	(4,'Prefer not to say');
+
+/*!40000 ALTER TABLE `gender` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table hear_about
 # ------------------------------------------------------------
 
@@ -486,7 +511,7 @@ DROP TABLE IF EXISTS `hear_about`;
 CREATE TABLE `hear_about` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `hearAbout` varchar(150) DEFAULT NULL,
-  `deleted` int(11) NOT NULL DEFAULT '0',
+  `deleted` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
@@ -506,6 +531,33 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table hearAbout
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `hearAbout`;
+
+CREATE TABLE `hearAbout` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `hearAbout` varchar(150) DEFAULT NULL,
+  `deleted` tinyint(4) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `hearAbout` WRITE;
+/*!40000 ALTER TABLE `hearAbout` DISABLE KEYS */;
+
+INSERT INTO `hearAbout` (`id`, `hearAbout`, `deleted`)
+VALUES
+	(1,'Google',0),
+	(2,'Newspaper',0),
+	(3,'Back of the toilet door',0),
+	(4,'Telepathy',0),
+	(5,'North Korea',0),
+	(6,'Yoda',0);
+
+/*!40000 ALTER TABLE `hearAbout` ENABLE KEYS */;
+UNLOCK TABLES;
+
 # Dump of table hiring_partner_companies
 # ------------------------------------------------------------
 
@@ -514,7 +566,7 @@ DROP TABLE IF EXISTS `hiring_partner_companies`;
 CREATE TABLE `hiring_partner_companies` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `size` int(11) DEFAULT '0',
+  `size` tinyint(2) DEFAULT 0,
   `tech_stack` varchar(600) DEFAULT NULL,
   `postcode` varchar(255) DEFAULT NULL,
   `phone_number` varchar(255) DEFAULT NULL,
@@ -544,7 +596,7 @@ CREATE TABLE `hiring_partner_contacts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `email` varchar(255) NOT NULL DEFAULT '',
-  `is_primary_contact` int(11) NOT NULL DEFAULT '1',
+  `is_primary_contact` tinyint(1) NOT NULL DEFAULT 1,
   `job_title` varchar(255) DEFAULT NULL,
   `hiring_partner_company_id` int(11) NOT NULL,
   `phone` varchar(255) DEFAULT NULL,
@@ -577,7 +629,7 @@ CREATE TABLE `options` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `option` varchar(255) NOT NULL DEFAULT '',
   `stageId` int(11) NOT NULL,
-  `deleted` int(11) NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
@@ -675,7 +727,7 @@ CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL DEFAULT '',
   `password` varchar(65) NOT NULL DEFAULT '',
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
