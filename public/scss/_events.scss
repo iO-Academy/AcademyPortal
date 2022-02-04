@@ -1,0 +1,107 @@
+#submit-search-event {
+    margin-top: 0;
+}
+
+#messages {
+    margin: 10px 0;
+}
+
+#events-list {
+    margin-top: 0;
+}
+
+.event {
+    padding: 15px;
+    border-bottom: 1px solid $dark-grey;
+    overflow: auto;
+    .header {
+        overflow: auto;
+    }
+    .show-event-info {
+        float: right;
+        background-color: $io-purple;
+        color: #ebeef1;
+    }
+    &:last-child {
+        border-bottom: none;
+    }
+    &.open {
+        background: #E0E8F2;
+    }
+}
+
+.header h4 {
+    float: left;
+    margin: 0;
+    padding-top: 6px;
+    font-size: 20px;
+}
+
+.event {
+    .moreInfo {
+        margin-top: 10px;
+        font-size: 16px;
+    }
+    p {
+        overflow-wrap: break-word;
+    }
+    .moreInfo span {
+        font-weight: bold;
+    }
+    .badge {
+        background-color: $io-pink;
+        padding: 6px;
+        margin: 0 3px;
+        font-size: 14px;
+    }
+    .btn {
+        font-size: 16px;
+    }
+}
+
+.event-attendees {
+    overflow: auto;
+    border: 1px solid $dark-grey;
+}
+
+.headerDateTime {
+    font-size: 18px;
+}
+
+.hiring-partners {
+    min-height: 0;
+    border-right: 1px solid $dark-grey;
+}
+
+.hiring-partner {
+    overflow: auto;
+    p {
+        float: left;
+        margin-right: 100px;
+        margin-top: 7px;
+    }
+    .btn {
+        float: right;
+        margin: 0;
+    }
+}
+
+.addHiringPartnerForm {
+    margin-bottom: 10px;
+    input,
+    label {
+        margin: 0;
+    }
+    select {
+        display: block;
+        padding: 4px;
+    }
+    .companyAttendees {
+        width: 100px;
+    }
+}
+
+input[type="date"],
+input[type="time"] {
+    padding: 0 12px;
+}

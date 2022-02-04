@@ -1,0 +1,21 @@
+.login {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    background: $light-grey;
+    border-radius: 15px;
+}
+
+#loginForm {
+    margin-top: 10px;
+    label {
+        display: block;
+    }
+    .form-control {
+        max-width: 350px;
+    }
+    .error {
+        background-color: #ffaab1;
+    }
+}

@@ -1,0 +1,14 @@
+nav {
+    margin-bottom: 15px;
+    .btn {
+        border-radius: 0;
+    }
+    a[href="#"] {
+        color: $light-grey;
+        cursor: default;
+        &:hover {
+            color: $light-grey;
+            background: none;
+        }
+    }
+}
