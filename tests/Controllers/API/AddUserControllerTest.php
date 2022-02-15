@@ -10,7 +10,7 @@ class AddUserControllerTest extends TestCase
 {
     private $mockUserModel;
 
-    public function setup()
+    public function setup(): void
     {
         $this->mockUserModel = $this->createMock(UserModel::class);
     }

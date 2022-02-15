@@ -16,13 +16,12 @@ class RegisterControllerFactoryTest extends TestCase
         $renderer = $this->createMock(PhpRenderer::class);
 
         //best solution is to use prophecy but this works. Do not mess with order in factory
-        $container->expects($this->at(0))->method('get')
-            ->with($this->equalTo('renderer'))
-            ->willReturn($renderer);
-
-        $container->expects($this->at(1))->method('get')
-            ->with($this->equalTo('RandomPasswordModel'))
-            ->willReturn('password');
+        $container->method('get')
+            ->withConsecutive(
+                [$this->equalTo('renderer')],
+                [$this->equalTo('RandomPasswordModel')]
+            )
+            ->willReturnOnConsecutiveCalls($renderer, 'password');
 
         $factory =  new RegisterPageControllerFactory();
         $case = $factory($container);

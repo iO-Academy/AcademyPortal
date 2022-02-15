@@ -18,13 +18,12 @@ class CoursesPageControllerFactoryTest extends TestCase
         $model = $this->createMock(CourseModel::class);
 
         //best solution is to use prophecy but this works. Do not mess with order in factory
-        $container->expects($this->at(0))->method('get')
-            ->with($this->equalTo('renderer'))
-            ->willReturn($renderer);
-
-        $container->expects($this->at(1))->method('get')
-            ->with($this->equalTo('CourseModel'))
-            ->willReturn($model);
+        $container->method('get')
+            ->withConsecutive(
+                [$this->equalTo('renderer')],
+                [$this->equalTo('CourseModel')]
+            )
+            ->willReturnOnConsecutiveCalls($renderer, $model);
 
         $factory = new CoursesPageControllerFactory();
         $case = $factory($container);

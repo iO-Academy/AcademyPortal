@@ -18,19 +18,13 @@ class EditApplicantPageControllerFactoryTest extends TestCase
         $container = $this->createMock(ContainerInterface::class);
         $stage = $this->createMock(StageModel::class);
         $applicant = $this->createMock(ApplicantModel::class);
-        $container->expects($this->at(0))
-            ->method('get')
-            ->with($this->equalTo('renderer'))
-            ->willReturn($renderer);
-        $container->expects($this->at(1))
-            ->method('get')
-            ->with($this->equalTo('ApplicantModel'))
-            ->willReturn($applicant);
-        $container->expects($this->at(2))
-            ->method('get')
-            ->with($this->equalTo('StageModel'))
-            ->willReturn($stage);
-
+        $container->method('get')
+            ->withConsecutive(
+                [$this->equalTo('renderer')],
+                [$this->equalTo('ApplicantModel')],
+                [$this->equalTo('StageModel')]
+            )
+            ->willReturnOnConsecutiveCalls($renderer, $applicant, $stage);
 
         $factory = new EditApplicantPageControllerFactory();
         $case = $factory($container);

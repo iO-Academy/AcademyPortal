@@ -16,14 +16,12 @@ class GetApplicationFormControllerFactoryTest extends TestCase
         $container = $this->createMock(ContainerInterface::class);
         $applicationForm = $this->createMock(ApplicationFormModel::class);
         $eventModel = $this->createMock(EventModel::class);
-        $container->expects($this->at(0))
-            ->method('get')
-            ->with($this->equalTo('ApplicationFormModel'))
-            ->willReturn($applicationForm);
-        $container->expects($this->at(1))
-            ->method('get')
-            ->with($this->equalTo('EventModel'))
-            ->willReturn($eventModel);
+        $container->method('get')
+            ->withConsecutive(
+                [$this->equalTo('ApplicationFormModel')],
+                [$this->equalTo('EventModel')]
+            )
+            ->willReturnOnConsecutiveCalls($applicationForm, $eventModel);
 
         $factory = new GetApplicationFormControllerFactory();
         $case = $factory($container);
