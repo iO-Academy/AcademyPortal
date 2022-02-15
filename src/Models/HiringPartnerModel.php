@@ -96,7 +96,7 @@ class HiringPartnerModel
 
         $query->bindParam(':contactName', $contact['contactName'], \PDO::PARAM_STR);
         $query->bindParam(':contactEmail', $contact['contactEmail'], \PDO::PARAM_STR);
-        $query->bindParam(':jobTitle', $contact['jobTitle'], \PDO::PARAM_STR);
+        $query->bindParam(':jobTitle', $contact['contactJobTitle'], \PDO::PARAM_STR);
         $query->bindParam(':contactPhone', $contact['contactPhone'], \PDO::PARAM_STR);
         $query->bindParam(':hiringPartnerCompanyId', $contact['contactCompanyId'], \PDO::PARAM_INT);
         $query->bindParam(':primaryContact', $contact['contactIsPrimary'], \PDO::PARAM_INT);

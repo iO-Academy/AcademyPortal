@@ -21,8 +21,8 @@ class ContactValidator
             throw new \Exception('Invalid company Id.');
         }
 
-        if (!is_null($contact['jobTitle'])) {
-            StringValidator::ValidateLength($contact['jobTitle'], StringValidator::MAXVARCHARLENGTH, 'jobTitle');
+        if (!is_null($contact['contactJobTitle'])) {
+            StringValidator::ValidateLength($contact['contactJobTitle'], StringValidator::MAXVARCHARLENGTH, 'contactJobTitle');
         }
 
         if (!is_null($contact['contactPhone'])) {
