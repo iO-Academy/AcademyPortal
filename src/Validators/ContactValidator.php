@@ -22,7 +22,10 @@ class ContactValidator
         }
 
         if (!is_null($contact['contactJobTitle'])) {
-            StringValidator::ValidateLength($contact['contactJobTitle'], StringValidator::MAXVARCHARLENGTH, 'contactJobTitle');
+            StringValidator::ValidateLength(
+                $contact['contactJobTitle'],
+                StringValidator::MAXVARCHARLENGTH,
+                'contactJobTitle');
         }
 
         if (!is_null($contact['contactPhone'])) {
