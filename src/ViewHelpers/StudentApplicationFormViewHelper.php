@@ -12,11 +12,11 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormOne(array $data): string
     {
-        $output = '<div class="row "><input type="text" placeholder="Full Name" class="form-control"></div>';
+        $output = '<div class="row "><input type="text" class="submitApplicant" placeholder="Full Name" class="form-control"></div>';
         $output .= '<div id="nameError" data-field="name" class="alert hidden formItem_alert">Field Required.</div>';
-        $output .= '<div class="row"><input type="email" placeholder="Email" class="form-control"></div>';
+        $output .= '<div class="row"><input type="email" class="submitApplicant" placeholder="Email" class="form-control"></div>';
         $output .= '<div id="emailError" data-field="Email" class="alert hidden formItem_alert">Field Required.</div>';
-        $output .= '<div class="row"><input type="tel" placeholder="Phone Number" class="form-control"></div>';
+        $output .= '<div class="row"><input type="tel" class="submitApplicant" placeholder="Phone Number" class="form-control"></div>';
         $output .= '<div id="telError" data-field="phone number" ';
         $output .= 'class="alert hidden formItem_alert">Field Required.</div>';
         $output .= '<div class="row"><select class="form-control" >';
@@ -84,13 +84,13 @@ class StudentApplicationFormViewHelper
     {
         $output = '<div class="row"><label>Select start date(s)</label><ul class="startDatesList">';
         foreach ($data['cohorts'] as $cohorts) {
-            $output .= '<li><label><input type="checkbox" data-nextcourse="false" ';
+            $output .= '<li><label><input type="checkbox" class="submitApplicant" data-nextcourse="false" ';
             $output .= 'class="startDatesCheckbox" name="startDatesCheckbox"';
             $output .= ' value="' . $cohorts['id'] . '"/>';
             $output .= date_format(date_create_from_format("Y-m-d", $cohorts['date']), "D j M Y");
             $output .= '</label></li>';
         }
-        $output .= '<li><label><input type="checkbox" data-nextcourse="true" ';
+        $output .= '<li><label><input type="checkbox" class="submitApplicant" data-nextcourse="true" ';
         $output .= 'class="startDatesCheckbox" name="startDatesCheckbox"';
         $output .= ' value="register interest">next available online course (register interest)';
         $output .= '</label></li></ul>';
@@ -107,19 +107,19 @@ class StudentApplicationFormViewHelper
         $output .= '<div id="hearAboutError" class="alert hidden formItem_alert"></div>';
         $output .= '<div class="row hidden" id="additionalNotesWordOfMouth">';
         $output .= '<label for="additionalNotesWordOfMouthInput">Who referred you?</label>';
-        $output .= '<input type="text" class="form-control" ';
+        $output .= '<input type="text" class="form-control submitApplicant" ';
         $output .= 'id="additionalNotesWordOfMouthInput" name="additionalNotes">';
         $output .= '</div>';
         $output .= '<div class="row hidden" id="additionalNotesOther">';
         $output .= '<label for="additionalNotesOtherInput">Please specify further</label>';
-        $output .= '<input type="text" class="form-control" ';
+        $output .= '<input type="text" class="form-control submitApplicant" ';
         $output .= 'id="additionalNotesOtherInput" name="additionalNotes"></div>';
         $output .= '<div id="additionalNotesError" class="alert hidden formItem_alert"></div>';
-        $output .= '<div class="termsAndConditions"><div class="row"><label><input type="checkbox" ';
+        $output .= '<div class="termsAndConditions"><div class="row"><label><input type="checkbox" class="submitApplicant"';
         $output .= 'value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK';
         $output .= '</label></div>';
         $output .= '<div id="UKWorkError" class="alert hidden formItem_alert"></div>';
-        $output .= '<div class="row"><label><input type="checkbox" value="I confirm that I am at least ';
+        $output .= '<div class="row"><label><input class="submitApplicant" type="checkbox" value="I confirm that I am at least ';
         $output .= '18 years of age before my chosen course start date"/>I confirm that I am at least 18 ';
         $output .= 'years of age before my chosen course start date</label></div>';
         $output .= '<div id="18Error" class="alert hidden formItem_alert"></div>';
@@ -127,7 +127,7 @@ class StudentApplicationFormViewHelper
         $output .= 'data by this website in accordance with our <a href="https://io-academy.uk/terms-conditions" ';
         $output .= 'target="_blank">terms and conditions</a>';
         $output .= ' and <a href="https://io-academy.uk/privacy-policy" target="_blank">privacy policy</a>.</p>';
-        $output .= '<label><input type="checkbox" value="I accept the terms and conditions"/>';
+        $output .= '<label><input type="checkbox" class="submitApplicant" value="I accept the terms and conditions"/>';
         $output .= 'I accept the terms and conditions</label></div></div>';
         $output .= '<div id="termsConditionsError" class="alert hidden formItem_alert"></div>';
         return $output;
@@ -200,7 +200,7 @@ class StudentApplicationFormViewHelper
             $output .= ($applicationFormPageNumber - 1) . '">Prev</button>';
         }
         if ($applicationFormPageNumber >= $finalPage) {
-            $output .= '<button class="btn btn-lg finishButton">Finish</button></div></div>';
+            $output .= '<button class="btn btn-lg finishButton" id="submitApplicant">Finish</button></div></div>';
         } else {
             $output .= '<button class="nextButton btn btn-lg" data-buttontype="next" ';
             $output .= 'type="submit" for="studentApplicationForm" value="';
