@@ -28,6 +28,16 @@
     &.open {
         background: #E0E8F2;
     }
+    .copy-emails-button {
+        background-color: $io-green;
+        color: $io-purple-dark;
+    }
+    .event-attendees-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 }
 
 .header h4 {
@@ -62,6 +72,16 @@
 .event-attendees {
     overflow: auto;
     border: 1px solid $dark-grey;
+}
+
+.event-attendees-table {
+    background-color: #ffffff;
+}
+
+.email-column-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .headerDateTime {
