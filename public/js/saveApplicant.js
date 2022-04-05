@@ -1,7 +1,6 @@
 document.querySelector('#submitApplicant').addEventListener('click', e => {
     e.preventDefault();
     const data = getCompletedFormData();
-    console.log(data);
     const validate = validateFormInputs(data);
     let formIsValid = true;
 
@@ -11,7 +10,6 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
         element.classList.add('hidden');
         element.innerHTML = '';
     });
-
     Object.keys(validate).forEach(formItem => {
         const querySelector = document.querySelector(`#${formItem}Error`);
         let formItemValues = validate[formItem];
@@ -26,6 +24,7 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
             }
         })
     });
+
 
     if (formIsValid) {
         makeApiRequest(data, window.location.pathname);
@@ -71,7 +70,6 @@ let errorMessage = (validationType) => {
 
 let getCompletedFormData = () => {
     const formData = document.querySelectorAll(".submitApplicant");
-    console.log(formData);
     let data = {};
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -101,7 +99,6 @@ let getCompletedFormData = () => {
 };
 
 let makeApiRequest = async (data, type) => {
-    console.log(data)
     const path = './api/' + (type === '/addapplicant' || type === '/studentApplicationForm' ? 'saveApplicant' : 'editApplicant');
     return fetch(path, {
         credentials: "same-origin",
@@ -138,7 +135,6 @@ let makeApiRequest = async (data, type) => {
 };
 
 let validateFormInputs = (data) => {
-    console.log(data)
     let validate = {};
 
     validate = {
@@ -167,7 +163,7 @@ let validateFormInputs = (data) => {
             validLengthText: textAreaMaxLength(data.notes)
         },
         cohort: {
-            isChecked: requiredCheckboxes(document.querySelectorAll('#cohorts .cohort_checkbox input'))
+            isChecked: requiredCheckboxes(document.querySelectorAll('#cohorts .cohort_checkbox .submitApplicant input'))
         }
     };
     return validate;
