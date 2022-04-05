@@ -119,9 +119,9 @@ function displayEventsHandler(eventsAndHiringPartners) {
 async function displayEvents(events, hiringPartners, applicants) {
     events.forEach(async (event) => {
         await eventGenerator(event, hiringPartners, applicants).then(event => {
-            // displayHiringPartnersAttending(event)
+            displayHiringPartnersAttending(event)
         })
-        // return event
+        return event
     })
 }
 
@@ -150,7 +150,7 @@ function DeleteHPRequest(e, event) {
             }) .then (response => response.json())
                .then (responseJSON => {
                     if (responseJSON.success) {
-                        // displayHiringPartnersAttending({id: data.event_id})
+                        displayHiringPartnersAttending({id: data.event_id})
                     } else {
                         document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`).innerText = responseJSON.message
                     }
@@ -293,7 +293,7 @@ async function eventGenerator(event, hiringPartners, applicants) {
     const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`)
     if (hiringPartners.status) {
         hiringPartners.data.forEach(function (hiringPartner) {
-            // document.querySelector(`select[data-event="${event.id}"]`).innerHTML += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
+            document.querySelector(`select[data-event="${event.id}"]`).innerHTML += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
         })
     } else {
         currentEventsMessage.innerText = hiringPartners.message
