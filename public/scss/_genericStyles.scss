@@ -70,3 +70,9 @@ input[type="submit"] {
 table {
     width: 100%;
 }
+
+.myBtn {
+    &:hover {
+      cursor: pointer;
+    }
+}

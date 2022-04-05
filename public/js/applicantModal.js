@@ -18,7 +18,6 @@ function prettyDate(date) {
     date = new Date(date);
     let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
     return date.toLocaleDateString("en-GB", dateOptions)
-
 }
 
 function aptitudeColors(score) {
@@ -50,7 +49,8 @@ function copyToClipboard(element) {
     document.querySelector("button.clipboard").innerText = 'Copied';
 }
 
-$(document).ready(function () {
+export function displayApplicantModal() {
+    $(document).ready(function () {
     $(".myBtn").click(function () {
         let url = './api/getApplicant/' + this.dataset.id
         let studentUrl = 'http://localhost:8080/public/' + this.dataset.id
@@ -178,3 +178,5 @@ $(document).ready(function () {
         $("#applicantModal").modal()
     })
 })
+}
+displayApplicantModal()
