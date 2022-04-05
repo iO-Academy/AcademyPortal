@@ -1,6 +1,9 @@
 const eventList = document.querySelector('#events')
 const message = document.querySelector('#messages')
 const isPastPage = document.querySelector('#events-list').dataset.eventType === 'Past'; // this is such a hack!
+
+import {displayApplicantModal} from "./applicantModal.js"
+
 /**
  * Gets event information from the API and passes into the
  * displayEventsHandler function
@@ -254,7 +257,7 @@ async function eventGenerator(event, hiringPartners, applicants) {
             applicants.forEach((applicant) => {
                 if (applicant.assessmentDay == event.id) {
                     eventInformation += `<tr>`;
-                    eventInformation += `<td>${applicant.name}</td>`;
+                    eventInformation += `<td><a class="myBtn"  data-id="${applicant.id}">${applicant.name}</a></td>`;
                     eventInformation += `<td>${applicant.email}</td>`;
                     eventInformation += `</tr>`;
                 }
@@ -262,6 +265,7 @@ async function eventGenerator(event, hiringPartners, applicants) {
         eventInformation += '</table>';
         eventInformation += '</div>';
     }
+    displayApplicantModal()
 
     if (event.availableToHP == 1) {
         eventInformation += `<div class="event-attendees">`
