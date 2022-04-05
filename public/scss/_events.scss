@@ -31,12 +31,7 @@
     .copy-emails-button {
         background-color: $io-green;
         color: $io-purple-dark;
-    }
-    .event-attendees-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+        float: right;
     }
 }
 
@@ -76,12 +71,6 @@
 
 .event-attendees-table {
     background-color: #ffffff;
-}
-
-.email-column-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
 .headerDateTime {
