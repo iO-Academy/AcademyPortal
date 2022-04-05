@@ -313,7 +313,6 @@ function addEventListenerForCopyEmailsButton(event, applicants) {
                 attendeeEmails += applicant.email + '; '
             })
             navigator.clipboard.writeText(attendeeEmails)
-            alert('All emails copied to clipboard')
             })
     })
 }
