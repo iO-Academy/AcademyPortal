@@ -246,10 +246,10 @@ async function eventGenerator(event, hiringPartners, applicants) {
     if (event.category_name === 'Assessment') {
         // put code for assessment event type here!
         eventInformation += '<div class="event-attendees-container">';
-        eventInformation += '<table class="col-xs-12 table-bordered table">';
+        eventInformation += '<table class="col-xs-12 table-bordered table event-attendees-table">';
         eventInformation += '<tr>';
-        eventInformation += '<th class="col-xs-2">Name</th>';
-        eventInformation += '<th class="col-xs-3">Email</th>';
+        eventInformation += '<th class="col-xs-5">Name</th>';
+        eventInformation += '<th class="email-column-header">Email <a class="copy-emails-button" data-id="${event.id}"><img src="/public/icons/copy-icon.svg" alt="copy emails icon" /></a></th>'
         eventInformation += '</tr>';
             applicants.forEach((applicant) => {
                 if (applicant.assessmentDay == event.id) {
@@ -260,7 +260,6 @@ async function eventGenerator(event, hiringPartners, applicants) {
                 }
             });
         eventInformation += '</table>';
-        eventInformation += `<button class="btn copy-emails-button" data-id="${event.id}">Copy emails</button>`;
         eventInformation += '</div>';
     }
 
