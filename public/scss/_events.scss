@@ -29,10 +29,8 @@
         background: #E0E8F2;
     }
     .copy-emails-button {
-        width: 100%;
-        height: 100%;
-        padding: 5px;
-        font-size: 12px;
+        background-color: $io-green;
+        color: $io-purple-dark;
     }
     .event-attendees-container {
         display: flex;

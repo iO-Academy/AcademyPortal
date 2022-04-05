@@ -249,7 +249,7 @@ async function eventGenerator(event, hiringPartners, applicants) {
         eventInformation += '<table class="col-xs-12 table-bordered table event-attendees-table">';
         eventInformation += '<tr>';
         eventInformation += '<th class="col-xs-5">Name</th>';
-        eventInformation += '<th class="email-column-header">Email <a class="copy-emails-button" data-id="${event.id}"><img src="/public/icons/copy-icon.svg" alt="copy emails icon" /></a></th>'
+        eventInformation += `<th class="email-column-header">Email <button class="btn copy-emails-button" data-id="${event.id}">Copy emails</button></th>`;
         eventInformation += '</tr>';
             applicants.forEach((applicant) => {
                 if (applicant.assessmentDay == event.id) {
@@ -313,6 +313,7 @@ function addEventListenerForCopyEmailsButton(event, applicants) {
                 attendeeEmails += applicant.email + '; '
             })
             navigator.clipboard.writeText(attendeeEmails)
+            alert('All emails copied to clipboard')
             })
     })
 }
