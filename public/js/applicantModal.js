@@ -180,7 +180,3 @@ export function displayApplicantModal() {
 })
 }
 displayApplicantModal()
-
-
-
-
