@@ -1,23 +1,26 @@
 <?php
 
+namespace Portal\Utilities;
+
 class Mailer {
 
-    private $adminEmail;
-    private $trainerEmail;
+//    private static $adminEmail;
+//    private static $trainerEmail;
+    private static $testEmail = 'lgrayland96@gmail.com';
 
-    public function mailApplication () {
 
-        $internalEmailsToNotify = array_merge($adminEmail, $trainerEmail);
+    public static function sendEmail () {
+
+        // $internalEmailsToNotify = array_merge($adminEmail, $trainerEmail);
 
         $email = new \SendGrid\Mail\Mail();
         $email->setFrom("no-reply@io-academy.uk", "Example User");
         $email->setSubject("New Applicant details");
-        $email->addTo($internalEmailsToNotify, "Internal Email Group");
-        $email->addContent("text/plain", "and easy to do anywhere, even with PHP");
+        $email->addTo(self::$testEmail, "Internal Email Group");
         $email->addContent(
-            "text/html", "<strong>and easy to do anywhere, even with PHP</strong>" /*Call ViewHelper Here*/
+            "text/html", "<h1>I am working</h1>" /*Call ViewHelper Here*/
         );
-        $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+        $sendgrid = new \SendGrid($_ENV['SENDGRID_API_KEY']);
         try {
             $response = $sendgrid->send($email);
             print $response->statusCode() . "\n";

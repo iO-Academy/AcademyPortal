@@ -61,4 +61,17 @@ return function (App $app) {
     $app->get('/api/getCourses', 'GetCoursesController');
     $app->post('/api/addCourse', 'AddCourseController');
 
+    // Remember to delete this AND deleteMe.phtml
+    $container = $app->getContainer();
+
+    $app->get('/testEmail', function ($request, $response, $args) use ($container) {
+
+
+        $testData = ['test1key' => 'test1value', 'test2key' => 'test2value'];
+        Portal\Utilities\Mailer::sendEmail($testData);
+
+        $renderer = $container->get('renderer');
+        return $renderer->render($response, "deleteMe.phtml", $args);
+    });
+
 };

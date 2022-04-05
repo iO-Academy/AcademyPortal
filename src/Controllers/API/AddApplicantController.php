@@ -45,6 +45,7 @@ class AddApplicantController extends Controller
             $newApplicationData = $request->getParsedBody();
             $getData = $request->getQueryParams();
             var_dump($getData);
+            var_dump($newApplicationData);
 
             //To do: find correct status code for incorrect data being sent to the API
             if ($newApplicationData === null) {
@@ -63,7 +64,11 @@ class AddApplicantController extends Controller
                 return $this->respondWithJson($response, $data, $statusCode);
             }
 
+
             $successfulRegister = $this->applicantModel->storeApplicant($applicant);
+
+            // Call email utility and pass in $applicant data
+
 
             if ($successfulRegister) {
                 $data = [
