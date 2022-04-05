@@ -2,7 +2,7 @@ const eventList = document.querySelector('#events')
 const message = document.querySelector('#messages')
 const isPastPage = document.querySelector('#events-list').dataset.eventType === 'Past'; // this is such a hack!
 
-import {displayApplicantModal} from "./applicantModal.js"
+import {addEventListenersToDisplayApplicantModal} from "./applicantModal.js"
 
 /**
  * Gets event information from the API and passes into the
@@ -265,7 +265,7 @@ async function eventGenerator(event, hiringPartners, applicants) {
         eventInformation += '</table>';
         eventInformation += '</div>';
     }
-    displayApplicantModal()
+    addEventListenersToDisplayApplicantModal()
 
     if (event.availableToHP == 1) {
         eventInformation += `<div class="event-attendees">`
