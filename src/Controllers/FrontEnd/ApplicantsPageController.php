@@ -14,6 +14,8 @@ class ApplicantsPageController extends Controller
     private $renderer;
     private $applicantModel;
     private $stageModel;
+    private int $numberOfApplicantsPerPage = 20;
+    private int $pageNumber = 1;
 
     /**
      * ApplicantsPageController constructor.
@@ -64,21 +66,28 @@ class ApplicantsPageController extends Controller
                 $params['stageId'] = '%';
             }
 
-            $params['count'] = $this->applicantModel->countPaginationPages($params['stageId'], $params['cohortId']);
+            $params['data']['applicants'] = $this->applicantModel
+                ->getApplicants(
+                    $params['name'],
+                    $params['stageId'],
+                    $params['cohortId'],
+                    $params['sort']
+                );
+
+            $numberOfPages = ceil(count($params['data']['applicants']) / $this->numberOfApplicantsPerPage);
+            var_dump(count($params['data']['applicants']));
+            // only 5 applicants coming back from DB, but should be all 15 of them
+            // perhaps need to save all applicants to a varioable first and then save to $params after slicing it down
+            $applicants = array_slice($params['data']['applicants'], ($this->pageNumber - 1) * $this->numberOfApplicantsPerPage , $this->numberOfApplicantsPerPage);
+
+            $params['count'] = $numberOfPages;
 
             if (isset($_SESSION['page']) && $_SESSION['page'] > $params['count']) {
                 $_SESSION['page'] = 1;
             }
             $params['page'] = $_SESSION['page'];
 
-            $params['data']['applicants'] = $this->applicantModel
-                ->getApplicants(
-                    $params['name'],
-                    $params['stageId'],
-                    $params['cohortId'],
-                    $params['sort'],
-                    $params['page']
-                );
+
             return $this->renderer->render($response, 'applicants.phtml', $params);
         }
         return $response->withHeader('Location', '/');
