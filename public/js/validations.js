@@ -44,10 +44,15 @@ function isPresent(data) {
 }
 
 function textAreaMaxLength(data) {
-    return data.length <= 10000;
+    if(typeof (data) === 'undefined') {
+        return "";
+    } else {
+        return data.length <= 10000;
+    }
 }
 
 function varCharMaxLength(data) {
+    console.log(data)
     return data.length <= 255;
 }
 

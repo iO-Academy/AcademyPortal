@@ -1,6 +1,7 @@
 document.querySelector('#submitApplicant').addEventListener('click', e => {
     e.preventDefault();
     const data = getCompletedFormData();
+    console.log(data);
     const validate = validateFormInputs(data);
     let formIsValid = true;
 
@@ -70,6 +71,7 @@ let errorMessage = (validationType) => {
 
 let getCompletedFormData = () => {
     const formData = document.querySelectorAll(".submitApplicant");
+    console.log(formData);
     let data = {};
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -99,7 +101,8 @@ let getCompletedFormData = () => {
 };
 
 let makeApiRequest = async (data, type) => {
-    const path = './api/' + (type === '/addapplicant' ? 'saveApplicant' : 'editApplicant');
+    console.log(data)
+    const path = './api/' + (type === '/addapplicant' || type === '/studentApplicationForm' ? 'saveApplicant' : 'editApplicant');
     return fetch(path, {
         credentials: "same-origin",
         headers: {
@@ -135,6 +138,7 @@ let makeApiRequest = async (data, type) => {
 };
 
 let validateFormInputs = (data) => {
+    console.log(data)
     let validate = {};
 
     validate = {
