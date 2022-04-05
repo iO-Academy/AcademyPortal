@@ -97,7 +97,7 @@ function displayEventsHandler(eventsAndHiringPartners) {
                                 .then((responseJSON) => {
 
                                     if(responseJSON.success) {
-                                        displayHiringPartnersAttending({id: data.event_id})
+                                        // displayHiringPartnersAttending({id: data.event_id})
                                     } else {
                                         currentEventsMessage.innerText = responseJSON.message
                                     }
@@ -112,12 +112,15 @@ function displayEventsHandler(eventsAndHiringPartners) {
             })
         })
     }
-};
+}
 
 async function displayEvents(events, hiringPartners, applicants) {
     events.forEach(async (event) => {
+        console.log('before event generator')
         await eventGenerator(event, hiringPartners, applicants).then(event => {
-            displayHiringPartnersAttending(event)
+            console.log('after event generator')
+            // displayHiringPartnersAttending(event)
+            addEventListenerForCopyEmailsButton(applicants)
         })
         return event
     })
@@ -148,7 +151,7 @@ function DeleteHPRequest(e, event) {
             }) .then (response => response.json())
                .then (responseJSON => {
                     if (responseJSON.success) {
-                        displayHiringPartnersAttending({id: data.event_id})
+                        // displayHiringPartnersAttending({id: data.event_id})
                     } else {
                         document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`).innerText = responseJSON.message
                     }
@@ -243,7 +246,7 @@ async function eventGenerator(event, hiringPartners, applicants) {
 
     if (event.category_name === 'Assessment') {
         // put code for assessment event type here!
-        eventInformation += '<div>';
+        eventInformation += '<div class="event-attendees-container">';
         eventInformation += '<table class="col-xs-12 table-bordered table">';
         eventInformation += '<tr>';
         eventInformation += '<th class="col-xs-2">Name</th>';
@@ -258,6 +261,7 @@ async function eventGenerator(event, hiringPartners, applicants) {
                 }
             });
         eventInformation += '</table>';
+        eventInformation += '<button class="btn copy-emails-button">Copy emails</button>';
         eventInformation += '</div>';
     }
 
@@ -291,12 +295,28 @@ async function eventGenerator(event, hiringPartners, applicants) {
     const currentEventsMessage = document.querySelector(`.currentEventsMessages[data-event="${event.id}"]`)
     if (hiringPartners.status) {
         hiringPartners.data.forEach(function (hiringPartner) {
-            document.querySelector(`select[data-event="${event.id}"]`).innerHTML += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
+            // document.querySelector(`select[data-event="${event.id}"]`).innerHTML += "<option value='" + hiringPartner.id + "'>" + hiringPartner.name + "</option>"
         })
     } else {
         currentEventsMessage.innerText = hiringPartners.message
     }
     return event
+}
+
+function addEventListenerForCopyEmailsButton(event, applicants) {
+    let copyEmailsButtons = document.querySelectorAll('.copy-emails-button')
+    copyEmailsButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            console.log('Hi')
+            let attendeeEmails = ''
+            applicants.forEach((applicant) => {
+                if (applicants.assessmentDay == event.id) {
+                    attendeeEmails += applicant.email + ', '
+                }
+            })
+            navigator.clipboard.writeText(attendeeEmails)
+        })
+    })
 }
 
 getEvents()

@@ -28,6 +28,16 @@
     &.open {
         background: #E0E8F2;
     }
+    #copy-emails-button {
+        background-color: $io-purple;
+        color: #ebeef1;
+    }
+    .event-attendees-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 }
 
 .header h4 {
