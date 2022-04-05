@@ -67,7 +67,7 @@ function displayEventsHandler(eventsAndHiringPartners) {
             })
         })
         .then(() => {
-            addEventListenerForCopyEmailsButton(eventsAndHiringPartners.events.data, eventsAndHiringPartners.applicants)
+            addEventListenersForCopyEmailsButtons(eventsAndHiringPartners.events.data, eventsAndHiringPartners.applicants)
 
             let hpForms = document.querySelectorAll('.addHiringPartnerForm')
             hpForms.forEach(function (hpForm) {
@@ -305,13 +305,11 @@ async function eventGenerator(event, hiringPartners, applicants) {
     return event
 }
 
-function addEventListenerForCopyEmailsButton(event, applicants) {
-    let assessmentApplicants
+function addEventListenersForCopyEmailsButtons(event, applicants) {
     let copyEmailsButtons = document.querySelectorAll('.copy-emails-button')
     copyEmailsButtons.forEach((button) => {
         button.addEventListener('click', (event) => {
-            event.stopPropagation()
-            assessmentApplicants = applicants.filter(applicant => applicant.assessmentDay === event.target.dataset.id)
+            let assessmentApplicants = applicants.filter(applicant => applicant.assessmentDay === event.target.dataset.id)
             let attendeeEmails = ''
             assessmentApplicants.forEach((applicant) => {
                 attendeeEmails += applicant.email + '; '
