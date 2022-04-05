@@ -39,10 +39,17 @@ class AddApplicantController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        if ($_SESSION['loggedIn'] === true) {
+
             $data = ['success' => false, 'msg' => 'Application not saved'];
             $statusCode = 500;
             $newApplicationData = $request->getParsedBody();
+            $getData = $request->getQueryParams();
+            var_dump($getData);
+
+            //To do: find correct status code for incorrect data being sent to the API
+            if ($newApplicationData === null) {
+                return $response->withStatus(401);
+            }
 
             try {
                 if (ApplicantValidator::validate($newApplicationData)) {
@@ -66,7 +73,7 @@ class AddApplicantController extends Controller
                 $statusCode = 200;
             }
             return $this->respondWithJson($response, $data, $statusCode);
-        }
-        return $response->withStatus(401);
+
+
     }
 }
