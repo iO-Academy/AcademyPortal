@@ -76,7 +76,6 @@ class ApplicantsPageController extends Controller
 
             $params['count'] = ceil(count($allApplicants) / $this->numberOfApplicantsPerPage); // counts number of pages
 
-
             if (isset($_SESSION['page']) && ($_SESSION['page'] > $params['count'] || $_SESSION['page'] < 1)) {
                 $_SESSION['page'] = 1;
             }
