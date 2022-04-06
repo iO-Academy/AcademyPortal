@@ -44,7 +44,11 @@ function isPresent(data) {
 }
 
 function textAreaMaxLength(data) {
-    return data.length <= 10000;
+    if(typeof (data) === 'undefined') {
+        return true;
+    } else {
+        return data.length <= 10000;
+    }
 }
 
 function varCharMaxLength(data) {
@@ -52,8 +56,8 @@ function varCharMaxLength(data) {
 }
 
 function requiredCheckboxes(checkboxes) {
-    let checkedArray  = Array.from(checkboxes).map(checkbox => {
-        return checkbox.checked
+     let checkedArray  = Array.from(checkboxes).map(checkbox => {
+         return checkbox.checked
     })
     return checkedArray.includes(true)
 }

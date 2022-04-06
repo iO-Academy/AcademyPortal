@@ -12,14 +12,17 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormOne(array $data): string
     {
-        $output = '<div class="row "><input type="text" placeholder="Full Name" class="form-control"></div>';
+        $output = '<div class="row "><input id="name" name="name" type="text" ';
+        $output .= 'class="submitApplicant" placeholder="Full Name" class="form-control"></div>';
         $output .= '<div id="nameError" data-field="name" class="alert hidden formItem_alert">Field Required.</div>';
-        $output .= '<div class="row"><input type="email" placeholder="Email" class="form-control"></div>';
+        $output .= '<div class="row"><input id="email" name="email" type="email" class="submitApplicant" ';
+        $output .= 'placeholder="Email" class="form-control"></div>';
         $output .= '<div id="emailError" data-field="Email" class="alert hidden formItem_alert">Field Required.</div>';
-        $output .= '<div class="row"><input type="tel" placeholder="Phone Number" class="form-control"></div>';
-        $output .= '<div id="telError" data-field="phone number" ';
+        $output .= '<div class="row"><input id="phoneNumber" name="phoneNumber" type="tel" class="submitApplicant" ';
+        $output .= 'placeholder="Phone Number" class="form-control"></div>';
+        $output .= '<div id="phoneError" data-field="phone number" ';
         $output .= 'class="alert hidden formItem_alert">Field Required.</div>';
-        $output .= '<div class="row"><select class="form-control" >';
+        $output .= '<div class="row"><select id="gender" name="gender" class="form-control submitApplicant" >';
         $output .= '<option value="" disabled selected>Gender</option>';
         foreach ($data['genders'] as $genders) {
             $output .= '<option value="' . $genders['id'] . '">' . $genders['gender'] . '</option>';
@@ -37,7 +40,8 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormTwo(array $data): string
     {
-        $output = '<div class="row"><select class="form-control">';
+        $output = '<div class="row"><select id="backgroundInfo" name="backgroundInfoId" class="form-control ';
+        $output .= 'submitApplicant">';
         $output .= '<option value="" disabled selected>Background</option>';
         foreach ($data['backgroundInfo'] as $backgroundInfo) {
             $output .= '<option value="' . $backgroundInfo['id'] .
@@ -47,8 +51,8 @@ class StudentApplicationFormViewHelper
         $output .= '<div id="backgroundError" class="alert hidden formItem_alert">Field Required.</div>';
         $output .= '<div class="row form-group"><label for="whyDev" class="label-control">';
         $output .= 'Why do you want to become a developer?</label>';
-        $output .= '<textarea id="whyDev" type="text" placeholder="(100 - 500 characters)" ';
-        $output .= 'class="form-control textAreaToCount" rows="5"></textarea>';
+        $output .= '<textarea id="whyDev" name="whyDev" type="text" placeholder="(100 - 500 characters)" ';
+        $output .= 'class="form-control textAreaToCount submitApplicant" rows="5"></textarea>';
         $output .= '<div class="textAreaCounter"><span id="textAreaCount">0</span> of 500 max characters</div>';
         $output .= '<div id="whyDevError" class="alert hidden formItem_alert"></div>';
         $output .= '</div>';
@@ -67,8 +71,8 @@ class StudentApplicationFormViewHelper
         $output .= '<p class="pastCodingTooltip" data-toggle="tooltip" data-placement="top" ';
         $output .= 'title="Taken an online course? Given WordPress a try? Our courses require no past experience,';
         $output .= ' but it would be useful to know about any existing knowledge.">?</p></label>';
-        $output .= '<textarea id="pastCoding" placeholder="Most people write a few sentences" ';
-        $output .= 'class="form-control" rows="5"></textarea>';
+        $output .= '<textarea id="pastCoding" name="codeExperience" placeholder="Most people write a few sentences" ';
+        $output .= 'class="form-control submitApplicant" rows="5"></textarea>';
         $output .= '<div id="codeExperienceError" class="alert hidden formItem_alert"></div>';
         $output .= '</div>';
         return $output;
@@ -82,23 +86,24 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormFour(array $data): string
     {
-        $output = '<div class="row"><label>Select start date(s)</label><ul class="startDatesList">';
+        $output = '<div id="cohorts" class="row"><label>Select start date(s)</label><ul class="startDatesList">';
         foreach ($data['cohorts'] as $cohorts) {
-            $output .= '<li><label><input type="checkbox" data-nextcourse="false" ';
-            $output .= 'class="startDatesCheckbox" name="startDatesCheckbox"';
+            $output .= '<li><label class="cohort_checkbox"><input name="cohort" type="checkbox" ';
+            $output .= 'data-nextcourse="false" ';
+            $output .= 'class="startDatesCheckbox cohort_checkbox submitApplicant"';
             $output .= ' value="' . $cohorts['id'] . '"/>';
             $output .= date_format(date_create_from_format("Y-m-d", $cohorts['date']), "D j M Y");
             $output .= '</label></li>';
         }
         $output .= '<li><label><input type="checkbox" data-nextcourse="true" ';
-        $output .= 'class="startDatesCheckbox" name="startDatesCheckbox"';
+        $output .= 'class="startDatesCheckbox submitApplicant" name="startDatesCheckbox"';
         $output .= ' value="register interest">next available online course (register interest)';
         $output .= '</label></li></ul>';
-        $output .= '<div id="startDateError" class="alert hidden formItem_alert"></div>';
+        $output .= '<div id="cohortError" class="alert hidden formItem_alert"></div>';
         $output .= '<p>Some course dates may also be offered with a remote option. ';
         $output .= 'Contact us to find out more.</p></div>';
         $output .= '<div class="row"><label> How did you hear about us?</label>';
-        $output .= '<select id="hearAbout" name="hearAbout" class="form-control">';
+        $output .= '<select id="hearAboutId" name="hearAboutId" class="form-control submitApplicant">';
         $output .= '<option value="" disabled selected>Pick one</option>';
         foreach ($data['hearAbout'] as $hearAbout) {
             $output .= '<option value="' . $hearAbout['id'] . '">' . $hearAbout['hearAbout'] . '</option>';
@@ -107,27 +112,28 @@ class StudentApplicationFormViewHelper
         $output .= '<div id="hearAboutError" class="alert hidden formItem_alert"></div>';
         $output .= '<div class="row hidden" id="additionalNotesWordOfMouth">';
         $output .= '<label for="additionalNotesWordOfMouthInput">Who referred you?</label>';
-        $output .= '<input type="text" class="form-control" ';
+        $output .= '<input type="text" class="form-control submitApplicant" ';
         $output .= 'id="additionalNotesWordOfMouthInput" name="additionalNotes">';
         $output .= '</div>';
         $output .= '<div class="row hidden" id="additionalNotesOther">';
         $output .= '<label for="additionalNotesOtherInput">Please specify further</label>';
-        $output .= '<input type="text" class="form-control" ';
+        $output .= '<input type="text" class="form-control submitApplicant" ';
         $output .= 'id="additionalNotesOtherInput" name="additionalNotes"></div>';
-        $output .= '<div id="additionalNotesError" class="alert hidden formItem_alert"></div>';
-        $output .= '<div class="termsAndConditions"><div class="row"><label><input type="checkbox" ';
+        $output .= '<div id="notesError" class="alert hidden formItem_alert"></div>';
+        $output .= '<div class="termsAndConditions"><div class="row"><label><input name="eligible" type="checkbox" ';
+        $output .= 'class="submitApplicant"';
         $output .= 'value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK';
         $output .= '</label></div>';
         $output .= '<div id="UKWorkError" class="alert hidden formItem_alert"></div>';
-        $output .= '<div class="row"><label><input type="checkbox" value="I confirm that I am at least ';
-        $output .= '18 years of age before my chosen course start date"/>I confirm that I am at least 18 ';
+        $output .= '<div class="row"><label><input name="eighteenPlus" class="submitApplicant" type="checkbox" />';
+        $output .= 'I confirm that I am at least 18 ';
         $output .= 'years of age before my chosen course start date</label></div>';
         $output .= '<div id="18Error" class="alert hidden formItem_alert"></div>';
         $output .= '<div class="row"><p>By using this form you agree with the storage and handling of your ';
         $output .= 'data by this website in accordance with our <a href="https://io-academy.uk/terms-conditions" ';
         $output .= 'target="_blank">terms and conditions</a>';
         $output .= ' and <a href="https://io-academy.uk/privacy-policy" target="_blank">privacy policy</a>.</p>';
-        $output .= '<label><input type="checkbox" value="I accept the terms and conditions"/>';
+        $output .= '<label><input type="checkbox" class="submitApplicant" value="I accept the terms and conditions"/>';
         $output .= 'I accept the terms and conditions</label></div></div>';
         $output .= '<div id="termsConditionsError" class="alert hidden formItem_alert"></div>';
         return $output;
@@ -153,8 +159,10 @@ class StudentApplicationFormViewHelper
         ' five working days to let you know whether your application' .
         ' has been successful and talk next steps!</li>';
         $output .= '</ul></div>';
+        $output .= '<div id="generalError" hidden></div>';
         return $output;
     }
+
 
     /**
      * selects a question page based on number and passes it the data array if needed.
@@ -200,7 +208,7 @@ class StudentApplicationFormViewHelper
             $output .= ($applicationFormPageNumber - 1) . '">Prev</button>';
         }
         if ($applicationFormPageNumber >= $finalPage) {
-            $output .= '<button class="btn btn-lg finishButton">Finish</button></div></div>';
+            $output .= '<button class="btn btn-lg finishButton" id="submitApplicant">Finish</button></div></div>';
         } else {
             $output .= '<button class="nextButton btn btn-lg" data-buttontype="next" ';
             $output .= 'type="submit" for="studentApplicationForm" value="';

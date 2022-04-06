@@ -1,6 +1,12 @@
 document.querySelector('#submitApplicant').addEventListener('click', e => {
     e.preventDefault();
     const data = getCompletedFormData();
+    if(typeof (data.notes) === 'undefined') {
+        data.notes = "";
+    }
+    if(typeof (data.finance) === 'undefined') {
+        data.finance = 0;
+    }
     const validate = validateFormInputs(data);
     let formIsValid = true;
 
@@ -10,7 +16,6 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
         element.classList.add('hidden');
         element.innerHTML = '';
     });
-
     Object.keys(validate).forEach(formItem => {
         const querySelector = document.querySelector(`#${formItem}Error`);
         let formItemValues = validate[formItem];
@@ -25,6 +30,7 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
             }
         })
     });
+
 
     if (formIsValid) {
         makeApiRequest(data, window.location.pathname);
@@ -99,7 +105,7 @@ let getCompletedFormData = () => {
 };
 
 let makeApiRequest = async (data, type) => {
-    const path = './api/' + (type === '/addapplicant' ? 'saveApplicant' : 'editApplicant');
+    const path = './api/' + (type === '/addapplicant' || type === '/studentApplicationForm' ? 'saveApplicant' : 'editApplicant');
     return fetch(path, {
         credentials: "same-origin",
         headers: {
