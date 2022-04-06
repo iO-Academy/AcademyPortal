@@ -17,30 +17,40 @@ class PaginationViewHelper
         $next = (strval($page + 1));
         $prev = (strval($page - 1));
 
+        $paginationHtml = '
+            <nav class="mt-5">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item ' . ($page > 1 ?: "disabled") . '"><a class="page-link" href="' . ($page <= 1 ? "#" : "?page=" . $prev) . '>Previous</a></li>';
+        for ($i = 1; $i <= $count; $i++) {
+            $paginationHtml .= '
+                <li class="page-item ' . ($page != $i ?: 'active') . '">
+                <a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+        }
+
         $string = '';
 
-        $string .= '<nav class="mt-5">';
-        $string .= '<ul class="pagination justify-content-center">';
-        $string .= '<li class="page-item ';
-        if ($page <= 1) {
-            $string .= 'disabled';
-        }
-        $string .= '"><a class="page-link" href="';
-        if ($page <= 1) {
-            $string .= '#';
-        } else {
-            $string .= '?page=' . $prev;
-        }
-        $string .= '">Previous</a></li>';
+//        $string .= '<nav class="mt-5">';
+//        $string .= '<ul class="pagination justify-content-center">';
+//        $string .= '<li class="page-item ';
+//        if ($page <= 1) {
+//            $string .= 'disabled';
+//        }
+//        $string .= '"><a class="page-link" href="';
+//        if ($page <= 1) {
+//            $string .= '#';
+//        } else {
+//            $string .= '?page=' . $prev;
+//        }
+//        $string .= '">Previous</a></li>';
 
-        for ($i = 1; $i <= $count; $i++) {
-            $string .= '<li class="page-item ';
-            if ($page == $i) {
-                $string .= 'active';
-            }
-            $string .= '">';
-            $string .= '<a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
-        }
+//        for ($i = 1; $i <= $count; $i++) {
+//            $string .= '<li class="page-item ';
+//            if ($page == $i) {
+//                $string .= 'active';
+//            }
+//            $string .= '">';
+//            $string .= '<a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+//        }
 
         $string .= '<li class="page-item ';
         if ($page >= $count) {
