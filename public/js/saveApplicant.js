@@ -1,6 +1,12 @@
 document.querySelector('#submitApplicant').addEventListener('click', e => {
     e.preventDefault();
     const data = getCompletedFormData();
+    if(typeof (data.notes) === 'undefined') {
+        data.notes = "";
+    }
+    if(typeof (data.finance) === 'undefined') {
+        data.finance = 0;
+    }
     const validate = validateFormInputs(data);
     let formIsValid = true;
 
@@ -163,7 +169,7 @@ let validateFormInputs = (data) => {
             validLengthText: textAreaMaxLength(data.notes)
         },
         cohort: {
-            isChecked: requiredCheckboxes(document.querySelectorAll('#cohorts .cohort_checkbox .submitApplicant input'))
+            isChecked: requiredCheckboxes(document.querySelectorAll('#cohorts .cohort_checkbox input'))
         }
     };
     return validate;

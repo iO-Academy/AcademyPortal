@@ -82,9 +82,9 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormFour(array $data): string
     {
-        $output = '<div class="row"><label>Select start date(s)</label><ul class="startDatesList">';
+        $output = '<div id="cohorts" class="row"><label>Select start date(s)</label><ul class="startDatesList">';
         foreach ($data['cohorts'] as $cohorts) {
-            $output .= '<li><label><input name="cohort" id="cohorts" type="checkbox" data-nextcourse="false" ';
+            $output .= '<li><label class="cohort_checkbox"><input name="cohort" type="checkbox" data-nextcourse="false" ';
             $output .= 'class="startDatesCheckbox cohort_checkbox submitApplicant"';
             $output .= ' value="' . $cohorts['id'] . '"/>';
             $output .= date_format(date_create_from_format("Y-m-d", $cohorts['date']), "D j M Y");
@@ -156,6 +156,7 @@ class StudentApplicationFormViewHelper
         $output .= '<div id="generalError" hidden></div>';
         return $output;
     }
+    
 
     /**
      * selects a question page based on number and passes it the data array if needed.

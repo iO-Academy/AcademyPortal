@@ -44,7 +44,7 @@ class AddApplicantController extends Controller
         $statusCode = 500;
         $newApplicationData = $request->getParsedBody();
         $getData = $request->getQueryParams();
-//        var_dump($getData);
+//      var_dump($getData);
 
         //To do: find correct status code for incorrect data being sent to the API
         if ($newApplicationData === null) {
