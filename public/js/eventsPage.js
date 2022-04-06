@@ -248,7 +248,7 @@ async function eventGenerator(event, hiringPartners, applicants) {
 
     if (event.category_name === 'Assessment') {
         // put code for assessment event type here!
-        eventInformation += '<table class="col-xs-12 table event-attendees-table">';
+        eventInformation += `<table class="col-xs-12 table event-attendees-table" id="event-attendies-${event.id}">`;
         eventInformation += '<tr>';
         eventInformation += '<th class="col-xs-5">Name</th>';
         eventInformation += `<th class="email-column-header">Email <button class="btn copy-emails-button" data-id="${event.id}">Copy emails</button></th>`;
@@ -256,7 +256,7 @@ async function eventGenerator(event, hiringPartners, applicants) {
             applicants.forEach((applicant) => {
                 if (applicant.assessmentDay == event.id) {
                     eventInformation += `<tr>`;
-                    eventInformation += `<td><a class="myBtn"  data-id="${applicant.id}">${applicant.name}</a></td>`;
+                    eventInformation += `<td><a class="myBtn"  data-id="${applicant.id}" href="#event-attendies-${event.id}">${applicant.name}</a></td>`;
                     eventInformation += `<td>${applicant.email}</td>`;
                     eventInformation += `</tr>`;
                 }
