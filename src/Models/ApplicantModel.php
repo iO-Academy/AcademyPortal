@@ -108,7 +108,7 @@ class ApplicantModel implements ApplicantModelInterface
     ) {
         $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`,
         `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName',
-        `start_date` as 'chosenStartDate', `chosenCourseId`
+        `start_date` as 'chosenStartDate', `chosenCourseId`, `apprentice`
                       FROM `applicants`
                       LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
                       LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
