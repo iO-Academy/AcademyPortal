@@ -67,8 +67,9 @@ return function (App $app) {
     $app->get('/testEmail', function ($request, $response, $args) use ($container) {
 
 
-        $testData = ['test1key' => 'test1value', 'test2key' => 'test2value'];
-        Portal\Utilities\Mailer::sendEmail($testData);
+        $testData = ['fullName' => 'Gabriel', 'email' => 'test@test.com', 'phoneNumber' => '0', 'gender' => ':)', 'background' => 'background', 'why' => '12345', 'experience' => '12345',
+            'startDate' => 'NOW', 'hearAboutUs' => 'Newspaper', 'studyConfirm' => True, 'ageConfirm' => True, 'TermsConfirm' => True];
+        Portal\Utilities\Mailer::sendAllEmails($testData);
 
         $renderer = $container->get('renderer');
         return $renderer->render($response, "deleteMe.phtml", $args);
