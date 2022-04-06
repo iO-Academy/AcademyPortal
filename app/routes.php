@@ -25,6 +25,7 @@ return function (App $app) {
     $app->get('/courses', 'CoursesPageController');
     $app->get('/addCourse', 'AddCoursePageController');
     $app->get('/studentApplicationForm', 'StudentApplicationFormPageController');
+    $app->get('/GDPR-Compliance', 'GdprCompliancePageController');
 
 
     //API

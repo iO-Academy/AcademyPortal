@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Admin Panel');
+    ?>
+</head>
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+<main>
+    <h1>GDPR Compliance</h1>
+    <div class="">
+        <p>Non-compliant successful applicants: 9 </p>
+        <p>Non-compliant unsuccessful applicants: 9999999999999 </p>
+        <button>GDPR clean up</button>
+    </div>
+</main>
+
+<?php require 'partials/layout/footer.phtml'; ?>
+</body>
+</html>
