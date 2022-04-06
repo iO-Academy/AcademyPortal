@@ -7,7 +7,7 @@ class EmailContentViewHelper
     public function ApplicantSubmission() {
         $result = '';
 
-        $result .= '<'
+        $result .= '<';
 
     }
 }

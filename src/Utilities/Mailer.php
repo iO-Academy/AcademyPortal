@@ -4,8 +4,8 @@ namespace Portal\Utilities;
 
 class Mailer {
 
-//    private static $adminEmail;
-//    private static $trainerEmail;
+    private static $adminEmail;
+    private static $trainerEmail;
     private static $testEmail = 'lgrayland96@gmail.com';
 
 
