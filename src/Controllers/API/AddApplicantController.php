@@ -26,8 +26,7 @@ class AddApplicantController extends Controller
     }
 
     /**
-     * If user is logged in, invoke gets data from new applicant form and passes into insertNewApplicantToDb
-     * function for inserting into database.
+     * Invoke gets data from new applicant form and stores it in the db.
      * If successful Insert returns success true with message of application saved.
      *
      * @param Request $request
@@ -43,12 +42,9 @@ class AddApplicantController extends Controller
         $data = ['success' => false, 'msg' => 'Application not saved'];
         $statusCode = 500;
         $newApplicationData = $request->getParsedBody();
-        $getData = $request->getQueryParams();
-//      var_dump($getData);
 
-        //To do: find correct status code for incorrect data being sent to the API
         if ($newApplicationData === null) {
-            return $response->withStatus(401);
+            return $response->withStatus(400);
         }
 
         try {
