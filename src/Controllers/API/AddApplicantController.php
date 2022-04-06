@@ -69,7 +69,5 @@ class AddApplicantController extends Controller
             $statusCode = 200;
         }
         return $this->respondWithJson($response, $data, $statusCode);
-
-
     }
 }

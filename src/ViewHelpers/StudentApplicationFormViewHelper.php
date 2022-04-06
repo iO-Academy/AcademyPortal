@@ -12,11 +12,14 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormOne(array $data): string
     {
-        $output = '<div class="row "><input id="name" name="name" type="text" class="submitApplicant" placeholder="Full Name" class="form-control"></div>';
+        $output = '<div class="row "><input id="name" name="name" type="text" ';
+        $output .= 'class="submitApplicant" placeholder="Full Name" class="form-control"></div>';
         $output .= '<div id="nameError" data-field="name" class="alert hidden formItem_alert">Field Required.</div>';
-        $output .= '<div class="row"><input id="email" name="email" type="email" class="submitApplicant" placeholder="Email" class="form-control"></div>';
+        $output .= '<div class="row"><input id="email" name="email" type="email" class="submitApplicant" ';
+        $output .= 'placeholder="Email" class="form-control"></div>';
         $output .= '<div id="emailError" data-field="Email" class="alert hidden formItem_alert">Field Required.</div>';
-        $output .= '<div class="row"><input id="phoneNumber" name="phoneNumber" type="tel" class="submitApplicant" placeholder="Phone Number" class="form-control"></div>';
+        $output .= '<div class="row"><input id="phoneNumber" name="phoneNumber" type="tel" class="submitApplicant" ';
+        $output .= 'placeholder="Phone Number" class="form-control"></div>';
         $output .= '<div id="phoneError" data-field="phone number" ';
         $output .= 'class="alert hidden formItem_alert">Field Required.</div>';
         $output .= '<div class="row"><select id="gender" name="gender" class="form-control submitApplicant" >';
@@ -37,7 +40,8 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormTwo(array $data): string
     {
-        $output = '<div class="row"><select id="backgroundInfo" name="backgroundInfoId" class="form-control submitApplicant">';
+        $output = '<div class="row"><select id="backgroundInfo" name="backgroundInfoId" class="form-control ';
+        $output .= 'submitApplicant">';
         $output .= '<option value="" disabled selected>Background</option>';
         foreach ($data['backgroundInfo'] as $backgroundInfo) {
             $output .= '<option value="' . $backgroundInfo['id'] .
@@ -84,7 +88,8 @@ class StudentApplicationFormViewHelper
     {
         $output = '<div id="cohorts" class="row"><label>Select start date(s)</label><ul class="startDatesList">';
         foreach ($data['cohorts'] as $cohorts) {
-            $output .= '<li><label class="cohort_checkbox"><input name="cohort" type="checkbox" data-nextcourse="false" ';
+            $output .= '<li><label class="cohort_checkbox"><input name="cohort" type="checkbox" ';
+            $output .= 'data-nextcourse="false" ';
             $output .= 'class="startDatesCheckbox cohort_checkbox submitApplicant"';
             $output .= ' value="' . $cohorts['id'] . '"/>';
             $output .= date_format(date_create_from_format("Y-m-d", $cohorts['date']), "D j M Y");
@@ -115,7 +120,8 @@ class StudentApplicationFormViewHelper
         $output .= '<input type="text" class="form-control submitApplicant" ';
         $output .= 'id="additionalNotesOtherInput" name="additionalNotes"></div>';
         $output .= '<div id="notesError" class="alert hidden formItem_alert"></div>';
-        $output .= '<div class="termsAndConditions"><div class="row"><label><input name="eligible" type="checkbox" class="submitApplicant"';
+        $output .= '<div class="termsAndConditions"><div class="row"><label><input name="eligible" type="checkbox" ';
+        $output .= 'class="submitApplicant"';
         $output .= 'value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK';
         $output .= '</label></div>';
         $output .= '<div id="UKWorkError" class="alert hidden formItem_alert"></div>';
