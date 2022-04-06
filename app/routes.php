@@ -67,8 +67,9 @@ return function (App $app) {
     $app->get('/testEmail', function ($request, $response, $args) use ($container) {
 
 
-        $testData = ['fullName' => 'Gabriel', 'email' => 'test@test.com', 'phoneNumber' => '0', 'gender' => ':)', 'background' => 'background', 'why' => '12345', 'experience' => '12345',
-            'startDate' => 'NOW', 'hearAboutUs' => 'Newspaper', 'studyConfirm' => True, 'ageConfirm' => True, 'TermsConfirm' => True];
+        $testData = ['name' => 'Gabriel', 'email' => 'test@test.com', 'phoneNumber' => '0', 'gender' => ':)', 'backgroundInfo' => 'background', 'whyDev' => '12345', 'codeExperience' => '12345',
+            'cohortDate' => 'NOW', 'hearAboutId' => 'Newspaper', 'eligible' => true, 'eighteenPlus' => true];
+
         Portal\Utilities\Mailer::sendAllEmails($testData);
 
         $renderer = $container->get('renderer');
