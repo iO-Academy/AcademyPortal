@@ -15,7 +15,6 @@ class ApplicantsPageController extends Controller
     private $applicantModel;
     private $stageModel;
     private int $numberOfApplicantsPerPage = 20;
-    private int $pageNumber = 1;
 
     /**
      * ApplicantsPageController constructor.
@@ -48,10 +47,11 @@ class ApplicantsPageController extends Controller
             $_SESSION['sort'] = $request->getQueryParams()['sort'] ?? $_SESSION['sort'] ?? '';
             $_SESSION['cohortId'] = $request->getQueryParams()['cohortId'] ?? $_SESSION['cohortId'] ?? '%';
             $_SESSION['stageId'] = $request->getQueryParams()['stageId'] ?? $_SESSION['stageId'] ?? '%';
-            $_SESSION['page'] = $request->getQueryParams()['page'] ?? $_SESSION['page'] ?? '1';
+            $_SESSION['page'] = $request->getQueryParams()['page'] ?? '1';
             $params['sort'] = $_SESSION['sort'];
             $params['cohortId'] = $_SESSION['cohortId'];
             $params['stageId'] = $_SESSION['stageId'];
+            $params['page'] = $_SESSION['page'];
             $params['data']['lastStage'] = $this->stageModel->getHighestOrderNo();
             $params['data']['stageCount'] = $this->stageModel->stagesCount();
             $params['name'] = $_SESSION['name'];
@@ -66,7 +66,7 @@ class ApplicantsPageController extends Controller
                 $params['stageId'] = '%';
             }
 
-            $params['data']['applicants'] = $this->applicantModel
+            $allApplicants = $this->applicantModel
                 ->getApplicants(
                     $params['name'],
                     $params['stageId'],
@@ -74,19 +74,14 @@ class ApplicantsPageController extends Controller
                     $params['sort']
                 );
 
-            $numberOfPages = ceil(count($params['data']['applicants']) / $this->numberOfApplicantsPerPage);
-            var_dump(count($params['data']['applicants']));
-            // only 5 applicants coming back from DB, but should be all 15 of them
-            // perhaps need to save all applicants to a varioable first and then save to $params after slicing it down
-            $applicants = array_slice($params['data']['applicants'], ($this->pageNumber - 1) * $this->numberOfApplicantsPerPage , $this->numberOfApplicantsPerPage);
+            $params['count'] = ceil(count($allApplicants) / $this->numberOfApplicantsPerPage); // counts number of pages
 
-            $params['count'] = $numberOfPages;
 
-            if (isset($_SESSION['page']) && $_SESSION['page'] > $params['count']) {
+            if (isset($_SESSION['page']) && ($_SESSION['page'] > $params['count'] || $_SESSION['page'] < 1)) {
                 $_SESSION['page'] = 1;
             }
-            $params['page'] = $_SESSION['page'];
 
+            $params['data']['applicants'] = array_slice($allApplicants, ($params['page'] - 1) * $this->numberOfApplicantsPerPage , $this->numberOfApplicantsPerPage);
 
             return $this->renderer->render($response, 'applicants.phtml', $params);
         }
