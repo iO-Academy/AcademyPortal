@@ -14,7 +14,7 @@ class ApplicantsPageController extends Controller
     private $renderer;
     private $applicantModel;
     private $stageModel;
-    private int $numberOfApplicantsPerPage = 20;
+    private $numberOfApplicantsPerPage = 20;
 
     /**
      * ApplicantsPageController constructor.

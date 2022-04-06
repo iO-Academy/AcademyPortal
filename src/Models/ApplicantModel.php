@@ -128,14 +128,14 @@ class ApplicantModel implements ApplicantModelInterface
         $query->bindValue(':cohortId', $cohortId);
         $query->bindValue(':cohortId2', $cohortId);
         $query->execute();
-        $allApplicants = $query->fetchAll();
-        foreach ($allApplicants as $key => $applicant) {
+        $applicants = $query->fetchAll();
+        foreach ($applicants as $key => $applicant) {
             if (
                 !empty($applicant->getChosenCourseId()) && $cohortId !== '%' &&
                 $applicant->getChosenCourseId() !== $cohortId
             ) {
                 //removes applicants where chosen applicants doesn't match filter
-                unset($allApplicants[$key]);
+                unset($applicants[$key]);
                 continue;
             }
             $queryDate = $this->db->prepare(
@@ -149,7 +149,7 @@ class ApplicantModel implements ApplicantModelInterface
             $cohorts = $queryDate->fetchAll();
             $applicant->setCohortDates($cohorts);
         }
-        return $allApplicants;
+        return $applicants;
     }
 
     /**
