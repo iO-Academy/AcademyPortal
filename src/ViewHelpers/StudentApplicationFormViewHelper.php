@@ -115,7 +115,7 @@ class StudentApplicationFormViewHelper
         $output .= '<input type="text" class="form-control submitApplicant" ';
         $output .= 'id="additionalNotesOtherInput" name="additionalNotes"></div>';
         $output .= '<div id="notesError" class="alert hidden formItem_alert"></div>';
-        $output .= '<div class="termsAndConditions"><div class="row"><label><input name="eligible" id="eligible" type="checkbox" class="submitApplicant"';
+        $output .= '<div class="termsAndConditions"><div class="row"><label><input name="eligible" type="checkbox" class="submitApplicant"';
         $output .= 'value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK';
         $output .= '</label></div>';
         $output .= '<div id="UKWorkError" class="alert hidden formItem_alert"></div>';
@@ -156,7 +156,7 @@ class StudentApplicationFormViewHelper
         $output .= '<div id="generalError" hidden></div>';
         return $output;
     }
-    
+
 
     /**
      * selects a question page based on number and passes it the data array if needed.
