@@ -5,12 +5,10 @@ namespace Portal\Utilities;
 use Portal\ViewHelpers\EmailContentViewHelper;
 
 class Mailer {
-
             private static $adminEmail = ['lgrayland96@gmail.com'];
             private static $trainerEmail = ['jordanaddis@gmail.com'];
 //        private static $testEmails;
 //        private static $testEmailsString;
-
 
     public static function sendEmail ($emailAddress, $applicantData) {
 

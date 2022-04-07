@@ -71,6 +71,16 @@ class ApplicantsPageController extends Controller
             }
             $params['page'] = $_SESSION['page'];
 
+
+            $getData = $request->getQueryParams();
+//            below is set as 0 because the applicationModal.js click event looks out for a value greater than 0 to
+//            bring up the individual applicant id from the getData
+            $params['emailID'] = 0;
+            if(isset($getData['id'])) {
+                $params['emailID'] = $getData['id'];
+            }
+
+
             $params['data']['applicants'] = $this->applicantModel
                 ->getApplicants(
                     $params['name'],
