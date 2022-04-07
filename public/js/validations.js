@@ -56,10 +56,8 @@ function varCharMaxLength(data) {
 }
 
 function requiredCheckboxes(checkboxes) {
-    console.log(checkboxes)
      let checkedArray  = Array.from(checkboxes).map(checkbox => {
          return checkbox.checked
     })
-    console.log(checkedArray)
     return checkedArray.includes(true)
 }

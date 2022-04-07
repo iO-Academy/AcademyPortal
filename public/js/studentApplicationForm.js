@@ -242,7 +242,6 @@ function pageFourValidation(formWrapper) {
     let miniCheck = []
     let toggle = true
     checks.push(dropdown[dropdown.selectedIndex].text !== 'Pick one')
-    console.log(inputsArray)
     inputsArray.filter((input)=>{
         return input.id !== 'additionalNotesWordOfMouthInput'
     }).forEach((input)=>{
@@ -264,8 +263,6 @@ function pageFourValidation(formWrapper) {
     // checks if one value in the mini check array is true then returns true and adds it to the start of checks
     checks.unshift(miniCheck.some((miniCheck)=>miniCheck))
     checks.forEach((check, index)=>{
-        console.log(miniCheck)
-        console.log(check)
         if(!check){
             alertsArray[index].textContent = 'Field Required'
             alertsArray[index].classList.remove('hidden')

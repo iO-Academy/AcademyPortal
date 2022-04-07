@@ -86,7 +86,8 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormFour(array $data): string
     {
-        $output = '<div id="cohorts" class="row"><label>Select start date(s)</label><ul data-nextcourse="false" class="startDatesList">';
+        $output = '<div id="cohorts" class="row"><label>Select start date(s)</label><ul data-nextcourse="false"' .
+            ' class="startDatesList">';
         foreach ($data['cohorts'] as $cohorts) {
             $output .= '<li><label class="cohort_checkbox"><input name="cohort" type="checkbox" ';
             $output .= 'class="startDatesCheckbox cohort_checkbox submitApplicant"';
