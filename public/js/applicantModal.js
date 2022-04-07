@@ -52,8 +52,12 @@ function copyToClipboard(element) {
 
 $(document).ready(function () {
     $(".myBtn").click(function () {
-        let url = './api/getApplicant/' + this.dataset.id
-        let studentUrl = 'http://localhost:8080/public/' + this.dataset.id
+        let url = './api/getApplicant/' +
+            ( document.querySelector('body').dataset.emailid !== '0' ?
+            document.querySelector('body').dataset.emailid : this.dataset.id)
+        let studentUrl = 'http://localhost:8080/public/' +
+            ( document.querySelector('body').dataset.emailid !== '0' ?
+            document.querySelector('body').dataset.emailid : this.dataset.id)
         fetch(url)
             .then(
                 function (response) {
@@ -176,5 +180,9 @@ $(document).ready(function () {
             )
 
         $("#applicantModal").modal()
+        document.querySelector('body').dataset.emailid = 0
     })
+    if(document.querySelector('body').dataset.emailid !== '0'){
+        $(".myBtn").trigger('click')
+    }
 })
