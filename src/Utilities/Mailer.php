@@ -4,21 +4,22 @@ namespace Portal\Utilities;
 
 use Portal\ViewHelpers\EmailContentViewHelper;
 
-class Mailer {
+class Mailer
+{
 
             private static $adminEmail = ['lgrayland96@gmail.com'];
             private static $trainerEmail = ['jordanaddis@gmail.com'];
-//        private static $testEmails;
-//        private static $testEmailsString;
 
+    /**
+     * Description: Combine email lists from static properties
+     * @return array All email addresses, as an array
+     */
+    public static function createEmailList(): array
+    {
+        return $allEmails = array_merge(self::$adminEmail, self::$trainerEmail);
+    }
 
     public static function sendEmail ($emailAddress, $applicantData) {
-
-//        self::$testEmails = ['lgrayland96@gmail.com', 'jordanaddis@gmail.com'];
-//        self::$testEmailsString = implode(', ', self::$testEmails);
-
-        // $internalEmailsToNotify = array_merge($adminEmail, $trainerEmail);
-
 
         $email = new \SendGrid\Mail\Mail();
         $email->setFrom("no-reply@io-academy.uk", "Example User");
@@ -36,15 +37,6 @@ class Mailer {
         } catch (Exception $e) {
             echo 'Caught exception: '. $e->getMessage() ."\n";
         }
-    }
-
-    /**
-     * Description: Combine email lists from static properties
-     * @return array All email addresses, as an array
-     */
-    public static function createEmailList(): array
-    {
-        return $allEmails = array_merge(self::$adminEmail, self::$trainerEmail);
     }
 
     public static function sendAllEmails ($applicantData){
