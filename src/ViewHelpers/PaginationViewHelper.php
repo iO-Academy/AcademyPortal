@@ -12,63 +12,33 @@ class PaginationViewHelper
      *
      * @return string
      */
-    public static function pagination($page, $count)
+    public static function pagination($page, $count, $applicantType = ''): string
     {
         $next = (strval($page + 1));
         $prev = (strval($page - 1));
 
+        $tabUrlParams = '';
+        if ($applicantType !== '') {$tabUrlParams = '&tab='.$applicantType;}
+
+
         $paginationHtml = '
-            <nav class="mt-5">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item ' . ($page > 1 ?: "disabled") . '"><a class="page-link" href="' . ($page <= 1 ? "#" : "?page=" . $prev) . '>Previous</a></li>';
+        <nav class="mt-5">
+            <ul class="pagination justify-content-center">
+                <li class="page-item ' . ($page > 1 ?: "disabled") . '">
+                <a class="page-link" href="' . ($page <= 1 ? "#" : "?page=" . $prev) . $tabUrlParams . '">Previous</a></li>';
         for ($i = 1; $i <= $count; $i++) {
             $paginationHtml .= '
                 <li class="page-item ' . ($page != $i ?: 'active') . '">
-                <a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+                    <a class="page-link" href="?page=' . $i . $tabUrlParams . '">' . $i . '</a>
+                </li>';
         }
         $paginationHtml .= '
-                <li class="page-item '.'
-        ';
+                <li class="page-item'. ($page < $count ?: ' disabled') .'">
+                    <a class="page-link" href="' . ($page >= $count ? '#' : '?page=' . ($next)) . $tabUrlParams . '">Next</a>
+                </li>
+            </ul>
+        </nav>';
 
-        $string = '';
-
-//        $string .= '<nav class="mt-5">';
-//        $string .= '<ul class="pagination justify-content-center">';
-//        $string .= '<li class="page-item ';
-//        if ($page <= 1) {
-//            $string .= 'disabled';
-//        }
-//        $string .= '"><a class="page-link" href="';
-//        if ($page <= 1) {
-//            $string .= '#';
-//        } else {
-//            $string .= '?page=' . $prev;
-//        }
-//        $string .= '">Previous</a></li>';
-
-//        for ($i = 1; $i <= $count; $i++) {
-//            $string .= '<li class="page-item ';
-//            if ($page == $i) {
-//                $string .= 'active';
-//            }
-//            $string .= '">';
-//            $string .= '<a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
-//        }
-
-        $string .= '<li class="page-item ';
-        if ($page >= $count) {
-            $string .= 'disabled';
-        }
-        $string .= '">';
-        $string .= '<a class="page-link" href="';
-        if ($page >= $count) {
-            $string .= '#';
-        } else {
-            $string .= '?page=' . ($next);
-        }
-        $string .= '">Next</a>';
-        $string .= '</li></ul></nav>';
-
-        return $string;
+        return $paginationHtml;
     }
 }

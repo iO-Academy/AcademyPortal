@@ -22,10 +22,10 @@
             <h1>Applicants</h1>
             <form class="arrowForm" id="sortFilterApplicants" method="get">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active">
+                    <li role="presentation" class="active" id="paying-tab-button">
                         <a href="#paying" aria-controls="paying" role="tab" data-toggle="tab">Paying Applicants</a>
                     </li>
-                    <li role="presentation">
+                    <li role="presentation" id="apprentice-tab-button">
                         <a href="#apprentice" aria-controls="apprentice" role="tab" data-toggle="tab">
                             Apprentice Applicants
                         </a>
@@ -60,12 +60,14 @@
                 </ul>
 
                 <div class="tab-content">
-                    <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayTab($data, 'paying', $sort); ?>
-                    <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayTab($data, 'apprentice', $sort); ?>
+                    <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayApplicantTable($data, $sort); ?>
+<!--                    --><?php //echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayTab($data, 'apprentice', $sort); ?>
+
                 </div>
 
             </form>
-            <?php echo \Portal\ViewHelpers\PaginationViewHelper::pagination($page, $count);?>
+<!--            --><?php //echo \Portal\ViewHelpers\PaginationViewHelper::pagination($page, $count);?>
+<!--            --><?php //echo \Portal\ViewHelpers\PaginationViewHelper::pagination($page, $count);?>
         </div>
 
         <!-- Modal -->

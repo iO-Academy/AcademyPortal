@@ -14,7 +14,7 @@ class ApplicantsPageController extends Controller
     private $renderer;
     private $applicantModel;
     private $stageModel;
-    private int $numberOfApplicantsPerPage = 20;
+//    private int $numberOfApplicantsPerPage = 20;
 
     /**
      * ApplicantsPageController constructor.
@@ -51,7 +51,6 @@ class ApplicantsPageController extends Controller
             $params['sort'] = $_SESSION['sort'];
             $params['cohortId'] = $_SESSION['cohortId'];
             $params['stageId'] = $_SESSION['stageId'];
-            $params['page'] = $_SESSION['page'];
             $params['data']['lastStage'] = $this->stageModel->getHighestOrderNo();
             $params['data']['stageCount'] = $this->stageModel->stagesCount();
             $params['name'] = $_SESSION['name'];
@@ -73,10 +72,11 @@ class ApplicantsPageController extends Controller
                     $params['cohortId'],
                     $params['sort']
                 );
-            $params['count'] = ceil(count($allApplicants) / $this->numberOfApplicantsPerPage); // counts number of pages
-            if (isset($_SESSION['page']) && ($_SESSION['page'] > $params['count'] || $_SESSION['page'] < 1)) {$_SESSION['page'] = 1;}
-            $params['data']['applicants'] = array_slice($allApplicants, ($params['page'] - 1) * $this->numberOfApplicantsPerPage , $this->numberOfApplicantsPerPage);
 
+            $params['data']['applicants'] = [
+                'paying' => array_filter($allApplicants, function ($applicant){return $applicant->apprentice !== '1';}),
+                'apprentice' => array_filter($allApplicants, function ($applicant){return $applicant->apprentice === '1';})
+            ];
             return $this->renderer->render($response, 'applicants.phtml', $params);
         }
         return $response->withHeader('Location', '/');

@@ -7,79 +7,67 @@ use Portal\Interfaces\ApplicantEntityInterface;
 
 class DisplayApplicantViewHelper
 {
-    public static function displayTab(array $applicants, string $type, string $sort)
+    public static function displayApplicantTable(array $data, string $sort): string
     {
         $dateAsc = ($sort == 'dateAsc' || empty($sort)) ? ' active' : '';
         $dateDesc = ($sort == 'dateDesc') ? ' active' : '';
-        $cohortAsc = ($sort == 'cohortAsc') ? ' active' : '';
-        $cohortDesc = ($sort == 'cohortDesc') ? ' active' : '';
-        $active = ($type == 'paying') ? ' active' : '';
 
-        $result = '<div class="tab-pane' . $active . '" role="tabpanel" id="' . $type . '">
+        $numberOfApplicantsPerPage = 5;
+
+        $tableHtml = '';
+        foreach ($data['applicants'] as $applicantType => $applicants) {
+
+            $numberOfPages = ceil(count($applicants) / $numberOfApplicantsPerPage);
+            if (isset($_SESSION['page']) && ($_SESSION['page'] > $numberOfPages || $_SESSION['page'] < 1)) {
+                $_SESSION['page'] = 1;
+            }
+
+            $applicantsToDisplay =
+                array_slice($applicants, (($_SESSION['page'] - 1) * $numberOfApplicantsPerPage), $numberOfApplicantsPerPage);
+
+            $active = '';
+            if($applicantType === array_key_first($data['applicants'])){$active = 'active';};
+
+            $tableHtml .= '
+                <div class="tab-pane ' . $active . '" role="tabpanel" id="' . $applicantType . '">
                     <table class="col-xs-12 table-bordered table">
                         <tr>
-                        <th class="col-xs-2">Name</th>
-                        <th class="col-xs-3">Email</th>
-                        <th class="col-xs-2 sort">Application Date
-                            <div>
-                            <button name="sort" value="dateAsc" class="arrowBtn' . $dateAsc . '" type="submit">
-                                <i id="arrowDateAsc" class="glyphicon glyphicon-triangle-top"></i>
-                            </button>
-                            <button name="sort" value="dateDesc" class="arrowBtn' . $dateDesc . '" type="submit">
-                                <i id="arrowDateDesc" class="glyphicon glyphicon-triangle-bottom"></i>
-                            </button>
-                            </div>
-                        </th>
-                        <th>Cohort</th>
-                        <th>Stage</th>
-                        <th class="col-xs-2"></th> 
-                    </tr>';
-        if ($type == 'paying') {
-            $result .= self::displayApplicants($applicants);
-        } else {
-            $result .= self::displayApprentices($applicants);
-        }
-        $result .= '</table></div>';
-        return $result;
-    }
+                            <th class="col-xs-2">Name</th>
+                            <th class="col-xs-3">Email</th>
+                            <th class="col-xs-2 sort">Application Date
+                                <div>
+                                <button name="sort" value="dateAsc" class="arrowBtn' . $dateAsc . '" type="submit">
+                                    <i id="arrowDateAsc" class="glyphicon glyphicon-triangle-top"></i>
+                                </button>
+                                <button name="sort" value="dateDesc" class="arrowBtn' . $dateDesc . '" type="submit">
+                                    <i id="arrowDateDesc" class="glyphicon glyphicon-triangle-bottom"></i>
+                                </button>
+                                </div>
+                            </th>
+                            <th>Cohort</th>
+                            <th>Stage</th>
+                            <th class="col-xs-2"></th>
+                            ';
 
 
-    /**
-     * Concatenates new applicant's name, email and cohort to join ready to be output, excluding apprentices.
-     *
-     * @param $applicants
-     *
-     * @return string $result, returns name, email, cohortID and all the data for the applicant.
-     */
-    public static function displayApplicants($applicants): string
-    {
-        $result = '';
-        foreach ($applicants['applicants'] as $applicant) {
-            if (empty($applicant->apprentice)) {
-                $result .= self::outputApplicantRow($applicant, $applicants['lastStage'], $applicants['stageCount']);
+
+            if (empty($applicants)) {
+                $tableHtml .= '<tr><td colspan="6"><h5 class="text-danger text-center">No Applicants Found.</h5></td></tr>';
+            } else {
+                foreach ($applicantsToDisplay as $applicant) {
+                    $tableHtml .= self::outputApplicantRow($applicant, $data['lastStage'], $data['stageCount']);
+                }
             }
-        }
-        return self::handleNoApplicants($result);
-    }
 
-    /**
-     * Concatenates new apprentice applicant's name, email and cohort to join ready to be output.
-     *
-     * @param $applicants
-     *
-     * @return string $result, returns name, email, cohortID and all the data for the applicant.
-     */
-    public static function displayApprentices($applicants): string
-    {
-        $result = '';
-        foreach ($applicants['applicants'] as $applicant) {
-            if (!empty($applicant->apprentice) && $applicant->apprentice == 1) {
-                $result .= self::outputApplicantRow($applicant, $applicants['lastStage'], $applicants['stageCount']);
-            }
+            $tableHtml .= '
+                        </tr>
+                    </table>
+                    ' . \Portal\ViewHelpers\PaginationViewHelper::pagination($_SESSION['page'], $numberOfPages, $applicantType) . '
+                </div>';
         }
-        return self::handleNoApplicants($result);
-    }
 
+        return $tableHtml;
+    }
 
     private static function outputApplicantRow(BaseApplicantEntityInterface $applicant, $lastStage, $stageCount): string
     {
@@ -125,13 +113,5 @@ class DisplayApplicantViewHelper
         }
         $string .= '</td></tr>';
         return $string;
-    }
-
-    private static function handleNoApplicants(string $output): string
-    {
-        if (empty($output)) {
-            return '<tr><td colspan="6"><h5 class="text-danger text-center">No Applicants Found.</h5></td></tr>';
-        }
-        return $output;
     }
 }

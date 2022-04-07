@@ -96,3 +96,15 @@
       .setAttribute('selected', 'true');
   }
 })();
+
+
+let url = new URL(window.location.href)
+console.log(url.searchParams.get('tab'))
+
+if (url.searchParams.get('tab') === 'apprentice') {
+  document.querySelector('#paying').classList.remove('active')
+  document.querySelector('#paying-tab-button').classList.remove('active')
+
+  document.querySelector('#apprentice').classList.add('active')
+  document.querySelector('#apprentice-tab-button').classList.add('active')
+}
