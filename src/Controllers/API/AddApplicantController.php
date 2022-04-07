@@ -61,7 +61,8 @@ class AddApplicantController extends Controller
         }
 
         $successfulRegister = $this->applicantModel->storeApplicant($applicant);
-        Portal\Utilities\Mailer::sendAllEmails($applicant, ApplicantModel::getLastInsertedId());
+        $id = $this->applicantModel->getLastId();
+        \Portal\Utilities\Mailer::sendAllEmails($applicant, $id);
 
         if ($successfulRegister) {
             $data = [
