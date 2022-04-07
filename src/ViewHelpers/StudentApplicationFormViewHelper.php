@@ -86,19 +86,15 @@ class StudentApplicationFormViewHelper
      */
     protected static function displayPageFormFour(array $data): string
     {
-        $output = '<div id="cohorts" class="row"><label>Select start date(s)</label><ul class="startDatesList">';
+        $output = '<div id="cohorts" class="row"><label>Select start date(s)</label><ul data-nextcourse="false" class="startDatesList">';
         foreach ($data['cohorts'] as $cohorts) {
             $output .= '<li><label class="cohort_checkbox"><input name="cohort" type="checkbox" ';
-            $output .= 'data-nextcourse="false" ';
             $output .= 'class="startDatesCheckbox cohort_checkbox submitApplicant"';
             $output .= ' value="' . $cohorts['id'] . '"/>';
             $output .= date_format(date_create_from_format("Y-m-d", $cohorts['date']), "D j M Y");
             $output .= '</label></li>';
         }
-        $output .= '<li><label><input type="checkbox" data-nextcourse="true" ';
-        $output .= 'class="startDatesCheckbox submitApplicant" name="startDatesCheckbox"';
-        $output .= ' value="register interest">next available online course (register interest)';
-        $output .= '</label></li></ul>';
+        $output .= '</ul>';
         $output .= '<div id="cohortError" class="alert hidden formItem_alert"></div>';
         $output .= '<p>Some course dates may also be offered with a remote option. ';
         $output .= 'Contact us to find out more.</p></div>';

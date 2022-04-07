@@ -259,6 +259,8 @@ function pageFourValidation(formWrapper) {
     // checks if one value in the mini check array is true then returns true and adds it to the start of checks
     checks.unshift(miniCheck.some((miniCheck)=>miniCheck))
     checks.forEach((check, index)=>{
+        console.log(miniCheck)
+        console.log(check)
         if(!check){
             alertsArray[index].textContent = 'Field Required'
             alertsArray[index].classList.remove('hidden')
