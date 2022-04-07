@@ -6,8 +6,8 @@ use Portal\ViewHelpers\EmailContentViewHelper;
 
 class Mailer {
 
-    private static $adminEmail = ['lgrayland96@gmail.com'];
-    private static $trainerEmail = ['jordanaddis@gmail.com'];
+    private static $adminEmail = ['test@test.com'];
+    private static $trainerEmail = ['test@test.com'];
 
 
 	/**
@@ -16,7 +16,7 @@ class Mailer {
      */
     public static function createEmailList(): array
     {
-        return array_merge(self::$adminEmail, self::$trainerEmail);
+        return $allEmails = array_merge(self::$adminEmail, self::$trainerEmail);
     }
 
     public static function sendEmail ($emailAddress, $applicantData, $applicantId) {
@@ -35,7 +35,7 @@ class Mailer {
             print_r($response->headers());
             print $response->body() . "\n";
         } catch (Exception $e) {
-            echo 'Caught exception: ' . $e->getMessage() ."\n";
+            echo 'Caught exception: '. $e->getMessage() ."\n";
         }
     }
 
