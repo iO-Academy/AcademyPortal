@@ -1,6 +1,9 @@
 const eventList = document.querySelector('#events')
 const message = document.querySelector('#messages')
 const isPastPage = document.querySelector('#events-list').dataset.eventType === 'Past'; // this is such a hack!
+
+import {addEventListenersToDisplayApplicantModal} from "./applicantModal.js"
+
 /**
  * Gets event information from the API and passes into the
  * displayEventsHandler function
@@ -64,6 +67,8 @@ function displayEventsHandler(eventsAndHiringPartners) {
             })
         })
         .then(() => {
+            addEventListenersForCopyEmailsButtons(eventsAndHiringPartners.events.data, eventsAndHiringPartners.applicants)
+
             let hpForms = document.querySelectorAll('.addHiringPartnerForm')
             hpForms.forEach(function (hpForm) {
                 hpForm.addEventListener('submit', function (e) {
@@ -97,7 +102,7 @@ function displayEventsHandler(eventsAndHiringPartners) {
                                 .then((responseJSON) => {
 
                                     if(responseJSON.success) {
-                                        displayHiringPartnersAttending({id: data.event_id})
+                                        // displayHiringPartnersAttending({id: data.event_id})
                                     } else {
                                         currentEventsMessage.innerText = responseJSON.message
                                     }
@@ -112,7 +117,7 @@ function displayEventsHandler(eventsAndHiringPartners) {
             })
         })
     }
-};
+}
 
 async function displayEvents(events, hiringPartners, applicants) {
     events.forEach(async (event) => {
@@ -243,23 +248,22 @@ async function eventGenerator(event, hiringPartners, applicants) {
 
     if (event.category_name === 'Assessment') {
         // put code for assessment event type here!
-        eventInformation += '<div>';
-        eventInformation += '<table class="col-xs-12 table-bordered table">';
+        eventInformation += `<table class="col-xs-12 table event-attendees-table" id="event-attendies-${event.id}">`;
         eventInformation += '<tr>';
-        eventInformation += '<th class="col-xs-2">Name</th>';
-        eventInformation += '<th class="col-xs-3">Email</th>';
+        eventInformation += '<th class="col-xs-5">Name</th>';
+        eventInformation += `<th class="email-column-header">Email <button class="btn copy-emails-button" data-id="${event.id}">Copy emails</button></th>`;
         eventInformation += '</tr>';
             applicants.forEach((applicant) => {
                 if (applicant.assessmentDay == event.id) {
                     eventInformation += `<tr>`;
-                    eventInformation += `<td>${applicant.name}</td>`;
+                    eventInformation += `<td><a class="myBtn"  data-id="${applicant.id}" href="#event-attendies-${event.id}">${applicant.name}</a></td>`;
                     eventInformation += `<td>${applicant.email}</td>`;
                     eventInformation += `</tr>`;
                 }
             });
         eventInformation += '</table>';
-        eventInformation += '</div>';
     }
+    addEventListenersToDisplayApplicantModal()
 
     if (event.availableToHP == 1) {
         eventInformation += `<div class="event-attendees">`
@@ -299,64 +303,78 @@ async function eventGenerator(event, hiringPartners, applicants) {
     return event
 }
 
+function addEventListenersForCopyEmailsButtons(event, applicants) {
+    let copyEmailsButtons = document.querySelectorAll('.copy-emails-button')
+    copyEmailsButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            let assessmentApplicants = applicants.filter(applicant => applicant.assessmentDay === event.target.dataset.id)
+            let attendeeEmails = ''
+            assessmentApplicants.forEach((applicant) => {
+                attendeeEmails += applicant.email + '; '
+            })
+            navigator.clipboard.writeText(attendeeEmails)
+            })
+    })
+}
+
 getEvents()
 
-/**
- * Get all the hiring partners from the API
- *
- * @return array The JSON response
- */
-async function getHiringPartners() {
+    /**
+     * Get all the hiring partners from the API
+     *
+     * @return array The JSON response
+     */
+    async function getHiringPartners() {
 
-    let response = await fetch('./api/getHiringPartnerInfo', {
-        credentials: 'same-origin',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        method: 'get',
-    })
-    return await response.json()
-}
-
-/**
- * Get all the applicants booked for assessment from the API
- *
- * @return array The JSON response
- */
-async function getAssessmentApplicants() {
-
-    let response = await fetch('./api/getAssessmentApplicants', {
-        credentials: 'same-origin',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-        method: 'get',
-    })
-    return await response.json()
-
-}
-
-document.querySelector('#submit-search-event').addEventListener('click', function(e) {
-    const searchInput = document.querySelector('#academy-events-search').value
-    e.preventDefault()
-    if ((searchInput.length) && searchInput.length < 256) {
-        message.classList.remove('alert-danger')
-        message.textContent = '';
-        getEvents(searchInput)
-        document.querySelector('#events-list').innerText = 'Results'
-    } else {
-        message.classList.add('alert-danger')
-        message.textContent = 'Event search: must be between 1 and 255 characters'
+        let response = await fetch('./api/getHiringPartnerInfo', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            method: 'get',
+        })
+        return await response.json()
     }
-})
 
-document.querySelector('#clear-search').addEventListener('click', function(e) {
-    e.preventDefault()
-    if (!window.location.href.includes('#events-list')) {
-        window.location.href += '#events-list'
+    /**
+     * Get all the applicants booked for assessment from the API
+     *
+     * @return array The JSON response
+     */
+    async function getAssessmentApplicants() {
+
+        let response = await fetch('./api/getAssessmentApplicants', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            method: 'get',
+        })
+        return await response.json()
+
     }
-    location.reload()
-})
+
+    document.querySelector('#submit-search-event').addEventListener('click', function (e) {
+        const searchInput = document.querySelector('#academy-events-search').value
+        e.preventDefault()
+        if ((searchInput.length) && searchInput.length < 256) {
+            message.classList.remove('alert-danger')
+            message.textContent = '';
+            getEvents(searchInput)
+            document.querySelector('#events-list').innerText = 'Results'
+        } else {
+            message.classList.add('alert-danger')
+            message.textContent = 'Event search: must be between 1 and 255 characters'
+        }
+    })
+
+    document.querySelector('#clear-search').addEventListener('click', function (e) {
+        e.preventDefault()
+        if (!window.location.href.includes('#events-list')) {
+            window.location.href += '#events-list'
+        }
+        location.reload()
+    })
 
