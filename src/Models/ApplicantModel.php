@@ -540,7 +540,8 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->fetchAll();
     }
 
-    public function getLastId(): int
+
+    public function getLastInsertedId(): int
     {
         $query = $this->db->lastInsertId();
         return intval($query);
