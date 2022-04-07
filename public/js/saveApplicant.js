@@ -30,8 +30,7 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
             }
         })
     });
-
-
+    
     if (formIsValid) {
         makeApiRequest(data, window.location.pathname);
     } else {
