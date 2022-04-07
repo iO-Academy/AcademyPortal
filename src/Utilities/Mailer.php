@@ -16,7 +16,7 @@ class Mailer {
      */
     public static function createEmailList(): array
     {
-        return $allEmails = array_merge(self::$adminEmail, self::$trainerEmail);
+        return array_merge(self::$adminEmail, self::$trainerEmail);
     }
 
     public static function sendEmail ($emailAddress, $applicantData, $applicantId) {
