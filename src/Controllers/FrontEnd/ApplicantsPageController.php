@@ -73,11 +73,16 @@ class ApplicantsPageController extends Controller
                     $params['cohortId'],
                     $params['sort']
                 );
-            $params['count'] = ceil(count($allApplicants) / $this->numberOfApplicantsPerPage); // counts number of pages
-
-            if($params['page'] <1 || $params['page'] > $params['count']) {return $response->withHeader('Location', '/applicants');}
-
-            $params['data']['applicants'] = array_slice($allApplicants, ($params['page'] - 1) * $this->numberOfApplicantsPerPage , $this->numberOfApplicantsPerPage);
+            // counts number of pages
+            $params['count'] = ceil(count($allApplicants) / $this->numberOfApplicantsPerPage);
+            if (isset($_SESSION['page']) && ($_SESSION['page'] > $params['count'] || $_SESSION['page'] < 1)) {
+                $_SESSION['page'] = 1;
+            }
+            $params['data']['applicants'] =
+                array_slice($allApplicants,
+                    ($params['page'] - 1) * $this->numberOfApplicantsPerPage ,
+                    $this->numberOfApplicantsPerPage
+                );
 
             return $this->renderer->render($response, 'applicants.phtml', $params);
         }
