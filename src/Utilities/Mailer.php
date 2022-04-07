@@ -6,8 +6,8 @@ use Portal\ViewHelpers\EmailContentViewHelper;
 
 class Mailer {
 
-    private static $adminEmail = ['test@test.com];
-    private static $trainerEmail = ['test2@test.com];
+    private static $adminEmail = ['lgrayland96@gmail.com'];
+    private static $trainerEmail = ['jordanaddis@gmail.com'];
 
 
 	/**
