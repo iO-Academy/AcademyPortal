@@ -539,4 +539,12 @@ class ApplicantModel implements ApplicantModelInterface
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function getAllApplicantsStageAndOptionIdsAndDatesAdded() {
+        $query = $this->db->prepare(
+            'SELECT `applicants`.`id`, `applicants`.`stageId`, `applicants`.`stageOptionId`, `applicants`.`dateTimeAdded`'
+    );
+        $query->execute();
+        return $query->fetchAll();
+    }
 }
