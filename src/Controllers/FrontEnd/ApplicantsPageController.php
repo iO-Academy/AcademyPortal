@@ -79,8 +79,9 @@ class ApplicantsPageController extends Controller
                 $_SESSION['page'] = 1;
             }
             $params['data']['applicants'] =
-                array_slice($allApplicants,
-                    ($params['page'] - 1) * $this->numberOfApplicantsPerPage ,
+                array_slice(
+                    $allApplicants,
+                    ($params['page'] - 1) * $this->numberOfApplicantsPerPage,
                     $this->numberOfApplicantsPerPage
                 );
 
