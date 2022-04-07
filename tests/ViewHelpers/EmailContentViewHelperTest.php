@@ -22,6 +22,8 @@ class EmailContentViewHelperTest extends TestCase
         'eligible' => true,
         'eighteenPlus' => true];
 
+    private static $applicantId = 12;
+
 
     public static function testApplicantSubmissionSuccess() {
 
@@ -90,8 +92,11 @@ class EmailContentViewHelperTest extends TestCase
                   <tr>
                     <td style='padding: 15px;'>Yes</td>
                   </tr>
-                </table>";
-        $case = EmailContentViewHelper::ApplicantSubmission(self::$testData);
+                </table>
+                <div style='padding: 20px; margin: 20px 0 20px 0; width: 200px; text-align: center; background-color: #D3D3D3'>
+                    <a href='http://localhost:8080/applicants?id=12' style='font-size: 15px;'>View Applicant in Portal</a>
+                </div>";
+        $case = EmailContentViewHelper::ApplicantSubmission(self::$testData, self::$applicantId);
         self::assertEquals($expected, $case);
     }
 

@@ -39,46 +39,38 @@ class AddApplicantController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
+        $data = ['success' => false, 'msg' => 'Application not saved'];
+        $statusCode = 500;
+        $newApplicationData = $request->getParsedBody();
+        $getData = $request->getQueryParams();
+        var_dump($getData);
+        var_dump($newApplicationData);
 
-            $data = ['success' => false, 'msg' => 'Application not saved'];
-            $statusCode = 500;
-            $newApplicationData = $request->getParsedBody();
-            $getData = $request->getQueryParams();
-            var_dump($getData);
-            var_dump($newApplicationData);
+        if ($newApplicationData === null) {
+            return $response->withStatus(400);
+        }
 
-            //To do: find correct status code for incorrect data being sent to the API
-            if ($newApplicationData === null) {
-                return $response->withStatus(401);
+        try {
+            if (ApplicantValidator::validate($newApplicationData)) {
+                $applicant = ApplicantSanitiser::sanitise($newApplicationData);
+            } else {
+                throw new Exception('Applicant data failed validation');
             }
-
-            try {
-                if (ApplicantValidator::validate($newApplicationData)) {
-                    $applicant = ApplicantSanitiser::sanitise($newApplicationData);
-                } else {
-                    throw new Exception('Applicant data failed validation');
-                }
-            } catch (Exception $e) {
-                $statusCode = 400;
-                $data['msg'] = $e->getMessage();
-                return $this->respondWithJson($response, $data, $statusCode);
-            }
-
-
-            $successfulRegister = $this->applicantModel->storeApplicant($applicant);
-
-            // Call email utility and pass in $applicant data
-
-
-            if ($successfulRegister) {
-                $data = [
-                    'success' => $successfulRegister,
-                    'msg' => 'Application successfully saved!'
-                ];
-                $statusCode = 200;
-            }
+        } catch (Exception $e) {
+            $statusCode = 400;
+            $data['msg'] = $e->getMessage();
             return $this->respondWithJson($response, $data, $statusCode);
+        }
 
+        $successfulRegister = $this->applicantModel->storeApplicant($applicant);
 
+        if ($successfulRegister) {
+            $data = [
+                'success' => $successfulRegister,
+                'msg' => 'Application successfully saved!'
+            ];
+            $statusCode = 200;
+        }
+        return $this->respondWithJson($response, $data, $statusCode);
     }
 }

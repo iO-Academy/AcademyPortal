@@ -70,7 +70,9 @@ return function (App $app) {
         $testData = ['name' => 'Gabriel', 'email' => 'test@test.com', 'phoneNumber' => '0', 'gender' => ':)', 'backgroundInfo' => 'background', 'whyDev' => '12345', 'codeExperience' => '12345',
             'cohortDate' => 'NOW', 'hearAboutId' => 'Newspaper', 'eligible' => true, 'eighteenPlus' => true];
 
-        Portal\Utilities\Mailer::sendAllEmails($testData);
+        $applicantId = 12;
+
+        Portal\Utilities\Mailer::sendAllEmails($testData, $applicantId);
 
         $renderer = $container->get('renderer');
         return $renderer->render($response, "deleteMe.phtml", $args);

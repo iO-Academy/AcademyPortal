@@ -3,9 +3,7 @@
 namespace Portal\ViewHelpers;
 
 class EmailContentViewHelper
-
 {
-
     /**
      * Renders application data from front end form
      *
@@ -13,7 +11,7 @@ class EmailContentViewHelper
      *
      * @return string
      */
-    public static function ApplicantSubmission(array $applicantData): string {
+    public static function ApplicantSubmission(array $applicantData, int $applicantId): string {
         $result = '';
         $applicantDataResult = ($applicantData['eligible'] ? 'Yes' : 'No');
         $ageResult = ($applicantData['eighteenPlus'] ? 'Yes' : 'No');
@@ -84,8 +82,10 @@ class EmailContentViewHelper
                   <tr>
                     <td style='padding: 15px;'>$ageResult</td>
                   </tr>
-                </table>";
+                </table>
+                <div style='padding: 20px; margin: 20px 0 20px 0; width: 200px; text-align: center; background-color: #D3D3D3'>
+                    <a href='http://localhost:8080/applicants?id=$applicantId' style='font-size: 15px;'>View Applicant in Portal</a>
+                </div>";
         return $result;
     }
 }
-
