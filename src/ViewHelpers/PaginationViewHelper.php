@@ -26,6 +26,9 @@ class PaginationViewHelper
                 <li class="page-item ' . ($page != $i ?: 'active') . '">
                 <a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
         }
+        $paginationHtml .= '
+                <li class="page-item '.'
+        ';
 
         $string = '';
 
