@@ -54,10 +54,10 @@ $(document).ready(function () {
     $(".myBtn").click(function () {
         let url = './api/getApplicant/' +
             ( document.querySelector('body').dataset.emailid !== '0' ?
-            document.querySelector('body').dataset.emailid : this.dataset.id)
+                document.querySelector('body').dataset.emailid : this.dataset.id)
         let studentUrl = 'http://localhost:8080/public/' +
             ( document.querySelector('body').dataset.emailid !== '0' ?
-            document.querySelector('body').dataset.emailid : this.dataset.id)
+                document.querySelector('body').dataset.emailid : this.dataset.id)
         fetch(url)
             .then(
                 function (response) {

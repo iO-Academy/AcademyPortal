@@ -246,7 +246,11 @@ function pageFourValidation(formWrapper) {
         return input.id !== 'additionalNotesWordOfMouthInput'
     }).forEach((input)=>{
         if(toggle){
-            miniCheck.push(input.checked)
+            if(input.classList.contains('cohort_checkbox')) {
+                miniCheck.push(input.checked)
+            } else {
+                checks.push(input.checked)
+            }
             if(input.dataset.nextcourse === 'true'){
                 toggle = false
             }
