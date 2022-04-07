@@ -242,11 +242,16 @@ function pageFourValidation(formWrapper) {
     let miniCheck = []
     let toggle = true
     checks.push(dropdown[dropdown.selectedIndex].text !== 'Pick one')
+    console.log(inputsArray)
     inputsArray.filter((input)=>{
         return input.id !== 'additionalNotesWordOfMouthInput'
     }).forEach((input)=>{
         if(toggle){
-            miniCheck.push(input.checked)
+            if(input.classList.contains('cohort_checkbox')) {
+                miniCheck.push(input.checked)
+            } else {
+                checks.push(input.checked)
+            }
             if(input.dataset.nextcourse === 'true'){
                 toggle = false
             }
