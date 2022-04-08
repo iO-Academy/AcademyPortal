@@ -42,6 +42,7 @@ class AddApplicantController extends Controller
         $data = ['success' => false, 'msg' => 'Application not saved'];
         $statusCode = 500;
         $newApplicationData = $request->getParsedBody();
+        $getData = $request->getQueryParams();
 
 
         if ($newApplicationData === null) {
@@ -61,8 +62,11 @@ class AddApplicantController extends Controller
         }
 
         $successfulRegister = $this->applicantModel->storeApplicant($applicant);
-        $id = $this->applicantModel->getLastInsertedId();
-        \Portal\Utilities\Mailer::sendAllEmails($applicant, $id);
+        if (isset($getData['form'])) {
+            //Get last Id not currently working- hardcoded ID to test functionality
+//            $id = $this->applicantModel->getLastInsertedId();
+            \Portal\Utilities\Mailer::sendAllEmails($applicant, 12);
+        }
 
         if ($successfulRegister) {
             $data = [

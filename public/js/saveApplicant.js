@@ -104,7 +104,14 @@ let getCompletedFormData = () => {
 };
 
 let makeApiRequest = async (data, type) => {
-    const path = './api/' + (type === '/addapplicant' || type === '/studentApplicationForm' ? 'saveApplicant' : 'editApplicant');
+    if (type === '/addapplicant') {
+        const path = './api/saveApplicant';
+    } else if (type === '/studentApplicationForm') {
+        const path = './api/saveApplicant?form=true'
+    } else {
+        const path = './api/editApplicant';
+    }
+
     return fetch(path, {
         credentials: "same-origin",
         headers: {
