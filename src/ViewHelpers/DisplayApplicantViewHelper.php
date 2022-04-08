@@ -12,7 +12,7 @@ class DisplayApplicantViewHelper
         $dateAsc = ($sort == 'dateAsc' || empty($sort)) ? ' active' : '';
         $dateDesc = ($sort == 'dateDesc') ? ' active' : '';
 
-        $numberOfApplicantsPerPage = 5;
+        $numberOfApplicantsPerPage = 20;
 
         $tableHtml = '';
         foreach ($data['applicants'] as $applicantType => $applicants) {
