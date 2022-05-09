@@ -178,7 +178,6 @@ let outputHearAbout = (options) => {
 let outputGender = (options) => {
   const element = document.getElementById('gender');
   let genderOptions = '';
-  console.log(options)
 
   options.forEach(item => {
     genderOptions += '<option ';
