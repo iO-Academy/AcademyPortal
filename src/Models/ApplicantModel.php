@@ -9,8 +9,6 @@ use Portal\Interfaces\ApplicantModelInterface;
 class ApplicantModel implements ApplicantModelInterface
 {
     private $db;
-    private $numberPerPage = 20;
-
     public function __construct(\PDO $db)
     {
         $this->db = $db;
@@ -92,19 +90,6 @@ class ApplicantModel implements ApplicantModelInterface
      *
      * @return false|float
      */
-    public function countPaginationPages(string $stageId = '%', string $cohortId = '%')
-    {
-        $count = "SELECT count(`applicants`.`id`) AS `id` FROM `applicants`
-                  JOIN `course_choice` ON `applicants`.`id` = `course_choice`.`applicantId`
-                    WHERE `applicants`.`deleted` = '0'
-                    AND `course_choice`.`courseId` like :cohortId
-                    AND `applicants`.`stageId` like :stageId;";
-        $query = $this->db->prepare($count);
-        $query->bindValue(':cohortId', $cohortId);
-        $query->bindValue(':stageId', $stageId);
-        $query->execute();
-        return ceil($query->fetch()['id'] / $this->numberPerPage);
-    }
 
     /**
      * Gets a sorted list of applicants assigned to a specific cohort and stage.
@@ -119,8 +104,7 @@ class ApplicantModel implements ApplicantModelInterface
         string $name = '%',
         string $stageId = '%',
         string $cohortId = '%',
-        string $sortingQuery = '',
-        string $pageNumber = '1'
+        string $sortingQuery = ''
     ) {
         $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`,
         `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName',
@@ -137,16 +121,12 @@ class ApplicantModel implements ApplicantModelInterface
                       AND `applicants`.`stageId` like :stageId 
                       GROUP BY `applicants`.`id`";
         $stmt .= $this->sortingQuery($sortingQuery);
-        $stmt .= " LIMIT :offsets, :numberPerPage;";
-        $offset = ($pageNumber - 1) * $this->numberPerPage;
         $query = $this->db->prepare($stmt);
         $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
         $query->bindValue(':name', $name);
         $query->bindValue(':stageId', $stageId);
         $query->bindValue(':cohortId', $cohortId);
         $query->bindValue(':cohortId2', $cohortId);
-        $query->bindValue(':offsets', $offset, \PDO::PARAM_INT);
-        $query->bindValue(':numberPerPage', $this->numberPerPage, \PDO::PARAM_INT);
         $query->execute();
         $applicants = $query->fetchAll();
         foreach ($applicants as $key => $applicant) {
