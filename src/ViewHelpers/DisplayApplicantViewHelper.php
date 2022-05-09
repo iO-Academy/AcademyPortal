@@ -15,7 +15,8 @@ class DisplayApplicantViewHelper
         $numberOfApplicantsPerPage = 20;
 
         $tableHtml = '';
-        foreach ($data['applicants'] as $applicantType => $applicants) {
+        foreach ($data['applicantTabs'] as $index => $applicantTab) {
+            $applicants = $applicantTab['applicants'];
 
             $numberOfPages = ceil(count($applicants) / $numberOfApplicantsPerPage);
             if (isset($_SESSION['page']) && ($_SESSION['page'] > $numberOfPages || $_SESSION['page'] < 1)) {
@@ -26,10 +27,12 @@ class DisplayApplicantViewHelper
                 array_slice($applicants, (($_SESSION['page'] - 1) * $numberOfApplicantsPerPage), $numberOfApplicantsPerPage);
 
             $active = '';
-            if($applicantType === array_key_first($data['applicants'])){$active = 'active';};
+            if($index === 0){
+                $active = 'active';
+            };
 
             $tableHtml .= '
-                <div class="tab-pane ' . $active . '" role="tabpanel" id="' . $applicantType . '">
+                <div class="tab-pane ' . $active . '" role="tabpanel" id="' . $applicantTab['name'] . '">
                     <table class="col-xs-12 table-bordered table">
                         <tr>
                             <th class="col-xs-2">Name</th>
@@ -62,7 +65,7 @@ class DisplayApplicantViewHelper
             $tableHtml .= '
                         </tr>
                     </table>
-                    ' . \Portal\ViewHelpers\PaginationViewHelper::pagination($_SESSION['page'], $numberOfPages, $applicantType) . '
+                    ' . \Portal\ViewHelpers\PaginationViewHelper::pagination($_SESSION['page'], $numberOfPages, $applicantTab['name']) . '
                 </div>';
         }
 

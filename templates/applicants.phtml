@@ -22,14 +22,13 @@
             <h1>Applicants</h1>
             <form class="arrowForm" id="sortFilterApplicants" method="get">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active" id="paying-tab-button">
-                        <a href="#paying" aria-controls="paying" role="tab" data-toggle="tab">Paying Applicants</a>
-                    </li>
-                    <li role="presentation" id="apprentice-tab-button">
-                        <a href="#apprentice" aria-controls="apprentice" role="tab" data-toggle="tab">
-                            Apprentice Applicants
-                        </a>
-                    </li>
+                        <?php
+                            foreach($data['applicantTabs'] as $applicantTab) {
+                                echo '<li role="presentation" class="'. $applicantTab['name'] . '" id="paying-tab-button">' .
+                                '<a href="#' . $applicantTab['name'] . '" aria-controls="' . $applicantTab['name'] . '" role="tab" data-toggle="tab">' . $applicantTab['displayName'] . '</a>' .
+                                '</li>';
+                            }
+                        ?>
                     <li>
                         <div class="input-group rounded searchForm">
                             <input type="search" class="form-control rounded submitApplicant" name="name" id="name" value="" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />

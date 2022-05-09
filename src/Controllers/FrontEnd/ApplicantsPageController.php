@@ -72,9 +72,22 @@ class ApplicantsPageController extends Controller
                     $params['sort']
                 );
 
-            $params['data']['applicants'] = [
-                'paying' => array_filter($allApplicants, function ($applicant){return $applicant->apprentice !== '1';}),
-                'apprentice' => array_filter($allApplicants, function ($applicant){return $applicant->apprentice === '1';})
+            $params['data']['applicantTabs'] = [
+                    [
+                        'name' => 'all',
+                        'displayName' => 'All applicants',
+                        'applicants' => $allApplicants
+                    ],
+                    [
+                        'name' => 'paying',
+                        'displayName' => 'Paying applicants',
+                        'applicants' => array_filter($allApplicants, function ($applicant){return $applicant->apprentice !== '1';})
+                    ],
+                    [
+                        'name' => 'apprentice',
+                        'displayName' => 'Apprentice applicants',
+                        'applicants' => array_filter($allApplicants, function ($applicant){return $applicant->apprentice === '1';})
+                    ],
             ];
             return $this->renderer->render($response, 'applicants.phtml', $params);
         }
