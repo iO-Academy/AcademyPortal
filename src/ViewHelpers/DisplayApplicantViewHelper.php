@@ -23,11 +23,12 @@ class DisplayApplicantViewHelper
                 $_SESSION['page'] = 1;
             }
 
+            $offset = (($_SESSION['page'] - 1) * $numberOfApplicantsPerPage);
             $applicantsToDisplay =
-                array_slice($applicants, (($_SESSION['page'] - 1) * $numberOfApplicantsPerPage), $numberOfApplicantsPerPage);
+                array_slice($applicants, $offset, $numberOfApplicantsPerPage);
 
             $active = '';
-            if($index === 0){
+            if ($index === 0) {
                 $active = 'active';
             };
 
@@ -55,7 +56,12 @@ class DisplayApplicantViewHelper
 
 
             if (empty($applicants)) {
-                $tableHtml .= '<tr><td colspan="6"><h5 class="text-danger text-center">No Applicants Found.</h5></td></tr>';
+                $tableHtml .=
+                    '<tr>
+                        <td colspan="6"
+                            <h5 class="text-danger text-center">No Applicants Found.</h5>
+                        </td>
+                    </tr>';
             } else {
                 foreach ($applicantsToDisplay as $applicant) {
                     $tableHtml .= self::outputApplicantRow($applicant, $data['lastStage'], $data['stageCount']);
@@ -74,10 +80,20 @@ class DisplayApplicantViewHelper
 
     public static function displayApplicantTabs(array $tabs): string {
         $tabsHtml = '';
-        foreach($tabs as $applicantTab) {
-            $tabsHtml .= '<li role="presentation" class="'. $applicantTab['name'] . '" id="' . $applicantTab['name'] . '-tab-button">' .
-                '<a href="#' . $applicantTab['name'] . '" aria-controls="' . $applicantTab['name'] . '" role="tab" data-toggle="tab">' . $applicantTab['displayName'] . '</a>' .
-                '</li>';
+        foreach($tabs as $index => $tab) {
+            $active = $index === 0 ? 'active' : '';
+            $tabsHtml .= '<li role="presentation" 
+                              class="'. $tab['name'] . ' ' . $active . '" 
+                              id="' . $tab['name'] . '-tab-button ">';
+            $tabsHtml .= '<a 
+                            href="#' . $tab['name'] . '" 
+                            aria-controls="' . $tab['name'] . '" 
+                            role="tab" 
+                            data-toggle="tab"
+                          >' .
+                            $tab['displayName'] .
+                        '</a>';
+            $tabsHtml .= '</li>';
         }
         return $tabsHtml;
     }
@@ -127,6 +143,5 @@ class DisplayApplicantViewHelper
         $string .= '</td></tr>';
         return $string;
     }
-
 
 }
