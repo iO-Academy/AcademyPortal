@@ -22,13 +22,7 @@
             <h1>Applicants</h1>
             <form class="arrowForm" id="sortFilterApplicants" method="get">
                 <ul class="nav nav-tabs" role="tablist">
-                        <?php
-                            foreach($data['applicantTabs'] as $applicantTab) {
-                                echo '<li role="presentation" class="'. $applicantTab['name'] . '" id="' . $applicantTab['name'] . '-tab-button">' .
-                                '<a href="#' . $applicantTab['name'] . '" aria-controls="' . $applicantTab['name'] . '" role="tab" data-toggle="tab">' . $applicantTab['displayName'] . '</a>' .
-                                '</li>';
-                            }
-                        ?>
+                    <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayApplicantTabs($data['applicantTabs']); ?>
                     <li>
                         <div class="input-group rounded searchForm">
                             <input type="search" class="form-control rounded submitApplicant" name="name" id="name" value="" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />

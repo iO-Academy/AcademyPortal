@@ -72,6 +72,16 @@ class DisplayApplicantViewHelper
         return $tableHtml;
     }
 
+    public static function displayApplicantTabs(array $tabs): string {
+        $tabsHtml = '';
+        foreach($tabs as $applicantTab) {
+            $tabsHtml .= '<li role="presentation" class="'. $applicantTab['name'] . '" id="' . $applicantTab['name'] . '-tab-button">' .
+                '<a href="#' . $applicantTab['name'] . '" aria-controls="' . $applicantTab['name'] . '" role="tab" data-toggle="tab">' . $applicantTab['displayName'] . '</a>' .
+                '</li>';
+        }
+        return $tabsHtml;
+    }
+
     private static function outputApplicantRow(BaseApplicantEntityInterface $applicant, $lastStage, $stageCount): string
     {
         $string = '<tr>
@@ -117,4 +127,6 @@ class DisplayApplicantViewHelper
         $string .= '</td></tr>';
         return $string;
     }
+
+
 }
