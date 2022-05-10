@@ -24,7 +24,7 @@
                 <ul class="nav nav-tabs" role="tablist">
                         <?php
                             foreach($data['applicantTabs'] as $applicantTab) {
-                                echo '<li role="presentation" class="'. $applicantTab['name'] . '" id="paying-tab-button">' .
+                                echo '<li role="presentation" class="'. $applicantTab['name'] . '" id="' . $applicantTab['name'] . '-tab-button">' .
                                 '<a href="#' . $applicantTab['name'] . '" aria-controls="' . $applicantTab['name'] . '" role="tab" data-toggle="tab">' . $applicantTab['displayName'] . '</a>' .
                                 '</li>';
                             }

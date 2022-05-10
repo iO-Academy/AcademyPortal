@@ -134,9 +134,11 @@ section {
 }
 
 .nav-tabs {
-    display: grid;
-    grid-template-columns: 0fr 2fr 2fr 1.5fr 0.3fr 2fr 2fr 2fr;
-    justify-items: left;
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+    white-space: nowrap;
+    align-items: center;
 }
 
 .form_pass {
