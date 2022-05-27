@@ -6,16 +6,17 @@
 body.studentApplicationPage {
     width: 100%;
     height: 100%;
-    background: linear-gradient(-30deg, #EE7752, #E73C7E, #23A6D5, #23d576);
-    animation: gradient 15s ease infinite;
-    background-size: 5000% 5000%;
+//    //background: linear-gradient(-30deg, #EE7752, #E73C7E, #23A6D5, #23d576);
+//    //animation: gradient 15s ease infinite;
+//    //background-size: 5000% 5000%;
 }
 .content-container {
     background-color: $white;
     z-index: 1;
-    width: 100%;
+    width: 55%;
     margin: 100px auto;
-    padding: 80px 120px;
+    padding: 40px 40px;
+    border: 1px solid black;
 }
 
 
@@ -35,6 +36,7 @@ ul.startDatesList li {
 }
 
 ul.startDatesList li label {
+    cursor:pointer;
     display: inline-block;
     background-color: #D3D3D3;
     border-radius: 10px;
@@ -184,6 +186,18 @@ ul.startDatesList li input[type="checkbox"] {
     border: none;
 }
 
+.eligibilityTooltip {
+    border-radius: 50%;
+    background-color: $io-green;
+    text-align: center;
+    height: 50px;
+    width: 35px;
+    font-size: 10px;
+    font-weight: bold;
+    border: none;
+
+}
+
 .tooltip.top {
     font-size: calc(3px + 1vw);
     display: flex;
@@ -196,10 +210,11 @@ ul.startDatesList li input[type="checkbox"] {
 }
 
 .studentApplicationForm input, .studentApplicationForm select {
-    margin: 10px 0;
-    border: 0;
+    margin: 21px 0;
+    border: 0px;
     box-shadow: none;
     border-bottom: 1px solid #d8d8d8;
+    width:100%;
 }
 
 .studentApplicationForm .btn {
@@ -223,21 +238,23 @@ svg {
     right: 0;
 }
 
+#pageFourSmallPrint{
+    font-size:.813em;
+    font-weight:bold;
+}
+
+
 @media only screen and (max-width: 500px) {
     .content-container {
         padding: 40px 60px;
     }
 }
 
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
+@media only screen and (min-width:1024px) {
+    #pageFourSmallPrint {
+        font-size:16px;
+        font-weight:600;
     }
 }
+
+
