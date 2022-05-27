@@ -126,7 +126,8 @@ return function (ContainerBuilder $containerBuilder) {
         DI\factory('\Portal\Factories\Controllers\API\EditApplicantStageControllerFactory');
     $container['GetCoursesController'] = DI\factory('\Portal\Factories\Controllers\API\GetCoursesControllerFactory');
     $container['AddCourseController'] = DI\factory('\Portal\Factories\Controllers\API\AddCourseControllerFactory');
-
+    $container['GetCsvFormController'] = DI\factory('\Portal\Factories\Controllers\FrontEnd\GetCsvFormControllerFactory');
+  $container['CsvController'] = DI\factory('\Portal\Factories\Controllers\API\CsvControllerFactory');
     // Models
     $container['UserModel'] = DI\factory('\Portal\Factories\Models\UserModelFactory');
     $container['ApplicationFormModel'] = DI\factory('\Portal\Factories\Models\ApplicationFormModelFactory');
@@ -137,6 +138,6 @@ return function (ContainerBuilder $containerBuilder) {
     $container['StageModel'] = DI\factory('\Portal\Factories\Models\StageModelFactory');
     $container['TeamModel'] = DI\factory('\Portal\Factories\Models\TeamModelFactory');
     $container['CourseModel'] = DI\factory('\Portal\Factories\Models\CourseModelFactory');
-
+    $container['CsvModel'] = DI\factory('\Portal\Factories\Models\CsvModelFactory');
     $containerBuilder->addDefinitions($container);
 };
