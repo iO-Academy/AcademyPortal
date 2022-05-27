@@ -519,4 +519,9 @@ class ApplicantModel implements ApplicantModelInterface
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function getApplicantByEmail(string $email): int
+    {
+                
+    }
 }
