@@ -49,6 +49,13 @@ class EditApplicantStageController extends Controller
                 'data' => []
             ];
             return $this->respondWithJson($response, $data, 500);
+        } else {
+            $data = [
+                'success' => false,
+                'message' => 'sdf',
+                'data' => []
+            ];
+            return $this->respondWithJson($response, $data, 541);
         }
     }
 }

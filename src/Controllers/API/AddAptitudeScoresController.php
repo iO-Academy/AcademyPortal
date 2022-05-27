@@ -23,17 +23,31 @@ class AddAptitudeScoresController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-
-        $data = ['success' => false, 'msg' => 'Aptitude Score Not Added'];
+        $data = [
+            'success' => false,
+            'message' => 'Aptitude score not added',
+            'data' => []
+        ];
         $statusCode = 500;
         $aptitudeData = $request->getParsedBody();
         $email = $aptitudeData['email'];
+        $score = $aptitudeData['score'];
 
-        if ($aptitudeData === null) {
-            return $response->withStatus(400);
-        }
-        if ($this->applicantModel->getApplicantByEmail) {
+        $matchedApplicant = $this->applicantModel->getApplicantByEmail($email);
+        $data = [
+            'success' => false,
+            'message' => 'Aptitude score not added',
+            'data' => ['matchedApplicant' => $matchedApplicant],
+        ];
+        return $this->respondWithJson($response, $data, $statusCode);
 
-        }
+//        $data = [
+//            'success' => true,
+//            'message' => 'Added to da',
+//            'data' => ['matchedApplicant' => $matchedApplicant]
+//        ];
+
+
+//        return $this->applicantModel->setAptitudeScore(11, 66);
     }
 }

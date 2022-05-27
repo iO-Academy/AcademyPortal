@@ -520,8 +520,28 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->fetchAll();
     }
 
-    public function getApplicantByEmail(string $email): int
+    public function getApplicantByEmail(string $email): array
     {
-                
+        $sql = 'SELECT `applicants`.`email`, `applicants`.`id` FROM `applicants`'
+            . 'WHERE `applicants`.`email` = :email;';
+
+        $values = ['email' => $email];
+
+        $query = $this->db->prepare($sql);
+        $query->execute($values);
+        return $query->fetch();
+    }
+
+    public function setAptitudeScore($id, $score): bool
+    {
+        $sql = 'UPDATE `applicants_additional` SET `aptitude` = :score WHERE `id` = :id;';
+
+        $values = [
+            'score' => $score,
+            'id' => $id,
+        ];
+
+        $query = $this->db->prepare($sql);
+        return $query->execute($values);
     }
 }
