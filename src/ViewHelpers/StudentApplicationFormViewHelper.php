@@ -126,16 +126,17 @@ class StudentApplicationFormViewHelper
 //        $output .= '</label></div>';
 //        $output .= '<div id="UKWorkError" class="alert hidden formItem_alert"></div>';
 
-        $output .= '<div class="termsAndConditions"><div class="row"><label for="eligibilityTooltip" class="label-control withTooltip"><div class="ukEligibility"><input name="eligible" type="checkbox" ';
-        $output .= 'class="submitApplicant"';
+        $output .= '<div class="termsAndConditions"><div class="row"><label for="eligibilityTooltip"';
+        $output .= 'class="label-control withTooltip"><div class="ukEligibility"><input name="eligible"';
+        $output .= 'type="checkbox" class="submitApplicant"';
         $output .= 'value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK</div>';
-	    $output .= ' <div class="toolTipContainer">';
+	    $output .= '<div class="toolTipContainer">';
         $output .= '<p class="eligibilityTooltip" data-toggle="tooltip" data-placement="top" title=""';
-        $output .= 'data-original-title="While not required, this may affect your ability to get a job in the UK after the course."';
+        $output .= 'data-original-title="While not required, this may ';
+        $output .= 'affect your ability to get a job in the UK after the course."';
         $output .= 'aria-describedby="tooltip173013">?</p></div>';
-	    $output .= '<div class="tooltip fade top in" role="tooltip" id="tooltip173013" style="top: 324.188px; left: 988px; display: block;">';
-        $output .= '</div>';
-        $output .= '</label></div>';
+	    $output .= '<div class="tooltip fade top in" role="tooltip" id="tooltip173013"';
+        $output .= 'style="top: 324.188px; left: 988px; display: block;"></div></label></div>';
         $output .= '<div id="UKWorkError" class="alert hidden formItem_alert"></div>';
 
 
@@ -224,7 +225,8 @@ class StudentApplicationFormViewHelper
             $output .= ($applicationFormPageNumber - 1) . '">Prev</button>';
         }
         if ($applicationFormPageNumber >= $finalPage) {
-            $output .= '<button class="btn btn-lg finishButton" id="submitApplicant">Submit Application</button></div></div>';
+            $output .= '<button class="btn btn-lg finishButton"';
+            $output .= 'id="submitApplicant">Submit Application</button></div></div>';
         } else {
             $output .= '<button class="nextButton btn btn-lg" data-buttontype="next" ';
             $output .= 'type="submit" for="studentApplicationForm" value="';
