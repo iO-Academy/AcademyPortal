@@ -127,7 +127,9 @@ return function (ContainerBuilder $containerBuilder) {
     $container['GetCoursesController'] = DI\factory('\Portal\Factories\Controllers\API\GetCoursesControllerFactory');
     $container['AddCourseController'] = DI\factory('\Portal\Factories\Controllers\API\AddCourseControllerFactory');
     $container['GetCsvFormController'] = DI\factory('\Portal\Factories\Controllers\FrontEnd\GetCsvFormControllerFactory');
-  $container['CsvController'] = DI\factory('\Portal\Factories\Controllers\API\CsvControllerFactory');
+    $container['CsvController'] = DI\factory('\Portal\Factories\Controllers\API\CsvControllerFactory');
+    $container['AddAptitudeScoreController'] = DI\factory('\Portal\Factories\Controllers\API\AddAptitudeScoreControllerFactory');
+
     // Models
     $container['UserModel'] = DI\factory('\Portal\Factories\Models\UserModelFactory');
     $container['ApplicationFormModel'] = DI\factory('\Portal\Factories\Models\ApplicationFormModelFactory');
