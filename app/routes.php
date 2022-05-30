@@ -25,7 +25,7 @@ return function (App $app) {
     $app->get('/courses', 'CoursesPageController');
     $app->get('/addCourse', 'AddCoursePageController');
     $app->get('/studentApplicationForm', 'StudentApplicationFormPageController');
-
+    $app->get('/csvForm', 'GetCsvFormController');
 
     //API
     $app->get('/api/getStudents', 'GetStudentsController');
@@ -60,6 +60,5 @@ return function (App $app) {
     $app->get('/api/progressApplicantStage', 'EditApplicantStageController');
     $app->get('/api/getCourses', 'GetCoursesController');
     $app->post('/api/addCourse', 'AddCourseController');
-    $app->get('/api/getCsvForm', 'GetCsvFormController');
     $app->post('/api/csvUpload', 'CsvController');
 };

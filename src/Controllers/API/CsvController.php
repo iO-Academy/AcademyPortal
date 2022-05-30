@@ -3,37 +3,42 @@
 namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
-use Portal\Models\CsvModel;
+use Portal\Models\ApplicantModel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 class CsvController extends Controller
 {
-  private CsvModel $csvModel;
+    private ApplicantModel $applicantModel;
 
-  public function __construct($csvModel)
-  {
-    $this->csvModel = $csvModel;
-  }
-
-
-  public function __invoke(Request $request, Response $response, array $args)
-  {
-    // TODO: Implement __invoke() method.
-    $newUpload = $request->getParsedBody();
-
-    $forResponse = '<pre>' . print_r($newUpload, true) . '</pre>';
-
-    // Use model to add data to database
-    $result = $this->csvModel->uploadCsv($newUpload);
-
-    if ($result > 0) {
-      $forResponse .= '<p>Book saved successfully</p>';
-    } else {
-      $forResponse .= '<p>Book not saved</p>';
+    public function __construct($applicantModel)
+    {
+        $this->applicantModel = $applicantModel;
     }
 
-    $response->getBody()->write($forResponse);
-    return $response;
-  }
+    public function __invoke(Request $request, Response $response, array $args)
+    {
+        // TODO: Implement __invoke() method.
+        $file = $_FILES['csv']['tmp_name'];
+        $rows = array_map('str_getcsv', file($file));
+        $header = array_shift($rows);
+        $applicants = array();
+        foreach ($rows as $row) {
+            $applicants[] = array_combine($header, $row);
+        }
+
+        // Use model to add data to database
+        foreach ($applicants as $applicant){
+            $result = $this->applicantModel->storeApplicant($applicant);
+        }
+
+        if ($result > 0) {
+            $forResponse = '<p>CSV Uploaded successfully</p>';
+        } else {
+            $forResponse = '<p>CSV Not Uploaded</p>';
+        }
+
+        $response->getBody()->write($forResponse);
+        return $response;
+    }
 }
