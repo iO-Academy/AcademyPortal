@@ -190,7 +190,8 @@ class EventModel
      * @param string $searchQuery
      * @return array
      */
-    public function getUpcomingEventsByCategoryIdAndSearch(string $categoryId = null, ?string $searchQuery = ''): array {
+    public function getUpcomingEventsByCategoryIdAndSearch(string $categoryId = null, ?string $searchQuery = ''): array
+    {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
         `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
         FROM `events` 
@@ -217,7 +218,8 @@ class EventModel
      * @param string|null $searchQuery
      * @return array
      */
-    public function getPastEventsByCategoryIdAndSearch(string $categoryId = null, ?string $searchQuery = ''): array {
+    public function getPastEventsByCategoryIdAndSearch(string $categoryId = null, ?string $searchQuery = ''): array
+    {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
         `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
         FROM `events` 
