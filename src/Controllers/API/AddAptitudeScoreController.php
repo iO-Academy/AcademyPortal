@@ -7,7 +7,7 @@ use Portal\Models\ApplicantModel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-class AddAptitudeScoresController extends Controller
+class AddAptitudeScoreController extends Controller
 {
     private $applicantModel;
 
