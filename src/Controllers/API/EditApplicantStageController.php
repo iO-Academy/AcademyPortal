@@ -52,7 +52,7 @@ class EditApplicantStageController extends Controller
         } else {
             $data = [
                 'success' => false,
-                'message' => 'sdf',
+                'message' => 'Not logged in.',
                 'data' => []
             ];
             return $this->respondWithJson($response, $data, 541);
