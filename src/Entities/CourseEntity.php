@@ -10,6 +10,8 @@ class CourseEntity
     protected $trainer;
     protected $notes;
     protected $id;
+    protected $remote;
+    protected $inPerson;
 
     /**
      * @return int|null
@@ -58,4 +60,21 @@ class CourseEntity
     {
         return $this->notes;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getRemote()
+    {
+        return $this->remote;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getInPerson()
+    {
+        return $this->inPerson;
+    }
+
 }

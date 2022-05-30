@@ -26,7 +26,9 @@ class CourseModel
                 `courses`.`end_date` AS `endDate`,
                 `name`,
                 `trainer`,
-                `notes`
+                `notes`,
+                `in_person` AS `inPerson`,
+                `remote`
                 FROM `courses`;';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);

@@ -25,6 +25,8 @@ class DisplayCoursesViewHelper
                     <td>' . $course->getName() . '</td>
                     <td>' . $course->getTrainer() . '</td>
                     <td>' . $course->getNotes() . '</td>
+                    <td>' . $course->getInPerson() . '</td>
+                    <td>' . $course->getRemote() . '</td>
                 </tr>';
         }
         return self::handleNoCourses($result);
