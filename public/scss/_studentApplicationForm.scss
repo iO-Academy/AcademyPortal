@@ -62,6 +62,7 @@ ul.startDatesList li input[type="checkbox"] {
     }
     label input[type="checkbox"] {
         appearance: none;
+        aspect-ratio:1;
         background-color: #fff;
         margin: 5px;
         margin-right: 20px;
@@ -93,8 +94,11 @@ ul.startDatesList li input[type="checkbox"] {
 
 
 .formItem_alert {
-    color: #8a0000;
+    color: #fa2929;
     font-size: calc(8px + 1vw);
+    padding: 0px;
+    margin: 0px;
+    font-family: "Inter", Papyrus;
 
 }
 
@@ -131,7 +135,7 @@ ul.startDatesList li input[type="checkbox"] {
         height: auto;
     }
     .row {
-        margin: 30px 0;
+        margin: 10px 0 0 0;
     }
     .hidden {
         visibility: hidden;
@@ -157,7 +161,7 @@ ul.startDatesList li input[type="checkbox"] {
     display: flex;
     justify-content: end;
     button {
-        margin: 10px;
+        margin:0px 10px;
     }
 }
 
@@ -167,7 +171,7 @@ ul.startDatesList li input[type="checkbox"] {
     border-radius: 30px;
 }
 
-.pastCodingTooltip {
+.pastCodingTooltip .eligibilityTooltip {
     border-radius: 50%;
     background-color: $io-green;
     text-align: center;
@@ -178,18 +182,29 @@ ul.startDatesList li input[type="checkbox"] {
     font-weight: bold;
     border: none;
 }
-
-.eligibilityTooltip {
-    border-radius: 50%;
-    background-color: $io-green;
-    text-align: center;
-    height: 50px;
-    width: 35px;
-    font-size: 10px;
+.toolTipContainer{
+     background-color: $io-green;
+     border-radius: 50%;
+     background-position: center;
+     width: 30px;
+     height: 30px;
+     background-image: url("/assets/question-mark.png");
+     background-repeat: no-repeat;
+     aspect-ratio: 1;
+ }
+.ukEligibility{
+    font-family: 'Inter', Papyrus;
+    font-size: calc(10px + 1vw);
     font-weight: bold;
-    border: none;
-
+    height:auto;
 }
+.eligibilityTooltip {
+    width: 100%;
+    opacity: 0;
+}
+
+
+
 
 .tooltip.top {
     font-size: calc(3px + 1vw);
@@ -236,6 +251,11 @@ svg {
     font-weight:bold;
 }
 
+@media only screen and (max-width: 770px) {
+    .toolTipContainer {
+        visibility:hidden;
+    }
+}
 
 @media only screen and (max-width: 500px) {
     .content-container {
