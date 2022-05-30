@@ -28,12 +28,29 @@ class CsvController extends Controller
         foreach ($rows as $row) {
             $applicants[] = array_combine($header, $row);
         }
+        $cohortApplicants = [];
+        foreach ($applicants as $applicant) {
+            $applicant['cohort'] = [$applicant['cohort']];
+            echo '<pre>';
+            print_r($applicant);
+            echo '</pre>';
+            $cohortApplicants[] = $applicant;
+        }
 
-        return $applicants;
+
+
+        echo '<pre>';
+        print_r($cohortApplicants);
+        echo '</pre>';
+
+        return $cohortApplicants;
     }
 
     public function __invoke(Request $request, Response $response, array $args)
     {
+        $gender = $this->applicantModel->getForeignKey("gender", 'gender', 'Female');
+        print_r($gender);
+
         if (!isset($body['submit'])
         || !$this->validateFile(
             $_FILES['csv'],

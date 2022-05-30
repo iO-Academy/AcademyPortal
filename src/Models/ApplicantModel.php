@@ -14,6 +14,19 @@ class ApplicantModel implements ApplicantModelInterface
         $this->db = $db;
     }
 
+    public function getForeignKey($table, $field, $value)
+    {
+        $query = $this->db->prepare(
+            'SELECT `id` 
+                    FROM `' . $table . '` 
+                    WHERE `' . $field . '` = :value'
+        );
+
+
+
+        $query->execute([':value' => $value]);
+        return $query->fetchAll();
+    }
     /**
      * Inserts new ApplicantEntity into database - registering.
      *
