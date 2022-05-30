@@ -33,7 +33,6 @@ class AddAptitudeScoresController extends Controller
         $aptitudeData = $request->getParsedBody();
 
         if (empty($aptitudeData) || !isset($aptitudeData['email']) || !isset($aptitudeData['score'])) {
-
             $data['message'] = 'Aptitude score not added - invalid data supplied.';
 
             return $this->respondWithJson($response, $data, $statusCode);
@@ -55,7 +54,7 @@ class AddAptitudeScoresController extends Controller
             'message' => 'Aptitude score added successfully',
             'data' => ['matchedApplicant' => $matchedApplicant],
         ];
-        
+
         $statusCode = 200;
         $this->applicantModel->setAptitudeScore($matchedApplicant['id'], $score);
 
