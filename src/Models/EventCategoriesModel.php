@@ -13,7 +13,8 @@ class EventCategoriesModel
         $this->db = $db;
     }
 
-    public function getEventCategories(): array {
+    public function getEventCategories(): array
+    {
         $sql = 'SELECT `id`, `name` FROM `event_categories`;';
 
         $query = $this->db->prepare($sql);
