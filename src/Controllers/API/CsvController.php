@@ -19,15 +19,8 @@ class CsvController extends Controller
         $this->applicantModel = $applicantModel;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    private function csvToAssocArr(): array
     {
-        if (!isset($body['submit'])
-        || !$this->validateFile(
-            $_FILES['csvfile'],
-                self::FILE_EXTENSIONS_ALLOWED,
-                self::VALID_FILE_TYPE)
-            ) 
-        // TODO: Implement __invoke() method.
         $file = $_FILES['csv']['tmp_name'];
         $rows = array_map('str_getcsv', file($file));
         $header = array_shift($rows);
@@ -36,9 +29,20 @@ class CsvController extends Controller
             $applicants[] = array_combine($header, $row);
         }
 
-        // Use model to add data to database
-        foreach ($applicants as $applicant) {
+        return $applicants;
+    }
 
+    public function __invoke(Request $request, Response $response, array $args)
+    {
+        if (!isset($body['submit'])
+        || !$this->validateFile(
+            $_FILES['csv'],
+                self::FILE_EXTENSIONS_ALLOWED,
+                self::VALID_FILE_TYPE)
+            )
+
+        // Use model to add data to database
+        foreach ($this->csvToAssocArr() as $applicant) {
             $result = $this->applicantModel->storeApplicant($applicant);
         }
 
