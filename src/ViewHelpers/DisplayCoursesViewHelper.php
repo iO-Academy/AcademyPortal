@@ -2,8 +2,6 @@
 
 namespace Portal\ViewHelpers;
 
-use Portal\Interfaces\CourseEntityInterface;
-
 class DisplayCoursesViewHelper
 {
     /**
@@ -28,7 +26,8 @@ class DisplayCoursesViewHelper
                     <td>' . $course->getName() . '</td>
                     <td>' . $course->getTrainer() . '</td>
                     <td>' . $course->getNotes() . '</td>
-                    <td>' . $inPerson . '</td>
+                    <td>' . $inPerson
+                . '</td>
                     <td>' . $remote . '</td>
                 </tr>';
         }
