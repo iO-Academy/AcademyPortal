@@ -156,7 +156,7 @@ class StudentApplicationFormViewHelper
         ' five working days to let you know whether your application' .
         ' has been successful and talk next steps!</li>';
         $output .= '</ul></div>';
-        $output .= '<div id="generalError" hidden></div>';
+        $output .= '<div id="generalError" class="hidden"></div>';
         return $output;
     }
 
