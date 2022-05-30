@@ -6,6 +6,7 @@ use Portal\Abstracts\Controller;
 use Portal\Models\EventCategoriesModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+
 class GetEventCategoriesController extends Controller
 {
     private EventCategoriesModel $eventCategoriesModel;

@@ -13,11 +13,11 @@ class EventCategoriesModel
         $this->db = $db;
     }
 
-    public function getEventCategories() {
-    $sql = 'SELECT `id`, `name` FROM `event_categories`;';
+    public function getEventCategories(): array {
+        $sql = 'SELECT `id`, `name` FROM `event_categories`;';
 
-    $query = $this->db->prepare($sql);
-    $query->execute();
-    return $query->fetchAll();
+        $query = $this->db->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
     }
 }
