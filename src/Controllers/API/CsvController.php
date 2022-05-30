@@ -48,22 +48,24 @@ class CsvController extends Controller
     {
         $gender = $this->applicantModel->getForeignKey("gender", 'gender', 'Female');
         print_r($gender);
-
-        if (!isset($body['submit'])
+        $forResponse = '<p>Invalid file format - CSV Not Uploaded</p>';
+        if (
+            !isset($body['submit'])
             || !$this->validateFile(
                 $_FILES['csv'],
                 self::FILE_EXTENSIONS_ALLOWED,
                 self::VALID_FILE_TYPE)
-        )
+        ) {
             // Use model to add data to database
             foreach ($this->csvToAssocArr() as $applicant) {
                 $result = $this->applicantModel->storeApplicant($applicant);
             }
 
-        if ($result > 0) {
-            $forResponse = '<p>CSV Uploaded successfully</p>';
-        } else {
-            $forResponse = '<p>CSV Not Uploaded</p>';
+            if ($result > 0) {
+                $forResponse = '<p>CSV Uploaded successfully</p>';
+            } else {
+                $forResponse = '<p>CSV Not Uploaded</p>';
+            }
         }
 
         $response->getBody()->write($forResponse);
@@ -71,18 +73,18 @@ class CsvController extends Controller
     }
 
     private function validateFile(
-        array  $file,
-        array  $fileExtensionsAllowed,
+        array $file,
+        array $fileExtensionsAllowed,
         string $validFileType
-    ): bool
-    {
+    ): bool {
         $fileName = $file['name'];
         $fileNameArr = explode('.', $fileName);
         $fileExtension = strtolower(end($fileNameArr));
         $fileType = $file['type'];
         $fileSize = $file['size'];
-
-        if (!in_array($fileExtension, $fileExtensionsAllowed)
+        
+        if (
+            !in_array($fileExtension, $fileExtensionsAllowed)
             || $fileType !== $validFileType
             || $fileSize == 0
         ) {
