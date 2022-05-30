@@ -529,7 +529,14 @@ class ApplicantModel implements ApplicantModelInterface
 
         $query = $this->db->prepare($sql);
         $query->execute($values);
-        return $query->fetch();
+
+        $result = $query->fetch();
+
+        if (!$result) {
+            return [];
+        }
+
+        return $result;
     }
 
     public function setAptitudeScore($id, $score): bool

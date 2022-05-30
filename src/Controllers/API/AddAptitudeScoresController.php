@@ -28,26 +28,37 @@ class AddAptitudeScoresController extends Controller
             'message' => 'Aptitude score not added',
             'data' => []
         ];
+
         $statusCode = 500;
         $aptitudeData = $request->getParsedBody();
+
+        if (empty($aptitudeData) || !isset($aptitudeData['email']) || !isset($aptitudeData['score'])) {
+
+            $data['message'] = 'Aptitude score not added - invalid data supplied.';
+
+            return $this->respondWithJson($response, $data, $statusCode);
+        }
+
         $email = $aptitudeData['email'];
         $score = $aptitudeData['score'];
 
         $matchedApplicant = $this->applicantModel->getApplicantByEmail($email);
+
+        if (!isset($matchedApplicant['email']) || $email != $matchedApplicant['email']) {
+            $data['message'] = 'Aptitude score not added - email not found';
+
+            return $this->respondWithJson($response, $data, $statusCode);
+        }
+
         $data = [
-            'success' => false,
-            'message' => 'Aptitude score not added',
+            'success' => true,
+            'message' => 'Aptitude score added successfully',
             'data' => ['matchedApplicant' => $matchedApplicant],
         ];
+        
+        $statusCode = 200;
+        $this->applicantModel->setAptitudeScore($matchedApplicant['id'], $score);
+
         return $this->respondWithJson($response, $data, $statusCode);
-
-//        $data = [
-//            'success' => true,
-//            'message' => 'Added to da',
-//            'data' => ['matchedApplicant' => $matchedApplicant]
-//        ];
-
-
-//        return $this->applicantModel->setAptitudeScore(11, 66);
     }
 }
