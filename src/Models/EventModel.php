@@ -210,6 +210,7 @@ class EventModel
         $query->bindParam(':searchQuery', $searchQuery);
         $query->execute();
         return $query->fetchAll();
+
     }
 
     /**
