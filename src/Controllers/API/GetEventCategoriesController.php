@@ -39,6 +39,5 @@ class GetEventCategoriesController extends Controller
         }
 
         return $this->respondWithJson($response, $data, $statusCode);
-
     }
 }

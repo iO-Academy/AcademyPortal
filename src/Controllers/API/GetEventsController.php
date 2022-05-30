@@ -43,25 +43,31 @@ class GetEventsController extends Controller
 
         $eventSearchInput = $request->getQueryParams()['searchTerm'] ?? '';
         $eventFilterInput = $request->getQueryParams()['categoryValue'] ?? null;
-            if (strlen($eventSearchInput) < 256) {
-                try {
-                    if (!$pastEvents) {
-                        $data['data'] = $this->eventModel->getUpcomingEventsByCategoryIdAndSearch($eventFilterInput, $eventSearchInput);
-                    } else {
-                        $data['data'] = $this->eventModel->getPastEventsByCategoryIdAndSearch($eventFilterInput, $eventSearchInput);
-                    }
-
-                    $data['message'] = 'No results returned matching your search';
-                    if (count($data['data']) > 0) {
-                        $data['message'] = '';
-                    }
-                    $data['success'] = true;
-                } catch (\PDOException $exception) {
-                    $data['message'] = $exception->getMessage();
+        if (strlen($eventSearchInput) < 256) {
+            try {
+                if (!$pastEvents) {
+                    $data['data'] = $this->eventModel->getUpcomingEventsByCategoryIdAndSearch(
+                        $eventFilterInput,
+                        $eventSearchInput
+                    );
+                } else {
+                    $data['data'] = $this->eventModel->getPastEventsByCategoryIdAndSearch(
+                        $eventFilterInput,
+                        $eventSearchInput
+                    );
                 }
-            } else {
-                $data['message'] = 'Search term cannot be greater than 255 characters.';
+
+                $data['message'] = 'No results returned matching your search';
+                if (count($data['data']) > 0) {
+                    $data['message'] = '';
+                }
+                $data['success'] = true;
+            } catch (\PDOException $exception) {
+                $data['message'] = $exception->getMessage();
             }
-            return $this->respondWithJson($response, $data, $statusCode);
+        } else {
+            $data['message'] = 'Search term cannot be greater than 255 characters.';
+        }
+        return $this->respondWithJson($response, $data, $statusCode);
     }
 }
