@@ -17,6 +17,8 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>Defence Against the Dark JSON</td>
                     <td>Harry Potter</td>
                     <td></td>
+                    <td>Yes</td>
+                    <td>No</td>
                 </tr>';
         $entityMock = $this->createMock(CourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -25,6 +27,8 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getName')->willReturn('Defence Against the Dark JSON');
         $entityMock->method('getTrainer')->willReturn('Harry Potter');
         $entityMock->method('getNotes')->willReturn('');
+        $entityMock->method('getRemote')->willReturn('0');
+        $entityMock->method('getInPerson')->willReturn('1');
         $data = [$entityMock];
         $result = DisplayCoursesViewHelper::displayCourses($data);
         $this->assertEquals($expected, $result);

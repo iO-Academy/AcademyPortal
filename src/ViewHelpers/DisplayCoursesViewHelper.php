@@ -2,7 +2,7 @@
 
 namespace Portal\ViewHelpers;
 
-//use Portal\Interfaces\CourseEntityInterface;
+use Portal\Interfaces\CourseEntityInterface;
 
 class DisplayCoursesViewHelper
 {
