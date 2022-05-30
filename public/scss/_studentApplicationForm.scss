@@ -6,21 +6,15 @@
 body.studentApplicationPage {
     width: 100%;
     height: 100%;
-    background: linear-gradient(-30deg, #EE7752, #E73C7E, #23A6D5, #23d576);
-    animation: gradient 15s ease infinite;
-    background-size: 5000% 5000%;
 }
 .content-container {
     background-color: $white;
     z-index: 1;
-    width: 100%;
+    width: 55%;
     margin: 100px auto;
-    padding: 80px 120px;
+    padding: 40px 40px;
+    border: 1px solid black;
 }
-
-
-
-
 ul.startDatesList {
     list-style: none;
     padding: 20px 0;
@@ -35,6 +29,7 @@ ul.startDatesList li {
 }
 
 ul.startDatesList li label {
+    cursor:pointer;
     display: inline-block;
     background-color: #D3D3D3;
     border-radius: 10px;
@@ -67,6 +62,7 @@ ul.startDatesList li input[type="checkbox"] {
     }
     label input[type="checkbox"] {
         appearance: none;
+        aspect-ratio:1;
         background-color: #fff;
         margin: 5px;
         margin-right: 20px;
@@ -98,8 +94,11 @@ ul.startDatesList li input[type="checkbox"] {
 
 
 .formItem_alert {
-    color: #8a0000;
+    color: #fa2929;
     font-size: calc(8px + 1vw);
+    padding: 0px;
+    margin: 0px;
+    font-family: "Inter", Papyrus;
 
 }
 
@@ -136,7 +135,7 @@ ul.startDatesList li input[type="checkbox"] {
         height: auto;
     }
     .row {
-        margin: 30px 0;
+        margin: 10px 0 0 0;
     }
     .hidden {
         visibility: hidden;
@@ -162,7 +161,7 @@ ul.startDatesList li input[type="checkbox"] {
     display: flex;
     justify-content: end;
     button {
-        margin: 10px;
+        margin:0px 10px;
     }
 }
 
@@ -172,7 +171,7 @@ ul.startDatesList li input[type="checkbox"] {
     border-radius: 30px;
 }
 
-.pastCodingTooltip {
+.pastCodingTooltip .eligibilityTooltip {
     border-radius: 50%;
     background-color: $io-green;
     text-align: center;
@@ -183,6 +182,29 @@ ul.startDatesList li input[type="checkbox"] {
     font-weight: bold;
     border: none;
 }
+.toolTipContainer{
+     background-color: $io-green;
+     border-radius: 50%;
+     background-position: center;
+     width: 30px;
+     height: 30px;
+     background-image: url("/assets/question-mark.png");
+     background-repeat: no-repeat;
+     aspect-ratio: 1;
+ }
+.ukEligibility{
+    font-family: 'Inter', Papyrus;
+    font-size: calc(10px + 1vw);
+    font-weight: bold;
+    height:auto;
+}
+.eligibilityTooltip {
+    width: 100%;
+    opacity: 0;
+}
+
+
+
 
 .tooltip.top {
     font-size: calc(3px + 1vw);
@@ -196,10 +218,11 @@ ul.startDatesList li input[type="checkbox"] {
 }
 
 .studentApplicationForm input, .studentApplicationForm select {
-    margin: 10px 0;
-    border: 0;
+    margin: 21px 0;
+    border: 0px;
     box-shadow: none;
     border-bottom: 1px solid #d8d8d8;
+    width:100%;
 }
 
 .studentApplicationForm .btn {
@@ -223,21 +246,30 @@ svg {
     right: 0;
 }
 
+#pageFourSmallPrint{
+    font-size:.813em;
+    font-weight:bold;
+}
+
+@media only screen and (max-width: 770px) {
+    .toolTipContainer {
+        visibility:hidden;
+    }
+}
+
 @media only screen and (max-width: 500px) {
     .content-container {
         padding: 40px 60px;
+        margin: 0px;
+        width: 100% ;
+    }
+}
+
+@media only screen and (min-width:1024px) {
+    #pageFourSmallPrint {
+        font-size:16px;
+        font-weight:600;
     }
 }
 
 
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}

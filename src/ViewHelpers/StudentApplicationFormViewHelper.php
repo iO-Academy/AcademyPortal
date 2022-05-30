@@ -27,6 +27,7 @@ class StudentApplicationFormViewHelper
         foreach ($data['genders'] as $genders) {
             $output .= '<option value="' . $genders['id'] . '">' . $genders['gender'] . '</option>';
         }
+
         $output .= '</select></div>';
         $output .= '<div id="genderError" class="alert hidden formItem_alert">Field Required.</div>';
         return $output;
@@ -97,7 +98,7 @@ class StudentApplicationFormViewHelper
         }
         $output .= '</ul>';
         $output .= '<div id="cohortError" class="alert hidden formItem_alert"></div>';
-        $output .= '<p>Some course dates may also be offered with a remote option. ';
+        $output .= '<p id="pageFourSmallPrint">Some course dates may also be offered with a remote option. ';
         $output .= 'Contact us to find out more.</p></div>';
         $output .= '<div class="row"><label> How did you hear about us?</label>';
         $output .= '<select id="hearAboutId" name="hearAboutId" class="form-control submitApplicant">';
@@ -117,16 +118,28 @@ class StudentApplicationFormViewHelper
         $output .= '<input type="text" class="form-control submitApplicant" ';
         $output .= 'id="additionalNotesOtherInput" name="additionalNotes"></div>';
         $output .= '<div id="notesError" class="alert hidden formItem_alert"></div>';
-        $output .= '<div class="termsAndConditions"><div class="row"><label><input name="eligible" type="checkbox" ';
-        $output .= 'class="submitApplicant"';
-        $output .= 'value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK';
-        $output .= '</label></div>';
+        $output .= '<div class="termsAndConditions"><div class="row"><label for="eligibilityTooltip"';
+        $output .= 'class="label-control withTooltip"><div class="ukEligibility"><input name="eligible"';
+        $output .= 'type="checkbox" class="submitApplicant"';
+        $output .= 'value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK</div>';
+        $output .= '<div class="toolTipContainer">';
+        $output .= '<p class="eligibilityTooltip" data-toggle="tooltip" data-placement="top" title=""';
+        $output .= 'data-original-title="While not required, this may ';
+        $output .= 'affect your ability to get a job in the UK after the course."';
+        $output .= 'aria-describedby="tooltip173013">?</p></div>';
+        $output .= '<div class="tooltip fade top in" role="tooltip" id="tooltip173013"';
+        $output .= 'style="top: 324.188px; left: 988px; display: block;"></div></label></div>';
         $output .= '<div id="UKWorkError" class="alert hidden formItem_alert"></div>';
+
+
+
+
         $output .= '<div class="row"><label><input name="eighteenPlus" class="submitApplicant" type="checkbox" />';
         $output .= 'I confirm that I am at least 18 ';
         $output .= 'years of age before my chosen course start date</label></div>';
         $output .= '<div id="18Error" class="alert hidden formItem_alert"></div>';
-        $output .= '<div class="row"><p>By using this form you agree with the storage and handling of your ';
+        $output .= '<div class="row"><p id="pageFourSmallPrint">';
+        $output .= 'By using this form you agree with the storage and handling of your ';
         $output .= 'data by this website in accordance with our <a href="https://io-academy.uk/terms-conditions" ';
         $output .= 'target="_blank">terms and conditions</a>';
         $output .= ' and <a href="https://io-academy.uk/privacy-policy" target="_blank">privacy policy</a>.</p>';
@@ -205,7 +218,8 @@ class StudentApplicationFormViewHelper
             $output .= ($applicationFormPageNumber - 1) . '">Prev</button>';
         }
         if ($applicationFormPageNumber >= $finalPage) {
-            $output .= '<button class="btn btn-lg finishButton" id="submitApplicant">Finish</button></div></div>';
+            $output .= '<button class="btn btn-lg finishButton"';
+            $output .= 'id="submitApplicant">Submit Application</button></div></div>';
         } else {
             $output .= '<button class="nextButton btn btn-lg" data-buttontype="next" ';
             $output .= 'type="submit" for="studentApplicationForm" value="';
