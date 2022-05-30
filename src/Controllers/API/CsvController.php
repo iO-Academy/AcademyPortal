@@ -36,9 +36,7 @@ class CsvController extends Controller
             echo '</pre>';
             $cohortApplicants[] = $applicant;
         }
-
-
-
+        
         echo '<pre>';
         print_r($cohortApplicants);
         echo '</pre>';
