@@ -25,7 +25,7 @@ class ApplicantModel implements ApplicantModelInterface
         $query->execute([':value' => $value]);
         $results = $query->fetchAll();
         $id = 0;
-        foreach($results as $result) {
+        foreach ($results as $result) {
             $id = $result['id'];
         }
 

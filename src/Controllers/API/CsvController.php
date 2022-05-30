@@ -47,11 +47,10 @@ class CsvController extends Controller
     }
 
     private function validateFile(
-        array  $file,
-        array  $fileExtensionsAllowed,
+        array $file,
+        array $fileExtensionsAllowed,
         string $validFileType
-    ): bool
-    {
+    ): bool {
         $fileName = $file['name'];
         $fileNameArr = explode('.', $fileName);
         $fileExtension = strtolower(end($fileNameArr));
@@ -105,9 +104,21 @@ class CsvController extends Controller
         $applicantsWithFKs = [];
         $applicants = $this->replaceValuesWithBinary();
         foreach ($applicants as $applicant) {
-            $applicant['gender'] = $this->applicantModel->getForeignKey('gender', 'gender', $applicant['gender']);
-            $applicant['hearAboutId'] = $this->applicantModel->getForeignKey('hear_about', 'hearAbout', $applicant['hearAboutId']);
-            $applicant['backgroundInfoId'] = $this->applicantModel->getForeignKey('background_info', 'backgroundInfo', $applicant['backgroundInfoId']);
+            $applicant['gender'] = $this->applicantModel->getForeignKey(
+                'gender',
+                'gender',
+                $applicant['gender']
+            );
+            $applicant['hearAboutId'] = $this->applicantModel->getForeignKey(
+                'hear_about',
+                'hearAbout',
+                $applicant['hearAboutId']
+            );
+            $applicant['backgroundInfoId'] = $this->applicantModel->getForeignKey(
+                'background_info',
+                'backgroundInfo',
+                $applicant['backgroundInfoId']
+            );
             $applicantsWithFKs[] = $applicant;
         }
 
