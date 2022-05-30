@@ -36,7 +36,7 @@ class CsvController extends Controller
             echo '</pre>';
             $cohortApplicants[] = $applicant;
         }
-        
+
         echo '<pre>';
         print_r($cohortApplicants);
         echo '</pre>';
@@ -50,16 +50,15 @@ class CsvController extends Controller
         print_r($gender);
 
         if (!isset($body['submit'])
-        || !$this->validateFile(
-            $_FILES['csv'],
+            || !$this->validateFile(
+                $_FILES['csv'],
                 self::FILE_EXTENSIONS_ALLOWED,
                 self::VALID_FILE_TYPE)
-            )
-
-        // Use model to add data to database
-        foreach ($this->csvToAssocArr() as $applicant) {
-            $result = $this->applicantModel->storeApplicant($applicant);
-        }
+        )
+            // Use model to add data to database
+            foreach ($this->csvToAssocArr() as $applicant) {
+                $result = $this->applicantModel->storeApplicant($applicant);
+            }
 
         if ($result > 0) {
             $forResponse = '<p>CSV Uploaded successfully</p>';
@@ -72,8 +71,8 @@ class CsvController extends Controller
     }
 
     private function validateFile(
-        array $file,
-        array $fileExtensionsAllowed,
+        array  $file,
+        array  $fileExtensionsAllowed,
         string $validFileType
     ): bool
     {
@@ -84,8 +83,8 @@ class CsvController extends Controller
         $fileSize = $file['size'];
 
         if (!in_array($fileExtension, $fileExtensionsAllowed)
-        || $fileType !== $validFileType
-        || $fileSize == 0
+            || $fileType !== $validFileType
+            || $fileSize == 0
         ) {
             return false;
         }
