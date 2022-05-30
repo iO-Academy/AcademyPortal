@@ -54,7 +54,8 @@ class CsvController extends Controller
             || !$this->validateFile(
                 $_FILES['csv'],
                 self::FILE_EXTENSIONS_ALLOWED,
-                self::VALID_FILE_TYPE)
+            self::VALID_FILE_TYPE
+            )
         ) {
             // Use model to add data to database
             foreach ($this->csvToAssocArr() as $applicant) {
@@ -73,16 +74,16 @@ class CsvController extends Controller
     }
 
     private function validateFile(
-        array $file,
-        array $fileExtensionsAllowed,
+        array  $file,
+        array  $fileExtensionsAllowed,
         string $validFileType
-    ): bool {
+    ): bool
+    {
         $fileName = $file['name'];
         $fileNameArr = explode('.', $fileName);
         $fileExtension = strtolower(end($fileNameArr));
         $fileType = $file['type'];
         $fileSize = $file['size'];
-        
         if (
             !in_array($fileExtension, $fileExtensionsAllowed)
             || $fileType !== $validFileType
