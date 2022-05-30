@@ -9,15 +9,15 @@ use Portal\Abstracts\Controller;
 
 class GetCsvFormController extends Controller
 {
-  private PhpRenderer $renderer;
+    private PhpRenderer $renderer;
 
-  public function __construct(PhpRenderer $renderer)
-  {
-    $this->renderer = $renderer;
-  }
+    public function __construct(PhpRenderer $renderer)
+    {
+        $this->renderer = $renderer;
+    }
 
-  public function __invoke(Request $request, Response $response, array $args)
-  {
-    return $this->renderer->render($response, 'csvUpload.phtml');
-  }
+    public function __invoke(Request $request, Response $response, array $args)
+    {
+        return $this->renderer->render($response, 'csvUpload.phtml');
+    }
 }

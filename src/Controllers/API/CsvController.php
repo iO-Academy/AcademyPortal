@@ -28,7 +28,7 @@ class CsvController extends Controller
         }
 
         // Use model to add data to database
-        foreach ($applicants as $applicant){
+        foreach ($applicants as $applicant) {
             $result = $this->applicantModel->storeApplicant($applicant);
         }
 

@@ -7,9 +7,9 @@ use Psr\Container\ContainerInterface;
 
 class GetCsvFormControllerFactory
 {
-  public function __invoke(ContainerInterface $container): GetCsvFormController
-  {
-    $renderer = $container->get('renderer');
-    return new GetCsvFormController($renderer);
-  }
+    public function __invoke(ContainerInterface $container): GetCsvFormController
+    {
+        $renderer = $container->get('renderer');
+        return new GetCsvFormController($renderer);
+    }
 }
