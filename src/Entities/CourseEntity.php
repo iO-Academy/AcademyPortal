@@ -76,5 +76,4 @@ class CourseEntity
     {
         return $this->inPerson;
     }
-
 }
