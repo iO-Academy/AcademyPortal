@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.37)
 # Database: academyPortal
-# Generation Time: 2022-05-30 11:20:56 +0000
+# Generation Time: 2022-05-30 13:12:43 +0000
 # ************************************************************
 
 
@@ -353,13 +353,13 @@ LOCK TABLES `courses` WRITE;
 
 INSERT INTO `courses` (`id`, `start_date`, `end_date`, `name`, `trainer`, `notes`, `deleted`, `in_person`, `remote`)
 VALUES
-	(1,'2022-01-10','2022-05-29','Full-Stack Track','Rayna','In person',0,1,0),
-	(2,'2022-01-10','2022-05-29','Full-Stack Track','Charlie','Remote',0,0,1),
-	(3,'2022-03-17','2022-03-25','Machine Data','Richard',NULL,0,NULL,NULL),
-	(4,'2022-03-07','2022-06-24','Full-Stack Track','Neal','In person',0,1,0),
-	(5,'2022-03-07','2022-06-24','Full-Stack Track','Ash',NULL,0,NULL,NULL),
-	(6,'2022-07-04','2022-10-21','Full-Stack Track','Rayna','Remote',0,0,1),
-	(7,'2022-07-04','2022-10-21','Full-Stack Track','Charlie','In person',0,1,0);
+	(1,'2022-01-10','2022-05-29','Full-Stack Track','Rayna',NULL,0,1,0),
+	(2,'2022-01-10','2022-05-29','Full-Stack Track','Charlie',NULL,0,0,1),
+	(3,'2022-03-17','2022-03-25','Machine Data','Richard',NULL,0,1,1),
+	(4,'2022-03-07','2022-06-24','Full-Stack Track','Neal','Great people',0,1,0),
+	(5,'2022-03-07','2022-06-24','Full-Stack Track','Ash',NULL,0,0,0),
+	(6,'2022-07-04','2022-10-21','Full-Stack Track','Rayna','Might be robots',0,0,1),
+	(7,'2022-07-04','2022-10-21','Full-Stack Track','Charlie',NULL,0,1,0);
 
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
