@@ -120,8 +120,7 @@ let makeApiRequest = async (data, type) => {
             switch (response.status) {
                 case 200:
                     response.json().then(data => {
-                        generalErrorMessage.innerHTML = data.msg;
-                        generalErrorMessage.classList.add('alert-success');
+                        top.location.href = "https://io-academy.uk/apply/thank-you/";
                     });
                     break;
                 case 400:

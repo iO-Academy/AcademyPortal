@@ -14,6 +14,23 @@ class ApplicantModel implements ApplicantModelInterface
         $this->db = $db;
     }
 
+    public function getForeignKey($table, $field, $value)
+    {
+        $query = $this->db->prepare(
+            'SELECT `id` 
+                    FROM `' . $table . '` 
+                    WHERE `' . $field . '` = :value'
+        );
+
+        $query->execute([':value' => $value]);
+        $results = $query->fetchAll();
+        $id = 0;
+        foreach ($results as $result) {
+            $id = $result['id'];
+        }
+
+        return $id;
+    }
     /**
      * Inserts new ApplicantEntity into database - registering.
      *
@@ -21,7 +38,7 @@ class ApplicantModel implements ApplicantModelInterface
      *
      * @return bool
      */
-    public function storeApplicant(array $applicant)
+    public function storeApplicant(array $applicant): bool
     {
         $query = $this->db->prepare(
             "INSERT INTO `applicants` (
@@ -518,5 +535,37 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare($stmt);
         $query->execute();
         return $query->fetchAll();
+    }
+
+    public function getApplicantByEmail(string $email): array
+    {
+        $sql = 'SELECT `applicants`.`email`, `applicants`.`id` FROM `applicants`'
+            . 'WHERE `applicants`.`email` = :email;';
+
+        $values = ['email' => $email];
+
+        $query = $this->db->prepare($sql);
+        $query->execute($values);
+
+        $result = $query->fetch();
+
+        if (!$result) {
+            return [];
+        }
+
+        return $result;
+    }
+
+    public function setAptitudeScore($id, $score): bool
+    {
+        $sql = 'UPDATE `applicants_additional` SET `aptitude` = :score WHERE `id` = :id;';
+
+        $values = [
+            'score' => $score,
+            'id' => $id,
+        ];
+
+        $query = $this->db->prepare($sql);
+        return $query->execute($values);
     }
 }
