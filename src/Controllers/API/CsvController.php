@@ -9,6 +9,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class CsvController extends Controller
 {
+    private const FILE_EXTENSIONS_ALLOWED = ['csv', 'txt'];
+    private const VALID_FILE_TYPE = 'text/csv';
+
     private ApplicantModel $applicantModel;
 
     public function __construct($applicantModel)
@@ -18,6 +21,12 @@ class CsvController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args)
     {
+        if (!isset($body['submit'])
+        || !$this->validateFile(
+            $_FILES['csvfile'],
+                self::FILE_EXTENSIONS_ALLOWED,
+                self::VALID_FILE_TYPE)
+            ) 
         // TODO: Implement __invoke() method.
         $file = $_FILES['csv']['tmp_name'];
         $rows = array_map('str_getcsv', file($file));
@@ -29,6 +38,7 @@ class CsvController extends Controller
 
         // Use model to add data to database
         foreach ($applicants as $applicant) {
+
             $result = $this->applicantModel->storeApplicant($applicant);
         }
 
@@ -40,5 +50,27 @@ class CsvController extends Controller
 
         $response->getBody()->write($forResponse);
         return $response;
+    }
+
+    private function validateFile(
+        array $file,
+        array $fileExtensionsAllowed,
+        string $validFileType
+    ): bool
+    {
+        $fileName = $file['name'];
+        $fileNameArr = explode('.', $fileName);
+        $fileExtension = strtolower(end($fileNameArr));
+        $fileType = $file['type'];
+        $fileSize = $file['size'];
+
+        if (!in_array($fileExtension, $fileExtensionsAllowed)
+        || $fileType !== $validFileType
+        || $fileSize == 0
+        ) {
+            return false;
+        }
+
+        return true;
     }
 }
