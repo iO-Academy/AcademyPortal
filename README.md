@@ -193,15 +193,15 @@ DELETE
 **/aptitudeScore**
 
 PUT 
-- Checks if user email address exists in database. Returns success true/false.
-
-- To add an applicant's test score to the database, the request should be sent as a PUT request to /api/aptiudetScore in
+- Checks if user email address exists in database. Adds test score to applicant entry in database.
+- To add an applicant's test score to the database, the request should be sent as a PUT request to /api/aptiudeScore in
 the following JSON format:
-- `{"email": 'example@email.com, "score": 'score'} The score should be formatted as an int percentage.`
-- If email exists in the database, adds applicant test store to the database.
-- `{"success": true, "message": "Aptitude score added successfully", "data": []}` 
-- If email does not exist in the database
-
-- `{"success": false, "message": "Aptitude score not added - email not found", "data": []}`
-- If invalid data supplied
-- `{"success": false, "message": "Aptitude score not added - invalid data supplied.", "data": []}`
+  - `{"email": 'example@email.com, "score": 'integer'}`
+The score should be an integer 0-100.
+- Returns success true/false:
+  - If email exists in the database, adds applicant test store to the database.
+    - `{"success": true, "message": "Aptitude score added successfully", "data": []}` 
+  - If email does not exist in the database
+    - `{"success": false, "message": "Aptitude score not added - email not found", "data": []}`
+  - If invalid data supplied
+    - `{"success": false, "message": "Aptitude score not added - invalid data supplied.", "data": []}`
