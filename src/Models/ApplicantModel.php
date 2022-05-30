@@ -22,10 +22,14 @@ class ApplicantModel implements ApplicantModelInterface
                     WHERE `' . $field . '` = :value'
         );
 
-
-
         $query->execute([':value' => $value]);
-        return $query->fetchAll();
+        $results = $query->fetchAll();
+        $id = 0;
+        foreach($results as $result) {
+            $id = $result['id'];
+        }
+
+        return $id;
     }
     /**
      * Inserts new ApplicantEntity into database - registering.
@@ -34,7 +38,7 @@ class ApplicantModel implements ApplicantModelInterface
      *
      * @return bool
      */
-    public function storeApplicant(array $applicant)
+    public function storeApplicant(array $applicant): bool
     {
         $query = $this->db->prepare(
             "INSERT INTO `applicants` (
