@@ -7,7 +7,6 @@ use Portal\Models\ApplicantModel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
-
 class CsvController extends Controller
 {
     private const FILE_EXTENSIONS_ALLOWED = ['csv', 'txt'];
@@ -57,11 +56,10 @@ class CsvController extends Controller
     }
 
     private function validateFile(
-        array  $file,
-        array  $fileExtensionsAllowed,
+        array $file,
+        array $fileExtensionsAllowed,
         string $validFileType
-    ): bool
-    {
+    ): bool {
         $fileName = $file['name'];
         $fileNameArr = explode('.', $fileName);
         $fileExtension = strtolower(end($fileNameArr));
