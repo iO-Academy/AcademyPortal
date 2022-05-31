@@ -41,12 +41,10 @@ class CsvController extends Controller
 
                 $applicant['row'] = $key + 1;
 
-                if($result)
-                {
-                $failedUploadArray[]  = ['name' => $applicant['name'], 'row' => $applicant['row']];
-                }
-                else {
-                    $successes ++;
+                if ($result) {
+                    $failedUploadArray[] = ['name' => $applicant['name'], 'row' => $applicant['row']];
+                } else {
+                    $successes++;
                 }
             }
         }
@@ -59,10 +57,11 @@ class CsvController extends Controller
     }
 
     private function validateFile(
-        array $file,
-        array $fileExtensionsAllowed,
+        array  $file,
+        array  $fileExtensionsAllowed,
         string $validFileType
-    ): bool {
+    ): bool
+    {
         $fileName = $file['name'];
         $fileNameArr = explode('.', $fileName);
         $fileExtension = strtolower(end($fileNameArr));
@@ -90,10 +89,10 @@ class CsvController extends Controller
         }
         $cohortApplicants = [];
         foreach ($applicants as $applicant) {
-            $applicant['email'] = $applicant['email'] ? : 'Unknown' ;
-            $applicant['phoneNumber'] = $applicant['phoneNumber'] ? : 'Unknown' ;
-            $applicant['whyDev'] ? : $applicant['whyDev'] = 'Unknown' ;
-            $applicant['codeExperience'] ? : $applicant['codeExperience'] = 'Unknown' ;
+            $applicant['email'] = $applicant['email'] ?: 'Unknown';
+            $applicant['phoneNumber'] = $applicant['phoneNumber'] ?: 'Unknown';
+            $applicant['whyDev'] ?: $applicant['whyDev'] = 'Unknown';
+            $applicant['codeExperience'] ?: $applicant['codeExperience'] = 'Unknown';
             $applicant['cohort'] = [$applicant['cohort']];
             $applicant['notes'] = $applicant['notes'] . ' - Added to db on ' . date("d/m/Y");
             $cohortApplicants[] = $applicant;
