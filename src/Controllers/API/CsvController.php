@@ -65,7 +65,8 @@ class CsvController extends Controller
         $fileExtension = strtolower(end($fileNameArr));
         $fileType = $file['type'];
         $fileSize = $file['size'];
-        if (!in_array($fileExtension, $fileExtensionsAllowed)
+        if (
+            !in_array($fileExtension, $fileExtensionsAllowed)
             || $fileType !== $validFileType
             || $fileSize == 0
         ) {
