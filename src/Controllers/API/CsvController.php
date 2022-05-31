@@ -23,7 +23,8 @@ class CsvController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-        if (!isset($body['submit'])
+        if (
+            !isset($body['submit'])
             || !$this->validateFile(
                 $_FILES['csv'],
                 self::FILE_EXTENSIONS_ALLOWED,
