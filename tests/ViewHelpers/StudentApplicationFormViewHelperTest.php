@@ -168,7 +168,8 @@ class StudentApplicationFormViewHelperTest extends TestCase
         'between you and one of our trainers.</li>' .
         '<li>After your chat with a trainer, we will be in touch within five ' .
         'working days to let you know whether your application has been successful and talk next steps!</li></ul>' .
-        '</div><div id="generalError" class="hidden"></div><div class="row buttons"><button class="btn btn-lg prevButton" ' .
+        '</div><div id="generalError" class="hidden"></div><div class="row buttons">' .
+        '<button class="btn btn-lg prevButton" ' .
         'value="4">Back</button><button class="btn btn-lg finishButton"id="submitApplicant">Submit Application' .
         '</button></div></div></div>';
 
