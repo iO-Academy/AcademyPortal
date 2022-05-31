@@ -40,7 +40,7 @@ class CsvController extends Controller
 
                 $applicant['row'] = $key + 1;
 
-                if ($result) {
+                if (!$result) {
                     $failedUploadArray[] = ['name' => $applicant['name'], 'row' => $applicant['row']];
                 } else {
                     $successes++;
