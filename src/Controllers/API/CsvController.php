@@ -140,9 +140,10 @@ class CsvController extends Controller
             );
             $applicant['cohort'][0] = $this->applicantModel->getForeignKey(
                 'cohort',
-            'date',
-            $applicant['cohort'][0]);
-            
+                'date',
+            $applicant['cohort'][0]
+            );
+
             $applicantsWithFKs[] = $applicant;
         }
 
