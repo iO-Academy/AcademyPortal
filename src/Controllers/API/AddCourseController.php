@@ -35,6 +35,7 @@ class AddCourseController extends Controller
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $newCourse = $request->getParsedBody();
+
         $responseData = [
             'success' => false,
             'message' => 'Unexpected Error.',
