@@ -25,6 +25,8 @@ courseForm.addEventListener("submit", e => {
                     courseForm.elements['name'].value = '',
                     courseForm.elements['trainer'].value = '',
                     courseForm.elements['notes'].value = '',
+                    courseForm.elements['in_person'].checked = false,
+                    courseForm.elements['remote'].checked = false,
                     message.innerText = responseJson.message,
                     message.classList.add('alert-success'),
                     message.classList.remove('alert-danger');
@@ -46,7 +48,9 @@ let getCompletedCourseFormData = () => {
         endDate: courseForm.elements['endDate'].value,
         name: courseForm.elements['name'].value,
         trainer: courseForm.elements['trainer'].value,
-        notes: courseForm.elements['notes'].value
+        notes: courseForm.elements['notes'].value,
+        in_person: courseForm.elements['in_person'].checked ? 1 : 0,
+        remote: courseForm.elements['remote'].checked ? 1 : 0,
     }
     return data;
 }

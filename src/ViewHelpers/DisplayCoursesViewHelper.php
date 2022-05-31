@@ -2,8 +2,6 @@
 
 namespace Portal\ViewHelpers;
 
-use Portal\Interfaces\CourseEntityInterface;
-
 class DisplayCoursesViewHelper
 {
     /**
@@ -17,6 +15,9 @@ class DisplayCoursesViewHelper
     {
         $result = '';
         foreach ($courses as $course) {
+            $remote = $course->getRemote() == 1 ? '&#x2713;' : '&#x10102';
+            $inPerson = $course->getInPerson() == 1 ? '&#x2713;' : '&#x10102';
+
             $result .=
                 '<tr>
                     <td>' . $course->getId() . '</td>
@@ -25,6 +26,8 @@ class DisplayCoursesViewHelper
                     <td>' . $course->getName() . '</td>
                     <td>' . $course->getTrainer() . '</td>
                     <td>' . $course->getNotes() . '</td>
+                    <td>' . $inPerson . '</td>
+                    <td>' . $remote . '</td>
                 </tr>';
         }
         return self::handleNoCourses($result);

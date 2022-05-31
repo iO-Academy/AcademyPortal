@@ -1,5 +1,6 @@
 const eventList = document.querySelector('#events')
 const message = document.querySelector('#messages')
+const categoriesFilter = document.querySelector('#categoriesFilter')
 const isPastPage = document.querySelector('#events-list').dataset.eventType === 'Past'; // this is such a hack!
 
 import {addEventListenersToDisplayApplicantModal} from "./applicantModal.js"
@@ -12,9 +13,9 @@ import {addEventListenersToDisplayApplicantModal} from "./applicantModal.js"
  */
 function getEvents(search = false) {
 
-    let url = './api/getEvents?'
+    let url = './api/getEvents?categoryValue=' + categoriesFilter.value
     if (search !== false) {
-        url += 'searchTerm=' + search
+        url += '&searchTerm=' + search
     }
 
     if (isPastPage) {
@@ -37,6 +38,20 @@ function getEvents(search = false) {
     .then(eventsAndHiringPartners => {
         displayEventsHandler(eventsAndHiringPartners)
     })
+}
+
+function populateFilterEventCategories() {
+    fetch('./api/getEventCategories',{
+        credentials: "same-origin",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(data => data['data'].forEach(category => {
+        categoriesFilter.innerHTML += `<option value="${category.id}">${category.name}</option>`
+    }))
 }
 
 /**
@@ -317,6 +332,8 @@ function addEventListenersForCopyEmailsButtons(event, applicants) {
     })
 }
 
+populateFilterEventCategories()
+
 getEvents()
 
     /**
@@ -359,14 +376,14 @@ getEvents()
     document.querySelector('#submit-search-event').addEventListener('click', function (e) {
         const searchInput = document.querySelector('#academy-events-search').value
         e.preventDefault()
-        if ((searchInput.length) && searchInput.length < 256) {
+        if (searchInput.length < 256) {
             message.classList.remove('alert-danger')
             message.textContent = '';
             getEvents(searchInput)
             document.querySelector('#events-list').innerText = 'Results'
         } else {
             message.classList.add('alert-danger')
-            message.textContent = 'Event search: must be between 1 and 255 characters'
+            message.textContent = 'Event search: must be less than 255 characters'
         }
     })
 

@@ -172,8 +172,6 @@ class StudentApplicationFormViewHelperTest extends TestCase
         'value="4">Back</button><button class="btn btn-lg finishButton"id="submitApplicant">Submit Application' .
         '</button></div></div></div>';
 
-
-
         $this->assertEquals($expected, $result);
     }
 
