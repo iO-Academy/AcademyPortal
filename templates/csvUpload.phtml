@@ -1,5 +1,7 @@
 
 <?php
+$successes = $data['successes'];
+$failures = $data['failures']
 
 ?>
 <!doctype html>
@@ -18,6 +20,31 @@
   <input id="csv" name="csv" type="file">
   <button>Submit</button>
 </form>
+
+<?php
+
+echo '<p>Result : ' . $successes . ' successfuly uploaded records</p>';
+
+if(count($failures) > 0){
+    echo count($failures) . ' Unsuccesful uploads: '
+    .'<table>'
+    .'<thead>'
+    .'<tr>'
+    .'<th>Name</th>'
+    .'<th>Row Number</th>'
+    .'</tr>'
+    .'</thead>'
+    .'<tbody>';
+    foreach ($failures as $failure){
+        echo '<tr>'
+        .'<td>' . $failure['name'] . '</td>'
+        .'<td>' . $failure['row'] . '</td>'
+        .'</tr>';
+    }
+    echo '</tbody>'
+    .'</table>';
+}
+?>
 
 </body>
 </html>

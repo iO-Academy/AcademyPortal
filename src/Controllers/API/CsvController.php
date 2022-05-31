@@ -24,7 +24,6 @@ class CsvController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-//        $forResponse = '<p>Invalid file format - CSV Not Uploaded</p>';
         if (
             !isset($body['submit'])
             || !$this->validateFile(
@@ -35,6 +34,7 @@ class CsvController extends Controller
         ) {
             $applicants = $this->replaceValuesWithForeignKeys();
             $failedUploadArray = [];
+            $successes = 0;
             // Use model to add data to database
             foreach ($applicants as $key => $applicant) {
                 $result = $this->applicantModel->storeApplicant($applicant);
@@ -45,21 +45,17 @@ class CsvController extends Controller
                 {
                 $failedUploadArray[]  = ['name' => $applicant['name'], 'row' => $applicant['row']];
                 }
-//                if ($result > 0) {
-//                    $forResponse = '<p>CSV Uploaded successfully</p>';
-//                } else {
-//                    $forResponse = '<p>CSV Not Uploaded</p>';
-//                }
+                else {
+                    $successes ++;
+                }
             }
         }
-        echo '<pre>';
-//        print_r($applicants);
-        print_r($failedUploadArray);
-        echo '</pre>';
 
+        $data = ['successes' => $successes,
+            'failures' => $failedUploadArray
+        ];
 
-
-        return $this->renderer->render($response, 'csvUpload.phtml');
+        return $this->renderer->render($response, 'csvUpload.phtml', ['data' => $data]);
     }
 
     private function validateFile(
@@ -94,7 +90,12 @@ class CsvController extends Controller
         }
         $cohortApplicants = [];
         foreach ($applicants as $applicant) {
+            $applicant['email'] = $applicant['email'] ? : 'Unknown' ;
+            $applicant['phoneNumber'] = $applicant['phoneNumber'] ? : 'Unknown' ;
+            $applicant['whyDev'] ? : $applicant['whyDev'] = 'Unknown' ;
+            $applicant['codeExperience'] ? : $applicant['codeExperience'] = 'Unknown' ;
             $applicant['cohort'] = [$applicant['cohort']];
+            $applicant['notes'] = $applicant['notes'] . ' - Added to db on ' . date("d/m/Y");
             $cohortApplicants[] = $applicant;
         }
 
