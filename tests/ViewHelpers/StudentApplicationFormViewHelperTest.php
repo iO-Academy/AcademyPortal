@@ -52,7 +52,7 @@ class StudentApplicationFormViewHelperTest extends TestCase
     public function testSuccessDisplayNextButtons()
     {
         $result = StudentApplicationFormViewHelper::displayNextButtons(1, 5);
-        $expected = '<div class="row buttons"><button class="btn btn-lg" disabled>Prev</button>';
+        $expected = '<div class="row buttons"><button class="btn btn-lg" disabled>Back</button>';
         $expected .= '<button class="nextButton btn btn-lg" data-buttontype="next" ';
         $expected .= 'type="submit" for="studentApplicationForm" ';
         $expected .= 'value="2" data-page="1">Next</button></div>';
@@ -90,7 +90,7 @@ class StudentApplicationFormViewHelperTest extends TestCase
         'Gender</option><option value="1">' .
         'male</option></select></div><div id="genderError" ' .
         'class="alert hidden formItem_alert">Field Required.</div>' .
-        '<div class="row buttons"><button class="btn btn-lg" disabled>Prev</button>' .
+        '<div class="row buttons"><button class="btn btn-lg" disabled>Back</button>' .
         '<button class="nextButton btn btn-lg"' .
         ' data-buttontype="next" type="submit" for="studentApplicationForm" ' .
         'value="2" data-page="1">Next</button></div>' .
@@ -106,7 +106,7 @@ class StudentApplicationFormViewHelperTest extends TestCase
         'rows="5"></textarea><div class="textAreaCounter"><span id="textAreaCount">0</span> of 500 max characters' .
         '</div><div id="whyDevError" class="alert hidden formItem_alert">' .
         '</div></div><div class="row buttons"><button ' .
-        'class="btn btn-lg prevButton" value="1">Prev</button><button class="nextButton btn btn-lg" ' .
+        'class="btn btn-lg prevButton" value="1">Back</button><button class="nextButton btn btn-lg" ' .
         'data-buttontype="next" type="submit" for="studentApplicationForm" value="3" data-page="2">Next</button>' .
         '</div></div><div class="studentApplicationFormPages hidden" id="3">' .
         '<div class="row"><label for="pastCoding" ' .
@@ -119,7 +119,7 @@ class StudentApplicationFormViewHelperTest extends TestCase
         'class="form-control submitApplicant" rows="5"></textarea><div ' .
         'id="codeExperienceError" class="alert hidden ' .
         'formItem_alert"></div></div><div class="row buttons">' .
-        '<button class="btn btn-lg prevButton" value="2">Prev' .
+        '<button class="btn btn-lg prevButton" value="2">Back' .
         '</button><button class="nextButton btn btn-lg" data-buttontype="next" type="submit" ' .
         'for="studentApplicationForm" value="4" data-page="3">Next</button></div></div><div ' .
         'class="studentApplicationFormPages hidden" id="4"><div id="cohorts" class="row">' .
@@ -158,7 +158,7 @@ class StudentApplicationFormViewHelperTest extends TestCase
         'value="I accept ' .
         'the terms and conditions"/>I accept the terms and conditions</label></div></div><div ' .
         'id="termsConditionsError" class="alert hidden formItem_alert"></div><div class="row buttons">' .
-        '<button class="btn btn-lg prevButton" value="3">Prev</button><button class="nextButton btn btn-lg" ' .
+        '<button class="btn btn-lg prevButton" value="3">Back</button><button class="nextButton btn btn-lg" ' .
         'data-buttontype="next" type="submit" for="studentApplicationForm" value="5" data-page="4">' .
         'Next</button></div>' .
         '</div><div class="studentApplicationFormPages hidden" id="5"><div class="finalPage"><h2>Ready to submit?' .
@@ -169,7 +169,7 @@ class StudentApplicationFormViewHelperTest extends TestCase
         '<li>After your chat with a trainer, we will be in touch within five ' .
         'working days to let you know whether your application has been successful and talk next steps!</li></ul>' .
         '</div><div id="generalError" hidden></div><div class="row buttons"><button class="btn btn-lg prevButton" ' .
-        'value="4">Prev</button><button class="btn btn-lg finishButton"id="submitApplicant">Submit Application' .
+        'value="4">Back</button><button class="btn btn-lg finishButton"id="submitApplicant">Submit Application' .
         '</button></div></div></div>';
 
 
