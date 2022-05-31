@@ -59,7 +59,7 @@ require 'partials/layout/nav.phtml';
   <form action="/api/csvUpload" method="post" enctype="multipart/form-data">
     <label for="csv">Csv:</label>
     <input id="csv" name="csv" type="file" required>
-    <button class="btn-primary">Submit</button>
+    <button class="btn-primary">Upload file</button>
   </form>
 <?php
 
@@ -89,6 +89,23 @@ if ($failures !== null) {
     }
 }
 ?>
+<br>
+<p>To successfully upload a CSV file, please follow the below steps to match data to database:</p>
+<br>
+<ol>
+  <li>Setup CSV file with the headers matching the template</li>
+  <li>Ensure data is aligned as below:
+    <ul>
+      <li>Field 'gender' matches the currently existing gender options in the database.</li>
+      <li>Fields 'hearAboutId' & 'backgroundInfoId' must match currently existing options for 'hear about'</li>
+      <li>Field 'cohort' must have a single date that currently exists in the database and must be formatted as 'yyyy-mm-dd'</li>
+      <li>Fields 'eligible', 'eighteenPlus' and 'finance' are all 'yes' or 'no' </li>
+      <li>Any empty fields for 'email', 'phoneNumber', 'whyDev', and 'codeExperience' will be replaced with 'Unknown'.</li>
+    </ul>
+  </li>
+  <li>Click the Choose File button to select the file you want to upload.</li>
+  <li>Date of upload will automatically be appended to the notes field.</li>
+</ol>
 
 <?php require 'partials/layout/footer.phtml'?>
 </body>
