@@ -104,9 +104,9 @@ class CsvController extends Controller
         $applicantsWithBinary = [];
         $applicants = $this->csvToAssocArr();
         foreach ($applicants as $applicant) {
-            $applicant['eligible'] = strtolower($applicant['eligible']) === 'y' ? 1 : 0;
-            $applicant['eighteenPlus'] = strtolower($applicant['eighteenPlus']) === 'y' ? 1 : 0;
-            $applicant['finance'] = strtolower($applicant['finance']) === 'y' ? 1 : 0;
+            $applicant['eligible'] = strtolower($applicant['eligible']) === 'yes' ? 1 : 0;
+            $applicant['eighteenPlus'] = strtolower($applicant['eighteenPlus']) === 'yes' ? 1 : 0;
+            $applicant['finance'] = strtolower($applicant['finance']) === 'yes' ? 1 : 0;
             $applicantsWithBinary[] = $applicant;
         }
 
@@ -121,18 +121,28 @@ class CsvController extends Controller
             $applicant['gender'] = $this->applicantModel->getForeignKey(
                 'gender',
                 'gender',
-                $applicant['gender']
+                ucfirst($applicant['gender'])
             );
             $applicant['hearAboutId'] = $this->applicantModel->getForeignKey(
                 'hear_about',
                 'hearAbout',
-                $applicant['hearAboutId']
+                ucfirst($applicant['hearAboutId'])
             );
             $applicant['backgroundInfoId'] = $this->applicantModel->getForeignKey(
                 'background_info',
                 'backgroundInfo',
-                $applicant['backgroundInfoId']
+                ucfirst($applicant['backgroundInfoId'])
             );
+            $applicant['backgroundInfoId'] = $this->applicantModel->getForeignKey(
+                'background_info',
+                'backgroundInfo',
+                ucfirst($applicant['backgroundInfoId'])
+            );
+            $applicant['cohort'][0] = $this->applicantModel->getForeignKey(
+                'cohort',
+            'date',
+            $applicant['cohort'][0]);
+            
             $applicantsWithFKs[] = $applicant;
         }
 
