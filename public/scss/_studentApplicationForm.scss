@@ -7,6 +7,7 @@ body.studentApplicationPage {
     width: 100%;
     height: 100%;
 }
+
 .content-container {
     background-color: $white;
     z-index: 1;
@@ -171,7 +172,7 @@ ul.startDatesList li input[type="checkbox"] {
     border-radius: 30px;
 }
 
-.pastCodingTooltip .eligibilityTooltip {
+.pastCodingTooltip, .eligibilityTooltip {
     border-radius: 50%;
     background-color: $io-green;
     text-align: center;
@@ -181,6 +182,8 @@ ul.startDatesList li input[type="checkbox"] {
     font-size: 2em;
     font-weight: bold;
     border: none;
+    width: 100%;
+    opacity: 0;
 }
 .toolTipContainer{
      background-color: $io-green;
@@ -192,19 +195,13 @@ ul.startDatesList li input[type="checkbox"] {
      background-repeat: no-repeat;
      aspect-ratio: 1;
  }
+
 .ukEligibility{
     font-family: 'Inter', Papyrus;
     font-size: calc(10px + 1vw);
     font-weight: bold;
     height:auto;
 }
-.eligibilityTooltip {
-    width: 100%;
-    opacity: 0;
-}
-
-
-
 
 .tooltip.top {
     font-size: calc(3px + 1vw);
@@ -225,6 +222,9 @@ ul.startDatesList li input[type="checkbox"] {
     width:100%;
 }
 
+#backgroundInfo, #gender, #hearAboutId, input[type=checkbox]{
+    cursor: pointer;
+}
 .studentApplicationForm .btn {
     background-color: $io-purple-dark;
     color: #FFFFFF;

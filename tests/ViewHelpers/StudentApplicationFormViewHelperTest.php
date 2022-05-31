@@ -110,11 +110,11 @@ class StudentApplicationFormViewHelperTest extends TestCase
         'data-buttontype="next" type="submit" for="studentApplicationForm" value="3" data-page="2">Next</button>' .
         '</div></div><div class="studentApplicationFormPages hidden" id="3">' .
         '<div class="row"><label for="pastCoding" ' .
-        'class="label-control withTooltip">Any past coding experience?' .
+        'class="label-control withTooltip">Any past coding experience?<div class="toolTipContainer">' .
         '<p class="pastCodingTooltip" data-toggle="tooltip"' .
         ' data-placement="top" title="Taken an online course? Given WordPress a try? ' .
         'Our courses require no past experience, but it would be useful to know about any existing knowledge.">' .
-        '?</p></label><textarea id="pastCoding" name="codeExperience" ' .
+        '?</p></div></label><textarea id="pastCoding" name="codeExperience" ' .
         'placeholder="Most people write a few sentences" ' .
         'class="form-control submitApplicant" rows="5"></textarea><div ' .
         'id="codeExperienceError" class="alert hidden ' .
