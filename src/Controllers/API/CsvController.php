@@ -92,7 +92,7 @@ class CsvController extends Controller
             $applicant['whyDev'] ?: $applicant['whyDev'] = 'Unknown';
             $applicant['codeExperience'] ?: $applicant['codeExperience'] = 'Unknown';
             $applicant['cohort'] = [$applicant['cohort']];
-            $applicant['notes'] = $applicant['notes'] . ' - Added to db on ' . date("d/m/Y");
+            $applicant['notes'] = $applicant['notes'] . ' - added by csv upload on ' . date("Y/m/d");
             $cohortApplicants[] = $applicant;
         }
 
