@@ -106,9 +106,9 @@ class CsvController extends Controller
         $applicantsWithBinary = [];
         $applicants = $this->csvToAssocArr();
         foreach ($applicants as $applicant) {
-            $applicant['eligible'] = $applicant['eligible'] === 'y' ? 1 : 0;
-            $applicant['eighteenPlus'] = $applicant['eighteenPlus'] === 'y' ? 1 : 0;
-            $applicant['finance'] = $applicant['finance'] === 'y' ? 1 : 0;
+            $applicant['eligible'] = strtolower($applicant['eligible']) === 'y' ? 1 : 0;
+            $applicant['eighteenPlus'] = strtolower($applicant['eighteenPlus']) === 'y' ? 1 : 0;
+            $applicant['finance'] = strtolower($applicant['finance']) === 'y' ? 1 : 0;
             $applicantsWithBinary[] = $applicant;
         }
 
