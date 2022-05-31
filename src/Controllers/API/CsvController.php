@@ -73,7 +73,7 @@ class CsvController extends Controller
             return false;
         }
 
-    return true;
+        return true;
     }
 
     private function csvToAssocArr(): array
