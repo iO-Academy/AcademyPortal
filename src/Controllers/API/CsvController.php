@@ -118,25 +118,23 @@ class CsvController extends Controller
         $applicantsWithFKs = [];
         $applicants = $this->replaceValuesWithBinary();
         foreach ($applicants as $applicant) {
+            $applicant['gender'] = ucfirst($applicant['gender']);
+            $applicant['hearAboutId'] = ucfirst($applicant['hearAboutId']);
+            $applicant['backgroundInfoId'] = ucfirst($applicant['backgroundInfoId']);
             $applicant['gender'] = $this->applicantModel->getForeignKey(
                 'gender',
                 'gender',
-                ucfirst($applicant['gender'])
+                $applicant['gender']
             );
             $applicant['hearAboutId'] = $this->applicantModel->getForeignKey(
                 'hear_about',
                 'hearAbout',
-                ucfirst($applicant['hearAboutId'])
+                $applicant['hearAboutId']
             );
             $applicant['backgroundInfoId'] = $this->applicantModel->getForeignKey(
                 'background_info',
                 'backgroundInfo',
-                ucfirst($applicant['backgroundInfoId'])
-            );
-            $applicant['backgroundInfoId'] = $this->applicantModel->getForeignKey(
-                'background_info',
-                'backgroundInfo',
-                ucfirst($applicant['backgroundInfoId'])
+                $applicant['backgroundInfoId']
             );
             $applicant['cohort'][0] = $this->applicantModel->getForeignKey(
                 'cohort',
