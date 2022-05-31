@@ -61,5 +61,6 @@ return function (App $app) {
     $app->get('/api/getCourses', 'GetCoursesController');
     $app->post('/api/addCourse', 'AddCourseController');
     $app->post('/api/csvUpload', 'CsvController');
+    $app->get('/api/getEventCategories', 'GetEventCategoriesController');
     $app->put('/api/aptitudeScore', 'AddAptitudeScoreController');
 };

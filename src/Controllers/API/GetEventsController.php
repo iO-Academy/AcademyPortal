@@ -42,44 +42,31 @@ class GetEventsController extends Controller
         $pastEvents = $request->getQueryParams()['past'] ?? '';
 
         $eventSearchInput = $request->getQueryParams()['searchTerm'] ?? '';
-        if (!empty($eventSearchInput)) {
-            if (strlen($eventSearchInput) < 256) {
-                try {
-                    if (!$pastEvents) {
-                        $data['data'] = $this->eventModel->searchFutureEvents($eventSearchInput);
-                    } else {
-                        $data['data'] = $this->eventModel->searchPastEvents($eventSearchInput);
-                    }
-
-                    $data['message'] = 'No results returned matching your search';
-                    if (count($data['data']) > 0) {
-                        $data['message'] = '';
-                    }
-                } catch (\PDOException $exception) {
-                    $data['message'] = $exception->getMessage();
+        $eventFilterInput = $request->getQueryParams()['categoryValue'] ?? null;
+        if (strlen($eventSearchInput) < 256) {
+            try {
+                if (!$pastEvents) {
+                    $data['data'] = $this->eventModel->getUpcomingEventsByCategoryIdAndSearch(
+                        $eventFilterInput,
+                        $eventSearchInput
+                    );
+                } else {
+                    $data['data'] = $this->eventModel->getPastEventsByCategoryIdAndSearch(
+                        $eventFilterInput,
+                        $eventSearchInput
+                    );
                 }
-            } else {
-                $data['message'] = 'Search term cannot be greater than 255 characters.';
+
+                $data['message'] = 'No results returned matching your search';
+                if (count($data['data']) > 0) {
+                    $data['message'] = '';
+                }
+                $data['success'] = true;
+            } catch (\PDOException $exception) {
+                $data['message'] = $exception->getMessage();
             }
-            return $this->respondWithJson($response, $data, $statusCode);
-        }
-
-
-        try {
-            if (!$pastEvents) {
-                $data['data'] = $this->eventModel->getFutureEvents();
-            } else {
-                $data['data'] = $this->eventModel->getPastEvents();
-            }
-
-            $data['message'] = 'No events scheduled';
-            $data['success'] = true;
-
-            if (count($data['data']) > 0) {
-                $data['message'] = '';
-            }
-        } catch (\PDOException $exception) {
-            $data['message'] = $exception->getMessage();
+        } else {
+            $data['message'] = 'Search term cannot be greater than 255 characters.';
         }
         return $this->respondWithJson($response, $data, $statusCode);
     }

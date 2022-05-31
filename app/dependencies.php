@@ -77,6 +77,7 @@ return function (ContainerBuilder $containerBuilder) {
         DI\factory('\Portal\Factories\Controllers\FrontEnd\AddCoursePageControllerFactory');
     $container['StudentApplicationFormPageController'] =
         DI\factory('Portal\Factories\Controllers\FrontEnd\StudentApplicationFormPageControllerFactory');
+
     // API Controllers
     $container['AddUserController'] = DI\factory('\Portal\Factories\Controllers\API\AddUserControllerFactory');
     $container['GetApplicationFormController'] =
@@ -128,6 +129,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['AddCourseController'] = DI\factory('\Portal\Factories\Controllers\API\AddCourseControllerFactory');
     $container['GetCsvFormController'] = DI\factory('\Portal\Factories\Controllers\FrontEnd\GetCsvFormControllerFactory');
     $container['CsvController'] = DI\factory('\Portal\Factories\Controllers\API\CsvControllerFactory');
+    $container['GetEventCategoriesController'] = DI\factory('\Portal\Factories\Controllers\API\GetEventCategoriesControllerFactory');
     $container['AddAptitudeScoreController'] = DI\factory('\Portal\Factories\Controllers\API\AddAptitudeScoreControllerFactory');
 
     // Models
@@ -140,7 +142,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['StageModel'] = DI\factory('\Portal\Factories\Models\StageModelFactory');
     $container['TeamModel'] = DI\factory('\Portal\Factories\Models\TeamModelFactory');
     $container['CourseModel'] = DI\factory('\Portal\Factories\Models\CourseModelFactory');
-    $container['CsvModel'] = DI\factory('\Portal\Factories\Models\CsvModelFactory');
-  
+    $container['EventCategoriesModel'] = DI\factory('\Portal\Factories\Models\EventCategoriesModelFactory');
+
     $containerBuilder->addDefinitions($container);
 };

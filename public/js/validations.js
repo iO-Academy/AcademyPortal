@@ -9,13 +9,8 @@ function isTime(time) {
 }
 
 function isName(name) {
-    let pattern = /^[a-z ,.'-]+$/i;
+    let pattern = /^[a-z0-9 ,.'-]+$/i;
     return pattern.test(name);
-}
-
-function isFullName(name) {
-    let pattern = /^([\w]{3,})+\s+([\w\s]{3,})+$/i;
-    return pattern.test(name)
 }
 
 function isPhoneNumber(phone) {
