@@ -108,7 +108,7 @@ class StudentApplicationFormViewHelper
         foreach ($data['hearAbout'] as $hearAbout) {
             $output .= '<option value="' . $hearAbout['id'] . '">' . $hearAbout['hearAbout'] . '</option>';
         }
-        $output .= '</select></div>'
+        $output .= '</select></div>';
         $output .= '<div id="hearAboutError" class="alert hidden formItem_alert"></div>';
         $output .= '<div class="row hidden" id="additionalNotesWordOfMouth">';
         $output .= '<label for="additionalNotesWordOfMouthInput">Who referred you?</label>';
