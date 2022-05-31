@@ -120,7 +120,7 @@ function pageOneValidation(formWrapper) {
         a.classList.add('hidden')
     })
     // Creates an array of true/false booleans based on checks in the for each also changes the text content of the error messages based on the checks.
-    let checks = [isFullName(inputs[0].value), isEmail(inputs[1].value), isPhoneNumber(inputs[2].value), dropdown[dropdown.selectedIndex].text !== 'Gender']
+    let checks = [isName(inputs[0].value), isEmail(inputs[1].value), isPhoneNumber(inputs[2].value), dropdown[dropdown.selectedIndex].text !== 'Gender']
     checks.forEach((check,index)=>{
         if(!check){
             if(index === 3){
