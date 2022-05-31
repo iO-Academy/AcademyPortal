@@ -146,7 +146,7 @@ class StudentApplicationFormViewHelperTest extends TestCase
             ' (Don’t worry, no coding knowledge needed!)</li><li>We will also arrange an informal chat between' .
             ' you and one of our trainers.</li><li>After your chat with a trainer, we will be in touch within' .
             ' five working days to let you know whether your application has been successful and talk next' .
-            ' steps!</li></ul></div><div id="generalError" hidden></div><div class="row buttons"><button ' .
+            ' steps!</li></ul></div><div id="generalError" class="hidden"></div><div class="row buttons"><button ' .
             'class="btn btn-lg prevButton" value="4">Prev</button><button class="btn btn-lg finishButton"' .
             ' id="submitApplicant">Finish</button></div></div></div>';
         $this->assertEquals($expected, $result);

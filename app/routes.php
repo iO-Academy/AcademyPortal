@@ -60,6 +60,7 @@ return function (App $app) {
     $app->get('/api/progressApplicantStage', 'EditApplicantStageController');
     $app->get('/api/getCourses', 'GetCoursesController');
     $app->post('/api/addCourse', 'AddCourseController');
+    $app->get('/api/getEventCategories', 'GetEventCategoriesController');
     $app->put('/api/aptitudeScore', 'AddAptitudeScoreController');
 
 };
