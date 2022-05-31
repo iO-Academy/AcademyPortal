@@ -18,13 +18,49 @@ require 'partials/layout/header.phtml';
 require 'partials/layout/nav.phtml';
 ?>
 
+  <h3>Csv upload template</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>email</th>
+        <th>phoneNumber</th>
+        <th>gender</th>
+        <th>whyDev</th>
+        <th>codeExperience</th>
+        <th>hearAboutId</th>
+        <th>eligible</th>
+        <th>eighteenPlus</th>
+        <th>finance</th>
+        <th>notes</th>
+        <th>backgroundInfoId</th>
+        <th>cohort</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bob</td>
+        <td>bob@email.com</td>
+        <td>07799555444</td>
+        <td>Male</td>
+        <td>Lorem ipsum</td>
+        <td>Lorem ipsum</td>
+        <td>Google</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Lorem ipsum</td>
+        <td>Changing careers</td>
+        <td>2022-03-31</td>
+      </tr>
+    </tbody>
+  </table>
 
-<form action="/api/csvUpload" method="post" enctype="multipart/form-data">
+  <form action="/api/csvUpload" method="post" enctype="multipart/form-data">
     <label for="csv">Csv:</label>
-    <input id="csv" name="csv" type="file">
+    <input id="csv" name="csv" type="file" required>
     <button class="btn-primary">Submit</button>
-</form>
-
+  </form>
 <?php
 
 if ($successes !== null) {
