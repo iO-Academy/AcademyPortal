@@ -213,7 +213,7 @@ class StudentApplicationFormViewHelper
      */
     public static function displayNextButtons(int $applicationFormPageNumber, int $finalPage): string
     {
-        $output = '<div class="row buttons"><button id="saveProgress" class="btn btn-lg">Save</button>';
+        $output = '<div class="row buttons"><button class="btn btn-lg saveProgress">Save</button>';
         if ($applicationFormPageNumber === 1) {
             $output .= '<button class="btn btn-lg" disabled>Back</button>';
         } else {

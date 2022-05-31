@@ -41,9 +41,11 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
     }
 });
 
-document.querySelector('#saveProgress').addEventListener('click', e => {
-    e.preventDefault();
-    getInProgressFormData()
+document.querySelectorAll('.saveProgress').forEach(saveButton => {
+    saveButton.addEventListener('click', e => {
+        e.preventDefault();
+        getInProgressFormData()
+    })
 })
 
 let errorMessage = (validationType) => {
@@ -100,44 +102,44 @@ let getInProgressFormData = () => {
     })
     Object.keys(stagedData).forEach(stagedItemKey => {
         console.log(stagedItemKey, stagedData[stagedItemKey])
-        window.localStorage.setItem(stagedItemKey, stagedData[stagedItemKey])
+        localStorage.setItem(stagedItemKey, stagedData[stagedItemKey])
     })
 }
 
 let populateFormFromLocalStorage = () => {
-    if(window.localStorage.getItem('name')) {
-        document.querySelector('#name').setAttribute('value', window.localStorage.getItem('name'))
+    if(localStorage.getItem('name')) {
+        document.querySelector('#name').setAttribute('value', localStorage.getItem('name'))
     }
-    if(window.localStorage.getItem('email')) {
-        document.querySelector('#email').setAttribute('value', window.localStorage.getItem('email'))
+    if(localStorage.getItem('email')) {
+        document.querySelector('#email').setAttribute('value', localStorage.getItem('email'))
     }
-    if(window.localStorage.getItem('phoneNumber')) {
-        document.querySelector('#phoneNumber').setAttribute('value', window.localStorage.getItem('phoneNumber'))
+    if(localStorage.getItem('phoneNumber')) {
+        document.querySelector('#phoneNumber').setAttribute('value', localStorage.getItem('phoneNumber'))
     }
-    if(window.localStorage.getItem('gender')) {
+    if(localStorage.getItem('gender')) {
         document.querySelectorAll('#gender option').forEach(option => {
             option.removeAttribute('selected')
-            if(option.getAttribute('value') === window.localStorage.getItem('gender')){
+            if(option.getAttribute('value') === localStorage.getItem('gender')){
                 option.setAttribute('selected','')
             }
         })
     }
-    if(window.localStorage.getItem('backgroundInfoId')) {
+    if(localStorage.getItem('backgroundInfoId')) {
         document.querySelectorAll('#backgroundInfo option').forEach(option => {
             option.removeAttribute('selected')
-            if(option.getAttribute('value') === window.localStorage.getItem('backgroundInfoId')){
+            if(option.getAttribute('value') === localStorage.getItem('backgroundInfoId')){
                 option.setAttribute('selected','')
             }
         })
     }
-    if(window.localStorage.getItem('whyDev')) {
-        document.querySelector('#whyDev').innerHTML = window.localStorage.getItem('whyDev')
+    if(localStorage.getItem('whyDev')) {
+        document.querySelector('#whyDev').innerHTML = localStorage.getItem('whyDev')
     }
-    if(window.localStorage.getItem('codeExperience')) {
-        document.querySelector('#pastCoding').innerHTML = window.localStorage.getItem('codeExperience')
+    if(localStorage.getItem('codeExperience')) {
+        document.querySelector('#pastCoding').innerHTML = localStorage.getItem('codeExperience')
     }
-    if(window.localStorage.getItem('cohort')) {
-        let cohorts = window.localStorage.getItem('cohort').split(",")
+    if(localStorage.getItem('cohort')) {
+        let cohorts = localStorage.getItem('cohort').split(",")
         document.querySelectorAll('input.cohort_checkbox').forEach(option => {
             cohorts.forEach(cohort => {
                 if(option.getAttribute('value') === cohort) {
@@ -148,18 +150,18 @@ let populateFormFromLocalStorage = () => {
             })
         })
     }
-    if(window.localStorage.getItem('hearAboutId')) {
+    if(localStorage.getItem('hearAboutId')) {
         document.querySelectorAll('#hearAboutId option').forEach(option => {
             option.removeAttribute('selected')
-            if(option.getAttribute('value') === window.localStorage.getItem('hearAboutId')){
+            if(option.getAttribute('value') === localStorage.getItem('hearAboutId')){
                 option.setAttribute('selected','')
             }
         })
     }
-    if(window.localStorage.getItem('eligible') === 'true') {
+    if(localStorage.getItem('eligible') === 'true') {
         document.querySelector('#eligibleCheck').setAttribute('checked','')
     }
-    if (window.localStorage.getItem('eighteenPlus') === 'true') {
+    if (localStorage.getItem('eighteenPlus') === 'true') {
         document.querySelector('#eighteenPlusCheck').setAttribute('checked', '')
     }
 }
