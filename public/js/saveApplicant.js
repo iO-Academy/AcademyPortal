@@ -1,5 +1,6 @@
 document.querySelector('#submitApplicant').addEventListener('click', e => {
     e.preventDefault();
+
     const data = getCompletedFormData();
     if(typeof (data.notes) === 'undefined') {
         data.notes = "";
@@ -30,7 +31,7 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
             }
         })
     });
-    
+
     if (formIsValid) {
         makeApiRequest(data, window.location.pathname);
     } else {
@@ -39,6 +40,13 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
         document.querySelector('#generalError').classList.add('alert-danger');
     }
 });
+
+document.querySelectorAll('.saveProgress').forEach(saveButton => {
+    saveButton.addEventListener('click', e => {
+        e.preventDefault();
+        getInProgressFormData()
+    })
+})
 
 let errorMessage = (validationType) => {
     let htmlString = '';
@@ -72,6 +80,91 @@ let errorMessage = (validationType) => {
 
     return htmlString;
 };
+
+let getInProgressFormData = () => {
+    const formData = document.querySelectorAll(".submitApplicant");
+    let stagedData = {}
+    stagedData['cohort'] = [];
+    formData.forEach(formItem => {
+        if (formItem.id !== 'termsAndConditionsCheck') {
+            if (formItem.type === 'checkbox') {
+                if (formItem.name === 'cohort') {
+                    if (formItem.checked) {
+                        stagedData[formItem.name].push(formItem.value);
+                    }
+                } else {
+                    stagedData[formItem.name] = formItem.checked;
+                }
+            } else {
+                stagedData[formItem.name] = formItem.value;
+            }
+        }
+    })
+    Object.keys(stagedData).forEach(stagedItemKey => {
+        console.log(stagedItemKey, stagedData[stagedItemKey])
+        localStorage.setItem(stagedItemKey, stagedData[stagedItemKey])
+    })
+}
+
+let populateFormFromLocalStorage = () => {
+    if(localStorage.getItem('name')) {
+        document.querySelector('#name').setAttribute('value', localStorage.getItem('name'))
+    }
+    if(localStorage.getItem('email')) {
+        document.querySelector('#email').setAttribute('value', localStorage.getItem('email'))
+    }
+    if(localStorage.getItem('phoneNumber')) {
+        document.querySelector('#phoneNumber').setAttribute('value', localStorage.getItem('phoneNumber'))
+    }
+    if(localStorage.getItem('gender')) {
+        document.querySelectorAll('#gender option').forEach(option => {
+            option.removeAttribute('selected')
+            if(option.getAttribute('value') === localStorage.getItem('gender')){
+                option.setAttribute('selected','')
+            }
+        })
+    }
+    if(localStorage.getItem('backgroundInfoId')) {
+        document.querySelectorAll('#backgroundInfo option').forEach(option => {
+            option.removeAttribute('selected')
+            if(option.getAttribute('value') === localStorage.getItem('backgroundInfoId')){
+                option.setAttribute('selected','')
+            }
+        })
+    }
+    if(localStorage.getItem('whyDev')) {
+        document.querySelector('#whyDev').innerHTML = localStorage.getItem('whyDev')
+    }
+    if(localStorage.getItem('codeExperience')) {
+        document.querySelector('#pastCoding').innerHTML = localStorage.getItem('codeExperience')
+    }
+    if(localStorage.getItem('cohort')) {
+        let cohorts = localStorage.getItem('cohort').split(",")
+        document.querySelectorAll('input.cohort_checkbox').forEach(option => {
+            cohorts.forEach(cohort => {
+                if(option.getAttribute('value') === cohort) {
+                    console.log('match on option ' + option.getAttribute('value'))
+                    option.parentElement.classList.add("clicked")
+                    option.setAttribute('checked','')
+                }
+            })
+        })
+    }
+    if(localStorage.getItem('hearAboutId')) {
+        document.querySelectorAll('#hearAboutId option').forEach(option => {
+            option.removeAttribute('selected')
+            if(option.getAttribute('value') === localStorage.getItem('hearAboutId')){
+                option.setAttribute('selected','')
+            }
+        })
+    }
+    if(localStorage.getItem('eligible') === 'true') {
+        document.querySelector('#eligibleCheck').setAttribute('checked','')
+    }
+    if (localStorage.getItem('eighteenPlus') === 'true') {
+        document.querySelector('#eighteenPlusCheck').setAttribute('checked', '')
+    }
+}
 
 let getCompletedFormData = () => {
     const formData = document.querySelectorAll(".submitApplicant");
@@ -172,3 +265,5 @@ let validateFormInputs = (data) => {
     };
     return validate;
 };
+
+populateFormFromLocalStorage()
