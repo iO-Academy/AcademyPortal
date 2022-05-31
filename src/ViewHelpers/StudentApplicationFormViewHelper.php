@@ -121,7 +121,8 @@ class StudentApplicationFormViewHelper
         $output .= 'id="additionalNotesOtherInput" name="additionalNotes"></div>';
         $output .= '<div id="notesError" class="alert hidden formItem_alert"></div>';
         $output .= '<div class="termsAndConditions"><div class="row"><label for="eligibilityTooltip"';
-        $output .= 'class="label-control withTooltip"><div class="ukEligibility"><input id="eligibleCheck" name="eligible"';
+        $output .= 'class="label-control withTooltip"><div class="ukEligibility">';
+        $output .= '<input id="eligibleCheck" name="eligible"';
         $output .= 'type="checkbox" class="submitApplicant"';
         $output .= 'value="I am eligible to live and work in the UK"/>I am eligible to live and work in the UK</div>';
         $output .= '<div class="toolTipContainer">';
@@ -136,7 +137,8 @@ class StudentApplicationFormViewHelper
 
 
 
-        $output .= '<div class="row"><label><input id="eighteenPlusCheck" name="eighteenPlus" class="submitApplicant" type="checkbox" />';
+        $output .= '<div class="row"><label><input id="eighteenPlusCheck" name="eighteenPlus" ';
+        $output .= 'class="submitApplicant" type="checkbox" />';
         $output .= 'I confirm that I am at least 18 ';
         $output .= 'years of age before my chosen course start date</label></div>';
         $output .= '<div id="18Error" class="alert hidden formItem_alert"></div>';
@@ -145,7 +147,8 @@ class StudentApplicationFormViewHelper
         $output .= 'data by this website in accordance with our <a href="https://io-academy.uk/terms-conditions" ';
         $output .= 'target="_blank">terms and conditions</a>';
         $output .= ' and <a href="https://io-academy.uk/privacy-policy" target="_blank">privacy policy</a>.</p>';
-        $output .= '<label><input id="termsAndConditionsCheck" type="checkbox" class="submitApplicant" value="I accept the terms and conditions"/>';
+        $output .= '<label><input id="termsAndConditionsCheck" type="checkbox" class="submitApplicant" ';
+        $output .= 'value="I accept the terms and conditions"/>';
         $output .= 'I accept the terms and conditions</label></div></div>';
         $output .= '<div id="termsConditionsError" class="alert hidden formItem_alert"></div>';
         return $output;
