@@ -15,8 +15,8 @@ class DisplayCoursesViewHelper
     {
         $result = '';
         foreach ($courses as $course) {
-            $remote = $course->getRemote() == 1 ? 'Yes' : 'No';
-            $inPerson = $course->getInPerson() == 1 ? 'Yes' : 'No';
+            $remote = $course->getRemote() == 1 ? '&#x2713;' : '&#x10102';
+            $inPerson = $course->getInPerson() == 1 ? '&#x2713;' : '&#x10102';
 
             $result .=
                 '<tr>

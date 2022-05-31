@@ -17,8 +17,8 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>Defence Against the Dark JSON</td>
                     <td>Harry Potter</td>
                     <td></td>
-                    <td>Yes</td>
-                    <td>No</td>
+                    <td>&#x2713;</td>
+                    <td>&#x10102</td>
                 </tr>';
         $entityMock = $this->createMock(CourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
