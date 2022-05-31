@@ -7,21 +7,24 @@ use Portal\Models\ApplicantModel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
+
 class CsvController extends Controller
 {
     private const FILE_EXTENSIONS_ALLOWED = ['csv', 'txt'];
     private const VALID_FILE_TYPE = 'text/csv';
 
     private ApplicantModel $applicantModel;
+    private $renderer;
 
-    public function __construct($applicantModel)
+    public function __construct($applicantModel, $renderer)
     {
         $this->applicantModel = $applicantModel;
+        $this->renderer = $renderer;
     }
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $forResponse = '<p>Invalid file format - CSV Not Uploaded</p>';
+//        $forResponse = '<p>Invalid file format - CSV Not Uploaded</p>';
         if (
             !isset($body['submit'])
             || !$this->validateFile(
@@ -30,20 +33,33 @@ class CsvController extends Controller
                 self::VALID_FILE_TYPE
             )
         ) {
+            $applicants = $this->replaceValuesWithForeignKeys();
+            $failedUploadArray = [];
             // Use model to add data to database
-            foreach ($this->replaceValuesWithForeignKeys() as $applicant) {
+            foreach ($applicants as $key => $applicant) {
                 $result = $this->applicantModel->storeApplicant($applicant);
 
-                if ($result > 0) {
-                    $forResponse = '<p>CSV Uploaded successfully</p>';
-                } else {
-                    $forResponse = '<p>CSV Not Uploaded</p>';
+                $applicant['row'] = $key + 1;
+
+                if($result)
+                {
+                $failedUploadArray[]  = ['name' => $applicant['name'], 'row' => $applicant['row']];
                 }
+//                if ($result > 0) {
+//                    $forResponse = '<p>CSV Uploaded successfully</p>';
+//                } else {
+//                    $forResponse = '<p>CSV Not Uploaded</p>';
+//                }
             }
         }
+        echo '<pre>';
+//        print_r($applicants);
+        print_r($failedUploadArray);
+        echo '</pre>';
 
-        $response->getBody()->write($forResponse);
-        return $response;
+
+
+        return $this->renderer->render($response, 'csvUpload.phtml');
     }
 
     private function validateFile(

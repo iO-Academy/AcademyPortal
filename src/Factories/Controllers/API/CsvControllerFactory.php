@@ -5,6 +5,7 @@ namespace Portal\Factories\Controllers\API;
 use Portal\Controllers\API\CsvController;
 use Psr\Container\ContainerInterface;
 
+
 class CsvControllerFactory
 {
     /**
@@ -16,7 +17,8 @@ class CsvControllerFactory
      */
     public function __invoke(ContainerInterface $container): CsvController
     {
+        $renderer = $container->get('renderer');
         $applicantModel = $container->get('ApplicantModel');
-        return new CsvController($applicantModel);
+        return new CsvController($applicantModel, $renderer);
     }
 }
