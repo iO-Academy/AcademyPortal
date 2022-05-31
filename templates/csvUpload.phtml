@@ -1,6 +1,6 @@
 <?php
-$successes = $data['successes'];
-$failures = $data['failures']
+$successes = $data['successes'] ?? null;
+$failures = $data['failures'] ?? null;
 
 ?>
 <!doctype html>
@@ -22,10 +22,13 @@ $failures = $data['failures']
 
 <?php
 
-echo '<p>Result : ' . $successes . ' successfuly uploaded records</p>';
+if ($successes !== null) {
+    echo '<p>Result : ' . $successes . ' successfully uploaded records.</p>';
+}
 
-if (count($failures) > 0) {
-    echo count($failures) . ' Unsuccesful uploads: '
+if ($failures !== null) {
+    if (count($failures) > 0) {
+        echo count($failures) . ' unsuccessful uploads: '
             . '<table>'
             . '<thead>'
             . '<tr>'
@@ -34,14 +37,15 @@ if (count($failures) > 0) {
             . '</tr>'
             . '</thead>'
             . '<tbody>';
-    foreach ($failures as $failure) {
-        echo '<tr>'
+        foreach ($failures as $failure) {
+            echo '<tr>'
                 . '<td>' . $failure['name'] . '</td>'
                 . '<td>' . $failure['row'] . '</td>'
                 . '</tr>';
-    }
-    echo '</tbody>'
+        }
+        echo '</tbody>'
             . '</table>';
+    }
 }
 ?>
 
