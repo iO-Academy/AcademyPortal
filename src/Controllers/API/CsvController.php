@@ -13,15 +13,16 @@ class CsvController extends Controller
     private const VALID_FILE_TYPE = 'text/csv';
 
     private ApplicantModel $applicantModel;
+    private $renderer;
 
-    public function __construct($applicantModel)
+    public function __construct($applicantModel, $renderer)
     {
         $this->applicantModel = $applicantModel;
+        $this->renderer = $renderer;
     }
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $forResponse = '<p>Invalid file format - CSV Not Uploaded</p>';
         if (
             !isset($body['submit'])
             || !$this->validateFile(
@@ -30,20 +31,28 @@ class CsvController extends Controller
                 self::VALID_FILE_TYPE
             )
         ) {
+            $applicants = $this->replaceValuesWithForeignKeys();
+            $failedUploadArray = [];
+            $successes = 0;
             // Use model to add data to database
-            foreach ($this->replaceValuesWithForeignKeys() as $applicant) {
+            foreach ($applicants as $key => $applicant) {
                 $result = $this->applicantModel->storeApplicant($applicant);
 
-                if ($result > 0) {
-                    $forResponse = '<p>CSV Uploaded successfully</p>';
+                $applicant['row'] = $key + 1;
+
+                if ($result) {
+                    $failedUploadArray[] = ['name' => $applicant['name'], 'row' => $applicant['row']];
                 } else {
-                    $forResponse = '<p>CSV Not Uploaded</p>';
+                    $successes++;
                 }
             }
         }
 
-        $response->getBody()->write($forResponse);
-        return $response;
+        $data = ['successes' => $successes,
+            'failures' => $failedUploadArray
+        ];
+
+        return $this->renderer->render($response, 'csvUpload.phtml', ['data' => $data]);
     }
 
     private function validateFile(
@@ -78,7 +87,12 @@ class CsvController extends Controller
         }
         $cohortApplicants = [];
         foreach ($applicants as $applicant) {
+            $applicant['email'] = $applicant['email'] ?: 'Unknown';
+            $applicant['phoneNumber'] = $applicant['phoneNumber'] ?: 'Unknown';
+            $applicant['whyDev'] ?: $applicant['whyDev'] = 'Unknown';
+            $applicant['codeExperience'] ?: $applicant['codeExperience'] = 'Unknown';
             $applicant['cohort'] = [$applicant['cohort']];
+            $applicant['notes'] = $applicant['notes'] . ' - Added to db on ' . date("d/m/Y");
             $cohortApplicants[] = $applicant;
         }
 
@@ -90,9 +104,9 @@ class CsvController extends Controller
         $applicantsWithBinary = [];
         $applicants = $this->csvToAssocArr();
         foreach ($applicants as $applicant) {
-            $applicant['eligible'] = $applicant['eligible'] === 'y' ? 1 : 0;
-            $applicant['eighteenPlus'] = $applicant['eighteenPlus'] === 'y' ? 1 : 0;
-            $applicant['finance'] = $applicant['finance'] === 'y' ? 1 : 0;
+            $applicant['eligible'] = strtolower($applicant['eligible']) === 'y' ? 1 : 0;
+            $applicant['eighteenPlus'] = strtolower($applicant['eighteenPlus']) === 'y' ? 1 : 0;
+            $applicant['finance'] = strtolower($applicant['finance']) === 'y' ? 1 : 0;
             $applicantsWithBinary[] = $applicant;
         }
 

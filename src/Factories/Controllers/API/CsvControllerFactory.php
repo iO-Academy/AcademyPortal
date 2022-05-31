@@ -16,7 +16,8 @@ class CsvControllerFactory
      */
     public function __invoke(ContainerInterface $container): CsvController
     {
+        $renderer = $container->get('renderer');
         $applicantModel = $container->get('ApplicantModel');
-        return new CsvController($applicantModel);
+        return new CsvController($applicantModel, $renderer);
     }
 }
