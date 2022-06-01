@@ -147,7 +147,7 @@ class EventModel
      * @param string of validated search term
      * @return array An array of Events based on input search criteria
      */
-    public function searchPastEvents(string $searchTerm): array
+    public function searchPastEvents(?string $searchTerm): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
                 `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes` 
@@ -169,20 +169,73 @@ class EventModel
      * @return array An array of Events based on category ID and previous X months from current date.
      */
 
-    public function getEventsByCategoryId(string $categoryId, $previousMonths = 0): array
+    public function getEventsByCategoryId(string $categoryId, int $previousMonths = 0): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
                 `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
                 FROM `events` 
                 LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
-                WHERE `events`.`category` = :categoryId';
-        if (is_int($previousMonths)) {
-            $sql .= ' AND `date` > curdate() - INTERVAL :previousMonths MONTH';
-        }
-        $sql .= ' ORDER BY `date` ASC';
+                WHERE `events`.`category` = :categoryId
+                AND `date` > curdate() - INTERVAL :previousMonths MONTH ORDER BY `date` ASC;';
         $query = $this->db->prepare($sql);
         $query->bindParam(':categoryId', $categoryId);
         $query->bindParam(':previousMonths', $previousMonths);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    /**
+     * Gets upcoming events based on an optional categoryId and searchQuery
+     * @param string|null $categoryId
+     * @param string $searchQuery
+     * @return array
+     */
+    public function getUpcomingEventsByCategoryIdAndSearch(?string $categoryId = null, ?string $searchQuery = ''): array
+    {
+        $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
+        `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
+        FROM `events` 
+        LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
+        WHERE `events`.`date` > NOW() AND';
+        if ($categoryId) {
+            $sql .= ' `events`.`category` = :categoryId AND';
+        }
+        $sql .= ' `events`.`name` LIKE :searchQuery ORDER BY `date` ASC;';
+
+        $query = $this->db->prepare($sql);
+        if ($categoryId) {
+            $query->bindParam(':categoryId', $categoryId);
+        }
+        $searchQuery = '%' . $searchQuery . '%';
+        $query->bindParam(':searchQuery', $searchQuery);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    /**
+     * Gets past events based on an optional categoryId and searchQuery
+     * @param string|null $categoryId
+     * @param string|null $searchQuery
+     * @return array
+     */
+    public function getPastEventsByCategoryIdAndSearch(?string $categoryId = null, ?string $searchQuery = ''): array
+    {
+        $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
+        `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
+        FROM `events` 
+        LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
+        WHERE `events`.`date` < NOW() AND';
+        if ($categoryId) {
+            $sql .= ' `events`.`category` = :categoryId AND';
+        }
+        $sql .= ' `events`.`name` LIKE :searchQuery ORDER BY `date` ASC;';
+
+        $query = $this->db->prepare($sql);
+        if ($categoryId) {
+            $query->bindParam(':categoryId', $categoryId);
+        }
+        $searchQuery = '%' . $searchQuery . '%';
+        $query->bindParam(':searchQuery', $searchQuery);
         $query->execute();
         return $query->fetchAll();
     }

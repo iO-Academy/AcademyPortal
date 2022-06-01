@@ -26,7 +26,9 @@ class CourseModel
                 `courses`.`end_date` AS `endDate`,
                 `name`,
                 `trainer`,
-                `notes`
+                `notes`,
+                `in_person` AS `inPerson`,
+                `remote`
                 FROM `courses`;';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
@@ -47,26 +49,34 @@ class CourseModel
             `end_date`,
             `name`,
             `trainer`,
-            `notes`
+            `notes`,
+            `in_person`,
+            `remote`
             ) 
             VALUES (
             :startDate, 
             :endDate, 
             :name,
             :trainer,
-            :notes);");
+            :notes,
+            :in_person,
+            :remote);");
 
         $startDate = $newCourse['startDate'];
         $endDate = $newCourse['endDate'];
         $name = $newCourse['name'];
         $trainer = $newCourse['trainer'];
         $notes = $newCourse['notes'];
+        $in_person = $newCourse['in_person'];
+        $remote = $newCourse['remote'];
 
         $query->bindParam(':startDate', $startDate);
         $query->bindParam(':endDate', $endDate);
         $query->bindParam(':name', $name);
         $query->bindParam(':trainer', $trainer);
         $query->bindParam(':notes', $notes);
+        $query->bindParam(':in_person', $in_person);
+        $query->bindParam(':remote', $remote);
         return $query->execute();
     }
 }

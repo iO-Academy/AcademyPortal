@@ -24,8 +24,7 @@ class CsvController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if (
-            !isset($body['submit'])
-            || !$this->validateFile(
+            $this->validateFile(
                 $_FILES['csv'],
                 self::FILE_EXTENSIONS_ALLOWED,
                 self::VALID_FILE_TYPE
@@ -40,12 +39,16 @@ class CsvController extends Controller
 
                 $applicant['row'] = $key + 1;
 
-                if ($result) {
+                if (!$result) {
                     $failedUploadArray[] = ['name' => $applicant['name'], 'row' => $applicant['row']];
                 } else {
                     $successes++;
                 }
             }
+        } else {
+            $error = 'File format not supported, please try again.';
+            $data = ['errors' => $error];
+            return $this->renderer->render($response, 'csvUpload.phtml', ['data' => $data]);
         }
 
         $data = ['successes' => $successes,
@@ -92,7 +95,7 @@ class CsvController extends Controller
             $applicant['whyDev'] ?: $applicant['whyDev'] = 'Unknown';
             $applicant['codeExperience'] ?: $applicant['codeExperience'] = 'Unknown';
             $applicant['cohort'] = [$applicant['cohort']];
-            $applicant['notes'] = $applicant['notes'] . ' - Added to db on ' . date("d/m/Y");
+            $applicant['notes'] = $applicant['notes'] . ' - added by csv upload on ' . date("d/m/Y");
             $cohortApplicants[] = $applicant;
         }
 
@@ -104,9 +107,9 @@ class CsvController extends Controller
         $applicantsWithBinary = [];
         $applicants = $this->csvToAssocArr();
         foreach ($applicants as $applicant) {
-            $applicant['eligible'] = strtolower($applicant['eligible']) === 'y' ? 1 : 0;
-            $applicant['eighteenPlus'] = strtolower($applicant['eighteenPlus']) === 'y' ? 1 : 0;
-            $applicant['finance'] = strtolower($applicant['finance']) === 'y' ? 1 : 0;
+            $applicant['eligible'] = strtolower($applicant['eligible']) === 'yes' ? 1 : 0;
+            $applicant['eighteenPlus'] = strtolower($applicant['eighteenPlus']) === 'yes' ? 1 : 0;
+            $applicant['finance'] = strtolower($applicant['finance']) === 'yes' ? 1 : 0;
             $applicantsWithBinary[] = $applicant;
         }
 
@@ -118,6 +121,9 @@ class CsvController extends Controller
         $applicantsWithFKs = [];
         $applicants = $this->replaceValuesWithBinary();
         foreach ($applicants as $applicant) {
+            $applicant['gender'] = ucfirst($applicant['gender']);
+            $applicant['hearAboutId'] = ucfirst($applicant['hearAboutId']);
+            $applicant['backgroundInfoId'] = ucfirst($applicant['backgroundInfoId']);
             $applicant['gender'] = $this->applicantModel->getForeignKey(
                 'gender',
                 'gender',
@@ -133,6 +139,12 @@ class CsvController extends Controller
                 'backgroundInfo',
                 $applicant['backgroundInfoId']
             );
+            $applicant['cohort'][0] = $this->applicantModel->getForeignKey(
+                'cohort',
+                'date',
+                $applicant['cohort'][0]
+            );
+
             $applicantsWithFKs[] = $applicant;
         }
 
