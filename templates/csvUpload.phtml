@@ -1,6 +1,7 @@
 <?php
 $successes = $data['successes'] ?? null;
 $failures = $data['failures'] ?? null;
+$error = $data['errors'] ?? null;
 
 ?>
 <!doctype html>
@@ -56,38 +57,18 @@ require 'partials/layout/nav.phtml';
     </tbody>
   </table>
 
-  <form action="/api/csvUpload" method="post" enctype="multipart/form-data">
-    <label for="csv">Csv:</label>
-    <input id="csv" name="csv" type="file" required>
-    <button class="btn-primary">Upload file</button>
-  </form>
+<form action="/api/csvUpload" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="csv">Csv:</label>
+        <input id="csv" name="csv" type="file" required>
+    </div>
+    <div>
+        <button class="btn-primary">Upload file</button>
+    </div>
+</form>
+<h5>Result:</h5>
 <?php
-
-if ($successes !== null) {
-    echo '<p>Result : ' . $successes . ' successfully uploaded records.</p>';
-}
-
-if ($failures !== null) {
-    if (count($failures) > 0) {
-        echo count($failures) . ' unsuccessful uploads: '
-            . '<table class="table">'
-            . '<thead>'
-            . '<tr>'
-            . '<th>Name</th>'
-            . '<th>Row Number</th>'
-            . '</tr>'
-            . '</thead>'
-            . '<tbody>';
-        foreach ($failures as $failure) {
-            echo '<tr>'
-                . '<td>' . $failure['name'] . '</td>'
-                . '<td>' . $failure['row'] . '</td>'
-                . '</tr>';
-        }
-        echo '</tbody>'
-            . '</table>';
-    }
-}
+echo \Portal\ViewHelpers\CsvUploadViewHelper::csvUploadResults($successes, $failures, $error);
 ?>
 <br>
 <p>To successfully upload a CSV file, please follow the below steps to match data to database:</p>
@@ -96,8 +77,9 @@ if ($failures !== null) {
   <li>Setup CSV file with the headers matching the template</li>
   <li>Ensure data is aligned as below:
     <ul>
-      <li>Field 'gender' matches the currently existing gender options in the database.</li>
-      <li>Fields 'hearAboutId' & 'backgroundInfoId' must match currently existing options for 'hear about'</li>
+        <li>Fields 'gender', 'hearAboutId' & 'backgroundInfoId' must match the currently existing gender options in the
+            database.
+        </li>
       <li>Field 'cohort' must have a single date that currently exists in the database and must be formatted as 'yyyy-mm-dd'</li>
       <li>Fields 'eligible', 'eighteenPlus' and 'finance' are all 'yes' or 'no' </li>
       <li>Any empty fields for 'email', 'phoneNumber', 'whyDev', and 'codeExperience' will be replaced with 'Unknown'.</li>

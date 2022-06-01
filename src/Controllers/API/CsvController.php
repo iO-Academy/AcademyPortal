@@ -24,8 +24,7 @@ class CsvController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if (
-            !isset($body['submit'])
-            || !$this->validateFile(
+            $this->validateFile(
                 $_FILES['csv'],
                 self::FILE_EXTENSIONS_ALLOWED,
                 self::VALID_FILE_TYPE
@@ -46,6 +45,10 @@ class CsvController extends Controller
                     $successes++;
                 }
             }
+        } else {
+            $error = 'File format not supported, please try again.';
+            $data = ['errors' => $error];
+            return $this->renderer->render($response, 'csvUpload.phtml', ['data' => $data]);
         }
 
         $data = ['successes' => $successes,
