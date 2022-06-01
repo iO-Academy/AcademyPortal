@@ -31,6 +31,7 @@ class ApplicantModel implements ApplicantModelInterface
 
         return $id;
     }
+
     /**
      * Inserts new ApplicantEntity into database - registering.
      *

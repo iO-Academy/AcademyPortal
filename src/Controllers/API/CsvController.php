@@ -92,8 +92,8 @@ class CsvController extends Controller
         foreach ($applicants as $applicant) {
             $applicant['email'] = $applicant['email'] ?: 'Unknown';
             $applicant['phoneNumber'] = $applicant['phoneNumber'] ?: 'Unknown';
-            $applicant['whyDev'] ?: $applicant['whyDev'] = 'Unknown';
-            $applicant['codeExperience'] ?: $applicant['codeExperience'] = 'Unknown';
+            $applicant['whyDev'] = $applicant['whyDev'] ?: 'Unknown';
+            $applicant['codeExperience'] = $applicant['codeExperience'] ?: 'Unknown';
             $applicant['cohort'] = [$applicant['cohort']];
             $applicant['notes'] = $applicant['notes'] . ' - added by csv upload on ' . date("d/m/Y");
             $cohortApplicants[] = $applicant;
