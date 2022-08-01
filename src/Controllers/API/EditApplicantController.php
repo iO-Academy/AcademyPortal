@@ -4,6 +4,7 @@ namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
 use Portal\Interfaces\ApplicantModelInterface;
+use Portal\Models\ApplicantModel;
 use Portal\Sanitisers\ApplicantSanitiser;
 use Portal\Validators\ApplicantValidator;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -17,7 +18,7 @@ class EditApplicantController extends Controller
      * EditApplicantController constructor.
      * @param $applicantModel
      */
-    public function __construct(ApplicantModelInterface $applicantModel)
+    public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
     }

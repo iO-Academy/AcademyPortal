@@ -22,7 +22,7 @@ class EditApplicantPageController extends Controller
      * @param StageModel $stageModel
      * @param PhpRenderer $renderer
      */
-    public function __construct(ApplicantModelInterface $applicantModel, StageModel $stageModel, PhpRenderer $renderer)
+    public function __construct(ApplicantModel $applicantModel, StageModel $stageModel, PhpRenderer $renderer)
     {
         $this->applicantModel = $applicantModel;
         $this->renderer = $renderer;

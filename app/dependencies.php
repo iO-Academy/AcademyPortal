@@ -70,8 +70,6 @@ return function (ContainerBuilder $containerBuilder) {
         DI\factory('\Portal\Factories\Controllers\FrontEnd\AddEventPageControllerFactory');
     $container['StagesPageController'] =
         DI\factory('\Portal\Factories\Controllers\FrontEnd\StagesPageControllerFactory');
-    $container['EditApplicantPageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\EditApplicantPageControllerFactory');
     $container['TeamPickerPageController'] =
         DI\factory('\Portal\Factories\Controllers\FrontEnd\TeamPickerPageControllerFactory');
     $container['CoursesPageController'] =
@@ -87,8 +85,6 @@ return function (ContainerBuilder $containerBuilder) {
         DI\factory('\Portal\Factories\Controllers\API\GetApplicationFormControllerFactory');
     $container['AddApplicantController'] =
         DI\factory('\Portal\Factories\Controllers\API\AddApplicantControllerFactory');
-    $container['GetApplicantController'] =
-        DI\factory('\Portal\Factories\Controllers\API\GetApplicantControllerFactory');
     $container['GetStudentsController'] = DI\factory('\Portal\Factories\Controllers\API\GetStudentsControllerFactory');
     $container['LoginController'] = DI\factory('\Portal\Factories\Controllers\API\LoginControllerFactory');
     $container['AddHiringPartnerController'] =
@@ -99,7 +95,8 @@ return function (ContainerBuilder $containerBuilder) {
         DI\factory('\Portal\Factories\Controllers\API\GetCompanyDetailsModalControllerFactory');
     $container['AddContactController'] = DI\factory('\Portal\Factories\Controllers\API\AddContactControllerFactory');
     $container['GetEventsController'] = DI\factory('\Portal\Factories\Controllers\API\GetEventsControllerFactory');
-    $container['GetAssessmentApplicantsController'] = DI\factory('\Portal\Factories\Controllers\API\GetAssessmentApplicantsControllerFactory');
+    $container['GetAssessmentApplicantsController'] =
+        DI\factory('\Portal\Factories\Controllers\API\GetAssessmentApplicantsControllerFactory');
     $container['GetHiringPartnersByIdController'] =
         DI\factory('\Portal\Factories\Controllers\API\GetHiringPartnersByIdControllerFactory');
     $container['AddHiringPartnerToEventController'] =
@@ -126,23 +123,21 @@ return function (ContainerBuilder $containerBuilder) {
     $container['EditTeamsController'] = DI\factory('\Portal\Factories\Controllers\API\EditTeamsControllerFactory');
     $container['GetNextStageOptionsController'] =
         DI\factory('\Portal\Factories\Controllers\API\GetNextStageOptionsControllerFactory');
-    $container['EditApplicantStageController'] =
-        DI\factory('\Portal\Factories\Controllers\API\EditApplicantStageControllerFactory');
     $container['GetCoursesController'] = DI\factory('\Portal\Factories\Controllers\API\GetCoursesControllerFactory');
     $container['AddCourseController'] = DI\factory('\Portal\Factories\Controllers\API\AddCourseControllerFactory');
-    $container['GetCsvFormController'] = DI\factory('\Portal\Factories\Controllers\FrontEnd\GetCsvFormControllerFactory');
+    $container['GetCsvFormController'] =
+        DI\factory('\Portal\Factories\Controllers\FrontEnd\GetCsvFormControllerFactory');
     $container['CsvController'] = DI\factory('\Portal\Factories\Controllers\API\CsvControllerFactory');
-    $container['GetEventCategoriesController'] = DI\factory('\Portal\Factories\Controllers\API\GetEventCategoriesControllerFactory');
-    $container['AddAptitudeScoreController'] = DI\factory('\Portal\Factories\Controllers\API\AddAptitudeScoreControllerFactory');
+    $container['GetEventCategoriesController'] =
+        DI\factory('\Portal\Factories\Controllers\API\GetEventCategoriesControllerFactory');
+    $container['AddAptitudeScoreController'] =
+        DI\factory('\Portal\Factories\Controllers\API\AddAptitudeScoreControllerFactory');
 
     // Models
     $container['UserModel'] = DI\factory('\Portal\Factories\Models\UserModelFactory');
     $container['ApplicationFormModel'] = DI\factory('\Portal\Factories\Models\ApplicationFormModelFactory');
-//    $container['ApplicantModel'] = DI\factory('\Portal\Factories\Models\ApplicantModelFactory');
     $container['HiringPartnerModel'] = DI\factory('\Portal\Factories\Models\HiringPartnerModelFactory');
     $container['EventModel'] = DI\factory('\Portal\Factories\Models\EventModelFactory');
-    $container['RandomPasswordModel'] = DI\factory('\Portal\Models\RandomPasswordModel');
-//    $container['StageModel'] = DI\factory('\Portal\Factories\Models\StageModelFactory');
     $container['TeamModel'] = DI\factory('\Portal\Factories\Models\TeamModelFactory');
     $container['CourseModel'] = DI\factory('\Portal\Factories\Models\CourseModelFactory');
     $container['EventCategoriesModel'] = DI\factory('\Portal\Factories\Models\EventCategoriesModelFactory');

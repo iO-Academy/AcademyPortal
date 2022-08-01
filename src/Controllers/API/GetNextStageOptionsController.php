@@ -21,7 +21,7 @@ class GetNextStageOptionsController extends Controller
      * @param StageModel $stageModel
      */
 
-    public function __construct(StageModel $stageModel, string $password, ApplicantModel $applicantModel)
+    public function __construct(StageModel $stageModel, RandomPasswordModel $password, ApplicantModel $applicantModel)
     {
         $this->stageModel = $stageModel;
         $this->password = $password;

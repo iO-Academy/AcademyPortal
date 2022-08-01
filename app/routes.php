@@ -17,7 +17,7 @@ return function (App $app) {
     $app->get('/events-past', 'PastEventsPageController');
     $app->get('/addEvent', 'AddEventPageController');
     $app->get('/editStages', 'StagesPageController');
-    $app->get('/editApplicant', 'EditApplicantPageController');
+    $app->get('/editApplicant', \Portal\Controllers\FrontEnd\EditApplicantPageController::class);
     $app->get('/teamPicker', 'TeamPickerPageController');
     $app->get('/student', 'TeamPickerPageController');
     $app->get('/public[/{id}]', 'StudentProfilePageController');
@@ -29,10 +29,10 @@ return function (App $app) {
 
     //API
     $app->get('/api/getStudents', 'GetStudentsController');
-    $app->get('/api/getApplicant/{id}', 'GetApplicantController');
+    $app->get('/api/getApplicant/{id}', \Portal\Controllers\API\GetApplicantController::class);
     $app->post('/api/saveApplicant', 'AddApplicantController');
     $app->delete('/api/deleteApplicant', 'DeleteApplicantController');
-    $app->post('/api/editApplicant', 'EditApplicantController');
+    $app->post('/api/editApplicant', \Portal\Controllers\API\EditApplicantController::class);
     $app->get('/api/applicationForm', 'GetApplicationFormController');
     $app->post('/api/createHiringPartner', 'AddHiringPartnerController');
     $app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');
@@ -47,7 +47,7 @@ return function (App $app) {
     $app->post('/api/createStage', 'AddStageController');
     $app->delete('/api/deleteStage', 'DeleteStageController');
     $app->put('/api/updateStages', 'EditStageController');
-    $app->get('/api/getStages', 'GetStagesController');
+    $app->get('/api/getStages', \Portal\Controllers\API\GetStagesController::class);
     $app->get('/api/getGender', 'GetGenderController');
     $app->post('/api/login', 'LoginController');
     $app->post('/api/registerUser', 'AddUserController');
@@ -56,8 +56,8 @@ return function (App $app) {
     $app->post('/api/addStageOption', 'AddStageOptionController');
     $app->delete('/api/deleteAllStageOptions', 'DeleteAllStageOptionsController');
     $app->post('/api/updateTeams', 'EditTeamsController');
-    $app->get('/api/getNextStageOptions/{stageid}', 'GetNextStageOptionsController');
-    $app->get('/api/progressApplicantStage', 'EditApplicantStageController');
+    $app->get('/api/getNextStageOptions/{stageid}', \Portal\Controllers\API\GetNextStageOptionsController::class);
+    $app->get('/api/progressApplicantStage', \Portal\Controllers\API\EditApplicantStageController::class);
     $app->get('/api/getCourses', 'GetCoursesController');
     $app->post('/api/addCourse', 'AddCourseController');
     $app->post('/api/csvUpload', 'CsvController');
