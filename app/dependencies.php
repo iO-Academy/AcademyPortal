@@ -28,11 +28,13 @@ return function (ContainerBuilder $containerBuilder) {
         return $logger;
     };
 
+    // TODO: Make sure to remove this when done
     $container['renderer'] = function (ContainerInterface $c) {
         $settings = $c->get('settings')['renderer'];
         return new PhpRenderer($settings['template_path']);
     };
 
+    // TODO: Make sure to remove this when done
     $container['dbConnection'] = function (ContainerInterface $c) {
         $settings = $c->get('settings')['db'];
         $db = new PDO($settings['host'] . $settings['dbName'], $settings['userName'], $settings['password']);
@@ -40,6 +42,9 @@ return function (ContainerBuilder $containerBuilder) {
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); // uncomment to debug DB errors
         return $db;
     };
+
+    $container[PDO::class] = DI\factory(\Portal\Factories\PDOFactory::class);
+    $container[PhpRenderer::class] = DI\factory(\Portal\Factories\PhpRendererFactory::class);
 
     // Controllers
     // Front end Controllers
@@ -49,8 +54,6 @@ return function (ContainerBuilder $containerBuilder) {
         DI\factory('\Portal\Factories\Controllers\FrontEnd\RegisterPageControllerFactory');
     $container['addApplicantPageController'] =
         DI\factory('\Portal\Factories\Controllers\FrontEnd\AddApplicantPageControllerFactory');
-    $container['ApplicantsPageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\ApplicantsPageControllerFactory');
     $container['StudentProfilePageController'] =
         DI\factory('\Portal\Factories\Controllers\FrontEnd\StudentProfilePageControllerFactory');
     $container['HiringPartnerPageController'] =
@@ -135,11 +138,11 @@ return function (ContainerBuilder $containerBuilder) {
     // Models
     $container['UserModel'] = DI\factory('\Portal\Factories\Models\UserModelFactory');
     $container['ApplicationFormModel'] = DI\factory('\Portal\Factories\Models\ApplicationFormModelFactory');
-    $container['ApplicantModel'] = DI\factory('\Portal\Factories\Models\ApplicantModelFactory');
+//    $container['ApplicantModel'] = DI\factory('\Portal\Factories\Models\ApplicantModelFactory');
     $container['HiringPartnerModel'] = DI\factory('\Portal\Factories\Models\HiringPartnerModelFactory');
     $container['EventModel'] = DI\factory('\Portal\Factories\Models\EventModelFactory');
     $container['RandomPasswordModel'] = DI\factory('\Portal\Models\RandomPasswordModel');
-    $container['StageModel'] = DI\factory('\Portal\Factories\Models\StageModelFactory');
+//    $container['StageModel'] = DI\factory('\Portal\Factories\Models\StageModelFactory');
     $container['TeamModel'] = DI\factory('\Portal\Factories\Models\TeamModelFactory');
     $container['CourseModel'] = DI\factory('\Portal\Factories\Models\CourseModelFactory');
     $container['EventCategoriesModel'] = DI\factory('\Portal\Factories\Models\EventCategoriesModelFactory');
