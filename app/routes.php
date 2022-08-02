@@ -31,7 +31,7 @@ return function (App $app) {
     $app->get('/api/getStudents', 'GetStudentsController');
     $app->get('/api/getApplicant/{id}', \Portal\Controllers\API\GetApplicantController::class);
     $app->post('/api/saveApplicant', 'AddApplicantController');
-    $app->delete('/api/deleteApplicant', 'DeleteApplicantController');
+    $app->delete('/api/deleteApplicant', \Portal\Controllers\API\DeleteApplicantController::class);
     $app->post('/api/editApplicant', \Portal\Controllers\API\EditApplicantController::class);
     $app->get('/api/applicationForm', 'GetApplicationFormController');
     $app->post('/api/createHiringPartner', 'AddHiringPartnerController');

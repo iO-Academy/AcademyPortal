@@ -75,7 +75,10 @@ class ApplicantsPageController extends Controller
                 );
             // counts number of pages
             $params['count'] = ceil(count($allApplicants) / $this->numberOfApplicantsPerPage);
-            if (isset($_SESSION['page']) && ($_SESSION['page'] > $params['count'] || $_SESSION['page'] < 1)) {
+            if (
+                (isset($_SESSION['page']) && ($_SESSION['page'] > $params['count'] || $_SESSION['page'] < 1)) &&
+                $_SESSION['page'] !== '1'
+            ) {
                 return $response->withHeader('Location', '/applicants?page=1');
             }
             $params['data']['applicants'] =

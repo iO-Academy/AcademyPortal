@@ -104,8 +104,6 @@ return function (ContainerBuilder $containerBuilder) {
     $container['AddEventController'] = DI\factory('\Portal\Factories\Controllers\API\AddEventControllerFactory');
     $container['DeleteHiringPartnerFromEventController'] =
         DI\factory('\Portal\Factories\Controllers\API\DeleteHiringPartnerFromEventControllerFactory');
-    $container['DeleteApplicantController'] =
-        DI\factory('\Portal\Factories\Controllers\API\DeleteApplicantControllerFactory');
     $container['AddStageController'] = DI\factory('\Portal\Factories\Controllers\API\AddStageControllerFactory');
     $container['GetStagesController'] = DI\factory('\Portal\Factories\Controllers\API\GetStagesControllerFactory');
     $container['DeleteStageController'] = DI\factory('\Portal\Factories\Controllers\API\DeleteStageControllerFactory');
