@@ -3,6 +3,7 @@
 namespace Portal\Controllers\FrontEnd;
 
 use Portal\Abstracts\Controller;
+use Portal\Models\RandomPasswordModel;
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -19,7 +20,7 @@ class RegisterPageController extends Controller
      * @param PhpRenderer $renderer
      * @param string $password
      */
-    public function __construct(PhpRenderer $renderer, string $password)
+    public function __construct(PhpRenderer $renderer, RandomPasswordModel $password)
     {
         $this->renderer = $renderer;
         $this->password = $password;
@@ -37,12 +38,12 @@ class RegisterPageController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $args['password'] = $this->password;
+        $args['password'] = ($this->password)();
         if ($_SESSION['loggedIn'] === true) {
             return $this->renderer->render($response, 'registerUser.phtml', $args);
         } else {
             $_SESSION['loggedIn'] = false;
-            return $response->withRedirect('./');
+            return $response->withHeader('Location', './');
         }
     }
 }

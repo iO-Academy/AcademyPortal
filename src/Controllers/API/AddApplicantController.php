@@ -43,6 +43,8 @@ class AddApplicantController extends Controller
         $statusCode = 500;
         $newApplicationData = $request->getParsedBody();
 
+
+
         if ($newApplicationData === null) {
             return $response->withStatus(400);
         }
@@ -68,6 +70,7 @@ class AddApplicantController extends Controller
             ];
             $statusCode = 200;
         }
+
         return $this->respondWithJson($response, $data, $statusCode);
     }
 }

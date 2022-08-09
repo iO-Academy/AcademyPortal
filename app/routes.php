@@ -5,32 +5,32 @@ use Slim\App;
 
 return function (App $app) {
     //Frontend
-    $app->get('/', 'HomePageController');
-    $app->get('/admin', 'AdminPageController');
-    $app->get('/register', 'RegisterPageController');
-    $app->get('/addapplicant', 'addApplicantPageController');
+    $app->get('/', \Portal\Controllers\FrontEnd\HomePageController::class);
+    $app->get('/admin', \Portal\Controllers\FrontEnd\AdminPageController::class);
+    $app->get('/register', \Portal\Controllers\FrontEnd\RegisterPageController::class);
+    $app->get('/addapplicant', \Portal\Controllers\FrontEnd\AddApplicantPageController::class);
     $app->get('/applicants', \Portal\Controllers\FrontEnd\ApplicantsPageController::class);
-    $app->get('/hiringPartners', 'HiringPartnerPageController');
-    $app->get('/addHiringPartner', 'AddHiringPartnerPageController');
-    $app->get('/addHiringPartnerContact', 'AddHiringPartnerContactPageController');
-    $app->get('/events', 'EventsPageController');
-    $app->get('/events-past', 'PastEventsPageController');
-    $app->get('/addEvent', 'AddEventPageController');
-    $app->get('/editStages', 'StagesPageController');
+    $app->get('/hiringPartners', \Portal\Controllers\FrontEnd\HiringPartnerPageController::class);
+    $app->get('/addHiringPartner', \Portal\Controllers\FrontEnd\AddHiringPartnerPageController::class);
+    $app->get('/addHiringPartnerContact', \Portal\Controllers\FrontEnd\AddHiringPartnerContactPageController::class);
+    $app->get('/events', \Portal\Controllers\FrontEnd\EventsPageController::class);
+    $app->get('/events-past', \Portal\Controllers\FrontEnd\PastEventsPageController::class);
+    $app->get('/addEvent', \Portal\Controllers\FrontEnd\AddEventPageController::class);
+    $app->get('/editStages', \Portal\Controllers\FrontEnd\StagesPageController::class);
     $app->get('/editApplicant', \Portal\Controllers\FrontEnd\EditApplicantPageController::class);
-    $app->get('/teamPicker', 'TeamPickerPageController');
-    $app->get('/student', 'TeamPickerPageController');
-    $app->get('/public[/{id}]', 'StudentProfilePageController');
-    $app->post('/public[/{id}]', 'StudentProfilePageController');
-    $app->get('/courses', 'CoursesPageController');
-    $app->get('/addCourse', 'AddCoursePageController');
-    $app->get('/studentApplicationForm', 'StudentApplicationFormPageController');
-    $app->get('/csvForm', 'GetCsvFormController');
+    $app->get('/teamPicker', \Portal\Controllers\FrontEnd\TeamPickerPageController::class);
+    $app->get('/student', \Portal\Controllers\FrontEnd\TeamPickerPageController::class);
+    $app->get('/public[/{id}]', \Portal\Controllers\FrontEnd\StudentProfilePageController::class);
+    $app->post('/public[/{id}]', \Portal\Controllers\FrontEnd\StudentProfilePageController::class);
+    $app->get('/courses', \Portal\Controllers\FrontEnd\CoursesPageController::class);
+    $app->get('/addCourse', \Portal\Controllers\FrontEnd\AddCoursePageController::class);
+    $app->get('/studentApplicationForm', \Portal\Controllers\FrontEnd\StudentApplicationFormPageController::class);
+    $app->get('/csvForm', \Portal\Controllers\FrontEnd\GetCsvFormController::class);
 
     //API
     $app->get('/api/getStudents', 'GetStudentsController');
     $app->get('/api/getApplicant/{id}', \Portal\Controllers\API\GetApplicantController::class);
-    $app->post('/api/saveApplicant', 'AddApplicantController');
+    $app->post('/api/saveApplicant', \Portal\Controllers\API\AddApplicantController::class);
     $app->delete('/api/deleteApplicant', \Portal\Controllers\API\DeleteApplicantController::class);
     $app->post('/api/editApplicant', \Portal\Controllers\API\EditApplicantController::class);
     $app->get('/api/applicationForm', 'GetApplicationFormController');

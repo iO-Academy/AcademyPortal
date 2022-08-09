@@ -47,44 +47,11 @@ return function (ContainerBuilder $containerBuilder) {
     $container[PhpRenderer::class] = DI\factory(\Portal\Factories\PhpRendererFactory::class);
 
     // Controllers
-    // Front end Controllers
-    $container['HomePageController'] = DI\factory('\Portal\Factories\Controllers\FrontEnd\HomePageControllerFactory');
-    $container['AdminPageController'] = DI\factory('\Portal\Factories\Controllers\FrontEnd\AdminPageControllerFactory');
-    $container['RegisterPageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\RegisterPageControllerFactory');
-    $container['addApplicantPageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\AddApplicantPageControllerFactory');
-    $container['StudentProfilePageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\StudentProfilePageControllerFactory');
-    $container['HiringPartnerPageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\HiringPartnerPageControllerFactory');
-    $container['AddHiringPartnerPageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\AddHiringPartnerPageControllerFactory');
-    $container['AddHiringPartnerContactPageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\AddHiringPartnerContactPageControllerFactory');
-    $container['EventsPageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\EventsPageControllerFactory');
-    $container['PastEventsPageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\PastEventsPageControllerFactory');
-    $container['AddEventPageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\AddEventPageControllerFactory');
-    $container['StagesPageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\StagesPageControllerFactory');
-    $container['TeamPickerPageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\TeamPickerPageControllerFactory');
-    $container['CoursesPageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\CoursesPageControllerFactory');
-    $container['AddCoursePageController'] =
-        DI\factory('\Portal\Factories\Controllers\FrontEnd\AddCoursePageControllerFactory');
-    $container['StudentApplicationFormPageController'] =
-        DI\factory('Portal\Factories\Controllers\FrontEnd\StudentApplicationFormPageControllerFactory');
 
     // API Controllers
     $container['AddUserController'] = DI\factory('\Portal\Factories\Controllers\API\AddUserControllerFactory');
     $container['GetApplicationFormController'] =
         DI\factory('\Portal\Factories\Controllers\API\GetApplicationFormControllerFactory');
-    $container['AddApplicantController'] =
-        DI\factory('\Portal\Factories\Controllers\API\AddApplicantControllerFactory');
     $container['GetStudentsController'] = DI\factory('\Portal\Factories\Controllers\API\GetStudentsControllerFactory');
     $container['LoginController'] = DI\factory('\Portal\Factories\Controllers\API\LoginControllerFactory');
     $container['AddHiringPartnerController'] =
