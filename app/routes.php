@@ -28,27 +28,27 @@ return function (App $app) {
     $app->get('/csvForm', \Portal\Controllers\FrontEnd\GetCsvFormController::class);
 
     //API
-    $app->get('/api/getStudents', 'GetStudentsController');
+    $app->get('/api/getStudents', \Portal\Controllers\API\GetStudentsController::class);
     $app->get('/api/getApplicant/{id}', \Portal\Controllers\API\GetApplicantController::class);
     $app->post('/api/saveApplicant', \Portal\Controllers\API\AddApplicantController::class);
     $app->delete('/api/deleteApplicant', \Portal\Controllers\API\DeleteApplicantController::class);
     $app->post('/api/editApplicant', \Portal\Controllers\API\EditApplicantController::class);
-    $app->get('/api/applicationForm', 'GetApplicationFormController');
+    $app->get('/api/applicationForm', \Portal\Controllers\API\GetApplicationFormController::class);
     $app->post('/api/createHiringPartner', 'AddHiringPartnerController');
-    $app->get('/api/getHiringPartnerInfo', 'GetHiringPartnersController');
-    $app->get('/api/getEvents', 'GetEventsController');
-    $app->get('/api/getAssessmentApplicants', 'GetAssessmentApplicantsController');
+    $app->get('/api/getHiringPartnerInfo', \Portal\Controllers\API\GetHiringPartnersController::class);
+    $app->get('/api/getEvents', \Portal\Controllers\API\GetEventsController::class);
+    $app->get('/api/getAssessmentApplicants', \Portal\Controllers\API\GetAssessmentApplicantsController::class);
     $app->post('/api/addEvent', 'AddEventController');
     $app->post('/api/addContact', 'AddContactController');
     $app->post('/api/addHiringPartnerToEvent', 'AddHiringPartnerToEventController');
-    $app->get('/api/displayCompanyInfo/{id}', 'GetCompanyDetailsModalController');
+    $app->get('/api/displayCompanyInfo/{id}', \Portal\Controllers\API\GetCompanyDetailsModalController::class);
     $app->post('/api/getHpsByEventId', 'GetHiringPartnersByIdController');
     $app->post('/api/deleteHiringPartnerFromEvent', 'DeleteHiringPartnerFromEventController');
     $app->post('/api/createStage', 'AddStageController');
     $app->delete('/api/deleteStage', 'DeleteStageController');
     $app->put('/api/updateStages', 'EditStageController');
     $app->get('/api/getStages', \Portal\Controllers\API\GetStagesController::class);
-    $app->get('/api/getGender', 'GetGenderController');
+    $app->get('/api/getGender', \Portal\Controllers\API\GetGenderController::class);
     $app->post('/api/login', 'LoginController');
     $app->post('/api/registerUser', 'AddUserController');
     $app->put('/api/editStageOption', 'EditStageOptionController');
@@ -58,9 +58,9 @@ return function (App $app) {
     $app->post('/api/updateTeams', 'EditTeamsController');
     $app->get('/api/getNextStageOptions/{stageid}', \Portal\Controllers\API\GetNextStageOptionsController::class);
     $app->get('/api/progressApplicantStage', \Portal\Controllers\API\EditApplicantStageController::class);
-    $app->get('/api/getCourses', 'GetCoursesController');
+    $app->get('/api/getCourses', \Portal\Controllers\API\GetCoursesController::class);
     $app->post('/api/addCourse', 'AddCourseController');
     $app->post('/api/csvUpload', 'CsvController');
-    $app->get('/api/getEventCategories', 'GetEventCategoriesController');
-    $app->put('/api/aptitudeScore', 'AddAptitudeScoreController');
+    $app->get('/api/getEventCategories', \Portal\Controllers\API\GetEventCategoriesController::class);
+    $app->put('/api/aptitudeScore', \Portal\Controllers\API\AddAptitudeScoreController::class);
 };
