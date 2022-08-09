@@ -14,7 +14,7 @@ class EditApplicantPageControllerTest extends TestCase
     public function testConstruct()
     {
         $renderer = $this->createMock(PhpRenderer::class);
-        $applicant = $this->createMock(ApplicantModelInterface::class);
+        $applicant = $this->createMock(ApplicantModel::class);
         $stage = $this->createMock(StageModel::class);
         $case = new EditApplicantPageController($applicant, $stage, $renderer);
         $expected = EditApplicantPageController::class;
