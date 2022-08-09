@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 namespace Portal\Factories;
-
 
 use PDO;
 use Psr\Container\ContainerInterface;
