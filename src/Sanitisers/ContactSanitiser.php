@@ -8,7 +8,7 @@ class ContactSanitiser
     {
         $contact['contactName'] = StringSanitiser::sanitiseString($contact['contactName']);
         $contact['contactEmail'] = StringSanitiser::sanitiseString($contact['contactEmail']);
-        $contact['jobTitle'] = StringSanitiser::sanitiseString($contact['jobTitle']);
+        $contact['contactJobTitle'] = StringSanitiser::sanitiseString($contact['contactJobTitle']);
         $contact['contactPhone'] = StringSanitiser::sanitiseString($contact['contactPhone']);
         $contact['contactCompanyId'] = (int)$contact['contactCompanyId'];
         $contact['contactIsPrimary'] = (int)$contact['contactIsPrimary'];
