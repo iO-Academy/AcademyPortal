@@ -8,7 +8,9 @@ class StageSanitiser
 {
     public static function sanitise(array $stage): array
     {
-        $stage['id'] = (int)$stage['id'];
+        if (isset($stage['id'])) {
+            $stage['id'] = (int)$stage['id'];
+        }
         $stage['title'] = StringSanitiser::sanitiseString($stage['title']);
         try {
             StringValidator::validateLength($stage['title'], StringValidator::MAXVARCHARLENGTH, 'title');
