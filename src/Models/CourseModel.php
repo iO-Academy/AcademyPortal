@@ -39,7 +39,7 @@ class CourseModel
     /**
      * Add a new course to the database
      *
-     * @param [type] $newCourse
+     * @param array $newCourse
      * @return boolean True if operation succeeded
      */
     public function addCourse(array $newCourse): bool
