@@ -164,8 +164,8 @@ class EventModel
      * Gets events based on a specific category ID from the database
      *
      * @param string $categoryId of category ID
-     * @param int $previousMonths optional parameter indicating how many previous X months from the current date and the future to be
-     * retrieved, defaults to all dates
+     * @param int $previousMonths optional parameter indicating how many previous X months from the current date and
+     * the future to be retrieved, defaults to all dates
      * @return array An array of Events based on category ID and previous X months from current date.
      */
 

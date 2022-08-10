@@ -43,7 +43,6 @@ class RegisterPageController extends Controller
         } else {
             $_SESSION['loggedIn'] = false;
             return $response->withHeader('Location', '/');
-
         }
     }
 }
