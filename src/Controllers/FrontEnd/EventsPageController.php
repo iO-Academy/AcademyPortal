@@ -11,18 +11,15 @@ use Slim\Views\PhpRenderer;
 class EventsPageController extends Controller
 {
     private $renderer;
-    private $eventModel;
 
     /**
      * Creates new instance of EventsPageController
      *
      * @param PhpRenderer $renderer
-     * @param EventsModel $eventsModel
      */
-    public function __construct(PhpRenderer $renderer, EventModel $eventModel)
+    public function __construct(PhpRenderer $renderer)
     {
         $this->renderer = $renderer;
-        $this->eventModel = $eventModel;
     }
 
     /**

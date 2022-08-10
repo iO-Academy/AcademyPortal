@@ -30,7 +30,7 @@ class LoginController extends Controller
      * @param array $args The arguments array
 
      *
-     * @return string JSON message and status code.
+     * @return Response JSON message and status code.
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {

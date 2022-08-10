@@ -17,7 +17,7 @@ class PastEventsPageController extends Controller
      * Creates new instance of EventsPageController
      *
      * @param PhpRenderer $renderer
-     * @param EventsModel $eventsModel
+     * @param EventModel $eventModel
      */
     public function __construct(PhpRenderer $renderer, EventModel $eventModel)
     {
