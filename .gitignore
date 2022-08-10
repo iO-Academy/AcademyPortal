@@ -8,3 +8,5 @@
 !/logs/README.md
 sendgrid.env
 .env
+.circleci/.config.yml.swp
+
