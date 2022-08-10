@@ -56,7 +56,7 @@ class StringValidator
      * Make sure the alpha string is valid
      *
      * @param string $alpha
-     * @return string|null
+     * @return string
      * @throws \Exception
      */
     public static function validateAlpha(string $alpha): string
