@@ -61,5 +61,9 @@ class AddUserController extends Controller
 
             return $this->respondWithJson($response, $data, $statusCode);
         }
+
+        $_SESSION['loggedIn'] = false;
+        $data = ['success' => false, 'message' => 'Unauthorized', 'data' => []];
+        return $this->respondWithJson($response, $data, 401);
     }
 }

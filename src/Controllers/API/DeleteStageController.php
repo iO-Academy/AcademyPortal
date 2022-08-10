@@ -30,7 +30,7 @@ class DeleteStageController extends Controller
      *
      * @return Response - Returns status 200/500 with message in Json
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $data = [
@@ -69,5 +69,9 @@ class DeleteStageController extends Controller
             }
             return $this->respondWithJson($response, $data, $statusCode);
         }
+
+        $_SESSION['loggedIn'] = false;
+        $data = ['success' => false, 'message' => 'Unauthorized', 'data' => []];
+        return $this->respondWithJson($response, $data, 401);
     }
 }
