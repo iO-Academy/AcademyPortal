@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.8.3-MariaDB-1:10.8.3+maria~jammy)
 # Database: academyPortal
-# Generation Time: 2022-09-26 15:54:08 +0000
+# Generation Time: 2022-09-26 15:57:43 +0000
 # ************************************************************
 
 
@@ -740,7 +740,7 @@ LOCK TABLES `trainers` WRITE;
 
 INSERT INTO `trainers` (`id`, `name`, `email`, `notes`, `deleted`)
 VALUES
-	(1,'Charlie Coggins','charlie.coggins@io-academy.uk','',0),
+	(1,'Charlie Coggans','charlie.coggans@io-academy.uk','',0),
 	(2,'Rayna Bozhkova','rayna.bozhkova@io-academy.uk','',0),
 	(3,'Ashley Coles','ashley.coles@io-academy.uk','',0),
 	(4,'Mike Oram','mike.oram@io-academy.uk','',0),
