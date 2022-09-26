@@ -1,22 +1,22 @@
 # ************************************************************
-# Sequel Ace SQL dump
-# Version 20031
+# Sequel Pro SQL dump
+# Version 4541
 #
-# https://sequel-ace.com/
-# https://github.com/Sequel-Ace/Sequel-Ace
+# http://www.sequelpro.com/
+# https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.37)
+# Host: 127.0.0.1 (MySQL 5.5.5-10.8.3-MariaDB-1:10.8.3+maria~jammy)
 # Database: academyPortal
-# Generation Time: 2022-05-30 13:12:43 +0000
+# Generation Time: 2022-09-26 15:57:43 +0000
 # ************************************************************
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-SET NAMES utf8mb4;
+/*!40101 SET NAMES utf8 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE='NO_AUTO_VALUE_ON_ZERO', SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
@@ -30,22 +30,22 @@ CREATE TABLE `applicants` (
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `phoneNumber` varchar(20) DEFAULT NULL,
-  `whyDev` text,
-  `codeExperience` text,
+  `whyDev` text DEFAULT NULL,
+  `codeExperience` text DEFAULT NULL,
   `hearAboutId` int(11) DEFAULT NULL,
   `eligible` enum('1','0') DEFAULT NULL,
   `eighteenPlus` enum('1','0') DEFAULT NULL,
   `finance` enum('1','0') DEFAULT NULL,
-  `notes` text,
-  `stageId` int(11) NOT NULL DEFAULT '1',
+  `notes` text DEFAULT NULL,
+  `stageId` int(11) NOT NULL DEFAULT 1,
   `stageOptionId` int(11) DEFAULT NULL,
-  `dateTimeAdded` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `deleted` tinyint(4) DEFAULT '0',
+  `dateTimeAdded` timestamp NULL DEFAULT current_timestamp(),
+  `deleted` tinyint(4) DEFAULT 0,
   `backgroundInfoId` varchar(1) DEFAULT NULL,
   `profile_password` varchar(68) DEFAULT '',
   `gender` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `applicants` WRITE;
 /*!40000 ALTER TABLE `applicants` DISABLE KEYS */;
@@ -84,7 +84,7 @@ CREATE TABLE `applicants_additional` (
   `assessmentDay` int(3) DEFAULT NULL,
   `customAssessmentDay` date DEFAULT NULL,
   `assessmentTime` varchar(5) DEFAULT NULL,
-  `assessmentNotes` text,
+  `assessmentNotes` text DEFAULT NULL,
   `diversitechInterest` int(1) DEFAULT NULL,
   `diversitech` int(5) DEFAULT NULL,
   `edaid` int(5) DEFAULT NULL,
@@ -102,7 +102,7 @@ CREATE TABLE `applicants_additional` (
   `portfolioUrl` varchar(255) DEFAULT NULL,
   `pleskHostingUrl` varchar(255) DEFAULT NULL,
   `githubEducationLink` varchar(255) DEFAULT NULL,
-  `additionalNotes` text,
+  `additionalNotes` text DEFAULT NULL,
   `chosenCourseId` int(11) unsigned DEFAULT NULL,
   `attitude` int(3) DEFAULT NULL,
   `averageScore` int(3) DEFAULT NULL,
@@ -158,9 +158,9 @@ DROP TABLE IF EXISTS `background_info`;
 CREATE TABLE `background_info` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `backgroundInfo` varchar(40) DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
+  `deleted` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `background_info` WRITE;
 /*!40000 ALTER TABLE `background_info` DISABLE KEYS */;
@@ -184,9 +184,9 @@ DROP TABLE IF EXISTS `cohort`;
 CREATE TABLE `cohort` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `date` date DEFAULT NULL,
-  `deleted` int(4) DEFAULT '0',
+  `deleted` int(4) DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `cohort` WRITE;
 /*!40000 ALTER TABLE `cohort` DISABLE KEYS */;
@@ -210,9 +210,9 @@ DROP TABLE IF EXISTS `cohorts`;
 CREATE TABLE `cohorts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `date` date DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
+  `deleted` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `cohorts` WRITE;
 /*!40000 ALTER TABLE `cohorts` DISABLE KEYS */;
@@ -237,7 +237,7 @@ CREATE TABLE `company_sizes` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `size` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `company_sizes` WRITE;
 /*!40000 ALTER TABLE `company_sizes` DISABLE KEYS */;
@@ -265,7 +265,7 @@ CREATE TABLE `course_choice` (
   `courseId` int(11) DEFAULT NULL,
   `applicantId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `course_choice` WRITE;
 /*!40000 ALTER TABLE `course_choice` DISABLE KEYS */;
@@ -342,11 +342,11 @@ CREATE TABLE `courses` (
   `name` varchar(255) DEFAULT NULL,
   `trainer` varchar(255) DEFAULT NULL,
   `notes` varchar(500) DEFAULT NULL,
-  `deleted` int(1) NOT NULL DEFAULT '0',
+  `deleted` int(1) NOT NULL DEFAULT 0,
   `in_person` int(11) DEFAULT NULL,
   `remote` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
@@ -374,7 +374,7 @@ CREATE TABLE `event_categories` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `event_categories` WRITE;
 /*!40000 ALTER TABLE `event_categories` DISABLE KEYS */;
@@ -405,12 +405,12 @@ CREATE TABLE `events` (
   `date` date NOT NULL,
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
-  `notes` text,
-  `availableToHP` tinyint(1) NOT NULL DEFAULT '0',
+  `notes` text DEFAULT NULL,
+  `availableToHP` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `category` (`category`),
   CONSTRAINT `events_ibfk_1` FOREIGN KEY (`category`) REFERENCES `event_categories` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
@@ -448,7 +448,7 @@ CREATE TABLE `events_hiring_partner_link_table` (
   `event_id` int(11) unsigned NOT NULL,
   `hiring_partner_id` int(11) unsigned NOT NULL,
   `people_attending` int(11) unsigned DEFAULT NULL,
-  `deleted` tinyint(4) NOT NULL DEFAULT '0',
+  `deleted` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -464,9 +464,9 @@ CREATE TABLE `events_hiring_partners` (
   `event_id` int(11) unsigned NOT NULL,
   `hiring_partner_id` int(11) unsigned NOT NULL,
   `people_attending` int(11) unsigned DEFAULT NULL,
-  `deleted` tinyint(4) NOT NULL DEFAULT '0',
+  `deleted` tinyint(4) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `events_hiring_partners` WRITE;
 /*!40000 ALTER TABLE `events_hiring_partners` DISABLE KEYS */;
@@ -489,7 +489,7 @@ CREATE TABLE `gender` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `gender` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 LOCK TABLES `gender` WRITE;
 /*!40000 ALTER TABLE `gender` DISABLE KEYS */;
@@ -513,9 +513,9 @@ DROP TABLE IF EXISTS `hear_about`;
 CREATE TABLE `hear_about` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `hearAbout` varchar(150) DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
+  `deleted` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `hear_about` WRITE;
 /*!40000 ALTER TABLE `hear_about` DISABLE KEYS */;
@@ -541,9 +541,9 @@ DROP TABLE IF EXISTS `hearAbout`;
 CREATE TABLE `hearAbout` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `hearAbout` varchar(150) DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT '0',
+  `deleted` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `hearAbout` WRITE;
 /*!40000 ALTER TABLE `hearAbout` DISABLE KEYS */;
@@ -569,13 +569,13 @@ DROP TABLE IF EXISTS `hiring_partner_companies`;
 CREATE TABLE `hiring_partner_companies` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
-  `size` tinyint(2) DEFAULT '0',
+  `size` tinyint(2) DEFAULT 0,
   `tech_stack` varchar(600) DEFAULT NULL,
   `postcode` varchar(255) DEFAULT NULL,
   `phone_number` varchar(255) DEFAULT NULL,
   `url_website` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `hiring_partner_companies` WRITE;
 /*!40000 ALTER TABLE `hiring_partner_companies` DISABLE KEYS */;
@@ -599,13 +599,13 @@ CREATE TABLE `hiring_partner_contacts` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `email` varchar(255) NOT NULL DEFAULT '',
-  `is_primary_contact` tinyint(1) NOT NULL DEFAULT '1',
+  `is_primary_contact` tinyint(1) NOT NULL DEFAULT 1,
   `job_title` varchar(255) DEFAULT NULL,
   `hiring_partner_company_id` int(11) NOT NULL,
   `phone` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `link_contacts_to_hiring_partner` (`hiring_partner_company_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `hiring_partner_contacts` WRITE;
 /*!40000 ALTER TABLE `hiring_partner_contacts` DISABLE KEYS */;
@@ -632,9 +632,9 @@ CREATE TABLE `options` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `option` varchar(255) NOT NULL DEFAULT '',
   `stageId` int(11) NOT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `options` WRITE;
 /*!40000 ALTER TABLE `options` DISABLE KEYS */;
@@ -667,13 +667,13 @@ CREATE TABLE `stages` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `order` int(11) DEFAULT NULL,
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
-  `student` int(1) NOT NULL DEFAULT '0',
-  `withdrawn` int(1) NOT NULL DEFAULT '0',
-  `rejected` int(1) NOT NULL DEFAULT '0',
-  `notAssigned` int(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  `student` int(1) NOT NULL DEFAULT 0,
+  `withdrawn` int(1) NOT NULL DEFAULT 0,
+  `rejected` int(1) NOT NULL DEFAULT 0,
+  `notAssigned` int(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `stages` WRITE;
 /*!40000 ALTER TABLE `stages` DISABLE KEYS */;
@@ -703,7 +703,7 @@ CREATE TABLE `teams` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `trainer` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `teams` WRITE;
 /*!40000 ALTER TABLE `teams` DISABLE KEYS */;
@@ -721,6 +721,36 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table trainers
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `trainers`;
+
+CREATE TABLE `trainers` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `notes` varchar(5000) NOT NULL DEFAULT '',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `trainers` WRITE;
+/*!40000 ALTER TABLE `trainers` DISABLE KEYS */;
+
+INSERT INTO `trainers` (`id`, `name`, `email`, `notes`, `deleted`)
+VALUES
+	(1,'Charlie Coggans','charlie.coggans@io-academy.uk','',0),
+	(2,'Rayna Bozhkova','rayna.bozhkova@io-academy.uk','',0),
+	(3,'Ashley Coles','ashley.coles@io-academy.uk','',0),
+	(4,'Mike Oram','mike.oram@io-academy.uk','',0),
+	(5,'Neal Hughson','neal.hughson@io-academy.uk','',0),
+	(6,'Richard Ball','richard.ball@io-academy.uk','',0);
+
+/*!40000 ALTER TABLE `trainers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table users
 # ------------------------------------------------------------
 
@@ -730,10 +760,10 @@ CREATE TABLE `users` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL DEFAULT '',
   `password` varchar(65) NOT NULL DEFAULT '',
-  `deleted` tinyint(1) NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
