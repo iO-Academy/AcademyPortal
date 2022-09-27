@@ -131,6 +131,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['CsvController'] = DI\factory('\Portal\Factories\Controllers\API\CsvControllerFactory');
     $container['GetEventCategoriesController'] = DI\factory('\Portal\Factories\Controllers\API\GetEventCategoriesControllerFactory');
     $container['AddAptitudeScoreController'] = DI\factory('\Portal\Factories\Controllers\API\AddAptitudeScoreControllerFactory');
+    $container['SubmitAptitudeScoreController'] =DI\factory('\Portal\Factories\Controllers\API\SubmitAptitudeScoreControllerFactory');
 
     // Models
     $container['UserModel'] = DI\factory('\Portal\Factories\Models\UserModelFactory');
