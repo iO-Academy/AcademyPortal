@@ -32,7 +32,6 @@ class SubmitAptitudeScoreController extends Controller
             return $this->respondWithJson($response, $responseBody);
         }
 
-
         $jsonResponseBody = json_encode($responseBody);
         $response->getBody()->write($jsonResponseBody);
         return $response;
