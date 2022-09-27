@@ -46,6 +46,15 @@ class SubmitAptitudeScoreController extends Controller
 
         $applicantId = $matchedApplicantEmail['id'];
 
+        $aptitudeFromId = $this->applicantModel->getAptitudeScore($applicantId);
+        if ($aptitudeFromId = null) {
+            // if null enter into the aptitude cell
+            
+        } else {
+            // if it is null then enter into the assessmentNote instead it with a custom message in a % format "Aptitude Score: ##%"
+
+        }
+
 
         $jsonResponseBody = json_encode($responseBody);
         $response->getBody()->write($jsonResponseBody);
