@@ -11,7 +11,21 @@
     <?php require 'partials/layout/header.phtml'; ?>
     <?php require 'partials/layout/nav.phtml'; ?>
 
-    <h1>Trainers</h1>       
+    <h1>Trainers</h1>  
+    <div id="trainers" class="row">
+            <table class="col-xs-12 table-bordered table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php echo \Portal\ViewHelpers\TrainerTableViewHelper::displayTrainerTable($trainers); ?>
+                </tbody>
+            </table>
+        </div>     
     <?php require 'partials/layout/footer.phtml'; ?>
 </body>
 </html>

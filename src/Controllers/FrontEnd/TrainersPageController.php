@@ -39,8 +39,8 @@ class TrainersPageController extends Controller
     {
         if ($_SESSION['loggedIn'] === true) {
             $trainers = $this->trainerModel->getAllTrainers();
-            $data = ['data' => $trainers];
-            return $this->renderer->render($response, 'trainers.phtml', $data);
+            $args['trainers'] = $trainers;
+            return $this->renderer->render($response, 'trainers.phtml', $args);
         } else {
             return $response->withHeader('Location', './');
         }

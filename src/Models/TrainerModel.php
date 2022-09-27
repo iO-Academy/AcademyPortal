@@ -2,10 +2,11 @@
 
 namespace Portal\Models;
 
+use Portal\Entities\TrainerEntity;
+
 class TrainerModel
 {
     private $db;
-
 
     /**
      * Constructor assigns db PDO to this object
@@ -28,6 +29,7 @@ class TrainerModel
         $query = $this->db->prepare(
             "SELECT `id`, `name`, `email`, `notes`, `deleted` FROM `trainers`;"
         );
+        $query->setFetchMode(\PDO::FETCH_CLASS, TrainerEntity::class);
         $query->execute();
         return $query->fetchAll();
     }
