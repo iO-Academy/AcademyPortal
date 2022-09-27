@@ -6,7 +6,6 @@ class TrainerModel
 {
     private $db;
 
-
     /**
      * Constructor assigns db PDO to this object
      *
