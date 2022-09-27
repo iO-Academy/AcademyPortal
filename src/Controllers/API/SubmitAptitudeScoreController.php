@@ -32,6 +32,18 @@ class SubmitAptitudeScoreController extends Controller
             return $this->respondWithJson($response, $responseBody);
         }
 
+        if (
+               !isset($applicantEmail)
+            || !isset($aptitudeScore)
+            || $aptitudeScore < 0
+            || $aptitudeScore > 100
+            || !is_int($aptitudeScore)
+        ) {
+            $responseBody['message'] = 'Aptitude score not added - invalid data provided.';
+
+            return $this->respondWithJson($response, $responseBody);
+        }
+
         $jsonResponseBody = json_encode($responseBody);
         $response->getBody()->write($jsonResponseBody);
         return $response;
