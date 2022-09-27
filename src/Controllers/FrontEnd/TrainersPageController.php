@@ -3,6 +3,7 @@
 namespace Portal\Controllers\FrontEnd;
 
 use Portal\Abstracts\Controller;
+use Portal\Models\TrainerModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
@@ -10,15 +11,18 @@ use Slim\Views\PhpRenderer;
 class TrainersPageController extends Controller
 {
     private $renderer;
+    private $trainerModel;
 
     /**
      * Creates new instance of TrainersPageController
      *
      * @param PhpRenderer $renderer
+     * @param TrainerModel $trainerModel
      */
-    public function __construct(PhpRenderer $renderer)
+    public function __construct(PhpRenderer $renderer, TrainerModel $trainerModel)
     {
         $this->renderer = $renderer;
+        $this->trainerModel = $trainerModel;
     }
 
     /**
@@ -34,7 +38,9 @@ class TrainersPageController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            return $this->renderer->render($response, 'trainers.phtml', $args);
+            $trainers = $this->trainerModel->getAllTrainers();
+            $data = ['data' => $trainers];
+            return $this->renderer->render($response, 'trainers.phtml', $data);
         } else {
             return $response->withHeader('Location', './');
         }

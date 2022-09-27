@@ -145,6 +145,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['TeamModel'] = DI\factory('\Portal\Factories\Models\TeamModelFactory');
     $container['CourseModel'] = DI\factory('\Portal\Factories\Models\CourseModelFactory');
     $container['EventCategoriesModel'] = DI\factory('\Portal\Factories\Models\EventCategoriesModelFactory');
+    $container['TrainerModel'] = DI\factory('\Portal\Factories\Models\TrainerModelFactory');
 
     $containerBuilder->addDefinitions($container);
 };
