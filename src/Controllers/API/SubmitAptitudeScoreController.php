@@ -26,7 +26,7 @@ class SubmitAptitudeScoreController extends Controller
             'data' => []
         ];
 
-        $matchedApplicantEmail = $this->applicantModel->getApplicantByEmail($applicantEmail);
+        $matchedApplicantByEmail = $this->applicantModel->getApplicantByEmail($applicantEmail);
         if (!isset($matchedApplicantEmail['email']) || $applicantEmail != $matchedApplicantEmail['email']) {
             $responseBody['message'] = 'Aptitude score not added - email not found';
 
@@ -51,7 +51,7 @@ class SubmitAptitudeScoreController extends Controller
             // if null enter into the aptitude cell
             
         } else {
-            // if it is null then enter into the assessmentNote instead it with a custom message in a % format "Aptitude Score: ##%"
+            // if it isn't null then enter into the assessmentNote instead with a custom message in a % format "Aptitude Score: ##%"
 
         }
 
