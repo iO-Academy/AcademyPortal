@@ -23,7 +23,7 @@ class TrainerModel
      * @param \PDO $db
      * @return array
      */
-    public function getAllTrainers(\PDO $db): array
+    public function getAllTrainers(): array
     {
         $query = $this->db->prepare(
             "SELECT `id`, `name`, `email`, `notes`, `deleted` FROM `trainers`;"
@@ -41,7 +41,7 @@ class TrainerModel
      * @param string $notes
      * @return boolean
      */
-    public function addNewTrainer(\PDO $db, $name, $email, $notes): bool
+    public function addNewTrainer($name, $email, $notes): bool
     {
         $query = $this->db->prepare(
             "INSERT INTO `trainers` (`name`, `email`, `notes`)
@@ -60,7 +60,7 @@ class TrainerModel
      * @param string $id
      * @return boolean
      */
-    public function deleteTrainer(\PDO $db, $id): bool
+    public function deleteTrainer($id): bool
     {
         $query = $this->db->prepare(
             "UPDATE `trainers` SET `deleted` = 1 WHERE `id` = :id;"
