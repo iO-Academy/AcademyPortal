@@ -35,23 +35,21 @@ class TrainerModel
     }
 
     /**
-     * Add a new trainer to a database
+     * Add a new trainer to the database
      *
      * @param \PDO $db
-     * @param string $name
-     * @param string $email
-     * @param string $notes
+     * @param array $newTrainer
      * @return boolean
      */
-    public function addNewTrainer($name, $email, $notes): bool
+    public function addNewTrainer(array $newTrainer): bool
     {
         $query = $this->db->prepare(
             "INSERT INTO `trainers` (`name`, `email`, `notes`)
             VALUES (:name, :email, :notes);"
         );
-        $query->bindParam(':name', $name);
-        $query->bindParam(':email', $email);
-        $query->bindParam(':notes', $notes);
+        $query->bindParam(':name', $newTrainer['name']);
+        $query->bindParam(':email', $newTrainer['email']);
+        $query->bindParam(':notes', $newTrainer['notes']);
         return $query->execute();
     }
 
