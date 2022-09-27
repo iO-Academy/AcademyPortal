@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Slim\App;
@@ -26,6 +27,7 @@ return function (App $app) {
     $app->get('/addCourse', 'AddCoursePageController');
     $app->get('/studentApplicationForm', 'StudentApplicationFormPageController');
     $app->get('/csvForm', 'GetCsvFormController');
+    $app->get('/trainers', 'TrainersPageController');
 
     //API
     $app->get('/api/getStudents', 'GetStudentsController');
