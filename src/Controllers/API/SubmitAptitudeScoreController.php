@@ -20,7 +20,6 @@ class SubmitAptitudeScoreController extends Controller
         $requestBody = $request->getParsedBody();
         $applicantEmail = $requestBody['email'];
         $aptitudeScore = $requestBody['aptitude'];
-//        $this->applicantModel->submitAptitudeScore($applicantEmail, $aptitudeScore);
         $responseBody = [
             'message' => 'Success',
             'data' => []
