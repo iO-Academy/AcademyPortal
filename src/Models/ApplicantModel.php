@@ -587,12 +587,11 @@ class ApplicantModel implements ApplicantModelInterface
         $sql = 'UPDATE `applicants_additional` SET `aptitude` = :score WHERE `id` = :id;';
 
         $values = [
-            'id' => $id,
             'score' => $score,
+            'id' => $id
         ];
 
         $query = $this->db->prepare($sql);
-        $query->execute($values);
-        return $query;
+        return $query->execute($values);
     }
 }
