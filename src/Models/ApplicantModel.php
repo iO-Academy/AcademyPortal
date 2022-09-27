@@ -580,7 +580,5 @@ class ApplicantModel implements ApplicantModelInterface
         $query->setFetchMode(\PDO::FETCH_ASSOC);
         $query->execute($values);
         return $query->fetch();
-
     }
-
 }
