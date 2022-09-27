@@ -138,8 +138,9 @@
                 <label for="pastAssessmentDays">
                     <input type="checkbox" id="pastAssessmentDays" name="accept" value="yes">  Include past assessment days
                 </label>
+                <?php echo \Portal\ViewHelpers\DisplayPastAssessmentDayViewHelper::displayPastAssessmentDays($applicant->getAssessmentDay())?>
             </p>
-            <p>Current saved date: <?php echo $applicant->getAssessmentDay();?></p>
+
             <select id="assessmentDay" class="submitApplicant form-control" name="assessmentDay" data-selected="<?php echo $applicant->getAssessmentDay();?>">
             </select>
 
