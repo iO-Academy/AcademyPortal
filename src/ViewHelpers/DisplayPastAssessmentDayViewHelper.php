@@ -9,12 +9,11 @@ class DisplayPastAssessmentDayViewHelper
     public static function displayPastAssessmentDays(?string $assessmentDay): string
     {
         $output = '';
-        if($assessmentDay !== null) {
+        if ($assessmentDay !== null) {
             $assessmentDayObject = new DateTime($assessmentDay);
             $currentDateObject = new DateTime();
 
-            if ($assessmentDayObject < $currentDateObject)
-            {
+            if ($assessmentDayObject < $currentDateObject) {
                 $output = "<p>Current saved date: " . $assessmentDayObject->format('d-m-Y') . "</p";
             }
         }
