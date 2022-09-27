@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Add Trainers');
+    ?>
+</head>
+<body>
+    <?php require 'partials/layout/header.phtml'; ?>
+    <?php require 'partials/layout/nav.phtml'; ?>
+    <h1>Add Trainers</h1>       
+    <form>
+        <label for="trainer-name">Trainer Name</label>
+        <input name="name" class=" form-control" type="text" placeholder="Full Name" data-required="true" data-max='255' maxlength="255" />
+
+        <label for="email">Email</label>
+            <div id="emailError" class="alert hidden formItem_alert"></div>
+            <input id="email" name="email" class="form-control" type="email" placeholder="email" required>
+
+        <label for="trainer-notes">Notes</label>
+        <textarea name="notes" class="form-control" placeholder="Notes" data-max="5000" maxlength="5000"></textarea>
+
+        <input type="submit" class="btn btn-success" />
+    </form>
+    <?php require 'partials/layout/footer.phtml'; ?>
+</body>
+</html>

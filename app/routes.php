@@ -28,6 +28,7 @@ return function (App $app) {
     $app->get('/studentApplicationForm', 'StudentApplicationFormPageController');
     $app->get('/csvForm', 'GetCsvFormController');
     $app->get('/trainers', 'TrainersPageController');
+    $app->get('/addTrainer', 'AddTrainerPageController');
 
     //API
     $app->get('/api/getStudents', 'GetStudentsController');
