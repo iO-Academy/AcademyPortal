@@ -1,3 +1,5 @@
+const pastAssessmentCheckbox = document.getElementById('pastAssessmentDays')
+
 //stages dropdown menu
 
 let getStageOptions = () => {
@@ -204,3 +206,15 @@ let outputBackgroundInfo = (options) => {
 
   element.innerHTML = backgroundInfoOptions;
 };
+
+
+
+let filterFutureDates = (events) => {
+  let currentDate = new Date();
+  return events.filter((event) => {
+    eventDateObject = new Date(event.date)
+      return eventDateObject > currentDate;
+    });
+}
+
+

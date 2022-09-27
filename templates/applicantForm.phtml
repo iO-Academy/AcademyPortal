@@ -133,7 +133,11 @@
         </div>
 
         <div id="assessment" class="collapse">
-            <label for="assessmentDay">Assessment day</label>
+            <label for="assessmentDay">Assessment day
+                <label for="pastAssessmentDays">
+                    <input type="checkbox" id="pastAssessmentDays" name="accept" value="yes">  Include past assessment days
+                </label>
+            </label>
             <select id="assessmentDay" class="submitApplicant form-control" name="assessmentDay" data-selected="<?php echo $applicant->getAssessmentDay();?>">
                 <option value="">Unselected assessment day</option>
             </select>
