@@ -169,7 +169,7 @@ class EventModel
      * @return array An array of Events based on category ID and previous X months from current date.
      */
 
-    public function getEventsByCategoryId(string $categoryId, int $previousMonths = 9999): array
+    public function getEventsByCategoryId(string $categoryId, int $previousMonths = 0): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
                 `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`

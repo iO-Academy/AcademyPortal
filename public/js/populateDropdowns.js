@@ -212,7 +212,7 @@ let checkPastAssessmentCheckbox = (futureDates, allDates) => {
     if (e.target.checked === true) {
       outputAssessmentDates(allDates)
     }
-    if (e.target.checked === false) {
+    else {
       outputAssessmentDates(futureDates)
     }
   })
