@@ -572,7 +572,7 @@ class ApplicantModel implements ApplicantModelInterface
 
     public function getAptitudeScore(int $id): array
     {
-        $sql = 'SELECT `aptitude`.`assessmentNotes` FROM applicants_additional' . 'WHERE `id` = :id;';
+        $sql = 'SELECT `aptitude`, `assessmentNotes` FROM applicants_additional WHERE `id` = :id;';
 
         $values = ['id' => $id];
 

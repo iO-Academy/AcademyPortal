@@ -27,7 +27,7 @@ class SubmitAptitudeScoreController extends Controller
         ];
 
         $matchedApplicantByEmail = $this->applicantModel->getApplicantByEmail($applicantEmail);
-        if (!isset($matchedApplicantEmail['email']) || $applicantEmail != $matchedApplicantEmail['email']) {
+        if (!isset($matchedApplicantByEmail)) {
             $responseBody['message'] = 'Aptitude score not added - email not found';
 
             return $this->respondWithJson($response, $responseBody);
@@ -44,7 +44,7 @@ class SubmitAptitudeScoreController extends Controller
             return $this->respondWithJson($response, $responseBody);
         }
 
-        $applicantId = $matchedApplicantEmail['id'];
+        $applicantId = $matchedApplicantByEmail['id'];
 
         $aptitudeFromId = $this->applicantModel->getAptitudeScore($applicantId);
         if ($aptitudeFromId = null) {
