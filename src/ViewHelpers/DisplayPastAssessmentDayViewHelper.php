@@ -8,10 +8,10 @@ class DisplayPastAssessmentDayViewHelper
 {
     public static function displayPastAssessmentDays(?string $assessmentDay): string
     {
+        $output = '';
         if($assessmentDay !== null) {
             $assessmentDayObject = new DateTime($assessmentDay);
             $currentDateObject = new DateTime();
-            $output = '';
 
             if ($assessmentDayObject < $currentDateObject)
             {
