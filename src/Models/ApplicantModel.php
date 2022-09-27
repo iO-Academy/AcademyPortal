@@ -569,4 +569,18 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare($sql);
         return $query->execute($values);
     }
+
+    public function getAptitudeScore($id): array
+    {
+        $sql = 'SELECT `aptitude`.`assessmentNotes` FROM applicants_additional' . 'WHERE `id` = :id;';
+
+        $values = ['id' => $id];
+
+        $query = $this->db->prepare($sql);
+        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        $query->execute($values);
+        return $query->fetch();
+
+    }
+
 }

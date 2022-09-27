@@ -44,6 +44,8 @@ class SubmitAptitudeScoreController extends Controller
             return $this->respondWithJson($response, $responseBody);
         }
 
+        $applicantId = $matchedApplicantEmail['id'];
+
 
         $jsonResponseBody = json_encode($responseBody);
         $response->getBody()->write($jsonResponseBody);
