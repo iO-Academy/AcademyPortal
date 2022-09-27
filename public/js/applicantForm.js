@@ -17,4 +17,6 @@
     if (document.querySelector('#chosenCourseId')) {
         outputCohorts(data.cohorts, document.querySelector('#chosenCourseId'));
     }
+
+    checkPastAssessmentCheckbox(futureDates, data.assessments);
 })()

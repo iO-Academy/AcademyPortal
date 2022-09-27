@@ -119,7 +119,7 @@ const checkedCohortDates = () => {
 
   let outputAssessmentDates = (dates, el = null) => {
     const element = el || document.querySelector('#assessmentDay');
-    let assessmentOptions = '';
+    let assessmentOptions = '<option value="">Unselected assessment day</option>';
 
     if (element) {
       dates.forEach(item => {
@@ -137,7 +137,7 @@ const checkedCohortDates = () => {
         )}</option>`;
       });
 
-      element.innerHTML += assessmentOptions;
+      element.innerHTML = assessmentOptions;
     }
 
 };
@@ -207,7 +207,16 @@ let outputBackgroundInfo = (options) => {
   element.innerHTML = backgroundInfoOptions;
 };
 
-
+let checkPastAssessmentCheckbox = (futureDates, allDates) => {
+  pastAssessmentCheckbox.addEventListener('change', e => {
+    if (e.target.checked === true) {
+      outputAssessmentDates(allDates)
+    }
+    if (e.target.checked === false) {
+      outputAssessmentDates(futureDates)
+    }
+  })
+};
 
 let filterFutureDates = (events) => {
   let currentDate = new Date();
