@@ -15,6 +15,7 @@ class SubmitAptitudeScoreController extends Controller
     {
         $this->applicantModel = $applicantModel;
     }
+
     public function __invoke(Request $request, Response $response, array $args)
     {
         $requestBody = $request->getParsedBody();
@@ -33,8 +34,7 @@ class SubmitAptitudeScoreController extends Controller
         }
 
         if (
-               !isset($applicantEmail)
-            || !isset($aptitudeScore)
+            !isset($aptitudeScore)
             || $aptitudeScore < 0
             || $aptitudeScore > 100
             || !is_int($aptitudeScore)
@@ -43,6 +43,7 @@ class SubmitAptitudeScoreController extends Controller
 
             return $this->respondWithJson($response, $responseBody);
         }
+
 
         $jsonResponseBody = json_encode($responseBody);
         $response->getBody()->write($jsonResponseBody);
