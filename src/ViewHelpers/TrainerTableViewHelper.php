@@ -21,9 +21,10 @@ class TrainerTableViewHelper
                 $result .= '<tr>';
                 $result .= '<td><a href=\'#\' data-id=\'' . $trainer->getId();
                 $result .= '\' type=\'button\' class=\'myBtn\'>' . $trainer->getName() . '</td>';
-                $result .= '<td>' . $trainer->getEmail() . '<button class="clipboard">';
-                $result .= '<i class="glyphicon glyphicon-copy"></i></button></td>';
-                $result .= '<td><button class=\'btn btn-danger\'>Delete</button></td>';
+                $result .= '<td class="email">' . $trainer->getEmail();
+                $result .= '<button data-email="' . $trainer->getEmail() . '" class="clipboard">';
+                $result .= '<i class="glyphicon glyphicon-copy"></i></button></td><td>';
+                $result .= '<button data-id="' . $trainer->getId() . '" class=\'btn btn-danger\'>Delete</button></td>';
             } else {
                 $result = '';
             }

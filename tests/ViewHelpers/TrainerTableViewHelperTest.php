@@ -18,9 +18,9 @@ class TrainerTableViewHelperTest extends TestCase
         $input->method('getNotes')->willReturn('notes');
         $input->method('getDeleted')->willReturn('0');
         $exp = '<tr><td><a href=\'#\' data-id=\'1\' type=\'button\'';
-        $exp .= ' class=\'myBtn\'>Charlie</td><td>char@lie.com<button class="clipboard">';
-        $exp .= '<i class="glyphicon glyphicon-copy"></i></button>';
-        $exp .= '</td><td><button class=\'btn btn-danger\'>Delete</button></td>';
+        $exp .= ' class=\'myBtn\'>Charlie</td><td class="email">char@lie.com<button data-email="char@lie.com" ';
+        $exp .= 'class="clipboard"><i class="glyphicon glyphicon-copy"></i></button>';
+        $exp .= '</td><td><button data-id="1" class=\'btn btn-danger\'>Delete</button></td>';
         $actual = TrainerTableViewHelper::displayTrainerTable([$input]);
         $this->assertEquals($exp, $actual);
     }
