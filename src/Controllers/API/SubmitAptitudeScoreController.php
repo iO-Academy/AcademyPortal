@@ -47,15 +47,18 @@ class SubmitAptitudeScoreController extends Controller
         $applicantId = $matchedApplicantByEmail['id'];
 
         $aptitudeFromId = $this->applicantModel->getAptitudeScore($applicantId);
-        if (is_null($aptitudeFromId)) {
+        if ($aptitudeFromId['aptitude'] == null) {
             $this->applicantModel->submitApplicantAptitudeScore($applicantId, $aptitudeScore);
-            $responseBody['message'] = 'Test';
+            $responseBody['message'] = 'Updated the applicants aptitude score';
             return $this->respondWithJson($response, $responseBody);
 
 
         } else {
-//            return '';
-            $responseBody['message'] = 'Hello World, work please';
+            date_default_timezone_set("Europe/London");
+            $assessmentNote = 'New aptitude test attempt ' . date("d/m/y") . ' ' . date("H:i") . "\r\n" .
+            'Score: ' . $aptitudeScore . '%';
+            $this->applicantModel->submitApplicantAssessmentNotes($applicantId, $assessmentNote);
+            $responseBody['message'] = 'Updated the applicants assessment notes';
             return $this->respondWithJson($response, $responseBody);
 
         }

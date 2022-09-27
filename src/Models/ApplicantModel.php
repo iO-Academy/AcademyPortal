@@ -594,4 +594,17 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare($sql);
         return $query->execute($values);
     }
+
+    public function submitApplicantAssessmentNotes(int $id, string $assessmentNote): bool
+    {
+        $sql = 'UPDATE `applicants_additional` SET `assessmentNotes` = :assessmentNote WHERE `id` = :id;';
+
+        $values = [
+            'assessmentNote' => $assessmentNote,
+            'id' => $id
+        ];
+
+        $query = $this->db->prepare($sql);
+        return $query->execute($values);
+    }
 }
