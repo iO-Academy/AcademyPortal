@@ -70,4 +70,14 @@ class TrainerModel
         $query->bindParam(':id', $id);
         return $query->execute();
     }
+
+    public function getTrainerById($id)
+    {
+        $query = $this->db->prepare(
+            "SELECT `id`, `name`, `email`, `notes`, `deleted` FROM `trainers` WHERE `id` = :id; "
+        );
+        $query->bindParam(':id', $id);
+        $query->setFetchMode(\PDO::FETCH_CLASS, TrainerEntity::class);
+        return $query->execute();
+    }
 }

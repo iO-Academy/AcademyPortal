@@ -20,7 +20,7 @@ class TrainerTableViewHelperTest extends TestCase
         $exp = '<tr><td><a href=\'#\' data-id=\'1\' type=\'button\'';
         $exp .= ' class=\'myBtn\'>Charlie</td><td class="email">char@lie.com<button data-email="char@lie.com" ';
         $exp .= 'class="clipboard"><i class="glyphicon glyphicon-copy"></i></button>';
-        $exp .= '</td><td><button data-id="1" class=\'btn btn-danger\'>Delete</button></td>';
+        $exp .= '</td><td><button data-id="1" class=\'btn btn-danger\'>Delete</button></td></tr>';
         $actual = TrainerTableViewHelper::displayTrainerTable([$input]);
         $this->assertEquals($exp, $actual);
     }

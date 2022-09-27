@@ -11,7 +11,6 @@ const deleteButtons = document.querySelectorAll('.btn-danger');
 deleteButtons.forEach(deleteBtn => {
     deleteBtn.addEventListener('click', (e) => {
         const id = e.target.dataset.id;
-        console.log(id);
         fetch('/api/deleteTrainer', {
             method: 'DELETE',
             body: JSON.stringify({"id": id}),
