@@ -557,19 +557,6 @@ class ApplicantModel implements ApplicantModelInterface
         return $result;
     }
 
-    public function setAptitudeScore($id, $score): bool
-    {
-        $sql = 'UPDATE `applicants_additional` SET `aptitude` = :score WHERE `id` = :id;';
-
-        $values = [
-            'score' => $score,
-            'id' => $id,
-        ];
-
-        $query = $this->db->prepare($sql);
-        return $query->execute($values);
-    }
-
     public function getAptitudeScore(int $id): array
     {
         $sql = 'SELECT `aptitude`, `assessmentNotes` FROM applicants_additional WHERE `id` = :id;';
