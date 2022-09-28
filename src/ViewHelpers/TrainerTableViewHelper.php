@@ -17,15 +17,18 @@ class TrainerTableViewHelper
     {
         $result = '';
         foreach ($trainers as $trainer) {
-            if ($trainer instanceof TrainerEntity && $trainer->getDeleted() === 0) {
+            if ($trainer instanceof TrainerEntity) {
                 $result .= '<tr>';
-                $result .= '<td><a href=\'#\' data-id=\'' . $trainer->getId();
-                $result .= '\' type=\'button\' class=\'myBtn\'>' . $trainer->getName() . '</td>';
-                $result .= '<td>' . $trainer->getEmail() . '<button class="clipboard">';
-                $result .= '<i class="glyphicon glyphicon-copy"></i></button></td>';
-                $result .= '<td><button class=\'btn btn-danger\'>Delete</button></td>';
+                $result .= '<td><a href="#" data-id="' . $trainer->getId() . '" type="button" class="myBtn';
+                $result .= ($trainer->getDeleted() ? ' deleted' : '') . '">' . $trainer->getName() . '</a></td>';
+                $result .= '<td class="email">' . $trainer->getEmail();
+                $result .= '<button data-email="' . $trainer->getEmail() . '" class="clipboard">';
+                $result .= '<i class="glyphicon glyphicon-copy"></i></button></td><td>';
+                $result .= ($trainer->getDeleted() ? '' : '<button data-id="' . $trainer->getId()
+                . '" class="btn btn-danger">Delete</button>');
+                $result .= '</td></tr>';
             } else {
-                $result = '';
+                $result .= '';
             }
         }
         return $result;

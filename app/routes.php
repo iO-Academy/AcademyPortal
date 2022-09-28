@@ -67,4 +67,5 @@ return function (App $app) {
     $app->get('/api/getEventCategories', 'GetEventCategoriesController');
     $app->put('/api/aptitudeScore', 'AddAptitudeScoreController');
     $app->post('/api/addTrainer', 'AddTrainerController');
+    $app->delete('/api/deleteTrainer', 'DeleteTrainerController');
 };

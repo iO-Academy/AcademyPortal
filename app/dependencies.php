@@ -136,7 +136,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['GetEventCategoriesController'] = DI\factory('\Portal\Factories\Controllers\API\GetEventCategoriesControllerFactory');
     $container['AddAptitudeScoreController'] = DI\factory('\Portal\Factories\Controllers\API\AddAptitudeScoreControllerFactory');
     $container['AddTrainerController'] = DI\factory('\Portal\Factories\Controllers\API\AddTrainerControllerFactory');
-
+    $container['DeleteTrainerController'] = DI\factory('\Portal\Factories\Controllers\API\DeleteTrainerControllerFactory');
 
     // Models
     $container['UserModel'] = DI\factory('\Portal\Factories\Models\UserModelFactory');
