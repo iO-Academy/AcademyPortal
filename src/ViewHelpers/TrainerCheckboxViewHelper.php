@@ -2,6 +2,8 @@
 
 namespace Portal\ViewHelpers;
 
+use Portal\Entities\TrainerEntity;
+
 class TrainerCheckboxViewHelper
 {
     /**
@@ -15,8 +17,12 @@ class TrainerCheckboxViewHelper
         $result = "";
 
         foreach ($trainers as $trainer) {
-            $result .= '<div><input type="checkbox" data-id="' . $trainer->getId() . '" name="trainer-checkbox"';
-            $result .= ' checked><label for="">' . $trainer->getName() . '</label></div>';
-        } return $result;
+            if ($trainer instanceof TrainerEntity) {
+                $result .= '<div><input type="checkbox" data-id="' . $trainer->getId() . '" name="trainer-checkbox"';
+                $result .= ' checked><label for="">' . $trainer->getName() . '</label></div>';
+            } else {
+                $result .= '';
+            }return $result;
+        }
     }
 }
