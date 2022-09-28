@@ -20,7 +20,8 @@ class TrainerTableViewHelper
             if ($trainer instanceof TrainerEntity) {
                 $result .= '<tr><td>';
                 $result .= '<a href="#" data-name="' . $trainer->getName() . '" data-notes="' . $trainer->getNotes();
-                $result .= '" data-id="' . $trainer->getId() . '" type="button" class="myBtn';
+                $result .= '" data-id="' . $trainer->getId() . '" data-toggle="modal" ';
+                $result .= 'data-target="#trainerNotesModal" type="button" class="myBtn';
                 $result .= ($trainer->getDeleted() ? ' deleted' : '') . '">' . $trainer->getName() . '</a></td>';
                 $result .= '<td class="email">' . $trainer->getEmail();
                 $result .= '<button data-email="' . $trainer->getEmail() . '" class="clipboard">';
