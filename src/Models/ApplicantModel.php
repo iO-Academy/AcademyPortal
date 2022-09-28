@@ -569,7 +569,7 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->fetch();
     }
 
-    public function submitApplicantAptitudeScore(int $id, int $score): bool
+    public function setAptitudeScore(int $id, int $score): bool
     {
         $sql = 'UPDATE `applicants_additional` SET `aptitude` = :score WHERE `id` = :id;';
 
@@ -582,7 +582,7 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->execute($values);
     }
 
-    public function submitApplicantAssessmentNotes(int $id, string $assessmentNote): bool
+    public function appendToAssessmentNotes(int $id, string $assessmentNote): bool
     {
         $sql = 'UPDATE `applicants_additional` SET `assessmentNotes` = 
         CONCAT(COALESCE(`assessmentNotes`, ""), :assessmentNote) WHERE `id` = :id;';

@@ -54,7 +54,7 @@ class AddAptitudeScoreController extends Controller
 
         $aptitudeFromId = $this->applicantModel->getAptitudeScore($applicantId);
         if ($aptitudeFromId['aptitude'] == null) {
-            $this->applicantModel->submitApplicantAptitudeScore($applicantId, $aptitudeScore);
+            $this->applicantModel->setAptitudeScore($applicantId, $aptitudeScore);
             $responseBody['message'] = 'Updated the applicants aptitude score';
             $responseBody['success'] = true;
             return $this->respondWithJson($response, $responseBody, 200);
@@ -62,7 +62,7 @@ class AddAptitudeScoreController extends Controller
             date_default_timezone_set("Europe/London");
             $assessmentNote = 'New aptitude test attempt ' . date("d/m/y") . ' ' . date("H:i")
                 . "\r\n" . 'Score: ' . $aptitudeScore . '%' . "\r\n";
-            $this->applicantModel->submitApplicantAssessmentNotes($applicantId, $assessmentNote);
+            $this->applicantModel->appendToAssessmentNotes($applicantId, $assessmentNote);
             $responseBody['message'] = 'Updated the applicants assessment notes';
             $responseBody['success'] = true;
             return $this->respondWithJson($response, $responseBody, 200);
