@@ -25,7 +25,6 @@ class CourseModel
                 `courses`.`start_date` AS `startDate`,
                 `courses`.`end_date` AS `endDate`,
                 `name`,
-                `trainer`,
                 `notes`,
                 `in_person` AS `inPerson`,
                 `remote`
@@ -48,7 +47,6 @@ class CourseModel
             `start_date`,
             `end_date`,
             `name`,
-            `trainer`,
             `notes`,
             `in_person`,
             `remote`
@@ -57,7 +55,6 @@ class CourseModel
             :startDate, 
             :endDate, 
             :name,
-            :trainer,
             :notes,
             :in_person,
             :remote);");
@@ -65,7 +62,6 @@ class CourseModel
         $startDate = $newCourse['startDate'];
         $endDate = $newCourse['endDate'];
         $name = $newCourse['name'];
-        $trainer = $newCourse['trainer'];
         $notes = $newCourse['notes'];
         $in_person = $newCourse['in_person'];
         $remote = $newCourse['remote'];
@@ -73,10 +69,21 @@ class CourseModel
         $query->bindParam(':startDate', $startDate);
         $query->bindParam(':endDate', $endDate);
         $query->bindParam(':name', $name);
-        $query->bindParam(':trainer', $trainer);
         $query->bindParam(':notes', $notes);
         $query->bindParam(':in_person', $in_person);
         $query->bindParam(':remote', $remote);
         return $query->execute();
+    }
+
+    public function getTrainersByCourseId()
+    {
+        $query = $this->db->prepare(
+            'SELECT `courses_trainers`.`course_id`, `trainers`.`name` FROM `courses_trainers` 
+                LEFT JOIN `trainers` 
+                    ON `courses_trainers`.`trainer_id` = `trainers`.`id`;'
+        );
+        $query->setFetchMode(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
+        $query->execute();
+        return $query->fetchAll();
     }
 }
