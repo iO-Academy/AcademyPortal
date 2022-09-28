@@ -18,8 +18,10 @@ class TrainerTableViewHelper
         $result = '';
         foreach ($trainers as $trainer) {
             if ($trainer instanceof TrainerEntity) {
-                $result .= '<tr>';
-                $result .= '<td><a href="#" data-id="' . $trainer->getId() . '" type="button" class="myBtn';
+                $result .= '<tr><td>';
+                $result .= '<a href="#" data-name="' . $trainer->getName() . '" data-notes="' . $trainer->getNotes();
+                $result .= '" data-id="' . $trainer->getId() . '" data-toggle="modal" ';
+                $result .= 'data-target="#trainerNotesModal" type="button" class="myBtn';
                 $result .= ($trainer->getDeleted() ? ' deleted' : '') . '">' . $trainer->getName() . '</a></td>';
                 $result .= '<td class="email">' . $trainer->getEmail();
                 $result .= '<button data-email="' . $trainer->getEmail() . '" class="clipboard">';

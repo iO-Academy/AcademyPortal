@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
+    <script defer src="/js/displaytrainers.js"></script>
+    <script defer src="/js/trainerNotesModal.js"></script>
     <?php
     require 'partials/layout/head.phtml';
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Trainers');
     ?>
-    <script defer src="/js/displaytrainers.js"></script>
 </head>
 <body>
     <?php require 'partials/layout/header.phtml'; ?>
@@ -26,7 +27,8 @@
                 <?php echo \Portal\ViewHelpers\TrainerTableViewHelper::displayTrainerTable($trainers); ?>
                 </tbody>
             </table>
-        </div>     
+        </div>
+    <?php require('partials/trainerNotesModal.phtml'); ?>     
     <?php require 'partials/layout/footer.phtml'; ?>
 </body>
 </html>
