@@ -53,7 +53,7 @@ export function addEventListenersToDisplayApplicantModal() {
     $(document).ready(function () {
         $(".myBtn").click(function () {
             let url = './api/getApplicant/' + this.dataset.id
-            let studentUrl = 'http://localhost:8080/public/' + this.dataset.id
+            let studentUrl = document.URL
             fetch(url)
                 .then(
                     function (response) {
