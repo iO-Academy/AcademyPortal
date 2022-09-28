@@ -49,7 +49,7 @@ class GetApplicationFormController extends Controller
                         'gender' => $this->applicationFormModel->getGenders(),
                         'backgroundInfo' => $this->applicationFormModel->getBackgroundInfo(),
                         'tasters' => $this->eventModel->getEventsByCategoryId(3, 3),
-                        'assessments' => $this->eventModel->getEventsByCategoryId(4)
+                        'assessments' => $this->eventModel->getEventsByCategoryId(4, 60)
                     ]
                 ];
             } catch (\Exception $e) {
