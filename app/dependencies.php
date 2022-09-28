@@ -137,7 +137,7 @@ return function (ContainerBuilder $containerBuilder) {
     $container['AddAptitudeScoreController'] = DI\factory('\Portal\Factories\Controllers\API\AddAptitudeScoreControllerFactory');
     $container['AddTrainerController'] = DI\factory('\Portal\Factories\Controllers\API\AddTrainerControllerFactory');
     $container['DeleteTrainerController'] = DI\factory('\Portal\Factories\Controllers\API\DeleteTrainerControllerFactory');
-    
+
     // Models
     $container['UserModel'] = DI\factory('\Portal\Factories\Models\UserModelFactory');
     $container['ApplicationFormModel'] = DI\factory('\Portal\Factories\Models\ApplicationFormModelFactory');

@@ -25,7 +25,7 @@ class AddAptitudeScoreController extends Controller
     {
         $requestBody = $request->getParsedBody();
         $applicantEmail = $requestBody['email'];
-        $aptitudeScore = $requestBody['aptitude'];
+        $aptitudeScore = $requestBody['score'];
         $responseBody = [
             'success' => false,
             'message' => '',
