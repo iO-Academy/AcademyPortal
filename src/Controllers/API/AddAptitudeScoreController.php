@@ -10,7 +10,10 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 class AddAptitudeScoreController extends Controller
 {
     private $applicantModel;
-
+//* Instantiates AddApplicantPageController.
+//*
+//* @param ApplicantModel $applicantModel userModel object dependency
+//*/
     public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
@@ -27,8 +30,8 @@ class AddAptitudeScoreController extends Controller
             'data' => []
         ];
 
-        $matchedApplicantByEmail = $this->applicantModel->getApplicantByEmail($applicantEmail);
-        if ($matchedApplicantByEmail == []) {
+        $applicantDataByEmail = $this->applicantModel->getApplicantByEmail($applicantEmail);
+        if ($applicantDataByEmail == []) {
             $responseBody['message'] = 'Aptitude score not added - email not found';
 
             return $this->respondWithJson($response, $responseBody, 400);
@@ -45,7 +48,7 @@ class AddAptitudeScoreController extends Controller
             return $this->respondWithJson($response, $responseBody, 400);
         }
 
-        $applicantId = $matchedApplicantByEmail['id'];
+        $applicantId = $applicantDataByEmail['id'];
 
         $aptitudeFromId = $this->applicantModel->getAptitudeScore($applicantId);
         if ($aptitudeFromId['aptitude'] == null) {
