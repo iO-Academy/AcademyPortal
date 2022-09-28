@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Slim\App;
@@ -26,6 +27,8 @@ return function (App $app) {
     $app->get('/addCourse', 'AddCoursePageController');
     $app->get('/studentApplicationForm', 'StudentApplicationFormPageController');
     $app->get('/csvForm', 'GetCsvFormController');
+    $app->get('/trainers', 'TrainersPageController');
+    $app->get('/addTrainer', 'AddTrainerPageController');
 
     //API
     $app->get('/api/getStudents', 'GetStudentsController');
@@ -63,4 +66,6 @@ return function (App $app) {
     $app->post('/api/csvUpload', 'CsvController');
     $app->get('/api/getEventCategories', 'GetEventCategoriesController');
     $app->put('/api/aptitudeScore', 'AddAptitudeScoreController');
+    $app->post('/api/addTrainer', 'AddTrainerController');
+    $app->delete('/api/deleteTrainer', 'DeleteTrainerController');
 };
