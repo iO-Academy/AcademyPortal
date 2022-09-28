@@ -34,7 +34,6 @@ function isPostcode(postcode) {
     return regEx.test(postcode);
 }
     
-
 function isPresent(data) {
         return (data !== "");
 }

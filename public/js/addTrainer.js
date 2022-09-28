@@ -1,5 +1,6 @@
 const trainerForm = document.querySelector('form');
 const message = document.querySelector('#messages');
+message.classList.add('hidden')
 
 // Submit Form + Add New Trainer API Call
 trainerForm.addEventListener("submit", e => {
@@ -26,6 +27,7 @@ trainerForm.addEventListener("submit", e => {
                 querySelector.classList.remove('hidden');
                 querySelector.innerHTML = errorMessage(validationType);
                 formIsValid = false;
+                message.classList.add('hidden')
             }
         })
     });
@@ -42,6 +44,7 @@ trainerForm.addEventListener("submit", e => {
         })
             .then(response => response.json())
             .then(responseJson => {
+                message.classList.remove('hidden')
                 if (responseJson.success) {
                     trainerForm.elements['name'].value = '',
                     trainerForm.elements['email'].value = '',
