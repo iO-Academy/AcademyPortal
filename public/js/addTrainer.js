@@ -16,7 +16,6 @@ trainerForm.addEventListener("submit", e => {
     });
     
     Object.keys(validate).forEach(formItem => {
-        console.log(formItem)
         const querySelector = document.querySelector(`#${formItem}Error`);
         let formItemValues = validate[formItem];
 
@@ -31,7 +30,7 @@ trainerForm.addEventListener("submit", e => {
         })
     });
 
-    if (validate) {
+    if (formIsValid) {
         fetch('/api/addTrainer', {
             credentials: 'same-origin',
             headers: {
@@ -71,7 +70,7 @@ trainerForm.addEventListener("submit", e => {
     return data;
 }
 
-    let validateTrainerInputs = (data) => {
+let validateTrainerInputs = (data) => {
 
     validate = {
         name: {
@@ -88,9 +87,7 @@ trainerForm.addEventListener("submit", e => {
             validLengthText: textAreaMaxLength(data.notes)
         }
     };
-    console.log(validate)
     return validate;
-
 };
 
 let errorMessage = (validationType) => {

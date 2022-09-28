@@ -20,7 +20,7 @@
 
         <label for="email">Email</label>
             <div id="emailError" class="alert hidden formItem_alert"></div>
-            <input id="email" name="email" class="create-trainer form-control" type="email" placeholder="email" data-required="true">
+            <input id="email" name="email" class="create-trainer form-control" type="text" placeholder="email" data-required="true">
 
         <label for="trainer-notes">Notes</label>
         <div id="notesError" class="alert hidden formItem_alert"></div>
@@ -28,6 +28,7 @@
 
         <input type="submit" class="btn btn-success" />
     </form>
+    <div id="messages" class="alert"></div>
     <?php require 'partials/layout/footer.phtml'; ?>
 </body>
 </html>
