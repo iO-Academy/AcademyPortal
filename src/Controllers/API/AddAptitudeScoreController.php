@@ -10,10 +10,12 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 class AddAptitudeScoreController extends Controller
 {
     private $applicantModel;
-//* Instantiates AddApplicantPageController.
-//*
-//* @param ApplicantModel $applicantModel userModel object dependency
-//*/
+
+    /**
+     * Instantiates AddApplicantPageController.
+     *
+     * @param ApplicantModel $applicantModel applicantModel is the object needed for querying applicant table in the db
+     */
     public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
