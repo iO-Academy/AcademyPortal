@@ -9,13 +9,11 @@ trainerForm.addEventListener("submit", e => {
     let validate = validateTrainerInputs(data);
     let formIsValid = true;
 
-    // document.querySelectorAll('.formItem_alert').forEach(element => {
-    //     element.classList.remove('alert-danger');
-    //     element.classList.add('hidden');
-    //     element.innerHTML = '';
-    // });
-
-    //Error messages: need to add the correct classes : use for reference addApplicant form and saveApplicant.js
+    document.querySelectorAll('.formItem_alert').forEach(element => {
+        element.classList.remove('alert-danger');
+        element.classList.add('hidden');
+        element.innerHTML = '';
+    });
     
     Object.keys(validate).forEach(formItem => {
         console.log(formItem)
@@ -95,28 +93,28 @@ trainerForm.addEventListener("submit", e => {
 
 };
 
-function validateTrainerForm() {
-    let success = true;
-    let message = '';
-    let inputs = document.querySelectorAll('.create-trainer');
-    inputs.forEach(function (element) {
+let errorMessage = (validationType) => {
+    let htmlString = '';
 
-
-        //Checks fields with attribute data-required=true has data
-        let required = element.getAttribute('data-required')
-        if (required && element.value.length < 1) {
-            message += element.name + ' is a required field! <br>';
-            success = false;
-        }
-        //Checks fields with attribute data-max are within their character limit.
-        let maxLength = element.getAttribute('data-max');
-        if (required && maxLength != null && element.value.length > maxLength) {
-            message += element.name + ' is too long, must be less than ' + maxLength + ' characters! <br>';
-            success = false;
-        }
-
-    });
-    //Adds all error messages to the messages div.
-    document.getElementById('messages').innerHTML = message;
-    return success;
-}
+    switch (validationType) {
+        case 'validLengthVarChar' :
+            htmlString += `This field must be less than 255 characters.`;
+            break;
+        case 'validLengthText':
+            htmlString += `This field must be less than 5000 characters.`;
+            break;
+        case 'isName' :
+            htmlString += `Please use alpha characters only.`;
+            break;
+        case 'isEmail' :
+            htmlString += `This doesn't appear to be a valid email address. Please try again.`;
+            break;
+        case 'isPresent' :
+            htmlString += `This field must be filled in.`;
+            break;
+        default:
+            htmlString += `This field is invalid.`;
+            break;
+    }
+    return htmlString;
+};

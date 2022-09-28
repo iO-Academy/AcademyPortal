@@ -15,6 +15,7 @@
     <h1>Add Trainers</h1>       
     <form>
         <label for="trainer-name">Trainer Name</label>
+        <div id="nameError" class="alert hidden formItem_alert"></div>
         <input name="name" class="create-trainer form-control" type="text" placeholder="Full Name" data-required="true" data-max='255' maxlength="255"/>
 
         <label for="email">Email</label>
@@ -22,11 +23,11 @@
             <input id="email" name="email" class="create-trainer form-control" type="email" placeholder="email" data-required="true">
 
         <label for="trainer-notes">Notes</label>
+        <div id="notesError" class="alert hidden formItem_alert"></div>
         <textarea name="notes" class="create-trainer form-control" placeholder="Notes" data-max="5000" maxlength="5000"></textarea>
 
         <input type="submit" class="btn btn-success" />
     </form>
-    <div id="messages" class="alert"></div>
     <?php require 'partials/layout/footer.phtml'; ?>
 </body>
 </html>
