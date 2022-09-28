@@ -597,10 +597,9 @@ class ApplicantModel implements ApplicantModelInterface
 
     public function submitApplicantAssessmentNotes(int $id, string $assessmentNote): bool
     {
-        // `assessmentNotes` :assessmentNote
-        $sql = 'UPDATE `applicants_additional` SET  `assessmentNotes` = CONCAT(`assessmentNotes`, :assessmentNote) WHERE `id` = :id;';
-//        $sql = 'UPDATE `applicants_additional` SET  `assessmentNotes` = :assessmentNote WHERE `id` = :id;';
-//        $sql = 'UPDATE `applicants_additional` SET  `assessmentNotes` = :assessmentNote WHERE `id` = :id;';
+        $sql = 'UPDATE `applicants_additional` SET `assessmentNotes` = 
+        CONCAT(COALESCE(`assessmentNotes`, " "), :assessmentNote) WHERE `id` = :id;';
+
         $values = [
             'assessmentNote' => $assessmentNote,
             'id' => $id

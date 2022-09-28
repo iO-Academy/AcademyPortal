@@ -30,7 +30,7 @@ class SubmitAptitudeScoreController extends Controller
         if (!isset($matchedApplicantByEmail)) {
             $responseBody['message'] = 'Aptitude score not added - email not found';
 
-            return $this->respondWithJson($response, $responseBody);
+            return $this->respondWithJson($response, $responseBody, 400);
         }
 
         if (
@@ -41,7 +41,7 @@ class SubmitAptitudeScoreController extends Controller
         ) {
             $responseBody['message'] = 'Aptitude score not added - invalid data provided.';
 
-            return $this->respondWithJson($response, $responseBody);
+            return $this->respondWithJson($response, $responseBody, 400);
         }
 
         $applicantId = $matchedApplicantByEmail['id'];
@@ -50,22 +50,14 @@ class SubmitAptitudeScoreController extends Controller
         if ($aptitudeFromId['aptitude'] == null) {
             $this->applicantModel->submitApplicantAptitudeScore($applicantId, $aptitudeScore);
             $responseBody['message'] = 'Updated the applicants aptitude score';
-            return $this->respondWithJson($response, $responseBody);
-
-
+            return $this->respondWithJson($response, $responseBody, 200);
         } else {
             date_default_timezone_set("Europe/London");
-            $assessmentNote = 'New aptitude test attempt ' . date("d/m/y") . ' ' . date("H:i") . "\r\n" .
-            'Score: ' . $aptitudeScore . '%';
+            $assessmentNote = 'New aptitude test attempt ' . date("d/m/y") . ' ' . date("H:i")
+            . "\r\n" . 'Score: ' . $aptitudeScore . '%' . "\r\n";
             $this->applicantModel->submitApplicantAssessmentNotes($applicantId, $assessmentNote);
             $responseBody['message'] = 'Updated the applicants assessment notes';
-            return $this->respondWithJson($response, $responseBody);
-
+            return $this->respondWithJson($response, $responseBody, 200);
         }
-
-
-        $jsonResponseBody = json_encode($responseBody);
-        $response->getBody()->write($jsonResponseBody);
-        return $response;
     }
 }
