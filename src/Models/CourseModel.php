@@ -86,4 +86,11 @@ class CourseModel
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function filterCoursesByTrainers(int $courseId, array $trainers)
+    {
+        array_filter($trainers, function ($trainer, $courseId) {
+            return $trainer['id'] == $courseId;
+        });
+    }
 }
