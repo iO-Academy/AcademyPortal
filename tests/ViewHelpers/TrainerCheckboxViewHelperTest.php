@@ -15,7 +15,7 @@ class TrainerCheckboxViewHelperTest extends TestCase
         $input->method('getId')->willReturn('1');
         $input->method('getName')->willReturn('Charlie');
         $exp = '<input type="checkbox" data-id="1" name="trainer-checkbox"';
-        $exp .= ' checked><label for="">Charlie</label>';
+        $exp .= '><label class="trainerCheckboxLabel" for="">Charlie</label>';
         $actual = TrainerCheckboxViewHelper::displayTrainerCheckbox([$input]);
         $this->assertEquals($exp, $actual);
     }
