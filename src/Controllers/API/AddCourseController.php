@@ -46,13 +46,14 @@ class AddCourseController extends Controller
         try {
             if (CourseValidator::validate($newCourse)) {
                 $newCourse = CourseSanitiser::sanitise($newCourse);
-                $result = $this->courseModel->addCourse($newCourse);
+                $insertedId = $this->courseModel->addCourse($newCourse);
+                $this->courseModel->addTrainersToCourse($newCourse['trainer'], $insertedId);
             }
         } catch (\Exception $exception) {
             $responseData['message'] = $exception->getMessage();
         }
 
-        if (isset($result) && $result) {
+        if (isset($insertedId) && $insertedId) {
             $responseData = [
                 'success' => true,
                 'message' => 'New Course successfully saved.',

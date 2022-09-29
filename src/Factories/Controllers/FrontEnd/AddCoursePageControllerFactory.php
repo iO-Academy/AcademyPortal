@@ -18,7 +18,8 @@ class AddCoursePageControllerFactory
     public function __invoke(ContainerInterface $container): AddCoursePageController
     {
         $courseModel = $container->get('CourseModel');
+        $trainerModel = $container->get('TrainerModel');
         $renderer = $container->get('renderer');
-        return new AddCoursePageController($renderer, $courseModel);
+        return new AddCoursePageController($renderer, $courseModel, $trainerModel);
     }
 }
