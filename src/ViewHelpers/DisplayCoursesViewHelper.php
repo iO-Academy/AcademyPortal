@@ -65,6 +65,6 @@ class DisplayCoursesViewHelper
             });
         } else {
             return [];
-        }  
+        }
     }
 }

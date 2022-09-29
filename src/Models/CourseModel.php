@@ -90,5 +90,4 @@ class CourseModel
         $query->execute();
         return $query->fetchAll();
     }
-
 }
