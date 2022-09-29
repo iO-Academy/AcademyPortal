@@ -39,6 +39,22 @@ courseForm.addEventListener("submit", e => {
     }
 });
 
+
+let selectedTrainerId = []
+/**
+ * Retrieves trainer checkbox data from add course form
+ * 
+ * @returns array
+ */
+let getSelectedTrainers = () => {
+    courseForm.elements['trainer-checkbox'].forEach(trainer => {
+        if(trainer.checked){
+            selectedTrainerId.push(trainer.dataset.id)  
+        }  
+    })
+    return selectedTrainerId
+}
+
 /**
  * Adds data from form into an object with the field name as key and the form value as value.
  */
@@ -47,7 +63,7 @@ let getCompletedCourseFormData = () => {
         startDate: courseForm.elements['startDate'].value,
         endDate: courseForm.elements['endDate'].value,
         name: courseForm.elements['name'].value,
-        trainer: courseForm.elements['trainer'].value,
+        trainer: getSelectedTrainers(),
         notes: courseForm.elements['notes'].value,
         in_person: courseForm.elements['in_person'].checked ? 1 : 0,
         remote: courseForm.elements['remote'].checked ? 1 : 0,
