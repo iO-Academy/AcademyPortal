@@ -88,7 +88,7 @@ class CourseModel
         foreach ($trainerIds as $trainerId) {
             $query = $this->db->prepare(
                 "INSERT INTO `courses_trainers` (`course_id`, `trainer_id`) 
-                VALUES (:cid,:tid);"
+                VALUES (:cid, :tid);"
             );
 
             $query->bindParam(':cid', $courseId);

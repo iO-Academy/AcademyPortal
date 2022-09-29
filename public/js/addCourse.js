@@ -7,7 +7,6 @@ courseForm.addEventListener("submit", e => {
 
     let data = getCompletedCourseFormData();
     let validate = validateCourseForm();
-    console.log(data)
     if (validate) {
         fetch('./api/addCourse', {
             credentials: 'same-origin',
@@ -30,6 +29,7 @@ courseForm.addEventListener("submit", e => {
                     message.innerText = responseJson.message,
                     message.classList.add('alert-success'),
                     message.classList.remove('alert-danger'),
+                    selectedTrainerId = [],
                     courseForm.elements['trainer-checkbox'].forEach(trainer => {
                         trainer.checked = false;
                     })
