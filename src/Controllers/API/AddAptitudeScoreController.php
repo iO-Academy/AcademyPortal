@@ -60,8 +60,8 @@ class AddAptitudeScoreController extends Controller
             return $this->respondWithJson($response, $responseBody, 200);
         } else {
             date_default_timezone_set("Europe/London");
-            $assessmentNote = 'New aptitude test attempt ' . date("d/m/y") . ' ' . date("H:i")
-                . "\r\n" . 'Score: ' . $aptitudeScore . '%' . "\r\n";
+            $assessmentNote = "\r" . 'New aptitude test attempt ' . date("d/m/y") . ' ' . date("H:i")
+                . "\r\n" . 'Score: ' . $aptitudeScore . '%';
             $this->applicantModel->appendToAssessmentNotes($applicantId, $assessmentNote);
             $responseBody['message'] = 'Updated the applicants assessment notes';
             $responseBody['success'] = true;
