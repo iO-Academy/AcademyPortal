@@ -24,7 +24,7 @@ class CourseModel
         $sql = 'SELECT `id`,
                 `courses`.`start_date` AS `startDate`,
                 `courses`.`end_date` AS `endDate`,
-                `name`
+                `name`,
                 `notes`,
                 `in_person` AS `inPerson`,
                 `remote`
