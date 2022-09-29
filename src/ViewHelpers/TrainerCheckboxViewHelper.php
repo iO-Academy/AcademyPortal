@@ -19,7 +19,7 @@ class TrainerCheckboxViewHelper
         foreach ($trainers as $trainer) {
             if ($trainer instanceof TrainerEntity) {
                 $result .= '<input type="checkbox" data-id="' . $trainer->getId() . '" name="trainer-checkbox"';
-                $result .= '><label for="">' . $trainer->getName() . '</label>';
+                $result .= '><label class="trainerCheckboxLabel" for="">' . $trainer->getName() . '</label>';
             } else {
                 $result .= '';
             }
