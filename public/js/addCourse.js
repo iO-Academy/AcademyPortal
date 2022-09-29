@@ -23,7 +23,7 @@ courseForm.addEventListener("submit", e => {
                     courseForm.elements['startDate'].value = '',
                     courseForm.elements['endDate'].value = '',
                     courseForm.elements['name'].value = '',
-                    courseForm.elements['trainer'].value = '',
+                    courseForm.elements['trainer-checkbox'].value = '',
                     courseForm.elements['notes'].value = '',
                     courseForm.elements['in_person'].checked = false,
                     courseForm.elements['remote'].checked = false,
@@ -95,6 +95,10 @@ function validateCourseForm() {
                 message += 'Invalid date!<br>';
                 success = false;
             }
+        }
+        if (element.name === 'trainer-checkbox'){
+            requiredCheckboxes()
+            //need to pass in array of checkboxes, not values
         }
     });
     // check that the end date is actually after the start date
