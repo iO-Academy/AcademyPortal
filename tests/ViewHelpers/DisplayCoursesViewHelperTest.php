@@ -40,4 +40,37 @@ class DisplayCoursesViewHelperTest extends TestCase
         $result = DisplayCoursesViewHelper::displayCourses([]);
         $this->assertEquals($expected, $result);
     }
+
+    public function testSuccessFilterCoursesByTrainers()
+    {
+        $input = [
+            ['course_id' => '1', 'name' => 'Charlie'],
+            ['course_id' => '1', 'name' => 'Neal'],
+            ['course_id' => '2', 'name' => 'Charlie']
+        ];
+        $input2 = '1';
+        $exp = [
+            ['course_id' => '1', 'name' => 'Charlie'],
+            ['course_id' => '1', 'name' => 'Neal']
+        ];
+        $result = DisplayCoursesViewHelper::filterCoursesByTrainers($input, $input2);
+        $this->assertEquals($exp, $result);
+    }
+
+    public function testFailureFilterCoursesByTrainers()
+    {
+        $input = [];
+        $input2 = '1';
+        $exp = [];
+        $result = DisplayCoursesViewHelper::filterCoursesByTrainers($input, $input2);
+        $this->assertEquals($exp, $result);
+    }
+
+    public function testMalformedFilterCoursesByTrainers()
+    {
+        $input = '';
+        $input2 = '1';
+        $this->expectException(\Error::class);
+        $actual = DisplayCoursesViewHelper::filterCoursesByTrainers($input, $input2);
+    }
 }
