@@ -29,7 +29,7 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getRemote')->willReturn('0');
         $entityMock->method('getInPerson')->willReturn('1');
         $courses = [$entityMock];
-        $trainers = [['course_id' => '1', 'name' => 'Charlie']];
+        $trainers = [['course_id' => '1', 'name' => 'Charlie', 'deleted' => '0'] ];
         $result = DisplayCoursesViewHelper::displayCourses($courses, $trainers);
         $this->assertEquals($expected, $result);
     }
@@ -56,8 +56,63 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getInPerson')->willReturn('1');
         $courses = [$entityMock];
         $trainers = [
-            ['course_id' => '1', 'name' => 'Charlie'],
-            ['course_id' => '1', 'name' => 'Neal']
+            ['course_id' => '1', 'name' => 'Charlie', 'deleted' => '0'],
+            ['course_id' => '1', 'name' => 'Neal', 'deleted' => '0']
+        ];
+        $result = DisplayCoursesViewHelper::displayCourses($courses, $trainers);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testSuccessOneDeletedTrainerDisplayCourse()
+    {
+        $expected = '<tr>
+                    <td>1</td>
+                    <td>1 January 2021</td>
+                    <td>30 March 2021</td>
+                    <td>Defence Against the Dark JSON</td>
+                    <td><p class="trainer-deleted-indicator">Charlie</p></td>
+                    <td></td>
+                    <td>&#x2713;</td>
+                    <td>&#x10102</td>
+                </tr>';
+        $entityMock = $this->createMock(CourseEntity::class);
+        $entityMock->method('getId')->willReturn(1);
+        $entityMock->method('getStartDate')->willReturn('1 January 2021');
+        $entityMock->method('getEndDate')->willReturn('30 March 2021');
+        $entityMock->method('getName')->willReturn('Defence Against the Dark JSON');
+        $entityMock->method('getNotes')->willReturn('');
+        $entityMock->method('getRemote')->willReturn('0');
+        $entityMock->method('getInPerson')->willReturn('1');
+        $courses = [$entityMock];
+        $trainers = [['course_id' => '1', 'name' => 'Charlie', 'deleted' => '1'] ];
+        $result = DisplayCoursesViewHelper::displayCourses($courses, $trainers);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testSuccessOneDeletedTwoTrainersDisplayCourse()
+    {
+        $expected = '<tr>
+                    <td>1</td>
+                    <td>1 January 2021</td>
+                    <td>30 March 2021</td>
+                    <td>Defence Against the Dark JSON</td>
+                    <td><p class="trainer-deleted-indicator">Charlie</p><p>Neal</p></td>
+                    <td></td>
+                    <td>&#x2713;</td>
+                    <td>&#x10102</td>
+                </tr>';
+        $entityMock = $this->createMock(CourseEntity::class);
+        $entityMock->method('getId')->willReturn(1);
+        $entityMock->method('getStartDate')->willReturn('1 January 2021');
+        $entityMock->method('getEndDate')->willReturn('30 March 2021');
+        $entityMock->method('getName')->willReturn('Defence Against the Dark JSON');
+        $entityMock->method('getNotes')->willReturn('');
+        $entityMock->method('getRemote')->willReturn('0');
+        $entityMock->method('getInPerson')->willReturn('1');
+        $courses = [$entityMock];
+        $trainers = [
+            ['course_id' => '1', 'name' => 'Charlie', 'deleted' => '1'],
+            ['course_id' => '1', 'name' => 'Neal', 'deleted' => '0']
         ];
         $result = DisplayCoursesViewHelper::displayCourses($courses, $trainers);
         $this->assertEquals($expected, $result);

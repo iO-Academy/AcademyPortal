@@ -105,7 +105,7 @@ class CourseModel
     public function getTrainersAndCourseId(): array
     {
         $query = $this->db->prepare(
-            'SELECT `courses_trainers`.`course_id`, `trainers`.`name` FROM `courses_trainers` 
+            'SELECT `courses_trainers`.`course_id`, `trainers`.`name`, `trainers`.`deleted` FROM `courses_trainers` 
                 LEFT JOIN `trainers` 
                     ON `courses_trainers`.`trainer_id` = `trainers`.`id`;'
         );

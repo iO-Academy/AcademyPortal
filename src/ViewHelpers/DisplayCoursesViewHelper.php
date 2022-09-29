@@ -59,7 +59,11 @@ class DisplayCoursesViewHelper
         if (!empty($trainersByCourse)) {
             $result = '';
             foreach ($trainersByCourse as $trainer) {
-                $result .= '<p>' . $trainer['name'] . '</p>';
+                if (!$trainer['deleted']) {
+                    $result .= '<p>' . $trainer['name'] . '</p>';
+                } else {
+                    $result .= '<p class="trainer-deleted-indicator">' . $trainer['name'] . '</p>';
+                }
             }
             return $result;
         } else {
