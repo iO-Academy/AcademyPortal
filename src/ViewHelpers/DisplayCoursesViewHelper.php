@@ -11,20 +11,20 @@ class DisplayCoursesViewHelper
      *
      * @return string $result, returns id, startDate, endDate, name, trainer, notes.
      */
-    public static function displayCourses($courses): string
+    public static function displayCourses($courses, $trainers): string
     {
         $result = '';
         foreach ($courses as $course) {
             $remote = $course->getRemote() == 1 ? '&#x2713;' : '&#x10102';
             $inPerson = $course->getInPerson() == 1 ? '&#x2713;' : '&#x10102';
-
+            $trainersByCourse = self::filterCoursesByTrainers($trainers, $course->getId());
             $result .=
                 '<tr>
                     <td>' . $course->getId() . '</td>
                     <td>' . date("j F Y", strtotime($course->getStartDate())) . '</td>
                     <td>' . date("j F Y", strtotime($course->getEndDate())) . '</td>
                     <td>' . $course->getName() . '</td>
-                    <td>' . $course->getTrainer() . '</td>
+                    <td>' . self::displayCourseTrainers($trainersByCourse) . '</td>
                     <td>' . $course->getNotes() . '</td>
                     <td>' . $inPerson . '</td>
                     <td>' . $remote . '</td>
@@ -48,7 +48,24 @@ class DisplayCoursesViewHelper
         return $output;
     }
 
-    // Add new static method to foreach through below method to print in viewhelper -- displayCourseTrainers()
+    /**
+     * Foreach through filtered trainer list to display
+     *
+     * @param array $trainersByCourse
+     * @return string
+     */
+    public static function displayCourseTrainers($trainersByCourse): string
+    {
+        if (!empty($trainersByCourse)) {
+            $result = '';
+            foreach ($trainersByCourse as $trainer) {
+                $result .= '<p>' . $trainer['name'] . '</p>';
+            }
+            return $result;
+        } else {
+            return '';
+        }
+    }
 
     /**
      * Filters array of trainers by a course id
