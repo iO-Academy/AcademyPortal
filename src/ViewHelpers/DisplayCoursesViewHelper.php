@@ -47,4 +47,24 @@ class DisplayCoursesViewHelper
         }
         return $output;
     }
+
+    // Add new static method to foreach through below method to print in viewhelper -- displayCourseTrainers()
+
+    /**
+     * Filters array of trainers by a course id
+     *
+     * @param array $trainers
+     * @param int $courseId
+     * @return array
+     */
+    public static function filterCoursesByTrainers(array $trainers, $courseId): array
+    {
+        if (!empty($trainers)) {
+            return array_filter($trainers, function ($trainer) use ($courseId) {
+                return $trainer['course_id'] == $courseId;
+            });
+        } else {
+            return [];
+        }
+    }
 }
