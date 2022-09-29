@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.8.3-MariaDB-1:10.8.3+maria~jammy)
 # Database: academyPortal
-# Generation Time: 2022-09-26 15:57:43 +0000
+# Generation Time: 2022-09-28 14:46:55 +0000
 # ************************************************************
 
 
@@ -65,8 +65,9 @@ VALUES
 	(21,'Nessy Weekes','nweekesb@bravesites.com','07448564580','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',3,'1','1','1','',1,NULL,'2021-11-25 16:45:29',0,'1','',NULL),
 	(22,'Sibylla Forsyth','sforsythc@statcounter.com','07046179858','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'1','1','0','',1,NULL,'2021-11-25 16:46:04',0,'3','',NULL),
 	(23,'Arluene Moody','amoodyd@gizmodo.com','07343959417','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'0','0','0','',1,NULL,'2021-11-25 16:46:38',0,'4','',NULL),
-	(24,'Creighton Gebbie','cgebbiee@ucla.edu','07866296968','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',4,'0','1','0','',1,NULL,'2021-11-25 16:47:16',0,'3','',NULL),
-	(25,'Jacinthe Towse','jtowsef@godaddy.com','07528968799','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',2,'1','1','1','',1,NULL,'2021-11-25 16:47:57',0,'3','',NULL);
+	(24,'Creighton Gebbie','cgebbiee@ucla.edu','07866296968','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',4,'0','1','0','',6,NULL,'2021-11-25 16:47:16',0,'3','$2y$10$F/he.CMeTqS4ZJqJIOluXesm84hvbYqQm8JZxKoQYxv.pniuXNQxy',NULL),
+	(25,'Jacinthe Towse','jtowsef@godaddy.com','07528968799','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',2,'1','1','1','',1,NULL,'2021-11-25 16:47:57',0,'3','',NULL),
+	(26,'Audra Snyder','tagywove@mailinator.com','+1 (684) 307-1038','Culpa deserunt labo','Facere modi quasi mo',2,'1','0','0','Maiores voluptatem e',1,NULL,'2022-09-28 10:04:11',0,'4','','2');
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -144,7 +145,8 @@ VALUES
 	(22,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(23,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(24,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(25,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+	(25,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(26,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*!40000 ALTER TABLE `applicants_additional` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -324,7 +326,9 @@ VALUES
 	(52,2,25),
 	(53,5,25),
 	(54,3,11),
-	(55,4,12);
+	(55,4,12),
+	(56,5,26),
+	(57,8,26);
 
 /*!40000 ALTER TABLE `course_choice` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -340,7 +344,6 @@ CREATE TABLE `courses` (
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `trainer` varchar(255) DEFAULT NULL,
   `notes` varchar(500) DEFAULT NULL,
   `deleted` int(1) NOT NULL DEFAULT 0,
   `in_person` int(11) DEFAULT NULL,
@@ -351,17 +354,47 @@ CREATE TABLE `courses` (
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
 
-INSERT INTO `courses` (`id`, `start_date`, `end_date`, `name`, `trainer`, `notes`, `deleted`, `in_person`, `remote`)
+INSERT INTO `courses` (`id`, `start_date`, `end_date`, `name`, `notes`, `deleted`, `in_person`, `remote`)
 VALUES
-	(1,'2022-01-10','2022-05-29','Full-Stack Track','Rayna',NULL,0,1,0),
-	(2,'2022-01-10','2022-05-29','Full-Stack Track','Charlie',NULL,0,0,1),
-	(3,'2022-03-17','2022-03-25','Machine Data','Richard',NULL,0,1,1),
-	(4,'2022-03-07','2022-06-24','Full-Stack Track','Neal','Great people',0,1,0),
-	(5,'2022-03-07','2022-06-24','Full-Stack Track','Ash',NULL,0,0,0),
-	(6,'2022-07-04','2022-10-21','Full-Stack Track','Rayna','Might be robots',0,0,1),
-	(7,'2022-07-04','2022-10-21','Full-Stack Track','Charlie',NULL,0,1,0);
+	(1,'2022-01-10','2022-05-29','Full-Stack Track',NULL,0,1,0),
+	(2,'2022-01-10','2022-05-29','Full-Stack Track',NULL,0,0,1),
+	(3,'2022-03-17','2022-03-25','Machine Data',NULL,0,1,1),
+	(4,'2022-03-07','2022-06-24','Full-Stack Track','Great people',0,1,0),
+	(5,'2022-03-07','2022-06-24','Full-Stack Track',NULL,0,0,0),
+	(6,'2022-07-04','2022-10-21','Full-Stack Track','Might be robots',0,0,1),
+	(7,'2022-07-04','2022-10-21','Full-Stack Track',NULL,0,1,0);
 
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table courses_trainers
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `courses_trainers`;
+
+CREATE TABLE `courses_trainers` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `course_id` int(10) NOT NULL,
+  `trainer_id` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `courses_trainers` WRITE;
+/*!40000 ALTER TABLE `courses_trainers` DISABLE KEYS */;
+
+INSERT INTO `courses_trainers` (`id`, `course_id`, `trainer_id`)
+VALUES
+	(1,1,2),
+	(2,2,1),
+	(3,3,6),
+	(4,4,5),
+	(5,5,3),
+	(6,6,2),
+	(7,7,1),
+	(10,2,5);
+
+/*!40000 ALTER TABLE `courses_trainers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -740,12 +773,12 @@ LOCK TABLES `trainers` WRITE;
 
 INSERT INTO `trainers` (`id`, `name`, `email`, `notes`, `deleted`)
 VALUES
-	(1,'Charlie Coggans','charlie.coggans@io-academy.uk','',0),
-	(2,'Rayna Bozhkova','rayna.bozhkova@io-academy.uk','',0),
-	(3,'Ashley Coles','ashley.coles@io-academy.uk','',0),
-	(4,'Mike Oram','mike.oram@io-academy.uk','',0),
-	(5,'Neal Hughson','neal.hughson@io-academy.uk','',0),
-	(6,'Richard Ball','richard.ball@io-academy.uk','',0);
+	(1,'Charlie Coggans','charlie.coggans@io-academy.uk','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',0),
+	(2,'Rayna Bozhkova','rayna.bozhkova@io-academy.uk','Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur',0),
+	(3,'Ashley Coles','ashley.coles@io-academy.uk','At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.',0),
+	(4,'Mike Oram','mike.oram@io-academy.uk','Pellentesque consectetur, lacus viverra euismod semper, ligula massa posuere ex, at scelerisque dolor leo et massa. Nam eu sapien felis. Morbi hendrerit scelerisque orci id fringilla. Quisque consequat sollicitudin felis id accumsan. Etiam eget elit efficitur, imperdiet ipsum sodales, tempor lorem. Nulla facilisi. Etiam malesuada vel mi ac pulvinar. Mauris sit amet justo nec justo tristique aliquet. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. ',0),
+	(5,'Neal Hughson','neal.hughson@io-academy.uk','Nulla facilisi. Curabitur egestas maximus finibus. Proin a vestibulum tortor, at malesuada sapien. Fusce imperdiet eros consequat lorem mattis consectetur. Mauris volutpat vitae sem in consequat. Mauris aliquet tincidunt quam, in ullamcorper diam hendrerit consequat. Praesent tellus est, luctus vitae molestie vitae, maximus sit amet dolor. Integer imperdiet accumsan odio. Donec lacinia libero et dolor interdum feugiat. Curabitur quis erat id elit tri',0),
+	(6,'Richard Ball','richard.ball@io-academy.uk','Maecenas sed blandit nulla, in vehicula quam. Vestibulum purus lacus, faucibus quis vulputate at, tempor eget orci. Donec at dictum nisl, a facilisis sem. Curabitur consectetur, dui ut maximus convallis, arcu arcu vulputate erat, consequat facilisis velit ipsum eu sem. Praesent sit amet venenatis urna. Pellentesque volutpat vestibulum eleifend. ',0);
 
 /*!40000 ALTER TABLE `trainers` ENABLE KEYS */;
 UNLOCK TABLES;

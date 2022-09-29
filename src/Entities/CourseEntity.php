@@ -7,7 +7,6 @@ class CourseEntity
     protected $startDate;
     protected $endDate;
     protected $name;
-    protected $trainer;
     protected $notes;
     protected $id;
     protected $remote;
@@ -43,14 +42,6 @@ class CourseEntity
     public function getName(): ?string
     {
         return $this->name;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getTrainer(): ?string
-    {
-        return $this->trainer;
     }
 
     /**
