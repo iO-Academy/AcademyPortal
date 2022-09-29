@@ -4,14 +4,14 @@ namespace Portal\ViewHelpers;
 
 class DisplayCoursesViewHelper
 {
-    /**
-     * Concats course details into table TRs.
-     *
-     * @param $courses
-     *
-     * @return string $result, returns id, startDate, endDate, name, trainer, notes.
-     */
-    public static function displayCourses($courses, $trainers): string
+     /**
+      * Viewhelper to display courses within course detail table
+      *
+      * @param array $courses
+      * @param array $trainers
+      * @return string
+      */
+    public static function displayCourses(array $courses, array $trainers): string
     {
         $result = '';
         foreach ($courses as $course) {
@@ -63,7 +63,7 @@ class DisplayCoursesViewHelper
             }
             return $result;
         } else {
-            return '';
+            return 'No trainers assigned';
         }
     }
 
