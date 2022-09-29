@@ -38,10 +38,10 @@ class CourseModel
     /**
      * Add a new course to the database
      *
-     * @param [type] $newCourse
+     * @param array $newCourse
      * @return boolean True if operation succeeded
      */
-    public function addCourse(array $newCourse): bool
+    public function addCourse(array $newCourse): string
     {
         $query = $this->db->prepare("INSERT INTO `courses` (
             `start_date`,
@@ -72,7 +72,29 @@ class CourseModel
         $query->bindParam(':notes', $notes);
         $query->bindParam(':in_person', $in_person);
         $query->bindParam(':remote', $remote);
-        return $query->execute();
+        $query->execute();
+        return $this->db->lastInsertId();
+    }
+
+    /**
+     * Updates the trainers and courses relationships using the link table
+     *
+     * @param array $trainerIds
+     * @param int $courseId
+     * @return void
+     */
+    public function addTrainersToCourse(array $trainerIds, int $courseId): void
+    {
+        foreach ($trainerIds as $trainerId) {
+            $query = $this->db->prepare(
+                "INSERT INTO `courses_trainers` (`course_id`, `trainer_id`) 
+                VALUES (:cid,:tid);"
+            );
+
+            $query->bindParam(':cid', $courseId);
+            $query->bindParam(':tid', $trainerId);
+            $query->execute();
+        }
     }
 
     public function getTrainersByCourseId()

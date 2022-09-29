@@ -7,6 +7,7 @@ courseForm.addEventListener("submit", e => {
 
     let data = getCompletedCourseFormData();
     let validate = validateCourseForm();
+    console.log(data)
     if (validate) {
         fetch('./api/addCourse', {
             credentials: 'same-origin',
@@ -23,13 +24,15 @@ courseForm.addEventListener("submit", e => {
                     courseForm.elements['startDate'].value = '',
                     courseForm.elements['endDate'].value = '',
                     courseForm.elements['name'].value = '',
-                    courseForm.elements['trainer-checkbox'].value = '',
                     courseForm.elements['notes'].value = '',
                     courseForm.elements['in_person'].checked = false,
                     courseForm.elements['remote'].checked = false,
                     message.innerText = responseJson.message,
                     message.classList.add('alert-success'),
-                    message.classList.remove('alert-danger');
+                    message.classList.remove('alert-danger'),
+                    courseForm.elements['trainer-checkbox'].forEach(trainer => {
+                        trainer.checked = false;
+                    })
                 } else {
                     message.innerText = responseJson.message;
                     message.classList.add('alert-danger');
@@ -38,7 +41,6 @@ courseForm.addEventListener("submit", e => {
             });
     }
 });
-
 
 let selectedTrainerId = []
 /**
@@ -95,10 +97,6 @@ function validateCourseForm() {
                 message += 'Invalid date!<br>';
                 success = false;
             }
-        }
-        if (element.name === 'trainer-checkbox'){
-            requiredCheckboxes()
-            //need to pass in array of checkboxes, not values
         }
     });
     // check that the end date is actually after the start date
