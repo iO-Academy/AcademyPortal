@@ -47,4 +47,13 @@ class DisplayCoursesViewHelper
         }
         return $output;
     }
+
+    // Add new static method to foreach through below method to print in viewhelper -- displayCourseTrainers()
+
+    public static function filterCoursesByTrainers(array $trainers, $courseId)
+    {
+        return array_filter($trainers, function ($trainer) use ($courseId) {
+            return $trainer['course_id'] == $courseId;
+        });
+    }
 }

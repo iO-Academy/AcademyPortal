@@ -40,6 +40,11 @@ class CoursesPageController extends Controller
         if ($_SESSION['loggedIn'] === true) {
             $courses = $this->courseModel->getAllCourses();
             $data = ['data' => $courses];
+            $trainers = $this->courseModel->getTrainersAndCourseId();
+            $coursedata = $this->courseModel->filterCoursesByTrainers($trainers, 2);
+            echo '<pre>';
+            var_dump($coursedata);
+            echo '</pre>';
             return $this->renderer->render($response, 'courses.phtml', $data);
         } else {
             return $response->withHeader('Location', './');
