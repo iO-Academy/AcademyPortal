@@ -24,7 +24,7 @@ class CourseModel
         $sql = 'SELECT `id`,
                 `courses`.`start_date` AS `startDate`,
                 `courses`.`end_date` AS `endDate`,
-                `name`,
+                `name`
                 `notes`,
                 `in_person` AS `inPerson`,
                 `remote`
@@ -97,14 +97,18 @@ class CourseModel
         }
     }
 
-    public function getTrainersByCourseId()
+    /**
+     * Gets all trainers linked to course Id
+     *
+     * @return array
+     */
+    public function getTrainersAndCourseId(): array
     {
         $query = $this->db->prepare(
             'SELECT `courses_trainers`.`course_id`, `trainers`.`name` FROM `courses_trainers` 
                 LEFT JOIN `trainers` 
                     ON `courses_trainers`.`trainer_id` = `trainers`.`id`;'
         );
-        $query->setFetchMode(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
         $query->execute();
         return $query->fetchAll();
     }
