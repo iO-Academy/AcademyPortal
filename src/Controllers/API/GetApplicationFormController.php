@@ -15,9 +15,6 @@ class GetApplicationFormController extends Controller
 
     /**
      * GetApplicationFormController constructor.
-     *
-     * @param ApplicationFormModel $applicationFormModel
-     * @param EventModel $eventModel
      */
     public function __construct(ApplicationFormModel $applicationFormModel, EventModel $eventModel)
     {
@@ -28,14 +25,8 @@ class GetApplicationFormController extends Controller
     /**
      * Defines the default behaviour of Class when treated as a method.
      * Retrieves options for drop down menus in application form.
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     *
-     * @return Response, carry through data and statusCode.
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             try {

@@ -11,12 +11,6 @@ class DeleteApplicantController extends Controller
 {
     private ApplicantModel $applicantModel;
 
-    /**
-     * DeleteApplicantsController constructor saves an applicantModel
-     * onto this object
-     *
-     * @param ApplicantModel $applicantModel
-     */
     public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
@@ -25,14 +19,8 @@ class DeleteApplicantController extends Controller
     /**
      * Checks if user is logged in, validates the http request data and calls
      * the delete method on applicantModel
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     *
-     * @return Response - Returns status 200/500 with message in Json
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $data = [

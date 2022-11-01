@@ -14,16 +14,12 @@ class EditApplicantController extends Controller
 {
     private ApplicantModel $applicantModel;
 
-    /**
-     * EditApplicantController constructor.
-     * @param $applicantModel
-     */
     public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $data = ['success' => false, 'msg' => 'Application not saved'];

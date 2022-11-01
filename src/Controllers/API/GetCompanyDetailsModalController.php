@@ -11,11 +11,6 @@ class GetCompanyDetailsModalController extends Controller
 {
     private HiringPartnerModel $model;
 
-    /**
-     * GetCompanyDetailsModalController constructor.
-     * @param $model
-     * @param $view
-     */
     public function __construct(HiringPartnerModel $model)
     {
         $this->model = $model;
@@ -23,11 +18,8 @@ class GetCompanyDetailsModalController extends Controller
 
     /**
      * Combine company details and company contact details into a single array and send to modal
-     * @param Request $request
-     * @param Response $response
-     * @param array $args contains company ID
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         try {
             $id = (int)$args['id'];

@@ -15,10 +15,6 @@ class EditTeamsController extends Controller
     private ApplicantModel $applicantModel;
     private TeamModel $teamModel;
 
-    /**
-     * @param ApplicantModel $applicantModel
-     * @param TeamModel $teamModel
-     */
     public function __construct(ApplicantModel $applicantModel, TeamModel $teamModel)
     {
         $this->applicantModel = $applicantModel;
@@ -30,14 +26,9 @@ class EditTeamsController extends Controller
      * function for inserting into database.
      * If successful Insert returns success true with message of application saved.
      *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args The arguments array
-     *
-     * @return Response, will return the data from successfulRegister and the statusCode, via Json.
      * @throws Exception
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $teamData = $request->getParsedBody();

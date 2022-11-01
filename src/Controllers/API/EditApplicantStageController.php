@@ -19,7 +19,7 @@ class EditApplicantStageController extends Controller
         $this->stageModel = $stageModel;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $applicantId = (int) $request->getQueryParams()['applicantId'];

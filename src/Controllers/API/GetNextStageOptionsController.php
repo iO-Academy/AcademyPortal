@@ -15,12 +15,6 @@ class GetNextStageOptionsController extends Controller
     private RandomPasswordModel $password;
     private ApplicantModel $applicantModel;
 
-    /**
-     * GetEventsController constructor.
-     *
-     * @param StageModel $stageModel
-     */
-
     public function __construct(StageModel $stageModel, RandomPasswordModel $password, ApplicantModel $applicantModel)
     {
         $this->stageModel = $stageModel;
@@ -30,14 +24,9 @@ class GetNextStageOptionsController extends Controller
 
     /**
      * Calls a method to get all the events and send JSON back with the info
-     *
-     * @param Request $request HTTP request
-     * @param Response $response HTTP response
-     * @param array $args
-     * @return Response returns JSON with hiring partner data
      */
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $data = [
             'success' => false,

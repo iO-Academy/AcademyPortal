@@ -11,17 +11,12 @@ class AddAptitudeScoreController extends Controller
 {
     private ApplicantModel $applicantModel;
 
-    /**
-     * Instantiates AddApplicantPageController.
-     *
-     * @param ApplicantModel $applicantModel applicantModel is the object needed for querying applicant table in the db
-     */
     public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $requestBody = $request->getParsedBody();
         $applicantEmail = $requestBody['email'];

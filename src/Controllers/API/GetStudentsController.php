@@ -11,23 +11,12 @@ class GetStudentsController extends Controller
 {
     private ApplicantModel $applicantModel;
 
-    /**
-     * GetApplicantsController constructor.
-     *
-     * @param ApplicantModel $applicantModel
-     */
     public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
     }
 
-    /**
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
-     */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $get = $request->getQueryParams();

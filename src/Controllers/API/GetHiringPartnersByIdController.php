@@ -11,20 +11,10 @@ use Psr\Http\Message\ResponseInterface as Response;
 class GetHiringPartnersByIdController extends Controller
 {
     private HiringPartnerModel $hiringPartnerModel;
-
     private EventModel $eventModel;
-
     private $hpIdsData;
-
     private $hpEntities = [];
 
-    /**
-     * GetHiringPartnersByIdController constructor to populate the model and event properties in this class.
-     *
-     * @param HiringPartnerModel $model
-     *
-     * @param EventModel $event
-     */
     public function __construct(HiringPartnerModel $hiringPartnerModel, EventModel $eventModel)
     {
         $this->hiringPartnerModel = $hiringPartnerModel;
@@ -33,14 +23,6 @@ class GetHiringPartnersByIdController extends Controller
 
     /**
      * Invoke function to get all hiring partners associated with an event and returns JSON
-     *
-     * @param Request $request
-     *
-     * @param Response $response
-     *
-     * @param $args array of url arguments
-     *
-     * @return Response response containing hpEntities
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {

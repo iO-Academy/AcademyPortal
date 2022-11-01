@@ -11,12 +11,6 @@ class GetEventsController extends Controller
 {
     private EventModel $eventModel;
 
-    /**
-     * GetEventsController constructor.
-     *
-     * @param EventModel $eventModel
-     */
-
     public function __construct(EventModel $eventModel)
     {
         $this->eventModel = $eventModel;
@@ -24,13 +18,8 @@ class GetEventsController extends Controller
 
     /**
      * Calls a method to get all the events and send JSON back with the info
-     *
-     * @param Request $request HTTP request
-     * @param Response $response HTTP response
-     * @param array $args
-     * @return Response returns JSON with hiring partner data
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $data = [
             'success' => false,

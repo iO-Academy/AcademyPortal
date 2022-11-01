@@ -11,12 +11,6 @@ class DeleteTrainerController extends Controller
 {
     private TrainerModel $trainerModel;
 
-    /**
-     * DeletetrainersController constructor saves an trainerModel
-     * onto this object
-     *
-     * @param TrainerModel $trainerModel
-     */
     public function __construct(TrainerModel $trainerModel)
     {
         $this->trainerModel = $trainerModel;
@@ -25,14 +19,8 @@ class DeleteTrainerController extends Controller
     /**
      * Checks if user is logged in, validates the http request data and calls
      * the delete method on TrainerModel
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     *
-     * @return Response - Returns status 200/500 with message in Json
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $data = [

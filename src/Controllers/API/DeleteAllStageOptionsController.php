@@ -11,11 +11,6 @@ class DeleteAllStageOptionsController extends Controller
 {
     private StageModel $stageModel;
 
-    /** Constructor assigns StageModel to this object
-    *
-    * DeleteStageOptionController constructor.
-    * @param StageModel $stageModel
-    */
     public function __construct(StageModel $stageModel)
     {
         $this->stageModel = $stageModel;
@@ -24,14 +19,8 @@ class DeleteAllStageOptionsController extends Controller
     /**
      * Checks if user is logged in, validates the http request data and calls
      * the deleteAllOptions method on stageModel
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     *
-     * @return Response - Returns status 200/500 with message in Json
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $data = [

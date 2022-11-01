@@ -13,11 +13,6 @@ class AddCourseController extends Controller
 {
     private CourseModel $courseModel;
 
-    /**
-     * AddCourseController constructor
-     *
-     * @param CourseModel $courseModel
-     */
     public function __construct(CourseModel $courseModel)
     {
         $this->courseModel = $courseModel;
@@ -25,12 +20,6 @@ class AddCourseController extends Controller
 
     /**
      * Get user input and send to CourseModel to add to db.
-     *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     *
-     * @return Response
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {

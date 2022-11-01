@@ -11,12 +11,6 @@ class GetCoursesController extends Controller
 {
     private CourseModel $courseModel;
 
-    /**
-     * GetCoursesController constructor.
-     *
-     * @param CourseModel $courseModel
-     */
-
     public function __construct(CourseModel $courseModel)
     {
         $this->courseModel = $courseModel;
@@ -24,13 +18,8 @@ class GetCoursesController extends Controller
 
     /**
      * Calls a method to get all the Courses and send JSON back with the info
-     *
-     * @param Request $request HTTP request
-     * @param Response $response HTTP response
-     * @param array $args
-     * @return Response returns JSON with hiring partner data
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $data = [
             'success' => false,

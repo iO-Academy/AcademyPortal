@@ -22,7 +22,7 @@ class CsvController extends Controller
         $this->renderer = $renderer;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if (
             $this->validateFile(

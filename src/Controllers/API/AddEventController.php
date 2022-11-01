@@ -13,17 +13,12 @@ class AddEventController extends Controller
 {
     private EventModel $eventModel;
 
-    /**
-     * AddEventController constructor
-     *
-     * @param EventModel $eventModel
-     */
     public function __construct(EventModel $eventModel)
     {
         $this->eventModel = $eventModel;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $newEvent = $request->getParsedBody();
         $responseData = [

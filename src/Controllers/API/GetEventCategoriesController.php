@@ -11,15 +11,12 @@ class GetEventCategoriesController extends Controller
 {
     private EventCategoriesModel $eventCategoriesModel;
 
-    /**
-     * @param EventCategoriesModel $eventCategoriesModel
-     */
     public function __construct(EventCategoriesModel $eventCategoriesModel)
     {
         $this->eventCategoriesModel = $eventCategoriesModel;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $data = [
             'success' => false,

@@ -11,11 +11,6 @@ class GetAssessmentApplicantsController extends Controller
 {
     private ApplicantModel $applicantModel;
 
-    /**
-     * GetApplicantController constructor.
-     *
-     * @param ApplicantModel $applicantModel
-     */
     public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
@@ -23,11 +18,8 @@ class GetAssessmentApplicantsController extends Controller
 
     /**
      * Gets applicants with a booked assessment date.
-     * @param Request $request
-     * @param Response $response
-     * @return Response
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
             $applicants = $this->applicantModel->getAssessmentApplicants();
             return $this->respondWithJson($response, $applicants);

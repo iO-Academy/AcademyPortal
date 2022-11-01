@@ -15,11 +15,6 @@ class AddApplicantController extends Controller
 {
     private ApplicantModel $applicantModel;
 
-    /**
-     * Instantiates AddApplicantPageController.
-     *
-     * @param ApplicantModel $applicantModel userModel object dependency
-     */
     public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
@@ -29,21 +24,14 @@ class AddApplicantController extends Controller
      * Invoke gets data from new applicant form and stores it in the db.
      * If successful Insert returns success true with message of application saved.
      *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args The arguments array
-     *
-     * @return Response, will return the data from successfulRegister and the statusCode, via Json.
      * @throws Exception
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
 
         $data = ['success' => false, 'msg' => 'Application not saved'];
         $statusCode = 500;
         $newApplicationData = $request->getParsedBody();
-
-
 
         if ($newApplicationData === null) {
             return $response->withStatus(400);

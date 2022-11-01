@@ -13,16 +13,12 @@ class AddContactController extends Controller
 {
     private HiringPartnerModel $hiringPartnerModel;
 
-    /**
-     * AddContactController constructor.
-     * @param $hiringPartnerModel
-     */
     public function __construct(HiringPartnerModel $hiringPartnerModel)
     {
         $this->hiringPartnerModel = $hiringPartnerModel;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $newContact = $request->getParsedBody();
         $data = [
