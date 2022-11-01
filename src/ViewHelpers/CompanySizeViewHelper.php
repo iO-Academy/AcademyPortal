@@ -4,7 +4,7 @@ namespace Portal\ViewHelpers;
 
 class CompanySizeViewHelper
 {
-    public static function companySizeDropdown($data)
+    public static function companySizeDropdown($data): string
     {
         $companySizeDropdown = '';
         if (!empty($data['companySize'])) {

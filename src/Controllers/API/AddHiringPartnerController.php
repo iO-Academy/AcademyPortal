@@ -12,14 +12,8 @@ use Portal\Models\HiringPartnerModel;
 
 class AddHiringPartnerController extends Controller
 {
-    public $hiringPartnerModel;
-    public $renderer;
+    public HiringPartnerModel $hiringPartnerModel;
 
-    /**
-     * AddHiringPartnerController constructor.
-     *
-     * @param $hiringPartnerModel
-     */
     public function __construct(HiringPartnerModel $hiringPartnerModel)
     {
         $this->hiringPartnerModel = $hiringPartnerModel;
@@ -28,14 +22,8 @@ class AddHiringPartnerController extends Controller
 
     /**
      * Uses hiring partner model to add hiring partners with a try/catch for any errors.
-     *
-     * @param Request $request HTTP request
-     * @param Response $response HTTP response
-     * @param array $args
-     *
-     * @return Response HTTP response with redirect
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $newHiringPartner = $request->getParsedBody();
         $data = [

@@ -59,7 +59,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     /**
      * Returns private properties from object.
      *
-     * @return array|mixed
+     * @return array
      */
     public function jsonSerialize(): array
     {
@@ -330,7 +330,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     }
 
     /**
-     * @return mixed
+     * @return ?string
      */
     public function getGithubUsername(): ?string
     {
@@ -338,7 +338,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     }
 
     /**
-     * @return mixed
+     * @return ?string
      */
     public function getPortfolioUrl(): ?string
     {
@@ -346,7 +346,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     }
 
     /**
-     * @return mixed
+     * @return ?string
      */
     public function getPleskHostingUrl(): ?string
     {
@@ -354,7 +354,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     }
 
     /**
-     * @return mixed
+     * @return ?string
      */
     public function getGithubEducationLink(): ?string
     {
@@ -362,7 +362,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     }
 
     /**
-     * @return mixed
+     * @return ?string
      */
     public function getAdditionalNotes(): ?string
     {
@@ -370,7 +370,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     }
 
     /**
-     * @return mixed
+     * @return ?int
      */
     public function getChosenCourseId(): ?int
     {
@@ -378,7 +378,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     }
 
     /**
-     * @return mixed
+     * @return ?string
      */
     public function getChosenCourseDatePretty(): ?string
     {

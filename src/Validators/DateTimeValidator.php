@@ -11,9 +11,6 @@ class DateTimeValidator
     /**
      * Sanitise as a date in YYYY-MM-DD format
      *
-     * @param string $date
-     *
-     * @return string|null
      * @throws \Exception
      */
     public static function validateDate(?string $date): ?string

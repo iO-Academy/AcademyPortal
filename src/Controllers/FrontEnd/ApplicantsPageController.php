@@ -11,19 +11,11 @@ use Portal\Models\StageModel;
 
 class ApplicantsPageController extends Controller
 {
-    private $renderer;
-    private $applicantModel;
-    private $stageModel;
-    private $numberOfApplicantsPerPage = 20;
+    private PhpRenderer $renderer;
+    private StageModel $stageModel;
+    private ApplicantModel $applicantModel;
+    private int $numberOfApplicantsPerPage = 20;
 
-    /**
-     * ApplicantsPageController constructor.
-     *
-     * @param PhpRenderer $renderer
-     *
-     * @param StageModel $stageModel
-     * @param ApplicantModel $applicantModel
-     */
     public function __construct(PhpRenderer $renderer, StageModel $stageModel, ApplicantModel $applicantModel)
     {
         $this->renderer = $renderer;
@@ -33,14 +25,8 @@ class ApplicantsPageController extends Controller
 
     /**
      * Renders applicant data on the front end in applicants.phtml.
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     *
-     * @return \Psr\Http\Message\ResponseInterface.
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $_SESSION['name'] = $request->getQueryParams()['name'] ?? $_SESSION['name'] ?? '%';

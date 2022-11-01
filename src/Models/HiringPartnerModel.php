@@ -2,19 +2,19 @@
 
 namespace Portal\Models;
 
+use PDO;
+
 class HiringPartnerModel
 {
-    private $db;
+    private PDO $db;
 
-    public function __construct(\PDO $db)
+    public function __construct(PDO $db)
     {
         $this->db = $db;
     }
 
-    /** Inserts the properties to the database
-     *
-     * @param array $company Sanitise and validate the hiring partner properties as required.
-     * @return bool
+    /**
+     * Inserts the properties to the database
      */
     public function addHiringPartner(array $company): bool
     {
@@ -46,8 +46,6 @@ class HiringPartnerModel
 
     /**
      * Gets all the contacts information
-     *
-     * @return array array with the info
      */
     public function getContactsByCompany(int $companyId): array
     {
@@ -61,7 +59,7 @@ class HiringPartnerModel
             FROM `hiring_partner_contacts`
             WHERE `hiring_partner_company_id` = :id
             ORDER BY `is_primary_contact` DESC;");
-        $query->bindParam(':id', $companyId, \PDO::PARAM_INT);
+        $query->bindParam(':id', $companyId, PDO::PARAM_INT);
         $query->execute();
         return $query->fetchAll();
     }
@@ -74,7 +72,7 @@ class HiringPartnerModel
                 SET `is_primary_contact` = 0 
                 WHERE `hiring_partner_company_id` = :id;");
 
-            $resetPrimaryQuery->bindParam(':id', $contact['hiringPartnerCompanyId'], \PDO::PARAM_INT);
+            $resetPrimaryQuery->bindParam(':id', $contact['hiringPartnerCompanyId'], PDO::PARAM_INT);
             $resetPrimaryQuery->execute();
         }
         $query = $this->db->prepare("INSERT INTO `hiring_partner_contacts`(
@@ -94,20 +92,19 @@ class HiringPartnerModel
             :primaryContact
             );");
 
-        $query->bindParam(':contactName', $contact['contactName'], \PDO::PARAM_STR);
-        $query->bindParam(':contactEmail', $contact['contactEmail'], \PDO::PARAM_STR);
-        $query->bindParam(':jobTitle', $contact['jobTitle'], \PDO::PARAM_STR);
-        $query->bindParam(':contactPhone', $contact['contactPhone'], \PDO::PARAM_STR);
-        $query->bindParam(':hiringPartnerCompanyId', $contact['contactCompanyId'], \PDO::PARAM_INT);
-        $query->bindParam(':primaryContact', $contact['contactIsPrimary'], \PDO::PARAM_INT);
+        $query->bindParam(':contactName', $contact['contactName'], PDO::PARAM_STR);
+        $query->bindParam(':contactEmail', $contact['contactEmail'], PDO::PARAM_STR);
+        $query->bindParam(':jobTitle', $contact['contactJobTitle'], PDO::PARAM_STR);
+        $query->bindParam(':contactPhone', $contact['contactPhone'], PDO::PARAM_STR);
+        $query->bindParam(':hiringPartnerCompanyId', $contact['contactCompanyId'], PDO::PARAM_INT);
+        $query->bindParam(':primaryContact', $contact['contactIsPrimary'], PDO::PARAM_INT);
         $success = $query->execute();
         $this->db->commit();
         return $success;
     }
 
-    /** Method does a query request that picks up the id and name to be displayed on the dropdown
-     *
-     * @return array
+    /**
+     * Method does a query request that picks up the id and name to be displayed on the dropdown
      */
     public function getCompanyName(): array
     {
@@ -116,9 +113,8 @@ class HiringPartnerModel
         return $query->fetchAll();
     }
 
-    /** Method does a query request that picks up the id and size to be displayed on the dropdown
-     *
-     * @return array
+    /**
+     * Method does a query request that picks up the id and size to be displayed on the dropdown
      */
     public function getCompanySize(): array
     {
@@ -129,8 +125,6 @@ class HiringPartnerModel
 
     /**
      * Gets all the hiring partners information
-     *
-     * @return array array with the info
      */
     public function getHiringPartners(): array
     {
@@ -151,8 +145,6 @@ class HiringPartnerModel
 
     /**
      * Gets a single hiring partners information
-     *
-     * @return array array with the info
      */
     public function getDetailsByCompany(int $id): array
     {
@@ -166,10 +158,6 @@ class HiringPartnerModel
 
     /**
      * Gets a single hiring partner's information
-     *
-     * @param int Hiring Partner Id
-     *
-     * @return array hiring partner data
      */
     public function getHiringPartnerById(int $id): array
     {

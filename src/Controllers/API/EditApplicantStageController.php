@@ -3,23 +3,23 @@
 namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
-use Portal\Interfaces\ApplicantModelInterface;
+use Portal\Models\ApplicantModel;
 use Portal\Models\StageModel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 class EditApplicantStageController extends Controller
 {
-    private $applicantModel;
-    private $stageModel;
+    private ApplicantModel $applicantModel;
+    private StageModel $stageModel;
 
-    public function __construct(ApplicantModelInterface $applicantModel, StageModel $stageModel)
+    public function __construct(ApplicantModel $applicantModel, StageModel $stageModel)
     {
         $this->applicantModel = $applicantModel;
         $this->stageModel = $stageModel;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $applicantId = (int) $request->getQueryParams()['applicantId'];

@@ -7,7 +7,7 @@ use Portal\Entities\CourseEntity;
 
 class CourseModel
 {
-    private $db;
+    private PDO $db;
 
     public function __construct(PDO $db)
     {
@@ -16,8 +16,6 @@ class CourseModel
 
     /**
      * Get all courses from the database
-     *
-     * @return array An array of Courses
      */
     public function getAllCourses(): array
     {
@@ -38,8 +36,7 @@ class CourseModel
     /**
      * Add a new course to the database
      *
-     * @param array $newCourse
-     * @return boolean True if operation succeeded
+     * @return string ID of the course inserted
      */
     public function addCourse(array $newCourse): string
     {
@@ -78,10 +75,6 @@ class CourseModel
 
     /**
      * Updates the trainers and courses relationships using the link table
-     *
-     * @param array $trainerIds
-     * @param int $courseId
-     * @return void
      */
     public function addTrainersToCourse(array $trainerIds, int $courseId): void
     {
@@ -99,8 +92,6 @@ class CourseModel
 
     /**
      * Gets all trainers linked to course Id
-     *
-     * @return array
      */
     public function getTrainersAndCourseId(): array
     {

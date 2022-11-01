@@ -6,7 +6,7 @@ use PDO;
 
 class EventModel
 {
-    private $db;
+    private PDO $db;
 
     public function __construct(PDO $db)
     {
@@ -15,8 +15,6 @@ class EventModel
 
     /**
      * Get all events from the database
-     *
-     * @return array An array of Events
      */
     public function getAllEvents(): array
     {
@@ -33,8 +31,6 @@ class EventModel
 
     /**
      * Get future events from the database
-     *
-     * @return array An array of Events
      */
     public function getFutureEvents(): array
     {
@@ -52,8 +48,6 @@ class EventModel
 
     /**
      * Get past events from the database
-     *
-     * @return array An array of Events
      */
     public function getPastEvents(): array
     {
@@ -71,8 +65,6 @@ class EventModel
 
     /**
      * Get all event categories from the database
-     *
-     * @return array An array of event categories
      */
     public function getEventCategories(): array
     {
@@ -84,9 +76,6 @@ class EventModel
 
     /**
      * Add a new event to the database
-     *
-     * @param array $newEvent
-     * @return boolean True if operation succeeded
      */
     public function addEvent(array $newEvent): bool
     {
@@ -124,8 +113,7 @@ class EventModel
     /**
      * Search future events from the database
      *
-     * @param string of validated search term
-     * @return array An array of Events based on input search criteria
+     * @param string $searchTerm of validated search term
      */
     public function searchFutureEvents(string $searchTerm): array
     {
@@ -143,9 +131,6 @@ class EventModel
 
     /**
      * Search past events from the database
-     *
-     * @param string of validated search term
-     * @return array An array of Events based on input search criteria
      */
     public function searchPastEvents(?string $searchTerm): array
     {
@@ -163,10 +148,8 @@ class EventModel
     /**
      * Gets events based on a specific category ID from the database
      *
-     * @param string of category ID
-     * @param mixed optional parameter indicating how many previous X months from the current date and the future to be
-     * retrieved, defaults to all dates
-     * @return array An array of Events based on category ID and previous X months from current date.
+     * @param int $previousMonths optional parameter indicating how many previous X months from the current date and
+     * the future to be retrieved, defaults to all dates
      */
 
     public function getEventsByCategoryId(string $categoryId, int $previousMonths = 0): array
@@ -186,9 +169,6 @@ class EventModel
 
     /**
      * Gets upcoming events based on an optional categoryId and searchQuery
-     * @param string|null $categoryId
-     * @param string $searchQuery
-     * @return array
      */
     public function getUpcomingEventsByCategoryIdAndSearch(?string $categoryId = null, ?string $searchQuery = ''): array
     {
@@ -214,9 +194,6 @@ class EventModel
 
     /**
      * Gets past events based on an optional categoryId and searchQuery
-     * @param string|null $categoryId
-     * @param string|null $searchQuery
-     * @return array
      */
     public function getPastEventsByCategoryIdAndSearch(?string $categoryId = null, ?string $searchQuery = ''): array
     {
@@ -241,15 +218,7 @@ class EventModel
     }
 
     /**
-     *Adds event id, hiring partner id and people attending to database
-     *
-     * @param int $hiringPartner id of the hiring partner selected
-     *
-     * @param int $event the id of the event selected
-     *
-     * @param int $attendees number of people attending from that hiring partner
-     *
-     * @return bool True if operation succeeds
+     * Adds event id, hiring partner id and people attending to database
      */
     public function addHPToEvent(int $hiringPartner, int $event, $attendees = null): bool
     {
@@ -270,12 +239,6 @@ class EventModel
 
     /**
      * checks that the hiring partner has successfully been linked to the event in the database
-     *
-     * @param int $hiringPartner hiring partner id
-     *
-     * @param int $event event id
-     *
-     * @return boolean indicating whether a hiring partner has successfully been linked to the event in the database
      */
     public function checkLinkHP(int $hiringPartner, int $event): bool
     {
@@ -295,10 +258,6 @@ class EventModel
 
     /**
      * Pulls hiring partner ids from database where they link to a specific event id
-     *
-     * @param int $eventId the id of the event
-     *
-     * @return array the array of hiring partner ids
      */
     public function hpIdsByEventId(int $eventId): array
     {
@@ -313,12 +272,6 @@ class EventModel
 
     /**
      * Deletes hiring partner from an event.
-     *
-     * @param int $eventId the id of the event
-     *
-     * @param int $hiringPartnerId the id of the hiring partner
-     *
-     * @return bool true if successful, else false.
      */
     public function removeHiringPartnerFromEvent(int $eventId, int $hiringPartnerId): bool
     {

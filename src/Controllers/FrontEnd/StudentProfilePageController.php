@@ -11,15 +11,11 @@ use Portal\Models\ApplicationFormModel;
 
 class StudentProfilePageController extends Controller
 {
-    private $renderer;
-    private $applicantModel;
+    private PhpRenderer $renderer;
+    private ApplicantModel $applicantModel;
 
     /**
      * DisplayStudentPageController constructor.
-     *
-     * @param PhpRenderer $renderer
-     *
-     * @param ApplicantModel $applicantModel
      */
     public function __construct(PhpRenderer $renderer, ApplicantModel $applicantModel)
     {
@@ -29,14 +25,8 @@ class StudentProfilePageController extends Controller
 
     /**
      * Renders applicant data on the front end in studentProfile.phtml.
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     *
-     * @return \Psr\Http\Message\ResponseInterface.
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $params['id'] = $args['id'];
         $params['applicant'] = $this->applicantModel->getApplicantById($params['id']);

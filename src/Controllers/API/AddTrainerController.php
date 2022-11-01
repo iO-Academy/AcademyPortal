@@ -11,13 +11,8 @@ use Portal\Models\TrainerModel;
 
 class AddTrainerController extends Controller
 {
-    private $trainerModel;
+    private TrainerModel $trainerModel;
 
-    /**
-     * AddTrainerController constructor
-     *
-     * @param TrainerModel $courseModel
-     */
     public function __construct(TrainerModel $trainerModel)
     {
         $this->trainerModel = $trainerModel;
@@ -25,12 +20,6 @@ class AddTrainerController extends Controller
 
     /**
      * Get user input and send to TrainerModel to add to db.
-     *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     *
-     * @return Response
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {

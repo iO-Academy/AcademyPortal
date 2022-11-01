@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class AddHiringPartnerToEventController extends Controller
 {
-    private $eventModel;
+    private EventModel $eventModel;
 
     public function __construct(EventModel $eventModel)
     {
@@ -18,14 +18,7 @@ class AddHiringPartnerToEventController extends Controller
 
     /**
      * Calls a method to send hiring partner id, event id and number of attendees
-     *
      * and responds with Json success message
-     *
-     * @param Request $request HTTP request
-     * @param Response $response HTTP response
-     * @param array $args
-     *
-     * @return Response returns Json success/failure message
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
@@ -52,7 +45,7 @@ class AddHiringPartnerToEventController extends Controller
                 $responseData['message'] = 'Hiring partner already linked.';
                 $statusCode = 200;
             }
-            if ($result) {
+            if (isset($result) && $result) {
                 $responseData['success'] = true;
                 $responseData['message'] = 'Hiring Partner linked successfully.';
                 $statusCode = 200;

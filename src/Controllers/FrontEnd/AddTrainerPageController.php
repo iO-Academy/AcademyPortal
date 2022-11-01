@@ -10,32 +10,18 @@ use Slim\Views\PhpRenderer;
 
 class AddTrainerPageController extends Controller
 {
-    private $renderer;
-    private $trainerModel;
+    private PhpRenderer $renderer;
 
-    /**
-     * Creates new instance of AddTrainerPageController
-     *
-     * @param PhpRenderer $renderer
-     * @param TrainerModel $trainerModel
-     */
-    public function __construct(PhpRenderer $renderer, TrainerModel $trainerModel)
+    public function __construct(PhpRenderer $renderer)
     {
         $this->renderer = $renderer;
-        $this->trainerModel = $trainerModel;
     }
 
     /**
      * Checks for logged-in status,
-     *
      * and returns rendered landing screen for add trainer page
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             return $this->renderer->render($response, 'addTrainer.phtml');

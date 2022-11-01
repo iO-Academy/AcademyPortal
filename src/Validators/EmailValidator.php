@@ -7,12 +7,9 @@ class EmailValidator
     /**
      * Sanitise the applicant's email from the applicant's data.
      *
-     * @param string $email
-     *
-     * @return string $email, returns valid email.
-     * @return bool, returns false if invalid email.
+     * @return string|bool $email returns valid email or false.
      */
-    public static function validateEmail($email)
+    public static function validateEmail(string $email)
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }

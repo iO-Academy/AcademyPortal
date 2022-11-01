@@ -10,22 +10,14 @@ use Slim\Views\PhpRenderer;
 
 class TeamPickerPageController extends Controller
 {
-    private $renderer;
-    private $applicantModel;
+    private PhpRenderer $renderer;
 
-    public function __construct(PhpRenderer $renderer, ApplicantModel $applicantModel)
+    public function __construct(PhpRenderer $renderer)
     {
         $this->renderer = $renderer;
-        $this->applicantModel = $applicantModel;
     }
 
-    /**
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
-     */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             return $this->renderer->render($response, 'teamPicker.phtml', $args);

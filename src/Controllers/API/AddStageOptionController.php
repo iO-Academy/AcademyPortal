@@ -11,13 +11,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class AddStageOptionController extends Controller
 {
-    private $stageModel;
+    private StageModel $stageModel;
 
-    /** Constructor assigns StageModel to this object
-     *
-     * AddStageOptionController constructor.
-     * @param StageModel $stageModel
-     */
     public function __construct(StageModel $stageModel)
     {
         $this->stageModel = $stageModel;
@@ -26,12 +21,9 @@ class AddStageOptionController extends Controller
     /** On invoke, check request input has data, then validate the data,
      * then create new OptionsEntity to send to DB via StageModel
      *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
      * @return Response - with json and status 200/400/500 for success/client error/server error
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $formOptions = $request->getParsedBody();
 
@@ -70,5 +62,9 @@ class AddStageOptionController extends Controller
             }
             return $this->respondWithJson($response, $data, $statusCode);
         }
+
+        $_SESSION['loggedIn'] = false;
+        $data['message'] = 'Unauthorized';
+        return $this->respondWithJson($response, $data, 401);
     }
 }

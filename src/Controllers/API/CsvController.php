@@ -6,6 +6,7 @@ use Portal\Abstracts\Controller;
 use Portal\Models\ApplicantModel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Views\PhpRenderer;
 
 class CsvController extends Controller
 {
@@ -13,15 +14,15 @@ class CsvController extends Controller
     private const VALID_FILE_TYPE = 'text/csv';
 
     private ApplicantModel $applicantModel;
-    private $renderer;
+    private PhpRenderer $renderer;
 
-    public function __construct($applicantModel, $renderer)
+    public function __construct($applicantModel, PhpRenderer $renderer)
     {
         $this->applicantModel = $applicantModel;
         $this->renderer = $renderer;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if (
             $this->validateFile(

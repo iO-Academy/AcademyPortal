@@ -2,29 +2,21 @@
 
 namespace Portal\Models;
 
-use phpDocumentor\Reflection\Types\Boolean;
+use PDO;
 use Portal\Entities\OptionsEntity;
 use Portal\Entities\StageEntity;
 
-/**
- *
- */
 class StageModel
 {
-    private $db;
+    private PDO $db;
 
-    /** Constructor assigns db PDO to this object
-     *
-     * @param \PDO $db
-     */
-    public function __construct(\PDO $db)
+    public function __construct(PDO $db)
     {
         $this->db = $db;
     }
 
-    /** Queries the database and returns the next stage id in an array
-     * @param int $currentStageId
-     * @return array
+    /**
+     * Queries the database and returns the next stage id in an array
      */
     public function getNextStageId(int $currentStageId): array
     {
@@ -36,9 +28,8 @@ class StageModel
         return $result;
     }
 
-    /** Queries the database and returns the highest current stage number as an integer
-     *
-     * @return int
+    /**
+     * Queries the database and returns the highest current stage number as an integer
      */
     public function getHighestOrderNo(): int
     {
@@ -48,24 +39,21 @@ class StageModel
         return ($result['MAX(`order`)'] ?? 0);
     }
 
-    /** Queries the db and returns an array with one result stored under 'stagesCount'
-     *
-     * @return array
+    /**
+     * Queries the db and returns an array with one result stored under 'stagesCount'
      */
     public function stagesCount(): array
     {
         $query = $this->db->prepare(
             "SELECT COUNT(`id`) AS 'stagesCount' FROM `stages` WHERE `deleted` = 0;"
         );
-        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
         $query->execute();
         return $query->fetch();
     }
 
-    /** Adds new stage to database and returns a boolean based on success or failure
-     *
-     * @param array $stageEntity
-     * @return bool
+    /**
+     * Adds new stage to database and returns a boolean based on success or failure
      */
     public function createStage(array $stageEntity): bool
     {
@@ -84,8 +72,6 @@ class StageModel
 
     /**
      * Gets all the stage titles from the database
-     *
-     * @return array
      */
     public function getStageTitles(): array
     {
@@ -98,9 +84,7 @@ class StageModel
     }
 
     /**
-     *  Gets all the stages that are not deleted from stages table sorted by order
-     *
-     * @return array of stage entities
+     * Gets all the stages that are not deleted from stages table sorted by order
      */
     public function getAllStages(): array
     {
@@ -115,7 +99,7 @@ class StageModel
                 GROUP BY `st`.`id`
                 ORDER BY `st`.`order`;"
         );
-        $query->setFetchMode(\PDO::FETCH_CLASS, StageEntity::class);
+        $query->setFetchMode(PDO::FETCH_CLASS, StageEntity::class);
         $query->execute();
         $stages = $query->fetchAll();
 
@@ -127,7 +111,7 @@ class StageModel
                 AND `a`.`deleted` = '0'
                 GROUP BY `op`.`id`"
         );
-        $query->setFetchMode(\PDO::FETCH_CLASS, OptionsEntity::class);
+        $query->setFetchMode(PDO::FETCH_CLASS, OptionsEntity::class);
         $query->execute();
         $options = $query->fetchAll();
 
@@ -144,10 +128,6 @@ class StageModel
     }
 
     /** Sets the 'deleted' flag to '1' and 'order' value to '0' for a record with a given id.
-     *
-     * @param integer $id
-     *
-     * @return boolean for success or failure of the query
      */
     public function deleteStage(int $id): bool
     {
@@ -158,16 +138,12 @@ class StageModel
 
     /**
      * Retrieves a stage with the specified id
-     *
-     * @param integer $id
-     * @return StageEntity object
-     *
      */
     public function getStageById(int $id): StageEntity
     {
         $query = $this->db->prepare('SELECT `id`, `title`, `order`, `deleted` FROM `stages` WHERE `id`=:id');
 
-        $query->setFetchMode(\PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
+        $query->setFetchMode(PDO::FETCH_CLASS, 'Portal\Entities\StageEntity');
         $query->bindParam(':id', $id);
         $query->execute();
         $stage = $query->fetch();
@@ -178,15 +154,12 @@ class StageModel
 
     /**
      * Retrieves a stage title by the specified id
-     *
-     * @param int $id
-     * @return array
      */
     public function getStageTitleById(int $id): array
     {
         $query = $this->db->prepare('SELECT `title` FROM `stages` WHERE `id`= :id');
 
-        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
         $query->bindParam(':id', $id);
         $query->execute();
         $stageTitle = $query->fetch();
@@ -195,10 +168,7 @@ class StageModel
     }
 
     /**
-     * Updates the 'title' value of a record with a given id.
-     * @param int $id
-     * @param string $newTitle
-     * @return bool
+     * Updates the 'title' value of a record with a given id
      */
     public function updateStage(
         int $id,
@@ -253,9 +223,6 @@ class StageModel
 
     /**
      * Creates a new option in the options table.
-     * @param string $option
-     * @param int $stageId
-     * @return bool
      */
     public function createOption(string $option, int $stageId): bool
     {
@@ -267,9 +234,7 @@ class StageModel
 
     /**
      * Updates the 'option' value of an entry in the options table with a given id.
-     * @param string $option
-     * @param int $optionId
-     * @return bool
+     * @param array{'optionId': int, 'option': string} $option
      */
     public function updateOption(array $option): bool
     {
@@ -281,8 +246,6 @@ class StageModel
 
     /**
      * Deletes (soft delete) the 'option' value of an entry in the options table with a given id.
-     * @param int $optionId
-     * @return bool
      */
     public function deleteOption(int $optionId): bool
     {
@@ -294,9 +257,6 @@ class StageModel
     /**
      * getOptionsByStageId - given a stage ID number, queries the DB to return all options which are assigned to that
      * stage
-     *
-     * @param integer $stageId The id of the stage whose options are required
-     * @return array an array of all options assigned to the listed stage
      */
     public function getOptionsByStageId(int $stageId): array
     {
@@ -310,8 +270,6 @@ class StageModel
 
     /**
      * Gets all the ids and options from the options table in the db
-     *
-     * @return array
      */
     public function getStageOptions(): array
     {
@@ -322,8 +280,6 @@ class StageModel
 
     /**
      * Deletes (soft delete) all the 'options' of a stage with a given id.
-     * @param int $stageId
-     * @return bool
      */
     public function deleteAllOptions(int $stageId): bool
     {

@@ -8,9 +8,6 @@ class TrainerCheckboxViewHelper
 {
     /**
      * take list of trainers and foreach to display them as individual checkbox items
-     *
-     * @param array $trainers
-     * @return string
      */
     public static function displayTrainerCheckbox(array $trainers): string
     {

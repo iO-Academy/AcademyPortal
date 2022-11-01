@@ -20,9 +20,6 @@ class EventValidator
 
     /**
      * Make sure that the category exists
-     *
-     * @param int $category
-     * @param array $categoryList
      */
     public static function validateCategoryExists(int $category, array $categoryList): bool
     {

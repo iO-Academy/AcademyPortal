@@ -16,7 +16,7 @@ class GetCsvFormController extends Controller
         $this->renderer = $renderer;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         return $this->renderer->render($response, 'csvUpload.phtml');
     }

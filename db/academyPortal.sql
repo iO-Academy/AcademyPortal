@@ -44,6 +44,7 @@ CREATE TABLE `applicants` (
   `backgroundInfoId` varchar(1) DEFAULT NULL,
   `profile_password` varchar(68) DEFAULT '',
   `gender` varchar(10) DEFAULT NULL,
+  `cohortId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -68,6 +69,7 @@ VALUES
 	(24,'Creighton Gebbie','cgebbiee@ucla.edu','07866296968','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',4,'0','1','0','',6,NULL,'2021-11-25 16:47:16',0,'3','$2y$10$F/he.CMeTqS4ZJqJIOluXesm84hvbYqQm8JZxKoQYxv.pniuXNQxy',NULL),
 	(25,'Jacinthe Towse','jtowsef@godaddy.com','07528968799','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',2,'1','1','1','',1,NULL,'2021-11-25 16:47:57',0,'3','',NULL),
 	(26,'Audra Snyder','tagywove@mailinator.com','+1 (684) 307-1038','Culpa deserunt labo','Facere modi quasi mo',2,'1','0','0','Maiores voluptatem e',1,NULL,'2022-09-28 10:04:11',0,'4','','2');
+
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -563,34 +565,6 @@ VALUES
 	(6,'Fax',0);
 
 /*!40000 ALTER TABLE `hear_about` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table hearAbout
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `hearAbout`;
-
-CREATE TABLE `hearAbout` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `hearAbout` varchar(150) DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-LOCK TABLES `hearAbout` WRITE;
-/*!40000 ALTER TABLE `hearAbout` DISABLE KEYS */;
-
-INSERT INTO `hearAbout` (`id`, `hearAbout`, `deleted`)
-VALUES
-	(1,'Google',0),
-	(2,'Newspaper',0),
-	(3,'Back of the toilet door',0),
-	(4,'Telepathy',0),
-	(5,'North Korea',0),
-	(6,'Yoda',0);
-
-/*!40000 ALTER TABLE `hearAbout` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

@@ -10,12 +10,8 @@ class StagesPageViewHelper
      * Concatenates new stages table ready to be output.
      * Runs an if statement to check whether or not there are options in a stage.
      * If there are options, the delete button is disabled.
-     *
-     * @param $stages
-     *
-     * @return string $result, returns table of stages
      */
-    public static function displayStages($stages)
+    public static function displayStages(array $stages): string
     {
         $result = '';
         $counter = 1;

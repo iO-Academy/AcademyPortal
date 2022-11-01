@@ -11,20 +11,12 @@ use Slim\Views\PhpRenderer;
 
 class AddCoursePageController extends Controller
 {
-    private $renderer;
-    private $courseModel;
-    private $trainerModel;
+    private PhpRenderer $renderer;
+    private TrainerModel $trainerModel;
 
-    /**
-     * Creates new instance of DisplayAddCoursesController
-     *
-     * @param PhpRenderer $renderer
-     * @param courseModel $courseModel
-     */
-    public function __construct(PhpRenderer $renderer, CourseModel $courseModel, TrainerModel $trainerModel)
+    public function __construct(PhpRenderer $renderer, TrainerModel $trainerModel)
     {
         $this->renderer = $renderer;
-        $this->courseModel = $courseModel;
         $this->trainerModel = $trainerModel;
     }
 
@@ -32,13 +24,8 @@ class AddCoursePageController extends Controller
      * Checks for logged-in status,
      * gets courses categories from DB
      * and returns rendered landing screen for Courses page
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $args['trainers'] = $this->trainerModel->getAllTrainers();

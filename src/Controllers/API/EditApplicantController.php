@@ -4,6 +4,7 @@ namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
 use Portal\Interfaces\ApplicantModelInterface;
+use Portal\Models\ApplicantModel;
 use Portal\Sanitisers\ApplicantSanitiser;
 use Portal\Validators\ApplicantValidator;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -11,18 +12,14 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class EditApplicantController extends Controller
 {
-    private $applicantModel;
+    private ApplicantModel $applicantModel;
 
-    /**
-     * EditApplicantController constructor.
-     * @param $applicantModel
-     */
-    public function __construct(ApplicantModelInterface $applicantModel)
+    public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $data = ['success' => false, 'msg' => 'Application not saved'];

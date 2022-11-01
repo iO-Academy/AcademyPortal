@@ -2,19 +2,19 @@
 
 namespace Portal\Models;
 
+use PDO;
+
 class ApplicationFormModel
 {
-    private $db;
+    private PDO $db;
 
-    public function __construct(\PDO $db)
+    public function __construct(PDO $db)
     {
         $this->db = $db;
     }
 
     /**
      * Gets the courses data needed for the application form
-     *
-     * @return array $result is data from courses table
      */
     public function getCohorts(): array
     {
@@ -25,8 +25,6 @@ class ApplicationFormModel
 
     /**
      * Gets all the hear about options from the database.
-     *
-     * @return array $result is data from hearAbout fields.
      */
     public function getHearAbout(): array
     {
@@ -38,8 +36,6 @@ class ApplicationFormModel
 
     /**
      * Gets all the gender options from the database.
-     *
-     * @return array $result is data from gender fields.
      */
     public function getGenders(): array
     {
@@ -49,9 +45,6 @@ class ApplicationFormModel
         return $result;
     }
 
-    /**
-     * @return array
-     */
     public function getBackgroundInfo(): array
     {
         $query = $this->db->prepare('SELECT `id`, `backgroundInfo` FROM `background_info`;');
