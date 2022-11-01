@@ -568,34 +568,6 @@ VALUES
 UNLOCK TABLES;
 
 
-# Dump of table hearAbout
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `hearAbout`;
-
-CREATE TABLE `hearAbout` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `hearAbout` varchar(150) DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-LOCK TABLES `hearAbout` WRITE;
-/*!40000 ALTER TABLE `hearAbout` DISABLE KEYS */;
-
-INSERT INTO `hearAbout` (`id`, `hearAbout`, `deleted`)
-VALUES
-	(1,'Google',0),
-	(2,'Newspaper',0),
-	(3,'Back of the toilet door',0),
-	(4,'Telepathy',0),
-	(5,'North Korea',0),
-	(6,'Yoda',0);
-
-/*!40000 ALTER TABLE `hearAbout` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
 # Dump of table hiring_partner_companies
 # ------------------------------------------------------------
 
