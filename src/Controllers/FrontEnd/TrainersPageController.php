@@ -10,14 +10,11 @@ use Slim\Views\PhpRenderer;
 
 class TrainersPageController extends Controller
 {
-    private $renderer;
-    private $trainerModel;
+    private PhpRenderer $renderer;
+    private TrainerModel $trainerModel;
 
     /**
      * Creates new instance of TrainersPageController
-     *
-     * @param PhpRenderer $renderer
-     * @param TrainerModel $trainerModel
      */
     public function __construct(PhpRenderer $renderer, TrainerModel $trainerModel)
     {

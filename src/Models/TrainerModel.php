@@ -2,18 +2,19 @@
 
 namespace Portal\Models;
 
+use PDO;
 use Portal\Entities\TrainerEntity;
 
 class TrainerModel
 {
-    private $db;
+    private PDO $db;
 
     /**
      * Constructor assigns db PDO to this object
      *
-     * @param \PDO $db
+     * @param PDO $db
      */
-    public function __construct(\PDO $db)
+    public function __construct(PDO $db)
     {
         $this->db = $db;
     }
@@ -21,7 +22,7 @@ class TrainerModel
     /**
      * Queries the db and returns an array of trainers
      *
-     * @param \PDO $db
+     * @param PDO $db
      * @return array
      */
     public function getAllTrainers(): array
@@ -29,7 +30,7 @@ class TrainerModel
         $query = $this->db->prepare(
             "SELECT `id`, `name`, `email`, `notes`, `deleted` FROM `trainers`;"
         );
-        $query->setFetchMode(\PDO::FETCH_CLASS, TrainerEntity::class);
+        $query->setFetchMode(PDO::FETCH_CLASS, TrainerEntity::class);
         $query->execute();
         return $query->fetchAll();
     }
@@ -37,7 +38,7 @@ class TrainerModel
     /**
      * Add a new trainer to the database
      *
-     * @param \PDO $db
+     * @param PDO $db
      * @param array $newTrainer
      * @return boolean
      */
@@ -56,7 +57,7 @@ class TrainerModel
     /**
      * Updates deleted field to 1
      *
-     * @param \PDO $db
+     * @param PDO $db
      * @param string $id
      * @return boolean
      */
@@ -75,7 +76,7 @@ class TrainerModel
             "SELECT `id`, `name`, `email`, `notes`, `deleted` FROM `trainers` WHERE `id` = :id; "
         );
         $query->bindParam(':id', $id);
-        $query->setFetchMode(\PDO::FETCH_CLASS, TrainerEntity::class);
+        $query->setFetchMode(PDO::FETCH_CLASS, TrainerEntity::class);
         return $query->execute();
     }
 }

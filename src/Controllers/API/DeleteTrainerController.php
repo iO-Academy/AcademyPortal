@@ -9,7 +9,7 @@ use Portal\Models\TrainerModel;
 
 class DeleteTrainerController extends Controller
 {
-    private $trainerModel;
+    private TrainerModel $trainerModel;
 
     /**
      * DeletetrainersController constructor saves an trainerModel

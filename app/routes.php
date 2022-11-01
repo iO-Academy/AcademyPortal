@@ -11,6 +11,7 @@ use Portal\Controllers\API\AddHiringPartnerController;
 use Portal\Controllers\API\AddHiringPartnerToEventController;
 use Portal\Controllers\API\AddStageController;
 use Portal\Controllers\API\AddStageOptionController;
+use Portal\Controllers\API\AddTrainerController;
 use Portal\Controllers\API\AddUserController;
 use Portal\Controllers\API\CsvController;
 use Portal\Controllers\API\DeleteAllStageOptionsController;
@@ -18,6 +19,7 @@ use Portal\Controllers\API\DeleteApplicantController;
 use Portal\Controllers\API\DeleteHiringPartnerFromEventController;
 use Portal\Controllers\API\DeleteStageController;
 use Portal\Controllers\API\DeleteStageOptionController;
+use Portal\Controllers\API\DeleteTrainerController;
 use Portal\Controllers\API\EditApplicantController;
 use Portal\Controllers\API\EditApplicantStageController;
 use Portal\Controllers\API\EditStageController;
@@ -42,6 +44,7 @@ use Portal\Controllers\FrontEnd\AddCoursePageController;
 use Portal\Controllers\FrontEnd\AddEventPageController;
 use Portal\Controllers\FrontEnd\AddHiringPartnerContactPageController;
 use Portal\Controllers\FrontEnd\AddHiringPartnerPageController;
+use Portal\Controllers\FrontEnd\AddTrainerPageController;
 use Portal\Controllers\FrontEnd\AdminPageController;
 use Portal\Controllers\FrontEnd\ApplicantsPageController;
 use Portal\Controllers\FrontEnd\CoursesPageController;
@@ -56,6 +59,7 @@ use Portal\Controllers\FrontEnd\StagesPageController;
 use Portal\Controllers\FrontEnd\StudentApplicationFormPageController;
 use Portal\Controllers\FrontEnd\StudentProfilePageController;
 use Portal\Controllers\FrontEnd\TeamPickerPageController;
+use Portal\Controllers\FrontEnd\TrainersPageController;
 use Slim\App;
 
 return function (App $app) {
@@ -81,10 +85,8 @@ return function (App $app) {
     $app->get('/addCourse', AddCoursePageController::class);
     $app->get('/studentApplicationForm', StudentApplicationFormPageController::class);
     $app->get('/csvForm', GetCsvFormController::class);
-
-    // TODO: fix these
-    $app->get('/trainers', 'TrainersPageController');
-    $app->get('/addTrainer', 'AddTrainerPageController');
+    $app->get('/trainers', TrainersPageController::class);
+    $app->get('/addTrainer', AddTrainerPageController::class);
 
     //API
     $app->get('/api/getStudents', GetStudentsController::class);
@@ -122,9 +124,6 @@ return function (App $app) {
     $app->post('/api/csvUpload', CsvController::class);
     $app->get('/api/getEventCategories', GetEventCategoriesController::class);
     $app->put('/api/aptitudeScore', AddAptitudeScoreController::class);
-
-
-    // TODO: fix these
-    $app->post('/api/addTrainer', 'AddTrainerController');
-    $app->delete('/api/deleteTrainer', 'DeleteTrainerController');
+    $app->post('/api/addTrainer', AddTrainerController::class);
+    $app->delete('/api/deleteTrainer', DeleteTrainerController::class);
 };
