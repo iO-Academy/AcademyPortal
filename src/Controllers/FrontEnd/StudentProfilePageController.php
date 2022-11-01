@@ -11,8 +11,8 @@ use Portal\Models\ApplicationFormModel;
 
 class StudentProfilePageController extends Controller
 {
-    private $renderer;
-    private $applicantModel;
+    private PhpRenderer $renderer;
+    private ApplicantModel $applicantModel;
 
     /**
      * DisplayStudentPageController constructor.

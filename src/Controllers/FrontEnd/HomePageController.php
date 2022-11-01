@@ -9,7 +9,7 @@ use Slim\Views\PhpRenderer;
 
 class HomePageController extends Controller
 {
-    private $renderer;
+    private PhpRenderer $renderer;
 
     public function __construct(PhpRenderer $renderer)
     {

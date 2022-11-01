@@ -10,8 +10,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class RegisterPageController extends Controller
 {
-    private $renderer;
-    private $password;
+    private PhpRenderer $renderer;
+    private RandomPasswordModel $password;
 
 
     /**

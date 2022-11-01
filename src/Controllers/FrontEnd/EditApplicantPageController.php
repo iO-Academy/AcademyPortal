@@ -12,9 +12,9 @@ use Portal\Models\StageModel;
 
 class EditApplicantPageController extends Controller
 {
-    private $applicantModel;
-    private $renderer;
-    private $stageModel;
+    private ApplicantModel $applicantModel;
+    private StageModel $stageModel;
+    private PhpRenderer $renderer;
 
     /**
      * EditApplicantPageController constructor.

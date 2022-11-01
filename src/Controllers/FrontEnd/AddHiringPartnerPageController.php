@@ -10,8 +10,8 @@ use Portal\Models\HiringPartnerModel;
 
 class AddHiringPartnerPageController extends Controller
 {
-    private $hiringPartnerModel;
-    private $renderer;
+    private PhpRenderer $renderer;
+    private HiringPartnerModel $hiringPartnerModel;
 
     /**
      * HiringPartnerPageController constructor.

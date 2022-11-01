@@ -11,9 +11,8 @@ use Slim\Views\PhpRenderer;
 
 class AddCoursePageController extends Controller
 {
-    private $renderer;
-    private $courseModel;
-    private $trainerModel;
+    private PhpRenderer $renderer;
+    private TrainerModel $trainerModel;
 
     /**
      * Creates new instance of DisplayAddCoursesController
@@ -21,10 +20,9 @@ class AddCoursePageController extends Controller
      * @param PhpRenderer $renderer
      * @param courseModel $courseModel
      */
-    public function __construct(PhpRenderer $renderer, CourseModel $courseModel, TrainerModel $trainerModel)
+    public function __construct(PhpRenderer $renderer, TrainerModel $trainerModel)
     {
         $this->renderer = $renderer;
-        $this->courseModel = $courseModel;
         $this->trainerModel = $trainerModel;
     }
 

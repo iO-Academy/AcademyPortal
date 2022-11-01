@@ -9,7 +9,7 @@ use Slim\Views\PhpRenderer;
 
 class AdminPageController extends Controller
 {
-    private $renderer;
+    private PhpRenderer $renderer;
 
     /**
      * AdminPageController constructor.

@@ -10,8 +10,8 @@ use Slim\Views\PhpRenderer;
 
 class CoursesPageController extends Controller
 {
-    private $renderer;
-    private $courseModel;
+    private PhpRenderer $renderer;
+    private CourseModel $courseModel;
 
     /**
      * Creates new instance of CoursesPageController

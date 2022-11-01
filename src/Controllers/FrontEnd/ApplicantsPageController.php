@@ -11,10 +11,10 @@ use Portal\Models\StageModel;
 
 class ApplicantsPageController extends Controller
 {
-    private $renderer;
-    private $applicantModel;
-    private $stageModel;
-    private $numberOfApplicantsPerPage = 20;
+    private PhpRenderer $renderer;
+    private StageModel $stageModel;
+    private ApplicantModel $applicantModel;
+    private int $numberOfApplicantsPerPage = 20;
 
     /**
      * ApplicantsPageController constructor.

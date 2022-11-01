@@ -10,8 +10,8 @@ use Portal\Models\StageModel;
 
 class StagesPageController extends Controller
 {
-    private $renderer;
-    private $stageModel;
+    private PhpRenderer $renderer;
+    private StageModel $stageModel;
 
     /**
      * StagesPageController constructor.

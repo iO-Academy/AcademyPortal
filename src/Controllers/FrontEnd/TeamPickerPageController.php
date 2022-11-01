@@ -10,13 +10,11 @@ use Slim\Views\PhpRenderer;
 
 class TeamPickerPageController extends Controller
 {
-    private $renderer;
-    private $applicantModel;
+    private PhpRenderer $renderer;
 
-    public function __construct(PhpRenderer $renderer, ApplicantModel $applicantModel)
+    public function __construct(PhpRenderer $renderer)
     {
         $this->renderer = $renderer;
-        $this->applicantModel = $applicantModel;
     }
 
     /**

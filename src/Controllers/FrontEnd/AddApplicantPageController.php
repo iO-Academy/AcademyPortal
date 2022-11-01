@@ -9,7 +9,7 @@ use Slim\Views\PhpRenderer;
 
 class AddApplicantPageController extends Controller
 {
-    private $renderer;
+    private PhpRenderer $renderer;
 
     /**
      * Will instantiate renderer.
