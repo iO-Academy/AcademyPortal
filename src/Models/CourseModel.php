@@ -25,7 +25,6 @@ class CourseModel
                 `courses`.`start_date` AS `startDate`,
                 `courses`.`end_date` AS `endDate`,
                 `name`,
-                `trainer`,
                 `notes`,
                 `in_person` AS `inPerson`,
                 `remote`
@@ -39,16 +38,15 @@ class CourseModel
     /**
      * Add a new course to the database
      *
-     * @param [type] $newCourse
+     * @param array $newCourse
      * @return boolean True if operation succeeded
      */
-    public function addCourse(array $newCourse): bool
+    public function addCourse(array $newCourse): string
     {
         $query = $this->db->prepare("INSERT INTO `courses` (
             `start_date`,
             `end_date`,
             `name`,
-            `trainer`,
             `notes`,
             `in_person`,
             `remote`
@@ -57,7 +55,6 @@ class CourseModel
             :startDate, 
             :endDate, 
             :name,
-            :trainer,
             :notes,
             :in_person,
             :remote);");
@@ -65,7 +62,6 @@ class CourseModel
         $startDate = $newCourse['startDate'];
         $endDate = $newCourse['endDate'];
         $name = $newCourse['name'];
-        $trainer = $newCourse['trainer'];
         $notes = $newCourse['notes'];
         $in_person = $newCourse['in_person'];
         $remote = $newCourse['remote'];
@@ -73,10 +69,47 @@ class CourseModel
         $query->bindParam(':startDate', $startDate);
         $query->bindParam(':endDate', $endDate);
         $query->bindParam(':name', $name);
-        $query->bindParam(':trainer', $trainer);
         $query->bindParam(':notes', $notes);
         $query->bindParam(':in_person', $in_person);
         $query->bindParam(':remote', $remote);
-        return $query->execute();
+        $query->execute();
+        return $this->db->lastInsertId();
+    }
+
+    /**
+     * Updates the trainers and courses relationships using the link table
+     *
+     * @param array $trainerIds
+     * @param int $courseId
+     * @return void
+     */
+    public function addTrainersToCourse(array $trainerIds, int $courseId): void
+    {
+        foreach ($trainerIds as $trainerId) {
+            $query = $this->db->prepare(
+                "INSERT INTO `courses_trainers` (`course_id`, `trainer_id`) 
+                VALUES (:cid, :tid);"
+            );
+
+            $query->bindParam(':cid', $courseId);
+            $query->bindParam(':tid', $trainerId);
+            $query->execute();
+        }
+    }
+
+    /**
+     * Gets all trainers linked to course Id
+     *
+     * @return array
+     */
+    public function getTrainersAndCourseId(): array
+    {
+        $query = $this->db->prepare(
+            'SELECT `courses_trainers`.`course_id`, `trainers`.`name`, `trainers`.`deleted` FROM `courses_trainers` 
+                LEFT JOIN `trainers` 
+                    ON `courses_trainers`.`trainer_id` = `trainers`.`id`;'
+        );
+        $query->execute();
+        return $query->fetchAll();
     }
 }

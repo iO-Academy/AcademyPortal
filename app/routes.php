@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Portal\Controllers\API\AddApplicantController;
@@ -81,6 +82,10 @@ return function (App $app) {
     $app->get('/studentApplicationForm', StudentApplicationFormPageController::class);
     $app->get('/csvForm', GetCsvFormController::class);
 
+    // TODO: fix these
+    $app->get('/trainers', 'TrainersPageController');
+    $app->get('/addTrainer', 'AddTrainerPageController');
+
     //API
     $app->get('/api/getStudents', GetStudentsController::class);
     $app->get('/api/getApplicant/{id}', GetApplicantController::class);
@@ -117,4 +122,9 @@ return function (App $app) {
     $app->post('/api/csvUpload', CsvController::class);
     $app->get('/api/getEventCategories', GetEventCategoriesController::class);
     $app->put('/api/aptitudeScore', AddAptitudeScoreController::class);
+
+
+    // TODO: fix these
+    $app->post('/api/addTrainer', 'AddTrainerController');
+    $app->delete('/api/deleteTrainer', 'DeleteTrainerController');
 };

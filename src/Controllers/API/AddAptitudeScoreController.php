@@ -14,7 +14,7 @@ class AddAptitudeScoreController extends Controller
     /**
      * Instantiates AddApplicantPageController.
      *
-     * @param ApplicantModel $applicantModel userModel object dependency
+     * @param ApplicantModel $applicantModel applicantModel is the object needed for querying applicant table in the db
      */
     public function __construct(ApplicantModel $applicantModel)
     {
@@ -23,48 +23,49 @@ class AddAptitudeScoreController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $data = [
+        $requestBody = $request->getParsedBody();
+        $applicantEmail = $requestBody['email'];
+        $aptitudeScore = $requestBody['score'];
+        $responseBody = [
             'success' => false,
-            'message' => 'Aptitude score not added',
+            'message' => '',
             'data' => []
         ];
 
-        $statusCode = 500;
-        $aptitudeData = $request->getParsedBody();
+        $applicantDataByEmail = $this->applicantModel->getApplicantByEmail($applicantEmail);
+        if ($applicantDataByEmail == []) {
+            $responseBody['message'] = 'Aptitude score not added - email not found';
+
+            return $this->respondWithJson($response, $responseBody, 400);
+        }
 
         if (
-            empty($aptitudeData)
-            || !isset($aptitudeData['email'])
-            || !isset($aptitudeData['score'])
-            || $aptitudeData['score'] < 0
-            || $aptitudeData['score'] > 100
-            || !is_int($aptitudeData['score'])
+            !isset($aptitudeScore)
+            || $aptitudeScore < 0
+            || $aptitudeScore > 100
+            || !is_int($aptitudeScore)
         ) {
-            $data['message'] = 'Aptitude score not added - invalid data supplied.';
+            $responseBody['message'] = 'Aptitude score not added - invalid data provided.';
 
-            return $this->respondWithJson($response, $data, $statusCode);
+            return $this->respondWithJson($response, $responseBody, 400);
         }
 
-        $email = $aptitudeData['email'];
-        $score = $aptitudeData['score'];
+        $applicantId = $applicantDataByEmail['id'];
 
-        $matchedApplicant = $this->applicantModel->getApplicantByEmail($email);
-
-        if (!isset($matchedApplicant['email']) || $email != $matchedApplicant['email']) {
-            $data['message'] = 'Aptitude score not added - email not found';
-
-            return $this->respondWithJson($response, $data, $statusCode);
+        $aptitudeFromId = $this->applicantModel->getAptitudeScore($applicantId);
+        if ($aptitudeFromId['aptitude'] == null) {
+            $this->applicantModel->setAptitudeScore($applicantId, $aptitudeScore);
+            $responseBody['message'] = 'Updated the applicants aptitude score';
+            $responseBody['success'] = true;
+            return $this->respondWithJson($response, $responseBody, 200);
+        } else {
+            date_default_timezone_set("Europe/London");
+            $assessmentNote = "\n" . 'New aptitude test attempt ' . date("d/m/y") . ' ' . date("H:i")
+                . "\n" . 'Score: ' . $aptitudeScore . '%';
+            $this->applicantModel->appendToAssessmentNotes($applicantId, $assessmentNote);
+            $responseBody['message'] = 'Updated the applicants assessment notes';
+            $responseBody['success'] = true;
+            return $this->respondWithJson($response, $responseBody, 200);
         }
-
-        $data = [
-            'success' => true,
-            'message' => 'Aptitude score added successfully',
-            'data' => ['matchedApplicant' => $matchedApplicant],
-        ];
-
-        $statusCode = 200;
-        $this->applicantModel->setAptitudeScore($matchedApplicant['id'], $score);
-
-        return $this->respondWithJson($response, $data, $statusCode);
     }
 }

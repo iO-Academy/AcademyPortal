@@ -3,32 +3,32 @@
 namespace Portal\Controllers\FrontEnd;
 
 use Portal\Abstracts\Controller;
-use Portal\Models\CourseModel;
+use Portal\Models\TrainerModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
-class CoursesPageController extends Controller
+class AddTrainerPageController extends Controller
 {
     private $renderer;
-    private $courseModel;
+    private $trainerModel;
 
     /**
-     * Creates new instance of CoursesPageController
+     * Creates new instance of AddTrainerPageController
      *
      * @param PhpRenderer $renderer
-     * @param courseModel $courseModel
+     * @param TrainerModel $trainerModel
      */
-    public function __construct(PhpRenderer $renderer, CourseModel $courseModel)
+    public function __construct(PhpRenderer $renderer, TrainerModel $trainerModel)
     {
         $this->renderer = $renderer;
-        $this->courseModel = $courseModel;
+        $this->trainerModel = $trainerModel;
     }
 
     /**
      * Checks for logged-in status,
-     * gets courses categories from DB
-     * and returns rendered landing screen for Courses page
+     *
+     * and returns rendered landing screen for add trainer page
      *
      * @param Request $request
      * @param Response $response
@@ -38,11 +38,7 @@ class CoursesPageController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         if ($_SESSION['loggedIn'] === true) {
-            $courses = $this->courseModel->getAllCourses();
-            $args['courses'] = $courses;
-            $trainers = $this->courseModel->getTrainersAndCourseId();
-            $args['trainers'] = $trainers;
-            return $this->renderer->render($response, 'courses.phtml', $args);
+            return $this->renderer->render($response, 'addTrainer.phtml');
         } else {
             return $response->withHeader('Location', './');
         }

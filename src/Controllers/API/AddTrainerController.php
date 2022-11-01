@@ -3,28 +3,28 @@
 namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
-use Portal\Sanitisers\CourseSanitiser;
-use Portal\Validators\CourseValidator;
+use Portal\Sanitisers\TrainerSanitiser;
+use Portal\Validators\TrainerValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Portal\Models\CourseModel;
+use Portal\Models\TrainerModel;
 
-class AddCourseController extends Controller
+class AddTrainerController extends Controller
 {
-    private $courseModel;
+    private $trainerModel;
 
     /**
-     * AddCourseController constructor
+     * AddTrainerController constructor
      *
-     * @param CourseModel $courseModel
+     * @param TrainerModel $courseModel
      */
-    public function __construct(CourseModel $courseModel)
+    public function __construct(TrainerModel $trainerModel)
     {
-        $this->courseModel = $courseModel;
+        $this->trainerModel = $trainerModel;
     }
 
     /**
-     * Get user input and send to CourseModel to add to db.
+     * Get user input and send to TrainerModel to add to db.
      *
      * @param Request  $request
      * @param Response $response
@@ -34,7 +34,7 @@ class AddCourseController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $newCourse = $request->getParsedBody();
+        $newTrainer = $request->getParsedBody();
 
         $responseData = [
             'success' => false,
@@ -44,19 +44,18 @@ class AddCourseController extends Controller
         $statusCode = 400;
 
         try {
-            if (CourseValidator::validate($newCourse)) {
-                $newCourse = CourseSanitiser::sanitise($newCourse);
-                $insertedId = $this->courseModel->addCourse($newCourse);
-                $this->courseModel->addTrainersToCourse($newCourse['trainer'], $insertedId);
+            if (TrainerValidator::validate($newTrainer)) {
+                $newTrainer = TrainerSanitiser::sanitise($newTrainer);
+                $result = $this->trainerModel->addNewTrainer($newTrainer);
             }
         } catch (\Exception $exception) {
             $responseData['message'] = $exception->getMessage();
         }
 
-        if (isset($insertedId) && $insertedId) {
+        if (isset($result) && $result) {
             $responseData = [
                 'success' => true,
-                'message' => 'New Course successfully saved.',
+                'message' => 'New Trainer successfully saved.',
                 'data' => []
             ];
             $statusCode = 200;
