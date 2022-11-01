@@ -12,11 +12,6 @@ class EventsPageController extends Controller
 {
     private PhpRenderer $renderer;
 
-    /**
-     * Creates new instance of EventsPageController
-     *
-     * @param PhpRenderer $renderer
-     */
     public function __construct(PhpRenderer $renderer)
     {
         $this->renderer = $renderer;
@@ -26,13 +21,8 @@ class EventsPageController extends Controller
      * Checks for logged-in status,
      * gets event categories from DB
      * and returns rendered landing screen for Events page
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $args['eventType'] = 'Upcoming';

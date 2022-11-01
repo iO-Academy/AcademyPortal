@@ -15,9 +15,6 @@ class AddEventPageController extends Controller
 
     /**
      * Creates new instance of EventsPageController
-     *
-     * @param PhpRenderer $renderer
-     * @param EventModel $eventsModel
      */
     public function __construct(PhpRenderer $renderer, EventModel $eventModel)
     {
@@ -29,13 +26,8 @@ class AddEventPageController extends Controller
      * Checks for logged-in status,
      * gets event categories from DB
      * and returns rendered landing screen for Events page
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $args['eventCategories'] = $this->eventModel->getEventCategories();

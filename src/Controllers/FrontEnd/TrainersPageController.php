@@ -13,9 +13,6 @@ class TrainersPageController extends Controller
     private PhpRenderer $renderer;
     private TrainerModel $trainerModel;
 
-    /**
-     * Creates new instance of TrainersPageController
-     */
     public function __construct(PhpRenderer $renderer, TrainerModel $trainerModel)
     {
         $this->renderer = $renderer;
@@ -24,15 +21,9 @@ class TrainersPageController extends Controller
 
     /**
      * Checks for logged-in status,
-     *
      * and returns rendered landing screen for trainers page
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $trainers = $this->trainerModel->getAllTrainers();

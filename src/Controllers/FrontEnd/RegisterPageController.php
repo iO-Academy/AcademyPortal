@@ -13,13 +13,6 @@ class RegisterPageController extends Controller
     private PhpRenderer $renderer;
     private RandomPasswordModel $password;
 
-
-    /**
-     * Constructs an instance of register controller with the given renderer and password.
-     *
-     * @param PhpRenderer $renderer
-     * @param string $password
-     */
     public function __construct(PhpRenderer $renderer, RandomPasswordModel $password)
     {
         $this->renderer = $renderer;
@@ -29,14 +22,8 @@ class RegisterPageController extends Controller
     /**
      * Directs the user to the registerUser page if they have logged in, but redirects them to the index
      * if they have not.
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     *
-     * @return \Psr\Http\Message\ResponseInterface|Response.
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $args['password'] = ($this->password)();
         if ($_SESSION['loggedIn'] === true) {

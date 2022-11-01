@@ -16,12 +16,6 @@ class EditApplicantPageController extends Controller
     private StageModel $stageModel;
     private PhpRenderer $renderer;
 
-    /**
-     * EditApplicantPageController constructor.
-     * @param ApplicantModelInterface $applicantModel
-     * @param StageModel $stageModel
-     * @param PhpRenderer $renderer
-     */
     public function __construct(ApplicantModel $applicantModel, StageModel $stageModel, PhpRenderer $renderer)
     {
         $this->applicantModel = $applicantModel;
@@ -29,7 +23,7 @@ class EditApplicantPageController extends Controller
         $this->stageModel = $stageModel;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $id = $request->getQueryParams()['id'];

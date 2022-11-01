@@ -16,7 +16,7 @@ class HomePageController extends Controller
         $this->renderer = $renderer;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
             return $response->withHeader('Location', './admin');

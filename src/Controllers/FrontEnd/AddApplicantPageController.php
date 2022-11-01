@@ -11,11 +11,6 @@ class AddApplicantPageController extends Controller
 {
     private PhpRenderer $renderer;
 
-    /**
-     * Will instantiate renderer.
-     *
-     * @param PhpRenderer $renderer
-     */
     public function __construct(PhpRenderer $renderer)
     {
         $this->renderer = $renderer;
@@ -23,14 +18,8 @@ class AddApplicantPageController extends Controller
 
     /**
      * Checks if the users are logged in or not.
-     *
-     * @param Request $request HTTP request
-     * @param Response $response HTTP response
-     * @param $args array
-     *
-     * @return Response will return the url output.
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             return $this->renderer->render($response, 'newApplicantForm.phtml');

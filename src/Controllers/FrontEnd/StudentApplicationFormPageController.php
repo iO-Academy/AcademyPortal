@@ -3,8 +3,8 @@
 namespace Portal\Controllers\FrontEnd;
 
 use Portal\Models\ApplicationFormModel;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\RequestInterface as Request;
+use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
 class StudentApplicationFormPageController
@@ -12,10 +12,6 @@ class StudentApplicationFormPageController
     protected ApplicationFormModel $model;
     protected PhpRenderer $view;
 
-    /**
-     * @param ApplicationFormModel $model
-     * @param PhpRenderer $view
-     */
     public function __construct(ApplicationFormModel $model, PhpRenderer $view)
     {
         $this->model = $model;
@@ -25,13 +21,8 @@ class StudentApplicationFormPageController
     /**
      * Renders the studentApplicationsForm page,
      * passes in backgroundInfo and hearAbout variables to be used on the page.
-     *
-     * @param RequestInterface $request
-     * @param ResponseInterface $response
-     * @param array $args
-     * @return ResponseInterface
      */
-    public function __invoke(RequestInterface $request, ResponseInterface $response, array $args): ResponseInterface
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $data = [
             'dropDownData' => [

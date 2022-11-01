@@ -13,13 +13,6 @@ class HiringPartnerPageController extends Controller
     private PhpRenderer $renderer;
     private HiringPartnerModel $hiringPartnerModel;
 
-    /**
-     * HiringPartnerPageController constructor.
-     *
-     * @param PhpRenderer $renderer
-     *
-     * @param HiringPartnerModel $hiringPartnerModel
-     */
     public function __construct(PhpRenderer $renderer, HiringPartnerModel $hiringPartnerModel)
     {
         $this->renderer = $renderer;
@@ -29,16 +22,8 @@ class HiringPartnerPageController extends Controller
     /**
      * Renders hiring partner company size on the front end in hiringPartners.phtml
      * Renders hiring partner page on the front end in hiringPartners.phtml
-     *
-     * @param Request $request
-     *
-     * @param Response $response
-     *
-     * @param array $args
-     *
-     * @return Response
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $args['companyName'] = $this->hiringPartnerModel->getCompanyName();
