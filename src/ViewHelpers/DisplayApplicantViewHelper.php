@@ -7,7 +7,7 @@ use Portal\Interfaces\ApplicantEntityInterface;
 
 class DisplayApplicantViewHelper
 {
-    public static function displayTab(array $applicants, string $type, string $sort)
+    public static function displayTab(array $applicants, string $type, string $sort): string
     {
         $dateAsc = ($sort == 'dateAsc' || empty($sort)) ? ' active' : '';
         $dateDesc = ($sort == 'dateDesc') ? ' active' : '';
@@ -47,11 +47,9 @@ class DisplayApplicantViewHelper
     /**
      * Concatenates new applicant's name, email and cohort to join ready to be output, excluding apprentices.
      *
-     * @param $applicants
-     *
      * @return string $result, returns name, email, cohortID and all the data for the applicant.
      */
-    public static function displayApplicants($applicants): string
+    public static function displayApplicants(array $applicants): string
     {
         $result = '';
         foreach ($applicants['applicants'] as $applicant) {

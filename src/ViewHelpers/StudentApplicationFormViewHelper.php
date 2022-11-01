@@ -6,9 +6,6 @@ class StudentApplicationFormViewHelper
 {
     /**
      * html to display the first question page
-     *
-     * @param array $data
-     * @return string
      */
     protected static function displayPageFormOne(array $data): string
     {
@@ -35,9 +32,6 @@ class StudentApplicationFormViewHelper
 
     /**
      * html to display the second question page
-     *
-     * @param array $data
-     * @return string
      */
     protected static function displayPageFormTwo(array $data): string
     {
@@ -62,8 +56,6 @@ class StudentApplicationFormViewHelper
 
     /**
      * html to display the third question page
-     *
-     * @return string
      */
     protected static function displayPageFormThree(): string
     {
@@ -83,9 +75,6 @@ class StudentApplicationFormViewHelper
 
     /**
      * html to display the fourth question page
-     *
-     * @param array $data
-     * @return string
      */
     protected static function displayPageFormFour(array $data): string
     {
@@ -134,9 +123,6 @@ class StudentApplicationFormViewHelper
         $output .= 'style="top: 324.188px; left: 988px; display: block;"></div></label></div>';
         $output .= '<div id="UKWorkError" class="alert hidden formItem_alert"></div>';
 
-
-
-
         $output .= '<div class="row"><label><input id="eighteenPlusCheck" name="eighteenPlus" ';
         $output .= 'class="submitApplicant" type="checkbox" />';
         $output .= 'I confirm that I am at least 18 ';
@@ -156,8 +142,6 @@ class StudentApplicationFormViewHelper
 
     /**
      * html to display the fifth question page
-     *
-     * @return string
      */
     protected static function displayPageFormFive(): string
     {
@@ -181,10 +165,6 @@ class StudentApplicationFormViewHelper
 
     /**
      * selects a question page based on number and passes it the data array if needed.
-     *
-     * @param int $applicationFormPageNumber
-     * @param array $data
-     * @return string
      */
     public static function displayPageByNumber(int $applicationFormPageNumber, array $data): string
     {
@@ -209,10 +189,6 @@ class StudentApplicationFormViewHelper
 
     /**
      * Displays the correct next buttons for a given page number and total number of pages.
-     *
-     * @param int $applicationFormPageNumber
-     * @param int $finalPage
-     * @return string
      */
     public static function displayNextButtons(int $applicationFormPageNumber, int $finalPage): string
     {
@@ -237,10 +213,6 @@ class StudentApplicationFormViewHelper
 
     /**
      * Displays all the form pages and next buttons in divs with a class of hidden
-     *
-     * @param int $pages
-     * @param array $data
-     * @return string
      */
     public static function displayForm(int $pages, array $data): string
     {

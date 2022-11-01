@@ -6,9 +6,6 @@ class EventCategoryViewHelper
 {
     /**
      * Takes event category data and returns html for events category dropdown in an <option> format
-     *
-     * @param array $data
-     * @return string
      */
     public static function eventCategoryDropdown(array $data): string
     {

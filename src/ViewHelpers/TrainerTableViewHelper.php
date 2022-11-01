@@ -9,9 +9,6 @@ class TrainerTableViewHelper
 
     /**
      * Displays all trainer that have not been deleted in a table
-     *
-     * @param array of TrainerEntity
-     * @return string
      */
     public static function displayTrainerTable(array $trainers): string
     {

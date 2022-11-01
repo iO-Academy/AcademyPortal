@@ -6,10 +6,6 @@ class DisplayCoursesViewHelper
 {
      /**
       * Viewhelper to display courses within course detail table
-      *
-      * @param array $courses
-      * @param array $trainers
-      * @return string
       */
     public static function displayCourses(array $courses, array $trainers): string
     {
@@ -35,10 +31,6 @@ class DisplayCoursesViewHelper
 
     /**
      * If no courses found, returns message saying no courses found.
-     *
-     * @param string $output
-     *
-     * @return string
      */
     private static function handleNoCourses(string $output): string
     {
@@ -50,11 +42,8 @@ class DisplayCoursesViewHelper
 
     /**
      * Foreach through filtered trainer list to display
-     *
-     * @param array $trainersByCourse
-     * @return string
      */
-    public static function displayCourseTrainers($trainersByCourse): string
+    public static function displayCourseTrainers(array $trainersByCourse): string
     {
         if (!empty($trainersByCourse)) {
             $result = '';

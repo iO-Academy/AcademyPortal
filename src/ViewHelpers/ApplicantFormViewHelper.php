@@ -4,7 +4,7 @@ namespace Portal\ViewHelpers;
 
 class ApplicantFormViewHelper
 {
-    public static function stagesDropdown($stages, $stageOptions, $currentStage, $currentOption)
+    public static function stagesDropdown($stages, $stageOptions, $currentStage, $currentOption): string
     {
         $string = '';
 
