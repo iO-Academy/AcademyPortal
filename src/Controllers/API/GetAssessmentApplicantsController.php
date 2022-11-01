@@ -9,7 +9,7 @@ use Portal\Models\ApplicantModel;
 
 class GetAssessmentApplicantsController extends Controller
 {
-    private $applicantModel;
+    private ApplicantModel $applicantModel;
 
     /**
      * GetApplicantController constructor.

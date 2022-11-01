@@ -12,8 +12,7 @@ use Portal\Models\HiringPartnerModel;
 
 class AddHiringPartnerController extends Controller
 {
-    public $hiringPartnerModel;
-    public $renderer;
+    public HiringPartnerModel $hiringPartnerModel;
 
     /**
      * AddHiringPartnerController constructor.

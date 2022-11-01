@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class GetCompanyDetailsModalController extends Controller
 {
-    private $model;
+    private HiringPartnerModel $model;
 
     /**
      * GetCompanyDetailsModalController constructor.

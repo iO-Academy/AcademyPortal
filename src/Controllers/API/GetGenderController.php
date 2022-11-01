@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class GetGenderController extends Controller
 {
-    private $applicationFormModel;
+    private ApplicationFormModel $applicationFormModel;
 
     /**
      * GetApplicationFormController constructor.

@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class DeleteAllStageOptionsController extends Controller
 {
-    private $stageModel;
+    private StageModel $stageModel;
 
     /** Constructor assigns StageModel to this object
     *

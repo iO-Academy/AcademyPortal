@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class AddHiringPartnerToEventController extends Controller
 {
-    private $eventModel;
+    private EventModel $eventModel;
 
     public function __construct(EventModel $eventModel)
     {

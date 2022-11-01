@@ -11,7 +11,7 @@ use Portal\Models\EventModel;
 
 class AddEventController extends Controller
 {
-    private $eventModel;
+    private EventModel $eventModel;
 
     /**
      * AddEventController constructor

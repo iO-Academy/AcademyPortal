@@ -11,7 +11,7 @@ use Portal\Models\TrainerModel;
 
 class AddTrainerController extends Controller
 {
-    private $trainerModel;
+    private TrainerModel $trainerModel;
 
     /**
      * AddTrainerController constructor

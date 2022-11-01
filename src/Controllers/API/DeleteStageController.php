@@ -9,7 +9,7 @@ use Portal\Models\StageModel;
 
 class DeleteStageController extends Controller
 {
-    private $stageModel;
+    private StageModel $stageModel;
 
     /**
      * DeleteStageController constructor.

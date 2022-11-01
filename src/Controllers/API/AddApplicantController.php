@@ -13,7 +13,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class AddApplicantController extends Controller
 {
-    private $applicantModel;
+    private ApplicantModel $applicantModel;
 
     /**
      * Instantiates AddApplicantPageController.

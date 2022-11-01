@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class LoginController extends Controller
 {
-    private $userModel;
+    private UserModel $userModel;
 
     /**
      * Instantiates login controller.

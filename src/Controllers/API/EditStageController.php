@@ -10,7 +10,7 @@ use Portal\Models\StageModel;
 
 class EditStageController extends Controller
 {
-    private $stageModel;
+    private StageModel $stageModel;
 
     public function __construct(StageModel $model)
     {

@@ -11,7 +11,7 @@ use Portal\Models\CourseModel;
 
 class AddCourseController extends Controller
 {
-    private $courseModel;
+    private CourseModel $courseModel;
 
     /**
      * AddCourseController constructor

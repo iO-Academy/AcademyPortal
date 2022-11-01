@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class GetCoursesController extends Controller
 {
-    private $courseModel;
+    private CourseModel $courseModel;
 
     /**
      * GetCoursesController constructor.

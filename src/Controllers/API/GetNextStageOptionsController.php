@@ -11,9 +11,9 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class GetNextStageOptionsController extends Controller
 {
-    private $stageModel;
-    private $password;
-    private $applicantModel;
+    private StageModel $stageModel;
+    private RandomPasswordModel $password;
+    private ApplicantModel $applicantModel;
 
     /**
      * GetEventsController constructor.

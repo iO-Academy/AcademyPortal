@@ -9,7 +9,7 @@ use Portal\Models\ApplicantModel;
 
 class DeleteApplicantController extends Controller
 {
-    private $applicantModel;
+    private ApplicantModel $applicantModel;
 
     /**
      * DeleteApplicantsController constructor saves an applicantModel

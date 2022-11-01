@@ -10,8 +10,8 @@ use Portal\Models\EventModel;
 
 class GetApplicationFormController extends Controller
 {
-    private $applicationFormModel;
-    private $eventModel;
+    private ApplicationFormModel $applicationFormModel;
+    private EventModel $eventModel;
 
     /**
      * GetApplicationFormController constructor.

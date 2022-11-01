@@ -10,8 +10,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class EditApplicantStageController extends Controller
 {
-    private $applicantModel;
-    private $stageModel;
+    private ApplicantModel $applicantModel;
+    private StageModel $stageModel;
 
     public function __construct(ApplicantModel $applicantModel, StageModel $stageModel)
     {

@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class GetHiringPartnersController extends Controller
 {
-    private $hiringPartnerModel;
+    private HiringPartnerModel $hiringPartnerModel;
 
     public function __construct(HiringPartnerModel $hiringPartnerModel)
     {

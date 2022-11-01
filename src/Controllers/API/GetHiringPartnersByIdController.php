@@ -10,15 +10,9 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class GetHiringPartnersByIdController extends Controller
 {
-    /**
-     * @var HiringPartnerModel created by constructor
-     */
-    private $model;
+    private HiringPartnerModel $hiringPartnerModel;
 
-    /**
-     * @var EventModel created by constructor
-     */
-    private $event;
+    private EventModel $eventModel;
 
     private $hpIdsData;
 
@@ -31,10 +25,10 @@ class GetHiringPartnersByIdController extends Controller
      *
      * @param EventModel $event
      */
-    public function __construct(HiringPartnerModel $model, EventModel $event)
+    public function __construct(HiringPartnerModel $hiringPartnerModel, EventModel $eventModel)
     {
-        $this->model = $model;
-        $this->event = $event;
+        $this->hiringPartnerModel = $hiringPartnerModel;
+        $this->eventModel = $eventModel;
     }
 
     /**
@@ -51,9 +45,9 @@ class GetHiringPartnersByIdController extends Controller
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $id = $request->getParsedBody()['event_id'];
-        $this->hpIdsData = $this->event->hpIdsByEventId($id);
+        $this->hpIdsData = $this->eventModel->hpIdsByEventId($id);
         foreach ($this->hpIdsData as $hpId) {
-            $hiringPartner = $this->model->getHiringPartnerById($hpId['hiring_partner_id']);
+            $hiringPartner = $this->hiringPartnerModel->getHiringPartnerById($hpId['hiring_partner_id']);
             if ($hiringPartner !== false) {
                 $hiringPartner['attendees'] = $hpId['people_attending'];
                 array_push($this->hpEntities, $hiringPartner);

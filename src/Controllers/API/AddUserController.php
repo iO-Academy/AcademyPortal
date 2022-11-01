@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class AddUserController extends Controller
 {
-    private $userModel;
+    private UserModel $userModel;
 
     /**
      * Instantiates AddUserController.

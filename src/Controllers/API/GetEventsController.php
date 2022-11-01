@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class GetEventsController extends Controller
 {
-    private $eventModel;
+    private EventModel $eventModel;
 
     /**
      * GetEventsController constructor.

@@ -12,7 +12,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 class EditApplicantController extends Controller
 {
-    private $applicantModel;
+    private ApplicantModel $applicantModel;
 
     /**
      * EditApplicantController constructor.

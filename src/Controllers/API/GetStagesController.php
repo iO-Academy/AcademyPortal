@@ -9,7 +9,7 @@ use Portal\Models\StageModel;
 
 class GetStagesController extends Controller
 {
-    private $stageModel;
+    private StageModel $stageModel;
 
     /**
      * GetApplicationFormController constructor.

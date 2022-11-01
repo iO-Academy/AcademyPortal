@@ -11,7 +11,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class AddContactController extends Controller
 {
-    private $hiringPartnerModel;
+    private HiringPartnerModel $hiringPartnerModel;
 
     /**
      * AddContactController constructor.

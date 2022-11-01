@@ -12,8 +12,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class EditTeamsController extends Controller
 {
-    private $applicantModel;
-    private $teamModel;
+    private ApplicantModel $applicantModel;
+    private TeamModel $teamModel;
 
     /**
      * @param ApplicantModel $applicantModel
