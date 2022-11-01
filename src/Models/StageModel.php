@@ -147,7 +147,7 @@ class StageModel
      *
      * @param integer $id
      *
-     * @return boolean for success or failure of the query
+     * @return bool for success or failure of the query
      */
     public function deleteStage(int $id): bool
     {
@@ -195,9 +195,15 @@ class StageModel
     }
 
     /**
-     * Updates the 'title' value of a record with a given id.
+     * Updates the 'title' value of a record with a given id
+     *
      * @param int $id
-     * @param string $newTitle
+     * @param string $title
+     * @param int $order
+     * @param int $isStudent
+     * @param int $isWithdrawn
+     * @param int $isRejected
+     * @param int $isNotAssigned
      * @return bool
      */
     public function updateStage(
@@ -267,8 +273,7 @@ class StageModel
 
     /**
      * Updates the 'option' value of an entry in the options table with a given id.
-     * @param string $option
-     * @param int $optionId
+     * @param array{'optionId': int, 'option': string} $option
      * @return bool
      */
     public function updateOption(array $option): bool

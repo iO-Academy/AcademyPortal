@@ -54,5 +54,9 @@ class AddStageController extends Controller
             }
             return $this->respondWithJson($response, $data, $statusCode);
         }
+
+        $_SESSION['loggedIn'] = false;
+        $data['message'] = 'Unauthorized';
+        return $this->respondWithJson($response, $data, 401);
     }
 }

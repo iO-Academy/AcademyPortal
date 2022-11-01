@@ -61,7 +61,7 @@ class UserModel
      * @param string $registerEmail value provided from form to insert into database
      * @param string $registerPassword value provided from form to insert into database
      *
-     * @return $query insert email and password into database.
+     * @return bool $query insert email and password into database.
      */
     public function insertNewUserToDb(string $registerEmail, string $registerPassword)
     {

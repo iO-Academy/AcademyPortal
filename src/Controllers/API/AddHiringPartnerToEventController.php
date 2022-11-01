@@ -45,7 +45,7 @@ class AddHiringPartnerToEventController extends Controller
                 $responseData['message'] = 'Hiring partner already linked.';
                 $statusCode = 200;
             }
-            if ($result) {
+            if (isset($result) && $result) {
                 $responseData['success'] = true;
                 $responseData['message'] = 'Hiring Partner linked successfully.';
                 $statusCode = 200;

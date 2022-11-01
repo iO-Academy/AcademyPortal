@@ -13,7 +13,7 @@ class PhoneNumberValidator
      * Make sure the phone Number is valid
      *
      * @param string $phoneNumber
-     * @return string|null
+     * @return string
      * @throws Exception
      */
     public static function validatePhoneNumber(string $phoneNumber): string

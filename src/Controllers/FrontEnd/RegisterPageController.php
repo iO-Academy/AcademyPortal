@@ -30,7 +30,7 @@ class RegisterPageController extends Controller
             return $this->renderer->render($response, 'registerUser.phtml', $args);
         } else {
             $_SESSION['loggedIn'] = false;
-            return $response->withHeader('Location', './');
+            return $response->withHeader('Location', '/');
         }
     }
 }

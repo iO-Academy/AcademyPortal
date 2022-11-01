@@ -167,7 +167,7 @@ class HiringPartnerModel
     /**
      * Gets a single hiring partner's information
      *
-     * @param int Hiring Partner Id
+     * @param int $id Hiring Partner Id
      *
      * @return array hiring partner data
      */

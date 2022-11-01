@@ -66,7 +66,7 @@ class StageEntity implements \JsonSerializable
     /**
      * Get stage deleted
      *
-     * @return string
+     * @return int
      */
     public function getStageDeleted(): int
     {
