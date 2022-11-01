@@ -2,14 +2,16 @@
 
 namespace Portal\Models;
 
+use PDO;
 use Portal\Entities\BaseApplicantEntity;
 use Portal\Entities\CompleteApplicantEntity;
 use Portal\Interfaces\ApplicantModelInterface;
 
 class ApplicantModel implements ApplicantModelInterface
 {
-    private $db;
-    public function __construct(\PDO $db)
+    private PDO $db;
+
+    public function __construct(PDO $db)
     {
         $this->db = $db;
     }
@@ -34,10 +36,6 @@ class ApplicantModel implements ApplicantModelInterface
 
     /**
      * Inserts new ApplicantEntity into database - registering.
-     *
-     * @param $applicant
-     *
-     * @return bool
      */
     public function storeApplicant(array $applicant): bool
     {
@@ -101,29 +99,17 @@ class ApplicantModel implements ApplicantModelInterface
     }
 
     /**
-     * Counts number of applicants (depending on filters) and divides by number of applicants to be shown per page
-     *
-     * @param string $stageId
-     * @param string $cohortId
-     *
-     * @return false|float
-     */
-
-    /**
      * Gets a sorted list of applicants assigned to a specific cohort and stage.
-     * @param string $name
      * @param string $stageId the stage to filter by
      * @param string $cohortId the cohort to filer by
      * @param string $sortingQuery how you would like the results sorted
-     *
-     * @return array the data retrieved from the database
      */
     public function getApplicants(
         string $name = '%',
         string $stageId = '%',
         string $cohortId = '%',
         string $sortingQuery = ''
-    ) {
+    ): array {
         $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`,
         `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName',
         `start_date` as 'chosenStartDate', `chosenCourseId`
@@ -140,7 +126,7 @@ class ApplicantModel implements ApplicantModelInterface
                       GROUP BY `applicants`.`id`";
         $stmt .= $this->sortingQuery($sortingQuery);
         $query = $this->db->prepare($stmt);
-        $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
+        $query->setFetchMode(PDO::FETCH_CLASS, BaseApplicantEntity::class);
         $query->bindValue(':name', $name);
         $query->bindValue(':stageId', $stageId);
         $query->bindValue(':cohortId', $cohortId);
@@ -172,11 +158,8 @@ class ApplicantModel implements ApplicantModelInterface
 
     /**
      * Sorts the table via the input taken from the sorting arrows
-     *
-     * @param string $sortingQuery - how you would like the results sorted
-     * @return array $results is the data retrieved.
      */
-    public function getAllStudents(string $sortingQuery = '') // @todo: only get applicants in a student stage
+    public function getAllStudents(string $sortingQuery = ''): array // @todo: only get applicants in a student stage
     {
         $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, `start_date` AS 'cohortDate', 
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
@@ -189,7 +172,7 @@ class ApplicantModel implements ApplicantModelInterface
         $stmt .= $this->sortingQuery($sortingQuery);
 
         $query = $this->db->prepare($stmt);
-        $query->setFetchMode(\PDO::FETCH_CLASS, BaseApplicantEntity::class);
+        $query->setFetchMode(PDO::FETCH_CLASS, BaseApplicantEntity::class);
 
         $query->execute();
 
@@ -198,11 +181,8 @@ class ApplicantModel implements ApplicantModelInterface
 
     /**
      * Gets a sorted list of students assigned to a specific cohort.
-     *
-     * @param string $cohortId the cohort you would like the results of
-     * @return array the data retrieved from the database
      */
-    public function getAllStudentsByCohort(string $cohortId) // @todo: only get applicants in a student stage
+    public function getAllStudentsByCohort(string $cohortId): array // @todo: only get applicants in a student stage
     {
         $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `teams`.`trainer`, `team`
                       FROM `applicants`
@@ -220,11 +200,8 @@ class ApplicantModel implements ApplicantModelInterface
 
     /**
      * Retrieves an Applicant with the specified id
-     *
-     * @param $id
-     * @return object of applicant data
      */
-    public function getApplicantById($id)
+    public function getApplicantById(int $id): CompleteApplicantEntity
     {
         $query = $this->db->prepare(
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `applicants`.`gender` AS `genderId`,
@@ -268,7 +245,7 @@ class ApplicantModel implements ApplicantModelInterface
                             ON `applicants`.`gender` = `gender`.`id`
                         WHERE `applicants`.`id`= :id;"
         );
-        $query->setFetchMode(\PDO::FETCH_CLASS, CompleteApplicantEntity::class);
+        $query->setFetchMode(PDO::FETCH_CLASS, CompleteApplicantEntity::class);
         $query->execute([
             'id' => $id
         ]);
@@ -289,12 +266,8 @@ class ApplicantModel implements ApplicantModelInterface
 
     /**
      * Deletes record with the given id from the database
-     *
-     * @param $id
-     *
-     * @return boolean for success or failure of the query
      */
-    public function deleteApplicant($id)
+    public function deleteApplicant(int $id): bool
     {
         $query = $this->db->prepare("UPDATE `applicants` SET `deleted` = '1' WHERE `id` = :id");
         $query->bindParam(':id', $id);
@@ -303,9 +276,6 @@ class ApplicantModel implements ApplicantModelInterface
 
     /**
      * Generates an SQL query used for sorting the data.
-     *
-     * @param string $sortingQuery how you would like to sort the database
-     * @return string the SQL statement used for sorting
      */
     private function sortingQuery(string $sortingQuery = ''): string
     {
@@ -336,9 +306,6 @@ class ApplicantModel implements ApplicantModelInterface
 
     /**
      * updateApplicant updates the applicant data.
-     *
-     * @param array $applicant
-     * @return bool
      */
     public function updateApplicant(array $applicant): bool
     {
@@ -394,11 +361,8 @@ class ApplicantModel implements ApplicantModelInterface
 
     /**
      * updateApplicant updates the applicant data.
-     *
-     * @param array $applicant
-     * @return bool
      */
-    public function updateApplicantAdditionalFields(array $applicant)
+    public function updateApplicantAdditionalFields(array $applicant): bool
     {
         $query = $this->db->prepare(
             "UPDATE `applicants_additional`
@@ -496,13 +460,12 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->execute([':password' => $password, ':applicantId' => $applicantId]);
     }
 
-
     public function getApplicantPassword(int $applicantId): string
     {
         $sql = 'SELECT `profile_password` FROM `applicants` WHERE `id` = :applicantId';
         $query = $this->db->prepare($sql);
         $query->execute([':applicantId' => $applicantId]);
-        return $query->fetch(\PDO::FETCH_COLUMN, 0);
+        return $query->fetch(PDO::FETCH_COLUMN, 0);
     }
 
     public function addApplicantToTeam(int $teamId, int $applicantId): bool
@@ -516,7 +479,7 @@ class ApplicantModel implements ApplicantModelInterface
     {
         $query = $this->db->prepare('SELECT `stageId` FROM `applicants` WHERE `id` = :applicantId');
         $query->execute([':applicantId' => $applicantId]);
-        return $query->fetch(\PDO::FETCH_COLUMN, 0);
+        return $query->fetch(PDO::FETCH_COLUMN, 0);
     }
 
     public function updateApplicantStageAndOptionIds(int $applicantId, int $stageId, ?int $optionId): bool
@@ -564,7 +527,7 @@ class ApplicantModel implements ApplicantModelInterface
         $values = ['id' => $id];
 
         $query = $this->db->prepare($sql);
-        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
         $query->execute($values);
         return $query->fetch();
     }

@@ -10,9 +10,9 @@ interface ApplicantModelInterface
 
     public function getApplicants(string $stageID, string $cohortId, string $sortingQuery);
 
-    public function getApplicantById($id);
+    public function getApplicantById(int $id);
 
-    public function deleteApplicant($id);
+    public function deleteApplicant(int $id);
 
     public function updateApplicant(array $applicant);
 

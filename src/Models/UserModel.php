@@ -2,28 +2,24 @@
 
 namespace Portal\Models;
 
+use PDO;
+
 class UserModel
 {
-    private $db;
+    private PDO $db;
 
     /**
      * Creates UserModel constructor.
-     *
-     * @param \PDO $db
      */
-    public function __construct(\PDO $db)
+    public function __construct(PDO $db)
     {
         $this->db = $db;
     }
 
     /**
      * Gets email and password from database to login.
-     *
-     * @param $userEmail used by prepared statement
-     *
-     * @return array contains user email and password.
      */
-    public function getUserByEmail($userEmail)
+    public function getUserByEmail($userEmail): array
     {
         if ($this->validateEmail($userEmail) !== false) {
             $query = $this->db->prepare("SELECT `email`, `password` FROM `users` WHERE `email` = :email;");
@@ -36,12 +32,6 @@ class UserModel
 
     /**
      * Verifies user credentials by comparing form input with email and hashed password in database
-     *
-     * @param string $userEmail value provided for comparison
-     * @param string $password value provided for comparison
-     * @param array $userCredentials values provided for comparison
-     *
-     * @return bool if email entered exists in database
      */
     public function userLoginVerify(string $userEmail, string $password, $userCredentials): bool
     {
@@ -57,13 +47,8 @@ class UserModel
 
     /**
      * Inserts new user into database - registering.
-     *
-     * @param string $registerEmail value provided from form to insert into database
-     * @param string $registerPassword value provided from form to insert into database
-     *
-     * @return bool $query insert email and password into database.
      */
-    public function insertNewUserToDb(string $registerEmail, string $registerPassword)
+    public function insertNewUserToDb(string $registerEmail, string $registerPassword): bool
     {
         $query = $this->db->prepare(
             "INSERT INTO `users` (`email`, `password`) VALUES (:email, :password);"
@@ -75,7 +60,6 @@ class UserModel
 
     /** Validates if parameter is an email
      *
-     * @param $email string value provided for validation
      * @return mixed returns the email as a string if its a valid email otherwise it returns false
      */
     private function validateEmail($email)
