@@ -53,6 +53,7 @@
   "scripts": {
     "start": "php -S 0.0.0.0:8080 -t public",
     "test": "phpunit",
-    "watch": "sass --watch public/scss/styles.scss public/css/style.css"
+    "watch": "sass --watch public/scss/styles.scss public/css/style.css",
+    "cs": "phpcs --standard=PSR12 src templates tests"
   }
 }
