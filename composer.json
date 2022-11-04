@@ -54,6 +54,7 @@
     "start": "php -S 0.0.0.0:8080 -t public",
     "test": "phpunit",
     "watch": "sass --watch public/scss/styles.scss public/css/style.css",
-    "sniff": "phpcs --standard=PSR12 src templates tests"
+    "sniff": "phpcs --standard=PSR12 src templates tests",
+    "clean": "phpcbf --standard=PSR12 src templates tests"
   }
 }
