@@ -12,11 +12,11 @@ class TrainerTableViewHelperTest extends TestCase
     public function testSuccessDisplayTrainerTable()
     {
         $input = $this->createMock(TrainerEntity::class);
-        $input->method('getId')->willReturn('1');
+        $input->method('getId')->willReturn(1);
         $input->method('getName')->willReturn('Charlie');
         $input->method('getEmail')->willReturn('char@lie.com');
         $input->method('getNotes')->willReturn('notes');
-        $input->method('getDeleted')->willReturn('0');
+        $input->method('getDeleted')->willReturn(0);
         $exp = '<tr><td><a href="#" data-name="Charlie" data-notes="notes" data-id="1" data-toggle="modal" ';
         $exp .= 'data-target="#trainerNotesModal" type="button" class="myBtn">Charlie</a>';
         $exp .= '</td><td class="email">char@lie.com<button data-email="char@lie.com" class="clipboard">';
@@ -29,11 +29,11 @@ class TrainerTableViewHelperTest extends TestCase
     public function testSuccessDeletedDisplayTrainerTable()
     {
         $input = $this->createMock(TrainerEntity::class);
-        $input->method('getId')->willReturn('1');
+        $input->method('getId')->willReturn(1);
         $input->method('getName')->willReturn('Charlie');
         $input->method('getEmail')->willReturn('char@lie.com');
         $input->method('getNotes')->willReturn('notes');
-        $input->method('getDeleted')->willReturn('1');
+        $input->method('getDeleted')->willReturn(1);
         $exp = '<tr><td><a href="#" data-name="Charlie" data-notes="notes" data-id="1" data-toggle="modal" ';
         $exp .= 'data-target="#trainerNotesModal" type="button" class="myBtn deleted">Charlie</a>';
         $exp .= '</td><td class="email">char@lie.com<button data-email="char@lie.com" class="clipboard">';

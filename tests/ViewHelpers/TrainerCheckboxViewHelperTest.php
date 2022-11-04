@@ -12,7 +12,7 @@ class TrainerCheckboxViewHelperTest extends TestCase
     public function testSuccessDisplayTrainerCheckbox()
     {
         $input = $this->createMock(TrainerEntity::class);
-        $input->method('getId')->willReturn('1');
+        $input->method('getId')->willReturn(1);
         $input->method('getName')->willReturn('Charlie');
         $exp = '<input type="checkbox" data-id="1" name="trainer-checkbox"';
         $exp .= '><label class="trainerCheckboxLabel" for="">Charlie</label>';
