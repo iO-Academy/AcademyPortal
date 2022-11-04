@@ -9,13 +9,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class AddUserController extends Controller
 {
-    private $userModel;
+    private UserModel $userModel;
 
-    /**
-     * Instantiates AddUserController.
-     *
-     * @param UserModel $userModel userModel object dependency
-     */
     public function __construct(UserModel $userModel)
     {
         $this->userModel = $userModel;
@@ -23,14 +18,8 @@ class AddUserController extends Controller
 
     /**
      * Validates username / email and updates database if email doesn't exist.
-     *
-     * @param Request $request HTTP request
-     * @param Response $response HTTP response
-     * @param array $args
-     *
-     * @return Response
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $data = ['success' => false, 'msg' => 'User not registered.', 'data' => []];
@@ -61,5 +50,9 @@ class AddUserController extends Controller
 
             return $this->respondWithJson($response, $data, $statusCode);
         }
+
+        $_SESSION['loggedIn'] = false;
+        $data = ['success' => false, 'message' => 'Unauthorized', 'data' => []];
+        return $this->respondWithJson($response, $data, 401);
     }
 }

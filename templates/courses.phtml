@@ -24,13 +24,15 @@
                         <th>Course Name</th>
                         <th>Trainer</th>
                         <th>Notes</th>
+                        <th>Remote</th>
+                        <th>In Person</th>
                     </tr>
                 </thead>
                 <tbody>
-                <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($data); ?>
+                <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($courses, $trainers); ?>
                 </tbody>
             </table>
         </div>
-<?php require 'partials/layout/footer.phtml'; ?>
+<?php require 'partials/layout/footer.phtml';?>
 </body>
 </html>

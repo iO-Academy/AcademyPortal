@@ -11,13 +11,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class AddStageController extends Controller
 {
-    private $stageModel;
+    private StageModel $stageModel;
 
-    /** Constructor assigns StageModel to this object
-     *
-     * AddStageController constructor.
-     * @param StageModel $stageModel
-     */
     public function __construct(StageModel $stageModel)
     {
         $this->stageModel = $stageModel;
@@ -26,12 +21,9 @@ class AddStageController extends Controller
     /** On invoke, check request input for Title value, then create new StageEntity with incremented
      * order number to send to DB via StageModel
      *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
      * @return Response - with json and status 200/500 for success or failure.
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $requestData = $request->getParsedBody();
         $data = [
@@ -62,5 +54,9 @@ class AddStageController extends Controller
             }
             return $this->respondWithJson($response, $data, $statusCode);
         }
+
+        $_SESSION['loggedIn'] = false;
+        $data['message'] = 'Unauthorized';
+        return $this->respondWithJson($response, $data, 401);
     }
 }

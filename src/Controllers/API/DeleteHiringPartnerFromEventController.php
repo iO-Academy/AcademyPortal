@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class DeleteHiringPartnerFromEventController extends Controller
 {
-    private $eventModel;
+    private EventModel $eventModel;
 
     public function __construct(EventModel $eventModel)
     {
@@ -18,14 +18,7 @@ class DeleteHiringPartnerFromEventController extends Controller
 
     /**
      * Calls a method to remove hiring partner from the event
-     *
      * and responds with Json success message
-     *
-     * @param Request $request HTTP request
-     * @param Response $response HTTP response
-     * @param array $args The arguments array
-     *
-     * @return Response returns Json success/failure message
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {

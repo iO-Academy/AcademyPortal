@@ -1,3 +1,9 @@
+<?php
+
+$trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTrainerCheckbox($trainers);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,11 +32,22 @@
         <input id="endDate" name="endDate" class="create-courses form-control" type="date" data-required="true" />
 
         <label for="course-trainer">Trainer</label>
-        <input name="trainer" class="create-courses form-control" type="text" placeholder="Trainer" data-max="255" maxlength="255" />
+        <div>
+            <?php echo $trainersCheckbox ?>
+        </div>
 
         <label for="course-notes">Notes</label>
         <textarea name="notes" class="create-courses form-control" placeholder="Notes" data-max="5000" maxlength="5000"></textarea>
 
+        <div class="form-group">
+            <label for="in_person">In Person?</label>
+            <input type="checkbox" id="in_person" value="1" class="create-courses" name="in_person">
+        </div>
+
+        <div class="">
+            <label for="remote">Remote?</label>
+            <input type="checkbox" id="remote" value="1" class="create-courses" name="remote">
+        </div>
         <input type="submit" class="btn btn-success" />
     </form>
     <div id="messages" class="alert"></div>

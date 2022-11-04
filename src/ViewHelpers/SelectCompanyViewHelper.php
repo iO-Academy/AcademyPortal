@@ -4,7 +4,7 @@ namespace Portal\ViewHelpers;
 
 class SelectCompanyViewHelper
 {
-    public static function selectCompanyDropdown($data)
+    public static function selectCompanyDropdown(array $data): string
     {
         $SelectCompanyDropdown = '';
         foreach ($data['companyName'] as $companyName) {

@@ -18,7 +18,6 @@ function prettyDate(date) {
     date = new Date(date);
     let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
     return date.toLocaleDateString("en-GB", dateOptions)
-
 }
 
 function aptitudeColors(score) {
@@ -50,131 +49,133 @@ function copyToClipboard(element) {
     document.querySelector("button.clipboard").innerText = 'Copied';
 }
 
-$(document).ready(function () {
-    $(".myBtn").click(function () {
-        let url = './api/getApplicant/' + this.dataset.id
-        let studentUrl = 'http://localhost:8080/public/' + this.dataset.id
-        fetch(url)
-            .then(
-                function (response) {
-                    if (response.status !== 200) {
-                        document.querySelector('#modal-main').innerHTML = ''
-                        document.querySelector('#modal-main').innerHTML += '<div class="alert alert-danger" role="alert">Looks like there was a problem. Status Code: ' +
-                            response.status + '</div>'
-                        return
-                    }
-                    // Examine the text in the response
-                    response.json().then(function (data) {
+export function addEventListenersToDisplayApplicantModal() {
+    $(document).ready(function () {
+        $(".myBtn").click(function () {
+            let url = './api/getApplicant/' + this.dataset.id
+            let studentUrl = document.URL
+            fetch(url)
+                .then(
+                    function (response) {
+                        if (response.status !== 200) {
+                            document.querySelector('#modal-main').innerHTML = ''
+                            document.querySelector('#modal-main').innerHTML += '<div class="alert alert-danger" role="alert">Looks like there was a problem. Status Code: ' +
+                                response.status + '</div>'
+                            return
+                        }
+                        // Examine the text in the response
+                        response.json().then(function (data) {
 
-                        document.querySelectorAll('#applicantModal section.student').forEach(section => {
-                            if (data.isStudentStage === "1") {
-                                section.classList.remove('hidden')
-                            } else {
-                                section.classList.add('hidden')
+                            document.querySelectorAll('#applicantModal section.student').forEach(section => {
+                                if (data.isStudentStage === "1") {
+                                    section.classList.remove('hidden')
+                                } else {
+                                    section.classList.add('hidden')
+                                }
+                            })
+
+                            data.dateTimeAdded = prettyDate(data.dateTimeAdded);
+                            displayField(data, 'dateTimeAdded')
+                            document.getElementById('apprentice').innerHTML = ''
+                            if (data.apprentice === 1) {
+                                document.getElementById('apprentice').innerHTML = 'Apprentice'
                             }
+                            console.log(data);
+                            displayField(data, 'name')
+                            displayField(data, 'email')
+                            displayField(data, 'phoneNumber')
+                            displayField(data, 'gender')
+                            displayField(data, 'stageName')
+                            document.querySelector('#stageOptionNameContainer').style.display = 'block'
+                            displayField(data, 'stageOptionName')
+                            if (data.stageOptionName === null) {
+                                document.querySelector('#stageOptionNameContainer').style.display = 'none'
+                            }
+                            displayField(data, 'cohortDate')
+                            displayField(data, 'backgroundInfo')
+                            displayField(data, 'whyDev')
+                            displayField(data, 'codeExperience')
+                            displayField(data, 'hearAbout')
+                            displayField(data, 'eligible', 'Not eligible to study in the UK')
+                            displayField(data, 'eighteenPlus', 'Under 18')
+                            displayField(data, 'finance', 'No')
+                            if (data.eligible !== 0) {
+                                document.getElementById('eligible').innerHTML = 'Eligible to study in the UK'
+                            }
+                            if (data.eighteenPlus !== 0) {
+                                document.getElementById('eighteenPlus').innerHTML = 'Over 18'
+                            }
+                            if (data.finance !== 0) {
+                                document.getElementById('finance').innerHTML = 'Yes'
+                            }
+                            displayField(data, 'notes')
+
+                            data.taster = prettyDate(data.taster)
+                            displayField(data, 'taster', 'Did not book onto a taster session')
+                            if (data.taster !== null && (data.tasterAttendance === null || data.tasterAttendance === 0)) {
+                                displayField(data, 'tasterAttendance', 'Did not attend the booked session')
+                            }
+
+                            data.assessmentDay = prettyDate(data.assessmentDay)
+                            displayField(data, 'assessmentDay', 'Not yet booked')
+                            if (data.assessmentDay !== null) {
+                                displayField(data, 'assessmentTime', 'Not yet booked')
+                            }
+
+                            data.customAssessmentDay = prettyDate(data.customAssessmentDay)
+                            displayField(data, 'customAssessmentDay', 'Not booked')
+                            if (data.customAssessmentDay !== null) {
+                                displayField(data, 'assessmentTime', 'Not yet booked')
+                            }
+
+                            data.aptitude = aptitudeColors(data.aptitude)
+                            displayField(data, 'aptitude', 'Not yet taken')
+
+                            displayField(data, 'diversitechInterest', 'Not asked yet', 'No')
+                            if (data.diversitechInterest === 1) {
+                                document.getElementById('diversitechInterest').innerHTML = 'Yes'
+                            }
+                            displayField(data, 'assessmentNotes', 'No notes written')
+                            data.diversitech = addCurrency(data.diversitech)
+                            data.edaid = addCurrency(data.edaid)
+                            data.upfront = addCurrency(data.upfront)
+                            displayField(data, 'diversitech')
+                            displayField(data, 'edaid')
+                            displayField(data, 'upfront')
+                            displayField(data, 'laptop', 'Unknown', 'No')
+                            if (data.laptop === 1) {
+                                document.getElementById('laptop').innerHTML = 'Yes'
+                            }
+                            displayField(data, 'laptopDeposit', 'No')
+                            if (data.laptopDeposit === 1) {
+                                document.getElementById('laptopDeposit').innerHTML = 'Yes'
+                            }
+                            displayField(data, 'laptopNum', 'Not assigned')
+                            data.kitCollectionDay = prettyDate(data.kitCollectionDay)
+                            displayField(data, 'kitCollectionDay', 'Not yet booked')
+                            if (data.kitCollectionDay !== null) {
+                                displayField(data, 'kitCollectionTime', 'Not yet booked')
+                            }
+                            displayField(data, 'kitNum', 'Not assiged')
+                            displayField(data, 'team', 'Not assigned')
+                            document.getElementById('userProfileLink').innerHTML = studentUrl;
+                            document.getElementById('userProfileLink').href = studentUrl;
+                            $(".clipboard").click(function () {
+                                copyToClipboard('#userProfileLink')
+                            })
+                            displayField(data, 'githubUsername', 'Unknown')
+                            displayField(data, 'portfolioUrl', 'Unknown')
+                            displayField(data, 'pleskHostingUrl', 'Not created')
+                            displayField(data, 'githubEducationLink', 'Not created')
+                            displayField(data, 'additionalNotes', 'No notes')
+                            data.chosenCourseDate = prettyDate(data.chosenCourseDate)
+                            displayField(data, 'chosenCourseDatePretty', 'Not asked yet')
+                            // displayField(data,'userProfileLink', 'No Link Yet' )
                         })
-
-                        data.dateTimeAdded = prettyDate(data.dateTimeAdded);
-                        displayField(data, 'dateTimeAdded')
-                        document.getElementById('apprentice').innerHTML = ''
-                        if (data.apprentice === 1) {
-                            document.getElementById('apprentice').innerHTML = 'Apprentice'
-                        }
-                        console.log(data);
-                        displayField(data, 'name')
-                        displayField(data, 'email')
-                        displayField(data, 'phoneNumber')
-                        displayField(data, 'gender')
-                        displayField(data, 'stageName')
-                        document.querySelector('#stageOptionNameContainer').style.display = 'block'
-                        displayField(data, 'stageOptionName')
-                        if (data.stageOptionName === null) {
-                            document.querySelector('#stageOptionNameContainer').style.display = 'none'
-                        }
-                        displayField(data, 'cohortDate')
-                        displayField(data, 'backgroundInfo')
-                        displayField(data, 'whyDev')
-                        displayField(data, 'codeExperience')
-                        displayField(data, 'hearAbout')
-                        displayField(data, 'eligible', 'Not eligible to study in the UK')
-                        displayField(data, 'eighteenPlus', 'Under 18')
-                        displayField(data, 'finance', 'No')
-                        if (data.eligible !== 0) {
-                            document.getElementById('eligible').innerHTML = 'Eligible to study in the UK'
-                        }
-                        if (data.eighteenPlus !== 0) {
-                            document.getElementById('eighteenPlus').innerHTML = 'Over 18'
-                        }
-                        if (data.finance !== 0) {
-                            document.getElementById('finance').innerHTML = 'Yes'
-                        }
-                        displayField(data, 'notes')
-
-                        data.taster = prettyDate(data.taster)
-                        displayField(data, 'taster', 'Did not book onto a taster session')
-                        if (data.taster !== null && (data.tasterAttendance === null || data.tasterAttendance === 0)) {
-                            displayField(data, 'tasterAttendance', 'Did not attend the booked session')
-                        }
-
-                        data.assessmentDay = prettyDate(data.assessmentDay)
-                        displayField(data, 'assessmentDay', 'Not yet booked')
-                        if (data.assessmentDay !== null) {
-                            displayField(data, 'assessmentTime', 'Not yet booked')
-                        }
-
-                        data.customAssessmentDay = prettyDate(data.customAssessmentDay)
-                        displayField(data, 'customAssessmentDay', 'Not booked')
-                        if (data.customAssessmentDay !== null) {
-                            displayField(data, 'assessmentTime', 'Not yet booked')
-                        }
-
-                        data.aptitude = aptitudeColors(data.aptitude)
-                        displayField(data, 'aptitude', 'Not yet taken')
-
-                        displayField(data, 'diversitechInterest', 'Not asked yet', 'No')
-                        if (data.diversitechInterest === 1) {
-                            document.getElementById('diversitechInterest').innerHTML = 'Yes'
-                        }
-                        displayField(data, 'assessmentNotes', 'No notes written')
-                        data.diversitech = addCurrency(data.diversitech)
-                        data.edaid = addCurrency(data.edaid)
-                        data.upfront = addCurrency(data.upfront)
-                        displayField(data, 'diversitech')
-                        displayField(data, 'edaid')
-                        displayField(data, 'upfront')
-                        displayField(data, 'laptop', 'Unknown', 'No')
-                        if (data.laptop === 1) {
-                            document.getElementById('laptop').innerHTML = 'Yes'
-                        }
-                        displayField(data, 'laptopDeposit', 'No')
-                        if (data.laptopDeposit === 1) {
-                            document.getElementById('laptopDeposit').innerHTML = 'Yes'
-                        }
-                        displayField(data, 'laptopNum', 'Not assigned')
-                        data.kitCollectionDay = prettyDate(data.kitCollectionDay)
-                        displayField(data, 'kitCollectionDay', 'Not yet booked')
-                        if (data.kitCollectionDay !== null) {
-                            displayField(data, 'kitCollectionTime', 'Not yet booked')
-                        }
-                        displayField(data, 'kitNum', 'Not assiged')
-                        displayField(data, 'team', 'Not assigned')
-                        document.getElementById('userProfileLink').innerHTML = studentUrl;
-                        document.getElementById('userProfileLink').href = studentUrl;
-                        $(".clipboard").click(function () {
-                            copyToClipboard('#userProfileLink')
-                        })
-                        displayField(data, 'githubUsername', 'Unknown')
-                        displayField(data, 'portfolioUrl', 'Unknown')
-                        displayField(data, 'pleskHostingUrl', 'Not created')
-                        displayField(data, 'githubEducationLink', 'Not created')
-                        displayField(data, 'additionalNotes', 'No notes')
-                        data.chosenCourseDate = prettyDate(data.chosenCourseDate)
-                        displayField(data, 'chosenCourseDatePretty', 'Not asked yet')
-                        // displayField(data,'userProfileLink', 'No Link Yet' )
-                    })
-                }
-            )
-
-        $("#applicantModal").modal()
+                    }
+                )
+            $("#applicantModal").modal()
+        })
     })
-})
+}
+addEventListenersToDisplayApplicantModal()

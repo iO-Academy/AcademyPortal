@@ -1,0 +1,94 @@
+<?php
+$successes = $data['successes'] ?? null;
+$failures = $data['failures'] ?? null;
+$error = $data['errors'] ?? null;
+
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    ?>
+    <title>Document</title>
+</head>
+<body>
+
+<?php
+require 'partials/layout/header.phtml';
+require 'partials/layout/nav.phtml';
+?>
+
+  <h3>Csv upload template</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>email</th>
+        <th>phoneNumber</th>
+        <th>gender</th>
+        <th>whyDev</th>
+        <th>codeExperience</th>
+        <th>hearAboutId</th>
+        <th>eligible</th>
+        <th>eighteenPlus</th>
+        <th>finance</th>
+        <th>notes</th>
+        <th>backgroundInfoId</th>
+        <th>cohort</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bob</td>
+        <td>bob@email.com</td>
+        <td>07799555444</td>
+        <td>Male</td>
+        <td>Lorem ipsum</td>
+        <td>Lorem ipsum</td>
+        <td>Google</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Lorem ipsum</td>
+        <td>Changing careers</td>
+        <td>2022-03-31</td>
+      </tr>
+    </tbody>
+  </table>
+
+<form action="/api/csvUpload" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="csv">Csv:</label>
+        <input id="csv" name="csv" type="file" required>
+    </div>
+    <div>
+        <button class="btn-primary">Upload file</button>
+    </div>
+</form>
+<h5>Result:</h5>
+<?php
+echo \Portal\ViewHelpers\CsvUploadViewHelper::csvUploadResults($successes, $failures, $error);
+?>
+<br>
+<p>To successfully upload a CSV file, please follow the below steps to match data to database:</p>
+<br>
+<ol>
+  <li>Setup CSV file with the headers matching the template</li>
+  <li>Ensure data is aligned as below:
+    <ul>
+        <li>Fields 'gender', 'hearAboutId' & 'backgroundInfoId' must match the currently existing gender options in the
+            database.
+        </li>
+      <li>Field 'cohort' must have a single date that currently exists in the database and must be formatted as 'yyyy-mm-dd'</li>
+      <li>Fields 'eligible', 'eighteenPlus' and 'finance' are all 'yes' or 'no' </li>
+      <li>Any empty fields for 'email', 'phoneNumber', 'whyDev', and 'codeExperience' will be replaced with 'Unknown'.</li>
+    </ul>
+  </li>
+  <li>Click the Choose File button to select the file you want to upload.</li>
+  <li>Date of upload will automatically be appended to the notes field.</li>
+</ol>
+
+<?php require 'partials/layout/footer.phtml'?>
+</body>
+</html>

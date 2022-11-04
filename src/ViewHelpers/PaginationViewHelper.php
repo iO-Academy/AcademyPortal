@@ -6,13 +6,8 @@ class PaginationViewHelper
 {
     /**
      * Takes in count of pages required and current page, and returns pagination for applicants list.
-     *
-     * @param $page
-     * @param $count
-     *
-     * @return string
      */
-    public static function pagination($page, $count)
+    public static function pagination(int $page, int $count): string
     {
         $next = (strval($page + 1));
         $prev = (strval($page - 1));

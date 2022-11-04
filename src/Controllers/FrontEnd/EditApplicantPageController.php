@@ -12,24 +12,18 @@ use Portal\Models\StageModel;
 
 class EditApplicantPageController extends Controller
 {
-    private $applicantModel;
-    private $renderer;
-    private $stageModel;
+    private ApplicantModel $applicantModel;
+    private StageModel $stageModel;
+    private PhpRenderer $renderer;
 
-    /**
-     * EditApplicantPageController constructor.
-     * @param ApplicantModelInterface $applicantModel
-     * @param StageModel $stageModel
-     * @param PhpRenderer $renderer
-     */
-    public function __construct(ApplicantModelInterface $applicantModel, StageModel $stageModel, PhpRenderer $renderer)
+    public function __construct(ApplicantModel $applicantModel, StageModel $stageModel, PhpRenderer $renderer)
     {
         $this->applicantModel = $applicantModel;
         $this->renderer = $renderer;
         $this->stageModel = $stageModel;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $id = $request->getQueryParams()['id'];

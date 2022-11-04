@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 class GetHiringPartnersController extends Controller
 {
-    private $hiringPartnerModel;
+    private HiringPartnerModel $hiringPartnerModel;
 
     public function __construct(HiringPartnerModel $hiringPartnerModel)
     {
@@ -18,11 +18,6 @@ class GetHiringPartnersController extends Controller
 
     /**
      * Calls a method to get all the hiring partner and send JSON back with the info
-     *
-     * @param Request $request HTTP request
-     * @param Response $response HTTP response
-     * @param array $args
-     * @return Response returns JSON with hiring partner data
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {

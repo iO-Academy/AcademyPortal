@@ -9,13 +9,8 @@ function isTime(time) {
 }
 
 function isName(name) {
-    let pattern = /^[a-z ,.'-]+$/i;
+    let pattern = /^[a-z0-9 ,.'-]+$/i;
     return pattern.test(name);
-}
-
-function isFullName(name) {
-    let pattern = /^([\w]{3,})+\s+([\w\s]{3,})+$/i;
-    return pattern.test(name)
 }
 
 function isPhoneNumber(phone) {
@@ -38,13 +33,17 @@ function isPostcode(postcode) {
     let regEx = /\b((?:(?:gir)|(?:[a-pr-uwyz])(?:(?:[0-9](?:[a-hjkpstuw]|[0-9])?)|(?:[a-hk-y][0-9](?:[0-9]|[abehmnprv-y])?)))) ?([0-9][abd-hjlnp-uw-z]{2})\b/ig;
     return regEx.test(postcode);
 }
-
+    
 function isPresent(data) {
         return (data !== "");
 }
 
 function textAreaMaxLength(data) {
-    return data.length <= 10000;
+    if(typeof (data) === 'undefined') {
+        return true;
+    } else {
+        return data.length <= 10000;
+    }
 }
 
 function varCharMaxLength(data) {
@@ -52,8 +51,8 @@ function varCharMaxLength(data) {
 }
 
 function requiredCheckboxes(checkboxes) {
-    let checkedArray  = Array.from(checkboxes).map(checkbox => {
-        return checkbox.checked
+     let checkedArray  = Array.from(checkboxes).map(checkbox => {
+         return checkbox.checked
     })
     return checkedArray.includes(true)
 }

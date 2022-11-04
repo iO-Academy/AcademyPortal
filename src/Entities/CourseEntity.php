@@ -7,9 +7,10 @@ class CourseEntity
     protected $startDate;
     protected $endDate;
     protected $name;
-    protected $trainer;
     protected $notes;
     protected $id;
+    protected $remote;
+    protected $inPerson;
 
     /**
      * @return int|null
@@ -46,16 +47,24 @@ class CourseEntity
     /**
      * @return string|null
      */
-    public function getTrainer(): ?string
+    public function getNotes(): ?string
     {
-        return $this->trainer;
+        return $this->notes;
     }
 
     /**
      * @return string|null
      */
-    public function getNotes(): ?string
+    public function getRemote()
     {
-        return $this->notes;
+        return $this->remote;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getInPerson()
+    {
+        return $this->inPerson;
     }
 }

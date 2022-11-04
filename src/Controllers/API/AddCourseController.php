@@ -11,13 +11,8 @@ use Portal\Models\CourseModel;
 
 class AddCourseController extends Controller
 {
-    private $courseModel;
+    private CourseModel $courseModel;
 
-    /**
-     * AddCourseController constructor
-     *
-     * @param CourseModel $courseModel
-     */
     public function __construct(CourseModel $courseModel)
     {
         $this->courseModel = $courseModel;
@@ -25,16 +20,11 @@ class AddCourseController extends Controller
 
     /**
      * Get user input and send to CourseModel to add to db.
-     *
-     * @param Request  $request
-     * @param Response $response
-     * @param array    $args
-     *
-     * @return Response
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $newCourse = $request->getParsedBody();
+
         $responseData = [
             'success' => false,
             'message' => 'Unexpected Error.',
@@ -45,13 +35,14 @@ class AddCourseController extends Controller
         try {
             if (CourseValidator::validate($newCourse)) {
                 $newCourse = CourseSanitiser::sanitise($newCourse);
-                $result = $this->courseModel->addCourse($newCourse);
+                $insertedId = $this->courseModel->addCourse($newCourse);
+                $this->courseModel->addTrainersToCourse($newCourse['trainer'], $insertedId);
             }
         } catch (\Exception $exception) {
             $responseData['message'] = $exception->getMessage();
         }
 
-        if (isset($result) && $result) {
+        if (isset($insertedId) && $insertedId) {
             $responseData = [
                 'success' => true,
                 'message' => 'New Course successfully saved.',

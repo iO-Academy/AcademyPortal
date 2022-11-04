@@ -9,13 +9,8 @@ use Portal\Models\ApplicantModel;
 
 class GetApplicantController extends Controller
 {
-    private $applicantModel;
+    private ApplicantModel $applicantModel;
 
-    /**
-     * GetApplicantController constructor.
-     *
-     * @param ApplicantModel $applicantModel
-     */
     public function __construct(ApplicantModel $applicantModel)
     {
         $this->applicantModel = $applicantModel;
@@ -24,12 +19,8 @@ class GetApplicantController extends Controller
     /**
      * Takes id from the get request and if id is valid returns relevant applicant
      * else returns 404
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $id = $args['id'];
         if (is_numeric($id) && !empty($id)) {

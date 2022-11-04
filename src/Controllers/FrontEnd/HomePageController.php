@@ -9,14 +9,14 @@ use Slim\Views\PhpRenderer;
 
 class HomePageController extends Controller
 {
-    private $renderer;
+    private PhpRenderer $renderer;
 
     public function __construct(PhpRenderer $renderer)
     {
         $this->renderer = $renderer;
     }
 
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
             return $response->withHeader('Location', './admin');

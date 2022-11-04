@@ -6,6 +6,9 @@ class HiringPartnerSanitiser
 {
     public static function sanitise(array $hiringPartner): array
     {
+        if (isset($hiringPartner['companyId'])) {
+            $hiringPartner['companyId'] = (int)$hiringPartner['companyId'];
+        }
         $hiringPartner['name'] = StringSanitiser::sanitiseString($hiringPartner['name']);
         $hiringPartner['companySize'] = (int)$hiringPartner['companySize'];
         $hiringPartner['techStack'] = StringSanitiser::sanitiseString($hiringPartner['techStack']);

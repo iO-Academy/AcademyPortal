@@ -10,15 +10,9 @@ use Slim\Views\PhpRenderer;
 
 class CoursesPageController extends Controller
 {
-    private $renderer;
-    private $courseModel;
+    private PhpRenderer $renderer;
+    private CourseModel $courseModel;
 
-    /**
-     * Creates new instance of CoursesPageController
-     *
-     * @param PhpRenderer $renderer
-     * @param courseModel $courseModel
-     */
     public function __construct(PhpRenderer $renderer, CourseModel $courseModel)
     {
         $this->renderer = $renderer;
@@ -29,18 +23,15 @@ class CoursesPageController extends Controller
      * Checks for logged-in status,
      * gets courses categories from DB
      * and returns rendered landing screen for Courses page
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
      */
-    public function __invoke(Request $request, Response $response, array $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
             $courses = $this->courseModel->getAllCourses();
-            $data = ['data' => $courses];
-            return $this->renderer->render($response, 'courses.phtml', $data);
+            $args['courses'] = $courses;
+            $trainers = $this->courseModel->getTrainersAndCourseId();
+            $args['trainers'] = $trainers;
+            return $this->renderer->render($response, 'courses.phtml', $args);
         } else {
             return $response->withHeader('Location', './');
         }

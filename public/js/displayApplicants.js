@@ -1,7 +1,7 @@
 
 (async ()=> {
   sessionStorage['name'] = '';
-  const nameInput = document.querySelector('#name');
+  const nameInput = document.querySelector('#searchName');
   const search =  document.querySelector('#navSubmitButton');
   const params = new URLSearchParams(
       window.location.search

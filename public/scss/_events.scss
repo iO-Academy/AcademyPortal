@@ -28,6 +28,11 @@
     &.open {
         background: #E0E8F2;
     }
+    .copy-emails-button {
+        background-color: $io-green;
+        color: $io-purple-dark;
+        float: right;
+    }
 }
 
 .header h4 {
@@ -62,6 +67,10 @@
 .event-attendees {
     overflow: auto;
     border: 1px solid $dark-grey;
+}
+
+.event-attendees-table {
+    background-color: #ffffff;
 }
 
 .headerDateTime {
