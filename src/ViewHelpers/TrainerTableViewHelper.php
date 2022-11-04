@@ -6,7 +6,6 @@ use Portal\Entities\TrainerEntity;
 
 class TrainerTableViewHelper
 {
-
     /**
      * Displays all trainer that have not been deleted in a table
      */

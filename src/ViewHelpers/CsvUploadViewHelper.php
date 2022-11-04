@@ -4,7 +4,6 @@ namespace Portal\ViewHelpers;
 
 class CsvUploadViewHelper
 {
-
     public static function csvUploadResults(string $successes, array $failures, string $error): string
     {
         $string = '';
