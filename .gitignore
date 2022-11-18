@@ -9,4 +9,4 @@
 sendgrid.env
 .env
 .circleci/.config.yml.swp
-
+/node_modules/
