@@ -17,7 +17,7 @@ Live Version at: https://portal.dev.io-academy.uk/
 ### Compiling SCSS
 
 - Must have SASS installed for this to work (`npm install` should have done this)
-- Run `composer watch` in the root of the project
+- Run `./node_modules/sass/sass.js --watch public/scss/styles.scss public/css/style.css` in the root of the project
 
 ### Running tests
 
