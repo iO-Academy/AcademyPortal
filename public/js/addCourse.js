@@ -27,12 +27,11 @@ courseForm.addEventListener("submit", e => {
                     courseForm.elements['in_person'].checked = false,
                     courseForm.elements['remote'].checked = false,
                     message.innerText = responseJson.message,
-                    message.classList.add('alert-success'),
-                    message.classList.remove('alert-danger'),
                     selectedTrainerId = [],
                     courseForm.elements['trainer-checkbox'].forEach(trainer => {
                         trainer.checked = false;
                     })
+                    formSubmitSuccess(message);
                 } else {
                     message.innerText = responseJson.message;
                     message.classList.add('alert-danger');

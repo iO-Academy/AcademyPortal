@@ -1,4 +1,5 @@
 const addHiringPartnerForm = document.querySelector('#add-hiring-partner-form')
+const message = document.querySelector('#add-hiring-partner-messages');
 
 addHiringPartnerForm.addEventListener('submit', async e => {
     e.preventDefault()
@@ -125,7 +126,8 @@ let addHiringPartner = async data => {
     .then((data) => {
         if (data.success) {
             document.getElementById('add-hiring-partner-form').reset()
-            document.getElementById('add-hiring-partner-messages').innerHTML = '<p>Hiring Partner successfully added.</p>'
+            message.innerHTML = 'Hiring Partner successfully added.'
+            formSubmitSuccess(message);
         } else {
             document.getElementById('add-hiring-partner-messages').innerHTML = '<p>Hiring Partner not added.</p>'
         }

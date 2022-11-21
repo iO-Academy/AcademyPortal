@@ -28,8 +28,7 @@ eventForm.addEventListener("submit", e => {
                     eventForm.elements['event-end-time'].value = '',
                     eventForm.elements['event-notes'].value = ''
                     message.innerText = responseJson.message
-                    message.classList.add('alert-success')
-                    message.classList.remove('alert-danger')
+                    formSubmitSuccess(message);
                 } else {
                     message.innerText = responseJson.message
                     message.classList.add('alert-danger')
