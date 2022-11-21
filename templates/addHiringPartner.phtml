@@ -5,6 +5,7 @@
     require 'partials/layout/head.phtml';
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Hiring Partners');
     ?>
+    <script defer src="./js/utils.js"></script>
     <script defer src="./js/validations.js"></script>
     <script defer src='./js/addHiringPartner.js'></script>
 </head>
@@ -30,7 +31,7 @@
             <label for='company-url'>Company Website URL:</label>
             <input id='company-url' name='company-url' class="submit-hiring-partner form-control" type="text" placeholder="Company Website Url">
             <input id="submit-hiring-partner" type="submit" class="btn btn-success" value="Add Hiring Partner"/>
-            <div id='add-hiring-partner-messages'></div>
+            <div id='add-hiring-partner-messages' class="alert"></div>
         </form>
 <?php require 'partials/layout/footer.phtml'; ?>
 </body>
