@@ -17,8 +17,8 @@ class DisplayCoursesViewHelper
             $result .=
                 '<tr>
                     <td>' . $course->getId() . '</td>
-                    <td>' . date("j/m/Y", strtotime($course->getStartDate())) . '</td>
-                    <td>' . date("j/m/Y", strtotime($course->getEndDate())) . '</td>
+                    <td>' . date("d/m/Y", strtotime($course->getStartDate())) . '</td>
+                    <td>' . date("d/m/Y", strtotime($course->getEndDate())) . '</td>
                     <td>' . $course->getName() . '</td>
                     <td>' . self::displayCourseTrainers($trainersByCourse) . '</td>
                     <td>' . $course->getNotes() . '</td>
