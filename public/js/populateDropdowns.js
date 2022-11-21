@@ -128,7 +128,7 @@ const checkedCohortDates = () => {
           assessmentOptions += 'selected ';
         }
         let date = new Date(item.date);
-        let dateOptions = {year: 'numeric', month: 'long', day: 'numeric'};
+        let dateOptions = {year: 'numeric', month: 'numeric', day: 'numeric'};
         assessmentOptions += `value="${
             item.id
         }">${date.toLocaleDateString(
