@@ -30,6 +30,7 @@ addContactForm.addEventListener('submit', e => {
                 addContactResponseMessage.classList.add('alert-success')
                 addContactResponseMessage.classList.remove('alert-danger')
                 addContactResponseMessage.textContent = data.message
+                formSubmitSuccess(addContactResponseMessage);
             } else {
                 addContactResponseMessage.classList.remove('alert-success')
                 addContactResponseMessage.classList.add('alert-danger')
