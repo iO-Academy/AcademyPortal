@@ -232,13 +232,13 @@ async function displayHiringPartnersAttending(event){
  */
 async function eventGenerator(event, hiringPartners, applicants) {
     let eventInformation = ''
-    let date = new Date(event.date).toDateString()
+    let date = new Date(event.date).toLocaleDateString()
     let numberOfAttendees
     if (event.category_name === 'Assessment') {
         let assessmentApplicants = applicants.filter(applicant => applicant.assessmentDay === event.id)
         numberOfAttendees = assessmentApplicants.length
     }
-    let headerDate = new Date(event.date).toDateString().substring(0,3) + ' ' + new Date(event.date).getUTCDate() + '/' + new Date(event.date).getUTCMonth() + '/' + new Date(event.date).getUTCFullYear()
+    let headerDate = new Date(event.date).toDateString().substring(0,3) + ' ' + new Date(event.date).toLocaleDateString()
     eventInformation +=
         `<div class="event">
         <div class="header header-show-event-info" data-reference='${event.id}'>
