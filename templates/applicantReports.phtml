@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Applicants');
+    ?>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="./js/populateDropdowns.js" defer></script>
+    <script defer src="./js/applicantModal.js" type="module"></script>
+    <script defer src="./js/deleteApplicant.js"></script>
+    <script defer src="./js/displayApplicants.js"></script>
+    <script defer src="./js/nextStageModal.js"></script>
+</head>
+<body> 
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+
+    <div class="row">
+        <div class="col-xs-12 registeredApplicants">
+            <h1>Applicant Reports</h1>
+        </div>
+
+        <!-- Modal -->
+        <?php require('partials/applicantInfoModal.phtml'); ?>
+        <?php require('partials/nextStageModal.phtml'); ?>
+        <?php require('partials/applicantPasswordModal.phtml'); ?>
+    </div>
+
+<?php require 'partials/layout/footer.phtml'; ?>
+
+</body>
+</html>

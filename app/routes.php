@@ -60,6 +60,7 @@ use Portal\Controllers\FrontEnd\StudentApplicationFormPageController;
 use Portal\Controllers\FrontEnd\StudentProfilePageController;
 use Portal\Controllers\FrontEnd\TeamPickerPageController;
 use Portal\Controllers\FrontEnd\TrainersPageController;
+use Portal\Controllers\FrontEnd\ApplicantReportsPageController;
 use Slim\App;
 
 return function (App $app) {
@@ -87,6 +88,7 @@ return function (App $app) {
     $app->get('/csvForm', GetCsvFormController::class);
     $app->get('/trainers', TrainersPageController::class);
     $app->get('/addTrainer', AddTrainerPageController::class);
+    $app->get('/applicantReports', ApplicantReportsPageController::class);
 
     //API
     $app->get('/api/getStudents', GetStudentsController::class);
