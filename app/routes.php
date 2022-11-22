@@ -26,6 +26,7 @@ use Portal\Controllers\API\EditStageController;
 use Portal\Controllers\API\EditStageOptionController;
 use Portal\Controllers\API\EditTeamsController;
 use Portal\Controllers\API\GetApplicantController;
+use Portal\Controllers\API\GetApplicantReportsController;
 use Portal\Controllers\API\GetApplicationFormController;
 use Portal\Controllers\API\GetAssessmentApplicantsController;
 use Portal\Controllers\API\GetCompanyDetailsModalController;
@@ -128,4 +129,5 @@ return function (App $app) {
     $app->put('/api/aptitudeScore', AddAptitudeScoreController::class);
     $app->post('/api/addTrainer', AddTrainerController::class);
     $app->delete('/api/deleteTrainer', DeleteTrainerController::class);
+    $app->post('/api/getApplicantReports', GetApplicantReportsController::class);
 };
