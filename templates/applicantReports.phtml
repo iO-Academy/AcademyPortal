@@ -11,7 +11,6 @@
 </head>
 <body> 
 <?php require 'partials/layout/header.phtml'; ?>
-
 <?php require 'partials/layout/nav.phtml'; ?>
 
 <div class="row">
@@ -21,23 +20,25 @@
     </div>
 </div>
 
-    <form method="post" class="container">
+    <form method="post" action="./api/getApplicantReports" class="container">
         <div class="row">
             <div class="col-md-3">
                 <label for="start-date">Start Date</label>
-                <input id="start-date" name="start-date" class="form-control" type="date" data-required="true">
+                <input id="start-date" name="start-date" class="form-control" type="date" data-required="true" required>
             </div>
 
             <div class="col-md-3">
                 <label for="end-date">End Date</label>
-                <input id="end-date" name="end-date" class="form-control" type="date" data-required="true">
+                <input id="end-date" name="end-date" class="form-control" type="date" data-required="true" required>
             </div>
 
             <div class="col-md-3">
                 <label for="report-category">Report category</label>
-                <select name="report-category" id="report-category" class="form-control">
-                    <option value="0">Select a report category</option>
-                    <?php echo \Portal\ViewHelpers\EventCategoryViewHelper::eventCategoryDropdown($data); ?>
+                <select name="report-category" id="report-category" class="form-control" required>
+                    <option value="" disabled selected>Select a report category</option>
+                    <option value="1">Gender</option>
+                    <option value="2">Background</option>
+                    <option value="3">Heard about us</option>
                 </select>
             </div>
         </div>
