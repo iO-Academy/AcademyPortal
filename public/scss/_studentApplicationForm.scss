@@ -51,7 +51,7 @@ ul.startDatesList li input[type="checkbox"] {
 
 .termsAndConditions {
     label {
-        font-family: 'Inter', Papyrus;
+        font-family: 'Inter', sans-serif;
         font-weight: bold;
     }
     p a:hover,
@@ -91,16 +91,6 @@ ul.startDatesList li input[type="checkbox"] {
             transform: scale(1);
         }
     }
-}
-
-
-.formItem_alert {
-    color: #fa2929;
-    font-size: calc(8px + 1vw);
-    padding: 0px;
-    margin: 0px;
-    font-family: "Inter", Papyrus;
-
 }
 
 .studentApplicationForm {
@@ -197,7 +187,7 @@ ul.startDatesList li input[type="checkbox"] {
  }
 
 .ukEligibility{
-    font-family: 'Inter', Papyrus;
+    font-family: 'Inter', sans-serif;
     font-size: calc(10px + 1vw);
     font-weight: bold;
     height:auto;
