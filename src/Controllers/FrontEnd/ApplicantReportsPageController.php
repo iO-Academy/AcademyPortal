@@ -20,7 +20,7 @@ class ApplicantReportsPageController
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $data = $this->applicantsReportsModel->extractDataForApplicantReports();
+        $data = $this->applicantsReportsModel->extractDataForApplicantReports(3, 20190101, 20220101);
         return $this->renderer->render($response, 'applicantReports.phtml', ['reports' => $data]);
     }
 }

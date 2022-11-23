@@ -7,36 +7,86 @@
     ?>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script src="./js/populateDropdowns.js" defer></script>
-    <script defer src="./js/applicantModal.js" type="module"></script>
-    <script defer src="./js/deleteApplicant.js"></script>
-    <script defer src="./js/displayApplicants.js"></script>
-    <script defer src="./js/nextStageModal.js"></script>
+
 </head>
 <body> 
 <?php require 'partials/layout/header.phtml'; ?>
 
 <?php require 'partials/layout/nav.phtml'; ?>
 
-    <div class="row">
-        <div class="col-xs-12 registeredApplicants">
-            <h1>Applicant Reports</h1>
-        </div>
-
-        <div>
-            <?php
-            print_r($reports);
-//            foreach ($reports as $report) {
-//                echo '<p>' . $report[''] . '</p>';
-//            }
-            ?>
-        </div>
-
-
-        <!-- Modal -->
-        <?php require('partials/applicantInfoModal.phtml'); ?>
-        <?php require('partials/nextStageModal.phtml'); ?>
-        <?php require('partials/applicantPasswordModal.phtml'); ?>
+<div class="row">
+    <div class="col-xs-12 registeredApplicants">
+        <h1>Applicant Reports</h1>
+        <h2><small>Select the report category and the dates you would like the report to run between:</small></h2>
     </div>
+</div>
+
+    <form method="post" class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="start-date">Start Date</label>
+                <input id="start-date" name="start-date" class="form-control" type="date" data-required="true">
+            </div>
+
+            <div class="col-md-3">
+                <label for="end-date">End Date</label>
+                <input id="end-date" name="end-date" class="form-control" type="date" data-required="true">
+            </div>
+
+            <div class="col-md-3">
+                <label for="report-category">Report category</label>
+                <select name="report-category" id="report-category" class="form-control">
+                    <option value="0">Select a report category</option>
+                    <?php echo \Portal\ViewHelpers\EventCategoryViewHelper::eventCategoryDropdown($data); ?>
+                </select>
+            </div>
+        </div>
+        <input type="submit" value="Run Report" class="btn btn-primary"/>
+    </form>
+
+<div class="container">
+    <div class="row">
+        <h3>Total Applicants: 20</h3>
+    </div>
+    <div class="row">
+        <table class="col-xs-12 table-bordered table">
+            <tr>
+                <th class="col-md-3">Data Field Name</th>
+                <th class="col-md-3">No. of Applicants</th>
+                <th class="col-md-3">Percentage of Applicants</th>
+            </tr>
+            <tr>
+                <td class="col-md-3">Male</td>
+                <td class="col-md-3">10</td>
+                <td class="col-md-3">50%</td>
+            </tr>
+            <tr>
+                <td class="col-md-3">Female</td>
+                <td class="col-md-3">10</td>
+                <td class="col-md-3">50%</td>
+            </tr>
+            <tr>
+                <td class="col-md-3">Non-binary</td>
+                <td class="col-md-3">0</td>
+                <td class="col-md-3">0%</td>
+            </tr>
+            <tr>
+                <td class="col-md-3">Prefer not to say</td>
+                <td class="col-md-3">0</td>
+                <td class="col-md-3">0%</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<?php
+//echo '<pre>';
+//print_r($reports);
+//echo '</pre>';
+foreach($reports as $report) {
+    echo '<p>' . $report['report'] . ' => ' . $report['total'] . '</p>';
+}
+
+?>
 
 <?php require 'partials/layout/footer.phtml'; ?>
 
