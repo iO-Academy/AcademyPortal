@@ -7,12 +7,11 @@
     ?>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script src="./js/populateDropdowns.js" defer></script>
-
+    <script src="./js/applicantReport.js" defer></script>
 </head>
 <body> 
 <?php require 'partials/layout/header.phtml'; ?>
 <?php require 'partials/layout/nav.phtml'; ?>
-
 <div class="row">
     <div class="col-xs-12 registeredApplicants">
         <h1>Applicant Reports</h1>
@@ -20,37 +19,37 @@
     </div>
 </div>
 
-    <form method="post" action="./api/getApplicantReports" class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <label for="start-date">Start Date</label>
-                <input id="start-date" name="start-date" class="form-control" type="date" data-required="true" required>
-            </div>
-
-            <div class="col-md-3">
-                <label for="end-date">End Date</label>
-                <input id="end-date" name="end-date" class="form-control" type="date" data-required="true" required>
-            </div>
-
-            <div class="col-md-3">
-                <label for="report-category">Report category</label>
-                <select name="report-category" id="report-category" class="form-control" required>
-                    <option value="" disabled selected>Select a report category</option>
-                    <option value="1">Gender</option>
-                    <option value="2">Background</option>
-                    <option value="3">Heard about us</option>
-                </select>
-            </div>
+<form id="report-form" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <label for="start-date">Start Date</label>
+            <input id="start-date" name="start-date" class="form-control" type="date" data-required="true" required>
         </div>
-        <input type="submit" value="Run Report" class="btn btn-primary"/>
-    </form>
 
-<div class="container">
+        <div class="col-md-3">
+            <label for="end-date">End Date</label>
+            <input id="end-date" name="end-date" class="form-control" type="date" data-required="true" required>
+        </div>
+
+        <div class="col-md-3">
+            <label for="report-category">Report category</label>
+            <select name="report-category" id="report-category" class="form-control" required>
+                <option value="" disabled selected>Select a report category</option>
+                <option value="1">Gender</option>
+                <option value="2">Background</option>
+                <option value="3">Heard about us</option>
+            </select>
+        </div>
+    </div>
+    <input id="run-btn" type="submit" value="Run Report" class="btn btn-primary"/>
+</form>
+
+<div id="report-container" class="container">
     <div class="row">
         <h3>Total Applicants: 20</h3>
     </div>
     <div class="row">
-        <table class="col-xs-12 table-bordered table">
+        <table id="table" class="col-xs-12 table-bordered table">
             <tr>
                 <th class="col-md-3">Data Field Name</th>
                 <th class="col-md-3">No. of Applicants</th>
@@ -81,6 +80,5 @@
 </div>
 
 <?php require 'partials/layout/footer.phtml'; ?>
-
 </body>
 </html>
