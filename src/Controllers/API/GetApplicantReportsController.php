@@ -7,24 +7,26 @@ use Portal\Models\ApplicantReportModel;
 use Portal\Validators\ReportValidator;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use Slim\Views\PhpRenderer;
 
 
 class GetApplicantReportsController extends Controller
 {
     private ApplicantReportModel $applicantReportModel;
+    private PhpRenderer $renderer;
 
     /**
      * @param ApplicantReportModel $applicantReportModel
-     * @param $renderer
+     * @param PhpRenderer $renderer
      */
-    public function __construct(ApplicantReportModel $applicantReportModel)
+    public function __construct(ApplicantReportModel $applicantReportModel, PhpRenderer $renderer)
     {
         $this->applicantReportModel = $applicantReportModel;
+        $this->renderer = $renderer;
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $reportRequest = $request->getParsedBody();
 
         $responseData = [
             'success' => false,
@@ -33,21 +35,21 @@ class GetApplicantReportsController extends Controller
         ];
         $statusCode = 400;
 
-        if ($reportRequest['report-category'] == 1) {
+        if ($args['cat'] == 1) {
             try {
-                $result = $this->applicantReportModel->getGenderReport($reportRequest);
+                $result = $this->applicantReportModel->getGenderReport();
             } catch (\Exception $exception) {
                 $responseData['message'] = $exception->getMessage();
             }
-        } elseif ($reportRequest['report-category'] == 2) {
+        } elseif ($args['cat'] == 2) {
             try {
-                $result = $this->applicantReportModel->getBackgroundReport($reportRequest);
+                $result = $this->applicantReportModel->getBackgroundReport();
             } catch (\Exception $exception) {
                 $responseData['message'] = $exception->getMessage();
             }
         } else {
             try {
-                $result = $this->applicantReportModel->getHeadAboutUsReport($reportRequest);
+                $result = $this->applicantReportModel->getHeadAboutUsReport();
             } catch (\Exception $exception) {
                 $responseData['message'] = $exception->getMessage();
             }
