@@ -129,5 +129,5 @@ return function (App $app) {
     $app->put('/api/aptitudeScore', AddAptitudeScoreController::class);
     $app->post('/api/addTrainer', AddTrainerController::class);
     $app->delete('/api/deleteTrainer', DeleteTrainerController::class);
-    $app->post('/api/getApplicantReports', GetApplicantReportsController::class);
+    $app->get('/api/getApplicantReports/{start}/{end}/{cat}', GetApplicantReportsController::class);
 };
