@@ -9,3 +9,15 @@ const formSubmitSuccess = () => {
 const validateEmailInputs = (email) => {
     return varCharMaxLength(email) && isEmail(email) && isPresent(email);
 };
+
+const validateEndLessThanStart = (startTime, endTime) => {
+
+    if (endTime < startTime) {
+        return false
+    }
+    return true
+};
+
+const validateEndSameAsStart = (startTime, endTime) => {
+    return endTime - startTime !== 0;
+};
