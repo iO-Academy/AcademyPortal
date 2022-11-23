@@ -13,7 +13,7 @@ class ApplicantReportModel
         $this->db = $db;
     }
 
-    public function getGenderReport(array $queryParams): array
+    public function getGenderReport(): array
     {
         $genderData = [
             ['title' => 'Gender'],
@@ -30,7 +30,7 @@ class ApplicantReportModel
         return $genderData;
     }
 
-    public function getBackgroundReport(array $queryParams): array
+    public function getBackgroundReport(): array
     {
         $backgroundData = [
             ['title' => 'Background'],
@@ -47,7 +47,7 @@ class ApplicantReportModel
         return $backgroundData;
     }
 
-    public function getHeadAboutUsReport(array $queryParams): array
+    public function getHeadAboutUsReport(): array
     {
         $heardAboutUSData = [
             ['title' => 'Heard About Us'],
