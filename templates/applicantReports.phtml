@@ -22,6 +22,16 @@
             <h1>Applicant Reports</h1>
         </div>
 
+        <div>
+            <?php
+            print_r($reports);
+//            foreach ($reports as $report) {
+//                echo '<p>' . $report[''] . '</p>';
+//            }
+            ?>
+        </div>
+
+
         <!-- Modal -->
         <?php require('partials/applicantInfoModal.phtml'); ?>
         <?php require('partials/nextStageModal.phtml'); ?>
