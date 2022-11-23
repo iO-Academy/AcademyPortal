@@ -1,13 +1,38 @@
 const courseForm = document.querySelector('form');
 const message = document.querySelector('#messages');
 
-// Submit Form + Add New Course API Call
-courseForm.addEventListener("submit", e => {
-    e.preventDefault();
+// Submit Form + Add New Event API Call
+courseForm.addEventListener('submit', e => {
+    e.preventDefault()
+    const errorDivs = document.querySelectorAll('.alert');
+    errorDivs.forEach(errorDiv => {
+        errorDiv.classList.add('hidden');
+    })
 
-    let data = getCompletedCourseFormData();
-    let validate = validateCourseForm();
-    if (validate) {
+    let data = getCompletedFormData();
+    let validatedFormItems = validateCourseInputs(data);
+    let formIsValid = true;
+
+    Object.keys(validatedFormItems).forEach(formItemKey => {
+        const errorDiv = document.querySelector(`#${formItemKey}Error`);
+        let formItemValues = validatedFormItems[formItemKey];
+        let keys = Object.keys(formItemValues);
+        for (let i = 0; i < keys.length; i++) {
+            let key = keys[i];
+            let isValid = formItemValues[key];
+            if (!isValid) {
+                errorDiv.classList.add('alert-danger');
+                errorDiv.classList.remove('hidden');
+                errorDiv.innerHTML = errorMessage(key);
+                formIsValid = false;
+                message.classList.add('hidden')
+                break;
+            }
+        }
+    });
+
+    if (formIsValid) {
+        // send it!
         fetch('./api/addCourse', {
             credentials: 'same-origin',
             headers: {
@@ -20,9 +45,9 @@ courseForm.addEventListener("submit", e => {
             .then(response => response.json())
             .then(responseJson => {
                 if (responseJson.success) {
+                    courseForm.elements['courseName'].value = '',
                     courseForm.elements['startDate'].value = '',
                     courseForm.elements['endDate'].value = '',
-                    courseForm.elements['name'].value = '',
                     courseForm.elements['notes'].value = '',
                     courseForm.elements['in_person'].checked = false,
                     courseForm.elements['remote'].checked = false,
@@ -32,11 +57,11 @@ courseForm.addEventListener("submit", e => {
                     selectedTrainerId = [],
                     courseForm.elements['trainer-checkbox'].forEach(trainer => {
                         trainer.checked = false;
-                    })
+                        })
                 } else {
-                    message.innerText = responseJson.message;
-                    message.classList.add('alert-danger');
-                    message.classList.remove('alert-success');
+                    message.innerText = responseJson.message
+                    message.classList.add('alert-danger')
+                    message.classList.remove('alert-success')
                 }
             });
     }
@@ -60,11 +85,11 @@ let getSelectedTrainers = () => {
 /**
  * Adds data from form into an object with the field name as key and the form value as value.
  */
-let getCompletedCourseFormData = () => {
+let getCompletedFormData = () => {
     let data = {
+        courseName: courseForm.elements['courseName'].value,
         startDate: courseForm.elements['startDate'].value,
         endDate: courseForm.elements['endDate'].value,
-        name: courseForm.elements['name'].value,
         trainer: getSelectedTrainers(),
         notes: courseForm.elements['notes'].value,
         in_person: courseForm.elements['in_person'].checked ? 1 : 0,
@@ -73,43 +98,58 @@ let getCompletedCourseFormData = () => {
     return data;
 }
 
-function validateCourseForm() {
-    let success = true;
-    let message = '';
-    let inputs = document.querySelectorAll('.create-courses');
-    inputs.forEach(function (element) {
-        //Checks fields with attribute data-required=true has data
-        let required = element.getAttribute('data-required')
-        if (required && element.value.length < 1) {
-            message += element.previousElementSibling.innerHTML + ' is a required field! <br>';
-            success = false;
+let validateCourseInputs = (data) => {
+
+    console.log(data.startDate === data.endDate);
+
+    validate = {
+        courseName: {
+            isPresent: isPresent(data.courseName),
+            isName: isName(data.courseName),
+            validLengthVarChar: varCharMaxLength(data.courseName)
+        },
+        startDate: {
+            isPresent: isPresent(data.startDate),
+            isDate: isDate(data.startDate),
+            validateEndDateLessThanStart: validateEndDateLessThanStart(data.startDate, data.endDate),
+            validateEndDateSameAsStart: validateEndDateSameAsStart(data.startDate, data.endDate)
+        },
+        endDate: {
+            isPresent: isPresent(data.endDate),
+            isDate: isDate(data.endDate),
+        },
+        notes: {
+            validLengthText: textAreaMaxLength(data.notes)
         }
-        //Checks fields with attribute data-max are within their character limit.
-        let maxLength = element.getAttribute('data-max');
-        if (required && maxLength != null && element.value.length > maxLength) {
-            message += element.name + ' is too long, must be less than ' + maxLength + ' characters! <br>';
-            success = false;
-        }
-        //Checks the date is in the format of a date 'YYYY-MM-DD'
-        if (element.name === 'startDate' || element.name === 'endDate') {
-            let date = element.value.trim();
-            if (!isDate(date)) {
-                message += 'Invalid date!<br>';
-                success = false;
-            }
-        }
-    });
-    // check that the end date is actually after the start date
-    let startDate = new Date(document.querySelector('#startDate').value);
-    let endDate = new Date(document.querySelector('#endDate').value);
-    if (endDate < startDate) {
-        message += 'Course must not end before it begins!<br>';
-        success = false;
-    } else if (endDate.getDate() === startDate.getDate()) {
-        message += 'Must not begin and end on the same day!<br>';
-        success = false;
+    };
+    return validate;
+};
+
+let errorMessage = (validationType) => {
+    let htmlString = '';
+
+    switch (validationType) {
+        case 'isPresent':
+            htmlString = `This field must be filled in.`;
+            break;
+        case 'validLengthVarChar':
+            htmlString = `This field must be less than 255 characters.`;
+            break;
+        case 'validLengthText':
+            htmlString = `This field must be less than 5000 characters.`;
+            break;
+        case 'isName':
+            htmlString = `Please use alphanumeric characters only.`;
+            break;
+        case 'validateEndDateLessThanStart':
+            htmlString = 'Course must not end before it begins.';
+            break;
+        case 'validateEndDateSameAsStart':
+            htmlString = 'Course must not end at the same date it begins.';
+            break;
+        default:
+            htmlString = `This field is invalid.`;
+            break;
     }
-    //Adds all error messages to the messages div.
-    document.getElementById('messages').innerHTML = message;
-    return success;
+    return htmlString;
 }

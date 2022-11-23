@@ -8,7 +8,7 @@ addContactForm.addEventListener('submit', e => {
     errorDivs.forEach(errorDiv => {
         errorDiv.classList.add('hidden');
     })
-    
+
     let data = getCompletedFormData();
     let validatedFormItems = validateContactInputs(data);
     let formIsValid = true;

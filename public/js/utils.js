@@ -21,3 +21,16 @@ const validateEndLessThanStart = (startTime, endTime) => {
 const validateEndSameAsStart = (startTime, endTime) => {
     return endTime - startTime !== 0;
 };
+
+const validateEndDateLessThanStart = (startDate, endDate) => {
+
+    if (endDate < startDate) {
+        return false
+    }
+    return true
+};
+
+const validateEndDateSameAsStart = (startDate, endDate) => {
+
+    return endDate !== startDate;
+};
