@@ -61,4 +61,3 @@ class ApplicantsReportsModel
         return $query->fetchAll();
     }
 }
-
