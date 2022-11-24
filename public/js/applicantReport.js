@@ -17,7 +17,7 @@ const getFormSubmission = () => {
 startBtn.addEventListener('click', e => {
     e.preventDefault();
     const reportSubmission = getFormSubmission();
-    
+
     const extractResponseData = (response) => {
         return response.json();
     }
