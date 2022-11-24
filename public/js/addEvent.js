@@ -1,12 +1,37 @@
 const eventForm = document.querySelector('form')
-const message = document.querySelector('#messages')
+const message = document.querySelector('#messages');
+
 // Submit Form + Add New Event API Call
 eventForm.addEventListener("submit", e => {
     e.preventDefault()
+    const errorDivs = document.querySelectorAll('.alert');
+    errorDivs.forEach(errorDiv => {
+        errorDiv.classList.add('hidden');
+    })
 
-    let data = getCompletedFormData()
-    let validate = validateForm()
-    if (validate) {
+    let data = getCompletedFormData();
+    let validatedFormItems = validateEventInputs(data);
+    let formIsValid = true;
+
+    Object.keys(validatedFormItems).forEach(formItemKey => {
+        const errorDiv = document.querySelector(`#${formItemKey}Error`);
+        let formItemValues = validatedFormItems[formItemKey];
+        let keys = Object.keys(formItemValues);
+        for (let i = 0; i < keys.length; i++) {
+            let key = keys[i];
+            let isValid = formItemValues[key];
+            if (!isValid) {
+                errorDiv.classList.add('alert-danger');
+                errorDiv.classList.remove('hidden');
+                errorDiv.innerHTML = errorMessage(key);
+                formIsValid = false;
+                message.classList.add('hidden')
+                break;
+            }
+        }
+    });
+
+    if (formIsValid) {
         // send it!
         fetch('./api/addEvent', {
             credentials: 'same-origin',
@@ -20,10 +45,10 @@ eventForm.addEventListener("submit", e => {
             .then(response => response.json())
             .then(responseJson => {
                 if (responseJson.success) {
-                    eventForm.elements['event-name'].value = '',
                     eventForm.elements['event-category'].value = '',
-                    eventForm.elements['event-location'].value = '',
+                    eventForm.elements['event-name'].value = '',
                     eventForm.elements['event-date'].value = '',
+                    eventForm.elements['event-location'].value = '',
                     eventForm.elements['event-start-time'].value = '',
                     eventForm.elements['event-end-time'].value = '',
                     eventForm.elements['event-notes'].value = ''
@@ -43,79 +68,81 @@ eventForm.addEventListener("submit", e => {
  */
 let getCompletedFormData = () => {
     let data = {
-        name: eventForm.elements['event-name'].value,
         category: eventForm.elements['event-category'].value,
         availableToHP: eventForm.elements['available-to-HP'].checked ? 1 : 0,
-        location: eventForm.elements['event-location'].value,
+        eventName: eventForm.elements['event-name'].value,
         date: eventForm.elements['event-date'].value,
+        location: eventForm.elements['event-location'].value,
         startTime: eventForm.elements['event-start-time'].value,
         endTime: eventForm.elements['event-end-time'].value,
         notes: eventForm.elements['event-notes'].value
     }
+
     return data
 }
 
-function validateForm() {
-    let success = true
-    let message = ''
-    let inputs = document.querySelectorAll('.create-events')
-    inputs.forEach(function (element) {
-        //Checks fields with attribute data-required=true has data
-        let required = element.getAttribute('data-required')
-        if (required && element.value.length < 1) {
-            message += element.previousElementSibling.innerHTML + ' is a required field! <br>'
-            success = false
+let validateEventInputs = (data) => {
+    validate = {
+        category: {
+            isPresent: isPresent(data.category)
+        },
+        eventName: {
+            isPresent: isPresent(data.eventName),
+            isName: isName(data.eventName),
+            validLengthVarChar: varCharMaxLength(data.eventName)
+        },
+        date: {
+            validDate: isDate(data.date)
+        },
+        location: {
+            isPresent: isPresent(data.location),
+            isName: isName(data.eventName),
+            validLengthVarChar: varCharMaxLength(data.location)
+        },
+        startTime: {
+            validTime: isTime(data.startTime),
+            // Force start and end time into date so the validators work correctly.
+            validateEndLessThanStart: validateEndLessThanStart(new Date('2000-01-01 ' + data.startTime + ':00'), new Date('2000-01-01 ' + data.endTime +':00')),
+            validateEndSameAsStart: validateEndSameAsStart(new Date('2000-01-01 ' + data.startTime + ':00'), new Date('2000-01-01 ' + data.endTime +':00'))
+        },
+        endTime: {
+            validTime: isTime(data.endTime)
+        },
+        notes: {
+            validLengthText: textAreaMaxLength(data.notes)
         }
-        //Checks fields with attribute data-max are within their character limit.
-        let maxLength = element.getAttribute('data-max')
-        if (required && maxLength != null && element.value.length > maxLength) {
-            message += element.name + ' is too long, must be less than ' + maxLength + ' characters! <br>'
-            success = false
-        }
-        //Checks an event is selected
-        if (element.name === 'event-category' && element.value === '0') {
-            message += 'Please select an event category!<br>'
-            success = false
-        }
-        //Checks the date is in the format of a date 'YYYY-MM-DD'
-        if (element.name === 'event-date') {
-            let date = element.value.trim()
-            if (!isDate(date)) {
-                message += 'Invalid date!<br>'
-                success = false
-            }
-        }
-        //Checks the start time is in the format of a time 'HH:MM'
-        if (element.name === 'event-start-time') {
-            let time = element.value.trim()
-            if (!isTime(time)) {
-                message += 'Invalid start time!<br>'
-                success = false
-            }
-        }
-        // Checks the end time is in the format of a time 'HH:MM'
-        if (element.name === 'event-end-time') {
-            let time = element.value.trim()
-            if (!isTime(time)) {
-                message += 'Invalid end time!<br>'
-                success = false
-            }
-        }
-    })
-    // check that the end time is actually after the start time
-    // does not assume that times after midnight roll over to the next day
-    let date = document.querySelector('#event-date').value
-    let startTime = new Date(date + ' ' + document.querySelector('#event-start-time').value)
-    let endTime = new Date(date + ' ' + document.querySelector('#event-end-time').value)
-    if (endTime < startTime) {
-        message += 'Event must not end before it begins.<br>'
-        success = false
-    } else if (endTime.getTime() == startTime.getTime()) {
-        message += 'Event must not end at the same time it begins.<br>'
-        success = false
-    }
+    };
+    return validate;
+};
 
-    //Adds all error messages to the messages div.
-    document.getElementById('messages').innerHTML = message
-    return success
+let errorMessage = (validationType) => {
+    let htmlString = '';
+
+    switch (validationType) {
+        case 'isPresent':
+            htmlString = `This field must be filled in.`;
+            break;
+        case 'validLengthVarChar':
+            htmlString = `This field must be less than 255 characters.`;
+            break;
+        case 'validLengthText':
+            htmlString = `This field must be less than 5000 characters.`;
+            break;
+        case 'isName':
+            htmlString = `Please use alphanumeric characters only.`;
+            break;
+        case 'isEmail':
+            htmlString = `This doesn't appear to be a valid email address. Please try again.`;
+            break;
+        case 'validateEndLessThanStart':
+            htmlString = 'Event must not end before it begins.';
+            break;
+        case 'validateEndSameAsStart':
+            htmlString = 'Event must not end at the same time it begins.';
+            break;
+        default:
+            htmlString = `This field is invalid.`;
+            break;
+    }
+    return htmlString;
 }

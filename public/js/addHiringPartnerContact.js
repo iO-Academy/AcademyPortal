@@ -1,20 +1,38 @@
 const addContactForm = document.querySelector('#add-contact-form')
 const addContactResponseMessage = document.querySelector('#add-contact-messages')
 
+// Submit Form + Add New Event API Call
 addContactForm.addEventListener('submit', e => {
     e.preventDefault()
+    const errorDivs = document.querySelectorAll('.alert');
+    errorDivs.forEach(errorDiv => {
+        errorDiv.classList.add('hidden');
+    })
 
-    let data = {
-        contactName: addContactForm['contact-name'].value.trim(),
-        contactCompanyId: addContactForm['company'].value,
-        contactEmail: addContactForm['contact-email'].value.trim(),
-        contactJobTitle: addContactForm['contact-job-title'].value.trim(),
-        contactPhone: addContactForm['contact-phone-number'].value.trim(),
-        contactIsPrimary: addContactForm['contact-is-primary'].checked,
-    }
+    let data = getCompletedFormData();
+    let validatedFormItems = validateContactInputs(data);
+    let formIsValid = true;
 
-    if(validateAddContactForm(data)){
-        fetch('./api/addContact', {
+    Object.keys(validatedFormItems).forEach(formItemKey => {
+        const errorDiv = document.querySelector(`#${formItemKey}Error`);
+        let formItemValues = validatedFormItems[formItemKey];
+        let keys = Object.keys(formItemValues);
+        for (let i = 0; i < keys.length; i++) {
+            let key = keys[i];
+            let isValid = formItemValues[key];
+            if (!isValid) {
+                errorDiv.classList.add('alert-danger');
+                errorDiv.classList.remove('hidden');
+                errorDiv.innerHTML = errorMessage(key);
+                formIsValid = false;
+                addContactResponseMessage.classList.add('hidden')
+                break;
+            }
+        }
+    });
+
+    if (formIsValid) {
+        fetch('./api/addHiringPartnerContact', {
             credentials: 'same-origin',
             headers: {
                 'Accept': 'application/json',
@@ -23,7 +41,7 @@ addContactForm.addEventListener('submit', e => {
             method: 'post',
             body: JSON.stringify(data)
         })
-        .then( response => response.json())
+        .then(response => response.json())
         .then( data => {
             if (data.success) {
                 document.querySelector('#add-contact-form').reset()
@@ -31,96 +49,81 @@ addContactForm.addEventListener('submit', e => {
                 addContactResponseMessage.classList.remove('alert-danger')
                 addContactResponseMessage.textContent = data.message
                 formSubmitSuccess(addContactResponseMessage);
-            } else {
-                addContactResponseMessage.classList.remove('alert-success')
-                addContactResponseMessage.classList.add('alert-danger')
-                addContactResponseMessage.textContent = data.message
             }
         })
     }
 })
 
-function validateAddContactForm(data) {
-    let message = ''
-
-    let validateCompany = function (company) {
-        if (company == 0) {
-            message += 'Contact Company is a required field!<br>'
-            return false
-        }
-        let companySizes = document.querySelector('#company').childElementCount
-        if (company > companySizes) {
-            message += 'Invalid company option!<br>'
-            return false
-        }
-        return true
-    }(data.contactCompanyId)
-
-    let validateName = function (name) {
-        if (name.length < 1) {
-            message += 'Contact Name is a required field!<br>'
-            return false
-        }
-        if (name.length > 255) {
-            message += 'Contact Name is too long!<br>'
-            return false
-        }
-        return true
-    }(data.contactName)
-
-    let validateEmail = function (email) {
-        if (email.length < 1) {
-            message += 'Contact Email is a required field!<br>'
-            return false
-        }
-        if (email.length > 255) {
-            message += 'Contact Email is too long!<br>'
-            return false
-        }
-        if (!isEmail(email)) {
-            message += 'Invalid email format!<br>'
-            return false
-        }
-        return true
-    }(data.contactEmail)
-
-    let validateJobTitle = function (jobTitle) {
-        if (jobTitle.length > 255) {
-            message += 'Contact Job Title is too long!<br>'
-            return false
-        }
-        return true
-    }(data.contactJobTitle)
-
-    let validatePhoneNumber = function (phone) {
-        if (phone.length == 0) {
-            return true
-        }
-        if (phone.length > 20) {
-            message += 'Contact Phone Number is too long!<br>'
-            return false
-        }
-        if (!isPhoneNumber(phone)) {
-            message += 'Invalid Phone Number format!<br>'
-            return false
-        }
-        return true
-    }(data.contactPhone)
-
-    let validateIsPrimary = function (isPrimary) {
-        if (!(isPrimary == 0 || isPrimary == 1)) {
-            message += 'Primary Contact has an invalid value!<br>'
-            return false
-        }
-        return true
-    }(data.contactIsPrimary)
-
-    if (message.length > 0) {
-        addContactResponseMessage.classList.remove('alert-success')
-        addContactResponseMessage.classList.add('alert-danger')
-        addContactResponseMessage.innerHTML = message
-        return false;
+let getCompletedFormData = () => {
+    let data = {
+        companyName: addContactForm['company'].value.trim(),
+        contactName: addContactForm['contact-name'].value,
+        contactEmail: addContactForm['contact-email'].value.trim(),
+        contactJobTitle: addContactForm['contact-job-title'].value.trim(),
+        contactPhoneNumber: addContactForm['contact-phone-number'].value.trim(),
+        contactIsPrimary: addContactForm['contact-is-primary'].checked,
     }
-    addContactResponseMessage.classList.remove('alert-success', 'alert-danger')
-    return true;
+    return data
 }
+
+let validateContactInputs = (data) => {
+    validate = {
+        companyName: {
+            isPresent: isPresent(data.companyName),
+            validLengthVarChar: varCharMaxLength(data.companyName)
+        },
+        contactName: {
+            isPresent: isPresent(data.contactName),
+            isName: isName(data.contactName),
+            validLengthVarChar: varCharMaxLength(data.contactName)
+        },
+        contactEmail: {
+            isPresent: isPresent(data.contactEmail),
+            isEmail: isEmail(data.contactEmail),
+            validLengthVarChar: varCharMaxLength(data.contactEmail)
+        },
+        contactJobTitle: {
+            isPresent: isPresent(data.contactJobTitle),
+            isName: isName(data.contactJobTitle),
+            validLengthVarChar: varCharMaxLength(data.contactJobTitle)
+        },
+        contactPhoneNumber: {
+            isPresent: isPresent(data.contactPhoneNumber),
+            isPhoneNumber: isPhoneNumber(data.contactPhoneNumber),
+            validLengthVarChar: varCharMaxLength(data.contactPhoneNumber)
+        },
+    };
+    return validate;
+};
+
+let errorMessage = (validationType) => {
+    let htmlString = '';
+
+    switch (validationType) {
+        case 'isPresent':
+            htmlString = `This field must be filled in.`;
+            break;
+        case 'validLengthVarChar':
+            htmlString = `This field must be less than 255 characters.`;
+            break;
+        case 'validLengthText':
+            htmlString = `This field must be less than 5000 characters.`;
+            break;
+        case 'isName':
+            htmlString = `Please use alphanumeric characters only.`;
+            break;
+        case 'isPhoneNumber':
+            htmlString = `Please enter a valid phone number.`;
+            break;
+        case 'isEmail' :
+            htmlString = `Please enter a valid email address.`;
+            break;
+        default:
+            htmlString = `This field is invalid.`;
+            break;
+    }
+    return htmlString;
+}
+
+
+

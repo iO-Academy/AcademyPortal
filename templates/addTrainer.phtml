@@ -16,16 +16,16 @@
     <h1>Add Trainers</h1>       
     <form>
         <label for="trainer-name">Trainer Name</label>
-        <div id="nameError" class="alert hidden formItem_alert"></div>
         <input name="name" class="create-trainer form-control" type="text" placeholder="Full Name" data-required="true" data-max='255' maxlength="255"/>
+        <div id="nameError" class="alert hidden formItem_alert"></div>
 
         <label for="email">Email</label>
-            <div id="emailError" class="alert hidden formItem_alert"></div>
             <input id="email" name="email" class="create-trainer form-control" type="text" placeholder="email" data-required="true">
+        <div id="emailError" class="alert hidden formItem_alert"></div>
 
         <label for="trainer-notes">Notes</label>
-        <div id="notesError" class="alert hidden formItem_alert"></div>
         <textarea name="notes" class="create-trainer form-control" placeholder="Notes" data-max="5000" maxlength="5000"></textarea>
+        <div id="notesError" class="alert hidden formItem_alert"></div>
 
         <input type="submit" class="btn btn-success" />
     </form>
