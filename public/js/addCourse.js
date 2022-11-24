@@ -30,7 +30,6 @@ courseForm.addEventListener('submit', e => {
             }
         }
     });
-
     if (formIsValid) {
         // send it!
         fetch('./api/addCourse', {
@@ -42,7 +41,9 @@ courseForm.addEventListener('submit', e => {
             method: 'post',
             body: JSON.stringify(data)
         })
-            .then(response => response.json())
+            .then(response => {
+                return response.json()
+            })
             .then(responseJson => {
                 if (responseJson.success) {
                     courseForm.elements['courseName'].value = '',
@@ -56,13 +57,13 @@ courseForm.addEventListener('submit', e => {
                     courseForm.elements['trainer-checkbox'].forEach(trainer => {
                         trainer.checked = false;
                     })
-                    formSubmitSuccess(message);
+                    formSubmitSuccess(message)
                 } else {
                     message.innerText = responseJson.message
                     message.classList.add('alert-danger')
                     message.classList.remove('alert-success')
                 }
-            });
+            })
     }
 });
 
@@ -98,8 +99,6 @@ let getCompletedFormData = () => {
 }
 
 let validateCourseInputs = (data) => {
-
-    console.log(data.startDate === data.endDate);
 
     validate = {
         courseName: {

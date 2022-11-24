@@ -1,6 +1,7 @@
 const formSubmitSuccess = (elem) => {
     elem.classList.add('alert-success');
     elem.classList.remove('alert-danger');
+    elem.classList.remove('hidden');
     setTimeout(() => {
         window.location.reload();
     }, 5000);
