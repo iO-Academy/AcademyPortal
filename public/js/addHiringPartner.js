@@ -1,5 +1,5 @@
 const addHiringPartnerForm = document.querySelector('#add-hiring-partner-form')
-const message = document.querySelector('#messages');
+const message = document.querySelector('#add-hiring-partner-messages');
 
 addHiringPartnerForm.addEventListener("submit", e => {
     e.preventDefault()
@@ -65,7 +65,6 @@ addHiringPartnerForm.addEventListener("submit", e => {
 /**
  * Adds data from form into an object with the field name as key and the form value as value.
  */
-
 let getCompletedFormData = () => {
     let data = {
         companyName: addHiringPartnerForm.elements['company-name'].value,
@@ -78,7 +77,6 @@ let getCompletedFormData = () => {
 
     return data
 }
-
 
 let validateHpInputs = (data) => {
     validate = {
@@ -141,6 +139,28 @@ let errorMessage = (validationType) => {
         default:
             htmlString = `This field is invalid.`;
             break;
-    }
+    }    
     return htmlString;
+}
+
+let addHiringPartner = async data => {
+    fetch('./api/createHiringPartner', {
+        credentials: 'same-origin',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        method: 'post',
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then((data) => {
+        if (data.success) {
+            document.getElementById('add-hiring-partner-form').reset()
+            message.innerHTML = 'Hiring Partner successfully added.'
+            formSubmitSuccess(message);
+        } else {
+            document.getElementById('add-hiring-partner-messages').innerHTML = '<p>Hiring Partner not added.</p>'
+        }
+    })
 }

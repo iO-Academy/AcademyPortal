@@ -5,6 +5,7 @@
     require 'partials/layout/head.phtml';
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Hiring Partners');
     ?>
+    <script defer src="./js/utils.js"></script>
     <script defer src="./js/validations.js"></script>
     <script defer src="./js/utils.js"></script>
     <script defer src='./js/addHiringPartner.js'></script>
@@ -44,6 +45,7 @@
             <div id="urlError" class="alert hidden formItem_alert"></div>
 
             <input id="submit-hiring-partner" type="submit" class="btn btn-success" value="Add Hiring Partner"/>
+            <div id='add-hiring-partner-messages' class="alert"></div>
         </form>
 <div id='messages' class="alert"></div>
 <?php require 'partials/layout/footer.phtml'; ?>

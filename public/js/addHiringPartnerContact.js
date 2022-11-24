@@ -1,5 +1,5 @@
 const addContactForm = document.querySelector('#add-contact-form')
-const message = document.querySelector('#add-contact-messages')
+const addContactResponseMessage = document.querySelector('#add-contact-messages')
 
 // Submit Form + Add New Event API Call
 addContactForm.addEventListener('submit', e => {
@@ -25,14 +25,13 @@ addContactForm.addEventListener('submit', e => {
                 errorDiv.classList.remove('hidden');
                 errorDiv.innerHTML = errorMessage(key);
                 formIsValid = false;
-                message.classList.add('hidden')
+                addContactResponseMessage.classList.add('hidden')
                 break;
             }
         }
     });
 
     if (formIsValid) {
-        // send it!
         fetch('./api/addHiringPartnerContact', {
             credentials: 'same-origin',
             headers: {
@@ -42,24 +41,16 @@ addContactForm.addEventListener('submit', e => {
             method: 'post',
             body: JSON.stringify(data)
         })
-            .then(response => response.json())
-            .then(responseJson => {
-                if (responseJson.success) {
-                    addHiringPartnerForm.elements['company'].value = '',
-                    addHiringPartnerForm.elements['contact-name'].value = '',
-                    addHiringPartnerForm.elements['contact-email'].value = '',
-                    addHiringPartnerForm.elements['contact-job-title'].value = '',
-                    addHiringPartnerForm.elements['contact-phone-number'].value = '',
-                    addHiringPartnerForm.elements['contact-is-primary'].checked,
-                    message.innerText = responseJson.message
-                    message.classList.add('alert-success')
-                    message.classList.remove('alert-danger')
-                } else {
-                    message.innerText = responseJson.message
-                    message.classList.add('alert-danger')
-                    message.classList.remove('alert-success')
-                }
-            })
+        .then(response => response.json())
+        .then( data => {
+            if (data.success) {
+                document.querySelector('#add-contact-form').reset()
+                addContactResponseMessage.classList.add('alert-success')
+                addContactResponseMessage.classList.remove('alert-danger')
+                addContactResponseMessage.textContent = data.message
+                formSubmitSuccess(addContactResponseMessage);
+            }
+        })
     }
 })
 
