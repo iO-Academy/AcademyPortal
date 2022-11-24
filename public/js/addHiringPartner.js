@@ -1,7 +1,6 @@
 const addHiringPartnerForm = document.querySelector('#add-hiring-partner-form')
 const message = document.querySelector('#messages');
 
-// Submit Form + Add New Event API Call
 addHiringPartnerForm.addEventListener("submit", e => {
     e.preventDefault()
     const errorDivs = document.querySelectorAll('.alert');
@@ -33,7 +32,6 @@ addHiringPartnerForm.addEventListener("submit", e => {
     });
 
     if (formIsValid) {
-        // send it!
         fetch('./api/createHiringPartner', {
             credentials: 'same-origin',
             headers: {
