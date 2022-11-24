@@ -78,6 +78,15 @@
         </table>
     </div>
 </div>
+<?php
+//echo '<pre>';
+//print_r($reports);
+//echo '</pre>';
+foreach($reports as $report) {
+    echo '<p>' . $report['report'] . ' => ' . $report['total'] . '</p>';
+}
+
+?>
 
 <?php require 'partials/layout/footer.phtml'; ?>
 
