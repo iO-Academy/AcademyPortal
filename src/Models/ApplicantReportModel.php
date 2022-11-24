@@ -17,6 +17,7 @@ class ApplicantReportModel
     {
         $genderData = [
             ['title' => 'Gender'],
+            ['total' => 20],
             ['rows' =>
                 [
                     ['category' => 'Male', 'total' => 10, 'percentage' => 50],
@@ -34,6 +35,7 @@ class ApplicantReportModel
     {
         $backgroundData = [
             ['title' => 'Background'],
+            ['total' => 20],
             ['rows' =>
                 [
                     ['category' => 'Student', 'total' => 10, 'percentage' => 50],
@@ -51,6 +53,7 @@ class ApplicantReportModel
     {
         $heardAboutUSData = [
             ['title' => 'Heard About Us'],
+            ['total' => 20],
             ['rows' =>
                 [
                     ['category' => 'E-Mail', 'total' => 10, 'percentage' => 50],
