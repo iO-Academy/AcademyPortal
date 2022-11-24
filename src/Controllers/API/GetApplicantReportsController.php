@@ -2,8 +2,10 @@
 
 namespace Portal\Controllers\API;
 
+use PHPUnit\Runner\Exception;
 use Portal\Abstracts\Controller;
 use Portal\Models\ApplicantReportModel;
+use Portal\Validators\DateTimeValidator;
 use Portal\Validators\ReportValidator;
 use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -13,16 +15,13 @@ use Slim\Views\PhpRenderer;
 class GetApplicantReportsController extends Controller
 {
     private ApplicantReportModel $applicantReportModel;
-    private PhpRenderer $renderer;
 
     /**
      * @param ApplicantReportModel $applicantReportModel
-     * @param PhpRenderer $renderer
      */
-    public function __construct(ApplicantReportModel $applicantReportModel, PhpRenderer $renderer)
+    public function __construct(ApplicantReportModel $applicantReportModel)
     {
         $this->applicantReportModel = $applicantReportModel;
-        $this->renderer = $renderer;
     }
 
     public function __invoke(Request $request, Response $response, array $args): Response
@@ -36,11 +35,12 @@ class GetApplicantReportsController extends Controller
         $statusCode = 400;
 
         try {
+            ReportValidator::validate($args);
+            DateTimeValidator::validateStartEndDate($args['start'], $args['end']);
             $result = $this->applicantReportModel->extractDataForApplicantReports($args['cat'], $args['start'], $args['end']);
         } catch (\Exception $exception) {
             $responseData['message'] = $exception->getMessage();
         }
-
 
         if (isset($result) && $result) {
             $responseData = [
@@ -50,10 +50,6 @@ class GetApplicantReportsController extends Controller
             ];
             $statusCode = 200;
         }
-
-//        echo '<pre>';
-//        print_r($responseData);
-//        echo '</pre>';
 
         return $this->respondWithJson($response, $responseData, $statusCode);
     }
