@@ -17,7 +17,7 @@ const getFormSubmission = () => {
 startBtn.addEventListener('click', e => {
     e.preventDefault();
     const reportSubmission = getFormSubmission();
-
+    
     const extractResponseData = (response) => {
         return response.json();
     }
@@ -41,6 +41,9 @@ startBtn.addEventListener('click', e => {
                     total.innerText = 'Total Applicants: ' + data.data[0][0][1];
                     createReportTable(data);
                 } else {
+                    while (table.firstChild) {
+                        table.removeChild(table.firstChild)
+                    }
                     total.innerText = '';
                     message.innerText = data.message;
                     message.classList.add('alert-danger');
