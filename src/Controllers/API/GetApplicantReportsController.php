@@ -35,25 +35,12 @@ class GetApplicantReportsController extends Controller
         ];
         $statusCode = 400;
 
-        if ($args['cat'] == 1) {
-            try {
-                $result = $this->applicantReportModel->getGenderReport();
-            } catch (\Exception $exception) {
-                $responseData['message'] = $exception->getMessage();
-            }
-        } elseif ($args['cat'] == 2) {
-            try {
-                $result = $this->applicantReportModel->getBackgroundReport();
-            } catch (\Exception $exception) {
-                $responseData['message'] = $exception->getMessage();
-            }
-        } else {
-            try {
-                $result = $this->applicantReportModel->getHeadAboutUsReport();
-            } catch (\Exception $exception) {
-                $responseData['message'] = $exception->getMessage();
-            }
+        try {
+            $result = $this->applicantReportModel->extractDataForApplicantReports($args['cat'], $args['start'], $args['end']);
+        } catch (\Exception $exception) {
+            $responseData['message'] = $exception->getMessage();
         }
+
 
         if (isset($result) && $result) {
             $responseData = [
@@ -63,6 +50,10 @@ class GetApplicantReportsController extends Controller
             ];
             $statusCode = 200;
         }
+
+//        echo '<pre>';
+//        print_r($responseData);
+//        echo '</pre>';
 
         return $this->respondWithJson($response, $responseData, $statusCode);
     }
