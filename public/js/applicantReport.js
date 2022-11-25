@@ -14,13 +14,33 @@ const getFormSubmission = () => {
     }
 }
 
+const validateCourseForm = () => {
+    let success = true;
+    let errorMessage = '';
+    const inputs = document.querySelectorAll('.report-input');
+    console.log(inputs)
+    inputs.forEach((element) => {
+        const required = element.getAttribute('data-required')
+        if (required && element.value.length === 0) {
+            errorMessage += element.previousElementSibling.innerHTML + ' is a required field! <br>';
+            success = false;
+        }
+
+        if (element.name === 'report-category' && element.value === '0') {
+            errorMessage += 'Please select a report category!<br>'
+            success = false
+        }
+    })
+
+    message.innerHTML = errorMessage;
+    message.classList.add('alert-danger');
+    return success;
+}
+
 startBtn.addEventListener('click', e => {
     e.preventDefault();
     const reportSubmission = getFormSubmission();
-
-    const extractResponseData = (response) => {
-        return response.json();
-    }
+    let validate = validateCourseForm();
 
     const options = {
         credentials: 'same-origin',
@@ -29,28 +49,28 @@ startBtn.addEventListener('click', e => {
             'Content-Type': 'application/json',
         },
     }
-
     const url = './api/getApplicantReports/' + reportSubmission.reportStart + '/' + reportSubmission.reportEnd + '/' + reportSubmission.reportCategory;
-    const getReportData = async () => {
-        const response = await fetch(url, options)
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    message.innerText = '';
-                    message.classList.remove('alert-danger');
-                    total.innerText = 'Total Applicants: ' + data.data[0][0][1];
-                    createReportTable(data);
-                } else {
-                    while (table.firstChild) {
-                        table.removeChild(table.firstChild)
+
+    if (validate) {
+            fetch(url, options)
+                .then(response => response.json())
+                .then(data => {
+                        if (data.success) {
+                            message.innerText = '';
+                            message.classList.remove('alert-danger');
+                            total.innerText = 'Total Applicants: ' + data.data[0][0][1];
+                            createReportTable(data);
+                        } else {
+                            while (table.firstChild) {
+                                table.removeChild(table.firstChild);
+                            }
+                            total.innerText = '';
+                            message.innerText = data.message;
+                            message.classList.add('alert-danger');
+                        }
                     }
-                    total.innerText = '';
-                    message.innerText = data.message;
-                    message.classList.add('alert-danger');
-                }
-            }
-        )
-    }
+                );
+        }
 
     const createReportTable = (reportData) => {
         while (table.firstChild) {
@@ -99,6 +119,4 @@ startBtn.addEventListener('click', e => {
                 row.appendChild(tdThree);
             }
     }
-
-    getReportData();
 });

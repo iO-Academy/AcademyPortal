@@ -69,4 +69,13 @@ class DateTimeValidator
             return $dateTime;
         }
     }
+
+    public static function validateStartEndDate($startDate, $endDate): bool
+    {
+        if ($startDate > $endDate) {
+            throw new \Exception('Start date should be before end date.');
+        } else {
+            return true;
+        }
+    }
 }

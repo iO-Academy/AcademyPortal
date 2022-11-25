@@ -9,7 +9,7 @@
     <script src="./js/populateDropdowns.js" defer></script>
     <script src="./js/applicantReport.js" defer></script>
 </head>
-<body> 
+<body>
 <?php require 'partials/layout/header.phtml'; ?>
 <?php require 'partials/layout/nav.phtml'; ?>
 <div class="row">
@@ -23,17 +23,17 @@
     <div class="row">
         <div class="col-md-3">
             <label for="start-date">Start Date</label>
-            <input id="start-date" name="start-date" class="form-control" type="date" data-required="true" required>
+            <input id="start-date" name="start-date" class="form-control report-input" type="date" data-required="true" required>
         </div>
 
         <div class="col-md-3">
             <label for="end-date">End Date</label>
-            <input id="end-date" name="end-date" class="form-control" type="date" data-required="true" required>
+            <input id="end-date" name="end-date" class="form-control report-input" type="date" data-required="true" required>
         </div>
 
         <div class="col-md-3">
             <label for="report-category">Report category</label>
-            <select name="report-category" id="report-category" class="form-control" required>
+            <select name="report-category" id="report-category" class="form-control report-input" data-required="true" required>
                 <option value="" disabled selected>Select a report category</option>
                 <option value="1">Gender</option>
                 <option value="2">Background</option>
