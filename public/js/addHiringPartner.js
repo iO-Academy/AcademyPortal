@@ -49,10 +49,9 @@ addHiringPartnerForm.addEventListener("submit", e => {
                     addHiringPartnerForm.elements['company-tech-stack'].value = '',
                     addHiringPartnerForm.elements['company-postcode'].value = '',
                     addHiringPartnerForm.elements['company-phone-number'].value = '',
-                    addHiringPartnerForm.elements['company-url'].value = ''
-                    message.innerText = responseJson.message
-                    message.classList.add('alert-success')
-                    message.classList.remove('alert-danger')
+                    addHiringPartnerForm.elements['company-url'].value = '',
+                    message.innerText = responseJson.message,
+                    formSubmitSuccess(message)
                 } else {
                     message.innerText = responseJson.message
                     message.classList.add('alert-danger')
@@ -67,12 +66,12 @@ addHiringPartnerForm.addEventListener("submit", e => {
  */
 let getCompletedFormData = () => {
     let data = {
-        companyName: addHiringPartnerForm.elements['company-name'].value,
+        name: addHiringPartnerForm.elements['company-name'].value,
         companySize: addHiringPartnerForm.elements['company-size'].value,
         techStack: addHiringPartnerForm.elements['company-tech-stack'].value,
         postcode: addHiringPartnerForm.elements['company-postcode'].value,
         phoneNumber: addHiringPartnerForm.elements['company-phone-number'].value,
-        url: addHiringPartnerForm.elements['company-url'].value
+        companyUrl: addHiringPartnerForm.elements['company-url'].value
     }
 
     return data
@@ -80,10 +79,10 @@ let getCompletedFormData = () => {
 
 let validateHpInputs = (data) => {
     validate = {
-        companyName: {
-            isPresent: isPresent(data.companyName),
-            isName: isName(data.companyName),
-            validLengthVarChar: varCharMaxLength(data.companyName)
+        name: {
+            isPresent: isPresent(data.name),
+            isName: isName(data.name),
+            validLengthVarChar: varCharMaxLength(data.name)
         },
         companySize: {
             isPresent: isPresent(data.companySize)
@@ -103,10 +102,10 @@ let validateHpInputs = (data) => {
             isPhoneNumber: isPhoneNumber(data.phoneNumber),
             validLengthVarChar: varCharMaxLength(data.phoneNumber)
         },
-        url: {
-            isPresent: isPresent(data.url),
-            isUrl: isUrl(data.url),
-            validTime: isUrl(data.url)
+        companyUrl: {
+            isPresent: isPresent(data.companyUrl),
+            isUrl: isUrl(data.companyUrl),
+            validTime: isUrl(data.companyUrl)
         },
     };
     return validate;
