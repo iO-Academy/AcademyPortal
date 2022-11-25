@@ -64,8 +64,11 @@ class ApplicantReportModel
         $query = $this->db->prepare($sql);
 
         $query->bindParam(':startDate', $startDate);
+
         $query->bindParam(':endDate', $endDate);
+
         $query->execute();
+
         $fetchedQuery = $query->fetchAll();;
 
         $total = 0;
@@ -76,7 +79,7 @@ class ApplicantReportModel
 
         if ($total > 0) {
             for ($i = 0; $i < count($fetchedQuery); $i++) {
-                $percentage = number_format(($fetchedQuery[$i]['total']/$total)*100, 0);
+                $percentage = number_format(($fetchedQuery[$i]['total'] / $total) * 100, 0);
                 $fetchedQuery[$i][] = [$percentage];
             }
         } else {
