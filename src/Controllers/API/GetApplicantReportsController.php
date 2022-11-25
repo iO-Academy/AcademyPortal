@@ -36,8 +36,11 @@ class GetApplicantReportsController extends Controller
         try {
             ReportValidator::validate($args);
             DateTimeValidator::validateStartEndDate($args['start'], $args['end']);
-            $result = $this->applicantReportModel->extractDataForApplicantReports($args['cat'],
-                $args['start'], $args['end']);
+            $result = $this->applicantReportModel->extractDataForApplicantReports(
+                $args['cat'],
+                $args['start'],
+                $args['end']
+            );
         } catch (\Exception $exception) {
             $responseData['message'] = $exception->getMessage();
         }
