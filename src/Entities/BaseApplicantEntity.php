@@ -83,7 +83,7 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
      */
     public function getPrettyDateOfApplication()
     {
-        return date("d F, Y", strtotime($this->dateTimeAdded));
+        return date("d/m/Y", strtotime($this->dateTimeAdded));
     }
 
     /**
