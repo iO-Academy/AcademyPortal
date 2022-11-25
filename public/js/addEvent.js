@@ -70,7 +70,7 @@ let getCompletedFormData = () => {
     let data = {
         category: eventForm.elements['event-category'].value,
         availableToHP: eventForm.elements['available-to-HP'].checked ? 1 : 0,
-        eventName: eventForm.elements['event-name'].value,
+        name: eventForm.elements['event-name'].value,
         date: eventForm.elements['event-date'].value,
         location: eventForm.elements['event-location'].value,
         startTime: eventForm.elements['event-start-time'].value,
@@ -86,10 +86,10 @@ let validateEventInputs = (data) => {
         category: {
             isPresent: isPresent(data.category)
         },
-        eventName: {
-            isPresent: isPresent(data.eventName),
-            isName: isName(data.eventName),
-            validLengthVarChar: varCharMaxLength(data.eventName)
+        name: {
+            isPresent: isPresent(data.name),
+            isName: isName(data.name),
+            validLengthVarChar: varCharMaxLength(data.name)
         },
         date: {
             validDate: isDate(data.date)
