@@ -12,6 +12,7 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
     require 'partials/layout/head.phtml';
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Add New Course');
     ?>
+    <script defer src="./js/utils.js"></script>
     <script defer src="./js/validations.js"></script>
     <script defer src='./js/addCourse.js'></script>
 </head>
@@ -23,31 +24,30 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
     <h3>Add New Course</h3>
     <form>
         <label for="course-name">Course Name</label>
-        <input name="name" class="create-courses form-control" type="text" placeholder="Course name" data-required="true" data-max='255' maxlength="255" />
-
+        <input name="courseName" class="create-courses form-control" type="text" placeholder="Course name" data-required="true" data-max='255' maxlength="255" />
+        <div id="courseNameError" class="alert hidden formItem_alert"></div>
         <label for="course-start-date">Start Date</label>
         <input id="startDate" name="startDate" class="create-courses form-control" type="date" data-required="true" />
-
+        <div id="startDateError" class="alert hidden formItem_alert"></div>
         <label for="course-end-date">End Date</label>
         <input id="endDate" name="endDate" class="create-courses form-control" type="date" data-required="true" />
-
+        <div id="endDateError" class="alert hidden formItem_alert"></div>
         <label for="course-trainer">Trainer</label>
         <div>
             <?php echo $trainersCheckbox ?>
         </div>
-
         <label for="course-notes">Notes</label>
         <textarea name="notes" class="create-courses form-control" placeholder="Notes" data-max="5000" maxlength="5000"></textarea>
-
+        <div id="courseNotesError" class="alert hidden formItem_alert"></div>
         <div class="form-group">
             <label for="in_person">In Person?</label>
             <input type="checkbox" id="in_person" value="1" class="create-courses" name="in_person">
         </div>
-
         <div class="">
             <label for="remote">Remote?</label>
             <input type="checkbox" id="remote" value="1" class="create-courses" name="remote">
         </div>
+        <div id="formGroupError" class="alert hidden formItem_alert"></div>
         <input type="submit" class="btn btn-success" />
     </form>
     <div id="messages" class="alert"></div>

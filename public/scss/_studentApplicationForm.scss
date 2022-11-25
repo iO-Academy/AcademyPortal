@@ -16,42 +16,43 @@ body.studentApplicationPage {
     padding: 40px 40px;
     border: 1px solid black;
 }
+
 ul.startDatesList {
     list-style: none;
     padding: 20px 0;
+
+    li {
+        display: inline;
+
+        label {
+            cursor:pointer;
+            display: inline-block;
+            background-color: #D3D3D3;
+            border-radius: 10px;
+            white-space: nowrap;
+            margin: 5px 5px;
+            padding: 8px 12px;
+            font-size: calc(7px + 1vw);
+
+            input[type="checkbox"] {
+                opacity: 0;
+                width: 0;
+            }
+        }
+
+        label.clicked {
+            background-color: $io-green;
+        }
+    }
 }
 
 .finalPage li {
     margin-bottom: 15px;
 }
 
-ul.startDatesList li {
-    display: inline;
-}
-
-ul.startDatesList li label {
-    cursor:pointer;
-    display: inline-block;
-    background-color: #D3D3D3;
-    border-radius: 10px;
-    white-space: nowrap;
-    margin: 5px 5px;
-    padding: 8px 12px;
-    font-size: calc(7px + 1vw);
-}
-
-ul.startDatesList li label.clicked {
-    background-color: $io-green;
-}
-
-ul.startDatesList li input[type="checkbox"] {
-    opacity: 0;
-    width: 0;
-}
-
 .termsAndConditions {
     label {
-        font-family: 'Inter', Papyrus;
+        font-family: 'Inter', sans-serif;
         font-weight: bold;
     }
     p a:hover,
@@ -93,22 +94,15 @@ ul.startDatesList li input[type="checkbox"] {
     }
 }
 
-
-.formItem_alert {
-    color: #fa2929;
-    font-size: calc(8px + 1vw);
-    padding: 0px;
-    margin: 0px;
-    font-family: "Inter", Papyrus;
-
-}
-
 .studentApplicationForm {
+
     .finalPage {
+
         h2 {
             text-align: center;
             font-size: calc(16px + 2vw);
         }
+
         ul {
             list-style-type: '> ';
             li::marker {
@@ -117,14 +111,17 @@ ul.startDatesList li input[type="checkbox"] {
             }
         }
     }
+
     .nextSteps {
         color: $io-purple;
         text-align: center;
     }
+
     h1 {
         font-size: calc(18px + 2vw);
         margin: 70px 0;
     }
+
     p,
     input,
     button,
@@ -135,21 +132,26 @@ ul.startDatesList li input[type="checkbox"] {
         font-size: calc(10px + 1vw);
         height: auto;
     }
+
     .row {
         margin: 10px 0 0 0;
     }
+
     .hidden {
         visibility: hidden;
         height: 0;
     }
+
     .progress {
         height: 30px;
         border-radius: 30px;
     }
+
     #whyDev,
     #pastCoding {
         background-color: #f3f6fa;
     }
+
     .textAreaCounter {
         color: #696969;
         text-align: end;
@@ -161,18 +163,19 @@ ul.startDatesList li input[type="checkbox"] {
     margin-top: 20px;
     display: flex;
     justify-content: space-evenly;
+
     button {
         margin:0px 10px;
     }
 }
-
 
 #progressBar {
     background-color: $io-green;
     border-radius: 30px;
 }
 
-.pastCodingTooltip, .eligibilityTooltip {
+.pastCodingTooltip,
+.eligibilityTooltip {
     border-radius: 50%;
     background-color: $io-green;
     text-align: center;
@@ -185,7 +188,8 @@ ul.startDatesList li input[type="checkbox"] {
     width: 100%;
     opacity: 0;
 }
-.toolTipContainer{
+
+.toolTipContainer {
      background-color: $io-green;
      border-radius: 50%;
      background-position: center;
@@ -196,8 +200,8 @@ ul.startDatesList li input[type="checkbox"] {
      aspect-ratio: 1;
  }
 
-.ukEligibility{
-    font-family: 'Inter', Papyrus;
+.ukEligibility {
+    font-family: 'Inter', sans-serif;
     font-size: calc(10px + 1vw);
     font-weight: bold;
     height:auto;
@@ -214,7 +218,8 @@ ul.startDatesList li input[type="checkbox"] {
     justify-content: space-between;
 }
 
-.studentApplicationForm input, .studentApplicationForm select {
+.studentApplicationForm input,
+.studentApplicationForm select {
     margin: 21px 0;
     border: 0px;
     box-shadow: none;
@@ -222,9 +227,13 @@ ul.startDatesList li input[type="checkbox"] {
     width:100%;
 }
 
-#backgroundInfo, #gender, #hearAboutId, input[type=checkbox]{
+#backgroundInfo,
+#gender,
+#hearAboutId,
+input[type=checkbox] {
     cursor: pointer;
 }
+
 .studentApplicationForm .btn {
     background-color: $io-purple-dark;
     color: #FFFFFF;
@@ -246,7 +255,7 @@ svg {
     right: 0;
 }
 
-#pageFourSmallPrint{
+#pageFourSmallPrint {
     font-size:.813em;
     font-weight:bold;
 }
