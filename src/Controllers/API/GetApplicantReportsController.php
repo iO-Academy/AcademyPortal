@@ -11,7 +11,6 @@ use Psr\Http\Message\RequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
-
 class GetApplicantReportsController extends Controller
 {
     private ApplicantReportModel $applicantReportModel;
@@ -37,7 +36,8 @@ class GetApplicantReportsController extends Controller
         try {
             ReportValidator::validate($args);
             DateTimeValidator::validateStartEndDate($args['start'], $args['end']);
-            $result = $this->applicantReportModel->extractDataForApplicantReports($args['cat'], $args['start'], $args['end']);
+            $result = $this->applicantReportModel->extractDataForApplicantReports($args['cat'],
+                $args['start'], $args['end']);
         } catch (\Exception $exception) {
             $responseData['message'] = $exception->getMessage();
         }

@@ -69,7 +69,7 @@ class ApplicantReportModel
 
         $query->execute();
 
-        $fetchedQuery = $query->fetchAll();;
+        $fetchedQuery = $query->fetchAll();
 
         $total = 0;
 
