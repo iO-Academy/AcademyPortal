@@ -32,7 +32,7 @@ addContactForm.addEventListener('submit', e => {
     });
 
     if (formIsValid) {
-        fetch('./api/addHiringPartnerContact', {
+        fetch('./api/addContact', {
             credentials: 'same-origin',
             headers: {
                 'Accept': 'application/json',
@@ -41,7 +41,9 @@ addContactForm.addEventListener('submit', e => {
             method: 'post',
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
+        .then(response => {
+            return response.json()
+        })
         .then( data => {
             if (data.success) {
                 document.querySelector('#add-contact-form').reset()
@@ -56,11 +58,11 @@ addContactForm.addEventListener('submit', e => {
 
 let getCompletedFormData = () => {
     let data = {
-        companyName: addContactForm['company'].value.trim(),
+        contactCompanyId: addContactForm['company'].value.trim(),
         contactName: addContactForm['contact-name'].value,
         contactEmail: addContactForm['contact-email'].value.trim(),
         contactJobTitle: addContactForm['contact-job-title'].value.trim(),
-        contactPhoneNumber: addContactForm['contact-phone-number'].value.trim(),
+        contactPhone: addContactForm['contact-phone-number'].value.trim(),
         contactIsPrimary: addContactForm['contact-is-primary'].checked,
     }
     return data
@@ -68,9 +70,9 @@ let getCompletedFormData = () => {
 
 let validateContactInputs = (data) => {
     validate = {
-        companyName: {
-            isPresent: isPresent(data.companyName),
-            validLengthVarChar: varCharMaxLength(data.companyName)
+        contactCompanyId: {
+            isPresent: isPresent(data.contactCompanyId),
+            validLengthVarChar: varCharMaxLength(data.contactCompanyId)
         },
         contactName: {
             isPresent: isPresent(data.contactName),
@@ -87,10 +89,10 @@ let validateContactInputs = (data) => {
             isName: isName(data.contactJobTitle),
             validLengthVarChar: varCharMaxLength(data.contactJobTitle)
         },
-        contactPhoneNumber: {
-            isPresent: isPresent(data.contactPhoneNumber),
-            isPhoneNumber: isPhoneNumber(data.contactPhoneNumber),
-            validLengthVarChar: varCharMaxLength(data.contactPhoneNumber)
+        contactPhone: {
+            isPresent: isPresent(data.contactPhone),
+            isPhoneNumber: isPhoneNumber(data.contactPhone),
+            validLengthVarChar: varCharMaxLength(data.contactPhone)
         },
     };
     return validate;

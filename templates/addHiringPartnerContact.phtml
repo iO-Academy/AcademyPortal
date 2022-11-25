@@ -7,7 +7,6 @@
     ?>
     <script defer src="./js/utils.js"></script>
     <script defer src="./js/validations.js"></script>
-    <script defer src="./js/utils.js"></script>
     <script defer src='./js/addHiringPartnerContact.js'></script>
 </head>
 <body>
@@ -22,7 +21,7 @@
             <option value=''>Please select a company</option>
             <?php echo \Portal\ViewHelpers\SelectCompanyViewHelper::selectCompanyDropdown($data); ?>
         </select>
-        <div id="companyNameError" class="alert hidden formItem_alert"></div>
+        <div id="contactCompanyIdError" class="alert hidden formItem_alert"></div>
         <label for="contact-name">Name:</label>
         <input id="contact-name" name="contact-name" class="submit-contact form-control" type="text" placeholder="Contact Name">
         <div id="contactNameError" class="alert hidden formItem_alert"></div>
@@ -34,7 +33,7 @@
         <div id="contactJobTitleError" class="alert hidden formItem_alert"></div>
         <label for='contact-phone-number'>Contact Phone Number:</label>
         <input id='contact-phone-number' name='contact-phone-number' class="submit-contact form-control" type="text" placeholder="Phone Number">
-        <div id="contactPhoneNumberError" class="alert hidden formItem_alert"></div>
+        <div id="contactPhoneError" class="alert hidden formItem_alert"></div>
         <div class="contact-is-primary">
             <input class="form-check-input" type="checkbox" value="" id="contact-is-primary">
             <label class="form-check-label" for="contact-is-primary">Primary Contact</label>
