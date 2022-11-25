@@ -74,9 +74,16 @@ class ApplicantReportModel
             $total += $entry['total'];
         }
 
-        for ($i = 0; $i < count($fetchedQuery); $i++) {
-            $percentage = number_format(($fetchedQuery[$i]['total']/$total)*100, 0);
-            $fetchedQuery[$i][] = [$percentage];
+        if ($total > 0) {
+            for ($i = 0; $i < count($fetchedQuery); $i++) {
+                $percentage = number_format(($fetchedQuery[$i]['total']/$total)*100, 0);
+                $fetchedQuery[$i][] = [$percentage];
+            }
+        } else {
+            for ($i = 0; $i < count($fetchedQuery); $i++) {
+                $percentage = 0;
+                $fetchedQuery[$i][] = [$percentage];
+            }
         }
 
         $titleTotalArray[] = $title;
