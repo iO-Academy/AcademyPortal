@@ -84,7 +84,7 @@ class DisplayStudentProfileHelperTest extends TestCase
         ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea');
         $applicantEntityMock->method('getCodeExperience')->willReturn('Ullamco quia quae excepturi 
         possimus quibusdam elit occaecat commodi dolore facere anim quaerat');
-        $applicantEntityMock->hearAbout = 'Back of the toilet door';
+        $applicantEntityMock->method('getHearAbout')->willReturn('Back of the toilet door');
         $applicantEntityMock->method('getEligible')->willReturn('Yes');
         $applicantEntityMock->method('getEighteenPlus')->willReturn('Yes');
         $applicantEntityMock->method('getFinance')->willReturn('Yes');

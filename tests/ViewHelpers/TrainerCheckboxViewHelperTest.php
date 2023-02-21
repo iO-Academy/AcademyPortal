@@ -24,7 +24,7 @@ class TrainerCheckboxViewHelperTest extends TestCase
     public function testFailureNotDisplayDeletedTrainerCheckbox()
     {
         $input = $this->createMock(TrainerEntity::class);
-        $input->method('getId')->willReturn('1');
+        $input->method('getId')->willReturn(1);
         $input->method('getName')->willReturn('Charlie');
         $input->method('getDeleted')->willReturn(1);
         $exp = '';
