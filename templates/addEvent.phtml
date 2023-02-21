@@ -6,8 +6,8 @@
     require 'partials/layout/head.phtml';
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Events');
     ?>
-    <!--    @todo: does it need this?-->
     <script defer src="./js/validations.js"></script>
+    <script defer src="./js/utils.js"></script>
     <script defer src='./js/addEvent.js'></script>
 </head>
 
@@ -18,10 +18,11 @@
         <h3>Add new Event</h3>
         <form id='create-events-form'>
             <label for='event-category'>Event category</label>
-            <select name='event-category' id='event-category' class='create-events form-control'>
-                <option value='0'>Select an event category</option>
+            <select id='event-category' name='event-category'  class='create-events form-control'>
+                <option value=''>Select an event category</option>
                 <?php echo \Portal\ViewHelpers\EventCategoryViewHelper::eventCategoryDropdown($data); ?>
             </select>
+            <div id="categoryError" class="alert hidden formItem_alert"></div>
 
             <div class="form-group">
                 <label for="available-to-HP">
@@ -30,23 +31,29 @@
                 </label>
             </div>
 
-            <label for="event-name">Event Name</label>
-            <input id="event-name" name="event-name" class="create-events form-control" type="text" placeholder="Event Name" data-required='true' data-max='255' maxlength="255">
+            <label for="eventName">Event Name</label>
+            <input id="eventName" name="event-name" class="create-events form-control" type="text" placeholder="Event Name" data-required='true' data-max='255' maxlength="255">
+            <div id="nameError" class="alert hidden formItem_alert"></div>
 
             <label for='event-date'>Date</label>
             <input id="event-date" name="event-date" class="create-events form-control" type="date" data-required='true'>
+            <div id="dateError" class="alert hidden formItem_alert"></div>
 
             <label for="event-location">Location</label>
             <input id="event-location" name="event-location" class="create-events form-control" type="text" placeholder="Location" data-required='true' data-max='255' maxlength="255">
+            <div id="locationError" class="alert hidden formItem_alert"></div>
 
             <label for='event-start-time'>Event Start Time</label>
             <input id='event-start-time' name='event-start-time' class="create-events form-control" type="time" data-required='true'>
+            <div id="startTimeError" class="alert hidden formItem_alert"></div>
 
             <label for='event-end-time'>Event End Time</label>
             <input id='event-end-time' name='event-end-time' class="create-events form-control" type="time" data-required='true'>
+            <div id="endTimeError" class="alert hidden formItem_alert"></div>
 
             <label for='event-notes'>Notes</label>
             <input id='event-notes' name='event-notes' class="create-events form-control" type="text" placeholder="Notes" data-max='5000' maxlength='5000'>
+            <div id="notesError" class="alert hidden formItem_alert"></div>
 
             <input id="submit-event" type="submit" class="btn btn-success" />
         </form>

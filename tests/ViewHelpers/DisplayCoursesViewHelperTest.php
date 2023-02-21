@@ -12,8 +12,8 @@ class DisplayCoursesViewHelperTest extends TestCase
     {
         $expected = '<tr>
                     <td>1</td>
-                    <td>1 January 2021</td>
-                    <td>30 March 2021</td>
+                    <td>01/01/2021</td>
+                    <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
                     <td><p>Charlie</p></td>
                     <td></td>
@@ -22,8 +22,8 @@ class DisplayCoursesViewHelperTest extends TestCase
                 </tr>';
         $entityMock = $this->createMock(CourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
-        $entityMock->method('getStartDate')->willReturn('1 January 2021');
-        $entityMock->method('getEndDate')->willReturn('30 March 2021');
+        $entityMock->method('getStartDate')->willReturn('2021-01-01');
+        $entityMock->method('getEndDate')->willReturn('2021-03-30');
         $entityMock->method('getName')->willReturn('Defence Against the Dark JSON');
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');
@@ -38,8 +38,8 @@ class DisplayCoursesViewHelperTest extends TestCase
     {
         $expected = '<tr>
                     <td>1</td>
-                    <td>1 January 2021</td>
-                    <td>30 March 2021</td>
+                    <td>01/01/2021</td>
+                    <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
                     <td><p>Charlie</p><p>Neal</p></td>
                     <td></td>
@@ -48,8 +48,8 @@ class DisplayCoursesViewHelperTest extends TestCase
                 </tr>';
         $entityMock = $this->createMock(CourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
-        $entityMock->method('getStartDate')->willReturn('1 January 2021');
-        $entityMock->method('getEndDate')->willReturn('30 March 2021');
+        $entityMock->method('getStartDate')->willReturn('2021-01-01');
+        $entityMock->method('getEndDate')->willReturn('2021-03-30');
         $entityMock->method('getName')->willReturn('Defence Against the Dark JSON');
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');
@@ -67,8 +67,8 @@ class DisplayCoursesViewHelperTest extends TestCase
     {
         $expected = '<tr>
                     <td>1</td>
-                    <td>1 January 2021</td>
-                    <td>30 March 2021</td>
+                    <td>01/01/2021</td>
+                    <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
                     <td><p class="trainer-deleted-indicator">Charlie</p></td>
                     <td></td>
@@ -77,8 +77,8 @@ class DisplayCoursesViewHelperTest extends TestCase
                 </tr>';
         $entityMock = $this->createMock(CourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
-        $entityMock->method('getStartDate')->willReturn('1 January 2021');
-        $entityMock->method('getEndDate')->willReturn('30 March 2021');
+        $entityMock->method('getStartDate')->willReturn('2021-01-01');
+        $entityMock->method('getEndDate')->willReturn('2021-03-30');
         $entityMock->method('getName')->willReturn('Defence Against the Dark JSON');
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');
@@ -93,8 +93,8 @@ class DisplayCoursesViewHelperTest extends TestCase
     {
         $expected = '<tr>
                     <td>1</td>
-                    <td>1 January 2021</td>
-                    <td>30 March 2021</td>
+                    <td>01/01/2021</td>
+                    <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
                     <td><p class="trainer-deleted-indicator">Charlie</p><p>Neal</p></td>
                     <td></td>
@@ -103,8 +103,8 @@ class DisplayCoursesViewHelperTest extends TestCase
                 </tr>';
         $entityMock = $this->createMock(CourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
-        $entityMock->method('getStartDate')->willReturn('1 January 2021');
-        $entityMock->method('getEndDate')->willReturn('30 March 2021');
+        $entityMock->method('getStartDate')->willReturn('2021-01-01');
+        $entityMock->method('getEndDate')->willReturn('2021-03-30');
         $entityMock->method('getName')->willReturn('Defence Against the Dark JSON');
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');
@@ -122,8 +122,8 @@ class DisplayCoursesViewHelperTest extends TestCase
     {
         $expected = '<tr>
                     <td>1</td>
-                    <td>1 January 2021</td>
-                    <td>30 March 2021</td>
+                    <td>01/01/2021</td>
+                    <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
                     <td>No trainers assigned</td>
                     <td></td>
@@ -132,8 +132,8 @@ class DisplayCoursesViewHelperTest extends TestCase
                 </tr>';
         $entityMock = $this->createMock(CourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
-        $entityMock->method('getStartDate')->willReturn('1 January 2021');
-        $entityMock->method('getEndDate')->willReturn('30 March 2021');
+        $entityMock->method('getStartDate')->willReturn('2021-01-01');
+        $entityMock->method('getEndDate')->willReturn('2021-03-30');
         $entityMock->method('getName')->willReturn('Defence Against the Dark JSON');
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');

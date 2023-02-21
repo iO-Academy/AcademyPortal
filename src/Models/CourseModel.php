@@ -58,7 +58,7 @@ class CourseModel
 
         $startDate = $newCourse['startDate'];
         $endDate = $newCourse['endDate'];
-        $name = $newCourse['name'];
+        $name = $newCourse['courseName'];
         $notes = $newCourse['notes'];
         $in_person = $newCourse['in_person'];
         $remote = $newCourse['remote'];

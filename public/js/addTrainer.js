@@ -15,7 +15,7 @@ trainerForm.addEventListener("submit", e => {
         element.classList.add('hidden');
         element.innerHTML = '';
     });
-    
+
     Object.keys(validate).forEach(formItem => {
         const querySelector = document.querySelector(`#${formItem}Error`);
         let formItemValues = validate[formItem];
@@ -50,8 +50,7 @@ trainerForm.addEventListener("submit", e => {
                     trainerForm.elements['email'].value = '',
                     trainerForm.elements['notes'].value = '',
                     message.innerText = responseJson.message,
-                    message.classList.add('alert-success'),
-                    message.classList.remove('alert-danger');
+                    formSubmitSuccess(message);
                 } else {
                     message.innerText = responseJson.message;
                     message.classList.add('alert-danger');
@@ -64,7 +63,7 @@ trainerForm.addEventListener("submit", e => {
 /**
  * Adds data from form into an object with the field name as key and the form value as value.
  */
- let getCompletedTrainerFormData = () => {
+let getCompletedTrainerFormData = () => {
     let data = {
         name: trainerForm.elements['name'].value,
         email: trainerForm.elements['email'].value,
@@ -75,7 +74,7 @@ trainerForm.addEventListener("submit", e => {
 
 let validateTrainerInputs = (data) => {
 
-    validate = {
+    return {
         name: {
             validLengthVarChar: varCharMaxLength(data.name),
             isName: isName(data.name),
@@ -90,7 +89,6 @@ let validateTrainerInputs = (data) => {
             validLengthText: textAreaMaxLength(data.notes)
         }
     };
-    return validate;
 };
 
 let errorMessage = (validationType) => {

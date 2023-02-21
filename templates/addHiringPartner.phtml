@@ -5,8 +5,10 @@
     require 'partials/layout/head.phtml';
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Hiring Partners');
     ?>
+    <script defer src="./js/utils.js"></script>
     <script defer src="./js/validations.js"></script>
     <script defer src='./js/addHiringPartner.js'></script>
+
 </head>
 <body>
 <?php require 'partials/layout/header.phtml'; ?>
@@ -16,21 +18,33 @@
         <form id='add-hiring-partner-form'>
             <label for="company-name">Company Name:</label>
             <input id="company-name" name="company-name" class="submit-hiring-partner form-control" type="text" placeholder="name">
+            <div id="nameError" class="alert hidden formItem_alert"></div>
+
             <label for='company-size'>Company Size:</label>
             <select name='company-size' id='company-size' class='submit-hiring-partner form-control'>
-                <option value='0'>Please select a company size...</option>
+                <option value=''>Please select a company size...</option>
                 <?php echo \Portal\ViewHelpers\CompanySizeViewHelper::companySizeDropdown($data); ?>
             </select>
+            <div id="companySizeError" class="alert hidden formItem_alert"></div>
+
             <label for="company-tech-stack">Company Tech Stack:</label>
             <input id="company-tech-stack" name="company-tech-stack" class="submit-hiring-partner form-control" type="text" placeholder="Company tech stack">
+            <div id="techStackError" class="alert hidden formItem_alert"></div>
+
             <label for='company-postcode'>Postcode:</label>
             <input id='company-postcode' name='company-postcode' class="submit-hiring-partner form-control" type="text" placeholder="Postcode">
+            <div id="postcodeError" class="alert hidden formItem_alert"></div>
+
             <label for='company-phone-number'>Phone Number:</label>
             <input id='company-phone-number' name='company-phone-number' class="submit-hiring-partner form-control" type="text" placeholder="Phone Number">
+            <div id="phoneNumberError" class="alert hidden formItem_alert"></div>
+
             <label for='company-url'>Company Website URL:</label>
             <input id='company-url' name='company-url' class="submit-hiring-partner form-control" type="text" placeholder="Company Website Url">
+            <div id="companyUrlError" class="alert hidden formItem_alert"></div>
+
             <input id="submit-hiring-partner" type="submit" class="btn btn-success" value="Add Hiring Partner"/>
-            <div id='add-hiring-partner-messages'></div>
+            <div id='add-hiring-partner-messages' class="alert"></div>
         </form>
 <?php require 'partials/layout/footer.phtml'; ?>
 </body>

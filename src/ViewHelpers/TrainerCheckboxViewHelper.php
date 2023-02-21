@@ -14,7 +14,7 @@ class TrainerCheckboxViewHelper
         $result = "";
 
         foreach ($trainers as $trainer) {
-            if ($trainer instanceof TrainerEntity) {
+            if ($trainer instanceof TrainerEntity && !$trainer->getDeleted()) {
                 $result .= '<input type="checkbox" data-id="' . $trainer->getId() . '" name="trainer-checkbox"';
                 $result .= '><label class="trainerCheckboxLabel" for="">' . $trainer->getName() . '</label>';
             } else {

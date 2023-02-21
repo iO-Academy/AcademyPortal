@@ -10,13 +10,14 @@ Live Version at: https://portal.dev.io-academy.uk/
 ### Setup
 
 1. Run `composer install` in root of project
-2. Create database with name `academyPortal` and populate using latest version in db/
-3. To run the application locally: `composer start`
+2. Run `npm install` in root of project
+3. Create database with name `academyPortal` and populate using latest version in db/
+4. To run the application locally: `composer start`
 
 ### Compiling SCSS
 
-- Must have SASS installed globally for this to work
-- Run `composer watch` in the root of the project
+- Must have SASS installed for this to work (`npm install` should have done this)
+- Run `./node_modules/sass/sass.js --watch public/scss/styles.scss public/css/style.css` in the root of the project
 
 ### Running tests
 
