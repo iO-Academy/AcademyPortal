@@ -2,11 +2,12 @@
 
 namespace Tests\Controllers\FrontEnd;
 
+use PHPUnit\Framework\TestCase;
 use Portal\Controllers\FrontEnd\StudentApplicationFormPageController;
 use Portal\Models\ApplicationFormModel;
 use Slim\Views\PhpRenderer;
 
-class StudentApplicationFormPageControllerTest
+class StudentApplicationFormPageControllerTest extends TestCase
 {
     public function testConstruct()
     {
