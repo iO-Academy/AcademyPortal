@@ -23,6 +23,10 @@ Live Version at: https://portal.dev.io-academy.uk/
 
 - To run the unit tests locally: `composer test`
 
+### Running the code sniffer
+
+- In order to manually run the code sniffer: `composer sniff`
+
 ### Deploy
 
 - Files/folders that can be easily replaced with uploads:

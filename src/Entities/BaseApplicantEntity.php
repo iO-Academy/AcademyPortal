@@ -17,7 +17,7 @@ class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInter
     protected $chosenStartDate;
     protected $chosenCourseId;
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return [
             'id' => $this->id,

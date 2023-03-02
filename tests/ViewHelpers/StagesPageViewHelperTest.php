@@ -71,11 +71,11 @@ class StagesPageViewHelperTest extends TestCase
 
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
         $optionEntityMock = $this->createMock(OptionsEntity::class);
-        $optionEntityMock->method('getOptionId')->willReturn('1');
+        $optionEntityMock->method('getOptionId')->willReturn(1);
         $optionEntityMock->method('getOptionTitle')->willReturn('aTitle');
 
         $stageEntityMock = $this->createMock(StageEntity::class);
-        $stageEntityMock->method('getStageId')->willReturn('1');
+        $stageEntityMock->method('getStageId')->willReturn(1);
         $stageEntityMock->method('getStageTitle')->willReturn('Stage 1 test');
         $stageEntityMock->method('getOptions')->willReturn([$optionEntityMock]);
 

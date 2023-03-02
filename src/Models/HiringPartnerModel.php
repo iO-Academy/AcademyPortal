@@ -98,6 +98,7 @@ class HiringPartnerModel
         $query->bindParam(':contactPhone', $contact['contactPhone'], PDO::PARAM_STR);
         $query->bindParam(':hiringPartnerCompanyId', $contact['contactCompanyId'], PDO::PARAM_INT);
         $query->bindParam(':primaryContact', $contact['contactIsPrimary'], PDO::PARAM_INT);
+
         $success = $query->execute();
         $this->db->commit();
         return $success;

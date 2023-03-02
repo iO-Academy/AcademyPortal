@@ -11,6 +11,9 @@ jobs:
           name: Install system packages
           command: apt-get update && apt-get -y install git
       - run:
+          name: Marking root as safe
+          command: git config --global --add safe.directory /var/www/html
+      - run:
           name: Install PHP extensions
           command: docker-php-ext-install pdo
       - checkout

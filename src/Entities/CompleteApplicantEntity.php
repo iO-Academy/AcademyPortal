@@ -54,6 +54,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $dataProtectionTestimonial;
     protected $dataProtectionBio;
     protected $dataProtectionVideo;
+    protected $hearAbout;
 
 
     /**
@@ -511,5 +512,13 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getBackgroundInfo()
     {
         return $this->backgroundInfo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHearAbout()
+    {
+        return $this->hearAbout;
     }
 }

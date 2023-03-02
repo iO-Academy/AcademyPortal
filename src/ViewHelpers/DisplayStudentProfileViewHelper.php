@@ -25,7 +25,7 @@ class DisplayStudentProfileViewHelper
                     <p id="whyDev">' . $applicant->getWhyDev() . '</p>
                     <p class="detail">Code Experience:</p>
                     <p id="codeExperience">' . $applicant->getCodeExperience() . '</p>
-                    <p class="detail">Heard About Us: <span id="hearAbout">' . $applicant->hearAbout . '</span></p>
+                    <p class="detail">Heard About Us: <span id="hearAbout">' . $applicant->getHearAbout() . '</span></p>
                     <p class="detail" id="eligible">Eligible to study in the UK: ' . '<span>'
                         . ($applicant->getEligible() === 1 ? 'Yes' : 'No') . '</span></p>
                     <p class="detail" id="eighteenPlus">Over 18 years: ' . '<span>'

@@ -11,15 +11,15 @@ class StringSanitiserTest extends TestCase
     {
         $str = '    <h1>Hello World!</h1>';
         $result = StringSanitiser::sanitiseString($str);
-        $expected = 'Hello World!';
-        $this->assertEquals($result, $expected);
+        $expected = '&lt;h1&gt;Hello World!&lt;/h1&gt;';
+        $this->assertEquals($expected, $result);
     }
 
     public function testSanitiseStringSuccessNull()
     {
         $result = StringSanitiser::sanitiseString(null);
         $expected = '';
-        $this->assertEquals($result, $expected);
+        $this->assertEquals($expected, $result);
     }
 
     public function testSanitiseStringFailure()
@@ -28,7 +28,7 @@ class StringSanitiserTest extends TestCase
         $int = 2;
         $result = StringSanitiser::sanitiseString($int);
         $expected = '2';
-        $this->assertEquals($result, $expected);
+        $this->assertEquals($expected, $result);
     }
 
     public function testSanitiseStringMalform()

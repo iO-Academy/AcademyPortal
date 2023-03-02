@@ -84,7 +84,7 @@ class DisplayStudentProfileHelperTest extends TestCase
         ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea');
         $applicantEntityMock->method('getCodeExperience')->willReturn('Ullamco quia quae excepturi 
         possimus quibusdam elit occaecat commodi dolore facere anim quaerat');
-        $applicantEntityMock->hearAbout = 'Back of the toilet door';
+        $applicantEntityMock->method('getHearAbout')->willReturn('Back of the toilet door');
         $applicantEntityMock->method('getEligible')->willReturn('Yes');
         $applicantEntityMock->method('getEighteenPlus')->willReturn('Yes');
         $applicantEntityMock->method('getFinance')->willReturn('Yes');
@@ -92,18 +92,18 @@ class DisplayStudentProfileHelperTest extends TestCase
         sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus');
         $applicantEntityMock->method('getAssessmentDay')->willReturn('2020-06-20');
         $applicantEntityMock->method('getAssessmentTime')->willReturn('13:00');
-        $applicantEntityMock->method('getAptitude')->willReturn('73');
+        $applicantEntityMock->method('getAptitude')->willReturn(73);
         $applicantEntityMock->method('getAssessmentNotes')->willReturn('Laborum cumque reprehenderit ut qui 
         sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus');
-        $applicantEntityMock->method('getDiversitech')->willReturn('1000');
-        $applicantEntityMock->method('getEdAid')->willReturn('8000');
-        $applicantEntityMock->method('getUpfront')->willReturn('1000');
-        $applicantEntityMock->method('getLaptop')->willReturn('1');
-        $applicantEntityMock->method('getLaptopDeposit')->willReturn('0');
-        $applicantEntityMock->method('getLaptopNum')->willReturn('3');
+        $applicantEntityMock->method('getDiversitech')->willReturn(1000);
+        $applicantEntityMock->method('getEdAid')->willReturn(8000);
+        $applicantEntityMock->method('getUpfront')->willReturn(1000);
+        $applicantEntityMock->method('getLaptop')->willReturn(true);
+        $applicantEntityMock->method('getLaptopDeposit')->willReturn(0);
+        $applicantEntityMock->method('getLaptopNum')->willReturn(3);
         $applicantEntityMock->method('getKitCollectionDay')->willReturn('2020-08-05');
         $applicantEntityMock->method('getKitCollectionTime')->willReturn('10:30');
-        $applicantEntityMock->method('getKitNum')->willReturn('3');
+        $applicantEntityMock->method('getKitNum')->willReturn(3);
 
         $data = $applicantEntityMock;
         $result = DisplayStudentProfileViewHelper::outputApplicant($data);
