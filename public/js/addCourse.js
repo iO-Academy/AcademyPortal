@@ -93,7 +93,9 @@ let getCompletedFormData = () => {
         trainer: getSelectedTrainers(),
         notes: courseForm.elements['notes'].value,
         in_person: courseForm.elements['in_person'].checked ? 1 : 0,
+        in_person_input: courseForm.elements['in_person_spaces_input'].value,
         remote: courseForm.elements['remote'].checked ? 1 : 0,
+        remote_input: courseForm.elements['remote_spaces_input'].value
     }
     return data;
 }
