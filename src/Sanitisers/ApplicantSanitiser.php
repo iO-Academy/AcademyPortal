@@ -143,6 +143,7 @@ class ApplicantSanitiser
      */
     public static function sanitiseGitHubUsername($savedProfileFieldGithubUsername): string
     {
-        return !empty($savedProfileFieldGithubUsername) ? htmlentities($savedProfileFieldGithubUsername, ENT_QUOTES) : null;
+        return !empty($savedProfileFieldGithubUsername) ? 
+            htmlentities($savedProfileFieldGithubUsername, ENT_QUOTES) : null;
     }
 }

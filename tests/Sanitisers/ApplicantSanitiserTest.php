@@ -20,7 +20,5 @@ class ApplicantSanitiserTest extends TestCase
         $actualOutput = ApplicantSanitiser::sanitiseEdAid($savedProfileFieldEdAid);
         $this->assertEquals($expectedOutput, $actualOutput);
     }
-
     // sanitiseUpFront sanitiseLaptop sanitiseGitHubUsername
-
 }
