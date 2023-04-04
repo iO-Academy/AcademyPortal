@@ -48,9 +48,18 @@ class DisplayStudentProfileHelperTest extends TestCase
                     <section>
                     <h4>OnboardingInfo</h4>
                     <pclass="detail">Diversitechamount:<spanid="diversitech">1000</span>
-                    <pclass="detail">EdAidamount:<spanid="edaid">8000</span></p>
-                    <pclass="detail">Upfrontamount:<spanid="upfront">1000</span></p>
-                    <pclass="detail">Laptoprequired:<spanid="laptop">1</span></p>
+                    <divclass="edAidAmountContainerstudentProfileEditableField">
+                    <pclass="detail">EdAidamount:</p><spanid="edaid">8000</span>
+                    <buttonclass="btnbtn-primaryedAidEditButtonbtn-sm">Edit</button>
+                    </div>
+                    <divclass="upfrontAmountContainerstudentProfileEditableField">
+                    <pclass="detail">Upfrontamount:</p><spanid="upfront">1000</span>
+                    <buttonclass="btnbtn-primaryupfrontAmountEditButtonbtn-sm">Edit</button>
+                    </div>
+                    <divclass="laptopRequiredContainerstudentProfileEditableField">
+                    <pclass="detail">Laptoprequired:</p><spanid="laptop">1</span><
+                    buttonclass="btnbtn-primarylaptopRequiredEditButtonbtn-sm">Edit</button>
+                    </div>
                     <pclass="detail">Laptopdepositpaid:<spanid="laptopDeposit"span>0</p>
                     <pclass="detail">Laptopnumber:<spanid="laptopNum">3</span></p>
                     <pclass="detail">Kitcollectiondate:<spanid="kitCollectionDay"span>2020-08-05</p>
@@ -60,7 +69,10 @@ class DisplayStudentProfileHelperTest extends TestCase
                     <hr>
                     <section>
                     <h4>Studentprofile</h4>
-                    <pclass="detail">GitHubUsername:<spanid="githubUser"></span></p>
+                    <divclass="githubUserContainerstudentProfileEditableField">
+                    <pclass="detail">GitHubUsername:</p><spanid="githubUser">MrSnuggles</span>
+                    <buttonclass="btnbtn-primarygithubUserEditButtonbtn-sm">Edit</button>
+                    </div>
                     <pclass="detail">GitHubLink:<spanid="githubLink"></span></p>
                     <pclass="detail">Portfolio:<spanid="portfolio"></span></p>
                     <pclass="detail">PleskHostingURL:<spanid="pleskHostUrl"></span></p>
@@ -104,6 +116,7 @@ class DisplayStudentProfileHelperTest extends TestCase
         $applicantEntityMock->method('getKitCollectionDay')->willReturn('2020-08-05');
         $applicantEntityMock->method('getKitCollectionTime')->willReturn('10:30');
         $applicantEntityMock->method('getKitNum')->willReturn(3);
+        $applicantEntityMock->method('getGithubUsername')->willReturn('MrSnuggles');
 
         $data = $applicantEntityMock;
         $result = DisplayStudentProfileViewHelper::outputApplicant($data);

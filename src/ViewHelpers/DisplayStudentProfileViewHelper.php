@@ -51,9 +51,22 @@ class DisplayStudentProfileViewHelper
                     <h4>Onboarding Info</h4>
                     <p class="detail">Diversitech amount: <span id="diversitech">'
                         . $applicant->getDiversitech() . '</span>
-                    <p class="detail">EdAid amount: <span id="edaid">' . $applicant->getEdaid() . '</span></p>
-                    <p class="detail">Upfront amount: <span id="upfront">' . $applicant->getUpfront() . '</span></p>
-                    <p class="detail">Laptop required: <span id="laptop">' . $applicant->getLaptop() . '</span></p>
+                    <div class="edAidAmountContainer studentProfileEditableField">
+                        <p class="detail">EdAid amount: </p>
+                        <span id="edaid">' . $applicant->getEdaid() . '</span>
+                        <button class="btn btn-primary edAidEditButton btn-sm">Edit</button>
+                    </div>
+                    <div class="upfrontAmountContainer studentProfileEditableField">
+                        <p class="detail">Upfront amount: </p>
+                        <span id="upfront">' . $applicant->getUpfront() . '</span>
+                        <button class="btn btn-primary upfrontAmountEditButton btn-sm">Edit</button>
+                    </div>
+                    <div class="laptopRequiredContainer studentProfileEditableField">
+                        <p class="detail">Laptop required: </p>
+                        <span id="laptop">' . $applicant->getLaptop() . '</span>
+                        <button class="btn btn-primary laptopRequiredEditButton btn-sm">Edit</button>
+                    </div>
+
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
                         . $applicant->getLaptopDeposit() . '</p>
                     <p class="detail">Laptop number: <span id="laptopNum">' . $applicant->getLaptopNum() . '</span></p>
@@ -66,7 +79,11 @@ class DisplayStudentProfileViewHelper
                 <hr>
                 <section>
                     <h4>Student profile</h4>
-                    <p class="detail">GitHub Username: <span id="githubUser"></span></p>
+                    <div class="githubUserContainer studentProfileEditableField">
+                        <p class="detail">GitHub Username: </p> 
+                        <span id="githubUser">' . $applicant->getGithubUsername() . '</span>
+                        <button class="btn btn-primary githubUserEditButtonbtn-sm">Edit</button>
+                    </div>
                     <p class="detail">GitHub Link: <span id="githubLink"></span></p>
                     <p class="detail">Portfolio: <span id="portfolio"></span></p>
                     <p class="detail">Plesk Hosting URL: <span id="pleskHostUrl"></span></p>
