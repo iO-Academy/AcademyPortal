@@ -2,21 +2,22 @@ const courseForm = document.querySelector('form');
 const message = document.querySelector('#messages');
 const in_person_checkbox = document.querySelector('#in_person');
 const remote_checkbox = document.querySelector('#remote');
-const in_person_spaces_input = document.querySelector('#in_person_spaces_input');
-const remote_spaces_input = document.querySelector('#remote_spaces_input');
+const in_person_spaces = document.querySelector('#in_person_spaces');
+const remote_spaces = document.querySelector('#remote_spaces');
 courseForm.addEventListener('change', () => {
     if (in_person_checkbox.checked) {
-        in_person_spaces_input.classList.remove('hidden');
+        in_person_spaces.classList.remove('hidden');
     } else {
-        in_person_spaces_input.classList.add('hidden');
+        in_person_spaces.classList.add('hidden');
     }
+
 })
 
 courseForm.addEventListener('change', () => {
     if (remote_checkbox.checked) {
-        remote_spaces_input.classList.remove('hidden');
+        remote_spaces.classList.remove('hidden');
     } else {
-        remote_spaces_input.classList.add('hidden');
+        remote_spaces.classList.add('hidden');
     }
 })
 
@@ -31,7 +32,6 @@ courseForm.addEventListener('submit', e => {
 
     let data = getCompletedFormData();
     let validatedFormItems = validateCourseInputs(data);
-    console.log(validatedFormItems)
 
     let formIsValid = true;
     Object.keys(validatedFormItems).forEach(formItemKey => {
@@ -115,12 +115,8 @@ let getCompletedFormData = () => {
         notes: courseForm.elements['notes'].value,
         in_person: courseForm.elements['in_person'].checked ? 1 : 0,
         remote: courseForm.elements['remote'].checked ? 1 : 0,
-    }
-    if (data.in_person) {
-        data.in_person_input = courseForm.elements['in_person_spaces_input'].value
-    }
-    if (data.remote) {
-        data.remote_input = courseForm.elements['remote_spaces_input'].value
+        in_person_spaces: courseForm.elements['in_person'].checked ? courseForm.elements['in_person_spaces'].value : null,
+        remote_spaces: courseForm.elements['remote'].checked ? courseForm.elements['remote_spaces'].value : null
     }
     return data;
 }
@@ -148,13 +144,13 @@ let validateCourseInputs = (data) => {
         },
     };
     if (data.in_person) {
-        validate.in_person_input = {
-            validInputSpacesAmount: validInputSpacesAmount(data.in_person_input)
+        validate.in_person_spaces = {
+            validInputSpacesAmount: validInputSpacesAmount(data.in_person_spaces)
         }
     }
     if (data.remote) {
-        validate.remote_input = {
-            validInputSpacesAmount: validInputSpacesAmount(data.remote_input)
+        validate.remote_spaces = {
+            validInputSpacesAmount: validInputSpacesAmount(data.remote_spaces)
         }
     }
     return validate;
