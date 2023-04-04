@@ -52,16 +52,30 @@ class DisplayStudentProfileViewHelper
                     <p class="detail">Diversitech amount: <span id="diversitech">'
                         . $applicant->getDiversitech() . '</span>
 
-                    <div class="edAidAmountContainer">
-                        <p class="detail">EdAid amount: <span id="edaid">' . $applicant->getEdaid() . '</span></p>
+                    <div class="edAidAmountContainer container">
+                        <p class="detail">EdAid amount: 
+                            <span id="edaid">' . $applicant->getEdaid() . '</span>
+                        </p>
+                        <button class="btn btn-primary edAidEditButton" data-edaid-amount>Edit</button>
                     </div>
+                    
+                    
 
                     <div class="upfrontAmountContainer">
-                        <p class="detail">Upfront amount: <span id="upfront">' . $applicant->getUpfront() . '</span></p>
+                        <p class="detail">Upfront amount: 
+                            <span id="upfront">' 
+                            . $applicant->getUpfront() . '</span>
+                        </p>
+                        <button class="btn btn-primary upfrontAmountEditButton" data-upfront-amount>Edit</button>
                     </div>
 
                     <div class="laptopRequiredContainer">
-                        <p class="detail">Laptop required: <span id="laptop">' . $applicant->getLaptop() . '</span></p>
+                        <p class="detail">Laptop required: 
+                            <span id="laptop">' 
+                            . $applicant->getLaptop() . 
+                            '</span>
+                        </p>
+                        <button class="btn btn-primary laptopRequiredEditButton" data-laptop-required>Edit</button>
                     </div>
 
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
@@ -76,9 +90,10 @@ class DisplayStudentProfileViewHelper
                 <hr>
                 <section>
                     <h4>Student profile</h4>
-
-                    <div class="gitHubUserContainer">
-                        <p class="detail">GitHub Username: <span id="githubUser">' . $applicant->getGithubUsername() . '</span></p>
+                    <div class="githubUserContainer">
+                        <span class="detail">GitHub Username: </span> 
+                        <span id="githubUser">' . $applicant->getGithubUsername() . '</span>
+                        <button class="btn btn-primary githubUserEditButton text-center" data-github-username>Edit</button>
                     </div>
 
                     <p class="detail">GitHub Link: <span id="githubLink"></span></p>
