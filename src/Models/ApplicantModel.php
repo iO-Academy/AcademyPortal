@@ -581,9 +581,9 @@ class ApplicantModel implements ApplicantModelInterface
     public function updateUpfront(array $userInput): bool
     {
         $query = $this->db->prepare('UPDATE `applicants_additional` SET upfront=:upfront WHERE id=:id');
-        return $query->execute($userInput);   
+        return $query->execute($userInput);
     }
-    
+
     public function getFeePaymentMethod(array $userInput): array
     {
         $query = $this->db->prepare('SELECT diversitech, edaid, fee, upfront FROM applicants_additional
@@ -591,5 +591,5 @@ class ApplicantModel implements ApplicantModelInterface
         $query->execute($userInput['id']);
         $feePaymentMethod = $query->fetch();
         return  $feePaymentMethod;
-    }   
+    }
 }
