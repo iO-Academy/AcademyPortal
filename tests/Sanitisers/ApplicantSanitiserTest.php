@@ -115,7 +115,4 @@ class ApplicantSanitiserTest extends TestCase
         $actualOutput = ApplicantSanitiser::sanitiseGithubUsername($savedProfileFieldGithubUsername);
         $this->assertEquals($expectedOutput, $actualOutput);
     }
-
-
-    // sanitiseLaptop 
 }
