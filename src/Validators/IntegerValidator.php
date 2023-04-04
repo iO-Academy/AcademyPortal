@@ -4,14 +4,18 @@ namespace Portal\Validators;
 
 class IntegerValidator
 {
-    public static function validateInteger(string $unvalidated, int $min, int $max): int
+    /**
+     * Validates that an integer is within the $min and $max range
+     *
+     * @throws \Exception if number out of range
+     */
+    public static function validateInteger(int $unvalidated, int $min, int $max): int
     {
-//        int $test = $unvalidated;
-
-        if (filter_var(intval($unvalidated), FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max))) !== false) {
+        $options = ["options" => ["min_range" => $min, "max_range" => $max]];
+        if (filter_var($unvalidated, FILTER_VALIDATE_INT, $options) !== false) {
             return $unvalidated;
         } else {
-            throw new \Exception('Invalid number');
+            throw new \Exception('Number out of range');
         }
     }
 }
