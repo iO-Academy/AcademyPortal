@@ -51,9 +51,19 @@ class DisplayStudentProfileViewHelper
                     <h4>Onboarding Info</h4>
                     <p class="detail">Diversitech amount: <span id="diversitech">'
                         . $applicant->getDiversitech() . '</span>
-                    <p class="detail">EdAid amount: <span id="edaid">' . $applicant->getEdaid() . '</span></p>
-                    <p class="detail">Upfront amount: <span id="upfront">' . $applicant->getUpfront() . '</span></p>
-                    <p class="detail">Laptop required: <span id="laptop">' . $applicant->getLaptop() . '</span></p>
+
+                    <div class="edAidAmountContainer">
+                        <p class="detail">EdAid amount: <span id="edaid">' . $applicant->getEdaid() . '</span></p>
+                    </div>
+
+                    <div class="upfrontAmountContainer">
+                        <p class="detail">Upfront amount: <span id="upfront">' . $applicant->getUpfront() . '</span></p>
+                    </div>
+
+                    <div class="laptopRequiredContainer">
+                        <p class="detail">Laptop required: <span id="laptop">' . $applicant->getLaptop() . '</span></p>
+                    </div>
+
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
                         . $applicant->getLaptopDeposit() . '</p>
                     <p class="detail">Laptop number: <span id="laptopNum">' . $applicant->getLaptopNum() . '</span></p>
@@ -66,7 +76,11 @@ class DisplayStudentProfileViewHelper
                 <hr>
                 <section>
                     <h4>Student profile</h4>
-                    <p class="detail">GitHub Username: <span id="githubUser"></span></p>
+
+                    <div class="gitHubUserContainer">
+                        <p class="detail">GitHub Username: <span id="githubUser">' . $applicant->getGithubUsername() . '</span></p>
+                    </div>
+
                     <p class="detail">GitHub Link: <span id="githubLink"></span></p>
                     <p class="detail">Portfolio: <span id="portfolio"></span></p>
                     <p class="detail">Plesk Hosting URL: <span id="pleskHostUrl"></span></p>
