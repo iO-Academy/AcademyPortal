@@ -8,15 +8,15 @@ class CsvUploadViewHelper
     {
         $string = '';
 
-        if ($error !== null) {
+        if ($error !== "") {
             $string = '<p>' . $error . '</p>';
         }
 
-        if ($successes !== null) {
+        if ($successes !== "") {
             $string = '<p>' . $successes . ' successfully uploaded record(s).</p>';
         }
 
-        if ($failures !== null) {
+        if ($failures !== []) {
             if (count($failures) > 0) {
                 $string .= '<p>' . count($failures) . ' unsuccessfully uploaded record(s): </p>'
                     . '<table class="table">'
