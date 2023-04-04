@@ -110,8 +110,7 @@ class ApplicantSanitiser
      */
     public static function sanitiseEdAid($savedProfileFieldEdAid): int
     {
-        $savedProfileFieldEdAid = $savedProfileFieldEdAid ? (int)$savedProfileFieldEdAid : null;
-        return $savedProfileFieldEdAid;
+        return $savedProfileFieldEdAid ? (int)$savedProfileFieldEdAid : null;
     }
 
     /**
@@ -121,10 +120,9 @@ class ApplicantSanitiser
      */
     public static function sanitiseUpFront($savedProfileFieldUpFront): int
     {
-        $savedProfileFieldUpFront = $savedProfileFieldUpFront ? (int)$savedProfileFieldUpFront : null;
-        return $savedProfileFieldUpFront;
+        return $savedProfileFieldUpFront ? (int)$savedProfileFieldUpFront : null;
     }
-    
+
     /**
      * Sanitise laptop for editing student profile
      *
@@ -137,7 +135,7 @@ class ApplicantSanitiser
         }
         return $savedProfileFieldLaptop;
     }
-    
+
     /**
      * Sanitise GitHub Username for editing student profile
      *
@@ -145,8 +143,6 @@ class ApplicantSanitiser
      */
     public static function sanitiseGitHubUsername($savedProfileFieldGithubUsername): string
     {
-        $savedProfileFieldGithubUsername =
-            !empty($savedProfileFieldGithubUsername) ? htmlentities($savedProfileFieldGithubUsername, ENT_QUOTES) : null;
-        return $savedProfileFieldGithubUsername;
+        return !empty($savedProfileFieldGithubUsername) ? htmlentities($savedProfileFieldGithubUsername, ENT_QUOTES) : null;
     }
 }

@@ -24,5 +24,3 @@ class ApplicantSanitiserTest extends TestCase
     // sanitiseUpFront sanitiseLaptop sanitiseGitHubUsername
 
 }
-
-
