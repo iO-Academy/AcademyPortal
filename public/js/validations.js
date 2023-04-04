@@ -59,6 +59,5 @@ function requiredCheckboxes(checkboxes) {
 
 function validInputSpacesAmount(number) {
     let regEx = /^[1-9]\d*$/;
-    console.log('test')
     return regEx.test(number);
 }

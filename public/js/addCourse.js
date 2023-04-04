@@ -115,13 +115,13 @@ let getCompletedFormData = () => {
         notes: courseForm.elements['notes'].value,
         in_person: courseForm.elements['in_person'].checked ? 1 : 0,
         remote: courseForm.elements['remote'].checked ? 1 : 0,
-        remote_input: courseForm.elements['remote_spaces_input'].value
     }
-
     if (data.in_person) {
         data.in_person_input = courseForm.elements['in_person_spaces_input'].value
     }
-
+    if (data.remote) {
+        data.remote_input = courseForm.elements['remote_spaces_input'].value
+    }
     return data;
 }
 
@@ -146,16 +146,15 @@ let validateCourseInputs = (data) => {
         notes: {
             validLengthText: textAreaMaxLength(data.notes)
         },
-        remote_input: {
-            validInputSpacesAmount: validInputSpacesAmount(data.remote_input)
-
-        }
-
     };
-
     if (data.in_person) {
         validate.in_person_input = {
             validInputSpacesAmount: validInputSpacesAmount(data.in_person_input)
+        }
+    }
+    if (data.remote) {
+        validate.remote_input = {
+            validInputSpacesAmount: validInputSpacesAmount(data.remote_input)
         }
     }
     return validate;
@@ -184,7 +183,7 @@ let errorMessage = (validationType) => {
             htmlString = 'Course must not end at the same date it begins.';
             break;
         case 'validInputSpacesAmount':
-            htmlString = 'test.';
+            htmlString = 'Please input a valid number.';
             break;
         default:
             htmlString = `This field is invalid.`;
