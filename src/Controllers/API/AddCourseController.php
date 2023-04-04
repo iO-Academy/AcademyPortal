@@ -35,6 +35,7 @@ class AddCourseController extends Controller
         try {
             if (CourseValidator::validate($newCourse)) {
                 $newCourse = CourseSanitiser::sanitise($newCourse);
+                var_dump($newCourse);
                 $insertedId = $this->courseModel->addCourse($newCourse);
                 $this->courseModel->addTrainersToCourse($newCourse['trainer'], $insertedId);
             }

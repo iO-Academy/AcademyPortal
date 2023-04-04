@@ -52,6 +52,7 @@ courseForm.addEventListener('submit', e => {
         }
     });
     if (formIsValid) {
+        console.log(data)
         // send it!
         fetch('./api/addCourse', {
             credentials: 'same-origin',
