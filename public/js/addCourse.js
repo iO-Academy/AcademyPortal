@@ -117,12 +117,8 @@ let getCompletedFormData = () => {
         notes: courseForm.elements['notes'].value,
         in_person: courseForm.elements['in_person'].checked ? 1 : 0,
         remote: courseForm.elements['remote'].checked ? 1 : 0,
-    }
-    if (data.in_person) {
-        data.in_person_input = courseForm.elements['in_person_spaces'].value
-    }
-    if (data.remote) {
-        data.remote_input = courseForm.elements['remote_spaces'].value
+        in_person_input: courseForm.elements['in_person'].checked ? courseForm.elements['in_person_spaces'].value : null,
+        remote_input: courseForm.elements['remote'].checked ? courseForm.elements['remote_spaces'].value : null
     }
     return data;
 }
