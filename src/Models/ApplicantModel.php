@@ -558,4 +558,38 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare($sql);
         return $query->execute($values);
     }
+
+    public function updateEdaid(array $userInput): bool
+    {
+        $query = $this->db->prepare('UPDATE `applicants_additional` SET edaid=:edaid WHERE id=:id');
+        return $query->execute($userInput);
+    }
+    public function updateGithubUsername(array $userInput): bool
+    {
+        $query = $this->db->prepare('UPDATE `applicants_additional` SET githubUsername=:githubUsername
+         WHERE id=:id');
+        return $query->execute($userInput);
+    }
+
+    public function updateLaptopRequired(array $userInput): bool
+    {
+        #NB:laptop should be 0 or 1 apparently
+        $query = $this->db->prepare('UPDATE `applicants_additional` SET laptop=:laptop WHERE id=:id');
+        return $query->execute($userInput);
+    }
+
+    public function updateUpfront(array $userInput): bool
+    {
+        $query = $this->db->prepare('UPDATE `applicants_additional` SET upfront=:upfront WHERE id=:id');
+        return $query->execute($userInput);
+    }
+
+    public function getFeePaymentMethod(array $userInput): array
+    {
+        $query = $this->db->prepare('SELECT diversitech, edaid, fee, upfront FROM applicants_additional
+                             WHERE id=?');
+        $query->execute($userInput['id']);
+        $feePaymentMethod = $query->fetch();
+        return  $feePaymentMethod;
+    }
 }
