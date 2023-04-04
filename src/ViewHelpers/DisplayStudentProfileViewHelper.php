@@ -47,23 +47,20 @@ class DisplayStudentProfileViewHelper
                     <p id="assessmentNotes">' . $applicant->getAssessmentNotes() . '</p>
                 </section>
                 <hr>
-                <section class=>
+                <section>
                     <h4>Onboarding Info</h4>
                     <p class="detail">Diversitech amount: <span id="diversitech">'
                         . $applicant->getDiversitech() . '</span>
-
                     <div class="edAidAmountContainer studentProfileEditableField">
                         <p class="detail">EdAid amount: </p>
                         <span id="edaid">' . $applicant->getEdaid() . '</span>
                         <button class="btn btn-primary edAidEditButton btn-sm">Edit</button>
                     </div>
-                    
                     <div class="upfrontAmountContainer studentProfileEditableField">
                         <p class="detail">Upfront amount: </p>
                         <span id="upfront">' . $applicant->getUpfront() . '</span>
                         <button class="btn btn-primary upfrontAmountEditButton btn-sm">Edit</button>
                     </div>
-
                     <div class="laptopRequiredContainer studentProfileEditableField">
                         <p class="detail">Laptop required: </p>
                         <span id="laptop">' . $applicant->getLaptop() . '</span>
