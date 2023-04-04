@@ -2,16 +2,16 @@
 
 namespace Portal\Validators;
 
-use phpDocumentor\Reflection\Types\Integer;
-
 class IntegerValidator
 {
-    public static function validateInteger(int $integer, int $min, int $max) : Integer
+    public static function validateInteger(string $unvalidated, int $min, int $max): int
     {
-        if (filter_var($integer, FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max))) === false) {
-            throw new Exception('Invalid number');;
+//        int $test = $unvalidated;
+
+        if (filter_var(intval($unvalidated), FILTER_VALIDATE_INT, array("options" => array("min_range"=>$min, "max_range"=>$max))) !== false) {
+            return $unvalidated;
         } else {
-            return $integer;
+            throw new \Exception('Invalid number');
         }
     }
 }
