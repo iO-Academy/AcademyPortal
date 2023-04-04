@@ -6,14 +6,18 @@ const githubUserEditButton = document.querySelector('.githubUserEditButton')
 function handleEditClick(event) {
     const buttonName = event.target.getAttribute('class')
     const divName = buttonName.replace('EditButton', 'Container')
-    document.querySelector(divName).innerHTML = 
+    const divSelector = document.querySelector('.' + divName)
+    divSelector.innerHTML = 
         '<form method="put">' +
-        '<input type="text" aria-label="text box" name="' + divName + '">' + 
+        '<label for="textBox">EdAid amount: </label>' +
+        '<input type="text" id="textBox" name="' + divName + '">' + 
         '<input type="submit" value="Save">' +
         '</form>'
 }
 
 edaidEditButton.addEventListener('click', handleEditClick)
-upfrontEditButton.addEventListener('click', handleEditClick)
-laptopEditButton.addEventListener('click', handleEditClick)
-githubUserEditButton.addEventListener('click', handleEditClick)
+
+// UNCOMMENT THESE WHEN VIEWHELPER.PHP IS UPDATED WITH BUTTON ETC.
+// upfrontEditButton.addEventListener('click', handleEditClick)
+// laptopEditButton.addEventListener('click', handleEditClick)
+// githubUserEditButton.addEventListener('click', handleEditClick)

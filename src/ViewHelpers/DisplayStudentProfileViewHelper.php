@@ -51,7 +51,13 @@ class DisplayStudentProfileViewHelper
                     <h4>Onboarding Info</h4>
                     <p class="detail">Diversitech amount: <span id="diversitech">'
                         . $applicant->getDiversitech() . '</span>
-                    <p class="detail">EdAid amount: <span id="edaid">' . $applicant->getEdaid() . '</span></p>
+
+                    <!-- DEMO EDIT BUTTON, REPLACE WITH TASK 4 CODE --> 
+                    <div class="detail edaidContainer">EdAid amount: 
+                        <span id="edaid">' . $applicant->getEdaid() . '</span>
+                        <button class="edaidEditButton">Edit</button>
+                    </div>
+                    
                     <p class="detail">Upfront amount: <span id="upfront">' . $applicant->getUpfront() . '</span></p>
                     <p class="detail">Laptop required: <span id="laptop">' . $applicant->getLaptop() . '</span></p>
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
