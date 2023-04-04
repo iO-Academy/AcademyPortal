@@ -106,7 +106,7 @@ class ApplicantSanitiser
     /**
      * Sanitise edaid for editing student profile
      *
-     * @return int sanitised $savedProfileFieldEdAid or null 
+     * @return int sanitised $savedProfileFieldEdAid or null
      */
     public static function sanitiseEdAid($savedProfileFieldEdAid)
     {
