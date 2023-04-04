@@ -20,7 +20,7 @@ class ApplicantValidatorTest extends TestCase
     /**
      * @doesNotPerformAssertions
      */
-    public function testValidateFeePaymentMethods_successNoExplicitFee()
+    public function testValidateFeePaymentMethodsSuccessNoExplicitFee()
     {
         ApplicantValidator::validateFeePaymentMethods([
             'upfront' => 2000,
@@ -33,7 +33,7 @@ class ApplicantValidatorTest extends TestCase
     /**
      * @doesNotPerformAssertions
      */
-    public function testValidateFeePaymentMethods_successWithExplicitFee()
+    public function testValidateFeePaymentMethodsSuccessWithExplicitFee()
     {
         ApplicantValidator::validateFeePaymentMethods([
             'upfront' => 5000,
@@ -43,7 +43,7 @@ class ApplicantValidatorTest extends TestCase
         ]);
     }
 
-    public function testValidateFeePaymentMethods_failureMoreThanAcademyPrice()
+    public function testValidateFeePaymentMethodsFailureMoreThanAcademyPrice()
     {
         $this->expectExceptionMessage('Total payment is more than course price');
         ApplicantValidator::validateFeePaymentMethods([
@@ -54,7 +54,7 @@ class ApplicantValidatorTest extends TestCase
         ]);
     }
 
-    public function testValidateFeePaymentMethods_failureMoreThanApplicantFee()
+    public function testValidateFeePaymentMethodsFailureMoreThanApplicantFee()
     {
         $this->expectExceptionMessage('Total payment is more than course price');
         ApplicantValidator::validateFeePaymentMethods([
@@ -65,7 +65,7 @@ class ApplicantValidatorTest extends TestCase
         ]);
     }
 
-    public function testValidateFeePaymentMethods_failureWrongFieldTypeUpfront()
+    public function testValidateFeePaymentMethodsFailureWrongFieldTypeUpfront()
     {
         $this->expectExceptionMessage('Applicant field \'upfront\' is not a numeric type');
         ApplicantValidator::validateFeePaymentMethods([
@@ -73,7 +73,7 @@ class ApplicantValidatorTest extends TestCase
         ]);
     }
 
-    public function testValidateFeePaymentMethods_failureWrongFieldTypeDiversitech()
+    public function testValidateFeePaymentMethodsFailureWrongFieldTypeDiversitech()
     {
         $this->expectExceptionMessage('Applicant field \'diversitech\' is not a numeric type');
         ApplicantValidator::validateFeePaymentMethods([
@@ -81,7 +81,7 @@ class ApplicantValidatorTest extends TestCase
         ]);
     }
 
-    public function testValidateFeePaymentMethods_failureWrongFieldTypeEdaid()
+    public function testValidateFeePaymentMethodsFailureWrongFieldTypeEdaid()
     {
         $this->expectExceptionMessage('Applicant field \'edaid\' is not a numeric type');
         ApplicantValidator::validateFeePaymentMethods([
@@ -89,7 +89,7 @@ class ApplicantValidatorTest extends TestCase
         ]);
     }
 
-    public function testValidateFeePaymentMethods_failureWrongFieldTypeFee()
+    public function testValidateFeePaymentMethodsFailureWrongFieldTypeFee()
     {
         $this->expectExceptionMessage('Applicant field \'fee\' is not a numeric type');
         ApplicantValidator::validateFeePaymentMethods([
@@ -97,46 +97,46 @@ class ApplicantValidatorTest extends TestCase
         ]);
     }
 
-    public function testValidateLaptop_success0()
+    public function testValidateLaptopSuccess0()
     {
         $this->assertSame(ApplicantValidator::validateLaptop(['laptop' => 0]), true);
     }
 
-    public function testValidateLaptop_success1()
+    public function testValidateLaptopSuccess1()
     {
         $this->assertSame(ApplicantValidator::validateLaptop(['laptop' => 1]), true);
     }
 
-    public function testValidateLaptop_successEmpty()
+    public function testValidateLaptopSuccessEmpty()
     {
         $this->assertSame(ApplicantValidator::validateLaptop(['laptop' => []]), true);
     }
 
-    public function testValidateLaptop_failureNot0Or1OrEmpty()
+    public function testValidateLaptopFailureNot0Or1OrEmpty()
     {
         $this->assertSame(ApplicantValidator::validateLaptop(['laptop' => 2]), false);
     }
 
-    public function testValidateLaptop_failureWrongFieldType()
+    public function testValidateLaptopFailureWrongFieldType()
     {
         $this->assertSame(ApplicantValidator::validateLaptop(['laptop' => ['woof']]), false);
     }
 
-    public function testValidateGithubUsername_successEmpty()
+    public function testValidateGithubUsernameSuccessEmpty()
     {
         $this->assertSame(ApplicantValidator::validateGithubUsername(
             ['githubUsername' => []]
         ), true);
     }
 
-    public function testValidateGithubUsername_successCorrectLength()
+    public function testValidateGithubUsernameSuccessCorrectLength()
     {
         $this->assertSame(ApplicantValidator::validateGithubUsername(
             ['githubUsername' => 'nifty']
         ), true);
     }
 
-    public function testValidateGithubUsername_failureTooLong()
+    public function testValidateGithubUsernameFailureTooLong()
     {
         $this->expectExceptionMessage(
             'You have either not inputted any information for githubUsername or ' . '
@@ -158,7 +158,7 @@ class ApplicantValidatorTest extends TestCase
         );
     }
 
-    public function testValidateGithubUsername_failureWrongFieldType()
+    public function testValidateGithubUsernameFailureWrongFieldType()
     {
         $this->assertSame(
             ApplicantValidator::validateGithubUsername(
