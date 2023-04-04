@@ -106,9 +106,9 @@ class ApplicantSanitiser
     /**
      * Sanitise edaid for editing student profile
      *
-     * @return int sanitised $savedProfileFieldEdAid
+     * @return int sanitised $savedProfileFieldEdAid or null 
      */
-    public static function sanitiseEdAid($savedProfileFieldEdAid): int
+    public static function sanitiseEdAid($savedProfileFieldEdAid)
     {
         return $savedProfileFieldEdAid ? (int)$savedProfileFieldEdAid : null;
     }
@@ -118,7 +118,7 @@ class ApplicantSanitiser
      *
      * @return int sanitised $savedProfileFieldUpFront
      */
-    public static function sanitiseUpFront($savedProfileFieldUpFront): int
+    public static function sanitiseUpFront($savedProfileFieldUpFront)
     {
         return $savedProfileFieldUpFront ? (int)$savedProfileFieldUpFront : null;
     }
@@ -128,7 +128,7 @@ class ApplicantSanitiser
      *
      * @return int sanitised $savedProfileFieldLaptop
      */
-    public static function sanitiseLaptop($savedProfileFieldLaptop): int
+    public static function sanitiseLaptop($savedProfileFieldLaptop)
     {
         if ($savedProfileFieldLaptop !== null) {
             $savedProfileFieldLaptop = $savedProfileFieldLaptop ? 1 : 0;
