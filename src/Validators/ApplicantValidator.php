@@ -9,8 +9,7 @@ class ApplicantValidator
     public static function validate(array $applicant): bool
     {
         return (
-            (
-                StringValidator::validateExistsAndLength(
+            (StringValidator::validateExistsAndLength(
                     $applicant['name'],
                     StringValidator::MAXVARCHARLENGTH,
                     'name'
@@ -20,8 +19,7 @@ class ApplicantValidator
             StringValidator::validateExistsAndLength($applicant['email'], StringValidator::MAXVARCHARLENGTH, 'email')
             &&
             filter_var($applicant['email'], FILTER_VALIDATE_EMAIL) !== false &&
-            (
-                empty($applicant['phoneNumber']) ||
+            (empty($applicant['phoneNumber']) ||
                 PhoneNumberValidator::validatePhoneNumber($applicant['phoneNumber'])
             ) &&
             is_array($applicant['cohort']) &&
@@ -41,14 +39,11 @@ class ApplicantValidator
             is_numeric($applicant['hearAboutId']) &&
             is_numeric($applicant['gender']) &&
             is_numeric($applicant['backgroundInfoId']) &&
-            (
-                $applicant['eligible'] == 1 || $applicant['eligible'] == 0
+            ($applicant['eligible'] == 1 || $applicant['eligible'] == 0
             ) &&
-            (
-                $applicant['eighteenPlus'] == 1 || $applicant['eighteenPlus'] == 0
+            ($applicant['eighteenPlus'] == 1 || $applicant['eighteenPlus'] == 0
             ) &&
-            (
-                $applicant['finance'] == 1 || $applicant['finance'] == 0
+            ($applicant['finance'] == 1 || $applicant['finance'] == 0
             ) &&
             strlen($applicant['notes']) <= StringValidator::MAXTEXTLENGTH
         );
@@ -73,125 +68,99 @@ class ApplicantValidator
         DateTimeValidator::validateDate($applicant['taster']);
 
         return (
-            (
-                $applicant['apprentice'] == 1 || $applicant['apprentice'] == 0
+            ($applicant['apprentice'] == 1 || $applicant['apprentice'] == 0
             ) &&
-            (
-                is_numeric($applicant['aptitude']) || empty($applicant['aptitude'])
+            (is_numeric($applicant['aptitude']) || empty($applicant['aptitude'])
             ) &&
-            (
-                empty($applicant['assessmentNotes']) ||
+            (empty($applicant['assessmentNotes']) ||
                 StringValidator::validateLength(
                     $applicant['assessmentNotes'],
                     StringValidator::MAXTEXTLENGTH,
                     'assessmentNotes'
                 )
             ) &&
-            (
-                $applicant['diversitechInterest'] == 1 ||
+            ($applicant['diversitechInterest'] == 1 ||
                 $applicant['diversitechInterest'] == 0 ||
                 empty($applicant['diversitechInterest'])
             ) &&
             ApplicantValidator::validateLaptop($applicant) &&
-            (
-                empty($applicant['team']) ||
+            (empty($applicant['team']) ||
                 StringValidator::validateLength($applicant['team'], StringValidator::MAXVARCHARLENGTH, 'team')
             ) &&
-            (
-                empty($applicant['stageName']) ||
+            (empty($applicant['stageName']) ||
                 StringValidator::validateLength($applicant['stageName'], StringValidator::MAXVARCHARLENGTH, 'stageName')
             ) &&
-            (
-                empty($applicant['stageOptionId']) ||
+            (empty($applicant['stageOptionId']) ||
                 is_numeric($applicant['stageOptionId'])
             ) &&
             is_numeric($applicant['stageId']) &&
             ApplicantValidator::validateGithubUsername($applicant) &&
-            (
-                empty($applicant['portfolioUrl']) ||
+            (empty($applicant['portfolioUrl']) ||
                 filter_var($applicant['portfolioUrl'], FILTER_VALIDATE_URL)
             ) &&
-            (
-                empty($applicant['pleskHostingUrl']) ||
+            (empty($applicant['pleskHostingUrl']) ||
                 PleskValidator::validate($applicant['pleskHostingUrl'])
             ) &&
-            (
-                empty($applicant['githubEducationLink']) ||
+            (empty($applicant['githubEducationLink']) ||
                 GithubEducationValidator::validate($applicant['githubEducationLink'])
             ) &&
-            (
-                empty($applicant['additionalNotes']) ||
+            (empty($applicant['additionalNotes']) ||
                 StringValidator::validateLength(
                     $applicant['additionalNotes'],
                     StringValidator::MAXTEXTLENGTH,
                     'additionalNotes'
                 )
             ) &&
-            (
-                empty($applicant['chosenCourseId']) ||
+            (empty($applicant['chosenCourseId']) ||
                 is_numeric($applicant['chosenCourseId'])
             ) &&
-            (
-                is_numeric($applicant['attitude']) || empty($applicant['attitude'])
+            (is_numeric($applicant['attitude']) || empty($applicant['attitude'])
             ) &&
-            (
-                is_numeric($applicant['averageScore']) || empty($applicant['averageScore'])
+            (is_numeric($applicant['averageScore']) || empty($applicant['averageScore'])
             ) &&
-            (
-                is_numeric($applicant['fee']) || empty($applicant['fee'])
+            (is_numeric($applicant['fee']) || empty($applicant['fee'])
             ) &&
-            (
-                $applicant['signedTerms'] == 1 ||
+            ($applicant['signedTerms'] == 1 ||
                 $applicant['signedTerms'] == 0 ||
                 empty($applicant['signedTerms'])
             ) &&
-            (
-                $applicant['signedDiversitech'] == 1 ||
+            ($applicant['signedDiversitech'] == 1 ||
                 $applicant['signedDiversitech'] == 0 ||
                 empty($applicant['signedDiversitech'])
             ) &&
-            (
-                $applicant['signedNDA'] == 1 ||
+            ($applicant['signedNDA'] == 1 ||
                 $applicant['signedNDA'] == 0 ||
                 empty($applicant['signedNDA'])
             ) &&
-            (
-                $applicant['inductionEmailSent'] == 1 ||
+            ($applicant['inductionEmailSent'] == 1 ||
                 $applicant['inductionEmailSent'] == 0 ||
                 empty($applicant['inductionEmailSent'])
             ) &&
-            (
-                $applicant['checkedID'] == 1 ||
+            ($applicant['checkedID'] == 1 ||
                 $applicant['checkedID'] == 0 ||
                 empty($applicant['checkedID'])
             ) &&
-            (
-                $applicant['contactFormSigned'] == 1 ||
+            ($applicant['contactFormSigned'] == 1 ||
                 $applicant['contactFormSigned'] == 0 ||
                 empty($applicant['contactFormSigned'])
             ) &&
-            (
-                $applicant['dataProtectionName'] == 1 ||
+            ($applicant['dataProtectionName'] == 1 ||
                 $applicant['dataProtectionName'] == 0 ||
                 empty($applicant['dataProtectionName'])
             ) &&
-            (
-                $applicant['dataProtectionPhoto'] == 1 ||
+            ($applicant['dataProtectionPhoto'] == 1 ||
                 $applicant['dataProtectionPhoto'] == 0 ||
                 empty($applicant['dataProtectionPhoto'])
             ) &&
-            (
-                $applicant['dataProtectionTestimonial'] == 1 ||
+            ($applicant['dataProtectionTestimonial'] == 1 ||
                 $applicant['dataProtectionTestimonial'] == 0 ||
                 empty($applicant['dataProtectionTestimonial'])
             ) &&
-            (
-                $applicant['dataProtectionBio'] == 1 ||
+            ($applicant['dataProtectionBio'] == 1 ||
                 $applicant['dataProtectionBio'] == 0 ||
                 empty($applicant['dataProtectionBio'])
             ) &&
-            (
-                $applicant['dataProtectionVideo'] == 1 ||
+            ($applicant['dataProtectionVideo'] == 1 ||
                 $applicant['dataProtectionVideo'] == 0 ||
                 empty($applicant['dataProtectionVideo'])
             )
@@ -200,9 +169,9 @@ class ApplicantValidator
 
     public static function validateFeePaymentMethods(array $applicant): void
     {
-        foreach (['upfront','edaid','diversitech','fee'] as $key) {
+        foreach (['upfront', 'edaid', 'diversitech', 'fee'] as $key) {
             if (!is_null($applicant[$key]) && !is_numeric($applicant[$key])) {
-                throw new \Exception('Applicant field \''.$key.'\' is not a numeric type');
+                throw new \Exception('Applicant field \'' . $key . '\' is not a numeric type');
             }
         }
 
@@ -210,7 +179,7 @@ class ApplicantValidator
 
         if (
             ((int)$applicant['fee'] > 0
-            && $feePaymentMethods > (int)$applicant['fee'])
+                && $feePaymentMethods > (int)$applicant['fee'])
             || ($feePaymentMethods > Globals::ACADEMYPRICE)
         ) {
             throw new \Exception('Total payment is more than course price');
@@ -219,8 +188,7 @@ class ApplicantValidator
 
     public static function validateLaptop(array $applicant): bool
     {
-        return (
-            $applicant['laptop'] == 1 ||
+        return ($applicant['laptop'] == 1 ||
             $applicant['laptop'] == 0 ||
             empty($applicant['laptop'])
         );
@@ -228,8 +196,7 @@ class ApplicantValidator
 
     public static function validateGithubUsername(array $applicant): bool
     {
-        return (
-            empty($applicant['githubUsername']) ||
+        return (empty($applicant['githubUsername']) ||
             is_string($applicant['githubUsername']) &&
             StringValidator::validateLength(
                 $applicant['githubUsername'],
