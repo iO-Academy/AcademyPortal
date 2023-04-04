@@ -12,7 +12,7 @@ class ApplicantSanitiserTest extends TestCase
         $this->markTestSkipped('Cannot unit test as method calls other methods');
     }
 
-    public function testSuccessSanitiseEdAid_int()
+    public function testSuccessIntSanitiseEdAid()
     {
         $savedProfileFieldEdAid = 800;
         $expectedOutput = 800;
@@ -20,7 +20,7 @@ class ApplicantSanitiserTest extends TestCase
         $this->assertEquals($expectedOutput, $actualOutput);
     }
 
-    public function testSuccessSanitiseEdAid_numberString()
+    public function testSuccessStringSanitiseEdAid()
     {
         $savedProfileFieldEdAid = '800';
         $expectedOutput = 800;
@@ -28,7 +28,7 @@ class ApplicantSanitiserTest extends TestCase
         $this->assertEquals($expectedOutput, $actualOutput);
     }
 
-    public function testSuccessSanitiseEdAid_null()
+    public function testSuccessNullSanitiseEdAid()
     {
         $savedProfileFieldEdAid = null;
         $expectedOutput = null;
@@ -36,7 +36,7 @@ class ApplicantSanitiserTest extends TestCase
         $this->assertEquals($expectedOutput, $actualOutput);
     }
 
-    public function testSuccessSanitiseEdAid_zero()
+    public function testSuccessZeroSanitiseEdAid()
     {
         $savedProfileFieldEdAid = 0;
         $expectedOutput = null;
@@ -44,7 +44,7 @@ class ApplicantSanitiserTest extends TestCase
         $this->assertEquals($expectedOutput, $actualOutput);
     }
     
-    public function testSuccessSanitiseUpFront_int()
+    public function testSuccessIntSanitiseUpFront()
     {
         $savedProfileFieldUpFront = 800;
         $expectedOutput = 800;
@@ -52,7 +52,7 @@ class ApplicantSanitiserTest extends TestCase
         $this->assertEquals($expectedOutput, $actualOutput);
     }
 
-    public function testSuccessSanitiseUpFront_numberString()
+    public function testSuccessNumberStringSanitiseUpFront()
     {
         $savedProfileFieldUpFront = '800';
         $expectedOutput = 800;
@@ -60,7 +60,7 @@ class ApplicantSanitiserTest extends TestCase
         $this->assertEquals($expectedOutput, $actualOutput);
     }
 
-    public function testSuccessSanitiseUpFront_null()
+    public function testSuccessNullSanitiseUpFront()
     {
         $savedProfileFieldUpFront = null;
         $expectedOutput = null;
@@ -68,7 +68,7 @@ class ApplicantSanitiserTest extends TestCase
         $this->assertEquals($expectedOutput, $actualOutput);
     }
 
-    public function testSuccessSanitiseLaptop_null()
+    public function testSuccessNullSanitiseLaptop()
     {
         $savedProfileFieldLaptop = null;
         $expectedOutput = null;
@@ -76,7 +76,7 @@ class ApplicantSanitiserTest extends TestCase
         $this->assertEquals($expectedOutput, $actualOutput);
     }
 
-    public function testSuccessSanitiseOneLaptop_one()
+    public function testSuccessOneSanitiseOneLaptop()
     {
         $savedProfileFieldLaptop = 1;
         $expectedOutput = 1;
@@ -84,7 +84,7 @@ class ApplicantSanitiserTest extends TestCase
         $this->assertEquals($expectedOutput, $actualOutput);
     }
 
-    public function testSuccessSanitiseLaptop_zero()
+    public function testSuccessZeroSanitiseLaptop()
     {
         $savedProfileFieldLaptop = 0;
         $expectedOutput = 0;
@@ -92,7 +92,7 @@ class ApplicantSanitiserTest extends TestCase
         $this->assertEquals($expectedOutput, $actualOutput);
     }
 
-    public function testSuccessSanitiseLaptop_string()
+    public function testSuccessStringSanitiseLaptop()
     {
         $savedProfileFieldLaptop = 'banana';
         $expectedOutput = 1;
@@ -100,7 +100,7 @@ class ApplicantSanitiserTest extends TestCase
         $this->assertEquals($expectedOutput, $actualOutput);
     }
 
-    public function testSuccessSanitiseGitHubUsername_nonHtmlString()
+    public function testSuccessNonHtmlStringSanitiseGitHubUsername()
     {
         $savedProfileFieldGithubUsername = 'banana';
         $expectedOutput = 'banana';
@@ -108,7 +108,7 @@ class ApplicantSanitiserTest extends TestCase
         $this->assertEquals($expectedOutput, $actualOutput);
     }
 
-    public function testSuccessSanitiseGitHubUsername_HtmlString()
+    public function testSuccessHtmlStringSanitiseGitHubUsername()
     {
         $savedProfileFieldGithubUsername = '<marquee>Hello</marquee>';
         $expectedOutput = '&lt;marquee&gt;Hello&lt;/marquee&gt;';
