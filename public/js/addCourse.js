@@ -2,21 +2,22 @@ const courseForm = document.querySelector('form');
 const message = document.querySelector('#messages');
 const in_person_checkbox = document.querySelector('#in_person');
 const remote_checkbox = document.querySelector('#remote');
-const in_person_spaces_input = document.querySelector('#in_person_spaces_input');
-const remote_spaces_input = document.querySelector('#remote_spaces_input');
+const in_person_spaces = document.querySelector('#in_person_spaces');
+const remote_spaces = document.querySelector('#remote_spaces');
 courseForm.addEventListener('change', () => {
     if (in_person_checkbox.checked) {
-        in_person_spaces_input.classList.remove('hidden');
+        in_person_spaces.classList.remove('hidden');
     } else {
-        in_person_spaces_input.classList.add('hidden');
+        in_person_spaces.classList.add('hidden');
     }
+
 })
 
 courseForm.addEventListener('change', () => {
     if (remote_checkbox.checked) {
-        remote_spaces_input.classList.remove('hidden');
+        remote_spaces.classList.remove('hidden');
     } else {
-        remote_spaces_input.classList.add('hidden');
+        remote_spaces.classList.add('hidden');
     }
 })
 
@@ -118,10 +119,10 @@ let getCompletedFormData = () => {
         remote: courseForm.elements['remote'].checked ? 1 : 0,
     }
     if (data.in_person) {
-        data.in_person_input = courseForm.elements['in_person_spaces_input'].value
+        data.in_person_input = courseForm.elements['in_person_spaces'].value
     }
     if (data.remote) {
-        data.remote_input = courseForm.elements['remote_spaces_input'].value
+        data.remote_input = courseForm.elements['remote_spaces'].value
     }
     return data;
 }

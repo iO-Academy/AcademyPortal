@@ -47,8 +47,8 @@ class CourseModel
             `notes`,
             `in_person`,
             `remote`,
-            `available_spaces_in_person`,
-            `available_spaces_remote`
+            `in_person_spaces`,
+            `remote_spaces`
             ) 
             VALUES (
             :startDate, 
@@ -57,8 +57,8 @@ class CourseModel
             :notes,
             :in_person,
             :remote,
-            :in_person_input,
-            :remote_input);");
+            :in_person_spaces,
+            :remote_spaces);");
 
         $startDate = $newCourse['startDate'];
         $endDate = $newCourse['endDate'];
@@ -66,8 +66,8 @@ class CourseModel
         $notes = $newCourse['notes'];
         $in_person = $newCourse['in_person'];
         $remote = $newCourse['remote'];
-        $in_person_input = $newCourse['in_person_input'];
-        $remote_input = $newCourse['remote_input'];
+        $in_person_spaces = $newCourse['in_person_spaces'];
+        $remote_spaces = $newCourse['remote_spaces'];
 
         $query->bindParam(':startDate', $startDate);
         $query->bindParam(':endDate', $endDate);
@@ -75,8 +75,8 @@ class CourseModel
         $query->bindParam(':notes', $notes);
         $query->bindParam(':in_person', $in_person);
         $query->bindParam(':remote', $remote);
-        $query->bindParam(':in_person_input', $in_person_input);
-        $query->bindParam(':remote_input', $remote_input);
+        $query->bindParam(':in_person_spaces', $in_person_spaces);
+        $query->bindParam(':remote_spaces', $remote_spaces);
         $query->execute();
         return $this->db->lastInsertId();
     }
