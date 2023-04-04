@@ -6,11 +6,12 @@ const githubUserEditButton = document.querySelector('.githubUserEditButton')
 function handleEditClick(event) {
     const buttonName = event.target.getAttribute('class')
     const divName = buttonName.replace('EditButton', 'Container')
-    const divSelector = document.querySelector('.' + divName)
-    divSelector.innerHTML = 
-        '<form method="put">' +
-        '<label for="textBox">EdAid amount: </label>' +
-        '<input type="text" id="textBox" name="' + divName + '">' + 
+    const containerDiv = document.querySelector('.' + divName)
+    const fieldName = divName.replace('Container', '')
+    containerDiv.innerHTML = 
+        '<form method="post">' +
+        '<label for="' + fieldName + 'TextBox">' + containerDiv.childNodes[0].textContent + '</label>' +
+        '<input type="text" id="' + fieldName + 'TextBox" name="' + fieldName + '">' + 
         '<input type="submit" value="Save">' +
         '</form>'
 }
