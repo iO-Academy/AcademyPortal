@@ -102,4 +102,51 @@ class ApplicantSanitiser
 
         return $applicant;
     }
+
+    /**
+     * Sanitise edaid for editing student profile
+     *
+     * @return int sanitised $savedProfileFieldEdAid
+     */
+    public static function sanitiseEdAid($savedProfileFieldEdAid): int
+    {
+        $savedProfileFieldEdAid = $savedProfileFieldEdAid ? (int)$savedProfileFieldEdAid : null;
+        return $savedProfileFieldEdAid;
+    }
+
+    /**
+     * Sanitise upfront for editing student profile
+     *
+     * @return int sanitised $savedProfileFieldUpFront
+     */
+    public static function sanitiseUpFront($savedProfileFieldUpFront): int
+    {
+        $savedProfileFieldUpFront = $savedProfileFieldUpFront ? (int)$savedProfileFieldUpFront : null;
+        return $savedProfileFieldUpFront;
+    }
+    
+    /**
+     * Sanitise laptop for editing student profile
+     *
+     * @return int sanitised $savedProfileFieldLaptop
+     */
+    public static function sanitiseLaptop($savedProfileFieldLaptop): int
+    {
+        if ($savedProfileFieldLaptop !== null) {
+            $savedProfileFieldLaptop = $savedProfileFieldLaptop ? 1 : 0;
+        }
+        return $savedProfileFieldLaptop;
+    }
+    
+    /**
+     * Sanitise GitHub Username for editing student profile
+     *
+     * @return array sanitised $savedProfileFieldGithubUsername
+     */
+    public static function sanitiseGitHubUsername($savedProfileFieldGithubUsername): string
+    {
+        $savedProfileFieldGithubUsername =
+            !empty($savedProfileFieldGithubUsername) ? htmlentities($savedProfileFieldGithubUsername, ENT_QUOTES) : null;
+        return $savedProfileFieldGithubUsername;
+    }
 }
