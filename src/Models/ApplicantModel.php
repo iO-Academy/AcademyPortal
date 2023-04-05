@@ -562,25 +562,25 @@ class ApplicantModel implements ApplicantModelInterface
     public function updateEdaid(int $id, int $edaid): bool
     {
         $query = $this->db->prepare('UPDATE `applicants_additional` SET edaid=:edaid WHERE id=:id');
-        return $query->execute(["id"=> $id, "edaid" => $edaid]);
+        return $query->execute(["id" => $id, "edaid" => $edaid]);
     }
     public function updateGithubUsername(int $id, string $githubUsername): bool
     {
         $query = $this->db->prepare('UPDATE `applicants_additional` SET githubUsername=:githubUsername
          WHERE id=:id');
-        return $query->execute(["id"=> $id, "githubUsername" => $githubUsername]);
+        return $query->execute(["id" => $id, "githubUsername" => $githubUsername]);
     }
 
     public function updateLaptop(int $id, int $laptop): bool
     {
         $query = $this->db->prepare('UPDATE `applicants_additional` SET laptop=:laptop WHERE id=:id');
-        return $query->execute(["id"=> $id, "laptop" => $laptop]);
+        return $query->execute(["id" => $id, "laptop" => $laptop]);
     }
 
     public function updateUpfront(int $id, int $upfront): bool
     {
         $query = $this->db->prepare('UPDATE `applicants_additional` SET upfront=:upfront WHERE id=:id');
-        return $query->execute(["id"=> $id, "upfront" => $upfront]);
+        return $query->execute(["id" => $id, "upfront" => $upfront]);
     }
 
     public function getFeePaymentMethods(int $id): array
