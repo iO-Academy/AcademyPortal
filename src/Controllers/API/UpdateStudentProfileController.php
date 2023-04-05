@@ -52,7 +52,8 @@ class UpdateStudentProfileController extends Controller
         return $response->withStatus(401);
     }
 
-    private function updateEdaid(Response $response, array $updatedStudentProfileData): Response {
+    private function updateEdaid(Response $response, array $updatedStudentProfileData): Response
+    {
         $feePaymentMethods = $this->applicantModel->getFeePaymentMethods($updatedStudentProfileData["id"]);
         $feePaymentMethods["edaid"] = $updatedStudentProfileData["edaid"];
 
@@ -88,7 +89,8 @@ class UpdateStudentProfileController extends Controller
         }
     }
 
-    private function updateUpfront(Response $response, array $updatedStudentProfileData) {
+    private function updateUpfront(Response $response, array $updatedStudentProfileData)
+    {
         $feePaymentMethods = $this->applicantModel->getFeePaymentMethods($updatedStudentProfileData["id"]);
         $feePaymentMethods["upfront"] = $updatedStudentProfileData["upfront"];
 
@@ -124,7 +126,8 @@ class UpdateStudentProfileController extends Controller
         }
     }
 
-    private function updateLaptop(Response $response, array $updatedStudentProfileData) {
+    private function updateLaptop(Response $response, array $updatedStudentProfileData)
+    {
         try {
             if (!ApplicantValidator::validateGithubUsername($updatedStudentProfileData)) {
                 $responseBody["success"] = false;
@@ -163,7 +166,8 @@ class UpdateStudentProfileController extends Controller
         }
     }
 
-    private function updateGithubUsername(Response $response, array $updatedStudentProfileData) {
+    private function updateGithubUsername(Response $response, array $updatedStudentProfileData)
+    {
         try {
             if (!ApplicantValidator::validateLaptop($updatedStudentProfileData)) {
                 $responseBody["success"] = false;
