@@ -25,16 +25,16 @@ class UpdateStudentProfileController extends Controller
         $updatedStudentProfileData = $request->getParsedBody();
 
         if (
-            !empty($_SESSION['studentLogin']) &&
+            (!empty($_SESSION['studentLogin']) &&
             $_SESSION['studentLogin'] &&
-            $_SESSION['studentId'] == $updatedStudentProfileData['id'] ||
-            !empty($_SESSION['loggedIn']) &&
-            $_SESSION['loggedIn']
+            $_SESSION['studentId'] == $updatedStudentProfileData['id'])||
+            (!empty($_SESSION['loggedIn']) &&
+            $_SESSION['loggedIn'])
         ) {
             $responseBody = [];
 
             if (array_key_exists("edaid", $updatedStudentProfileData)) {
-                $feePaymentMethods = $this->applicantModel->getFeePaymentMethods($updatedStudentProfileData);
+                $feePaymentMethods = $this->applicantModel->getFeePaymentMethods($updatedStudentProfileData["id"]);
                 $feePaymentMethods["edaid"] = $updatedStudentProfileData["edaid"];
 
                 try {
@@ -49,7 +49,8 @@ class UpdateStudentProfileController extends Controller
 
                 $updatedStudentProfileData["edaid"] =
                     ApplicantSanitiser::sanitiseEdAid($updatedStudentProfileData["edaid"]);
-                $successfulUpdate = $this->applicantModel->updateEdaid($updatedStudentProfileData);
+                $successfulUpdate = $this->applicantModel->updateEdaid($updatedStudentProfileData["id"],
+                                    $updatedStudentProfileData["edaid"]);
 
                 if ($successfulUpdate) {
                     $responseBody["success"] = true;
@@ -65,7 +66,7 @@ class UpdateStudentProfileController extends Controller
                     return $this->respondWithJson($response, $responseBody, $statusCode);
                 }
             } elseif (array_key_exists("upfront", $updatedStudentProfileData)) {
-                $feePaymentMethods = $this->applicantModel->getFeePaymentMethods($updatedStudentProfileData);
+                $feePaymentMethods = $this->applicantModel->getFeePaymentMethods($updatedStudentProfileData["id"]);
                 $feePaymentMethods["upfront"] = $updatedStudentProfileData["upfront"];
 
                 try {
@@ -80,7 +81,8 @@ class UpdateStudentProfileController extends Controller
 
                 $updatedStudentProfileData["upfront"] =
                     ApplicantSanitiser::sanitiseUpFront($updatedStudentProfileData["upfront"]);
-                $successfulUpdate = $this->applicantModel->updateUpfront($updatedStudentProfileData);
+                $successfulUpdate = $this->applicantModel->updateUpfront($updatedStudentProfileData["id"],
+                                    $updatedStudentProfileData["upfront"]);
 
                 if ($successfulUpdate) {
                     $responseBody["success"] = true;
@@ -114,7 +116,8 @@ class UpdateStudentProfileController extends Controller
 
                 $updatedStudentProfileData["githubUsername"] =
                     ApplicantSanitiser::sanitiseGitHubUsername($updatedStudentProfileData["githubUsername"]);
-                $successfulUpdate = $this->applicantModel->updateGithubUsername($updatedStudentProfileData);
+                $successfulUpdate = $this->applicantModel->updateGithubUsername($updatedStudentProfileData["id"],
+                                    $updatedStudentProfileData["githubUsername"]);
 
                 if ($successfulUpdate) {
                     $responseBody["success"] = true;
@@ -154,7 +157,8 @@ class UpdateStudentProfileController extends Controller
 
                 $updatedStudentProfileData["laptop"] =
                     ApplicantSanitiser::sanitiseLaptop($updatedStudentProfileData["laptop"]);
-                $successfulUpdate = $this->applicantModel->updateLaptop($updatedStudentProfileData);
+                $successfulUpdate = $this->applicantModel->updateLaptop($updatedStudentProfileData["id"],
+                                    $updatedStudentProfileData["laptop"]);
 
                 if ($successfulUpdate) {
                     $responseBody["success"] = true;
