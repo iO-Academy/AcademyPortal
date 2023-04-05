@@ -70,7 +70,8 @@ class DisplayStudentProfileHelperTest extends TestCase
                     <section>
                     <h4>Studentprofile</h4>
                     <divclass="githubUsernameContainerstudentProfileEditableField">
-                    <pclass="detail"id="githubUsernameDescription">GitHubUsername:</p><spanid="githubUsername">MrSnuggles</span>
+                    <pclass="detail"id="githubUsernameDescription">GitHubUsername:</p>
+                    <spanid="githubUsername">MrSnuggles</span>
                     <buttonclass="btnbtn-primarybtn-sm"id="githubUsernameEditButton">Edit</button>
                     </div>
                     <pclass="detail">GitHubLink:<spanid="githubLink"></span></p>
