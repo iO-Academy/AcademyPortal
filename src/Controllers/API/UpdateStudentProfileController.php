@@ -3,7 +3,6 @@
 namespace Portal\Controllers\API;
 
 use Exception;
-
 use Portal\Abstracts\Controller;
 use Portal\Interfaces\ApplicantModelInterface;
 use Portal\Models\ApplicantModel;
@@ -11,7 +10,6 @@ use Portal\Sanitisers\ApplicantSanitiser;
 use Portal\Validators\ApplicantValidator;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-
 
 class UpdateStudentProfileController extends Controller
 {
@@ -36,7 +34,6 @@ class UpdateStudentProfileController extends Controller
             $responseBody = [];
 
             if (array_key_exists("edaid", $updatedStudentProfileData)) {
-
                 $feePaymentMethods = $this->applicantModel->getFeePaymentMethods($updatedStudentProfileData);
                 $feePaymentMethods["edaid"] = $updatedStudentProfileData["edaid"];
 
@@ -67,7 +64,7 @@ class UpdateStudentProfileController extends Controller
                     $statusCode = 500;
                     return $this->respondWithJson($response, $responseBody, $statusCode);
                 }
-            } else if (array_key_exists("upfront", $updatedStudentProfileData)) {
+            } elseif (array_key_exists("upfront", $updatedStudentProfileData)) {
                 $feePaymentMethods = $this->applicantModel->getFeePaymentMethods($updatedStudentProfileData);
                 $feePaymentMethods["upfront"] = $updatedStudentProfileData["upfront"];
 
@@ -98,8 +95,7 @@ class UpdateStudentProfileController extends Controller
                     $statusCode = 500;
                     return $this->respondWithJson($response, $responseBody, $statusCode);
                 }
-            } else if (array_key_exists("githubUsername", $updatedStudentProfileData)) {
-
+            } elseif (array_key_exists("githubUsername", $updatedStudentProfileData)) {
                 try {
                     if (!ApplicantValidator::validateGithubUsername($updatedStudentProfileData)) {
                         $responseBody["success"] = false;
@@ -133,7 +129,7 @@ class UpdateStudentProfileController extends Controller
                     $statusCode = 500;
                     return $this->respondWithJson($response, $responseBody, $statusCode);
                 }
-            } else if (array_key_exists("laptop", $updatedStudentProfileData)) {
+            } elseif (array_key_exists("laptop", $updatedStudentProfileData)) {
                 try {
                     if (!ApplicantValidator::validateLaptop($updatedStudentProfileData)) {
                         $responseBody["success"] = false;
@@ -155,7 +151,6 @@ class UpdateStudentProfileController extends Controller
                 } elseif ($updatedStudentProfileData["laptop"] === "No") {
                     $updatedStudentProfileData["laptop"] = false;
                 }
-
 
                 $updatedStudentProfileData["laptop"] =
                     ApplicantSanitiser::sanitiseLaptop($updatedStudentProfileData["laptop"]);

@@ -63,7 +63,10 @@ class DisplayStudentProfileViewHelper
                     </div>
                     <div class="laptopRequiredContainer studentProfileEditableField">
                         <p class="detail">Laptop required: </p>
-                        <span id="laptop">' . (is_null($applicant->getLaptop()) ? null : ($applicant->getLaptop() ? 'Yes' : 'No')) . '</span>
+                        <span id="laptop">'
+                        . (is_null($applicant->getLaptop()) ? null
+                           : ($applicant->getLaptop() ? 'Yes' : 'No'))
+                        . '</span>
                         <button class="btn btn-primary laptopRequiredEditButton btn-sm">Edit</button>
                     </div>
 
