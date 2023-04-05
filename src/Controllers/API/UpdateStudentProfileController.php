@@ -26,10 +26,10 @@ class UpdateStudentProfileController extends Controller
 
         if (
             (!empty($_SESSION['studentLogin']) &&
-            $_SESSION['studentLogin'] &&
-            $_SESSION['studentId'] == $updatedStudentProfileData['id'])||
+                $_SESSION['studentLogin'] &&
+                $_SESSION['studentId'] == $updatedStudentProfileData['id']) ||
             (!empty($_SESSION['loggedIn']) &&
-            $_SESSION['loggedIn'])
+                $_SESSION['loggedIn'])
         ) {
             $responseBody = [];
 
@@ -49,8 +49,10 @@ class UpdateStudentProfileController extends Controller
 
                 $updatedStudentProfileData["edaid"] =
                     ApplicantSanitiser::sanitiseEdAid($updatedStudentProfileData["edaid"]);
-                $successfulUpdate = $this->applicantModel->updateEdaid($updatedStudentProfileData["id"],
-                                    $updatedStudentProfileData["edaid"]);
+                $successfulUpdate = $this->applicantModel->updateEdaid(
+                    $updatedStudentProfileData["id"],
+                    $updatedStudentProfileData["edaid"]
+                );
 
                 if ($successfulUpdate) {
                     $responseBody["success"] = true;
@@ -81,8 +83,10 @@ class UpdateStudentProfileController extends Controller
 
                 $updatedStudentProfileData["upfront"] =
                     ApplicantSanitiser::sanitiseUpFront($updatedStudentProfileData["upfront"]);
-                $successfulUpdate = $this->applicantModel->updateUpfront($updatedStudentProfileData["id"],
-                                    $updatedStudentProfileData["upfront"]);
+                $successfulUpdate = $this->applicantModel->updateUpfront(
+                    $updatedStudentProfileData["id"],
+                    $updatedStudentProfileData["upfront"]
+                );
 
                 if ($successfulUpdate) {
                     $responseBody["success"] = true;
@@ -116,8 +120,10 @@ class UpdateStudentProfileController extends Controller
 
                 $updatedStudentProfileData["githubUsername"] =
                     ApplicantSanitiser::sanitiseGitHubUsername($updatedStudentProfileData["githubUsername"]);
-                $successfulUpdate = $this->applicantModel->updateGithubUsername($updatedStudentProfileData["id"],
-                                    $updatedStudentProfileData["githubUsername"]);
+                $successfulUpdate = $this->applicantModel->updateGithubUsername(
+                    $updatedStudentProfileData["id"],
+                    $updatedStudentProfileData["githubUsername"]
+                );
 
                 if ($successfulUpdate) {
                     $responseBody["success"] = true;
@@ -157,8 +163,10 @@ class UpdateStudentProfileController extends Controller
 
                 $updatedStudentProfileData["laptop"] =
                     ApplicantSanitiser::sanitiseLaptop($updatedStudentProfileData["laptop"]);
-                $successfulUpdate = $this->applicantModel->updateLaptop($updatedStudentProfileData["id"],
-                                    $updatedStudentProfileData["laptop"]);
+                $successfulUpdate = $this->applicantModel->updateLaptop(
+                    $updatedStudentProfileData["id"],
+                    $updatedStudentProfileData["laptop"]
+                );
 
                 if ($successfulUpdate) {
                     $responseBody["success"] = true;
