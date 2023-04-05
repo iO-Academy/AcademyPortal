@@ -1,32 +1,36 @@
-const edaidEditButton = document.querySelector('.edaidEditButton')
-const upfrontEditButton = document.querySelector('.upfrontEditButton')
-const laptopEditButton = document.querySelector('.laptopEditButton')
-const githubUserEditButton = document.querySelector('.githubUserEditButton')
+const edaidEditButton = document.querySelector('#edaidEditButton')
+const upfrontEditButton = document.querySelector('#upfrontEditButton')
+const laptopEditButton = document.querySelector('#laptopEditButton')
+const githubUserEditButton = document.querySelector('#githubUserEditButton')
 // please delete this line
 const studentId = 24
 
 function handleEditClick(event) {
-    const buttonName = event.target.getAttribute('class')
+    const buttonName = event.target.getAttribute('id')
     const divName = buttonName.replace('EditButton', 'Container')
     const containerDiv = document.querySelector('.' + divName)
     const fieldName = divName.replace('Container', '')
+    const description = buttonName.replace('EditButton', 'Description')
+    const descriptionTag = document.querySelector('#' + description)
     if(divName == 'laptopContainer') {
     containerDiv.innerHTML = 
-        '<form class="form">' +
-        '<input type="radio" value="No" id="no" name="laptop">' +
-        '<label for="no"> No</label>' +
-        '<input type="radio" value="Yes" id="yes" name="laptop">' +
-        '<label for="no"> Yes</label>' +
+        '<form class="form studentProfileEditableField">' +
+        '<label>Laptop required: </label>' +
+        '<input type="radio" value="No" id="noLaptop" name="' + fieldName + '">' +
+        '<label for="noLaptop">No</label>' +
+        '<input type="radio" value="Yes" id="yesLaptop" name="' + fieldName + '">' +
+        '<label for="yesLaptop">Yes</label>' +
         '<input class="saveButton" type="submit" value="Save">' +
         '</form>'
     } else {
         containerDiv.innerHTML = 
-        '<form class="form">' +
-        '<label for="' + fieldName + 'TextBox">' + containerDiv.childNodes[0].textContent + '</label>' +
+        '<form class="form studentProfileEditableField">' +
+        '<label for="' + fieldName + 'TextBox">' + descriptionTag.textContent + '</label>' +
         '<input type="text" id="' + fieldName + 'TextBox" name="' + fieldName + '">' + 
         '<input class="saveButton" type="submit" value="Save">' +
         '</form>'
     }
+
     const saveButton = document.querySelector('.saveButton')
     const form = document.querySelector('.form')
     
@@ -38,7 +42,6 @@ function handleEditClick(event) {
             [fieldName]: formData,
             id: studentId 
         } 
-        console.log(updatedField)
         const jsonUpdatedField = JSON.stringify(updatedField)
         fetch('/api/updateStudentProfile', {
             method: 'PUT',

@@ -53,19 +53,20 @@ class DisplayStudentProfileViewHelper
                         . $applicant->getDiversitech() . '</span>
 
                     <!-- DEMO EDIT BUTTON, REPLACE WITH TASK 4 CODE --> 
-                    <div class="detail edaidContainer">EdAid amount: 
-                    <span id="edaid">' . $applicant->getEdaid() . '</span>
-                    <button class="edaidEditButton">Edit</button>
+                    <div class="edaidContainer studentProfileEditableField">
+                        <p class="detail" id="edaidDescription">EdAid amount: </p>
+                        <span id="edaid">' . $applicant->getEdaid() . '</span>
+                        <button id="edaidEditButton">Edit</button>
                     </div>
                     
                     <p class="detail">Upfront amount: <span id="upfront">' . $applicant->getUpfront() . '</span></p>
                     
                     <!-- DEMO EDIT BUTTON, REPLACE WITH TASK 4 CODE --> 
-                    <div class="laptopContainer">Laptop required: 
-                        <span id="laptop">' . $applicant->getLaptop() . '</span></p>
-                        <button class="laptopEditButton">Edit</button>
+                    <div class="laptopContainer studentProfileEditableField">
+                        <p class="detail" id="laptopDescription">Laptop required: </p>
+                        <span id="laptop">' . $applicant->getLaptop() . '</span>
+                        <button id="laptopEditButton">Edit</button>
                     </div>
-
 
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
                         . $applicant->getLaptopDeposit() . '</p>
