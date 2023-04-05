@@ -48,17 +48,17 @@ class DisplayStudentProfileHelperTest extends TestCase
                     <section>
                     <h4>OnboardingInfo</h4>
                     <pclass="detail">Diversitechamount:<spanid="diversitech">1000</span>
-                    <divclass="edAidAmountContainerstudentProfileEditableField">
-                    <pclass="detail">EdAidamount:</p><spanid="edaid">8000</span>
-                    <buttonclass="btnbtn-primaryedAidEditButtonbtn-sm">Edit</button>
+                    <divclass="edaidContainerstudentProfileEditableField">
+                    <pclass="detail"id="edaidDescription">EdAidamount:</p><spanid="edaid">8000</span>
+                    <buttonclass="btnbtn-primaryedaidEditButtonbtn-sm"id="edaidEditButton">Edit</button>
                     </div>
-                    <divclass="upfrontAmountContainerstudentProfileEditableField">
-                    <pclass="detail">Upfrontamount:</p><spanid="upfront">1000</span>
-                    <buttonclass="btnbtn-primaryupfrontAmountEditButtonbtn-sm">Edit</button>
+                    <divclass="upfrontContainerstudentProfileEditableField">
+                    <pclass="detail"id="upfrontDescription">Upfrontamount:</p><spanid="upfront">1000</span>
+                    <buttonclass="btnbtn-primarybtn-sm"id="upfrontEditButton">Edit</button>
                     </div>
-                    <divclass="laptopRequiredContainerstudentProfileEditableField">
-                    <pclass="detail">Laptoprequired:</p><spanid="laptop">Yes</span><
-                    buttonclass="btnbtn-primarylaptopRequiredEditButtonbtn-sm">Edit</button>
+                    <divclass="laptopContainerstudentProfileEditableField">
+                    <pclass="detail"id="laptopDescription">Laptoprequired:</p><spanid="laptop">Yes</span><
+                    buttonclass="btnbtn-primarybtn-sm"id="laptopEditButton">Edit</button>
                     </div>
                     <pclass="detail">Laptopdepositpaid:<spanid="laptopDeposit"span>0</p>
                     <pclass="detail">Laptopnumber:<spanid="laptopNum">3</span></p>
@@ -69,9 +69,10 @@ class DisplayStudentProfileHelperTest extends TestCase
                     <hr>
                     <section>
                     <h4>Studentprofile</h4>
-                    <divclass="githubUserContainerstudentProfileEditableField">
-                    <pclass="detail">GitHubUsername:</p><spanid="githubUser">MrSnuggles</span>
-                    <buttonclass="btnbtn-primarygithubUserEditButtonbtn-sm">Edit</button>
+                    <divclass="githubUsernameContainerstudentProfileEditableField">
+                    <pclass="detail"id="githubUsernameDescription">GitHubUsername:</p>
+                    <spanid="githubUsername">MrSnuggles</span>
+                    <buttonclass="btnbtn-primarybtn-sm"id="githubUsernameEditButton">Edit</button>
                     </div>
                     <pclass="detail">GitHubLink:<spanid="githubLink"></span></p>
                     <pclass="detail">Portfolio:<spanid="portfolio"></span></p>
