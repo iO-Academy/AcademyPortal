@@ -4,22 +4,9 @@ const in_person_checkbox = document.querySelector('#in_person');
 const remote_checkbox = document.querySelector('#remote');
 const in_person_spaces = document.querySelector('#in_person_spaces');
 const remote_spaces = document.querySelector('#remote_spaces');
-courseForm.addEventListener('change', () => {
-    if (in_person_checkbox.checked) {
-        in_person_spaces.classList.remove('hidden');
-    } else {
-        in_person_spaces.classList.add('hidden');
-    }
 
-})
-
-courseForm.addEventListener('change', () => {
-    if (remote_checkbox.checked) {
-        remote_spaces.classList.remove('hidden');
-    } else {
-        remote_spaces.classList.add('hidden');
-    }
-})
+in_person_checkbox.addEventListener('change', () => in_person_spaces.classList.toggle('hidden'));
+remote_checkbox.addEventListener('change', () => remote_spaces.classList.toggle('hidden'));
 
 
 // Submit Form + Add New Event API Call
