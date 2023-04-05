@@ -63,7 +63,10 @@ class DisplayStudentProfileViewHelper
                     </div>
                     <div class="laptopContainer studentProfileEditableField">
                         <p class="detail" id="laptopDescription">Laptop required: </p>
-                        <span id="laptop">' . $applicant->getLaptop() . '</span>
+                        <span id="laptop">' . 
+                        (is_null($applicant->getLaptop()) 
+                        ? null : ($applicant->getLaptop() ? 'Yes' : 'No')) 
+                        . '</span>
                         <button class="btn btn-primary btn-sm" id="laptopEditButton">Edit</button>
                     </div>
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
@@ -78,10 +81,10 @@ class DisplayStudentProfileViewHelper
                 <hr>
                 <section>
                     <h4>Student profile</h4>
-                    <div class="githubUserContainer studentProfileEditableField">
-                        <p class="detail" id="githubUserDescription">GitHub Username: </p> 
-                        <span id="githubUser">' . $applicant->getGithubUsername() . '</span>
-                        <button class="btn btn-primary btn-sm" id="githubUserEditButton">Edit</button>
+                    <div class="githubUsernameContainer studentProfileEditableField">
+                        <p class="detail" id="githubUsernameDescription">GitHub Username: </p> 
+                        <span id="githubUsername">' . $applicant->getGithubUsername() . '</span>
+                        <button class="btn btn-primary btn-sm" id="githubUsernameEditButton">Edit</button>
                     </div>
                     <p class="detail">GitHub Link: <span id="githubLink"></span></p>
                     <p class="detail">Portfolio: <span id="portfolio"></span></p>

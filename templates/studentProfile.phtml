@@ -5,6 +5,7 @@
     require 'partials/layout/head.phtml';
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Applicants');
     ?>
+    <script>const studentId = <?=intval($id);?></script>
     <script src="/js/populateDropdowns.js" defer></script>
     <script defer src="/js/applicantModal.js"></script>
     <script defer src="/js/deleteApplicant.js"></script>

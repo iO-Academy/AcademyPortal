@@ -57,7 +57,7 @@ class DisplayStudentProfileHelperTest extends TestCase
                     <buttonclass="btnbtn-primaryupfrontAmountEditButtonbtn-sm">Edit</button>
                     </div>
                     <divclass="laptopRequiredContainerstudentProfileEditableField">
-                    <pclass="detail">Laptoprequired:</p><spanid="laptop">1</span><
+                    <pclass="detail">Laptoprequired:</p><spanid="laptop">Yes</span><
                     buttonclass="btnbtn-primarylaptopRequiredEditButtonbtn-sm">Edit</button>
                     </div>
                     <pclass="detail">Laptopdepositpaid:<spanid="laptopDeposit"span>0</p>

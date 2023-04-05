@@ -1,7 +1,7 @@
 const edaidEditButton = document.querySelector('#edaidEditButton')
 const upfrontEditButton = document.querySelector('#upfrontEditButton')
 const laptopEditButton = document.querySelector('#laptopEditButton')
-const githubUserEditButton = document.querySelector('#githubUserEditButton')
+const githubUsernameEditButton = document.querySelector('#githubUsernameEditButton')
 
 function handleEditClick(event) {
     const buttonName = event.target.getAttribute('id')
@@ -50,15 +50,15 @@ function handleEditClick(event) {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then((response) => {
-            return response.json()
-        }).then((data) => {
-            if(response.status == 200) {
-                location.reload()
-            } else {
-                const responseMessage = response.statusText
-                console.log(responseMessage)
-            }
+        }).then( async (response) => {
+            return response.json().then((data) => {
+                if(response.status == 200) {
+                    location.reload()
+                } else {
+                    const responseMessage = data.msg
+                    alert(responseMessage)
+                }
+            })
         })
     })
 }
@@ -66,4 +66,4 @@ function handleEditClick(event) {
 edaidEditButton.addEventListener('click', handleEditClick)
 laptopEditButton.addEventListener('click', handleEditClick)
 upfrontEditButton.addEventListener('click', handleEditClick)
-githubUserEditButton.addEventListener('click', handleEditClick)
+githubUsernameEditButton.addEventListener('click', handleEditClick)

@@ -102,4 +102,48 @@ class ApplicantSanitiser
 
         return $applicant;
     }
+
+    /**
+     * Sanitise edaid for editing student profile
+     *
+     * @return ?int sanitised $savedProfileFieldEdAid
+     */
+    public static function sanitiseEdAid($savedProfileFieldEdAid): ?int
+    {
+        return $savedProfileFieldEdAid ? (int)$savedProfileFieldEdAid : null;
+    }
+
+    /**
+     * Sanitise upfront for editing student profile
+     *
+     * @return ?int sanitised $savedProfileFieldUpFront
+     */
+    public static function sanitiseUpFront($savedProfileFieldUpFront): ?int
+    {
+        return $savedProfileFieldUpFront ? (int)$savedProfileFieldUpFront : null;
+    }
+
+    /**
+     * Sanitise laptop for editing student profile
+     *
+     * @return ?int sanitised $savedProfileFieldLaptop
+     */
+    public static function sanitiseLaptop($savedProfileFieldLaptop): ?int
+    {
+        if ($savedProfileFieldLaptop !== null) {
+            $savedProfileFieldLaptop = $savedProfileFieldLaptop ? 1 : 0;
+        }
+        return $savedProfileFieldLaptop;
+    }
+
+    /**
+     * Sanitise GitHub Username for editing student profile
+     *
+     * @return ?string sanitised $savedProfileFieldGithubUsername
+     */
+    public static function sanitiseGitHubUsername($savedProfileFieldGithubUsername): ?string
+    {
+        return !empty($savedProfileFieldGithubUsername) ?
+            htmlentities($savedProfileFieldGithubUsername, ENT_QUOTES) : null;
+    }
 }

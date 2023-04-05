@@ -66,15 +66,7 @@ class ApplicantValidator
         DateTimeValidator::validateTime($applicant['assessmentTime']);
         DateTimeValidator::validateDateTime($applicant['dateTimeAdded']);
 
-        $feePaymentMethods = (int)$applicant['upfront'] + (int)$applicant['edaid'] + (int)$applicant['diversitech'];
-
-        if (
-            ((int)$applicant['fee'] > 0
-            && $feePaymentMethods > (int)$applicant['fee'])
-            || ($feePaymentMethods > Globals::ACADEMYPRICE)
-        ) {
-            throw new \Exception('Total payment is more than course price');
-        }
+        ApplicantValidator::validateFeePaymentMethods($applicant);
 
         DateTimeValidator::validateDate($applicant['kitCollectionDay']);
         DateTimeValidator::validateTime($applicant['kitCollectionTime']);
@@ -100,11 +92,7 @@ class ApplicantValidator
                 $applicant['diversitechInterest'] == 0 ||
                 empty($applicant['diversitechInterest'])
             ) &&
-            (
-                $applicant['laptop'] == 1 ||
-                $applicant['laptop'] == 0 ||
-                empty($applicant['laptop'])
-            ) &&
+            ApplicantValidator::validateLaptop($applicant) &&
             (
                 empty($applicant['team']) ||
                 StringValidator::validateLength($applicant['team'], StringValidator::MAXVARCHARLENGTH, 'team')
@@ -118,14 +106,7 @@ class ApplicantValidator
                 is_numeric($applicant['stageOptionId'])
             ) &&
             is_numeric($applicant['stageId']) &&
-            (
-                empty($applicant['githubUsername']) ||
-                StringValidator::validateLength(
-                    $applicant['githubUsername'],
-                    StringValidator::MAXVARCHARLENGTH,
-                    'githubUsername'
-                )
-            ) &&
+            ApplicantValidator::validateGithubUsername($applicant) &&
             (
                 empty($applicant['portfolioUrl']) ||
                 filter_var($applicant['portfolioUrl'], FILTER_VALIDATE_URL)
@@ -213,6 +194,47 @@ class ApplicantValidator
                 $applicant['dataProtectionVideo'] == 1 ||
                 $applicant['dataProtectionVideo'] == 0 ||
                 empty($applicant['dataProtectionVideo'])
+            )
+        );
+    }
+
+    public static function validateFeePaymentMethods(array $applicant): void
+    {
+        foreach (['upfront','edaid','diversitech','fee'] as $key) {
+            if (!is_null($applicant[$key]) && !is_numeric($applicant[$key])) {
+                throw new \Exception('Applicant field \'' . $key . '\' is not a numeric type');
+            }
+        }
+
+        $feePaymentMethods = (int)$applicant['upfront'] + (int)$applicant['edaid'] + (int)$applicant['diversitech'];
+
+        if (
+            ((int)$applicant['fee'] > 0
+            && $feePaymentMethods > (int)$applicant['fee'])
+            || ($feePaymentMethods > Globals::ACADEMYPRICE)
+        ) {
+            throw new \Exception('Total payment is more than course price');
+        }
+    }
+
+    public static function validateLaptop(array $applicant): bool
+    {
+        return (
+            $applicant['laptop'] == 1 ||
+            $applicant['laptop'] == 0 ||
+            empty($applicant['laptop'])
+        );
+    }
+
+    public static function validateGithubUsername(array $applicant): bool
+    {
+        return (
+            empty($applicant['githubUsername']) ||
+            is_string($applicant['githubUsername']) &&
+            StringValidator::validateLength(
+                $applicant['githubUsername'],
+                StringValidator::MAXVARCHARLENGTH,
+                'githubUsername'
             )
         );
     }
