@@ -93,14 +93,14 @@ courseForm.addEventListener('submit', e => {
 let selectedTrainerId = []
 /**
  * Retrieves trainer checkbox data from add course form
- * 
+ *
  * @returns array
  */
 let getSelectedTrainers = () => {
     courseForm.elements['trainer-checkbox'].forEach(trainer => {
         if(trainer.checked){
-            selectedTrainerId.push(trainer.dataset.id)  
-        }  
+            selectedTrainerId.push(trainer.dataset.id)
+        }
     })
     return selectedTrainerId
 }
