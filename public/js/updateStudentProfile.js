@@ -1,3 +1,5 @@
+const studentId = document.querySelector('#studentId').dataset.studentId
+
 const edaidEditButton = document.querySelector('#edaidEditButton')
 const upfrontEditButton = document.querySelector('#upfrontEditButton')
 const laptopEditButton = document.querySelector('#laptopEditButton')
