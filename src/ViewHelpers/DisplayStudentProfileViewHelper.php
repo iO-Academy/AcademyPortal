@@ -54,12 +54,19 @@ class DisplayStudentProfileViewHelper
 
                     <!-- DEMO EDIT BUTTON, REPLACE WITH TASK 4 CODE --> 
                     <div class="detail edaidContainer">EdAid amount: 
-                        <span id="edaid">' . $applicant->getEdaid() . '</span>
-                        <button class="edaidEditButton">Edit</button>
+                    <span id="edaid">' . $applicant->getEdaid() . '</span>
+                    <button class="edaidEditButton">Edit</button>
                     </div>
                     
                     <p class="detail">Upfront amount: <span id="upfront">' . $applicant->getUpfront() . '</span></p>
-                    <p class="detail">Laptop required: <span id="laptop">' . $applicant->getLaptop() . '</span></p>
+                    
+                    <!-- DEMO EDIT BUTTON, REPLACE WITH TASK 4 CODE --> 
+                    <div class="laptopContainer">Laptop required: 
+                        <span id="laptop">' . $applicant->getLaptop() . '</span></p>
+                        <button class="laptopEditButton">Edit</button>
+                    </div>
+
+
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
                         . $applicant->getLaptopDeposit() . '</p>
                     <p class="detail">Laptop number: <span id="laptopNum">' . $applicant->getLaptopNum() . '</span></p>
