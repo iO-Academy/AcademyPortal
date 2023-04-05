@@ -51,23 +51,21 @@ class DisplayStudentProfileViewHelper
                     <h4>Onboarding Info</h4>
                     <p class="detail">Diversitech amount: <span id="diversitech">'
                         . $applicant->getDiversitech() . '</span>
-                    <div class="edAidAmountContainer studentProfileEditableField">
-                        <p class="detail">EdAid amount: </p>
+                    <div class="edaidContainer studentProfileEditableField">
+                        <p class="detail" id="edaidDescription">EdAid amount: </p>
                         <span id="edaid">' . $applicant->getEdaid() . '</span>
-                        <button class="btn btn-primary edAidEditButton btn-sm">Edit</button>
+                        <button class="btn btn-primary edaidEditButton btn-sm" id="edaidEditButton">Edit</button>
                     </div>
-                    <div class="upfrontAmountContainer studentProfileEditableField">
-                        <p class="detail">Upfront amount: </p>
+                    <div class="upfrontContainer studentProfileEditableField">
+                        <p class="detail" id="upfrontDescription">Upfront amount: </p>
                         <span id="upfront">' . $applicant->getUpfront() . '</span>
-                        <button class="btn btn-primary upfrontAmountEditButton btn-sm">Edit</button>
+                        <button class="btn btn-primary btn-sm" id="upfrontEditButton">Edit</button>
                     </div>
-                    <div class="laptopRequiredContainer studentProfileEditableField">
-                        <p class="detail">Laptop required: </p>
+                    <div class="laptopContainer studentProfileEditableField">
+                        <p class="detail" id="laptopDescription">Laptop required: </p>
                         <span id="laptop">' . $applicant->getLaptop() . '</span>
-                        <button class="btn btn-primary laptopRequiredEditButton btn-sm">Edit</button>
+                        <button class="btn btn-primary btn-sm" id="laptopEditButton">Edit</button>
                     </div>
-
->>>>>>> d8ccfe4ba6a352f5a4e1d7b25a6b392408ba659b
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
                         . $applicant->getLaptopDeposit() . '</p>
                     <p class="detail">Laptop number: <span id="laptopNum">' . $applicant->getLaptopNum() . '</span></p>
@@ -81,9 +79,9 @@ class DisplayStudentProfileViewHelper
                 <section>
                     <h4>Student profile</h4>
                     <div class="githubUserContainer studentProfileEditableField">
-                        <p class="detail">GitHub Username: </p> 
+                        <p class="detail" id="githubUserDescription">GitHub Username: </p> 
                         <span id="githubUser">' . $applicant->getGithubUsername() . '</span>
-                        <button class="btn btn-primary githubUserEditButtonbtn-sm">Edit</button>
+                        <button class="btn btn-primary btn-sm" id="githubUserEditButton">Edit</button>
                     </div>
                     <p class="detail">GitHub Link: <span id="githubLink"></span></p>
                     <p class="detail">Portfolio: <span id="portfolio"></span></p>
