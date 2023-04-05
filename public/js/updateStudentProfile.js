@@ -12,7 +12,7 @@ function handleEditClick(event) {
     const fieldName = divName.replace('Container', '')
     if(divName == 'laptopContainer') {
     containerDiv.innerHTML = 
-        '<form class="form" method="post">' +
+        '<form class="form">' +
         '<input type="radio" value="No" id="no" name="laptop">' +
         '<label for="no"> No</label>' +
         '<input type="radio" value="Yes" id="yes" name="laptop">' +
@@ -21,7 +21,7 @@ function handleEditClick(event) {
         '</form>'
     } else {
         containerDiv.innerHTML = 
-        '<form class="form" method="post">' +
+        '<form class="form">' +
         '<label for="' + fieldName + 'TextBox">' + containerDiv.childNodes[0].textContent + '</label>' +
         '<input type="text" id="' + fieldName + 'TextBox" name="' + fieldName + '">' + 
         '<input class="saveButton" type="submit" value="Save">' +
@@ -31,9 +31,9 @@ function handleEditClick(event) {
     const form = document.querySelector('.form')
     
     form.addEventListener('submit', (event) => {
+        event.preventDefault()
         const data = new FormData(form, saveButton)
         const formData = data.get(fieldName)
-        event.preventDefault()
         const updatedField = {
             [fieldName]: formData,
             id: studentId 
@@ -41,7 +41,7 @@ function handleEditClick(event) {
         console.log(updatedField)
         const jsonUpdatedField = JSON.stringify(updatedField)
         fetch('/api/updateStudentProfile', {
-            method: 'POST',
+            method: 'PUT',
             body: jsonUpdatedField,
             headers: {
                 'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ function handleEditClick(event) {
             return response.json()
         }).then((data) => {
             if(response.status == 200) {
-                header('Location: studentProfile.phtml')
+                location.reload()
             } else {
                 const responseMessage = response.statusText
                 console.log(responseMessage)
@@ -60,15 +60,9 @@ function handleEditClick(event) {
 
 }
 
-// function handleSaveClick(event) {
-
-// }
-
-
 edaidEditButton.addEventListener('click', handleEditClick)
-// saveButton.addEventListener('click', handleSaveClick)
+laptopEditButton.addEventListener('click', handleEditClick)
 
 // UNCOMMENT THESE WHEN VIEWHELPER.PHP IS UPDATED WITH BUTTON ETC.
 // upfrontEditButton.addEventListener('click', handleEditClick)
-laptopEditButton.addEventListener('click', handleEditClick)
 // githubUserEditButton.addEventListener('click', handleEditClick)
