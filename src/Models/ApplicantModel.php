@@ -571,7 +571,7 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->execute($userInput);
     }
 
-    public function updateLaptopRequired(array $userInput): bool
+    public function updateLaptop(array $userInput): bool
     {
         #NB:laptop should be 0 or 1 apparently
         $query = $this->db->prepare('UPDATE `applicants_additional` SET laptop=:laptop WHERE id=:id');
@@ -584,11 +584,11 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->execute($userInput);
     }
 
-    public function getFeePaymentMethod(array $userInput): array
+    public function getFeePaymentMethods(array $userInput): array
     {
         $query = $this->db->prepare('SELECT diversitech, edaid, fee, upfront FROM applicants_additional
                              WHERE id=?');
-        $query->execute($userInput['id']);
+        $query->execute([$userInput['id']]);
         $feePaymentMethod = $query->fetch();
         return  $feePaymentMethod;
     }
