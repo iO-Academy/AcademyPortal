@@ -2,7 +2,6 @@
 
 namespace Tests\Validators;
 
-
 use Portal\Validators\IntegerValidator;
 use Tests\TestCase;
 
