@@ -106,9 +106,9 @@ class ApplicantSanitiser
     /**
      * Sanitise edaid for editing student profile
      *
-     * @return int sanitised $savedProfileFieldEdAid or null
+     * @return ?int sanitised $savedProfileFieldEdAid
      */
-    public static function sanitiseEdAid($savedProfileFieldEdAid)
+    public static function sanitiseEdAid($savedProfileFieldEdAid): ?int
     {
         return $savedProfileFieldEdAid ? (int)$savedProfileFieldEdAid : null;
     }
@@ -116,9 +116,9 @@ class ApplicantSanitiser
     /**
      * Sanitise upfront for editing student profile
      *
-     * @return int sanitised $savedProfileFieldUpFront
+     * @return ?int sanitised $savedProfileFieldUpFront
      */
-    public static function sanitiseUpFront($savedProfileFieldUpFront)
+    public static function sanitiseUpFront($savedProfileFieldUpFront): ?int
     {
         return $savedProfileFieldUpFront ? (int)$savedProfileFieldUpFront : null;
     }
@@ -126,9 +126,9 @@ class ApplicantSanitiser
     /**
      * Sanitise laptop for editing student profile
      *
-     * @return int sanitised $savedProfileFieldLaptop
+     * @return ?int sanitised $savedProfileFieldLaptop
      */
-    public static function sanitiseLaptop($savedProfileFieldLaptop)
+    public static function sanitiseLaptop($savedProfileFieldLaptop): ?int
     {
         if ($savedProfileFieldLaptop !== null) {
             $savedProfileFieldLaptop = $savedProfileFieldLaptop ? 1 : 0;
@@ -139,9 +139,9 @@ class ApplicantSanitiser
     /**
      * Sanitise GitHub Username for editing student profile
      *
-     * @return array sanitised $savedProfileFieldGithubUsername
+     * @return ?string sanitised $savedProfileFieldGithubUsername
      */
-    public static function sanitiseGitHubUsername($savedProfileFieldGithubUsername): string
+    public static function sanitiseGitHubUsername($savedProfileFieldGithubUsername): ?string
     {
         return !empty($savedProfileFieldGithubUsername) ?
             htmlentities($savedProfileFieldGithubUsername, ENT_QUOTES) : null;

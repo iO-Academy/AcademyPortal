@@ -588,7 +588,7 @@ class ApplicantModel implements ApplicantModelInterface
     {
         $query = $this->db->prepare('SELECT diversitech, edaid, fee, upfront FROM applicants_additional
                              WHERE id=?');
-        $query->execute($userInput['id']);
+        $query->execute([$userInput['id']]);
         $feePaymentMethod = $query->fetch();
         return  $feePaymentMethod;
     }

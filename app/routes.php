@@ -95,7 +95,7 @@ return function (App $app) {
     $app->post('/api/saveApplicant', AddApplicantController::class);
     $app->delete('/api/deleteApplicant', DeleteApplicantController::class);
     $app->post('/api/editApplicant', EditApplicantController::class);
-    $app->put('api/updateStudentProfile', UpdateStudentProfileController::class);
+    $app->put('/api/updateStudentProfile', UpdateStudentProfileController::class);
     $app->get('/api/applicationForm', GetApplicationFormController::class);
     $app->post('/api/createHiringPartner', AddHiringPartnerController::class);
     $app->get('/api/getHiringPartnerInfo', GetHiringPartnersController::class);
