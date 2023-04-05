@@ -217,11 +217,11 @@ The score should be an integer 0-100.
 **/addCourse**
 
 POST
-- Adds a new course to the 'courses' table in the database.
+- Adds a new course to the courses table in the database.
 - Sends:
   - `{"courseName":"example","startDate":"2023-04-12","endDate":"2024-04-12","trainer":"['1']","notes":"example","in_person":"0","remote":"1"}`
-  - If `remote` or `in_person` is `1` (true) then sends data regarding number of available spaces on the course e.g:
-  - `{"remote_spaces":"5","in_person_spaces":"2"}`
+  - If `remote` or `in_person` is `1` (true) then sends data regarding number of available spaces on the course
+    - `{"remote_spaces":"5","in_person_spaces":"2"}`
 - Returns success true / false:
     - if course is added successfully
         - `{"success": true, "message": "New Course successfully saved."}`
