@@ -13,12 +13,26 @@ function handleEditClick(event) {
     const fieldName = divName.replace('Container', '')
     const description = buttonName.replace('EditButton', 'Description')
     const descriptionTag = document.querySelector('#' + description)
-    containerDiv.innerHTML = 
+    if(divName == 'laptopContainer') {
+        containerDiv.innerHTML = 
+            '<form class="form studentProfileEditableField">' +
+            '<label>Laptop required: </label>' +
+            '<div>' +
+            '<input type="radio" value="No" id="noLaptop" name="' + fieldName + '">' +
+            '<label for="noLaptop">No</label>' +
+            '<input type="radio" value="Yes" id="yesLaptop" name="' + fieldName + '">' +
+            '<label for="yesLaptop">Yes</label>' +
+            '</div>' +
+            '<input class="saveButton btn btn-sm btn-primary" type="submit" value="Save">' +
+            '</form>'
+        } else {
+            containerDiv.innerHTML = 
         '<form class="form studentProfileEditableField" method="post">' +
         '<label for="' + fieldName + 'TextBox">' + descriptionTag.textContent + '</label>' +
         '<input type="text" id="' + fieldName + 'TextBox" name="' + fieldName + '">' + 
         '<input class="saveButton btn btn-primary btn-sm" type="submit" value="Save">' +
         '</form>'
+        }
 }
 
 // function handleEditClick(event) {
