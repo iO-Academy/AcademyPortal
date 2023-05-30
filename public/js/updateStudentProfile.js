@@ -18,9 +18,9 @@ function handleEditClick(event) {
         '<form class="form studentProfileEditableField">' +
         '<label>Laptop required: </label>' +
         '<div>' +
-        '<input type="radio" value="No" id="noLaptop" name="' + fieldName + '">' +
+        '<input type="radio" value="0" id="noLaptop" name="' + fieldName + '">' +
         '<label for="noLaptop">No</label>' +
-        '<input type="radio" value="Yes" id="yesLaptop" name="' + fieldName + '">' +
+        '<input type="radio" value="1" id="yesLaptop" name="' + fieldName + '">' +
         '<label for="yesLaptop">Yes</label>' +
         '</div>' +
         '<input class="saveButton btn btn-sm btn-primary" type="submit" value="Save">' +
