@@ -202,7 +202,7 @@ class ApplicantValidator
     {
         foreach (['upfront','edaid','diversitech','fee'] as $key) {
             if (!is_null($applicant[$key]) && !is_numeric($applicant[$key])) {
-                throw new \Exception('Applicant field \'' . $key . '\' is not a numeric type');
+                throw new \Exception('Applicant field \'' . $key . '\' needs to be a number');
             }
         }
 

@@ -67,8 +67,6 @@ class UpdateStudentProfileController extends Controller
             return $this->respondWithJson($response, $responseBody, $statusCode);
         }
 
-        $updatedStudentProfileData["edaid"] =
-            ApplicantSanitiser::sanitiseEdAid($updatedStudentProfileData["edaid"]);
         $successfulUpdate = $this->applicantModel->updateEdaid(
             $updatedStudentProfileData["id"],
             $updatedStudentProfileData["edaid"]
@@ -104,8 +102,6 @@ class UpdateStudentProfileController extends Controller
             return $this->respondWithJson($response, $responseBody, $statusCode);
         }
 
-        $updatedStudentProfileData["upfront"] =
-            ApplicantSanitiser::sanitiseUpFront($updatedStudentProfileData["upfront"]);
         $successfulUpdate = $this->applicantModel->updateUpfront(
             $updatedStudentProfileData["id"],
             $updatedStudentProfileData["upfront"]
