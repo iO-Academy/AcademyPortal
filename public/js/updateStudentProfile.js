@@ -9,7 +9,6 @@ function handleEditClick(event) {
     const buttonName = event.target.getAttribute('id')
     const divName = buttonName.replace('EditButton', 'Container')
     const containerDiv = document.querySelector('.' + divName)
-    console.log(containerDiv)
     const fieldName = divName.replace('Container', '')
     const description = buttonName.replace('EditButton', 'Description')
     const descriptionTag = document.querySelector('#' + description)
@@ -25,12 +24,19 @@ function handleEditClick(event) {
         '</div>' +
         '<input class="saveButton btn btn-sm btn-primary" type="submit" value="Save">' +
         '</form>'
+    } else if (divName == 'githubUsernameContainer') {
+        containerDiv.innerHTML =
+        '<form class="form studentProfileEditableField">' +
+        '<label for="' + fieldName + 'TextBox">' + descriptionTag.textContent + '</label>' +
+        '<input type="text" id="' + fieldName + 'TextBox" name="' + fieldName + '">' +
+        '<input class="saveButton btn btn-primary btn-sm" type="submit" value="Save">' +
+        '</form>'
     } else {
         containerDiv.innerHTML = 
         '<form class="form studentProfileEditableField">' +
         '<label for="' + fieldName + 'TextBox">' + descriptionTag.textContent + '</label>' +
-        '<input type="text" id="' + fieldName + 'TextBox" name="' + fieldName + '">' + 
-        '<input class="saveButton  btn btn-primary btn-sm" type="submit" value="Save">' +
+            '<input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" id="' + fieldName + 'TextBox" name="' + fieldName + '">' +
+            '<input class="saveButton btn btn-primary btn-sm" type="submit" value="Save">' +
         '</form>'
     }
 
