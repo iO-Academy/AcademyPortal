@@ -16,7 +16,7 @@ class CsvController extends Controller
     private ApplicantModel $applicantModel;
     private PhpRenderer $renderer;
 
-    public function __construct($applicantModel, PhpRenderer $renderer)
+    public function __construct(ApplicantModel $applicantModel, PhpRenderer $renderer)
     {
         $this->applicantModel = $applicantModel;
         $this->renderer = $renderer;

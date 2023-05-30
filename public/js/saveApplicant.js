@@ -213,7 +213,7 @@ let makeApiRequest = async (data, type) => {
             switch (response.status) {
                 case 200:
                     response.json().then(data => {
-                        top.location.href = "https://io-academy.uk/apply/thank-you/";
+                        top.location.href = "/applicants";
                     });
                     break;
                 case 400:
