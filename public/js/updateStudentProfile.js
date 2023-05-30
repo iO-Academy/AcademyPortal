@@ -5,6 +5,13 @@ const upfrontEditButton = document.querySelector('#upfrontEditButton')
 const laptopEditButton = document.querySelector('#laptopEditButton')
 const githubUsernameEditButton = document.querySelector('#githubUsernameEditButton')
 
+
+
+
+
+
+
+
 function handleEditClick(event) {
     const buttonName = event.target.getAttribute('id')
     const divName = buttonName.replace('EditButton', 'Container')
@@ -58,7 +65,7 @@ function handleEditClick(event) {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then( async (response) => {
+        }).then( async (response) => { // Rayna doesn't like this
             return response.json().then((data) => {
                 if(response.status == 200) {
                     location.reload()
