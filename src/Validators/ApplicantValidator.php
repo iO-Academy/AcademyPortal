@@ -230,11 +230,14 @@ class ApplicantValidator
     {
         return (
             empty($applicant['githubUsername']) ||
-            is_string($applicant['githubUsername']) &&
-            StringValidator::validateLength(
-                $applicant['githubUsername'],
-                StringValidator::MAXVARCHARLENGTH,
-                'githubUsername'
+            (
+                is_string($applicant['githubUsername']) &&
+                StringValidator::validateLength(
+                    $applicant['githubUsername'],
+                    StringValidator::MAXVARCHARLENGTH,
+                    'githubUsername'
+                ) &&
+                preg_match('/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i', $applicant['githubUsername'])
             )
         );
     }
