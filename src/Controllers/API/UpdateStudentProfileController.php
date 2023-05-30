@@ -38,9 +38,9 @@ class UpdateStudentProfileController extends Controller
             } elseif (array_key_exists("upfront", $updatedStudentProfileData)) {
                 return $this->updateUpfront($response, $updatedStudentProfileData);
             } elseif (array_key_exists("githubUsername", $updatedStudentProfileData)) {
-                return $this->updateLaptop($response, $updatedStudentProfileData);
-            } elseif (array_key_exists("laptop", $updatedStudentProfileData)) {
                 return $this->updateGithubUsername($response, $updatedStudentProfileData);
+            } elseif (array_key_exists("laptop", $updatedStudentProfileData)) {
+                return $this->updateLaptop($response, $updatedStudentProfileData);
             } else {
                 $responseBody["success"] = false;
                 $responseBody["msg"] = "Unsupported field";
@@ -126,7 +126,7 @@ class UpdateStudentProfileController extends Controller
         }
     }
 
-    private function updateLaptop(Response $response, array $updatedStudentProfileData)
+    private function updateGithubUsername(Response $response, array $updatedStudentProfileData)
     {
         try {
             if (!ApplicantValidator::validateGithubUsername($updatedStudentProfileData)) {
@@ -166,7 +166,7 @@ class UpdateStudentProfileController extends Controller
         }
     }
 
-    private function updateGithubUsername(Response $response, array $updatedStudentProfileData)
+    private function updateLaptop(Response $response, array $updatedStudentProfileData)
     {
         try {
             if (!ApplicantValidator::validateLaptop($updatedStudentProfileData)) {
