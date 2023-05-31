@@ -51,37 +51,50 @@ class DisplayStudentProfileViewHelper
                     <h4>Onboarding Info</h4>
                     <p class="detail">Diversitech amount: <span id="diversitech">'
                         . $applicant->getDiversitech() . '</span>
-                    
                     <div class="edaidContainer studentProfileEditableField">
                         <label class="detail" for="edaidTextBox">EdAid amount: </label>
                         <span id="edaidDisplayed">' . $applicant->getEdaid() . '</span>
-                        <button data-selector="edaid" class="btn btn-primary edaidEditButton btn-sm editbutton" id="edaidEditButton">Edit</button>
+                        <button data-selector="edaid" class="btn btn-primary edaidEditButton btn-sm editbutton" 
+                        id="edaidEditButton">Edit</button>
                     </div>
                     <div data-selector="edaid" class="editableedaid hidden">
                         <label for="edaidTextBox">EdAid amount:</label>
-                        <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" id="edaidTextBox" name="edaid">
-                        <input class="saveButton btn btn-primary btn-sm" type="submit" value="Save">
+                        <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" id="edaidTextBox" 
+                        name="edaid">
+                        <!-- <input class="saveButton btn btn-primary btn-sm" type="submit" value="Save"> -->
                     </div>
-                    
-                    
                     <div class="upfrontContainer studentProfileEditableField">
                         <label class="detail" for="upfrontTextBox">Upfront amount: </label>
                         <span id="upfrontDisplayed">' . $applicant->getUpfront() . '</span>
-                        <button data-selector="upfront" class="btn btn-primary upfrontEditButton btn-sm editbutton" id="upfrontEditButton">Edit</button>
+                        <button data-selector="upfront" class="btn btn-primary upfrontEditButton btn-sm editbutton" 
+                        id="upfrontEditButton">Edit</button>
                     </div>
                     <div data-selector="upfront" class="editableupfront hidden">
                         <label for="upfrontTextBox">Upfront amount:</label>
-                        <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" id="upfrontTextBox" name="upfront">
-                        <input class="saveButton btn btn-primary btn-sm" type="submit" value="Save">
+                        <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" 
+                        id="upfrontTextBox" name="upfront">
+                        <!-- <input class="saveButton btn btn-primary btn-sm" type="submit" value="Save"> -->
                     </div>
-                    
-                    <div class="laptopContainer studentProfileEditableField">
-                        <p class="detail" id="laptopDescription">Laptop required: </p>
-                        <span id="laptop">' .
+                    <div class="laptopRequiredContainer studentProfileEditableField">
+                        <label class="detail" for="laptopRadioButtons">Laptop required: </label>
+                        <span id="laptopDisplayed">' .
                         (is_null($applicant->getLaptop())
                         ? null : ($applicant->getLaptop() ? 'Yes' : 'No'))
                         . '</span>
-                        <button class="btn btn-primary btn-sm" id="laptopEditButton">Edit</button>
+                        <button data-selector="laptoprequired" class="btn btn-primary btn-sm laptoprequiredEditButton 
+                        editbutton" id="laptopRequiredEditButton">Edit</button>
+                    </div>
+                    <div data-selector="laptoprequired" class="editablelaptoprequired hidden">
+                        <form class="form studentProfileEditableField">
+                            <label>Laptop required: </label>
+                            <div>
+                                <input type="radio" value="0" id="noLaptop" name="noLaptop">
+                                <label for="noLaptop">No</label>
+                                <input type="radio" value="1" id="yesLaptop" name="yesLaptop">
+                                <label for="yesLaptop">Yes</label>
+                               </div>
+                            <!-- <input class="saveButton btn btn-sm btn-primary" type="submit" value="Save"> -->
+                        </form>                 
                     </div>
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
                         . $applicant->getLaptopDeposit() . '</p>
@@ -96,9 +109,15 @@ class DisplayStudentProfileViewHelper
                 <section>
                     <h4>Student profile</h4>
                     <div class="githubUsernameContainer studentProfileEditableField">
-                        <p class="detail" id="githubUsernameDescription">GitHub Username: </p> 
+                        <label class="detail" for="githubUsername">GitHub Username: </label> 
                         <span id="githubUsername">' . $applicant->getGithubUsername() . '</span>
-                        <button class="btn btn-primary btn-sm" id="githubUsernameEditButton">Edit</button>
+                        <button data-selector="githubusername" class="btn btn-primary btn-sm githubUsernameEditButton 
+                        editbutton" id="githubUsernameEditButton">Edit</button>
+                    </div>
+                    <div data-selector="githubusername" class="editablegithubusername hidden">
+                        <label for="githubUsernameTextBox">GitHub Username:</label>
+                        <input type="text" id="githubUsernameTextBox" name="githubUsername">
+                        <!-- <input class="saveButton btn btn-primary btn-sm" type="submit" value="Save"> -->
                     </div>
                     <p class="detail">GitHub Link: <span id="githubLink"></span></p>
                     <p class="detail">Portfolio: <span id="portfolio"></span></p>
