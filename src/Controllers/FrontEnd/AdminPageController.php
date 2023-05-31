@@ -24,7 +24,6 @@ class AdminPageController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-
         if ($_SESSION['loggedIn'] === true) {
             return $this->renderer->render($response, 'admin.phtml');
         }
