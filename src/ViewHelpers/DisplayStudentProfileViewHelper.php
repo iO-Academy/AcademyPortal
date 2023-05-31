@@ -62,7 +62,9 @@ class DisplayStudentProfileViewHelper
                         <label for="edaidTextBox">EdAid amount:</label>
                         <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" id="edaidTextBox" 
                         name="edaid">
-                        <!-- <input class="saveButton btn btn-primary btn-sm" type="submit" value="Save"> -->
+                        <span>
+                            <input data-selector="edaid" class="btn btn-primary btn-sm confirm" value="Confirm">
+                        </span>
                     </div>
                     <div class="upfrontContainer studentProfileEditableField">
                         <label class="detail" for="upfrontTextBox">Upfront amount: </label>
@@ -74,9 +76,11 @@ class DisplayStudentProfileViewHelper
                         <label for="upfrontTextBox">Upfront amount:</label>
                         <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" 
                         id="upfrontTextBox" name="upfront">
-                        <!-- <input class="saveButton btn btn-primary btn-sm" type="submit" value="Save"> -->
+                        <span>
+                            <input data-selector="upfront" class="btn btn-primary btn-sm confirm" value="Confirm">
+                        </span>
                     </div>
-                    <div class="laptopRequiredContainer studentProfileEditableField">
+                    <div class="laptoprequiredContainer studentProfileEditableField">
                         <label class="detail" for="laptopRadioButtons">Laptop required: </label>
                         <span id="laptopDisplayed">' .
                         (is_null($applicant->getLaptop())
@@ -89,12 +93,13 @@ class DisplayStudentProfileViewHelper
                         <form class="form studentProfileEditableField">
                             <label>Laptop required: </label>
                             <div>
-                                <input type="radio" value="0" id="noLaptop" name="noLaptop">
+                                <input type="radio" value="0" id="noLaptop" name="laptopRequired">
                                 <label for="noLaptop">No</label>
-                                <input type="radio" value="1" id="yesLaptop" name="yesLaptop">
+                                <input type="radio" value="1" id="yesLaptop" name="laptopRequired">
                                 <label for="yesLaptop">Yes</label>
-                               </div>
-                            <!-- <input class="saveButton btn btn-sm btn-primary" type="submit" value="Save"> -->
+                            </div>
+                            <input data-selector="laptoprequired" class="btn btn-primary btn-sm confirm" 
+                            value="Confirm">
                         </form>                 
                     </div>
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
@@ -109,7 +114,7 @@ class DisplayStudentProfileViewHelper
                 <hr>
                 <section>
                     <h4>Student profile</h4>
-                    <div class="githubUsernameContainer studentProfileEditableField">
+                    <div class="githubusernameContainer studentProfileEditableField">
                         <label class="detail" for="githubUsername">GitHub Username: </label> 
                         <span id="githubUsername">' . $applicant->getGithubUsername() . '</span>
                         <button data-selector="githubusername" class="btn btn-primary btn-sm githubUsernameEditButton 
@@ -118,7 +123,10 @@ class DisplayStudentProfileViewHelper
                     <div data-selector="githubusername" class="editablegithubusername hidden">
                         <label for="githubUsernameTextBox">GitHub Username:</label>
                         <input type="text" id="githubUsernameTextBox" name="githubUsername">
-                        <!-- <input class="saveButton btn btn-primary btn-sm" type="submit" value="Save"> -->
+                        <span>
+                            <input data-selector="githubusername" class="btn btn-primary btn-sm confirm" 
+                            value="Confirm">
+                        </span>
                     </div>
                     <p class="detail">GitHub Link: <span id="githubLink"></span></p>
                     <p class="detail">Portfolio: <span id="portfolio"></span></p>

@@ -1,5 +1,9 @@
+const studentId = document.querySelector('#studentId').dataset.studentId
 
 const editButtons = document.querySelectorAll('.editbutton')
+const saveButton = document.querySelector('#saveButton')
+const confirmButtons = document.querySelectorAll('.confirm')
+let updatedFields = {id: studentId}
 
 function editClicked(event) {
     const selector = event.target.dataset.selector
@@ -7,14 +11,27 @@ function editClicked(event) {
     const section = event.target.parentNode.parentNode
     const editable = section.querySelector('.editable' + selector)
     editable.classList.remove('hidden')
-    const saveButton = document.querySelector('#saveButton')
     saveButton.classList.remove('hidden')
 }
 
+function confirmClicked(event) {
+    const selector = event.target.dataset.selector
+    event.target.parentNode.parentNode.classList.add('hidden')
+    const section = event.target.parentNode.parentNode.parentNode
+    const container = section.querySelector('.' + selector + 'Container')
+    container.classList.remove('hidden')
+
+    // Do something to store that it's been confirmed
+
+}
 
 
 editButtons.forEach(function (editButton) {
     editButton.addEventListener('click', editClicked)
+})
+
+confirmButtons.forEach(function (confirmButton) {
+    confirmButton.addEventListener('click', confirmClicked)
 })
 
 
