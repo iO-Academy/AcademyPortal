@@ -55,29 +55,29 @@ class DisplayStudentProfileViewHelper
                     <div class="edaidContainer studentProfileEditableField">
                         <label class="detail" for="edaidTextBox">EdAid amount: </label>
                         <span id="edaidDisplayed">' . $applicant->getEdaid() . '</span>
-                        <button data-selector="edaid" class="btn btn-primary edaidEditButton btn-sm editbutton" 
+                        <button data-selector="edaid" class="btn btn-primary btn-sm edaidEditButton editbutton" 
                         id="edaidEditButton">Edit</button>
                     </div>
-                    <div data-selector="edaid" class="editableedaid hidden">
+                    <div data-selector="edaid" class="editableedaid studentProfileEditableField hidden">
                         <label for="edaidTextBox">EdAid amount:</label>
                         <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" id="edaidTextBox" 
                         name="edaid">
                         <span>
-                            <input data-selector="edaid" class="btn btn-primary btn-sm confirm" value="Confirm">
+                            <button data-selector="edaid" class="btn btn-primary btn-sm confirm">Confirm</button>
                         </span>
                     </div>
                     <div class="upfrontContainer studentProfileEditableField">
                         <label class="detail" for="upfrontTextBox">Upfront amount: </label>
                         <span id="upfrontDisplayed">' . $applicant->getUpfront() . '</span>
-                        <button data-selector="upfront" class="btn btn-primary upfrontEditButton btn-sm editbutton" 
+                        <button data-selector="upfront" class="btn btn-primary btn-sm upfrontEditButton editbutton" 
                         id="upfrontEditButton">Edit</button>
                     </div>
-                    <div data-selector="upfront" class="editableupfront hidden">
+                    <div data-selector="upfront" class="editableupfront hidden studentProfileEditableField">
                         <label for="upfrontTextBox">Upfront amount:</label>
                         <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" 
                         id="upfrontTextBox" name="upfront">
                         <span>
-                            <input data-selector="upfront" class="btn btn-primary btn-sm confirm" value="Confirm">
+                            <button data-selector="upfront" class="btn btn-primary btn-sm confirm">Confirm</button>
                         </span>
                     </div>
                     <div class="laptoprequiredContainer studentProfileEditableField">
@@ -86,20 +86,19 @@ class DisplayStudentProfileViewHelper
                         (is_null($applicant->getLaptop())
                         ? null : ($applicant->getLaptop() ? 'Yes' : 'No'))
                         . '</span>
-                        <button data-selector="laptoprequired" class="btn btn-primary btn-sm laptoprequiredEditButton 
-                        editbutton" id="laptopRequiredEditButton">Edit</button>
+                        <input data-selector="laptoprequired" class="btn btn-primary btn-sm laptoprequiredEditButton 
+                        editbutton" id="laptopRequiredEditButton" value="Edit">
                     </div>
-                    <div data-selector="laptoprequired" class="editablelaptoprequired hidden">
+                    <div data-selector="laptoprequired" class="editablelaptoprequired studentProfileEditableField hidden">
                         <form class="form studentProfileEditableField">
                             <label>Laptop required: </label>
-                            <div>
+                            <span>
                                 <input type="radio" value="0" id="noLaptop" name="laptopRequired">
                                 <label for="noLaptop">No</label>
                                 <input type="radio" value="1" id="yesLaptop" name="laptopRequired">
                                 <label for="yesLaptop">Yes</label>
-                            </div>
-                            <input data-selector="laptoprequired" class="btn btn-primary btn-sm confirm" 
-                            value="Confirm">
+                            </span>
+                            <input data-selector="laptoprequired" class="btn btn-primary btn-sm confirm" value="Confirm">
                         </form>                 
                     </div>
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
@@ -120,7 +119,7 @@ class DisplayStudentProfileViewHelper
                         <button data-selector="githubusername" class="btn btn-primary btn-sm githubUsernameEditButton 
                         editbutton" id="githubUsernameEditButton">Edit</button>
                     </div>
-                    <div data-selector="githubusername" class="editablegithubusername hidden">
+                    <div data-selector="githubusername" class="editablegithubusername studentProfileEditableField hidden">
                         <label for="githubUsernameTextBox">GitHub Username:</label>
                         <input type="text" id="githubUsernameTextBox" name="githubUsername">
                         <span>
