@@ -31,180 +31,69 @@ class UpdateStudentProfileController extends Controller
             (!empty($_SESSION['loggedIn']) &&
                 $_SESSION['loggedIn'])
         ) {
-            $responseBody = [];
 
-            if (array_key_exists("edaid", $updatedStudentProfileData)) {
-                return $this->updateEdaid($response, $updatedStudentProfileData);
-            } elseif (array_key_exists("upfront", $updatedStudentProfileData)) {
-                return $this->updateUpfront($response, $updatedStudentProfileData);
-            } elseif (array_key_exists("githubUsername", $updatedStudentProfileData)) {
-                return $this->updateGithubUsername($response, $updatedStudentProfileData);
-            } elseif (array_key_exists("laptop", $updatedStudentProfileData)) {
-                return $this->updateLaptop($response, $updatedStudentProfileData);
+            $responseBody["success"] = true;
+            $responseBody["msg"] = "Success";
+            $responseBody["data"] = [];
+            $statusCode = 200;
+            
+            $responseArray = $this->validateEditableFields($updatedStudentProfileData);
+
+            if ($responseArray['success']) {
+                $this->applicantModel->updateEditableFields($updatedStudentProfileData);
             } else {
                 $responseBody["success"] = false;
-                $responseBody["msg"] = "Unsupported field";
-                $responseBody["data"] = [];
-                $statusCode = 400;
-                return $this->respondWithJson($response, $responseBody, $statusCode);
+                $responseBody["msg"] = $responseArray['msg'];
+                $statusCode = $responseArray['status'];
             }
+            return $this->respondWithJson($response, $responseBody, $statusCode);
         }
         return $response->withStatus(401);
     }
 
-    private function updateEdaid(Response $response, array $updatedStudentProfileData): Response
+    private function validateEditableFields(array $updatedStudentProfileData): array
     {
+        $responseArray = [
+            'success' => true,
+            'msg' => 'success',
+            'status' => 200
+        ];
+
         $feePaymentMethods = $this->applicantModel->getFeePaymentMethods($updatedStudentProfileData["id"]);
-        $feePaymentMethods["edaid"] = $updatedStudentProfileData["edaid"];
+
+        if ($updatedStudentProfileData["upfront"]) {
+            $feePaymentMethods["upfront"] = $updatedStudentProfileData["upfront"];
+        }
+        if ($updatedStudentProfileData["edaid"]) {
+            $feePaymentMethods["edaid"] = $updatedStudentProfileData["edaid"];
+        }
 
         try {
             ApplicantValidator::validateFeePaymentMethods($feePaymentMethods);
         } catch (Exception $e) {
-            $responseBody["success"] = false;
-            $responseBody["msg"] = $e->getMessage();
-            $responseBody["data"] = [];
-            $statusCode = 400;
-            return $this->respondWithJson($response, $responseBody, $statusCode);
+            $responseArray["success"] = false;
+            $responseArray["msg"] = $e->getMessage();
+            $responseArray["status"] = 400;
         }
 
-        $successfulUpdate = $this->applicantModel->updateEdaid(
-            $updatedStudentProfileData["id"],
-            $updatedStudentProfileData["edaid"]
-        );
-
-        if ($successfulUpdate) {
-            $responseBody["success"] = true;
-            $responseBody["msg"] = "Edaid field has been successfully updated.";
-            $responseBody["data"] = [];
-            $statusCode = 200;
-            return $this->respondWithJson($response, $responseBody, $statusCode);
-        } else {
-            $responseBody["success"] = false;
-            $responseBody["msg"] = "Edaid field could not be updated.";
-            $responseBody["data"] = [];
-            $statusCode = 500;
-            return $this->respondWithJson($response, $responseBody, $statusCode);
-        }
-    }
-
-    private function updateUpfront(Response $response, array $updatedStudentProfileData)
-    {
-        $feePaymentMethods = $this->applicantModel->getFeePaymentMethods($updatedStudentProfileData["id"]);
-        $feePaymentMethods["upfront"] = $updatedStudentProfileData["upfront"];
-
-        try {
-            ApplicantValidator::validateFeePaymentMethods($feePaymentMethods);
-        } catch (Exception $e) {
-            $responseBody["success"] = false;
-            $responseBody["msg"] = $e->getMessage();
-            $responseBody["data"] = [];
-            $statusCode = 400;
-            return $this->respondWithJson($response, $responseBody, $statusCode);
+        if (!ApplicantValidator::validateLaptop($updatedStudentProfileData)) {
+            $responseArray["success"] = false;
+            $responseArray["msg"] = "Incorrect input for laptop requirement";
+            $responseArray["status"] = 400;
         }
 
-        $successfulUpdate = $this->applicantModel->updateUpfront(
-            $updatedStudentProfileData["id"],
-            $updatedStudentProfileData["upfront"]
-        );
-
-        if ($successfulUpdate) {
-            $responseBody["success"] = true;
-            $responseBody["msg"] = "Upfront field has been successfully updated.";
-            $responseBody["data"] = [];
-            $statusCode = 200;
-            return $this->respondWithJson($response, $responseBody, $statusCode);
-        } else {
-            $responseBody["success"] = false;
-            $responseBody["msg"] = "Upfront field could not be updated.";
-            $responseBody["data"] = [];
-            $statusCode = 500;
-            return $this->respondWithJson($response, $responseBody, $statusCode);
-        }
-    }
-
-    private function updateGithubUsername(Response $response, array $updatedStudentProfileData)
-    {
         try {
             if (!ApplicantValidator::validateGithubUsername($updatedStudentProfileData)) {
-                $responseBody["success"] = false;
-                $responseBody["msg"] = "Github username must be a string";
-                $responseBody["data"] = [];
-                $statusCode = 400;
-                return $this->respondWithJson($response, $responseBody, $statusCode);
+                $responseArray["success"] = false;
+                $responseArray["msg"] = "Incorrect input for GitHub username";
+                $responseArray["status"] = 400;
             }
         } catch (Exception $e) {
-            $responseBody["success"] = false;
-            $responseBody["msg"] = $e->getMessage();
-            $responseBody["data"] = [];
-            $statusCode = 400;
-            return $this->respondWithJson($response, $responseBody, $statusCode);
+            $responseArray["success"] = false;
+            $responseArray["msg"] = $e->getMessage();
+            $responseArray["status"] = 400;
         }
 
-        $updatedStudentProfileData["githubUsername"] =
-            ApplicantSanitiser::sanitiseGitHubUsername($updatedStudentProfileData["githubUsername"]);
-        $successfulUpdate = $this->applicantModel->updateGithubUsername(
-            $updatedStudentProfileData["id"],
-            $updatedStudentProfileData["githubUsername"]
-        );
-
-        if ($successfulUpdate) {
-            $responseBody["success"] = true;
-            $responseBody["msg"] = "Github username field has been successfully updated.";
-            $responseBody["data"] = [];
-            $statusCode = 200;
-            return $this->respondWithJson($response, $responseBody, $statusCode);
-        } else {
-            $responseBody["success"] = false;
-            $responseBody["msg"] = "Github username field could not be updated.";
-            $responseBody["data"] = [];
-            $statusCode = 500;
-            return $this->respondWithJson($response, $responseBody, $statusCode);
-        }
-    }
-
-    private function updateLaptop(Response $response, array $updatedStudentProfileData)
-    {
-        try {
-            if (!ApplicantValidator::validateLaptop($updatedStudentProfileData)) {
-                $responseBody["success"] = false;
-                $responseBody["msg"] = "Incorrect input for laptop requirement";
-                $responseBody["data"] = [];
-                $statusCode = 400;
-                return $this->respondWithJson($response, $responseBody, $statusCode);
-            }
-        } catch (Exception $e) {
-            $responseBody["success"] = false;
-            $responseBody["msg"] = $e->getMessage();
-            $responseBody["data"] = [];
-            $statusCode = 400;
-            return $this->respondWithJson($response, $responseBody, $statusCode);
-        }
-
-        if ($updatedStudentProfileData["laptop"] === "Yes") {
-            $updatedStudentProfileData["laptop"] = true;
-        } elseif ($updatedStudentProfileData["laptop"] === "No") {
-            $updatedStudentProfileData["laptop"] = false;
-        }
-
-        $updatedStudentProfileData["laptop"] =
-            ApplicantSanitiser::sanitiseLaptop($updatedStudentProfileData["laptop"]);
-        $successfulUpdate = $this->applicantModel->updateLaptop(
-            $updatedStudentProfileData["id"],
-            $updatedStudentProfileData["laptop"]
-        );
-
-        if ($successfulUpdate) {
-            $responseBody["success"] = true;
-            $responseBody["msg"] = "Laptop field has been successfully updated.";
-            $responseBody["data"] = [];
-            $statusCode = 200;
-            return $this->respondWithJson($response, $responseBody, $statusCode);
-        } else {
-            $responseBody["success"] = false;
-            $responseBody["msg"] = "Laptop field could not be updated.";
-            $responseBody["data"] = [];
-            $statusCode = 500;
-            return $this->respondWithJson($response, $responseBody, $statusCode);
-        }
+        return $responseArray;
     }
 }

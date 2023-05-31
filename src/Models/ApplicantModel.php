@@ -564,12 +564,6 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare('UPDATE `applicants_additional` SET edaid=:edaid WHERE id=:id');
         return $query->execute(["id" => $id, "edaid" => $edaid]);
     }
-    public function updateGithubUsername(int $id, string $githubUsername): bool
-    {
-        $query = $this->db->prepare('UPDATE `applicants_additional` SET githubUsername=:githubUsername
-         WHERE id=:id');
-        return $query->execute(["id" => $id, "githubUsername" => $githubUsername]);
-    }
 
     public function updateLaptop(int $id, int $laptop): bool
     {
@@ -577,10 +571,24 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->execute(["id" => $id, "laptop" => $laptop]);
     }
 
-    public function updateUpfront(int $id, int $upfront): bool
+    public function updateEditableFields(array $updatedStudentProfile): array
     {
-        $query = $this->db->prepare('UPDATE `applicants_additional` SET upfront=:upfront WHERE id=:id');
-        return $query->execute(["id" => $id, "upfront" => $upfront]);
+        $query = $this->db->prepare(
+            'UPDATE `applicants_additional` 
+                    SET '
+            . ($updatedStudentProfile['edaid'] ? 'edaid=:edaid, ' : '')
+            . ($updatedStudentProfile['githubUsername'] ? 'githubUsername=:githubUsername, ' : '')
+            . ($updatedStudentProfile['upfront'] ? 'upfront=:upfront, ' : '')
+            . ($updatedStudentProfile['laptop'] ? 'laptop=:laptop ' : '')
+            . 'WHERE id=:id'
+        );
+        $query->execute([
+            "id" => $updatedStudentProfile['id'],
+            "edaid" => $updatedStudentProfile['edaid'],
+            "githubUsername" => $updatedStudentProfile['githubUsername'],
+            "upfront" => $updatedStudentProfile['upfront'],
+            "laptop" => $updatedStudentProfile['laptop']]);
+        return ['statuscode' => 400, 'message' => 'a string with a message in'];
     }
 
     public function getFeePaymentMethods(int $id): array
