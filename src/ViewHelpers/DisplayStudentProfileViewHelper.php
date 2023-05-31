@@ -14,8 +14,9 @@ class DisplayStudentProfileViewHelper
                     <p class="detail">Name: <span>' . $applicant->getName() . '</span></p>
                     <p class="detail">Email: <span>' . $applicant->getEmail() . '</span></p>
                     <p class="detail">Phone Number: <span>' . $applicant->getPhoneNumber() . '</span></p>
-                 <hr>
-                 <section>
+                </section>
+                <hr>
+                <section>
                     <h4>Application Info</h4>
                     <p class="detail">Stage: <span id="stageName">' . $applicant->getStageName() . '</span></p>
                     <p class="detail" id="stageOptionNameContainer">Stage Option: 
@@ -128,6 +129,8 @@ class DisplayStudentProfileViewHelper
                     <p class="detail">Notes: <span id="notes"></span></p>
                     <p class="detail">Course Date Confirmed: <span id="courseDate"></span></p>
                 </section>
-                </section>';
+                <div class="navbar navbar-fixed-bottom col-sm-offset-9 hidden" id="saveButton">
+                <input class="saveButton btn btn-primary btn-sm" type="submit" value="Save">
+                </div>';
     }
 }
