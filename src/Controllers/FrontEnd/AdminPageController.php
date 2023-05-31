@@ -3,6 +3,7 @@
 namespace Portal\Controllers\FrontEnd;
 
 use Portal\Abstracts\Controller;
+use Portal\Entities\BaseApplicantEntity;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
@@ -32,6 +33,10 @@ class AdminPageController extends Controller
     }
     public function sendEmail()
     {
+        $baseApplicant = new BaseApplicantEntity();
+        $applicantName = $baseApplicant->getName();
+        $applicantId = $baseApplicant->getId();
+
         $mail = new PHPMailer(true);
         try {
             // Server settings
@@ -46,12 +51,17 @@ class AdminPageController extends Controller
             // Recipients
             $mail->setFrom('from@example.com', 'Mailer');
             $mail->addAddress('testacademyportal@gmail.com', 'test');  // Add a recipient
+            $mail->addAddress('adamyoungy678@gmail.com', 'test');  // Add a recipient
             // Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'Here is the subject';
-            $mail->Body = 'This is the HTML message body <b>in bold!</b>';
+            $mail->Body = 'The following applicant has edited their student profile:' .
+                $applicantName .
+                            'Link to the changed application: http://0.0.0.0:8080/public/' .
+                            $applicantId;
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();
+
             echo 'Message has been sent';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

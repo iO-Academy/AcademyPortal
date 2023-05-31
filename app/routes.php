@@ -88,6 +88,7 @@ return function (App $app) {
     $app->get('/csvForm', GetCsvFormController::class);
     $app->get('/trainers', TrainersPageController::class);
     $app->get('/addTrainer', AddTrainerPageController::class);
+    $app->post('/api/sendEmail', AdminPageController::class . ':sendEmail');
 
     //API
     $app->get('/api/getStudents', GetStudentsController::class);

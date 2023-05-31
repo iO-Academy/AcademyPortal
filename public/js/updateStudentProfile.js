@@ -5,15 +5,16 @@ const upfrontEditButton = document.querySelector('#upfrontEditButton')
 const laptopEditButton = document.querySelector('#laptopEditButton')
 const githubUsernameEditButton = document.querySelector('#githubUsernameEditButton')
 
-function handleEditClick(event) {
+function handleEditClick(event)
+{
     const buttonName = event.target.getAttribute('id')
     const divName = buttonName.replace('EditButton', 'Container')
     const containerDiv = document.querySelector('.' + divName)
     const fieldName = divName.replace('Container', '')
     const description = buttonName.replace('EditButton', 'Description')
     const descriptionTag = document.querySelector('#' + description)
-    if(divName == 'laptopContainer') {
-    containerDiv.innerHTML = 
+    if (divName === 'laptopContainer') {
+        containerDiv.innerHTML =
         '<form class="form studentProfileEditableField">' +
         '<label>Laptop required: </label>' +
         '<div>' +
@@ -24,7 +25,7 @@ function handleEditClick(event) {
         '</div>' +
         '<input class="saveButton btn btn-sm btn-primary" type="submit" value="Save">' +
         '</form>'
-    } else if (divName == 'githubUsernameContainer') {
+    } else if (divName === 'githubUsernameContainer') {
         containerDiv.innerHTML =
         '<form class="form studentProfileEditableField">' +
         '<label for="' + fieldName + 'TextBox">' + descriptionTag.textContent + '</label>' +
@@ -32,7 +33,7 @@ function handleEditClick(event) {
         '<input class="saveButton btn btn-primary btn-sm" type="submit" value="Save">' +
         '</form>'
     } else {
-        containerDiv.innerHTML = 
+        containerDiv.innerHTML =
         '<form class="form studentProfileEditableField">' +
         '<label for="' + fieldName + 'TextBox">' + descriptionTag.textContent + '</label>' +
             '<input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" id="' + fieldName + 'TextBox" name="' + fieldName + '">' +
@@ -42,15 +43,37 @@ function handleEditClick(event) {
 
     const saveButton = document.querySelector('.saveButton')
     const form = document.querySelector('.form')
-    
+
+    function sendEmail()
+    {
+        fetch('/api/sendEmail', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            // body: JSON.stringify({
+            //     method: "sendEmail",
+            // })
+        })
+            .then(response => response.text())
+            .then(data => {
+                // Handle the response if needed
+                console.log(data);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error(error);
+            });
+    }
+
     form.addEventListener('submit', (event) => {
         event.preventDefault()
         const data = new FormData(form, saveButton)
         const formData = data.get(fieldName)
         const updatedField = {
             [fieldName]: formData,
-            id: studentId 
-        } 
+            id: studentId
+        }
         const jsonUpdatedField = JSON.stringify(updatedField)
         fetch('/api/updateStudentProfile', {
             method: 'PUT',
@@ -58,9 +81,10 @@ function handleEditClick(event) {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then( async (response) => {
+        }).then(async(response) => {
+            sendEmail()
             return response.json().then((data) => {
-                if(response.status == 200) {
+                if (response.status === 200) {
                     location.reload()
                 } else {
                     const responseMessage = data.msg
