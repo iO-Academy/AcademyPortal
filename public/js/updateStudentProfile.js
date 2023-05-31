@@ -15,13 +15,18 @@ function editClicked(event) {
 }
 
 function confirmClicked(event) {
+    event.preventDefault()
     const selector = event.target.dataset.selector
     event.target.parentNode.parentNode.classList.add('hidden')
     const section = event.target.parentNode.parentNode.parentNode
     const container = section.querySelector('.' + selector + 'Container')
     container.classList.remove('hidden')
 
-    // Do something to store that it's been confirmed
+
+    const form = document.querySelector(input)
+    console.log(form)
+    const data = new FormData(form, event.target)
+    console.log(data)
 
 }
 

@@ -52,34 +52,53 @@ class DisplayStudentProfileViewHelper
                     <h4>Onboarding Info</h4>
                     <p class="detail">Diversitech amount: <span id="diversitech">'
                         . $applicant->getDiversitech() . '</span>
+                    
+                    
+                    
                     <div class="edaidContainer studentProfileEditableField">
                         <label class="detail" for="edaidTextBox">EdAid amount: </label>
                         <span id="edaidDisplayed">' . $applicant->getEdaid() . '</span>
                         <button data-selector="edaid" class="btn btn-primary btn-sm edaidEditButton editbutton" 
                         id="edaidEditButton">Edit</button>
                     </div>
+                    
                     <div data-selector="edaid" class="editableedaid studentProfileEditableField hidden">
-                        <label for="edaidTextBox">EdAid amount:</label>
-                        <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" id="edaidTextBox" 
-                        name="edaid">
-                        <span>
-                            <button data-selector="edaid" class="btn btn-primary btn-sm confirm">Confirm</button>
-                        </span>
+                        <form class="form studentProfileEditableField">
+                            <label for="edaidTextBox">EdAid amount:</label>
+                            <span>
+                                <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" 
+                                id="edaidTextBox" name="edaid">
+                            </span>
+                            <button data-selector="edaid" class="btn btn-primary btn-sm confirm" type="submit">
+                            Confirm
+                            </button>
+                        </form>
                     </div>
+                    
+                    
+                    
                     <div class="upfrontContainer studentProfileEditableField">
                         <label class="detail" for="upfrontTextBox">Upfront amount: </label>
                         <span id="upfrontDisplayed">' . $applicant->getUpfront() . '</span>
                         <button data-selector="upfront" class="btn btn-primary btn-sm upfrontEditButton editbutton" 
                         id="upfrontEditButton">Edit</button>
                     </div>
-                    <div data-selector="upfront" class="editableupfront hidden studentProfileEditableField">
-                        <label for="upfrontTextBox">Upfront amount:</label>
-                        <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" 
-                        id="upfrontTextBox" name="upfront">
-                        <span>
-                            <button data-selector="upfront" class="btn btn-primary btn-sm confirm">Confirm</button>
-                        </span>
+                   
+                    <div data-selector="upfront" class="editableupfront studentProfileEditableField hidden">
+                        <form class="form studentProfileEditableField">
+                            <label for="upfrontTextBox">Upfront amount:</label>
+                                <span>
+                                    <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" 
+                                    id="upfrontTextBox" name="upfront">
+                                </span>
+                            <button data-selector="upfront" class="btn btn-primary btn-sm confirm" type="submit">
+                            Confirm
+                            </button>
+                        </form>                 
                     </div>
+                    
+                    
+                    
                     <div class="laptoprequiredContainer studentProfileEditableField">
                         <label class="detail" for="laptopRadioButtons">Laptop required: </label>
                         <span id="laptopDisplayed">' .
@@ -101,6 +120,9 @@ class DisplayStudentProfileViewHelper
                             <input data-selector="laptoprequired" class="btn btn-primary btn-sm confirm" value="Confirm">
                         </form>                 
                     </div>
+                    
+                    
+                    
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
                         . $applicant->getLaptopDeposit() . '</p>
                     <p class="detail">Laptop number: <span id="laptopNum">' . $applicant->getLaptopNum() . '</span></p>
@@ -113,20 +135,29 @@ class DisplayStudentProfileViewHelper
                 <hr>
                 <section>
                     <h4>Student profile</h4>
+                    
+                    
+                    
                     <div class="githubusernameContainer studentProfileEditableField">
                         <label class="detail" for="githubUsername">GitHub Username: </label> 
                         <span id="githubUsername">' . $applicant->getGithubUsername() . '</span>
                         <button data-selector="githubusername" class="btn btn-primary btn-sm githubUsernameEditButton 
                         editbutton" id="githubUsernameEditButton">Edit</button>
                     </div>
+                    
                     <div data-selector="githubusername" class="editablegithubusername studentProfileEditableField hidden">
-                        <label for="githubUsernameTextBox">GitHub Username:</label>
-                        <input type="text" id="githubUsernameTextBox" name="githubUsername">
-                        <span>
+                        <form class="form studentProfileEditableField">
+                            <label for="githubUsernameTextBox">GitHub Username:</label>
+                            <span>
+                                <input type="text" id="githubUsernameTextBox" name="githubUsername">
+                            </span>
                             <input data-selector="githubusername" class="btn btn-primary btn-sm confirm" 
                             value="Confirm">
-                        </span>
+                        </form>
                     </div>
+                    
+                    
+                    
                     <p class="detail">GitHub Link: <span id="githubLink"></span></p>
                     <p class="detail">Portfolio: <span id="portfolio"></span></p>
                     <p class="detail">Plesk Hosting URL: <span id="pleskHostUrl"></span></p>
