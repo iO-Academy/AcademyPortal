@@ -128,7 +128,8 @@ class DisplayStudentProfileViewHelper
                         <button data-selector="githubUsername" class="btn btn-primary btn-sm githubUsernameEditButton 
                         editbutton" id="githubUsernameEditButton">Edit</button>
                     </div>
-                    <div data-selector="githubUsername" class="editablegithubUsername studentProfileEditableField hidden">
+                    <div data-selector="githubUsername" class="editablegithubUsername studentProfileEditableField 
+                    hidden">
                         <form class="form studentProfileEditableField">
                             <label for="githubUsernameTextBox">GitHub Username:</label>
                             <span>
