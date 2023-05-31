@@ -25,35 +25,37 @@ class AdminPageController extends Controller
     public function __invoke(Request $request, Response $response, array $args): Response
     {
 
+        if ($_SESSION['loggedIn'] === true) {
+            return $this->renderer->render($response, 'admin.phtml');
+        }
+        $_SESSION['loggedIn'] = false;
+        return $response->withHeader('Location', './')->withStatus(302);
+    }
+    public function sendEmail()
+    {
         $mail = new PHPMailer(true);
         try {
             // Server settings
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
             $mail->isSMTP();                                            // Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                // Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-            $mail->Username   = 'testacademyportal@gmail.com';         // SMTP username
-            $mail->Password   = 'mnhftppxpklunjug';                       // SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;          // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-            $mail->Port       = 587;                                    // TCP port to connect to
+            $mail->Host = 'smtp.gmail.com';                // Set the SMTP server to send through
+            $mail->SMTPAuth = true;                                   // Enable SMTP authentication
+            $mail->Username = 'testacademyportal@gmail.com';         // SMTP username
+            $mail->Password = 'mnhftppxpklunjug';                       // SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;          // Enable TLS encryption; `PHPMailer::
+            //ENCRYPTION_SMTPS` also accepted
+            $mail->Port = 587;                                    // TCP port to connect to
             // Recipients
             $mail->setFrom('from@example.com', 'Mailer');
             $mail->addAddress('testacademyportal@gmail.com', 'test');  // Add a recipient
             // Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'Here is the subject';
-            $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+            $mail->Body = 'This is the HTML message body <b>in bold!</b>';
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();
             echo 'Message has been sent';
         } catch (Exception $e) {
             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         }
-
-        if ($_SESSION['loggedIn'] === true) {
-            return $this->renderer->render($response, 'admin.phtml');
-        }
-        $_SESSION['loggedIn'] = false;
-        return $response->withHeader('Location', './')->withStatus(302);
     }
 }
