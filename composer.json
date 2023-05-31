@@ -22,18 +22,20 @@
     }
   ],
   "require": {
-    "sendgrid/sendgrid": "~7",
-    "php": ">=7.4",
+    "php": ">=8.2",
     "ext-json": "*",
     "ext-pdo": "*",
+    "league/oauth2-client": "^2.7",
     "monolog/monolog": "^1.24",
     "php-di/php-di": "^6.0",
+    "phpmailer/phpmailer": "^6.8",
+    "sendgrid/sendgrid": "~7",
     "slim/php-view": "^2.2",
     "slim/psr7": "^1.1.0",
     "slim/slim": "^4.7"
   },
   "require-dev": {
-    "phpunit/phpunit": "^7.5",
+    "phpunit/phpunit": "^10.0",
     "squizlabs/php_codesniffer": "*"
   },
   "config": {
