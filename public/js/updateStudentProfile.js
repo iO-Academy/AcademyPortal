@@ -79,10 +79,10 @@ function saveClicked(event)
             'Content-Type': 'application/json'
         }
     }).then(async(response) => {
-        sendEmail()
         return response.json().then((data) => {
             if (response.status == 200) {
                 location.reload()
+                sendEmail()
             } else {
                 const responseMessage = data.msg
                 alert(responseMessage)
