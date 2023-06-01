@@ -5,6 +5,7 @@ const saveButton = document.querySelector('#saveButton')
 const confirmButtons = document.querySelectorAll('.confirm')
 const cancelButtons = document.querySelectorAll('.cancel')
 let updatedFields = {id: studentId}
+const numberInputFields = document.querySelectorAll('.numberInputField')
 
 function editClicked(event)
 {
@@ -40,20 +41,21 @@ function confirmClicked(event)
     }
 }
 
-function cancelClicked(event) {
+function cancelClicked(event)
+{
     event.preventDefault()
     const selector = event.target.dataset.selector
     event.target.parentNode.parentNode.classList.add('hidden')
-    const section = event.target.parentNode.parentNode.parentNode
-    const container = section.querySelector('.' + selector + 'Container')
-    container.classList.remove('hidden')
-    if (Object.keys(updatedFields).length === 1) {
+    const plainTextContainer = document.querySelector('.' + selector + 'Container')
+    plainTextContainer.classList.remove('hidden')
+    const numberOfFieldsChanged = Object.keys(updatedFields).length - 1
+    if (numberOfFieldsChanged === 0) {
         saveButton.classList.add('hidden')
     }
 }
 
-
-function saveClicked(event) {
+function saveClicked(event)
+{
     const jsonUpdatedFields = JSON.stringify(updatedFields)
     fetch('/api/updateStudentProfile', {
         method: 'PUT',
@@ -61,7 +63,7 @@ function saveClicked(event) {
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then( async (response) => {
+    }).then(async(response) => {
         return response.json().then((data) => {
             if (response.status == 200) {
                 location.reload()
@@ -73,8 +75,19 @@ function saveClicked(event) {
     })
 }
 
+function onlyAllowNumbers(input)
+{
+    if (isNaN(input.key) && input.key !== 'ArrowRight' && input.key !== 'ArrowLeft' && input.key !== 'Backspace') {
+        input.preventDefault()
+    }
+}
+
 editButtons.forEach(function (editButton) {
     editButton.addEventListener('click', editClicked)
+})
+
+numberInputFields.forEach(function (inputField) {
+    inputField.addEventListener('keydown', onlyAllowNumbers)
 })
 
 confirmButtons.forEach(function (confirmButton) {

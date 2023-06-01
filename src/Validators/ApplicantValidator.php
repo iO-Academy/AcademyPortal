@@ -200,9 +200,13 @@ class ApplicantValidator
 
     public static function validateFeePaymentMethods(array $applicant): void
     {
-        foreach (['upfront','edaid','diversitech','fee'] as $key) {
-            if (!is_null($applicant[$key]) && !is_numeric($applicant[$key])) {
-                throw new \Exception('Applicant field \'' . $key . '\' needs to be a number');
+        $fieldsToValidate = ['upfront','edaid','diversitech','fee'];
+        foreach ($fieldsToValidate as $field) {
+            if (!is_null($applicant[$field]) && !is_numeric($applicant[$field])) {
+                throw new \Exception('Applicant field \'' . $field . '\' needs to be a number');
+            }
+            if ($field < 0) {
+                throw new \Exception('Applicant field \'' . $field . ' can\'t be a negative number');
             }
         }
 

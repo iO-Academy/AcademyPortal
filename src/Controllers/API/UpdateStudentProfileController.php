@@ -23,22 +23,19 @@ class UpdateStudentProfileController extends Controller
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $updatedStudentProfileData = $request->getParsedBody();
+        $isStudentLoggedIn = !empty($_SESSION['studentLogin']) && $_SESSION['studentLogin']
+            && $_SESSION['studentId'] == $updatedStudentProfileData['id'];
+        $isAdminLoggedIn = !empty($_SESSION['loggedIn']) && $_SESSION['loggedIn'];
 
-        if (
-            (!empty($_SESSION['studentLogin']) &&
-                $_SESSION['studentLogin'] &&
-                $_SESSION['studentId'] == $updatedStudentProfileData['id']) ||
-            (!empty($_SESSION['loggedIn']) &&
-                $_SESSION['loggedIn'])
-        ) {
+        if ($isStudentLoggedIn || $isAdminLoggedIn) {
             $responseBody["success"] = true;
             $responseBody["msg"] = "Success";
             $responseBody["data"] = [];
             $statusCode = 200;
 
-            $responseArray = $this->validateEditableFields($updatedStudentProfileData);
+            $validationResult = $this->validateEditableFields($updatedStudentProfileData);
 
-            if ($responseArray['success']) {
+            if ($validationResult['success']) {
                 if (isset($updatedStudentProfileData['edaid'])) {
                     $this->applicantModel->updateEdaid(
                         $updatedStudentProfileData['id'],
@@ -65,8 +62,8 @@ class UpdateStudentProfileController extends Controller
                 }
             } else {
                 $responseBody["success"] = false;
-                $responseBody["msg"] = $responseArray['msg'];
-                $statusCode = $responseArray['status'];
+                $responseBody["msg"] = $validationResult['msg'];
+                $statusCode = $validationResult['status'];
             }
 
             return $this->respondWithJson($response, $responseBody, $statusCode);
@@ -76,7 +73,7 @@ class UpdateStudentProfileController extends Controller
 
     private function validateEditableFields(array $updatedStudentProfileData): array
     {
-        $responseArray = [
+        $validationResult = [
             'success' => true,
             'msg' => 'success',
             'status' => 200
@@ -94,33 +91,33 @@ class UpdateStudentProfileController extends Controller
         try {
             ApplicantValidator::validateFeePaymentMethods($feePaymentMethods);
         } catch (Exception $e) {
-            $responseArray["success"] = false;
-            $responseArray["msg"] = $e->getMessage();
-            $responseArray["status"] = 400;
+            $validationResult["success"] = false;
+            $validationResult["msg"] = $e->getMessage();
+            $validationResult["status"] = 400;
         }
 
         if (isset($updatedStudentProfileData['laptop'])) {
             if (!ApplicantValidator::validateLaptop($updatedStudentProfileData)) {
-                $responseArray["success"] = false;
-                $responseArray["msg"] = "Incorrect input for laptop requirement";
-                $responseArray["status"] = 400;
+                $validationResult["success"] = false;
+                $validationResult["msg"] = "Incorrect input for laptop requirement";
+                $validationResult["status"] = 400;
             }
         }
 
         if (isset($updatedStudentProfileData['githubUsername'])) {
             try {
                 if (!ApplicantValidator::validateGithubUsername($updatedStudentProfileData)) {
-                    $responseArray["success"] = false;
-                    $responseArray["msg"] = "Incorrect input for GitHub username";
-                    $responseArray["status"] = 400;
+                    $validationResult["success"] = false;
+                    $validationResult["msg"] = "Incorrect input for GitHub username";
+                    $validationResult["status"] = 400;
                 }
             } catch (Exception $e) {
-                $responseArray["success"] = false;
-                $responseArray["msg"] = $e->getMessage();
-                $responseArray["status"] = 400;
+                $validationResult["success"] = false;
+                $validationResult["msg"] = $e->getMessage();
+                $validationResult["status"] = 400;
             }
         }
 
-        return $responseArray;
+        return $validationResult;
     }
 }

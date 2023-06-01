@@ -64,7 +64,7 @@ class DisplayStudentProfileViewHelper
                         <form class="form studentProfileEditableField">
                             <label for="edaidTextBox">EdAid amount:</label>
                             <span>
-                                <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" 
+                                <input type="number" min="0" class="numberInputField" 
                                 id="edaidTextBox" name="edaid">
                             </span>
                             <button data-selector="edaid" class="btn btn-primary btn-sm confirm" type="submit">
@@ -87,8 +87,8 @@ class DisplayStudentProfileViewHelper
                         <form class="form studentProfileEditableField">
                             <label for="upfrontTextBox">Upfront amount:</label>
                                 <span>
-                                    <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" 
-                                    id="upfrontTextBox" name="upfront">
+                                    <input type="number" min="0" class="numberInputField" id="upfrontTextBox" 
+                                    name="upfront">
                                 </span>
                             <button data-selector="upfront" class="btn btn-primary btn-sm confirm" type="submit">
                             Confirm
