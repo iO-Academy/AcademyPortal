@@ -51,17 +51,12 @@ function handleEditClick(event)
             headers: {
                 'Content-Type': 'application/json'
             },
-            // body: JSON.stringify({
-            //     method: "sendEmail",
-            // })
         })
             .then(response => response.text())
             .then(data => {
-                // Handle the response if needed
                 console.log(data);
             })
             .catch(error => {
-                // Handle errors
                 console.error(error);
             });
     }
