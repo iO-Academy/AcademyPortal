@@ -14,7 +14,6 @@ function editClicked(event)
     const section = event.target.parentNode.parentNode
     const editable = section.querySelector('.editable' + selector)
     editable.classList.remove('hidden')
-    saveButton.classList.remove('hidden')
 }
 
 function confirmClicked(event)
@@ -39,6 +38,7 @@ function confirmClicked(event)
     } else {
         updatedHTML.innerHTML = data.get(selector)
     }
+    saveButton.classList.remove('hidden')
 }
 
 function cancelClicked(event)
@@ -48,10 +48,6 @@ function cancelClicked(event)
     event.target.parentNode.parentNode.classList.add('hidden')
     const plainTextContainer = document.querySelector('.' + selector + 'Container')
     plainTextContainer.classList.remove('hidden')
-    const numberOfFieldsChanged = Object.keys(updatedFields).length - 1
-    if (numberOfFieldsChanged === 0) {
-        saveButton.classList.add('hidden')
-    }
 }
 
 function saveClicked(event)
