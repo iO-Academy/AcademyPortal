@@ -111,7 +111,7 @@ class DisplayStudentProfileViewHelper
                         <form class="form studentProfileEditableField">
                             <label>Laptop required: </label>
                             <span>
-                                <input type="radio" value="0" id="noLaptop" name="laptop">
+                                <input type="radio" value="0" id="noLaptop" name="laptop" checked="checked">
                                 <label for="noLaptop">No</label>
                                 <input type="radio" value="1" id="yesLaptop" name="laptop">
                                 <label for="yesLaptop">Yes</label>
