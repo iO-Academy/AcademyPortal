@@ -20,9 +20,14 @@ return function (ContainerBuilder $containerBuilder) {
             ],
             'db' => [
                 'host' => 'mysql:host=db;',
-                'dbName' =>'dbname=academyPortal',
-                'userName' =>'root',
+                'dbName' => 'dbname=academyPortal',
+                'userName' => 'root',
                 'password' => 'password'
+            ],
+            'adminEmail' => [
+                'hostUsername' => 'testacademyportal@gmail.com',
+                'hostPassword' => 'mnhftppxpklunjug',
+                'adminEmail' => 'testacademyportal@gmail.com'
             ],
         ],
     ]);

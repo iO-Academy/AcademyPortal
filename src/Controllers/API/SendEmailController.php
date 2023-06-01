@@ -6,16 +6,24 @@ use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
 use Portal\Abstracts\Controller;
 use Portal\Models\ApplicantModel;
+use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 class SendEmailController extends Controller
 {
     private ApplicantModel $applicantModel;
+    private string $hostUsername;
+    private string $hostPassword;
+    private string $adminEmail;
 
-    public function __construct(ApplicantModel $applicantModel)
+    public function __construct(ApplicantModel $applicantModel, ContainerInterface $container)
     {
         $this->applicantModel = $applicantModel;
+        $settings = $container->get('settings')['adminEmail'];
+        $this->hostUsername = $settings['hostUsername'];
+        $this->hostPassword = $settings['hostPassword'];
+        $this->adminEmail = $settings['adminEmail'];
     }
 
     public function __invoke(Request $request, Response $response, array $args)
@@ -28,12 +36,12 @@ class SendEmailController extends Controller
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'testacademyportal@gmail.com';
-            $mail->Password = 'mnhftppxpklunjug';
+            $mail->Username = $this->hostUsername;
+            $mail->Password = $this->hostPassword;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
             $mail->setFrom('from@example.com', 'Mailer');
-            $mail->addAddress('testacademyportal@gmail.com', 'test');
+            $mail->addAddress($this->adminEmail, 'Admin1');
             $mail->isHTML(true);
             $mail->Subject = 'Student profile has been updated';
             $mail->Body = '<p>The following applicant has edited their student profile: ' .

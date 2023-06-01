@@ -53,19 +53,14 @@ After clicking "Generate", you should see the following:
 
 ![password](https://res.cloudinary.com/dgfofxbf1/image/upload/c_scale,w_526/v1685630498/academyportal/password_uo3qck.png)
 
-2. Change the following lines of code in `src/Controllers/API/SendEmailController.php`: 
+2. Change the following lines of code in `app/settings.php`: 
+
 ``` php
-// Enter gmail address here
-$mail->Username = 'testacademyportal@gmail.com';
-
-// Enter app password here
-$mail->Password = 'placeholder';
-
-// Enter email address of recipients here 
-$mail->addAddress('admin1@gmail.com', 'Admin1');
-$mail->addAddress('admin2@yahoo.com', 'Admin2');
-$mail->addAddress('admin3@gmail.com', 'Admin3');
-// etc.
+'adminEmail' => [
+     'hostUsername' => 'sender@gmail.com',
+     'hostPassword' => 'app-password',
+     'adminEmail' => 'recipient@gmail.com'
+],
 ```
 
 ### Routes
