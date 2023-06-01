@@ -7,7 +7,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
-
 class AdminPageController extends Controller
 {
     private PhpRenderer $renderer;
@@ -25,5 +24,4 @@ class AdminPageController extends Controller
         $_SESSION['loggedIn'] = false;
         return $response->withHeader('Location', './')->withStatus(302);
     }
-
 }
