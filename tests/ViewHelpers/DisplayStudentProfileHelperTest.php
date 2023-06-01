@@ -25,15 +25,18 @@ class DisplayStudentProfileHelperTest extends TestCase
                     <span id="stageOptionName">Onboarding</span></p>
                     <p class="detail">Cohort: <span id="cohortDate">February, 2019</span></p>
                     <p class="detail">Reason for wanting to be a dev:</p>
-                    <p id="whyDev">Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat quasi ut est nostrud nihil ad corporis ea</p>
+                    <p id="whyDev">Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat 
+                    quasi ut est nostrud nihil ad corporis ea</p>
                     <p class="detail">Code Experience:</p>
-                    <p id="codeExperience">Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore facere anim quaerat</p>
+                    <p id="codeExperience">Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore 
+                    facere anim quaerat</p>
                     <p class="detail">Heard About Us: <span id="hearAbout">Back of the toilet door</span></p>
                     <p class="detail" id="eligible">Eligible to study in the UK:<span>No</span></p>
                     <p class="detail" id="eighteenPlus">Over 18 years:<span>No</span></p>
                     <p class="detail">Finance: <span id="finance">No</span></p>
                     <p class="detail">Notes: </p>
-                    <p id="notes">Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus</p>
+                    <p id="notes">Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident 
+                    voluptates Nam beatae quis quam illo voluptatibus</p>
                 </section>
                 <hr>
                 <section>
@@ -42,7 +45,8 @@ class DisplayStudentProfileHelperTest extends TestCase
                     <p class="detail">Assessment Time: <span id="assessmentTime">13:00</span>
                     <p class="detail">Aptitude Score: <span id="aptitude">73</span></p>
                     <p class="detail">Assessment notes:</p>
-                    <p id="assessmentNotes">Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus</p>
+                    <p id="assessmentNotes">Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis 
+                    provident voluptates Nam beatae quis quam illo voluptatibus</p>
                 </section>
                 <hr>
                 <section>
@@ -164,7 +168,8 @@ class DisplayStudentProfileHelperTest extends TestCase
         $applicantEntityMock->method('getAssessmentDay')->willReturn('2020-06-20');
         $applicantEntityMock->method('getAssessmentTime')->willReturn('13:00');
         $applicantEntityMock->method('getAptitude')->willReturn(73);
-        $applicantEntityMock->method('getAssessmentNotes')->willReturn('Laborum cumque reprehenderit ut qui 
+        $applicantEntityMock->method('getAssessmentNotes')->willReturn('Laborum cumque reprehenderit ut 
+        qui 
         sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus');
         $applicantEntityMock->method('getDiversitech')->willReturn(1000);
         $applicantEntityMock->method('getEdAid')->willReturn(8000);
