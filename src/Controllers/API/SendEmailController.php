@@ -35,7 +35,7 @@ class SendEmailController extends Controller
             $mail->setFrom('from@example.com', 'Mailer');
             $mail->addAddress('testacademyportal@gmail.com', 'test');
             $mail->isHTML(true);
-            $mail->Subject = 'Here is the subject';
+            $mail->Subject = 'Student profile has been updated';
             $mail->Body = '<p>The following applicant has edited their student profile: ' .
                 $name . '</p>' .
                 '<p>Link to the changed application: http://localhost:8080/editApplicant?id=' .
