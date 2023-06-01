@@ -31,7 +31,6 @@ function confirmClicked(event) {
 }
 
 function saveClicked(event) {
-    event.preventDefault()
     const jsonUpdatedFields = JSON.stringify(updatedFields)
     fetch('/api/updateStudentProfile', {
         method: 'PUT',
@@ -39,9 +38,9 @@ function saveClicked(event) {
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then( async (response) => { // Rayna doesn't like this
+    }).then( async (response) => {
         return response.json().then((data) => {
-            if(response.status == 200) {
+            if (response.status == 200) {
                 location.reload()
             } else {
                 const responseMessage = data.msg
@@ -50,7 +49,6 @@ function saveClicked(event) {
         })
     })
 }
-
 
 editButtons.forEach(function (editButton) {
     editButton.addEventListener('click', editClicked)
@@ -61,5 +59,3 @@ confirmButtons.forEach(function (confirmButton) {
 })
 
 saveButton.addEventListener('click', saveClicked)
-
-

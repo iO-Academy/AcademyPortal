@@ -56,7 +56,9 @@ class DisplayStudentProfileViewHelper
                         <label class="detail" for="edaidTextBox">EdAid amount: </label>
                         <span id="edaidDisplayed">' . $applicant->getEdaid() . '</span>
                         <button data-selector="edaid" class="btn btn-primary btn-sm edaidEditButton editbutton" 
-                        id="edaidEditButton">Edit</button>
+                        id="edaidEditButton">
+                        Edit
+                        </button>
                     </div>
                     <div data-selector="edaid" class="editableedaid studentProfileEditableField hidden">
                         <form class="form studentProfileEditableField">
@@ -74,7 +76,9 @@ class DisplayStudentProfileViewHelper
                         <label class="detail" for="upfrontTextBox">Upfront amount: </label>
                         <span id="upfrontDisplayed">' . $applicant->getUpfront() . '</span>
                         <button data-selector="upfront" class="btn btn-primary btn-sm upfrontEditButton editbutton" 
-                        id="upfrontEditButton">Edit</button>
+                        id="upfrontEditButton">
+                        Edit
+                        </button>
                     </div>
                     <div data-selector="upfront" class="editableupfront studentProfileEditableField hidden">
                         <form class="form studentProfileEditableField">
@@ -126,7 +130,9 @@ class DisplayStudentProfileViewHelper
                         <label class="detail" for="githubUsername">GitHub Username: </label> 
                         <span id="githubUsernameDisplayed">' . $applicant->getGithubUsername() . '</span>
                         <button data-selector="githubUsername" class="btn btn-primary btn-sm githubUsernameEditButton 
-                        editbutton" id="githubUsernameEditButton">Edit</button>
+                        editbutton" id="githubUsernameEditButton">
+                        Edit
+                        </button>
                     </div>
                     <div data-selector="githubUsername" class="editablegithubUsername studentProfileEditableField 
                     hidden">
@@ -135,8 +141,9 @@ class DisplayStudentProfileViewHelper
                             <span>
                                 <input type="text" id="githubUsernameTextBox" name="githubUsername">
                             </span>
-                            <button data-selector="githubUsername" class="btn btn-primary btn-sm confirm" 
-                            type="submit">Confirm</button>
+                            <button data-selector="githubUsername" class="btn btn-primary btn-sm confirm" type="submit">
+                            Confirm
+                            </button>
                         </form>
                     </div>
                     <p class="detail">GitHub Link: <span id="githubLink"></span></p>

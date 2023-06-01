@@ -238,6 +238,8 @@ class ApplicantValidator
                     'githubUsername'
                 ) &&
                 preg_match('/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i', $applicant['githubUsername'])
+                // This is a regex that only allows the valid characters you can have in a github username
+                // Letters, numbers and hyphens but can't start with hyphen, and there is a max length
             )
         );
     }

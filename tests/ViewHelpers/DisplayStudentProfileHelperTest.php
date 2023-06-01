@@ -169,8 +169,7 @@ class DisplayStudentProfileHelperTest extends TestCase
         $applicantEntityMock->method('getAssessmentTime')->willReturn('13:00');
         $applicantEntityMock->method('getAptitude')->willReturn(73);
         $applicantEntityMock->method('getAssessmentNotes')->willReturn('Laborum cumque reprehenderit ut 
-        qui 
-        sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus');
+        qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus');
         $applicantEntityMock->method('getDiversitech')->willReturn(1000);
         $applicantEntityMock->method('getEdAid')->willReturn(8000);
         $applicantEntityMock->method('getUpfront')->willReturn(1000);
