@@ -564,10 +564,11 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare('UPDATE `applicants_additional` SET edaid=:edaid WHERE id=:id');
         return $query->execute(["id" => $id, "edaid" => $edaid]);
     }
+
     public function updateGithubUsername(int $id, string $githubUsername): bool
     {
         $query = $this->db->prepare('UPDATE `applicants_additional` SET githubUsername=:githubUsername
-         WHERE id=:id');
+     WHERE id=:id');
         return $query->execute(["id" => $id, "githubUsername" => $githubUsername]);
     }
 
@@ -585,8 +586,10 @@ class ApplicantModel implements ApplicantModelInterface
 
     public function getFeePaymentMethods(int $id): array
     {
-        $query = $this->db->prepare('SELECT diversitech, edaid, fee, upfront FROM applicants_additional
-                             WHERE id=?');
+        $query = $this->db->prepare(
+            'SELECT diversitech, edaid, fee, upfront FROM applicants_additional 
+                                        WHERE id=?'
+        );
         $query->execute([$id]);
         $feePaymentMethod = $query->fetch();
         return  $feePaymentMethod;

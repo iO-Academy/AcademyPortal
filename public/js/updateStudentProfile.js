@@ -6,7 +6,8 @@ const confirmButtons = document.querySelectorAll('.confirm')
 const cancelButtons = document.querySelectorAll('.cancel')
 let updatedFields = {id: studentId}
 
-function editClicked(event) {
+function editClicked(event)
+{
     const selector = event.target.dataset.selector
     event.target.parentNode.classList.add('hidden')
     const section = event.target.parentNode.parentNode
@@ -15,7 +16,8 @@ function editClicked(event) {
     saveButton.classList.remove('hidden')
 }
 
-function confirmClicked(event) {
+function confirmClicked(event)
+{
     event.preventDefault()
     const selector = event.target.dataset.selector
     event.target.parentNode.parentNode.classList.add('hidden')
@@ -49,6 +51,7 @@ function cancelClicked(event) {
         saveButton.classList.add('hidden')
     }
 }
+
 
 function saveClicked(event) {
     const jsonUpdatedFields = JSON.stringify(updatedFields)
