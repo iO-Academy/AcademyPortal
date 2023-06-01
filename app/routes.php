@@ -39,6 +39,7 @@ use Portal\Controllers\API\GetNextStageOptionsController;
 use Portal\Controllers\API\GetStagesController;
 use Portal\Controllers\API\GetStudentsController;
 use Portal\Controllers\API\LoginController;
+use Portal\Controllers\API\SendEmailController;
 use Portal\Controllers\API\UpdateStudentProfileController;
 use Portal\Controllers\FrontEnd\AddApplicantPageController;
 use Portal\Controllers\FrontEnd\AddCoursePageController;
@@ -88,7 +89,6 @@ return function (App $app) {
     $app->get('/csvForm', GetCsvFormController::class);
     $app->get('/trainers', TrainersPageController::class);
     $app->get('/addTrainer', AddTrainerPageController::class);
-    $app->post('/api/sendEmail', AdminPageController::class . ':sendEmail');
 
     //API
     $app->get('/api/getStudents', GetStudentsController::class);
@@ -129,4 +129,5 @@ return function (App $app) {
     $app->put('/api/aptitudeScore', AddAptitudeScoreController::class);
     $app->post('/api/addTrainer', AddTrainerController::class);
     $app->delete('/api/deleteTrainer', DeleteTrainerController::class);
+    $app->post('/api/sendEmail', SendEmailController::class);
 };
