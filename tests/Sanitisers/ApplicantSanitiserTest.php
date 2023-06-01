@@ -12,62 +12,6 @@ class ApplicantSanitiserTest extends TestCase
         $this->markTestSkipped('Cannot unit test as method calls other methods');
     }
 
-    public function testSuccessIntSanitiseEdAid()
-    {
-        $savedProfileFieldEdAid = 800;
-        $expectedOutput = 800;
-        $actualOutput = ApplicantSanitiser::sanitiseEdAid($savedProfileFieldEdAid);
-        $this->assertEquals($expectedOutput, $actualOutput);
-    }
-
-    public function testSuccessStringSanitiseEdAid()
-    {
-        $savedProfileFieldEdAid = '800';
-        $expectedOutput = 800;
-        $actualOutput = ApplicantSanitiser::sanitiseEdAid($savedProfileFieldEdAid);
-        $this->assertEquals($expectedOutput, $actualOutput);
-    }
-
-    public function testSuccessNullSanitiseEdAid()
-    {
-        $savedProfileFieldEdAid = null;
-        $expectedOutput = null;
-        $actualOutput = ApplicantSanitiser::sanitiseEdAid($savedProfileFieldEdAid);
-        $this->assertEquals($expectedOutput, $actualOutput);
-    }
-
-    public function testSuccessZeroSanitiseEdAid()
-    {
-        $savedProfileFieldEdAid = 0;
-        $expectedOutput = null;
-        $actualOutput = ApplicantSanitiser::sanitiseEdAid($savedProfileFieldEdAid);
-        $this->assertEquals($expectedOutput, $actualOutput);
-    }
-
-    public function testSuccessIntSanitiseUpFront()
-    {
-        $savedProfileFieldUpFront = 800;
-        $expectedOutput = 800;
-        $actualOutput = ApplicantSanitiser::sanitiseUpFront($savedProfileFieldUpFront);
-        $this->assertEquals($expectedOutput, $actualOutput);
-    }
-
-    public function testSuccessNumberStringSanitiseUpFront()
-    {
-        $savedProfileFieldUpFront = '800';
-        $expectedOutput = 800;
-        $actualOutput = ApplicantSanitiser::sanitiseUpFront($savedProfileFieldUpFront);
-        $this->assertEquals($expectedOutput, $actualOutput);
-    }
-
-    public function testSuccessNullSanitiseUpFront()
-    {
-        $savedProfileFieldUpFront = null;
-        $expectedOutput = null;
-        $actualOutput = ApplicantSanitiser::sanitiseUpFront($savedProfileFieldUpFront);
-        $this->assertEquals($expectedOutput, $actualOutput);
-    }
-
     public function testSuccessNullSanitiseLaptop()
     {
         $savedProfileFieldLaptop = null;

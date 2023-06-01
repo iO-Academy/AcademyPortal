@@ -1,1 +1,0 @@
-{"version":1,"defects":[],"times":{"Tests\\Controllers\\API\\AddAptitudeScoreControllerTest::testConstruct":0.009,"Tests\\Factories\\Controllers\\API\\AddAptitudeScoreControllerFactoryTest::testInvoke":0.013}}

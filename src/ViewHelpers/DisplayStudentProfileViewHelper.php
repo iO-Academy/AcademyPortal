@@ -14,8 +14,9 @@ class DisplayStudentProfileViewHelper
                     <p class="detail">Name: <span>' . $applicant->getName() . '</span></p>
                     <p class="detail">Email: <span>' . $applicant->getEmail() . '</span></p>
                     <p class="detail">Phone Number: <span>' . $applicant->getPhoneNumber() . '</span></p>
-                 <hr>
-                 <section>
+                </section>
+                <hr>
+                <section>
                     <h4>Application Info</h4>
                     <p class="detail">Stage: <span id="stageName">' . $applicant->getStageName() . '</span></p>
                     <p class="detail" id="stageOptionNameContainer">Stage Option: 
@@ -52,22 +53,75 @@ class DisplayStudentProfileViewHelper
                     <p class="detail">Diversitech amount: <span id="diversitech">'
                         . $applicant->getDiversitech() . '</span>
                     <div class="edaidContainer studentProfileEditableField">
-                        <p class="detail" id="edaidDescription">EdAid amount: </p>
-                        <span id="edaid">' . $applicant->getEdaid() . '</span>
-                        <button class="btn btn-primary edaidEditButton btn-sm" id="edaidEditButton">Edit</button>
+                        <label class="detail" for="edaidTextBox">EdAid amount: </label>
+                        <span id="edaidDisplayed">' . $applicant->getEdaid() . '</span>
+                        <button data-selector="edaid" class="btn btn-primary btn-sm edaidEditButton editbutton" 
+                        id="edaidEditButton">
+                        Edit
+                        </button>
+                    </div>
+                    <div data-selector="edaid" class="editableedaid studentProfileEditableField hidden">
+                        <form class="form studentProfileEditableField">
+                            <label for="edaidTextBox">EdAid amount:</label>
+                            <span>
+                                <input type="number" min="0" class="numberInputField" 
+                                id="edaidTextBox" name="edaid">
+                            </span>
+                            <button data-selector="edaid" class="btn btn-primary btn-sm confirm" type="submit">
+                            Confirm
+                            </button>
+                            <button data-selector="edaid" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>                            
+                        </form>
                     </div>
                     <div class="upfrontContainer studentProfileEditableField">
-                        <p class="detail" id="upfrontDescription">Upfront amount: </p>
-                        <span id="upfront">' . $applicant->getUpfront() . '</span>
-                        <button class="btn btn-primary btn-sm" id="upfrontEditButton">Edit</button>
+                        <label class="detail" for="upfrontTextBox">Upfront amount: </label>
+                        <span id="upfrontDisplayed">' . $applicant->getUpfront() . '</span>
+                        <button data-selector="upfront" class="btn btn-primary btn-sm upfrontEditButton editbutton" 
+                        id="upfrontEditButton">
+                        Edit
+                        </button>
+                    </div>
+                    <div data-selector="upfront" class="editableupfront studentProfileEditableField hidden">
+                        <form class="form studentProfileEditableField">
+                            <label for="upfrontTextBox">Upfront amount:</label>
+                                <span>
+                                    <input type="number" min="0" class="numberInputField" id="upfrontTextBox" 
+                                    name="upfront">
+                                </span>
+                            <button data-selector="upfront" class="btn btn-primary btn-sm confirm" type="submit">
+                            Confirm
+                            </button>
+                            <button data-selector="upfront" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>
+                        </form>                 
                     </div>
                     <div class="laptopContainer studentProfileEditableField">
-                        <p class="detail" id="laptopDescription">Laptop required: </p>
-                        <span id="laptop">' .
+                        <label class="detail" for="laptopRadioButtons">Laptop required: </label>
+                        <span id="laptopDisplayed">' .
                         (is_null($applicant->getLaptop())
                         ? null : ($applicant->getLaptop() ? 'Yes' : 'No'))
                         . '</span>
-                        <button class="btn btn-primary btn-sm" id="laptopEditButton">Edit</button>
+                        <input data-selector="laptop" class="btn btn-primary btn-sm laptopEditButton 
+                        editbutton" id="laptopEditButton" value="Edit">
+                    </div>
+                    <div data-selector="laptop" class="editablelaptop studentProfileEditableField hidden">
+                        <form class="form studentProfileEditableField">
+                            <label>Laptop required: </label>
+                            <span>
+                                <input type="radio" value="0" id="noLaptop" name="laptop" checked="checked">
+                                <label for="noLaptop">No</label>
+                                <input type="radio" value="1" id="yesLaptop" name="laptop">
+                                <label for="yesLaptop">Yes</label>
+                            </span>
+                            <input data-selector="laptop" class="btn btn-primary btn-sm confirm" value="Confirm" 
+                            type="submit">
+                            <button data-selector="laptop" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>
+                        </form>                 
                     </div>
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
                         . $applicant->getLaptopDeposit() . '</p>
@@ -82,9 +136,27 @@ class DisplayStudentProfileViewHelper
                 <section>
                     <h4>Student profile</h4>
                     <div class="githubUsernameContainer studentProfileEditableField">
-                        <p class="detail" id="githubUsernameDescription">GitHub Username: </p> 
-                        <span id="githubUsername">' . $applicant->getGithubUsername() . '</span>
-                        <button class="btn btn-primary btn-sm" id="githubUsernameEditButton">Edit</button>
+                        <label class="detail" for="githubUsername">GitHub Username: </label> 
+                        <span id="githubUsernameDisplayed">' . $applicant->getGithubUsername() . '</span>
+                        <button data-selector="githubUsername" class="btn btn-primary btn-sm githubUsernameEditButton 
+                        editbutton" id="githubUsernameEditButton">
+                        Edit
+                        </button>
+                    </div>
+                    <div data-selector="githubUsername" class="editablegithubUsername studentProfileEditableField 
+                    hidden">
+                        <form class="form studentProfileEditableField">
+                            <label for="githubUsernameTextBox">GitHub Username:</label>
+                            <span>
+                                <input type="text" id="githubUsernameTextBox" name="githubUsername">
+                            </span>
+                            <button data-selector="githubUsername" class="btn btn-primary btn-sm confirm" type="submit">
+                            Confirm
+                            </button>
+                            <button data-selector="githubUsername" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>
+                        </form>
                     </div>
                     <p class="detail">GitHub Link: <span id="githubLink"></span></p>
                     <p class="detail">Portfolio: <span id="portfolio"></span></p>
@@ -95,6 +167,8 @@ class DisplayStudentProfileViewHelper
                     <p class="detail">Notes: <span id="notes"></span></p>
                     <p class="detail">Course Date Confirmed: <span id="courseDate"></span></p>
                 </section>
-                </section>';
+                <div class="navbar navbar-fixed-bottom col-sm-offset-9 hidden" id="saveButton">
+                <input class="saveButton btn btn-primary btn-sm" type="submit" value="Save">
+                </div>';
     }
 }

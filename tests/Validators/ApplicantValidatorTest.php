@@ -67,7 +67,7 @@ class ApplicantValidatorTest extends TestCase
 
     public function testValidateFeePaymentMethodsFailureWrongFieldTypeUpfront()
     {
-        $this->expectExceptionMessage('Applicant field \'upfront\' is not a numeric type');
+        $this->expectExceptionMessage('Applicant field \'upfront\' needs to be a number');
         ApplicantValidator::validateFeePaymentMethods([
             'upfront' => [], 'diversitech' => 0, 'edaid' => 0, 'fee' => 0
         ]);
@@ -75,7 +75,7 @@ class ApplicantValidatorTest extends TestCase
 
     public function testValidateFeePaymentMethodsFailureWrongFieldTypeDiversitech()
     {
-        $this->expectExceptionMessage('Applicant field \'diversitech\' is not a numeric type');
+        $this->expectExceptionMessage('Applicant field \'diversitech\' needs to be a number');
         ApplicantValidator::validateFeePaymentMethods([
             'upfront' => 0, 'diversitech' => [], 'edaid' => 0, 'fee' => 0
         ]);
@@ -83,7 +83,7 @@ class ApplicantValidatorTest extends TestCase
 
     public function testValidateFeePaymentMethodsFailureWrongFieldTypeEdaid()
     {
-        $this->expectExceptionMessage('Applicant field \'edaid\' is not a numeric type');
+        $this->expectExceptionMessage('Applicant field \'edaid\' needs to be a number');
         ApplicantValidator::validateFeePaymentMethods([
             'upfront' => 0, 'diversitech' => 0, 'edaid' => [], 'fee' => 0
         ]);
@@ -91,7 +91,7 @@ class ApplicantValidatorTest extends TestCase
 
     public function testValidateFeePaymentMethodsFailureWrongFieldTypeFee()
     {
-        $this->expectExceptionMessage('Applicant field \'fee\' is not a numeric type');
+        $this->expectExceptionMessage('Applicant field \'fee\' needs to be a number');
         ApplicantValidator::validateFeePaymentMethods([
             'upfront' => 0, 'diversitech' => 0, 'edaid' => 0, 'fee' => []
         ]);
@@ -138,11 +138,7 @@ class ApplicantValidatorTest extends TestCase
 
     public function testValidateGithubUsernameFailureTooLong()
     {
-        $this->expectExceptionMessage(
-            'You have either not inputted any information for githubUsername or ' . '
-            it exceeds our character limits'
-        );
-        ApplicantValidator::validateGithubUsername(
+        $result = ApplicantValidator::validateGithubUsername(
             ['githubUsername' =>
              'qwuiofuwkdyjsdkuysdgfusydgfusdygfsdfyugsdufyg' .
              'qiwugfuwehdbsudfybiqwdbzjvbhcdvguefghoi4987y8327' .
@@ -156,6 +152,7 @@ class ApplicantValidatorTest extends TestCase
              'qwet8uygf86tv98u98fqy76qdf72g3utc12rt3c1uyig487fsdt' .
              'vuycugvqvixcubvjhndkuiuhoiqjoiuqwebqjhwebj']
         );
+        $this->assertFalse($result);
     }
 
     public function testValidateGithubUsernameFailureWrongFieldType()

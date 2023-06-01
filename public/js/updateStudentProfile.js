@@ -1,96 +1,117 @@
 const studentId = document.querySelector('#studentId').dataset.studentId
 
-const edaidEditButton = document.querySelector('#edaidEditButton')
-const upfrontEditButton = document.querySelector('#upfrontEditButton')
-const laptopEditButton = document.querySelector('#laptopEditButton')
-const githubUsernameEditButton = document.querySelector('#githubUsernameEditButton')
+const editButtons = document.querySelectorAll('.editbutton')
+const saveButton = document.querySelector('#saveButton')
+const confirmButtons = document.querySelectorAll('.confirm')
+const cancelButtons = document.querySelectorAll('.cancel')
+let updatedFields = {id: studentId}
+const numberInputFields = document.querySelectorAll('.numberInputField')
 
-function handleEditClick(event)
+
+function editClicked(event)
 {
-    const buttonName = event.target.getAttribute('id')
-    const divName = buttonName.replace('EditButton', 'Container')
-    const containerDiv = document.querySelector('.' + divName)
-    const fieldName = divName.replace('Container', '')
-    const description = buttonName.replace('EditButton', 'Description')
-    const descriptionTag = document.querySelector('#' + description)
-    if (divName === 'laptopContainer') {
-        containerDiv.innerHTML =
-        '<form class="form studentProfileEditableField">' +
-        '<label>Laptop required: </label>' +
-        '<div>' +
-        '<input type="radio" value="0" id="noLaptop" name="' + fieldName + '">' +
-        '<label for="noLaptop">No</label>' +
-        '<input type="radio" value="1" id="yesLaptop" name="' + fieldName + '">' +
-        '<label for="yesLaptop">Yes</label>' +
-        '</div>' +
-        '<input class="saveButton btn btn-sm btn-primary" type="submit" value="Save">' +
-        '</form>'
-    } else if (divName === 'githubUsernameContainer') {
-        containerDiv.innerHTML =
-        '<form class="form studentProfileEditableField">' +
-        '<label for="' + fieldName + 'TextBox">' + descriptionTag.textContent + '</label>' +
-        '<input type="text" id="' + fieldName + 'TextBox" name="' + fieldName + '">' +
-        '<input class="saveButton btn btn-primary btn-sm" type="submit" value="Save">' +
-        '</form>'
+    const selector = event.target.dataset.selector
+    event.target.parentNode.classList.add('hidden')
+    const section = event.target.parentNode.parentNode
+    const editable = section.querySelector('.editable' + selector)
+    editable.classList.remove('hidden')
+}
+
+function confirmClicked(event)
+{
+    event.preventDefault()
+    const selector = event.target.dataset.selector
+    event.target.parentNode.parentNode.classList.add('hidden')
+    const section = event.target.parentNode.parentNode.parentNode
+    const container = section.querySelector('.' + selector + 'Container')
+    container.classList.remove('hidden')
+
+    const formContainer = event.target.parentNode.parentNode
+    const form = formContainer.querySelector('.form')
+    const data = new FormData(form, event.target)
+    updatedFields[selector] = data.get(selector)
+    const updatedHTML = document.querySelector('#' + selector + 'Displayed')
+
+    if (selector === 'laptop' && data.get(selector) === "1") {
+        updatedHTML.innerHTML = 'Yes'
+    } else if (selector === 'laptop' && data.get(selector) === "0") {
+        updatedHTML.innerHTML = 'No'
     } else {
-        containerDiv.innerHTML =
-        '<form class="form studentProfileEditableField">' +
-        '<label for="' + fieldName + 'TextBox">' + descriptionTag.textContent + '</label>' +
-            '<input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" id="' + fieldName + 'TextBox" name="' + fieldName + '">' +
-            '<input class="saveButton btn btn-primary btn-sm" type="submit" value="Save">' +
-        '</form>'
+        updatedHTML.innerHTML = data.get(selector)
     }
+    saveButton.classList.remove('hidden')
+}
 
-    const saveButton = document.querySelector('.saveButton')
-    const form = document.querySelector('.form')
 
-    function sendEmail()
-    {
-        fetch('/api/sendEmail?id=' + studentId, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+function sendEmail()
+{
+    fetch('/api/sendEmail?id=' + studentId, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
         })
-            .then(response => response.text())
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
+        .catch(error => {
+            console.error(error);
+        });
+}
 
-    form.addEventListener('submit', (event) => {
-        event.preventDefault()
-        const data = new FormData(form, saveButton)
-        const formData = data.get(fieldName)
-        const updatedField = {
-            [fieldName]: formData,
-            id: studentId
+function cancelClicked(event)
+{
+    event.preventDefault()
+    const selector = event.target.dataset.selector
+    event.target.parentNode.parentNode.classList.add('hidden')
+    const plainTextContainer = document.querySelector('.' + selector + 'Container')
+    plainTextContainer.classList.remove('hidden')
+}
+
+function saveClicked(event)
+{
+    const jsonUpdatedFields = JSON.stringify(updatedFields)
+    fetch('/api/updateStudentProfile', {
+        method: 'PUT',
+        body: jsonUpdatedFields,
+        headers: {
+            'Content-Type': 'application/json'
         }
-        const jsonUpdatedField = JSON.stringify(updatedField)
-        fetch('/api/updateStudentProfile', {
-            method: 'PUT',
-            body: jsonUpdatedField,
-            headers: {
-                'Content-Type': 'application/json'
+    }).then(async(response) => {
+        sendEmail()
+        return response.json().then((data) => {
+            if (response.status == 200) {
+                location.reload()
+            } else {
+                const responseMessage = data.msg
+                alert(responseMessage)
             }
-        }).then(async(response) => {
-            sendEmail()
-            return response.json().then((data) => {
-                if (response.status === 200) {
-                    location.reload()
-                } else {
-                    const responseMessage = data.msg
-                    alert(responseMessage)
-                }
-            })
         })
     })
 }
 
-edaidEditButton.addEventListener('click', handleEditClick)
-laptopEditButton.addEventListener('click', handleEditClick)
-upfrontEditButton.addEventListener('click', handleEditClick)
-githubUsernameEditButton.addEventListener('click', handleEditClick)
+function onlyAllowNumbers(input)
+{
+    if (isNaN(input.key) && input.key !== 'ArrowRight' && input.key !== 'ArrowLeft' && input.key !== 'Backspace') {
+        input.preventDefault()
+    }
+}
+
+editButtons.forEach(function (editButton) {
+    editButton.addEventListener('click', editClicked)
+})
+
+numberInputFields.forEach(function (inputField) {
+    inputField.addEventListener('keydown', onlyAllowNumbers)
+})
+
+confirmButtons.forEach(function (confirmButton) {
+    confirmButton.addEventListener('click', confirmClicked)
+})
+
+cancelButtons.forEach(function (cancelButton) {
+    cancelButton.addEventListener('click', cancelClicked)
+})
+
+saveButton.addEventListener('click', saveClicked)

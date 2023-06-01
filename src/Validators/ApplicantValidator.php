@@ -200,9 +200,13 @@ class ApplicantValidator
 
     public static function validateFeePaymentMethods(array $applicant): void
     {
-        foreach (['upfront','edaid','diversitech','fee'] as $key) {
-            if (!is_null($applicant[$key]) && !is_numeric($applicant[$key])) {
-                throw new \Exception('Applicant field \'' . $key . '\' is not a numeric type');
+        $fieldsToValidate = ['upfront','edaid','diversitech','fee'];
+        foreach ($fieldsToValidate as $field) {
+            if (!is_null($applicant[$field]) && !is_numeric($applicant[$field])) {
+                throw new \Exception('Applicant field \'' . $field . '\' needs to be a number');
+            }
+            if ($field < 0) {
+                throw new \Exception('Applicant field \'' . $field . ' can\'t be a negative number');
             }
         }
 
@@ -229,15 +233,12 @@ class ApplicantValidator
     public static function validateGithubUsername(array $applicant): bool
     {
         return (
-            empty($applicant['githubUsername']) ||
-            (
-                is_string($applicant['githubUsername']) &&
-                StringValidator::validateLength(
-                    $applicant['githubUsername'],
-                    StringValidator::MAXVARCHARLENGTH,
-                    'githubUsername'
-                ) &&
-                preg_match('/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i', $applicant['githubUsername'])
+            empty($applicant['githubUsername'])
+            || (
+                is_string($applicant['githubUsername'])
+                && preg_match('/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i', $applicant['githubUsername'])
+                // This is a regex that only allows the valid characters you can have in a github username
+                // Letters, numbers and hyphens but can't start with hyphen, and there is a max length
             )
         );
     }
