@@ -31,21 +31,52 @@ class UpdateStudentProfileController extends Controller
             (!empty($_SESSION['loggedIn']) &&
                 $_SESSION['loggedIn'])
         ) {
-
             $responseBody["success"] = true;
             $responseBody["msg"] = "Success";
             $responseBody["data"] = [];
             $statusCode = 200;
-            
+
             $responseArray = $this->validateEditableFields($updatedStudentProfileData);
 
+//            if ($responseArray['success']) {
+//                $this->applicantModel->updateEditableFields($updatedStudentProfileData);
+//            } else {
+//                $responseBody["success"] = false;
+//                $responseBody["msg"] = $responseArray['msg'];
+//                $statusCode = $responseArray['status'];
+//            }
+
             if ($responseArray['success']) {
-                $this->applicantModel->updateEditableFields($updatedStudentProfileData);
+                if (isset($updatedStudentProfileData['edaid'])) {
+                    $this->applicantModel->updateEdaid(
+                        $updatedStudentProfileData['id'],
+                        $updatedStudentProfileData['edaid']
+                    );
+                }
+                if (isset($updatedStudentProfileData['githubUsername'])) {
+                    $this->applicantModel->updateGithubUsername(
+                        $updatedStudentProfileData['id'],
+                        $updatedStudentProfileData['githubUsername']
+                    );
+                }
+                if (isset($updatedStudentProfileData['laptop'])) {
+                    $this->applicantModel->updateLaptop(
+                        $updatedStudentProfileData['id'],
+                        $updatedStudentProfileData['laptop']
+                    );
+                }
+                if (isset($updatedStudentProfileData['upfront'])) {
+                    $this->applicantModel->updateUpfront(
+                        $updatedStudentProfileData['id'],
+                        $updatedStudentProfileData['upfront']
+                    );
+                }
             } else {
                 $responseBody["success"] = false;
                 $responseBody["msg"] = $responseArray['msg'];
                 $statusCode = $responseArray['status'];
             }
+
             return $this->respondWithJson($response, $responseBody, $statusCode);
         }
         return $response->withStatus(401);
@@ -61,10 +92,10 @@ class UpdateStudentProfileController extends Controller
 
         $feePaymentMethods = $this->applicantModel->getFeePaymentMethods($updatedStudentProfileData["id"]);
 
-        if ($updatedStudentProfileData["upfront"]) {
+        if (isset($updatedStudentProfileData["upfront"])) {
             $feePaymentMethods["upfront"] = $updatedStudentProfileData["upfront"];
         }
-        if ($updatedStudentProfileData["edaid"]) {
+        if (isset($updatedStudentProfileData["edaid"])) {
             $feePaymentMethods["edaid"] = $updatedStudentProfileData["edaid"];
         }
 
@@ -76,22 +107,26 @@ class UpdateStudentProfileController extends Controller
             $responseArray["status"] = 400;
         }
 
-        if (!ApplicantValidator::validateLaptop($updatedStudentProfileData)) {
-            $responseArray["success"] = false;
-            $responseArray["msg"] = "Incorrect input for laptop requirement";
-            $responseArray["status"] = 400;
-        }
-
-        try {
-            if (!ApplicantValidator::validateGithubUsername($updatedStudentProfileData)) {
+        if (isset($updatedStudentProfileData['laptop'])) {
+            if (!ApplicantValidator::validateLaptop($updatedStudentProfileData)) {
                 $responseArray["success"] = false;
-                $responseArray["msg"] = "Incorrect input for GitHub username";
+                $responseArray["msg"] = "Incorrect input for laptop requirement";
                 $responseArray["status"] = 400;
             }
-        } catch (Exception $e) {
-            $responseArray["success"] = false;
-            $responseArray["msg"] = $e->getMessage();
-            $responseArray["status"] = 400;
+        }
+
+        if (isset($updatedStudentProfileData['githubUsername'])) {
+            try {
+                if (!ApplicantValidator::validateGithubUsername($updatedStudentProfileData)) {
+                    $responseArray["success"] = false;
+                    $responseArray["msg"] = "Incorrect input for GitHub username";
+                    $responseArray["status"] = 400;
+                }
+            } catch (Exception $e) {
+                $responseArray["success"] = false;
+                $responseArray["msg"] = $e->getMessage();
+                $responseArray["status"] = 400;
+            }
         }
 
         return $responseArray;

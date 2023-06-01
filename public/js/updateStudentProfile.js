@@ -5,7 +5,8 @@ const saveButton = document.querySelector('#saveButton')
 const confirmButtons = document.querySelectorAll('.confirm')
 let updatedFields = {id: studentId}
 
-function editClicked(event) {
+function editClicked(event)
+{
     const selector = event.target.dataset.selector
     event.target.parentNode.classList.add('hidden')
     const section = event.target.parentNode.parentNode
@@ -14,7 +15,8 @@ function editClicked(event) {
     saveButton.classList.remove('hidden')
 }
 
-function confirmClicked(event) {
+function confirmClicked(event)
+{
     event.preventDefault()
     const selector = event.target.dataset.selector
     event.target.parentNode.parentNode.classList.add('hidden')
@@ -30,7 +32,8 @@ function confirmClicked(event) {
     updatedHTML.innerHTML = data.get(selector)
 }
 
-function saveClicked(event) {
+function saveClicked(event)
+{
     event.preventDefault()
     const jsonUpdatedFields = JSON.stringify(updatedFields)
     fetch('/api/updateStudentProfile', {
@@ -39,9 +42,9 @@ function saveClicked(event) {
         headers: {
             'Content-Type': 'application/json'
         }
-    }).then( async (response) => { // Rayna doesn't like this
+    }).then(async(response) => { // Rayna doesn't like this
         return response.json().then((data) => {
-            if(response.status == 200) {
+            if (response.status == 200) {
                 location.reload()
             } else {
                 const responseMessage = data.msg
