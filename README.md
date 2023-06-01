@@ -53,7 +53,7 @@ After clicking "Generate", you should see the following:
 
 ![password](https://res.cloudinary.com/dgfofxbf1/image/upload/c_scale,w_526/v1685630498/academyportal/password_uo3qck.png)
 
-2. Change the following lines of code in `src/API/SendEmailController.php`: 
+2. Change the following lines of code in `src/Controllers/API/SendEmailController.php`: 
 ``` php
 // Enter gmail address here
 $mail->Username = 'testacademyportal@gmail.com';
