@@ -38,14 +38,6 @@ class UpdateStudentProfileController extends Controller
 
             $responseArray = $this->validateEditableFields($updatedStudentProfileData);
 
-//            if ($responseArray['success']) {
-//                $this->applicantModel->updateEditableFields($updatedStudentProfileData);
-//            } else {
-//                $responseBody["success"] = false;
-//                $responseBody["msg"] = $responseArray['msg'];
-//                $statusCode = $responseArray['status'];
-//            }
-
             if ($responseArray['success']) {
                 if (isset($updatedStudentProfileData['edaid'])) {
                     $this->applicantModel->updateEdaid(

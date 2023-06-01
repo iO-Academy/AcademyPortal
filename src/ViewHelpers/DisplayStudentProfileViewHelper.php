@@ -56,7 +56,9 @@ class DisplayStudentProfileViewHelper
                         <label class="detail" for="edaidTextBox">EdAid amount: </label>
                         <span id="edaidDisplayed">' . $applicant->getEdaid() . '</span>
                         <button data-selector="edaid" class="btn btn-primary btn-sm edaidEditButton editbutton" 
-                        id="edaidEditButton">Edit</button>
+                        id="edaidEditButton">
+                        Edit
+                        </button>
                     </div>
                     <div data-selector="edaid" class="editableedaid studentProfileEditableField hidden">
                         <form class="form studentProfileEditableField">
@@ -68,13 +70,18 @@ class DisplayStudentProfileViewHelper
                             <button data-selector="edaid" class="btn btn-primary btn-sm confirm" type="submit">
                             Confirm
                             </button>
+                            <button data-selector="edaid" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>                            
                         </form>
                     </div>
                     <div class="upfrontContainer studentProfileEditableField">
                         <label class="detail" for="upfrontTextBox">Upfront amount: </label>
                         <span id="upfrontDisplayed">' . $applicant->getUpfront() . '</span>
                         <button data-selector="upfront" class="btn btn-primary btn-sm upfrontEditButton editbutton" 
-                        id="upfrontEditButton">Edit</button>
+                        id="upfrontEditButton">
+                        Edit
+                        </button>
                     </div>
                     <div data-selector="upfront" class="editableupfront studentProfileEditableField hidden">
                         <form class="form studentProfileEditableField">
@@ -86,10 +93,13 @@ class DisplayStudentProfileViewHelper
                             <button data-selector="upfront" class="btn btn-primary btn-sm confirm" type="submit">
                             Confirm
                             </button>
+                            <button data-selector="upfront" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>
                         </form>                 
                     </div>
                     <div class="laptopContainer studentProfileEditableField">
-                        <label class="detail" for="laptopRadioButtons">Laptop(s) required: </label>
+                        <label class="detail" for="laptopRadioButtons">Laptop required: </label>
                         <span id="laptopDisplayed">' .
                         (is_null($applicant->getLaptop())
                         ? null : ($applicant->getLaptop() ? 'Yes' : 'No'))
@@ -99,15 +109,18 @@ class DisplayStudentProfileViewHelper
                     </div>
                     <div data-selector="laptop" class="editablelaptop studentProfileEditableField hidden">
                         <form class="form studentProfileEditableField">
-                            <label>Laptop(s) required: </label>
+                            <label>Laptop required: </label>
                             <span>
-                                <input type="radio" value="0" id="noLaptop" name="laptop">
+                                <input type="radio" value="0" id="noLaptop" name="laptop" checked="checked">
                                 <label for="noLaptop">No</label>
                                 <input type="radio" value="1" id="yesLaptop" name="laptop">
                                 <label for="yesLaptop">Yes</label>
                             </span>
                             <input data-selector="laptop" class="btn btn-primary btn-sm confirm" value="Confirm" 
                             type="submit">
+                            <button data-selector="laptop" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>
                         </form>                 
                     </div>
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
@@ -126,7 +139,9 @@ class DisplayStudentProfileViewHelper
                         <label class="detail" for="githubUsername">GitHub Username: </label> 
                         <span id="githubUsernameDisplayed">' . $applicant->getGithubUsername() . '</span>
                         <button data-selector="githubUsername" class="btn btn-primary btn-sm githubUsernameEditButton 
-                        editbutton" id="githubUsernameEditButton">Edit</button>
+                        editbutton" id="githubUsernameEditButton">
+                        Edit
+                        </button>
                     </div>
                     <div data-selector="githubUsername" class="editablegithubUsername studentProfileEditableField 
                     hidden">
@@ -135,8 +150,12 @@ class DisplayStudentProfileViewHelper
                             <span>
                                 <input type="text" id="githubUsernameTextBox" name="githubUsername">
                             </span>
-                            <button data-selector="githubUsername" class="btn btn-primary btn-sm confirm" 
-                            type="submit">Confirm</button>
+                            <button data-selector="githubUsername" class="btn btn-primary btn-sm confirm" type="submit">
+                            Confirm
+                            </button>
+                            <button data-selector="githubUsername" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>
                         </form>
                     </div>
                     <p class="detail">GitHub Link: <span id="githubLink"></span></p>

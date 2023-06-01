@@ -10,80 +10,154 @@ class DisplayStudentProfileHelperTest extends TestCase
 {
     public function testDisplayStudentProfileHelper()
     {
-        $expected =    '<hr>
-                        <section>
-                        <h4>PersonalInformation</h4>
-                        <pclass="detail">Name:<span>OwenMiller</span></p>
-                        <pclass="detail">Email:<span>weqi@mailinator.net</span></p>
-                        <pclass="detail">PhoneNumber:<span>+532-82-1263991</span></p>
-                    <hr>
-                    <section>
-                        <h4>ApplicationInfo</h4>
-                        <pclass="detail">Stage:<spanid="stageName">Onboarding</span></p>
-                        <pclass="detail"id="stageOptionNameContainer">StageOption:
-                        <spanid="stageOptionName">Onboarding</span></p>
-                        <pclass="detail">Cohort:<spanid="cohortDate">February,2019</span></p>
-                        <pclass="detail">Reasonforwantingtobeadev:</p>
-                        <pid="whyDev">Ametverominimrepudiandaeautrationevoluptasperferendissequieunonquaerat
-                        quasiutestnostrudnihiladcorporisea</p>
-                        <pclass="detail">CodeExperience:</p>
-                        <pid="codeExperience">Ullamcoquiaquaeexcepturipossimusquibusdamelitoccaecatcommodido
-                        lorefacereanimquaerat</p>
-                        <pclass="detail">HeardAboutUs:<spanid="hearAbout">Backofthetoiletdoor</span></p>
-                        <pclass="detail"id="eligible">EligibletostudyintheUK:<span>No</span></p>
-                        <pclass="detail"id="eighteenPlus">Over18years:<span>No</span></p>
-                        <pclass="detail">Finance:<spanid="finance">No</span></p><pclass="detail">Notes:</p>
-                        <pid="notes">Laborumcumquereprehenderitutquisapientenobiscommodoiustoveritatisprovidentvolu
-                        ptatesNambeataequisquamillovoluptatibus</p>
-                        </section>
-                        <hr><section><h4>Assessment</h4>
-                        <pclass="detail">Assessmentday:<spanid="assessmentDay">2020-06-20</span></p>
-                        <pclass="detail">AssessmentTime:<spanid="assessmentTime">13:00</span>
-                        <pclass="detail">AptitudeScore:<spanid="aptitude">73</span></p>
-                        <pclass="detail">Assessmentnotes:</p>
-                        <pid="assessmentNotes">Laborumcumquereprehenderitutquisapientenobiscommodoiustoveritatisprovid
-                        entvoluptatesNambeataequisquamillovoluptatibus</p>
-                        </section>
-                    <hr>
-                    <section>
-                    <h4>OnboardingInfo</h4>
-                    <pclass="detail">Diversitechamount:<spanid="diversitech">1000</span>
-                    <divclass="edaidContainerstudentProfileEditableField">
-                    <pclass="detail"id="edaidDescription">EdAidamount:</p><spanid="edaid">8000</span>
-                    <buttonclass="btnbtn-primaryedaidEditButtonbtn-sm"id="edaidEditButton">Edit</button>
+        $expected = '<hr>
+                <section>
+                    <h4>Personal Information</h4>
+                    <p class="detail">Name: <span>Owen Miller</span></p>
+                    <p class="detail">Email: <span>weqi@mailinator.net</span></p>
+                    <p class="detail">Phone Number: <span>+532-82-1263991</span></p>
+                </section>
+                <hr>
+                <section>
+                    <h4>Application Info</h4>
+                    <p class="detail">Stage: <span id="stageName">Onboarding</span></p>
+                    <p class="detail" id="stageOptionNameContainer">Stage Option: 
+                    <span id="stageOptionName">Onboarding</span></p>
+                    <p class="detail">Cohort: <span id="cohortDate">February, 2019</span></p>
+                    <p class="detail">Reason for wanting to be a dev:</p>
+                    <p id="whyDev">Amet vero minim repudiandae aut ratione voluptas perferendis sequi eu non quaerat 
+                    quasi ut est nostrud nihil ad corporis ea</p>
+                    <p class="detail">Code Experience:</p>
+                    <p id="codeExperience">Ullamco quia quae excepturi possimus quibusdam elit occaecat commodi dolore 
+                    facere anim quaerat</p>
+                    <p class="detail">Heard About Us: <span id="hearAbout">Back of the toilet door</span></p>
+                    <p class="detail" id="eligible">Eligible to study in the UK:<span>No</span></p>
+                    <p class="detail" id="eighteenPlus">Over 18 years:<span>No</span></p>
+                    <p class="detail">Finance: <span id="finance">No</span></p>
+                    <p class="detail">Notes: </p>
+                    <p id="notes">Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis provident 
+                    voluptates Nam beatae quis quam illo voluptatibus</p>
+                </section>
+                <hr>
+                <section>
+                    <h4>Assessment</h4>
+                    <p class="detail">Assessment day: <span id="assessmentDay">2020-06-20</span></p>
+                    <p class="detail">Assessment Time: <span id="assessmentTime">13:00</span>
+                    <p class="detail">Aptitude Score: <span id="aptitude">73</span></p>
+                    <p class="detail">Assessment notes:</p>
+                    <p id="assessmentNotes">Laborum cumque reprehenderit ut qui sapiente nobis commodo iusto veritatis 
+                    provident voluptates Nam beatae quis quam illo voluptatibus</p>
+                </section>
+                <hr>
+                <section>
+                    <h4>Onboarding Info</h4>
+                    <p class="detail">Diversitech amount: <span id="diversitech">1000</span>
+                    <div class="edaidContainer studentProfileEditableField">
+                        <label class="detail" for="edaidTextBox">EdAid amount: </label>
+                        <span id="edaidDisplayed">8000</span>
+                        <button data-selector="edaid" class="btn btn-primary btn-sm edaidEditButton editbutton" 
+                        id="edaidEditButton">Edit</button>
                     </div>
-                    <divclass="upfrontContainerstudentProfileEditableField">
-                    <pclass="detail"id="upfrontDescription">Upfrontamount:</p><spanid="upfront">1000</span>
-                    <buttonclass="btnbtn-primarybtn-sm"id="upfrontEditButton">Edit</button>
+                    <div data-selector="edaid" class="editableedaid studentProfileEditableField hidden">
+                        <form class="form studentProfileEditableField">
+                            <label for="edaidTextBox">EdAid amount:</label>
+                            <span>
+                                <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" 
+                                id="edaidTextBox" name="edaid">
+                            </span>
+                            <button data-selector="edaid" class="btn btn-primary btn-sm confirm" type="submit">
+                            Confirm
+                            </button>
+                            <button data-selector="edaid" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button> 
+                        </form>
                     </div>
-                    <divclass="laptopContainerstudentProfileEditableField">
-                    <pclass="detail"id="laptopDescription">Laptoprequired:</p><spanid="laptop">Yes</span><
-                    buttonclass="btnbtn-primarybtn-sm"id="laptopEditButton">Edit</button>
+                    <div class="upfrontContainer studentProfileEditableField">
+                        <label class="detail" for="upfrontTextBox">Upfront amount: </label>
+                        <span id="upfrontDisplayed">1000</span>
+                        <button data-selector="upfront" class="btn btn-primary btn-sm upfrontEditButton editbutton" 
+                        id="upfrontEditButton">Edit</button>
                     </div>
-                    <pclass="detail">Laptopdepositpaid:<spanid="laptopDeposit"span>0</p>
-                    <pclass="detail">Laptopnumber:<spanid="laptopNum">3</span></p>
-                    <pclass="detail">Kitcollectiondate:<spanid="kitCollectionDay"span>2020-08-05</p>
-                    <pclass="detail">Kitcollectiontime:<spanid="kitCollectionTime"span>10:30</p>
-                    <pclass="detail">Kitnumber:<spanid="kitNum">3</span></p>
-                    </section>
-                    <hr>
-                    <section>
-                    <h4>Studentprofile</h4>
-                    <divclass="githubUsernameContainerstudentProfileEditableField">
-                    <pclass="detail"id="githubUsernameDescription">GitHubUsername:</p>
-                    <spanid="githubUsername">MrSnuggles</span>
-                    <buttonclass="btnbtn-primarybtn-sm"id="githubUsernameEditButton">Edit</button>
+                    <div data-selector="upfront" class="editableupfront studentProfileEditableField hidden">
+                        <form class="form studentProfileEditableField">
+                            <label for="upfrontTextBox">Upfront amount:</label>
+                                <span>
+                                    <input type="text" oninput="this.value = this.value.replace(/[^0-9]/g, \'\')" 
+                                    id="upfrontTextBox" name="upfront">
+                                </span>
+                            <button data-selector="upfront" class="btn btn-primary btn-sm confirm" type="submit">
+                            Confirm
+                            </button>
+                            <button data-selector="upfront" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>
+                        </form>                 
                     </div>
-                    <pclass="detail">GitHubLink:<spanid="githubLink"></span></p>
-                    <pclass="detail">Portfolio:<spanid="portfolio"></span></p>
-                    <pclass="detail">PleskHostingURL:<spanid="pleskHostUrl"></span></p>
-                    <pclass="detail">PleskUsername:<spanid="pleskUsername"></span></p>
-                    <pclass="detail">PleskPassword:<spanid="pleskPassword"></span></p>
-                    <pclass="detail">GitHubEducationLink:<spanid="githubEduLink"></span></p>
-                    <pclass="detail">Notes:<spanid="notes"></span></p>
-                    <pclass="detail">CourseDateConfirmed:<spanid="courseDate"></span></p>
-                    </section>
-                    </section>';
+                    <div class="laptopContainer studentProfileEditableField">
+                        <label class="detail" for="laptopRadioButtons">Laptop required: </label>
+                        <span id="laptopDisplayed">Yes</span>
+                        <input data-selector="laptop" class="btn btn-primary btn-sm laptopEditButton 
+                        editbutton" id="laptopEditButton" value="Edit">
+                    </div>
+                    <div data-selector="laptop" class="editablelaptop studentProfileEditableField hidden">
+                        <form class="form studentProfileEditableField">
+                            <label>Laptop required: </label>
+                            <span>
+                                <input type="radio" value="0" id="noLaptop" name="laptop" checked="checked">
+                                <label for="noLaptop">No</label>
+                                <input type="radio" value="1" id="yesLaptop" name="laptop">
+                                <label for="yesLaptop">Yes</label>
+                            </span>
+                            <input data-selector="laptop" class="btn btn-primary btn-sm confirm" value="Confirm" 
+                            type="submit">
+                            <button data-selector="laptop" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>
+                        </form>                 
+                    </div>
+                    <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>0</p>
+                    <p class="detail">Laptop number: <span id="laptopNum">3</span></p>
+                    <p class="detail">Kit collection date: <span id="kitCollectionDay"span>2020-08-05</p>
+                    <p class="detail">Kit collection time: <span id="kitCollectionTime"span>10:30</p>
+                    <p class="detail">Kit number: <span id="kitNum">3</span></p>
+                </section>
+                <hr>
+                <section>
+                    <h4>Student profile</h4>
+                    <div class="githubUsernameContainer studentProfileEditableField">
+                        <label class="detail" for="githubUsername">GitHub Username: </label> 
+                        <span id="githubUsernameDisplayed">MrSnuggles</span>
+                        <button data-selector="githubUsername" class="btn btn-primary btn-sm githubUsernameEditButton 
+                        editbutton" id="githubUsernameEditButton">Edit</button>
+                    </div>
+                    <div data-selector="githubUsername" class="editablegithubUsername studentProfileEditableField 
+                    hidden">
+                        <form class="form studentProfileEditableField">
+                            <label for="githubUsernameTextBox">GitHub Username:</label>
+                            <span>
+                                <input type="text" id="githubUsernameTextBox" name="githubUsername">
+                            </span>
+                            <button data-selector="githubUsername" class="btn btn-primary btn-sm confirm" 
+                            type="submit">Confirm</button>
+                            <button data-selector="githubUsername" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>
+                        </form>
+                    </div>
+                    <p class="detail">GitHub Link: <span id="githubLink"></span></p>
+                    <p class="detail">Portfolio: <span id="portfolio"></span></p>
+                    <p class="detail">Plesk Hosting URL: <span id="pleskHostUrl"></span></p>
+                    <p class="detail">Plesk Username: <span id="pleskUsername"></span></p>
+                    <p class="detail">Plesk Password: <span id="pleskPassword"></span></p>
+                    <p class="detail">GitHub Education Link: <span id="githubEduLink"></span></p>
+                    <p class="detail">Notes: <span id="notes"></span></p>
+                    <p class="detail">Course Date Confirmed: <span id="courseDate"></span></p>
+                </section>
+                <div class="navbar navbar-fixed-bottom col-sm-offset-9 hidden" id="saveButton">
+                <input class="saveButton btn btn-primary btn-sm" type="submit" value="Save">
+                </div>';
+
         $expected = preg_replace('/\s+/', '', $expected); // removes whitespace
 
         $applicantEntityMock = $this->createMock(CompleteApplicantEntity::class);
@@ -106,8 +180,8 @@ class DisplayStudentProfileHelperTest extends TestCase
         $applicantEntityMock->method('getAssessmentDay')->willReturn('2020-06-20');
         $applicantEntityMock->method('getAssessmentTime')->willReturn('13:00');
         $applicantEntityMock->method('getAptitude')->willReturn(73);
-        $applicantEntityMock->method('getAssessmentNotes')->willReturn('Laborum cumque reprehenderit ut qui 
-        sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus');
+        $applicantEntityMock->method('getAssessmentNotes')->willReturn('Laborum cumque reprehenderit ut 
+        qui sapiente nobis commodo iusto veritatis provident voluptates Nam beatae quis quam illo voluptatibus');
         $applicantEntityMock->method('getDiversitech')->willReturn(1000);
         $applicantEntityMock->method('getEdAid')->willReturn(8000);
         $applicantEntityMock->method('getUpfront')->willReturn(1000);

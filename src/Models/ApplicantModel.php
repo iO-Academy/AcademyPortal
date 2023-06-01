@@ -584,31 +584,6 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->execute(["id" => $id, "upfront" => $upfront]);
     }
 
-    public function updateEditableFields(array $updatedStudentProfile): array
-    {$sql = 'UPDATE `applicants_additional`
-    SET `edaid` = :edaid, `githubUsername` = :githubUsername, `upfront` = :upfront, `laptop` = :laptop 
-    WHERE `id` = :id ;';
-
-        $query = $this->db->prepare($sql);
-
-        $bindings = [];
-        $bindings['edaid'] = isset($updatedStudentProfile['edaid'])
-            ? (int)$updatedStudentProfile['edaid']
-            : '';
-        isset($updatedStudentProfile['githubUsername'])
-            ? $bindings['githubUsername'] = $updatedStudentProfile['githubUsername']
-            : '';
-        isset($updatedStudentProfile['upfront'])
-            ? $bindings['upfront'] = (int)$updatedStudentProfile['upfront']
-            : '';
-        isset($updatedStudentProfile['laptop'])
-            ? $bindings['laptop'] = (int)$updatedStudentProfile['laptop']
-            : '';
-        $bindings['id'] = (int)$updatedStudentProfile['id'];
-        $query->execute($bindings);
-        return ['statuscode' => 400, 'message' => 'a string with a message in'];
-    }
-
     public function getFeePaymentMethods(int $id): array
     {
         $query = $this->db->prepare(
