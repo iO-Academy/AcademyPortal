@@ -1,0 +1,29 @@
+.studentProfileEditableField {
+    display: grid;  
+    column-gap: 10px;
+    justify-content: start;
+    align-items: end;
+    grid-template-columns: 150px 200px 100px 100px;
+    grid-template-rows: 30px;
+
+    input {
+        margin: 0;
+    }
+    label {
+        margin: 0;
+    }
+    div {
+        label {
+            padding-right: 5px;
+        }
+    }
+
+    span {
+        button {
+            width: 100%;
+        }
+        input.confirm {
+            width: 100%;
+        }
+    }
+  }

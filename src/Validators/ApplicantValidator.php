@@ -66,15 +66,7 @@ class ApplicantValidator
         DateTimeValidator::validateTime($applicant['assessmentTime']);
         DateTimeValidator::validateDateTime($applicant['dateTimeAdded']);
 
-        $feePaymentMethods = (int)$applicant['upfront'] + (int)$applicant['edaid'] + (int)$applicant['diversitech'];
-
-        if (
-            ((int)$applicant['fee'] > 0
-            && $feePaymentMethods > (int)$applicant['fee'])
-            || ($feePaymentMethods > Globals::ACADEMYPRICE)
-        ) {
-            throw new \Exception('Total payment is more than course price');
-        }
+        ApplicantValidator::validateFeePaymentMethods($applicant);
 
         DateTimeValidator::validateDate($applicant['kitCollectionDay']);
         DateTimeValidator::validateTime($applicant['kitCollectionTime']);
@@ -100,11 +92,7 @@ class ApplicantValidator
                 $applicant['diversitechInterest'] == 0 ||
                 empty($applicant['diversitechInterest'])
             ) &&
-            (
-                $applicant['laptop'] == 1 ||
-                $applicant['laptop'] == 0 ||
-                empty($applicant['laptop'])
-            ) &&
+            ApplicantValidator::validateLaptop($applicant) &&
             (
                 empty($applicant['team']) ||
                 StringValidator::validateLength($applicant['team'], StringValidator::MAXVARCHARLENGTH, 'team')
@@ -118,14 +106,7 @@ class ApplicantValidator
                 is_numeric($applicant['stageOptionId'])
             ) &&
             is_numeric($applicant['stageId']) &&
-            (
-                empty($applicant['githubUsername']) ||
-                StringValidator::validateLength(
-                    $applicant['githubUsername'],
-                    StringValidator::MAXVARCHARLENGTH,
-                    'githubUsername'
-                )
-            ) &&
+            ApplicantValidator::validateGithubUsername($applicant) &&
             (
                 empty($applicant['portfolioUrl']) ||
                 filter_var($applicant['portfolioUrl'], FILTER_VALIDATE_URL)
@@ -213,6 +194,51 @@ class ApplicantValidator
                 $applicant['dataProtectionVideo'] == 1 ||
                 $applicant['dataProtectionVideo'] == 0 ||
                 empty($applicant['dataProtectionVideo'])
+            )
+        );
+    }
+
+    public static function validateFeePaymentMethods(array $applicant): void
+    {
+        $fieldsToValidate = ['upfront','edaid','diversitech','fee'];
+        foreach ($fieldsToValidate as $field) {
+            if (!is_null($applicant[$field]) && !is_numeric($applicant[$field])) {
+                throw new \Exception('Applicant field \'' . $field . '\' needs to be a number');
+            }
+            if ($field < 0) {
+                throw new \Exception('Applicant field \'' . $field . ' can\'t be a negative number');
+            }
+        }
+
+        $feePaymentMethods = (int)$applicant['upfront'] + (int)$applicant['edaid'] + (int)$applicant['diversitech'];
+
+        if (
+            ((int)$applicant['fee'] > 0
+            && $feePaymentMethods > (int)$applicant['fee'])
+            || ($feePaymentMethods > Globals::ACADEMYPRICE)
+        ) {
+            throw new \Exception('Total payment is more than course price');
+        }
+    }
+
+    public static function validateLaptop(array $applicant): bool
+    {
+        return (
+            $applicant['laptop'] == 1 ||
+            $applicant['laptop'] == 0 ||
+            empty($applicant['laptop'])
+        );
+    }
+
+    public static function validateGithubUsername(array $applicant): bool
+    {
+        return (
+            empty($applicant['githubUsername'])
+            || (
+                is_string($applicant['githubUsername'])
+                && preg_match('/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i', $applicant['githubUsername'])
+                // This is a regex that only allows the valid characters you can have in a github username
+                // Letters, numbers and hyphens but can't start with hyphen, and there is a max length
             )
         );
     }
