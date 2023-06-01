@@ -24,6 +24,11 @@ return function (ContainerBuilder $containerBuilder) {
                 'userName' => 'root',
                 'password' => 'password'
             ],
+            'adminEmail' => [
+                'hostUsername' => 'testacademyportal@gmail.com',
+                'hostPassword' => 'mnhftppxpklunjug',
+                'adminEmail' => 'testacademyportal@gmail.com'
+            ],
         ],
     ]);
 };

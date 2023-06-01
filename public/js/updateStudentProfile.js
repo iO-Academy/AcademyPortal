@@ -7,6 +7,7 @@ const cancelButtons = document.querySelectorAll('.cancel')
 let updatedFields = {id: studentId}
 const numberInputFields = document.querySelectorAll('.numberInputField')
 
+
 function editClicked(event)
 {
     const selector = event.target.dataset.selector
@@ -41,6 +42,24 @@ function confirmClicked(event)
     saveButton.classList.remove('hidden')
 }
 
+
+function sendEmail()
+{
+    fetch('/api/sendEmail?id=' + studentId, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    })
+        .then(response => response.text())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+}
+
 function cancelClicked(event)
 {
     event.preventDefault()
@@ -63,6 +82,7 @@ function saveClicked(event)
         return response.json().then((data) => {
             if (response.status == 200) {
                 location.reload()
+                sendEmail()
             } else {
                 const responseMessage = data.msg
                 alert(responseMessage)
