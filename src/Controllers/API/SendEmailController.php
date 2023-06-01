@@ -38,7 +38,7 @@ class SendEmailController extends Controller
             $mail->Subject = 'Here is the subject';
             $mail->Body = '<p>The following applicant has edited their student profile: ' .
                 $name . '</p>' .
-                '<p>Link to the changed application: http://0.0.0.0:8080/public/' .
+                '<p>Link to the changed application: http://localhost:8080/editApplicant?id=' .
                 $id . '</p>';
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();
