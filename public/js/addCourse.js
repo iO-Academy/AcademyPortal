@@ -1,5 +1,13 @@
 const courseForm = document.querySelector('form');
 const message = document.querySelector('#messages');
+const in_person_checkbox = document.querySelector('#in_person');
+const remote_checkbox = document.querySelector('#remote');
+const in_person_spaces = document.querySelector('#in_person_spaces');
+const remote_spaces = document.querySelector('#remote_spaces');
+
+in_person_checkbox.addEventListener('change', () => in_person_spaces.classList.toggle('hidden'));
+remote_checkbox.addEventListener('change', () => remote_spaces.classList.toggle('hidden'));
+
 
 // Submit Form + Add New Event API Call
 courseForm.addEventListener('submit', e => {
@@ -11,8 +19,8 @@ courseForm.addEventListener('submit', e => {
 
     let data = getCompletedFormData();
     let validatedFormItems = validateCourseInputs(data);
-    let formIsValid = true;
 
+    let formIsValid = true;
     Object.keys(validatedFormItems).forEach(formItemKey => {
         const errorDiv = document.querySelector(`#${formItemKey}Error`);
         let formItemValues = validatedFormItems[formItemKey];
@@ -52,6 +60,8 @@ courseForm.addEventListener('submit', e => {
                     courseForm.elements['notes'].value = '',
                     courseForm.elements['in_person'].checked = false,
                     courseForm.elements['remote'].checked = false,
+                    courseForm.elements['in_person_spaces'].value = '',
+                    courseForm.elements['remote_spaces'].value = '',
                     message.innerText = responseJson.message,
                     selectedTrainerId = [],
                     courseForm.elements['trainer-checkbox'].forEach(trainer => {
@@ -70,14 +80,14 @@ courseForm.addEventListener('submit', e => {
 let selectedTrainerId = []
 /**
  * Retrieves trainer checkbox data from add course form
- * 
+ *
  * @returns array
  */
 let getSelectedTrainers = () => {
     courseForm.elements['trainer-checkbox'].forEach(trainer => {
         if(trainer.checked){
-            selectedTrainerId.push(trainer.dataset.id)  
-        }  
+            selectedTrainerId.push(trainer.dataset.id)
+        }
     })
     return selectedTrainerId
 }
@@ -94,6 +104,8 @@ let getCompletedFormData = () => {
         notes: courseForm.elements['notes'].value,
         in_person: courseForm.elements['in_person'].checked ? 1 : 0,
         remote: courseForm.elements['remote'].checked ? 1 : 0,
+        in_person_spaces: courseForm.elements['in_person'].checked ? courseForm.elements['in_person_spaces'].value : null,
+        remote_spaces: courseForm.elements['remote'].checked ? courseForm.elements['remote_spaces'].value : null
     }
     return data;
 }
@@ -118,8 +130,18 @@ let validateCourseInputs = (data) => {
         },
         notes: {
             validLengthText: textAreaMaxLength(data.notes)
-        }
+        },
     };
+    if (data.in_person) {
+        validate.in_person_spaces = {
+            validInputSpacesAmount: validInputSpacesAmount(data.in_person_spaces)
+        }
+    }
+    if (data.remote) {
+        validate.remote_spaces = {
+            validInputSpacesAmount: validInputSpacesAmount(data.remote_spaces)
+        }
+    }
     return validate;
 };
 
@@ -144,6 +166,9 @@ let errorMessage = (validationType) => {
             break;
         case 'validateEndDateSameAsStart':
             htmlString = 'Course must not end at the same date it begins.';
+            break;
+        case 'validInputSpacesAmount':
+            htmlString = 'Please input a valid number.';
             break;
         default:
             htmlString = `This field is invalid.`;

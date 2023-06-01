@@ -56,3 +56,8 @@ function requiredCheckboxes(checkboxes) {
     })
     return checkedArray.includes(true)
 }
+
+function validInputSpacesAmount(number) {
+    let regEx = /^[1-9]\d*$/;
+    return regEx.test(number);
+}
