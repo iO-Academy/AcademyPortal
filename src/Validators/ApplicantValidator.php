@@ -233,15 +233,10 @@ class ApplicantValidator
     public static function validateGithubUsername(array $applicant): bool
     {
         return (
-            empty($applicant['githubUsername']) ||
-            (
-                is_string($applicant['githubUsername']) &&
-                StringValidator::validateLength(
-                    $applicant['githubUsername'],
-                    StringValidator::MAXVARCHARLENGTH,
-                    'githubUsername'
-                ) &&
-                preg_match('/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i', $applicant['githubUsername'])
+            empty($applicant['githubUsername'])
+            || (
+                is_string($applicant['githubUsername'])
+                && preg_match('/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i', $applicant['githubUsername'])
                 // This is a regex that only allows the valid characters you can have in a github username
                 // Letters, numbers and hyphens but can't start with hyphen, and there is a max length
             )

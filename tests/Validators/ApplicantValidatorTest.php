@@ -138,11 +138,7 @@ class ApplicantValidatorTest extends TestCase
 
     public function testValidateGithubUsernameFailureTooLong()
     {
-        $this->expectExceptionMessage(
-            'You have either not inputted any information for githubUsername or ' . '
-            it exceeds our character limits'
-        );
-        ApplicantValidator::validateGithubUsername(
+        $result = ApplicantValidator::validateGithubUsername(
             ['githubUsername' =>
              'qwuiofuwkdyjsdkuysdgfusydgfusdygfsdfyugsdufyg' .
              'qiwugfuwehdbsudfybiqwdbzjvbhcdvguefghoi4987y8327' .
@@ -156,6 +152,7 @@ class ApplicantValidatorTest extends TestCase
              'qwet8uygf86tv98u98fqy76qdf72g3utc12rt3c1uyig487fsdt' .
              'vuycugvqvixcubvjhndkuiuhoiqjoiuqwebqjhwebj']
         );
+        $this->assertFalse($result);
     }
 
     public function testValidateGithubUsernameFailureWrongFieldType()

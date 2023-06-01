@@ -23,8 +23,9 @@ class UpdateStudentProfileController extends Controller
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $updatedStudentProfileData = $request->getParsedBody();
+
         $isStudentLoggedIn = !empty($_SESSION['studentLogin']) && $_SESSION['studentLogin']
-            && $_SESSION['studentId'] == $updatedStudentProfileData['id'];
+                             && $_SESSION['studentId'] == $updatedStudentProfileData['id'];
         $isAdminLoggedIn = !empty($_SESSION['loggedIn']) && $_SESSION['loggedIn'];
 
         if ($isStudentLoggedIn || $isAdminLoggedIn) {
@@ -79,6 +80,7 @@ class UpdateStudentProfileController extends Controller
             'status' => 200
         ];
 
+        // The following 8 lines set up the fields validateFeePaymentMethods needs
         $feePaymentMethods = $this->applicantModel->getFeePaymentMethods($updatedStudentProfileData["id"]);
 
         if (isset($updatedStudentProfileData["upfront"])) {
@@ -96,26 +98,22 @@ class UpdateStudentProfileController extends Controller
             $validationResult["status"] = 400;
         }
 
-        if (isset($updatedStudentProfileData['laptop'])) {
-            if (!ApplicantValidator::validateLaptop($updatedStudentProfileData)) {
+        if (
+            isset($updatedStudentProfileData['laptop'])
+            && !ApplicantValidator::validateLaptop($updatedStudentProfileData)
+        ) {
                 $validationResult["success"] = false;
                 $validationResult["msg"] = "Incorrect input for laptop requirement";
                 $validationResult["status"] = 400;
-            }
         }
 
-        if (isset($updatedStudentProfileData['githubUsername'])) {
-            try {
-                if (!ApplicantValidator::validateGithubUsername($updatedStudentProfileData)) {
+        if (
+            isset($updatedStudentProfileData['githubUsername'])
+            && !ApplicantValidator::validateGithubUsername($updatedStudentProfileData)
+        ) {
                     $validationResult["success"] = false;
                     $validationResult["msg"] = "Incorrect input for GitHub username";
                     $validationResult["status"] = 400;
-                }
-            } catch (Exception $e) {
-                $validationResult["success"] = false;
-                $validationResult["msg"] = $e->getMessage();
-                $validationResult["status"] = 400;
-            }
         }
 
         return $validationResult;
