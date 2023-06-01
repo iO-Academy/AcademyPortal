@@ -70,6 +70,9 @@ class DisplayStudentProfileViewHelper
                             <button data-selector="edaid" class="btn btn-primary btn-sm confirm" type="submit">
                             Confirm
                             </button>
+                            <button data-selector="edaid" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>                            
                         </form>
                     </div>
                     <div class="upfrontContainer studentProfileEditableField">
@@ -90,10 +93,13 @@ class DisplayStudentProfileViewHelper
                             <button data-selector="upfront" class="btn btn-primary btn-sm confirm" type="submit">
                             Confirm
                             </button>
+                            <button data-selector="upfront" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>
                         </form>                 
                     </div>
                     <div class="laptopContainer studentProfileEditableField">
-                        <label class="detail" for="laptopRadioButtons">Laptop(s) required: </label>
+                        <label class="detail" for="laptopRadioButtons">Laptop required: </label>
                         <span id="laptopDisplayed">' .
                         (is_null($applicant->getLaptop())
                         ? null : ($applicant->getLaptop() ? 'Yes' : 'No'))
@@ -103,7 +109,7 @@ class DisplayStudentProfileViewHelper
                     </div>
                     <div data-selector="laptop" class="editablelaptop studentProfileEditableField hidden">
                         <form class="form studentProfileEditableField">
-                            <label>Laptop(s) required: </label>
+                            <label>Laptop required: </label>
                             <span>
                                 <input type="radio" value="0" id="noLaptop" name="laptop">
                                 <label for="noLaptop">No</label>
@@ -112,6 +118,9 @@ class DisplayStudentProfileViewHelper
                             </span>
                             <input data-selector="laptop" class="btn btn-primary btn-sm confirm" value="Confirm" 
                             type="submit">
+                            <button data-selector="laptop" class="btn btn-primary btn-sm cancel">
+                            Cancel
+                            </button>
                         </form>                 
                     </div>
                     <p class="detail">Laptop deposit paid: <span id="laptopDeposit"span>'
@@ -143,6 +152,9 @@ class DisplayStudentProfileViewHelper
                             </span>
                             <button data-selector="githubUsername" class="btn btn-primary btn-sm confirm" type="submit">
                             Confirm
+                            </button>
+                            <button data-selector="githubUsername" class="btn btn-primary btn-sm cancel">
+                            Cancel
                             </button>
                         </form>
                     </div>
