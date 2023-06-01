@@ -39,6 +39,35 @@ Live Version at: https://portal.dev.io-academy.uk/
       deployed now (config, not credentials))
     - src/settings (deployed version contains different credentials, shouldn't need to be updated)
 
+### Set Up Email Server
+
+This allows you to automatically send email notifications from a gmail account to admin(s) whenever applicants amend their profiles.
+
+**Before proceeding, ensure that you have enabled 2-step verification for your gmail account.**
+
+1. __[Generate an app password in gmail](https://myaccount.google.com/apppasswords)__ 
+    - Under "Select app", choose `Mail` 
+    - Under "Select device", choose `Mac`
+
+After clicking "Generate", you should see the following:
+
+![password](https://res.cloudinary.com/dgfofxbf1/image/upload/c_scale,w_526/v1685630498/academyportal/password_uo3qck.png)
+
+2. Change the following lines of code in `src/API/SendEmailController.php`: 
+``` php
+// Enter gmail address here
+$mail->Username = 'testacademyportal@gmail.com';
+
+// Enter app password here
+$mail->Password = 'placeholder';
+
+// Enter email address of recipients here 
+$mail->addAddress('admin1@gmail.com', 'Admin1');
+$mail->addAddress('admin2@yahoo.com', 'Admin2');
+$mail->addAddress('admin3@gmail.com', 'Admin3');
+// etc.
+```
+
 ### Routes
 
 - for local development use localhost:8080/api/whatYouRequire as your URL
