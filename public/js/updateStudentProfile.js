@@ -47,8 +47,6 @@ function cancelClicked(event) {
     const section = event.target.parentNode.parentNode.parentNode
     const container = section.querySelector('.' + selector + 'Container')
     container.classList.remove('hidden')
-
-    console.log(Object.keys(updatedFields).length)
     if (Object.keys(updatedFields).length === 1) {
         saveButton.classList.add('hidden')
     }
