@@ -202,7 +202,7 @@ class ApplicantValidator
     {
         foreach (['upfront','edaid','diversitech','fee'] as $key) {
             if (!is_null($applicant[$key]) && !is_numeric($applicant[$key])) {
-                throw new \Exception('Applicant field \'' . $key . '\' is not a numeric type');
+                throw new \Exception('Applicant field \'' . $key . '\' needs to be a number');
             }
         }
 
@@ -230,11 +230,16 @@ class ApplicantValidator
     {
         return (
             empty($applicant['githubUsername']) ||
-            is_string($applicant['githubUsername']) &&
-            StringValidator::validateLength(
-                $applicant['githubUsername'],
-                StringValidator::MAXVARCHARLENGTH,
-                'githubUsername'
+            (
+                is_string($applicant['githubUsername']) &&
+                StringValidator::validateLength(
+                    $applicant['githubUsername'],
+                    StringValidator::MAXVARCHARLENGTH,
+                    'githubUsername'
+                ) &&
+                preg_match('/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i', $applicant['githubUsername'])
+                // This is a regex that only allows the valid characters you can have in a github username
+                // Letters, numbers and hyphens but can't start with hyphen, and there is a max length
             )
         );
     }

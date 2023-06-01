@@ -104,26 +104,6 @@ class ApplicantSanitiser
     }
 
     /**
-     * Sanitise edaid for editing student profile
-     *
-     * @return ?int sanitised $savedProfileFieldEdAid
-     */
-    public static function sanitiseEdAid($savedProfileFieldEdAid): ?int
-    {
-        return $savedProfileFieldEdAid ? (int)$savedProfileFieldEdAid : null;
-    }
-
-    /**
-     * Sanitise upfront for editing student profile
-     *
-     * @return ?int sanitised $savedProfileFieldUpFront
-     */
-    public static function sanitiseUpFront($savedProfileFieldUpFront): ?int
-    {
-        return $savedProfileFieldUpFront ? (int)$savedProfileFieldUpFront : null;
-    }
-
-    /**
      * Sanitise laptop for editing student profile
      *
      * @return ?int sanitised $savedProfileFieldLaptop
