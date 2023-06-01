@@ -21,10 +21,18 @@ class SendEmailController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args)
     {
-        $baseApplicant = new BaseApplicantEntity();
-        $applicantName = $baseApplicant->getName();
-        $applicantId = $baseApplicant->getId();
+//        $baseApplicant = new BaseApplicantEntity();
+//        $applicantName = $baseApplicant->getName();
+//        $applicantId = $baseApplicant->getId();
 
+        $id = $request->getQueryParams()['id'];
+
+        $applicant = $this ->applicantModel->getNameById($id);
+        $name = $applicant['name'];
+//echo '<pre>';
+//print_r($name);
+//    echo'</pre>';
+//    exit;
         $mail = new PHPMailer(true);
         try {
             // Server settings
@@ -42,10 +50,10 @@ class SendEmailController extends Controller
             // Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'Here is the subject';
-            $mail->Body = 'The following applicant has edited their student profile:' .
-                $applicantName .
-                'Link to the changed application: http://0.0.0.0:8080/public/' .
-                $applicantId;
+            $mail->Body = '<p>The following applicant has edited their student profile: ' .
+                $name . '</p>' .
+                '<p>Link to the changed application: http://0.0.0.0:8080/public/' .
+                $id . '</p>';
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             $mail->send();
 

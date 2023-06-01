@@ -592,16 +592,22 @@ class ApplicantModel implements ApplicantModelInterface
         return  $feePaymentMethod;
     }
 
-    public function getNameById(int $applicantId): array
+    public function getNameById(int $id): array
     {
-        $statement = $this->db->prepare('SELECT name, id FROM applicants WHERE id=:id');
-        $statement->bindValue(':id', $applicantId); // Replace $applicantId with the actual ID you want to retrieve
-        $statement->execute();
-
-        // Fetch the result as an associative array
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
+//        $query = $this->db->prepare('SELECT name, id FROM applicants WHERE `id`=:id');
+//        $statement->bindValue(':id', $applicantId); // Replace $applicantId with the actual ID you want to retrieve
+//        $statement->execute();
+//
+//        // Fetch the result as an associative array
+//        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $sql = 'SELECT `name`, `id` FROM `applicants` WHERE `id`=:id;';
+        $values = ['id' => $id];
+        $query = $this->db->prepare($sql);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $query->execute($values);
+        return $query->fetch();
 
         // Return the result
-        return $result;
+       // return $result;
     }
 }

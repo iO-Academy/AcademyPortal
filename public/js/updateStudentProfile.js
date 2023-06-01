@@ -46,7 +46,7 @@ function handleEditClick(event)
 
     function sendEmail()
     {
-        fetch('/api/sendEmail', {
+        fetch('/api/sendEmail?id=' + studentId, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
