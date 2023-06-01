@@ -33,8 +33,6 @@ function confirmClicked(event) {
         updatedHTML.innerHTML = 'Yes'
     } else if (selector === 'laptop' && data.get(selector) === "0") {
         updatedHTML.innerHTML = 'No'
-    } else if (selector === 'laptop' && data.get(selector) === null) {
-        updatedHTML.innerHTML = 'Please select yes or no.'
     } else {
         updatedHTML.innerHTML = data.get(selector)
     }
