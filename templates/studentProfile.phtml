@@ -9,8 +9,10 @@
     <script defer src="/js/applicantModal.js"></script>
     <script defer src="/js/deleteApplicant.js"></script>
     <script defer src="/js/displayApplicants.js"></script>
+    <script defer src="/js/updateStudentProfile.js"></script>
 </head>
 <body>
+<div hidden data-student-id=<?=intval($id);?> id="studentId"></div>
 <div class="container">
     <div class="col-xs-12 registeredApplicants">
         <h1>Profile</h1>

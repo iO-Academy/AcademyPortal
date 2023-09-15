@@ -16,9 +16,6 @@ class AdminPageController extends Controller
         $this->renderer = $renderer;
     }
 
-    /**
-     * Checks if the user is admin or not and if true let them into admin page, if false redirect them back.
-     */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {

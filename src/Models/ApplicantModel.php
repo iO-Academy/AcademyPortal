@@ -558,4 +558,50 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare($sql);
         return $query->execute($values);
     }
+
+    public function updateEdaid(int $id, int $edaid): bool
+    {
+        $query = $this->db->prepare('UPDATE `applicants_additional` SET edaid=:edaid WHERE id=:id');
+        return $query->execute(["id" => $id, "edaid" => $edaid]);
+    }
+
+    public function updateGithubUsername(int $id, string $githubUsername): bool
+    {
+        $query = $this->db->prepare('UPDATE `applicants_additional` SET githubUsername=:githubUsername
+     WHERE id=:id');
+        return $query->execute(["id" => $id, "githubUsername" => $githubUsername]);
+    }
+
+    public function updateLaptop(int $id, int $laptop): bool
+    {
+        $query = $this->db->prepare('UPDATE `applicants_additional` SET laptop=:laptop WHERE id=:id');
+        return $query->execute(["id" => $id, "laptop" => $laptop]);
+    }
+
+    public function updateUpfront(int $id, int $upfront): bool
+    {
+        $query = $this->db->prepare('UPDATE `applicants_additional` SET upfront=:upfront WHERE id=:id');
+        return $query->execute(["id" => $id, "upfront" => $upfront]);
+    }
+
+    public function getFeePaymentMethods(int $id): array
+    {
+        $query = $this->db->prepare(
+            'SELECT diversitech, edaid, fee, upfront FROM applicants_additional 
+                                        WHERE id=?'
+        );
+        $query->execute([$id]);
+        $feePaymentMethod = $query->fetch();
+        return  $feePaymentMethod;
+    }
+
+    public function getNameById(int $id): array
+    {
+        $sql = 'SELECT `name`, `id` FROM `applicants` WHERE `id`=:id;';
+        $values = ['id' => $id];
+        $query = $this->db->prepare($sql);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $query->execute($values);
+        return $query->fetch();
+    }
 }
