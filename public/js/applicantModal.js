@@ -67,7 +67,7 @@ export function addEventListenersToDisplayApplicantModal() {
                         response.json().then(function (data) {
 
                             document.querySelectorAll('#applicantModal section.student').forEach(section => {
-                                if (data.isStudentStage === "1") {
+                                if (data.isStudentStage) {
                                     section.classList.remove('hidden')
                                 } else {
                                     section.classList.add('hidden')
@@ -80,7 +80,7 @@ export function addEventListenersToDisplayApplicantModal() {
                             if (data.apprentice === 1) {
                                 document.getElementById('apprentice').innerHTML = 'Apprentice'
                             }
-                            console.log(data);
+
                             displayField(data, 'name')
                             displayField(data, 'email')
                             displayField(data, 'phoneNumber')
@@ -170,7 +170,7 @@ export function addEventListenersToDisplayApplicantModal() {
                             displayField(data, 'additionalNotes', 'No notes')
                             data.chosenCourseDate = prettyDate(data.chosenCourseDate)
                             displayField(data, 'chosenCourseDatePretty', 'Not asked yet')
-                            // displayField(data,'userProfileLink', 'No Link Yet' )
+                            displayField(data,'userProfileLink', 'No Link Yet' )
                         })
                     }
                 )
