@@ -27,9 +27,8 @@ class CoursesPageController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $todaysDate = DateService::getTodaysDateAsString();
         if ($_SESSION['loggedIn'] === true) {
-            $courses = $this->courseModel->getCoursesWithFutureEndDates($todaysDate);
+            $courses = $this->courseModel->getCoursesWithFutureEndDates();
             $args['courses'] = $courses;
             $trainers = $this->courseModel->getTrainersAndCourseId();
             $args['trainers'] = $trainers;

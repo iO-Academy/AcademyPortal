@@ -36,7 +36,7 @@ class CourseModel
     /**
      * Gets all courses from the database that have an end date in the future
      */
-    public function getCoursesWithFutureEndDates($todayDate): array
+    public function getCoursesWithFutureEndDates(): array
     {
         $sql = 'SELECT `id`,
                 `courses`.`start_date` AS `startDate`,
@@ -46,10 +46,10 @@ class CourseModel
                 `in_person` AS `inPerson`,
                 `remote`
                 FROM `courses`
-                WHERE `courses`.`end_date` >= ?;';
+                WHERE `courses`.`end_date` >= NOW();';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
-        $query->execute([$todayDate]);
+        $query->execute();
         return $query->fetchAll();
     }
 
