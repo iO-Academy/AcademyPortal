@@ -20,7 +20,7 @@ return function (ContainerBuilder $containerBuilder) {
             ],
             'db' => [
                 'host' => 'mysql:host=DB;',
-                'dbName' => 'dbname=academyortal',
+                'dbName' => 'dbname=academyPortal',
                 'userName' => 'root',
                 'password' => 'password'
             ],
