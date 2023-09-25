@@ -33,6 +33,7 @@ courseForm.addEventListener('submit', e => {
                 errorDiv.classList.remove('hidden');
                 errorDiv.innerHTML = errorMessage(key);
                 formIsValid = false;
+                message.classList.add('hidden');
                 break;
             }
         }
