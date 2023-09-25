@@ -10,6 +10,7 @@
     <script src="./js/saveApplicant.js" defer></script>
     <script src="./js/applicantForm.js" defer></script>
     <script src="./js/editApplicant.js" defer></script>
+    <script src="./js/lockToggle.js" defer></script>
 </head>
 <body>
 <?php require 'partials/layout/header.phtml'; ?>
@@ -258,27 +259,29 @@
                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                        placeholder="0" min="0" max="10000" step="1"
                        value="<?php echo $applicant->getEdaid() ? $applicant->getEdaid() : 0; ?>">
-                <span class="input-group-addon"><i class="bi bi-lock"></i></span>
+                <span class="input-group-addon"><i class="bi bi-lock" id="lockToggle"></i></span>
             </div>
-
             <label for="upfront">Upfront Amount</label>
-            <div class="input-group">
+            <div class="input-group col-lg-12">
                 <span class="input-group-addon">&pound;</span>
                 <input id="upfront" name="upfront" class="submitApplicant form-control" type="number"
                        placeholder="0" min="0" max="10000" step="1"
                        value="<?php echo $applicant->getUpfront() ? $applicant->getUpfront() : 0; ?>">
+                <span class="input-group-addon"><i class="bi bi-lock" id="lockToggle"></i></span>
             </div>
 
             <div class="form-group">
                 <input class="submitApplicant" name="laptop"
                        type="checkbox"<?php echo $applicant->getLaptop() ? " checked" : ""; ?>/>
                 <label for="laptop">Academy laptop needed?</label>
+                <i class="bi bi-lock" id="lockToggle"></i>
             </div>
 
             <div class="form-group">
                 <input class="submitApplicant" name="laptopDeposit"
                        type="checkbox"<?php echo $applicant->getLaptopDeposit() ? " checked" : ""; ?>/>
                 <label for="laptopDeposit">Laptop deposit paid?</label>
+                <i class="bi bi-lock" id="lockToggle"></i>
             </div>
 
             <div class="form-group">
@@ -386,11 +389,9 @@
         </div>
 
         <div id="studentinfo" class="collapse">
-
             <label for="githubUsername">Github Username</label>
             <input id="githubUsername" name="githubUsername" class="submitApplicant form-control"
                    type="text" value="<?php echo $applicant->getGithubUsername(); ?>">
-
             <label for="portfolioUrl">Portfolio URL</label>
             <input id="portfolioUrl" name="portfolioUrl" class="submitApplicant form-control"
                    type="url" value="<?php echo $applicant->getPortfolioUrl(); ?>">
