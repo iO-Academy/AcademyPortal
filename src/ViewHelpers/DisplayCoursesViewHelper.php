@@ -29,6 +29,28 @@ class DisplayCoursesViewHelper
         return self::handleNoCourses($result);
     }
 
+    public static function displayFutureCourses(array $courses, array $trainers): string
+    {
+        $result = '';
+        foreach ($courses as $course) {
+            $remote = $course->getRemote() == 1 ? '&#x2713;' : '&#x10102';
+            $inPerson = $course->getInPerson() == 1 ? '&#x2713;' : '&#x10102';
+            $trainersByCourse = self::filterCoursesByTrainers($trainers, $course->getId());
+            $result .=
+                '<tr>
+                    <td>' . $course->getId() . '</td>
+                    <td>' . date("d/m/Y", strtotime($course->getStartDate())) . '</td>
+                    <td>' . date("d/m/Y", strtotime($course->getEndDate())) . '</td>
+                    <td>' . $course->getName() . '</td>
+                    <td>' . self::displayCourseTrainers($trainersByCourse) . '</td>
+                    <td>' . $course->getNotes() . '</td>
+                    <td>' . $inPerson . '</td>
+                    <td>' . $remote . '</td>
+                </tr>';
+        }
+        return self::handleNoCourses($result);
+    }
+
     /**
      * If no courses found, returns message saying no courses found.
      */
