@@ -252,12 +252,13 @@
 
             <label for="edaid">EdAid Amount</label>
 
-            <div class="input-group">
+            <div class="input-group col-lg-12">
                 <span class="input-group-addon">&pound;</span>
                 <input id="edaid" name="edaid" class="submitApplicant form-control" type="text"
                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                        placeholder="0" min="0" max="10000" step="1"
                        value="<?php echo $applicant->getEdaid() ? $applicant->getEdaid() : 0; ?>">
+                <span class="input-group-addon"><i class="bi bi-lock"></i></span>
             </div>
 
             <label for="upfront">Upfront Amount</label>
