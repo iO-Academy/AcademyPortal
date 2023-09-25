@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 11.0.2-MariaDB-1:11.0.2+maria~ubu2204)
 # Database: academyPortal
-# Generation Time: 2023-09-25 12:55:47 +0000
+# Generation Time: 2023-09-25 15:00:27 +0000
 # ************************************************************
 
 
@@ -366,56 +366,10 @@ VALUES
 	(5,'2022-03-07','2022-06-24','Full-Stack Track',NULL,0,0,0,NULL,NULL),
 	(6,'2022-07-04','2022-10-21','Full-Stack Track','Might be robots',0,0,1,NULL,NULL),
 	(7,'2022-07-04','2022-10-21','Full-Stack Track',NULL,0,1,0,NULL,NULL),
-	(59,'2032-06-28','2033-01-20','SDE','paradigm',0,1,1,NULL,NULL),
-	(60,'2026-08-07','2030-12-28','Full-Stack Track','Universal',0,0,0,NULL,NULL),
-	(61,'2029-08-22','2025-08-10','Data Science','Triple-buffered',0,0,1,NULL,NULL),
-	(62,'2027-12-26','2025-01-23','SDE','web-enabled',0,1,0,NULL,NULL),
-	(63,'2033-07-03','2028-03-11','Data Science','infrastructure',0,1,1,NULL,NULL),
-	(64,'2023-12-14','2031-07-08','SDE','application',0,1,1,NULL,NULL),
-	(65,'2031-10-13','2028-10-11','SDE','multimedia',0,1,1,NULL,NULL),
-	(66,'2029-07-11','2024-02-25','Data Science','internet solution',0,0,1,NULL,NULL),
-	(67,'2022-10-05','2024-09-15','SDE','scalable',0,1,1,NULL,NULL),
-	(68,'2028-06-16','2031-02-18','Data Science','content-based',0,1,0,NULL,NULL),
-	(69,'2028-02-24','2028-06-21','SDE','Virtual',0,1,0,NULL,NULL),
-	(70,'2033-09-06','2027-04-26','SDE','infrastructure',0,1,1,NULL,NULL),
-	(71,'2024-01-16','2032-07-21','Full-Stack Track','hub',0,1,1,NULL,NULL),
-	(72,'2027-08-29','2027-02-06','Data Science','Persistent',0,0,0,NULL,NULL),
-	(73,'2024-08-10','2023-09-04','Full-Stack Track','hierarchy',0,1,0,NULL,NULL),
-	(74,'2023-12-17','2024-07-10','Data Science','eco-centric',0,1,0,NULL,NULL),
-	(75,'2026-11-01','2028-11-30','Data Science','Digitized',0,0,0,NULL,NULL),
-	(76,'2026-08-06','2023-10-19','SDE','internet solution',0,1,1,NULL,NULL),
-	(77,'2025-10-07','2029-02-17','SDE','homogeneous',0,0,0,NULL,NULL),
-	(78,'2032-08-05','2027-10-03','Full-Stack Track','encoding',0,1,0,NULL,NULL),
-	(79,'2030-09-04','2029-07-06','Full-Stack Track','open system',0,1,0,NULL,NULL),
-	(80,'2024-03-04','2032-08-07','SDE','fresh-thinking',0,1,0,NULL,NULL),
-	(81,'2026-05-16','2032-07-08','SDE','open system',0,1,1,NULL,NULL),
-	(82,'2032-06-26','2026-11-19','Full-Stack Track','analyzing',0,0,0,NULL,NULL),
-	(83,'2033-03-28','2023-05-25','Data Science','Configurable',0,1,1,NULL,NULL),
-	(84,'2032-06-28','2033-01-20','SDE','paradigm',0,1,1,NULL,NULL),
-	(85,'2026-08-07','2030-12-28','Full-Stack Track','Universal',0,0,0,NULL,NULL),
-	(86,'2029-08-22','2025-08-10','Data Science','Triple-buffered',0,0,1,NULL,NULL),
-	(87,'2027-12-26','2025-01-23','SDE','web-enabled',0,1,0,NULL,NULL),
-	(88,'2033-07-03','2028-03-11','Data Science','infrastructure',0,1,1,NULL,NULL),
-	(89,'2023-12-14','2031-07-08','SDE','application',0,1,1,NULL,NULL),
-	(90,'2031-10-13','2028-10-11','SDE','multimedia',0,1,1,NULL,NULL),
-	(91,'2029-07-11','2024-02-25','Data Science','internet solution',0,0,1,NULL,NULL),
-	(92,'2022-10-05','2024-09-15','SDE','scalable',0,1,1,NULL,NULL),
-	(93,'2028-06-16','2031-02-18','Data Science','content-based',0,1,0,NULL,NULL),
-	(94,'2028-02-24','2028-06-21','SDE','Virtual',0,1,0,NULL,NULL),
-	(95,'2033-09-06','2027-04-26','SDE','infrastructure',0,1,1,NULL,NULL),
-	(96,'2024-01-16','2032-07-21','Full-Stack Track','hub',0,1,1,NULL,NULL),
-	(97,'2027-08-29','2027-02-06','Data Science','Persistent',0,0,0,NULL,NULL),
-	(98,'2024-08-10','2023-09-04','Full-Stack Track','hierarchy',0,1,0,NULL,NULL),
-	(99,'2023-12-17','2024-07-10','Data Science','eco-centric',0,1,0,NULL,NULL),
-	(100,'2026-11-01','2028-11-30','Data Science','Digitized',0,0,0,NULL,NULL),
-	(101,'2026-08-06','2023-10-19','SDE','internet solution',0,1,1,NULL,NULL),
-	(102,'2025-10-07','2029-02-17','SDE','homogeneous',0,0,0,NULL,NULL),
-	(103,'2032-08-05','2027-10-03','Full-Stack Track','encoding',0,1,0,NULL,NULL),
-	(104,'2030-09-04','2029-07-06','Full-Stack Track','open system',0,1,0,NULL,NULL),
-	(105,'2024-03-04','2032-08-07','SDE','fresh-thinking',0,1,0,NULL,NULL),
-	(106,'2026-05-16','2032-07-08','SDE','open system',0,1,1,NULL,NULL),
-	(107,'2032-06-26','2026-11-19','Full-Stack Track','analyzing',0,0,0,NULL,NULL),
-	(108,'2033-03-28','2023-05-25','Data Science','Configurable',0,1,1,NULL,NULL);
+	(8,'2023-05-23','2023-07-23','SDE','grid-enabled',0,1,0,NULL,NULL),
+	(9,'2023-09-23','2023-11-23','Full-Stack Track','customer loyalty',0,0,1,NULL,NULL),
+	(10,'2028-07-11','2028-10-11','SDE','migration',0,1,1,NULL,NULL),
+	(11,'2029-10-19','2029-12-12','SDE','Virtual',0,0,0,NULL,NULL);
 
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
