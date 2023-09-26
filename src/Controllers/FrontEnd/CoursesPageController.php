@@ -28,8 +28,12 @@ class CoursesPageController extends Controller
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
-            $courses = $this->courseModel->getCoursesWithFutureEndDates();
-            $args['courses'] = $courses;
+            $ongoingCourses = $this->courseModel->getOngoingCourses();
+            $args['ongoingCourses'] = $ongoingCourses;
+            $futureCourses = $this->courseModel->getFutureCourses();
+            $args['futureCourses'] = $futureCourses;
+            $completedCourses = $this->courseModel->getCompletedCourses();
+            $args['completedCourses'] = $completedCourses;
             $trainers = $this->courseModel->getTrainersAndCourseId();
             $args['trainers'] = $trainers;
             return $this->renderer->render($response, 'courses.phtml', $args);

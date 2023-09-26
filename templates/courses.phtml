@@ -30,7 +30,9 @@
                 </thead>
                 <tbody>
                 <tr><td colspan="8"><h5 class="text-success text-center">Ongoing Courses</h5></td></tr>
-                <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($courses, $trainers); ?>
+                <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($ongoingCourses, $trainers); ?>
+                <tr><td colspan="8"><h5 class="text-primary text-center">Future Courses</h5></td></tr>
+                <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($futureCourses, $trainers); ?>
                 </tbody>
             </table>
         </div>
