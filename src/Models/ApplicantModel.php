@@ -571,7 +571,22 @@ class ApplicantModel implements ApplicantModelInterface
      WHERE id=:id');
         return $query->execute(["id" => $id, "githubUsername" => $githubUsername]);
     }
+    public function lockField(int $id,string $fieldName)
+    {
+        switch ($fieldName) {
+            case 'githubUsername':
+                $sql = 'UPDATE `applicants_additional` SET `githubUsernameLocked` = 1 WHERE `id` = :id';
+                break;
+            case 'edaid':
+                $sql = 'UPDATE `applicants_additional` SET `edaidLocked` = 1 WHERE `id` = :id';
+                break;
+            default:
+                throw new \Exception('Invalid field name');
+        }
 
+        $query = $this->db->prepare($sql);
+        return $query->execute(["id"=>$id]);
+    }
     public function updateLaptop(int $id, int $laptop): bool
     {
         $query = $this->db->prepare('UPDATE `applicants_additional` SET laptop=:laptop WHERE id=:id');
