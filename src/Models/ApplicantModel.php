@@ -580,6 +580,12 @@ class ApplicantModel implements ApplicantModelInterface
             case 'edaid':
                 $sql = 'UPDATE `applicants_additional` SET `edaidLocked` = 1 WHERE `id` = :id';
                 break;
+            case 'upfront':
+                $sql = 'UPDATE `applicants_additional` SET `upfrontLocked` = 1 WHERE `id` = :id';
+                break;
+            case 'laptop':
+                $sql = 'UPDATE `applicants_additional` SET `laptopLocked` = 1 WHERE `id` = :id';
+                break;
             default:
                 throw new \Exception('Invalid field name');
         }
