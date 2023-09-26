@@ -2,6 +2,8 @@
 
 namespace Portal\ViewHelpers;
 
+use Portal\Services\DateService;
+
 class DisplayCoursesViewHelper
 {
      /**
@@ -33,7 +35,9 @@ class DisplayCoursesViewHelper
     {
         $result = '';
         foreach ($courses as $course) {
-            if ($course->getStartDate())
+            if ($course->getStartDate() < DateService::getTodaysDateAsString() && $course->getEndDate() >= DateService::getTodaysDateAsString()) {
+                //insert <tr>Upcoming</tr>
+            }
             $remote = $course->getRemote() == 1 ? '&#x2713;' : '&#x10102';
             $inPerson = $course->getInPerson() == 1 ? '&#x2713;' : '&#x10102';
             $trainersByCourse = self::filterCoursesByTrainers($trainers, $course->getId());
