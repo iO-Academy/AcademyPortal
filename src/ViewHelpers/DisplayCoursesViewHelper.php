@@ -6,7 +6,12 @@ use Portal\Services\DateService;
 
 class DisplayCoursesViewHelper
 {
-    private const HANDLE_NO_COURSES = '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
+    private const NO_COURSES_TABLE_HEADING =
+        '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
+
+    /**
+     * Method to display courses within course detail table
+     */
     public static function createCoursesTableLoop(array $courses, array $trainers): string
     {
         $result = '';
@@ -28,16 +33,14 @@ class DisplayCoursesViewHelper
         }
         return $result;
     }
-     /**
-      * Viewhelper to display courses within course detail table
-      */
+
     public static function displayFutureCourses(array $courses, array $trainers): string
     {
         $result = self::createCoursesTableLoop($courses, $trainers);
         if (!empty($result)) {
             return $result;
         }
-        return self::HANDLE_NO_COURSES;
+        return self::NO_COURSES_TABLE_HEADING;
     }
 
     public static function displayOngoingCourses(array $courses, array $trainers): string
@@ -59,14 +62,6 @@ class DisplayCoursesViewHelper
             $row = '<tr><td colspan="8"><h5 class="text-success text-center">Ongoing Courses</h5></td></tr>';
         }
         return $row;
-    }
-
-    /**
-     * If no courses found, returns message saying no courses found.
-     */
-    private static function handleNoCourses(): string
-    {
-            return '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
     }
 
     /**
