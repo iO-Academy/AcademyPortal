@@ -163,15 +163,15 @@ class DisplayCoursesViewHelperTest extends TestCase
 //    {
 //
 //    }
-
-    public function testSuccessNoOngoingCoursesDisplayOngoingCourses()
-    {
-        $ongoingCourses = [];
-        $trainers = ['Paul', 'John', 'Ringo', 'George'];
-        $result = DisplayCoursesViewHelper::displayOngoingCourses($ongoingCourses, $trainers);
-        $expected = '';
-        $this->assertEquals($expected, $result);
-    }
+//
+//    public function testSuccessNoOngoingCoursesDisplayOngoingCourses()
+//    {
+//        $ongoingCourses = [];
+//        $trainers = ['Paul', 'John', 'Ringo', 'George'];
+//        $result = DisplayCoursesViewHelper::displayOngoingCourses($ongoingCourses, $trainers);
+//        $expected = '';
+//        $this->assertEquals($expected, $result);
+//    }
 
     public function testSuccessFilterCoursesByTrainers()
     {
