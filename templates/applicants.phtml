@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <?php
+
+    use Portal\Controllers\API\RetrieveApplicantAppitudeController;
+
     require 'partials/layout/head.phtml';
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Applicants');
     ?>
@@ -16,6 +19,8 @@
 <?php require 'partials/layout/header.phtml'; ?>
 
 <?php require 'partials/layout/nav.phtml'; ?>
+
+<?php //var_dump($data); ?>
 
     <div class="row">
         <div class="col-xs-12 registeredApplicants">

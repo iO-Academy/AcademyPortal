@@ -130,6 +130,11 @@ export function addEventListenersToDisplayApplicantModal() {
 
                             data.aptitude = aptitudeColors(data.aptitude)
                             displayField(data, 'aptitude', 'Not yet taken')
+                            document.querySelector('.retrieveAptitudeScore').addEventListener("click", e => {
+                                fetch(`/api/retrieveAptitudeScore?email=${data.email}`)
+                                    .then(response => response.json())
+                                    .then(data => console.log(data))
+                            })
 
                             displayField(data, 'diversitechInterest', 'Not asked yet', 'No')
                             if (data.diversitechInterest === 1) {
