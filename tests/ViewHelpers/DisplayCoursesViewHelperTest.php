@@ -154,8 +154,22 @@ class DisplayCoursesViewHelperTest extends TestCase
 
     public function testFailureDisplayCourse()
     {
-        $expected = '<tr><td colspan="6"><h5 class="text-danger text-center">No Courses Found.</h5></td></tr>';
+        $expected = '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
         $result = DisplayCoursesViewHelper::displayCourses([], []);
+        $this->assertEquals($expected, $result);
+    }
+
+//    public function testSuccessDisplayOngoingCourses()
+//    {
+//
+//    }
+
+    public function testSuccessNoOngoingCoursesDisplayOngoingCourses()
+    {
+        $ongoingCourses = [];
+        $trainers = ['Paul', 'John', 'Ringo', 'George'];
+        $result = DisplayCoursesViewHelper::displayOngoingCourses($ongoingCourses, $trainers);
+        $expected = '';
         $this->assertEquals($expected, $result);
     }
 

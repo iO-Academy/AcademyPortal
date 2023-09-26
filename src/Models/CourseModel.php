@@ -56,7 +56,7 @@ class CourseModel
     /**
      * Gets all courses from the database that are ongoing (i.e. have a start date in the past, end date in the future)
      */
-    public function getOngoingCourses():array
+    public function getOngoingCourses(): array
     {
         $sql = 'SELECT `id`,
                 `courses`.`start_date` AS `startDate`,

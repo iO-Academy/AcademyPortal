@@ -32,12 +32,26 @@ class DisplayCoursesViewHelper
     }
 
     /**
+     * function displays ongoing courses if there are any with a heading row of 'Ongoing Courses' in the courses table
+     * */
+    public static function displayOngoingCourses(array $ongoingCourses, array $trainers): string
+    {
+        $row = '';
+        $courses = '';
+        if (!empty($ongoingCourses)) {
+            $row = '<tr><td colspan="8"><h5 class="text-success text-center">Ongoing Courses</h5></td></tr>';
+            $courses = self::displayCourses($ongoingCourses, $trainers);
+        }
+        return ($row . $courses);
+    }
+
+    /**
      * If no courses found, returns message saying no courses found.
      */
     private static function handleNoCourses(string $output): string
     {
         if (empty($output)) {
-            return '<tr><td colspan="6"><h5 class="text-danger text-center">No Courses Found.</h5></td></tr>';
+            return '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
         }
         return $output;
     }
