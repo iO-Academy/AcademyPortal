@@ -29,10 +29,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayOngoingCoursesHeading($ongoingCourses); ?>
-                    <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($ongoingCourses, $trainers); ?>
+                    <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayOngoingCoursesHeading(empty($ongoingCourses)); ?>
+                    <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayOngoingCourses($ongoingCourses, $trainers); ?>
                     <tr><td colspan="8"><h5 class="text-primary text-center">Future Courses</h5></td></tr>
-                    <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($futureCourses, $trainers); ?>
+                    <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayFutureCourses($futureCourses, $trainers); ?>
                 </tbody>
             </table>
         </div>

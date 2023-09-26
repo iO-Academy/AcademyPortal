@@ -8,7 +8,10 @@ use Portal\ViewHelpers\DisplayCoursesViewHelper;
 
 class DisplayCoursesViewHelperTest extends TestCase
 {
-    public function testSuccessOneTrainerDisplayCourse()
+    /**
+     * This test is actually an integration test written by a previous group
+     * */
+    public function testSuccessOneTrainerDisplayFutureCourses()
     {
         $expected = '<tr>
                     <td>1</td>
@@ -30,11 +33,14 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getInPerson')->willReturn('1');
         $courses = [$entityMock];
         $trainers = [['course_id' => '1', 'name' => 'Charlie', 'deleted' => '0'] ];
-        $result = DisplayCoursesViewHelper::displayCourses($courses, $trainers);
+        $result = DisplayCoursesViewHelper::displayFutureCourses($courses, $trainers);
         $this->assertEquals($expected, $result);
     }
 
-    public function testSuccessTwoTrainersDisplayCourse()
+    /**
+     * This test is actually an integration test written by a previous group
+     * */
+    public function testSuccessTwoTrainersDisplayFutureCourses()
     {
         $expected = '<tr>
                     <td>1</td>
@@ -59,11 +65,14 @@ class DisplayCoursesViewHelperTest extends TestCase
             ['course_id' => '1', 'name' => 'Charlie', 'deleted' => '0'],
             ['course_id' => '1', 'name' => 'Neal', 'deleted' => '0']
         ];
-        $result = DisplayCoursesViewHelper::displayCourses($courses, $trainers);
+        $result = DisplayCoursesViewHelper::displayFutureCourses($courses, $trainers);
         $this->assertEquals($expected, $result);
     }
 
-    public function testSuccessOneDeletedTrainerDisplayCourse()
+    /**
+     * This test is actually an integration test written by a previous group
+     * */
+    public function testSuccessOneDeletedTrainerDisplayFutureCourses()
     {
         $expected = '<tr>
                     <td>1</td>
@@ -85,11 +94,14 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getInPerson')->willReturn('1');
         $courses = [$entityMock];
         $trainers = [['course_id' => '1', 'name' => 'Charlie', 'deleted' => '1'] ];
-        $result = DisplayCoursesViewHelper::displayCourses($courses, $trainers);
+        $result = DisplayCoursesViewHelper::displayFutureCourses($courses, $trainers);
         $this->assertEquals($expected, $result);
     }
 
-    public function testSuccessOneDeletedTwoTrainersDisplayCourse()
+    /**
+     * This test is actually an integration test written by a previous group
+     * */
+    public function testSuccessOneDeletedTwoTrainersDisplayFutureCourse()
     {
         $expected = '<tr>
                     <td>1</td>
@@ -114,11 +126,14 @@ class DisplayCoursesViewHelperTest extends TestCase
             ['course_id' => '1', 'name' => 'Charlie', 'deleted' => '1'],
             ['course_id' => '1', 'name' => 'Neal', 'deleted' => '0']
         ];
-        $result = DisplayCoursesViewHelper::displayCourses($courses, $trainers);
+        $result = DisplayCoursesViewHelper::displayFutureCourses($courses, $trainers);
         $this->assertEquals($expected, $result);
     }
 
-    public function testSuccessZeroTrainersDisplayCourse()
+    /**
+     * This test is actually an integration test written by a previous group
+     * */
+    public function testSuccessZeroTrainersDisplayFutureCourse()
     {
         $expected = '<tr>
                     <td>1</td>
@@ -140,38 +155,76 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getInPerson')->willReturn('1');
         $courses = [$entityMock];
         $trainers = [];
-        $result = DisplayCoursesViewHelper::displayCourses($courses, $trainers);
+        $result = DisplayCoursesViewHelper::displayFutureCourses($courses, $trainers);
         $this->assertEquals($expected, $result);
     }
 
-    public function testMalformedDisplayCourse()
+    /**
+     * This test is actually an integration test written by a previous group
+     * */
+    public function testMalformedDisplayFutureCourse()
     {
         $input = '';
         $input2 = '1';
         $this->expectException(\Error::class);
-        $actual = DisplayCoursesViewHelper::displayCourses($input, $input2);
+        $actual = DisplayCoursesViewHelper::displayFutureCourses($input, $input2);
     }
 
-    public function testFailureDisplayCourse()
+    /**
+     * This test is actually an integration test written by a previous group
+     * */
+    public function testFailureDisplayFutureCourse()
     {
         $expected = '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
-        $result = DisplayCoursesViewHelper::displayCourses([], []);
+        $result = DisplayCoursesViewHelper::displayFutureCourses([], []);
         $this->assertEquals($expected, $result);
     }
 
-//    public function testSuccessDisplayOngoingCourses()
-//    {
-//
-//    }
-//
-//    public function testSuccessNoOngoingCoursesDisplayOngoingCourses()
-//    {
-//        $ongoingCourses = [];
-//        $trainers = ['Paul', 'John', 'Ringo', 'George'];
-//        $result = DisplayCoursesViewHelper::displayOngoingCourses($ongoingCourses, $trainers);
-//        $expected = '';
-//        $this->assertEquals($expected, $result);
-//    }
+    public function testSuccessCreateCoursesTableLoop()
+    {
+        $this->markTestSkipped('Integration Test Required');
+    }
+
+    public function testMalformedCreateCoursesTableLoop()
+    {
+        $this->markTestSkipped('Integration Test Required');
+    }
+
+    public function testFailureCreateCoursesTableLoop()
+    {
+        $this->markTestSkipped('Integration Test Required');
+    }
+
+    public function testSuccessDisplayOngoingCourses()
+    {
+        $this->markTestSkipped('Integration Test Required');
+    }
+
+    public function testMalformedDisplayOngoingCourses()
+    {
+        $this->markTestSkipped('Integration Test Required');
+    }
+
+    public function testFailureDisplayOngoingCourses()
+    {
+        $this->markTestSkipped('Integration Test Required');
+    }
+
+    public function testSuccessOngoingCoursesPresentDisplayOngoingCoursesHeading()
+    {
+        $ongoingCourses = true;
+        $result = DisplayCoursesViewHelper::displayOngoingCoursesHeading($ongoingCourses);
+        $expected = '<tr><td colspan="8"><h5 class="text-success text-center">Ongoing Courses</h5></td></tr>';
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testSuccessNoOngoingCoursesDisplayOngoingCoursesHeading()
+    {
+        $ongoingCourses = false;
+        $result = DisplayCoursesViewHelper::displayOngoingCoursesHeading($ongoingCourses);
+        $expected = '';
+        $this->assertEquals($expected, $result);
+    }
 
     public function testSuccessFilterCoursesByTrainers()
     {

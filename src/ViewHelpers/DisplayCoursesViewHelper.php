@@ -6,10 +6,8 @@ use Portal\Services\DateService;
 
 class DisplayCoursesViewHelper
 {
-     /**
-      * Viewhelper to display courses within course detail table
-      */
-    public static function displayCourses(array $courses, array $trainers): string
+    private const HANDLE_NO_COURSES = '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
+    public static function createCoursesTableLoop(array $courses, array $trainers): string
     {
         $result = '';
         foreach ($courses as $course) {
@@ -28,16 +26,36 @@ class DisplayCoursesViewHelper
                     <td>' . $remote . '</td>
                 </tr>';
         }
-        return self::handleNoCourses($result);
+        return $result;
+    }
+     /**
+      * Viewhelper to display courses within course detail table
+      */
+    public static function displayFutureCourses(array $courses, array $trainers): string
+    {
+        $result = self::createCoursesTableLoop($courses, $trainers);
+        if (!empty($result)) {
+            return $result;
+        }
+        return self::HANDLE_NO_COURSES;
+    }
+
+    public static function displayOngoingCourses(array $courses, array $trainers): string
+    {
+        $result = '';
+        if (!empty($courses)) {
+            $result = self::createCoursesTableLoop($courses, $trainers);
+        }
+        return $result;
     }
 
     /**
-     * function displays ongoing courses if there are any with a heading row of 'Ongoing Courses' in the courses table
+     * function displays a heading row of 'Ongoing Courses' in the courses table
      * */
-    public static function displayOngoingCoursesHeading(array $ongoingCourses): string
+    public static function displayOngoingCoursesHeading(bool $ongoingCourses): string
     {
         $row = '';
-        if (!empty($ongoingCourses)) {
+        if ($ongoingCourses) {
             $row = '<tr><td colspan="8"><h5 class="text-success text-center">Ongoing Courses</h5></td></tr>';
         }
         return $row;
@@ -46,12 +64,9 @@ class DisplayCoursesViewHelper
     /**
      * If no courses found, returns message saying no courses found.
      */
-    private static function handleNoCourses(string $output): string
+    private static function handleNoCourses(): string
     {
-        if (empty($output)) {
             return '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
-        }
-        return $output;
     }
 
     /**
