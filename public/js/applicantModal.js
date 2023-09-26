@@ -54,7 +54,6 @@ export function addEventListenersToDisplayApplicantModal() {
         $(".myBtn").click(function () {
             let url = './api/getApplicant/' + this.dataset.id
             let studentUrl = window.location.origin + '/public/'
-            console.log(window.location.origin)
             fetch(url)
                 .then(
                     function (response) {
