@@ -170,7 +170,7 @@ export function addEventListenersToDisplayApplicantModal() {
                             displayField(data, 'additionalNotes', 'No notes')
                             data.chosenCourseDate = prettyDate(data.chosenCourseDate)
                             displayField(data, 'chosenCourseDatePretty', 'Not asked yet')
-                            displayField(data,'userProfileLink', 'No Link Yet' )
+                            displayField(data,'userProfileLink', 'No Link Yet')
                         })
                     }
                 )
