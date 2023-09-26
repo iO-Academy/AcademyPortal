@@ -561,17 +561,17 @@ class ApplicantModel implements ApplicantModelInterface
 
     public function updateEdaid(int $id, int $edaid): bool
     {
-        $query = $this->db->prepare('UPDATE `applicants_additional` SET edaid=:edaid WHERE id=:id');
+        $query = $this->db->prepare('UPDATE `applicants_additional` SET edaid=:edaid WHERE `id` = :id;');
         return $query->execute(["id" => $id, "edaid" => $edaid]);
     }
 
     public function updateGithubUsername(int $id, string $githubUsername): bool
     {
-        $query = $this->db->prepare('UPDATE `applicants_additional` SET githubUsername=:githubUsername
-     WHERE id=:id');
+        $query = $this->db->prepare('UPDATE `applicants_additional` SET githubUsername =: githubUsername
+     WHERE `id` = :id');
         return $query->execute(["id" => $id, "githubUsername" => $githubUsername]);
     }
-    public function lockField(int $id,string $fieldName)
+    public function lockField(int $id, string $fieldName)
     {
         switch ($fieldName) {
             case 'githubUsername':
@@ -591,7 +591,7 @@ class ApplicantModel implements ApplicantModelInterface
         }
 
         $query = $this->db->prepare($sql);
-        return $query->execute(["id"=>$id]);
+        return $query->execute(["id" => $id]);
     }
     public function updateLaptop(int $id, int $laptop): bool
     {
