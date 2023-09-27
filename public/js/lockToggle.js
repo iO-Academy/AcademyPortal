@@ -19,6 +19,7 @@ const urlID = urlParams.get('id')
 
                             e.target.classList.toggle("bi-lock");
                         } else {
+                            document.querySelector(`#${fieldName}Error`).textContent = data.message
                             document.querySelector(`#${fieldName}Error`).classList.toggle('hidden')
                             // show error
                         }

@@ -2,6 +2,7 @@
 
 namespace Portal\ViewHelpers;
 
+use Portal\Controllers\API\LockApplicantFieldController;
 use Portal\Entities\CompleteApplicantEntity;
 
 class DisplayStudentProfileViewHelper
@@ -57,7 +58,7 @@ class DisplayStudentProfileViewHelper
                         <span id="edaidDisplayed">' . $applicant->getEdaid() . '</span>
                         <button data-selector="edaid" class="btn btn-primary btn-sm edaidEditButton editbutton" 
                         id="edaidEditButton">
-                        Edit
+                        Edit 
                         </button>
                     </div>
                     <div data-selector="edaid" class="editableedaid studentProfileEditableField hidden">

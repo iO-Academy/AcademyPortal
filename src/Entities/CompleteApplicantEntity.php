@@ -15,11 +15,14 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $diversitechInterest; // bool
     protected $diversitech; // int
     protected $edaid; // int
+    protected $edaidLocked; // int
     protected $upfront; // int
+    protected $upfrontLocked; // int
     protected $kitCollectionDay; // date string
     protected $kitCollectionTime; // time string
     protected $kitNum; // int
     protected $laptop; // bool
+    protected $laptopLocked; // bool
     protected $laptopDeposit; // bool
     protected $laptopNum; // int
     protected $taster; // date string
@@ -32,6 +35,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $stageOptionId;
     protected $stageOptionName;
     protected $githubUsername;
+    protected $githubUsernameLocked;
     protected $portfolioUrl;
     protected $pleskHostingUrl;
     protected $githubEducationLink;
@@ -90,11 +94,14 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
             'diversitechInterest' => $this->diversitechInterest,
             'diversitech' => $this->diversitech,
             'edaid' => $this->edaid,
+            'edaidLocked' => $this->edaidLocked,
             'upfront' => $this->upfront,
+            'upfrontLocked' => $this->upfrontLocked,
             'kitCollectionDay' => $this->kitCollectionDay,
             'kitCollectionTime' => $this->kitCollectionTime,
             'kitNum' => $this->kitNum,
             'laptop' => $this->laptop,
+            'laptopLocked' => $this->laptopLocked,
             'laptopNum' => $this->laptopNum,
             'taster' => $this->taster,
             'tasterId' => $this->tasterId,
@@ -105,6 +112,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
             'stageName' => $this->stageName,
             'stageOptionName' => $this->stageOptionName,
             'githubUsername' => $this->githubUsername,
+            'githubUsernameLocked' => $this->githubUsernameLocked,
             'portfolioUrl' => $this->portfolioUrl,
             'pleskHostingUrl' => $this->pleskHostingUrl,
             'githubEducationLink' => $this->githubEducationLink,
@@ -209,6 +217,10 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->edaid;
     }
+    public function getEdaidLocked(): ?int
+    {
+        return $this->edaidLocked;
+    }
 
     /**
      * @return int
@@ -218,6 +230,10 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         return $this->upfront;
     }
 
+    public function getUpfrontLocked(): ?int
+    {
+        return $this->upfrontLocked;
+    }
     /**
      * @return string
      */
@@ -250,6 +266,10 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         return $this->laptop;
     }
 
+    public function getLaptopLocked(): ?bool
+    {
+        return $this->laptopLocked;
+    }
     /**
      * @return int // for some reason it doesnt like it if this is a bool?!
      */
@@ -336,6 +356,11 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     public function getGithubUsername(): ?string
     {
         return $this->githubUsername;
+    }
+
+    public function getGithubUsernameLocked(): ?bool
+    {
+        return $this->githubUsernameLocked;
     }
 
     /**
