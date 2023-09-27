@@ -34,9 +34,9 @@ class CourseModel
     }
 
     /**
-     * Gets all courses from the database that have an end date in the future
+     * Gets all courses from the database that have a start date in the future
      */
-    public function getCoursesWithFutureEndDates(): array
+    public function getFutureCourses(): array
     {
         $sql = 'SELECT `id`,
                 `courses`.`start_date` AS `startDate`,
@@ -46,7 +46,44 @@ class CourseModel
                 `in_person` AS `inPerson`,
                 `remote`
                 FROM `courses`
-                WHERE `courses`.`end_date` >= NOW();';
+                WHERE `courses`.`start_date` > NOW();';
+        $query = $this->db->prepare($sql);
+        $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    /**
+     * Gets all courses from the database that are ongoing (i.e. have a start date in the past, end date in the future)
+     */
+    public function getOngoingCourses(): array
+    {
+        $sql = 'SELECT `id`,
+                `courses`.`start_date` AS `startDate`,
+                `courses`.`end_date` AS `endDate`,
+                `name`,
+                `notes`,
+                `in_person` AS `inPerson`,
+                `remote`
+                FROM `courses`
+                WHERE `courses`.`start_date` <= NOW() AND `courses`.`end_date` >= NOW();';
+        $query = $this->db->prepare($sql);
+        $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function getCompletedCourses(): array
+    {
+        $sql = 'SELECT `id`,
+                `courses`.`start_date` AS `startDate`,
+                `courses`.`end_date` AS `endDate`,
+                `name`,
+                `notes`,
+                `in_person` AS `inPerson`,
+                `remote`
+                FROM `courses`
+                WHERE `courses`.`end_date` < NOW();';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
         $query->execute();

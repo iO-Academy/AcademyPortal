@@ -2,12 +2,17 @@
 
 namespace Portal\ViewHelpers;
 
+use Portal\Services\DateService;
+
 class DisplayCoursesViewHelper
 {
-     /**
-      * Viewhelper to display courses within course detail table
-      */
-    public static function displayCourses(array $courses, array $trainers): string
+    private const NO_COURSES_TABLE_HEADING =
+        '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
+
+    /**
+     * Method to display courses within course detail table
+     */
+    public static function createCoursesTableLoop(array $courses, array $trainers): string
     {
         $result = '';
         foreach ($courses as $course) {
@@ -26,18 +31,37 @@ class DisplayCoursesViewHelper
                     <td>' . $remote . '</td>
                 </tr>';
         }
-        return self::handleNoCourses($result);
+        return $result;
+    }
+
+    public static function displayFutureCourses(array $courses, array $trainers): string
+    {
+        $result = self::createCoursesTableLoop($courses, $trainers);
+        if (!empty($result)) {
+            return $result;
+        }
+        return self::NO_COURSES_TABLE_HEADING;
+    }
+
+    public static function displayOngoingCourses(array $courses, array $trainers): string
+    {
+        $result = '';
+        if (!empty($courses)) {
+            $result = self::createCoursesTableLoop($courses, $trainers);
+        }
+        return $result;
     }
 
     /**
-     * If no courses found, returns message saying no courses found.
-     */
-    private static function handleNoCourses(string $output): string
+     * function displays a heading row of 'Ongoing Courses' in the courses table
+     * */
+    public static function displayOngoingCoursesHeading(bool $ongoingCourses): string
     {
-        if (empty($output)) {
-            return '<tr><td colspan="6"><h5 class="text-danger text-center">No Courses Found.</h5></td></tr>';
+        $row = '';
+        if ($ongoingCourses) {
+            $row = '<tr><td colspan="8"><h5 class="text-success text-center">Ongoing Courses</h5></td></tr>';
         }
-        return $output;
+        return $row;
     }
 
     /**
