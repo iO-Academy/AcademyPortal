@@ -259,7 +259,7 @@
                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                        placeholder="0" min="0" max="10000" step="1"
                        value="<?php echo $applicant->getEdaid() ? $applicant->getEdaid() : 0; ?>">
-                <span class="input-group-addon"><i class="bi bi-lock" id="lockToggle"></i></span>
+                <span class="input-group-addon"><i class="bi bi-unlock" id="lockToggle"></i></span>
             </div>
             <label for="upfront">Upfront Amount</label>
             <div class="input-group col-lg-12">
@@ -267,14 +267,14 @@
                 <input id="upfront" name="upfront" class="submitApplicant form-control" type="number"
                        placeholder="0" min="0" max="10000" step="1"
                        value="<?php echo $applicant->getUpfront() ? $applicant->getUpfront() : 0; ?>">
-                <span class="input-group-addon"><i class="bi bi-lock" id="lockToggle"></i></span>
+                <span class="input-group-addon"><i class="bi bi-unlock" id="lockToggle"></i></span>
             </div>
 
             <div class="form-group">
                 <input class="submitApplicant" name="laptop"
                        type="checkbox"<?php echo $applicant->getLaptop() ? " checked" : ""; ?>/>
                 <label for="laptop">Academy laptop needed?</label>
-                <i class="bi bi-lock" id="lockToggle"></i>
+                <i class="bi bi-unlock" id="lockToggle"></i>
             </div>
 
             <div class="form-group">
@@ -392,7 +392,7 @@
             <div class="input-group">
             <input id="githubUsername" name="githubUsername" class="submitApplicant form-control"
                    type="text" value="<?php echo $applicant->getGithubUsername(); ?>">
-                <span class="input-group-addon"><i class="bi bi-lock" id="lockToggle"></i></span>
+                <span class="input-group-addon"><i class="bi bi-unlock" id="lockToggle"></i></span>
             </div>
             <label for="portfolioUrl">Portfolio URL</label>
             <input id="portfolioUrl" name="portfolioUrl" class="submitApplicant form-control"
