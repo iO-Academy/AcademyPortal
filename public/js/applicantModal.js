@@ -129,13 +129,16 @@ export function addEventListenersToDisplayApplicantModal() {
                             }
 
                             data.aptitude = aptitudeColors(data.aptitude)
+                            console.log(data.aptitude)
                             displayField(data, 'aptitude', 'Not yet taken')
+                            removeEventListener()
                             document.querySelector('.retrieveAptitudeScore').addEventListener("click", e => {
                                 fetch(`/api/retrieveAptitudeScore?email=${data.email}`)
                                     .then(response => response.json())
-                                    .then(data => {
+                                    .then(data => document.querySelector((('#aptitude'))).textContent = `${data.data.score}%`)
 
-                                    })
+                                // console.log(data.data.score)
+                                // document.querySelector(aptitudeColors(data.aptitude).textContent = ${data}))
                             })
 
                             displayField(data, 'diversitechInterest', 'Not asked yet', 'No')
