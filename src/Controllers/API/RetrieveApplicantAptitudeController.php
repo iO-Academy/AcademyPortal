@@ -10,9 +10,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
-
 class RetrieveApplicantAptitudeController extends Controller
-
 {
     private AptitudeTestModel $model;
 
@@ -26,13 +24,26 @@ class RetrieveApplicantAptitudeController extends Controller
         $requestBody = $request->getQueryParams();
         if (!empty($requestBody['email'])) {
             $apiResponse = $this->model->sendEmailToApi($requestBody['email']);
-            if($apiResponse['success']) {
-                // use model to curl for result
-            } else {
-                [“Not yet taken”]
-            }
+            if (is_array($apiResponse) && $apiResponse['success']) {
+                $apiResultResponse = $this->model->sendIdToApi($apiResponse['data']['id']);
+                if (is_array($apiResultResponse) && $apiResultResponse['success']) {
+                    $data = [
+                        'success' => true,
+                        'msg' => "Found aptitude test score",
+                        'data' => ['score' => $apiResultResponse['data']['score']]
+                    ];
+                    $statusCode = 200;
+                    return $this->respondWithJson($response, $data, $statusCode);
+                }
 
+
+                } else {
+
+            }
         }
         return $response;
     }
 }
+
+//if (is_array($apiResponse) && $apiResponse['success']) {
+//    $idResponse = $this->model->sendIdToApi($requestBody['Id']);

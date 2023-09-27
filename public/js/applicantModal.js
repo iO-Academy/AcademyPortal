@@ -133,7 +133,9 @@ export function addEventListenersToDisplayApplicantModal() {
                             document.querySelector('.retrieveAptitudeScore').addEventListener("click", e => {
                                 fetch(`/api/retrieveAptitudeScore?email=${data.email}`)
                                     .then(response => response.json())
-                                    .then(data => console.log(data))
+                                    .then(data => {
+
+                                    })
                             })
 
                             displayField(data, 'diversitechInterest', 'Not asked yet', 'No')
