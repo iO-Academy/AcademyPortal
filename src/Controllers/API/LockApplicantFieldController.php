@@ -41,7 +41,7 @@ class LockApplicantFieldController extends Controller
             if ($result) {
                 $responseData = [
                     'success' => true,
-                    'message' => 'Lock applicant for ' . $data['field'] . ' field Successfully',
+                    'message' => 'Lock for ' . $data['field'] . ' field Successfully',
                     'data' => []
                 ];
                 $statusCode = 200;
