@@ -57,7 +57,7 @@ function copyToClipboard(element)
 
 function aptitudeScoreButtonClick(e)
 {
-    fetch(`/api/retrieveAptitudeScore?email=${e.target.dataset.email}`)
+    fetch(`/api/getAptitudeScore?email=${e.target.dataset.email}`)
         .then(response => response.json())
         .then(data => document.querySelector((('#aptitude'))).textContent = `${data.data.score}% `)
 }
@@ -144,9 +144,9 @@ export function addEventListenersToDisplayApplicantModal()
 
                             data.aptitude = aptitudeColors(data.aptitude)
                             displayField(data, 'aptitude', 'Not yet taken')
-                            document.querySelector('.retrieveAptitudeScore').dataset.email = data.email
-                            document.querySelector('.retrieveAptitudeScore').removeEventListener("click", aptitudeScoreButtonClick)
-                            document.querySelector('.retrieveAptitudeScore').addEventListener("click", aptitudeScoreButtonClick);
+                            document.querySelector('.getAptitudeScoreButton').dataset.email = data.email
+                            document.querySelector('.getAptitudeScoreButton').removeEventListener("click", aptitudeScoreButtonClick)
+                            document.querySelector('.getAptitudeScoreButton').addEventListener("click", aptitudeScoreButtonClick);
 
 
                             displayField(data, 'diversitechInterest', 'Not asked yet', 'No')

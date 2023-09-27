@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
-class RetrieveApplicantAptitudeController extends Controller
+class GetApplicantAptitudeController extends Controller
 {
     private AptitudeTestModel $model;
 
