@@ -1,4 +1,5 @@
-function displayField(data, field, noDataMessage = 'No information provided', zeroMessage = null) {
+function displayField(data, field, noDataMessage = 'No information provided', zeroMessage = null)
+{
     if (data[field] === 0 && zeroMessage !== null) {
         document.getElementById(field).innerHTML = zeroMessage
         return
@@ -8,10 +9,12 @@ function displayField(data, field, noDataMessage = 'No information provided', ze
         document.getElementById(field).innerHTML = '<span class="text-danger">' + noDataMessage + '</span>'
     } else {
         document.getElementById(field).innerHTML = data[field]
+        document.getElementById(field).innerHTML = data[field]
     }
 }
 
-function prettyDate(date) {
+function prettyDate(date)
+{
     if (typeof date !== 'string' || date.length === 0) {
         return null;
     }
@@ -20,7 +23,8 @@ function prettyDate(date) {
     return date.toLocaleDateString("en-GB", dateOptions)
 }
 
-function aptitudeColors(score) {
+function aptitudeColors(score)
+{
     if (score === null) {
         return null
     }
@@ -33,14 +37,16 @@ function aptitudeColors(score) {
     }
 }
 
-function addCurrency(number) {
+function addCurrency(number)
+{
     if (number !== null) {
         return '&pound;' + number.toLocaleString()
     }
     return 'Unknown'
 }
 
-function copyToClipboard(element) {
+function copyToClipboard(element)
+{
     let $temp = $("<input>");
     $("body").append($temp);
     $temp.val($(element).text()).select();
@@ -49,7 +55,15 @@ function copyToClipboard(element) {
     document.querySelector("button.clipboard").innerText = 'Copied';
 }
 
-export function addEventListenersToDisplayApplicantModal() {
+function aptitudeScoreButtonClick(e)
+{
+    fetch(`/api/retrieveAptitudeScore?email=${e.target.dataset.email}`)
+        .then(response => response.json())
+        .then(data => document.querySelector((('#aptitude'))).textContent = `${data.data.score}% `)
+}
+
+export function addEventListenersToDisplayApplicantModal()
+{
     $(document).ready(function () {
         $(".myBtn").click(function () {
             let url = './api/getApplicant/' + this.dataset.id
@@ -129,17 +143,11 @@ export function addEventListenersToDisplayApplicantModal() {
                             }
 
                             data.aptitude = aptitudeColors(data.aptitude)
-                            console.log(data.aptitude)
                             displayField(data, 'aptitude', 'Not yet taken')
-                            removeEventListener()
-                            document.querySelector('.retrieveAptitudeScore').addEventListener("click", e => {
-                                fetch(`/api/retrieveAptitudeScore?email=${data.email}`)
-                                    .then(response => response.json())
-                                    .then(data => document.querySelector((('#aptitude'))).textContent = `${data.data.score}%`)
+                            document.querySelector('.retrieveAptitudeScore').dataset.email = data.email
+                            document.querySelector('.retrieveAptitudeScore').removeEventListener("click", aptitudeScoreButtonClick)
+                            document.querySelector('.retrieveAptitudeScore').addEventListener("click", aptitudeScoreButtonClick);
 
-                                // console.log(data.data.score)
-                                // document.querySelector(aptitudeColors(data.aptitude).textContent = ${data}))
-                            })
 
                             displayField(data, 'diversitechInterest', 'Not asked yet', 'No')
                             if (data.diversitechInterest === 1) {
@@ -180,7 +188,7 @@ export function addEventListenersToDisplayApplicantModal() {
                             displayField(data, 'additionalNotes', 'No notes')
                             data.chosenCourseDate = prettyDate(data.chosenCourseDate)
                             displayField(data, 'chosenCourseDatePretty', 'Not asked yet')
-                            displayField(data,'userProfileLink', 'No Link Yet' )
+                            displayField(data,'userProfileLink', 'No Link Yet')
                         })
                     }
                 )
