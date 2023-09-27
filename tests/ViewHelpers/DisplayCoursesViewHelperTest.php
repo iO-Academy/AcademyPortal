@@ -226,6 +226,12 @@ class DisplayCoursesViewHelperTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
+    public function testMalformedDisplayOngoingCoursesHeading()
+    {
+        $this->expectException(\TypeError::class);
+        DisplayCoursesViewHelper::displayOngoingCoursesHeading([]);
+    }
+
     public function testSuccessFilterCoursesByTrainers()
     {
         $input = [
