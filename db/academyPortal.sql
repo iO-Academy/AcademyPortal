@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 11.0.2-MariaDB-1:11.0.2+maria~ubu2204)
 # Database: academyPortal
-# Generation Time: 2023-09-27 09:58:31 +0000
+# Generation Time: 2023-09-27 11:27:41 +0000
 # ************************************************************
 
 
@@ -71,111 +71,6 @@ VALUES
 	(26,'Audra Snyder','tagywove@mailinator.com','+1 (684) 307-1038','Culpa deserunt labo','Facere modi quasi mo',2,'1','0','0','Maiores voluptatem e',1,NULL,'2022-09-28 10:04:11',0,'4','','2',NULL);
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table applicants_additional
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `applicants_additional`;
-
-CREATE TABLE `applicants_additional` (
-  `id` int(11) unsigned NOT NULL,
-  `apprentice` int(1) DEFAULT NULL,
-  `aptitude` int(3) DEFAULT NULL,
-  `assessmentDay` int(3) DEFAULT NULL,
-  `customAssessmentDay` date DEFAULT NULL,
-  `assessmentTime` varchar(5) DEFAULT NULL,
-  `assessmentNotes` text DEFAULT NULL,
-  `diversitechInterest` int(1) DEFAULT NULL,
-  `diversitech` int(5) DEFAULT NULL,
-  `edaid` int(5) DEFAULT NULL,
-  `upfront` int(5) DEFAULT NULL,
-  `kitCollectionDay` date DEFAULT NULL,
-  `kitCollectionTime` varchar(5) DEFAULT NULL,
-  `kitNum` int(2) DEFAULT NULL,
-  `laptop` int(1) DEFAULT NULL,
-  `laptopDeposit` int(1) DEFAULT NULL,
-  `laptopNum` int(2) DEFAULT NULL,
-  `tasterId` int(11) unsigned DEFAULT NULL,
-  `tasterAttendance` int(1) DEFAULT NULL,
-  `team` int(1) DEFAULT NULL,
-  `githubUsername` varchar(255) DEFAULT NULL,
-  `portfolioUrl` varchar(255) DEFAULT NULL,
-  `pleskHostingUrl` varchar(255) DEFAULT NULL,
-  `githubEducationLink` varchar(255) DEFAULT NULL,
-  `additionalNotes` text DEFAULT NULL,
-  `chosenCourseId` int(11) unsigned DEFAULT NULL,
-  `attitude` int(3) DEFAULT NULL,
-  `averageScore` int(3) DEFAULT NULL,
-  `fee` int(5) DEFAULT NULL,
-  `signedTerms` tinyint(1) DEFAULT NULL,
-  `signedDiversitech` tinyint(1) DEFAULT NULL,
-  `inductionEmailSent` tinyint(1) DEFAULT NULL,
-  `signedNDA` tinyint(1) DEFAULT NULL,
-  `checkedID` tinyint(1) DEFAULT NULL,
-  `dataProtectionName` tinyint(1) DEFAULT NULL,
-  `dataProtectionPhoto` tinyint(1) DEFAULT NULL,
-  `dataProtectionTestimonial` tinyint(1) DEFAULT NULL,
-  `dataProtectionBio` tinyint(1) DEFAULT NULL,
-  `dataProtectionVideo` tinyint(1) DEFAULT NULL,
-  `contactFormSigned` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `CourseID` (`chosenCourseId`),
-  KEY `TasterID` (`tasterId`),
-  CONSTRAINT `CourseID` FOREIGN KEY (`chosenCourseId`) REFERENCES `courses` (`id`),
-  CONSTRAINT `TasterID` FOREIGN KEY (`tasterId`) REFERENCES `events` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
-LOCK TABLES `applicants_additional` WRITE;
-/*!40000 ALTER TABLE `applicants_additional` DISABLE KEYS */;
-
-INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `customAssessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `tasterId`, `tasterAttendance`, `team`, `githubUsername`, `portfolioUrl`, `pleskHostingUrl`, `githubEducationLink`, `additionalNotes`, `chosenCourseId`, `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`, `inductionEmailSent`, `signedNDA`, `checkedID`, `dataProtectionName`, `dataProtectionPhoto`, `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`, `contactFormSigned`)
-VALUES
-	(11,1,21,NULL,NULL,'','',0,NULL,NULL,NULL,NULL,'',NULL,0,0,NULL,NULL,0,NULL,NULL,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
-	(12,0,99,8,NULL,'','',0,NULL,NULL,NULL,NULL,'',NULL,0,0,NULL,NULL,0,NULL,NULL,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
-	(13,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(14,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(16,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(17,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(18,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(19,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(20,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(21,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(22,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(23,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(24,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(25,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(26,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-
-/*!40000 ALTER TABLE `applicants_additional` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table background_info
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `background_info`;
-
-CREATE TABLE `background_info` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `backgroundInfo` varchar(40) DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
-LOCK TABLES `background_info` WRITE;
-/*!40000 ALTER TABLE `background_info` DISABLE KEYS */;
-
-INSERT INTO `background_info` (`id`, `backgroundInfo`, `deleted`)
-VALUES
-	(1,'Changing careers',0),
-	(2,'Returning to work',0),
-	(3,'Recent university graduate',0),
-	(4,'School leaver',0);
-
-/*!40000 ALTER TABLE `background_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -366,10 +261,9 @@ VALUES
 	(5,'2022-03-07','2022-06-24','Full-Stack Track',NULL,0,0,0,NULL,NULL),
 	(6,'2022-07-04','2022-10-21','Full-Stack Track','Might be robots',0,0,1,NULL,NULL),
 	(7,'2022-07-04','2022-10-21','Full-Stack Track',NULL,0,1,0,NULL,NULL),
-	(8,'2023-05-23','2023-07-23','SDE','grid-enabled',0,1,0,NULL,NULL),
 	(9,'2023-09-23','2023-11-23','Full-Stack Track','customer loyalty',0,0,1,NULL,NULL),
 	(10,'2024-01-11','2024-03-11','SDE','MAGNETS',0,0,1,NULL,NULL),
-	(11,'2024-07-11','0000-00-00','SDE','GHOULS',0,1,1,NULL,NULL),
+	(11,'2024-07-11','2024-07-14','Python Intro','GHOULS',0,1,1,NULL,NULL),
 	(12,'2025-01-11','2025-04-11','Full-Stack Track','H for Hornets',0,1,1,NULL,NULL),
 	(13,'2025-07-15','2025-10-11','Data Science','cowabunga',0,1,0,NULL,NULL),
 	(14,'2026-06-06','2026-10-11','SDE','migration',0,1,1,NULL,NULL),
@@ -574,34 +468,6 @@ VALUES
 	(4,'Prefer not to say');
 
 /*!40000 ALTER TABLE `gender` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table hear_about
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `hear_about`;
-
-CREATE TABLE `hear_about` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `hearAbout` varchar(150) DEFAULT NULL,
-  `deleted` tinyint(4) DEFAULT 0,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
-LOCK TABLES `hear_about` WRITE;
-/*!40000 ALTER TABLE `hear_about` DISABLE KEYS */;
-
-INSERT INTO `hear_about` (`id`, `hearAbout`, `deleted`)
-VALUES
-	(1,'Google',0),
-	(2,'Newspaper',0),
-	(3,'Back of the toilet door',0),
-	(4,'Telepathy',0),
-	(5,'Carrier Pigeon',0),
-	(6,'Fax',0);
-
-/*!40000 ALTER TABLE `hear_about` ENABLE KEYS */;
 UNLOCK TABLES;
 
 

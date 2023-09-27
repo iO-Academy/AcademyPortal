@@ -9,6 +9,10 @@ class DisplayCoursesViewHelper
     private const NO_COURSES_TABLE_HEADING =
         '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
 
+    private const FUTURE_COURSES_HEADING_TABLE = '<tr><td colspan="8"><h5 class="text-primary text-center">Future Courses</h5></td></tr>';
+
+    public const COMPLETED_COURSE_HEADING_TABLE = '<tr><td colspan="8"><h5 class="text-secondary text-center">Completed Courses</h5></td></tr>';
+
     /**
      * Method to display courses within course detail table
      */
@@ -43,7 +47,7 @@ class DisplayCoursesViewHelper
         return self::NO_COURSES_TABLE_HEADING;
     }
 
-    public static function displayOngoingCourses(array $courses, array $trainers): string
+    public static function displayCourses(array $courses, array $trainers): string
     {
         $result = '';
         if (!empty($courses)) {
@@ -100,5 +104,37 @@ class DisplayCoursesViewHelper
         } else {
             return [];
         }
+    }
+
+    public static function displayCoursesTab(array $ongoingCourses, array $completedCourses, array $futureCourses, array $trainers, string $type): string
+    {
+        $active = ($type == 'ongoingAndFuture') ? ' active' : '';
+
+        $result = '<div class="tab-pane' . $active . ' role="tabpanel" id="' . $type . '"
+                    <table class="col-xs-12 table-bordered table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Course Name</th>
+                            <th>Trainer</th>
+                            <th>Notes</th>
+                            <th>Remote</th>
+                            <th>In Person</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+
+        if ($type == 'ongoingAndFuture') {
+             $result .= self::displayOngoingCoursesHeading(!empty($ongoingCourses));
+             $result .= self::displayCourses($ongoingCourses, $trainers);
+             $result .= self::FUTURE_COURSES_HEADING_TABLE;
+             $result .= self::displayFutureCourses($futureCourses, $trainers);
+        } else {
+            $result .= self::displayCourses($completedCourses, $trainers);
+        }
+        $result .= '</table></div>';
+        return $result;
     }
 }

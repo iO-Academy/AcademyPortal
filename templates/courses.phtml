@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <?php
+        require 'partials/layout/head.phtml';
+        echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Courses');
+        ?>
+        <script defer src="./js/toggleCompletedCourses.js"></script>
+    </head>
+    <body>
+        <?php require 'partials/layout/header.phtml'; ?>
+        <?php require 'partials/layout/nav.phtml'; ?>
 
-<head>
-    <?php
-    require 'partials/layout/head.phtml';
-    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Courses');
-    ?>
-</head>
-
-<body>
-<?php require 'partials/layout/header.phtml'; ?>
-
-<?php require 'partials/layout/nav.phtml'; ?>
-
-        <h1>Courses</h1>
+        <div>
+            <h1>Courses</h1>
+            <button type="button" class="btn btn-default completed-courses-btn">Toggle Completed Courses</button>
+        </div>
         <div id="courses" class="row">
             <table class="col-xs-12 table-bordered table">
                 <thead>
@@ -28,14 +29,18 @@
                         <th>In Person</th>
                     </tr>
                 </thead>
+                <tbody class="hidden" id="completed-courses">
+                    <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::COMPLETED_COURSE_HEADING_TABLE; ?>
+                    <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($completedCourses, $trainers); ?>
+                </tbody>
                 <tbody>
                     <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayOngoingCoursesHeading(!empty($ongoingCourses)); ?>
-                    <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayOngoingCourses($ongoingCourses, $trainers); ?>
+                    <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($ongoingCourses, $trainers); ?>
                     <tr><td colspan="8"><h5 class="text-primary text-center">Future Courses</h5></td></tr>
                     <?php echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayFutureCourses($futureCourses, $trainers); ?>
                 </tbody>
             </table>
         </div>
-<?php require 'partials/layout/footer.phtml';?>
-</body>
+    <?php require 'partials/layout/footer.phtml';?>
+    </body>
 </html>
