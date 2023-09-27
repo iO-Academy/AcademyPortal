@@ -46,7 +46,7 @@ class CourseModel
                 `in_person` AS `inPerson`,
                 `remote`
                 FROM `courses`
-                WHERE `courses`.`start_date` >= NOW();';
+                WHERE `courses`.`start_date` > NOW();';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
         $query->execute();
@@ -66,7 +66,7 @@ class CourseModel
                 `in_person` AS `inPerson`,
                 `remote`
                 FROM `courses`
-                WHERE `courses`.`start_date` < NOW() AND `courses`.`end_date` >= NOW();';
+                WHERE `courses`.`start_date` <= NOW() AND `courses`.`end_date` >= NOW();';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
         $query->execute();
