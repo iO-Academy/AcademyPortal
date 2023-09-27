@@ -11,4 +11,5 @@ sendgrid.env
 .circleci/.config.yml.swp
 .phpunit.result.cache
 /node_modules/
+.phpunit.cache/
 
