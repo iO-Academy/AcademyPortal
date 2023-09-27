@@ -11,9 +11,11 @@
         <?php require 'partials/layout/header.phtml'; ?>
         <?php require 'partials/layout/nav.phtml'; ?>
 
-        <div>
-            <h1>Courses</h1>
-            <button type="button" class="btn btn-default completed-courses-btn">Toggle Completed Courses</button>
+        <div class="container-fluid">
+            <div class="row">
+                <h1 class="col-lg-10">Courses</h1>
+                <button type="button" class="btn btn-default completed-courses-btn col-lg-2">Toggle Completed Courses</button>
+            </div>
         </div>
         <div id="courses" class="row">
             <table class="col-xs-12 table-bordered table">
