@@ -17,3 +17,30 @@ document.querySelector('#stageTitle').addEventListener('change', e => {
         })
     }
 })
+
+function showAlertforApptitudeButton(alertSelector)
+{
+    document.querySelector(alertSelector).classList.remove('hidden')
+    setTimeout(() => {
+        document.querySelector(alertSelector).classList.add('hidden')
+    }, 3000)
+}
+function aptitudeScoreButtonClick(e)
+{
+    e.preventDefault()
+    fetch(`/api/getAptitudeScore?email=${e.target.dataset.email}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.querySelector('#aptitude').value = data.data.score;
+            } else {
+                document.querySelector('#aptitudeScoreError').textContent = data.message;
+                showAlertforApptitudeButton('#aptitudeScoreError')
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+document.querySelector('.getAptitudeScoreButton').addEventListener('click', aptitudeScoreButtonClick)
