@@ -9,7 +9,6 @@ function displayField(data, field, noDataMessage = 'No information provided', ze
         document.getElementById(field).innerHTML = '<span class="text-danger">' + noDataMessage + '</span>'
     } else {
         document.getElementById(field).innerHTML = data[field]
-        document.getElementById(field).innerHTML = data[field]
     }
 }
 
@@ -77,7 +76,7 @@ function aptitudeScoreButtonClick(e)
             }
             })
             .catch(error => {
-                console.error('Error:', error);
+                console.error('Unexpected error', error);
             });
 }
 

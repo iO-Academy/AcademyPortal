@@ -39,7 +39,7 @@ function aptitudeScoreButtonClick(e)
             }
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error('Unexpected error', error);
         });
 }
 

@@ -6,7 +6,7 @@ class AptitudeTestModel
 {
     private const URL = 'https://api.aptitude-test.dev.io-academy.uk/user?email=';
     private const APTURL = 'https://api.aptitude-test.dev.io-academy.uk/result?id=';
-    public function sendEmailToApi(string $email)
+    public function sendEmailToApi(string $email): array
     {
         $curl = curl_init(self::URL . $email);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -14,7 +14,7 @@ class AptitudeTestModel
         return json_decode($response, true);
     }
 
-    public function sendIdToApi(string $id)
+    public function sendIdToApi(string $id): array
     {
         $curl = curl_init(self::APTURL . $id);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

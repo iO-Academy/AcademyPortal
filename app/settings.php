@@ -29,10 +29,6 @@ return function (ContainerBuilder $containerBuilder) {
                 'hostPassword' => 'mnhftppxpklunjug',
                 'adminEmail' => 'testacademyportal@gmail.com'
             ],
-            'aptitudeTestApiUrl' => [
-                'dev' => '',
-                'live' => ''
-            ]
         ],
     ]);
 };
