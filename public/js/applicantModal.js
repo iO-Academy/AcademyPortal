@@ -53,7 +53,7 @@ export function addEventListenersToDisplayApplicantModal() {
     $(document).ready(function () {
         $(".myBtn").click(function () {
             let url = './api/getApplicant/' + this.dataset.id
-            let studentUrl = document.URL
+            let studentUrl = window.location.origin + '/public/'
             fetch(url)
                 .then(
                     function (response) {
@@ -65,7 +65,7 @@ export function addEventListenersToDisplayApplicantModal() {
                         }
                         // Examine the text in the response
                         response.json().then(function (data) {
-
+                            studentUrl += data.id
                             document.querySelectorAll('#applicantModal section.student').forEach(section => {
                                 if (data.isStudentStage) {
                                     section.classList.remove('hidden')
@@ -170,7 +170,6 @@ export function addEventListenersToDisplayApplicantModal() {
                             displayField(data, 'additionalNotes', 'No notes')
                             data.chosenCourseDate = prettyDate(data.chosenCourseDate)
                             displayField(data, 'chosenCourseDatePretty', 'Not asked yet')
-                            displayField(data,'userProfileLink', 'No Link Yet' )
                         })
                     }
                 )
