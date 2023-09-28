@@ -27,14 +27,10 @@ class CoursesPageController extends Controller
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
-            $ongoingCourses = $this->courseModel->getOngoingCourses();
-            $args['ongoingCourses'] = $ongoingCourses;
-            $futureCourses = $this->courseModel->getFutureCourses();
-            $args['futureCourses'] = $futureCourses;
-            $completedCourses = $this->courseModel->getCompletedCourses();
-            $args['completedCourses'] = $completedCourses;
-            $trainers = $this->courseModel->getTrainersAndCourseId();
-            $args['trainers'] = $trainers;
+            $args['ongoingCourses'] = $this->courseModel->getOngoingCourses();
+            $args['futureCourses'] = $this->courseModel->getFutureCourses();
+            $args['completedCourses'] = $this->courseModel->getCompletedCourses();
+            $args['trainers'] = $this->courseModel->getTrainersAndCourseId();
             return $this->renderer->render($response, 'courses.phtml', $args);
         } else {
             return $response->withHeader('Location', './');
