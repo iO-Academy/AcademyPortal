@@ -55,39 +55,31 @@ function copyToClipboard(element)
     document.querySelector("button.clipboard").innerText = 'Copied';
 }
 
-// function aptitudeScoreButtonClick(e) {
-//     fetch(`/api/getAptitudeScore?email=${e.target.dataset.email}`)
-//         .then(response => response.json())
-//         .then(data => document.querySelector(('#aptitude')).textContent = `${data.data.score} % `)
-// }
-
-function showAlert(alertSelector) {
+function showAlertforApptitudeButton(alertSelector)
+{
     document.querySelector(alertSelector).classList.remove('hidden')
     setTimeout(() => {
         document.querySelector(alertSelector).classList.add('hidden')
     }, 3000)
 }
 
-
-    function aptitudeScoreButtonClick(e) {
-        fetch(`/api/getAptitudeScore?email=${e.target.dataset.email}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    document.querySelector('#aptitude').textContent = `${data.data.score}%`;
-                    showAlert('#aptitudeScoreSuccess')
-                } else {
-                    document.querySelector('#aptitudeScoreError').textContent = data.message;
-                    showAlert('#aptitudeScoreError')
-                }
+function aptitudeScoreButtonClick(e)
+{
+    fetch(`/api/getAptitudeScore?email=${e.target.dataset.email}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.querySelector('#aptitude').textContent = `${data.data.score}%`;
+                showAlertforApptitudeButton('#aptitudeScoreSuccess')
+            } else {
+                document.querySelector('#aptitudeScoreError').textContent = data.message;
+                showAlertforApptitudeButton('#aptitudeScoreError')
+            }
             })
             .catch(error => {
                 console.error('Error:', error);
             });
 }
-
-
-
 
 export function addEventListenersToDisplayApplicantModal()
 {
