@@ -2,8 +2,6 @@
 
 namespace Portal\ViewHelpers;
 
-use Portal\Services\DateService;
-
 class DisplayCoursesViewHelper
 {
     private const NO_COURSES_TABLE_HEADING =

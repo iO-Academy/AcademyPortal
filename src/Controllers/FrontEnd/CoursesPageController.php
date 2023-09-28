@@ -4,7 +4,6 @@ namespace Portal\Controllers\FrontEnd;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\CourseModel;
-use Portal\Services\DateService;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
