@@ -18,7 +18,7 @@ document.querySelector('#stageTitle').addEventListener('change', e => {
     }
 })
 
-function showAlertforApptitudeButton(alertSelector)
+function showAlertForApptitudeButton(alertSelector)
 {
     document.querySelector(alertSelector).classList.remove('hidden')
     setTimeout(() => {
@@ -35,7 +35,7 @@ function aptitudeScoreButtonClick(e)
                 document.querySelector('#aptitude').value = data.data.score;
             } else {
                 document.querySelector('#aptitudeScoreError').textContent = data.message;
-                showAlertforApptitudeButton('#aptitudeScoreError')
+                showAlertForApptitudeButton('#aptitudeScoreError')
             }
         })
         .catch(error => {
