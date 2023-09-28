@@ -14,7 +14,6 @@ class AptitudeTestModel
         return json_decode($response, true);
     }
 
-
     public function sendIdToApi(string $id)
     {
         $curl = curl_init(self::APTURL . $id);
