@@ -1,6 +1,3 @@
-
-
-
 const urlParams = new URLSearchParams(window.location.search);
 const urlID = urlParams.get('id')
  document.querySelectorAll('#lockToggle').forEach(toggleLock => {
@@ -23,6 +20,6 @@ const urlID = urlParams.get('id')
                             document.querySelector(`#${fieldName}Error`).classList.toggle('hidden')
                             // show error
                         }
-                    });
-            })
-        });
+                    })
+                })
+            });
