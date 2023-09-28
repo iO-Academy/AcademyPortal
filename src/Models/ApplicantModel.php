@@ -579,7 +579,6 @@ class ApplicantModel implements ApplicantModelInterface
     {
         switch ($fieldName) {
             case 'githubUsername':
-
                 $query = $this->db->prepare('SELECT `githubUsernameLocked` FROM 
                                   `applicants_additional` WHERE `id` = :id');
                 $query->execute(["id" => $id]);
