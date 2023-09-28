@@ -9,7 +9,7 @@ class DisplayCoursesViewHelper
     private const NO_COURSES_TABLE_HEADING =
         '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
 
-    private const FUTURE_COURSES_HEADING_TABLE =
+    public const FUTURE_COURSES_HEADING_TABLE =
         '<tr><td colspan="8"><h5 class="text-primary text-center">Future Courses</h5></td></tr>';
 
     public const COMPLETED_COURSE_HEADING_TABLE =
