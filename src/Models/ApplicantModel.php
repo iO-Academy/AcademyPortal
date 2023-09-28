@@ -209,13 +209,20 @@ class ApplicantModel implements ApplicantModelInterface
                       `dateTimeAdded`, `backgroundInfo`, `hearAbout`, `gender`.`gender`,
                       `apprentice`, `aptitude`,`events`.`date` AS 'assessmentDay', 
                       `applicants_additional`.`customAssessmentDay`, `assessmentTime`,
-                      `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`,
-                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, 
+                      `assessmentNotes`, `diversitechInterest`, `diversitech`,
+                      `edaid`, `edaidLocked`, `upfront`,`upfrontLocked`,
+                      `kitCollectionDay`,
+                      `kitCollectionTime`, `kitNum`, `laptop`, `laptopLocked`, `laptopDeposit`, `laptopNum`, 
                       `tasterEvent`.`date` AS `taster`, `tasterId`,
                       `tasterAttendance`, `teams`.`trainer` AS 'team', `hearAboutId`, `backgroundInfoId`,
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', 
                       `stages`.`student` AS 'isStudentStage',
-                      `option` as 'stageOptionName', `githubUsername`, `portfolioUrl`, `pleskHostingUrl`,
+                      `option` AS 
+                        'stageOptionName', 
+                        `githubUsername`, 
+                        `githubUsernameLocked`,
+                        `portfolioUrl`, 
+                        `pleskHostingUrl`,
                       `githubEducationLink`, `additionalNotes`, `student_course`.`start_date` AS 'chosenCourseDate',
                       `applicants_additional`.`chosenCourseId` AS 'chosenCourseId',
                       `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`,
@@ -561,17 +568,58 @@ class ApplicantModel implements ApplicantModelInterface
 
     public function updateEdaid(int $id, int $edaid): bool
     {
-        $query = $this->db->prepare('UPDATE `applicants_additional` SET edaid=:edaid WHERE id=:id');
+        $query = $this->db->prepare('UPDATE `applicants_additional` SET edaid=:edaid WHERE `id` = :id;');
         return $query->execute(["id" => $id, "edaid" => $edaid]);
     }
 
     public function updateGithubUsername(int $id, string $githubUsername): bool
     {
-        $query = $this->db->prepare('UPDATE `applicants_additional` SET githubUsername=:githubUsername
-     WHERE id=:id');
+        $query = $this->db->prepare('UPDATE `applicants_additional` SET githubUsername =: githubUsername
+     WHERE `id` = :id');
         return $query->execute(["id" => $id, "githubUsername" => $githubUsername]);
     }
+    public function toggleLockField(int $id, string $fieldName)
+    {
+        switch ($fieldName) {
+            case 'githubUsername':
+                $query = $this->db->prepare(
+                    'SELECT `githubUsernameLocked` 
+                    FROM `applicants_additional` 
+                    WHERE `id` = :id'
+                );
+                $query->execute(["id" => $id]);
+                $result = $query->fetch();
+                $locked = $result['githubUsernameLocked'] ? 0 : 1;
+                $sql = 'UPDATE `applicants_additional` SET `githubUsernameLocked` = :locked WHERE `id` = :id';
+                break;
+            case 'edaid':
+                $query = $this->db->prepare('SELECT `edaidLocked` FROM `applicants_additional` WHERE `id` = :id');
+                $query->execute(["id" => $id]);
+                $result = $query->fetch();
+                $locked = $result['edaidLocked'] ? 0 : 1;
+                $sql = 'UPDATE `applicants_additional` SET `edaidLocked` = :locked WHERE `id` = :id';
+                break;
+            case 'upfront':
+                $query = $this->db->prepare('SELECT `upfrontLocked` FROM `applicants_additional` WHERE `id` = :id');
+                $query->execute(["id" => $id]);
+                $result = $query->fetch();
+                $locked = $result['upfrontLocked'] ? 0 : 1;
+                $sql = 'UPDATE `applicants_additional` SET `upfrontLocked` = :locked WHERE `id` = :id';
+                break;
+            case 'laptop':
+                $query = $this->db->prepare('SELECT `laptopLocked` FROM `applicants_additional` WHERE `id` = :id');
+                $query->execute(["id" => $id]);
+                $result = $query->fetch();
+                $locked = $result['laptopLocked'] ? 0 : 1;
+                $sql = 'UPDATE `applicants_additional` SET `laptopLocked` = :locked WHERE `id` = :id';
+                break;
+            default:
+                throw new \Exception('Invalid field name');
+        }
 
+        $query = $this->db->prepare($sql);
+        return $query->execute(["id" => $id, "locked" => $locked]);
+    }
     public function updateLaptop(int $id, int $laptop): bool
     {
         $query = $this->db->prepare('UPDATE `applicants_additional` SET laptop=:laptop WHERE id=:id');

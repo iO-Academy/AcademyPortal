@@ -130,4 +130,5 @@ return function (App $app) {
     $app->post('/api/addTrainer', AddTrainerController::class);
     $app->delete('/api/deleteTrainer', DeleteTrainerController::class);
     $app->post('/api/sendEmail', SendEmailController::class);
+    $app->get('/api/lockApplicantField',\Portal\Controllers\API\LockApplicantFieldController::class);
 };

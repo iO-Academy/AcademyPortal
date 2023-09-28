@@ -115,3 +115,8 @@ cancelButtons.forEach(function (cancelButton) {
 })
 
 saveButton.addEventListener('click', saveClicked)
+
+// The function below displays a message for student when he  will hover on question mark next to the fields that cannot be edited anymore
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})

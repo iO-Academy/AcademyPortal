@@ -259,7 +259,10 @@
                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                        placeholder="0" min="0" max="10000" step="1"
                        value="<?php echo $applicant->getEdaid() ? $applicant->getEdaid() : 0; ?>">
-                <span class="input-group-addon"><i class="bi bi-lock" id="lockToggle"></i></span>
+                <span class="input-group-addon"><i class="bi <?php echo($applicant->getEdaidLocked() ? 'bi-lock' : 'bi-unlock');?>" id="lockToggle" data-field="edaid"></i></span>
+            </div>
+            <div class="alert formItem_alert alert-danger hidden" id="edaidError">
+                Locking the field not working
             </div>
             <label for="upfront">Upfront Amount</label>
             <div class="input-group col-lg-12">
@@ -267,16 +270,20 @@
                 <input id="upfront" name="upfront" class="submitApplicant form-control" type="number"
                        placeholder="0" min="0" max="10000" step="1"
                        value="<?php echo $applicant->getUpfront() ? $applicant->getUpfront() : 0; ?>">
-                <span class="input-group-addon"><i class="bi bi-lock" id="lockToggle"></i></span>
+                <span class="input-group-addon"><i class="bi <?php echo($applicant->getUpfrontLocked() ? 'bi-lock' : 'bi-unlock');?> " id="lockToggle" data-field="upfront"></i></span>
             </div>
-
+            <div class="alert formItem_alert alert-danger hidden" id="upfrontError">
+                Locking the field not working
+            </div>
             <div class="form-group">
                 <input class="submitApplicant" name="laptop"
                        type="checkbox"<?php echo $applicant->getLaptop() ? " checked" : ""; ?>/>
                 <label for="laptop">Academy laptop needed?</label>
-                <i class="bi bi-lock" id="lockToggle"></i>
+                <i class="bi <?php echo ($applicant->getLaptopLocked() ? 'bi-lock' : 'bi-unlock'); ?>" id="lockToggle" data-field="laptop"></i>
             </div>
-
+            <div class="alert formItem_alert alert-danger hidden" id="laptopError">
+                Locking the field not working
+            </div>
             <div class="form-group">
                 <input class="submitApplicant" name="laptopDeposit"
                        type="checkbox"<?php echo $applicant->getLaptopDeposit() ? " checked" : ""; ?>/>
@@ -392,8 +399,13 @@
             <div class="input-group">
             <input id="githubUsername" name="githubUsername" class="submitApplicant form-control"
                    type="text" value="<?php echo $applicant->getGithubUsername(); ?>">
-                <span class="input-group-addon"><i class="bi bi-lock" id="lockToggle"></i></span>
+                <span class="input-group-addon"><i class="bi <?php echo ($applicant->getGithubUsernameLocked() ? 'bi-lock' : 'bi-unlock'); ?> " id="lockToggle" data-field="githubUsername"></i></span>
             </div>
+
+            <div class="alert formItem_alert alert-danger hidden" id="githubUsernameError">
+                Locking the field not working
+            </div>
+
             <label for="portfolioUrl">Portfolio URL</label>
             <input id="portfolioUrl" name="portfolioUrl" class="submitApplicant form-control"
                    type="url" value="<?php echo $applicant->getPortfolioUrl(); ?>">
