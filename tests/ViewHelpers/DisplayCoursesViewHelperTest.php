@@ -18,7 +18,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>01/01/2021</td>
                     <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
-                    <td><p>Charlie</p></td>
+                    <td>Charlie</td>
                     <td></td>
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
@@ -47,7 +47,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>01/01/2021</td>
                     <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
-                    <td><p>Charlie</p><p>Neal</p></td>
+                    <td>Charlie Neal</td>
                     <td></td>
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
@@ -108,7 +108,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>01/01/2021</td>
                     <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
-                    <td><p class="trainer-deleted-indicator">Charlie</p><p>Neal</p></td>
+                    <td><p class="trainer-deleted-indicator">Charlie</p> Neal</td>
                     <td></td>
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
