@@ -10,7 +10,11 @@ class DisplayStudentProfileViewHelper
     private static function displayEditButtonOrQuestionMark(bool $isLocked, string $fieldName)
     {
         return ($isLocked ?
-            '?' :
+            '<span 
+        data-toggle="tooltip"
+        style="cursor:pointer;font-size:20px;"
+        title="This field has been locked"
+        ><i class="bi bi-question-circle"></i></span>' :
             '<button data-selector="' . $fieldName . '" 
                 class="btn btn-primary btn-sm ' . $fieldName . 'EditButton editbutton" 
                 id="' . $fieldName . 'EditButton">Edit</button>'

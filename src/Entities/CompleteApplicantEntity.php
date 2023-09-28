@@ -15,9 +15,9 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $diversitechInterest; // bool
     protected $diversitech; // int
     protected $edaid; // int
-    protected $edaidLocked; // int
+    protected $edaidLocked; // bool
     protected $upfront; // int
-    protected $upfrontLocked; // int
+    protected $upfrontLocked; // bool
     protected $kitCollectionDay; // date string
     protected $kitCollectionTime; // time string
     protected $kitNum; // int
@@ -35,7 +35,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     protected $stageOptionId;
     protected $stageOptionName;
     protected $githubUsername;
-    protected $githubUsernameLocked;
+    protected $githubUsernameLocked; //bool
     protected $portfolioUrl;
     protected $pleskHostingUrl;
     protected $githubEducationLink;
@@ -217,7 +217,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
     {
         return $this->edaid;
     }
-    public function getEdaidLocked(): ?int
+    public function getEdaidLocked(): bool
     {
         return $this->edaidLocked;
     }
@@ -230,7 +230,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         return $this->upfront;
     }
 
-    public function getUpfrontLocked(): ?int
+    public function getUpfrontLocked(): bool
     {
         return $this->upfrontLocked;
     }
@@ -266,7 +266,7 @@ class CompleteApplicantEntity extends ApplicantEntity implements \JsonSerializab
         return $this->laptop;
     }
 
-    public function getLaptopLocked(): ?bool
+    public function getLaptopLocked(): bool
     {
         return $this->laptopLocked;
     }
