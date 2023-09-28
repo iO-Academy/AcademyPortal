@@ -595,7 +595,7 @@ class ApplicantModel implements ApplicantModelInterface
                 $sql = 'UPDATE `applicants_additional` SET `edaidLocked` = :locked WHERE `id` = :id';
                 break;
             case 'upfront':
-                    $query = $this->db->prepare('SELECT `upfrontLocked` FROM `applicants_additional` WHERE `id` = :id');
+                $query = $this->db->prepare('SELECT `upfrontLocked` FROM `applicants_additional` WHERE `id` = :id');
                 $query->execute(["id" => $id]);
                 $result = $query->fetch();
                 $locked = $result['upfrontLocked'] ? 0 : 1;
