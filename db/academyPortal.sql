@@ -7,8 +7,6 @@
 #
 # Host: 127.0.0.1 (MySQL 11.0.2-MariaDB-1:11.0.2+maria~ubu2204)
 # Database: academyPortal
-# Generation Time: 2023-09-28 15:14:25 +0000
-# ************************************************************
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -369,7 +367,18 @@ VALUES
 	(4,'2022-03-07','2022-06-24','Full-Stack Track','Great people',0,1,0,NULL,NULL),
 	(5,'2022-03-07','2022-06-24','Full-Stack Track',NULL,0,0,0,NULL,NULL),
 	(6,'2022-07-04','2022-10-21','Full-Stack Track','Might be robots',0,0,1,NULL,NULL),
-	(7,'2022-07-04','2022-10-21','Full-Stack Track',NULL,0,1,0,NULL,NULL);
+	(7,'2022-07-04','2022-10-21','Full-Stack Track',NULL,0,1,0,NULL,NULL),
+	(9,'2023-09-23','2023-12-25','SDE','there are only 151 pokemon',0,0,1,NULL,NULL),
+	(10,'2024-01-11','2024-03-11','SDE','MAGNETS',0,0,1,NULL,NULL),
+	(11,'2024-07-11','2024-07-14','Python Intro','GHOULS',0,1,1,NULL,NULL),
+	(12,'2025-01-11','2025-04-11','Full-Stack Track','H for Hornets',0,1,1,NULL,NULL),
+	(13,'2025-07-15','2025-10-11','Data Science','cowabunga',0,1,0,NULL,NULL),
+	(14,'2026-06-06','2026-10-11','SDE','migration',0,1,1,NULL,NULL),
+	(15,'2026-07-11','2026-11-11','SDE','chaos potato',0,1,1,NULL,NULL),
+	(16,'2027-04-22','2027-10-15','SDE','pigeons',0,1,1,NULL,NULL),
+	(17,'2027-07-11','2027-10-30','SDE','migration',0,0,1,NULL,NULL),
+	(18,'2028-06-19','2028-09-12','SDE','Virtual',0,1,0,NULL,NULL),
+	(19,'2028-10-19','2028-12-12','Full-Stack Track','Wolf Cola',0,1,0,NULL,NULL);
 
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
