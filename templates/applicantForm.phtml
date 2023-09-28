@@ -177,7 +177,10 @@
             <input id="assessmentTime" name="assessmentTime" class="submitApplicant form-control"
                    type="time" value="<?php echo $applicant->getAssessmentTime(); ?>">
 
-            <label for="aptitude">Aptitude Score (%)</label>
+            <div class="aptitudeSection">
+                <label for="aptitude">Aptitude Score (%)</label>
+                <button id="aptitude1" class="btn btn-primary btn-xs getAptitudeScoreButton">Retrieve Score</button>
+            </div>
             <div class="input-group">
                 <input id="aptitude" name="aptitude" class="submitApplicant form-control"
                        type="number" min="0" max="100" placeholder="0" value="<?php echo $applicant->getAptitude(); ?>">
