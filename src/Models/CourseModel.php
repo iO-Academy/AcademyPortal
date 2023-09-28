@@ -83,7 +83,8 @@ class CourseModel
                 `in_person` AS `inPerson`,
                 `remote`
                 FROM `courses`
-                WHERE `courses`.`end_date` < NOW();';
+                WHERE `courses`.`end_date` < NOW()
+                ORDER BY `courses`.`end_date` DESC;';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
         $query->execute();
