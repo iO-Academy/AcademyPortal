@@ -12,7 +12,6 @@ class DisplayStudentProfileHelperTest extends TestCase
     {
         $this->markTestSkipped('Integration test required so skipped');
     }
-
     public function testMalformedOutputApplicant()
     {
         $this->markTestSkipped('Integration test required so skipped');
@@ -23,4 +22,3 @@ class DisplayStudentProfileHelperTest extends TestCase
         $this->markTestSkipped('Integration test required so skipped');
     }
 }
-
