@@ -41,10 +41,7 @@ class DisplayCoursesViewHelper
     public static function displayFutureCourses(array $courses, array $trainers): string
     {
         $result = self::createCoursesTableLoop($courses, $trainers);
-        if (!empty($result)) {
-            return $result;
-        }
-        return self::NO_COURSES_TABLE_HEADING;
+        return !empty($result) ? $result : self::NO_COURSES_TABLE_HEADING;
     }
 
     public static function displayCourses(array $courses, array $trainers): string
