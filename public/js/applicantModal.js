@@ -55,12 +55,30 @@ function copyToClipboard(element)
     document.querySelector("button.clipboard").innerText = 'Copied';
 }
 
-function aptitudeScoreButtonClick(e)
-{
-    fetch(`/api/getAptitudeScore?email=${e.target.dataset.email}`)
-        .then(response => response.json())
-        .then(data => document.querySelector((('#aptitude'))).textContent = `${data.data.score}% `)
+// function aptitudeScoreButtonClick(e) {
+//     fetch(`/api/getAptitudeScore?email=${e.target.dataset.email}`)
+//         .then(response => response.json())
+//         .then(data => document.querySelector(('#aptitude')).textContent = `${data.data.score} % `)
+// }
+
+
+
+    function aptitudeScoreButtonClick(e) {
+        fetch(`/api/getAptitudeScore?email=${e.target.dataset.email}`)
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('#aptitude').textContent = `${data.data.score}%`;
+                if (data.success === false) {
+                    document.querySelector('#aptitude').textContent = 'Not yet taken';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
 }
+
+
+
 
 export function addEventListenersToDisplayApplicantModal()
 {
