@@ -37,7 +37,7 @@ class LockApplicantFieldController extends Controller
 
         try {
             $data = $request->getQueryParams();
-            $result = $this->model->lockField($data['id'], $data['field']);
+            $result = $this->model->toggleLockField($data['id'], $data['field']);
 
             if ($result) {
                 $responseData = [
