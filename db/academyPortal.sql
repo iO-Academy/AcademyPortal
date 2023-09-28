@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 11.0.2-MariaDB-1:11.0.2+maria~ubu2204)
 # Database: academyPortal
-# Generation Time: 2023-09-27 11:27:41 +0000
+# Generation Time: 2023-09-28 10:55:28 +0000
 # ************************************************************
 
 
@@ -53,7 +53,7 @@ LOCK TABLES `applicants` WRITE;
 
 INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`, `backgroundInfoId`, `profile_password`, `gender`, `cohortId`)
 VALUES
-	(11,'Melinde Rentoll','mrentoll0@salon.com','07671138755','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'1','1','1','Loves stilton!',1,NULL,'2021-11-25 16:29:00',0,'1','','1',NULL),
+	(11,'Melinde Rentoll','mrentoll0@salon.com','07671138755','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'1','1','1','Loves stilton!',1,NULL,'2021-11-25 16:29:00',0,'1','',NULL,NULL),
 	(12,'Trumaine Digger','tdigger1@utexas.edu','07938905902','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',4,'1','0','1','Loves cheddar',1,NULL,'2021-11-25 16:32:00',0,'2','',NULL,NULL),
 	(13,'Morgan Graundisson','mgraundisson2@tuttocitta.it','07933387264','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',5,'1','1','0','Brie for me!',1,NULL,'2021-11-25 16:35:33',0,'3','',NULL,NULL),
 	(14,'Ignazio Hairesnape','ihairesnape3@themeforest.net','07121444941','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',5,'1','1','1','Cheddar',1,NULL,'2021-11-25 16:36:35',0,'4','',NULL,NULL),
@@ -71,6 +71,111 @@ VALUES
 	(26,'Audra Snyder','tagywove@mailinator.com','+1 (684) 307-1038','Culpa deserunt labo','Facere modi quasi mo',2,'1','0','0','Maiores voluptatem e',1,NULL,'2022-09-28 10:04:11',0,'4','','2',NULL);
 
 /*!40000 ALTER TABLE `applicants` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table applicants_additional
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `applicants_additional`;
+
+CREATE TABLE `applicants_additional` (
+  `id` int(11) unsigned NOT NULL,
+  `apprentice` int(1) DEFAULT NULL,
+  `aptitude` int(3) DEFAULT NULL,
+  `assessmentDay` int(3) DEFAULT NULL,
+  `customAssessmentDay` date DEFAULT NULL,
+  `assessmentTime` varchar(5) DEFAULT NULL,
+  `assessmentNotes` text DEFAULT NULL,
+  `diversitechInterest` int(1) DEFAULT NULL,
+  `diversitech` int(5) DEFAULT NULL,
+  `edaid` int(5) DEFAULT NULL,
+  `upfront` int(5) DEFAULT NULL,
+  `kitCollectionDay` date DEFAULT NULL,
+  `kitCollectionTime` varchar(5) DEFAULT NULL,
+  `kitNum` int(2) DEFAULT NULL,
+  `laptop` int(1) DEFAULT NULL,
+  `laptopDeposit` int(1) DEFAULT NULL,
+  `laptopNum` int(2) DEFAULT NULL,
+  `tasterId` int(11) unsigned DEFAULT NULL,
+  `tasterAttendance` int(1) DEFAULT NULL,
+  `team` int(1) DEFAULT NULL,
+  `githubUsername` varchar(255) DEFAULT NULL,
+  `portfolioUrl` varchar(255) DEFAULT NULL,
+  `pleskHostingUrl` varchar(255) DEFAULT NULL,
+  `githubEducationLink` varchar(255) DEFAULT NULL,
+  `additionalNotes` text DEFAULT NULL,
+  `chosenCourseId` int(11) unsigned DEFAULT NULL,
+  `attitude` int(3) DEFAULT NULL,
+  `averageScore` int(3) DEFAULT NULL,
+  `fee` int(5) DEFAULT NULL,
+  `signedTerms` tinyint(1) DEFAULT NULL,
+  `signedDiversitech` tinyint(1) DEFAULT NULL,
+  `inductionEmailSent` tinyint(1) DEFAULT NULL,
+  `signedNDA` tinyint(1) DEFAULT NULL,
+  `checkedID` tinyint(1) DEFAULT NULL,
+  `dataProtectionName` tinyint(1) DEFAULT NULL,
+  `dataProtectionPhoto` tinyint(1) DEFAULT NULL,
+  `dataProtectionTestimonial` tinyint(1) DEFAULT NULL,
+  `dataProtectionBio` tinyint(1) DEFAULT NULL,
+  `dataProtectionVideo` tinyint(1) DEFAULT NULL,
+  `contactFormSigned` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `CourseID` (`chosenCourseId`),
+  KEY `TasterID` (`tasterId`),
+  CONSTRAINT `CourseID` FOREIGN KEY (`chosenCourseId`) REFERENCES `courses` (`id`),
+  CONSTRAINT `TasterID` FOREIGN KEY (`tasterId`) REFERENCES `events` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+LOCK TABLES `applicants_additional` WRITE;
+/*!40000 ALTER TABLE `applicants_additional` DISABLE KEYS */;
+
+INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `customAssessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `upfront`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopDeposit`, `laptopNum`, `tasterId`, `tasterAttendance`, `team`, `githubUsername`, `portfolioUrl`, `pleskHostingUrl`, `githubEducationLink`, `additionalNotes`, `chosenCourseId`, `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`, `inductionEmailSent`, `signedNDA`, `checkedID`, `dataProtectionName`, `dataProtectionPhoto`, `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`, `contactFormSigned`)
+VALUES
+	(11,1,20,NULL,NULL,'','',0,NULL,NULL,NULL,NULL,'',NULL,0,0,NULL,NULL,0,NULL,NULL,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
+	(12,0,99,8,NULL,'','',0,NULL,NULL,NULL,NULL,'',NULL,0,0,NULL,NULL,0,NULL,NULL,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
+	(13,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(14,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(16,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(17,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(18,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(19,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(20,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(21,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(22,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(23,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(24,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(25,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(26,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+/*!40000 ALTER TABLE `applicants_additional` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table background_info
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `background_info`;
+
+CREATE TABLE `background_info` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `backgroundInfo` varchar(40) DEFAULT NULL,
+  `deleted` tinyint(4) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+LOCK TABLES `background_info` WRITE;
+/*!40000 ALTER TABLE `background_info` DISABLE KEYS */;
+
+INSERT INTO `background_info` (`id`, `backgroundInfo`, `deleted`)
+VALUES
+	(1,'Changing careers',0),
+	(2,'Returning to work',0),
+	(3,'Recent university graduate',0),
+	(4,'School leaver',0);
+
+/*!40000 ALTER TABLE `background_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -221,10 +326,10 @@ VALUES
 	(51,1,25),
 	(52,2,25),
 	(53,5,25),
+	(54,3,11),
 	(55,4,12),
 	(56,5,26),
-	(57,8,26),
-	(58,3,11);
+	(57,8,26);
 
 /*!40000 ALTER TABLE `course_choice` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -261,7 +366,8 @@ VALUES
 	(5,'2022-03-07','2022-06-24','Full-Stack Track',NULL,0,0,0,NULL,NULL),
 	(6,'2022-07-04','2022-10-21','Full-Stack Track','Might be robots',0,0,1,NULL,NULL),
 	(7,'2022-07-04','2022-10-21','Full-Stack Track',NULL,0,1,0,NULL,NULL),
-	(9,'2023-09-23','2023-11-23','Full-Stack Track','customer loyalty',0,0,1,NULL,NULL),
+	(8,'2023-09-23','2023-11-23','Full-Stack Track','customer loyalty',0,0,1,NULL,NULL),
+	(9,'2023-11-23','2023-12-25','SDE','there are only 151 pokemon',0,0,1,NULL,NULL),
 	(10,'2024-01-11','2024-03-11','SDE','MAGNETS',0,0,1,NULL,NULL),
 	(11,'2024-07-11','2024-07-14','Python Intro','GHOULS',0,1,1,NULL,NULL),
 	(12,'2025-01-11','2025-04-11','Full-Stack Track','H for Hornets',0,1,1,NULL,NULL),
@@ -468,6 +574,34 @@ VALUES
 	(4,'Prefer not to say');
 
 /*!40000 ALTER TABLE `gender` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Dump of table hear_about
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `hear_about`;
+
+CREATE TABLE `hear_about` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `hearAbout` varchar(150) DEFAULT NULL,
+  `deleted` tinyint(4) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+LOCK TABLES `hear_about` WRITE;
+/*!40000 ALTER TABLE `hear_about` DISABLE KEYS */;
+
+INSERT INTO `hear_about` (`id`, `hearAbout`, `deleted`)
+VALUES
+	(1,'Google',0),
+	(2,'Newspaper',0),
+	(3,'Back of the toilet door',0),
+	(4,'Telepathy',0),
+	(5,'Carrier Pigeon',0),
+	(6,'Fax',0);
+
+/*!40000 ALTER TABLE `hear_about` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
