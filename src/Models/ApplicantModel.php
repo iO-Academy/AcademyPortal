@@ -578,30 +578,26 @@ class ApplicantModel implements ApplicantModelInterface
     public function toggleLockField(int $id, string $fieldName): bool
     {
         switch ($fieldName) {
-            case 'githubUsername':
-                $query = $this->db->prepare('SELECT `githubUsernameLocked` FROM 
+            case 'githubUsername': $query = $this->db->prepare('SELECT `githubUsernameLocked` FROM 
                                   `applicants_additional` WHERE `id` = :id');
                 $query->execute(["id" => $id]);
                 $result = $query->fetch();
                 $locked = $result['githubUsernameLocked'] ? 0 : 1;
                 $sql = 'UPDATE `applicants_additional` SET `githubUsernameLocked` = :locked WHERE `id` = :id';
                 break;
-            case 'edaid':
-                $query = $this->db->prepare('SELECT `edaidLocked` FROM `applicants_additional` WHERE `id` = :id');
+            case 'edaid': $query = $this->db->prepare('SELECT `edaidLocked` FROM `applicants_additional` WHERE `id` = :id');
                 $query->execute(["id" => $id]);
                 $result = $query->fetch();
                 $locked = $result['edaidLocked'] ? 0 : 1;
                 $sql = 'UPDATE `applicants_additional` SET `edaidLocked` = :locked WHERE `id` = :id';
                 break;
-            case 'upfront':
-                $query = $this->db->prepare('SELECT `upfrontLocked` FROM `applicants_additional` WHERE `id` = :id');
+                case 'upfront': $query = $this->db->prepare('SELECT `upfrontLocked` FROM `applicants_additional` WHERE `id` = :id');
                 $query->execute(["id" => $id]);
                 $result = $query->fetch();
                 $locked = $result['upfrontLocked'] ? 0 : 1;
                 $sql = 'UPDATE `applicants_additional` SET `upfrontLocked` = :locked WHERE `id` = :id';
                 break;
-            case 'laptop':
-                $query = $this->db->prepare('SELECT `laptopLocked` FROM `applicants_additional` WHERE `id` = :id');
+            case 'laptop': $query = $this->db->prepare('SELECT `laptopLocked` FROM `applicants_additional` WHERE `id` = :id');
                 $query->execute(["id" => $id]);
                 $result = $query->fetch();
                 $locked = $result['laptopLocked'] ? 0 : 1;
