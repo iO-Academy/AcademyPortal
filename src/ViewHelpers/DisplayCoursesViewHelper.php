@@ -77,7 +77,7 @@ class DisplayCoursesViewHelper
             $result = '';
             foreach ($trainersByCourse as $trainer) {
                 if (!$trainer['deleted']) {
-                    $result .= '<p>' . $trainer['name'] . '</p>';
+                    $result .= $trainer['name'];
                 } else {
                     $result .= '<p class="trainer-deleted-indicator">' . $trainer['name'] . '</p>';
                 }

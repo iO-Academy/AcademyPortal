@@ -5,6 +5,7 @@
             require 'partials/layout/head.phtml';
             echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Courses');
         ?>
+        <link rel="stylesheet" type="text/css" href="public/css/style.css">
         <script defer src="./js/toggleCompletedCourses.js"></script>
     </head>
     <body>
@@ -13,9 +14,13 @@
             require 'partials/layout/nav.phtml';
         ?>
         <div class="container-fluid">
-            <div class="row">
-                <h1 class="col-lg-10 col-md-9 col-sm-8 col-xs-7">Courses</h1>
-                <button type="button" class="btn btn-default completed-courses-btn col-lg-2 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-4 col-xs-5">Toggle Completed Courses</button>
+            <div class="row text-left courses-heading-container">
+                <div class="col-lg-10 col-md-9 col-sm-8 col-xs-7 pb-1">
+                    <h1>Courses</h1>
+                </div>
+                <div class="col-lg-2 col-lg-offset-0 col-md-3 col-md-offset-0 col-sm-4 col-xs-5">
+                    <button type="button" class="btn btn-default completed-courses-btn">Toggle Completed Courses</button>
+                </div>
             </div>
         </div>
         <div id="courses" class="row">
