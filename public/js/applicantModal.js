@@ -59,7 +59,14 @@ function aptitudeScoreButtonClick(e)
 {
     fetch(`/api/getAptitudeScore?email=${e.target.dataset.email}`)
         .then(response => response.json())
-        .then(data => document.querySelector((('#aptitude'))).textContent = `${data.data.score}% `)
+        .then(data => document.querySelector(('#aptitude')).textContent = `${data.data.score}%`)
+    // if(response !== false) {
+    //     document.querySelector(('#aptitude')).textContent = `${data.data.score}`)
+    // } else {
+    // document.querySelector(('#aptitude')).textContent = 'Not yet taken')
+    // }
+
+
 }
 
 export function addEventListenersToDisplayApplicantModal()

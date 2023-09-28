@@ -39,7 +39,8 @@ class GetApplicantAptitudeController extends Controller
         } else {
             if (is_array($apiResponse)) {
                 $responseBody['message'] = 'User not found in aptitude test system';
-                return $this->respondWithJson($response, $responseBody, 204);
+//                var_dump($responseBody['message']);
+                return $this->respondWithJson($response, $responseBody, 404);
             } else {
                 $responseBody['message'] = 'Aptitude test system currently unavailable';
                 return $this->respondWithJson($response, $responseBody, 503);
@@ -62,6 +63,8 @@ class GetApplicantAptitudeController extends Controller
             if (is_array($apiResultResponse)) {
                 $responseBody['message'] = 'User not yet taken aptitude test';
                 return $this->respondWithJson($response, $responseBody, 400);
+                var_dump($responseBody['message']);
+                exit;
             } else {
                 $responseBody['message'] = 'Aptitude test system currently unavailable';
                 return $this->respondWithJson($response, $responseBody, 503);
