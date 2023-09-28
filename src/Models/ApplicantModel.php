@@ -209,14 +209,20 @@ class ApplicantModel implements ApplicantModelInterface
                       `dateTimeAdded`, `backgroundInfo`, `hearAbout`, `gender`.`gender`,
                       `apprentice`, `aptitude`,`events`.`date` AS 'assessmentDay', 
                       `applicants_additional`.`customAssessmentDay`, `assessmentTime`,
-                      `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `edaidLocked`, `upfront`,`upfrontLocked`,
+                      `assessmentNotes`, `diversitechInterest`, `diversitech`,
+                      `edaid`, `edaidLocked`, `upfront`,`upfrontLocked`,
                       `kitCollectionDay`,
                       `kitCollectionTime`, `kitNum`, `laptop`, `laptopLocked`, `laptopDeposit`, `laptopNum`, 
                       `tasterEvent`.`date` AS `taster`, `tasterId`,
                       `tasterAttendance`, `teams`.`trainer` AS 'team', `hearAboutId`, `backgroundInfoId`,
                       `applicants`.`stageId` as 'stageID', `title` as 'stageName', 
                       `stages`.`student` AS 'isStudentStage',
-                      `option` as 'stageOptionName', `githubUsername`, `githubUsernameLocked`, `portfolioUrl`, `pleskHostingUrl`,
+                      `option` AS 
+                        'stageOptionName', 
+                        `githubUsername`, 
+                        `githubUsernameLocked`,
+                        `portfolioUrl`, 
+                        `pleskHostingUrl`,
                       `githubEducationLink`, `additionalNotes`, `student_course`.`start_date` AS 'chosenCourseDate',
                       `applicants_additional`.`chosenCourseId` AS 'chosenCourseId',
                       `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`,
@@ -576,8 +582,11 @@ class ApplicantModel implements ApplicantModelInterface
     {
         switch ($fieldName) {
             case 'githubUsername':
-
-                $query = $this->db->prepare('SELECT `githubUsernameLocked` FROM `applicants_additional` WHERE `id` = :id');
+                $query = $this->db->prepare(
+                    'SELECT `githubUsernameLocked` 
+                    FROM `applicants_additional` 
+                    WHERE `id` = :id'
+                );
                 $query->execute(["id" => $id]);
                 $result = $query->fetch();
                 $locked = $result['githubUsernameLocked'] ? 0 : 1;

@@ -7,7 +7,7 @@ use Portal\Entities\CompleteApplicantEntity;
 
 class DisplayStudentProfileViewHelper
 {
-    private static function displayEditButtonOrQuestionMark(bool $isLocked, string $fieldName)
+    private static function displayEditButtonOrQuestionMark(?bool $isLocked, string $fieldName)
     {
         return ($isLocked ?
             '<div><span 
