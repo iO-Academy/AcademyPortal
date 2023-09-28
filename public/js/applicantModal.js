@@ -55,19 +55,37 @@ function copyToClipboard(element)
     document.querySelector("button.clipboard").innerText = 'Copied';
 }
 
-function aptitudeScoreButtonClick(e)
-{
-    fetch(`/api/getAptitudeScore?email=${e.target.dataset.email}`)
-        .then(response => response.json())
-        .then(data => document.querySelector((('#aptitude'))).textContent = `${data.data.score}% `)
+// function aptitudeScoreButtonClick(e) {
+//     fetch(`/api/getAptitudeScore?email=${e.target.dataset.email}`)
+//         .then(response => response.json())
+//         .then(data => document.querySelector(('#aptitude')).textContent = `${data.data.score} % `)
+// }
+
+
+
+    function aptitudeScoreButtonClick(e) {
+        fetch(`/api/getAptitudeScore?email=${e.target.dataset.email}`)
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('#aptitude').textContent = `${data.data.score}%`;
+                if (data.success === false) {
+                    document.querySelector('#aptitude').textContent = 'Not yet taken';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
 }
+
+
+
 
 export function addEventListenersToDisplayApplicantModal()
 {
     $(document).ready(function () {
         $(".myBtn").click(function () {
             let url = './api/getApplicant/' + this.dataset.id
-            let studentUrl = document.URL
+            let studentUrl = window.location.origin + '/public/'
             fetch(url)
                 .then(
                     function (response) {
@@ -79,7 +97,7 @@ export function addEventListenersToDisplayApplicantModal()
                         }
                         // Examine the text in the response
                         response.json().then(function (data) {
-
+                            studentUrl += data.id
                             document.querySelectorAll('#applicantModal section.student').forEach(section => {
                                 if (data.isStudentStage) {
                                     section.classList.remove('hidden')
@@ -188,7 +206,6 @@ export function addEventListenersToDisplayApplicantModal()
                             displayField(data, 'additionalNotes', 'No notes')
                             data.chosenCourseDate = prettyDate(data.chosenCourseDate)
                             displayField(data, 'chosenCourseDatePretty', 'Not asked yet')
-                            displayField(data,'userProfileLink', 'No Link Yet')
                         })
                     }
                 )
