@@ -4,10 +4,19 @@ namespace Portal\ViewHelpers;
 
 class DisplayCoursesViewHelper
 {
-     /**
-      * Viewhelper to display courses within course detail table
-      */
-    public static function displayCourses(array $courses, array $trainers): string
+    private const NO_COURSES_TABLE_HEADING =
+        '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
+
+    public const FUTURE_COURSES_HEADING_TABLE =
+        '<tr><td colspan="8"><h5 class="text-primary text-center">Future Courses</h5></td></tr>';
+
+    public const COMPLETED_COURSE_HEADING_TABLE =
+        '<tr><td colspan="8"><h5 class="text-secondary text-center">Completed Courses</h5></td></tr>';
+
+    /**
+     * Method to display courses within course detail table
+     */
+    public static function createCoursesTableLoop(array $courses, array $trainers): string
     {
         $result = '';
         foreach ($courses as $course) {
@@ -26,18 +35,34 @@ class DisplayCoursesViewHelper
                     <td>' . $remote . '</td>
                 </tr>';
         }
-        return self::handleNoCourses($result);
+        return $result;
+    }
+
+    public static function displayFutureCourses(array $courses, array $trainers): string
+    {
+        $result = self::createCoursesTableLoop($courses, $trainers);
+        return !empty($result) ? $result : self::NO_COURSES_TABLE_HEADING;
+    }
+
+    public static function displayCourses(array $courses, array $trainers): string
+    {
+        $result = '';
+        if (!empty($courses)) {
+            $result = self::createCoursesTableLoop($courses, $trainers);
+        }
+        return $result;
     }
 
     /**
-     * If no courses found, returns message saying no courses found.
-     */
-    private static function handleNoCourses(string $output): string
+     * function displays a heading row of 'Ongoing Courses' in the courses table
+     * */
+    public static function displayOngoingCoursesHeading(bool $ongoingCourses): string
     {
-        if (empty($output)) {
-            return '<tr><td colspan="6"><h5 class="text-danger text-center">No Courses Found.</h5></td></tr>';
+        $row = '';
+        if ($ongoingCourses) {
+            $row = '<tr><td colspan="8"><h5 class="text-success text-center">Ongoing Courses</h5></td></tr>';
         }
-        return $output;
+        return $row;
     }
 
     /**
@@ -49,7 +74,11 @@ class DisplayCoursesViewHelper
             $result = '';
             foreach ($trainersByCourse as $trainer) {
                 if (!$trainer['deleted']) {
-                    $result .= '<p>' . $trainer['name'] . '</p>';
+                    if (!empty($result)) {
+                        $result .= ' ' . $trainer['name'];
+                    } else {
+                        $result .= $trainer['name'];
+                    }
                 } else {
                     $result .= '<p class="trainer-deleted-indicator">' . $trainer['name'] . '</p>';
                 }

@@ -21,16 +21,16 @@ class CoursesPageController extends Controller
 
     /**
      * Checks for logged-in status,
-     * gets courses categories from DB
+     * gets courses with future end dates categories from DB
      * and returns rendered landing screen for Courses page
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         if ($_SESSION['loggedIn'] === true) {
-            $courses = $this->courseModel->getAllCourses();
-            $args['courses'] = $courses;
-            $trainers = $this->courseModel->getTrainersAndCourseId();
-            $args['trainers'] = $trainers;
+            $args['ongoingCourses'] = $this->courseModel->getOngoingCourses();
+            $args['futureCourses'] = $this->courseModel->getFutureCourses();
+            $args['completedCourses'] = $this->courseModel->getCompletedCourses();
+            $args['trainers'] = $this->courseModel->getTrainersAndCourseId();
             return $this->renderer->render($response, 'courses.phtml', $args);
         } else {
             return $response->withHeader('Location', './');
