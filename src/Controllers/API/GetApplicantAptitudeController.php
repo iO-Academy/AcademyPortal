@@ -29,13 +29,13 @@ class GetApplicantAptitudeController extends Controller
 
         $requestBody = $request->getQueryParams();
         if (!empty($requestBody['email'])) {
-            $apiResponse = $this->aptitudeTestModel->sendEmailToApi($requestBody['email']);
+            $apiResponse = $this->aptitudeTestModel->getUserByEmail($requestBody['email']);
         } else {
             $responseBody['message'] = 'No Email found';
             return $this->respondWithJson($response, $responseBody, 400);
         }
         if (is_array($apiResponse) && $apiResponse['success']) {
-            $apiResultResponse = $this->aptitudeTestModel->sendIdToApi($apiResponse['data']['id']);
+            $apiResultResponse = $this->aptitudeTestModel->getAptitudeScoreById($apiResponse['data']['id']);
         } else {
             if (is_array($apiResponse)) {
                 $responseBody['message'] = 'User not found in aptitude test system';
