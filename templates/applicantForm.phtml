@@ -116,7 +116,6 @@
                 <input id="dateTimeAdded" name="dateTimeAdded" class="submitApplicant form-control"
                        type="datetime-local" value="<?php echo $applicant->getDateOfApplicationForRFC3339(); ?>"/>
             </div>
-
             <label for="notes">Notes</label>
             <div id="notesError" class="alert hidden formItem_alert"></div>
             <textarea id="notes" name="notes" class="submitApplicant form-control"
@@ -178,12 +177,16 @@
             <input id="assessmentTime" name="assessmentTime" class="submitApplicant form-control"
                    type="time" value="<?php echo $applicant->getAssessmentTime(); ?>">
 
-            <label for="aptitude">Aptitude Score (%)</label>
+            <div class="aptitudeSection">
+                <label for="aptitude">Aptitude Score (%)</label>
+                <button id="aptitudeButton" class="btn btn-primary btn-xs getAptitudeScoreButton" data-email="<?php echo $applicant->getEmail(); ?>">Retrieve Score</button>
+            </div>
             <div class="input-group">
                 <input id="aptitude" name="aptitude" class="submitApplicant form-control"
                        type="number" min="0" max="100" placeholder="0" value="<?php echo $applicant->getAptitude(); ?>">
                 <span class="input-group-addon">%</span>
             </div>
+            <div class="aptitudeAlert alert alert-danger hidden" id="aptitudeScoreError"></div>
 
             <label for="attitude">Attitude Score (%)</label>
             <div class="input-group">
