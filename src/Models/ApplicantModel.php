@@ -605,7 +605,7 @@ class ApplicantModel implements ApplicantModelInterface
         return $query->execute(["id" => $id, "locked" => $locked]);
     }
 
-    private function isFieldLocked(string $fieldName, int $id)
+    private function isFieldLocked(string $fieldName, int $id): bool
     {
         $query = $this->db->prepare(
             'SELECT :fieldName 

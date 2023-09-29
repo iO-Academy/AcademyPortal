@@ -41,6 +41,7 @@ use Portal\Controllers\API\GetStudentsController;
 use Portal\Controllers\API\LoginController;
 use Portal\Controllers\API\SendEmailController;
 use Portal\Controllers\API\UpdateStudentProfileController;
+use Portal\Controllers\API\LockApplicantFieldController;
 use Portal\Controllers\FrontEnd\AddApplicantPageController;
 use Portal\Controllers\FrontEnd\AddCoursePageController;
 use Portal\Controllers\FrontEnd\AddEventPageController;
@@ -62,7 +63,6 @@ use Portal\Controllers\FrontEnd\StudentApplicationFormPageController;
 use Portal\Controllers\FrontEnd\StudentProfilePageController;
 use Portal\Controllers\FrontEnd\TeamPickerPageController;
 use Portal\Controllers\FrontEnd\TrainersPageController;
-use \Portal\Controllers\API\LockApplicantFieldController;
 use Slim\App;
 
 return function (App $app) {
