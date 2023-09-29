@@ -39,7 +39,8 @@ function aptitudeScoreButtonClick(e)
             }
         })
         .catch(error => {
-            console.error('Unexpected error', error);
+                document.querySelector('#aptitudeScoreError').textContent = "Unexpected Error";
+                showAlertforApptitudeButton('#aptitudeScoreError')
         });
 }
 
