@@ -1,4 +1,5 @@
-function displayField(data, field, noDataMessage = 'No information provided', zeroMessage = null) {
+function displayField(data, field, noDataMessage = 'No information provided', zeroMessage = null)
+{
     if (data[field] === 0 && zeroMessage !== null) {
         document.getElementById(field).innerHTML = zeroMessage
         return
@@ -11,7 +12,8 @@ function displayField(data, field, noDataMessage = 'No information provided', ze
     }
 }
 
-function prettyDate(date) {
+function prettyDate(date)
+{
     if (typeof date !== 'string' || date.length === 0) {
         return null;
     }
@@ -20,7 +22,8 @@ function prettyDate(date) {
     return date.toLocaleDateString("en-GB", dateOptions)
 }
 
-function aptitudeColors(score) {
+function aptitudeColors(score)
+{
     if (score === null) {
         return null
     }
@@ -33,14 +36,16 @@ function aptitudeColors(score) {
     }
 }
 
-function addCurrency(number) {
+function addCurrency(number)
+{
     if (number !== null) {
         return '&pound;' + number.toLocaleString()
     }
     return 'Unknown'
 }
 
-function copyToClipboard(element) {
+function copyToClipboard(element)
+{
     let $temp = $("<input>");
     $("body").append($temp);
     $temp.val($(element).text()).select();
@@ -49,7 +54,35 @@ function copyToClipboard(element) {
     document.querySelector("button.clipboard").innerText = 'Copied';
 }
 
-export function addEventListenersToDisplayApplicantModal() {
+function showAlertforApptitudeButton(alertSelector)
+{
+    document.querySelector(alertSelector).classList.remove('hidden')
+    setTimeout(() => {
+        document.querySelector(alertSelector).classList.add('hidden')
+    }, 3000)
+}
+
+function aptitudeScoreButtonClick(e)
+{
+    fetch(`/api/getAptitudeScore?email=${e.target.dataset.email}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                document.querySelector('#aptitude').textContent = `${data.data.score}%`;
+                showAlertforApptitudeButton('#aptitudeScoreSuccess')
+            } else {
+                document.querySelector('#aptitudeScoreError').textContent = data.message;
+                showAlertforApptitudeButton('#aptitudeScoreError')
+            }
+            })
+            .catch(error => {
+                document.querySelector('#aptitudeScoreError').textContent = "Unexpected Error";
+                showAlertforApptitudeButton('#aptitudeScoreError')
+            });
+}
+
+export function addEventListenersToDisplayApplicantModal()
+{
     $(document).ready(function () {
         $(".myBtn").click(function () {
             let url = './api/getApplicant/' + this.dataset.id
@@ -130,6 +163,10 @@ export function addEventListenersToDisplayApplicantModal() {
 
                             data.aptitude = aptitudeColors(data.aptitude)
                             displayField(data, 'aptitude', 'Not yet taken')
+                            document.querySelector('.getAptitudeScoreButton').dataset.email = data.email
+                            document.querySelector('.getAptitudeScoreButton').removeEventListener("click", aptitudeScoreButtonClick)
+                            document.querySelector('.getAptitudeScoreButton').addEventListener("click", aptitudeScoreButtonClick);
+
 
                             displayField(data, 'diversitechInterest', 'Not asked yet', 'No')
                             if (data.diversitechInterest === 1) {
