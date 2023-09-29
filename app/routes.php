@@ -62,6 +62,7 @@ use Portal\Controllers\FrontEnd\StudentApplicationFormPageController;
 use Portal\Controllers\FrontEnd\StudentProfilePageController;
 use Portal\Controllers\FrontEnd\TeamPickerPageController;
 use Portal\Controllers\FrontEnd\TrainersPageController;
+use \Portal\Controllers\API\LockApplicantFieldController;
 use Slim\App;
 
 return function (App $app) {
@@ -130,5 +131,5 @@ return function (App $app) {
     $app->post('/api/addTrainer', AddTrainerController::class);
     $app->delete('/api/deleteTrainer', DeleteTrainerController::class);
     $app->post('/api/sendEmail', SendEmailController::class);
-    $app->get('/api/lockApplicantField',\Portal\Controllers\API\LockApplicantFieldController::class);
+    $app->get('/api/lockApplicantField', LockApplicantFieldController::class);
 };
