@@ -574,7 +574,7 @@ class ApplicantModel implements ApplicantModelInterface
 
     public function updateGithubUsername(int $id, string $githubUsername): bool
     {
-        $query = $this->db->prepare('UPDATE `applicants_additional` SET githubUsername =: githubUsername
+        $query = $this->db->prepare('UPDATE `applicants_additional` SET githubUsername = :githubUsername
      WHERE `id` = :id');
         return $query->execute(["id" => $id, "githubUsername" => $githubUsername]);
     }
@@ -582,36 +582,20 @@ class ApplicantModel implements ApplicantModelInterface
     {
         switch ($fieldName) {
             case 'githubUsername':
-                $query = $this->db->prepare(
-                    'SELECT `githubUsernameLocked` 
-                    FROM `applicants_additional` 
-                    WHERE `id` = :id'
-                );
-                $query->execute(["id" => $id]);
-                $result = $query->fetch();
-                $locked = $result['githubUsernameLocked'] ? 0 : 1;
+                $locked = $this->isFieldLocked('githubUsernameLocked', $id);
                 $sql = 'UPDATE `applicants_additional` SET `githubUsernameLocked` = :locked WHERE `id` = :id';
                 break;
             case 'edaid':
-                $query = $this->db->prepare('SELECT `edaidLocked` FROM `applicants_additional` WHERE `id` = :id');
-                $query->execute(["id" => $id]);
-                $result = $query->fetch();
-                $locked = $result['edaidLocked'] ? 0 : 1;
-                $sql = 'UPDATE `applicants_additional` SET `edaidLocked` = :locked WHERE `id` = :id';
+                $locked = $this->isFieldLocked('edaidLocked', $id);
+                $sql = 'UPDATE `applicants_additional` SET `githubUsernameLocked` = :locked WHERE `id` = :id';
                 break;
             case 'upfront':
-                $query = $this->db->prepare('SELECT `upfrontLocked` FROM `applicants_additional` WHERE `id` = :id');
-                $query->execute(["id" => $id]);
-                $result = $query->fetch();
-                $locked = $result['upfrontLocked'] ? 0 : 1;
-                $sql = 'UPDATE `applicants_additional` SET `upfrontLocked` = :locked WHERE `id` = :id';
+                $locked = $this->isFieldLocked('upfrontLocked', $id);
+                $sql = 'UPDATE `applicants_additional` SET `githubUsernameLocked` = :locked WHERE `id` = :id';
                 break;
             case 'laptop':
-                $query = $this->db->prepare('SELECT `laptopLocked` FROM `applicants_additional` WHERE `id` = :id');
-                $query->execute(["id" => $id]);
-                $result = $query->fetch();
-                $locked = $result['laptopLocked'] ? 0 : 1;
-                $sql = 'UPDATE `applicants_additional` SET `laptopLocked` = :locked WHERE `id` = :id';
+                $locked = $this->isFieldLocked('laptopLocked', $id);
+                $sql = 'UPDATE `applicants_additional` SET `githubUsernameLocked` = :locked WHERE `id` = :id';
                 break;
             default:
                 throw new \Exception('Invalid field name');
@@ -620,6 +604,19 @@ class ApplicantModel implements ApplicantModelInterface
         $query = $this->db->prepare($sql);
         return $query->execute(["id" => $id, "locked" => $locked]);
     }
+
+    private function isFieldLocked(string $fieldName, int $id)
+    {
+        $query = $this->db->prepare(
+            'SELECT :fieldName 
+                    FROM `applicants_additional` 
+                    WHERE `id` = :id'
+        );
+        $query->execute(["id" => $id, 'fieldName' => $fieldName]);
+        $result = $query->fetch();
+        return $result[$fieldName] ? 0 : 1;
+    }
+
     public function updateLaptop(int $id, int $laptop): bool
     {
         $query = $this->db->prepare('UPDATE `applicants_additional` SET laptop=:laptop WHERE id=:id');

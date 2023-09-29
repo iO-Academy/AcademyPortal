@@ -41,7 +41,9 @@ class LockApplicantFieldController extends Controller
                 $statusCode = 200;
             }
         } catch (\Exception $exception) {
-            // do nothing, respond with error response
+            // uncomment next line when debugging model
+            // $responseData['message'] = $exception->getMessage();
+            // when not debugging do nothing, respond with nice error response
         }
         return $this->respondWithJson($response, $responseData, $statusCode);
     }
