@@ -14,7 +14,6 @@ class DisplayStudentProfileViewHelper
             class="bi bi-question-circle"
             data-toggle="tooltip"
             data-placement="right" 
-            style="cursor:pointer;font-size:20px;"
             title="This field has been locked"
             ></div>' :
             '<button data-selector="' . $fieldName . '" 
