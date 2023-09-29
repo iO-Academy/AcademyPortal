@@ -3,7 +3,7 @@ const urlID = urlParams.get('id');
  document.querySelectorAll('#lockToggle').forEach(toggleLock => {
         toggleLock.addEventListener('click',(e) => {
             const fieldName = toggleLock.dataset.field;
-            const URL = 'http://localhost:8080/api/lockApplicantField?id=${urlID}&field=${fieldName}';
+            const URL = `http://localhost:8080/api/lockApplicantField?id=${urlID}&field=${fieldName}`;
                 fetch(URL)
                     .then(response => response.json())
                     .then(data => {

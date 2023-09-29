@@ -4,11 +4,8 @@ namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\ApplicantModel;
-use Portal\Models\ApplicationFormModel;
-use Portal\ViewHelpers\DisplayStudentProfileViewHelper;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Views\PhpRenderer;
 
 class LockApplicantFieldController extends Controller
 {
@@ -22,10 +19,6 @@ class LockApplicantFieldController extends Controller
         $this->model = $model;
     }
 
-
-    /**
-     * @throws \Exception
-     */
     public function __invoke(Request $request, Response $response, $args)
     {
         $statusCode = 500;
@@ -48,8 +41,7 @@ class LockApplicantFieldController extends Controller
                 $statusCode = 200;
             }
         } catch (\Exception $exception) {
-            $statusCode = 400;
-            $responseData['message'] = $exception->getMessage();
+            // do nothing, respond with error response
         }
         return $this->respondWithJson($response, $responseData, $statusCode);
     }
