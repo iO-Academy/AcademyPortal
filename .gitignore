@@ -1,3 +1,4 @@
+.phpunit.cache/
 .idea/
 .DS_Store
 /coverage/
