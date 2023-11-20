@@ -35,7 +35,10 @@ class DisplayCoursesViewHelper
                     <td>' . $course->getNotes() . '</td>
                     <td>' . $inPerson . '</td>
                     <td>' . $remote . '</td>
-                    <td>' . $spacesTaken . ' | ' . $totalAvailableSpaces . '</td>
+                    <td><span class="filled-places badge">Filled: ' . $spacesTaken .
+                        '</span>' . ' ' . '<span class="total-places badge">Total: ' . $totalAvailableSpaces .
+                        '</span>
+                    </td>
                 </tr>';
         }
         return $result;
