@@ -607,12 +607,19 @@ class ApplicantModel implements ApplicantModelInterface
 
     private function isFieldLocked(string $fieldName, int $id): int
     {
+
+        $validFieldNames = ['githubUsernameLocked', 'edaidLocked', 'upfrontLocked', 'laptopLocked'];
+        if (!in_array($fieldName, $validFieldNames)) {
+
+            throw new InvalidArgumentException('Invalid field name');
+        }
+
         $query = $this->db->prepare(
-            'SELECT :fieldName 
+            "SELECT $fieldName
                     FROM `applicants_additional` 
-                    WHERE `id` = :id'
+                    WHERE `id` = :id"
         );
-        $query->execute(["id" => $id, 'fieldName' => $fieldName]);
+        $query->execute(["id" => $id]);
         $result = $query->fetch();
         return $result[$fieldName] ? 0 : 1;
     }
