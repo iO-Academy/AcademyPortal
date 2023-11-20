@@ -19,14 +19,20 @@ class CourseModel
      */
     public function getAllCourses(): array
     {
-        $sql = 'SELECT `id`,
-                `courses`.`start_date` AS `startDate`,
-                `courses`.`end_date` AS `endDate`,
-                `name`,
-                `notes`,
-                `in_person` AS `inPerson`,
-                `remote`
-                FROM `courses`;';
+        $sql = 'SELECT `c`.`id`,
+        `start_date` AS `startDate`,
+        `end_date` AS `endDate`,
+        `name`,
+        `notes`,
+        `in_person` AS `inPerson`,
+        `remote`,
+        `in_person_spaces` AS `inPersonSpaces`,
+        `remote_spaces` AS `remoteSpaces`,
+        `in_person_spaces` + `remote_spaces` AS `totalAvailableSpaces`,
+        COUNT(`applicantId`) AS `spacesTaken`
+        FROM `courses` `c`
+        LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
+        GROUP BY `c`.`id`, `startDate`, `endDate`, `name`, `notes`, `inPerson`, `remote`, `inPersonSpaces`, `remoteSpaces`, `totalAvailableSpaces`;';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
         $query->execute();
@@ -38,15 +44,21 @@ class CourseModel
      */
     public function getFutureCourses(): array
     {
-        $sql = 'SELECT `id`,
-                `courses`.`start_date` AS `startDate`,
-                `courses`.`end_date` AS `endDate`,
-                `name`,
-                `notes`,
-                `in_person` AS `inPerson`,
-                `remote`
-                FROM `courses`
-                WHERE `courses`.`start_date` > NOW();';
+        $sql = 'SELECT `c`.`id`,
+        `start_date` AS `startDate`,
+        `end_date` AS `endDate`,
+        `name`,
+        `notes`,
+        `in_person` AS `inPerson`,
+        `remote`,
+        `in_person_spaces` AS `inPersonSpaces`,
+        `remote_spaces` AS `remoteSpaces`,
+        `in_person_spaces` + `remote_spaces` AS `totalAvailableSpaces`,
+        COUNT(`applicantId`) AS `spacesTaken`
+        FROM `courses` `c`
+        LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
+        WHERE `c`.`start_date` > NOW()
+        GROUP BY `c`.`id`, `startDate`, `endDate`, `name`, `notes`, `inPerson`, `remote`, `inPersonSpaces`, `remoteSpaces`, `totalAvailableSpaces`;';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
         $query->execute();
@@ -58,15 +70,22 @@ class CourseModel
      */
     public function getOngoingCourses(): array
     {
-        $sql = 'SELECT `id`,
-                `courses`.`start_date` AS `startDate`,
-                `courses`.`end_date` AS `endDate`,
-                `name`,
-                `notes`,
-                `in_person` AS `inPerson`,
-                `remote`
-                FROM `courses`
-                WHERE `courses`.`start_date` <= NOW() AND `courses`.`end_date` >= NOW();';
+        $sql = 'SELECT `c`.`id`,
+        `start_date` AS `startDate`,
+        `end_date` AS `endDate`,
+        `name`,
+        `notes`,
+        `in_person` AS `inPerson`,
+        `remote`,
+        `in_person_spaces` AS `inPersonSpaces`,
+        `remote_spaces` AS `remoteSpaces`,
+        `in_person_spaces` + `remote_spaces` AS `totalAvailableSpaces`,
+        COUNT(`applicantId`) AS `spacesTaken`
+        FROM `courses` `c`
+        LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
+        WHERE `c`.`start_date` <= NOW() AND `c`.`end_date` >= NOW()
+        GROUP BY `c`.`id`, `startDate`, `endDate`, `name`, `notes`, `inPerson`, `remote`, `inPersonSpaces`, `remoteSpaces`, `totalAvailableSpaces`;';
+
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
         $query->execute();
@@ -75,16 +94,22 @@ class CourseModel
 
     public function getCompletedCourses(): array
     {
-        $sql = 'SELECT `id`,
-                `courses`.`start_date` AS `startDate`,
-                `courses`.`end_date` AS `endDate`,
-                `name`,
-                `notes`,
-                `in_person` AS `inPerson`,
-                `remote`
-                FROM `courses`
-                WHERE `courses`.`end_date` < NOW()
-                ORDER BY `courses`.`end_date` DESC;';
+        $sql = 'SELECT `c`.`id`,
+        `start_date` AS `startDate`,
+        `end_date` AS `endDate`,
+        `name`,
+        `notes`,
+        `in_person` AS `inPerson`,
+        `remote`,
+        `in_person_spaces` AS `inPersonSpaces`,
+        `remote_spaces` AS `remoteSpaces`,
+        `in_person_spaces` + `remote_spaces` AS `totalAvailableSpaces`,
+        COUNT(`applicantId`) AS `spacesTaken`
+        FROM `courses` `c`
+        LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
+        WHERE `c`.`end_date` < NOW()
+        GROUP BY `c`.`id`, `startDate`, `endDate`, `name`, `notes`, `inPerson`, `remote`, `inPersonSpaces`, `remoteSpaces`, `totalAvailableSpaces`
+        ORDER BY `endDate` DESC;';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
         $query->execute();

@@ -5,13 +5,13 @@ namespace Portal\ViewHelpers;
 class DisplayCoursesViewHelper
 {
     private const NO_COURSES_TABLE_HEADING =
-        '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
+    '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
 
     public const FUTURE_COURSES_HEADING_TABLE =
-        '<tr><td colspan="8"><h5 class="text-primary text-center">Future Courses</h5></td></tr>';
+    '<tr><td colspan="8"><h5 class="text-primary text-center">Future Courses</h5></td></tr>';
 
     public const COMPLETED_COURSE_HEADING_TABLE =
-        '<tr><td colspan="8"><h5 class="text-secondary text-center">Completed Courses</h5></td></tr>';
+    '<tr><td colspan="8"><h5 class="text-secondary text-center">Completed Courses</h5></td></tr>';
 
     /**
      * Method to display courses within course detail table
@@ -23,6 +23,8 @@ class DisplayCoursesViewHelper
             $remote = $course->getRemote() == 1 ? '&#x2713;' : '&#x10102';
             $inPerson = $course->getInPerson() == 1 ? '&#x2713;' : '&#x10102';
             $trainersByCourse = self::filterCoursesByTrainers($trainers, $course->getId());
+            $totalAvailableSpaces = $course->getTotalAvailableSpaces();
+            $spacesTaken = $course->getSpacesTaken();
             $result .=
                 '<tr>
                     <td>' . $course->getId() . '</td>
@@ -33,6 +35,7 @@ class DisplayCoursesViewHelper
                     <td>' . $course->getNotes() . '</td>
                     <td>' . $inPerson . '</td>
                     <td>' . $remote . '</td>
+                    <td>' . $spacesTaken . ' | ' . $totalAvailableSpaces . '</td>
                 </tr>';
         }
         return $result;

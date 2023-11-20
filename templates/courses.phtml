@@ -1,59 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <?php
-            require 'partials/layout/head.phtml';
-            echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Courses');
-        ?>
-        <script defer src="./js/toggleCompletedCourses.js"></script>
-    </head>
-    <body>
-        <?php
-            require 'partials/layout/header.phtml';
-            require 'partials/layout/nav.phtml';
-        ?>
-        <div class="container-fluid">
-            <div class="row courses-heading-container">
-                <div class="col-xs-6 text-left courses-box">
-                    <h1>Courses</h1>
-                </div>
-                <div class="col-xs-6 text-right courses-box">
-                    <button type="button" class="btn btn-default completed-courses-btn">Toggle Completed Courses</button>
-                </div>
+
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Courses');
+    ?>
+    <script defer src="./js/toggleCompletedCourses.js"></script>
+</head>
+
+<body>
+    <?php
+    require 'partials/layout/header.phtml';
+    require 'partials/layout/nav.phtml';
+    ?>
+    <div class="container-fluid">
+        <div class="row courses-heading-container">
+            <div class="col-xs-6 text-left courses-box">
+                <h1>Courses</h1>
+            </div>
+            <div class="col-xs-6 text-right courses-box">
+                <button type="button" class="btn btn-default completed-courses-btn">Toggle Completed Courses</button>
             </div>
         </div>
-        <div id="courses" class="row">
-            <table class="col-xs-12 table-bordered table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Course Name</th>
-                        <th>Trainer</th>
-                        <th>Notes</th>
-                        <th>Remote</th>
-                        <th>In Person</th>
-                    </tr>
-                </thead>
-                <tbody class="hidden" id="completed-courses">
-                    <?php
-                        echo \Portal\ViewHelpers\DisplayCoursesViewHelper::COMPLETED_COURSE_HEADING_TABLE;
-                        echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($completedCourses, $trainers);
-                    ?>
-                </tbody>
-                <tbody>
-                    <?php
-                        echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayOngoingCoursesHeading(!empty($ongoingCourses));
-                        echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($ongoingCourses, $trainers);
-                        echo \Portal\ViewHelpers\DisplayCoursesViewHelper::FUTURE_COURSES_HEADING_TABLE;
-                        echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayFutureCourses($futureCourses, $trainers);
-                    ?>
-                </tbody>
-            </table>
-        </div>
+    </div>
+    <div id="courses" class="row">
+        <table class="col-xs-12 table-bordered table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Course Name</th>
+                    <th>Trainer</th>
+                    <th>Notes</th>
+                    <th>Remote</th>
+                    <th>In Person</th>
+                    <th>Available places</th>
+                </tr>
+            </thead>
+            <tbody class="hidden" id="completed-courses">
+                <?php
+                // var_dump($ongoingCourses[0]->getInPersonSpaces());
+                echo \Portal\ViewHelpers\DisplayCoursesViewHelper::COMPLETED_COURSE_HEADING_TABLE;
+                echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($completedCourses, $trainers);
+                ?>
+            </tbody>
+            <tbody>
+                <?php
+                echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayOngoingCoursesHeading(!empty($ongoingCourses));
+                echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($ongoingCourses, $trainers);
+                echo \Portal\ViewHelpers\DisplayCoursesViewHelper::FUTURE_COURSES_HEADING_TABLE;
+                echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayFutureCourses($futureCourses, $trainers);
+                ?>
+            </tbody>
+        </table>
+    </div>
     <?php
-        require 'partials/layout/footer.phtml';
+    require 'partials/layout/footer.phtml';
     ?>
-    </body>
+</body>
+
 </html>

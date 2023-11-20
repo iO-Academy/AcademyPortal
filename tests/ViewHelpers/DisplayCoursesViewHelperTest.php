@@ -22,6 +22,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td></td>
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
+                    <td>4 | 8</td>
                 </tr>';
         $entityMock = $this->createMock(CourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -31,8 +32,10 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');
         $entityMock->method('getInPerson')->willReturn('1');
+        $entityMock->method('getTotalAvailableSpaces')->willReturn('8');
+        $entityMock->method('getSpacesTaken')->willReturn('4');
         $courses = [$entityMock];
-        $trainers = [['course_id' => '1', 'name' => 'Charlie', 'deleted' => '0'] ];
+        $trainers = [['course_id' => '1', 'name' => 'Charlie', 'deleted' => '0']];
         $result = DisplayCoursesViewHelper::displayFutureCourses($courses, $trainers);
         $this->assertEquals($expected, $result);
     }
@@ -51,6 +54,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td></td>
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
+                    <td>4 | 8</td>
                 </tr>';
         $entityMock = $this->createMock(CourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -60,6 +64,8 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');
         $entityMock->method('getInPerson')->willReturn('1');
+        $entityMock->method('getTotalAvailableSpaces')->willReturn('8');
+        $entityMock->method('getSpacesTaken')->willReturn('4');
         $courses = [$entityMock];
         $trainers = [
             ['course_id' => '1', 'name' => 'Charlie', 'deleted' => '0'],
@@ -83,6 +89,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td></td>
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
+                    <td>4 | 8</td>
                 </tr>';
         $entityMock = $this->createMock(CourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -92,8 +99,10 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');
         $entityMock->method('getInPerson')->willReturn('1');
+        $entityMock->method('getTotalAvailableSpaces')->willReturn('8');
+        $entityMock->method('getSpacesTaken')->willReturn('4');
         $courses = [$entityMock];
-        $trainers = [['course_id' => '1', 'name' => 'Charlie', 'deleted' => '1'] ];
+        $trainers = [['course_id' => '1', 'name' => 'Charlie', 'deleted' => '1']];
         $result = DisplayCoursesViewHelper::displayFutureCourses($courses, $trainers);
         $this->assertEquals($expected, $result);
     }
@@ -112,6 +121,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td></td>
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
+                    <td>4 | 8</td>
                 </tr>';
         $entityMock = $this->createMock(CourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -121,6 +131,8 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');
         $entityMock->method('getInPerson')->willReturn('1');
+        $entityMock->method('getTotalAvailableSpaces')->willReturn('8');
+        $entityMock->method('getSpacesTaken')->willReturn('4');
         $courses = [$entityMock];
         $trainers = [
             ['course_id' => '1', 'name' => 'Charlie', 'deleted' => '1'],
@@ -144,6 +156,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td></td>
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
+                    <td>4 | 8</td>
                 </tr>';
         $entityMock = $this->createMock(CourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -153,6 +166,8 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');
         $entityMock->method('getInPerson')->willReturn('1');
+        $entityMock->method('getTotalAvailableSpaces')->willReturn('8');
+        $entityMock->method('getSpacesTaken')->willReturn('4');
         $courses = [$entityMock];
         $trainers = [];
         $result = DisplayCoursesViewHelper::displayFutureCourses($courses, $trainers);
