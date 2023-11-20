@@ -609,7 +609,6 @@ class ApplicantModel implements ApplicantModelInterface
     {
         $validFieldNames = ['githubUsernameLocked', 'edaidLocked', 'upfrontLocked', 'laptopLocked'];
         if (!in_array($fieldName, $validFieldNames)) {
-
             throw new InvalidArgumentException('Invalid field name');
         }
 
