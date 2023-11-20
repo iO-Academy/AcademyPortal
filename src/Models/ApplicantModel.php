@@ -607,7 +607,6 @@ class ApplicantModel implements ApplicantModelInterface
 
     private function isFieldLocked(string $fieldName, int $id): int
     {
-
         $validFieldNames = ['githubUsernameLocked', 'edaidLocked', 'upfrontLocked', 'laptopLocked'];
         if (!in_array($fieldName, $validFieldNames)) {
 
