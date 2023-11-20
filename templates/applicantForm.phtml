@@ -255,25 +255,25 @@
             </div>
 
             <label for="edaid">EdAid Amount</label>
-
             <div class="input-group col-lg-12">
                 <span class="input-group-addon">&pound;</span>
                 <input id="edaid" name="edaid" class="submitApplicant form-control" type="text"
                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                        placeholder="0" min="0" max="10000" step="1"
                        value="<?php echo $applicant->getEdaid() ? $applicant->getEdaid() : 0; ?>">
-                <span class="input-group-addon"><i class="bi <?php echo ($applicant->getEdaidLocked() ? 'bi-lock' : 'bi-unlock');?>" id="lockToggle" data-field="edaid"></i></span>
+                <span class="input-group-addon"><i class="lockToggle bi <?php echo ($applicant->getEdaidLocked() ? 'bi-lock' : 'bi-unlock');?>" data-field="edaid"></i></span>
             </div>
             <div class="alert formItem_alert alert-danger hidden" id="edaidError">
                 Locking the field not working
             </div>
+
             <label for="upfront">Upfront Amount</label>
             <div class="input-group col-lg-12">
                 <span class="input-group-addon">&pound;</span>
                 <input id="upfront" name="upfront" class="submitApplicant form-control" type="number"
                        placeholder="0" min="0" max="10000" step="1"
                        value="<?php echo $applicant->getUpfront() ? $applicant->getUpfront() : 0; ?>">
-                <span class="input-group-addon"><i class="bi <?php echo ($applicant->getUpfrontLocked() ? 'bi-lock' : 'bi-unlock');?> " id="lockToggle" data-field="upfront"></i></span>
+                <span class="input-group-addon"><i class="lockToggle bi <?php echo ($applicant->getUpfrontLocked() ? 'bi-lock' : 'bi-unlock');?> " data-field="upfront"></i></span>
             </div>
             <div class="alert formItem_alert alert-danger hidden" id="upfrontError">
                 Locking the field not working
@@ -282,7 +282,7 @@
                 <input class="submitApplicant" name="laptop"
                        type="checkbox"<?php echo $applicant->getLaptop() ? " checked" : ""; ?>/>
                 <label for="laptop">Academy laptop needed?</label>
-                <i class="bi <?php echo ($applicant->getLaptopLocked() ? 'bi-lock' : 'bi-unlock'); ?>" id="lockToggle" data-field="laptop"></i>
+                <i class="lockToggle bi <?php echo ($applicant->getLaptopLocked() ? 'bi-lock' : 'bi-unlock'); ?>" data-field="laptop"></i>
             </div>
             <div class="alert formItem_alert alert-danger hidden" id="laptopError">
                 Locking the field not working
@@ -396,13 +396,12 @@
             <h4>Student Info</h4>
             <i class="glyphicon glyphicon-chevron-down"></i>
         </div>
-
         <div id="studentinfo" class="collapse">
             <label for="githubUsername">Github Username</label>
             <div class="input-group">
             <input id="githubUsername" name="githubUsername" class="submitApplicant form-control"
                    type="text" value="<?php echo $applicant->getGithubUsername(); ?>">
-                <span class="input-group-addon"><i class="bi <?php echo ($applicant->getGithubUsernameLocked() ? 'bi-lock' : 'bi-unlock'); ?> " id="lockToggle" data-field="githubUsername"></i></span>
+                <span class="input-group-addon"><i class="lockToggle bi <?php echo ($applicant->getGithubUsernameLocked() ? 'bi-lock' : 'bi-unlock'); ?> " data-field="githubUsername"></i></span>
             </div>
 
             <div class="alert formItem_alert alert-danger hidden" id="githubUsernameError">

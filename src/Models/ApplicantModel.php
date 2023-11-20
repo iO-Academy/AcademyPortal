@@ -587,15 +587,15 @@ class ApplicantModel implements ApplicantModelInterface
                 break;
             case 'edaid':
                 $locked = $this->isFieldLocked('edaidLocked', $id);
-                $sql = 'UPDATE `applicants_additional` SET `githubUsernameLocked` = :locked WHERE `id` = :id';
+                $sql = 'UPDATE `applicants_additional` SET `edaidLocked` = :locked WHERE `id` = :id';
                 break;
             case 'upfront':
                 $locked = $this->isFieldLocked('upfrontLocked', $id);
-                $sql = 'UPDATE `applicants_additional` SET `githubUsernameLocked` = :locked WHERE `id` = :id';
+                $sql = 'UPDATE `applicants_additional` SET `upfrontLocked` = :locked WHERE `id` = :id';
                 break;
             case 'laptop':
                 $locked = $this->isFieldLocked('laptopLocked', $id);
-                $sql = 'UPDATE `applicants_additional` SET `githubUsernameLocked` = :locked WHERE `id` = :id';
+                $sql = 'UPDATE `applicants_additional` SET `laptopLocked` = :locked WHERE `id` = :id';
                 break;
             default:
                 throw new \Exception('Invalid field name');
