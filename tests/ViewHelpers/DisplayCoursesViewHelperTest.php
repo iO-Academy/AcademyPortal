@@ -22,8 +22,8 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td></td>
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
-                    <td><span class="filled-places badge">Filled: 4' . 
-                    '</span> <span class="total-places badge">Total: 8' . 
+                    <td><span class="filled-places badge">Filled: 4' .
+                    '</span> <span class="total-places badge">Total: 8' .
                     '</span>
                     </td>
                 </tr>';
@@ -57,8 +57,8 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td></td>
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
-                    <td><span class="filled-places badge">Filled: 4' . 
-                    '</span> <span class="total-places badge">Total: 8' . 
+                    <td><span class="filled-places badge">Filled: 4' .
+                    '</span> <span class="total-places badge">Total: 8' .
                     '</span>
                     </td>
                 </tr>';
@@ -95,8 +95,8 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td></td>
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
-                    <td><span class="filled-places badge">Filled: 4' . 
-                    '</span> <span class="total-places badge">Total: 8' . 
+                    <td><span class="filled-places badge">Filled: 4' .
+                    '</span> <span class="total-places badge">Total: 8' .
                     '</span>
                     </td>
                 </tr>';
@@ -130,8 +130,8 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td></td>
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
-                    <td><span class="filled-places badge">Filled: 4' . 
-                    '</span> <span class="total-places badge">Total: 8' . 
+                    <td><span class="filled-places badge">Filled: 4' .
+                    '</span> <span class="total-places badge">Total: 8' .
                     '</span>
                     </td>
                 </tr>';
@@ -168,8 +168,8 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td></td>
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
-                    <td><span class="filled-places badge">Filled: 4' . 
-                    '</span> <span class="total-places badge">Total: 8' . 
+                    <td><span class="filled-places badge">Filled: 4' .
+                    '</span> <span class="total-places badge">Total: 8' .
                     '</span>
                     </td>
                 </tr>';
