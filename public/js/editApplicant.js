@@ -18,6 +18,8 @@ document.querySelector('#stageTitle').addEventListener('change', e => {
     }
 })
 
+document.querySelector('.getAptitudeScoreButton').addEventListener('click', aptitudeScoreButtonClick)
+
 function showAlertForApptitudeButton(alertSelector)
 {
     document.querySelector(alertSelector).classList.remove('hidden')
@@ -43,5 +45,3 @@ function aptitudeScoreButtonClick(e)
                 showAlertforApptitudeButton('#aptitudeScoreError')
         });
 }
-
-document.querySelector('.getAptitudeScoreButton').addEventListener('click', aptitudeScoreButtonClick)
