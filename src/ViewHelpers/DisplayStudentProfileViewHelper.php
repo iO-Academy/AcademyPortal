@@ -2,10 +2,26 @@
 
 namespace Portal\ViewHelpers;
 
+use Portal\Controllers\API\LockApplicantFieldController;
 use Portal\Entities\CompleteApplicantEntity;
 
 class DisplayStudentProfileViewHelper
 {
+    private static function displayEditButtonOrQuestionMark(?bool $isLocked, string $fieldName)
+    {
+        return ($isLocked ?
+            '<div><span 
+            class="bi bi-question-circle"
+            data-toggle="tooltip"
+            data-placement="right" 
+            title="This field has been locked by iO, please contact us if it is incorrect"
+            ></div>' :
+            '<button data-selector="' . $fieldName . '" 
+                class="btn btn-primary btn-sm ' . $fieldName . 'EditButton editbutton" 
+                id="' . $fieldName . 'EditButton">Edit</button>'
+        );
+    }
+
     public static function outputApplicant(CompleteApplicantEntity $applicant): string
     {
         return '<hr>
@@ -54,12 +70,9 @@ class DisplayStudentProfileViewHelper
                         . $applicant->getDiversitech() . '</span>
                     <div class="edaidContainer studentProfileEditableField">
                         <label class="detail" for="edaidTextBox">EdAid amount: </label>
-                        <span id="edaidDisplayed">' . $applicant->getEdaid() . '</span>
-                        <button data-selector="edaid" class="btn btn-primary btn-sm edaidEditButton editbutton" 
-                        id="edaidEditButton">
-                        Edit
-                        </button>
-                    </div>
+                        <span id="edaidDisplayed">' . $applicant->getEdaid() . '</span>' .
+                        self::displayEditButtonOrQuestionMark($applicant->getEdaidLocked(), 'edaid') .
+                    '</div>
                     <div data-selector="edaid" class="editableedaid studentProfileEditableField hidden">
                         <form class="form studentProfileEditableField">
                             <label for="edaidTextBox">EdAid amount:</label>
@@ -77,13 +90,10 @@ class DisplayStudentProfileViewHelper
                     </div>
                     <div class="upfrontContainer studentProfileEditableField">
                         <label class="detail" for="upfrontTextBox">Upfront amount: </label>
-                        <span id="upfrontDisplayed">' . $applicant->getUpfront() . '</span>
-                        <button data-selector="upfront" class="btn btn-primary btn-sm upfrontEditButton editbutton" 
-                        id="upfrontEditButton">
-                        Edit
-                        </button>
-                    </div>
-                    <div data-selector="upfront" class="editableupfront studentProfileEditableField hidden">
+                        <span id="upfrontDisplayed">' . $applicant->getUpfront() . '</span>' .
+                        self::displayEditButtonOrQuestionMark($applicant->getUpfrontLocked(), 'upfront') .
+                    '</div>
+                        <div data-selector="upfront" class="editableupfront studentProfileEditableField hidden">
                         <form class="form studentProfileEditableField">
                             <label for="upfrontTextBox">Upfront amount:</label>
                                 <span>
@@ -103,12 +113,11 @@ class DisplayStudentProfileViewHelper
                         <span id="laptopDisplayed">' .
                         (is_null($applicant->getLaptop())
                         ? null : ($applicant->getLaptop() ? 'Yes' : 'No'))
-                        . '</span>
-                        <input data-selector="laptop" class="btn btn-primary btn-sm laptopEditButton 
-                        editbutton" id="laptopEditButton" value="Edit">
-                    </div>
-                    <div data-selector="laptop" class="editablelaptop studentProfileEditableField hidden">
-                        <form class="form studentProfileEditableField">
+                        . '</span>' .
+                        self::displayEditButtonOrQuestionMark($applicant->getLaptopLocked(), 'laptop') .
+                    '</div>
+                        <div data-selector="laptop" class="editablelaptop studentProfileEditableField hidden">
+                            <form class="form studentProfileEditableField">
                             <label>Laptop required: </label>
                             <span>
                                 <input type="radio" value="0" id="noLaptop" name="laptop" checked="checked">
@@ -137,12 +146,9 @@ class DisplayStudentProfileViewHelper
                     <h4>Student profile</h4>
                     <div class="githubUsernameContainer studentProfileEditableField">
                         <label class="detail" for="githubUsername">GitHub Username: </label> 
-                        <span id="githubUsernameDisplayed">' . $applicant->getGithubUsername() . '</span>
-                        <button data-selector="githubUsername" class="btn btn-primary btn-sm githubUsernameEditButton 
-                        editbutton" id="githubUsernameEditButton">
-                        Edit
-                        </button>
-                    </div>
+                        <span id="githubUsernameDisplayed">' . $applicant->getGithubUsername() . '</span>' .
+                        self::displayEditButtonOrQuestionMark($applicant->getGithubUsernameLocked(), 'githubUsername') .
+                    '</div>
                     <div data-selector="githubUsername" class="editablegithubUsername studentProfileEditableField 
                     hidden">
                         <form class="form studentProfileEditableField">

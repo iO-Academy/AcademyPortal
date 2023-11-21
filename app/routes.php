@@ -41,7 +41,8 @@ use Portal\Controllers\API\GetStudentsController;
 use Portal\Controllers\API\LoginController;
 use Portal\Controllers\API\SendEmailController;
 use Portal\Controllers\API\UpdateStudentProfileController;
-use \Portal\Controllers\API\GetApplicantAptitudeController;
+use Portal\Controllers\API\LockApplicantFieldController;
+use Portal\Controllers\API\GetApplicantAptitudeController;
 use Portal\Controllers\FrontEnd\AddApplicantPageController;
 use Portal\Controllers\FrontEnd\AddCoursePageController;
 use Portal\Controllers\FrontEnd\AddEventPageController;
@@ -131,5 +132,6 @@ return function (App $app) {
     $app->post('/api/addTrainer', AddTrainerController::class);
     $app->delete('/api/deleteTrainer', DeleteTrainerController::class);
     $app->post('/api/sendEmail', SendEmailController::class);
+    $app->get('/api/lockApplicantField', LockApplicantFieldController::class);
     $app->get('/api/getAptitudeScore', GetApplicantAptitudeController::class);
 };
