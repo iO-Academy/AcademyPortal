@@ -9,12 +9,12 @@ use Slim\Views\PhpRenderer;
 
 class StudentProfilePageControllerTest extends TestCase
 {
-    public function testConstruct() {
+    public function testConstruct()
+    {
         $renderer = $this->createMock(PhpRenderer::class);
         $applicantModel = $this->createMock(ApplicantModel::class);
         $result = new StudentProfilePageController($renderer, $applicantModel);
         $expected = StudentProfilePageController::class;
         $this->assertInstanceOf($expected, $result);
-
     }
 }
