@@ -53,16 +53,7 @@ class CourseModel
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
         WHERE `c`.`start_date` > NOW()
-        GROUP BY `c`.`id`, 
-        `startDate`, 
-        `endDate`, 
-        `name`, 
-        `notes`, 
-        `inPerson`, 
-        `remote`, 
-        `inPersonSpaces`, 
-        `remoteSpaces`, 
-        `totalAvailableSpaces`;';
+        GROUP BY `c`.`id`;';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntityDetailed::class);
         $query->execute();
@@ -88,16 +79,7 @@ class CourseModel
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
         WHERE `c`.`start_date` <= NOW() AND `c`.`end_date` >= NOW()
-        GROUP BY `c`.`id`, 
-        `startDate`, 
-        `endDate`, 
-        `name`, 
-        `notes`, 
-        `inPerson`, 
-        `remote`, 
-        `inPersonSpaces`, 
-        `remoteSpaces`, 
-        `totalAvailableSpaces`;';
+        GROUP BY `c`.`id`;';
 
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntityDetailed::class);
@@ -121,16 +103,7 @@ class CourseModel
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
         WHERE `c`.`end_date` < NOW()
-        GROUP BY `c`.`id`,
-         `startDate`, 
-         `endDate`, 
-         `name`, 
-         `notes`, 
-         `inPerson`, 
-         `remote`, 
-         `inPersonSpaces`, 
-         `remoteSpaces`, 
-         `totalAvailableSpaces`
+        GROUP BY `c`.`id`
         ORDER BY `endDate` DESC;';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntityDetailed::class);
