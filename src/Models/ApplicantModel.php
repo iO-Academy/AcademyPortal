@@ -257,9 +257,7 @@ class ApplicantModel implements ApplicantModelInterface
             'id' => $id
         ]);
         $results = $query->fetch();
-        if (empty($results)) {
-            return null;
-        } else {
+        if (!empty($results)) {
             $queryDate = $this->db->prepare(
                 'SELECT `courses`.`id` as "id", `start_date` 
                     FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`courseId` 
@@ -271,6 +269,8 @@ class ApplicantModel implements ApplicantModelInterface
             $applicantCohortDate = $queryDate->fetchAll();
             $results->setCohortDates($applicantCohortDate);
             return $results;
+        } else {
+            return null;
         }
     }
 
