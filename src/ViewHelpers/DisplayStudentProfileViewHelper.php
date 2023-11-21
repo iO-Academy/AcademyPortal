@@ -22,9 +22,9 @@ class DisplayStudentProfileViewHelper
         );
     }
 
-    public static function studentChecks(bool $check): string
+    public static function convertBooleanToYesOrNo(bool $boolValue): string
     {
-        return $check ? 'Yes' : 'No';
+        return $boolValue ? 'Yes' : 'No';
     }
 
     public static function laptopRequired(bool $required): string

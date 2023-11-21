@@ -48,27 +48,27 @@ class DisplayStudentProfileHelperTest extends TestCase
         $result = DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($islocked, $fieldname);
     }
 
-    public function testGetDetailsSuccessTrue()
+    public function testConvertBooleanToYesOrNoSuccessTrue()
     {
-        $check = 1;
+        $boolValue = 1;
         $expected = 'Yes';
-        $result = DisplayStudentProfileViewHelper::studentChecks($check);
+        $result = DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($boolValue);
         $this->assertEquals($expected, $result);
     }
 
-    public function testGetDetailsSuccessFalse()
+    public function testConvertBooleanToYesOrNoSuccessFalse()
     {
-        $check = 0;
+        $boolValue = 0;
         $expected = 'No';
-        $result = DisplayStudentProfileViewHelper::studentChecks($check);
+        $result = DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($boolValue);
         $this->assertEquals($expected, $result);
     }
 
-    public function testGetDetailsMalformed()
+    public function testConvertBooleanToYesOrNoMalformed()
     {
-        $check = [];
+        $boolValue = [];
         $this->expectException(\TypeError::class);
-        $result = DisplayStudentProfileViewHelper::studentChecks($check);
+        $result = DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($boolValue);
     }
 
     public function testLaptopRequiredSuccessTrue()

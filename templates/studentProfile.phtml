@@ -36,13 +36,13 @@
             <p id="codeExperience"><?php echo $applicant->getCodeExperience(); ?></p>
             <p class="detail">Heard About Us: <span id="hearAbout"><?php echo $applicant->getHearAbout(); ?></span></p>
             <p class="detail" id="eligible">Eligible to study in the UK: <?php echo '<span>'
-                    . \Portal\ViewHelpers\DisplayStudentProfileViewHelper::studentChecks($applicant->getEligible())
+                    . \Portal\ViewHelpers\DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getEligible())
                     . '</span>'; ?></p>
             <p class="detail" id="eighteenPlus">Over 18 years: <?php echo '<span>'
-                    . \Portal\ViewHelpers\DisplayStudentProfileViewHelper::studentChecks($applicant->getEighteenPlus())
+                    . \Portal\ViewHelpers\DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getEighteenPlus())
                     . '</span>'; ?></p>
             <p class="detail">Finance: <?php echo '<span>'
-                    . \Portal\ViewHelpers\DisplayStudentProfileViewHelper::studentChecks($applicant->getFinance())
+                    . \Portal\ViewHelpers\DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getFinance())
                     . '</span>'; ?></p>
             <p class="detail">Notes: </p>
             <p id="notes"><?php echo $applicant->getNotes(); ?></p>
