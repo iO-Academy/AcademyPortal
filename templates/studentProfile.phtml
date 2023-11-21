@@ -105,7 +105,7 @@
             </div>
             <div class="laptopContainer studentProfileEditableField">
                 <label class="detail" for="laptopRadioButtons">Laptop required: </label>
-                <?php echo '<span id="laptopDisplayed">' . \Portal\ViewHelpers\DisplayStudentProfileViewHelper::laptopRequired($applicant->getLaptop()) . '</span>'; ?>
+                <?php echo '<span id="laptopDisplayed">' . \Portal\ViewHelpers\DisplayStudentProfileViewHelper::convertFieldToYesNoOrNull($applicant->getLaptop()) . '</span>'; ?>
                 <?php echo \Portal\ViewHelpers\DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getLaptopLocked(), 'laptop'); ?>
             </div>
             <div data-selector="laptop" class="editablelaptop studentProfileEditableField hidden">

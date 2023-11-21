@@ -71,26 +71,34 @@ class DisplayStudentProfileHelperTest extends TestCase
         $result = DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($boolValue);
     }
 
-    public function testLaptopRequiredSuccessTrue()
+    public function testConvertFieldToYesNoOrNullSuccessNull()
     {
-        $required = 1;
+        $fieldValue = null;
+        $expected = '';
+        $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrNull($fieldValue);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testConvertFieldToYesNoOrNullSuccessTrue()
+    {
+        $fieldValue = 1;
         $expected = 'Yes';
-        $result = DisplayStudentProfileViewHelper::laptopRequired($required);
+        $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrNull($fieldValue);
         $this->assertEquals($expected, $result);
     }
 
-    public function testLaptopRequiredSuccessFalse()
+    public function testConvertFieldToYesNoOrNullSuccessFalse()
     {
-        $required = 0;
+        $fieldValue = 0;
         $expected = 'No';
-        $result = DisplayStudentProfileViewHelper::laptopRequired($required);
+        $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrNull($fieldValue);
         $this->assertEquals($expected, $result);
     }
 
-    public function testLaptopRequiredMalformed()
+    public function testConvertFieldToYesNoOrNullMalformed()
     {
-        $required = [];
+        $fieldValue = [];
         $this->expectException(\TypeError::class);
-        $result = DisplayStudentProfileViewHelper::laptopRequired($required);
+        $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrNull($fieldValue);
     }
 }

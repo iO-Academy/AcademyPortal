@@ -27,9 +27,8 @@ class DisplayStudentProfileViewHelper
         return $boolValue ? 'Yes' : 'No';
     }
 
-    public static function laptopRequired(bool $required): string
+    public static function convertFieldToYesNoOrNull(?bool $fieldValue): ?string
     {
-        return
-            $required ? 'Yes' : 'No';
+        return is_null($fieldValue) ? null : ($fieldValue ? 'Yes' : 'No');
     }
 }
