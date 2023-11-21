@@ -10,6 +10,7 @@
     <script src="./js/saveApplicant.js" defer></script>
     <script src="./js/applicantForm.js" defer></script>
     <script src="./js/editApplicant.js" defer></script>
+    <script src="./js/lockToggle.js" defer></script>
 </head>
 <body>
 <?php require 'partials/layout/header.phtml'; ?>
@@ -254,29 +255,38 @@
             </div>
 
             <label for="edaid">EdAid Amount</label>
-
-            <div class="input-group">
+            <div class="input-group col-lg-12">
                 <span class="input-group-addon">&pound;</span>
                 <input id="edaid" name="edaid" class="submitApplicant form-control" type="text"
                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                        placeholder="0" min="0" max="10000" step="1"
                        value="<?php echo $applicant->getEdaid() ? $applicant->getEdaid() : 0; ?>">
+                <span class="input-group-addon"><i class="lockToggle bi <?php echo ($applicant->getEdaidLocked() ? 'bi-lock' : 'bi-unlock');?>" data-field="edaid"></i></span>
+            </div>
+            <div class="alert formItem_alert alert-danger hidden" id="edaidError">
+                Locking the field not working
             </div>
 
             <label for="upfront">Upfront Amount</label>
-            <div class="input-group">
+            <div class="input-group col-lg-12">
                 <span class="input-group-addon">&pound;</span>
                 <input id="upfront" name="upfront" class="submitApplicant form-control" type="number"
                        placeholder="0" min="0" max="10000" step="1"
                        value="<?php echo $applicant->getUpfront() ? $applicant->getUpfront() : 0; ?>">
+                <span class="input-group-addon"><i class="lockToggle bi <?php echo ($applicant->getUpfrontLocked() ? 'bi-lock' : 'bi-unlock');?> " data-field="upfront"></i></span>
             </div>
-
+            <div class="alert formItem_alert alert-danger hidden" id="upfrontError">
+                Locking the field not working
+            </div>
             <div class="form-group">
                 <input class="submitApplicant" name="laptop"
                        type="checkbox"<?php echo $applicant->getLaptop() ? " checked" : ""; ?>/>
                 <label for="laptop">Academy laptop needed?</label>
+                <i class="lockToggle bi <?php echo ($applicant->getLaptopLocked() ? 'bi-lock' : 'bi-unlock'); ?>" data-field="laptop"></i>
             </div>
-
+            <div class="alert formItem_alert alert-danger hidden" id="laptopError">
+                Locking the field not working
+            </div>
             <div class="form-group">
                 <input class="submitApplicant" name="laptopDeposit"
                        type="checkbox"<?php echo $applicant->getLaptopDeposit() ? " checked" : ""; ?>/>
@@ -386,12 +396,17 @@
             <h4>Student Info</h4>
             <i class="glyphicon glyphicon-chevron-down"></i>
         </div>
-
         <div id="studentinfo" class="collapse">
-
             <label for="githubUsername">Github Username</label>
+            <div class="input-group">
             <input id="githubUsername" name="githubUsername" class="submitApplicant form-control"
                    type="text" value="<?php echo $applicant->getGithubUsername(); ?>">
+                <span class="input-group-addon"><i class="lockToggle bi <?php echo ($applicant->getGithubUsernameLocked() ? 'bi-lock' : 'bi-unlock'); ?> " data-field="githubUsername"></i></span>
+            </div>
+
+            <div class="alert formItem_alert alert-danger hidden" id="githubUsernameError">
+                Locking the field not working
+            </div>
 
             <label for="portfolioUrl">Portfolio URL</label>
             <input id="portfolioUrl" name="portfolioUrl" class="submitApplicant form-control"
