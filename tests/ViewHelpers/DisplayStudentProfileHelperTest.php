@@ -18,18 +18,18 @@ class DisplayStudentProfileHelperTest extends TestCase
             title="This field has been locked by iO, please contact us if it is incorrect"
             ></div>';
         $result = DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($islocked, $fieldname);
-        $this->assertEquals($expected, $result);
+        $this->assertSame($expected, $result);
     }
 
     public function testDisplayEditButtonOrQuestionMarkSuccessFalse()
     {
         $islocked = 0;
         $fieldname = 'test';
-        $expected = '<button data-selector="' . 'test' . '" 
-                class="btn btn-primary btn-sm ' . 'test' . 'EditButton editbutton" 
-                id="' . 'test' . 'EditButton">Edit</button>';
+        $expected = '<button data-selector="test" 
+                class="btn btn-primary btn-sm testEditButton editbutton" 
+                id="testEditButton">Edit</button>';
         $result = DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($islocked, $fieldname);
-        $this->assertEquals($expected, $result);
+        $this->assertSame($expected, $result);
     }
 
     public function testDisplayEditButtonOrQuestionMarkMalformedFieldName()
@@ -53,7 +53,7 @@ class DisplayStudentProfileHelperTest extends TestCase
         $boolValue = 1;
         $expected = 'Yes';
         $result = DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($boolValue);
-        $this->assertEquals($expected, $result);
+        $this->assertSame($expected, $result);
     }
 
     public function testConvertBooleanToYesOrNoSuccessFalse()
@@ -61,7 +61,7 @@ class DisplayStudentProfileHelperTest extends TestCase
         $boolValue = 0;
         $expected = 'No';
         $result = DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($boolValue);
-        $this->assertEquals($expected, $result);
+        $this->assertSame($expected, $result);
     }
 
     public function testConvertBooleanToYesOrNoMalformed()
@@ -84,7 +84,7 @@ class DisplayStudentProfileHelperTest extends TestCase
         $fieldValue = 1;
         $expected = 'Yes';
         $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrNull($fieldValue);
-        $this->assertEquals($expected, $result);
+        $this->assertSame($expected, $result);
     }
 
     public function testConvertFieldToYesNoOrNullSuccessFalse()
@@ -92,7 +92,7 @@ class DisplayStudentProfileHelperTest extends TestCase
         $fieldValue = 0;
         $expected = 'No';
         $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrNull($fieldValue);
-        $this->assertEquals($expected, $result);
+        $this->assertSame($expected, $result);
     }
 
     public function testConvertFieldToYesNoOrNullMalformed()
