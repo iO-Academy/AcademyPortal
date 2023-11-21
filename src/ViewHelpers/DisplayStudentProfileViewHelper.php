@@ -27,8 +27,8 @@ class DisplayStudentProfileViewHelper
         return $boolValue ? 'Yes' : 'No';
     }
 
-    public static function convertFieldToYesNoOrNull(?bool $fieldValue): ?string
+    public static function convertFieldToYesNoOrEmptyString(?bool $fieldValue): string
     {
-        return is_null($fieldValue) ? null : ($fieldValue ? 'Yes' : 'No');
+        return is_null($fieldValue) ? '' : ($fieldValue ? 'Yes' : 'No');
     }
 }

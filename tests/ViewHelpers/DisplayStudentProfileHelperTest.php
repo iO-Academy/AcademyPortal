@@ -71,34 +71,34 @@ class DisplayStudentProfileHelperTest extends TestCase
         $result = DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($boolValue);
     }
 
-    public function testConvertFieldToYesNoOrNullSuccessNull()
+    public function testConvertFieldToYesNoOrEmptyStringSuccessEmptyString()
     {
         $fieldValue = null;
         $expected = '';
-        $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrNull($fieldValue);
+        $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrEmptyString($fieldValue);
         $this->assertEquals($expected, $result);
     }
 
-    public function testConvertFieldToYesNoOrNullSuccessTrue()
+    public function testConvertFieldToYesNoOrEmptyStringSuccessTrue()
     {
         $fieldValue = 1;
         $expected = 'Yes';
-        $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrNull($fieldValue);
+        $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrEmptyString($fieldValue);
         $this->assertSame($expected, $result);
     }
 
-    public function testConvertFieldToYesNoOrNullSuccessFalse()
+    public function testConvertFieldToYesNoOrEmptyStringSuccessFalse()
     {
         $fieldValue = 0;
         $expected = 'No';
-        $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrNull($fieldValue);
+        $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrEmptyString($fieldValue);
         $this->assertSame($expected, $result);
     }
 
-    public function testConvertFieldToYesNoOrNullMalformed()
+    public function testConvertFieldToYesNoOrEmptyStringMalformed()
     {
         $fieldValue = [];
         $this->expectException(\TypeError::class);
-        $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrNull($fieldValue);
+        $result = DisplayStudentProfileViewHelper::convertFieldToYesNoOrEmptyString($fieldValue);
     }
 }
