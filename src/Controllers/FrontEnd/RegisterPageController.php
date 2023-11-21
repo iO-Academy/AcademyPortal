@@ -26,7 +26,7 @@ class RegisterPageController extends Controller
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $args['password'] = ($this->password)();
-        if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+        if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
             return $this->renderer->render($response, 'registerUser.phtml', $args);
         } else {
             $_SESSION['loggedIn'] = false;

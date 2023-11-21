@@ -25,7 +25,7 @@ class TrainersPageController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+        if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
             $trainers = $this->trainerModel->getAllTrainers();
             $args['trainers'] = $trainers;
             return $this->renderer->render($response, 'trainers.phtml', $args);

@@ -25,7 +25,7 @@ class EditApplicantPageController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+        if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
             $id = $request->getQueryParams()['id'];
             if ($id > 0) {
                 $data['applicant'] = $this->applicantModel->getApplicantById($id);

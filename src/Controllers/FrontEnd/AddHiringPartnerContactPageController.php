@@ -28,7 +28,7 @@ class AddHiringPartnerContactPageController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
+        if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
             $args['companyName'] = $this->hiringPartnerModel->getCompanyName();
             $args['companySize'] = $this->hiringPartnerModel->getCompanySize();
             return $this->renderer->render($response, 'addHiringPartnerContact.phtml', $args);
