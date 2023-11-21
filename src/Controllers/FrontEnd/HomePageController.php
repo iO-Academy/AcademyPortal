@@ -19,7 +19,7 @@ class HomePageController extends Controller
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) {
-            return $response->withHeader('Location', './admin');
+            return $response->withHeader('Location', './admin')->withStatus(301);
         }
         return $this->renderer->render($response, 'login.phtml', $args);
     }
