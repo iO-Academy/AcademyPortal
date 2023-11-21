@@ -1,3 +1,9 @@
+<?php
+
+use Portal\ViewHelpers\DisplayStudentProfileViewHelper;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,22 +34,29 @@
             <h4>Application Info</h4>
             <p class="detail">Stage: <span id="stageName"><?php echo $applicant->getStageName(); ?></span></p>
             <p class="detail" id="stageOptionNameContainer">Stage Option:
-                <span id="stageOptionName"><?php echo($applicant->getStageOptionName() ?? '--'); ?></span></p>
+                <span id="stageOptionName"><?php echo($applicant->getStageOptionName() ?? '--'); ?></span>
+            </p>
             <p class="detail">Cohort: <span id="cohortDate"><?php echo $applicant->getCohortDate(); ?></span></p>
             <p class="detail">Reason for wanting to be a dev:</p>
             <p id="whyDev"><?php echo $applicant->getWhyDev(); ?></p>
             <p class="detail">Code Experience:</p>
             <p id="codeExperience"><?php echo $applicant->getCodeExperience(); ?></p>
             <p class="detail">Heard About Us: <span id="hearAbout"><?php echo $applicant->getHearAbout(); ?></span></p>
-            <p class="detail" id="eligible">Eligible to study in the UK: <?php echo '<span>'
-                    . \Portal\ViewHelpers\DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getEligible())
-                    . '</span>'; ?></p>
-            <p class="detail" id="eighteenPlus">Over 18 years: <?php echo '<span>'
-                    . \Portal\ViewHelpers\DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getEighteenPlus())
-                    . '</span>'; ?></p>
-            <p class="detail">Finance: <?php echo '<span>'
-                    . \Portal\ViewHelpers\DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getFinance())
-                    . '</span>'; ?></p>
+            <p class="detail" id="eligible">Eligible to study in the UK:
+                <span>
+                    <?php echo DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getEligible()); ?>
+                </span>
+            </p>
+            <p class="detail" id="eighteenPlus">Over 18 years:
+                <span>
+                    <?php echo DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getEighteenPlus()); ?>
+                </span>
+            </p>
+            <p class="detail">Finance:
+                <span>
+                    <?php echo DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getFinance()); ?>
+                </span>
+            </p>
             <p class="detail">Notes: </p>
             <p id="notes"><?php echo $applicant->getNotes(); ?></p>
         </section>
@@ -61,20 +74,18 @@
         <hr>
         <section>
             <h4>Onboarding Info</h4>
-            <p class="detail">Diversitech amount: <span
-                        id="diversitech"><?php echo $applicant->getDiversitech(); ?></span>
+            <p class="detail">Diversitech amount: <span id="diversitech"><?php echo $applicant->getDiversitech(); ?></span>
             <div class="edaidContainer studentProfileEditableField">
                 <label class="detail" for="edaidTextBox">EdAid amount: </label>
                 <span id="edaidDisplayed"><?php echo $applicant->getEdaid(); ?></span>
-                <?php echo \Portal\ViewHelpers\DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getEdaidLocked(), 'edaid'); ?>
+                <?php echo DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getEdaidLocked(), 'edaid'); ?>
             </div>
             <div data-selector="edaid" class="editableedaid studentProfileEditableField hidden">
                 <form class="form studentProfileEditableField">
                     <label for="edaidTextBox">EdAid amount:</label>
                     <span>
-                                <input type="number" min="0" class="numberInputField"
-                                       id="edaidTextBox" name="edaid">
-                            </span>
+                        <input type="number" min="0" class="numberInputField" id="edaidTextBox" name="edaid">
+                    </span>
                     <button data-selector="edaid" class="btn btn-primary btn-sm confirm" type="submit">
                         Confirm
                     </button>
@@ -86,15 +97,14 @@
             <div class="upfrontContainer studentProfileEditableField">
                 <label class="detail" for="upfrontTextBox">Upfront amount: </label>
                 <span id="upfrontDisplayed"><?php echo $applicant->getUpfront(); ?></span>
-                <?php echo \Portal\ViewHelpers\DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getUpfrontLocked(), 'upfront'); ?>
+                <?php echo DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getUpfrontLocked(), 'upfront'); ?>
             </div>
             <div data-selector="upfront" class="editableupfront studentProfileEditableField hidden">
                 <form class="form studentProfileEditableField">
                     <label for="upfrontTextBox">Upfront amount:</label>
                     <span>
-                                    <input type="number" min="0" class="numberInputField" id="upfrontTextBox"
-                                           name="upfront">
-                                </span>
+                        <input type="number" min="0" class="numberInputField" id="upfrontTextBox" name="upfront">
+                    </span>
                     <button data-selector="upfront" class="btn btn-primary btn-sm confirm" type="submit">
                         Confirm
                     </button>
@@ -105,32 +115,30 @@
             </div>
             <div class="laptopContainer studentProfileEditableField">
                 <label class="detail" for="laptopRadioButtons">Laptop required: </label>
-                <?php echo '<span id="laptopDisplayed">' . \Portal\ViewHelpers\DisplayStudentProfileViewHelper::convertFieldToYesNoOrNull($applicant->getLaptop()) . '</span>'; ?>
-                <?php echo \Portal\ViewHelpers\DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getLaptopLocked(), 'laptop'); ?>
+                <span id="laptopDisplayed">
+                    <?php echo '' . DisplayStudentProfileViewHelper::convertFieldToYesNoOrNull($applicant->getLaptop()); ?>
+                </span>
+                <?php echo DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getLaptopLocked(), 'laptop'); ?>
             </div>
             <div data-selector="laptop" class="editablelaptop studentProfileEditableField hidden">
                 <form class="form studentProfileEditableField">
                     <label>Laptop required: </label>
                     <span>
-                                <input type="radio" value="0" id="noLaptop" name="laptop" checked="checked">
-                                <label for="noLaptop">No</label>
-                                <input type="radio" value="1" id="yesLaptop" name="laptop">
-                                <label for="yesLaptop">Yes</label>
-                            </span>
-                    <input data-selector="laptop" class="btn btn-primary btn-sm confirm" value="Confirm"
-                           type="submit">
+                        <input type="radio" value="0" id="noLaptop" name="laptop" checked="checked">
+                        <label for="noLaptop">No</label>
+                        <input type="radio" value="1" id="yesLaptop" name="laptop">
+                        <label for="yesLaptop">Yes</label>
+                    </span>
+                    <input data-selector="laptop" class="btn btn-primary btn-sm confirm" value="Confirm" type="submit">
                     <button data-selector="laptop" class="btn btn-primary btn-sm cancel">
                         Cancel
                     </button>
                 </form>
             </div>
-            <p class="detail">Laptop deposit paid: <span
-                        id="laptopDeposit"> <?php echo $applicant->getLaptopDeposit(); ?></span></p>
+            <p class="detail">Laptop deposit paid: <span id="laptopDeposit"> <?php echo $applicant->getLaptopDeposit(); ?></span></p>
             <p class="detail">Laptop number: <span id="laptopNum"> <?php echo $applicant->getLaptopNum(); ?></span></p>
-            <p class="detail">Kit collection date: <span
-                        id="kitCollectionDay"> <?php echo $applicant->getKitCollectionDay(); ?></span></p>
-            <p class="detail">Kit collection time: <span
-                        id="kitCollectionTime"> <?php echo $applicant->getKitCollectionTime(); ?></span></p>
+            <p class="detail">Kit collection date: <span id="kitCollectionDay"> <?php echo $applicant->getKitCollectionDay(); ?></span></p>
+            <p class="detail">Kit collection time: <span id="kitCollectionTime"> <?php echo $applicant->getKitCollectionTime(); ?></span></p>
             <p class="detail">Kit number: <span id="kitNum"><?php echo $applicant->getKitNum(); ?></span></p>
         </section>
         <hr>
@@ -139,15 +147,15 @@
             <div class="githubUsernameContainer studentProfileEditableField">
                 <label class="detail" for="githubUsername">GitHub Username: </label>
                 <span id="githubUsernameDisplayed"><?php echo $applicant->getGithubUsername(); ?></span>
-                <?php echo \Portal\ViewHelpers\DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getGithubUsernameLocked(), 'githubUsername'); ?>
+                <?php echo DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getGithubUsernameLocked(), 'githubUsername'); ?>
             </div>
             <div data-selector="githubUsername" class="editablegithubUsername studentProfileEditableField
                     hidden">
                 <form class="form studentProfileEditableField">
                     <label for="githubUsernameTextBox">GitHub Username:</label>
                     <span>
-                                <input type="text" id="githubUsernameTextBox" name="githubUsername">
-                            </span>
+                        <input type="text" id="githubUsernameTextBox" name="githubUsername">
+                    </span>
                     <button data-selector="githubUsername" class="btn btn-primary btn-sm confirm" type="submit">
                         Confirm
                     </button>
@@ -168,8 +176,6 @@
         <div class="navbar navbar-fixed-bottom col-sm-offset-9 hidden" id="saveButton">
             <input class="saveButton btn btn-primary btn-sm" type="submit" value="Save">
         </div>
-        ;
-
         <div class="modal-footer">
         </div>
     </div>
