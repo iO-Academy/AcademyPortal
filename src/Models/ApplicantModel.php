@@ -257,7 +257,7 @@ class ApplicantModel implements ApplicantModelInterface
             'id' => $id
         ]);
         $results = $query->fetch();
-        if (!$results) {
+        if (empty($results)) {
             return null;
         } else {
             $queryDate = $this->db->prepare(
