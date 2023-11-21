@@ -16,7 +16,26 @@
 <div class="container">
     <div class="col-xs-12 registeredApplicants">
         <h1>Profile</h1>
-            
+<!--        started pasting from here-->
+        <hr>
+        <section>
+            <h4>Personal Information</h4>
+            <p class="detail">Name: <span>' . $applicant->getName() . '</span></p>
+            <p class="detail">Email: <span>' . $applicant->getEmail() . '</span></p>
+            <p class="detail">Phone Number: <span>' . $applicant->getPhoneNumber() . '</span></p>
+        </section>
+        <hr>
+        <section>
+            <h4>Application Info</h4>
+            <p class="detail">Stage: <span id="stageName"><?php echo $applicant->getStageName(); ?></span></p>
+            <p class="detail" id="stageOptionNameContainer">Stage Option:
+                <span id="stageOptionName">' . ($applicant->getStageOptionName() ?? '--') . '</span></p>
+            <p class="detail">Cohort: <span id="cohortDate">' . $applicant->getCohortDate() . '</span></p>
+            <p class="detail">Reason for wanting to be a dev:</p>
+            <p id="whyDev">' . $applicant->getWhyDev() . '</p>
+            <p class="detail">Code Experience:</p>
+            <p id="codeExperience">' . $applicant->getCodeExperience() . '</p>
+            <p class="detail">Heard About Us: <span id="hearAbout">' . $applicant->getHearAbout() . '</span></p>
                     
                     <?php if($applicant) {
                         echo \Portal\ViewHelpers\DisplayStudentProfileViewHelper::outputApplicant($applicant);
