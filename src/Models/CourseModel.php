@@ -4,7 +4,7 @@ namespace Portal\Models;
 
 use PDO;
 use Portal\Entities\CourseEntity;
-use Portal\Entities\CourseEntityDetailed;
+use Portal\Entities\CompleteCourseEntity;
 
 class CourseModel
 {
@@ -55,7 +55,7 @@ class CourseModel
         WHERE `c`.`start_date` > NOW()
         GROUP BY `c`.`id`;';
         $query = $this->db->prepare($sql);
-        $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntityDetailed::class);
+        $query->setFetchMode(\PDO::FETCH_CLASS, CompleteCourseEntity::class);
         $query->execute();
         return $query->fetchAll();
     }
@@ -82,7 +82,7 @@ class CourseModel
         GROUP BY `c`.`id`;';
 
         $query = $this->db->prepare($sql);
-        $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntityDetailed::class);
+        $query->setFetchMode(\PDO::FETCH_CLASS, CompleteCourseEntity::class);
         $query->execute();
         return $query->fetchAll();
     }
@@ -106,7 +106,7 @@ class CourseModel
         GROUP BY `c`.`id`
         ORDER BY `endDate` DESC;';
         $query = $this->db->prepare($sql);
-        $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntityDetailed::class);
+        $query->setFetchMode(\PDO::FETCH_CLASS, CompleteCourseEntity::class);
         $query->execute();
         return $query->fetchAll();
     }

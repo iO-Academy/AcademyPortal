@@ -4,7 +4,7 @@ namespace Tests\ViewHelpers;
 
 use PHPUnit\Framework\TestCase;
 use Portal\Entities\CourseEntity;
-use Portal\Entities\CourseEntityDetailed;
+use Portal\Entities\CompleteCourseEntity;
 use Portal\ViewHelpers\DisplayCoursesViewHelper;
 
 class DisplayCoursesViewHelperTest extends TestCase
@@ -24,11 +24,11 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
                     <td><span class="filled-places badge">Filled: 4' .
-                    '</span> <span class="total-places badge">Total: 8' .
-                    '</span>
+            '</span> <span class="total-places badge">Total: 8' .
+            '</span>
                     </td>
                 </tr>';
-        $entityMock = $this->createMock(CourseEntityDetailed::class);
+        $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
@@ -59,11 +59,11 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
                     <td><span class="filled-places badge">Filled: 4' .
-                    '</span> <span class="total-places badge">Total: 8' .
-                    '</span>
+            '</span> <span class="total-places badge">Total: 8' .
+            '</span>
                     </td>
                 </tr>';
-        $entityMock = $this->createMock(CourseEntityDetailed::class);
+        $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
@@ -97,11 +97,11 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
                     <td><span class="filled-places badge">Filled: 4' .
-                    '</span> <span class="total-places badge">Total: 8' .
-                    '</span>
+            '</span> <span class="total-places badge">Total: 8' .
+            '</span>
                     </td>
                 </tr>';
-        $entityMock = $this->createMock(CourseEntityDetailed::class);
+        $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
@@ -132,11 +132,11 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
                     <td><span class="filled-places badge">Filled: 4' .
-                    '</span> <span class="total-places badge">Total: 8' .
-                    '</span>
+            '</span> <span class="total-places badge">Total: 8' .
+            '</span>
                     </td>
                 </tr>';
-        $entityMock = $this->createMock(CourseEntityDetailed::class);
+        $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
@@ -170,11 +170,11 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>&#x2713;</td>
                     <td>&#x10102</td>
                     <td><span class="filled-places badge">Filled: 4' .
-                    '</span> <span class="total-places badge">Total: 8' .
-                    '</span>
+            '</span> <span class="total-places badge">Total: 8' .
+            '</span>
                     </td>
                 </tr>';
-        $entityMock = $this->createMock(CourseEntityDetailed::class);
+        $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
