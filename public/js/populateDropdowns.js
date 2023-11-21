@@ -76,7 +76,7 @@ let outputCohorts = (cohorts, el = null) => {
 
   cohorts.forEach(item => {
     cohortOptions += '<option ';
-    if (element.dataset.selected === item.id) {
+    if (element.dataset.selected == item.id) {
       cohortOptions += 'selected ';
     }
     let date = new Date(item.date);

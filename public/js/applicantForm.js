@@ -15,7 +15,8 @@
     checkedCohortDates();
 
     if (document.querySelector('#chosenCourseId')) {
-        outputCohorts(data.cohorts, document.querySelector('#chosenCourseId'));
+      const futureCohorts = filterFutureDates(data.cohorts);
+        outputCohorts(futureCohorts, document.querySelector('#chosenCourseId'));
     }
 
     checkPastAssessmentCheckbox(futureDates, data.assessments);
