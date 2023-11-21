@@ -361,24 +361,24 @@ LOCK TABLES `courses` WRITE;
 
 INSERT INTO `courses` (`id`, `start_date`, `end_date`, `name`, `notes`, `deleted`, `in_person`, `remote`, `in_person_spaces`, `remote_spaces`)
 VALUES
-	(1,'2022-01-10','2022-05-29','Full-Stack Track',NULL,0,1,0,NULL,NULL),
-	(2,'2022-01-10','2022-05-29','Full-Stack Track',NULL,0,0,1,NULL,NULL),
-	(3,'2022-03-17','2022-03-25','Machine Data',NULL,0,1,1,NULL,NULL),
-	(4,'2022-03-07','2022-06-24','Full-Stack Track','Great people',0,1,0,NULL,NULL),
-	(5,'2022-03-07','2022-06-24','Full-Stack Track',NULL,0,0,0,NULL,NULL),
-	(6,'2022-07-04','2022-10-21','Full-Stack Track','Might be robots',0,0,1,NULL,NULL),
-	(7,'2022-07-04','2022-10-21','Full-Stack Track',NULL,0,1,0,NULL,NULL),
-	(9,'2023-09-23','2023-12-25','SDE','there are only 151 pokemon',0,0,1,NULL,NULL),
-	(10,'2024-01-11','2024-03-11','SDE','MAGNETS',0,0,1,NULL,NULL),
-	(11,'2024-07-11','2024-07-14','Python Intro','GHOULS',0,1,1,NULL,NULL),
-	(12,'2025-01-11','2025-04-11','Full-Stack Track','H for Hornets',0,1,1,NULL,NULL),
-	(13,'2025-07-15','2025-10-11','Data Science','cowabunga',0,1,0,NULL,NULL),
-	(14,'2026-06-06','2026-10-11','SDE','migration',0,1,1,NULL,NULL),
-	(15,'2026-07-11','2026-11-11','SDE','chaos potato',0,1,1,NULL,NULL),
-	(16,'2027-04-22','2027-10-15','SDE','pigeons',0,1,1,NULL,NULL),
-	(17,'2027-07-11','2027-10-30','SDE','migration',0,0,1,NULL,NULL),
-	(18,'2028-06-19','2028-09-12','SDE','Virtual',0,1,0,NULL,NULL),
-	(19,'2028-10-19','2028-12-12','Full-Stack Track','Wolf Cola',0,1,0,NULL,NULL);
+	(1,'2022-01-10','2022-05-29','Full-Stack Track',NULL,0,1,0,8,0),
+	(2,'2022-01-10','2022-05-29','Full-Stack Track',NULL,0,0,1,8,0),
+	(3,'2022-03-17','2022-03-25','Machine Data',NULL,0,1,1,0,12),
+	(4,'2022-03-07','2022-06-24','Full-Stack Track','Great people',0,1,0,8,0),
+	(5,'2022-03-07','2022-06-24','Full-Stack Track',NULL,0,0,0,8,0),
+	(6,'2022-07-04','2022-10-21','Full-Stack Track','Might be robots',0,0,1,8,0),
+	(7,'2022-07-04','2022-10-21','Full-Stack Track',NULL,0,1,0,8,0),
+	(9,'2023-09-23','2023-12-25','SDE','there are only 151 pokemon',0,0,1,0,12),
+	(10,'2024-01-11','2024-03-11','SDE','MAGNETS',0,0,1,0,12),
+	(11,'2024-07-11','2024-07-14','Python Intro','GHOULS',0,1,1,0,12),
+	(12,'2025-01-11','2025-04-11','Full-Stack Track','H for Hornets',0,1,1,8,0),
+	(13,'2025-07-15','2025-10-11','Data Science','cowabunga',0,1,0,0,12),
+	(14,'2026-06-06','2026-10-11','SDE','migration',0,1,1,0,12),
+	(15,'2026-07-11','2026-11-11','SDE','chaos potato',0,1,1,0,12),
+	(16,'2027-04-22','2027-10-15','SDE','pigeons',0,1,1,0,12),
+	(17,'2027-07-11','2027-10-30','SDE','migration',0,0,1,0,12),
+	(18,'2028-06-19','2028-09-12','SDE','Virtual',0,1,0,0,12),
+	(19,'2028-10-19','2028-12-12','Full-Stack Track','Wolf Cola',0,1,0,8,0);
 
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
