@@ -31,29 +31,34 @@ class StudentProfilePageController extends Controller
         $params['id'] = $args['id'];
         $params['applicant'] = $this->applicantModel->getApplicantById($params['id']);
 
-        if (!empty($request->getParsedBody()['password'])) {
-            $hashPassword = $this->applicantModel->getApplicantPassword($params['id']);
-            $password = $request->getParsedBody()['password'];
-
-            if (password_verify($password, $hashPassword)) {
-                $_SESSION['studentLogin'] = true;
-                $_SESSION['studentId'] =  $params['id'];
-            } else {
-                unset($_SESSION['studentLogin']);
-                unset($_SESSION['studentId']);
-                $params['error'] = 'Invalid password';
-            }
+        if ((!$params['applicant']) || !$params['applicant']->isStudentStage()) {
+           return $this->renderer->render($response, '404.phtml');
         }
-        if (
-            !empty($_SESSION['studentLogin']) &&
-            $_SESSION['studentLogin'] &&
-            $_SESSION['studentId'] == $params['id'] ||
-            !empty($_SESSION['loggedIn']) &&
-            $_SESSION['loggedIn']
-        ) {
-            return $this->renderer->render($response, 'studentProfile.phtml', $params);
-        } else {
-            return $this->renderer->render($response, 'studentLogin.phtml', $params);
+        else {
+            if (!empty($request->getParsedBody()['password'])) {
+                $hashPassword = $this->applicantModel->getApplicantPassword($params['id']);
+                $password = $request->getParsedBody()['password'];
+
+                if (password_verify($password, $hashPassword)) {
+                    $_SESSION['studentLogin'] = true;
+                    $_SESSION['studentId'] =  $params['id'];
+                } else {
+                    unset($_SESSION['studentLogin']);
+                    unset($_SESSION['studentId']);
+                    $params['error'] = 'Invalid password';
+                }
+            }
+            if (
+                !empty($_SESSION['studentLogin']) &&
+                $_SESSION['studentLogin'] &&
+                $_SESSION['studentId'] == $params['id'] ||
+                !empty($_SESSION['loggedIn']) &&
+                $_SESSION['loggedIn']
+            ) {
+                return $this->renderer->render($response, 'studentProfile.phtml', $params);
+            } else {
+                return $this->renderer->render($response, 'studentLogin.phtml', $params);
+            }
         }
     }
 }
