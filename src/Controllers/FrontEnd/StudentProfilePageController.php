@@ -32,16 +32,15 @@ class StudentProfilePageController extends Controller
         $params['applicant'] = $this->applicantModel->getApplicantById($params['id']);
 
         if ((!$params['applicant']) || !$params['applicant']->isStudentStage()) {
-           return $this->renderer->render($response, '404.phtml');
-        }
-        else {
+            return $this->renderer->render($response, '404.phtml');
+        } else {
             if (!empty($request->getParsedBody()['password'])) {
                 $hashPassword = $this->applicantModel->getApplicantPassword($params['id']);
                 $password = $request->getParsedBody()['password'];
 
                 if (password_verify($password, $hashPassword)) {
                     $_SESSION['studentLogin'] = true;
-                    $_SESSION['studentId'] =  $params['id'];
+                    $_SESSION['studentId'] = $params['id'];
                 } else {
                     unset($_SESSION['studentLogin']);
                     unset($_SESSION['studentId']);
