@@ -22,12 +22,12 @@ class DisplayStudentProfileViewHelper
         );
     }
 
-    public static function getDetails(bool $answer)
+    public static function studentChecks(bool $check): string
     {
-        return $answer ? 'Yes' : 'No';
+        return $check ? 'Yes' : 'No';
     }
 
-    public static function laptopRequired(bool $required)
+    public static function laptopRequired(bool $required): string
     {
         return
             $required ? 'Yes' : 'No';
