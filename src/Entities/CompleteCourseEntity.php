@@ -6,8 +6,9 @@ class CompleteCourseEntity extends CourseEntity
 {
     protected ?int $inPersonSpaces;
     protected ?int $remoteSpaces;
-    protected ?int $totalAvailableSpaces;
-    protected ?int $spacesTaken;
+    // defaulted null for testing purposes
+    protected ?int $totalAvailableSpaces = null;
+    protected ?int $spacesTaken = null;
 
     /**
      * @return string
