@@ -201,7 +201,7 @@ class ApplicantModel implements ApplicantModelInterface
     /**
      * Retrieves an Applicant with the specified id
      */
-    public function getApplicantById(int $id): CompleteApplicantEntity
+    public function getApplicantById(int $id): ?CompleteApplicantEntity
     {
         $query = $this->db->prepare(
             "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `phoneNumber`, `applicants`.`gender` AS `genderId`,
@@ -250,18 +250,21 @@ class ApplicantModel implements ApplicantModelInterface
             'id' => $id
         ]);
         $results = $query->fetch();
-
-        $queryDate = $this->db->prepare(
-            'SELECT `courses`.`id` as "id", `start_date` 
+        if (!$results) {
+            return null;
+        } else {
+            $queryDate = $this->db->prepare(
+                'SELECT `courses`.`id` as "id", `start_date` 
                     FROM `courses` JOIN `course_choice` ON `courses`.`id` = `course_choice`.`courseId` 
                     WHERE `applicantId` = :id'
-        );
-        $queryDate->execute([
-            'id' => $id
-        ]);
-        $applicantCohortDate = $queryDate->fetchAll();
-        $results->setCohortDates($applicantCohortDate);
-        return $results;
+            );
+            $queryDate->execute([
+                'id' => $id
+            ]);
+            $applicantCohortDate = $queryDate->fetchAll();
+            $results->setCohortDates($applicantCohortDate);
+            return $results;
+        }
     }
 
     /**
