@@ -26,14 +26,14 @@ class CoursesPageController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        if ($_SESSION['loggedIn'] === true) {
+        if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == true) {
             $args['ongoingCourses'] = $this->courseModel->getOngoingCourses();
             $args['futureCourses'] = $this->courseModel->getFutureCourses();
             $args['completedCourses'] = $this->courseModel->getCompletedCourses();
             $args['trainers'] = $this->courseModel->getTrainersAndCourseId();
             return $this->renderer->render($response, 'courses.phtml', $args);
         } else {
-            return $response->withHeader('Location', './');
+            return $response->withHeader('Location', './')->withStatus(301);
         }
     }
 }
