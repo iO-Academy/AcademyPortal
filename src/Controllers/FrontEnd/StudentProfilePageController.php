@@ -32,7 +32,7 @@ class StudentProfilePageController extends Controller
         $params['applicant'] = $this->applicantModel->getApplicantById($params['id']);
 
         if ((!$params['applicant']) || !$params['applicant']->isStudentStage()) {
-            $response->withStatus(404);
+             $response->withStatus(404);
              return $this->renderer->render($response, '404.phtml');
         } else {
             if (!empty($request->getParsedBody()['password'])) {
