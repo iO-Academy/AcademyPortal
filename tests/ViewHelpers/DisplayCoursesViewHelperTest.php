@@ -4,6 +4,7 @@ namespace Tests\ViewHelpers;
 
 use PHPUnit\Framework\TestCase;
 use Portal\Entities\CourseEntity;
+use Portal\Entities\CourseEntityDetailed;
 use Portal\ViewHelpers\DisplayCoursesViewHelper;
 
 class DisplayCoursesViewHelperTest extends TestCase
@@ -27,7 +28,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     '</span>
                     </td>
                 </tr>';
-        $entityMock = $this->createMock(CourseEntity::class);
+        $entityMock = $this->createMock(CourseEntityDetailed::class);
         $entityMock->method('getId')->willReturn(1);
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
@@ -62,7 +63,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     '</span>
                     </td>
                 </tr>';
-        $entityMock = $this->createMock(CourseEntity::class);
+        $entityMock = $this->createMock(CourseEntityDetailed::class);
         $entityMock->method('getId')->willReturn(1);
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
@@ -100,7 +101,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     '</span>
                     </td>
                 </tr>';
-        $entityMock = $this->createMock(CourseEntity::class);
+        $entityMock = $this->createMock(CourseEntityDetailed::class);
         $entityMock->method('getId')->willReturn(1);
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
@@ -135,7 +136,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     '</span>
                     </td>
                 </tr>';
-        $entityMock = $this->createMock(CourseEntity::class);
+        $entityMock = $this->createMock(CourseEntityDetailed::class);
         $entityMock->method('getId')->willReturn(1);
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
@@ -173,7 +174,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     '</span>
                     </td>
                 </tr>';
-        $entityMock = $this->createMock(CourseEntity::class);
+        $entityMock = $this->createMock(CourseEntityDetailed::class);
         $entityMock->method('getId')->willReturn(1);
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');

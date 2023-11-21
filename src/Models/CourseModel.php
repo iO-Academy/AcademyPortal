@@ -4,6 +4,7 @@ namespace Portal\Models;
 
 use PDO;
 use Portal\Entities\CourseEntity;
+use Portal\Entities\CourseEntityDetailed;
 
 class CourseModel
 {
@@ -19,29 +20,14 @@ class CourseModel
      */
     public function getAllCourses(): array
     {
-        $sql = 'SELECT `c`.`id`,
-        `start_date` AS `startDate`,
-        `end_date` AS `endDate`,
-        `name`,
-        `notes`,
-        `in_person` AS `inPerson`,
-        `remote`,
-        `in_person_spaces` AS `inPersonSpaces`,
-        `remote_spaces` AS `remoteSpaces`,
-        `in_person_spaces` + `remote_spaces` AS `totalAvailableSpaces`,
-        COUNT(`applicantId`) AS `spacesTaken`
-        FROM `courses` `c`
-        LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
-        GROUP BY `c`.`id`, 
-        `startDate`, 
-        `endDate`, 
-        `name`, 
-        `notes`, 
-        `inPerson`, 
-        `remote`, 
-        `inPersonSpaces`, 
-        `remoteSpaces`, 
-        `totalAvailableSpaces`;';
+        $sql = 'SELECT `id`,
+                `courses`.`start_date` AS `startDate`,
+                `courses`.`end_date` AS `endDate`,
+                `name`,
+                `notes`,
+                `in_person` AS `inPerson`,
+                `remote`
+                FROM `courses`;';
         $query = $this->db->prepare($sql);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
         $query->execute();
@@ -78,7 +64,7 @@ class CourseModel
         `remoteSpaces`, 
         `totalAvailableSpaces`;';
         $query = $this->db->prepare($sql);
-        $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
+        $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntityDetailed::class);
         $query->execute();
         return $query->fetchAll();
     }
@@ -114,7 +100,7 @@ class CourseModel
         `totalAvailableSpaces`;';
 
         $query = $this->db->prepare($sql);
-        $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
+        $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntityDetailed::class);
         $query->execute();
         return $query->fetchAll();
     }
@@ -147,7 +133,7 @@ class CourseModel
          `totalAvailableSpaces`
         ORDER BY `endDate` DESC;';
         $query = $this->db->prepare($sql);
-        $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
+        $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntityDetailed::class);
         $query->execute();
         return $query->fetchAll();
     }

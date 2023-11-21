@@ -41,7 +41,6 @@
             </thead>
             <tbody class="hidden" id="completed-courses">
                 <?php
-                // var_dump($ongoingCourses[0]->getInPersonSpaces());
                 echo \Portal\ViewHelpers\DisplayCoursesViewHelper::COMPLETED_COURSE_HEADING_TABLE;
                 echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($completedCourses, $trainers);
                 ?>

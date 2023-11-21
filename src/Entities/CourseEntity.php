@@ -4,17 +4,13 @@ namespace Portal\Entities;
 
 class CourseEntity
 {
-    protected $id;
-    protected $startDate;
-    protected $endDate;
-    protected $name;
-    protected $notes;
-    protected $inPerson;
-    protected $remote;
-    protected $inPersonSpaces;
-    protected $remoteSpaces;
-    protected $totalAvailableSpaces;
-    protected $spacesTaken;
+    protected int $id;
+    protected ?string $startDate;
+    protected ?string $endDate;
+    protected ?string $name;
+    protected ?string $notes;
+    protected ?bool $inPerson;
+    protected ?bool $remote;
 
     /**
      * @return int|null
@@ -59,7 +55,7 @@ class CourseEntity
     /**
      * @return string|null
      */
-    public function getRemote()
+    public function getRemote(): ?string
     {
         return $this->remote;
     }
@@ -67,24 +63,8 @@ class CourseEntity
     /**
      * @return string|null
      */
-    public function getInPerson()
+    public function getInPerson(): ?string
     {
         return $this->inPerson;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getTotalAvailableSpaces()
-    {
-        return $this->totalAvailableSpaces;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getSpacesTaken()
-    {
-        return $this->spacesTaken;
     }
 }

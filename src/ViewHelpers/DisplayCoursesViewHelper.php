@@ -23,8 +23,9 @@ class DisplayCoursesViewHelper
             $remote = $course->getRemote() == 1 ? '&#x2713;' : '&#x10102';
             $inPerson = $course->getInPerson() == 1 ? '&#x2713;' : '&#x10102';
             $trainersByCourse = self::filterCoursesByTrainers($trainers, $course->getId());
-            $totalAvailableSpaces = $course->getTotalAvailableSpaces();
-            $spacesTaken = $course->getSpacesTaken();
+            $spacesTaken = $course->getSpacesTaken() === null ? 'N/A' : $course->getSpacesTaken();
+            $totalAvailableSpaces =
+            $course->getTotalAvailableSpaces() === null ? 'N/A' : $course->getTotalAvailableSpaces();
             $result .=
                 '<tr>
                     <td>' . $course->getId() . '</td>
@@ -36,8 +37,9 @@ class DisplayCoursesViewHelper
                     <td>' . $inPerson . '</td>
                     <td>' . $remote . '</td>
                     <td><span class="filled-places badge">Filled: ' . $spacesTaken .
-                        '</span>' . ' ' . '<span class="total-places badge">Total: ' . $totalAvailableSpaces .
-                        '</span>
+                '</span>' . ' ' . '<span class="total-places badge">Total: '
+                . $totalAvailableSpaces .
+                '</span>
                     </td>
                 </tr>';
         }
