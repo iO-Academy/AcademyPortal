@@ -28,7 +28,7 @@ class ApplicantsPageController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        if ($_SESSION['loggedIn'] === true) {
+        if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
             $_SESSION['name'] = $request->getQueryParams()['name'] ?? $_SESSION['name'] ?? '%';
             $_SESSION['sort'] = $request->getQueryParams()['sort'] ?? $_SESSION['sort'] ?? '';
             $_SESSION['cohortId'] = $request->getQueryParams()['cohortId'] ?? $_SESSION['cohortId'] ?? '%';
@@ -65,7 +65,7 @@ class ApplicantsPageController extends Controller
                 (isset($_SESSION['page']) && ($_SESSION['page'] > $params['count'] || $_SESSION['page'] < 1)) &&
                 $_SESSION['page'] !== '1'
             ) {
-                return $response->withHeader('Location', '/applicants?page=1');
+                return $response->withHeader('Location', '/applicants?page=1')->withStatus(301);
             }
             $params['data']['applicants'] =
                 array_slice(
@@ -76,6 +76,6 @@ class ApplicantsPageController extends Controller
 
             return $this->renderer->render($response, 'applicants.phtml', $params);
         }
-        return $response->withHeader('Location', '/');
+        return $response->withHeader('Location', '/')->withStatus(301);
     }
 }
