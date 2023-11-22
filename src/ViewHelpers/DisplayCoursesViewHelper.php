@@ -5,13 +5,13 @@ namespace Portal\ViewHelpers;
 class DisplayCoursesViewHelper
 {
     private const NO_COURSES_TABLE_HEADING =
-        '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
+    '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
 
     public const FUTURE_COURSES_HEADING_TABLE =
-        '<tr><td colspan="8"><h5 class="text-primary text-center">Future Courses</h5></td></tr>';
+    '<tr><td colspan="8"><h5 class="text-primary text-center">Future Courses</h5></td></tr>';
 
     public const COMPLETED_COURSE_HEADING_TABLE =
-        '<tr><td colspan="8"><h5 class="text-secondary text-center">Completed Courses</h5></td></tr>';
+    '<tr><td colspan="8"><h5 class="text-secondary text-center">Completed Courses</h5></td></tr>';
 
     /**
      * Method to display courses within course detail table
@@ -33,6 +33,11 @@ class DisplayCoursesViewHelper
                     <td>' . $course->getNotes() . '</td>
                     <td>' . $inPerson . '</td>
                     <td>' . $remote . '</td>
+                    <td><span class="filled-places badge">Filled: ' . $course->getSpacesTaken() .
+                '</span>' . ' ' . '<span class="total-places badge">Total: '
+                . $course->getTotalAvailableSpaces() .
+                '</span>
+                    </td>
                 </tr>';
         }
         return $result;
