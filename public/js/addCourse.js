@@ -4,6 +4,7 @@ const in_person_checkbox = document.querySelector('#in_person');
 const remote_checkbox = document.querySelector('#remote');
 const in_person_spaces = document.querySelector('#in_person_spaces');
 const remote_spaces = document.querySelector('#remote_spaces');
+const courseCategory = document.querySelector('#courseCategory');
 
 in_person_checkbox.addEventListener('change', () => in_person_spaces.classList.toggle('hidden'));
 remote_checkbox.addEventListener('change', () => remote_spaces.classList.toggle('hidden'));
@@ -62,7 +63,7 @@ courseForm.addEventListener('submit', e => {
                     courseForm.elements['remote'].checked = false,
                     courseForm.elements['in_person_spaces'].value = '',
                     courseForm.elements['remote_spaces'].value = '',
-                        courseForm.elements['courseCategory'].value = '',
+                    courseForm.elements['courseCategory'].value = '',
                     message.innerText = responseJson.message,
                     selectedTrainerId = [],
                     courseForm.elements['trainer-checkbox'].forEach(trainer => {
@@ -120,6 +121,9 @@ let validateCourseInputs = (data) => {
             isPresent: isPresent(data.courseName),
             isName: isName(data.courseName),
             validLengthVarChar: varCharMaxLength(data.courseName)
+        },
+        courseCategory: {
+            isPresent: isPresent(data.courseCategory)
         },
         startDate: {
             isPresent: isPresent(data.startDate),

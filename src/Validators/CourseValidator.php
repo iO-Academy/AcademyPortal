@@ -14,6 +14,8 @@ class CourseValidator
      */
     public static function validate(array $course): bool
     {
+        $categoryInput = intval($course['courseCategory']);
+        IntegerValidator::validateInteger($categoryInput,1,999);
         DateTimeValidator::validateDate($course['startDate']);
         DateTimeValidator::validateDate($course['endDate']);
         DateTimeValidator::validateStartEndTime($course['startDate'], $course['endDate']);
