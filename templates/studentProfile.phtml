@@ -116,7 +116,7 @@ use Portal\ViewHelpers\DisplayStudentProfileViewHelper;
             <div class="laptopContainer studentProfileEditableField">
                 <label class="detail" for="laptopRadioButtons">Laptop required: </label>
                 <span id="laptopDisplayed">
-                    <?php echo '' . DisplayStudentProfileViewHelper::convertFieldToYesNoOrEmptyString($applicant->getLaptop()); ?>
+                    <?php echo DisplayStudentProfileViewHelper::convertFieldToYesNoOrEmptyString($applicant->getLaptop()); ?>
                 </span>
                 <?php echo DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getLaptopLocked(), 'laptop'); ?>
             </div>
