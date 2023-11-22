@@ -48,10 +48,12 @@ class CourseModel
         `remote`,
         `in_person_spaces` AS `inPersonSpaces`,
         `remote_spaces` AS `remoteSpaces`,
+        `course_categories`.`category`,
         `in_person_spaces` + `remote_spaces` AS `totalAvailableSpaces`,
         COUNT(`applicantId`) AS `spacesTaken`
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
+        LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
         WHERE `c`.`start_date` > NOW()
         GROUP BY `c`.`id`;';
         $query = $this->db->prepare($sql);
@@ -74,10 +76,12 @@ class CourseModel
         `remote`,
         `in_person_spaces` AS `inPersonSpaces`,
         `remote_spaces` AS `remoteSpaces`,
+       `course_categories`.`category`,
         `in_person_spaces` + `remote_spaces` AS `totalAvailableSpaces`,
         COUNT(`applicantId`) AS `spacesTaken`
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
+        LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
         WHERE `c`.`start_date` <= NOW() AND `c`.`end_date` >= NOW()
         GROUP BY `c`.`id`;';
 
@@ -98,10 +102,12 @@ class CourseModel
         `remote`,
         `in_person_spaces` AS `inPersonSpaces`,
         `remote_spaces` AS `remoteSpaces`,
+        `course_categories`.`category`,
         `in_person_spaces` + `remote_spaces` AS `totalAvailableSpaces`,
         COUNT(`applicantId`) AS `spacesTaken`
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
+        LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
         WHERE `c`.`end_date` < NOW()
         GROUP BY `c`.`id`
         ORDER BY `endDate` DESC;';
