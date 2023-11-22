@@ -15,8 +15,8 @@
     checkedCohortDates();
 
     if (document.querySelector('#chosenCourseId')) {
-        const chosenCourseElement  = document.querySelector('#chosenCourseId');
-        const futureCohortsWithChosenCourse = filterFutureDates(data.cohorts, chosenCourseElement.dataset.selected );
+        const chosenCourseElement = document.querySelector('#chosenCourseId');
+        const futureCohortsWithChosenCourse = filterFutureDates(data.cohorts, chosenCourseElement.dataset.selected);
         outputCohorts(futureCohortsWithChosenCourse, chosenCourseElement);
     }
 
