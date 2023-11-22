@@ -27,7 +27,6 @@ class CompleteCourseEntity extends CourseEntity
         return $this->spacesTaken === null ? 'N/A' : $this->spacesTaken;
     }
 
-
     /**
      * @return string|null
      */
