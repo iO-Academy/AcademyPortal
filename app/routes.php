@@ -51,6 +51,7 @@ use Portal\Controllers\FrontEnd\AddHiringPartnerPageController;
 use Portal\Controllers\FrontEnd\AddTrainerPageController;
 use Portal\Controllers\FrontEnd\AdminPageController;
 use Portal\Controllers\FrontEnd\ApplicantsPageController;
+use Portal\Controllers\FrontEnd\CalendarPageController;
 use Portal\Controllers\FrontEnd\CoursesPageController;
 use Portal\Controllers\FrontEnd\EditApplicantPageController;
 use Portal\Controllers\FrontEnd\EventsPageController;
@@ -91,6 +92,8 @@ return function (App $app) {
     $app->get('/csvForm', GetCsvFormController::class);
     $app->get('/trainers', TrainersPageController::class);
     $app->get('/addTrainer', AddTrainerPageController::class);
+    $app->get('/calendar', CalendarPageController::class);
+
 
     //API
     $app->get('/api/getStudents', GetStudentsController::class);
