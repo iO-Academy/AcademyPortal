@@ -86,7 +86,7 @@ let outputCohorts = (cohorts, el = null) => {
     }">${date.toLocaleDateString(
         'en-GB',
         dateOptions
-    )}</option>`;
+    )} : ${item.name}</option>`;
   });
 
   element.innerHTML += cohortOptions;

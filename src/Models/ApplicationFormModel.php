@@ -18,7 +18,7 @@ class ApplicationFormModel
      */
     public function getCohorts(): array
     {
-        $query = $this->db->prepare('SELECT `id`, `start_date` AS "date" FROM `courses` WHERE `deleted` != 1;');
+        $query = $this->db->prepare('SELECT `id`, `start_date` AS "date", `name` FROM `courses` WHERE `deleted` != 1;');
         $query->execute();
         return $query->fetchAll();
     }
