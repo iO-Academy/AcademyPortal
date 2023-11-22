@@ -151,6 +151,59 @@ class CourseModel
     }
 
     /**
+     * Get course by ID
+     */
+    public function getCourseById(int $courseId): ?CompleteCourseEntity
+    {
+        $query = $this->db->prepare(
+            "SELECT 
+                        `id`, 
+                        `start_date`, 
+                        `end_date`, 
+                        `name`, 
+                        `notes`, 
+                        `deleted`, 
+                        `in_person`, 
+                        `remote`, 
+                        `in_person_spaces`, 
+                        `remote_spaces`
+        FROM `courses`
+        WHERE `id` = ?;"
+        );
+        $query->setFetchMode(PDO::FETCH_CLASS, CompleteCourseEntity::class);
+        $query->execute([$courseId]);
+        return $query->fetch();
+    }
+
+    public function updateCourse(array $course): bool
+    {
+        $query = $this->db->prepare(
+            "UPDATE `courses`
+                        SET 
+                            `start_date`= :startDate, 
+                            `end_date` = :endDate, 
+                            `name`= :name, 
+                            `notes` = :notes, 
+                            `in_person` = :inPerson, 
+                            `remote` = :remote, 
+                            `in_person_spaces`= :inPersonSpaces, 
+                            `remote_spaces` = :remoteSpaces
+                        WHERE `id` = :id;"
+        );
+
+        $query->bindValue(':startDate', $course['startDate']);
+        $query->bindValue(':endDate', $course['endDate']);
+        $query->bindValue(':name', $course['name']);
+        $query->bindValue(':notes', $course['notes']);
+        $query->bindValue(':inPerson', $course['inPerson']);
+        $query->bindValue(':remote', $course['remote']);
+        $query->bindValue(':inPersonSpaces', $course['inPersonSpaces']);
+        $query->bindValue(':remoteSpaces', $course['remoteSpaces']);
+        return $query->execute();
+    }
+
+
+    /**
      * Updates the trainers and courses relationships using the link table
      */
     public function addTrainersToCourse(array $trainerIds, int $courseId): void
