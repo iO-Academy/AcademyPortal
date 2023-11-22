@@ -186,4 +186,15 @@ class CourseModel
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function getCategories(): array
+    {
+        $sql = 'SELECT `id`,
+                `category`,
+                `deleted`
+                FROM `course_categories`;';
+        $query = $this->db->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
 }

@@ -62,6 +62,7 @@ courseForm.addEventListener('submit', e => {
                     courseForm.elements['remote'].checked = false,
                     courseForm.elements['in_person_spaces'].value = '',
                     courseForm.elements['remote_spaces'].value = '',
+                        courseForm.elements['courseCategory'].value = '',
                     message.innerText = responseJson.message,
                     selectedTrainerId = [],
                     courseForm.elements['trainer-checkbox'].forEach(trainer => {
@@ -106,7 +107,8 @@ let getCompletedFormData = () => {
         in_person: courseForm.elements['in_person'].checked ? 1 : 0,
         remote: courseForm.elements['remote'].checked ? 1 : 0,
         in_person_spaces: courseForm.elements['in_person'].checked ? courseForm.elements['in_person_spaces'].value : null,
-        remote_spaces: courseForm.elements['remote'].checked ? courseForm.elements['remote_spaces'].value : null
+        remote_spaces: courseForm.elements['remote'].checked ? courseForm.elements['remote_spaces'].value : null,
+        courseCategory: courseForm.elements['courseCategory'].value
     }
     return data;
 }
