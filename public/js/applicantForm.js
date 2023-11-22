@@ -15,7 +15,15 @@
     checkedCohortDates();
 
     if (document.querySelector('#chosenCourseId')) {
-      const futureCohorts = filterFutureDates(data.cohorts);
+        const chosenCourseId = document.querySelector('#chosenCourseId').dataset.selected;
+        const futureCohorts = filterFutureDates(data.cohorts);
+        if(chosenCourseId) {
+            futureCohorts.push(((data.cohorts.filter((cohort) => {
+                return cohort.id == chosenCourseId;
+            }))[0]));
+        }
+        console.log(futureCohorts);
+
         outputCohorts(futureCohorts, document.querySelector('#chosenCourseId'));
     }
 
