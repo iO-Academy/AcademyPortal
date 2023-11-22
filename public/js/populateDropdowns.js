@@ -217,11 +217,11 @@ let checkPastAssessmentCheckbox = (futureDates, allDates) => {
     })
 };
 
-let filterFutureDates = (events) => {
+let filterFutureDates = (events, chosenId = null) => {
     let currentDate = new Date();
     return events.filter((event) => {
         eventDateObject = new Date(event.date)
-        return eventDateObject > currentDate;
+        return eventDateObject > currentDate || event.id == chosenId;
     });
 }
 
