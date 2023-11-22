@@ -154,10 +154,22 @@ class CourseModel
      * Get course by ID
      */
     public function getCourseById(int $courseId): ?CompleteCourseEntity
-    { $query = $this->db->prepare(
-    "SELECT `id`, `start_date`, `end_date`, `name`, `notes`, `deleted`, `in_person`, `remote`, `in_person_spaces`, `remote_spaces`
+    {
+        $query = $this->db->prepare(
+            "SELECT 
+                        `id`, 
+                        `start_date`, 
+                        `end_date`, 
+                        `name`, 
+                        `notes`, 
+                        `deleted`, 
+                        `in_person`, 
+                        `remote`, 
+                        `in_person_spaces`, 
+                        `remote_spaces`
         FROM `courses`
-        WHERE `id` = ?;");
+        WHERE `id` = ?;"
+        );
         $query->setFetchMode(PDO::FETCH_CLASS, CompleteCourseEntity::class);
         $query->execute([$courseId]);
         return $query->fetch();
@@ -167,8 +179,17 @@ class CourseModel
     {
         $query = $this->db->prepare(
             "UPDATE `courses`
-        SET `start_date`= :startDate, `end_date` = :endDate, `name`= :name, `notes` = :notes, `in_person` = :inPerson, `remote` = :remote, `in_person_spaces`= :inPersonSpaces, `remote_spaces` = :remoteSpaces
-        WHERE `id` = :id;");
+                        SET 
+                            `start_date`= :startDate, 
+                            `end_date` = :endDate, 
+                            `name`= :name, 
+                            `notes` = :notes, 
+                            `in_person` = :inPerson, 
+                            `remote` = :remote, 
+                            `in_person_spaces`= :inPersonSpaces, 
+                            `remote_spaces` = :remoteSpaces
+                        WHERE `id` = :id;"
+        );
 
         $query->bindValue(':startDate', $course['startDate']);
         $query->bindValue(':endDate', $course['endDate']);
