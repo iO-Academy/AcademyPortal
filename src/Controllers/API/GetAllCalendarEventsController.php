@@ -22,11 +22,9 @@ class GetAllCalendarEventsController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $statusCode = 200;
-
         if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
             $data = $this->eventModel->getAllCalendarEvents();
-            return $this->respondWithJson($response, $data, $statusCode);
+            return $this->respondWithJson($response, $data, 200);
         } else {
             return $response->withHeader('Location', './')->withStatus(301);
         }
