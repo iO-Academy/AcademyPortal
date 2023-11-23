@@ -3,6 +3,7 @@
 namespace Portal\Models;
 
 use PDO;
+use Portal\Entities\CalendarEventEntity;
 
 class EventModel
 {
@@ -25,6 +26,19 @@ class EventModel
         LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id`
         ORDER BY `date` DESC;';
         $query = $this->db->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function getAllCalendarEvents(): array
+    {
+        $sql = 'SELECT `events`.`id` AS `id`, `events`.`name` AS `title`, `date`,
+        `start_time` AS `start`, `end_time` AS `end`
+        FROM `events`
+        LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id`
+        ORDER BY `date` DESC;';
+        $query = $this->db->prepare($sql);
+        $query->setFetchMode(\PDO::FETCH_CLASS, CalendarEventEntity::class);
         $query->execute();
         return $query->fetchAll();
     }

@@ -505,7 +505,9 @@ VALUES
 	(13,'Graduation',5,'Bath','2022-05-06','17:00:00','19:00:00',NULL,0),
 	(14,'Graduation',5,'Sheffield','2022-05-06','17:00:00','19:00:00',NULL,0),
 	(15,'Graduation',5,'Bath','2022-06-24','17:00:00','19:00:00',NULL,0),
-	(16,'Graduation',5,'Sheffield','2022-06-24','17:00:00','19:00:00',NULL,0);
+	(16,'Graduation',5,'Sheffield','2022-06-24','17:00:00','19:00:00',NULL,0),
+	(17,'Sprint Review',2,'Bath','2023-11-24','14:00:00','15:00:00','Toast Sandwich',0),
+  (18,'Hiring Event',1,'Bath','2023-11-28','14:00:00','15:00:00','Jam Sandwich',0);
 
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;

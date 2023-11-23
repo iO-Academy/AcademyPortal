@@ -43,6 +43,8 @@ use Portal\Controllers\API\SendEmailController;
 use Portal\Controllers\API\UpdateStudentProfileController;
 use Portal\Controllers\API\LockApplicantFieldController;
 use Portal\Controllers\API\GetApplicantAptitudeController;
+use Portal\Controllers\API\GetAllCalendarEventsController;
+
 use Portal\Controllers\FrontEnd\AddApplicantPageController;
 use Portal\Controllers\FrontEnd\AddCoursePageController;
 use Portal\Controllers\FrontEnd\AddEventPageController;
@@ -51,6 +53,7 @@ use Portal\Controllers\FrontEnd\AddHiringPartnerPageController;
 use Portal\Controllers\FrontEnd\AddTrainerPageController;
 use Portal\Controllers\FrontEnd\AdminPageController;
 use Portal\Controllers\FrontEnd\ApplicantsPageController;
+use Portal\Controllers\FrontEnd\CalendarPageController;
 use Portal\Controllers\FrontEnd\CoursesPageController;
 use Portal\Controllers\FrontEnd\EditApplicantPageController;
 use Portal\Controllers\FrontEnd\EventsPageController;
@@ -91,6 +94,7 @@ return function (App $app) {
     $app->get('/csvForm', GetCsvFormController::class);
     $app->get('/trainers', TrainersPageController::class);
     $app->get('/addTrainer', AddTrainerPageController::class);
+    $app->get('/calendar', CalendarPageController::class);
 
     //API
     $app->get('/api/getStudents', GetStudentsController::class);
@@ -134,4 +138,5 @@ return function (App $app) {
     $app->post('/api/sendEmail', SendEmailController::class);
     $app->get('/api/lockApplicantField', LockApplicantFieldController::class);
     $app->get('/api/getAptitudeScore', GetApplicantAptitudeController::class);
+    $app->get('/api/calendar', GetAllCalendarEventsController::class);
 };
