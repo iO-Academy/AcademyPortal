@@ -35,4 +35,14 @@ class CompleteCourseEntity extends CourseEntity
     {
         return $this->category;
     }
+
+    public function getInPersonSpaces(): ?int
+    {
+        return $this->inPersonSpaces;
+    }
+
+    public function getRemoteSpaces(): ?int
+    {
+        return $this->remoteSpaces;
+    }
 }

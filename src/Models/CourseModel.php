@@ -198,7 +198,9 @@ class CourseModel
                             `in_person` = :inPerson, 
                             `remote` = :remote, 
                             `in_person_spaces`= :inPersonSpaces, 
-                            `remote_spaces` = :remoteSpaces
+                            `remote_spaces` = :remoteSpaces,
+                            `category_id` = :categoryId
+                    
                         WHERE `id` = :id;"
         );
 
@@ -210,6 +212,8 @@ class CourseModel
         $query->bindValue(':remote', $course['remote']);
         $query->bindValue(':inPersonSpaces', $course['inPersonSpaces']);
         $query->bindValue(':remoteSpaces', $course['remoteSpaces']);
+        $query->bindValue(':categoryId', $course['courseCategory']);
+        $query->bindValue(':id', $course['id']);
         return $query->execute();
     }
 

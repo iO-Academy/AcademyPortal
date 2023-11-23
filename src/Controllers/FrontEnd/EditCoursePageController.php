@@ -24,9 +24,9 @@ class EditCoursePageController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $id = $args['id'];
-        $data['course'] = $this->courseModel->getCourseById($id);
-        $data['selectedTrainerIds'] = $this->courseModel->getTrainersIdByCourseId($id);
+        $data['id']  = $args['id'];
+        $data['course'] = $this->courseModel->getCourseById($data['id']);
+        $data['selectedTrainerIds'] = $this->courseModel->getTrainersIdByCourseId($data['id']);
         $data['trainers'] = $this->trainerModel->getAllTrainers();
         $data['categories'] = $this->courseModel->getCategories();
         if (!empty($data)) {
