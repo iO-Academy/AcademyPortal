@@ -1,0 +1,104 @@
+const categoryForm = document.querySelector('form');
+const message = document.querySelector('#messages');
+//const categoryInput = document.querySelector('#addCategory');
+
+// Submit Form + Add New Event API Call
+categoryForm.addEventListener('submit', e => {
+    e.preventDefault()
+    const errorDivs = document.querySelectorAll('.alert');
+    errorDivs.forEach(errorDiv => {
+        errorDiv.classList.add('hidden');
+    })
+
+    let data = getCompletedFormData();
+    let validatedFormItems = validateCategoryInput(data);
+
+    let formIsValid = true;
+    Object.keys(validatedFormItems).forEach(formItemKey => {
+        const errorDiv = document.querySelector(`#${formItemKey}Error`);
+        let formItemValues = validatedFormItems[formItemKey];
+        let keys = Object.keys(formItemValues);
+        for (let i = 0; i < keys.length; i++) {
+            let key = keys[i];
+            let isValid = formItemValues[key];
+            if (!isValid) {
+                errorDiv.classList.add('alert-danger');
+                errorDiv.classList.remove('hidden');
+                errorDiv.innerHTML = errorMessage(key);
+                formIsValid = false;
+                message.classList.add('hidden');
+                break;
+            }
+        }
+    });
+    if (formIsValid) {
+        // send it!
+        fetch('./api/addCategory', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            method: 'post',
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                return response.json()
+            })
+            .then(responseJson => {
+                if (responseJson.success) {
+                    categoryForm.elements['addCategory'].value = ''
+                    message.innerText = responseJson.message
+                    formSubmitSuccess(message)
+                } else {
+                    message.innerText = responseJson.message
+                    message.classList.add('alert-danger')
+                    message.classList.remove('alert-success')
+                    message.classList.remove('hidden')
+                }
+            })
+    }
+});
+
+/**
+ * Adds data from form into an object with the field name as key and the form value as value.
+ */
+let getCompletedFormData = () => {
+    let data = {
+        courseCategory: categoryForm.elements['addCategory'].value
+    }
+    return data;
+}
+
+let validateCategoryInput = (data) => {
+
+    validate = {
+        courseCategory: {
+            isPresent: isPresent(data.courseCategory),
+            isName: isName(data.courseCategory),
+            validLengthVarChar: varCharMaxLength(data.courseCategory)
+        }
+    };
+
+    return validate;
+};
+
+let errorMessage = (validationType) => {
+    let htmlString = '';
+
+    switch (validationType) {
+        case 'isPresent':
+            htmlString = `This field must be filled in.`;
+            break;
+        case 'validLengthVarChar':
+            htmlString = `This field must be less than 255 characters.`;
+            break;
+        case 'isName':
+            htmlString = `Please use alphanumeric characters only.`;
+            break;
+        default:
+            htmlString = `This field is invalid.`;
+            break;
+    }
+    return htmlString;
+}

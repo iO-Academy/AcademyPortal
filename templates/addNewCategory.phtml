@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Courses');
+    ?>
+    <script defer src="./js/utils.js"></script>
+    <script defer src="./js/validations.js"></script>
+    <script defer src='./js/addCourseCategory.js'></script>
+</head>
+
+<body>
+    <?php
+    require 'partials/layout/header.phtml';
+    require 'partials/layout/nav.phtml';
+    ?>
+    <div class="container-fluid">
+        <div class="row courses-heading-container">
+            <div class="col-xs-6 text-left courses-box">
+                <h3>Add New Category</h3>
+            </div>
+        </div>
+    </div>
+
+    <form>
+        <label for="course-name">Add Category</label>
+        <input id="addCategory" name="addCategory" class="create-category form-control" type="text" placeholder="Category name" data-required="true" data-max='255' maxlength="255" />
+        <div id="categoryError" class="alert hidden formItem_alert"></div>
+
+        <input type="submit" class="btn btn-success" />
+    </form>
+    <div id="messages" class="alert"></div>
+
+
+    <?php
+    require 'partials/layout/footer.phtml';
+    ?>
+</body>
+
+</html>
