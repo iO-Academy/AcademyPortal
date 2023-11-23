@@ -32,8 +32,8 @@ class AddCourseCategoryController extends Controller
         $statusCode = 400;
 
         try {
-                $newCategory = CourseCategorySanitiser::sanitise($newCategory);
-                $insertedId = $this->courseModel->addCategory($newCategory);
+            $newCategory = CourseCategorySanitiser::sanitise($newCategory);
+            $insertedId = $this->courseModel->addCategory($newCategory);
         } catch (\Exception $exception) {
             $responseData['message'] = $exception->getMessage();
         }
