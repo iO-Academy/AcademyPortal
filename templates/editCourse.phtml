@@ -50,7 +50,9 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
     <div class="form-group">
         <label for="in_person">In Person?</label>
         <input type="checkbox" id="in_person" value="1" class="create-courses" name="in_person" <?php if($course->getInPerson()) {echo 'checked';} ?>>
-        <input id="in_person_spaces" name="in_person_spaces" class="create-courses form-control <?php if (!$course->getInPerson()) {echo 'hidden"';} else { echo '" value="' . $course->getInPersonSpaces(); }  ?> type="number" placeholder="How many spaces available?" min="1" max="999" data-required="true" />
+        <input id="in_person_spaces" name="in_person_spaces" class="create-courses form-control
+        <?php if (!$course->getInPerson()) {echo 'hidden';} else { echo '" value="' . $course->getInPersonSpaces(); }  ?>
+" type="number" placeholder="How many spaces available?" min="1" max="999" data-required="true" />
         <div id="in_person_spacesError" class="alert hidden formItem_alert"></div>
     </div>
     <div class="">
@@ -60,7 +62,8 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
         <?php if(!$course->getRemote())
         {echo 'hidden';
         } else {
-            echo '" value="' . $course->getRemoteSpaces(); } ?>" type="number" placeholder="How many spaces available?" min="1" max="999" data-required="true" "/>
+            echo '" value="' . $course->getRemoteSpaces(); } ?>
+" type="number" placeholder="How many spaces available?" min="1" max="999" data-required="true" "/>
         <div id="remote_spacesError" class="alert hidden formItem_alert"></div>
     </div>
 

@@ -39,7 +39,6 @@ courseForm.addEventListener('submit', e => {
         }
     });
     if (formIsValid) {
-        // send it!
         fetch('/api/editCourse', {
             credentials: 'same-origin',
             headers: {
@@ -50,32 +49,11 @@ courseForm.addEventListener('submit', e => {
             body: JSON.stringify(data)
         })
             .then(response => {
-                return response.json()
+                response.json()
             })
-            // .then(responseJson => {
-            //     if (responseJson.success) {
-            //         courseForm.elements['courseName'].value = '',
-            //             courseForm.elements['startDate'].value = '',
-            //             courseForm.elements['endDate'].value = '',
-            //             courseForm.elements['notes'].value = '',
-            //             courseForm.elements['in_person'].checked = false,
-            //             courseForm.elements['remote'].checked = false,
-            //             courseForm.elements['in_person_spaces'].value = '',
-            //             courseForm.elements['remote_spaces'].value = '',
-            //             courseForm.elements['courseCategory'].value = '',
-            //             message.innerText = responseJson.message,
-            //             selectedTrainerId = [],
-            //             courseForm.elements['trainer-checkbox'].forEach(trainer => {
-            //                 trainer.checked = false;
-            //             })
-            //         formSubmitSuccess(message)
-            //     } else {
-            //         message.innerText = responseJson.message
-            //         message.classList.add('alert-danger')
-            //         message.classList.remove('alert-success')
-            //         message.classList.remove('hidden')
-            //     }
-            // })
+            .then(data => {
+                top.location.href = "/courses";
+            });
     }
 });
 

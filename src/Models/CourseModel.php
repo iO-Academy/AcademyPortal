@@ -206,12 +206,12 @@ class CourseModel
 
         $query->bindValue(':startDate', $course['startDate']);
         $query->bindValue(':endDate', $course['endDate']);
-        $query->bindValue(':name', $course['name']);
+        $query->bindValue(':name', $course['courseName']);
         $query->bindValue(':notes', $course['notes']);
-        $query->bindValue(':inPerson', $course['inPerson']);
+        $query->bindValue(':inPerson', $course['in_person']);
         $query->bindValue(':remote', $course['remote']);
-        $query->bindValue(':inPersonSpaces', $course['inPersonSpaces']);
-        $query->bindValue(':remoteSpaces', $course['remoteSpaces']);
+        $query->bindValue(':inPersonSpaces', $course['in_person_spaces']);
+        $query->bindValue(':remoteSpaces', $course['remote_spaces']);
         $query->bindValue(':categoryId', $course['courseCategory']);
         $query->bindValue(':id', $course['id']);
         return $query->execute();
