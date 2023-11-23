@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Courses');
+    ?>
+<!--    <script defer src="./js/toggleCompletedCourses.js"></script>-->
+</head>
+
+<body>
+    <?php
+    require 'partials/layout/header.phtml';
+    require 'partials/layout/nav.phtml';
+    ?>
+    <div class="container-fluid">
+        <div class="row courses-heading-container">
+            <div class="col-xs-6 text-left courses-box">
+                <h3>Delete Category</h3>
+            </div>
+        </div>
+    </div>
+
+
+
+    <?php
+    require 'partials/layout/footer.phtml';
+    ?>
+</body>
+
+</html>

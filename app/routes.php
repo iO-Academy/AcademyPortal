@@ -87,6 +87,8 @@ return function (App $app) {
     $app->post('/public[/{id}]', StudentProfilePageController::class);
     $app->get('/courses', CoursesPageController::class);
     $app->get('/addCourse', AddCoursePageController::class);
+    $app->get('/addNewCategory', \Portal\Controllers\FrontEnd\AddNewCategoryController::class);
+    $app->get('/deleteCategory', \Portal\Controllers\FrontEnd\DeleteCategoryController::class);
     $app->get('/studentApplicationForm', StudentApplicationFormPageController::class);
     $app->get('/csvForm', GetCsvFormController::class);
     $app->get('/trainers', TrainersPageController::class);
