@@ -63,23 +63,19 @@ categoryForm.addEventListener('submit', e => {
  * Adds data from form into an object with the field name as key and the form value as value.
  */
 let getCompletedFormData = () => {
-    let data = {
+    return {
         courseCategory: categoryForm.elements['addCategory'].value
-    }
-    return data;
+    };
 }
 
 let validateCategoryInput = (data) => {
-
-    validate = {
+    return {
         courseCategory: {
             isPresent: isPresent(data.courseCategory),
             isName: isName(data.courseCategory),
             validLengthVarChar: varCharMaxLength(data.courseCategory)
         }
     };
-
-    return validate;
 };
 
 let errorMessage = (validationType) => {
