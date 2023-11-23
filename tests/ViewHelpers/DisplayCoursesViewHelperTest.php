@@ -28,6 +28,7 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
+                    <td><a href="/editCourse/1"><button>Edit</button></a></td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -65,6 +66,7 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
+                    <td><a href="/editCourse/1"><button>Edit</button></a></td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -105,6 +107,7 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
+                    <td><a href="/editCourse/1"><button>Edit</button></a></td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -142,6 +145,7 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
+                    <td><a href="/editCourse/1"><button>Edit</button></a></td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -182,6 +186,7 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
+                    <td><a href="/editCourse/1"><button>Edit</button></a></td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -216,7 +221,7 @@ class DisplayCoursesViewHelperTest extends TestCase
      * */
     public function testFailureDisplayFutureCourse()
     {
-        $expected = '<tr><td colspan="9"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
+        $expected = '<tr><td colspan="10"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
         $result = DisplayCoursesViewHelper::displayFutureCourses([], []);
         $this->assertEquals($expected, $result);
     }
@@ -255,7 +260,7 @@ class DisplayCoursesViewHelperTest extends TestCase
     {
         $ongoingCourses = true;
         $result = DisplayCoursesViewHelper::displayOngoingCoursesHeading($ongoingCourses);
-        $expected = '<tr><td colspan="9"><h5 class="text-success text-center">Ongoing Courses</h5></td></tr>';
+        $expected = '<tr><td colspan="10"><h5 class="text-success text-center">Ongoing Courses</h5></td></tr>';
         $this->assertEquals($expected, $result);
     }
 

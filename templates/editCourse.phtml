@@ -1,0 +1,70 @@
+<?php
+
+$trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTrainerCheckbox($trainers, $selectedTrainerIds);
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Edit Course');
+    ?>
+    <script defer src="./js/utils.js"></script>
+    <script defer src="./js/validations.js"></script>
+<!--    <script defer src='./js/addCourse.js'></script>-->
+</head>
+
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml';?>
+<h3>Edit Course</h3>
+<form>
+    <label for="course-name">Course Name</label>
+    <input name="courseName" class="create-courses form-control" type="text" placeholder="Course name" data-required="true" data-max='255' maxlength="255" value="<?php echo $course->getName()?>"/>
+    <div id="courseNameError" class="alert hidden formItem_alert"></div>
+    <label for="course-category">Category</label>
+    <select id="courseCategory" name="courseCategory" class="create-courses form-control" data-required="true">
+        <option disabled selected>Select category</option>
+        <?php echo \Portal\ViewHelpers\AddCourseViewHelper::courseCategoryDropdown($categories, $course->getCategory()); ?>
+    </select>
+    <div id="courseCategoryError" class="alert hidden formItem_alert"></div>
+    <label for="course-start-date">Start Date</label>
+    <input id="startDate" name="startDate" class="create-courses form-control" type="date" data-required="true" value="<?php echo $course->getStartDate()?>"/>
+    <div id="startDateError" class="alert hidden formItem_alert"></div>
+    <label for="course-end-date">End Date</label>
+    <input id="endDate" name="endDate" class="create-courses form-control" type="date" data-required="true" value="<?php echo $course->getEndDate()?>"/>
+    <div id="endDateError" class="alert hidden formItem_alert"></div>
+    <label for="course-trainer">Trainer</label>
+    <div>
+        <?php echo $trainersCheckbox ?>
+    </div>
+    <label for="course-notes">Notes</label>
+    <textarea name="notes" class="create-courses form-control" placeholder="Notes" data-max="5000" maxlength="5000"></textarea>
+    <div id="courseNotesError" class="alert hidden formItem_alert"></div>
+
+    <div class="form-group">
+        <label for="in_person">In Person?</label>
+        <input type="checkbox" id="in_person" value="1" class="create-courses" name="in_person" <?php if($course->getInPerson()) {echo 'checked';} ?>>
+        <input id="in_person_spaces" name="in_person_spaces" class="create-courses form-control hidden" type="number" placeholder="How many spaces available?" min="1" max="999" data-required="true" />
+        <div id="in_person_spacesError" class="alert hidden formItem_alert"></div>
+    </div>
+    <div class="">
+        <label for="remote">Remote?</label>
+        <input type="checkbox" id="remote" value="1" class="create-courses" name="remote" <?php if($course->getRemote()) {echo 'checked';} ?>>
+        <input id="remote_spaces" name="remote_spaces" class="create-courses form-control hidden" type="number" placeholder="How many spaces available?" min="1" max="999" data-required="true" />
+        <div id="remote_spacesError" class="alert hidden formItem_alert"></div>
+    </div>
+
+
+    <input id="saveCourse" type="submit" class="btn btn-success" value="Save"/>
+    <a href="/courses" class="btn btn-danger">Cancel</a>
+    <div id="formGroupError" class="alert hidden formItem_alert"></div>
+
+</form>
+<div id="messages" class="alert"></div>
+<?php require 'partials/layout/footer.phtml'; ?>
+</body>

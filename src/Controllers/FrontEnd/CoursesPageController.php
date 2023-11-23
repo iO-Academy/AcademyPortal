@@ -31,6 +31,7 @@ class CoursesPageController extends Controller
             $args['futureCourses'] = $this->courseModel->getFutureCourses();
             $args['completedCourses'] = $this->courseModel->getCompletedCourses();
             $args['trainers'] = $this->courseModel->getTrainersAndCourseId();
+            $args['getcourse'] = $this->courseModel->getCourseById(1);
             return $this->renderer->render($response, 'courses.phtml', $args);
         } else {
             return $response->withHeader('Location', './')->withStatus(301);

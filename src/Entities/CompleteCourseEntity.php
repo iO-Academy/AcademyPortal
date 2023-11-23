@@ -9,6 +9,7 @@ class CompleteCourseEntity extends CourseEntity
     // defaulted null for testing purposes
     protected ?int $totalAvailableSpaces = null;
     protected ?int $spacesTaken = null;
+    protected ?int $deleted;
     protected ?string $category = null;
 
     /**
