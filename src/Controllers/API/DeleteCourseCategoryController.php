@@ -37,7 +37,7 @@ class DeleteCourseCategoryController extends Controller
         } else {
             $data = [
                     'success' => false,
-                    'message' => 'Error - please contact administrator'
+                    'message' => 'Unexpected error occurred'
                     ];
             return $this->respondWithJson($response, $data, 500);
         }
