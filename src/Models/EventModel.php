@@ -32,7 +32,8 @@ class EventModel
 
     public function getAllCalendarEvents(): array
     {
-        $sql = 'SELECT `events`.`id` AS `id`, `events`.`name` AS `title`, `date`,
+        $sql = 'SELECT `events`.`id` AS `id`, `events`.`name` AS `title`, 
+       `event_categories`.`id` AS `categoryId` , `date`,
         `start_time` AS `start`, `end_time` AS `end`
         FROM `events`
         LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id`
