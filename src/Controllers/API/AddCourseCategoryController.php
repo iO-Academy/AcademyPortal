@@ -34,6 +34,9 @@ class AddCourseCategoryController extends Controller
         try {
             $newCategory = CourseCategorySanitiser::sanitise($newCategory);
             $insertedId = $this->courseModel->addCategory($newCategory);
+        } catch (\PDOException $pdoException) {
+            $responseData['message'] = 'Internal error: ' . $pdoException->getMessage();
+            $statusCode = 500;
         } catch (\Exception $exception) {
             $responseData['message'] = $exception->getMessage();
         }
