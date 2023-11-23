@@ -27,7 +27,6 @@ class AddNewCategoryPageController extends Controller
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
-            //will change this
             $args['categories'] = $this->courseModel->getCategories();
             return $this->renderer->render($response, 'addNewCategory.phtml', $args);
         } else {
