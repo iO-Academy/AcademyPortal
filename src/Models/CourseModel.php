@@ -165,7 +165,7 @@ class CourseModel
     public function getCourseById(int $courseId): ?CompleteCourseEntity
     {
         $query = $this->db->prepare(
-            "SELECT 
+            "SELECT
                         `courses`.`id`, 
                         `start_date` AS 'startDate', 
                         `end_date` AS 'endDate', 
