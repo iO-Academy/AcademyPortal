@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('404');
+    ?>
+</head>
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+<main>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Oh no...</h1>
+            <p>It's a <strong>404</strong> - We can't find the page that you're looking for!</p>
+        </div>
+    </div>
+</main>
+
+<?php require 'partials/layout/footer.phtml'; ?>
+</body>
+</html>

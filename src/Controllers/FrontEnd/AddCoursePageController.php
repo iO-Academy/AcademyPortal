@@ -27,11 +27,11 @@ class AddCoursePageController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        if ($_SESSION['loggedIn'] === true) {
+        if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
             $args['trainers'] = $this->trainerModel->getAllTrainers();
             return $this->renderer->render($response, 'addCourse.phtml', $args);
         } else {
-            return $response->withHeader('Location', './');
+            return $response->withHeader('Location', './')->withStatus(301);
         }
     }
 }
