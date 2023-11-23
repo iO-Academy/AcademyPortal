@@ -29,16 +29,16 @@ class DeleteCourseCategoryController extends Controller
 
         if ($result) {
             $data = [
-                    'success' => true,
-                    'message' => 'Category deleted',
-                    'id' => [$deletedCategory]
-                     ];
+                'success' => true,
+                'message' => 'Category deleted',
+                'id' => [$deletedCategory]
+            ];
             return $this->respondWithJson($response, $data);
         } else {
             $data = [
-                    'success' => false,
-                    'message' => 'Unexpected error occurred'
-                    ];
+                'success' => false,
+                'message' => 'Unexpected error occurred'
+            ];
             return $this->respondWithJson($response, $data, 500);
         }
     }
