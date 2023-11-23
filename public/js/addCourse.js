@@ -56,19 +56,19 @@ courseForm.addEventListener('submit', e => {
             .then(responseJson => {
                 if (responseJson.success) {
                     courseForm.elements['courseName'].value = '',
-                    courseForm.elements['startDate'].value = '',
-                    courseForm.elements['endDate'].value = '',
-                    courseForm.elements['notes'].value = '',
-                    courseForm.elements['in_person'].checked = false,
-                    courseForm.elements['remote'].checked = false,
-                    courseForm.elements['in_person_spaces'].value = '',
-                    courseForm.elements['remote_spaces'].value = '',
-                    courseForm.elements['courseCategory'].value = '',
-                    message.innerText = responseJson.message,
-                    selectedTrainerId = [],
-                    courseForm.elements['trainer-checkbox'].forEach(trainer => {
-                        trainer.checked = false;
-                    })
+                        courseForm.elements['startDate'].value = '',
+                        courseForm.elements['endDate'].value = '',
+                        courseForm.elements['notes'].value = '',
+                        courseForm.elements['in_person'].checked = false,
+                        courseForm.elements['remote'].checked = false,
+                        courseForm.elements['in_person_spaces'].value = '',
+                        courseForm.elements['remote_spaces'].value = '',
+                        courseForm.elements['courseCategory'].value = '',
+                        message.innerText = responseJson.message,
+                        selectedTrainerId = [],
+                        courseForm.elements['trainer-checkbox'].forEach(trainer => {
+                            trainer.checked = false;
+                        })
                     formSubmitSuccess(message)
                 } else {
                     message.innerText = responseJson.message
@@ -88,7 +88,7 @@ let selectedTrainerId = []
  */
 let getSelectedTrainers = () => {
     courseForm.elements['trainer-checkbox'].forEach(trainer => {
-        if(trainer.checked){
+        if (trainer.checked) {
             selectedTrainerId.push(trainer.dataset.id)
         }
     })
@@ -99,7 +99,7 @@ let getSelectedTrainers = () => {
  * Adds data from form into an object with the field name as key and the form value as value.
  */
 let getCompletedFormData = () => {
-    let data = {
+    return {
         courseName: courseForm.elements['courseName'].value,
         startDate: courseForm.elements['startDate'].value,
         endDate: courseForm.elements['endDate'].value,
@@ -110,13 +110,11 @@ let getCompletedFormData = () => {
         in_person_spaces: courseForm.elements['in_person'].checked ? courseForm.elements['in_person_spaces'].value : null,
         remote_spaces: courseForm.elements['remote'].checked ? courseForm.elements['remote_spaces'].value : null,
         courseCategory: courseForm.elements['courseCategory'].value
-    }
-    return data;
+    };
 }
 
 let validateCourseInputs = (data) => {
-
-    validate = {
+    return {
         courseName: {
             isPresent: isPresent(data.courseName),
             isName: isName(data.courseName),
@@ -138,19 +136,11 @@ let validateCourseInputs = (data) => {
         notes: {
             validLengthText: textAreaMaxLength(data.notes)
         },
+        ...(data.in_person ? {in_person_spaces: {validInputSpacesAmount: validInputSpacesAmount(data.in_person_spaces)}} : {}),
+        ...(data.remote ? {remote_spaces: {validInputSpacesAmount: validInputSpacesAmount(data.remote_spaces)}} : {})
     };
-    if (data.in_person) {
-        validate.in_person_spaces = {
-            validInputSpacesAmount: validInputSpacesAmount(data.in_person_spaces)
-        }
-    }
-    if (data.remote) {
-        validate.remote_spaces = {
-            validInputSpacesAmount: validInputSpacesAmount(data.remote_spaces)
-        }
-    }
-    return validate;
-};
+}
+
 
 let errorMessage = (validationType) => {
     let htmlString = '';
