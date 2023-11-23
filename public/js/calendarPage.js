@@ -11,23 +11,14 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
 
 (async () => {
   const response = await fetch("./api/getCalendarEvents");
-  const events = await response.json();
-  events.map((event) => {
-    if (event.categoryId == 1) {
-      event.className = "hiringevent";
-    } else if (event.categoryId == 2) {
-      event.className = "sprintreview";
-    } else if (event.categoryId == 3) {
-      event.className = "tastersession";
-    } else if (event.categoryId == 4) {
-      event.className = "assessment";
-      event.allDay = true;
-    } else if (event.categoryId == 5) {
-      event.className = "graduation";
-    } else if (event.categoryId == 6) {
-      event.className = "other";
-    }
-    calendar.addEvent(event);
+  const calendarEvents = await response.json();
+  calendarEvents.map((calendarEvent) => {
+    const categoryName = calendarEvent.categoryName
+      .toLowerCase()
+      .split(" ")
+      .join("");
+    calendarEvent.className = categoryName;
+    calendar.addEvent(calendarEvent);
   });
   calendar.render();
 })();
