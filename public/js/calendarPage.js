@@ -5,30 +5,28 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
     hour: "2-digit",
     minute: "2-digit",
     meridiem: true,
+    eventColor: "#3b003a",
   },
 });
 
 (async () => {
-  const response = await fetch("./api/calendar");
+  const response = await fetch("./api/getCalendarEvents");
   const events = await response.json();
   events.map((event) => {
     if (event.categoryId == 1) {
-      event.color = "#4eab1a";
+      event.className = "hiringevent";
     } else if (event.categoryId == 2) {
-      event.color = "#002aff";
+      event.className = "sprintreview";
     } else if (event.categoryId == 3) {
-      event.color = "#b5b601";
+      event.className = "tastersession";
     } else if (event.categoryId == 4) {
-      event.color = "#c03d3d";
+      event.className = "assessment";
       event.allDay = true;
     } else if (event.categoryId == 5) {
-      event.color = "#fa5c03";
+      event.className = "graduation";
     } else if (event.categoryId == 6) {
-      event.color = "#f48cff";
-    } else {
-      event.color = "#3b003a";
+      event.className = "other";
     }
-
     calendar.addEvent(event);
   });
   calendar.render();
