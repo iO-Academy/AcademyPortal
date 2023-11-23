@@ -138,5 +138,5 @@ return function (App $app) {
     $app->post('/api/sendEmail', SendEmailController::class);
     $app->get('/api/lockApplicantField', LockApplicantFieldController::class);
     $app->get('/api/getAptitudeScore', GetApplicantAptitudeController::class);
-    $app->get('/api/calendar', GetAllCalendarEventsController::class);
+    $app->get('/api/getCalendarEvents', GetAllCalendarEventsController::class);
 };
