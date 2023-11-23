@@ -8,7 +8,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Views\PhpRenderer;
 
-class DeleteCategoryPageController extends Controller
+class CourseCategoriesPageController extends Controller
 {
     private PhpRenderer $renderer;
     private CourseModel $courseModel;
@@ -27,9 +27,8 @@ class DeleteCategoryPageController extends Controller
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
-            //will change this
             $args['categories'] = $this->courseModel->getCategories();
-            return $this->renderer->render($response, 'deleteCategory.phtml', $args);
+            return $this->renderer->render($response, 'courseCategories.phtml', $args);
         } else {
             return $response->withHeader('Location', './')->withStatus(301);
         }

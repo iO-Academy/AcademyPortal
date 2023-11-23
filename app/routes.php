@@ -88,7 +88,7 @@ return function (App $app) {
     $app->get('/courses', CoursesPageController::class);
     $app->get('/addCourse', AddCoursePageController::class);
     $app->get('/addNewCategory', \Portal\Controllers\FrontEnd\AddNewCategoryPageController::class);
-    $app->get('/deleteCategory', \Portal\Controllers\FrontEnd\DeleteCategoryPageController::class);
+    $app->get('/courseCategories', \Portal\Controllers\FrontEnd\CourseCategoriesPageController::class);
     $app->get('/studentApplicationForm', StudentApplicationFormPageController::class);
     $app->get('/csvForm', GetCsvFormController::class);
     $app->get('/trainers', TrainersPageController::class);
@@ -128,6 +128,7 @@ return function (App $app) {
     $app->get('/api/progressApplicantStage', EditApplicantStageController::class);
     $app->get('/api/getCourses', GetCoursesController::class);
     $app->post('/api/addCategory', \Portal\Controllers\API\AddCourseCategoryController::class);
+    $app->post('/api/deleteCategory',\Portal\Controllers\API\DeleteCourseCategoryController::class);
     $app->post('/api/addCourse', AddCourseController::class);
     $app->post('/api/csvUpload', CsvController::class);
     $app->get('/api/getEventCategories', GetEventCategoriesController::class);
