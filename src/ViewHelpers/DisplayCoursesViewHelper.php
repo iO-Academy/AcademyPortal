@@ -29,7 +29,7 @@ class DisplayCoursesViewHelper
                     <td>' . date("d/m/Y", strtotime($course->getStartDate())) . '</td>
                     <td>' . date("d/m/Y", strtotime($course->getEndDate())) . '</td>
                     <td>' . $course->getName() . '</td>
-                    <td>' . $course->getCategory() . '</td>
+                    <td><span class="badge">' . $course->getCategory() . '</span></td>
                     <td>' . self::displayCourseTrainers($trainersByCourse) . '</td>
                     <td>' . $course->getNotes() . '</td>
                     <td>' . $inPerson . '</td>
