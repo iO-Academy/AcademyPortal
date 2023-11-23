@@ -158,15 +158,15 @@ class CourseModel
         $query = $this->db->prepare(
             "SELECT 
                         `id`, 
-                        `start_date`, 
-                        `end_date`, 
+                        `start_date` AS 'startDate', 
+                        `end_date` AS 'endDate', 
                         `name`, 
                         `notes`, 
                         `deleted`, 
-                        `in_person`, 
+                        `in_person` AS 'inPerson', 
                         `remote`, 
-                        `in_person_spaces`, 
-                        `remote_spaces`
+                        `in_person_spaces` AS 'inPersonSpaces', 
+                        `remote_spaces` AS 'remoteSpaces'
         FROM `courses`
         WHERE `id` = ?;"
         );
@@ -231,6 +231,20 @@ class CourseModel
                     ON `courses_trainers`.`trainer_id` = `trainers`.`id`;'
         );
         $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function getTrainersIdByCourseId(int $courseId): array
+    {
+        $query = $this->db->prepare(
+            "SELECT `trainers`.`id` 
+                FROM `courses_trainers` 
+                LEFT JOIN `trainers` 
+                ON `courses_trainers`.`trainer_id` = `trainers`.`id`
+                WHERE `course_id`=?;"
+        );
+        $query->execute([$courseId]);
+        $query->setFetchMode(\PDO::FETCH_COLUMN, 0);
         return $query->fetchAll();
     }
 }
