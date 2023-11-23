@@ -96,7 +96,6 @@ return function (App $app) {
     $app->get('/addTrainer', AddTrainerPageController::class);
     $app->get('/calendar', CalendarPageController::class);
 
-
     //API
     $app->get('/api/getStudents', GetStudentsController::class);
     $app->get('/api/getApplicant/{id}', GetApplicantController::class);
