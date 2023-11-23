@@ -9,7 +9,6 @@ const courseCategory = document.querySelector('#courseCategory');
 in_person_checkbox.addEventListener('change', () => in_person_spaces.classList.toggle('hidden'));
 remote_checkbox.addEventListener('change', () => remote_spaces.classList.toggle('hidden'));
 
-
 // Submit Form + Add New Event API Call
 courseForm.addEventListener('submit', e => {
     e.preventDefault()

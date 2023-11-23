@@ -200,7 +200,6 @@ class CourseModel
                             `in_person_spaces`= :inPersonSpaces, 
                             `remote_spaces` = :remoteSpaces,
                             `category_id` = :categoryId
-                    
                         WHERE `id` = :id;"
         );
 
