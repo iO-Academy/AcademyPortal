@@ -24,9 +24,7 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
 <h3>Edit Course</h3>
 <form>
     <label for="course-name">Course Name</label>
-    <input name="courseName" class="create-courses form-control" type="text" placeholder="Course name" data-required="true" data-max='255' maxlength="255" value="
-    <?php echo $course->getName()?>
-"/>
+    <input name="courseName" class="create-courses form-control" type="text" placeholder="Course name" data-required="true" data-max='255' maxlength="255" value="<?php echo $course->getName()?>"/>
     <div id="courseNameError" class="alert hidden formItem_alert"></div>
     <label for="course-category">Category</label>
     <select id="courseCategory" name="courseCategory" class="create-courses form-control" data-required="true">
@@ -61,8 +59,11 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
         <div id="remote_spacesError" class="alert hidden formItem_alert"></div>
     </div>
 
+
+    <input id="saveCourse" type="submit" class="btn btn-success" value="Save"/>
+    <a href="/courses" class="btn btn-danger">Cancel</a>
     <div id="formGroupError" class="alert hidden formItem_alert"></div>
-    <input type="submit" class="btn btn-success" />
+
 </form>
 <div id="messages" class="alert"></div>
 <?php require 'partials/layout/footer.phtml'; ?>

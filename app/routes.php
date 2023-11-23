@@ -92,7 +92,7 @@ return function (App $app) {
     $app->get('/csvForm', GetCsvFormController::class);
     $app->get('/trainers', TrainersPageController::class);
     $app->get('/addTrainer', AddTrainerPageController::class);
-    $app->get('/editCourse', EditCoursePageController::class);
+    $app->get('/editCourse/{id}', EditCoursePageController::class);
 
     //API
     $app->get('/api/getStudents', GetStudentsController::class);

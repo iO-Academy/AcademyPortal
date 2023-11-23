@@ -24,7 +24,7 @@ class EditCoursePageController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $id = $request->getQueryParams()['id'];
+        $id = $args['id'];
         $data['course'] = $this->courseModel->getCourseById($id);
         $data['selectedTrainerIds'] = $this->courseModel->getTrainersIdByCourseId($id);
         $data['trainers'] = $this->trainerModel->getAllTrainers();
