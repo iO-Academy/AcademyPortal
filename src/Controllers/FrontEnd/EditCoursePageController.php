@@ -28,13 +28,11 @@ class EditCoursePageController extends Controller
         $data['course'] = $this->courseModel->getCourseById($id);
         $data['selectedTrainerIds'] = $this->courseModel->getTrainersIdByCourseId($id);
         $data['trainers'] = $this->trainerModel->getAllTrainers();
-        $data['categories']=$this->courseModel->getCategories();
+        $data['categories'] = $this->courseModel->getCategories();
         if (!empty($data)) {
             return $this->renderer->render($response, 'editCourse.phtml', $data);
-        }
-        else {
+        } else {
             return $this->renderer->render($response, '404.phtml');
         }
-
     }
 }

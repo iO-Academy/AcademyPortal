@@ -10,12 +10,11 @@ class AddCourseViewHelper
         foreach ($categories as $category) {
             $courseCategoryDropdown .=
                 '<option value="' . $category['id'] . '"';
-                if ($selectedCategory && $category['category'] === $selectedCategory)
-                {
+            if ($selectedCategory && $category['category'] === $selectedCategory) {
                 $courseCategoryDropdown .= 'selected';
-                }
+            }
                 $courseCategoryDropdown .=  '>' . $category['category'] . '</option>';
-}
+        }
         return $courseCategoryDropdown;
     }
 }
