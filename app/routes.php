@@ -95,6 +95,7 @@ return function (App $app) {
     $app->get('/editCourse/{id}', EditCoursePageController::class);
 
     //API
+    $app->post('/api/editCourse', \Portal\Controllers\API\EditCourseController::class);
     $app->get('/api/getStudents', GetStudentsController::class);
     $app->get('/api/getApplicant/{id}', GetApplicantController::class);
     $app->post('/api/saveApplicant', AddApplicantController::class);

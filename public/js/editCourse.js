@@ -1,0 +1,163 @@
+const courseForm = document.querySelector('form');
+const message = document.querySelector('#messages');
+const in_person_checkbox = document.querySelector('#in_person');
+const remote_checkbox = document.querySelector('#remote');
+const in_person_spaces = document.querySelector('#in_person_spaces');
+const remote_spaces = document.querySelector('#remote_spaces');
+const courseCategory = document.querySelector('#courseCategory');
+
+in_person_checkbox.addEventListener('change', () => in_person_spaces.classList.toggle('hidden'));
+remote_checkbox.addEventListener('change', () => remote_spaces.classList.toggle('hidden'));
+
+// Submit Form + Add New Event API Call
+courseForm.addEventListener('submit', e => {
+    e.preventDefault()
+    const errorDivs = document.querySelectorAll('.alert');
+    errorDivs.forEach(errorDiv => {
+        errorDiv.classList.add('hidden');
+    })
+
+    let data = getCompletedFormData();
+    let validatedFormItems = validateCourseInputs(data);
+    let formIsValid = true;
+    Object.keys(validatedFormItems).forEach(formItemKey => {
+        const errorDiv = document.querySelector(`#${formItemKey}Error`);
+        let formItemValues = validatedFormItems[formItemKey];
+        let keys = Object.keys(formItemValues);
+        for (let i = 0; i < keys.length; i++) {
+            let key = keys[i];
+            let isValid = formItemValues[key];
+            if (!isValid) {
+                errorDiv.classList.add('alert-danger');
+                errorDiv.classList.remove('hidden');
+                errorDiv.innerHTML = errorMessage(key);
+                formIsValid = false;
+                message.classList.add('hidden');
+                break;
+            }
+        }
+    });
+    if (formIsValid) {
+        fetch('/api/editCourse', {
+            credentials: 'same-origin',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            method: 'post',
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                response.json()
+            })
+            .then(data => {
+                top.location.href = "/courses";
+            });
+    }
+});
+
+let selectedTrainerId = []
+/**
+ * Retrieves trainer checkbox data from add course form
+ *
+ * @returns array
+ */
+let getSelectedTrainers = () => {
+    courseForm.elements['trainer-checkbox'].forEach(trainer => {
+        if(trainer.checked){
+            selectedTrainerId.push(trainer.dataset.id)
+        }
+    })
+    return selectedTrainerId
+}
+
+/**
+ * Adds data from form into an object with the field name as key and the form value as value.
+ */
+let getCompletedFormData = () => {
+    let data = {
+        id: courseForm.elements['courseName'].dataset.id,
+        courseName: courseForm.elements['courseName'].value,
+        startDate: courseForm.elements['startDate'].value,
+        endDate: courseForm.elements['endDate'].value,
+        trainer: getSelectedTrainers(),
+        notes: courseForm.elements['notes'].value,
+        in_person: courseForm.elements['in_person'].checked ? 1 : 0,
+        remote: courseForm.elements['remote'].checked ? 1 : 0,
+        in_person_spaces: courseForm.elements['in_person'].checked ? courseForm.elements['in_person_spaces'].value : null,
+        remote_spaces: courseForm.elements['remote'].checked ? courseForm.elements['remote_spaces'].value : null,
+        courseCategory: courseForm.elements['courseCategory'].value
+    }
+    return data;
+}
+
+
+
+let validateCourseInputs = (data) => {
+    validate = {
+        courseName: {
+            isPresent: isPresent(data.courseName),
+            isName: isName(data.courseName),
+            validLengthVarChar: varCharMaxLength(data.courseName)
+        },
+        courseCategory: {
+            isPresent: isPresent(data.courseCategory)
+        },
+        startDate: {
+            isPresent: isPresent(data.startDate),
+            isDate: isDate(data.startDate),
+            validateEndDateLessThanStart: validateEndDateLessThanStart(data.startDate, data.endDate),
+            validateEndDateSameAsStart: validateEndDateSameAsStart(data.startDate, data.endDate)
+        },
+        endDate: {
+            isPresent: isPresent(data.endDate),
+            isDate: isDate(data.endDate),
+        },
+        notes: {
+            validLengthText: textAreaMaxLength(data.notes)
+        },
+    };
+    if (data.in_person) {
+        validate.in_person_spaces = {
+            validInputSpacesAmount: validInputSpacesAmount(data.in_person_spaces)
+        }
+    }
+    if (data.remote) {
+        validate.remote_spaces = {
+            validInputSpacesAmount: validInputSpacesAmount(data.remote_spaces)
+        }
+    }
+    return validate;
+};
+
+let errorMessage = (validationType) => {
+    let htmlString = '';
+
+    switch (validationType) {
+        case 'isPresent':
+            htmlString = `This field must be filled in.`;
+            break;
+        case 'validLengthVarChar':
+            htmlString = `This field must be less than 255 characters.`;
+            break;
+        case 'validLengthText':
+            htmlString = `This field must be less than 5000 characters.`;
+            break;
+        case 'isName':
+            htmlString = `Please use alphanumeric characters only.`;
+            break;
+        case 'validateEndDateLessThanStart':
+            htmlString = 'Course must not end before it begins.';
+            break;
+        case 'validateEndDateSameAsStart':
+            htmlString = 'Course must not end at the same date it begins.';
+            break;
+        case 'validInputSpacesAmount':
+            htmlString = 'Please input a valid number.';
+            break;
+        default:
+            htmlString = `This field is invalid.`;
+            break;
+    }
+    return htmlString;
+}

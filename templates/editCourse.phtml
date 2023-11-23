@@ -12,9 +12,10 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
     require 'partials/layout/head.phtml';
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Edit Course');
     ?>
-    <script defer src="./js/utils.js"></script>
-    <script defer src="./js/validations.js"></script>
-<!--    <script defer src='./js/addCourse.js'></script>-->
+    <script defer src="/js/utils.js"></script>
+    <script defer src="/js/validations.js"></script>
+    <script defer src='/js/editCourse.js'></script>
+
 </head>
 
 <body>
@@ -24,7 +25,7 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
 <h3>Edit Course</h3>
 <form>
     <label for="course-name">Course Name</label>
-    <input name="courseName" class="create-courses form-control" type="text" placeholder="Course name" data-required="true" data-max='255' maxlength="255" value="<?php echo $course->getName()?>"/>
+    <input name="courseName" class="create-courses form-control" type="text" placeholder="Course name" data-required="true" data-max='255' maxlength="255" value="<?php echo $course->getName()?>" data-id="<?php echo $course->getId()?>"/>
     <div id="courseNameError" class="alert hidden formItem_alert"></div>
     <label for="course-category">Category</label>
     <select id="courseCategory" name="courseCategory" class="create-courses form-control" data-required="true">
@@ -49,13 +50,20 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
     <div class="form-group">
         <label for="in_person">In Person?</label>
         <input type="checkbox" id="in_person" value="1" class="create-courses" name="in_person" <?php if($course->getInPerson()) {echo 'checked';} ?>>
-        <input id="in_person_spaces" name="in_person_spaces" class="create-courses form-control hidden" type="number" placeholder="How many spaces available?" min="1" max="999" data-required="true" />
+        <input id="in_person_spaces" name="in_person_spaces" class="create-courses form-control
+        <?php if (!$course->getInPerson()) {echo 'hidden';} else { echo '" value="' . $course->getInPersonSpaces(); }  ?>
+" type="number" placeholder="How many spaces available?" min="1" max="999" data-required="true" />
         <div id="in_person_spacesError" class="alert hidden formItem_alert"></div>
     </div>
     <div class="">
         <label for="remote">Remote?</label>
         <input type="checkbox" id="remote" value="1" class="create-courses" name="remote" <?php if($course->getRemote()) {echo 'checked';} ?>>
-        <input id="remote_spaces" name="remote_spaces" class="create-courses form-control hidden" type="number" placeholder="How many spaces available?" min="1" max="999" data-required="true" />
+        <input id="remote_spaces" name="remote_spaces" class="create-courses form-control
+        <?php if(!$course->getRemote())
+        {echo 'hidden';
+        } else {
+            echo '" value="' . $course->getRemoteSpaces(); } ?>
+" type="number" placeholder="How many spaces available?" min="1" max="999" data-required="true" "/>
         <div id="remote_spacesError" class="alert hidden formItem_alert"></div>
     </div>
 

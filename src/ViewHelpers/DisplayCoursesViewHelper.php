@@ -32,8 +32,8 @@ class DisplayCoursesViewHelper
                     <td>' . $course->getCategory() . '</td>
                     <td>' . self::displayCourseTrainers($trainersByCourse) . '</td>
                     <td>' . $course->getNotes() . '</td>
-                    <td>' . $inPerson . '</td>
                     <td>' . $remote . '</td>
+                    <td>' . $inPerson . '</td>
                     <td><span class="filled-places badge">Filled: ' . $course->getSpacesTaken() .
                 '</span>' . ' ' . '<span class="total-places badge">Total: '
                 . $course->getTotalAvailableSpaces() .
