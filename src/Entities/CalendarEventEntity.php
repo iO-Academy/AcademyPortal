@@ -7,6 +7,7 @@ class CalendarEventEntity implements \JsonSerializable
     protected int $id;
     protected ?string $title;
     protected ?int $categoryId;
+    protected ?string $categoryName;
     protected ?string $date;
     protected ?string $start;
     protected ?string $end;
@@ -21,8 +22,10 @@ class CalendarEventEntity implements \JsonSerializable
         return [
             'title' => $this->title,
             'categoryId' => $this->categoryId,
-            'start' => $this->date . 'T' . $this->start,
-            'end' => $this->date . 'T' . $this->end
+            'categoryName' => $this->categoryName,
+            'start' => $this->start !== null ? $this->date . 'T' . $this->start : $this->date . 'T09:00:00',
+            'end' => $this->start !== null ? $this->date . 'T' . $this->end : null,
+            'allDay' => $this->start === null ? true : false
         ];
     }
 }
