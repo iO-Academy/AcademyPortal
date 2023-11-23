@@ -1,6 +1,5 @@
 const categoryForm = document.querySelector('form');
 const message = document.querySelector('#messages');
-//const categoryInput = document.querySelector('#addCategory');
 
 // Submit Form + Add New Event API Call
 categoryForm.addEventListener('submit', e => {
