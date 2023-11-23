@@ -1,14 +1,13 @@
 <?php
 
-namespace Portal\Controllers\FrontEnd;
+namespace Portal\Controllers\API;
 
 use Portal\Abstracts\Controller;
 use Portal\Models\EventModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Views\PhpRenderer;
 
-class GetAllEventsController extends Controller
+class GetAllCalendarEventsController extends Controller
 {
     private EventModel $eventModel;
 
@@ -23,9 +22,11 @@ class GetAllEventsController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
+        $statusCode = 200;
+
         if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
-            $args['events'] = $this->eventModel->getAllEvents();
-            return $this->respondWithJson($response, $args);
+            $data = $this->eventModel->getAllCalendarEvents();
+            return $this->respondWithJson($response, $data, $statusCode);
         } else {
             return $response->withHeader('Location', './')->withStatus(301);
         }
