@@ -12,7 +12,6 @@ deleteButtons.forEach(deleteCatBtn => {
                 }
             });
             const responseData = await response.json();
-            document.cookie = `response = ${responseData.message}`;
             if (responseData.success) {
                 window.location.reload();
             } else {
