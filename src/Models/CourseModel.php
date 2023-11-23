@@ -200,4 +200,16 @@ class CourseModel
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function addCategory(array $newCategory): string
+    {
+        $query = $this->db->prepare("INSERT INTO `course_categories` (
+            `category`
+            ) 
+            VALUES (
+            :courseCategory);");
+        $query->bindParam(':courseCategory', $newCategory['courseCategory']);
+        $query->execute();
+        return $this->db->lastInsertId();
+    }
 }
