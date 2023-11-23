@@ -19,7 +19,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>01/01/2021</td>
                     <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
-                    <td>Defence Against the Dark JSON</td>
+                    <td><span class="badge">Defence Against the Dark JSON</span></td>
                     <td>Charlie</td>
                     <td></td>
                     <td>&#x2713;</td>
@@ -56,7 +56,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>01/01/2021</td>
                     <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
-                    <td>Defence Against the Dark JSON</td>
+                    <td><span class="badge">Defence Against the Dark JSON</span></td>
                     <td>Charlie Neal</td>
                     <td></td>
                     <td>&#x2713;</td>
@@ -96,7 +96,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>01/01/2021</td>
                     <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
-                    <td>Defence Against the Dark JSON</td>
+                    <td><span class="badge">Defence Against the Dark JSON</span></td>
                     <td><p class="trainer-deleted-indicator">Charlie</p></td>
                     <td></td>
                     <td>&#x2713;</td>
@@ -133,7 +133,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>01/01/2021</td>
                     <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
-                    <td>Defence Against the Dark JSON</td>
+                    <td><span class="badge">Defence Against the Dark JSON</span></td>
                     <td><p class="trainer-deleted-indicator">Charlie</p> Neal</td>
                     <td></td>
                     <td>&#x2713;</td>
@@ -173,7 +173,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>01/01/2021</td>
                     <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
-                    <td>Defence Against the Dark JSON</td>
+                    <td><span class="badge">Defence Against the Dark JSON</span></td>
                     <td>No trainers assigned</td>
                     <td></td>
                     <td>&#x2713;</td>

@@ -1,4 +1,5 @@
 const deleteButtons = document.querySelectorAll('.deleteCatBtn');
+const deleteError = document.querySelector('.deleteError')
 deleteButtons.forEach(deleteCatBtn => {
     deleteCatBtn.addEventListener('click', async (e) => {
         const id = e.target.dataset.id;
@@ -15,10 +16,10 @@ deleteButtons.forEach(deleteCatBtn => {
             if (responseData.success) {
                 window.location.reload();
             } else {
-                console.error('Error')
+                deleteError.classList.remove('hidden');
             }
         } catch (error) {
-            console.error('Error', error);
+            deleteError.classList.remove('hidden');
         }
     });
 });
