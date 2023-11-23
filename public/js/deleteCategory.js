@@ -13,7 +13,11 @@ deleteButtons.forEach(deleteCatBtn => {
             });
             const responseData = await response.json();
             document.cookie = `response = ${responseData.message}`;
-            window.location.reload();
+            if (responseData.success) {
+                window.location.reload();
+            } else {
+                console.error('Error')
+            }
         } catch (error) {
             console.error('Error', error);
         }
