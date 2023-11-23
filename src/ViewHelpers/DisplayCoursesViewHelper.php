@@ -5,13 +5,13 @@ namespace Portal\ViewHelpers;
 class DisplayCoursesViewHelper
 {
     private const NO_COURSES_TABLE_HEADING =
-    '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
+    '<tr><td colspan="9"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
 
     public const FUTURE_COURSES_HEADING_TABLE =
-    '<tr><td colspan="8"><h5 class="text-primary text-center">Future Courses</h5></td></tr>';
+    '<tr><td colspan="9"><h5 class="text-primary text-center">Future Courses</h5></td></tr>';
 
     public const COMPLETED_COURSE_HEADING_TABLE =
-    '<tr><td colspan="8"><h5 class="text-secondary text-center">Completed Courses</h5></td></tr>';
+    '<tr><td colspan="9"><h5 class="text-secondary text-center">Completed Courses</h5></td></tr>';
 
     /**
      * Method to display courses within course detail table
@@ -29,6 +29,7 @@ class DisplayCoursesViewHelper
                     <td>' . date("d/m/Y", strtotime($course->getStartDate())) . '</td>
                     <td>' . date("d/m/Y", strtotime($course->getEndDate())) . '</td>
                     <td>' . $course->getName() . '</td>
+                    <td>' . $course->getCategory() . '</td>
                     <td>' . self::displayCourseTrainers($trainersByCourse) . '</td>
                     <td>' . $course->getNotes() . '</td>
                     <td>' . $inPerson . '</td>
@@ -65,7 +66,7 @@ class DisplayCoursesViewHelper
     {
         $row = '';
         if ($ongoingCourses) {
-            $row = '<tr><td colspan="8"><h5 class="text-success text-center">Ongoing Courses</h5></td></tr>';
+            $row = '<tr><td colspan="9"><h5 class="text-success text-center">Ongoing Courses</h5></td></tr>';
         }
         return $row;
     }

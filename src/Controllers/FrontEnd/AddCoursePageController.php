@@ -13,11 +13,13 @@ class AddCoursePageController extends Controller
 {
     private PhpRenderer $renderer;
     private TrainerModel $trainerModel;
+    private CourseModel $courseModel;
 
-    public function __construct(PhpRenderer $renderer, TrainerModel $trainerModel)
+    public function __construct(PhpRenderer $renderer, TrainerModel $trainerModel, CourseModel $courseModel)
     {
         $this->renderer = $renderer;
         $this->trainerModel = $trainerModel;
+        $this->courseModel = $courseModel;
     }
 
     /**
@@ -29,6 +31,7 @@ class AddCoursePageController extends Controller
     {
         if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
             $args['trainers'] = $this->trainerModel->getAllTrainers();
+            $args['categories'] = $this->courseModel->getCategories();
             return $this->renderer->render($response, 'addCourse.phtml', $args);
         } else {
             return $response->withHeader('Location', './')->withStatus(301);

@@ -28,6 +28,12 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
     <?php echo $course->getName()?>
 "/>
     <div id="courseNameError" class="alert hidden formItem_alert"></div>
+    <label for="course-category">Category</label>
+    <select id="courseCategory" name="courseCategory" class="create-courses form-control" data-required="true">
+        <option disabled selected>Select category</option>
+        <?php echo \Portal\ViewHelpers\AddCourseViewHelper::courseCategoryDropdown($categories, $course->getCategory()); ?>
+    </select>
+    <div id="courseCategoryError" class="alert hidden formItem_alert"></div>
     <label for="course-start-date">Start Date</label>
     <input id="startDate" name="startDate" class="create-courses form-control" type="date" data-required="true" value="<?php echo $course->getStartDate()?>"/>
     <div id="startDateError" class="alert hidden formItem_alert"></div>

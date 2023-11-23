@@ -48,10 +48,12 @@ class CourseModel
         `remote`,
         `in_person_spaces` AS `inPersonSpaces`,
         `remote_spaces` AS `remoteSpaces`,
+        `course_categories`.`category`,
         `in_person_spaces` + `remote_spaces` AS `totalAvailableSpaces`,
         COUNT(`applicantId`) AS `spacesTaken`
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
+        LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
         WHERE `c`.`start_date` > NOW()
         GROUP BY `c`.`id`;';
         $query = $this->db->prepare($sql);
@@ -74,10 +76,12 @@ class CourseModel
         `remote`,
         `in_person_spaces` AS `inPersonSpaces`,
         `remote_spaces` AS `remoteSpaces`,
+       `course_categories`.`category`,
         `in_person_spaces` + `remote_spaces` AS `totalAvailableSpaces`,
         COUNT(`applicantId`) AS `spacesTaken`
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
+        LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
         WHERE `c`.`start_date` <= NOW() AND `c`.`end_date` >= NOW()
         GROUP BY `c`.`id`;';
 
@@ -98,10 +102,12 @@ class CourseModel
         `remote`,
         `in_person_spaces` AS `inPersonSpaces`,
         `remote_spaces` AS `remoteSpaces`,
+        `course_categories`.`category`,
         `in_person_spaces` + `remote_spaces` AS `totalAvailableSpaces`,
         COUNT(`applicantId`) AS `spacesTaken`
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
+        LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
         WHERE `c`.`end_date` < NOW()
         GROUP BY `c`.`id`
         ORDER BY `endDate` DESC;';
@@ -126,7 +132,8 @@ class CourseModel
             `in_person`,
             `remote`,
             `in_person_spaces`,
-            `remote_spaces`
+            `remote_spaces`,
+            `category_id`
             ) 
             VALUES (
             :startDate, 
@@ -136,7 +143,8 @@ class CourseModel
             :in_person,
             :remote,
             :in_person_spaces,
-            :remote_spaces);");
+            :remote_spaces,
+            :courseCategory);");
 
         $query->bindParam(':startDate', $newCourse['startDate']);
         $query->bindParam(':endDate', $newCourse['endDate']);
@@ -146,6 +154,7 @@ class CourseModel
         $query->bindParam(':remote', $newCourse['remote']);
         $query->bindParam(':in_person_spaces', $newCourse['in_person_spaces']);
         $query->bindParam(':remote_spaces', $newCourse['remote_spaces']);
+        $query->bindParam(':courseCategory', $newCourse['courseCategory']);
         $query->execute();
         return $this->db->lastInsertId();
     }
@@ -157,18 +166,20 @@ class CourseModel
     {
         $query = $this->db->prepare(
             "SELECT 
-                        `id`, 
+                        `courses`.`id`, 
                         `start_date` AS 'startDate', 
                         `end_date` AS 'endDate', 
                         `name`, 
                         `notes`, 
-                        `deleted`, 
+                        `courses`.`deleted`, 
                         `in_person` AS 'inPerson', 
                         `remote`, 
                         `in_person_spaces` AS 'inPersonSpaces', 
-                        `remote_spaces` AS 'remoteSpaces'
+                        `remote_spaces` AS 'remoteSpaces',
+                        `course_categories`.`category`
         FROM `courses`
-        WHERE `id` = ?;"
+        LEFT JOIN `course_categories` ON `courses`.`category_id` = `course_categories`.`id`
+        WHERE `courses`.`id` = ?;"
         );
         $query->setFetchMode(PDO::FETCH_CLASS, CompleteCourseEntity::class);
         $query->execute([$courseId]);
@@ -245,6 +256,18 @@ class CourseModel
         );
         $query->execute([$courseId]);
         $query->setFetchMode(\PDO::FETCH_COLUMN, 0);
+        return $query->fetchAll();
+    }
+
+    public function getCategories(): array
+    {
+        $sql = 'SELECT `id`,
+                `category`,
+                `deleted`
+                FROM `course_categories`;';
+        $query = $this->db->prepare($sql);
+        $query->execute();
+
         return $query->fetchAll();
     }
 }
