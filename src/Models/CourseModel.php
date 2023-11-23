@@ -132,7 +132,8 @@ class CourseModel
             `in_person`,
             `remote`,
             `in_person_spaces`,
-            `remote_spaces`
+            `remote_spaces`,
+            `category_id`
             ) 
             VALUES (
             :startDate, 
@@ -142,7 +143,8 @@ class CourseModel
             :in_person,
             :remote,
             :in_person_spaces,
-            :remote_spaces);");
+            :remote_spaces,
+            :courseCategory);");
 
         $query->bindParam(':startDate', $newCourse['startDate']);
         $query->bindParam(':endDate', $newCourse['endDate']);
@@ -152,6 +154,7 @@ class CourseModel
         $query->bindParam(':remote', $newCourse['remote']);
         $query->bindParam(':in_person_spaces', $newCourse['in_person_spaces']);
         $query->bindParam(':remote_spaces', $newCourse['remote_spaces']);
+        $query->bindParam(':courseCategory', $newCourse['courseCategory']);
         $query->execute();
         return $this->db->lastInsertId();
     }
@@ -183,6 +186,17 @@ class CourseModel
                 LEFT JOIN `trainers` 
                     ON `courses_trainers`.`trainer_id` = `trainers`.`id`;'
         );
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function getCategories(): array
+    {
+        $sql = 'SELECT `id`,
+                `category`,
+                `deleted`
+                FROM `course_categories`;';
+        $query = $this->db->prepare($sql);
         $query->execute();
         return $query->fetchAll();
     }
