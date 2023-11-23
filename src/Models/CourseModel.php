@@ -195,7 +195,9 @@ class CourseModel
         $sql = 'SELECT `id`,
                 `category`,
                 `deleted`
-                FROM `course_categories`;';
+                FROM `course_categories`
+                WHERE `course_categories`.`deleted` = 0
+                ;';
         $query = $this->db->prepare($sql);
         $query->execute();
         return $query->fetchAll();
@@ -211,5 +213,15 @@ class CourseModel
         $query->bindParam(':courseCategory', $newCategory['courseCategory']);
         $query->execute();
         return $this->db->lastInsertId();
+    }
+
+    public function deleteCategory(int $deletedCategory): bool
+    {
+        $sql = 'UPDATE `course_categories`
+                SET `deleted` = 1
+                WHERE `id` = :id;';
+        $query = $this->db->prepare($sql);
+        $query->bindParam(':id', $deletedCategory);
+        return $query->execute();
     }
 }
