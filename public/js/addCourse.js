@@ -4,6 +4,7 @@ const in_person_checkbox = document.querySelector('#in_person');
 const remote_checkbox = document.querySelector('#remote');
 const in_person_spaces = document.querySelector('#in_person_spaces');
 const remote_spaces = document.querySelector('#remote_spaces');
+const courseCategory = document.querySelector('#courseCategory');
 
 in_person_checkbox.addEventListener('change', () => in_person_spaces.classList.toggle('hidden'));
 remote_checkbox.addEventListener('change', () => remote_spaces.classList.toggle('hidden'));
@@ -55,18 +56,19 @@ courseForm.addEventListener('submit', e => {
             .then(responseJson => {
                 if (responseJson.success) {
                     courseForm.elements['courseName'].value = '',
-                    courseForm.elements['startDate'].value = '',
-                    courseForm.elements['endDate'].value = '',
-                    courseForm.elements['notes'].value = '',
-                    courseForm.elements['in_person'].checked = false,
-                    courseForm.elements['remote'].checked = false,
-                    courseForm.elements['in_person_spaces'].value = '',
-                    courseForm.elements['remote_spaces'].value = '',
-                    message.innerText = responseJson.message,
-                    selectedTrainerId = [],
-                    courseForm.elements['trainer-checkbox'].forEach(trainer => {
-                        trainer.checked = false;
-                    })
+                        courseForm.elements['startDate'].value = '',
+                        courseForm.elements['endDate'].value = '',
+                        courseForm.elements['notes'].value = '',
+                        courseForm.elements['in_person'].checked = false,
+                        courseForm.elements['remote'].checked = false,
+                        courseForm.elements['in_person_spaces'].value = '',
+                        courseForm.elements['remote_spaces'].value = '',
+                        courseForm.elements['courseCategory'].value = '',
+                        message.innerText = responseJson.message,
+                        selectedTrainerId = [],
+                        courseForm.elements['trainer-checkbox'].forEach(trainer => {
+                            trainer.checked = false;
+                        })
                     formSubmitSuccess(message)
                 } else {
                     message.innerText = responseJson.message
@@ -86,7 +88,7 @@ let selectedTrainerId = []
  */
 let getSelectedTrainers = () => {
     courseForm.elements['trainer-checkbox'].forEach(trainer => {
-        if(trainer.checked){
+        if (trainer.checked) {
             selectedTrainerId.push(trainer.dataset.id)
         }
     })
@@ -97,7 +99,7 @@ let getSelectedTrainers = () => {
  * Adds data from form into an object with the field name as key and the form value as value.
  */
 let getCompletedFormData = () => {
-    let data = {
+    return {
         courseName: courseForm.elements['courseName'].value,
         startDate: courseForm.elements['startDate'].value,
         endDate: courseForm.elements['endDate'].value,
@@ -106,9 +108,9 @@ let getCompletedFormData = () => {
         in_person: courseForm.elements['in_person'].checked ? 1 : 0,
         remote: courseForm.elements['remote'].checked ? 1 : 0,
         in_person_spaces: courseForm.elements['in_person'].checked ? courseForm.elements['in_person_spaces'].value : null,
-        remote_spaces: courseForm.elements['remote'].checked ? courseForm.elements['remote_spaces'].value : null
-    }
-    return data;
+        remote_spaces: courseForm.elements['remote'].checked ? courseForm.elements['remote_spaces'].value : null,
+        courseCategory: courseForm.elements['courseCategory'].value
+    };
 }
 
 let validateCourseInputs = (data) => {
@@ -118,6 +120,9 @@ let validateCourseInputs = (data) => {
             isPresent: isPresent(data.courseName),
             isName: isName(data.courseName),
             validLengthVarChar: varCharMaxLength(data.courseName)
+        },
+        courseCategory: {
+            isPresent: isPresent(data.courseCategory)
         },
         startDate: {
             isPresent: isPresent(data.startDate),
@@ -146,34 +151,3 @@ let validateCourseInputs = (data) => {
     return validate;
 };
 
-let errorMessage = (validationType) => {
-    let htmlString = '';
-
-    switch (validationType) {
-        case 'isPresent':
-            htmlString = `This field must be filled in.`;
-            break;
-        case 'validLengthVarChar':
-            htmlString = `This field must be less than 255 characters.`;
-            break;
-        case 'validLengthText':
-            htmlString = `This field must be less than 5000 characters.`;
-            break;
-        case 'isName':
-            htmlString = `Please use alphanumeric characters only.`;
-            break;
-        case 'validateEndDateLessThanStart':
-            htmlString = 'Course must not end before it begins.';
-            break;
-        case 'validateEndDateSameAsStart':
-            htmlString = 'Course must not end at the same date it begins.';
-            break;
-        case 'validInputSpacesAmount':
-            htmlString = 'Please input a valid number.';
-            break;
-        default:
-            htmlString = `This field is invalid.`;
-            break;
-    }
-    return htmlString;
-}

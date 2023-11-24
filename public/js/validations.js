@@ -61,3 +61,35 @@ function validInputSpacesAmount(number) {
     let regEx = /^[1-9]\d*$/;
     return regEx.test(number);
 }
+
+let errorMessage = (validationType) => {
+    let htmlString = '';
+
+    switch (validationType) {
+        case 'isPresent':
+            htmlString = `This field must be filled in.`;
+            break;
+        case 'validLengthVarChar':
+            htmlString = `This field must be less than 255 characters.`;
+            break;
+        case 'validLengthText':
+            htmlString = `This field must be less than 5000 characters.`;
+            break;
+        case 'isName':
+            htmlString = `Please use alphanumeric characters only.`;
+            break;
+        case 'validateEndDateLessThanStart':
+            htmlString = 'Course must not end before it begins.';
+            break;
+        case 'validateEndDateSameAsStart':
+            htmlString = 'Course must not end at the same date it begins.';
+            break;
+        case 'validInputSpacesAmount':
+            htmlString = 'Please input a valid number.';
+            break;
+        default:
+            htmlString = `This field is invalid.`;
+            break;
+    }
+    return htmlString;
+}

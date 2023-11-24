@@ -1,12 +1,14 @@
 # ************************************************************
 # Sequel Ace SQL dump
-# Version 20051
+# Version 20057
 #
 # https://sequel-ace.com/
 # https://github.com/Sequel-Ace/Sequel-Ace
 #
-# Host: 127.0.0.1 (MySQL 11.0.2-MariaDB-1:11.0.2+maria~ubu2204)
+# Host: 127.0.0.1 (MySQL 11.1.2-MariaDB-1:11.1.2+maria~ubu2204)
 # Database: academyPortal
+# Generation Time: 2023-11-22 11:26:50 +0000
+# ************************************************************
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -51,7 +53,7 @@ LOCK TABLES `applicants` WRITE;
 
 INSERT INTO `applicants` (`id`, `name`, `email`, `phoneNumber`, `whyDev`, `codeExperience`, `hearAboutId`, `eligible`, `eighteenPlus`, `finance`, `notes`, `stageId`, `stageOptionId`, `dateTimeAdded`, `deleted`, `backgroundInfoId`, `profile_password`, `gender`, `cohortId`)
 VALUES
-	(11,'Melinde Rentoll','mrentoll0@salon.com','07671138755','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'1','1','1','Loves stilton!',1,NULL,'2021-11-25 16:29:00',0,'1','',NULL,NULL),
+	(11,'Melinde Rentoll','mrentoll0@salon.com','07671138755','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'1','1','1','Loves stilton!',6,NULL,'2021-11-25 16:29:00',0,'1','$2y$10$1Dx6nHE1.SOncDcA7UV.d.dN7dMoAkBOqFPQH2m5pMcC6ylQPdq4e','1',NULL),
 	(12,'Trumaine Digger','tdigger1@utexas.edu','07938905902','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'1','0','1','Loves cheddar',6,NULL,'2021-11-25 16:32:00',0,'1','','1',NULL),
 	(13,'Morgan Graundisson','mgraundisson2@tuttocitta.it','07933387264','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',1,'1','1','0','Brie for me!',6,NULL,'2021-11-25 16:35:00',0,'1','','1',NULL),
 	(14,'Ignazio Hairesnape','ihairesnape3@themeforest.net','07121444941','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.',5,'1','1','1','Cheddar',1,NULL,'2021-11-25 16:36:35',0,'4','',NULL,NULL),
@@ -135,7 +137,7 @@ LOCK TABLES `applicants_additional` WRITE;
 INSERT INTO `applicants_additional` (`id`, `apprentice`, `aptitude`, `assessmentDay`, `customAssessmentDay`, `assessmentTime`, `assessmentNotes`, `diversitechInterest`, `diversitech`, `edaid`, `edaidLocked`, `upfront`, `upfrontLocked`, `kitCollectionDay`, `kitCollectionTime`, `kitNum`, `laptop`, `laptopLocked`, `laptopDeposit`, `laptopNum`, `tasterId`, `tasterAttendance`, `team`, `githubUsername`, `githubUsernameLocked`, `portfolioUrl`, `pleskHostingUrl`, `githubEducationLink`, `additionalNotes`, `chosenCourseId`, `attitude`, `averageScore`, `fee`, `signedTerms`, `signedDiversitech`, `inductionEmailSent`, `signedNDA`, `checkedID`, `dataProtectionName`, `dataProtectionPhoto`, `dataProtectionTestimonial`, `dataProtectionBio`, `dataProtectionVideo`, `contactFormSigned`)
 VALUES
 	(11,1,20,NULL,NULL,'','',0,NULL,NULL,1,NULL,1,NULL,'',NULL,0,1,0,NULL,NULL,0,NULL,NULL,0,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
-	(12,0,99,NULL,NULL,'','',0,NULL,NULL,1,NULL,1,NULL,'',NULL,0,1,0,NULL,NULL,0,NULL,NULL,1,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
+	(12,0,99,NULL,NULL,'','',0,NULL,NULL,1,NULL,1,NULL,'',NULL,0,1,0,NULL,NULL,0,NULL,NULL,0,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
 	(13,1,NULL,NULL,NULL,'','',0,NULL,NULL,0,NULL,1,NULL,'',NULL,0,1,0,NULL,NULL,0,NULL,NULL,0,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
 	(14,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,0,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(15,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,0,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
@@ -147,7 +149,7 @@ VALUES
 	(21,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,0,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(22,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,0,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(23,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,0,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-	(24,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,0,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+	(24,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,0,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
 	(25,0,NULL,NULL,NULL,'','',0,NULL,NULL,0,NULL,0,NULL,'',NULL,0,0,0,NULL,NULL,0,NULL,NULL,0,'','','',NULL,NULL,NULL,NULL,NULL,0,0,0,0,0,0,0,0,0,0,0),
 	(26,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,0,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
@@ -260,6 +262,35 @@ VALUES
 UNLOCK TABLES;
 
 
+# Dump of table course_categories
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `course_categories`;
+
+CREATE TABLE `course_categories` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `category` varchar(256) NOT NULL,
+  `deleted` tinyint(4) DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+LOCK TABLES `course_categories` WRITE;
+/*!40000 ALTER TABLE `course_categories` DISABLE KEYS */;
+
+INSERT INTO `course_categories` (`id`, `category`, `deleted`)
+VALUES
+	(1,'Data Science',0),
+	(2,'Coding Quick Start',0),
+	(3,'Full-Stack Track',0),
+	(4,'Python Intro',0),
+	(5,'SDE',0),
+	(6,'Workshop',0),
+	(7,'Machine Data',0);
+
+/*!40000 ALTER TABLE `course_categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 # Dump of table course_choice
 # ------------------------------------------------------------
 
@@ -322,7 +353,6 @@ VALUES
 	(48,2,24),
 	(49,3,24),
 	(50,7,24),
-	(54,3,11),
 	(56,5,26),
 	(57,8,26),
 	(59,4,12),
@@ -331,7 +361,8 @@ VALUES
 	(62,7,13),
 	(63,1,25),
 	(64,2,25),
-	(65,5,25);
+	(65,5,25),
+	(67,3,11);
 
 /*!40000 ALTER TABLE `course_choice` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -353,32 +384,33 @@ CREATE TABLE `courses` (
   `remote` int(11) DEFAULT NULL,
   `in_person_spaces` int(11) DEFAULT NULL,
   `remote_spaces` int(11) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
 
-INSERT INTO `courses` (`id`, `start_date`, `end_date`, `name`, `notes`, `deleted`, `in_person`, `remote`, `in_person_spaces`, `remote_spaces`)
+INSERT INTO `courses` (`id`, `start_date`, `end_date`, `name`, `notes`, `deleted`, `in_person`, `remote`, `in_person_spaces`, `remote_spaces`, `category_id`)
 VALUES
-	(1,'2022-01-10','2022-05-29','Full-Stack Track',NULL,0,1,0,8,0),
-	(2,'2022-01-10','2022-05-29','Full-Stack Track',NULL,0,0,1,8,0),
-	(3,'2022-03-17','2022-03-25','Machine Data',NULL,0,1,1,0,12),
-	(4,'2022-03-07','2022-06-24','Full-Stack Track','Great people',0,1,0,8,0),
-	(5,'2022-03-07','2022-06-24','Full-Stack Track',NULL,0,0,0,8,0),
-	(6,'2022-07-04','2022-10-21','Full-Stack Track','Might be robots',0,0,1,8,0),
-	(7,'2022-07-04','2022-10-21','Full-Stack Track',NULL,0,1,0,8,0),
-	(9,'2023-09-23','2023-12-25','SDE','there are only 151 pokemon',0,0,1,0,12),
-	(10,'2024-01-11','2024-03-11','SDE','MAGNETS',0,0,1,0,12),
-	(11,'2024-07-11','2024-07-14','Python Intro','GHOULS',0,1,1,0,12),
-	(12,'2025-01-11','2025-04-11','Full-Stack Track','H for Hornets',0,1,1,8,0),
-	(13,'2025-07-15','2025-10-11','Data Science','cowabunga',0,1,0,0,12),
-	(14,'2026-06-06','2026-10-11','SDE','migration',0,1,1,0,12),
-	(15,'2026-07-11','2026-11-11','SDE','chaos potato',0,1,1,0,12),
-	(16,'2027-04-22','2027-10-15','SDE','pigeons',0,1,1,0,12),
-	(17,'2027-07-11','2027-10-30','SDE','migration',0,0,1,0,12),
-	(18,'2028-06-19','2028-09-12','SDE','Virtual',0,1,0,0,12),
-	(19,'2028-10-19','2028-12-12','Full-Stack Track','Wolf Cola',0,1,0,8,0);
+	(1,'2022-01-10','2022-05-29','Full-Stack Track',NULL,0,1,0,NULL,NULL,3),
+	(2,'2022-01-10','2022-05-29','Full-Stack Track',NULL,0,0,1,NULL,NULL,3),
+	(3,'2022-03-17','2022-03-25','Machine Data',NULL,0,1,1,NULL,NULL,7),
+	(4,'2022-03-07','2022-06-24','Full-Stack Track','Great people',0,1,0,NULL,NULL,3),
+	(5,'2022-03-07','2022-06-24','Full-Stack Track',NULL,0,0,0,NULL,NULL,3),
+	(6,'2022-07-04','2022-10-21','Full-Stack Track','Might be robots',0,0,1,NULL,NULL,3),
+	(7,'2022-07-04','2022-10-21','Full-Stack Track',NULL,0,1,0,NULL,NULL,3),
+	(9,'2023-09-23','2023-12-25','SDE','there are only 151 pokemon',0,0,1,NULL,NULL,5),
+	(10,'2024-01-11','2024-03-11','SDE','MAGNETS',0,0,1,NULL,NULL,5),
+	(11,'2024-07-11','2024-07-14','Python Intro','GHOULS',0,1,1,NULL,NULL,4),
+	(12,'2025-01-11','2025-04-11','Full-Stack Track','H for Hornets',0,1,1,NULL,NULL,3),
+	(13,'2025-07-15','2025-10-11','Data Science','cowabunga',0,1,0,NULL,NULL,1),
+	(14,'2026-06-06','2026-10-11','SDE','migration',0,1,1,NULL,NULL,5),
+	(15,'2026-07-11','2026-11-11','SDE','chaos potato',0,1,1,NULL,NULL,5),
+	(16,'2027-04-22','2027-10-15','SDE','pigeons',0,1,1,NULL,NULL,5),
+	(17,'2027-07-11','2027-10-30','SDE','migration',0,0,1,NULL,NULL,5),
+	(18,'2028-06-19','2028-09-12','SDE','Virtual',0,1,0,NULL,NULL,5),
+	(19,'2028-10-19','2028-12-12','Full-Stack Track','Wolf Cola',0,1,0,NULL,NULL,3);
 
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
