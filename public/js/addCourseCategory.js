@@ -78,22 +78,3 @@ let validateCategoryInput = (data) => {
     };
 };
 
-let errorMessage = (validationType) => {
-    let htmlString = '';
-
-    switch (validationType) {
-        case 'isPresent':
-            htmlString = `This field must be filled in.`;
-            break;
-        case 'validLengthVarChar':
-            htmlString = `This field must be less than 255 characters.`;
-            break;
-        case 'isName':
-            htmlString = `Please use alphanumeric characters only.`;
-            break;
-        default:
-            htmlString = `This field is invalid.`;
-            break;
-    }
-    return htmlString;
-}
