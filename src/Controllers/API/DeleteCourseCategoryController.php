@@ -25,16 +25,16 @@ class DeleteCourseCategoryController extends Controller
         $data = $request->getParsedBody();
         $deletedCategory = $data['id'];
 
-        $result = $this->courseModel->deleteCategory($deletedCategory);
+        try {
+            $this->courseModel->deleteCategory($deletedCategory);
 
-        if ($result) {
             $data = [
                 'success' => true,
                 'message' => 'Category deleted',
                 'id' => [$deletedCategory]
             ];
             return $this->respondWithJson($response, $data);
-        } else {
+        } catch (\Exception $e) {
             $data = [
                 'success' => false,
                 'message' => 'Unexpected error occurred'

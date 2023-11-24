@@ -17,9 +17,17 @@ deleteButtons.forEach(deleteCatBtn => {
                 window.location.reload();
             } else {
                 deleteError.classList.remove('hidden');
+                deleteError.innerText = responseData.message;
+                setTimeout(() => {
+                    deleteError.classList.add('hidden');
+                }, 5000);
             }
         } catch (error) {
             deleteError.classList.remove('hidden');
+            deleteError.innerText = error.message;
+            setTimeout(() => {
+                deleteError.classList.add('hidden');
+            }, 5000);
         }
     });
 });
