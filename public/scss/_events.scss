@@ -114,3 +114,62 @@ input[type="date"],
 input[type="time"] {
     padding: 0 12px;
 }
+
+#calendar a {
+    color: #000000;
+}
+
+.hiringevent .fc-daygrid-event-dot {
+    border-color: #4eab1a;
+}
+
+.hiringevent.fc-h-event {
+    background-color: #4eab1a;
+    border-color: #4eab1a;
+}
+  
+.sprintreview .fc-daygrid-event-dot {
+    border-color: #002aff;
+}
+
+.sprintreview.fc-h-event {
+    background-color: #002aff;
+    border-color: #002aff;
+}
+  
+.tastersession .fc-daygrid-event-dot {
+    border-color: #b5b601;
+}
+
+.tastersession.fc-h-event {
+    background-color: #b5b601;
+    border-color: #b5b601;
+}
+  
+.assessment .fc-daygrid-event-dot {
+    border-color: #c03d3d;
+}
+
+.assessment.fc-h-event {
+    background-color: #c03d3d;
+    border-color: #c03d3d;
+}
+  
+.graduation .fc-daygrid-event-dot {
+    border-color: #fa5c03;
+}
+
+.graduation.fc-h-event {
+    background-color: #fa5c03;
+    border-color: #fa5c03;
+}
+  
+.other .fc-daygrid-event-dot {
+    border-color: #7e007c;
+}
+
+.other.fc-h-event {
+    background-color: #7e007c;
+    border-color: #7e007c;
+}
+  
