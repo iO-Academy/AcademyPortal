@@ -23,13 +23,16 @@ class DisplayCoursesViewHelper
             $remote = $course->getRemote() == 1 ? '&#x2713;' : '&#x10102';
             $inPerson = $course->getInPerson() == 1 ? '&#x2713;' : '&#x10102';
             $trainersByCourse = self::filterCoursesByTrainers($trainers, $course->getId());
+            $categoryNoSpaces = str_replace(' ', '', $course->getCategory());
             $result .=
                 '<tr>
                     <td>' . $course->getId() . '</td>
                     <td>' . date("d/m/Y", strtotime($course->getStartDate())) . '</td>
                     <td>' . date("d/m/Y", strtotime($course->getEndDate())) . '</td>
                     <td>' . $course->getName() . '</td>
-                    <td><span class="badge">' . $course->getCategory() . '</span></td>
+                    <td>
+                        <span class="badge badge-color-' . $categoryNoSpaces . '">' . $course->getCategory() . '</span>
+                    </td>
                     <td>' . self::displayCourseTrainers($trainersByCourse) . '</td>
                     <td>' . $course->getNotes() . '</td>
                     <td>' . $inPerson . '</td>
