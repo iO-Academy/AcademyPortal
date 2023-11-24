@@ -114,7 +114,8 @@ let getCompletedFormData = () => {
 }
 
 let validateCourseInputs = (data) => {
-    return {
+
+    validate = {
         courseName: {
             isPresent: isPresent(data.courseName),
             isName: isName(data.courseName),
@@ -136,8 +137,17 @@ let validateCourseInputs = (data) => {
         notes: {
             validLengthText: textAreaMaxLength(data.notes)
         },
-        ...(data.in_person ? {in_person_spaces: {validInputSpacesAmount: validInputSpacesAmount(data.in_person_spaces)}} : {}),
-        ...(data.remote ? {remote_spaces: {validInputSpacesAmount: validInputSpacesAmount(data.remote_spaces)}} : {})
     };
-}
+    if (data.in_person) {
+        validate.in_person_spaces = {
+            validInputSpacesAmount: validInputSpacesAmount(data.in_person_spaces)
+        }
+    }
+    if (data.remote) {
+        validate.remote_spaces = {
+            validInputSpacesAmount: validInputSpacesAmount(data.remote_spaces)
+        }
+    }
+    return validate;
+};
 
