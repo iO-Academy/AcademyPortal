@@ -16,15 +16,15 @@ deleteButtons.forEach(deleteCatBtn => {
             if (responseData.success) {
                 window.location.reload();
             } else {
-                deleteError.classList.remove('hidden');
                 deleteError.innerText = responseData.message;
+                deleteError.classList.remove('hidden');
                 setTimeout(() => {
                     deleteError.classList.add('hidden');
                 }, 5000);
             }
         } catch (error) {
-            deleteError.classList.remove('hidden');
             deleteError.innerText = error.message;
+            deleteError.classList.remove('hidden');
             setTimeout(() => {
                 deleteError.classList.add('hidden');
             }, 5000);
