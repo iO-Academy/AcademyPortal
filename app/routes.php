@@ -67,6 +67,10 @@ use Portal\Controllers\FrontEnd\StudentApplicationFormPageController;
 use Portal\Controllers\FrontEnd\StudentProfilePageController;
 use Portal\Controllers\FrontEnd\TeamPickerPageController;
 use Portal\Controllers\FrontEnd\TrainersPageController;
+use Portal\Controllers\API\AddCourseCategoryController;
+use Portal\Controllers\API\DeleteCourseCategoryController;
+use Portal\Controllers\FrontEnd\AddNewCategoryPageController;
+use Portal\Controllers\FrontEnd\CourseCategoriesPageController;
 use Slim\App;
 
 return function (App $app) {
@@ -90,6 +94,8 @@ return function (App $app) {
     $app->post('/public[/{id}]', StudentProfilePageController::class);
     $app->get('/courses', CoursesPageController::class);
     $app->get('/addCourse', AddCoursePageController::class);
+    $app->get('/addNewCategory', AddNewCategoryPageController::class);
+    $app->get('/courseCategories', CourseCategoriesPageController::class);
     $app->get('/studentApplicationForm', StudentApplicationFormPageController::class);
     $app->get('/csvForm', GetCsvFormController::class);
     $app->get('/trainers', TrainersPageController::class);
@@ -129,6 +135,8 @@ return function (App $app) {
     $app->get('/api/getNextStageOptions/{stageid}', GetNextStageOptionsController::class);
     $app->get('/api/progressApplicantStage', EditApplicantStageController::class);
     $app->get('/api/getCourses', GetCoursesController::class);
+    $app->post('/api/addCategory', AddCourseCategoryController::class);
+    $app->post('/api/deleteCategory',DeleteCourseCategoryController::class);
     $app->post('/api/addCourse', AddCourseController::class);
     $app->post('/api/csvUpload', CsvController::class);
     $app->get('/api/getEventCategories', GetEventCategoriesController::class);

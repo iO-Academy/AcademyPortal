@@ -9,6 +9,7 @@ class CompleteCourseEntity extends CourseEntity
     // defaulted null for testing purposes
     protected ?int $totalAvailableSpaces = null;
     protected ?int $spacesTaken = null;
+    protected ?string $category = null;
 
     /**
      * @return string
@@ -24,5 +25,13 @@ class CompleteCourseEntity extends CourseEntity
     public function getSpacesTaken(): string
     {
         return $this->spacesTaken === null ? 'N/A' : $this->spacesTaken;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCategory(): ?string
+    {
+        return $this->category;
     }
 }

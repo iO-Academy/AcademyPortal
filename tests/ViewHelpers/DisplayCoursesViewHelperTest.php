@@ -19,6 +19,9 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>01/01/2021</td>
                     <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
+                    <td>
+                        <span class="badge badge-color-DarkJSON">Dark JSON</span>
+                    </td>
                     <td>Charlie</td>
                     <td></td>
                     <td>&#x2713;</td>
@@ -33,6 +36,7 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
         $entityMock->method('getName')->willReturn('Defence Against the Dark JSON');
+        $entityMock->method('getCategory')->willReturn('Dark JSON');
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');
         $entityMock->method('getInPerson')->willReturn('1');
@@ -54,6 +58,9 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>01/01/2021</td>
                     <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
+                    <td>
+                        <span class="badge badge-color-DarkJSON">Dark JSON</span>
+                    </td>
                     <td>Charlie Neal</td>
                     <td></td>
                     <td>&#x2713;</td>
@@ -68,6 +75,7 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
         $entityMock->method('getName')->willReturn('Defence Against the Dark JSON');
+        $entityMock->method('getCategory')->willReturn('Dark JSON');
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');
         $entityMock->method('getInPerson')->willReturn('1');
@@ -92,6 +100,9 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>01/01/2021</td>
                     <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
+                    <td>
+                        <span class="badge badge-color-DarkJSON">Dark JSON</span>
+                    </td>
                     <td><p class="trainer-deleted-indicator">Charlie</p></td>
                     <td></td>
                     <td>&#x2713;</td>
@@ -107,6 +118,7 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
         $entityMock->method('getName')->willReturn('Defence Against the Dark JSON');
         $entityMock->method('getNotes')->willReturn('');
+        $entityMock->method('getCategory')->willReturn('Dark JSON');
         $entityMock->method('getRemote')->willReturn('0');
         $entityMock->method('getInPerson')->willReturn('1');
         $entityMock->method('getTotalAvailableSpaces')->willReturn('8');
@@ -127,6 +139,9 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>01/01/2021</td>
                     <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
+                    <td>
+                        <span class="badge badge-color-DarkJSON">Dark JSON</span>
+                    </td>
                     <td><p class="trainer-deleted-indicator">Charlie</p> Neal</td>
                     <td></td>
                     <td>&#x2713;</td>
@@ -141,6 +156,7 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
         $entityMock->method('getName')->willReturn('Defence Against the Dark JSON');
+        $entityMock->method('getCategory')->willReturn('Dark JSON');
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');
         $entityMock->method('getInPerson')->willReturn('1');
@@ -165,6 +181,9 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td>01/01/2021</td>
                     <td>30/03/2021</td>
                     <td>Defence Against the Dark JSON</td>
+                    <td>
+                        <span class="badge badge-color-DarkJSON">Dark JSON</span>
+                    </td>
                     <td>No trainers assigned</td>
                     <td></td>
                     <td>&#x2713;</td>
@@ -179,6 +198,7 @@ class DisplayCoursesViewHelperTest extends TestCase
         $entityMock->method('getStartDate')->willReturn('2021-01-01');
         $entityMock->method('getEndDate')->willReturn('2021-03-30');
         $entityMock->method('getName')->willReturn('Defence Against the Dark JSON');
+        $entityMock->method('getCategory')->willReturn('Dark JSON');
         $entityMock->method('getNotes')->willReturn('');
         $entityMock->method('getRemote')->willReturn('0');
         $entityMock->method('getInPerson')->willReturn('1');
@@ -206,7 +226,7 @@ class DisplayCoursesViewHelperTest extends TestCase
      * */
     public function testFailureDisplayFutureCourse()
     {
-        $expected = '<tr><td colspan="8"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
+        $expected = '<tr><td colspan="9"><h5 class="text-danger text-center">No Courses Found</h5></td></tr>';
         $result = DisplayCoursesViewHelper::displayFutureCourses([], []);
         $this->assertEquals($expected, $result);
     }
@@ -245,7 +265,7 @@ class DisplayCoursesViewHelperTest extends TestCase
     {
         $ongoingCourses = true;
         $result = DisplayCoursesViewHelper::displayOngoingCoursesHeading($ongoingCourses);
-        $expected = '<tr><td colspan="8"><h5 class="text-success text-center">Ongoing Courses</h5></td></tr>';
+        $expected = '<tr><td colspan="9"><h5 class="text-success text-center">Ongoing Courses</h5></td></tr>';
         $this->assertEquals($expected, $result);
     }
 
