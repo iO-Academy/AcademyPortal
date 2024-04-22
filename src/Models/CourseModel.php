@@ -64,7 +64,8 @@ class CourseModel
     }
 
     /**
-     * Gets all courses from the database that are ongoing (i.e. have a start date in the past, end date in the future). Sorted by the category selected.
+     * Gets all courses from the database that are ongoing (i.e. have a start date in the past, end date in the future).
+     * Sorted by the category selected.
      */
     public function getOngoingCourses(string $category = '%'): array
     {
