@@ -6,8 +6,16 @@ const in_person_spaces = document.querySelector('#in_person_spaces');
 const remote_spaces = document.querySelector('#remote_spaces');
 const courseCategory = document.querySelector('#courseCategory');
 
-in_person_checkbox.addEventListener('change', () => in_person_spaces.classList.toggle('hidden'));
-remote_checkbox.addEventListener('change', () => remote_spaces.classList.toggle('hidden'));
+// if (in_person_spaces.classList.contains('hidden') || remote_spaces.classList.contains('hidden')) {
+//
+// }
+
+in_person_checkbox.addEventListener('click', () => {
+    in_person_spaces.classList.toggle('hidden');
+    remote_spaces.classList.toggle('hidden')});
+remote_checkbox.addEventListener('click', () => {
+    in_person_spaces.classList.toggle('hidden');
+    remote_spaces.classList.toggle('hidden')});
 
 
 // Submit Form + Add New Event API Call
