@@ -26,11 +26,18 @@ class CoursesPageController extends Controller
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {
+        $params = $request->getQueryParams();
+        if (isset($params['category'])) {
+            $category = $params['category'];
+        } else {
+            $category = '%';
+        }
         if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
-            $args['ongoingCourses'] = $this->courseModel->getOngoingCourses();
-            $args['futureCourses'] = $this->courseModel->getFutureCourses();
-            $args['completedCourses'] = $this->courseModel->getCompletedCourses();
+            $args['ongoingCourses'] = $this->courseModel->getOngoingCourses($category);
+            $args['futureCourses'] = $this->courseModel->getFutureCourses($category);
+            $args['completedCourses'] = $this->courseModel->getCompletedCourses($category);
             $args['trainers'] = $this->courseModel->getTrainersAndCourseId();
+            $args['courses'] = $this->courseModel->getCategories();
             return $this->renderer->render($response, 'courses.phtml', $args);
         } else {
             return $response->withHeader('Location', './')->withStatus(301);

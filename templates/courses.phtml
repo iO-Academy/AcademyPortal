@@ -20,6 +20,14 @@
                 <h1>Courses</h1>
             </div>
             <div class="col-xs-6 text-right courses-box">
+                <select class="courseCategoryFilter">
+                    <option value="%" selected>All</option>
+                    <?php
+                    foreach ($courses as $course){
+                        echo '<option value="'.$course['category'].'">'. $course['category'] . '</option>';
+                    }
+                    ?>
+                </select>
                 <button type="button" class="btn btn-default completed-courses-btn">Toggle Completed Courses</button>
             </div>
         </div>
