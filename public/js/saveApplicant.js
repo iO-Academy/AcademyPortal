@@ -26,7 +26,7 @@ document.querySelector('#submitApplicant').addEventListener('click', e => {
             if (!isValid) {
                 querySelector.classList.add('alert-danger');
                 querySelector.classList.remove('hidden');
-                querySelector.innerHTML = errorMessage(validationType);
+                querySelector.innerHTML = saveApplicantErrorMessage(validationType);
                 formIsValid = false;
             }
         })
@@ -48,7 +48,7 @@ document.querySelectorAll('.saveProgress').forEach(saveButton => {
     })
 })
 
-let errorMessage = (validationType) => {
+let saveApplicantErrorMessage = (validationType) => {
     let htmlString = '';
 
     switch (validationType) {

@@ -25,7 +25,7 @@ trainerForm.addEventListener("submit", e => {
             if (!isValid) {
                 querySelector.classList.add('alert-danger');
                 querySelector.classList.remove('hidden');
-                querySelector.innerHTML = errorMessage(validationType);
+                querySelector.innerHTML = addTrainerErrorMessage(validationType);
                 formIsValid = false;
                 message.classList.add('hidden')
             }
@@ -91,7 +91,7 @@ let validateTrainerInputs = (data) => {
     };
 };
 
-let errorMessage = (validationType) => {
+let addTrainerErrorMessage = (validationType) => {
     let htmlString = '';
 
     switch (validationType) {
