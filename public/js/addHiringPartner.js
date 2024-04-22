@@ -23,7 +23,7 @@ addHiringPartnerForm.addEventListener("submit", e => {
             if (!isValid) {
                 errorDiv.classList.add('alert-danger');
                 errorDiv.classList.remove('hidden');
-                errorDiv.innerHTML = errorMessage(key);
+                errorDiv.innerHTML = addHiringPartnerErrorMessage(key);
                 formIsValid = false;
                 message.classList.add('hidden')
                 break;
@@ -111,7 +111,7 @@ let validateHpInputs = (data) => {
     return validate;
 };
 
-let errorMessage = (validationType) => {
+let addHiringPartnerErrorMessage = (validationType) => {
     let htmlString = '';
 
     switch (validationType) {

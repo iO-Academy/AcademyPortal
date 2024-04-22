@@ -87,6 +87,7 @@ let selectedTrainerId = []
  * @returns array
  */
 let getSelectedTrainers = () => {
+    let selectedTrainerId = []
     courseForm.elements['trainer-checkbox'].forEach(trainer => {
         if (trainer.checked) {
             selectedTrainerId.push(trainer.dataset.id)

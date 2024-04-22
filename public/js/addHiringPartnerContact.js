@@ -23,7 +23,7 @@ addContactForm.addEventListener('submit', e => {
             if (!isValid) {
                 errorDiv.classList.add('alert-danger');
                 errorDiv.classList.remove('hidden');
-                errorDiv.innerHTML = errorMessage(key);
+                errorDiv.innerHTML = addHiringPartnerErrorMessage(key);
                 formIsValid = false;
                 addContactResponseMessage.classList.add('hidden')
                 break;
@@ -98,7 +98,7 @@ let validateContactInputs = (data) => {
     return validate;
 };
 
-let errorMessage = (validationType) => {
+let addHiringPartnerErrorMessage = (validationType) => {
     let htmlString = '';
 
     switch (validationType) {

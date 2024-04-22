@@ -1,7 +1,7 @@
 // This entire file is useless, password have to be generated server side. Client side request fails due to CORS error
 // leaving this file here incase we need it later, e.g. we change API
 
-let errorMessage = () => {
+let randomPasswordErrorMessage = () => {
     let messageBox = document.getElementById('randomPassword')
 
     messageBox.textContent = 'PasswordWolf currently unavailable. Try refreshing or come back later.'
@@ -20,7 +20,7 @@ let getPasswordList = (numberOfPasswords) => {
     })
         .then(res => res.json())
         .catch(err => {
-            errorMessage()
+            randomPasswordErrorMessage()
         })
 }
 
@@ -50,7 +50,7 @@ let displayPassword = async () => {
     if(password !== undefined) {
         messageBox.textContent = password
     } else {
-        errorMessage()
+        randomPasswordErrorMessage()
     }
 }
 
