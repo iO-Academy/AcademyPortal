@@ -84,7 +84,7 @@ class CourseModel
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
         LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
-        WHERE `c`.`start_date` <= NOW() AND `c`.`end_date` >= NOW()  AND `course_categories`.`category` LIKE :category
+        WHERE `c`.`start_date` <= NOW() AND `c`.`end_date` >= NOW() AND `course_categories`.`category` LIKE :category
         GROUP BY `c`.`id`;';
 
         $query = $this->db->prepare($sql);
@@ -111,7 +111,7 @@ class CourseModel
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
         LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
-        WHERE `c`.`end_date` < NOW()   AND `course_categories`.`category` LIKE :category
+        WHERE `c`.`end_date` < NOW() AND `course_categories`.`category` LIKE :category
         GROUP BY `c`.`id`
         ORDER BY `endDate` DESC;';
         $query = $this->db->prepare($sql);
