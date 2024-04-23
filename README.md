@@ -252,21 +252,16 @@ POST
     - if course could not be added
         - `{"success": false, "msg": "Unexpected error."}`
 
-**/editTeams / updateTeams**
+**/updateTeams**  
+
 POST
-- When the user is logged in, invoke gets data from new applicant form and passes into insertNewApplicantToDb function for inserting into database.
+- When the user is logged in and selects 'save teams' invoke gets data from new applicant form and passes into insertNewApplicantToDb function for inserting into database.
 - Returns success true / false
   - If successful it returns 'success true' with message 'Team successfully saved' 
-  - If trainer name is missing it returns success => false with message 'Missing trainer names',
+  - If trainer name is missing it returns success => false with message 'Missing trainer names'
 
+**/getCourses**  
 
-**/getHiringPartnersByID**
-GET
-- Function to get all hiring partners associated with an event 
-- Returns JSON of the hiring partners associated with an event
-- If not successful it will return `Database error`
-
-**/getCourses**
 GET
 - Calls a method to get all the courses scheduled and send JSON back with the info
 - Returns success true / false
@@ -276,35 +271,36 @@ GET
     - `{"success": true, "message": "No courses scheduled"}`
   - If the data is retrieved successfully it will return an array with the courses scheduled
 
-**/Routes that will need to be documented in the future**
-/api/getStudents
-/api/getApplicant/{id}
-/api/editApplicant
-/api/updateStudentProfile
-/api/getEvents
-/api/getAssessmentApplicants
-/api/addEvent
-/api/addContact
-/api/addHiringPartnerToEvent
-/api/deleteHiringPartnerFromEvent
-/api/getStages
-/api/getGender
-/api/editStageOption
-/api/deleteStageOption
-/api/addStageOption
-/api/deleteAllStageOptions
-/api/getNextStageOptions/{stageid}
-/api/progressApplicantStage
-/api/addCategory
-/api/deleteCategory
-/api/csvUpload
-/api/getEventCategories
-/api/addTrainer
-/api/deleteTrainer
-/api/sendEmail
-/api/lockApplicantField
-/api/getAptitudeScore
-/api/getCalendarEvents
+**/Routes that will need to be documented in the future**  
+
+/api/getStudents  
+/api/getApplicant/{id}  
+/api/editApplicant  
+/api/updateStudentProfile  
+/api/getEvents  
+/api/getAssessmentApplicants  
+/api/addEvent  
+/api/addContact  
+/api/addHiringPartnerToEvent  
+/api/deleteHiringPartnerFromEvent  
+/api/getStages  
+/api/getGender  
+/api/editStageOption  
+/api/deleteStageOption  
+/api/addStageOption  
+/api/deleteAllStageOptions  
+/api/getNextStageOptions/{stageid}  
+/api/progressApplicantStage  
+/api/addCategory  
+/api/deleteCategory  
+/api/csvUpload  
+/api/getEventCategories  
+/api/addTrainer  
+/api/deleteTrainer  
+/api/sendEmail  
+/api/lockApplicantField  
+/api/getAptitudeScore  
+/api/getCalendarEvents  
 
 
 
