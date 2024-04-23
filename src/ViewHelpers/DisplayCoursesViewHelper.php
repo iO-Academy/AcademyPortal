@@ -41,6 +41,7 @@ class DisplayCoursesViewHelper
                 '</span>' . ' ' . '<span class="total-places badge">Total: '
                 . $course->getTotalAvailableSpaces() .
                 '</span>
+                    <td><button class="btn btn-danger delete deleteBtn">Delete</button></td>
                     </td>
                 </tr>';
         }
