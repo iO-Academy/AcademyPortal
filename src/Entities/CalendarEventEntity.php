@@ -25,7 +25,7 @@ class CalendarEventEntity implements \JsonSerializable
             'categoryName' => $this->categoryName,
             'start' => $this->start !== null ? $this->date . 'T' . $this->start : $this->date . 'T09:00:00',
             'end' => $this->start !== null ? $this->date . 'T' . $this->end : null,
-            'allDay' => $this->start === null ? true : false
+            'allDay' => $this->start === null ? true : false,
         ];
     }
 }
