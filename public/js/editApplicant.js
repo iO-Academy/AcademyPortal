@@ -45,3 +45,6 @@ function aptitudeScoreButtonClick(e)
                 showAlertforApptitudeButton('#aptitudeScoreError')
         });
 }
+
+
+
