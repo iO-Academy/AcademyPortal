@@ -255,15 +255,21 @@ POST
 **/updateTeams**  
 
 POST
-- When the user is logged in and selects 'save teams' invoke gets data from new applicant form and passes into insertNewApplicantToDb function for inserting into database.
-- Returns success true / false
-  - If successful it returns 'success true' with message 'Team successfully saved' 
-  - If trainer name is missing it returns success => false with message 'Missing trainer names'
+- When the user is logged in and selects 'save teams' the new team is inserting into database.
+- If successful the following is returned:
+
+```
+  {success: true, message: "Teams successfully saved.", data: {team1: "11", team2: "12"}}
+```
+- If trainer name is missing it returns the following
+```
+{success: false, message: "Missing trainer names", data: []}
+```
 
 **/getCourses**  
 
 GET
-- Calls a method to get all the courses scheduled and send JSON back with the info
+- Gets all scheduled courses
 - Returns success true / false
   - If the course can't be retrieved
     - `{"success": false, "message": "Something went wrong."}`
