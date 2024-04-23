@@ -1,0 +1,39 @@
+
+<!-- Modal -->
+<div class="modal fade" id="deleteCourseModal" tabindex="-1" role="dialog" aria-labelledby="deleteCourseModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="deleteCourseModal">Delete Course Options</h5>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div id="currentStageContainer" class="col-xs-4" >
+                            <h4 id="currentStageNumber"></h4>
+                            <h4 id="currentStageTitle"></h4>
+                            <p id="currentOption"></p>
+                        </div>
+                        <div class="col-xs-2 centralArrow">
+                            <i id="arrow-right" class="glyphicon glyphicon-arrow-right"></i>
+                        </div>
+                        <div id="nextStageContainer" class="col-xs-4">
+                            <h4 id="nextStageNumber" ></h4>
+                            <h4 id="nextStageTitle"></h4>
+                            <select name="next-stage-options" id="next-stage-options"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-xs-2 col-xs-offset-8">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                <div id="nextStageSaveButtonContainer" class="col-xs-2"></div>
+            </div>
+        </div>
+    </div>
+</div>
