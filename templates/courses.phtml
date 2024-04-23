@@ -7,6 +7,7 @@
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Courses');
     ?>
     <script defer src="./js/toggleCompletedCourses.js"></script>
+    <script defer src="./js/deleteCourseModal.js"></script>
 </head>
 
 <body>
@@ -61,9 +62,13 @@
                 echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($ongoingCourses, $trainers);
                 echo \Portal\ViewHelpers\DisplayCoursesViewHelper::FUTURE_COURSES_HEADING_TABLE;
                 echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayFutureCourses($futureCourses, $trainers);
+
                 ?>
             </tbody>
         </table>
+        <?php
+        require('partials/deleteCoursesModal.phtml');
+        ?>
     </div>
     <?php
     require 'partials/layout/footer.phtml';
