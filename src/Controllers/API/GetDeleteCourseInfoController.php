@@ -18,18 +18,20 @@ class GetDeleteCourseInfoController extends Controller
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $data = [
-        'success' => false,
-        'message' => 'Something went wrong.',
-        'data' => []
-    ];
+            'success' => false,
+            'message' => 'Something went wrong.',
+            'applicants' => [],
+            'availableCourses' => []
+        ];
         $statusCode = 200;
 
         try {
-            $data['data'] = $this->courseModel->getApplicantsByCourse($args['id']);
+            $data['applicants'] = $this->courseModel->getApplicantsByCourse($args['id']);
+            $data['availableCourses'] = $this->courseModel->getAllCoursesExceptOne($args['id']);
             $data['message'] = 'There are no applicants on this course';
             $data['success'] = true;
 
-            if (count($data['data']) > 0) {
+            if (count($data['applicants']) > 0) {
                 $data['message'] = '';
             }
         } catch (\PDOException $exception) {

@@ -236,4 +236,11 @@ class CourseModel
         $query->execute();
         return $query->fetchAll();
     }
+    public function getAllCoursesExceptOne(int $courseId): array
+    {
+        $query = $this->db->prepare("SELECT `name`, `start_date` FROM `courses` WHERE `deleted` = 0 AND `id` != :id" );
+        $query->bindParam(':id', $courseId);
+        $query->execute();
+        return $query->fetchAll();
+    }
 }
