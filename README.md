@@ -251,3 +251,62 @@ POST
         - `{"success": true, "message": "New Course successfully saved."}`
     - if course could not be added
         - `{"success": false, "msg": "Unexpected error."}`
+
+**/updateTeams**  
+
+POST
+- When the user is logged in and selects 'save teams' the new team is inserting into database.
+- If successful the following is returned:
+
+```
+  {success: true, message: "Teams successfully saved.", data: {team1: "11", team2: "12"}}
+```
+- If trainer name is missing it returns the following
+```
+{success: false, message: "Missing trainer names", data: []}
+```
+
+**/getCourses**  
+
+GET
+- Gets all scheduled courses
+- Returns success true / false
+  - If the course can't be retrieved
+    - `{"success": false, "message": "Something went wrong."}`
+  - If there are no courses scheduled but the data is retrieved successfully 
+    - `{"success": true, "message": "No courses scheduled"}`
+  - If the data is retrieved successfully it will return an array with the courses scheduled
+
+**/Routes that will need to be documented in the future**  
+
+/api/getStudents  
+/api/getApplicant/{id}  
+/api/editApplicant  
+/api/updateStudentProfile  
+/api/getEvents  
+/api/getAssessmentApplicants  
+/api/addEvent  
+/api/addContact  
+/api/addHiringPartnerToEvent  
+/api/deleteHiringPartnerFromEvent  
+/api/getStages  
+/api/getGender  
+/api/editStageOption  
+/api/deleteStageOption  
+/api/addStageOption  
+/api/deleteAllStageOptions  
+/api/getNextStageOptions/{stageid}  
+/api/progressApplicantStage  
+/api/addCategory  
+/api/deleteCategory  
+/api/csvUpload  
+/api/getEventCategories  
+/api/addTrainer  
+/api/deleteTrainer  
+/api/sendEmail  
+/api/lockApplicantField  
+/api/getAptitudeScore  
+/api/getCalendarEvents  
+
+
+
