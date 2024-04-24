@@ -2,6 +2,7 @@
 
 namespace Portal\Models;
 
+use mysql_xdevapi\Warning;
 use PDO;
 use Portal\Entities\CalendarCourseEntity;
 use Portal\Entities\CourseEntity;

@@ -10,27 +10,24 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
   },
 });
 
+const calendarConverter= ($calendarItem) => {
+  $calendarItem.className = $calendarItem.categoryName
+      .toLowerCase()
+      .split(" ")
+      .join("");
+  calendar.addEvent($calendarItem);
+}
+
 (async () => {
   const response = await fetch("/api/getAllCalendarData");
   const calendarEvents = await response.json();
 
-  calendarEvents['eventData'].map((calendarEvent) => {
-    calendarEvent.className = calendarEvent.categoryName
-        .toLowerCase()
-        .split(" ")
-        .join("");
-    calendar.addEvent(calendarEvent);
-  });
+  calendarEvents['eventData'].map(calendarConverter);
 
   calendarEvents['courseData'].map((calendarEvent) => {
-    calendarEvent.map((course) => {
-      course.className = course.categoryName
-        .toLowerCase()
-        .split(" ")
-        .join("");
-      calendar.addEvent(course)
-    })
+    calendarEvent.map(calendarConverter)
   });
 
   calendar.render();
 })();
+

@@ -9,10 +9,10 @@ class CourseSplitterHelper
     /**
      * @throws \Exception
      */
-    public static function splitCourses($start, $end, string $courseName, string $categoryName): array
+    public static function splitCourses(string $startDate, string $endDate, string $courseName, string $categoryName): array
     {
-        $currentStart = new DateTime($start);
-        $end = new DateTime($end);
+        $currentStart = new DateTime($startDate);
+        $end = new DateTime($endDate);
         $courses = [];
 
         while ($currentStart <= $end) {
@@ -29,10 +29,6 @@ class CourseSplitterHelper
             if ($currentStart->format('N') < 5) {
                 $daysToAdd = 5 - $currentStart->format('N'); // N is 1-7, Monday (1) to Sunday (7)
                 $currentEnd->modify("+$daysToAdd days");
-            } else {
-                // If it's Friday, end date is the current day
-                $currentEnd = clone $currentStart;
-                $currentEnd->setTime(23, 59, 59);
             }
 
             // Check if calculated end date is beyond the range's end date
