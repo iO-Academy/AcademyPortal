@@ -1,19 +1,16 @@
 const courseForm = document.querySelector('form');
 const message = document.querySelector('#messages');
-const in_person_checkbox = document.querySelector('#in_person');
-const remote_checkbox = document.querySelector('#remote');
+const in_person_radio = document.querySelector('#in_person');
+const remote_radio = document.querySelector('#remote');
 const in_person_spaces = document.querySelector('#in_person_spaces');
 const remote_spaces = document.querySelector('#remote_spaces');
 const courseCategory = document.querySelector('#courseCategory');
 
-// if (in_person_spaces.classList.contains('hidden') || remote_spaces.classList.contains('hidden')) {
-//
-// }
 
-in_person_checkbox.addEventListener('click', () => {
+in_person_radio.addEventListener('click', () => {
     in_person_spaces.classList.toggle('hidden');
     remote_spaces.classList.toggle('hidden')});
-remote_checkbox.addEventListener('click', () => {
+remote_radio.addEventListener('click', () => {
     in_person_spaces.classList.toggle('hidden');
     remote_spaces.classList.toggle('hidden')});
 
