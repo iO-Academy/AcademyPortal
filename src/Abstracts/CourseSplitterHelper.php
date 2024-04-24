@@ -9,8 +9,7 @@ class CourseSplitterHelper
     /**
      * @throws \Exception
      */
-    public static function splitCourses(string $startDate, string $endDate,
-                                        string $courseName, string $categoryName): array
+    public static function splitCourses($startDate, $endDate, string $courseName, string $categoryName): array
     {
         $currentStart = new DateTime($startDate);
         $end = new DateTime($endDate);
