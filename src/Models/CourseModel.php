@@ -228,4 +228,12 @@ class CourseModel
         $query->bindParam(':id', $deletedCategory);
         return $query->execute();
     }
+    public function getApplicantsByCourse(int $courseId): array
+    {
+        $query = $this->db->prepare("SELECT `name`, applicants.`id` FROM `applicants` INNER JOIN `course_choice` 
+        ON `applicantId` = applicants.`id` WHERE `courseId` = :id");
+        $query->bindParam(':id', $courseId);
+        $query->execute();
+        return $query->fetchAll();
+    }
 }

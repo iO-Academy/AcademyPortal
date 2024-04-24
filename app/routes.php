@@ -30,6 +30,7 @@ use Portal\Controllers\API\GetApplicationFormController;
 use Portal\Controllers\API\GetAssessmentApplicantsController;
 use Portal\Controllers\API\GetCompanyDetailsModalController;
 use Portal\Controllers\API\GetCoursesController;
+use Portal\Controllers\API\GetDeleteCourseInfoController;
 use Portal\Controllers\API\GetEventCategoriesController;
 use Portal\Controllers\API\GetEventsController;
 use Portal\Controllers\API\GetGenderController;
@@ -147,4 +148,5 @@ return function (App $app) {
     $app->get('/api/lockApplicantField', LockApplicantFieldController::class);
     $app->get('/api/getAptitudeScore', GetApplicantAptitudeController::class);
     $app->get('/api/getCalendarEvents', GetAllCalendarEventsController::class);
+    $app->get('/api/deleteCourse/{id}', GetDeleteCourseInfoController::class);
 };
