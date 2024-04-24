@@ -40,6 +40,11 @@ class DisplayCoursesViewHelper
                 . $course->getTotalAvailableSpaces() .
                 '</span>
                     </td>
+                    <td><a href="/"
+                           type="button" 
+                           class="btn btn-primary edit">
+                           Edit
+                        </a></td>
                 </tr>';
         }
         return $result;
