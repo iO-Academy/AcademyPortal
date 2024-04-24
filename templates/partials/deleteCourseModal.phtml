@@ -7,30 +7,27 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h5 class="modal-title" id="deleteCourseModal">Delete Course Options</h5>
+                <h4 class="modal-title" id="deleteCourseModal">Delete Course Options</h4>
             </div>
             <div class="modal-body">
-                <div class="container-fluid">
+                <div class="container-fluid" id="deleteCourseInfo">
                     <div class="row">
-                        <div id="currentCourseContainer" class="col-xs-4" >
-                            <h4 id="courseId"></h4>
-                            <h4 id="currentStageTitle"></h4>
-                            <p id="currentOption"></p>
+                        <div id="studentNamesContainer" class="col-xs-4">
+                            <h4>Name</h4>
                         </div>
-                        <div class="col-xs-2 centralArrow">
-                            <i id="arrow-right" class="glyphicon glyphicon-arrow-right"></i>
+                        <div id="reassignContainer" class="col-xs-4">
+                            <h4>Reassign Student</h4>
                         </div>
-                        <div id="nextStageContainer" class="col-xs-4">
-                            <h4 id="nextStageNumber" ></h4>
-                            <h4 id="nextStageTitle"></h4>
-                            <select name="next-stage-options" id="next-stage-options"></select>
-                        </div>
+                    </div>
+                    <div class="reassignContainer">
+
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <div class="col-xs-2 col-xs-offset-8">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="d-flex flex-column">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
                 <div id="nextStageSaveButtonContainer" class="col-xs-2"></div>
             </div>
