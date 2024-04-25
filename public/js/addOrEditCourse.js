@@ -44,9 +44,13 @@ courseForm.addEventListener('submit', e => {
             }
         }
     });
+    // the add and edit course forms each have a hidden input which is constant, add produces a value of 1 and edit
+    // produces a value of 0, this ternary checks whether said value is 1 or 0, thus deciding which controller to
+    // redirect to.
+    let route = data['editOrAdd'] == 0 ? '/api/editCourse': '/api/addCourse';
     if (formIsValid) {
         // send it!
-        fetch('./api/addCourse', {
+        fetch(route, {
             credentials: 'same-origin',
             headers: {
                 'Accept': 'application/json',
@@ -115,7 +119,9 @@ let getCompletedFormData = () => {
         remote: courseForm.elements['remote'].checked ? 1 : 0,
         in_person_spaces: courseForm.elements['in_person'].checked ? courseForm.elements['in_person_spaces'].value : null,
         remote_spaces: courseForm.elements['remote'].checked ? courseForm.elements['remote_spaces'].value : null,
-        courseCategory: courseForm.elements['courseCategory'].value
+        courseCategory: courseForm.elements['courseCategory'].value,
+        editOrAdd: courseForm.elements['editOrAdd'].value,
+        id: courseForm.elements['id'].value
     };
 }
 
@@ -156,4 +162,3 @@ let validateCourseInputs = (data) => {
     }
     return validate;
 };
-

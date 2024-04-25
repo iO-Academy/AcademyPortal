@@ -23,7 +23,7 @@
             <label for='company-size'>Company Size:</label>
             <select name='company-size' id='company-size' class='submit-hiring-partner form-control'>
                 <option value=''>Please select a company size...</option>
-                <?php echo \Portal\ViewHelpers\CompanySizeViewHelper::companySizeDropdown($data); ?>
+                <?= \Portal\ViewHelpers\CompanySizeViewHelper::companySizeDropdown($data); ?>
             </select>
             <div id="companySizeError" class="alert hidden formItem_alert"></div>
 

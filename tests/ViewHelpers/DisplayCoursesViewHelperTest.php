@@ -29,6 +29,11 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
+                    <td><a href="/editCourse/1"
+                           type="button" 
+                           class="btn btn-primary edit">
+                           Edit
+                        </a></td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -67,6 +72,11 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
+                    <td><a href="/editCourse/1"
+                           type="button" 
+                           class="btn btn-primary edit">
+                           Edit
+                        </a></td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -108,6 +118,11 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
+                    <td><a href="/editCourse/1"
+                           type="button" 
+                           class="btn btn-primary edit">
+                           Edit
+                        </a></td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -146,6 +161,11 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
+                    <td><a href="/editCourse/1"
+                           type="button" 
+                           class="btn btn-primary edit">
+                           Edit
+                        </a></td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -187,6 +207,11 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
+                    <td><a href="/editCourse/1"
+                           type="button" 
+                           class="btn btn-primary edit">
+                           Edit
+                        </a></td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);

@@ -11,7 +11,9 @@ class CourseEntity
     protected ?string $notes;
     protected ?bool $inPerson;
     protected ?bool $remote;
-
+    protected ?int $inPersonSpaces;
+    protected ?int $remoteSpaces;
+    protected ?int $categoryId;
     /**
      * @return int
      */
