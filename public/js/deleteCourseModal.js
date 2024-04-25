@@ -2,23 +2,24 @@ let deleteButtons = document.querySelectorAll('.btnDeleteCourse');
 for (let db of deleteButtons) {
     db.addEventListener("click", () => {
         const courseId = db.getAttribute('data-courseId');
-        displayDetails('./api/deleteCourse/' + courseId);
+        displayDetails('./api/deleteCourse/' + courseId, courseId);
     });
 }
 
-function displayDetails(url) {
+function displayDetails(url, courseId) {
     fetch(url).then(
         response => {
             return response.json();
         }).then(data => {
             let studentNamesContainer = document.querySelector('#studentNamesContainer');
-            let reassignContainer = document.querySelector('#reassignContainer');
             studentNamesContainer.innerHTML = '<h4>Name</h4>';
-            reassignContainer.innerHTML = '<h4>Reassign Student</h4>';
+            let DeleteCoursesForm = document.querySelector('#DeleteCoursesForm');
+            DeleteCoursesForm.innerHTML='';
+            DeleteCoursesForm.action="api/deleteCourse/" + courseId;
             let prettyCourses = makeCoursesPretty(data['availableCourses'])
             for (let student of data['applicants']) {
                 generateStudents(student['name'], studentNamesContainer);
-                generateOptions(prettyCourses, reassignContainer);
+                generateOptions(prettyCourses, DeleteCoursesForm, student['id'], data['availableCourses']);
             }
         }
     )
@@ -39,13 +40,21 @@ function makeCoursesPretty(courses) {
     return prettyCoursesArray;
 }
 
-function generateOptions(courses, reassignContainer) {
+function generateOptions(prettyCourses, DeleteCoursesForm, studentId, courses) {
     let optionSelect = document.createElement('select');
-    for (let course of courses) {
+    optionSelect.name = studentId;
+    optionSelect.form = DeleteCoursesForm;
+    optionSelect.classList.add('individualCourses');
+    let unassignStudent = document.createElement('option');
+    unassignStudent.innerText = 'Unassign Student';
+    unassignStudent.value = '0';
+    optionSelect.appendChild(unassignStudent);
+    for (let i = 0; i < courses.length; i ++) {
         let option = document.createElement('option');
-        option.innerText = course;
+        option.innerText = prettyCourses[i];
+        option.value = courses[i]['id'];
         optionSelect.appendChild(option);
     }
-    reassignContainer.appendChild(optionSelect)
+    DeleteCoursesForm.appendChild(optionSelect)
 }
 

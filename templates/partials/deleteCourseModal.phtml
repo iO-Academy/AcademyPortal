@@ -13,16 +13,16 @@
                 <div class="container-fluid" id="deleteCourseInfo">
                     <div class="row">
                         <div id="studentNamesContainer" class="col-xs-4"></div>
-                        <div id="reassignContainer" class="col-xs-4"></div>
-                    </div>
-                    <div class="reassignContainer">
-
+                        <div id="reassignContainer" class="col-xs-4">
+                            <h4>Reassign Student</h4>
+                            <form id="DeleteCoursesForm" method="post"></form>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <div class="d-flex flex-column">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                    <button type="submit" class="btn btn-danger" value="Delete" form='DeleteCoursesForm'>DELETE</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
                 <div id="nextStageSaveButtonContainer" class="col-xs-2"></div>

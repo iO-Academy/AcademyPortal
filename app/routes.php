@@ -16,6 +16,7 @@ use Portal\Controllers\API\AddUserController;
 use Portal\Controllers\API\CsvController;
 use Portal\Controllers\API\DeleteAllStageOptionsController;
 use Portal\Controllers\API\DeleteApplicantController;
+use Portal\Controllers\API\DeleteCourseController;
 use Portal\Controllers\API\DeleteHiringPartnerFromEventController;
 use Portal\Controllers\API\DeleteStageController;
 use Portal\Controllers\API\DeleteStageOptionController;
@@ -148,5 +149,6 @@ return function (App $app) {
     $app->get('/api/lockApplicantField', LockApplicantFieldController::class);
     $app->get('/api/getAptitudeScore', GetApplicantAptitudeController::class);
     $app->get('/api/getCalendarEvents', GetAllCalendarEventsController::class);
+    $app->post('/api/deleteCourse/{id}', DeleteCourseController::class);
     $app->get('/api/deleteCourse/{id}', GetDeleteCourseInfoController::class);
 };
