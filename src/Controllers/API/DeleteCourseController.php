@@ -23,9 +23,13 @@ class DeleteCourseController extends Controller
         $students = $request->getParsedBody();
         $courseToDelete = $args['id'];
         foreach ($students as $studentId => $value) {
-            $this->courseModel->reassignApplicantsToNewCourse(intval($value), intval($studentId));
+            if ($value === '0') {
+                $this->courseModel->unassignApplicantFromCourse(intval($value), intval($studentId));
+            } else {
+                $this->courseModel->reassignApplicantsToNewCourse(intval($value), intval($studentId));
+            }
         }
         $this->courseModel->deleteCourse($courseToDelete);
-        return $response->withHeader('Location', '/courses')->withStatus(301);
+        return $response->withHeader('Location', '/courses');
     }
 }

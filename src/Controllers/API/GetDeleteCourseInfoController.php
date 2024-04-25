@@ -39,6 +39,4 @@ class GetDeleteCourseInfoController extends Controller
         }
         return $this->respondWithJson($response, $data, $statusCode);
     }
-
-
 }

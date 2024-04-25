@@ -238,7 +238,8 @@ class CourseModel
     }
     public function getAllCoursesExceptOne(int $courseId): array
     {
-        $query = $this->db->prepare("SELECT `name`, `start_date`, `id` FROM `courses` WHERE `deleted` = 0 AND `id` != :id" );
+        $query = $this->db->prepare("SELECT `name`, `start_date`, `id` FROM `courses` WHERE `deleted` = 0
+                                    AND `id` != :id");
         $query->bindParam(':id', $courseId);
         $query->execute();
         return $query->fetchAll();
@@ -248,6 +249,15 @@ class CourseModel
     {
         $query = $this->db->prepare("UPDATE `course_choice` SET `courseId` = :courseId
                                     WHERE `applicantId` = :applicantId");
+        $query->bindParam(':courseId', $courseId);
+        $query->bindParam(':applicantId', $applicantId);
+        return $query->execute();
+    }
+
+    public function unassignApplicantFromCourse(int $courseId, int $applicantId): bool
+    {
+        $query = $this->db->prepare("DELETE FROM `course_choice` WHERE `courseId` = :courseId
+                                    AND `applicantId` = :applicantId");
         $query->bindParam(':courseId', $courseId);
         $query->bindParam(':applicantId', $applicantId);
         return $query->execute();

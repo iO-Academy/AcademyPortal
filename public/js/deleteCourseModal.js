@@ -14,8 +14,8 @@ function displayDetails(url, courseId) {
             let studentNamesContainer = document.querySelector('#studentNamesContainer');
             studentNamesContainer.innerHTML = '<h4>Name</h4>';
             let DeleteCoursesForm = document.querySelector('#DeleteCoursesForm');
-            DeleteCoursesForm.innerHTML='';
-            DeleteCoursesForm.action="api/deleteCourse/" + courseId;
+            DeleteCoursesForm.innerHTML = '';
+            DeleteCoursesForm.action = "api/deleteCourse/" + courseId;
             let prettyCourses = makeCoursesPretty(data['availableCourses'])
             for (let student of data['applicants']) {
                 generateStudents(student['name'], studentNamesContainer);
