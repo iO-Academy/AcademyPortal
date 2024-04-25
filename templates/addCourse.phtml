@@ -14,7 +14,6 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
     ?>
     <script defer src="./js/utils.js"></script>
     <script defer src="./js/validations.js"></script>
-    <script defer src='./js/addCourse.js'></script>
 </head>
 
 <body>
@@ -58,6 +57,7 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
         </div>
 
         <div id="formGroupError" class="alert hidden formItem_alert"></div>
+        <input type="hidden" value="1" name="editOrAdd">
         <input type="submit" class="btn btn-success" />
     </form>
     <div id="messages" class="alert"></div>

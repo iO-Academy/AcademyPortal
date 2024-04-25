@@ -34,6 +34,26 @@ class CourseModel
         return $query->fetchAll();
     }
 
+    public function getCourseByID($id): array
+    {
+        $sql = 'SELECT `id`,
+        `start_date` as `startDate`,
+        `end_date` as `endDate`,
+        `name`,
+        `notes`,
+        `in_person` as `inPerson`,
+        `remote`,
+        `in_person_spaces` as `inPersonSpaces`,
+        `remote_spaces` as `remoteSpaces`,
+        `category_id` as `categoryId`
+        FROM `courses` WHERE `id` = :id';
+        $query = $this->db->prepare($sql);
+        $query->bindParam('id', $id);
+        $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
     /**
      * Gets all courses from the database that have a start date in the future
      */
@@ -222,6 +242,36 @@ class CourseModel
                 WHERE `id` = :id;';
         $query = $this->db->prepare($sql);
         $query->bindParam(':id', $deletedCategory);
+        return $query->execute();
+    }
+
+    public function updateCourse(array $course): bool
+    {
+        $query = $this->db->prepare(
+            "UPDATE `courses` 
+                SET
+                    `start_date` = :start_date,
+                    `end_date` = :end_date,
+                    `name` = :name,
+                    `notes` = :notes,
+                    `in_person` = :in_person,
+                    `remote` = :remote,
+                    `in_person_spaces` = :in_person_spaces,
+                    `remote_spaces` = :remote_spaces,
+                    `category_id` = :category_id
+                WHERE `id` = :id"
+        );
+
+        $query->bindValue(':start_date', $course['startDate']);
+        $query->bindValue(':end_date', $course['endDate']);
+        $query->bindValue(':name', $course['courseName']);
+        $query->bindValue(':notes', $course['notes']);
+        $query->bindValue(':in_person', $course['in_person']);
+        $query->bindValue(':remote', $course['remote']);
+        $query->bindValue(':in_person_spaces', $course['in_person_spaces']);
+        $query->bindValue(':remote_spaces', $course['remote_spaces']);
+        $query->bindValue(':category_id', $course['courseCategory']);
+        $query->bindValue(':id', $course['id']);
         return $query->execute();
     }
 }

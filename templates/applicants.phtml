@@ -60,12 +60,12 @@
                 </ul>
 
                 <div class="tab-content">
-                    <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayTab($data, 'paying', $sort); ?>
-                    <?php echo \Portal\ViewHelpers\DisplayApplicantViewHelper::displayTab($data, 'apprentice', $sort); ?>
+                    <?= \Portal\ViewHelpers\DisplayApplicantViewHelper::displayTab($data, 'paying', $sort); ?>
+                    <?= \Portal\ViewHelpers\DisplayApplicantViewHelper::displayTab($data, 'apprentice', $sort); ?>
                 </div>
 
             </form>
-            <?php echo \Portal\ViewHelpers\PaginationViewHelper::pagination($page, $count);?>
+            <?= \Portal\ViewHelpers\PaginationViewHelper::pagination($page, $count);?>
         </div>
 
         <!-- Modal -->
