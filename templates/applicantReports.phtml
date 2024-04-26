@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Applicants');
+    ?>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="./js/populateDropdowns.js" defer></script>
+    <script defer src="./js/applicantModal.js" type="module"></script>
+    <script defer src="./js/deleteApplicant.js"></script>
+    <script defer src="./js/displayApplicants.js"></script>
+    <script defer src="./js/nextStageModal.js"></script>
+</head>
+<body> 
+<?php require 'partials/layout/header.phtml'; ?>
+
+<?php require 'partials/layout/nav.phtml'; ?>
+
+    <div class="row">
+        <div class="col-xs-12 registeredApplicants">
+            <h1>Applicant Reports</h1>
+            <form class="arrowForm" id="sortFilterApplicants" method="get">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="pull-right">
+                        <label for="genders">
+                            Select Gender
+                            <select id="genders" class="submitApplicant form-control" name="genders">
+                                <option value="all">All</option>
+                            </select>
+                        </label>
+                    </li>
+                    <li class="pull-right">
+                        <label for="backgrounds">
+                            Select Background
+                            <select id="backgrounds" class="submitApplicant form-control" name="backgrounds">
+                                <option value="all">All</option>
+                            </select>
+                        </label>
+                    </li>
+                    <li class="pull-right">
+                        <label for="heardAbout">
+                            Heard About
+                            <select id="heardAbout" class="submitApplicant form-control" name="heardAbout">
+                                <option value="all">All</option>
+                            </select>
+                        </label>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <?php echo \Portal\ViewHelpers\ApplicantReportViewHelper::displayTab($data, 'paying', $sort); ?>
+                    <?php echo \Portal\ViewHelpers\ApplicantReportViewHelper::displayTab($data, 'apprentice', $sort); ?>
+                </div>
+
+            </form>
+            <?php echo \Portal\ViewHelpers\PaginationViewHelper::pagination($page, $count);?>
+        </div>
+
+        <!-- Modal -->
+        <?php require('partials/applicantInfoModal.phtml'); ?>
+        <?php require('partials/nextStageModal.phtml'); ?>
+        <?php require('partials/applicantPasswordModal.phtml'); ?>
+    </div>
+
+<?php require 'partials/layout/footer.phtml'; ?>
+
+</body>
+</html>

@@ -63,6 +63,7 @@ use Portal\Controllers\FrontEnd\HiringPartnerPageController;
 use Portal\Controllers\FrontEnd\HomePageController;
 use Portal\Controllers\FrontEnd\PastEventsPageController;
 use Portal\Controllers\FrontEnd\RegisterPageController;
+use Portal\Controllers\FrontEnd\ReportsPageController;
 use Portal\Controllers\FrontEnd\StagesPageController;
 use Portal\Controllers\FrontEnd\StudentApplicationFormPageController;
 use Portal\Controllers\FrontEnd\StudentProfilePageController;
@@ -102,6 +103,7 @@ return function (App $app) {
     $app->get('/trainers', TrainersPageController::class);
     $app->get('/addTrainer', AddTrainerPageController::class);
     $app->get('/calendar', CalendarPageController::class);
+    $app->get('/reports', ReportsPageController::class);
 
     //API
     $app->get('/api/getStudents', GetStudentsController::class);
