@@ -21,7 +21,7 @@
     <section class="stagesDropdown">
         <label for="stageTitle">Choose Applicant's Stage: </label>
         <select class="submitApplicant" name="stageId" id="stageTitle">
-            <?php echo \Portal\ViewHelpers\ApplicantFormViewHelper::stagesDropdown
+            <?= \Portal\ViewHelpers\ApplicantFormViewHelper::stagesDropdown
             ($data['stages'], $data['stageOptions'], $data['currentStage'], $data['currentOption']); ?>
         </select>
     </section>
@@ -36,21 +36,21 @@
             <label for="name">Name</label>
             <div id="nameError" class="alert hidden formItem_alert"></div>
             <input id="name" name="name" class="submitApplicant form-control" type="text"
-                   placeholder="name" value="<?php echo $applicant->getName(); ?>" required>
+                   placeholder="name" value="<?= $applicant->getName(); ?>" required>
 
             <label for="email">Email</label>
             <div id="emailError" class="alert hidden formItem_alert"></div>
             <input id="email" name="email" class="submitApplicant form-control" type="email"
-                   placeholder="email" value="<?php echo $applicant->getEmail(); ?>" required>
+                   placeholder="email" value="<?= $applicant->getEmail(); ?>" required>
 
             <label for="phone">Phone Number</label>
             <div id="phoneError" class="alert hidden formItem_alert"></div>
             <input id="phone" name="phoneNumber" class="submitApplicant form-control" type="text"
-                   placeholder="phone number" value="<?php echo $applicant->getPhoneNumber(); ?>" required>
+                   placeholder="phone number" value="<?= $applicant->getPhoneNumber(); ?>" required>
 
             <label for="gender">Gender</label>
             <select id="gender" class="submitApplicant form-control" name="gender"
-                    data-selected="<?php echo $applicant->getGenderId(); ?>" required>
+                    data-selected="<?= $applicant->getGenderId(); ?>" required>
             </select>
         </div>
     </section>
@@ -66,60 +66,60 @@
         <div id="application" class="collapse">
             <label>When would you like to join us?</label>
             <div id="cohortError" class="alert hidden formItem_alert"></div>
-            <div id="cohorts" data-dates="<?php echo $applicant->getCohortIds(); ?>"></div>
+            <div id="cohorts" data-dates="<?= $applicant->getCohortIds(); ?>"></div>
 
             <label for="backgroundInfoId">Background Info</label>
             <select id="backgroundInfo" class="submitApplicant form-control" name="backgroundInfoId"
-                    data-selected="<?php echo $applicant->getBackgroundInfoId(); ?>" required></select>
+                    data-selected="<?= $applicant->getBackgroundInfoId(); ?>" required></select>
 
             <label for="why-developer">Why do you want to become a software developer?</label>
             <div id="whyDevError" class="alert hidden formItem_alert"></div>
             <textarea id="why-developer" name="whyDev" class="submitApplicant form-control"
-                      placeholder="Enter here" required><?php echo $applicant->getWhyDev(); ?></textarea>
+                      placeholder="Enter here" required><?= $applicant->getWhyDev(); ?></textarea>
 
             <label for="experience">Please tell us about any relevant coding experience.</label>
             <div id="codeExperienceError" class="alert hidden formItem_alert"></div>
             <textarea id="experience" name="codeExperience" class="submitApplicant form-control"
-                      placeholder="Enter here"><?php echo $applicant->getCodeExperience(); ?></textarea>
+                      placeholder="Enter here"><?= $applicant->getCodeExperience(); ?></textarea>
 
             <label for="hear-about">How did you hear about iO Academy?</label>
             <select id="hear-about" class="submitApplicant form-control" name="hearAboutId"
-                    data-selected="<?php echo $applicant->getHearAboutId(); ?>" required>
+                    data-selected="<?= $applicant->getHearAboutId(); ?>" required>
             </select>
 
             <div class="form-group">
                 <input class="submitApplicant" name="eligible"
-                       type="checkbox"<?php echo $applicant->getEligible() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getEligible() ? " checked" : ""; ?>/>
                 <label for="uk-eligible">I confirm I am eligible to study in the UK.</label>
             </div>
 
             <div class="form-group">
                 <input class="submitApplicant" name="eighteenPlus"
-                       type="checkbox"<?php echo $applicant->getEighteenPlus() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getEighteenPlus() ? " checked" : ""; ?>/>
                 <label for="is-18">I confirm I will be at least 18 years before my chosen cohort*.</label>
             </div>
 
             <div class="form-group">
                 <input class="submitApplicant" name="finance"
-                       type="checkbox"<?php echo $applicant->getFinance() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getFinance() ? " checked" : ""; ?>/>
                 <label for="finance">I would like to apply for interest free finance.</label>
             </div>
 
             <div class="form-group">
                 <input class="submitApplicant" name="apprentice" type="checkbox"
-                    <?php echo $applicant->getApprentice() ? " checked" : ""; ?>/>
+                    <?= $applicant->getApprentice() ? " checked" : ""; ?>/>
                 <label for="apprentice">Apprentice applicant</label>
             </div>
 
             <div class="form-group">
                 <label for="dateTimeAdded">Date/Time of application</label>
                 <input id="dateTimeAdded" name="dateTimeAdded" class="submitApplicant form-control"
-                       type="datetime-local" value="<?php echo $applicant->getDateOfApplicationForRFC3339(); ?>"/>
+                       type="datetime-local" value="<?= $applicant->getDateOfApplicationForRFC3339(); ?>"/>
             </div>
             <label for="notes">Notes</label>
             <div id="notesError" class="alert hidden formItem_alert"></div>
             <textarea id="notes" name="notes" class="submitApplicant form-control"
-                      placeholder="Enter here"><?php echo $applicant->getNotes(); ?></textarea>
+                      placeholder="Enter here"><?= $applicant->getNotes(); ?></textarea>
         </div>
     </section>
 
@@ -140,7 +140,7 @@
 
             <div class="form-group">
                 <input class="submitApplicant" name="tasterAttendance" type="checkbox"
-                    <?php echo $applicant->getTasterAttendance() ? " checked" : ""; ?>/>
+                    <?= $applicant->getTasterAttendance() ? " checked" : ""; ?>/>
                 <label for="tasterAttendance">Did they attend the taster session?</label>
             </div>
         </div>
@@ -160,30 +160,30 @@
                     <input type="checkbox" id="pastAssessmentDays" name="accept" value="yes">
                     Include past assessment days
                 </label>
-                <?php echo \Portal\ViewHelpers\DisplayPastAssessmentDayViewHelper::displayPastAssessmentDays
+                <?= \Portal\ViewHelpers\DisplayPastAssessmentDayViewHelper::displayPastAssessmentDays
                 ($applicant->getAssessmentDay()) ?>
             </p>
 
             <select id="assessmentDay" class="submitApplicant form-control" name="assessmentDay"
-                    data-selected="<?php echo $applicant->getAssessmentDay(); ?>">
+                    data-selected="<?= $applicant->getAssessmentDay(); ?>">
             </select>
 
             <label for="customAssessmentDay">Custom assessment day</label>
             <input id="customAssessmentDay" name="customAssessmentDay" class="submitApplicant form-control"
                    type="date" value="
-                   <?php echo $applicant->getCustomAssessmentDay(); ?>" min="<?php echo date('Y-m-d'); ?>">
+                   <?= $applicant->getCustomAssessmentDay(); ?>" min="<?= date('Y-m-d'); ?>">
 
             <label for="assessmentTime">Assessment time</label>
             <input id="assessmentTime" name="assessmentTime" class="submitApplicant form-control"
-                   type="time" value="<?php echo $applicant->getAssessmentTime(); ?>">
+                   type="time" value="<?= $applicant->getAssessmentTime(); ?>">
 
             <div class="aptitudeSection">
                 <label for="aptitude">Aptitude Score (%)</label>
-                <button id="aptitudeButton" class="btn btn-primary btn-xs getAptitudeScoreButton" data-email="<?php echo $applicant->getEmail(); ?>">Retrieve Score</button>
+                <button id="aptitudeButton" class="btn btn-primary btn-xs getAptitudeScoreButton" data-email="<?= $applicant->getEmail(); ?>">Retrieve Score</button>
             </div>
             <div class="input-group">
                 <input id="aptitude" name="aptitude" class="submitApplicant form-control"
-                       type="number" min="0" max="100" placeholder="0" value="<?php echo $applicant->getAptitude(); ?>">
+                       type="number" min="0" max="100" placeholder="0" value="<?= $applicant->getAptitude(); ?>">
                 <span class="input-group-addon">%</span>
             </div>
             <div class="aptitudeAlert alert alert-danger hidden" id="aptitudeScoreError"></div>
@@ -191,7 +191,7 @@
             <label for="attitude">Attitude Score (%)</label>
             <div class="input-group">
                 <input id="attitude" name="attitude" class="submitApplicant form-control"
-                       type="number" min="0" max="100" placeholder="0" value="<?php echo $applicant->getAttitude(); ?>">
+                       type="number" min="0" max="100" placeholder="0" value="<?= $applicant->getAttitude(); ?>">
                 <span class="input-group-addon">%</span>
             </div>
 
@@ -212,13 +212,13 @@
 
             <div class="form-group">
                 <input class="submitApplicant" name="diversitechInterest"
-                       type="checkbox"<?php echo $applicant->getdiversitechInterest() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getdiversitechInterest() ? " checked" : ""; ?>/>
                 <label for="diversitechInterest">Interested in Diversitech?</label>
             </div>
 
             <label for="chosenCourseId">Chosen Course</label>
             <select id="chosenCourseId" class="submitApplicant form-control" name="chosenCourseId"
-                    data-selected="<?php echo $applicant->getChosenCourseId(); ?>" required>
+                    data-selected="<?= $applicant->getChosenCourseId(); ?>" required>
                 <option value="">Unconfirmed</option>
             </select>
 
@@ -226,11 +226,11 @@
             <div id="assessmentNotesError" class="alert hidden formItem_alert"></div>
             <textarea id="assessmentNotes" name="assessmentNotes" class="submitApplicant form-control"
                       placeholder="Notes about the student assessment">
-                <?php echo $applicant->getAssessmentNotes(); ?></textarea>
+                <?= $applicant->getAssessmentNotes(); ?></textarea>
         </div>
     </section>
 
-    <section class="applicationFormSection student<?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
+    <section class="applicationFormSection student<?= $applicant->isStudentStage() ? "" : " hidden"; ?>">
         <div data-toggle="collapse" class="collapse-header" data-target="#onboarding"
              aria-expanded="false" aria-controls="onboarding">
             <h4>Onboarding Info</h4>
@@ -243,7 +243,7 @@
             <div class="input-group">
                 <span class="input-group-addon">&pound;</span>
                 <input id="fee" name="fee" class="submitApplicant form-control" type="number" placeholder="0" min="0"
-                       max="10000" step="1" value="<?php echo $applicant->getFee() ? $applicant->getFee() : 0; ?>">
+                       max="10000" step="1" value="<?= $applicant->getFee() ? $applicant->getFee() : 0; ?>">
             </div>
 
             <label for="diversitech">Diversitech Amount</label>
@@ -251,7 +251,7 @@
                 <span class="input-group-addon">&pound;</span>
                 <input id="diversitech" name="diversitech" class="submitApplicant form-control" type="number"
                        placeholder="0" min="0" max="10000" step="1"
-                       value="<?php echo $applicant->getDiversitech() ? $applicant->getDiversitech() : 0; ?>">
+                       value="<?= $applicant->getDiversitech() ? $applicant->getDiversitech() : 0; ?>">
             </div>
 
             <label for="edaid">EdAid Amount</label>
@@ -260,8 +260,8 @@
                 <input id="edaid" name="edaid" class="submitApplicant form-control" type="text"
                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                        placeholder="0" min="0" max="10000" step="1"
-                       value="<?php echo $applicant->getEdaid() ? $applicant->getEdaid() : 0; ?>">
-                <span class="input-group-addon"><i class="lockToggle bi <?php echo ($applicant->getEdaidLocked() ? 'bi-lock' : 'bi-unlock');?>" data-field="edaid"></i></span>
+                       value="<?= $applicant->getEdaid() ? $applicant->getEdaid() : 0; ?>">
+                <span class="input-group-addon"><i class="lockToggle bi <?= ($applicant->getEdaidLocked() ? 'bi-lock' : 'bi-unlock');?>" data-field="edaid"></i></span>
             </div>
             <div class="alert formItem_alert alert-danger hidden" id="edaidError">
                 Locking the field not working
@@ -272,89 +272,89 @@
                 <span class="input-group-addon">&pound;</span>
                 <input id="upfront" name="upfront" class="submitApplicant form-control" type="number"
                        placeholder="0" min="0" max="10000" step="1"
-                       value="<?php echo $applicant->getUpfront() ? $applicant->getUpfront() : 0; ?>">
-                <span class="input-group-addon"><i class="lockToggle bi <?php echo ($applicant->getUpfrontLocked() ? 'bi-lock' : 'bi-unlock');?> " data-field="upfront"></i></span>
+                       value="<?= $applicant->getUpfront() ? $applicant->getUpfront() : 0; ?>">
+                <span class="input-group-addon"><i class="lockToggle bi <?= ($applicant->getUpfrontLocked() ? 'bi-lock' : 'bi-unlock');?> " data-field="upfront"></i></span>
             </div>
             <div class="alert formItem_alert alert-danger hidden" id="upfrontError">
                 Locking the field not working
             </div>
             <div class="form-group">
                 <input class="submitApplicant" name="laptop"
-                       type="checkbox"<?php echo $applicant->getLaptop() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getLaptop() ? " checked" : ""; ?>/>
                 <label for="laptop">Academy laptop needed?</label>
-                <i class="lockToggle bi <?php echo ($applicant->getLaptopLocked() ? 'bi-lock' : 'bi-unlock'); ?>" data-field="laptop"></i>
+                <i class="lockToggle bi <?= ($applicant->getLaptopLocked() ? 'bi-lock' : 'bi-unlock'); ?>" data-field="laptop"></i>
             </div>
             <div class="alert formItem_alert alert-danger hidden" id="laptopError">
                 Locking the field not working
             </div>
             <div class="form-group">
                 <input class="submitApplicant" name="laptopDeposit"
-                       type="checkbox"<?php echo $applicant->getLaptopDeposit() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getLaptopDeposit() ? " checked" : ""; ?>/>
                 <label for="laptopDeposit">Laptop deposit paid?</label>
             </div>
 
             <div class="form-group">
                 <input class="submitApplicant" name="signedTerms"
-                       type="checkbox"<?php echo $applicant->getSignedTerms() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getSignedTerms() ? " checked" : ""; ?>/>
                 <label for="signedTerms">Signed Terms & Conditions?</label>
             </div>
 
             <div class="form-group">
                 <input class="submitApplicant" name="contactFormSigned"
-                       type="checkbox"<?php echo $applicant->getContactFormSigned() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getContactFormSigned() ? " checked" : ""; ?>/>
                 <label for="contactFormSigned">Signed Contact Form?</label>
             </div>
 
-            <div class="form-group <?php echo $applicant->getDiversitech() ? '' : ' hidden'; ?>">
+            <div class="form-group <?= $applicant->getDiversitech() ? '' : ' hidden'; ?>">
                 <input id="signedDiversitech" class="submitApplicant" name="signedDiversitech"
-                       type="checkbox"<?php echo $applicant->getSignedDiversitech() ? " checked" : ""; ?> ?>
+                       type="checkbox"<?= $applicant->getSignedDiversitech() ? " checked" : ""; ?> ?>
                 <label for="signedDiversitech">Signed Diversitech Terms & Conditions?</label>
             </div>
 
             <label for="laptopNum">Laptop number</label>
             <input id="laptopNum" class="submitApplicant form-control"
                    name="laptopNum" type="number" min="1" max="99" step="1"
-                   value="<?php echo $applicant->getLaptopNum(); ?>">
+                   value="<?= $applicant->getLaptopNum(); ?>">
 
             <label for="kitCollectionDay">Kit Collection Day</label>
             <input id="kitCollectionDay" class="submitApplicant form-control"
                    name="kitCollectionDay" type="date"
-                   value="<?php echo $applicant->getKitCollectionDay(); ?>">
+                   value="<?= $applicant->getKitCollectionDay(); ?>">
 
             <label for="kitCollectionTime">Kit Collection time</label>
             <input id="kitCollectionTime" name="kitCollectionTime" class="submitApplicant form-control"
-                   type="time" value="<?php echo $applicant->getKitCollectionTime(); ?>">
+                   type="time" value="<?= $applicant->getKitCollectionTime(); ?>">
 
             <label for=kitNum">Kit number</label>
             <input id="kitNum" class="submitApplicant form-control"
                    name="kitNum" type="number" min="1" max="99" step="1"
-                   value="<?php echo $applicant->getKitNum(); ?>">
+                   value="<?= $applicant->getKitNum(); ?>">
 
             <div class="form-group">
                 <input class="submitApplicant" name="inductionEmailSent"
-                       type="checkbox"<?php echo $applicant->getInductionEmailSent() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getInductionEmailSent() ? " checked" : ""; ?>/>
                 <label for="inductionEmailSent">Induction Email Sent?</label>
             </div>
 
             <div class="form-group">
                 <input class="submitApplicant" name="signedNDA"
-                       type="checkbox"<?php echo $applicant->getSignedNDA() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getSignedNDA() ? " checked" : ""; ?>/>
                 <label for="signedNDA">Signed NDA?</label>
             </div>
 
             <div class="form-group">
                 <input class="submitApplicant" name="checkedID"
-                       type="checkbox"<?php echo $applicant->getCheckedID() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getCheckedID() ? " checked" : ""; ?>/>
                 <label for="checkedID">ID Check Completed?</label>
             </div>
 
             <label for="team">Team</label>
             <input id="team" class="submitApplicant form-control"
-                   type="text" readonly value="<?php echo $applicant->getTeam(); ?>">
+                   type="text" readonly value="<?= $applicant->getTeam(); ?>">
         </div>
     </section>
 
-    <section class="applicationFormSection student<?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
+    <section class="applicationFormSection student<?= $applicant->isStudentStage() ? "" : " hidden"; ?>">
         <div data-toggle="collapse" class="collapse-header" data-target="#dataProtection"
              aria-expanded="false" aria-controls="dataProtection">
             <h4>Data Protection Permissions</h4>
@@ -364,33 +364,33 @@
         <div id="dataProtection" class="collapse">
             <div class="form-group">
                 <input class="submitApplicant" name="dataProtectionName"
-                       type="checkbox"<?php echo $applicant->getDataProtectionName() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getDataProtectionName() ? " checked" : ""; ?>/>
                 <label for="dataProtectionName">Name?</label>
             </div>
             <div class="form-group">
                 <input class="submitApplicant" name="dataProtectionPhoto"
-                       type="checkbox"<?php echo $applicant->getDataProtectionPhoto() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getDataProtectionPhoto() ? " checked" : ""; ?>/>
                 <label for="dataProtectionPhoto">Photo?</label>
             </div>
             <div class="form-group">
                 <input class="submitApplicant" name="dataProtectionTestimonial"
-                       type="checkbox"<?php echo $applicant->getDataProtectionTestimonial() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getDataProtectionTestimonial() ? " checked" : ""; ?>/>
                 <label for="dataProtectionTestimonial">Testimonial?</label>
             </div>
             <div class="form-group">
                 <input class="submitApplicant" name="dataProtectionBio"
-                       type="checkbox"<?php echo $applicant->getDataProtectionBio() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getDataProtectionBio() ? " checked" : ""; ?>/>
                 <label for="dataProtectionBio">Bio?</label>
             </div>
             <div class="form-group">
                 <input class="submitApplicant" name="dataProtectionVideo"
-                       type="checkbox"<?php echo $applicant->getDataProtectionVideo() ? " checked" : ""; ?>/>
+                       type="checkbox"<?= $applicant->getDataProtectionVideo() ? " checked" : ""; ?>/>
                 <label for="dataProtectionVideo">Video?</label>
             </div>
         </div>
     </section>
 
-    <section class="applicationFormSection student<?php echo $applicant->isStudentStage() ? "" : " hidden"; ?>">
+    <section class="applicationFormSection student<?= $applicant->isStudentStage() ? "" : " hidden"; ?>">
         <div data-toggle="collapse" class="collapse-header"
              data-target="#studentinfo" aria-expanded="false" aria-controls="studentinfo">
             <h4>Student Info</h4>
@@ -400,8 +400,8 @@
             <label for="githubUsername">Github Username</label>
             <div class="input-group">
             <input id="githubUsername" name="githubUsername" class="submitApplicant form-control"
-                   type="text" value="<?php echo $applicant->getGithubUsername(); ?>">
-                <span class="input-group-addon"><i class="lockToggle bi <?php echo ($applicant->getGithubUsernameLocked() ? 'bi-lock' : 'bi-unlock'); ?> " data-field="githubUsername"></i></span>
+                   type="text" value="<?= $applicant->getGithubUsername(); ?>">
+                <span class="input-group-addon"><i class="lockToggle bi <?= ($applicant->getGithubUsernameLocked() ? 'bi-lock' : 'bi-unlock'); ?> " data-field="githubUsername"></i></span>
             </div>
 
             <div class="alert formItem_alert alert-danger hidden" id="githubUsernameError">
@@ -410,19 +410,19 @@
 
             <label for="portfolioUrl">Portfolio URL</label>
             <input id="portfolioUrl" name="portfolioUrl" class="submitApplicant form-control"
-                   type="url" value="<?php echo $applicant->getPortfolioUrl(); ?>">
+                   type="url" value="<?= $applicant->getPortfolioUrl(); ?>">
 
             <label for="pleskHostingUrl">Plesk Hosting Url</label>
             <input id="pleskHostingUrl" name="pleskHostingUrl" class="submitApplicant form-control"
-                   type="url" value="<?php echo $applicant->getPleskHostingUrl(); ?>">
+                   type="url" value="<?= $applicant->getPleskHostingUrl(); ?>">
 
             <label for="githubEducationLink">Github Education Url</label>
             <input id="githubEducationLink" name="githubEducationLink" class="submitApplicant form-control"
-                   type="url" value="<?php echo $applicant->getGithubEducationLink(); ?>">
+                   type="url" value="<?= $applicant->getGithubEducationLink(); ?>">
 
             <label for="additionalNotes">Notes</label>
             <textarea id="additionalNotes" name="additionalNotes"
-                      class="submitApplicant form-control"><?php echo $applicant->getAdditionalNotes(); ?></textarea>
+                      class="submitApplicant form-control"><?= $applicant->getAdditionalNotes(); ?></textarea>
         </div>
     </section>
 

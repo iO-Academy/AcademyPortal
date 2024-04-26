@@ -25,60 +25,60 @@ use Portal\ViewHelpers\DisplayStudentProfileViewHelper;
         <hr>
         <section>
             <h4>Personal Information</h4>
-            <p class="detail">Name: <span><?php echo $applicant->getName(); ?></span></p>
-            <p class="detail">Email: <span><?php echo $applicant->getEmail(); ?></span></p>
-            <p class="detail">Phone Number: <span><?php echo $applicant->getPhoneNumber(); ?></span></p>
+            <p class="detail">Name: <span><?= $applicant->getName(); ?></span></p>
+            <p class="detail">Email: <span><?= $applicant->getEmail(); ?></span></p>
+            <p class="detail">Phone Number: <span><?= $applicant->getPhoneNumber(); ?></span></p>
         </section>
         <hr>
         <section>
             <h4>Application Info</h4>
-            <p class="detail">Stage: <span id="stageName"><?php echo $applicant->getStageName(); ?></span></p>
+            <p class="detail">Stage: <span id="stageName"><?= $applicant->getStageName(); ?></span></p>
             <p class="detail" id="stageOptionNameContainer">Stage Option:
-                <span id="stageOptionName"><?php echo($applicant->getStageOptionName() ?? '--'); ?></span>
+                <span id="stageOptionName"><?=($applicant->getStageOptionName() ?? '--'); ?></span>
             </p>
-            <p class="detail">Cohort: <span id="cohortDate"><?php echo $applicant->getCohortDate(); ?></span></p>
+            <p class="detail">Cohort: <span id="cohortDate"><?= $applicant->getCohortDate(); ?></span></p>
             <p class="detail">Reason for wanting to be a dev:</p>
-            <p id="whyDev"><?php echo $applicant->getWhyDev(); ?></p>
+            <p id="whyDev"><?= $applicant->getWhyDev(); ?></p>
             <p class="detail">Code Experience:</p>
-            <p id="codeExperience"><?php echo $applicant->getCodeExperience(); ?></p>
-            <p class="detail">Heard About Us: <span id="hearAbout"><?php echo $applicant->getHearAbout(); ?></span></p>
+            <p id="codeExperience"><?= $applicant->getCodeExperience(); ?></p>
+            <p class="detail">Heard About Us: <span id="hearAbout"><?= $applicant->getHearAbout(); ?></span></p>
             <p class="detail" id="eligible">Eligible to study in the UK:
                 <span>
-                    <?php echo DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getEligible()); ?>
+                    <?= DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getEligible()); ?>
                 </span>
             </p>
             <p class="detail" id="eighteenPlus">Over 18 years:
                 <span>
-                    <?php echo DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getEighteenPlus()); ?>
+                    <?= DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getEighteenPlus()); ?>
                 </span>
             </p>
             <p class="detail">Finance:
                 <span>
-                    <?php echo DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getFinance()); ?>
+                    <?= DisplayStudentProfileViewHelper::convertBooleanToYesOrNo($applicant->getFinance()); ?>
                 </span>
             </p>
             <p class="detail">Notes: </p>
-            <p id="notes"><?php echo $applicant->getNotes(); ?></p>
+            <p id="notes"><?= $applicant->getNotes(); ?></p>
         </section>
         <hr>
         <section>
             <h4>Assessment</h4>
             <p class="detail">Assessment day: <span
-                        id="assessmentDay"><?php echo $applicant->getAssessmentDay(); ?></span></p>
+                        id="assessmentDay"><?= $applicant->getAssessmentDay(); ?></span></p>
             <p class="detail">Assessment Time: <span
-                        id="assessmentTime"><?php echo $applicant->getAssessmentTime(); ?></span>
-            <p class="detail">Aptitude Score: <span id="aptitude"><?php echo $applicant->getAptitude(); ?></span></p>
+                        id="assessmentTime"><?= $applicant->getAssessmentTime(); ?></span>
+            <p class="detail">Aptitude Score: <span id="aptitude"><?= $applicant->getAptitude(); ?></span></p>
             <p class="detail">Assessment notes:</p>
-            <p id="assessmentNotes"><?php echo $applicant->getAssessmentNotes(); ?></p>
+            <p id="assessmentNotes"><?= $applicant->getAssessmentNotes(); ?></p>
         </section>
         <hr>
         <section>
             <h4>Onboarding Info</h4>
-            <p class="detail">Diversitech amount: <span id="diversitech"><?php echo $applicant->getDiversitech(); ?></span>
+            <p class="detail">Diversitech amount: <span id="diversitech"><?= $applicant->getDiversitech(); ?></span>
             <div class="edaidContainer studentProfileEditableField">
                 <label class="detail" for="edaidTextBox">EdAid amount: </label>
-                <span id="edaidDisplayed"><?php echo $applicant->getEdaid(); ?></span>
-                <?php echo DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getEdaidLocked(), 'edaid'); ?>
+                <span id="edaidDisplayed"><?= $applicant->getEdaid(); ?></span>
+                <?= DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getEdaidLocked(), 'edaid'); ?>
             </div>
             <div data-selector="edaid" class="editableedaid studentProfileEditableField hidden">
                 <form class="form studentProfileEditableField">
@@ -96,8 +96,8 @@ use Portal\ViewHelpers\DisplayStudentProfileViewHelper;
             </div>
             <div class="upfrontContainer studentProfileEditableField">
                 <label class="detail" for="upfrontTextBox">Upfront amount: </label>
-                <span id="upfrontDisplayed"><?php echo $applicant->getUpfront(); ?></span>
-                <?php echo DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getUpfrontLocked(), 'upfront'); ?>
+                <span id="upfrontDisplayed"><?= $applicant->getUpfront(); ?></span>
+                <?= DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getUpfrontLocked(), 'upfront'); ?>
             </div>
             <div data-selector="upfront" class="editableupfront studentProfileEditableField hidden">
                 <form class="form studentProfileEditableField">
@@ -116,9 +116,9 @@ use Portal\ViewHelpers\DisplayStudentProfileViewHelper;
             <div class="laptopContainer studentProfileEditableField">
                 <label class="detail" for="laptopRadioButtons">Laptop required: </label>
                 <span id="laptopDisplayed">
-                    <?php echo DisplayStudentProfileViewHelper::convertFieldToYesNoOrEmptyString($applicant->getLaptop()); ?>
+                    <?= DisplayStudentProfileViewHelper::convertFieldToYesNoOrEmptyString($applicant->getLaptop()); ?>
                 </span>
-                <?php echo DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getLaptopLocked(), 'laptop'); ?>
+                <?= DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getLaptopLocked(), 'laptop'); ?>
             </div>
             <div data-selector="laptop" class="editablelaptop studentProfileEditableField hidden">
                 <form class="form studentProfileEditableField">
@@ -135,19 +135,19 @@ use Portal\ViewHelpers\DisplayStudentProfileViewHelper;
                     </button>
                 </form>
             </div>
-            <p class="detail">Laptop deposit paid: <span id="laptopDeposit"> <?php echo $applicant->getLaptopDeposit(); ?></span></p>
-            <p class="detail">Laptop number: <span id="laptopNum"> <?php echo $applicant->getLaptopNum(); ?></span></p>
-            <p class="detail">Kit collection date: <span id="kitCollectionDay"> <?php echo $applicant->getKitCollectionDay(); ?></span></p>
-            <p class="detail">Kit collection time: <span id="kitCollectionTime"> <?php echo $applicant->getKitCollectionTime(); ?></span></p>
-            <p class="detail">Kit number: <span id="kitNum"><?php echo $applicant->getKitNum(); ?></span></p>
+            <p class="detail">Laptop deposit paid: <span id="laptopDeposit"> <?= $applicant->getLaptopDeposit(); ?></span></p>
+            <p class="detail">Laptop number: <span id="laptopNum"> <?= $applicant->getLaptopNum(); ?></span></p>
+            <p class="detail">Kit collection date: <span id="kitCollectionDay"> <?= $applicant->getKitCollectionDay(); ?></span></p>
+            <p class="detail">Kit collection time: <span id="kitCollectionTime"> <?= $applicant->getKitCollectionTime(); ?></span></p>
+            <p class="detail">Kit number: <span id="kitNum"><?= $applicant->getKitNum(); ?></span></p>
         </section>
         <hr>
         <section>
             <h4>Student profile</h4>
             <div class="githubUsernameContainer studentProfileEditableField">
                 <label class="detail" for="githubUsername">GitHub Username: </label>
-                <span id="githubUsernameDisplayed"><?php echo $applicant->getGithubUsername(); ?></span>
-                <?php echo DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getGithubUsernameLocked(), 'githubUsername'); ?>
+                <span id="githubUsernameDisplayed"><?= $applicant->getGithubUsername(); ?></span>
+                <?= DisplayStudentProfileViewHelper::displayEditButtonOrQuestionMark($applicant->getGithubUsernameLocked(), 'githubUsername'); ?>
             </div>
             <div data-selector="githubUsername" class="editablegithubUsername studentProfileEditableField
                     hidden">

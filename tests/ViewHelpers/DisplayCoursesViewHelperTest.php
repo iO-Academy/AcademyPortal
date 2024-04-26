@@ -29,7 +29,11 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
-                    <td>
+                    <td><a href="/editCourse/1"
+                           type="button" 
+                           class="btn btn-primary edit">
+                           Edit
+                        </a>
                         <button class="btn btn-danger btnDeleteCourse" data-toggle="modal" 
                         data-target="#deleteCourseModal" 
                         data-courseId="1">Delete</button>
@@ -72,7 +76,11 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
-                    <td>
+                    <td><a href="/editCourse/1"
+                           type="button" 
+                           class="btn btn-primary edit">
+                           Edit
+                        </a>
                         <button class="btn btn-danger btnDeleteCourse" data-toggle="modal" 
                         data-target="#deleteCourseModal" 
                         data-courseId="1">Delete</button>
@@ -118,7 +126,11 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
-                    <td>
+                    <td><a href="/editCourse/1"
+                           type="button" 
+                           class="btn btn-primary edit">
+                           Edit
+                        </a>
                         <button class="btn btn-danger btnDeleteCourse" data-toggle="modal" 
                         data-target="#deleteCourseModal" 
                         data-courseId="1">Delete</button>
@@ -161,7 +173,11 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
-                    <td>
+                    <td><a href="/editCourse/1"
+                           type="button" 
+                           class="btn btn-primary edit">
+                           Edit
+                        </a>
                         <button class="btn btn-danger btnDeleteCourse" data-toggle="modal" 
                         data-target="#deleteCourseModal" 
                         data-courseId="1">Delete</button>
@@ -207,7 +223,11 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
-                    <td>
+                    <td><a href="/editCourse/1"
+                           type="button" 
+                           class="btn btn-primary edit">
+                           Edit
+                        </a>
                         <button class="btn btn-danger btnDeleteCourse" data-toggle="modal" 
                         data-target="#deleteCourseModal" 
                         data-courseId="1">Delete</button>

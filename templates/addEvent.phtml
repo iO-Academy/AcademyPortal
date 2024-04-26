@@ -20,7 +20,7 @@
             <label for='event-category'>Event category</label>
             <select id='event-category' name='event-category'  class='create-events form-control'>
                 <option value=''>Select an event category</option>
-                <?php echo \Portal\ViewHelpers\EventCategoryViewHelper::eventCategoryDropdown($data); ?>
+                <?= \Portal\ViewHelpers\EventCategoryViewHelper::eventCategoryDropdown($data); ?>
             </select>
             <div id="categoryError" class="alert hidden formItem_alert"></div>
 

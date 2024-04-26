@@ -45,7 +45,7 @@ courseForm.addEventListener('submit', e => {
         }
     });
 
-    let route = '/api/addCourse';
+    let route = '/api/editCourse';
     if (formIsValid) {
         // send it!
         fetch(route, {

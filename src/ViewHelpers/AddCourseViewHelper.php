@@ -8,8 +8,9 @@ class AddCourseViewHelper
     {
         $courseCategoryDropdown = '';
         foreach ($categories as $category) {
-            $courseCategoryDropdown .=
-                '<option value="' . $category['id'] . '">' . $category['category'] . '</option>';
+                $courseCategoryDropdown .=
+                    '<option value="' . $category['id'] . '">'
+                    . $category['category'] . '</option>';
         }
         return $courseCategoryDropdown;
     }

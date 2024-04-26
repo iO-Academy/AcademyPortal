@@ -1,5 +1,5 @@
 <footer>
-    &copy; Copyright iO Academy <?php echo date('Y'); ?>
+    &copy; Copyright iO Academy <?= date('Y'); ?>
     <div class="pull-right">
         <?php if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true) { ?>
             <a href="./register">Register User</a>

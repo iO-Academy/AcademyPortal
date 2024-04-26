@@ -1,0 +1,66 @@
+<?php
+
+use Portal\ViewHelpers\EditCourseViewHelper;
+use Portal\ViewHelpers\TrainerCheckboxViewHelper;
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Add New Course');
+    ?>
+    <script defer src="/js/utils.js"></script>
+    <script defer src="/js/validations.js"></script>
+    <script defer src='/js/editCourse.js'></script>
+</head>
+
+<body>
+<?php require 'partials/layout/header.phtml'; ?>
+<?php require 'partials/layout/nav.phtml'; ?>
+<h3>Edit Course</h3>
+<form>
+    <label for="course-name">Course Name</label>
+    <input name="courseName" class="create-courses form-control" type="text" value='<?= $course->getName() ?>' data-required="true" data-max='255' maxlength="255"/>
+    <div id="courseNameError" class="alert hidden formItem_alert"></div>
+    <label for="courseCategory">Category</label>
+    <select id="courseCategory" name="courseCategory" class="create-courses form-control" data-required="true">
+        <option disabled selected>Select category</option>
+        <?= EditCourseViewHelper::courseEditCategoryDropdown($categories, $course->getCategoryId()); ?>
+    </select>
+    <div id="courseCategoryError" class="alert hidden formItem_alert"></div>
+    <label for="course-start-date">Start Date</label>
+    <input id="startDate" name="startDate" class="create-courses form-control" type="date" data-required="true" value="<?= $course->getStartDate() ?>"/>
+    <div id="startDateError" class="alert hidden formItem_alert"></div>
+    <label for="course-end-date">End Date</label>
+    <input id="endDate" name="endDate" class="create-courses form-control" type="date" data-required="true" value="<?= $course->getEndDate() ?>"/>
+    <div id="endDateError" class="alert hidden formItem_alert"></div>
+    <label for="course-trainer">Trainer</label>
+    <div>
+        <?= TrainerCheckboxViewHelper::displayTrainerCheckbox($trainers, $courseTrainers) ?>
+    </div>
+    <label for="course-notes">Notes</label>
+    <textarea name="notes" class="create-courses form-control" data-max="5000" maxlength="5000"><?= $course->getNotes() ?></textarea>
+    <div id="courseNotesError" class="alert hidden formItem_alert"></div>
+
+    <div class="form-group">
+        <label for="in_person">In Person?</label>
+        <input type="radio" id="in_person" value="1" class="create-courses" name="location">
+        <div id="in_person_spacesError" class="alert hidden formItem_alert"></div>
+        <label for="remote">Remote?</label>
+        <input type="radio" id="remote" value="1" class="create-courses" name="location" checked="checked">
+        <input id="in_person_spaces" name="in_person_spaces" class="create-courses form-control hidden" type="number" value="<?= $course->getInPersonSpaces(); ?>" min="1" max="999" data-required="true" />
+        <input id="remote_spaces" name="remote_spaces" class="create-courses form-control" type="number" value="<?= $course->getRemoteSpaces(); ?>" min="1" max="999" data-required="true" />
+        <div id="remote_spacesError" class="alert hidden formItem_alert"></div>
+    </div>
+
+    <div id="formGroupError" class="alert hidden formItem_alert"></div>
+    <input type="hidden" value='<?= $id ?>' name="id">
+    <input type="submit" class="btn btn-success" />
+</form>
+<div id="messages" class="alert"></div>
+<?php require 'partials/layout/footer.phtml'; ?>
+</body>

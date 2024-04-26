@@ -19,7 +19,7 @@
         <label for='company'>Company:</label>
         <select name='company' id='company' class='submit-contact form-control'>
             <option value=''>Please select a company</option>
-            <?php echo \Portal\ViewHelpers\SelectCompanyViewHelper::selectCompanyDropdown($data); ?>
+            <?= \Portal\ViewHelpers\SelectCompanyViewHelper::selectCompanyDropdown($data); ?>
         </select>
         <div id="contactCompanyIdError" class="alert hidden formItem_alert"></div>
         <label for="contact-name">Name:</label>

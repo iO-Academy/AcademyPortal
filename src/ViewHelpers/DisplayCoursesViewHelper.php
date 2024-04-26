@@ -40,7 +40,11 @@ class DisplayCoursesViewHelper
                 . $course->getTotalAvailableSpaces() .
                 '</span>
                     </td>
-                    <td>
+                    <td><a href="/editCourse/' . $course->getId() . '"
+                           type="button" 
+                           class="btn btn-primary edit">
+                           Edit
+                        </a>
                         <button class="btn btn-danger btnDeleteCourse" data-toggle="modal" 
                         data-target="#deleteCourseModal" 
                         data-courseId="' . $course->getId() . '">Delete</button>

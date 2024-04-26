@@ -9,17 +9,29 @@ class TrainerCheckboxViewHelper
     /**
      * take list of trainers and foreach to display them as individual checkbox items
      */
-    public static function displayTrainerCheckbox(array $trainers): string
+    public static function displayTrainerCheckbox(array $trainers, array $courseTrainers = []): string
     {
         $result = "";
-
+        $trainerIds = array_map(
+            function ($a) {
+                return  $a['trainer_id'];
+            },
+            $courseTrainers
+        );
         foreach ($trainers as $trainer) {
-            if ($trainer instanceof TrainerEntity && !$trainer->getDeleted()) {
-                $result .= '<input type="checkbox" data-id="' . $trainer->getId() . '" name="trainer-checkbox"';
-                $result .= '><label class="trainerCheckboxLabel" for="">' . $trainer->getName() . '</label>';
-            } else {
-                $result .= '';
+            $checked = '';
+            if ($trainer instanceof TrainerEntity) {
+                $trainerId = $trainer->getId();
+                if (in_array($trainerId, $trainerIds)) {
+                    $checked = 'checked';
+                }
+                if (!$trainer->getDeleted()) {
+                    $result .= '<input ' . $checked . ' type="checkbox" data-id="' . $trainerId
+                        . '" name="trainer-checkbox">';
+                    $result .= '<label class="trainerCheckboxLabel" for="">' . $trainer->getName() . '</label>';
+                }
             }
-        } return $result;
+        }
+        return $result;
     }
 }

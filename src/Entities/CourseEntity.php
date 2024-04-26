@@ -11,6 +11,9 @@ class CourseEntity
     protected ?string $notes;
     protected ?bool $inPerson;
     protected ?bool $remote;
+    protected ?int $inPersonSpaces;
+    protected ?int $remoteSpaces;
+    protected ?int $categoryId;
 
     /**
      * @return int
@@ -66,5 +69,20 @@ class CourseEntity
     public function getInPerson(): ?string
     {
         return $this->inPerson;
+    }
+
+    public function getInPersonSpaces(): ?int
+    {
+        return $this->inPersonSpaces;
+    }
+
+    public function getRemoteSpaces(): ?int
+    {
+        return $this->remoteSpaces;
+    }
+
+    public function getCategoryId(): ?int
+    {
+        return $this->categoryId;
     }
 }
