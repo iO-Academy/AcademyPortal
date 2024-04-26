@@ -17,8 +17,8 @@ class EditCourseController
 
     public function __invoke(RequestInterface $request, ResponseInterface $response)
     {
-        $datum = $request->getParsedBody();
-        $this->courseModel->updateCourse($datum);
+        $courseData = $request->getParsedBody();
+        $this->courseModel->updateCourse($courseData);
         return $response->withHeader('Location', '/courses')->withStatus(301);
     }
 }

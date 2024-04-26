@@ -9,7 +9,7 @@ class TrainerCheckboxViewHelper
     /**
      * take list of trainers and foreach to display them as individual checkbox items
      */
-    public static function displayTrainerCheckbox(array $trainers, $courseTrainers = []): string
+    public static function displayTrainerCheckbox(array $trainers, array $courseTrainers = []): string
     {
         $result = "";
         $trainerIds = array_map(

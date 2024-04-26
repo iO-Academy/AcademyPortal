@@ -44,10 +44,8 @@ courseForm.addEventListener('submit', e => {
             }
         }
     });
-    // the add and edit course forms each have a hidden input which is constant, add produces a value of 1 and edit
-    // produces a value of 0, this ternary checks whether said value is 1 or 0, thus deciding which controller to
-    // redirect to.
-    let route = data['editOrAdd'] == 0 ? '/api/editCourse': '/api/addCourse';
+
+    let route = '/api/editCourse';
     if (formIsValid) {
         // send it!
         fetch(route, {
