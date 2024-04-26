@@ -24,14 +24,17 @@ class EditCoursePageController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
+
         if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
             $id = $args['id'];
             if ($id > 0) {
                 $args['course'] = $this->courseModel->getCourseById($id);
                 $args['trainers'] = $this->trainerModel->getAllTrainers();
                 $args['categories'] = $this->courseModel->getCategories();
+                $args['courseTrainers'] = $this->courseModel->getTrainersIdByCourseId($id);
                 return $this->renderer->render($response, 'editCourse.phtml', $args);
             }
+
             return $response->withHeader('Location', './courses')->withStatus(400);
         }
         return $response->withStatus(401);

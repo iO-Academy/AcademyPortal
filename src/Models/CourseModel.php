@@ -34,7 +34,7 @@ class CourseModel
         return $query->fetchAll();
     }
 
-    public function getCourseByID($id): array
+    public function getCourseByID($id): CourseEntity
     {
         $sql = 'SELECT `id`,
         `start_date` as `startDate`,
@@ -51,7 +51,7 @@ class CourseModel
         $query->bindParam('id', $id);
         $query->setFetchMode(\PDO::FETCH_CLASS, CourseEntity::class);
         $query->execute();
-        return $query->fetchAll();
+        return $query->fetch();
     }
 
     /**
@@ -206,6 +206,16 @@ class CourseModel
                 LEFT JOIN `trainers` 
                     ON `courses_trainers`.`trainer_id` = `trainers`.`id`;'
         );
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function getTrainersIdByCourseId($courseId): array
+    {
+        $query = $this->db->prepare(
+            'SELECT `trainer_id` FROM `courses_trainers` WHERE `course_id` = :courseId'
+        );
+        $query->bindParam(':courseId', $courseId);
         $query->execute();
         return $query->fetchAll();
     }
