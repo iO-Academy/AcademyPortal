@@ -261,7 +261,6 @@ class CourseModel
         return $query->execute();
     }
 
-
     public function updateCourse(array $course): bool
     {
         $query = $this->db->prepare(
@@ -289,6 +288,49 @@ class CourseModel
         $query->bindValue(':remote_spaces', $course['remote_spaces']);
         $query->bindValue(':category_id', $course['courseCategory']);
         $query->bindValue(':id', $course['id']);
+        return $query->execute();
+    }
+
+    public function getApplicantsByCourse(int $courseId): array
+    {
+        $query = $this->db->prepare("SELECT `name`, applicants.`id` FROM `applicants` INNER JOIN `course_choice` 
+        ON `applicantId` = applicants.`id` WHERE `courseId` = :id");
+        $query->bindParam(':id', $courseId);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function getAllCoursesExceptOne(int $courseId): array
+    {
+        $query = $this->db->prepare("SELECT `name`, `start_date`, `id` FROM `courses` WHERE `deleted` = 0
+                                    AND `id` != :id");
+        $query->bindParam(':id', $courseId);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function reassignApplicantsToNewCourse(int $courseId, int $applicantId): bool
+    {
+        $query = $this->db->prepare("UPDATE `course_choice` SET `courseId` = :courseId
+                                    WHERE `applicantId` = :applicantId");
+        $query->bindParam(':courseId', $courseId);
+        $query->bindParam(':applicantId', $applicantId);
+        return $query->execute();
+    }
+
+    public function unassignApplicantFromCourse(int $courseId, int $applicantId): bool
+    {
+        $query = $this->db->prepare("DELETE FROM `course_choice` WHERE `courseId` = :courseId
+                                    AND `applicantId` = :applicantId");
+        $query->bindParam(':courseId', $courseId);
+        $query->bindParam(':applicantId', $applicantId);
+        return $query->execute();
+    }
+
+    public function deleteCourse(int $courseId): bool
+    {
+        $query = $this->db->prepare("UPDATE `courses` SET `deleted` = 1 WHERE `id` = :courseId");
+        $query->bindParam(':courseId', $courseId);
         return $query->execute();
     }
 

@@ -44,7 +44,11 @@ class DisplayCoursesViewHelper
                            type="button" 
                            class="btn btn-primary edit">
                            Edit
-                        </a></td>
+                        </a>
+                        <button class="btn btn-danger btnDeleteCourse" data-toggle="modal" 
+                        data-target="#deleteCourseModal" 
+                        data-courseId="' . $course->getId() . '">Delete</button>
+                    </td>
                 </tr>';
         }
         return $result;

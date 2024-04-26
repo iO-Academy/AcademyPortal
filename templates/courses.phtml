@@ -7,8 +7,8 @@
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Courses');
     ?>
     <script defer src="./js/toggleCompletedCourses.js"></script>
+    <script defer src="./js/deleteCourseModal.js"></script>
 </head>
-
 <body>
     <?php
     require 'partials/layout/header.phtml';
@@ -45,6 +45,7 @@
                     <th>Notes</th>
                     <th>Location</th>
                     <th>Available places</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody class="hidden" id="completed-courses">
@@ -62,6 +63,9 @@
                 ?>
             </tbody>
         </table>
+        <?php
+        require('partials/deleteCourseModal.phtml');
+        ?>
     </div>
     <?php
     require 'partials/layout/footer.phtml';

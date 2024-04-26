@@ -1,5 +1,3 @@
-
-
 function updateStage(url, applicantId, btnNextStage) {
     fetch(url).then(
         function(response) {
