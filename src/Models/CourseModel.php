@@ -37,15 +37,15 @@ class CourseModel
     public function getCourseByID($id): CourseEntity
     {
         $sql = 'SELECT `id`,
-        `start_date` as `startDate`,
-        `end_date` as `endDate`,
+        `start_date` AS `startDate`,
+        `end_date`AS `endDate`,
         `name`,
         `notes`,
-        `in_person` as `inPerson`,
+        `in_person` AS `inPerson`,
         `remote`,
-        `in_person_spaces` as `inPersonSpaces`,
-        `remote_spaces` as `remoteSpaces`,
-        `category_id` as `categoryId`
+        `in_person_spaces` AS `inPersonSpaces`,
+        `remote_spaces` AS `remoteSpaces`,
+        `category_id` AS `categoryId`
         FROM `courses` WHERE `id` = :id';
         $query = $this->db->prepare($sql);
         $query->bindParam('id', $id);
