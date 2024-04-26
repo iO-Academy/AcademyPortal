@@ -14,6 +14,7 @@ use Portal\Controllers\API\AddStageController;
 use Portal\Controllers\API\AddStageOptionController;
 use Portal\Controllers\API\AddTrainerController;
 use Portal\Controllers\API\AddUserController;
+use Portal\Controllers\API\CalendarCourseController;
 use Portal\Controllers\API\CsvController;
 use Portal\Controllers\API\DeleteAllStageOptionsController;
 use Portal\Controllers\API\DeleteApplicantController;
@@ -150,4 +151,5 @@ return function (App $app) {
     $app->get('/api/lockApplicantField', LockApplicantFieldController::class);
     $app->get('/api/getAptitudeScore', GetApplicantAptitudeController::class);
     $app->get('/api/getCalendarEvents', GetAllCalendarEventsController::class);
+    $app->get('/api/getAllCalendarData', CalendarCourseController::class);
 };

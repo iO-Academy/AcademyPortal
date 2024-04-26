@@ -2,7 +2,9 @@
 
 namespace Portal\Models;
 
+use mysql_xdevapi\Warning;
 use PDO;
+use Portal\Entities\CalendarCourseEntity;
 use Portal\Entities\CourseEntity;
 use Portal\Entities\CompleteCourseEntity;
 
@@ -55,9 +57,9 @@ class CourseModel
     }
 
     /**
-     * Gets all courses from the database that have a start date in the future
+     * Gets all courses from the database that have a start date in the future. Sorted by the category selected.
      */
-    public function getFutureCourses(): array
+    public function getFutureCourses(string $category = '%'): array
     {
         $sql = 'SELECT `c`.`id`,
         `start_date` AS `startDate`,
@@ -74,18 +76,20 @@ class CourseModel
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
         LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
-        WHERE `c`.`start_date` > NOW()
+        WHERE `c`.`start_date` > NOW() AND `course_categories`.`category` LIKE :category
         GROUP BY `c`.`id`;';
         $query = $this->db->prepare($sql);
+        $query->bindParam(':category', $category);
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteCourseEntity::class);
         $query->execute();
         return $query->fetchAll();
     }
 
     /**
-     * Gets all courses from the database that are ongoing (i.e. have a start date in the past, end date in the future)
+     * Gets all courses from the database that are ongoing (i.e. have a start date in the past, end date in the future).
+     * Sorted by the category selected.
      */
-    public function getOngoingCourses(): array
+    public function getOngoingCourses(string $category = '%'): array
     {
         $sql = 'SELECT `c`.`id`,
         `start_date` AS `startDate`,
@@ -102,16 +106,17 @@ class CourseModel
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
         LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
-        WHERE `c`.`start_date` <= NOW() AND `c`.`end_date` >= NOW()
+        WHERE `c`.`start_date` <= NOW() AND `c`.`end_date` >= NOW() AND `course_categories`.`category` LIKE :category
         GROUP BY `c`.`id`;';
 
         $query = $this->db->prepare($sql);
+        $query->bindParam(':category', $category);
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteCourseEntity::class);
         $query->execute();
         return $query->fetchAll();
     }
 
-    public function getCompletedCourses(): array
+    public function getCompletedCourses(string $category = '%'): array
     {
         $sql = 'SELECT `c`.`id`,
         `start_date` AS `startDate`,
@@ -128,10 +133,11 @@ class CourseModel
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
         LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
-        WHERE `c`.`end_date` < NOW()
+        WHERE `c`.`end_date` < NOW() AND `course_categories`.`category` LIKE :category
         GROUP BY `c`.`id`
         ORDER BY `endDate` DESC;';
         $query = $this->db->prepare($sql);
+        $query->bindParam(':category', $category);
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteCourseEntity::class);
         $query->execute();
         return $query->fetchAll();
@@ -255,6 +261,7 @@ class CourseModel
         return $query->execute();
     }
 
+
     public function updateCourse(array $course): bool
     {
         $query = $this->db->prepare(
@@ -283,5 +290,20 @@ class CourseModel
         $query->bindValue(':category_id', $course['courseCategory']);
         $query->bindValue(':id', $course['id']);
         return $query->execute();
+    }
+
+    public function getCoursesForCalendar(): array
+    {
+        $sql = 'SELECT `courses`.`id`,
+               `courses`.`start_date` AS `startDate`,
+               `courses`.`end_date` AS `endDate`,
+               `name` AS `title`,
+               `course_categories`.`category` AS `categoryName`
+                FROM `courses`
+                INNER JOIN `course_categories` ON `courses`.`category_id` = `course_categories`.`id`';
+        $query = $this->db->prepare($sql);
+        $query->setFetchMode(\PDO::FETCH_CLASS, CalendarCourseEntity::class);
+        $query->execute();
+        return $query->fetchAll();
     }
 }
