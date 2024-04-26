@@ -17,6 +17,8 @@ class DeleteCourseController extends Controller
         $this->courseModel = $courseModel;
     }
 
+    //If no course is assigned to an applicant,
+    //it gives the applicant the value of 0 and they are removed from that course when it is deleted.
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $students = $request->getParsedBody();

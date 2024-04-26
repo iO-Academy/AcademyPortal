@@ -45,7 +45,7 @@ let deleteButtons = document.querySelectorAll('.btnDeleteCourse');
 for (let db of deleteButtons) {
     db.addEventListener("click", () => {
         const courseId = db.getAttribute('data-courseId');
-        displayDetails('./api/deleteCourse/' + courseId, courseId);
+        displayDetails('./api/deleteCourse/' + courseId);
     });
 }
 
