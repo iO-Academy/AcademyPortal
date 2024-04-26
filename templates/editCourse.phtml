@@ -1,6 +1,6 @@
 <?php
 
-use Portal\ViewHelpers\AddCourseViewHelper;
+use Portal\ViewHelpers\EditCourseViewHelper;
 use Portal\ViewHelpers\TrainerCheckboxViewHelper;
 
 ?>
@@ -29,7 +29,7 @@ use Portal\ViewHelpers\TrainerCheckboxViewHelper;
     <label for="courseCategory">Category</label>
     <select id="courseCategory" name="courseCategory" class="create-courses form-control" data-required="true">
         <option disabled selected>Select category</option>
-        <?= AddCourseViewHelper::courseCategoryDropdown($categories, $course->getCategoryId()); ?>
+        <?= EditCourseViewHelper::courseEditCategoryDropdown($categories, $course->getCategoryId()); ?>
     </select>
     <div id="courseCategoryError" class="alert hidden formItem_alert"></div>
     <label for="course-start-date">Start Date</label>
