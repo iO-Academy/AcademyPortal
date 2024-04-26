@@ -29,6 +29,11 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
+                    <td>
+                        <button class="btn btn-danger btnDeleteCourse" data-toggle="modal" 
+                        data-target="#deleteCourseModal" 
+                        data-courseId="1">Delete</button>
+                    </td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -66,6 +71,11 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td><span class="filled-places badge">Filled: 4' .
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btnDeleteCourse" data-toggle="modal" 
+                        data-target="#deleteCourseModal" 
+                        data-courseId="1">Delete</button>
                     </td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
@@ -108,6 +118,11 @@ class DisplayCoursesViewHelperTest extends TestCase
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
                     </td>
+                    <td>
+                        <button class="btn btn-danger btnDeleteCourse" data-toggle="modal" 
+                        data-target="#deleteCourseModal" 
+                        data-courseId="1">Delete</button>
+                    </td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
         $entityMock->method('getId')->willReturn(1);
@@ -145,6 +160,11 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td><span class="filled-places badge">Filled: 4' .
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btnDeleteCourse" data-toggle="modal" 
+                        data-target="#deleteCourseModal" 
+                        data-courseId="1">Delete</button>
                     </td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
@@ -186,6 +206,11 @@ class DisplayCoursesViewHelperTest extends TestCase
                     <td><span class="filled-places badge">Filled: 4' .
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger btnDeleteCourse" data-toggle="modal" 
+                        data-target="#deleteCourseModal" 
+                        data-courseId="1">Delete</button>
                     </td>
                 </tr>';
         $entityMock = $this->createMock(CompleteCourseEntity::class);
