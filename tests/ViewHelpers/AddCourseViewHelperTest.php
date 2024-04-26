@@ -13,9 +13,10 @@ class AddCourseViewHelperTest extends TestCase
             ['id' => 1, 'category' => 'Gladiator', 'deleted' => 0],
             ['id' => 2, 'category' => '300', 'deleted' => 0]
         ];
-        $expected = '<option value="1">Gladiator</option>'
-                    . '<option value="2">300</option>';
-        $result = AddCourseViewHelper::courseCategoryDropdown($categories);
+        $courseCatId = 1;
+        $expected = '<option selected="selected" value="1">Gladiator</option>'
+                    . '<option selected="" value="2">300</option>';
+        $result = AddCourseViewHelper::courseCategoryDropdown($categories, $courseCatId);
         $this->assertSame($expected, $result);
     }
 
@@ -23,6 +24,6 @@ class AddCourseViewHelperTest extends TestCase
     {
         $categories = 5;
         $this->expectException(\TypeError::class);
-        $result = AddCourseViewHelper::courseCategoryDropdown($categories);
+        $result = AddCourseViewHelper::courseCategoryDropdown($categories, $courseCatId);
     }
 }
