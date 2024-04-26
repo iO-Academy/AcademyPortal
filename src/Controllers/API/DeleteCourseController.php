@@ -19,17 +19,16 @@ class DeleteCourseController extends Controller
 
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-
         $students = $request->getParsedBody();
         $courseToDelete = $args['id'];
         foreach ($students as $studentId => $value) {
-            if ($value === '0') {
+            if ($value === 0) {
                 $this->courseModel->unassignApplicantFromCourse(intval($value), intval($studentId));
             } else {
                 $this->courseModel->reassignApplicantsToNewCourse(intval($value), intval($studentId));
             }
         }
         $this->courseModel->deleteCourse($courseToDelete);
-        return $response->withHeader('Location', '/courses');
+        return $response->withHeader('Location', '/courses')->withStatus(301);
     }
 }

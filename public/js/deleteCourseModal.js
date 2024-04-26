@@ -57,4 +57,3 @@ function generateOptions(prettyCourses, DeleteCoursesForm, studentId, courses) {
     }
     DeleteCoursesForm.appendChild(optionSelect)
 }
-

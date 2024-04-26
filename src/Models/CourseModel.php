@@ -228,6 +228,7 @@ class CourseModel
         $query->bindParam(':id', $deletedCategory);
         return $query->execute();
     }
+
     public function getApplicantsByCourse(int $courseId): array
     {
         $query = $this->db->prepare("SELECT `name`, applicants.`id` FROM `applicants` INNER JOIN `course_choice` 
@@ -236,6 +237,7 @@ class CourseModel
         $query->execute();
         return $query->fetchAll();
     }
+
     public function getAllCoursesExceptOne(int $courseId): array
     {
         $query = $this->db->prepare("SELECT `name`, `start_date`, `id` FROM `courses` WHERE `deleted` = 0
