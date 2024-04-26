@@ -5,7 +5,7 @@ namespace Tests\ViewHelpers;
 use Portal\ViewHelpers\AddCourseViewHelper;
 use PHPUnit\Framework\TestCase;
 
-class AddCourseViewHelperTest extends TestCase
+class EditCourseViewHelperTest extends TestCase
 {
     public function testCourseCategoryDropdownSuccess()
     {
@@ -16,7 +16,7 @@ class AddCourseViewHelperTest extends TestCase
         $courseCatId = 1;
         $expected = '<option selected="selected" value="1">Gladiator</option>'
                     . '<option selected="" value="2">300</option>';
-        $result = AddCourseViewHelper::courseCategoryDropdown($categories, $courseCatId);
+        $result = AddCourseViewHelper::courseEditCategoryDropdown($categories, $courseCatId);
         $this->assertSame($expected, $result);
     }
 
@@ -24,6 +24,6 @@ class AddCourseViewHelperTest extends TestCase
     {
         $categories = 5;
         $this->expectException(\TypeError::class);
-        $result = AddCourseViewHelper::courseCategoryDropdown($categories, $courseCatId);
+        $result = AddCourseViewHelper::courseEditCategoryDropdown($categories, $courseCatId);
     }
 }
