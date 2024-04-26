@@ -24,8 +24,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     </td>
                     <td>Charlie</td>
                     <td></td>
-                    <td>&#x2713;</td>
-                    <td>&#x10102</td>
+                    <td>In-Person</td>
                     <td><span class="filled-places badge">Filled: 4' .
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
@@ -68,8 +67,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     </td>
                     <td>Charlie Neal</td>
                     <td></td>
-                    <td>&#x2713;</td>
-                    <td>&#x10102</td>
+                    <td>In-Person</td>
                     <td><span class="filled-places badge">Filled: 4' .
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
@@ -115,8 +113,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     </td>
                     <td><p class="trainer-deleted-indicator">Charlie</p></td>
                     <td></td>
-                    <td>&#x2713;</td>
-                    <td>&#x10102</td>
+                    <td>In-Person</td>
                     <td><span class="filled-places badge">Filled: 4' .
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
@@ -159,8 +156,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     </td>
                     <td><p class="trainer-deleted-indicator">Charlie</p> Neal</td>
                     <td></td>
-                    <td>&#x2713;</td>
-                    <td>&#x10102</td>
+                    <td>In-Person</td>
                     <td><span class="filled-places badge">Filled: 4' .
             '</span> <span class="total-places badge">Total: 8' .
             '</span>
@@ -206,8 +202,7 @@ class DisplayCoursesViewHelperTest extends TestCase
                     </td>
                     <td>No trainers assigned</td>
                     <td></td>
-                    <td>&#x2713;</td>
-                    <td>&#x10102</td>
+                    <td>In-Person</td>
                     <td><span class="filled-places badge">Filled: 4' .
             '</span> <span class="total-places badge">Total: 8' .
             '</span>

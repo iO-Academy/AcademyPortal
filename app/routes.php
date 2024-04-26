@@ -13,6 +13,7 @@ use Portal\Controllers\API\AddStageController;
 use Portal\Controllers\API\AddStageOptionController;
 use Portal\Controllers\API\AddTrainerController;
 use Portal\Controllers\API\AddUserController;
+use Portal\Controllers\API\CalendarCourseController;
 use Portal\Controllers\API\CsvController;
 use Portal\Controllers\API\DeleteAllStageOptionsController;
 use Portal\Controllers\API\DeleteApplicantController;
@@ -151,4 +152,5 @@ return function (App $app) {
     $app->get('/api/getCalendarEvents', GetAllCalendarEventsController::class);
     $app->post('/api/deleteCourse/{id}', DeleteCourseController::class);
     $app->get('/api/deleteCourse/{id}', GetDeleteCourseInfoController::class);
+    $app->get('/api/getAllCalendarData', CalendarCourseController::class);
 };

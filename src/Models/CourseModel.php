@@ -2,7 +2,9 @@
 
 namespace Portal\Models;
 
+use mysql_xdevapi\Warning;
 use PDO;
+use Portal\Entities\CalendarCourseEntity;
 use Portal\Entities\CourseEntity;
 use Portal\Entities\CompleteCourseEntity;
 
@@ -270,5 +272,20 @@ class CourseModel
         $query = $this->db->prepare("UPDATE `courses` SET `deleted` = 1 WHERE `id` = :courseId");
         $query->bindParam(':courseId', $courseId);
         return $query->execute();
+    }
+
+    public function getCoursesForCalendar(): array
+    {
+        $sql = 'SELECT `courses`.`id`,
+               `courses`.`start_date` AS `startDate`,
+               `courses`.`end_date` AS `endDate`,
+               `name` AS `title`,
+               `course_categories`.`category` AS `categoryName`
+                FROM `courses`
+                INNER JOIN `course_categories` ON `courses`.`category_id` = `course_categories`.`id`';
+        $query = $this->db->prepare($sql);
+        $query->setFetchMode(\PDO::FETCH_CLASS, CalendarCourseEntity::class);
+        $query->execute();
+        return $query->fetchAll();
     }
 }

@@ -20,8 +20,7 @@ class DisplayCoursesViewHelper
     {
         $result = '';
         foreach ($courses as $course) {
-            $remote = $course->getRemote() == 1 ? '&#x2713;' : '&#x10102';
-            $inPerson = $course->getInPerson() == 1 ? '&#x2713;' : '&#x10102';
+            $location = $course->getRemote() == 1 ? 'Remote' : 'In-Person';
             $trainersByCourse = self::filterCoursesByTrainers($trainers, $course->getId());
             $categoryNoSpaces = str_replace(' ', '', $course->getCategory());
             $result .=
@@ -35,8 +34,7 @@ class DisplayCoursesViewHelper
                     </td>
                     <td>' . self::displayCourseTrainers($trainersByCourse) . '</td>
                     <td>' . $course->getNotes() . '</td>
-                    <td>' . $inPerson . '</td>
-                    <td>' . $remote . '</td>
+                    <td>' . $location . '</td>
                     <td><span class="filled-places badge">Filled: ' . $course->getSpacesTaken() .
                 '</span>' . ' ' . '<span class="total-places badge">Total: '
                 . $course->getTotalAvailableSpaces() .
