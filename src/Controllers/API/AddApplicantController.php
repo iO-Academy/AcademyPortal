@@ -11,13 +11,11 @@ use Portal\Validators\ApplicantValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 
-class AddApplicantController extends Controller
-{
+class AddApplicantController extends Controller {
     private ApplicantModel $applicantModel;
 
-    public function __construct(ApplicantModel $applicantModel)
-    {
-        $this->applicantMdel = $applicantModel;
+    public function __construct(ApplicantModel $applicantModel) {
+        $this->applicantModel = $applicantModel;
     }
 
     /**
@@ -51,13 +49,7 @@ class AddApplicantController extends Controller
 
         $successfulRegister = $this->applicantModel->storeApplicant($applicant);
 
-        if ($successfulRegister) {
-            $data = [
-                'success' => $successfulRegister,
-                'msg' => 'Application successfully saved!'
-            ];
-            $statusCode = 200;
-        }
+        if ($successfulRegister) { $data = [ 'success' => $successfulRegister, 'msg' => 'Application successfully saved!' ]; $statusCode = 200; }
 
         return $this->respondWithJson($response, $data, $statusCode);
     }
