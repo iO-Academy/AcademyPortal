@@ -17,7 +17,7 @@ class AddApplicantController extends Controller
 
     public function __construct(ApplicantModel $applicantModel)
     {
-        $this->applicantModel = $applicantModel;
+        $this->applicantMdel = $applicantModel;
     }
 
     /**
