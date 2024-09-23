@@ -128,7 +128,75 @@ POST
         - `{'success':true, 'msg':'Application Saved', 'data':[]}`
     - if new applicant not saved successfully
         - `{'success':false, 'msg':'Application Not Saved', 'data':[]}`
+        
+**/editApplicant**
 
+POST
+
+- Updates an applicant record in the applicant table
+- Sends:
+	{
+		"id":"14",
+		"cohort":["1","3","6","7"],
+		"stageId":"1",
+		"stageOptionId":null,
+		"name":"Ignazio Hairesnape",
+		"email":"ihairesnape3@themeforest.net",
+		"phoneNumber":"07121444941",
+		"gender":"2",
+		"backgroundInfoId":"1",
+		"whyDev":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.","codeExperience":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In volutpat ultrices placerat. Donec in lacinia arcu, at ornare odio. Donec id enim in arcu aliquam lacinia. Ut id felis sapien. Quisque gravida consequat risus, at porta quam pellentesque nec. Ut sed enim sit amet dui facilisis aliquam at in arcu. Aenean ut lacus ipsum. Sed cursus sapien sit amet dui elementum, in ultrices nunc facilisis. Fusce massa nisi, egestas ut elementum non, viverra a orci.",
+		"hearAboutId":"1",
+		"eligible":true,
+		"eighteenPlus":true,
+		"finance":true,
+		"apprentice":false,
+		"dateTimeAdded":"2021-11-25T16:36",
+		"notes":"Cheddar",
+		"taster":"",
+		"tasterAttendance":false,
+		"assessmentDay":"",
+		"customAssessmentDay":"",
+		"assessmentTime":"",
+		"aptitude":"",
+		"attitude":"",
+		"averageScore":"",
+		"diversitechInterest":false,
+		"chosenCourseId":"",
+		"assessmentNotes":"",
+		"fee":"0",
+		"diversitech":"0",
+		"edaid":"0",
+		"upfront":"0",
+		"laptop":false,
+		"laptopDeposit":false,
+		"signedTerms":false,
+		"contactFormSigned":false,
+		"signedDiversitech":false,
+		"laptopNum":"",
+		"kitCollectionDay":"",
+		"kitCollectionTime":"",
+		"kitNum":"",
+		"inductionEmailSent":false,
+		"signedNDA":false,
+		"checkedID":false,
+		"":"",
+		"dataProtectionName":false,
+		"dataProtectionPhoto":false,
+		"dataProtectionTestimonial":false,
+		"dataProtectionBio":false,
+		"dataProtectionVideo":false,
+		"githubUsername":"",
+		"portfolioUrl":"",
+		"pleskHostingUrl":"",
+		"githubEducationLink":"",
+		"additionalNotes":""}
+- Returns success true / false:
+    - if update is successful:
+        - `{$data['success'] = true; $data['msg'] = 'Applicant has been updated!'; $statusCode = 200;}
+    - if update is unsuccessful:
+		- `{$data['success'] = false; $data['msg'] = 'Invalid applicant data'; $statusCode = 400;}
+		
 **/deleteApplicant**
 
 DELETE
@@ -276,6 +344,40 @@ GET
   - If there are no courses scheduled but the data is retrieved successfully 
     - `{"success": true, "message": "No courses scheduled"}`
   - If the data is retrieved successfully it will return an array with the courses scheduled
+  
+  
+**/getEvents**
+GET
+-  Gets all the future events present in database.
+-  Required: 
+-  Optional: - ?categoryValue=[integer]
+             - ?searchTerm=[alphanumeric]
+			 - ?past=[tinyInt]  --- if 1, returns past events
+- Data format: 
+	-  `{	"id": 129,
+            "name": "Hiring Event",
+            "category": 6,
+            "category_name": "Other",
+            "location": "San Andres",
+            "date": "2024-09-28",
+            "start_time": "16:11:07",
+            "end_time": "22:38:52",
+            "notes": "support"
+        }`		 
+- Returns success true / false:
+	- if the data is received successfully
+		- `{’success’:true, ‘message: ‘’, ‘data’:[]}`
+		
+	- if the data is not received successfully
+		- `{'success': false,'message': 'Something went wrong.','data': []}`
+
+	- if there is no associated data in the database
+		- `{'success': false,'message': 'No results returned matching your search','data': []}`
+		
+	- if search term is over 255 characters
+		- `{'success': false,'message': 'Search term cannot be greater than 255 characters.','data': []}`
+
+HT - 23/9/24
 
 **/addTrainer**
 
@@ -296,7 +398,6 @@ POST
 /api/getApplicant/{id}  
 /api/editApplicant  
 /api/updateStudentProfile  
-/api/getEvents  
 /api/getAssessmentApplicants  
 /api/addEvent  
 /api/addContact  
