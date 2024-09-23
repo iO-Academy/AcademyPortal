@@ -277,6 +277,19 @@ GET
     - `{"success": true, "message": "No courses scheduled"}`
   - If the data is retrieved successfully it will return an array with the courses scheduled
 
+**/addTrainer**
+
+POST
+
+- Adds new trainer to the database
+- Sends an array of:
+      `{'name': 'string', 'email': 'string', 'notes': 'string'}`
+  - Returns success true / false:
+      If trainer is added successfully
+        `{'success': true, 'msg': 'New Trainer successfully saved.', 'data': []}`
+      If trainer can't be added
+        `{'success': false, 'msg': 'Unexpected error.', 'notes': []}`
+
 **/Routes that will need to be documented in the future**  
 
 /api/getStudents  
