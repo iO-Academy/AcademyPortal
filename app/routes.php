@@ -79,7 +79,7 @@ use Portal\Controllers\FrontEnd\StudentProfilePageController;
 use Portal\Controllers\FrontEnd\TeamPickerPageController;
 use Portal\Controllers\FrontEnd\TrainersPageController;
 //UNCOMMENT
-//use Portal\Controllers\FrontEnd\TrainersPageController;
+use Portal\Controllers\FrontEnd\EditTrainerPageController;
 //UNCOMMENT
 use Slim\App;
 
@@ -112,9 +112,7 @@ return function (App $app) {
     $app->get('/trainers', TrainersPageController::class);
     $app->get('/addTrainer', AddTrainerPageController::class);
     $app->get('/calendar', CalendarPageController::class);
-//UNCOMMENT
-//    $app->get('/editTrainer', EditTrainerPageController::class);
-//UNCOMMENT
+    $app->get('/editTrainer/{id}', EditTrainerPageController::class );
     //API
     $app->get('/api/getStudents', GetStudentsController::class);
     $app->get('/api/getApplicant/{id}', GetApplicantController::class);
@@ -165,6 +163,6 @@ return function (App $app) {
     $app->get('/api/deleteCourse/{id}', GetDeleteCourseInfoController::class);
     $app->get('/api/getAllCalendarData', CalendarCourseController::class);
 //UNCOMMENT
-//    $app->put('/api/editTrainer', EditTrainerController::class);
+//    $app->put('/api/editTrainer/{id}', EditTrainerController::class);
 //UNCOMMENT
 };
