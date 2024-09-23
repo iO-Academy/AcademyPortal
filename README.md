@@ -311,6 +311,18 @@ GET
 
 HT - 23/9/24
 
+**/getGender**
+GET
+
+- Retrieves all the gender information from the gender table on the academy portal database. 
+- Data Format: 
+  - `{"id":1,"gender":"Male"},{"id":2,"gender":"Female"},{"id":3,"gender":"Non-binary"},
+        {"id":4,"gender":"Prefer not to say"}]}}`
+- If the data is successfully retrieved: 
+  - `{"success":true,"message":"Retrieved dropdown info."}`
+
+
+
 **/Routes that will need to be documented in the future**  
 
 /api/getStudents  
