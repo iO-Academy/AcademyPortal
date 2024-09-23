@@ -276,6 +276,40 @@ GET
   - If there are no courses scheduled but the data is retrieved successfully 
     - `{"success": true, "message": "No courses scheduled"}`
   - If the data is retrieved successfully it will return an array with the courses scheduled
+  
+  
+**/getEvents**
+GET
+-  Gets all the future events present in database.
+-  Required: 
+-  Optional: - ?categoryValue=[integer]
+             - ?searchTerm=[alphanumeric]
+			 - ?past=[tinyInt]  --- if 1, returns past events
+- Data format: 
+	-  `{	"id": 129,
+            "name": "Hiring Event",
+            "category": 6,
+            "category_name": "Other",
+            "location": "San Andres",
+            "date": "2024-09-28",
+            "start_time": "16:11:07",
+            "end_time": "22:38:52",
+            "notes": "support"
+        }`		 
+- Returns success true / false:
+	- if the data is received successfully
+		- `{’success’:true, ‘message: ‘’, ‘data’:[]}`
+		
+	- if the data is not received successfully
+		- `{'success': false,'message': 'Something went wrong.','data': []}`
+
+	- if there is no associated data in the database
+		- `{'success': false,'message': 'No results returned matching your search','data': []}`
+		
+	- if search term is over 255 characters
+		- `{'success': false,'message': 'Search term cannot be greater than 255 characters.','data': []}`
+
+HT - 23/9/24
 
 **/Routes that will need to be documented in the future**  
 
@@ -283,7 +317,6 @@ GET
 /api/getApplicant/{id}  
 /api/editApplicant  
 /api/updateStudentProfile  
-/api/getEvents  
 /api/getAssessmentApplicants  
 /api/addEvent  
 /api/addContact  
