@@ -12,14 +12,24 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
       calendarEventModal.close()
     })
 
+    const eventName = document.getElementById('eventName')
+    const eventLocation = document.getElementById('eventLocation')
+    const eventDate = document.getElementById('eventDate')
+    const eventStart = document.getElementById('eventStart')
+    const eventEnd = document.getElementById('eventEnd')
 
-    // alert('Event: ' + eventObj.title
-    //     + '.\nLocation: ' + eventObj.extendedProps.location
-    //     + '.\nStart time: ' + eventObj.start
-    //     //Todo: conditional render for if there is an end time
-    //     + '.\nEnd time: ' + eventObj.end
-    //     + '.\nDate: ' + eventObj.date
-    // );
+
+
+
+
+
+    eventName.innerText = 'Event: ' + eventObj.title
+    eventLocation.innerText = 'Location: ' + eventObj.extendedProps.location
+    eventDate.innerText = 'Date: ' + eventObj.date
+    eventStart.innerText = 'Start: ' + eventObj.start
+    eventEnd.innerText = 'End: ' + eventObj.end
+
+
 
   },
   initialView: "dayGridMonth",
