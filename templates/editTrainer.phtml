@@ -15,15 +15,15 @@
 <h1>Add Trainers</h1>
 <form>
     <label for="trainer-name">Trainer Name</label>
-    <input name="name" class="edit-trainer form-control" type="text" placeholder="<?= $trainerDetails->getName(); ?>" data-required="true" data-max='255' maxlength="255"/>
+    <input name="name" class="edit-trainer form-control" type="text" value="<?= $trainerDetails->getName(); ?>" data-required="true" data-max='255' maxlength="255"/>
     <div id="nameError" class="alert hidden formItem_alert"></div>
 
     <label for="email">Email</label>
-    <input id="email" name="email" class="edit-trainer form-control" type="text" placeholder="<?= $trainerDetails->getEmail(); ?>" data-required="true">
+    <input id="email" name="email" class="edit-trainer form-control" type="text" value="<?= $trainerDetails->getEmail(); ?>" data-required="true">
     <div id="emailError" class="alert hidden formItem_alert"></div>
 
     <label for="trainer-notes">Notes</label>
-    <textarea name="notes" class="edit-trainer form-control" placeholder="<?= $trainerDetails->getNotes(); ?>" data-max="5000" maxlength="5000"></textarea>
+    <textarea name="notes" class="edit-trainer form-control" data-max="5000" maxlength="5000"><?= $trainerDetails->getNotes(); ?></textarea>
     <div id="notesError" class="alert hidden formItem_alert"></div>
 
     <input type="submit" class="btn btn-success" />
