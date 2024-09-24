@@ -24,8 +24,8 @@ class TrainerTableViewHelper
                 $result .= '<i class="glyphicon glyphicon-copy"></i></button></td><td>';
                 $result .= ($trainer->getDeleted() ? '' : '<button data-id="' . $trainer->getId()
                 . '" class="btn btn-danger">Delete</button>');
-                $result .= '<button data-id="' . $trainer->getId()
-                . '" class="btn btn-primary edit-button">Edit</button>';
+                $result .= ($trainer->getDeleted() ? '' : '<button data-id="' . $trainer->getId()
+                . '" class="btn btn-primary edit-button">Edit</button>');
 
 
                 $result .= '</td></tr>';
