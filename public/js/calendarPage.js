@@ -5,13 +5,22 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
     eventObj.extendedProps = undefined;
     console.log(eventObj)
 
-    alert('Event: ' + eventObj.title
-        + '.\nLocation: ' + eventObj.extendedProps.location
-        + '.\nStart time: ' + eventObj.start
-        //Todo: conditional render for if there is an end time
-        + '.\nEnd time: ' + eventObj.end
-        + '.\nDate: ' + eventObj.date
-    );
+    // calendarEl.addEventListener('click', () => {
+
+    //     }
+    // )
+    const calendarEventModal= document.getElementById("myModal")
+    calendarEventModal.showModal()
+
+
+
+    // alert('Event: ' + eventObj.title
+    //     + '.\nLocation: ' + eventObj.extendedProps.location
+    //     + '.\nStart time: ' + eventObj.start
+    //     //Todo: conditional render for if there is an end time
+    //     + '.\nEnd time: ' + eventObj.end
+    //     + '.\nDate: ' + eventObj.date
+    // );
 
   },
   initialView: "dayGridMonth",
