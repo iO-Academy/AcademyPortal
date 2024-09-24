@@ -282,11 +282,12 @@ GET
 GET
 -  Gets all the future events present in database.
 -  Required: 
--  Optional: - ?categoryValue=[integer]
-             - ?searchTerm=[alphanumeric]
-			 - ?past=[tinyInt]  --- if 1, returns past events
+-  Optional: 
+  - ?categoryValue=[integer]
+  - ?searchTerm=[alphanumeric]
+  - ?past=[tinyInt]  --- if 1, returns past events
 - Data format: 
-	-  `{	"id": 129,
+	-  `{"id": 129,
             "name": "Hiring Event",
             "category": 6,
             "category_name": "Other",
@@ -316,8 +317,7 @@ GET
 
 - Retrieves all the gender information from the gender table on the academy portal database. 
 - Data Format: 
-  - `{"id":1,"gender":"Male"},{"id":2,"gender":"Female"},{"id":3,"gender":"Non-binary"},
-        {"id":4,"gender":"Prefer not to say"}]}}`
+  - `{"id":1,"gender":"Male"}`
 - If the data is successfully retrieved: 
   - `{"success":true,"message":"Retrieved dropdown info."}`
 
@@ -334,8 +334,7 @@ GET
 /api/addContact  
 /api/addHiringPartnerToEvent  
 /api/deleteHiringPartnerFromEvent  
-/api/getStages  
-/api/getGender  
+/api/getStages
 /api/editStageOption  
 /api/deleteStageOption  
 /api/addStageOption  
