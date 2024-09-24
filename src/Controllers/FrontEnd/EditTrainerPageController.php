@@ -23,6 +23,6 @@ class EditTrainerPageController extends Controller
     {
         $id = $args['id'];
 //        $this->trainerModel->getTrainerById($id);
-        return $this->renderer->render($response, 'editTrainer.phtml', ['item'=>$args]);
+        return $this->renderer->render($response, 'editTrainer.phtml', ['item' => $args]);
     }
 }
