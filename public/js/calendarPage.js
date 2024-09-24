@@ -4,14 +4,13 @@ const calendar = new FullCalendar.Calendar(calendarEl, {
     var eventObj = info.event;
     eventObj.extendedProps = undefined;
     console.log(eventObj)
-
-    // calendarEl.addEventListener('click', () => {
-
-    //     }
-    // )
     const calendarEventModal= document.getElementById("myModal")
     calendarEventModal.showModal()
+    const closeModal = document.getElementById('close')
 
+    closeModal.addEventListener("click", () => {
+      calendarEventModal.close()
+    })
 
 
     // alert('Event: ' + eventObj.title
