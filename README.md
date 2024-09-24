@@ -361,6 +361,7 @@ GET
     - If the data is retrieved successfully it will return an array with the courses scheduled
 
 **/getEvents**
+
 GET
 
 - Gets all the future events present in database.
@@ -391,8 +392,6 @@ GET
 
     - if search term is over 255 characters
         - `{'success': false,'message': 'Search term cannot be greater than 255 characters.','data': []}`
-
-HT - 23/9/24
 
 **/addTrainer**
 
@@ -435,7 +434,18 @@ POST
     - If category was not deleted successfully:
         - `{'success' => false,'message' => 'Unexpected error occurred'}`
 
-**/Routes that will need to be documented in the future**
+**/getGender**
+
+GET
+
+- Retrieves all the gender information from the gender table on the academy portal database. 
+- Data Format: 
+  - `{"id":1,"gender":"Male"}`
+- If the data is successfully retrieved: 
+  - `{"success" => true, "message"=> "Retrieved dropdown info.", "data"=> []}`
+
+    
+**/Routes that will need to be documented in the future**  
 
 /api/getStudents  
 /api/getApplicant/{id}  
@@ -446,8 +456,7 @@ POST
 /api/addContact  
 /api/addHiringPartnerToEvent  
 /api/deleteHiringPartnerFromEvent  
-/api/getStages  
-/api/getGender  
+/api/getStages
 /api/editStageOption  
 /api/deleteStageOption  
 /api/addStageOption  
