@@ -402,9 +402,9 @@ POST
 - Sends an array of:
   `{'name': 'string', 'email': 'string', 'notes': 'string'}`
     - Returns success true / false:
-      If trainer is added successfully
+      - If trainer is added successfully
       `{'success': true, 'msg': 'New Trainer successfully saved.', 'data': []}`
-      If trainer can't be added
+      - If trainer can't be added
       `{'success': false, 'msg': 'Unexpected error.', 'notes': []}`
 
 **/addCategory**
@@ -456,7 +456,6 @@ POST
 /api/progressApplicantStage
 /api/csvUpload  
 /api/getEventCategories  
-/api/addTrainer  
 /api/deleteTrainer  
 /api/sendEmail  
 /api/lockApplicantField  
