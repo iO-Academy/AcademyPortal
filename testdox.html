@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Test Documentation</title>
+        <style>
+            body {
+                text-rendering: optimizeLegibility;
+                font-family: Source SansSerif Pro, Arial, sans-serif;
+                font-variant-ligatures: common-ligatures;
+                font-kerning: normal;
+                margin-left: 2rem;
+                background-color: #fff;
+                color: #000;
+            }
+
+            body > ul > li {
+                font-size: larger;
+            }
+
+            h2 {
+                font-size: larger;
+                text-decoration-line: underline;
+                text-decoration-thickness: 2px;
+                margin: 0;
+                padding: 0.5rem 0;
+            }
+
+            ul {
+                list-style: none;
+                margin: 0 0 2rem;
+                padding: 0 0 0 1rem;
+                text-indent: -1rem;
+            }
+
+            .success:before {
+                color: #4e9a06;
+                content: '✓';
+                padding-right: 0.5rem;
+            }
+
+            .defect {
+                color: #a40000;
+            }
+
+            .defect:before {
+                color: #a40000;
+                content: '✗';
+                padding-right: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Add Applicant Controller (Tests\Controllers\API\AddApplicantController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Add Aptitude Score Controller (Tests\Controllers\API\AddAptitudeScoreController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Add Course View Helper (Tests\ViewHelpers\AddCourseViewHelper)</h2>
+        <ul>
+            <li class="success">Course category dropdown success</li>
+        </ul>
+        <h2>Add Hiring Partner Controller (Tests\Controllers\API\AddHiringPartnerController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Add Hiring Partner To Event Controller (Tests\Controllers\API\AddHiringPartnerToEventController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Add Stage Controller (Tests\Controllers\API\AddStageController)</h2>
+        <ul>
+            <li class="success">Success construct</li>
+        </ul>
+        <h2>Add Stage Option Controller (Tests\Controllers\API\AddStageOptionController)</h2>
+        <ul>
+            <li class="success">Success construct</li>
+        </ul>
+        <h2>Add User Controller (Tests\Controllers\API\AddUserController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Admin Page Controller (Tests\Controllers\FrontEnd\AdminPageController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Applicant Entity (Tests\Entities\ApplicantEntity)</h2>
+        <ul>
+            <li class="defect">Constructor</li>
+        </ul>
+        <h2>Applicant Form View Helper (Tests\ViewHelpers\ApplicantFormViewHelper)</h2>
+        <ul>
+            <li class="success">Success applicant form</li>
+        </ul>
+        <h2>Applicant Model (Tests\Models\ApplicantModel)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Applicant Sanitiser (Portal\Sanitisers\ApplicantSanitiser)</h2>
+        <ul>
+            <li class="defect">Sanitise</li>
+            <li class="success">Success null sanitise laptop</li>
+            <li class="success">Success one sanitise one laptop</li>
+            <li class="success">Success zero sanitise laptop</li>
+            <li class="success">Success string sanitise laptop</li>
+            <li class="success">Success non html string sanitise git hub username</li>
+            <li class="success">Success html string sanitise git hub username</li>
+        </ul>
+        <h2>Applicant Validator (Tests\Entities\ApplicantValidator)</h2>
+        <ul>
+            <li class="defect">Validate</li>
+            <li class="defect">Validate additional fields</li>
+            <li class="success">Validate fee payment methods success no explicit fee</li>
+            <li class="success">Validate fee payment methods success with explicit fee</li>
+            <li class="success">Validate fee payment methods failure more than academy price</li>
+            <li class="success">Validate fee payment methods failure more than applicant fee</li>
+            <li class="success">Validate fee payment methods failure wrong field type upfront</li>
+            <li class="success">Validate fee payment methods failure wrong field type diversitech</li>
+            <li class="success">Validate fee payment methods failure wrong field type edaid</li>
+            <li class="success">Validate fee payment methods failure wrong field type fee</li>
+            <li class="success">Validate laptop success 0</li>
+            <li class="success">Validate laptop success 1</li>
+            <li class="success">Validate laptop success empty</li>
+            <li class="success">Validate laptop failure not 0 or 1 or empty</li>
+            <li class="success">Validate laptop failure wrong field type</li>
+            <li class="success">Validate github username success empty</li>
+            <li class="success">Validate github username success correct length</li>
+            <li class="success">Validate github username failure too long</li>
+            <li class="success">Validate github username failure wrong field type</li>
+        </ul>
+        <h2>Application Form Model (Tests\Models\ApplicationFormModel)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Calendar Page Controller (Tests\Controllers\FrontEnd\CalendarPageController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Company Size View Helper (Tests\ViewHelpers\CompanySizeViewHelper)</h2>
+        <ul>
+            <li class="success">Success company size dropdown</li>
+            <li class="success">Failure company size dropdown incorrect data format</li>
+        </ul>
+        <h2>Complete Applicant Entity (Tests\Entities\CompleteApplicantEntity)</h2>
+        <ul>
+            <li class="defect">Complete applicant entity</li>
+        </ul>
+        <h2>Complete Course Entity (Tests\Entities\CompleteCourseEntity)</h2>
+        <ul>
+            <li class="success">Success get total available spaces given null</li>
+            <li class="success">Success get spaces taken given null</li>
+        </ul>
+        <h2>Contact Entity (Tests\Entities\ContactEntity)</h2>
+        <ul>
+            <li class="defect">Constructor</li>
+        </ul>
+        <h2>Contact Sanitiser (Tests\Sanitisers\ContactSanitiser)</h2>
+        <ul>
+            <li class="defect">Sanitise</li>
+        </ul>
+        <h2>Contact Validator (Tests\Validators\ContactValidator)</h2>
+        <ul>
+            <li class="defect">Validate</li>
+        </ul>
+        <h2>Course Categories Helper (Tests\ViewHelpers\CourseCategoriesHelper)</h2>
+        <ul>
+            <li class="success">Display course categories success</li>
+            <li class="success">Display course categories malformed</li>
+        </ul>
+        <h2>Course Entity (Tests\Entities\CourseEntity)</h2>
+        <ul>
+            <li class="defect">Constructor</li>
+        </ul>
+        <h2>Course Model (Tests\Models\CourseModel)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Course Sanitiser (Tests\Sanitisers\CourseSanitiser)</h2>
+        <ul>
+            <li class="defect">Sanitise</li>
+        </ul>
+        <h2>Course Validator (Tests\Validators\CourseValidator)</h2>
+        <ul>
+            <li class="defect">Validate</li>
+        </ul>
+        <h2>Courses Page Controller (Tests\Controllers\FrontEnd\CoursesPageController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Date Time Validator (Tests\Validators\DateTimeValidator)</h2>
+        <ul>
+            <li class="success">Validate start end time success</li>
+            <li class="success">Validate start end time failure</li>
+            <li class="success">Validate time success</li>
+            <li class="success">Validate time failure</li>
+            <li class="success">Validate date success</li>
+            <li class="success">Validate date failure</li>
+            <li class="success">Validate date time success</li>
+            <li class="success">Validate date time failure</li>
+        </ul>
+        <h2>Delete All Stage Options Controller (Tests\Controllers\API\DeleteAllStageOptionsController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Delete Applicant Controller (Tests\Controllers\API\DeleteApplicantController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Delete Stage Controller (Tests\Controllers\API\DeleteStageController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Delete Stage Option Controller (Tests\Controllers\API\DeleteStageOptionController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Display Applicant View Helper (Tests\ViewHelpers\DisplayApplicantViewHelper)</h2>
+        <ul>
+            <li class="success">Success display applicants</li>
+            <li class="success">Success display applicants empty array</li>
+            <li class="success">Failure display applicants incorrect entity</li>
+        </ul>
+        <h2>Display Courses View Helper (Tests\ViewHelpers\DisplayCoursesViewHelper)</h2>
+        <ul>
+            <li class="success">Success one trainer display future courses</li>
+            <li class="success">Success two trainers display future courses</li>
+            <li class="success">Success one deleted trainer display future courses</li>
+            <li class="success">Success one deleted two trainers display future course</li>
+            <li class="success">Success zero trainers display future course</li>
+            <li class="success">Malformed display future course</li>
+            <li class="success">Failure display future course</li>
+            <li class="defect">Success create courses table loop</li>
+            <li class="defect">Malformed create courses table loop</li>
+            <li class="defect">Failure create courses table loop</li>
+            <li class="defect">Success display ongoing courses</li>
+            <li class="defect">Malformed display ongoing courses</li>
+            <li class="defect">Failure display ongoing courses</li>
+            <li class="success">Success ongoing courses present display ongoing courses heading</li>
+            <li class="success">Success no ongoing courses display ongoing courses heading</li>
+            <li class="success">Malformed display ongoing courses heading</li>
+            <li class="success">Success filter courses by trainers</li>
+            <li class="success">Failure filter courses by trainers</li>
+            <li class="success">Malformed filter courses by trainers</li>
+        </ul>
+        <h2>Display Student Profile Helper (Tests\ViewHelpers\DisplayStudentProfileHelper)</h2>
+        <ul>
+            <li class="success">Display edit button or question mark success true</li>
+            <li class="success">Display edit button or question mark success false</li>
+            <li class="success">Display edit button or question mark malformed field name</li>
+            <li class="success">Display edit button or question mark malformed is locked</li>
+            <li class="success">Convert boolean to yes or no success true</li>
+            <li class="success">Convert boolean to yes or no success false</li>
+            <li class="success">Convert boolean to yes or no malformed</li>
+            <li class="success">Convert field to yes no or empty string success empty string</li>
+            <li class="success">Convert field to yes no or empty string success true</li>
+            <li class="success">Convert field to yes no or empty string success false</li>
+            <li class="success">Convert field to yes no or empty string malformed</li>
+        </ul>
+        <h2>Edit Applicant Page Controller (Tests\Controllers\FrontEnd\EditApplicantPageController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Edit Stage Controller (Tests\Controllers\API\EditStageController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Edit Stage Option Controller (Tests\Controllers\API\EditStageOptionController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Email Validator (Tests\Validators\EmailValidator)</h2>
+        <ul>
+            <li class="success">Validate email success</li>
+            <li class="success">Validate email failure</li>
+        </ul>
+        <h2>Event Category View Helper (Tests\ViewHelpers\EventCategoryViewHelper)</h2>
+        <ul>
+            <li class="success">Success event category dropdown</li>
+            <li class="success">Failure event category dropdown incorrect data</li>
+        </ul>
+        <h2>Event Model (Tests\Models\EventModel)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Event Sanitiser (Tests\Sanitisers\EventSanitiser)</h2>
+        <ul>
+            <li class="defect">Sanitise</li>
+        </ul>
+        <h2>Event Validator (Tests\Validators\EventValidator)</h2>
+        <ul>
+            <li class="defect">Validate</li>
+            <li class="success">Validate category exists success</li>
+            <li class="success">Validate category exists invalid category</li>
+        </ul>
+        <h2>Events Page Controller (Tests\Controllers\FrontEnd\EventsPageController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Get All Calendar Events Controller (Tests\Controllers\API\GetAllCalendarEventsController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Get Applicant Controller (Tests\Controllers\API\GetApplicantController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Get Application Form Controller (Tests\Controllers\API\GetApplicationFormController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Get Company Details Modal Controller (Tests\Controllers\API\GetCompanyDetailsModalController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Get Courses Controller (Tests\Controllers\API\GetCoursesController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Get Events Controller (Tests\Controllers\API\GetEventsController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Get Hiring Partner Controller (Tests\Controllers\API\GetHiringPartnerController)</h2>
+        <ul>
+            <li class="success">Instance of the right class</li>
+        </ul>
+        <h2>Get Hiring Partners By Id Controller (Tests\Controllers\API\GetHiringPartnersByIdController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Get Stages Controller (Tests\Controllers\API\GetStagesController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Github Education Validator (Tests\Validators\GithubEducationValidator)</h2>
+        <ul>
+            <li class="success">Github education validator success</li>
+            <li class="success">Github education validator failure</li>
+            <li class="success">Git hub education validator malformed</li>
+        </ul>
+        <h2>Hiring Partner Model (Tests\Models\HiringPartnerModel)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Hiring Partner Page Controller (Tests\Controllers\FrontEnd\HiringPartnerPageController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Hiring Partner Validator (Tests\Validators\HiringPartnerValidator)</h2>
+        <ul>
+            <li class="defect">Validate</li>
+        </ul>
+        <h2>Hiring Sanitiser (Tests\Sanitisers\HiringSanitiser)</h2>
+        <ul>
+            <li class="defect">Sanitise</li>
+        </ul>
+        <h2>Home Page Controller (Tests\Controllers\FrontEnd\HomePageController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Integer Validator (Tests\Validators\IntegerValidator)</h2>
+        <ul>
+            <li class="success">Success integer validator</li>
+            <li class="success">Failure integer validator</li>
+            <li class="success">Malformed integer validator</li>
+        </ul>
+        <h2>Layout View Helper (Tests\ViewHelpers\LayoutViewHelper)</h2>
+        <ul>
+            <li class="success">Success output title</li>
+            <li class="success">Success empty output title</li>
+            <li class="success">Success no input output title</li>
+        </ul>
+        <h2>Lock Applicant Field Controller (Tests\Controllers\API\LockApplicantFieldController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Login Controller (Tests\Controllers\API\LoginController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Options Sanitiser (Tests\Sanitisers\OptionsSanitiser)</h2>
+        <ul>
+            <li class="defect">Sanitise</li>
+        </ul>
+        <h2>Options Validator (Tests\Validators\OptionsValidator)</h2>
+        <ul>
+            <li class="success">Validate option success</li>
+            <li class="success">Validate option failure title exists</li>
+            <li class="success">Validate option failure id number</li>
+            <li class="success">Validate option failure id exists</li>
+            <li class="success">Validate option malformed</li>
+        </ul>
+        <h2>Pagination View Helper (Tests\ViewHelpers\PaginationViewHelper)</h2>
+        <ul>
+            <li class="success">Success pagination view helper</li>
+            <li class="success">Malformed pagination view helper</li>
+        </ul>
+        <h2>Phone Number Validator (Tests\Validators\PhoneNumberValidator)</h2>
+        <ul>
+            <li class="success">Validate phone number success</li>
+            <li class="success">Validate phone number failure</li>
+            <li class="success">Validate phone number empty failure</li>
+        </ul>
+        <h2>Plesk Validator (Tests\Validators\PleskValidator)</h2>
+        <ul>
+            <li class="success">Plesk validator success</li>
+            <li class="success">Plesk validator failure</li>
+            <li class="success">Plesk validator malformed</li>
+        </ul>
+        <h2>Register Page Controller (Tests\Controllers\FrontEnd\RegisterPageController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Stage Entity (Tests\Entities\StageEntity)</h2>
+        <ul>
+            <li class="defect">Stage entity</li>
+        </ul>
+        <h2>Stage Model (Tests\Models\StageModel)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Stage Sanitiser (Tests\Sanitisers\StageSanitiser)</h2>
+        <ul>
+            <li class="defect">Sanitise</li>
+        </ul>
+        <h2>Stage Validator (Tests\Validators\StageValidator)</h2>
+        <ul>
+            <li class="defect">Validate stage</li>
+            <li class="success">Validate new stage success</li>
+            <li class="success">Validate new stage malformed</li>
+            <li class="success">Validate existing stage success</li>
+            <li class="success">Validate existing stage malformed</li>
+        </ul>
+        <h2>Stages Page Controller (Tests\Controllers\FrontEnd\StagesPageController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Stages Page View Helper (Tests\ViewHelpers\StagesPageViewHelper)</h2>
+        <ul>
+            <li class="success">Success no options display stages</li>
+            <li class="success">Success options display stages</li>
+        </ul>
+        <h2>String Sanitiser (Tests\Sanitisers\StringSanitiser)</h2>
+        <ul>
+            <li class="success">Sanitise string success</li>
+            <li class="success">Sanitise string success null</li>
+            <li class="success">Sanitise string failure</li>
+            <li class="success">Sanitise string malform</li>
+        </ul>
+        <h2>String Validator (Tests\Validators\StringValidator)</h2>
+        <ul>
+            <li class="success">Validate exists and length</li>
+            <li class="success">Validate exists and length failure</li>
+            <li class="success">Validate exists and length long failure</li>
+            <li class="success">Validate exists and length malform</li>
+            <li class="success">Validate length success</li>
+            <li class="success">Validate length empty success</li>
+            <li class="success">Validate length failure</li>
+            <li class="success">Validate length malform</li>
+            <li class="success">Validate alpha success</li>
+            <li class="success">Validate alpha failure</li>
+            <li class="success">Validate alpha empty failure</li>
+            <li class="success">Validate alpha malformed</li>
+        </ul>
+        <h2>Student Application Form Page Controller (Tests\Controllers\FrontEnd\StudentApplicationFormPageController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Student Application Form View Helper (Tests\ViewHelpers\StudentApplicationFormViewHelper)</h2>
+        <ul>
+            <li class="success">Success display page by number test</li>
+            <li class="success">Malformed display page by number test</li>
+            <li class="success">Success display next buttons</li>
+            <li class="success">Malformed display next buttons</li>
+            <li class="success">Success display form</li>
+            <li class="success">Malformed display form</li>
+        </ul>
+        <h2>Student Profile Page Controller (Tests\Controllers\FrontEnd\StudentProfilePageController)</h2>
+        <ul>
+            <li class="success">Construct</li>
+        </ul>
+        <h2>Trainer Checkbox View Helper (Tests\ViewHelpers\TrainerCheckboxViewHelper)</h2>
+        <ul>
+            <li class="success">Success display trainer checkbox</li>
+            <li class="success">Failure not display deleted trainer checkbox</li>
+            <li class="success">Failure display trainer checkbox</li>
+            <li class="success">Malformed display trainer checkbox</li>
+        </ul>
+        <h2>Trainer Entity (Tests\Entities\TrainerEntity)</h2>
+        <ul>
+            <li class="defect">Constructor</li>
+        </ul>
+        <h2>Trainer Table View Helper (Tests\ViewHelpers\TrainerTableViewHelper)</h2>
+        <ul>
+            <li class="success">Success display trainer table</li>
+            <li class="success">Success deleted display trainer table</li>
+            <li class="success">Failure display trainer table</li>
+            <li class="success">Malformed display trainer table</li>
+        </ul>
+        <h2>User Model (Tests\Models\UserModel)</h2>
+        <ul>
+            <li class="success">Construct</li>
+            <li class="success">Success user login verify</li>
+        </ul>
+    </body>
+</html>

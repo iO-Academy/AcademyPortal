@@ -1,0 +1,369 @@
+Add Applicant Controller (Tests\Controllers\API\AddApplicantController)
+ [x] Construct
+
+Add Aptitude Score Controller (Tests\Controllers\API\AddAptitudeScoreController)
+ [x] Construct
+
+Add Course View Helper (Tests\ViewHelpers\AddCourseViewHelper)
+ [x] Course category dropdown success
+
+Add Hiring Partner Controller (Tests\Controllers\API\AddHiringPartnerController)
+ [x] Construct
+
+Add Hiring Partner To Event Controller (Tests\Controllers\API\AddHiringPartnerToEventController)
+ [x] Construct
+
+Add Stage Controller (Tests\Controllers\API\AddStageController)
+ [x] Success construct
+
+Add Stage Option Controller (Tests\Controllers\API\AddStageOptionController)
+ [x] Success construct
+
+Add User Controller (Tests\Controllers\API\AddUserController)
+ [x] Construct
+
+Admin Page Controller (Tests\Controllers\FrontEnd\AdminPageController)
+ [x] Construct
+
+Applicant Entity (Tests\Entities\ApplicantEntity)
+ [ ] Constructor
+
+Applicant Form View Helper (Tests\ViewHelpers\ApplicantFormViewHelper)
+ [x] Success applicant form
+
+Applicant Model (Tests\Models\ApplicantModel)
+ [x] Construct
+
+Applicant Sanitiser (Portal\Sanitisers\ApplicantSanitiser)
+ [ ] Sanitise
+ [x] Success null sanitise laptop
+ [x] Success one sanitise one laptop
+ [x] Success zero sanitise laptop
+ [x] Success string sanitise laptop
+ [x] Success non html string sanitise git hub username
+ [x] Success html string sanitise git hub username
+
+Applicant Validator (Tests\Entities\ApplicantValidator)
+ [ ] Validate
+ [ ] Validate additional fields
+ [x] Validate fee payment methods success no explicit fee
+ [x] Validate fee payment methods success with explicit fee
+ [x] Validate fee payment methods failure more than academy price
+ [x] Validate fee payment methods failure more than applicant fee
+ [x] Validate fee payment methods failure wrong field type upfront
+ [x] Validate fee payment methods failure wrong field type diversitech
+ [x] Validate fee payment methods failure wrong field type edaid
+ [x] Validate fee payment methods failure wrong field type fee
+ [x] Validate laptop success 0
+ [x] Validate laptop success 1
+ [x] Validate laptop success empty
+ [x] Validate laptop failure not 0 or 1 or empty
+ [x] Validate laptop failure wrong field type
+ [x] Validate github username success empty
+ [x] Validate github username success correct length
+ [x] Validate github username failure too long
+ [x] Validate github username failure wrong field type
+
+Application Form Model (Tests\Models\ApplicationFormModel)
+ [x] Construct
+
+Calendar Page Controller (Tests\Controllers\FrontEnd\CalendarPageController)
+ [x] Construct
+
+Company Size View Helper (Tests\ViewHelpers\CompanySizeViewHelper)
+ [x] Success company size dropdown
+ [x] Failure company size dropdown incorrect data format
+
+Complete Applicant Entity (Tests\Entities\CompleteApplicantEntity)
+ [ ] Complete applicant entity
+
+Complete Course Entity (Tests\Entities\CompleteCourseEntity)
+ [x] Success get total available spaces given null
+ [x] Success get spaces taken given null
+
+Contact Entity (Tests\Entities\ContactEntity)
+ [ ] Constructor
+
+Contact Sanitiser (Tests\Sanitisers\ContactSanitiser)
+ [ ] Sanitise
+
+Contact Validator (Tests\Validators\ContactValidator)
+ [ ] Validate
+
+Course Categories Helper (Tests\ViewHelpers\CourseCategoriesHelper)
+ [x] Display course categories success
+ [x] Display course categories malformed
+
+Course Entity (Tests\Entities\CourseEntity)
+ [ ] Constructor
+
+Course Model (Tests\Models\CourseModel)
+ [x] Construct
+
+Course Sanitiser (Tests\Sanitisers\CourseSanitiser)
+ [ ] Sanitise
+
+Course Validator (Tests\Validators\CourseValidator)
+ [ ] Validate
+
+Courses Page Controller (Tests\Controllers\FrontEnd\CoursesPageController)
+ [x] Construct
+
+Date Time Validator (Tests\Validators\DateTimeValidator)
+ [x] Validate start end time success
+ [x] Validate start end time failure
+ [x] Validate time success
+ [x] Validate time failure
+ [x] Validate date success
+ [x] Validate date failure
+ [x] Validate date time success
+ [x] Validate date time failure
+
+Delete All Stage Options Controller (Tests\Controllers\API\DeleteAllStageOptionsController)
+ [x] Construct
+
+Delete Applicant Controller (Tests\Controllers\API\DeleteApplicantController)
+ [x] Construct
+
+Delete Stage Controller (Tests\Controllers\API\DeleteStageController)
+ [x] Construct
+
+Delete Stage Option Controller (Tests\Controllers\API\DeleteStageOptionController)
+ [x] Construct
+
+Display Applicant View Helper (Tests\ViewHelpers\DisplayApplicantViewHelper)
+ [x] Success display applicants
+ [x] Success display applicants empty array
+ [x] Failure display applicants incorrect entity
+
+Display Courses View Helper (Tests\ViewHelpers\DisplayCoursesViewHelper)
+ [x] Success one trainer display future courses
+ [x] Success two trainers display future courses
+ [x] Success one deleted trainer display future courses
+ [x] Success one deleted two trainers display future course
+ [x] Success zero trainers display future course
+ [x] Malformed display future course
+ [x] Failure display future course
+ [ ] Success create courses table loop
+ [ ] Malformed create courses table loop
+ [ ] Failure create courses table loop
+ [ ] Success display ongoing courses
+ [ ] Malformed display ongoing courses
+ [ ] Failure display ongoing courses
+ [x] Success ongoing courses present display ongoing courses heading
+ [x] Success no ongoing courses display ongoing courses heading
+ [x] Malformed display ongoing courses heading
+ [x] Success filter courses by trainers
+ [x] Failure filter courses by trainers
+ [x] Malformed filter courses by trainers
+
+Display Student Profile Helper (Tests\ViewHelpers\DisplayStudentProfileHelper)
+ [x] Display edit button or question mark success true
+ [x] Display edit button or question mark success false
+ [x] Display edit button or question mark malformed field name
+ [x] Display edit button or question mark malformed is locked
+ [x] Convert boolean to yes or no success true
+ [x] Convert boolean to yes or no success false
+ [x] Convert boolean to yes or no malformed
+ [x] Convert field to yes no or empty string success empty string
+ [x] Convert field to yes no or empty string success true
+ [x] Convert field to yes no or empty string success false
+ [x] Convert field to yes no or empty string malformed
+
+Edit Applicant Page Controller (Tests\Controllers\FrontEnd\EditApplicantPageController)
+ [x] Construct
+
+Edit Stage Controller (Tests\Controllers\API\EditStageController)
+ [x] Construct
+
+Edit Stage Option Controller (Tests\Controllers\API\EditStageOptionController)
+ [x] Construct
+
+Email Validator (Tests\Validators\EmailValidator)
+ [x] Validate email success
+ [x] Validate email failure
+
+Event Category View Helper (Tests\ViewHelpers\EventCategoryViewHelper)
+ [x] Success event category dropdown
+ [x] Failure event category dropdown incorrect data
+
+Event Model (Tests\Models\EventModel)
+ [x] Construct
+
+Event Sanitiser (Tests\Sanitisers\EventSanitiser)
+ [ ] Sanitise
+
+Event Validator (Tests\Validators\EventValidator)
+ [ ] Validate
+ [x] Validate category exists success
+ [x] Validate category exists invalid category
+
+Events Page Controller (Tests\Controllers\FrontEnd\EventsPageController)
+ [x] Construct
+
+Get All Calendar Events Controller (Tests\Controllers\API\GetAllCalendarEventsController)
+ [x] Construct
+
+Get Applicant Controller (Tests\Controllers\API\GetApplicantController)
+ [x] Construct
+
+Get Application Form Controller (Tests\Controllers\API\GetApplicationFormController)
+ [x] Construct
+
+Get Company Details Modal Controller (Tests\Controllers\API\GetCompanyDetailsModalController)
+ [x] Construct
+
+Get Courses Controller (Tests\Controllers\API\GetCoursesController)
+ [x] Construct
+
+Get Events Controller (Tests\Controllers\API\GetEventsController)
+ [x] Construct
+
+Get Hiring Partner Controller (Tests\Controllers\API\GetHiringPartnerController)
+ [x] Instance of the right class
+
+Get Hiring Partners By Id Controller (Tests\Controllers\API\GetHiringPartnersByIdController)
+ [x] Construct
+
+Get Stages Controller (Tests\Controllers\API\GetStagesController)
+ [x] Construct
+
+Github Education Validator (Tests\Validators\GithubEducationValidator)
+ [x] Github education validator success
+ [x] Github education validator failure
+ [x] Git hub education validator malformed
+
+Hiring Partner Model (Tests\Models\HiringPartnerModel)
+ [x] Construct
+
+Hiring Partner Page Controller (Tests\Controllers\FrontEnd\HiringPartnerPageController)
+ [x] Construct
+
+Hiring Partner Validator (Tests\Validators\HiringPartnerValidator)
+ [ ] Validate
+
+Hiring Sanitiser (Tests\Sanitisers\HiringSanitiser)
+ [ ] Sanitise
+
+Home Page Controller (Tests\Controllers\FrontEnd\HomePageController)
+ [x] Construct
+
+Integer Validator (Tests\Validators\IntegerValidator)
+ [x] Success integer validator
+ [x] Failure integer validator
+ [x] Malformed integer validator
+
+Layout View Helper (Tests\ViewHelpers\LayoutViewHelper)
+ [x] Success output title
+ [x] Success empty output title
+ [x] Success no input output title
+
+Lock Applicant Field Controller (Tests\Controllers\API\LockApplicantFieldController)
+ [x] Construct
+
+Login Controller (Tests\Controllers\API\LoginController)
+ [x] Construct
+
+Options Sanitiser (Tests\Sanitisers\OptionsSanitiser)
+ [ ] Sanitise
+
+Options Validator (Tests\Validators\OptionsValidator)
+ [x] Validate option success
+ [x] Validate option failure title exists
+ [x] Validate option failure id number
+ [x] Validate option failure id exists
+ [x] Validate option malformed
+
+Pagination View Helper (Tests\ViewHelpers\PaginationViewHelper)
+ [x] Success pagination view helper
+ [x] Malformed pagination view helper
+
+Phone Number Validator (Tests\Validators\PhoneNumberValidator)
+ [x] Validate phone number success
+ [x] Validate phone number failure
+ [x] Validate phone number empty failure
+
+Plesk Validator (Tests\Validators\PleskValidator)
+ [x] Plesk validator success
+ [x] Plesk validator failure
+ [x] Plesk validator malformed
+
+Register Page Controller (Tests\Controllers\FrontEnd\RegisterPageController)
+ [x] Construct
+
+Stage Entity (Tests\Entities\StageEntity)
+ [ ] Stage entity
+
+Stage Model (Tests\Models\StageModel)
+ [x] Construct
+
+Stage Sanitiser (Tests\Sanitisers\StageSanitiser)
+ [ ] Sanitise
+
+Stage Validator (Tests\Validators\StageValidator)
+ [ ] Validate stage
+ [x] Validate new stage success
+ [x] Validate new stage malformed
+ [x] Validate existing stage success
+ [x] Validate existing stage malformed
+
+Stages Page Controller (Tests\Controllers\FrontEnd\StagesPageController)
+ [x] Construct
+
+Stages Page View Helper (Tests\ViewHelpers\StagesPageViewHelper)
+ [x] Success no options display stages
+ [x] Success options display stages
+
+String Sanitiser (Tests\Sanitisers\StringSanitiser)
+ [x] Sanitise string success
+ [x] Sanitise string success null
+ [x] Sanitise string failure
+ [x] Sanitise string malform
+
+String Validator (Tests\Validators\StringValidator)
+ [x] Validate exists and length
+ [x] Validate exists and length failure
+ [x] Validate exists and length long failure
+ [x] Validate exists and length malform
+ [x] Validate length success
+ [x] Validate length empty success
+ [x] Validate length failure
+ [x] Validate length malform
+ [x] Validate alpha success
+ [x] Validate alpha failure
+ [x] Validate alpha empty failure
+ [x] Validate alpha malformed
+
+Student Application Form Page Controller (Tests\Controllers\FrontEnd\StudentApplicationFormPageController)
+ [x] Construct
+
+Student Application Form View Helper (Tests\ViewHelpers\StudentApplicationFormViewHelper)
+ [x] Success display page by number test
+ [x] Malformed display page by number test
+ [x] Success display next buttons
+ [x] Malformed display next buttons
+ [x] Success display form
+ [x] Malformed display form
+
+Student Profile Page Controller (Tests\Controllers\FrontEnd\StudentProfilePageController)
+ [x] Construct
+
+Trainer Checkbox View Helper (Tests\ViewHelpers\TrainerCheckboxViewHelper)
+ [x] Success display trainer checkbox
+ [x] Failure not display deleted trainer checkbox
+ [x] Failure display trainer checkbox
+ [x] Malformed display trainer checkbox
+
+Trainer Entity (Tests\Entities\TrainerEntity)
+ [ ] Constructor
+
+Trainer Table View Helper (Tests\ViewHelpers\TrainerTableViewHelper)
+ [x] Success display trainer table
+ [x] Success deleted display trainer table
+ [x] Failure display trainer table
+ [x] Malformed display trainer table
+
+User Model (Tests\Models\UserModel)
+ [x] Construct
+ [x] Success user login verify
+

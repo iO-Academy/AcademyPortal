@@ -1,5 +1,6 @@
 {
   "name": "slim/slim-skeleton",
+  "version": "1.0.0",
   "description": "A Slim Framework skeleton application for rapid development",
   "keywords": [
     "microframework",

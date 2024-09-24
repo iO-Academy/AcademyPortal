@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="/var/www/html/AcademyPortal/phpunit.xml" tests="201" assertions="174" errors="0" failures="0" skipped="26" time="0.479364">
+    <testsuite name="Test Suite" tests="201" assertions="174" errors="0" failures="0" skipped="26" time="0.479364">
+      <testsuite name="Tests\Controllers\API\AddApplicantControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddApplicantControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.010486">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddApplicantControllerTest.php" line="11" class="Tests\Controllers\API\AddApplicantControllerTest" classname="Tests.Controllers.API.AddApplicantControllerTest" assertions="1" time="0.010486"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\AddAptitudeScoreControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddAptitudeScoreControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000537">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddAptitudeScoreControllerTest.php" line="11" class="Tests\Controllers\API\AddAptitudeScoreControllerTest" classname="Tests.Controllers.API.AddAptitudeScoreControllerTest" assertions="1" time="0.000537"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\AddHiringPartnerControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddHiringPartnerControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.001037">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddHiringPartnerControllerTest.php" line="12" class="Tests\Controllers\API\AddHiringPartnerControllerTest" classname="Tests.Controllers.API.AddHiringPartnerControllerTest" assertions="1" time="0.001037"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\AddHiringPartnerToEventControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddHiringPartnerToEventControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.001116">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddHiringPartnerToEventControllerTest.php" line="11" class="Tests\Controllers\API\AddHiringPartnerToEventControllerTest" classname="Tests.Controllers.API.AddHiringPartnerToEventControllerTest" assertions="1" time="0.001116"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\AddStageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddStageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.001203">
+        <testcase name="testSuccessConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddStageControllerTest.php" line="11" class="Tests\Controllers\API\AddStageControllerTest" classname="Tests.Controllers.API.AddStageControllerTest" assertions="1" time="0.001203"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\AddStageOptionControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddStageOptionControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000543">
+        <testcase name="testSuccessConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddStageOptionControllerTest.php" line="11" class="Tests\Controllers\API\AddStageOptionControllerTest" classname="Tests.Controllers.API.AddStageOptionControllerTest" assertions="1" time="0.000543"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\AddUserControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddUserControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.001011">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/AddUserControllerTest.php" line="18" class="Tests\Controllers\API\AddUserControllerTest" classname="Tests.Controllers.API.AddUserControllerTest" assertions="1" time="0.001011"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\DeleteAllStageOptionsControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/DeleteAllStageOptionsControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000531">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/DeleteAllStageOptionsControllerTest.php" line="16" class="Tests\Controllers\API\DeleteAllStageOptionsControllerTest" classname="Tests.Controllers.API.DeleteAllStageOptionsControllerTest" assertions="1" time="0.000531"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\DeleteApplicantControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/DeleteApplicantControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000481">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/DeleteApplicantControllerTest.php" line="16" class="Tests\Controllers\API\DeleteApplicantControllerTest" classname="Tests.Controllers.API.DeleteApplicantControllerTest" assertions="1" time="0.000481"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\DeleteStageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/DeleteStageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000537">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/DeleteStageControllerTest.php" line="16" class="Tests\Controllers\API\DeleteStageControllerTest" classname="Tests.Controllers.API.DeleteStageControllerTest" assertions="1" time="0.000537"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\DeleteStageOptionControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/DeleteStageOptionControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000536">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/DeleteStageOptionControllerTest.php" line="16" class="Tests\Controllers\API\DeleteStageOptionControllerTest" classname="Tests.Controllers.API.DeleteStageOptionControllerTest" assertions="1" time="0.000536"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\EditStageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/EditStageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000523">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/EditStageControllerTest.php" line="16" class="Tests\Controllers\API\EditStageControllerTest" classname="Tests.Controllers.API.EditStageControllerTest" assertions="1" time="0.000523"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\EditStageOptionControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/EditStageOptionControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000493">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/EditStageOptionControllerTest.php" line="16" class="Tests\Controllers\API\EditStageOptionControllerTest" classname="Tests.Controllers.API.EditStageOptionControllerTest" assertions="1" time="0.000493"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\GetAllCalendarEventsControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetAllCalendarEventsControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000493">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetAllCalendarEventsControllerTest.php" line="11" class="Tests\Controllers\API\GetAllCalendarEventsControllerTest" classname="Tests.Controllers.API.GetAllCalendarEventsControllerTest" assertions="1" time="0.000493"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\GetApplicantControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetApplicantControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000486">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetApplicantControllerTest.php" line="11" class="Tests\Controllers\API\GetApplicantControllerTest" classname="Tests.Controllers.API.GetApplicantControllerTest" assertions="1" time="0.000486"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\GetApplicationFormControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetApplicationFormControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000790">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetApplicationFormControllerTest.php" line="12" class="Tests\Controllers\API\GetApplicationFormControllerTest" classname="Tests.Controllers.API.GetApplicationFormControllerTest" assertions="1" time="0.000790"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\GetCompanyDetailsModalControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetCompanyDetailsModalControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000495">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetCompanyDetailsModalControllerTest.php" line="11" class="Tests\Controllers\API\GetCompanyDetailsModalControllerTest" classname="Tests.Controllers.API.GetCompanyDetailsModalControllerTest" assertions="1" time="0.000495"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\GetCoursesControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetCoursesControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.001283">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetCoursesControllerTest.php" line="11" class="Tests\Controllers\API\GetCoursesControllerTest" classname="Tests.Controllers.API.GetCoursesControllerTest" assertions="1" time="0.001283"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\GetEventsControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetEventsControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000504">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetEventsControllerTest.php" line="11" class="Tests\Controllers\API\GetEventsControllerTest" classname="Tests.Controllers.API.GetEventsControllerTest" assertions="1" time="0.000504"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\GetHiringPartnerControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetHiringPartnerControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000526">
+        <testcase name="testInstanceOfTheRightClass" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetHiringPartnerControllerTest.php" line="11" class="Tests\Controllers\API\GetHiringPartnerControllerTest" classname="Tests.Controllers.API.GetHiringPartnerControllerTest" assertions="1" time="0.000526"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\GetHiringPartnersByIdControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetHiringPartnersByIdControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000522">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetHiringPartnersByIdControllerTest.php" line="12" class="Tests\Controllers\API\GetHiringPartnersByIdControllerTest" classname="Tests.Controllers.API.GetHiringPartnersByIdControllerTest" assertions="1" time="0.000522"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\GetStagesControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetStagesControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000523">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/GetStagesControllerTest.php" line="11" class="Tests\Controllers\API\GetStagesControllerTest" classname="Tests.Controllers.API.GetStagesControllerTest" assertions="1" time="0.000523"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\LockApplicantFieldControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/LockApplicantFieldControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000512">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/LockApplicantFieldControllerTest.php" line="12" class="Tests\Controllers\API\LockApplicantFieldControllerTest" classname="Tests.Controllers.API.LockApplicantFieldControllerTest" assertions="1" time="0.000512"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\API\LoginControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/API/LoginControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000502">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/API/LoginControllerTest.php" line="11" class="Tests\Controllers\API\LoginControllerTest" classname="Tests.Controllers.API.LoginControllerTest" assertions="1" time="0.000502"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\FrontEnd\AdminPageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/AdminPageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.001043">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/AdminPageControllerTest.php" line="11" class="Tests\Controllers\FrontEnd\AdminPageControllerTest" classname="Tests.Controllers.FrontEnd.AdminPageControllerTest" assertions="1" time="0.001043"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\FrontEnd\CalendarPageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/CalendarPageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000526">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/CalendarPageControllerTest.php" line="11" class="Tests\Controllers\FrontEnd\CalendarPageControllerTest" classname="Tests.Controllers.FrontEnd.CalendarPageControllerTest" assertions="1" time="0.000526"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\FrontEnd\CoursesPageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/CoursesPageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000487">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/CoursesPageControllerTest.php" line="12" class="Tests\Controllers\FrontEnd\CoursesPageControllerTest" classname="Tests.Controllers.FrontEnd.CoursesPageControllerTest" assertions="1" time="0.000487"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\FrontEnd\EditApplicantPageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/EditApplicantPageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000542">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/EditApplicantPageControllerTest.php" line="14" class="Tests\Controllers\FrontEnd\EditApplicantPageControllerTest" classname="Tests.Controllers.FrontEnd.EditApplicantPageControllerTest" assertions="1" time="0.000542"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\FrontEnd\EventsPageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/EventsPageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000478">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/EventsPageControllerTest.php" line="12" class="Tests\Controllers\FrontEnd\EventsPageControllerTest" classname="Tests.Controllers.FrontEnd.EventsPageControllerTest" assertions="1" time="0.000478"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\FrontEnd\HiringPartnerPageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/HiringPartnerPageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000544">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/HiringPartnerPageControllerTest.php" line="12" class="Tests\Controllers\FrontEnd\HiringPartnerPageControllerTest" classname="Tests.Controllers.FrontEnd.HiringPartnerPageControllerTest" assertions="1" time="0.000544"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\FrontEnd\HomePageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/HomePageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000500">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/HomePageControllerTest.php" line="11" class="Tests\Controllers\FrontEnd\HomePageControllerTest" classname="Tests.Controllers.FrontEnd.HomePageControllerTest" assertions="1" time="0.000500"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\FrontEnd\RegisterPageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/RegisterPageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000716">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/RegisterPageControllerTest.php" line="12" class="Tests\Controllers\FrontEnd\RegisterPageControllerTest" classname="Tests.Controllers.FrontEnd.RegisterPageControllerTest" assertions="1" time="0.000716"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\FrontEnd\StagesPageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/StagesPageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000503">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/StagesPageControllerTest.php" line="17" class="Tests\Controllers\FrontEnd\StagesPageControllerTest" classname="Tests.Controllers.FrontEnd.StagesPageControllerTest" assertions="1" time="0.000503"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\FrontEnd\StudentApplicationFormPageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/StudentApplicationFormPageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000531">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/StudentApplicationFormPageControllerTest.php" line="12" class="Tests\Controllers\FrontEnd\StudentApplicationFormPageControllerTest" classname="Tests.Controllers.FrontEnd.StudentApplicationFormPageControllerTest" assertions="1" time="0.000531"/>
+      </testsuite>
+      <testsuite name="Tests\Controllers\FrontEnd\StudentProfilePageControllerTest" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/StudentProfilePageControllerTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000506">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Controllers/FrontEnd/StudentProfilePageControllerTest.php" line="12" class="Tests\Controllers\FrontEnd\StudentProfilePageControllerTest" classname="Tests.Controllers.FrontEnd.StudentProfilePageControllerTest" assertions="1" time="0.000506"/>
+      </testsuite>
+      <testsuite name="Tests\Entities\ApplicantEntityTest" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantEntityTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.001427">
+        <testcase name="testConstructor" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantEntityTest.php" line="10" class="Tests\Entities\ApplicantEntityTest" classname="Tests.Entities.ApplicantEntityTest" assertions="0" time="0.001427">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Entities\ApplicantValidatorTest" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" tests="19" assertions="15" errors="0" failures="0" skipped="2" time="0.008007">
+        <testcase name="testValidate" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="10" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="0" time="0.000690">
+          <skipped/>
+        </testcase>
+        <testcase name="testValidateAdditionalFields" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="15" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="0" time="0.000704">
+          <skipped/>
+        </testcase>
+        <testcase name="testValidateFeePaymentMethodsSuccessNoExplicitFee" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="20" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="0" time="0.000761"/>
+        <testcase name="testValidateFeePaymentMethodsSuccessWithExplicitFee" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="32" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="0" time="0.000313"/>
+        <testcase name="testValidateFeePaymentMethodsFailureMoreThanAcademyPrice" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="44" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000530"/>
+        <testcase name="testValidateFeePaymentMethodsFailureMoreThanApplicantFee" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="55" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000346"/>
+        <testcase name="testValidateFeePaymentMethodsFailureWrongFieldTypeUpfront" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="66" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000352"/>
+        <testcase name="testValidateFeePaymentMethodsFailureWrongFieldTypeDiversitech" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="74" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000349"/>
+        <testcase name="testValidateFeePaymentMethodsFailureWrongFieldTypeEdaid" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="82" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000345"/>
+        <testcase name="testValidateFeePaymentMethodsFailureWrongFieldTypeFee" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="90" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000334"/>
+        <testcase name="testValidateLaptopSuccess0" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="98" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000506"/>
+        <testcase name="testValidateLaptopSuccess1" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="103" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000340"/>
+        <testcase name="testValidateLaptopSuccessEmpty" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="108" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000320"/>
+        <testcase name="testValidateLaptopFailureNot0Or1OrEmpty" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="113" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000343"/>
+        <testcase name="testValidateLaptopFailureWrongFieldType" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="118" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000319"/>
+        <testcase name="testValidateGithubUsernameSuccessEmpty" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="123" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000306"/>
+        <testcase name="testValidateGithubUsernameSuccessCorrectLength" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="130" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000347"/>
+        <testcase name="testValidateGithubUsernameFailureTooLong" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="137" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000495"/>
+        <testcase name="testValidateGithubUsernameFailureWrongFieldType" file="/var/www/html/AcademyPortal/tests/Entities/ApplicantValidatorTest.php" line="156" class="Tests\Entities\ApplicantValidatorTest" classname="Tests.Entities.ApplicantValidatorTest" assertions="1" time="0.000308"/>
+      </testsuite>
+      <testsuite name="Tests\Entities\CompleteApplicantEntityTest" file="/var/www/html/AcademyPortal/tests/Entities/CompleteApplicantEntityTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000676">
+        <testcase name="testCompleteApplicantEntity" file="/var/www/html/AcademyPortal/tests/Entities/CompleteApplicantEntityTest.php" line="10" class="Tests\Entities\CompleteApplicantEntityTest" classname="Tests.Entities.CompleteApplicantEntityTest" assertions="0" time="0.000676">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Entities\CompleteCourseEntityTest" file="/var/www/html/AcademyPortal/tests/Entities/CompleteCourseEntityTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.001025">
+        <testcase name="testSuccessGetTotalAvailableSpacesGivenNull" file="/var/www/html/AcademyPortal/tests/Entities/CompleteCourseEntityTest.php" line="10" class="Tests\Entities\CompleteCourseEntityTest" classname="Tests.Entities.CompleteCourseEntityTest" assertions="1" time="0.000695"/>
+        <testcase name="testSuccessGetSpacesTakenGivenNull" file="/var/www/html/AcademyPortal/tests/Entities/CompleteCourseEntityTest.php" line="18" class="Tests\Entities\CompleteCourseEntityTest" classname="Tests.Entities.CompleteCourseEntityTest" assertions="1" time="0.000329"/>
+      </testsuite>
+      <testsuite name="Tests\Entities\ContactEntityTest" file="/var/www/html/AcademyPortal/tests/Entities/ContactEntityTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000716">
+        <testcase name="testConstructor" file="/var/www/html/AcademyPortal/tests/Entities/ContactEntityTest.php" line="9" class="Tests\Entities\ContactEntityTest" classname="Tests.Entities.ContactEntityTest" assertions="0" time="0.000716">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Entities\CourseEntityTest" file="/var/www/html/AcademyPortal/tests/Entities/CourseEntityTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000653">
+        <testcase name="testConstructor" file="/var/www/html/AcademyPortal/tests/Entities/CourseEntityTest.php" line="9" class="Tests\Entities\CourseEntityTest" classname="Tests.Entities.CourseEntityTest" assertions="0" time="0.000653">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Entities\StageEntityTest" file="/var/www/html/AcademyPortal/tests/Entities/StageEntityTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000695">
+        <testcase name="testStageEntity" file="/var/www/html/AcademyPortal/tests/Entities/StageEntityTest.php" line="9" class="Tests\Entities\StageEntityTest" classname="Tests.Entities.StageEntityTest" assertions="0" time="0.000695">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Entities\TrainerEntityTest" file="/var/www/html/AcademyPortal/tests/Entities/TrainerEntityTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000692">
+        <testcase name="testConstructor" file="/var/www/html/AcademyPortal/tests/Entities/TrainerEntityTest.php" line="9" class="Tests\Entities\TrainerEntityTest" classname="Tests.Entities.TrainerEntityTest" assertions="0" time="0.000692">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Models\ApplicantModelTest" file="/var/www/html/AcademyPortal/tests/Models/ApplicantModelTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.001296">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Models/ApplicantModelTest.php" line="10" class="Tests\Models\ApplicantModelTest" classname="Tests.Models.ApplicantModelTest" assertions="1" time="0.001296"/>
+      </testsuite>
+      <testsuite name="Tests\Models\ApplicationFormModelTest" file="/var/www/html/AcademyPortal/tests/Models/ApplicationFormModelTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000334">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Models/ApplicationFormModelTest.php" line="10" class="Tests\Models\ApplicationFormModelTest" classname="Tests.Models.ApplicationFormModelTest" assertions="1" time="0.000334"/>
+      </testsuite>
+      <testsuite name="Tests\Models\CourseModelTest" file="/var/www/html/AcademyPortal/tests/Models/CourseModelTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000330">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Models/CourseModelTest.php" line="10" class="Tests\Models\CourseModelTest" classname="Tests.Models.CourseModelTest" assertions="1" time="0.000330"/>
+      </testsuite>
+      <testsuite name="Tests\Models\EventModelTest" file="/var/www/html/AcademyPortal/tests/Models/EventModelTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000363">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Models/EventModelTest.php" line="10" class="Tests\Models\EventModelTest" classname="Tests.Models.EventModelTest" assertions="1" time="0.000363"/>
+      </testsuite>
+      <testsuite name="Tests\Models\HiringPartnerModelTest" file="/var/www/html/AcademyPortal/tests/Models/HiringPartnerModelTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000338">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Models/HiringPartnerModelTest.php" line="10" class="Tests\Models\HiringPartnerModelTest" classname="Tests.Models.HiringPartnerModelTest" assertions="1" time="0.000338"/>
+      </testsuite>
+      <testsuite name="Tests\Models\StageModelTest" file="/var/www/html/AcademyPortal/tests/Models/StageModelTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000315">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Models/StageModelTest.php" line="10" class="Tests\Models\StageModelTest" classname="Tests.Models.StageModelTest" assertions="1" time="0.000315"/>
+      </testsuite>
+      <testsuite name="Tests\Models\UserModelTest" file="/var/www/html/AcademyPortal/tests/Models/UserModelTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.367433">
+        <testcase name="testConstruct" file="/var/www/html/AcademyPortal/tests/Models/UserModelTest.php" line="10" class="Tests\Models\UserModelTest" classname="Tests.Models.UserModelTest" assertions="1" time="0.000347"/>
+        <testcase name="testSuccessUserLoginVerify" file="/var/www/html/AcademyPortal/tests/Models/UserModelTest.php" line="18" class="Tests\Models\UserModelTest" classname="Tests.Models.UserModelTest" assertions="1" time="0.367085"/>
+      </testsuite>
+      <testsuite name="Portal\Sanitisers\ApplicantSanitiserTest" file="/var/www/html/AcademyPortal/tests/Sanitisers/ApplicantSanitiserTest.php" tests="7" assertions="6" errors="0" failures="0" skipped="1" time="0.003287">
+        <testcase name="testSanitise" file="/var/www/html/AcademyPortal/tests/Sanitisers/ApplicantSanitiserTest.php" line="10" class="Portal\Sanitisers\ApplicantSanitiserTest" classname="Portal.Sanitisers.ApplicantSanitiserTest" assertions="0" time="0.000783">
+          <skipped/>
+        </testcase>
+        <testcase name="testSuccessNullSanitiseLaptop" file="/var/www/html/AcademyPortal/tests/Sanitisers/ApplicantSanitiserTest.php" line="15" class="Portal\Sanitisers\ApplicantSanitiserTest" classname="Portal.Sanitisers.ApplicantSanitiserTest" assertions="1" time="0.000707"/>
+        <testcase name="testSuccessOneSanitiseOneLaptop" file="/var/www/html/AcademyPortal/tests/Sanitisers/ApplicantSanitiserTest.php" line="23" class="Portal\Sanitisers\ApplicantSanitiserTest" classname="Portal.Sanitisers.ApplicantSanitiserTest" assertions="1" time="0.000369"/>
+        <testcase name="testSuccessZeroSanitiseLaptop" file="/var/www/html/AcademyPortal/tests/Sanitisers/ApplicantSanitiserTest.php" line="31" class="Portal\Sanitisers\ApplicantSanitiserTest" classname="Portal.Sanitisers.ApplicantSanitiserTest" assertions="1" time="0.000337"/>
+        <testcase name="testSuccessStringSanitiseLaptop" file="/var/www/html/AcademyPortal/tests/Sanitisers/ApplicantSanitiserTest.php" line="39" class="Portal\Sanitisers\ApplicantSanitiserTest" classname="Portal.Sanitisers.ApplicantSanitiserTest" assertions="1" time="0.000367"/>
+        <testcase name="testSuccessNonHtmlStringSanitiseGitHubUsername" file="/var/www/html/AcademyPortal/tests/Sanitisers/ApplicantSanitiserTest.php" line="47" class="Portal\Sanitisers\ApplicantSanitiserTest" classname="Portal.Sanitisers.ApplicantSanitiserTest" assertions="1" time="0.000347"/>
+        <testcase name="testSuccessHtmlStringSanitiseGitHubUsername" file="/var/www/html/AcademyPortal/tests/Sanitisers/ApplicantSanitiserTest.php" line="55" class="Portal\Sanitisers\ApplicantSanitiserTest" classname="Portal.Sanitisers.ApplicantSanitiserTest" assertions="1" time="0.000378"/>
+      </testsuite>
+      <testsuite name="Tests\Sanitisers\ContactSanitiserTest" file="/var/www/html/AcademyPortal/tests/Sanitisers/ContactSanitiserTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000757">
+        <testcase name="testSanitise" file="/var/www/html/AcademyPortal/tests/Sanitisers/ContactSanitiserTest.php" line="10" class="Tests\Sanitisers\ContactSanitiserTest" classname="Tests.Sanitisers.ContactSanitiserTest" assertions="0" time="0.000757">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Sanitisers\CourseSanitiserTest" file="/var/www/html/AcademyPortal/tests/Sanitisers/CourseSanitiserTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000854">
+        <testcase name="testSanitise" file="/var/www/html/AcademyPortal/tests/Sanitisers/CourseSanitiserTest.php" line="10" class="Tests\Sanitisers\CourseSanitiserTest" classname="Tests.Sanitisers.CourseSanitiserTest" assertions="0" time="0.000854">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Sanitisers\EventSanitiserTest" file="/var/www/html/AcademyPortal/tests/Sanitisers/EventSanitiserTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000729">
+        <testcase name="testSanitise" file="/var/www/html/AcademyPortal/tests/Sanitisers/EventSanitiserTest.php" line="10" class="Tests\Sanitisers\EventSanitiserTest" classname="Tests.Sanitisers.EventSanitiserTest" assertions="0" time="0.000729">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Sanitisers\HiringSanitiserTest" file="/var/www/html/AcademyPortal/tests/Sanitisers/HiringSanitiserTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000722">
+        <testcase name="testSanitise" file="/var/www/html/AcademyPortal/tests/Sanitisers/HiringSanitiserTest.php" line="10" class="Tests\Sanitisers\HiringSanitiserTest" classname="Tests.Sanitisers.HiringSanitiserTest" assertions="0" time="0.000722">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Sanitisers\OptionsSanitiserTest" file="/var/www/html/AcademyPortal/tests/Sanitisers/OptionsSanitiserTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000720">
+        <testcase name="testSanitise" file="/var/www/html/AcademyPortal/tests/Sanitisers/OptionsSanitiserTest.php" line="10" class="Tests\Sanitisers\OptionsSanitiserTest" classname="Tests.Sanitisers.OptionsSanitiserTest" assertions="0" time="0.000720">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Sanitisers\StageSanitiserTest" file="/var/www/html/AcademyPortal/tests/Sanitisers/StageSanitiserTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000752">
+        <testcase name="testSanitise" file="/var/www/html/AcademyPortal/tests/Sanitisers/StageSanitiserTest.php" line="10" class="Tests\Sanitisers\StageSanitiserTest" classname="Tests.Sanitisers.StageSanitiserTest" assertions="0" time="0.000752">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Sanitisers\StringSanitiserTest" file="/var/www/html/AcademyPortal/tests/Sanitisers/StringSanitiserTest.php" tests="4" assertions="4" errors="0" failures="0" skipped="0" time="0.001806">
+        <testcase name="testSanitiseStringSuccess" file="/var/www/html/AcademyPortal/tests/Sanitisers/StringSanitiserTest.php" line="10" class="Tests\Sanitisers\StringSanitiserTest" classname="Tests.Sanitisers.StringSanitiserTest" assertions="1" time="0.000556"/>
+        <testcase name="testSanitiseStringSuccessNull" file="/var/www/html/AcademyPortal/tests/Sanitisers/StringSanitiserTest.php" line="18" class="Tests\Sanitisers\StringSanitiserTest" classname="Tests.Sanitisers.StringSanitiserTest" assertions="1" time="0.000357"/>
+        <testcase name="testSanitiseStringFailure" file="/var/www/html/AcademyPortal/tests/Sanitisers/StringSanitiserTest.php" line="25" class="Tests\Sanitisers\StringSanitiserTest" classname="Tests.Sanitisers.StringSanitiserTest" assertions="1" time="0.000342"/>
+        <testcase name="testSanitiseStringMalform" file="/var/www/html/AcademyPortal/tests/Sanitisers/StringSanitiserTest.php" line="34" class="Tests\Sanitisers\StringSanitiserTest" classname="Tests.Sanitisers.StringSanitiserTest" assertions="1" time="0.000551"/>
+      </testsuite>
+      <testsuite name="Tests\Validators\ContactValidatorTest" file="/var/www/html/AcademyPortal/tests/Validators/ContactValidatorTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000712">
+        <testcase name="testValidate" file="/var/www/html/AcademyPortal/tests/Validators/ContactValidatorTest.php" line="10" class="Tests\Validators\ContactValidatorTest" classname="Tests.Validators.ContactValidatorTest" assertions="0" time="0.000712">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Validators\CourseValidatorTest" file="/var/www/html/AcademyPortal/tests/Validators/CourseValidatorTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000738">
+        <testcase name="testValidate" file="/var/www/html/AcademyPortal/tests/Validators/CourseValidatorTest.php" line="10" class="Tests\Validators\CourseValidatorTest" classname="Tests.Validators.CourseValidatorTest" assertions="0" time="0.000738">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Validators\DateTimeValidatorTest" file="/var/www/html/AcademyPortal/tests/Validators/DateTimeValidatorTest.php" tests="8" assertions="8" errors="0" failures="0" skipped="0" time="0.003029">
+        <testcase name="testValidateStartEndTimeSuccess" file="/var/www/html/AcademyPortal/tests/Validators/DateTimeValidatorTest.php" line="10" class="Tests\Validators\DateTimeValidatorTest" classname="Tests.Validators.DateTimeValidatorTest" assertions="1" time="0.000569"/>
+        <testcase name="testValidateStartEndTimeFailure" file="/var/www/html/AcademyPortal/tests/Validators/DateTimeValidatorTest.php" line="18" class="Tests\Validators\DateTimeValidatorTest" classname="Tests.Validators.DateTimeValidatorTest" assertions="1" time="0.000345"/>
+        <testcase name="testValidateTimeSuccess" file="/var/www/html/AcademyPortal/tests/Validators/DateTimeValidatorTest.php" line="26" class="Tests\Validators\DateTimeValidatorTest" classname="Tests.Validators.DateTimeValidatorTest" assertions="1" time="0.000380"/>
+        <testcase name="testValidateTimeFailure" file="/var/www/html/AcademyPortal/tests/Validators/DateTimeValidatorTest.php" line="33" class="Tests\Validators\DateTimeValidatorTest" classname="Tests.Validators.DateTimeValidatorTest" assertions="1" time="0.000359"/>
+        <testcase name="testValidateDateSuccess" file="/var/www/html/AcademyPortal/tests/Validators/DateTimeValidatorTest.php" line="40" class="Tests\Validators\DateTimeValidatorTest" classname="Tests.Validators.DateTimeValidatorTest" assertions="1" time="0.000368"/>
+        <testcase name="testValidateDateFailure" file="/var/www/html/AcademyPortal/tests/Validators/DateTimeValidatorTest.php" line="47" class="Tests\Validators\DateTimeValidatorTest" classname="Tests.Validators.DateTimeValidatorTest" assertions="1" time="0.000333"/>
+        <testcase name="testValidateDateTimeSuccess" file="/var/www/html/AcademyPortal/tests/Validators/DateTimeValidatorTest.php" line="54" class="Tests\Validators\DateTimeValidatorTest" classname="Tests.Validators.DateTimeValidatorTest" assertions="1" time="0.000338"/>
+        <testcase name="testValidateDateTimeFailure" file="/var/www/html/AcademyPortal/tests/Validators/DateTimeValidatorTest.php" line="61" class="Tests\Validators\DateTimeValidatorTest" classname="Tests.Validators.DateTimeValidatorTest" assertions="1" time="0.000339"/>
+      </testsuite>
+      <testsuite name="Tests\Validators\EmailValidatorTest" file="/var/www/html/AcademyPortal/tests/Validators/EmailValidatorTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.001119">
+        <testcase name="testValidateEmailSuccess" file="/var/www/html/AcademyPortal/tests/Validators/EmailValidatorTest.php" line="10" class="Tests\Validators\EmailValidatorTest" classname="Tests.Validators.EmailValidatorTest" assertions="1" time="0.000773"/>
+        <testcase name="testValidateEmailFailure" file="/var/www/html/AcademyPortal/tests/Validators/EmailValidatorTest.php" line="16" class="Tests\Validators\EmailValidatorTest" classname="Tests.Validators.EmailValidatorTest" assertions="1" time="0.000346"/>
+      </testsuite>
+      <testsuite name="Tests\Validators\EventValidatorTest" file="/var/www/html/AcademyPortal/tests/Validators/EventValidatorTest.php" tests="3" assertions="2" errors="0" failures="0" skipped="1" time="0.001733">
+        <testcase name="testValidate" file="/var/www/html/AcademyPortal/tests/Validators/EventValidatorTest.php" line="10" class="Tests\Validators\EventValidatorTest" classname="Tests.Validators.EventValidatorTest" assertions="0" time="0.000681">
+          <skipped/>
+        </testcase>
+        <testcase name="testValidateCategoryExistsSuccess" file="/var/www/html/AcademyPortal/tests/Validators/EventValidatorTest.php" line="15" class="Tests\Validators\EventValidatorTest" classname="Tests.Validators.EventValidatorTest" assertions="1" time="0.000701"/>
+        <testcase name="testValidateCategoryExistsInvalidCategory" file="/var/www/html/AcademyPortal/tests/Validators/EventValidatorTest.php" line="23" class="Tests\Validators\EventValidatorTest" classname="Tests.Validators.EventValidatorTest" assertions="1" time="0.000351"/>
+      </testsuite>
+      <testsuite name="Tests\Validators\GithubEducationValidatorTest" file="/var/www/html/AcademyPortal/tests/Validators/GithubEducationValidatorTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.001184">
+        <testcase name="testGithubEducationValidatorSuccess" file="/var/www/html/AcademyPortal/tests/Validators/GithubEducationValidatorTest.php" line="10" class="Tests\Validators\GithubEducationValidatorTest" classname="Tests.Validators.GithubEducationValidatorTest" assertions="1" time="0.000494"/>
+        <testcase name="testGithubEducationValidatorFailure" file="/var/www/html/AcademyPortal/tests/Validators/GithubEducationValidatorTest.php" line="18" class="Tests\Validators\GithubEducationValidatorTest" classname="Tests.Validators.GithubEducationValidatorTest" assertions="1" time="0.000335"/>
+        <testcase name="testGitHubEducationValidatorMalformed" file="/var/www/html/AcademyPortal/tests/Validators/GithubEducationValidatorTest.php" line="26" class="Tests\Validators\GithubEducationValidatorTest" classname="Tests.Validators.GithubEducationValidatorTest" assertions="1" time="0.000355"/>
+      </testsuite>
+      <testsuite name="Tests\Validators\HiringPartnerValidatorTest" file="/var/www/html/AcademyPortal/tests/Validators/HiringPartnerValidatorTest.php" tests="1" assertions="0" errors="0" failures="0" skipped="1" time="0.000676">
+        <testcase name="testValidate" file="/var/www/html/AcademyPortal/tests/Validators/HiringPartnerValidatorTest.php" line="10" class="Tests\Validators\HiringPartnerValidatorTest" classname="Tests.Validators.HiringPartnerValidatorTest" assertions="0" time="0.000676">
+          <skipped/>
+        </testcase>
+      </testsuite>
+      <testsuite name="Tests\Validators\IntegerValidatorTest" file="/var/www/html/AcademyPortal/tests/Validators/IntegerValidatorTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.001191">
+        <testcase name="testSuccessIntegerValidator" file="/var/www/html/AcademyPortal/tests/Validators/IntegerValidatorTest.php" line="14" class="Tests\Validators\IntegerValidatorTest" classname="Tests.Validators.IntegerValidatorTest" assertions="1" time="0.000508"/>
+        <testcase name="testFailureIntegerValidator" file="/var/www/html/AcademyPortal/tests/Validators/IntegerValidatorTest.php" line="28" class="Tests\Validators\IntegerValidatorTest" classname="Tests.Validators.IntegerValidatorTest" assertions="1" time="0.000333"/>
+        <testcase name="testMalformedIntegerValidator" file="/var/www/html/AcademyPortal/tests/Validators/IntegerValidatorTest.php" line="41" class="Tests\Validators\IntegerValidatorTest" classname="Tests.Validators.IntegerValidatorTest" assertions="1" time="0.000350"/>
+      </testsuite>
+      <testsuite name="Tests\Validators\OptionsValidatorTest" file="/var/www/html/AcademyPortal/tests/Validators/OptionsValidatorTest.php" tests="5" assertions="5" errors="0" failures="0" skipped="0" time="0.001923">
+        <testcase name="testvalidateOptionSuccess" file="/var/www/html/AcademyPortal/tests/Validators/OptionsValidatorTest.php" line="10" class="Tests\Validators\OptionsValidatorTest" classname="Tests.Validators.OptionsValidatorTest" assertions="1" time="0.000546"/>
+        <testcase name="testvalidateOptionFailureTitleExists" file="/var/www/html/AcademyPortal/tests/Validators/OptionsValidatorTest.php" line="17" class="Tests\Validators\OptionsValidatorTest" classname="Tests.Validators.OptionsValidatorTest" assertions="1" time="0.000327"/>
+        <testcase name="testvalidateOptionFailureIdNumber" file="/var/www/html/AcademyPortal/tests/Validators/OptionsValidatorTest.php" line="24" class="Tests\Validators\OptionsValidatorTest" classname="Tests.Validators.OptionsValidatorTest" assertions="1" time="0.000329"/>
+        <testcase name="testvalidateOptionFailureIdExists" file="/var/www/html/AcademyPortal/tests/Validators/OptionsValidatorTest.php" line="31" class="Tests\Validators\OptionsValidatorTest" classname="Tests.Validators.OptionsValidatorTest" assertions="1" time="0.000370"/>
+        <testcase name="testvalidateOptionMalformed" file="/var/www/html/AcademyPortal/tests/Validators/OptionsValidatorTest.php" line="38" class="Tests\Validators\OptionsValidatorTest" classname="Tests.Validators.OptionsValidatorTest" assertions="1" time="0.000350"/>
+      </testsuite>
+      <testsuite name="Tests\Validators\PhoneNumberValidatorTest" file="/var/www/html/AcademyPortal/tests/Validators/PhoneNumberValidatorTest.php" tests="3" assertions="4" errors="0" failures="0" skipped="0" time="0.001260">
+        <testcase name="testValidatePhoneNumberSuccess" file="/var/www/html/AcademyPortal/tests/Validators/PhoneNumberValidatorTest.php" line="9" class="Tests\Validators\PhoneNumberValidatorTest" classname="Tests.Validators.PhoneNumberValidatorTest" assertions="2" time="0.000564"/>
+        <testcase name="testValidatePhoneNumberFailure" file="/var/www/html/AcademyPortal/tests/Validators/PhoneNumberValidatorTest.php" line="18" class="Tests\Validators\PhoneNumberValidatorTest" classname="Tests.Validators.PhoneNumberValidatorTest" assertions="1" time="0.000343"/>
+        <testcase name="testValidatePhoneNumberEmptyFailure" file="/var/www/html/AcademyPortal/tests/Validators/PhoneNumberValidatorTest.php" line="24" class="Tests\Validators\PhoneNumberValidatorTest" classname="Tests.Validators.PhoneNumberValidatorTest" assertions="1" time="0.000353"/>
+      </testsuite>
+      <testsuite name="Tests\Validators\PleskValidatorTest" file="/var/www/html/AcademyPortal/tests/Validators/PleskValidatorTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.001199">
+        <testcase name="testPleskValidatorSuccess" file="/var/www/html/AcademyPortal/tests/Validators/PleskValidatorTest.php" line="10" class="Tests\Validators\PleskValidatorTest" classname="Tests.Validators.PleskValidatorTest" assertions="1" time="0.000518"/>
+        <testcase name="testPleskValidatorFailure" file="/var/www/html/AcademyPortal/tests/Validators/PleskValidatorTest.php" line="17" class="Tests\Validators\PleskValidatorTest" classname="Tests.Validators.PleskValidatorTest" assertions="1" time="0.000360"/>
+        <testcase name="testPleskValidatorMalformed" file="/var/www/html/AcademyPortal/tests/Validators/PleskValidatorTest.php" line="24" class="Tests\Validators\PleskValidatorTest" classname="Tests.Validators.PleskValidatorTest" assertions="1" time="0.000321"/>
+      </testsuite>
+      <testsuite name="Tests\Validators\StageValidatorTest" file="/var/www/html/AcademyPortal/tests/Validators/StageValidatorTest.php" tests="5" assertions="4" errors="0" failures="0" skipped="1" time="0.002262">
+        <testcase name="testValidateStage" file="/var/www/html/AcademyPortal/tests/Validators/StageValidatorTest.php" line="10" class="Tests\Validators\StageValidatorTest" classname="Tests.Validators.StageValidatorTest" assertions="0" time="0.000697">
+          <skipped/>
+        </testcase>
+        <testcase name="testValidateNewStageSuccess" file="/var/www/html/AcademyPortal/tests/Validators/StageValidatorTest.php" line="15" class="Tests\Validators\StageValidatorTest" classname="Tests.Validators.StageValidatorTest" assertions="1" time="0.000547"/>
+        <testcase name="testValidateNewStageMalformed" file="/var/www/html/AcademyPortal/tests/Validators/StageValidatorTest.php" line="22" class="Tests\Validators\StageValidatorTest" classname="Tests.Validators.StageValidatorTest" assertions="1" time="0.000352"/>
+        <testcase name="testValidateExistingStageSuccess" file="/var/www/html/AcademyPortal/tests/Validators/StageValidatorTest.php" line="28" class="Tests\Validators\StageValidatorTest" classname="Tests.Validators.StageValidatorTest" assertions="1" time="0.000340"/>
+        <testcase name="testValidateExistingStageMalformed" file="/var/www/html/AcademyPortal/tests/Validators/StageValidatorTest.php" line="35" class="Tests\Validators\StageValidatorTest" classname="Tests.Validators.StageValidatorTest" assertions="1" time="0.000327"/>
+      </testsuite>
+      <testsuite name="Tests\Validators\StringValidatorTest" file="/var/www/html/AcademyPortal/tests/Validators/StringValidatorTest.php" tests="12" assertions="12" errors="0" failures="0" skipped="0" time="0.004267">
+        <testcase name="testValidateExistsAndLength" file="/var/www/html/AcademyPortal/tests/Validators/StringValidatorTest.php" line="10" class="Tests\Validators\StringValidatorTest" classname="Tests.Validators.StringValidatorTest" assertions="1" time="0.000537"/>
+        <testcase name="testValidateExistsAndLengthFailure" file="/var/www/html/AcademyPortal/tests/Validators/StringValidatorTest.php" line="18" class="Tests\Validators\StringValidatorTest" classname="Tests.Validators.StringValidatorTest" assertions="1" time="0.000363"/>
+        <testcase name="testValidateExistsAndLengthLongFailure" file="/var/www/html/AcademyPortal/tests/Validators/StringValidatorTest.php" line="26" class="Tests\Validators\StringValidatorTest" classname="Tests.Validators.StringValidatorTest" assertions="1" time="0.000317"/>
+        <testcase name="testValidateExistsAndLengthMalform" file="/var/www/html/AcademyPortal/tests/Validators/StringValidatorTest.php" line="34" class="Tests\Validators\StringValidatorTest" classname="Tests.Validators.StringValidatorTest" assertions="1" time="0.000332"/>
+        <testcase name="testValidateLengthSuccess" file="/var/www/html/AcademyPortal/tests/Validators/StringValidatorTest.php" line="42" class="Tests\Validators\StringValidatorTest" classname="Tests.Validators.StringValidatorTest" assertions="1" time="0.000352"/>
+        <testcase name="testValidateLengthEmptySuccess" file="/var/www/html/AcademyPortal/tests/Validators/StringValidatorTest.php" line="50" class="Tests\Validators\StringValidatorTest" classname="Tests.Validators.StringValidatorTest" assertions="1" time="0.000328"/>
+        <testcase name="testValidateLengthFailure" file="/var/www/html/AcademyPortal/tests/Validators/StringValidatorTest.php" line="56" class="Tests\Validators\StringValidatorTest" classname="Tests.Validators.StringValidatorTest" assertions="1" time="0.000328"/>
+        <testcase name="testValidateLengthMalform" file="/var/www/html/AcademyPortal/tests/Validators/StringValidatorTest.php" line="64" class="Tests\Validators\StringValidatorTest" classname="Tests.Validators.StringValidatorTest" assertions="1" time="0.000363"/>
+        <testcase name="testValidateAlphaSuccess" file="/var/www/html/AcademyPortal/tests/Validators/StringValidatorTest.php" line="72" class="Tests\Validators\StringValidatorTest" classname="Tests.Validators.StringValidatorTest" assertions="1" time="0.000328"/>
+        <testcase name="testValidateAlphaFailure" file="/var/www/html/AcademyPortal/tests/Validators/StringValidatorTest.php" line="79" class="Tests\Validators\StringValidatorTest" classname="Tests.Validators.StringValidatorTest" assertions="1" time="0.000317"/>
+        <testcase name="testValidateAlphaEmptyFailure" file="/var/www/html/AcademyPortal/tests/Validators/StringValidatorTest.php" line="85" class="Tests\Validators\StringValidatorTest" classname="Tests.Validators.StringValidatorTest" assertions="1" time="0.000374"/>
+        <testcase name="testValidateAlphaMalformed" file="/var/www/html/AcademyPortal/tests/Validators/StringValidatorTest.php" line="91" class="Tests\Validators\StringValidatorTest" classname="Tests.Validators.StringValidatorTest" assertions="1" time="0.000328"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\AddCourseViewHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/AddCourseViewHelperTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000556">
+        <testcase name="testCourseCategoryDropdownSuccess" file="/var/www/html/AcademyPortal/tests/ViewHelpers/AddCourseViewHelperTest.php" line="10" class="Tests\ViewHelpers\AddCourseViewHelperTest" classname="Tests.ViewHelpers.AddCourseViewHelperTest" assertions="1" time="0.000556"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\ApplicantFormViewHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/ApplicantFormViewHelperTest.php" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.000622">
+        <testcase name="testSuccessApplicantForm" file="/var/www/html/AcademyPortal/tests/ViewHelpers/ApplicantFormViewHelperTest.php" line="10" class="Tests\ViewHelpers\ApplicantFormViewHelperTest" classname="Tests.ViewHelpers.ApplicantFormViewHelperTest" assertions="1" time="0.000622"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\CompanySizeViewHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/CompanySizeViewHelperTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.001206">
+        <testcase name="testSuccessCompanySizeDropdown" file="/var/www/html/AcademyPortal/tests/ViewHelpers/CompanySizeViewHelperTest.php" line="10" class="Tests\ViewHelpers\CompanySizeViewHelperTest" classname="Tests.ViewHelpers.CompanySizeViewHelperTest" assertions="1" time="0.000507"/>
+        <testcase name="testFailureCompanySizeDropdownIncorrectDataFormat" file="/var/www/html/AcademyPortal/tests/ViewHelpers/CompanySizeViewHelperTest.php" line="24" class="Tests\ViewHelpers\CompanySizeViewHelperTest" classname="Tests.ViewHelpers.CompanySizeViewHelperTest" assertions="1" time="0.000340"/>
+        <testcase name="testFailureCompanySizeDropdownIncorrectDataFormat2" file="/var/www/html/AcademyPortal/tests/ViewHelpers/CompanySizeViewHelperTest.php" line="30" class="Tests\ViewHelpers\CompanySizeViewHelperTest" classname="Tests.ViewHelpers.CompanySizeViewHelperTest" assertions="1" time="0.000360"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\CourseCategoriesHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/CourseCategoriesHelperTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.000861">
+        <testcase name="testDisplayCourseCategoriesSuccess" file="/var/www/html/AcademyPortal/tests/ViewHelpers/CourseCategoriesHelperTest.php" line="10" class="Tests\ViewHelpers\CourseCategoriesHelperTest" classname="Tests.ViewHelpers.CourseCategoriesHelperTest" assertions="1" time="0.000499"/>
+        <testcase name="testDisplayCourseCategoriesMalformed" file="/var/www/html/AcademyPortal/tests/ViewHelpers/CourseCategoriesHelperTest.php" line="31" class="Tests\ViewHelpers\CourseCategoriesHelperTest" classname="Tests.ViewHelpers.CourseCategoriesHelperTest" assertions="1" time="0.000362"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\DisplayApplicantViewHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayApplicantViewHelperTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.004661">
+        <testcase name="testSuccessDisplayApplicants" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayApplicantViewHelperTest.php" line="11" class="Tests\ViewHelpers\DisplayApplicantViewHelperTest" classname="Tests.ViewHelpers.DisplayApplicantViewHelperTest" assertions="1" time="0.003966"/>
+        <testcase name="testSuccessDisplayApplicantsEmptyArray" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayApplicantViewHelperTest.php" line="63" class="Tests\ViewHelpers\DisplayApplicantViewHelperTest" classname="Tests.ViewHelpers.DisplayApplicantViewHelperTest" assertions="1" time="0.000330"/>
+        <testcase name="testFailureDisplayApplicantsIncorrectEntity" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayApplicantViewHelperTest.php" line="71" class="Tests\ViewHelpers\DisplayApplicantViewHelperTest" classname="Tests.ViewHelpers.DisplayApplicantViewHelperTest" assertions="1" time="0.000366"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\DisplayCoursesViewHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" tests="19" assertions="13" errors="0" failures="0" skipped="6" time="0.009628">
+        <testcase name="testSuccessOneTrainerDisplayFutureCourses" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="15" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="1" time="0.000958"/>
+        <testcase name="testSuccessTwoTrainersDisplayFutureCourses" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="62" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="1" time="0.000451"/>
+        <testcase name="testSuccessOneDeletedTrainerDisplayFutureCourses" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="112" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="1" time="0.000468"/>
+        <testcase name="testSuccessOneDeletedTwoTrainersDisplayFutureCourse" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="159" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="1" time="0.000447"/>
+        <testcase name="testSuccessZeroTrainersDisplayFutureCourse" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="209" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="1" time="0.000435"/>
+        <testcase name="testMalformedDisplayFutureCourse" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="256" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="1" time="0.000340"/>
+        <testcase name="testFailureDisplayFutureCourse" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="267" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="1" time="0.000343"/>
+        <testcase name="testSuccessCreateCoursesTableLoop" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="274" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="0" time="0.000673">
+          <skipped/>
+        </testcase>
+        <testcase name="testMalformedCreateCoursesTableLoop" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="279" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="0" time="0.000668">
+          <skipped/>
+        </testcase>
+        <testcase name="testFailureCreateCoursesTableLoop" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="284" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="0" time="0.000720">
+          <skipped/>
+        </testcase>
+        <testcase name="testSuccessDisplayOngoingCourses" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="289" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="0" time="0.000718">
+          <skipped/>
+        </testcase>
+        <testcase name="testMalformedDisplayOngoingCourses" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="294" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="0" time="0.000690">
+          <skipped/>
+        </testcase>
+        <testcase name="testFailureDisplayOngoingCourses" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="299" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="0" time="0.000704">
+          <skipped/>
+        </testcase>
+        <testcase name="testSuccessOngoingCoursesPresentDisplayOngoingCoursesHeading" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="304" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="1" time="0.000349"/>
+        <testcase name="testSuccessNoOngoingCoursesDisplayOngoingCoursesHeading" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="312" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="1" time="0.000323"/>
+        <testcase name="testMalformedDisplayOngoingCoursesHeading" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="320" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="1" time="0.000331"/>
+        <testcase name="testSuccessFilterCoursesByTrainers" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="326" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="1" time="0.000374"/>
+        <testcase name="testFailureFilterCoursesByTrainers" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="342" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="1" time="0.000325"/>
+        <testcase name="testMalformedFilterCoursesByTrainers" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayCoursesViewHelperTest.php" line="351" class="Tests\ViewHelpers\DisplayCoursesViewHelperTest" classname="Tests.ViewHelpers.DisplayCoursesViewHelperTest" assertions="1" time="0.000312"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\DisplayStudentProfileHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayStudentProfileHelperTest.php" tests="11" assertions="11" errors="0" failures="0" skipped="0" time="0.003860">
+        <testcase name="testDisplayEditButtonOrQuestionMarkSuccessTrue" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayStudentProfileHelperTest.php" line="10" class="Tests\ViewHelpers\DisplayStudentProfileHelperTest" classname="Tests.ViewHelpers.DisplayStudentProfileHelperTest" assertions="1" time="0.000499"/>
+        <testcase name="testDisplayEditButtonOrQuestionMarkSuccessFalse" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayStudentProfileHelperTest.php" line="24" class="Tests\ViewHelpers\DisplayStudentProfileHelperTest" classname="Tests.ViewHelpers.DisplayStudentProfileHelperTest" assertions="1" time="0.000327"/>
+        <testcase name="testDisplayEditButtonOrQuestionMarkMalformedFieldName" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayStudentProfileHelperTest.php" line="35" class="Tests\ViewHelpers\DisplayStudentProfileHelperTest" classname="Tests.ViewHelpers.DisplayStudentProfileHelperTest" assertions="1" time="0.000350"/>
+        <testcase name="testDisplayEditButtonOrQuestionMarkMalformedIsLocked" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayStudentProfileHelperTest.php" line="43" class="Tests\ViewHelpers\DisplayStudentProfileHelperTest" classname="Tests.ViewHelpers.DisplayStudentProfileHelperTest" assertions="1" time="0.000348"/>
+        <testcase name="testConvertBooleanToYesOrNoSuccessTrue" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayStudentProfileHelperTest.php" line="51" class="Tests\ViewHelpers\DisplayStudentProfileHelperTest" classname="Tests.ViewHelpers.DisplayStudentProfileHelperTest" assertions="1" time="0.000326"/>
+        <testcase name="testConvertBooleanToYesOrNoSuccessFalse" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayStudentProfileHelperTest.php" line="59" class="Tests\ViewHelpers\DisplayStudentProfileHelperTest" classname="Tests.ViewHelpers.DisplayStudentProfileHelperTest" assertions="1" time="0.000331"/>
+        <testcase name="testConvertBooleanToYesOrNoMalformed" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayStudentProfileHelperTest.php" line="67" class="Tests\ViewHelpers\DisplayStudentProfileHelperTest" classname="Tests.ViewHelpers.DisplayStudentProfileHelperTest" assertions="1" time="0.000342"/>
+        <testcase name="testConvertFieldToYesNoOrEmptyStringSuccessEmptyString" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayStudentProfileHelperTest.php" line="74" class="Tests\ViewHelpers\DisplayStudentProfileHelperTest" classname="Tests.ViewHelpers.DisplayStudentProfileHelperTest" assertions="1" time="0.000322"/>
+        <testcase name="testConvertFieldToYesNoOrEmptyStringSuccessTrue" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayStudentProfileHelperTest.php" line="82" class="Tests\ViewHelpers\DisplayStudentProfileHelperTest" classname="Tests.ViewHelpers.DisplayStudentProfileHelperTest" assertions="1" time="0.000339"/>
+        <testcase name="testConvertFieldToYesNoOrEmptyStringSuccessFalse" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayStudentProfileHelperTest.php" line="90" class="Tests\ViewHelpers\DisplayStudentProfileHelperTest" classname="Tests.ViewHelpers.DisplayStudentProfileHelperTest" assertions="1" time="0.000350"/>
+        <testcase name="testConvertFieldToYesNoOrEmptyStringMalformed" file="/var/www/html/AcademyPortal/tests/ViewHelpers/DisplayStudentProfileHelperTest.php" line="98" class="Tests\ViewHelpers\DisplayStudentProfileHelperTest" classname="Tests.ViewHelpers.DisplayStudentProfileHelperTest" assertions="1" time="0.000325"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\EventCategoryViewHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/EventCategoryViewHelperTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.001215">
+        <testcase name="testSuccessEventCategoryDropdown" file="/var/www/html/AcademyPortal/tests/ViewHelpers/EventCategoryViewHelperTest.php" line="10" class="Tests\ViewHelpers\EventCategoryViewHelperTest" classname="Tests.ViewHelpers.EventCategoryViewHelperTest" assertions="1" time="0.000538"/>
+        <testcase name="testFailureEventCategoryDropdownIncorrectData" file="/var/www/html/AcademyPortal/tests/ViewHelpers/EventCategoryViewHelperTest.php" line="24" class="Tests\ViewHelpers\EventCategoryViewHelperTest" classname="Tests.ViewHelpers.EventCategoryViewHelperTest" assertions="1" time="0.000357"/>
+        <testcase name="testFailureEventCategoryDropdownIncorrectData2" file="/var/www/html/AcademyPortal/tests/ViewHelpers/EventCategoryViewHelperTest.php" line="30" class="Tests\ViewHelpers\EventCategoryViewHelperTest" classname="Tests.ViewHelpers.EventCategoryViewHelperTest" assertions="1" time="0.000320"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\LayoutViewHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/LayoutViewHelperTest.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.001117">
+        <testcase name="testSuccessOutputTitle" file="/var/www/html/AcademyPortal/tests/ViewHelpers/LayoutViewHelperTest.php" line="10" class="Tests\ViewHelpers\LayoutViewHelperTest" classname="Tests.ViewHelpers.LayoutViewHelperTest" assertions="1" time="0.000479"/>
+        <testcase name="testSuccessEmptyOutputTitle" file="/var/www/html/AcademyPortal/tests/ViewHelpers/LayoutViewHelperTest.php" line="17" class="Tests\ViewHelpers\LayoutViewHelperTest" classname="Tests.ViewHelpers.LayoutViewHelperTest" assertions="1" time="0.000314"/>
+        <testcase name="testSuccessNoInputOutputTitle" file="/var/www/html/AcademyPortal/tests/ViewHelpers/LayoutViewHelperTest.php" line="24" class="Tests\ViewHelpers\LayoutViewHelperTest" classname="Tests.ViewHelpers.LayoutViewHelperTest" assertions="1" time="0.000325"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\PaginationViewHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/PaginationViewHelperTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.000827">
+        <testcase name="testSuccessPaginationViewHelper" file="/var/www/html/AcademyPortal/tests/ViewHelpers/PaginationViewHelperTest.php" line="10" class="Tests\ViewHelpers\PaginationViewHelperTest" classname="Tests.ViewHelpers.PaginationViewHelperTest" assertions="1" time="0.000489"/>
+        <testcase name="testMalformedPaginationViewHelper" file="/var/www/html/AcademyPortal/tests/ViewHelpers/PaginationViewHelperTest.php" line="27" class="Tests\ViewHelpers\PaginationViewHelperTest" classname="Tests.ViewHelpers.PaginationViewHelperTest" assertions="1" time="0.000338"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\StagesPageViewHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/StagesPageViewHelperTest.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.001843">
+        <testcase name="testSuccessNoOptionsDisplayStages" file="/var/www/html/AcademyPortal/tests/ViewHelpers/StagesPageViewHelperTest.php" line="16" class="Tests\ViewHelpers\StagesPageViewHelperTest" classname="Tests.ViewHelpers.StagesPageViewHelperTest" assertions="1" time="0.001114"/>
+        <testcase name="testSuccessOptionsDisplayStages" file="/var/www/html/AcademyPortal/tests/ViewHelpers/StagesPageViewHelperTest.php" line="49" class="Tests\ViewHelpers\StagesPageViewHelperTest" classname="Tests.ViewHelpers.StagesPageViewHelperTest" assertions="1" time="0.000729"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\StudentApplicationFormViewHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/StudentApplicationFormViewHelperTest.php" tests="6" assertions="6" errors="0" failures="0" skipped="0" time="0.002238">
+        <testcase name="testSuccessDisplayPageByNumberTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/StudentApplicationFormViewHelperTest.php" line="11" class="Tests\ViewHelpers\StudentApplicationFormViewHelperTest" classname="Tests.ViewHelpers.StudentApplicationFormViewHelperTest" assertions="1" time="0.000561"/>
+        <testcase name="testMalformedDisplayPageByNumberTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/StudentApplicationFormViewHelperTest.php" line="39" class="Tests\ViewHelpers\StudentApplicationFormViewHelperTest" classname="Tests.ViewHelpers.StudentApplicationFormViewHelperTest" assertions="1" time="0.000334"/>
+        <testcase name="testSuccessDisplayNextButtons" file="/var/www/html/AcademyPortal/tests/ViewHelpers/StudentApplicationFormViewHelperTest.php" line="52" class="Tests\ViewHelpers\StudentApplicationFormViewHelperTest" classname="Tests.ViewHelpers.StudentApplicationFormViewHelperTest" assertions="1" time="0.000311"/>
+        <testcase name="testMalformedDisplayNextButtons" file="/var/www/html/AcademyPortal/tests/ViewHelpers/StudentApplicationFormViewHelperTest.php" line="63" class="Tests\ViewHelpers\StudentApplicationFormViewHelperTest" classname="Tests.ViewHelpers.StudentApplicationFormViewHelperTest" assertions="1" time="0.000326"/>
+        <testcase name="testSuccessDisplayForm" file="/var/www/html/AcademyPortal/tests/ViewHelpers/StudentApplicationFormViewHelperTest.php" line="71" class="Tests\ViewHelpers\StudentApplicationFormViewHelperTest" classname="Tests.ViewHelpers.StudentApplicationFormViewHelperTest" assertions="1" time="0.000368"/>
+        <testcase name="testMalformedDisplayForm" file="/var/www/html/AcademyPortal/tests/ViewHelpers/StudentApplicationFormViewHelperTest.php" line="168" class="Tests\ViewHelpers\StudentApplicationFormViewHelperTest" classname="Tests.ViewHelpers.StudentApplicationFormViewHelperTest" assertions="1" time="0.000338"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\TrainerCheckboxViewHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/TrainerCheckboxViewHelperTest.php" tests="4" assertions="4" errors="0" failures="0" skipped="0" time="0.001894">
+        <testcase name="testSuccessDisplayTrainerCheckbox" file="/var/www/html/AcademyPortal/tests/ViewHelpers/TrainerCheckboxViewHelperTest.php" line="12" class="Tests\ViewHelpers\TrainerCheckboxViewHelperTest" classname="Tests.ViewHelpers.TrainerCheckboxViewHelperTest" assertions="1" time="0.000835"/>
+        <testcase name="testFailureNotDisplayDeletedTrainerCheckbox" file="/var/www/html/AcademyPortal/tests/ViewHelpers/TrainerCheckboxViewHelperTest.php" line="24" class="Tests\ViewHelpers\TrainerCheckboxViewHelperTest" classname="Tests.ViewHelpers.TrainerCheckboxViewHelperTest" assertions="1" time="0.000369"/>
+        <testcase name="testFailureDisplayTrainerCheckbox" file="/var/www/html/AcademyPortal/tests/ViewHelpers/TrainerCheckboxViewHelperTest.php" line="35" class="Tests\ViewHelpers\TrainerCheckboxViewHelperTest" classname="Tests.ViewHelpers.TrainerCheckboxViewHelperTest" assertions="1" time="0.000373"/>
+        <testcase name="testMalformedDisplayTrainerCheckbox" file="/var/www/html/AcademyPortal/tests/ViewHelpers/TrainerCheckboxViewHelperTest.php" line="43" class="Tests\ViewHelpers\TrainerCheckboxViewHelperTest" classname="Tests.ViewHelpers.TrainerCheckboxViewHelperTest" assertions="1" time="0.000317"/>
+      </testsuite>
+      <testsuite name="Tests\ViewHelpers\TrainerTableViewHelperTest" file="/var/www/html/AcademyPortal/tests/ViewHelpers/TrainerTableViewHelperTest.php" tests="4" assertions="4" errors="0" failures="0" skipped="0" time="0.001569">
+        <testcase name="testSuccessDisplayTrainerTable" file="/var/www/html/AcademyPortal/tests/ViewHelpers/TrainerTableViewHelperTest.php" line="12" class="Tests\ViewHelpers\TrainerTableViewHelperTest" classname="Tests.ViewHelpers.TrainerTableViewHelperTest" assertions="1" time="0.000545"/>
+        <testcase name="testSuccessDeletedDisplayTrainerTable" file="/var/www/html/AcademyPortal/tests/ViewHelpers/TrainerTableViewHelperTest.php" line="29" class="Tests\ViewHelpers\TrainerTableViewHelperTest" classname="Tests.ViewHelpers.TrainerTableViewHelperTest" assertions="1" time="0.000365"/>
+        <testcase name="testFailureDisplayTrainerTable" file="/var/www/html/AcademyPortal/tests/ViewHelpers/TrainerTableViewHelperTest.php" line="46" class="Tests\ViewHelpers\TrainerTableViewHelperTest" classname="Tests.ViewHelpers.TrainerTableViewHelperTest" assertions="1" time="0.000310"/>
+        <testcase name="testMalformedDisplayTrainerTable" file="/var/www/html/AcademyPortal/tests/ViewHelpers/TrainerTableViewHelperTest.php" line="54" class="Tests\ViewHelpers\TrainerTableViewHelperTest" classname="Tests.ViewHelpers.TrainerTableViewHelperTest" assertions="1" time="0.000349"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
