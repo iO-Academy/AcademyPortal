@@ -1,19 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="" rel="stylesheet">
-    <title>TITLE</title>
+    <?php
+    require 'partials/layout/head.phtml';
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Edit Trainers');
+    ?>
+    <script defer src="./js/utils.js"></script>
+    <script defer src="./js/validations.js"></script>
 </head>
 <body>
+<?php require 'partials/layout/header.phtml'; ?>
+<?php require 'partials/layout/nav.phtml'; ?>
+<h1>Add Trainers</h1>
+<form>
+    <label for="trainer-name">Trainer Name</label>
+    <input name="name" class="edit-trainer form-control" type="text" placeholder="<?= $trainerDetails->getName(); ?>" data-required="true" data-max='255' maxlength="255"/>
+    <div id="nameError" class="alert hidden formItem_alert"></div>
 
-<?
+    <label for="email">Email</label>
+    <input id="email" name="email" class="edit-trainer form-control" type="text" placeholder="<?= $trainerDetails->getEmail(); ?>" data-required="true">
+    <div id="emailError" class="alert hidden formItem_alert"></div>
 
-print_r($trainerDetails);
+    <label for="trainer-notes">Notes</label>
+    <textarea name="notes" class="edit-trainer form-control" placeholder="<?= $trainerDetails->getNotes(); ?>" data-max="5000" maxlength="5000"></textarea>
+    <div id="notesError" class="alert hidden formItem_alert"></div>
 
-?>
-
-
+    <input type="submit" class="btn btn-success" />
+</form>
+<div id="messages" class="alert"></div>
+<?php require 'partials/layout/footer.phtml'; ?>
 </body>
 </html>
