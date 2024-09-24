@@ -2,7 +2,7 @@
 
 namespace Portal\ViewHelpers;
 
-use Portal\Interfaces\BaseApplicantEntityInterface;
+use Portal\Entities\BaseApplicantEntity;
 use Portal\Interfaces\ApplicantEntityInterface;
 
 class DisplayApplicantViewHelper
@@ -79,7 +79,7 @@ class DisplayApplicantViewHelper
     }
 
 
-    private static function outputApplicantRow(BaseApplicantEntityInterface $applicant, $lastStage, $stageCount): string
+    private static function outputApplicantRow(BaseApplicantEntity $applicant, $lastStage, $stageCount): string
     {
         $string = '<tr>
                     <td>

@@ -347,14 +347,16 @@ GET
   
   
 **/getEvents**
+
 GET
 -  Gets all the future events present in database.
 -  Required: 
--  Optional: - ?categoryValue=[integer]
-             - ?searchTerm=[alphanumeric]
-			 - ?past=[tinyInt]  --- if 1, returns past events
+-  Optional: 
+  - ?categoryValue=[integer]
+  - ?searchTerm=[alphanumeric]
+  - ?past=[tinyInt]  --- if 1, returns past events
 - Data format: 
-	-  `{	"id": 129,
+	-  `{"id": 129,
             "name": "Hiring Event",
             "category": 6,
             "category_name": "Other",
@@ -377,8 +379,6 @@ GET
 	- if search term is over 255 characters
 		- `{'success': false,'message': 'Search term cannot be greater than 255 characters.','data': []}`
 
-HT - 23/9/24
-
 **/addTrainer**
 
 POST
@@ -392,6 +392,17 @@ POST
       If trainer can't be added
         `{'success': false, 'msg': 'Unexpected error.', 'notes': []}`
 
+**/getGender**
+
+GET
+
+- Retrieves all the gender information from the gender table on the academy portal database. 
+- Data Format: 
+  - `{"id":1,"gender":"Male"}`
+- If the data is successfully retrieved: 
+  - `{"success":true,"message":"Retrieved dropdown info."}`
+
+    
 **/Routes that will need to be documented in the future**  
 
 /api/getStudents  
@@ -403,8 +414,7 @@ POST
 /api/addContact  
 /api/addHiringPartnerToEvent  
 /api/deleteHiringPartnerFromEvent  
-/api/getStages  
-/api/getGender  
+/api/getStages
 /api/editStageOption  
 /api/deleteStageOption  
 /api/addStageOption  

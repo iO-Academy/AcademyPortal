@@ -117,16 +117,23 @@ optionButtons.forEach((optionButton) => {
     })
 })
 
-//Handler for delete button
-deleteButtons.forEach((deleteButton) => {
-    deleteButton.addEventListener('click', async (e) => {
-        let data = {
-            "id": e.target.dataset.id
-        };
-        await sendRequest('./api/deleteStage', 'DELETE', data)
-        window.location.reload()
-    })
-})
+deleteButtons.forEach(deleteBtn => {
+    deleteBtn.addEventListener('click', (e) => {
+        const id = e.target.dataset.id;
+        fetch('/api/deleteStage', {
+            method: 'DELETE',
+            body: JSON.stringify({"id": id}),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((response) => {
+            return response.json();
+        }).then((responseData) => {
+            document.cookie = `response = ${responseData.message}`;
+            window.location.reload();
+        });
+    });
+});
 
 //Handler for edit button
 editButtons.forEach((editButton, index) => {
