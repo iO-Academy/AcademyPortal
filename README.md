@@ -136,7 +136,8 @@ POST
 
 - Updates an applicant record in the applicant table
 - Sends:
-  ```{
+  ```
+  {
   "id":"14",
   "cohort":["1","3","6","7"],
   "stageId":"1",
@@ -199,7 +200,9 @@ POST
   "portfolioUrl":"",
   "pleskHostingUrl":"",
   "githubEducationLink":"",
-  "additionalNotes":""}```
+  "additionalNotes":""
+  }
+  ```
 - Returns success true / false:
     - if update is successful:
         - `{$data['success'] = true; $data['msg'] = 'Applicant has been updated!'; $statusCode = 200;}`
@@ -366,11 +369,12 @@ GET
 
 - Gets all the future events present in database.
 - Required:
-- Optional: - ?categoryValue=[integer]
-    - ?searchTerm=[alphanumeric]
-    - ?past=[tinyInt]  --- if 1, returns past events
+- Optional: 
+    - `?categoryValue=[integer]`
+    - `?searchTerm=[alphanumeric]`
+    - `?past=[tinyInt]`  --- if 1, returns past events
 - Data format:
-    - `{    "id": 129,
+    - `{"id": 129,
       "name": "Hiring Event",
       "category": 6,
       "category_name": "Other",
@@ -427,10 +431,10 @@ POST
 
 - Deletes a course category from the course_categories table in the database
 - Sends an array of:
-  `{id: "{9}"}`
+  `{id: 9}`
 - Returns success true / false:
     - If category was deleted successfully:
-        - `{'success' => true,'message' => 'Category deleted','id' => [$deletedCategory]}`
+        - `{'success' => true,'message' => 'Category deleted','id' => [9]}`
     - If category was not deleted successfully:
         - `{'success' => false,'message' => 'Unexpected error occurred'}`
 
