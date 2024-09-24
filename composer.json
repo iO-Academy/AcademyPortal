@@ -1,5 +1,6 @@
 {
   "name": "slim/slim-skeleton",
+  "version": "1.0.0",
   "description": "A Slim Framework skeleton application for rapid development",
   "keywords": [
     "microframework",
@@ -36,7 +37,7 @@
     "ext-curl": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "^10.0",
+    "phpunit/phpunit": "^11.0",
     "squizlabs/php_codesniffer": "*"
   },
   "config": {
