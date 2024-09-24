@@ -95,7 +95,7 @@ class StagesPageViewHelper
                 $result .= '<td class="col-xs-2 text-center"><a class="toggleEditForm">Edit</a></td>';
                 if (empty($stage->getOptions()) && $stage->getHasAssignees() === 0) {
                     $result .= '<td class="col-xs-2 text-center"><a data-hasOptions="0" data-id="'
-                        . $stage->getStageId() . '" class="text-danger delete disabled">Delete</a></td>';
+                        . $stage->getStageId() . '" class="text-danger delete">Delete</a></td>';
                 } else {
                     $result .= '<td class="col-xs-2 text-center"><a data-id="'
                         . $stage->getStageId()
