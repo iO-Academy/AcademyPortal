@@ -1,8 +1,6 @@
 const editButtons = document.querySelectorAll('.toggleEditForm');
 const editForms = document.querySelectorAll('.stagesTableForm');
-const editResponse = document.getElementById('editResponse'); // @todo: can we remove this?
 const newStageForm = document.getElementById('newStageForm');
-const createNewResponse = document.getElementById('createNewResponse'); // @todo: can we remove this?
 const deleteButtons = document.querySelectorAll('.delete');
 const optionButtons = document.querySelectorAll('.toggleEditOptions');
 const optionEditSubmits = document.querySelectorAll('.optionEditSubmit');
@@ -108,33 +106,6 @@ optionAddSubmits.forEach((optionAddSubmit) => {
     })
 })
 
-window.addEventListener('load', (event) => {
-    checkCookie()
-});
-
-function checkCookie() {
-    let elem = document.getElementById('editResponse');
-    let response = getCookie("response");
-    elem.textContent = response;
-    document.cookie = "response=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
 optionButtons.forEach((optionButton) => {
     optionButton.addEventListener('click', (e) => {
         e.preventDefault();
@@ -146,16 +117,23 @@ optionButtons.forEach((optionButton) => {
     })
 })
 
-//Handler for delete button
-deleteButtons.forEach((deleteButton) => {
-    deleteButton.addEventListener('click', async (e) => {
-        let data = {
-            "id": e.target.dataset.id
-        };
-        await sendRequest('./api/deleteStage', 'DELETE', data)
-        window.location.reload()
-    })
-})
+deleteButtons.forEach(deleteBtn => {
+    deleteBtn.addEventListener('click', (e) => {
+        const id = e.target.dataset.id;
+        fetch('/api/deleteStage', {
+            method: 'DELETE',
+            body: JSON.stringify({"id": id}),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then((response) => {
+            return response.json();
+        }).then((responseData) => {
+            document.cookie = `response = ${responseData.message}`;
+            window.location.reload();
+        });
+    });
+});
 
 //Handler for edit button
 editButtons.forEach((editButton, index) => {

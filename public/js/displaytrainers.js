@@ -25,4 +25,3 @@ deleteButtons.forEach(deleteBtn => {
         });
     });
 });
-

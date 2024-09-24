@@ -445,7 +445,7 @@ GET
 - Retrieves all the gender information from the gender table on the academy portal database. 
 - Data Format: 
   - `{"id":1,"gender":"Male"}`
-- If the data is successfully retrieved: 
+- If the data is successfully retrieved:
   - `{"success" => true, "message"=> "Retrieved dropdown info.", "data"=> []}`
 
     
