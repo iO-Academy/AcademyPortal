@@ -2,19 +2,17 @@ const calendarEl = document.getElementById("calendar");
 const calendar = new FullCalendar.Calendar(calendarEl, {
   eventClick: function(info) {
     var eventObj = info.event;
+    eventObj.extendedProps = undefined;
     console.log(eventObj)
-    if (eventObj.url) {
-      alert(
-          'Clicked ' + eventObj.title + '.\n' +
-          'Will open ' + eventObj.url + ' in a new tab'
-      );
 
-      window.open(eventObj.url);
+    alert('Event: ' + eventObj.title
+        + '.\nLocation: ' + eventObj.extendedProps.location
+        + '.\nStart time: ' + eventObj.start
+        //Todo: conditional render for if there is an end time
+        + '.\nEnd time: ' + eventObj.end
+        + '.\nDate: ' + eventObj.date
+    );
 
-      info.jsEvent.preventDefault(); // prevents browser from following link in current tab.
-    } else {
-      alert('Clicked ' + eventObj.title);
-    }
   },
   initialView: "dayGridMonth",
   businessHours: {'daysOfWeek': [1,2,3,4,5], 'startTime': '09:00', 'endTime': '17:00' },
