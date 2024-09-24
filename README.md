@@ -136,7 +136,7 @@ POST
 
 - Updates an applicant record in the applicant table
 - Sends:
-  {
+  ```{
   "id":"14",
   "cohort":["1","3","6","7"],
   "stageId":"1",
@@ -199,12 +199,12 @@ POST
   "portfolioUrl":"",
   "pleskHostingUrl":"",
   "githubEducationLink":"",
-  "additionalNotes":""}
+  "additionalNotes":""}```
 - Returns success true / false:
     - if update is successful:
-        - `{$data['success'] = true; $data['msg'] = 'Applicant has been updated!'; $statusCode = 200;}
+        - `{$data['success'] = true; $data['msg'] = 'Applicant has been updated!'; $statusCode = 200;}`
     - if update is unsuccessful:
-        - `{$data['success'] = false; $data['msg'] = 'Invalid applicant data'; $statusCode = 400;}
+        - `{$data['success'] = false; $data['msg'] = 'Invalid applicant data'; $statusCode = 400;}`
 
 **/deleteApplicant**
 
