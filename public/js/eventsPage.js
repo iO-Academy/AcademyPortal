@@ -37,6 +37,7 @@ function getEvents(search = false) {
     })
     .then(eventsAndHiringPartners => {
         displayEventsHandler(eventsAndHiringPartners)
+        console.log(eventsAndHiringPartners.events)
     })
 }
 
@@ -59,6 +60,7 @@ function populateFilterEventCategories() {
  *
  * @param events is an array of objects which contains information about events
  */
+
 function displayEventsHandler(eventsAndHiringPartners) {
     if (eventsAndHiringPartners.events.data.length === 0) {
         eventList.innerHTML = eventsAndHiringPartners.events.message

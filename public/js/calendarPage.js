@@ -1,5 +1,19 @@
 const calendarEl = document.getElementById("calendar");
 const calendar = new FullCalendar.Calendar(calendarEl, {
+  eventClick: function(info) {
+    var eventObj = info.event;
+    eventObj.extendedProps = undefined;
+    console.log(eventObj)
+
+    alert('Event: ' + eventObj.title
+        + '.\nLocation: ' + eventObj.extendedProps.location
+        + '.\nStart time: ' + eventObj.start
+        //Todo: conditional render for if there is an end time
+        + '.\nEnd time: ' + eventObj.end
+        + '.\nDate: ' + eventObj.date
+    );
+
+  },
   initialView: "dayGridMonth",
   businessHours: {'daysOfWeek': [1,2,3,4,5], 'startTime': '09:00', 'endTime': '17:00' },
   eventTimeFormat: {
