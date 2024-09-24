@@ -11,12 +11,10 @@
          bootstrap="tests/bootstrap.php"
          cacheDirectory=".phpunit.cache"
          backupStaticProperties="false"
-         testdox="false"
          displayDetailsOnTestsThatTriggerDeprecations="true"
          displayDetailsOnPhpunitDeprecations="true"
          displayDetailsOnTestsThatTriggerErrors="true"
-         displayDetailsOnTestsThatTriggerNotices="true"
->
+         displayDetailsOnTestsThatTriggerNotices="true">
   <testsuites>
     <testsuite name="Test Suite">
       <directory>./tests/</directory>
