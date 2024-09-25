@@ -10,66 +10,86 @@
     <script defer src="./js/deleteCourseModal.js"></script>
 </head>
 <body>
-    <?php
-    require 'partials/layout/header.phtml';
-    require 'partials/layout/nav.phtml';
-    ?>
-    <div class="container-fluid">
-        <div class="row courses-heading-container">
-            <div class="col-xs-6 text-left courses-box">
-                <h1>Courses</h1>
-            </div>
-            <div class="col-xs-6 text-right courses-box">
-                <select class="courseCategoryFilter btn-default btn">
-                    <option value="%" selected>All</option>
-                    <?php
-                    foreach ($courses as $course){
-                        echo '<option value="'.$course['category'].'">'. $course['category'] . '</option>';
-                    }
-                    ?>
-                </select>
-                <button type="button" class="btn btn-default completed-courses-btn">Toggle Completed Courses</button>
-            </div>
+<?php
+require 'partials/layout/header.phtml';
+require 'partials/layout/nav.phtml';
+?>
+<div class="container-fluid">
+    <div class="row courses-heading-container">
+        <div class="col-xs-6 text-left courses-box">
+            <h1>Courses</h1>
+        </div>
+        <div class="col-xs-6 text-right courses-box">
+            <select class="courseCategoryFilter btn-default btn">
+                <option value="%" selected>All</option>
+                <?php
+                foreach ($courses as $course) {
+                    echo '<option value="' . $course['category'] . '">' . $course['category'] . '</option>';
+                }
+                ?>
+            </select>
+            <button type="button" class="btn btn-default completed-courses-btn">Toggle Completed Courses</button>
         </div>
     </div>
-    <div id="courses" class="row">
-        <table class="col-xs-12 table-bordered table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Course Name</th>
-                    <th>Category</th>
-                    <th>Trainer</th>
-                    <th>Notes</th>
-                    <th>Location</th>
-                    <th>Available places</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody class="hidden" id="completed-courses">
-                <?php
-                echo \Portal\ViewHelpers\DisplayCoursesViewHelper::COMPLETED_COURSE_HEADING_TABLE;
-                echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($completedCourses, $trainers);
-                ?>
-            </tbody>
-            <tbody>
-                <?php
-                echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayOngoingCoursesHeading(!empty($ongoingCourses));
-                echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($ongoingCourses, $trainers);
-                echo \Portal\ViewHelpers\DisplayCoursesViewHelper::FUTURE_COURSES_HEADING_TABLE;
-                echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayFutureCourses($futureCourses, $trainers);
-                ?>
-            </tbody>
-        </table>
+</div>
+<div id="courses" class="row">
+    <table class="col-xs-12 table-bordered table">
+        <thead>
+        <tr class="text-center">
+            <th>
+                <button type="button" class="btn btn-link sortHeader" data-bs-toggle="button" value="id">ID</button>
+            </th>
+            <th>
+                <button type="button" class="btn btn-link sortHeader" value="start_date">Start Date</button>
+            </th>
+            <th>
+                <button type="button" class="btn btn-link sortHeader" value="end_date">End Date</button>
+            </th>
+            <th>
+                <button type="button" class="btn btn-link sortHeader" value="name">Course Name</button>
+            </th>
+            <th>
+                <button type="button" class="btn btn-link sortHeader" value="category_id">Category</button>
+            </th>
+            <th>
+                <button type="button" class="btn btn-link sortHeader" disabled>Trainer</button>
+            </th>
+            <th>
+                <button type="button" class="btn btn-link sortHeader" value="notes">Notes</button>
+            </th>
+            <th>
+                <button type="button" class="btn btn-link sortHeader" value="remote">Location</button>
+            </th>
+            <th>
+                <button type="button" class="btn btn-link sortHeader" disabled>Available places</button>
+            </th>
+            <th>
+                <button type="button" class="btn btn-link" disabled>Actions</button>
+            </th>
+        </tr>
+        </thead>
+        <tbody class="hidden" id="completed-courses">
         <?php
-        require('partials/deleteCourseModal.phtml');
+        echo \Portal\ViewHelpers\DisplayCoursesViewHelper::COMPLETED_COURSE_HEADING_TABLE;
+        echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($completedCourses, $trainers);
         ?>
-    </div>
+        </tbody>
+        <tbody>
+        <?php
+        echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayOngoingCoursesHeading(!empty($ongoingCourses));
+        echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayCourses($ongoingCourses, $trainers);
+        echo \Portal\ViewHelpers\DisplayCoursesViewHelper::FUTURE_COURSES_HEADING_TABLE;
+        echo \Portal\ViewHelpers\DisplayCoursesViewHelper::displayFutureCourses($futureCourses, $trainers);
+        ?>
+        </tbody>
+    </table>
     <?php
-    require 'partials/layout/footer.phtml';
+    require('partials/deleteCourseModal.phtml');
     ?>
+</div>
+<?php
+require 'partials/layout/footer.phtml';
+?>
 </body>
 
 </html>
