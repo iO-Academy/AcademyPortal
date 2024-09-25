@@ -2,8 +2,6 @@ const calendarEl = document.getElementById("calendar");
 const calendar = new FullCalendar.Calendar(calendarEl, {
   eventClick: function(info) {
     var eventObj = info.event;
-    console.log(eventObj)
-    $('#modalBody').html(event.description);
     $('#eventName').html(eventObj.title);
     $('#eventLocation').html(eventObj.extendedProps.location)
     $('#eventStart').html(eventObj.start)
@@ -37,7 +35,6 @@ const calendarConverter= ($calendarItem) => {
   calendarEvents['courseData'].map((calendarEvent) => {
     calendarEvent.map(calendarConverter)
   });
-
   calendar.render();
 })();
 
