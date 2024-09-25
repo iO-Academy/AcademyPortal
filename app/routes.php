@@ -45,7 +45,6 @@ use Portal\Controllers\API\GetHiringPartnersByIdController;
 use Portal\Controllers\API\GetHiringPartnersController;
 use Portal\Controllers\API\GetNextStageOptionsController;
 use Portal\Controllers\API\GetStagesController;
-use Portal\Controllers\API\GetStudentsController;
 use Portal\Controllers\API\LockApplicantFieldController;
 use Portal\Controllers\API\LoginController;
 use Portal\Controllers\API\SendEmailController;
@@ -105,7 +104,6 @@ return function (App $app) {
     $app->get('/calendar', CalendarPageController::class);
 
     //API
-    $app->get('/api/getStudents', GetStudentsController::class);
     $app->get('/api/getApplicant/{id}', GetApplicantController::class);
     $app->post('/api/saveApplicant', AddApplicantController::class);
     $app->delete('/api/deleteApplicant', DeleteApplicantController::class);

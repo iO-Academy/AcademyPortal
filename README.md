@@ -279,7 +279,6 @@ GET
 
 **/Routes that will need to be documented in the future**  
 
-/api/getStudents  
 /api/getApplicant/{id}  
 /api/editApplicant  
 /api/updateStudentProfile  
