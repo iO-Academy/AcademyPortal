@@ -1,24 +1,19 @@
-<!--<button type="button" id="calendarEventModal" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
-
-<!-- Modal -->
-<dialog id="myModal" class="modal-lg" data-toggle="modal" data-bs-target="#myModal">
-
-
-            <!-- Modal content-->
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" id="close">&times;</button>
-                    <h2 class="modal-title">Event Details</h2>
-                </div>
-                <div id="modal-main">
-                    <div id="modal-main" class="modal-body">
-                        <h3>Event Details:</h3>
-                        <h5 id="eventName">Event name: </h5>
-                        <h5 id="eventLocation">Location: </h5>
-                        <h5 id="eventDate">Date: </h5>
-                        <h5 id="eventStart">Start: </h5>
-                        <h5 id="eventEnd">End: </h5>
-                    </div>
-                </div>
+<div id="calendarModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                <h3 id="modalTitle" class="modal-title"></h3>
             </div>
-
-</dialog>
+            <div id="modalBody" class="modal-body">
+            <h5 id="eventName">Event: </h5>
+            <h5 id="eventLocation">Location: </h5>
+            <h5 id="eventStart">Start: </h5>
+            <h5 id="eventEnd"></h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
