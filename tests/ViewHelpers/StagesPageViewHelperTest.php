@@ -26,7 +26,7 @@ class StagesPageViewHelperTest extends TestCase
         type="text"class="optionAddTitleform-control"placeholder="Typethenameofyournewoption"/><inputtype="submit"
         class="optionAddSubmitbtnbtn-success"data-stageid="1"value="Submit"></form></div></div></td><td
         class="col-xs-2text-center"><aclass="toggleEditForm">Edit</a></td><tdclass="col-xs-2text-center">
-        <adata-hasOptions="0"data-id="1"class="text-dangerdeletedisabled">Delete</a></td><td
+        <adata-hasOptions="0"data-id="1"class="text-dangerdelete">Delete</a></td><td
         class="col-xs-2text-center"><aclass="toggleEditOptions"data-stageId="1">Options</a></td><td
         class="col-xs-2text-centerstageLock"data-stageId="1"data-locked="1"><iclass="fasfa-lock"></i></td></tr>';
 

@@ -157,48 +157,6 @@ class ApplicantModel implements ApplicantModelInterface
     }
 
     /**
-     * Sorts the table via the input taken from the sorting arrows
-     */
-    public function getAllStudents(string $sortingQuery = ''): array // @todo: only get applicants in a student stage
-    {
-        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `email`, `dateTimeAdded`, `start_date` AS 'cohortDate', 
-                      `applicants`.`stageId` as 'stageID', `title` as 'stageName', `option` as 'stageOptionName' 
-                      FROM `applicants`
-                      LEFT JOIN `courses` ON `applicants`.`cohortId` = `courses`.`id`
-                      LEFT JOIN `stages` ON `applicants`.`stageId` = `stages`.`id`
-                      LEFT JOIN `options` ON `applicants`.`stageOptionId` = `options`.`id`
-                      WHERE `applicants`.`deleted` = '0' ";
-
-        $stmt .= $this->sortingQuery($sortingQuery);
-
-        $query = $this->db->prepare($stmt);
-        $query->setFetchMode(PDO::FETCH_CLASS, BaseApplicantEntity::class);
-
-        $query->execute();
-
-        return $query->fetchAll();
-    }
-
-    /**
-     * Gets a sorted list of students assigned to a specific cohort.
-     */
-    public function getAllStudentsByCohort(string $cohortId): array // @todo: only get applicants in a student stage
-    {
-        $stmt = "SELECT `applicants`.`id`, `applicants`.`name`, `teams`.`trainer`, `team`
-                      FROM `applicants`
-                      LEFT JOIN `courses` ON `applicants`.`cohortId`=`courses`.`id`
-                      LEFT JOIN `applicants_additional` ON `applicants`.`id` = `applicants_additional`.`id`
-                      LEFT JOIN `teams` ON `applicants_additional`.`team` = `teams`.`id`
-                      WHERE `applicants`.`deleted` = '0' AND `applicants`.`cohortId` = :cohortId;";
-
-        $query = $this->db->prepare($stmt);
-        $query->bindValue(':cohortId', $cohortId);
-        $query->execute();
-
-        return $query->fetchAll();
-    }
-
-    /**
      * Retrieves an Applicant with the specified id
      */
     public function getApplicantById(int $id): ?CompleteApplicantEntity

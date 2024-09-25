@@ -19,11 +19,11 @@ class AddCourseViewHelperTest extends TestCase
         $result = EditCourseViewHelper::courseEditCategoryDropdown($categories, $courseCatId);
         $this->assertSame($expected, $result);
     }
-
     public function testCourseCategoryDropdownMalformed()
     {
         $categories = 5;
+        $courseCatId = 1;
         $this->expectException(\TypeError::class);
-        $result = EditCourseViewHelper::courseEditCategoryDropdown($categories, $courseCatId);
+        EditCourseViewHelper::courseEditCategoryDropdown($categories, $courseCatId);
     }
 }
