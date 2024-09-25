@@ -73,7 +73,6 @@ use Portal\Controllers\FrontEnd\RegisterPageController;
 use Portal\Controllers\FrontEnd\StagesPageController;
 use Portal\Controllers\FrontEnd\StudentApplicationFormPageController;
 use Portal\Controllers\FrontEnd\StudentProfilePageController;
-use Portal\Controllers\FrontEnd\TeamPickerPageController;
 use Portal\Controllers\FrontEnd\TrainersPageController;
 use Slim\App;
 
@@ -93,8 +92,6 @@ return function (App $app) {
     $app->get('/editStages', StagesPageController::class);
     $app->get('/editApplicant', EditApplicantPageController::class);
     $app->get('/editCourse/{id}', EditCoursePageController::class);
-    $app->get('/teamPicker', TeamPickerPageController::class);
-    $app->get('/student', TeamPickerPageController::class);
     $app->get('/public[/{id}]', StudentProfilePageController::class);
     $app->post('/public[/{id}]', StudentProfilePageController::class);
     $app->get('/courses', CoursesPageController::class);

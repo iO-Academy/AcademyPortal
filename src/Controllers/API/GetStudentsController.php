@@ -28,7 +28,7 @@ class GetStudentsController extends Controller
             ];
 
             if (empty($get['cohortId'])) {
-                $responseData['data'] = $this->applicantModel->getAllApplicants();
+                $responseData['data'] = $this->applicantModel->getAllStudents();
             } else {
                 $responseData['data'] = $this->applicantModel->getAllStudentsByCohort($get['cohortId']);
             }
