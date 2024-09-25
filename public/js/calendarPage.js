@@ -2,16 +2,12 @@ const calendarEl = document.getElementById("calendar");
 const calendar = new FullCalendar.Calendar(calendarEl, {
   eventClick: function(info) {
     var eventObj = info.event;
-    $('#modalTitle').html('Event Details');
+    console.log(eventObj)
     $('#modalBody').html(event.description);
-    $('#eventName').html('Event: ' + eventObj.title);
-    $('#eventLocation').html('Location: ' + eventObj.extendedProps.location)
-    $('#eventStart').html('Start: ' + eventObj.start)
-    if (eventObj.end) {
-      $('#eventEnd').html('End: ' + eventObj.end)
-    } else {
-      $('#eventEnd').html('')
-    }
+    $('#eventName').html(eventObj.title);
+    $('#eventLocation').html(eventObj.extendedProps.location)
+    $('#eventStart').html(eventObj.start)
+    $('#eventEnd').html(eventObj.end)
     $('#calendarModal').modal();
   },
   initialView: "dayGridMonth",
