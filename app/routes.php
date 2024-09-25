@@ -50,9 +50,7 @@ use Portal\Controllers\API\LockApplicantFieldController;
 use Portal\Controllers\API\LoginController;
 use Portal\Controllers\API\SendEmailController;
 use Portal\Controllers\API\UpdateStudentProfileController;
-//UNCOMMENT
-//use Portal\Controllers\API\EditTrainerController;
-//UNCOMMENT
+use Portal\Controllers\API\EditTrainerController;
 use Portal\Controllers\FrontEnd\AddApplicantPageController;
 use Portal\Controllers\FrontEnd\AddCoursePageController;
 use Portal\Controllers\FrontEnd\AddEventPageController;
@@ -78,9 +76,7 @@ use Portal\Controllers\FrontEnd\StudentApplicationFormPageController;
 use Portal\Controllers\FrontEnd\StudentProfilePageController;
 use Portal\Controllers\FrontEnd\TeamPickerPageController;
 use Portal\Controllers\FrontEnd\TrainersPageController;
-//UNCOMMENT
 use Portal\Controllers\FrontEnd\EditTrainerPageController;
-//UNCOMMENT
 use Slim\App;
 
 return function (App $app) {
@@ -162,7 +158,6 @@ return function (App $app) {
     $app->post('/api/deleteCourse/{id}', DeleteCourseController::class);
     $app->get('/api/deleteCourse/{id}', GetDeleteCourseInfoController::class);
     $app->get('/api/getAllCalendarData', CalendarCourseController::class);
-//UNCOMMENT
-//    $app->put('/api/editTrainer/{id}', EditTrainerController::class);
-//UNCOMMENT
+    $app->put('/api/editTrainer/{id}', EditTrainerController::class);
+
 };

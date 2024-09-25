@@ -22,7 +22,7 @@ class EditTrainerPageController extends Controller
     public function __invoke(Request $request, Response $response, array $args)
     {
         $id = $args['id'];
-        $trainerDetails = $this->trainerModel->editTrainerById($id);
+        $trainerDetails = $this->trainerModel->getTrainerForEdit($id);
         return $this->renderer->render($response, 'editTrainer.phtml', ['trainerDetails' => $trainerDetails]);
     }
 }

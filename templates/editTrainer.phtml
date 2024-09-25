@@ -4,15 +4,16 @@
 <head>
     <?php
     require 'partials/layout/head.phtml';
-    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Edit Trainers');
+    echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Edit Trainer');
     ?>
-    <script defer src="./js/utils.js"></script>
-    <script defer src="./js/validations.js"></script>
+    <script defer src="/js/utils.js"></script>
+    <script defer src="/js/validations.js"></script>
+    <script defer src="/js/editTrainer.js"></script>
 </head>
 <body>
 <?php require 'partials/layout/header.phtml'; ?>
 <?php require 'partials/layout/nav.phtml'; ?>
-<h1>Add Trainers</h1>
+<h1>Edit Trainer</h1>
 <form>
     <label for="trainer-name">Trainer Name</label>
     <input name="name" class="edit-trainer form-control" type="text" value="<?= $trainerDetails->getName(); ?>" data-required="true" data-max='255' maxlength="255"/>
@@ -25,6 +26,8 @@
     <label for="trainer-notes">Notes</label>
     <textarea name="notes" class="edit-trainer form-control" data-max="5000" maxlength="5000"><?= $trainerDetails->getNotes(); ?></textarea>
     <div id="notesError" class="alert hidden formItem_alert"></div>
+
+    <input type="hidden" name="id" id="trainerId" value="<?= $trainerDetails->getId(); ?>">
 
     <input type="submit" class="btn btn-success" />
 </form>
