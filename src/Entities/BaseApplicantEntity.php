@@ -2,9 +2,7 @@
 
 namespace Portal\Entities;
 
-use Portal\Interfaces\BaseApplicantEntityInterface;
-
-class BaseApplicantEntity implements \JsonSerializable, BaseApplicantEntityInterface
+class BaseApplicantEntity implements \JsonSerializable
 {
     protected $id;
     protected $name;

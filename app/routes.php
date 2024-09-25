@@ -45,7 +45,6 @@ use Portal\Controllers\API\GetHiringPartnersByIdController;
 use Portal\Controllers\API\GetHiringPartnersController;
 use Portal\Controllers\API\GetNextStageOptionsController;
 use Portal\Controllers\API\GetStagesController;
-use Portal\Controllers\API\GetStudentsController;
 use Portal\Controllers\API\LockApplicantFieldController;
 use Portal\Controllers\API\LoginController;
 use Portal\Controllers\API\SendEmailController;
@@ -74,7 +73,6 @@ use Portal\Controllers\FrontEnd\RegisterPageController;
 use Portal\Controllers\FrontEnd\StagesPageController;
 use Portal\Controllers\FrontEnd\StudentApplicationFormPageController;
 use Portal\Controllers\FrontEnd\StudentProfilePageController;
-use Portal\Controllers\FrontEnd\TeamPickerPageController;
 use Portal\Controllers\FrontEnd\TrainersPageController;
 use Portal\Controllers\FrontEnd\EditTrainerPageController;
 use Slim\App;
@@ -95,8 +93,6 @@ return function (App $app) {
     $app->get('/editStages', StagesPageController::class);
     $app->get('/editApplicant', EditApplicantPageController::class);
     $app->get('/editCourse/{id}', EditCoursePageController::class);
-    $app->get('/teamPicker', TeamPickerPageController::class);
-    $app->get('/student', TeamPickerPageController::class);
     $app->get('/public[/{id}]', StudentProfilePageController::class);
     $app->post('/public[/{id}]', StudentProfilePageController::class);
     $app->get('/courses', CoursesPageController::class);
@@ -110,7 +106,6 @@ return function (App $app) {
     $app->get('/calendar', CalendarPageController::class);
     $app->get('/editTrainer/{id}', EditTrainerPageController::class );
     //API
-    $app->get('/api/getStudents', GetStudentsController::class);
     $app->get('/api/getApplicant/{id}', GetApplicantController::class);
     $app->post('/api/saveApplicant', AddApplicantController::class);
     $app->delete('/api/deleteApplicant', DeleteApplicantController::class);
