@@ -6,6 +6,7 @@ use Portal\Abstracts\Controller;
 use Portal\Models\EventModel;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
+use function PHPUnit\Framework\throwException;
 
 class GetEventsController extends Controller
 {
@@ -32,15 +33,21 @@ class GetEventsController extends Controller
 
         $eventSearchInput = $request->getQueryParams()['searchTerm'] ?? '';
         $eventFilterInput = $request->getQueryParams()['categoryValue'] ?? null;
+//        $pageNumberInput = $args['pageNumber'];
+        $pageNumberInput = 10;
         if (strlen($eventSearchInput) < 256) {
             try {
                 if (!$pastEvents) {
                     $data['data'] = $this->eventModel->getUpcomingEventsByCategoryIdAndSearch(
+                        $pageNumberInput,
+
                         $eventFilterInput,
                         $eventSearchInput
+
                     );
                 } else {
                     $data['data'] = $this->eventModel->getPastEventsByCategoryIdAndSearch(
+                        $pageNumberInput,
                         $eventFilterInput,
                         $eventSearchInput
                     );

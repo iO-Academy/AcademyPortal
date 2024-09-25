@@ -13,7 +13,24 @@ import {addEventListenersToDisplayApplicantModal} from "./applicantModal.js"
  */
 function getEvents(search = false) {
 
-    let url = './api/getEvents?categoryValue=' + categoriesFilter.value
+    let pageNumber = 10
+    document.querySelector('#counterMinus').addEventListener('click', function (e) {
+        pageNumber--
+        console.log(pageNumber)
+
+    })
+    document.querySelector('#counterPlus').addEventListener('click', function (e) {
+        pageNumber++
+        console.log(pageNumber)
+
+    })
+
+
+    document.getElementById('buttonOne').textContent = pageNumber.toString()
+    document.getElementById('buttonTwo').textContent = (pageNumber + 1).toString()
+    document.getElementById('buttonThree').textContent = (pageNumber + 2).toString()
+
+    let url = `./api/getEvents/${pageNumber}?categoryValue=` + categoriesFilter.value
     if (search !== false) {
         url += '&searchTerm=' + search
     }
@@ -21,6 +38,8 @@ function getEvents(search = false) {
     if (isPastPage) {
         url += '&past=1'
     }
+
+    //'.api/getEvents?page={pageNumber}
 
     fetch(url, {
         credentials: "same-origin",

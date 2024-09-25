@@ -186,7 +186,7 @@ class EventModel
     /**
      * Gets upcoming events based on an optional categoryId and searchQuery
      */
-    public function getUpcomingEventsByCategoryIdAndSearch(?string $categoryId = null, ?string $searchQuery = ''): array
+    public function getUpcomingEventsByCategoryIdAndSearch($pageNumberInput, ?string $categoryId = null, ?string $searchQuery = ''): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
         `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
@@ -196,9 +196,13 @@ class EventModel
         if ($categoryId) {
             $sql .= ' `events`.`category` = :categoryId AND';
         }
-        $sql .= ' `events`.`name` LIKE :searchQuery ORDER BY `date` ASC;';
+        $sql .= ' `events`.`name` LIKE :searchQuery ORDER BY `date` ASC
+        LIMIT 10
+        OFFSET :offset;';
 
         $query = $this->db->prepare($sql);
+        $query->bindParam(':offset', $pageNumberInput);
+
         if ($categoryId) {
             $query->bindParam(':categoryId', $categoryId);
         }
@@ -211,7 +215,7 @@ class EventModel
     /**
      * Gets past events based on an optional categoryId and searchQuery
      */
-    public function getPastEventsByCategoryIdAndSearch(?string $categoryId = null, ?string $searchQuery = ''): array
+    public function getPastEventsByCategoryIdAndSearch($pageNumberInput, ?string $categoryId = null, ?string $searchQuery = ''): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
         `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
@@ -221,9 +225,13 @@ class EventModel
         if ($categoryId) {
             $sql .= ' `events`.`category` = :categoryId AND';
         }
-        $sql .= ' `events`.`name` LIKE :searchQuery ORDER BY `date` ASC;';
+        $sql .= ' `events`.`name` LIKE :searchQuery ORDER BY `date` ASC
+        LIMIT 10
+        Offset :offset;';
 
         $query = $this->db->prepare($sql);
+        $query->bindParam(':offset', $pageNumberInput);
+
         if ($categoryId) {
             $query->bindParam(':categoryId', $categoryId);
         }
