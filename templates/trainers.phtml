@@ -4,6 +4,7 @@
 <head>
     <script defer src="/js/displaytrainers.js"></script>
     <script defer src="/js/trainerNotesModal.js"></script>
+    <script defer src="/js/cookies.js"></script>
     <?php
     require 'partials/layout/head.phtml';
     echo \Portal\ViewHelpers\LayoutViewHelper::outputTitle('Trainers');
@@ -15,6 +16,7 @@
 
     <h1>Trainers</h1>  
     <div id="trainers" class="row">
+        <div id="editResponse" class="text-danger"></div>
             <table class="col-xs-12 table-bordered table">
                 <thead>
                     <tr>

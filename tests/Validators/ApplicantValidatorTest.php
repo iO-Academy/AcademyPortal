@@ -17,11 +17,10 @@ class ApplicantValidatorTest extends TestCase
         $this->markTestSkipped('Cannot unit test as method calls other methods');
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testValidateFeePaymentMethodsSuccessNoExplicitFee()
     {
+        $this->expectNotToPerformAssertions();
+
         ApplicantValidator::validateFeePaymentMethods([
             'upfront' => 2000,
             'edaid' => 3000,
@@ -30,11 +29,10 @@ class ApplicantValidatorTest extends TestCase
         ]);
     }
 
-    /**
-     * @doesNotPerformAssertions
-     */
     public function testValidateFeePaymentMethodsSuccessWithExplicitFee()
     {
+        $this->expectNotToPerformAssertions();
+
         ApplicantValidator::validateFeePaymentMethods([
             'upfront' => 5000,
             'edaid' => 500,

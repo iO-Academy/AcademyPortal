@@ -24,5 +24,14 @@ deleteButtons.forEach(deleteBtn => {
             window.location.reload();
         });
     });
+
 });
 
+const editButtons = document.querySelectorAll('.edit-button');
+
+editButtons.forEach(editButton => {
+    editButton.addEventListener('click', (e) => {
+        const id = e.target.dataset.id;
+        window.location.href = `/editTrainer/${id}`;
+    })
+});
