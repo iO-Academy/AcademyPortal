@@ -186,8 +186,11 @@ class EventModel
     /**
      * Gets upcoming events based on an optional categoryId and searchQuery
      */
-    public function getUpcomingEventsByCategoryIdAndSearch($pageNumberInput, ?string $categoryId = null, ?string $searchQuery = ''): array
-    {
+    public function getUpcomingEventsByCategoryIdAndSearch(
+        $pageNumberInput,
+        ?string $categoryId = null,
+        ?string $searchQuery = ''
+    ): array {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
         `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
         FROM `events` 
@@ -215,8 +218,11 @@ class EventModel
     /**
      * Gets past events based on an optional categoryId and searchQuery
      */
-    public function getPastEventsByCategoryIdAndSearch($pageNumberInput, ?string $categoryId = null, ?string $searchQuery = ''): array
-    {
+    public function getPastEventsByCategoryIdAndSearch(
+        $pageNumberInput,
+        ?string $categoryId = null,
+        ?string $searchQuery = ''
+    ): array {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
         `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
         FROM `events` 
