@@ -154,5 +154,4 @@ return function (App $app) {
     $app->get('/api/deleteCourse/{id}', GetDeleteCourseInfoController::class);
     $app->get('/api/getAllCalendarData', CalendarCourseController::class);
     $app->put('/api/editTrainer/{id}', EditTrainerController::class);
-
 };

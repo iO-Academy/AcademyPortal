@@ -52,6 +52,9 @@ trainerForm.addEventListener("submit", e => {
                         trainerForm.elements['notes'].value = '',
                         message.innerText = responseJson.message,
                         formSubmitSuccess(message);
+                    setTimeout(() => {
+                        window.location.href = '/trainers';
+                    }, 800);
                 } else {
                     message.innerText = responseJson.message;
                     message.classList.add('alert-danger');
