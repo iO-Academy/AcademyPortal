@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const sortColumn = document.querySelectorAll('.sortHeader');
 
     // Set the dropdown based on the URL parameter
-    const
-        urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(window.location.search);
     const categoryParam = urlParams.get('category');
     if (categoryParam) {
         dropdown.value = categoryParam;
