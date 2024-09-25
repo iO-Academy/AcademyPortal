@@ -34,7 +34,8 @@ class EventModel
     {
         $sql = 'SELECT `events`.`id` AS `id`, `events`.`name` AS `title`, 
        `event_categories`.`id` AS `categoryId` , `event_categories`.`name` AS `categoryName`, 
-       `date`, `start_time` AS `start`, `end_time` AS `end`
+       `date`, `start_time` AS `start`, `end_time` AS `end`, `events`.`date` AS `date`, 
+       `events`.`location` AS `location`
         FROM `events`
         LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id`
         ORDER BY `date` DESC;';
