@@ -1,11 +1,12 @@
 const calendarEl = document.getElementById("calendar");
 const calendar = new FullCalendar.Calendar(calendarEl, {
   eventClick: function(info) {
-    var eventObj = info.event;
-    $('#eventName').html(eventObj.title);
-    $('#eventLocation').html(eventObj.extendedProps.location)
-    $('#eventStart').html(eventObj.start)
-    $('#eventEnd').html(eventObj.end)
+    const eventObj = info.event;
+    document.querySelector('#eventName').textContent = eventObj.title;
+    document.querySelector('#eventLocation').textContent = eventObj.extendedProps.location;
+    document.querySelector('#eventStart').textContent = eventObj.start;
+    document.querySelector('#eventEnd').textContent = eventObj.end;
+    //Bootstrap Modals require this line of jQuery to open.
     $('#calendarModal').modal();
   },
   initialView: "dayGridMonth",

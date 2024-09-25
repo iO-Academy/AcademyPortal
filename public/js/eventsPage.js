@@ -37,7 +37,6 @@ function getEvents(search = false) {
     })
     .then(eventsAndHiringPartners => {
         displayEventsHandler(eventsAndHiringPartners)
-        console.log(eventsAndHiringPartners.events)
     })
 }
 
