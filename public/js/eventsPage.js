@@ -88,7 +88,7 @@ function getEvents(search = false) {
         }
         else if (maxPageLimit > 1 && maxPageLimit === pageNumber)
         {
-            button1.getElementById('buttonOne').textContent = (pageNumber - 2).toString()
+            button1.textContent = (pageNumber - 2).toString()
             button2.textContent = (pageNumber - 1).toString()
             button3.textContent = pageNumber.toString()
             NextButton.classList.add('disabled')
@@ -98,12 +98,11 @@ function getEvents(search = false) {
             button1.textContent = pageNumber.toString()
             button2.textContent = (pageNumber + 1).toString()
             button3.textContent = (pageNumber + 2).toString()
+            NextButton.classList.remove('disabled')
         }
         console.log(maxPageLimit)
         console.log(pageNumber)
     })
-
-
 }
 
 
