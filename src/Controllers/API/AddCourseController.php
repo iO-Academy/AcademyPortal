@@ -34,8 +34,8 @@ class AddCourseController extends Controller
         $statusCode = 400;
 
         try {
-        if (CourseValidator::validate($newCourse)) {
-            $newCourse = CourseSanitiser::sanitise($newCourse);
+            if (CourseValidator::validate($newCourse)) {
+                $newCourse = CourseSanitiser::sanitise($newCourse);
                 $insertedId = $this->courseModel->addCourse($newCourse);
                 $this->courseModel->addTrainersToCourse($newCourse['trainer'], $insertedId);
             }
@@ -53,6 +53,5 @@ class AddCourseController extends Controller
         }
 
         return $this->respondWithJson($response, $responseData, $statusCode);
-
     }
 }
