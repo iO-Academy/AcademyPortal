@@ -59,7 +59,6 @@ courseForm.addEventListener('submit', e => {
             body: JSON.stringify(data)
         })
             .then(response => {
-
                 return response.json()
             })
             .then(responseJson => {
