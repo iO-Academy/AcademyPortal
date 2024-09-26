@@ -38,6 +38,7 @@ class AddEventController extends Controller
             ) {
                 $newEvent = EventSanitiser::sanitise($newEvent);
                 $result = $this->eventModel->addEvent($newEvent);
+//                $this->eventModel->updateEvents();
             }
         } catch (\Exception $exception) {
             $responseData['message'] = $exception->getMessage();

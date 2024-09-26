@@ -125,6 +125,13 @@ class EventModel
         return $query->execute();
     }
 
+    /** delete event from the database */
+    public function deleteEvent($deleteTask) {
+        $query = $this->db->prepare("UPDATE `events` SET `deleted` = 1 WHERE `id` = :deleted");
+        $query->bindParam(':deleted', $deleteTask);
+        $query->execute();
+    }
+
     /**
      * Search future events from the database
      *
@@ -173,7 +180,7 @@ class EventModel
                 `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
                 FROM `events` 
                 LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
-                WHERE `events`.`category` = :categoryId
+                WHERE `events`.`category` = :categoryId 
                 AND `date` > curdate() - INTERVAL :previousMonths MONTH ORDER BY `date` ASC;';
         $query = $this->db->prepare($sql);
         $query->bindParam(':categoryId', $categoryId);
@@ -188,10 +195,10 @@ class EventModel
     public function getUpcomingEventsByCategoryIdAndSearch(?string $categoryId = null, ?string $searchQuery = ''): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
-        `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
+        `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`, `deleted`
         FROM `events` 
         LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
-        WHERE `events`.`date` > NOW() AND';
+        WHERE `events`.`date` > NOW() AND `events`.`deleted` = 0 AND';
         if ($categoryId) {
             $sql .= ' `events`.`category` = :categoryId AND';
         }
@@ -213,10 +220,10 @@ class EventModel
     public function getPastEventsByCategoryIdAndSearch(?string $categoryId = null, ?string $searchQuery = ''): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
-        `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
+        `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`, `deleted`
         FROM `events` 
         LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
-        WHERE `events`.`date` < NOW() AND';
+        WHERE `events`.`date` < NOW() AND `events`.`deleted` = 0 AND';
         if ($categoryId) {
             $sql .= ' `events`.`category` = :categoryId AND';
         }
