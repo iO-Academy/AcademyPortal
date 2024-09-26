@@ -14,21 +14,23 @@ import {addEventListenersToDisplayApplicantModal} from "./applicantModal.js"
 
 
 let pageNumber = 1
-
-getEvents()
+let offset = 0
 document.querySelector('#counterMinus').addEventListener('click', function (e) {
     pageNumber--
-    console.log(pageNumber)
-    getEvents()
+    offset = pageNumber+3
+    console.log(offset)
+    getEvents(offset)
 
 })
 document.querySelector('#counterPlus').addEventListener('click', function (e) {
     pageNumber++
-    console.log(pageNumber)
-    getEvents()
+    offset = pageNumber+3
+    console.log(offset)
+
+    getEvents(offset)
 
 })
-function getEvents(search = false) {
+function getEvents(search = false, offset) {
 
 
 
@@ -37,8 +39,7 @@ function getEvents(search = false) {
     document.getElementById('buttonThree').textContent = (pageNumber + 2).toString()
 
     // (pageNumber > 1) ? offsetValue = (pageNumber-1) * 10 : pageNumber = 0
-
-    let url = `./api/getEvents/${pageNumber}?categoryValue=` + categoriesFilter.value
+    let url = `./api/getEvents/${offset}?categoryValue=` + categoriesFilter.value
     if (search !== false) {
         url += '&searchTerm=' + search
     }
@@ -358,6 +359,8 @@ function addEventListenersForCopyEmailsButtons(event, applicants) {
             })
     })
 }
+
+getEvents()
 
 populateFilterEventCategories()
 

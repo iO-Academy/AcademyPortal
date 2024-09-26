@@ -114,7 +114,7 @@ return function (App $app) {
     $app->get('/api/applicationForm', GetApplicationFormController::class);
     $app->post('/api/createHiringPartner', AddHiringPartnerController::class);
     $app->get('/api/getHiringPartnerInfo', GetHiringPartnersController::class);
-    $app->get('/api/getEvents/{pageNumber}', GetEventsController::class);
+    $app->get('/api/getEvents/{offset}', GetEventsController::class);
     $app->get('/api/getAssessmentApplicants', GetAssessmentApplicantsController::class);
     $app->post('/api/addEvent', AddEventController::class);
     $app->post('/api/addContact', AddContactController::class);
