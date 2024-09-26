@@ -11,6 +11,7 @@ class CalendarEventEntity implements \JsonSerializable
     protected ?string $date;
     protected ?string $start;
     protected ?string $end;
+    protected ?string $location;
 
     /**
      * Returns private properties from object.
@@ -23,8 +24,11 @@ class CalendarEventEntity implements \JsonSerializable
             'title' => $this->title,
             'categoryId' => $this->categoryId,
             'categoryName' => $this->categoryName,
+            'date' => $this->date,
+
             'start' => $this->start !== null ? $this->date . 'T' . $this->start : $this->date . 'T09:00:00',
             'end' => $this->start !== null ? $this->date . 'T' . $this->end : null,
+            'location' => $this->location,
             'allDay' => $this->start === null ? true : false
         ];
     }

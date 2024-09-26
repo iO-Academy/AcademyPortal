@@ -63,4 +63,28 @@ class TrainerModel
         $query->setFetchMode(PDO::FETCH_CLASS, TrainerEntity::class);
         return $query->execute();
     }
+
+    public function getTrainerForEdit($id): TrainerEntity // Return TrainerEntity or null if not found
+    {
+        $query = $this->db->prepare(
+            "SELECT `id`, `name`, `email`, `notes`, `deleted` FROM `trainers` WHERE `id` = :id; "
+        );
+        $query->bindParam(':id', $id);
+        $query->setFetchMode(PDO::FETCH_CLASS, TrainerEntity::class);
+        $query->execute();
+
+        return $query->fetch(); // Fetch the TrainerEntity object
+    }
+
+    public function editTrainer(array $trainer): bool
+    {
+        $query = $this->db->prepare(
+            "UPDATE `trainers` SET `name` = :name, `email` = :email, `notes` = :notes WHERE `id` = :id;"
+        );
+        $query->bindParam(':name', $trainer['name']);
+        $query->bindParam(':email', $trainer['email']);
+        $query->bindParam(':notes', $trainer['notes']);
+        $query->bindParam(':id', $trainer['id']);
+        return $query->execute();
+    }
 }

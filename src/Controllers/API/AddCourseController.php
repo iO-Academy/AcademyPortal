@@ -51,6 +51,7 @@ class AddCourseController extends Controller
             ];
             $statusCode = 200;
         }
+
         return $this->respondWithJson($response, $responseData, $statusCode);
     }
 }
