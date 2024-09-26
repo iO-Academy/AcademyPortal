@@ -4,6 +4,7 @@ namespace Portal\Models;
 
 use PDO;
 use Portal\Entities\CalendarEventEntity;
+use Portal\Entities\EventEntity;
 
 class EventModel
 {
@@ -114,7 +115,6 @@ class EventModel
             :endTime, 
             :notes,
             :availableToHP);");
-
         $query->bindParam(':name', $newEvent['name']);
         $query->bindParam(':category', $newEvent['category']);
         $query->bindParam(':location', $newEvent['location']);
@@ -298,4 +298,39 @@ class EventModel
         $query->bindParam(':hiringPartnerId', $hiringPartnerId);
         return $query->execute();
     }
+
+    public function getEventForEdit($id): EventEntity
+    {
+        $query = $this->db->prepare('SELECT `id`, `name`, `location`, `date`, `start_time`, 
+                                            `end_time`, `notes` FROM `events` WHERE `id` = :id');
+        $query->bindParam(':id', $id);
+        $query->setFetchMode(PDO::FETCH_CLASS, EventEntity::class);
+        $query->execute();
+        return $query->fetch();
+    }
+
+    public function editEvent($event): bool
+    {
+        $query = $this->db->prepare(
+                    'UPDATE `events` SET 
+                    id = :id,
+                    name = :name,
+                    location = :location,
+                    date = :date,
+                    start_time = :start_time,
+                    end_time = :end_time,
+                    notes = :notes
+                    WHERE 
+                    id = :eventId'
+        );
+        $query->bindParam(':id', $event);
+        $query->bindParam(':name', $name);
+        $query->bindParam(':location', $location);
+        $query->bindParam(':date', $date);
+        $query->bindParam(':start_time', $start_time);
+        $query->bindParam(':end_time', $end_time);
+        $query->bindParam(':notes', $notes);
+        return $query->execute();
+    }
 }
+

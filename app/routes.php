@@ -27,6 +27,7 @@ use Portal\Controllers\API\DeleteTrainerController;
 use Portal\Controllers\API\EditApplicantController;
 use Portal\Controllers\API\EditApplicantStageController;
 use Portal\Controllers\API\EditCourseController;
+use Portal\Controllers\API\EditEventController;
 use Portal\Controllers\API\EditStageController;
 use Portal\Controllers\API\EditStageOptionController;
 use Portal\Controllers\API\EditTeamsController;
@@ -64,6 +65,7 @@ use Portal\Controllers\FrontEnd\CourseCategoriesPageController;
 use Portal\Controllers\FrontEnd\CoursesPageController;
 use Portal\Controllers\FrontEnd\EditApplicantPageController;
 use Portal\Controllers\FrontEnd\EditCoursePageController;
+use Portal\Controllers\FrontEnd\EditEventPageController;
 use Portal\Controllers\FrontEnd\EventsPageController;
 use Portal\Controllers\FrontEnd\GetCsvFormController;
 use Portal\Controllers\FrontEnd\HiringPartnerPageController;
@@ -104,7 +106,9 @@ return function (App $app) {
     $app->get('/trainers', TrainersPageController::class);
     $app->get('/addTrainer', AddTrainerPageController::class);
     $app->get('/calendar', CalendarPageController::class);
-    $app->get('/editTrainer/{id}', EditTrainerPageController::class );
+    $app->get('/editTrainer/{id}', EditTrainerPageController::class);
+    $app->get('/editEvent/{id}', EditEventPageController::class);
+
     //API
     $app->get('/api/getApplicant/{id}', GetApplicantController::class);
     $app->post('/api/saveApplicant', AddApplicantController::class);
@@ -154,4 +158,5 @@ return function (App $app) {
     $app->get('/api/deleteCourse/{id}', GetDeleteCourseInfoController::class);
     $app->get('/api/getAllCalendarData', CalendarCourseController::class);
     $app->put('/api/editTrainer/{id}', EditTrainerController::class);
+    $app->get('/api/editEvents/{id}', EditEventController::class);
 };
