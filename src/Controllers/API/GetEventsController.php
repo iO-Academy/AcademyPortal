@@ -40,9 +40,8 @@ class GetEventsController extends Controller
                         $pageNumberInput,
                         $eventFilterInput,
                         $eventSearchInput,
-                );
+                    );
                     $data['count'] = $this->eventModel->getMaxCountUpcomingEvents();
-
                 } else {
                     $data['data'] = $this->eventModel->getPastEventsByCategoryIdAndSearch(
                         $pageNumberInput,
