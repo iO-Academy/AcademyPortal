@@ -15,10 +15,10 @@ import {addEventListenersToDisplayApplicantModal} from "./applicantModal.js"
 
 let pageNumber = 1
 let offset = 0
-let maxPageLimit = getEvents()
+let maxPageLimit = 10
 
+getEvents()
 
-console.log(maxPageLimit)
 const pageClickFunction = () => {
     (pageNumber > 1) ? offset = (pageNumber-1) * 10 : offset = 0
 
@@ -39,9 +39,13 @@ document.querySelector('#counterPlus').addEventListener('click', function (e) {
 
 
 function getEvents(search = false) {
-    document.getElementById('buttonOne').textContent = pageNumber.toString()
-    document.getElementById('buttonTwo').textContent = (pageNumber + 1).toString()
-    document.getElementById('buttonThree').textContent = (pageNumber + 2).toString()
+    let button1 = document.getElementById('buttonOne')
+    let button2 = document.getElementById('buttonTwo')
+    let button3 = document.getElementById('buttonThree')
+    let PreviousButton = document.getElementById('counterMinus')
+    let NextButton = document.getElementById('counterPlus')
+
+
 
     let url = `./api/getEvents/${offset}?categoryValue=` + categoriesFilter.value
     if (search !== false) {
@@ -67,8 +71,39 @@ function getEvents(search = false) {
     })
     .then(eventsAndHiringPartners => {
         displayEventsHandler(eventsAndHiringPartners)
-        return maxPageLimit = eventsAndHiringPartners.events.count[0].max_count
+        maxPageLimit = Math.ceil(eventsAndHiringPartners.events.count[0].max_count / 10)
+        if (maxPageLimit === 1)
+        {
+            button1.textContent = pageNumber . toString()
+            button2.classList.add('hidden')
+            button3.classList.add('hidden')
+            PreviousButton.classList.add('disabled')
+            NextButton.classList.add('disabled')
+        }
+        else if (maxPageLimit > 1 && (maxPageLimit - pageNumber) === 1)
+        {
+            button1.textContent = (pageNumber - 1).toString()
+            button2.textContent = pageNumber .toString()
+            button3.textContent = (pageNumber + 1).toString()
+        }
+        else if (maxPageLimit > 1 && maxPageLimit === pageNumber)
+        {
+            button1.getElementById('buttonOne').textContent = (pageNumber - 2).toString()
+            button2.textContent = (pageNumber - 1).toString()
+            button3.textContent = pageNumber.toString()
+            NextButton.classList.add('disabled')
+        }
+        else
+        {
+            button1.textContent = pageNumber.toString()
+            button2.textContent = (pageNumber + 1).toString()
+            button3.textContent = (pageNumber + 2).toString()
+        }
+        console.log(maxPageLimit)
+        console.log(pageNumber)
     })
+
+
 }
 
 
