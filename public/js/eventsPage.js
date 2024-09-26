@@ -14,31 +14,28 @@ import {addEventListenersToDisplayApplicantModal} from "./applicantModal.js"
 
 
 let pageNumber = 1
+let offset = 0
+const pageClickFunction = () => {
+    (pageNumber > 1) ? offset = (pageNumber-1) * 10 : offset = 0
+    getEvents()
+}
 
-getEvents()
 document.querySelector('#counterMinus').addEventListener('click', function (e) {
     pageNumber--
-    console.log(pageNumber)
-    getEvents()
-
+    pageClickFunction()
 })
+
 document.querySelector('#counterPlus').addEventListener('click', function (e) {
     pageNumber++
-    console.log(pageNumber)
-    getEvents()
-
+    pageClickFunction()
 })
+
 function getEvents(search = false) {
-
-
-
     document.getElementById('buttonOne').textContent = pageNumber.toString()
     document.getElementById('buttonTwo').textContent = (pageNumber + 1).toString()
     document.getElementById('buttonThree').textContent = (pageNumber + 2).toString()
 
-    // (pageNumber > 1) ? offsetValue = (pageNumber-1) * 10 : pageNumber = 0
-
-    let url = `./api/getEvents/${pageNumber}?categoryValue=` + categoriesFilter.value
+    let url = `./api/getEvents/${offset}?categoryValue=` + categoriesFilter.value
     if (search !== false) {
         url += '&searchTerm=' + search
     }
@@ -46,7 +43,6 @@ function getEvents(search = false) {
     if (isPastPage) {
         url += '&past=1'
     }
-
 
     fetch(url, {
         credentials: "same-origin",
@@ -358,6 +354,8 @@ function addEventListenersForCopyEmailsButtons(event, applicants) {
             })
     })
 }
+
+getEvents()
 
 populateFilterEventCategories()
 
