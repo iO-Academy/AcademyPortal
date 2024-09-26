@@ -196,7 +196,7 @@ class EventModel
     public function getUpcomingEventsByCategoryIdAndSearch(?string $categoryId = null, ?string $searchQuery = ''): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
-        `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`, `deleted`
+        `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
         FROM `events` 
         LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
         WHERE `events`.`date` > NOW() AND `events`.`deleted` = 0 AND';
@@ -221,7 +221,7 @@ class EventModel
     public function getPastEventsByCategoryIdAndSearch(?string $categoryId = null, ?string $searchQuery = ''): array
     {
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
-        `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`, `deleted`
+        `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
         FROM `events` 
         LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
         WHERE `events`.`date` < NOW() AND `events`.`deleted` = 0 AND';
