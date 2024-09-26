@@ -15,22 +15,23 @@ import {addEventListenersToDisplayApplicantModal} from "./applicantModal.js"
 
 let pageNumber = 1
 let offset = 0
+const pageClickFunction = () => {
+
+    (pageNumber > 1) ? offset = (pageNumber-1) * 10 : offset = 0
+    getEvents()
+}
 document.querySelector('#counterMinus').addEventListener('click', function (e) {
     pageNumber--
-    offset = pageNumber+3
-    console.log(offset)
-    getEvents(offset)
-
+    pageClickFunction()
 })
+
 document.querySelector('#counterPlus').addEventListener('click', function (e) {
     pageNumber++
-    offset = pageNumber+3
-    console.log(offset)
-
-    getEvents(offset)
-
+    pageClickFunction()
 })
-function getEvents(search = false, offset) {
+
+
+function getEvents(search = false) {
 
 
 
@@ -38,7 +39,6 @@ function getEvents(search = false, offset) {
     document.getElementById('buttonTwo').textContent = (pageNumber + 1).toString()
     document.getElementById('buttonThree').textContent = (pageNumber + 2).toString()
 
-    // (pageNumber > 1) ? offsetValue = (pageNumber-1) * 10 : pageNumber = 0
     let url = `./api/getEvents/${offset}?categoryValue=` + categoriesFilter.value
     if (search !== false) {
         url += '&searchTerm=' + search
