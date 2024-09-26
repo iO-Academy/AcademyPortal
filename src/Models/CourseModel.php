@@ -59,9 +59,9 @@ class CourseModel
     /**
      * Gets all courses from the database that have a start date in the future. Sorted by the category selected.
      */
-    public function getFutureCourses(string $category = '%'): array
+    public function getFutureCourses(string $category, string $sortColumn): array
     {
-        $sql = 'SELECT `c`.`id`,
+        $sql = "SELECT `c`.`id`,
         `start_date` AS `startDate`,
         `end_date` AS `endDate`,
         `name`,
@@ -77,7 +77,8 @@ class CourseModel
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
         LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
         WHERE `c`.`start_date` > NOW() AND `course_categories`.`category` LIKE :category
-        GROUP BY `c`.`id`;';
+        GROUP BY `c`.`id` ORDER BY $sortColumn;";
+
         $query = $this->db->prepare($sql);
         $query->bindParam(':category', $category);
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteCourseEntity::class);
@@ -89,9 +90,9 @@ class CourseModel
      * Gets all courses from the database that are ongoing (i.e. have a start date in the past, end date in the future).
      * Sorted by the category selected.
      */
-    public function getOngoingCourses(string $category = '%'): array
+    public function getOngoingCourses(string $category, string $sortColumn): array
     {
-        $sql = 'SELECT `c`.`id`,
+        $sql = "SELECT `c`.`id`,
         `start_date` AS `startDate`,
         `end_date` AS `endDate`,
         `name`,
@@ -107,7 +108,8 @@ class CourseModel
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
         LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
         WHERE `c`.`start_date` <= NOW() AND `c`.`end_date` >= NOW() AND `course_categories`.`category` LIKE :category
-        GROUP BY `c`.`id`;';
+        GROUP BY `c`.`id`
+        ORDER BY $sortColumn;";
 
         $query = $this->db->prepare($sql);
         $query->bindParam(':category', $category);
@@ -116,9 +118,9 @@ class CourseModel
         return $query->fetchAll();
     }
 
-    public function getCompletedCourses(string $category = '%'): array
+    public function getCompletedCourses(string $category, string $sortColumn): array
     {
-        $sql = 'SELECT `c`.`id`,
+        $sql = "SELECT `c`.`id`,
         `start_date` AS `startDate`,
         `end_date` AS `endDate`,
         `name`,
@@ -135,7 +137,7 @@ class CourseModel
         LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
         WHERE `c`.`end_date` < NOW() AND `course_categories`.`category` LIKE :category
         GROUP BY `c`.`id`
-        ORDER BY `endDate` DESC;';
+        ORDER BY $sortColumn;";
         $query = $this->db->prepare($sql);
         $query->bindParam(':category', $category);
         $query->setFetchMode(\PDO::FETCH_CLASS, CompleteCourseEntity::class);
