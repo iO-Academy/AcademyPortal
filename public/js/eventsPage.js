@@ -21,7 +21,9 @@ const pageClickFunction = () => {
 }
 
 document.querySelector('#counterMinus').addEventListener('click', function (e) {
-    pageNumber--
+    if (pageNumber > 1) {
+        pageNumber--
+    }
     pageClickFunction()
 })
 
