@@ -19,6 +19,7 @@ class GetAllCalendarEventsController extends Controller
     /**
      * Checks for logged-in status,
      * gets all events from DB
+     * @throws \Exception
      */
     public function __invoke(Request $request, Response $response, array $args): Response
     {

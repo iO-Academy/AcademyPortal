@@ -21,7 +21,9 @@ class TrainerTableViewHelperTest extends TestCase
         $exp .= 'data-target="#trainerNotesModal" type="button" class="myBtn">Charlie</a>';
         $exp .= '</td><td class="email">char@lie.com<button data-email="char@lie.com" class="clipboard">';
         $exp .= '<i class="glyphicon glyphicon-copy"></i></button></td>';
-        $exp .= '<td><button data-id="1" class="btn btn-danger">Delete</button></td></tr>';
+        $exp .= '<td><button data-id="1" class="btn btn-danger">Delete</button>';
+        $exp .= '<button data-id="1" class="btn btn-primary edit-button">Edit</button>';
+        $exp .= '</td></tr>';
         $actual = TrainerTableViewHelper::displayTrainerTable([$input]);
         $this->assertEquals($exp, $actual);
     }
