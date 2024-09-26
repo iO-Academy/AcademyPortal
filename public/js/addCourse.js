@@ -1,4 +1,4 @@
-const courseForm = document.querySelector('form');
+const courseForm = document.querySelector('.addCourseForm');
 const message = document.querySelector('#messages');
 const in_person_radio = document.querySelector('#in_person');
 const remote_radio = document.querySelector('#remote');
@@ -24,6 +24,7 @@ courseForm.addEventListener('submit', e => {
     })
 
     let data = getCompletedFormData();
+
     let validatedFormItems = validateCourseInputs(data);
 
     let formIsValid = true;
@@ -58,9 +59,11 @@ courseForm.addEventListener('submit', e => {
             body: JSON.stringify(data)
         })
             .then(response => {
+                console.log(response.json())
                 return response.json()
+
             })
-            .then(responseJson => {
+            .then((responseJson) => {
                 if (responseJson.success) {
                     courseForm.elements['courseName'].value = '',
                         courseForm.elements['startDate'].value = '',
@@ -108,20 +111,21 @@ let getSelectedTrainers = () => {
  */
 let getCompletedFormData = () => {
     return {
-        courseName: courseForm.elements['courseName'].value,
-        startDate: courseForm.elements['startDate'].value,
-        endDate: courseForm.elements['endDate'].value,
+        courseName: courseForm.elements['courseName'] ? courseForm.elements['courseName'].value : null,
+        startDate: courseForm.elements['startDate'] ? courseForm.elements['startDate'].value : null,
+        endDate: courseForm.elements['endDate'] ? courseForm.elements['endDate'].value : null,
         trainer: getSelectedTrainers(),
-        notes: courseForm.elements['notes'].value,
-        in_person: courseForm.elements['in_person'].checked ? 1 : 0,
-        remote: courseForm.elements['remote'].checked ? 1 : 0,
-        in_person_spaces: courseForm.elements['in_person'].checked ? courseForm.elements['in_person_spaces'].value : null,
-        remote_spaces: courseForm.elements['remote'].checked ? courseForm.elements['remote_spaces'].value : null,
-        courseCategory: courseForm.elements['courseCategory'].value,
-        editOrAdd: courseForm.elements['editOrAdd'].value,
-        id: courseForm.elements['id'].value
+        notes: courseForm.elements['notes'] ? courseForm.elements['notes'].value : '',
+        in_person: courseForm.elements['in_person'] && courseForm.elements['in_person'].checked ? 1 : 0,
+        remote: courseForm.elements['remote'] && courseForm.elements['remote'].checked ? 1 : 0,
+        in_person_spaces: courseForm.elements['in_person'] && courseForm.elements['in_person'].checked ? courseForm.elements['in_person_spaces'].value : null,
+        remote_spaces: courseForm.elements['remote'] && courseForm.elements['remote'].checked ? courseForm.elements['remote_spaces'].value : null,
+        courseCategory: courseForm.elements['courseCategory'] ? courseForm.elements['courseCategory'].value : null,
+        editOrAdd: courseForm.elements['editOrAdd'] ? courseForm.elements['editOrAdd'].value : null,
+        id: courseForm.elements['id'] ? courseForm.elements['id'].value : null
     };
-}
+};
+
 
 let validateCourseInputs = (data) => {
 

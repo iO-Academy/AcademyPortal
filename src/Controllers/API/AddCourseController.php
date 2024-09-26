@@ -8,6 +8,7 @@ use Portal\Validators\CourseValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Models\CourseModel;
+use Slim\Views\PhpRenderer;
 
 class AddCourseController extends Controller
 {
@@ -34,8 +35,8 @@ class AddCourseController extends Controller
         $statusCode = 400;
 
         try {
-            if (CourseValidator::validate($newCourse)) {
-                $newCourse = CourseSanitiser::sanitise($newCourse);
+        if (CourseValidator::validate($newCourse)) {
+            $newCourse = CourseSanitiser::sanitise($newCourse);
                 $insertedId = $this->courseModel->addCourse($newCourse);
                 $this->courseModel->addTrainersToCourse($newCourse['trainer'], $insertedId);
             }
@@ -51,6 +52,8 @@ class AddCourseController extends Controller
             ];
             $statusCode = 200;
         }
+
         return $this->respondWithJson($response, $responseData, $statusCode);
+
     }
 }
