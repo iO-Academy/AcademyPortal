@@ -107,7 +107,8 @@ class CourseModel
         FROM `courses` `c`
         LEFT JOIN `course_choice` `cc` ON `c`.`id` = `cc`.`courseId`
         LEFT JOIN `course_categories` ON `c`.`category_id` = `course_categories`.`id`
-        WHERE `c`.`deleted` = 0 AND `c`.`start_date` <= NOW() AND `c`.`end_date` >= NOW() AND `course_categories`.`category` LIKE :category
+        WHERE `c`.`deleted` = 0 AND `c`.`start_date` <= NOW() AND `c`.`end_date` >= NOW() 
+        AND `course_categories`.`category` LIKE :category
         GROUP BY `c`.`id`
         ORDER BY $sortColumn;";
 
