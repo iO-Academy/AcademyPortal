@@ -187,10 +187,11 @@ class EventModel
      * Gets upcoming events based on an optional categoryId and searchQuery
      */
     public function getUpcomingEventsByCategoryIdAndSearch(
-        $pageNumberInput,
+        ?int $pageNumberInput,
         ?string $categoryId = null,
         ?string $searchQuery = ''
     ): array {
+        $pageNumberInput = intval($pageNumberInput);
         $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
         `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, `notes`
         FROM `events` 
@@ -199,12 +200,10 @@ class EventModel
         if ($categoryId) {
             $sql .= ' `events`.`category` = :categoryId AND';
         }
-        $sql .= ' `events`.`name` LIKE :searchQuery ORDER BY `date` ASC
-        LIMIT 10
-        OFFSET :offset;';
+        $sql .= ' `events`.`name` LIKE :searchQuery ORDER BY `date` ASC LIMIT 10 OFFSET :offset;';
 
         $query = $this->db->prepare($sql);
-        $query->bindParam(':offset', $pageNumberInput);
+        $query->bindParam(':offset', $pageNumberInput, PDO::PARAM_INT);
 
         if ($categoryId) {
             $query->bindParam(':categoryId', $categoryId);
