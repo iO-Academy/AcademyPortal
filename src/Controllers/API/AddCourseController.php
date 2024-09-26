@@ -8,7 +8,6 @@ use Portal\Validators\CourseValidator;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Portal\Models\CourseModel;
-use Slim\Views\PhpRenderer;
 
 class AddCourseController extends Controller
 {

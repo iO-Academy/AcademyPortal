@@ -59,11 +59,10 @@ courseForm.addEventListener('submit', e => {
             body: JSON.stringify(data)
         })
             .then(response => {
-                console.log(response.json())
-                return response.json()
 
+                return response.json()
             })
-            .then((responseJson) => {
+            .then(responseJson => {
                 if (responseJson.success) {
                     courseForm.elements['courseName'].value = '',
                         courseForm.elements['startDate'].value = '',
