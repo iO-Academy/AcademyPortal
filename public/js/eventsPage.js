@@ -15,8 +15,13 @@ import {addEventListenersToDisplayApplicantModal} from "./applicantModal.js"
 
 let pageNumber = 1
 let offset = 0
+let maxPageLimit = getEvents()
+
+
+console.log(maxPageLimit)
 const pageClickFunction = () => {
     (pageNumber > 1) ? offset = (pageNumber-1) * 10 : offset = 0
+
     getEvents()
 }
 
@@ -31,6 +36,7 @@ document.querySelector('#counterPlus').addEventListener('click', function (e) {
     pageNumber++
     pageClickFunction()
 })
+
 
 function getEvents(search = false) {
     document.getElementById('buttonOne').textContent = pageNumber.toString()
@@ -61,8 +67,10 @@ function getEvents(search = false) {
     })
     .then(eventsAndHiringPartners => {
         displayEventsHandler(eventsAndHiringPartners)
+        return maxPageLimit = eventsAndHiringPartners.events.count[0].max_count
     })
 }
+
 
 function populateFilterEventCategories() {
     fetch('./api/getEventCategories',{
@@ -357,7 +365,6 @@ function addEventListenersForCopyEmailsButtons(event, applicants) {
     })
 }
 
-getEvents()
 
 populateFilterEventCategories()
 

@@ -235,7 +235,7 @@ class EventModel
         Offset :offset;';
 
         $query = $this->db->prepare($sql);
-        $query->bindParam(':offset', $pageNumberInput);
+        $query->bindParam(':offset', $pageNumberInput, PDO::PARAM_INT);
 
         if ($categoryId) {
             $query->bindParam(':categoryId', $categoryId);
@@ -245,6 +245,56 @@ class EventModel
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function getMaxCountPastEvents(?string $categoryId = null, ?string $searchQuery = ''): array
+    {
+        $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
+        `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, 
+        `notes`, COUNT(`events`.`id`) AS `max_count`
+        FROM `events` 
+        LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
+        WHERE `events`.`date` < NOW() AND';
+        if ($categoryId) {
+            $sql .= ' `events`.`category` = :categoryId AND';
+        }
+        $sql .= ' `events`.`name` LIKE :searchQuery ORDER BY `date` ASC;';
+
+        $query = $this->db->prepare($sql);
+        if ($categoryId) {
+            $query->bindParam(':categoryId', $categoryId);
+        }
+        $searchQuery = '%' . $searchQuery . '%';
+        $query->bindParam(':searchQuery', $searchQuery);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+    public function getMaxCountUpcomingEvents(?string $categoryId = null, ?string $searchQuery = ''): array
+    {
+        $sql = 'SELECT `events`.`id`, `events`.`name`, `events`.`category`, 
+        `event_categories`.`name` AS `category_name`, `location`, `date`, `start_time`,`end_time`, 
+        `notes`, COUNT(`events`.`id`) AS `max_count`
+        FROM `events` 
+        LEFT JOIN `event_categories` ON `events`.`category` = `event_categories`.`id` 
+        WHERE `events`.`date` > NOW() AND';
+        if ($categoryId) {
+            $sql .= ' `events`.`category` = :categoryId AND';
+        }
+        $sql .= ' `events`.`name` LIKE :searchQuery ORDER BY `date` ASC;';
+
+        $query = $this->db->prepare($sql);
+        if ($categoryId) {
+            $query->bindParam(':categoryId', $categoryId);
+        }
+        $searchQuery = '%' . $searchQuery . '%';
+        $query->bindParam(':searchQuery', $searchQuery);
+        $query->execute();
+        return $query->fetchAll();
+    }
+
+
+
+
 
     /**
      * Adds event id, hiring partner id and people attending to database

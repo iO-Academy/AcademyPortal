@@ -39,14 +39,17 @@ class GetEventsController extends Controller
                     $data['data'] = $this->eventModel->getUpcomingEventsByCategoryIdAndSearch(
                         $pageNumberInput,
                         $eventFilterInput,
-                        $eventSearchInput
-                    );
+                        $eventSearchInput,
+                );
+                    $data['count'] = $this->eventModel->getMaxCountUpcomingEvents();
+
                 } else {
                     $data['data'] = $this->eventModel->getPastEventsByCategoryIdAndSearch(
                         $pageNumberInput,
                         $eventFilterInput,
                         $eventSearchInput
                     );
+                    $data['count'] = $this->eventModel->getMaxCountPastEvents();
                 }
 
                 $data['message'] = 'No results returned matching your search';
