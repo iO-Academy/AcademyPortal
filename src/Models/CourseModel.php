@@ -173,7 +173,6 @@ class CourseModel
             :in_person_spaces,
             :remote_spaces,
             :courseCategory);");
-
         $query->bindParam(':startDate', $newCourse['startDate']);
         $query->bindParam(':endDate', $newCourse['endDate']);
         $query->bindParam(':name', $newCourse['courseName']);

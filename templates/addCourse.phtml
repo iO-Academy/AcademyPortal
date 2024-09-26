@@ -14,6 +14,8 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
     ?>
     <script defer src="./js/utils.js"></script>
     <script defer src="./js/validations.js"></script>
+    <script defer src="./js/addCourse.js"></script>
+
 </head>
 
 <body>
@@ -21,7 +23,7 @@ $trainersCheckbox = \Portal\ViewHelpers\TrainerCheckboxViewHelper::displayTraine
 
     <?php require 'partials/layout/nav.phtml'; ?>
     <h3>Add New Course</h3>
-    <form>
+    <form class="addCourseForm">
         <label for="course-name">Course Name</label>
         <input name="courseName" class="create-courses form-control" type="text" placeholder="Course name" data-required="true" data-max='255' maxlength="255" />
         <div id="courseNameError" class="alert hidden formItem_alert"></div>
