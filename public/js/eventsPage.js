@@ -249,6 +249,7 @@ async function eventGenerator(event, hiringPartners, applicants) {
     }
     eventInformation +=
             `</h4> 
+            <a href="/api/deleteEvent/${event.id}" class="btn delete-btn">Delete</a>
             <button class="show-event-info btn" data-button-id='button${event.id}' data-reference='${event.id}'>More Info</button>
         </div>
         <div id="moreInfo${event.id}" class="hidden moreInfo">

@@ -20,6 +20,7 @@ use Portal\Controllers\API\DeleteAllStageOptionsController;
 use Portal\Controllers\API\DeleteApplicantController;
 use Portal\Controllers\API\DeleteCourseCategoryController;
 use Portal\Controllers\API\DeleteCourseController;
+use Portal\Controllers\API\DeleteEventController;
 use Portal\Controllers\API\DeleteHiringPartnerFromEventController;
 use Portal\Controllers\API\DeleteStageController;
 use Portal\Controllers\API\DeleteStageOptionController;
@@ -117,6 +118,7 @@ return function (App $app) {
     $app->get('/api/getEvents', GetEventsController::class);
     $app->get('/api/getAssessmentApplicants', GetAssessmentApplicantsController::class);
     $app->post('/api/addEvent', AddEventController::class);
+    $app->get('/api/deleteEvent/{id}', DeleteEventController::class);
     $app->post('/api/addContact', AddContactController::class);
     $app->post('/api/addHiringPartnerToEvent', AddHiringPartnerToEventController::class);
     $app->get('/api/displayCompanyInfo/{id}', GetCompanyDetailsModalController::class);
