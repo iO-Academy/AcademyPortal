@@ -20,5 +20,4 @@ class DeleteEventController
         $this->eventModel->deleteEvent(intval($args['id']));
         return $response->withHeader('Location', '/events')->withStatus(301);
     }
-
 }

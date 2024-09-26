@@ -126,7 +126,8 @@ class EventModel
     }
 
     /** delete event from the database */
-    public function deleteEvent($deleteTask) {
+    public function deleteEvent($deleteTask)
+    {
         $query = $this->db->prepare("UPDATE `events` SET `deleted` = 1 WHERE `id` = :deleted");
         $query->bindParam(':deleted', $deleteTask);
         $query->execute();
