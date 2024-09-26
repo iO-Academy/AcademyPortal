@@ -26,13 +26,15 @@
     </div>
         <h3 id="events-list" data-event-type="<?=$eventType?>"><?=$eventType?> Events</h3>
     <div id='events'></div>
-<div id="pageNumberDisplay">
-    <a id="counterMinus">previous </a>
-    <a id="buttonOne"></a>
-    <a id="buttonTwo"></a>
-    <a id="buttonThree"></a>
-    <span id="dots"></span>
-    <a id="counterPlus"> next</a>
+<div>
+    <?=
+    var_dump($response);
+//    \Portal\ViewHelpers\PaginationViewHelper::pagination()
+    ?>
+<!--    <a id="counterMinus">previous </a>-->
+<!--    <div id="pageButtons">-->
+<!--    </div>-->
+<!--    <a id="counterPlus"> next</a>-->
 </div>
 
     <?php require('partials/applicantInfoModal.phtml'); ?>

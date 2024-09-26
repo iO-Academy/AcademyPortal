@@ -11,10 +11,12 @@ use Slim\Views\PhpRenderer;
 class PastEventsPageController extends Controller
 {
     private PhpRenderer $renderer;
+    private EventModel $model;
 
-    public function __construct(PhpRenderer $renderer)
+    public function __construct(PhpRenderer $renderer, EventModel $model)
     {
         $this->renderer = $renderer;
+        $this->model = $model;
     }
 
     /**
@@ -26,6 +28,7 @@ class PastEventsPageController extends Controller
     {
         if (!empty($_SESSION['loggedIn']) && $_SESSION['loggedIn']) {
             $args['eventType'] = 'Past';
+            $args['maxPages'] = $this->model->getMaxCountPastEvents();
             return $this->renderer->render($response, 'events.phtml', $args);
         } else {
             return $response->withHeader('Location', './')->withStatus(301);

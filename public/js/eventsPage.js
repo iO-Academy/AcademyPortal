@@ -21,7 +21,6 @@ getEvents()
 
 const pageClickFunction = () => {
     (pageNumber > 1) ? offset = (pageNumber-1) * 10 : offset = 0
-
     getEvents()
 }
 
@@ -44,6 +43,7 @@ function getEvents(search = false) {
     let button3 = document.getElementById('buttonThree')
     let PreviousButton = document.getElementById('counterMinus')
     let NextButton = document.getElementById('counterPlus')
+    let pageButtonDiv = document.getElementById('pageButtons')
 
 
 
@@ -72,34 +72,45 @@ function getEvents(search = false) {
     .then(eventsAndHiringPartners => {
         displayEventsHandler(eventsAndHiringPartners)
         maxPageLimit = Math.ceil(eventsAndHiringPartners.events.count[0].max_count / 10)
-        if (maxPageLimit === 1)
-        {
-            button1.textContent = pageNumber . toString()
-            button2.classList.add('hidden')
-            button3.classList.add('hidden')
-            PreviousButton.classList.add('disabled')
-            NextButton.classList.add('disabled')
-        }
-        else if (maxPageLimit > 1 && (maxPageLimit - pageNumber) === 1)
-        {
-            button1.textContent = (pageNumber - 1).toString()
-            button2.textContent = pageNumber .toString()
-            button3.textContent = (pageNumber + 1).toString()
-        }
-        else if (maxPageLimit > 1 && maxPageLimit === pageNumber)
-        {
-            button1.textContent = (pageNumber - 2).toString()
-            button2.textContent = (pageNumber - 1).toString()
-            button3.textContent = pageNumber.toString()
-            NextButton.classList.add('disabled')
-        }
-        else
-        {
-            button1.textContent = pageNumber.toString()
-            button2.textContent = (pageNumber + 1).toString()
-            button3.textContent = (pageNumber + 2).toString()
-            NextButton.classList.remove('disabled')
-        }
+
+
+
+        // let i=1
+        // for (i; i<=maxPageLimit; i++)
+        // {
+        //     const pageButton = document.createElement('a')
+        //     pageButton.textContent = i.toString() + '  '
+        //     pageButton.setAttribute('id',i.toString())
+        //     pageButtonDiv.appendChild(pageButton)
+        // }
+        // if (maxPageLimit === 1)
+        // {
+        //     button1.textContent = pageNumber . toString()
+        //     button2.classList.add('hidden')
+        //     button3.classList.add('hidden')
+        //     PreviousButton.classList.add('disabled')
+        //     NextButton.classList.add('disabled')
+        // }
+        // else if (maxPageLimit > 1 && (maxPageLimit - pageNumber) === 1)
+        // {
+        //     button1.textContent = (pageNumber - 1).toString()
+        //     button2.textContent = pageNumber .toString()
+        //     button3.textContent = (pageNumber + 1).toString()
+        // }
+        // else if (maxPageLimit > 1 && maxPageLimit === pageNumber)
+        // {
+        //     button1.textContent = (pageNumber - 2).toString()
+        //     button2.textContent = (pageNumber - 1).toString()
+        //     button3.textContent = pageNumber.toString()
+        //     NextButton.classList.add('disabled')
+        // }
+        // else
+        // {
+        //     button1.textContent = pageNumber.toString()
+        //     button2.textContent = (pageNumber + 1).toString()
+        //     button3.textContent = (pageNumber + 2).toString()
+        //     NextButton.classList.remove('disabled')
+        // }
         console.log(maxPageLimit)
         console.log(pageNumber)
     })
