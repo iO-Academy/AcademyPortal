@@ -32,8 +32,7 @@ class GetEventsController extends Controller
 
         $eventSearchInput = $request->getQueryParams()['searchTerm'] ?? '';
         $eventFilterInput = $request->getQueryParams()['categoryValue'] ?? null;
-//        $pageNumberInput = $args['pageNumber'];
-        $pageNumberInput = 10;
+        $pageNumberInput = $args['pageNumber'];
         if (strlen($eventSearchInput) < 256) {
             try {
                 if (!$pastEvents) {

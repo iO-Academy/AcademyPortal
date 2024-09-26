@@ -11,24 +11,32 @@ import {addEventListenersToDisplayApplicantModal} from "./applicantModal.js"
  *
  * @return event data
  */
+
+
+let pageNumber = 1
+
+getEvents()
+document.querySelector('#counterMinus').addEventListener('click', function (e) {
+    pageNumber--
+    console.log(pageNumber)
+    getEvents()
+
+})
+document.querySelector('#counterPlus').addEventListener('click', function (e) {
+    pageNumber++
+    console.log(pageNumber)
+    getEvents()
+
+})
 function getEvents(search = false) {
 
-    let pageNumber = 10
-    document.querySelector('#counterMinus').addEventListener('click', function (e) {
-        pageNumber--
-        console.log(pageNumber)
-
-    })
-    document.querySelector('#counterPlus').addEventListener('click', function (e) {
-        pageNumber++
-        console.log(pageNumber)
-
-    })
 
 
     document.getElementById('buttonOne').textContent = pageNumber.toString()
     document.getElementById('buttonTwo').textContent = (pageNumber + 1).toString()
     document.getElementById('buttonThree').textContent = (pageNumber + 2).toString()
+
+    // (pageNumber > 1) ? offsetValue = (pageNumber-1) * 10 : pageNumber = 0
 
     let url = `./api/getEvents/${pageNumber}?categoryValue=` + categoriesFilter.value
     if (search !== false) {
@@ -39,7 +47,6 @@ function getEvents(search = false) {
         url += '&past=1'
     }
 
-    //'.api/getEvents?page={pageNumber}
 
     fetch(url, {
         credentials: "same-origin",
@@ -354,7 +361,6 @@ function addEventListenersForCopyEmailsButtons(event, applicants) {
 
 populateFilterEventCategories()
 
-getEvents()
 
     /**
      * Get all the hiring partners from the API
